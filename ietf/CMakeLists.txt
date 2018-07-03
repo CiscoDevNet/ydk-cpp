@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0)
 cmake_policy(SET CMP0048 NEW)
-project(ydk_ietf VERSION 0.1.5-post1 LANGUAGES C CXX)
+project(ydk_ietf VERSION 0.1.5 LANGUAGES C CXX)
 
 # CPack Dynamic Settings
 set (CPACK_PACKAGE_NAME "libydk-ietf")

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0)
 cmake_policy(SET CMP0048 NEW)
-project(ydk_cisco_ios_xe VERSION 16.8.1-post1 LANGUAGES C CXX)
+project(ydk_cisco_ios_xe VERSION 16.8.1 LANGUAGES C CXX)
 
 # CPack Dynamic Settings
 set (CPACK_PACKAGE_NAME "libydk-cisco-ios-xe")
