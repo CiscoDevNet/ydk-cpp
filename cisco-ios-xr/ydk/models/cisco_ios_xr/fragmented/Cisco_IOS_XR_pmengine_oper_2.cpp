@@ -20,7 +20,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "rx-util"; yang_parent_name = "macsec-hour24-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-util"; yang_parent_name = "macsec-hour24-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24EtherS::MacsecHour24Ether::RxUtil::~RxUtil()
@@ -29,6 +29,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24EtherS::MacsecHour24Ether::RxUtil::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -139,7 +140,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "tx-util"; yang_parent_name = "macsec-hour24-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-util"; yang_parent_name = "macsec-hour24-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24EtherS::MacsecHour24Ether::TxUtil::~TxUtil()
@@ -148,6 +149,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24EtherS::MacsecHour24Ether::TxUtil::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -258,7 +260,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "tx-undersized-pkt"; yang_parent_name = "macsec-hour24-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-undersized-pkt"; yang_parent_name = "macsec-hour24-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24EtherS::MacsecHour24Ether::TxUndersizedPkt::~TxUndersizedPkt()
@@ -267,6 +269,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24EtherS::MacsecHour24Ether::TxUndersizedPkt::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -377,7 +380,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "tx-oversized-pkt"; yang_parent_name = "macsec-hour24-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-oversized-pkt"; yang_parent_name = "macsec-hour24-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24EtherS::MacsecHour24Ether::TxOversizedPkt::~TxOversizedPkt()
@@ -386,6 +389,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24EtherS::MacsecHour24Ether::TxOversizedPkt::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -496,7 +500,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "tx-fragments"; yang_parent_name = "macsec-hour24-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-fragments"; yang_parent_name = "macsec-hour24-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24EtherS::MacsecHour24Ether::TxFragments::~TxFragments()
@@ -505,6 +509,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24EtherS::MacsecHour24Ether::TxFragments::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -615,7 +620,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "tx-jabber"; yang_parent_name = "macsec-hour24-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-jabber"; yang_parent_name = "macsec-hour24-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24EtherS::MacsecHour24Ether::TxJabber::~TxJabber()
@@ -624,6 +629,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24EtherS::MacsecHour24Ether::TxJabber::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -734,7 +740,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "tx-bad-fcs"; yang_parent_name = "macsec-hour24-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-bad-fcs"; yang_parent_name = "macsec-hour24-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24EtherS::MacsecHour24Ether::TxBadFcs::~TxBadFcs()
@@ -743,6 +749,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24EtherS::MacsecHour24Ether::TxBadFcs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -845,19 +852,22 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyifs()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyifs()
+    :
+    macsec_hour24secyif(this, {"number"})
 {
 
-    yang_name = "macsec-hour24secyifs"; yang_parent_name = "macsec-hour24"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-hour24secyifs"; yang_parent_name = "macsec-hour24"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::~MacsecHour24Secyifs()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::~MacsecHour24secyifs()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::has_data() const
 {
-    for (std::size_t index=0; index<macsec_hour24secyif.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<macsec_hour24secyif.len(); index++)
     {
         if(macsec_hour24secyif[index]->has_data())
             return true;
@@ -865,9 +875,9 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return false;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::has_operation() const
 {
-    for (std::size_t index=0; index<macsec_hour24secyif.size(); index++)
+    for (std::size_t index=0; index<macsec_hour24secyif.len(); index++)
     {
         if(macsec_hour24secyif[index]->has_operation())
             return true;
@@ -875,14 +885,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "macsec-hour24secyifs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -891,25 +901,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-hour24secyif")
     {
-        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif>();
+        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif>();
         c->parent = this;
-        macsec_hour24secyif.push_back(c);
+        macsec_hour24secyif.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : macsec_hour24secyif)
+    for (auto c : macsec_hour24secyif.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -920,22 +930,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::Ma
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "macsec-hour24secyif")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::MacsecHour24Secyif()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::MacsecHour24secyif()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -947,19 +957,19 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"},
     sample_count{YType::uint64, "sample-count"}
-    	,
-    in_pkts_untagged(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUntagged>())
-	,in_pkts_no_tag(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoTag>())
-	,in_pkts_bad_tag(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsBadTag>())
-	,in_pkts_unknown_sci(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUnknownSci>())
-	,in_pkts_no_sci(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoSci>())
-	,in_pkts_overrun(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsOverrun>())
-	,in_octets_validated(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsValidated>())
-	,in_octets_decrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsDecrypted>())
-	,out_pkts_untagged(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsUntagged>())
-	,out_pkts_too_long(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsTooLong>())
-	,out_octets_protected(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsProtected>())
-	,out_octets_encrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsEncrypted>())
+        ,
+    in_pkts_untagged(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUntagged>())
+    , in_pkts_no_tag(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoTag>())
+    , in_pkts_bad_tag(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsBadTag>())
+    , in_pkts_unknown_sci(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUnknownSci>())
+    , in_pkts_no_sci(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoSci>())
+    , in_pkts_overrun(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsOverrun>())
+    , in_octets_validated(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsValidated>())
+    , in_octets_decrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsDecrypted>())
+    , out_pkts_untagged(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsUntagged>())
+    , out_pkts_too_long(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsTooLong>())
+    , out_octets_protected(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsProtected>())
+    , out_octets_encrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsEncrypted>())
 {
     in_pkts_untagged->parent = this;
     in_pkts_no_tag->parent = this;
@@ -974,15 +984,16 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     out_octets_protected->parent = this;
     out_octets_encrypted->parent = this;
 
-    yang_name = "macsec-hour24secyif"; yang_parent_name = "macsec-hour24secyifs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-hour24secyif"; yang_parent_name = "macsec-hour24secyifs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::~MacsecHour24Secyif()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::~MacsecHour24secyif()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -1007,7 +1018,7 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| (out_octets_encrypted !=  nullptr && out_octets_encrypted->has_data());
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -1034,14 +1045,15 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| (out_octets_encrypted !=  nullptr && out_octets_encrypted->has_operation());
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "macsec-hour24secyif" <<"[number='" <<number <<"']";
+    path_buffer << "macsec-hour24secyif";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1060,13 +1072,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "in-pkts-untagged")
     {
         if(in_pkts_untagged == nullptr)
         {
-            in_pkts_untagged = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUntagged>();
+            in_pkts_untagged = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUntagged>();
         }
         return in_pkts_untagged;
     }
@@ -1075,7 +1087,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_no_tag == nullptr)
         {
-            in_pkts_no_tag = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoTag>();
+            in_pkts_no_tag = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoTag>();
         }
         return in_pkts_no_tag;
     }
@@ -1084,7 +1096,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_bad_tag == nullptr)
         {
-            in_pkts_bad_tag = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsBadTag>();
+            in_pkts_bad_tag = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsBadTag>();
         }
         return in_pkts_bad_tag;
     }
@@ -1093,7 +1105,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_unknown_sci == nullptr)
         {
-            in_pkts_unknown_sci = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUnknownSci>();
+            in_pkts_unknown_sci = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUnknownSci>();
         }
         return in_pkts_unknown_sci;
     }
@@ -1102,7 +1114,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_no_sci == nullptr)
         {
-            in_pkts_no_sci = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoSci>();
+            in_pkts_no_sci = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoSci>();
         }
         return in_pkts_no_sci;
     }
@@ -1111,7 +1123,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_overrun == nullptr)
         {
-            in_pkts_overrun = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsOverrun>();
+            in_pkts_overrun = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsOverrun>();
         }
         return in_pkts_overrun;
     }
@@ -1120,7 +1132,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_octets_validated == nullptr)
         {
-            in_octets_validated = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsValidated>();
+            in_octets_validated = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsValidated>();
         }
         return in_octets_validated;
     }
@@ -1129,7 +1141,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_octets_decrypted == nullptr)
         {
-            in_octets_decrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsDecrypted>();
+            in_octets_decrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsDecrypted>();
         }
         return in_octets_decrypted;
     }
@@ -1138,7 +1150,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out_pkts_untagged == nullptr)
         {
-            out_pkts_untagged = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsUntagged>();
+            out_pkts_untagged = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsUntagged>();
         }
         return out_pkts_untagged;
     }
@@ -1147,7 +1159,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out_pkts_too_long == nullptr)
         {
-            out_pkts_too_long = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsTooLong>();
+            out_pkts_too_long = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsTooLong>();
         }
         return out_pkts_too_long;
     }
@@ -1156,7 +1168,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out_octets_protected == nullptr)
         {
-            out_octets_protected = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsProtected>();
+            out_octets_protected = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsProtected>();
         }
         return out_octets_protected;
     }
@@ -1165,7 +1177,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out_octets_encrypted == nullptr)
         {
-            out_octets_encrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsEncrypted>();
+            out_octets_encrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsEncrypted>();
         }
         return out_octets_encrypted;
     }
@@ -1173,7 +1185,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1240,7 +1252,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::Ma
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -1304,7 +1316,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -1348,14 +1360,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "in-pkts-untagged" || name == "in-pkts-no-tag" || name == "in-pkts-bad-tag" || name == "in-pkts-unknown-sci" || name == "in-pkts-no-sci" || name == "in-pkts-overrun" || name == "in-octets-validated" || name == "in-octets-decrypted" || name == "out-pkts-untagged" || name == "out-pkts-too-long" || name == "out-octets-protected" || name == "out-octets-encrypted" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support" || name == "sample-count")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUntagged::InPktsUntagged()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUntagged::InPktsUntagged()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -1363,22 +1375,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-untagged"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-untagged"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUntagged::~InPktsUntagged()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUntagged::~InPktsUntagged()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUntagged::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUntagged::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUntagged::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUntagged::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -1387,14 +1400,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUntagged::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUntagged::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-untagged";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUntagged::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUntagged::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1407,19 +1420,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUntagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUntagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUntagged::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUntagged::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUntagged::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUntagged::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -1447,7 +1460,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUntagged::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUntagged::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -1467,14 +1480,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUntagged::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUntagged::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoTag::InPktsNoTag()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoTag::InPktsNoTag()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -1482,22 +1495,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-no-tag"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-no-tag"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoTag::~InPktsNoTag()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoTag::~InPktsNoTag()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoTag::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoTag::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoTag::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoTag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -1506,14 +1520,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoTag::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoTag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-no-tag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoTag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoTag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1526,19 +1540,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoTag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -1566,7 +1580,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoTag::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoTag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -1586,14 +1600,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoTag::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoTag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsBadTag::InPktsBadTag()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsBadTag::InPktsBadTag()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -1601,22 +1615,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-bad-tag"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-bad-tag"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsBadTag::~InPktsBadTag()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsBadTag::~InPktsBadTag()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsBadTag::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsBadTag::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsBadTag::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsBadTag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -1625,14 +1640,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsBadTag::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsBadTag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-bad-tag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsBadTag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsBadTag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1645,19 +1660,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsBadTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsBadTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsBadTag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsBadTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsBadTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsBadTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -1685,7 +1700,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsBadTag::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsBadTag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -1705,14 +1720,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsBadTag::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsBadTag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUnknownSci::InPktsUnknownSci()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUnknownSci::InPktsUnknownSci()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -1720,22 +1735,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-unknown-sci"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-unknown-sci"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUnknownSci::~InPktsUnknownSci()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUnknownSci::~InPktsUnknownSci()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUnknownSci::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUnknownSci::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUnknownSci::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUnknownSci::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -1744,14 +1760,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUnknownSci::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUnknownSci::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-unknown-sci";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUnknownSci::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUnknownSci::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1764,19 +1780,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUnknownSci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUnknownSci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUnknownSci::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUnknownSci::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUnknownSci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUnknownSci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -1804,7 +1820,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUnknownSci::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUnknownSci::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -1824,14 +1840,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsUnknownSci::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsUnknownSci::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoSci::InPktsNoSci()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoSci::InPktsNoSci()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -1839,22 +1855,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-no-sci"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-no-sci"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoSci::~InPktsNoSci()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoSci::~InPktsNoSci()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoSci::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoSci::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoSci::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoSci::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -1863,14 +1880,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoSci::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoSci::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-no-sci";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoSci::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoSci::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1883,19 +1900,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoSci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoSci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoSci::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoSci::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoSci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoSci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -1923,7 +1940,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoSci::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoSci::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -1943,14 +1960,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsNoSci::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsNoSci::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsOverrun::InPktsOverrun()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsOverrun::InPktsOverrun()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -1958,22 +1975,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-overrun"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-overrun"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsOverrun::~InPktsOverrun()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsOverrun::~InPktsOverrun()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsOverrun::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsOverrun::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsOverrun::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsOverrun::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -1982,14 +2000,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsOverrun::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsOverrun::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-overrun";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsOverrun::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsOverrun::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2002,19 +2020,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsOverrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsOverrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsOverrun::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsOverrun::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsOverrun::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsOverrun::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2042,7 +2060,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsOverrun::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsOverrun::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2062,14 +2080,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InPktsOverrun::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InPktsOverrun::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsValidated::InOctetsValidated()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsValidated::InOctetsValidated()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -2077,22 +2095,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-octets-validated"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-octets-validated"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsValidated::~InOctetsValidated()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsValidated::~InOctetsValidated()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsValidated::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsValidated::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsValidated::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsValidated::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2101,14 +2120,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsValidated::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsValidated::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-octets-validated";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsValidated::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsValidated::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2121,19 +2140,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsValidated::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsValidated::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsValidated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsValidated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2161,7 +2180,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsValidated::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsValidated::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2181,14 +2200,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsValidated::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsValidated::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsDecrypted::InOctetsDecrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsDecrypted::InOctetsDecrypted()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -2196,22 +2215,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-octets-decrypted"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-octets-decrypted"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsDecrypted::~InOctetsDecrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsDecrypted::~InOctetsDecrypted()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsDecrypted::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsDecrypted::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsDecrypted::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsDecrypted::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2220,14 +2240,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsDecrypted::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsDecrypted::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-octets-decrypted";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsDecrypted::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsDecrypted::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2240,19 +2260,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsDecrypted::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsDecrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsDecrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsDecrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2280,7 +2300,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsDecrypted::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsDecrypted::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2300,14 +2320,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::InOctetsDecrypted::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::InOctetsDecrypted::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsUntagged::OutPktsUntagged()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsUntagged::OutPktsUntagged()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -2315,22 +2335,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-pkts-untagged"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-pkts-untagged"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsUntagged::~OutPktsUntagged()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsUntagged::~OutPktsUntagged()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsUntagged::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsUntagged::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsUntagged::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsUntagged::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2339,14 +2360,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsUntagged::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsUntagged::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-pkts-untagged";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsUntagged::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsUntagged::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2359,19 +2380,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsUntagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsUntagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsUntagged::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsUntagged::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsUntagged::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsUntagged::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2399,7 +2420,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsUntagged::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsUntagged::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2419,14 +2440,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsUntagged::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsUntagged::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsTooLong::OutPktsTooLong()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsTooLong::OutPktsTooLong()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -2434,22 +2455,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-pkts-too-long"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-pkts-too-long"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsTooLong::~OutPktsTooLong()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsTooLong::~OutPktsTooLong()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsTooLong::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsTooLong::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsTooLong::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsTooLong::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2458,14 +2480,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsTooLong::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsTooLong::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-pkts-too-long";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsTooLong::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsTooLong::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2478,19 +2500,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsTooLong::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsTooLong::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsTooLong::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsTooLong::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsTooLong::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsTooLong::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2518,7 +2540,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsTooLong::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsTooLong::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2538,14 +2560,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutPktsTooLong::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutPktsTooLong::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsProtected::OutOctetsProtected()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsProtected::OutOctetsProtected()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -2553,22 +2575,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-octets-protected"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-octets-protected"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsProtected::~OutOctetsProtected()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsProtected::~OutOctetsProtected()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsProtected::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsProtected::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsProtected::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsProtected::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2577,14 +2600,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsProtected::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsProtected::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-octets-protected";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsProtected::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsProtected::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2597,19 +2620,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsProtected::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsProtected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsProtected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsProtected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2637,7 +2660,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsProtected::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsProtected::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2657,14 +2680,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsProtected::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsProtected::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsEncrypted::OutOctetsEncrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsEncrypted::OutOctetsEncrypted()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -2672,22 +2695,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-octets-encrypted"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-octets-encrypted"; yang_parent_name = "macsec-hour24secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsEncrypted::~OutOctetsEncrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsEncrypted::~OutOctetsEncrypted()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsEncrypted::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsEncrypted::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsEncrypted::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsEncrypted::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2696,14 +2720,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsEncrypted::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsEncrypted::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-octets-encrypted";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsEncrypted::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsEncrypted::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2716,19 +2740,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsEncrypted::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsEncrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsEncrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsEncrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2756,7 +2780,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsEncrypted::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsEncrypted::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2776,26 +2800,29 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyifs::MacsecHour24Secyif::OutOctetsEncrypted::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyifs::MacsecHour24secyif::OutOctetsEncrypted::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrxes()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrxes()
+    :
+    macsec_hour24secyrx(this, {"number"})
 {
 
-    yang_name = "macsec-hour24secyrxes"; yang_parent_name = "macsec-hour24"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-hour24secyrxes"; yang_parent_name = "macsec-hour24"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::~MacsecHour24Secyrxes()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::~MacsecHour24secyrxes()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::has_data() const
 {
-    for (std::size_t index=0; index<macsec_hour24secyrx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<macsec_hour24secyrx.len(); index++)
     {
         if(macsec_hour24secyrx[index]->has_data())
             return true;
@@ -2803,9 +2830,9 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return false;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::has_operation() const
 {
-    for (std::size_t index=0; index<macsec_hour24secyrx.size(); index++)
+    for (std::size_t index=0; index<macsec_hour24secyrx.len(); index++)
     {
         if(macsec_hour24secyrx[index]->has_operation())
             return true;
@@ -2813,14 +2840,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "macsec-hour24secyrxes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2829,25 +2856,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-hour24secyrx")
     {
-        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx>();
+        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx>();
         c->parent = this;
-        macsec_hour24secyrx.push_back(c);
+        macsec_hour24secyrx.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : macsec_hour24secyrx)
+    for (auto c : macsec_hour24secyrx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2858,22 +2885,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::Ma
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "macsec-hour24secyrx")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::MacsecHour24Secyrx()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::MacsecHour24secyrx()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -2885,18 +2912,18 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"},
     sample_count{YType::uint64, "sample-count"}
-    	,
-    in_pkts_unchecked(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnchecked>())
-	,in_pkts_delayed(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsDelayed>())
-	,in_pkts_late(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsLate>())
-	,in_pkts_ok(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsOk>())
-	,in_pkts_invalid(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsInvalid>())
-	,in_pkts_not_valid(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotValid>())
-	,in_pkts_not_using_sa(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotUsingSa>())
-	,in_pkts_unused_sa(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnusedSa>())
-	,in_pkts_untagged_hit(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUntaggedHit>())
-	,in_octets_validated(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsValidated>())
-	,in_octets_decrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsDecrypted>())
+        ,
+    in_pkts_unchecked(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnchecked>())
+    , in_pkts_delayed(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsDelayed>())
+    , in_pkts_late(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsLate>())
+    , in_pkts_ok(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsOk>())
+    , in_pkts_invalid(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsInvalid>())
+    , in_pkts_not_valid(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotValid>())
+    , in_pkts_not_using_sa(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotUsingSa>())
+    , in_pkts_unused_sa(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnusedSa>())
+    , in_pkts_untagged_hit(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUntaggedHit>())
+    , in_octets_validated(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsValidated>())
+    , in_octets_decrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsDecrypted>())
 {
     in_pkts_unchecked->parent = this;
     in_pkts_delayed->parent = this;
@@ -2910,15 +2937,16 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     in_octets_validated->parent = this;
     in_octets_decrypted->parent = this;
 
-    yang_name = "macsec-hour24secyrx"; yang_parent_name = "macsec-hour24secyrxes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-hour24secyrx"; yang_parent_name = "macsec-hour24secyrxes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::~MacsecHour24Secyrx()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::~MacsecHour24secyrx()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -2942,7 +2970,7 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| (in_octets_decrypted !=  nullptr && in_octets_decrypted->has_data());
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -2968,14 +2996,15 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| (in_octets_decrypted !=  nullptr && in_octets_decrypted->has_operation());
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "macsec-hour24secyrx" <<"[number='" <<number <<"']";
+    path_buffer << "macsec-hour24secyrx";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2994,13 +3023,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "in-pkts-unchecked")
     {
         if(in_pkts_unchecked == nullptr)
         {
-            in_pkts_unchecked = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnchecked>();
+            in_pkts_unchecked = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnchecked>();
         }
         return in_pkts_unchecked;
     }
@@ -3009,7 +3038,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_delayed == nullptr)
         {
-            in_pkts_delayed = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsDelayed>();
+            in_pkts_delayed = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsDelayed>();
         }
         return in_pkts_delayed;
     }
@@ -3018,7 +3047,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_late == nullptr)
         {
-            in_pkts_late = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsLate>();
+            in_pkts_late = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsLate>();
         }
         return in_pkts_late;
     }
@@ -3027,7 +3056,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_ok == nullptr)
         {
-            in_pkts_ok = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsOk>();
+            in_pkts_ok = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsOk>();
         }
         return in_pkts_ok;
     }
@@ -3036,7 +3065,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_invalid == nullptr)
         {
-            in_pkts_invalid = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsInvalid>();
+            in_pkts_invalid = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsInvalid>();
         }
         return in_pkts_invalid;
     }
@@ -3045,7 +3074,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_not_valid == nullptr)
         {
-            in_pkts_not_valid = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotValid>();
+            in_pkts_not_valid = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotValid>();
         }
         return in_pkts_not_valid;
     }
@@ -3054,7 +3083,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_not_using_sa == nullptr)
         {
-            in_pkts_not_using_sa = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotUsingSa>();
+            in_pkts_not_using_sa = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotUsingSa>();
         }
         return in_pkts_not_using_sa;
     }
@@ -3063,7 +3092,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_unused_sa == nullptr)
         {
-            in_pkts_unused_sa = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnusedSa>();
+            in_pkts_unused_sa = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnusedSa>();
         }
         return in_pkts_unused_sa;
     }
@@ -3072,7 +3101,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_untagged_hit == nullptr)
         {
-            in_pkts_untagged_hit = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUntaggedHit>();
+            in_pkts_untagged_hit = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUntaggedHit>();
         }
         return in_pkts_untagged_hit;
     }
@@ -3081,7 +3110,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_octets_validated == nullptr)
         {
-            in_octets_validated = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsValidated>();
+            in_octets_validated = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsValidated>();
         }
         return in_octets_validated;
     }
@@ -3090,7 +3119,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_octets_decrypted == nullptr)
         {
-            in_octets_decrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsDecrypted>();
+            in_octets_decrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsDecrypted>();
         }
         return in_octets_decrypted;
     }
@@ -3098,7 +3127,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3160,7 +3189,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::Ma
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -3224,7 +3253,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -3268,14 +3297,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "in-pkts-unchecked" || name == "in-pkts-delayed" || name == "in-pkts-late" || name == "in-pkts-ok" || name == "in-pkts-invalid" || name == "in-pkts-not-valid" || name == "in-pkts-not-using-sa" || name == "in-pkts-unused-sa" || name == "in-pkts-untagged-hit" || name == "in-octets-validated" || name == "in-octets-decrypted" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support" || name == "sample-count")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnchecked::InPktsUnchecked()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnchecked::InPktsUnchecked()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -3283,22 +3312,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-unchecked"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-unchecked"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnchecked::~InPktsUnchecked()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnchecked::~InPktsUnchecked()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnchecked::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnchecked::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnchecked::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnchecked::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -3307,14 +3337,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnchecked::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnchecked::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-unchecked";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnchecked::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnchecked::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3327,19 +3357,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnchecked::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnchecked::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnchecked::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnchecked::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnchecked::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnchecked::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -3367,7 +3397,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnchecked::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnchecked::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -3387,14 +3417,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnchecked::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnchecked::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsDelayed::InPktsDelayed()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsDelayed::InPktsDelayed()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -3402,22 +3432,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-delayed"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-delayed"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsDelayed::~InPktsDelayed()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsDelayed::~InPktsDelayed()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsDelayed::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsDelayed::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsDelayed::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsDelayed::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -3426,14 +3457,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsDelayed::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsDelayed::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-delayed";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsDelayed::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsDelayed::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3446,19 +3477,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsDelayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsDelayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsDelayed::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsDelayed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsDelayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsDelayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -3486,7 +3517,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsDelayed::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsDelayed::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -3506,14 +3537,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsDelayed::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsDelayed::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsLate::InPktsLate()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsLate::InPktsLate()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -3521,22 +3552,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-late"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-late"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsLate::~InPktsLate()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsLate::~InPktsLate()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsLate::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsLate::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsLate::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsLate::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -3545,14 +3577,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsLate::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsLate::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-late";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsLate::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsLate::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3565,19 +3597,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsLate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsLate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsLate::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsLate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsLate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsLate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -3605,7 +3637,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsLate::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsLate::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -3625,14 +3657,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsLate::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsLate::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsOk::InPktsOk()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsOk::InPktsOk()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -3640,22 +3672,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-ok"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-ok"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsOk::~InPktsOk()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsOk::~InPktsOk()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsOk::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsOk::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsOk::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsOk::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -3664,14 +3697,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsOk::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsOk::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-ok";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsOk::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsOk::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3684,19 +3717,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsOk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsOk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsOk::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsOk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsOk::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsOk::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -3724,7 +3757,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsOk::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsOk::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -3744,14 +3777,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsOk::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsOk::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsInvalid::InPktsInvalid()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsInvalid::InPktsInvalid()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -3759,22 +3792,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-invalid"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-invalid"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsInvalid::~InPktsInvalid()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsInvalid::~InPktsInvalid()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsInvalid::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsInvalid::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsInvalid::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsInvalid::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -3783,14 +3817,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsInvalid::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsInvalid::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-invalid";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsInvalid::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsInvalid::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3803,19 +3837,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsInvalid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsInvalid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsInvalid::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsInvalid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsInvalid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsInvalid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -3843,7 +3877,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsInvalid::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsInvalid::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -3863,14 +3897,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsInvalid::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsInvalid::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotValid::InPktsNotValid()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotValid::InPktsNotValid()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -3878,22 +3912,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-not-valid"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-not-valid"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotValid::~InPktsNotValid()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotValid::~InPktsNotValid()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotValid::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotValid::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotValid::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotValid::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -3902,14 +3937,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotValid::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotValid::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-not-valid";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotValid::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotValid::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3922,19 +3957,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotValid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotValid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotValid::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotValid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotValid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotValid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -3962,7 +3997,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotValid::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotValid::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -3982,14 +4017,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotValid::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotValid::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotUsingSa::InPktsNotUsingSa()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotUsingSa::InPktsNotUsingSa()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -3997,22 +4032,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-not-using-sa"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-not-using-sa"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotUsingSa::~InPktsNotUsingSa()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotUsingSa::~InPktsNotUsingSa()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotUsingSa::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotUsingSa::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotUsingSa::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotUsingSa::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -4021,14 +4057,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotUsingSa::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotUsingSa::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-not-using-sa";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotUsingSa::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotUsingSa::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4041,19 +4077,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotUsingSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotUsingSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotUsingSa::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotUsingSa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotUsingSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotUsingSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -4081,7 +4117,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotUsingSa::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotUsingSa::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -4101,14 +4137,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsNotUsingSa::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsNotUsingSa::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnusedSa::InPktsUnusedSa()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnusedSa::InPktsUnusedSa()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -4116,22 +4152,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-unused-sa"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-unused-sa"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnusedSa::~InPktsUnusedSa()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnusedSa::~InPktsUnusedSa()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnusedSa::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnusedSa::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnusedSa::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnusedSa::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -4140,14 +4177,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnusedSa::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnusedSa::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-unused-sa";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnusedSa::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnusedSa::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4160,19 +4197,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnusedSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnusedSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnusedSa::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnusedSa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnusedSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnusedSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -4200,7 +4237,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnusedSa::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnusedSa::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -4220,14 +4257,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUnusedSa::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUnusedSa::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUntaggedHit::InPktsUntaggedHit()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUntaggedHit::InPktsUntaggedHit()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -4235,22 +4272,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-untagged-hit"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-untagged-hit"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUntaggedHit::~InPktsUntaggedHit()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUntaggedHit::~InPktsUntaggedHit()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUntaggedHit::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUntaggedHit::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUntaggedHit::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUntaggedHit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -4259,14 +4297,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUntaggedHit::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUntaggedHit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-untagged-hit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUntaggedHit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUntaggedHit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4279,19 +4317,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUntaggedHit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUntaggedHit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUntaggedHit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUntaggedHit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUntaggedHit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUntaggedHit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -4319,7 +4357,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUntaggedHit::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUntaggedHit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -4339,14 +4377,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InPktsUntaggedHit::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InPktsUntaggedHit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsValidated::InOctetsValidated()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsValidated::InOctetsValidated()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -4354,22 +4392,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-octets-validated"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-octets-validated"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsValidated::~InOctetsValidated()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsValidated::~InOctetsValidated()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsValidated::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsValidated::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsValidated::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsValidated::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -4378,14 +4417,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsValidated::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsValidated::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-octets-validated";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsValidated::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsValidated::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4398,19 +4437,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsValidated::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsValidated::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsValidated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsValidated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -4438,7 +4477,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsValidated::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsValidated::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -4458,14 +4497,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsValidated::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsValidated::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsDecrypted::InOctetsDecrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsDecrypted::InOctetsDecrypted()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -4473,22 +4512,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-octets-decrypted"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-octets-decrypted"; yang_parent_name = "macsec-hour24secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsDecrypted::~InOctetsDecrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsDecrypted::~InOctetsDecrypted()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsDecrypted::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsDecrypted::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsDecrypted::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsDecrypted::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -4497,14 +4537,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsDecrypted::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsDecrypted::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-octets-decrypted";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsDecrypted::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsDecrypted::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4517,19 +4557,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsDecrypted::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsDecrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsDecrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsDecrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -4557,7 +4597,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsDecrypted::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsDecrypted::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -4577,26 +4617,29 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secyrxes::MacsecHour24Secyrx::InOctetsDecrypted::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secyrxes::MacsecHour24secyrx::InOctetsDecrypted::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytxes()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytxes()
+    :
+    macsec_hour24secytx(this, {"number"})
 {
 
-    yang_name = "macsec-hour24secytxes"; yang_parent_name = "macsec-hour24"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-hour24secytxes"; yang_parent_name = "macsec-hour24"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::~MacsecHour24Secytxes()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::~MacsecHour24secytxes()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::has_data() const
 {
-    for (std::size_t index=0; index<macsec_hour24secytx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<macsec_hour24secytx.len(); index++)
     {
         if(macsec_hour24secytx[index]->has_data())
             return true;
@@ -4604,9 +4647,9 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return false;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::has_operation() const
 {
-    for (std::size_t index=0; index<macsec_hour24secytx.size(); index++)
+    for (std::size_t index=0; index<macsec_hour24secytx.len(); index++)
     {
         if(macsec_hour24secytx[index]->has_operation())
             return true;
@@ -4614,14 +4657,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "macsec-hour24secytxes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4630,25 +4673,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-hour24secytx")
     {
-        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx>();
+        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx>();
         c->parent = this;
-        macsec_hour24secytx.push_back(c);
+        macsec_hour24secytx.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : macsec_hour24secytx)
+    for (auto c : macsec_hour24secytx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4659,22 +4702,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::Ma
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "macsec-hour24secytx")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::MacsecHour24Secytx()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::MacsecHour24secytx()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -4686,12 +4729,12 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"},
     sample_count{YType::uint64, "sample-count"}
-    	,
-    out_pkts_protected(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsProtected>())
-	,out_pkts_encrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsEncrypted>())
-	,out_octets_protected(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsProtected>())
-	,out_octets_encrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsEncrypted>())
-	,out_pkts_too_long(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsTooLong>())
+        ,
+    out_pkts_protected(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsProtected>())
+    , out_pkts_encrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsEncrypted>())
+    , out_octets_protected(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsProtected>())
+    , out_octets_encrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsEncrypted>())
+    , out_pkts_too_long(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsTooLong>())
 {
     out_pkts_protected->parent = this;
     out_pkts_encrypted->parent = this;
@@ -4699,15 +4742,16 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     out_octets_encrypted->parent = this;
     out_pkts_too_long->parent = this;
 
-    yang_name = "macsec-hour24secytx"; yang_parent_name = "macsec-hour24secytxes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-hour24secytx"; yang_parent_name = "macsec-hour24secytxes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::~MacsecHour24Secytx()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::~MacsecHour24secytx()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -4725,7 +4769,7 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| (out_pkts_too_long !=  nullptr && out_pkts_too_long->has_data());
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -4745,14 +4789,15 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| (out_pkts_too_long !=  nullptr && out_pkts_too_long->has_operation());
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "macsec-hour24secytx" <<"[number='" <<number <<"']";
+    path_buffer << "macsec-hour24secytx";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4771,13 +4816,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "out-pkts-protected")
     {
         if(out_pkts_protected == nullptr)
         {
-            out_pkts_protected = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsProtected>();
+            out_pkts_protected = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsProtected>();
         }
         return out_pkts_protected;
     }
@@ -4786,7 +4831,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out_pkts_encrypted == nullptr)
         {
-            out_pkts_encrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsEncrypted>();
+            out_pkts_encrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsEncrypted>();
         }
         return out_pkts_encrypted;
     }
@@ -4795,7 +4840,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out_octets_protected == nullptr)
         {
-            out_octets_protected = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsProtected>();
+            out_octets_protected = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsProtected>();
         }
         return out_octets_protected;
     }
@@ -4804,7 +4849,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out_octets_encrypted == nullptr)
         {
-            out_octets_encrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsEncrypted>();
+            out_octets_encrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsEncrypted>();
         }
         return out_octets_encrypted;
     }
@@ -4813,7 +4858,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out_pkts_too_long == nullptr)
         {
-            out_pkts_too_long = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsTooLong>();
+            out_pkts_too_long = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsTooLong>();
         }
         return out_pkts_too_long;
     }
@@ -4821,7 +4866,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -4853,7 +4898,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::Ma
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -4917,7 +4962,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -4961,14 +5006,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "out-pkts-protected" || name == "out-pkts-encrypted" || name == "out-octets-protected" || name == "out-octets-encrypted" || name == "out-pkts-too-long" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support" || name == "sample-count")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsProtected::OutPktsProtected()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsProtected::OutPktsProtected()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -4976,22 +5021,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-pkts-protected"; yang_parent_name = "macsec-hour24secytx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-pkts-protected"; yang_parent_name = "macsec-hour24secytx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsProtected::~OutPktsProtected()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsProtected::~OutPktsProtected()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsProtected::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsProtected::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsProtected::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsProtected::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -5000,14 +5046,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsProtected::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsProtected::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-pkts-protected";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsProtected::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsProtected::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5020,19 +5066,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsProtected::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsProtected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsProtected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsProtected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -5060,7 +5106,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsProtected::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsProtected::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -5080,14 +5126,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsProtected::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsProtected::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsEncrypted::OutPktsEncrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsEncrypted::OutPktsEncrypted()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -5095,22 +5141,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-pkts-encrypted"; yang_parent_name = "macsec-hour24secytx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-pkts-encrypted"; yang_parent_name = "macsec-hour24secytx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsEncrypted::~OutPktsEncrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsEncrypted::~OutPktsEncrypted()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsEncrypted::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsEncrypted::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsEncrypted::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsEncrypted::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -5119,14 +5166,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsEncrypted::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsEncrypted::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-pkts-encrypted";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsEncrypted::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsEncrypted::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5139,19 +5186,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsEncrypted::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsEncrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsEncrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsEncrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -5179,7 +5226,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsEncrypted::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsEncrypted::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -5199,14 +5246,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsEncrypted::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsEncrypted::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsProtected::OutOctetsProtected()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsProtected::OutOctetsProtected()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -5214,22 +5261,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-octets-protected"; yang_parent_name = "macsec-hour24secytx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-octets-protected"; yang_parent_name = "macsec-hour24secytx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsProtected::~OutOctetsProtected()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsProtected::~OutOctetsProtected()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsProtected::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsProtected::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsProtected::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsProtected::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -5238,14 +5286,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsProtected::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsProtected::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-octets-protected";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsProtected::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsProtected::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5258,19 +5306,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsProtected::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsProtected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsProtected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsProtected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -5298,7 +5346,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsProtected::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsProtected::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -5318,14 +5366,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsProtected::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsProtected::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsEncrypted::OutOctetsEncrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsEncrypted::OutOctetsEncrypted()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -5333,22 +5381,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-octets-encrypted"; yang_parent_name = "macsec-hour24secytx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-octets-encrypted"; yang_parent_name = "macsec-hour24secytx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsEncrypted::~OutOctetsEncrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsEncrypted::~OutOctetsEncrypted()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsEncrypted::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsEncrypted::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsEncrypted::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsEncrypted::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -5357,14 +5406,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsEncrypted::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsEncrypted::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-octets-encrypted";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsEncrypted::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsEncrypted::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5377,19 +5426,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsEncrypted::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsEncrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsEncrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsEncrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -5417,7 +5466,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsEncrypted::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsEncrypted::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -5437,14 +5486,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutOctetsEncrypted::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutOctetsEncrypted::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsTooLong::OutPktsTooLong()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsTooLong::OutPktsTooLong()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -5452,22 +5501,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHou
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-pkts-too-long"; yang_parent_name = "macsec-hour24secytx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-pkts-too-long"; yang_parent_name = "macsec-hour24secytx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsTooLong::~OutPktsTooLong()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsTooLong::~OutPktsTooLong()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsTooLong::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsTooLong::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsTooLong::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsTooLong::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -5476,14 +5526,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsTooLong::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsTooLong::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-pkts-too-long";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsTooLong::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsTooLong::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5496,19 +5546,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsTooLong::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsTooLong::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsTooLong::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsTooLong::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsTooLong::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsTooLong::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -5536,7 +5586,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsTooLong::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsTooLong::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -5556,7 +5606,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24Secytxes::MacsecHour24Secytx::OutPktsTooLong::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24::MacsecHour24secytxes::MacsecHour24secytx::OutPktsTooLong::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
@@ -5569,7 +5619,7 @@ PerformanceManagement::HoVc::HoVc()
 {
     ho_vc_ports->parent = this;
 
-    yang_name = "ho-vc"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ho-vc"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::HoVc::~HoVc()
@@ -5578,6 +5628,7 @@ PerformanceManagement::HoVc::~HoVc()
 
 bool PerformanceManagement::HoVc::has_data() const
 {
+    if (is_presence_container) return true;
     return (ho_vc_ports !=  nullptr && ho_vc_ports->has_data());
 }
 
@@ -5652,9 +5703,11 @@ bool PerformanceManagement::HoVc::has_leaf_or_child_of_name(const std::string & 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPorts()
+    :
+    ho_vc_port(this, {"name"})
 {
 
-    yang_name = "ho-vc-ports"; yang_parent_name = "ho-vc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ho-vc-ports"; yang_parent_name = "ho-vc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::~HoVcPorts()
@@ -5663,7 +5716,8 @@ PerformanceManagement::HoVc::HoVcPorts::~HoVcPorts()
 
 bool PerformanceManagement::HoVc::HoVcPorts::has_data() const
 {
-    for (std::size_t index=0; index<ho_vc_port.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ho_vc_port.len(); index++)
     {
         if(ho_vc_port[index]->has_data())
             return true;
@@ -5673,7 +5727,7 @@ bool PerformanceManagement::HoVc::HoVcPorts::has_data() const
 
 bool PerformanceManagement::HoVc::HoVcPorts::has_operation() const
 {
-    for (std::size_t index=0; index<ho_vc_port.size(); index++)
+    for (std::size_t index=0; index<ho_vc_port.len(); index++)
     {
         if(ho_vc_port[index]->has_operation())
             return true;
@@ -5710,7 +5764,7 @@ std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::get_child_by_nam
     {
         auto c = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort>();
         c->parent = this;
-        ho_vc_port.push_back(c);
+        ho_vc_port.append(c);
         return c;
     }
 
@@ -5722,7 +5776,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ho_vc_port)
+    for (auto c : ho_vc_port.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5751,12 +5805,12 @@ bool PerformanceManagement::HoVc::HoVcPorts::has_leaf_or_child_of_name(const std
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcPort()
     :
     name{YType::str, "name"}
-    	,
+        ,
     ho_vc_current(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent>())
 {
     ho_vc_current->parent = this;
 
-    yang_name = "ho-vc-port"; yang_parent_name = "ho-vc-ports"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ho-vc-port"; yang_parent_name = "ho-vc-ports"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::~HoVcPort()
@@ -5765,6 +5819,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::~HoVcPort()
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (ho_vc_current !=  nullptr && ho_vc_current->has_data());
 }
@@ -5786,7 +5841,8 @@ std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::get_absolute_path(
 std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ho-vc-port" <<"[name='" <<name <<"']";
+    path_buffer << "ho-vc-port";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -5854,12 +5910,12 @@ bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::has_leaf_or_child_of_name
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcCurrent()
     :
     ho_vc_hour24(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24>())
-	,ho_vc_minute15(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15>())
+    , ho_vc_minute15(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15>())
 {
     ho_vc_hour24->parent = this;
     ho_vc_minute15->parent = this;
 
-    yang_name = "ho-vc-current"; yang_parent_name = "ho-vc-port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ho-vc-current"; yang_parent_name = "ho-vc-port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::~HoVcCurrent()
@@ -5868,6 +5924,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::~HoVcCurrent()
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::has_data() const
 {
+    if (is_presence_container) return true;
     return (ho_vc_hour24 !=  nullptr && ho_vc_hour24->has_data())
 	|| (ho_vc_minute15 !=  nullptr && ho_vc_minute15->has_data());
 }
@@ -5956,7 +6013,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
 {
     ho_vc_hour24_paths->parent = this;
 
-    yang_name = "ho-vc-hour24"; yang_parent_name = "ho-vc-current"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ho-vc-hour24"; yang_parent_name = "ho-vc-current"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::~HoVcHour24()
@@ -5965,6 +6022,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::~HoVc
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::has_data() const
 {
+    if (is_presence_container) return true;
     return (ho_vc_hour24_paths !=  nullptr && ho_vc_hour24_paths->has_data());
 }
 
@@ -6032,9 +6090,11 @@ bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Paths()
+    :
+    ho_vc_hour24_path(this, {"number"})
 {
 
-    yang_name = "ho-vc-hour24-paths"; yang_parent_name = "ho-vc-hour24"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ho-vc-hour24-paths"; yang_parent_name = "ho-vc-hour24"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::~HoVcHour24Paths()
@@ -6043,7 +6103,8 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::has_data() const
 {
-    for (std::size_t index=0; index<ho_vc_hour24_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ho_vc_hour24_path.len(); index++)
     {
         if(ho_vc_hour24_path[index]->has_data())
             return true;
@@ -6053,7 +6114,7 @@ bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::has_operation() const
 {
-    for (std::size_t index=0; index<ho_vc_hour24_path.size(); index++)
+    for (std::size_t index=0; index<ho_vc_hour24_path.len(); index++)
     {
         if(ho_vc_hour24_path[index]->has_operation())
             return true;
@@ -6083,7 +6144,7 @@ std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCu
     {
         auto c = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path>();
         c->parent = this;
-        ho_vc_hour24_path.push_back(c);
+        ho_vc_hour24_path.append(c);
         return c;
     }
 
@@ -6095,7 +6156,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ho_vc_hour24_path)
+    for (auto c : ho_vc_hour24_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6130,14 +6191,14 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
     last_clear_time{YType::str, "last-clear-time"},
     last_clear15_min_time{YType::str, "last-clear15-min-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"}
-    	,
+        ,
     path(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path>())
-	,fe_path(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::FePath>())
+    , fe_path(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::FePath>())
 {
     path->parent = this;
     fe_path->parent = this;
 
-    yang_name = "ho-vc-hour24-path"; yang_parent_name = "ho-vc-hour24-paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ho-vc-hour24-path"; yang_parent_name = "ho-vc-hour24-paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::~HoVcHour24Path()
@@ -6146,6 +6207,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -6174,7 +6236,8 @@ bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::
 std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ho-vc-hour24-path" <<"[number='" <<number <<"']";
+    path_buffer << "ho-vc-hour24-path";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -6322,15 +6385,15 @@ bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::Path()
     :
     path_status{YType::int32, "path-status"}
-    	,
+        ,
     path_e_ss(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathESs>())
-	,path_es_rs(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEsRs>())
-	,path_se_ss(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSeSs>())
-	,path_ses_rs(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSesRs>())
-	,path_e_bs(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEBs>())
-	,path_ua_ss(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathUaSs>())
-	,path_bb_es(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbEs>())
-	,path_bbe_rs(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbeRs>())
+    , path_es_rs(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEsRs>())
+    , path_se_ss(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSeSs>())
+    , path_ses_rs(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSesRs>())
+    , path_e_bs(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEBs>())
+    , path_ua_ss(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathUaSs>())
+    , path_bb_es(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbEs>())
+    , path_bbe_rs(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbeRs>())
 {
     path_e_ss->parent = this;
     path_es_rs->parent = this;
@@ -6341,7 +6404,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
     path_bb_es->parent = this;
     path_bbe_rs->parent = this;
 
-    yang_name = "path"; yang_parent_name = "ho-vc-hour24-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "ho-vc-hour24-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::~Path()
@@ -6350,6 +6413,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::has_data() const
 {
+    if (is_presence_container) return true;
     return path_status.is_set
 	|| (path_e_ss !=  nullptr && path_e_ss->has_data())
 	|| (path_es_rs !=  nullptr && path_es_rs->has_data())
@@ -6548,7 +6612,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-e-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-e-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathESs::~PathESs()
@@ -6557,6 +6621,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathESs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -6653,7 +6718,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-es-rs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-es-rs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEsRs::~PathEsRs()
@@ -6662,6 +6727,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEsRs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -6758,7 +6824,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-se-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-se-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSeSs::~PathSeSs()
@@ -6767,6 +6833,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSeSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -6863,7 +6930,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-ses-rs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-ses-rs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSesRs::~PathSesRs()
@@ -6872,6 +6939,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathSesRs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -6968,7 +7036,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-e-bs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-e-bs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEBs::~PathEBs()
@@ -6977,6 +7045,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathEBs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -7073,7 +7142,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-ua-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-ua-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathUaSs::~PathUaSs()
@@ -7082,6 +7151,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathUaSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -7178,7 +7248,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-bb-es"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-bb-es"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbEs::~PathBbEs()
@@ -7187,6 +7257,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbEs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -7283,7 +7354,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-bbe-rs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-bbe-rs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbeRs::~PathBbeRs()
@@ -7292,6 +7363,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::Path::PathBbeRs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -7389,7 +7461,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
     far_end_path_ua_ss{YType::uint32, "far-end-path-ua-ss"}
 {
 
-    yang_name = "fe-path"; yang_parent_name = "ho-vc-hour24-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fe-path"; yang_parent_name = "ho-vc-hour24-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::FePath::~FePath()
@@ -7398,6 +7470,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcH
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcHour24::HoVcHour24Paths::HoVcHour24Path::FePath::has_data() const
 {
+    if (is_presence_container) return true;
     return far_end_path_e_ss.is_set
 	|| far_end_path_se_ss.is_set
 	|| far_end_path_c_vs.is_set
@@ -7506,7 +7579,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
 {
     ho_vc_minute15_paths->parent = this;
 
-    yang_name = "ho-vc-minute15"; yang_parent_name = "ho-vc-current"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ho-vc-minute15"; yang_parent_name = "ho-vc-current"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::~HoVcMinute15()
@@ -7515,6 +7588,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::~Ho
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::has_data() const
 {
+    if (is_presence_container) return true;
     return (ho_vc_minute15_paths !=  nullptr && ho_vc_minute15_paths->has_data());
 }
 
@@ -7582,9 +7656,11 @@ bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Paths()
+    :
+    ho_vc_minute15_path(this, {"number"})
 {
 
-    yang_name = "ho-vc-minute15-paths"; yang_parent_name = "ho-vc-minute15"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ho-vc-minute15-paths"; yang_parent_name = "ho-vc-minute15"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::~HoVcMinute15Paths()
@@ -7593,7 +7669,8 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::has_data() const
 {
-    for (std::size_t index=0; index<ho_vc_minute15_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ho_vc_minute15_path.len(); index++)
     {
         if(ho_vc_minute15_path[index]->has_data())
             return true;
@@ -7603,7 +7680,7 @@ bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::has_operation() const
 {
-    for (std::size_t index=0; index<ho_vc_minute15_path.size(); index++)
+    for (std::size_t index=0; index<ho_vc_minute15_path.len(); index++)
     {
         if(ho_vc_minute15_path[index]->has_operation())
             return true;
@@ -7633,7 +7710,7 @@ std::shared_ptr<Entity> PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCu
     {
         auto c = std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path>();
         c->parent = this;
-        ho_vc_minute15_path.push_back(c);
+        ho_vc_minute15_path.append(c);
         return c;
     }
 
@@ -7645,7 +7722,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::HoVc::HoVc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ho_vc_minute15_path)
+    for (auto c : ho_vc_minute15_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7680,14 +7757,14 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
     last_clear_time{YType::str, "last-clear-time"},
     last_clear15_min_time{YType::str, "last-clear15-min-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"}
-    	,
+        ,
     path(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path>())
-	,fe_path(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::FePath>())
+    , fe_path(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::FePath>())
 {
     path->parent = this;
     fe_path->parent = this;
 
-    yang_name = "ho-vc-minute15-path"; yang_parent_name = "ho-vc-minute15-paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ho-vc-minute15-path"; yang_parent_name = "ho-vc-minute15-paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::~HoVcMinute15Path()
@@ -7696,6 +7773,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -7724,7 +7802,8 @@ bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15
 std::string PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ho-vc-minute15-path" <<"[number='" <<number <<"']";
+    path_buffer << "ho-vc-minute15-path";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -7872,15 +7951,15 @@ bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::Path()
     :
     path_status{YType::int32, "path-status"}
-    	,
+        ,
     path_e_ss(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathESs>())
-	,path_es_rs(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEsRs>())
-	,path_se_ss(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSeSs>())
-	,path_ses_rs(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSesRs>())
-	,path_e_bs(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEBs>())
-	,path_ua_ss(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathUaSs>())
-	,path_bb_es(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbEs>())
-	,path_bbe_rs(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbeRs>())
+    , path_es_rs(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEsRs>())
+    , path_se_ss(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSeSs>())
+    , path_ses_rs(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSesRs>())
+    , path_e_bs(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEBs>())
+    , path_ua_ss(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathUaSs>())
+    , path_bb_es(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbEs>())
+    , path_bbe_rs(std::make_shared<PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbeRs>())
 {
     path_e_ss->parent = this;
     path_es_rs->parent = this;
@@ -7891,7 +7970,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
     path_bb_es->parent = this;
     path_bbe_rs->parent = this;
 
-    yang_name = "path"; yang_parent_name = "ho-vc-minute15-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "ho-vc-minute15-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::~Path()
@@ -7900,6 +7979,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::has_data() const
 {
+    if (is_presence_container) return true;
     return path_status.is_set
 	|| (path_e_ss !=  nullptr && path_e_ss->has_data())
 	|| (path_es_rs !=  nullptr && path_es_rs->has_data())
@@ -8098,7 +8178,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-e-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-e-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathESs::~PathESs()
@@ -8107,6 +8187,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathESs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -8203,7 +8284,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-es-rs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-es-rs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEsRs::~PathEsRs()
@@ -8212,6 +8293,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEsRs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -8308,7 +8390,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-se-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-se-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSeSs::~PathSeSs()
@@ -8317,6 +8399,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSeSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -8413,7 +8496,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-ses-rs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-ses-rs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSesRs::~PathSesRs()
@@ -8422,6 +8505,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathSesRs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -8518,7 +8602,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-e-bs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-e-bs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEBs::~PathEBs()
@@ -8527,6 +8611,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathEBs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -8623,7 +8708,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-ua-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-ua-ss"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathUaSs::~PathUaSs()
@@ -8632,6 +8717,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathUaSs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -8728,7 +8814,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-bb-es"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-bb-es"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbEs::~PathBbEs()
@@ -8737,6 +8823,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbEs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -8833,7 +8920,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "path-bbe-rs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-bbe-rs"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbeRs::~PathBbeRs()
@@ -8842,6 +8929,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::Path::PathBbeRs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
@@ -8939,7 +9027,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
     far_end_path_ua_ss{YType::uint32, "far-end-path-ua-ss"}
 {
 
-    yang_name = "fe-path"; yang_parent_name = "ho-vc-minute15-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fe-path"; yang_parent_name = "ho-vc-minute15-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::FePath::~FePath()
@@ -8948,6 +9036,7 @@ PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoV
 
 bool PerformanceManagement::HoVc::HoVcPorts::HoVcPort::HoVcCurrent::HoVcMinute15::HoVcMinute15Paths::HoVcMinute15Path::FePath::has_data() const
 {
+    if (is_presence_container) return true;
     return far_end_path_e_ss.is_set
 	|| far_end_path_se_ss.is_set
 	|| far_end_path_c_vs.is_set
@@ -9056,7 +9145,7 @@ PerformanceManagement::Odu::Odu()
 {
     odu_ports->parent = this;
 
-    yang_name = "odu"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "odu"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Odu::~Odu()
@@ -9065,6 +9154,7 @@ PerformanceManagement::Odu::~Odu()
 
 bool PerformanceManagement::Odu::has_data() const
 {
+    if (is_presence_container) return true;
     return (odu_ports !=  nullptr && odu_ports->has_data());
 }
 
@@ -9139,9 +9229,11 @@ bool PerformanceManagement::Odu::has_leaf_or_child_of_name(const std::string & n
 }
 
 PerformanceManagement::Odu::OduPorts::OduPorts()
+    :
+    odu_port(this, {"name"})
 {
 
-    yang_name = "odu-ports"; yang_parent_name = "odu"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "odu-ports"; yang_parent_name = "odu"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Odu::OduPorts::~OduPorts()
@@ -9150,7 +9242,8 @@ PerformanceManagement::Odu::OduPorts::~OduPorts()
 
 bool PerformanceManagement::Odu::OduPorts::has_data() const
 {
-    for (std::size_t index=0; index<odu_port.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<odu_port.len(); index++)
     {
         if(odu_port[index]->has_data())
             return true;
@@ -9160,7 +9253,7 @@ bool PerformanceManagement::Odu::OduPorts::has_data() const
 
 bool PerformanceManagement::Odu::OduPorts::has_operation() const
 {
-    for (std::size_t index=0; index<odu_port.size(); index++)
+    for (std::size_t index=0; index<odu_port.len(); index++)
     {
         if(odu_port[index]->has_operation())
             return true;
@@ -9197,7 +9290,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::get_child_by_name(
     {
         auto c = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort>();
         c->parent = this;
-        odu_port.push_back(c);
+        odu_port.append(c);
         return c;
     }
 
@@ -9209,7 +9302,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : odu_port)
+    for (auto c : odu_port.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9238,12 +9331,12 @@ bool PerformanceManagement::Odu::OduPorts::has_leaf_or_child_of_name(const std::
 PerformanceManagement::Odu::OduPorts::OduPort::OduPort()
     :
     name{YType::str, "name"}
-    	,
+        ,
     odu_current(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent>())
 {
     odu_current->parent = this;
 
-    yang_name = "odu-port"; yang_parent_name = "odu-ports"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "odu-port"; yang_parent_name = "odu-ports"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Odu::OduPorts::OduPort::~OduPort()
@@ -9252,6 +9345,7 @@ PerformanceManagement::Odu::OduPorts::OduPort::~OduPort()
 
 bool PerformanceManagement::Odu::OduPorts::OduPort::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (odu_current !=  nullptr && odu_current->has_data());
 }
@@ -9273,7 +9367,8 @@ std::string PerformanceManagement::Odu::OduPorts::OduPort::get_absolute_path() c
 std::string PerformanceManagement::Odu::OduPorts::OduPort::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "odu-port" <<"[name='" <<name <<"']";
+    path_buffer << "odu-port";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -9341,12 +9436,12 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::has_leaf_or_child_of_name(co
 PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduCurrent()
     :
     odu_minute15(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15>())
-	,odu_hour24(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24>())
+    , odu_hour24(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24>())
 {
     odu_minute15->parent = this;
     odu_hour24->parent = this;
 
-    yang_name = "odu-current"; yang_parent_name = "odu-port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "odu-current"; yang_parent_name = "odu-port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::~OduCurrent()
@@ -9355,6 +9450,7 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::~OduCurrent()
 
 bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::has_data() const
 {
+    if (is_presence_container) return true;
     return (odu_minute15 !=  nullptr && odu_minute15->has_data())
 	|| (odu_hour24 !=  nullptr && odu_hour24->has_data());
 }
@@ -9439,15 +9535,15 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::has_leaf_or_chil
 
 PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15()
     :
-    odu_minute15gfps(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps>())
-	,odu_minute15prbses(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses>())
-	,odu_minute15otns(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns>())
+    odu_minute15gfps(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps>())
+    , odu_minute15prbses(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses>())
+    , odu_minute15otns(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns>())
 {
     odu_minute15gfps->parent = this;
     odu_minute15prbses->parent = this;
     odu_minute15otns->parent = this;
 
-    yang_name = "odu-minute15"; yang_parent_name = "odu-current"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "odu-minute15"; yang_parent_name = "odu-current"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::~OduMinute15()
@@ -9456,6 +9552,7 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::~OduMinu
 
 bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::has_data() const
 {
+    if (is_presence_container) return true;
     return (odu_minute15gfps !=  nullptr && odu_minute15gfps->has_data())
 	|| (odu_minute15prbses !=  nullptr && odu_minute15prbses->has_data())
 	|| (odu_minute15otns !=  nullptr && odu_minute15otns->has_data());
@@ -9491,7 +9588,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(odu_minute15gfps == nullptr)
         {
-            odu_minute15gfps = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps>();
+            odu_minute15gfps = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps>();
         }
         return odu_minute15gfps;
     }
@@ -9500,7 +9597,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(odu_minute15prbses == nullptr)
         {
-            odu_minute15prbses = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses>();
+            odu_minute15prbses = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses>();
         }
         return odu_minute15prbses;
     }
@@ -9509,7 +9606,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(odu_minute15otns == nullptr)
         {
-            odu_minute15otns = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns>();
+            odu_minute15otns = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns>();
         }
         return odu_minute15otns;
     }
@@ -9554,19 +9651,22 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::has
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfps()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfps()
+    :
+    odu_minute15gfp(this, {"number"})
 {
 
-    yang_name = "odu-minute15gfps"; yang_parent_name = "odu-minute15"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "odu-minute15gfps"; yang_parent_name = "odu-minute15"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::~OduMinute15Gfps()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::~OduMinute15gfps()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::has_data() const
 {
-    for (std::size_t index=0; index<odu_minute15gfp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<odu_minute15gfp.len(); index++)
     {
         if(odu_minute15gfp[index]->has_data())
             return true;
@@ -9574,9 +9674,9 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     return false;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::has_operation() const
 {
-    for (std::size_t index=0; index<odu_minute15gfp.size(); index++)
+    for (std::size_t index=0; index<odu_minute15gfp.len(); index++)
     {
         if(odu_minute15gfp[index]->has_operation())
             return true;
@@ -9584,14 +9684,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "odu-minute15gfps";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9600,25 +9700,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "odu-minute15gfp")
     {
-        auto c = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp>();
+        auto c = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp>();
         c->parent = this;
-        odu_minute15gfp.push_back(c);
+        odu_minute15gfp.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : odu_minute15gfp)
+    for (auto c : odu_minute15gfp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9629,22 +9729,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPo
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "odu-minute15gfp")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::OduMinute15Gfp()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::OduMinute15gfp()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -9655,12 +9755,12 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinut
     last_clear30_sec_time{YType::str, "last-clear30-sec-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"}
-    	,
-    rx_bit_err(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr>())
-	,rx_inv_typ(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp>())
-	,rx_crc(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc>())
-	,rx_lfd(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd>())
-	,rx_csf(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf>())
+        ,
+    rx_bit_err(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxBitErr>())
+    , rx_inv_typ(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxInvTyp>())
+    , rx_crc(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCrc>())
+    , rx_lfd(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxLfd>())
+    , rx_csf(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCsf>())
 {
     rx_bit_err->parent = this;
     rx_inv_typ->parent = this;
@@ -9668,15 +9768,16 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinut
     rx_lfd->parent = this;
     rx_csf->parent = this;
 
-    yang_name = "odu-minute15gfp"; yang_parent_name = "odu-minute15gfps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "odu-minute15gfp"; yang_parent_name = "odu-minute15gfps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::~OduMinute15Gfp()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::~OduMinute15gfp()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -9693,7 +9794,7 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| (rx_csf !=  nullptr && rx_csf->has_data());
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -9712,14 +9813,15 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| (rx_csf !=  nullptr && rx_csf->has_operation());
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "odu-minute15gfp" <<"[number='" <<number <<"']";
+    path_buffer << "odu-minute15gfp";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9737,13 +9839,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rx-bit-err")
     {
         if(rx_bit_err == nullptr)
         {
-            rx_bit_err = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr>();
+            rx_bit_err = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxBitErr>();
         }
         return rx_bit_err;
     }
@@ -9752,7 +9854,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(rx_inv_typ == nullptr)
         {
-            rx_inv_typ = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp>();
+            rx_inv_typ = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxInvTyp>();
         }
         return rx_inv_typ;
     }
@@ -9761,7 +9863,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(rx_crc == nullptr)
         {
-            rx_crc = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc>();
+            rx_crc = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCrc>();
         }
         return rx_crc;
     }
@@ -9770,7 +9872,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(rx_lfd == nullptr)
         {
-            rx_lfd = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd>();
+            rx_lfd = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxLfd>();
         }
         return rx_lfd;
     }
@@ -9779,7 +9881,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(rx_csf == nullptr)
         {
-            rx_csf = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf>();
+            rx_csf = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCsf>();
         }
         return rx_csf;
     }
@@ -9787,7 +9889,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -9819,7 +9921,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPo
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -9877,7 +9979,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -9917,35 +10019,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rx-bit-err" || name == "rx-inv-typ" || name == "rx-crc" || name == "rx-lfd" || name == "rx-csf" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr::RxBitErr()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxBitErr::RxBitErr()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "rx-bit-err"; yang_parent_name = "odu-minute15gfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-bit-err"; yang_parent_name = "odu-minute15gfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr::~RxBitErr()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxBitErr::~RxBitErr()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxBitErr::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxBitErr::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -9953,14 +10056,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxBitErr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rx-bit-err";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxBitErr::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9972,19 +10075,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxBitErr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxBitErr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxBitErr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -10006,7 +10109,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxBitErr::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -10022,35 +10125,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxBitErr::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxBitErr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp::RxInvTyp()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxInvTyp::RxInvTyp()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "rx-inv-typ"; yang_parent_name = "odu-minute15gfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-inv-typ"; yang_parent_name = "odu-minute15gfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp::~RxInvTyp()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxInvTyp::~RxInvTyp()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxInvTyp::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxInvTyp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -10058,14 +10162,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxInvTyp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rx-inv-typ";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxInvTyp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10077,19 +10181,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxInvTyp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxInvTyp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxInvTyp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -10111,7 +10215,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxInvTyp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -10127,35 +10231,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxInvTyp::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxInvTyp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc::RxCrc()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCrc::RxCrc()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "rx-crc"; yang_parent_name = "odu-minute15gfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-crc"; yang_parent_name = "odu-minute15gfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc::~RxCrc()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCrc::~RxCrc()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCrc::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCrc::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -10163,14 +10268,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCrc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rx-crc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCrc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10182,19 +10287,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCrc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCrc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -10216,7 +10321,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCrc::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -10232,35 +10337,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCrc::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCrc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd::RxLfd()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxLfd::RxLfd()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "rx-lfd"; yang_parent_name = "odu-minute15gfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-lfd"; yang_parent_name = "odu-minute15gfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd::~RxLfd()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxLfd::~RxLfd()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxLfd::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxLfd::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -10268,14 +10374,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxLfd::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rx-lfd";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxLfd::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10287,19 +10393,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxLfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxLfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxLfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -10321,7 +10427,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxLfd::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -10337,35 +10443,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxLfd::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxLfd::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf::RxCsf()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCsf::RxCsf()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "rx-csf"; yang_parent_name = "odu-minute15gfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-csf"; yang_parent_name = "odu-minute15gfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf::~RxCsf()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCsf::~RxCsf()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCsf::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCsf::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -10373,14 +10480,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCsf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rx-csf";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCsf::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10392,19 +10499,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCsf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCsf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCsf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -10426,7 +10533,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCsf::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -10442,26 +10549,29 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Gfps::OduMinute15Gfp::RxCsf::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15gfps::OduMinute15gfp::RxCsf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbses()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbses()
+    :
+    odu_minute15prbs(this, {"number"})
 {
 
-    yang_name = "odu-minute15prbses"; yang_parent_name = "odu-minute15"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "odu-minute15prbses"; yang_parent_name = "odu-minute15"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::~OduMinute15Prbses()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::~OduMinute15prbses()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::has_data() const
 {
-    for (std::size_t index=0; index<odu_minute15prbs.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<odu_minute15prbs.len(); index++)
     {
         if(odu_minute15prbs[index]->has_data())
             return true;
@@ -10469,9 +10579,9 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     return false;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::has_operation() const
 {
-    for (std::size_t index=0; index<odu_minute15prbs.size(); index++)
+    for (std::size_t index=0; index<odu_minute15prbs.len(); index++)
     {
         if(odu_minute15prbs[index]->has_operation())
             return true;
@@ -10479,14 +10589,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "odu-minute15prbses";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10495,25 +10605,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "odu-minute15prbs")
     {
-        auto c = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs>();
+        auto c = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs>();
         c->parent = this;
-        odu_minute15prbs.push_back(c);
+        odu_minute15prbs.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : odu_minute15prbs)
+    for (auto c : odu_minute15prbs.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10524,22 +10634,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPo
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "odu-minute15prbs")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::OduMinute15Prbs()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::OduMinute15prbs()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -10554,22 +10664,23 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinut
     found_at_time{YType::uint64, "found-at-time"},
     lost_at_time{YType::uint64, "lost-at-time"},
     conf_patt{YType::enumeration, "conf-patt"}
-    	,
-    rcv_patt(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt>())
-	,prbs_status(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::PrbsStatus>())
+        ,
+    rcv_patt(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::RcvPatt>())
+    , prbs_status(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::PrbsStatus>())
 {
     rcv_patt->parent = this;
     prbs_status->parent = this;
 
-    yang_name = "odu-minute15prbs"; yang_parent_name = "odu-minute15prbses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "odu-minute15prbs"; yang_parent_name = "odu-minute15prbses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::~OduMinute15Prbs()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::~OduMinute15prbs()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -10587,7 +10698,7 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| (prbs_status !=  nullptr && prbs_status->has_data());
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -10607,14 +10718,15 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| (prbs_status !=  nullptr && prbs_status->has_operation());
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "odu-minute15prbs" <<"[number='" <<number <<"']";
+    path_buffer << "odu-minute15prbs";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10636,13 +10748,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rcv-patt")
     {
         if(rcv_patt == nullptr)
         {
-            rcv_patt = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt>();
+            rcv_patt = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::RcvPatt>();
         }
         return rcv_patt;
     }
@@ -10651,7 +10763,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(prbs_status == nullptr)
         {
-            prbs_status = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::PrbsStatus>();
+            prbs_status = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::PrbsStatus>();
         }
         return prbs_status;
     }
@@ -10659,7 +10771,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -10676,7 +10788,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPo
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -10758,7 +10870,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -10814,47 +10926,48 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rcv-patt" || name == "prbs-status" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "ebc" || name == "found-count" || name == "lost-count" || name == "found-at-time" || name == "lost-at-time" || name == "conf-patt")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt::RcvPatt()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::RcvPatt::RcvPatt()
     :
     valid{YType::boolean, "valid"},
     rcv_patt{YType::enumeration, "rcv-patt"}
 {
 
-    yang_name = "rcv-patt"; yang_parent_name = "odu-minute15prbs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rcv-patt"; yang_parent_name = "odu-minute15prbs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt::~RcvPatt()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::RcvPatt::~RcvPatt()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::RcvPatt::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| rcv_patt.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::RcvPatt::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(valid.yfilter)
 	|| ydk::is_set(rcv_patt.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::RcvPatt::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rcv-patt";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::RcvPatt::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10865,19 +10978,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::RcvPatt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::RcvPatt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::RcvPatt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "valid")
     {
@@ -10893,7 +11006,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::RcvPatt::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "valid")
     {
@@ -10905,47 +11018,48 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::RcvPatt::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::RcvPatt::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "valid" || name == "rcv-patt")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::PrbsStatus::PrbsStatus()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::PrbsStatus::PrbsStatus()
     :
     valid{YType::boolean, "valid"},
     prbs_status{YType::enumeration, "prbs-status"}
 {
 
-    yang_name = "prbs-status"; yang_parent_name = "odu-minute15prbs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prbs-status"; yang_parent_name = "odu-minute15prbs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::PrbsStatus::~PrbsStatus()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::PrbsStatus::~PrbsStatus()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::PrbsStatus::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::PrbsStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| prbs_status.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::PrbsStatus::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::PrbsStatus::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(valid.yfilter)
 	|| ydk::is_set(prbs_status.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::PrbsStatus::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::PrbsStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "prbs-status";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::PrbsStatus::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::PrbsStatus::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10956,19 +11070,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::PrbsStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::PrbsStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::PrbsStatus::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::PrbsStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::PrbsStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::PrbsStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "valid")
     {
@@ -10984,7 +11098,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::PrbsStatus::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::PrbsStatus::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "valid")
     {
@@ -10996,26 +11110,29 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Prbses::OduMinute15Prbs::PrbsStatus::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15prbses::OduMinute15prbs::PrbsStatus::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "valid" || name == "prbs-status")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otns()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otns()
+    :
+    odu_minute15otn(this, {"number"})
 {
 
-    yang_name = "odu-minute15otns"; yang_parent_name = "odu-minute15"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "odu-minute15otns"; yang_parent_name = "odu-minute15"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::~OduMinute15Otns()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::~OduMinute15otns()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::has_data() const
 {
-    for (std::size_t index=0; index<odu_minute15otn.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<odu_minute15otn.len(); index++)
     {
         if(odu_minute15otn[index]->has_data())
             return true;
@@ -11023,9 +11140,9 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     return false;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::has_operation() const
 {
-    for (std::size_t index=0; index<odu_minute15otn.size(); index++)
+    for (std::size_t index=0; index<odu_minute15otn.len(); index++)
     {
         if(odu_minute15otn[index]->has_operation())
             return true;
@@ -11033,14 +11150,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "odu-minute15otns";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11049,25 +11166,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "odu-minute15otn")
     {
-        auto c = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn>();
+        auto c = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn>();
         c->parent = this;
-        odu_minute15otn.push_back(c);
+        odu_minute15otn.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : odu_minute15otn)
+    for (auto c : odu_minute15otn.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11078,22 +11195,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPo
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "odu-minute15otn")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::OduMinute15Otn()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::OduMinute15otn()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -11104,24 +11221,24 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinut
     last_clear30_sec_time{YType::str, "last-clear30-sec-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"}
-    	,
-    lbc(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc>())
-	,es_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe>())
-	,esr_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe>())
-	,ses_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesNe>())
-	,sesr_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe>())
-	,uas_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe>())
-	,bbe_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeNe>())
-	,bber_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberNe>())
-	,fc_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcNe>())
-	,es_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsFe>())
-	,esr_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrFe>())
-	,ses_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesFe>())
-	,sesr_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrFe>())
-	,uas_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe>())
-	,bbe_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeFe>())
-	,bber_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberFe>())
-	,fc_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcFe>())
+        ,
+    lbc(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::Lbc>())
+    , es_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsNe>())
+    , esr_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrNe>())
+    , ses_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesNe>())
+    , sesr_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrNe>())
+    , uas_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasNe>())
+    , bbe_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeNe>())
+    , bber_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberNe>())
+    , fc_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcNe>())
+    , es_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsFe>())
+    , esr_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrFe>())
+    , ses_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesFe>())
+    , sesr_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrFe>())
+    , uas_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasFe>())
+    , bbe_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeFe>())
+    , bber_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberFe>())
+    , fc_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcFe>())
 {
     lbc->parent = this;
     es_ne->parent = this;
@@ -11141,15 +11258,16 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinut
     bber_fe->parent = this;
     fc_fe->parent = this;
 
-    yang_name = "odu-minute15otn"; yang_parent_name = "odu-minute15otns"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "odu-minute15otn"; yang_parent_name = "odu-minute15otns"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::~OduMinute15Otn()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::~OduMinute15otn()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -11178,7 +11296,7 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| (fc_fe !=  nullptr && fc_fe->has_data());
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -11209,14 +11327,15 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| (fc_fe !=  nullptr && fc_fe->has_operation());
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "odu-minute15otn" <<"[number='" <<number <<"']";
+    path_buffer << "odu-minute15otn";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11234,13 +11353,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lbc")
     {
         if(lbc == nullptr)
         {
-            lbc = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc>();
+            lbc = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::Lbc>();
         }
         return lbc;
     }
@@ -11249,7 +11368,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(es_ne == nullptr)
         {
-            es_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe>();
+            es_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsNe>();
         }
         return es_ne;
     }
@@ -11258,7 +11377,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(esr_ne == nullptr)
         {
-            esr_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe>();
+            esr_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrNe>();
         }
         return esr_ne;
     }
@@ -11267,7 +11386,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(ses_ne == nullptr)
         {
-            ses_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesNe>();
+            ses_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesNe>();
         }
         return ses_ne;
     }
@@ -11276,7 +11395,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(sesr_ne == nullptr)
         {
-            sesr_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe>();
+            sesr_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrNe>();
         }
         return sesr_ne;
     }
@@ -11285,7 +11404,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(uas_ne == nullptr)
         {
-            uas_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe>();
+            uas_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasNe>();
         }
         return uas_ne;
     }
@@ -11294,7 +11413,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(bbe_ne == nullptr)
         {
-            bbe_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeNe>();
+            bbe_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeNe>();
         }
         return bbe_ne;
     }
@@ -11303,7 +11422,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(bber_ne == nullptr)
         {
-            bber_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberNe>();
+            bber_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberNe>();
         }
         return bber_ne;
     }
@@ -11312,7 +11431,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(fc_ne == nullptr)
         {
-            fc_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcNe>();
+            fc_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcNe>();
         }
         return fc_ne;
     }
@@ -11321,7 +11440,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(es_fe == nullptr)
         {
-            es_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsFe>();
+            es_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsFe>();
         }
         return es_fe;
     }
@@ -11330,7 +11449,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(esr_fe == nullptr)
         {
-            esr_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrFe>();
+            esr_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrFe>();
         }
         return esr_fe;
     }
@@ -11339,7 +11458,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(ses_fe == nullptr)
         {
-            ses_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesFe>();
+            ses_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesFe>();
         }
         return ses_fe;
     }
@@ -11348,7 +11467,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(sesr_fe == nullptr)
         {
-            sesr_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrFe>();
+            sesr_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrFe>();
         }
         return sesr_fe;
     }
@@ -11357,7 +11476,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(uas_fe == nullptr)
         {
-            uas_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe>();
+            uas_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasFe>();
         }
         return uas_fe;
     }
@@ -11366,7 +11485,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(bbe_fe == nullptr)
         {
-            bbe_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeFe>();
+            bbe_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeFe>();
         }
         return bbe_fe;
     }
@@ -11375,7 +11494,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(bber_fe == nullptr)
         {
-            bber_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberFe>();
+            bber_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberFe>();
         }
         return bber_fe;
     }
@@ -11384,7 +11503,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(fc_fe == nullptr)
         {
-            fc_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcFe>();
+            fc_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcFe>();
         }
         return fc_fe;
     }
@@ -11392,7 +11511,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11484,7 +11603,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPo
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -11542,7 +11661,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -11582,35 +11701,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lbc" || name == "es-ne" || name == "esr-ne" || name == "ses-ne" || name == "sesr-ne" || name == "uas-ne" || name == "bbe-ne" || name == "bber-ne" || name == "fc-ne" || name == "es-fe" || name == "esr-fe" || name == "ses-fe" || name == "sesr-fe" || name == "uas-fe" || name == "bbe-fe" || name == "bber-fe" || name == "fc-fe" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc::Lbc()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::Lbc::Lbc()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "lbc"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lbc"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc::~Lbc()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::Lbc::~Lbc()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::Lbc::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::Lbc::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -11618,14 +11738,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::Lbc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lbc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::Lbc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11637,19 +11757,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::Lbc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -11671,7 +11791,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::Lbc::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -11687,35 +11807,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::Lbc::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::Lbc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe::EsNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsNe::EsNe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "es-ne"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "es-ne"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe::~EsNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsNe::~EsNe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -11723,14 +11844,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "es-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11742,19 +11863,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -11776,7 +11897,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -11792,35 +11913,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe::EsrNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrNe::EsrNe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "esr-ne"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "esr-ne"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe::~EsrNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrNe::~EsrNe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -11828,14 +11950,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "esr-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11847,19 +11969,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -11881,7 +12003,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -11897,35 +12019,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesNe::SesNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesNe::SesNe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "ses-ne"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ses-ne"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesNe::~SesNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesNe::~SesNe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesNe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesNe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -11933,14 +12056,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesNe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ses-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11952,19 +12075,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -11986,7 +12109,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -12002,35 +12125,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe::SesrNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrNe::SesrNe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "sesr-ne"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sesr-ne"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe::~SesrNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrNe::~SesrNe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -12038,14 +12162,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sesr-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12057,19 +12181,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -12091,7 +12215,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -12107,35 +12231,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe::UasNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasNe::UasNe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "uas-ne"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uas-ne"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe::~UasNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasNe::~UasNe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -12143,14 +12268,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "uas-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12162,19 +12287,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -12196,7 +12321,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -12212,35 +12337,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeNe::BbeNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeNe::BbeNe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "bbe-ne"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bbe-ne"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeNe::~BbeNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeNe::~BbeNe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeNe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeNe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -12248,14 +12374,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeNe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bbe-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12267,19 +12393,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -12301,7 +12427,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -12317,35 +12443,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberNe::BberNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberNe::BberNe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "bber-ne"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bber-ne"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberNe::~BberNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberNe::~BberNe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberNe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberNe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -12353,14 +12480,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberNe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bber-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12372,19 +12499,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -12406,7 +12533,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -12422,35 +12549,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcNe::FcNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcNe::FcNe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "fc-ne"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fc-ne"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcNe::~FcNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcNe::~FcNe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcNe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcNe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -12458,14 +12586,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcNe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fc-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12477,19 +12605,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -12511,7 +12639,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -12527,35 +12655,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsFe::EsFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsFe::EsFe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "es-fe"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "es-fe"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsFe::~EsFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsFe::~EsFe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsFe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsFe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -12563,14 +12692,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsFe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "es-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12582,19 +12711,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -12616,7 +12745,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -12632,35 +12761,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrFe::EsrFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrFe::EsrFe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "esr-fe"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "esr-fe"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrFe::~EsrFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrFe::~EsrFe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrFe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrFe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -12668,14 +12798,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrFe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "esr-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12687,19 +12817,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -12721,7 +12851,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -12737,35 +12867,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::EsrFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::EsrFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesFe::SesFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesFe::SesFe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "ses-fe"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ses-fe"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesFe::~SesFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesFe::~SesFe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesFe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesFe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -12773,14 +12904,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesFe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ses-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12792,19 +12923,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -12826,7 +12957,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -12842,35 +12973,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrFe::SesrFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrFe::SesrFe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "sesr-fe"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sesr-fe"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrFe::~SesrFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrFe::~SesrFe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrFe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrFe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -12878,14 +13010,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrFe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sesr-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12897,19 +13029,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -12931,7 +13063,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -12947,35 +13079,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::SesrFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::SesrFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe::UasFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasFe::UasFe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "uas-fe"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uas-fe"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe::~UasFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasFe::~UasFe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -12983,14 +13116,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "uas-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13002,19 +13135,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -13036,7 +13169,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -13052,35 +13185,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::UasFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::UasFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeFe::BbeFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeFe::BbeFe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "bbe-fe"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bbe-fe"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeFe::~BbeFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeFe::~BbeFe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeFe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeFe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -13088,14 +13222,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeFe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bbe-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13107,19 +13241,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -13141,7 +13275,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -13157,35 +13291,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BbeFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BbeFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberFe::BberFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberFe::BberFe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "bber-fe"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bber-fe"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberFe::~BberFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberFe::~BberFe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberFe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberFe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -13193,14 +13328,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberFe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bber-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13212,19 +13347,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -13246,7 +13381,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -13262,35 +13397,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::BberFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::BberFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcFe::FcFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcFe::FcFe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "fc-fe"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fc-fe"; yang_parent_name = "odu-minute15otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcFe::~FcFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcFe::~FcFe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcFe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcFe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -13298,14 +13434,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcFe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fc-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13317,19 +13453,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -13351,7 +13487,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -13367,7 +13503,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15Otns::OduMinute15Otn::FcFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::OduMinute15otns::OduMinute15otn::FcFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
@@ -13376,15 +13512,15 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduMinute15::Odu
 
 PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24()
     :
-    odu_hour24prbses(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses>())
-	,odu_hour24gfps(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps>())
-	,odu_hour24otns(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns>())
+    odu_hour24prbses(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses>())
+    , odu_hour24gfps(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps>())
+    , odu_hour24otns(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns>())
 {
     odu_hour24prbses->parent = this;
     odu_hour24gfps->parent = this;
     odu_hour24otns->parent = this;
 
-    yang_name = "odu-hour24"; yang_parent_name = "odu-current"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "odu-hour24"; yang_parent_name = "odu-current"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::~OduHour24()
@@ -13393,6 +13529,7 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::~OduHour24
 
 bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::has_data() const
 {
+    if (is_presence_container) return true;
     return (odu_hour24prbses !=  nullptr && odu_hour24prbses->has_data())
 	|| (odu_hour24gfps !=  nullptr && odu_hour24gfps->has_data())
 	|| (odu_hour24otns !=  nullptr && odu_hour24otns->has_data());
@@ -13428,7 +13565,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(odu_hour24prbses == nullptr)
         {
-            odu_hour24prbses = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses>();
+            odu_hour24prbses = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses>();
         }
         return odu_hour24prbses;
     }
@@ -13437,7 +13574,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(odu_hour24gfps == nullptr)
         {
-            odu_hour24gfps = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps>();
+            odu_hour24gfps = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps>();
         }
         return odu_hour24gfps;
     }
@@ -13446,7 +13583,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(odu_hour24otns == nullptr)
         {
-            odu_hour24otns = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns>();
+            odu_hour24otns = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns>();
         }
         return odu_hour24otns;
     }
@@ -13491,19 +13628,22 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::has_l
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbses()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbses()
+    :
+    odu_hour24prbs(this, {"number"})
 {
 
-    yang_name = "odu-hour24prbses"; yang_parent_name = "odu-hour24"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "odu-hour24prbses"; yang_parent_name = "odu-hour24"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::~OduHour24Prbses()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::~OduHour24prbses()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::has_data() const
 {
-    for (std::size_t index=0; index<odu_hour24prbs.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<odu_hour24prbs.len(); index++)
     {
         if(odu_hour24prbs[index]->has_data())
             return true;
@@ -13511,9 +13651,9 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     return false;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::has_operation() const
 {
-    for (std::size_t index=0; index<odu_hour24prbs.size(); index++)
+    for (std::size_t index=0; index<odu_hour24prbs.len(); index++)
     {
         if(odu_hour24prbs[index]->has_operation())
             return true;
@@ -13521,14 +13661,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "odu-hour24prbses";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13537,25 +13677,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "odu-hour24prbs")
     {
-        auto c = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs>();
+        auto c = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs>();
         c->parent = this;
-        odu_hour24prbs.push_back(c);
+        odu_hour24prbs.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : odu_hour24prbs)
+    for (auto c : odu_hour24prbs.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13566,22 +13706,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPo
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "odu-hour24prbs")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::OduHour24Prbs()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::OduHour24prbs()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -13596,22 +13736,23 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24P
     found_at_time{YType::uint64, "found-at-time"},
     lost_at_time{YType::uint64, "lost-at-time"},
     conf_patt{YType::enumeration, "conf-patt"}
-    	,
-    rcv_patt(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt>())
-	,prbs_status(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::PrbsStatus>())
+        ,
+    rcv_patt(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::RcvPatt>())
+    , prbs_status(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::PrbsStatus>())
 {
     rcv_patt->parent = this;
     prbs_status->parent = this;
 
-    yang_name = "odu-hour24prbs"; yang_parent_name = "odu-hour24prbses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "odu-hour24prbs"; yang_parent_name = "odu-hour24prbses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::~OduHour24Prbs()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::~OduHour24prbs()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -13629,7 +13770,7 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| (prbs_status !=  nullptr && prbs_status->has_data());
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -13649,14 +13790,15 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| (prbs_status !=  nullptr && prbs_status->has_operation());
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "odu-hour24prbs" <<"[number='" <<number <<"']";
+    path_buffer << "odu-hour24prbs";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13678,13 +13820,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rcv-patt")
     {
         if(rcv_patt == nullptr)
         {
-            rcv_patt = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt>();
+            rcv_patt = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::RcvPatt>();
         }
         return rcv_patt;
     }
@@ -13693,7 +13835,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(prbs_status == nullptr)
         {
-            prbs_status = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::PrbsStatus>();
+            prbs_status = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::PrbsStatus>();
         }
         return prbs_status;
     }
@@ -13701,7 +13843,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13718,7 +13860,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPo
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -13800,7 +13942,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -13856,47 +13998,48 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rcv-patt" || name == "prbs-status" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "ebc" || name == "found-count" || name == "lost-count" || name == "found-at-time" || name == "lost-at-time" || name == "conf-patt")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt::RcvPatt()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::RcvPatt::RcvPatt()
     :
     valid{YType::boolean, "valid"},
     rcv_patt{YType::enumeration, "rcv-patt"}
 {
 
-    yang_name = "rcv-patt"; yang_parent_name = "odu-hour24prbs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rcv-patt"; yang_parent_name = "odu-hour24prbs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt::~RcvPatt()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::RcvPatt::~RcvPatt()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::RcvPatt::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| rcv_patt.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::RcvPatt::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(valid.yfilter)
 	|| ydk::is_set(rcv_patt.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::RcvPatt::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rcv-patt";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::RcvPatt::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13907,19 +14050,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::RcvPatt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::RcvPatt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::RcvPatt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "valid")
     {
@@ -13935,7 +14078,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::RcvPatt::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "valid")
     {
@@ -13947,47 +14090,48 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::RcvPatt::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::RcvPatt::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "valid" || name == "rcv-patt")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::PrbsStatus::PrbsStatus()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::PrbsStatus::PrbsStatus()
     :
     valid{YType::boolean, "valid"},
     prbs_status{YType::enumeration, "prbs-status"}
 {
 
-    yang_name = "prbs-status"; yang_parent_name = "odu-hour24prbs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prbs-status"; yang_parent_name = "odu-hour24prbs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::PrbsStatus::~PrbsStatus()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::PrbsStatus::~PrbsStatus()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::PrbsStatus::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::PrbsStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return valid.is_set
 	|| prbs_status.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::PrbsStatus::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::PrbsStatus::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(valid.yfilter)
 	|| ydk::is_set(prbs_status.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::PrbsStatus::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::PrbsStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "prbs-status";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::PrbsStatus::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::PrbsStatus::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13998,19 +14142,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::PrbsStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::PrbsStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::PrbsStatus::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::PrbsStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::PrbsStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::PrbsStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "valid")
     {
@@ -14026,7 +14170,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::PrbsStatus::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::PrbsStatus::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "valid")
     {
@@ -14038,26 +14182,29 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Prbses::OduHour24Prbs::PrbsStatus::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24prbses::OduHour24prbs::PrbsStatus::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "valid" || name == "prbs-status")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfps()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfps()
+    :
+    odu_hour24gfp(this, {"number"})
 {
 
-    yang_name = "odu-hour24gfps"; yang_parent_name = "odu-hour24"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "odu-hour24gfps"; yang_parent_name = "odu-hour24"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::~OduHour24Gfps()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::~OduHour24gfps()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::has_data() const
 {
-    for (std::size_t index=0; index<odu_hour24gfp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<odu_hour24gfp.len(); index++)
     {
         if(odu_hour24gfp[index]->has_data())
             return true;
@@ -14065,9 +14212,9 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     return false;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::has_operation() const
 {
-    for (std::size_t index=0; index<odu_hour24gfp.size(); index++)
+    for (std::size_t index=0; index<odu_hour24gfp.len(); index++)
     {
         if(odu_hour24gfp[index]->has_operation())
             return true;
@@ -14075,14 +14222,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "odu-hour24gfps";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14091,25 +14238,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "odu-hour24gfp")
     {
-        auto c = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp>();
+        auto c = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp>();
         c->parent = this;
-        odu_hour24gfp.push_back(c);
+        odu_hour24gfp.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : odu_hour24gfp)
+    for (auto c : odu_hour24gfp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14120,22 +14267,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPo
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "odu-hour24gfp")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::OduHour24Gfp()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::OduHour24gfp()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -14146,12 +14293,12 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24G
     last_clear30_sec_time{YType::str, "last-clear30-sec-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"}
-    	,
-    rx_bit_err(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr>())
-	,rx_inv_typ(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp>())
-	,rx_crc(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc>())
-	,rx_lfd(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd>())
-	,rx_csf(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf>())
+        ,
+    rx_bit_err(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxBitErr>())
+    , rx_inv_typ(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxInvTyp>())
+    , rx_crc(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCrc>())
+    , rx_lfd(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxLfd>())
+    , rx_csf(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCsf>())
 {
     rx_bit_err->parent = this;
     rx_inv_typ->parent = this;
@@ -14159,15 +14306,16 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24G
     rx_lfd->parent = this;
     rx_csf->parent = this;
 
-    yang_name = "odu-hour24gfp"; yang_parent_name = "odu-hour24gfps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "odu-hour24gfp"; yang_parent_name = "odu-hour24gfps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::~OduHour24Gfp()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::~OduHour24gfp()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -14184,7 +14332,7 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| (rx_csf !=  nullptr && rx_csf->has_data());
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -14203,14 +14351,15 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| (rx_csf !=  nullptr && rx_csf->has_operation());
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "odu-hour24gfp" <<"[number='" <<number <<"']";
+    path_buffer << "odu-hour24gfp";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14228,13 +14377,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rx-bit-err")
     {
         if(rx_bit_err == nullptr)
         {
-            rx_bit_err = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr>();
+            rx_bit_err = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxBitErr>();
         }
         return rx_bit_err;
     }
@@ -14243,7 +14392,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(rx_inv_typ == nullptr)
         {
-            rx_inv_typ = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp>();
+            rx_inv_typ = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxInvTyp>();
         }
         return rx_inv_typ;
     }
@@ -14252,7 +14401,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(rx_crc == nullptr)
         {
-            rx_crc = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc>();
+            rx_crc = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCrc>();
         }
         return rx_crc;
     }
@@ -14261,7 +14410,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(rx_lfd == nullptr)
         {
-            rx_lfd = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd>();
+            rx_lfd = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxLfd>();
         }
         return rx_lfd;
     }
@@ -14270,7 +14419,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(rx_csf == nullptr)
         {
-            rx_csf = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf>();
+            rx_csf = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCsf>();
         }
         return rx_csf;
     }
@@ -14278,7 +14427,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14310,7 +14459,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPo
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -14368,7 +14517,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -14408,35 +14557,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rx-bit-err" || name == "rx-inv-typ" || name == "rx-crc" || name == "rx-lfd" || name == "rx-csf" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr::RxBitErr()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxBitErr::RxBitErr()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "rx-bit-err"; yang_parent_name = "odu-hour24gfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-bit-err"; yang_parent_name = "odu-hour24gfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr::~RxBitErr()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxBitErr::~RxBitErr()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxBitErr::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxBitErr::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -14444,14 +14594,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxBitErr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rx-bit-err";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxBitErr::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14463,19 +14613,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxBitErr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxBitErr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxBitErr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -14497,7 +14647,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxBitErr::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -14513,35 +14663,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxBitErr::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxBitErr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp::RxInvTyp()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxInvTyp::RxInvTyp()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "rx-inv-typ"; yang_parent_name = "odu-hour24gfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-inv-typ"; yang_parent_name = "odu-hour24gfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp::~RxInvTyp()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxInvTyp::~RxInvTyp()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxInvTyp::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxInvTyp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -14549,14 +14700,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxInvTyp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rx-inv-typ";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxInvTyp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14568,19 +14719,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxInvTyp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxInvTyp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxInvTyp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -14602,7 +14753,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxInvTyp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -14618,35 +14769,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxInvTyp::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxInvTyp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc::RxCrc()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCrc::RxCrc()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "rx-crc"; yang_parent_name = "odu-hour24gfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-crc"; yang_parent_name = "odu-hour24gfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc::~RxCrc()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCrc::~RxCrc()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCrc::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCrc::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -14654,14 +14806,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCrc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rx-crc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCrc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14673,19 +14825,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCrc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCrc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -14707,7 +14859,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCrc::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -14723,35 +14875,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCrc::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCrc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd::RxLfd()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxLfd::RxLfd()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "rx-lfd"; yang_parent_name = "odu-hour24gfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-lfd"; yang_parent_name = "odu-hour24gfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd::~RxLfd()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxLfd::~RxLfd()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxLfd::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxLfd::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -14759,14 +14912,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxLfd::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rx-lfd";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxLfd::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14778,19 +14931,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxLfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxLfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxLfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -14812,7 +14965,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxLfd::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -14828,35 +14981,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxLfd::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxLfd::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf::RxCsf()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCsf::RxCsf()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "rx-csf"; yang_parent_name = "odu-hour24gfp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-csf"; yang_parent_name = "odu-hour24gfp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf::~RxCsf()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCsf::~RxCsf()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCsf::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCsf::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -14864,14 +15018,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCsf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rx-csf";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCsf::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14883,19 +15037,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCsf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCsf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCsf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -14917,7 +15071,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCsf::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -14933,26 +15087,29 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Gfps::OduHour24Gfp::RxCsf::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24gfps::OduHour24gfp::RxCsf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otns()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otns()
+    :
+    odu_hour24otn(this, {"number"})
 {
 
-    yang_name = "odu-hour24otns"; yang_parent_name = "odu-hour24"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "odu-hour24otns"; yang_parent_name = "odu-hour24"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::~OduHour24Otns()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::~OduHour24otns()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::has_data() const
 {
-    for (std::size_t index=0; index<odu_hour24otn.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<odu_hour24otn.len(); index++)
     {
         if(odu_hour24otn[index]->has_data())
             return true;
@@ -14960,9 +15117,9 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     return false;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::has_operation() const
 {
-    for (std::size_t index=0; index<odu_hour24otn.size(); index++)
+    for (std::size_t index=0; index<odu_hour24otn.len(); index++)
     {
         if(odu_hour24otn[index]->has_operation())
             return true;
@@ -14970,14 +15127,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "odu-hour24otns";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14986,25 +15143,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "odu-hour24otn")
     {
-        auto c = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn>();
+        auto c = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn>();
         c->parent = this;
-        odu_hour24otn.push_back(c);
+        odu_hour24otn.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : odu_hour24otn)
+    for (auto c : odu_hour24otn.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15015,22 +15172,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPo
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "odu-hour24otn")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::OduHour24Otn()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::OduHour24otn()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -15041,24 +15198,24 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24O
     last_clear30_sec_time{YType::str, "last-clear30-sec-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"}
-    	,
-    lbc(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc>())
-	,es_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe>())
-	,esr_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe>())
-	,ses_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesNe>())
-	,sesr_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe>())
-	,uas_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe>())
-	,bbe_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeNe>())
-	,bber_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberNe>())
-	,fc_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcNe>())
-	,es_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsFe>())
-	,esr_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrFe>())
-	,ses_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesFe>())
-	,sesr_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrFe>())
-	,uas_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe>())
-	,bbe_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeFe>())
-	,bber_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberFe>())
-	,fc_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcFe>())
+        ,
+    lbc(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::Lbc>())
+    , es_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsNe>())
+    , esr_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrNe>())
+    , ses_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesNe>())
+    , sesr_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrNe>())
+    , uas_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasNe>())
+    , bbe_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeNe>())
+    , bber_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberNe>())
+    , fc_ne(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcNe>())
+    , es_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsFe>())
+    , esr_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrFe>())
+    , ses_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesFe>())
+    , sesr_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrFe>())
+    , uas_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasFe>())
+    , bbe_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeFe>())
+    , bber_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberFe>())
+    , fc_fe(std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcFe>())
 {
     lbc->parent = this;
     es_ne->parent = this;
@@ -15078,15 +15235,16 @@ PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24O
     bber_fe->parent = this;
     fc_fe->parent = this;
 
-    yang_name = "odu-hour24otn"; yang_parent_name = "odu-hour24otns"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "odu-hour24otn"; yang_parent_name = "odu-hour24otns"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::~OduHour24Otn()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::~OduHour24otn()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -15115,7 +15273,7 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| (fc_fe !=  nullptr && fc_fe->has_data());
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -15146,14 +15304,15 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| (fc_fe !=  nullptr && fc_fe->has_operation());
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "odu-hour24otn" <<"[number='" <<number <<"']";
+    path_buffer << "odu-hour24otn";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15171,13 +15330,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lbc")
     {
         if(lbc == nullptr)
         {
-            lbc = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc>();
+            lbc = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::Lbc>();
         }
         return lbc;
     }
@@ -15186,7 +15345,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(es_ne == nullptr)
         {
-            es_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe>();
+            es_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsNe>();
         }
         return es_ne;
     }
@@ -15195,7 +15354,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(esr_ne == nullptr)
         {
-            esr_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe>();
+            esr_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrNe>();
         }
         return esr_ne;
     }
@@ -15204,7 +15363,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(ses_ne == nullptr)
         {
-            ses_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesNe>();
+            ses_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesNe>();
         }
         return ses_ne;
     }
@@ -15213,7 +15372,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(sesr_ne == nullptr)
         {
-            sesr_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe>();
+            sesr_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrNe>();
         }
         return sesr_ne;
     }
@@ -15222,7 +15381,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(uas_ne == nullptr)
         {
-            uas_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe>();
+            uas_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasNe>();
         }
         return uas_ne;
     }
@@ -15231,7 +15390,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(bbe_ne == nullptr)
         {
-            bbe_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeNe>();
+            bbe_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeNe>();
         }
         return bbe_ne;
     }
@@ -15240,7 +15399,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(bber_ne == nullptr)
         {
-            bber_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberNe>();
+            bber_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberNe>();
         }
         return bber_ne;
     }
@@ -15249,7 +15408,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(fc_ne == nullptr)
         {
-            fc_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcNe>();
+            fc_ne = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcNe>();
         }
         return fc_ne;
     }
@@ -15258,7 +15417,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(es_fe == nullptr)
         {
-            es_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsFe>();
+            es_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsFe>();
         }
         return es_fe;
     }
@@ -15267,7 +15426,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(esr_fe == nullptr)
         {
-            esr_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrFe>();
+            esr_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrFe>();
         }
         return esr_fe;
     }
@@ -15276,7 +15435,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(ses_fe == nullptr)
         {
-            ses_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesFe>();
+            ses_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesFe>();
         }
         return ses_fe;
     }
@@ -15285,7 +15444,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(sesr_fe == nullptr)
         {
-            sesr_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrFe>();
+            sesr_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrFe>();
         }
         return sesr_fe;
     }
@@ -15294,7 +15453,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(uas_fe == nullptr)
         {
-            uas_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe>();
+            uas_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasFe>();
         }
         return uas_fe;
     }
@@ -15303,7 +15462,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(bbe_fe == nullptr)
         {
-            bbe_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeFe>();
+            bbe_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeFe>();
         }
         return bbe_fe;
     }
@@ -15312,7 +15471,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(bber_fe == nullptr)
         {
-            bber_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberFe>();
+            bber_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberFe>();
         }
         return bber_fe;
     }
@@ -15321,7 +15480,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     {
         if(fc_fe == nullptr)
         {
-            fc_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcFe>();
+            fc_fe = std::make_shared<PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcFe>();
         }
         return fc_fe;
     }
@@ -15329,7 +15488,7 @@ std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -15421,7 +15580,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPo
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -15479,7 +15638,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -15519,35 +15678,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lbc" || name == "es-ne" || name == "esr-ne" || name == "ses-ne" || name == "sesr-ne" || name == "uas-ne" || name == "bbe-ne" || name == "bber-ne" || name == "fc-ne" || name == "es-fe" || name == "esr-fe" || name == "ses-fe" || name == "sesr-fe" || name == "uas-fe" || name == "bbe-fe" || name == "bber-fe" || name == "fc-fe" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc::Lbc()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::Lbc::Lbc()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "lbc"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lbc"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc::~Lbc()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::Lbc::~Lbc()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::Lbc::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::Lbc::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -15555,14 +15715,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::Lbc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lbc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::Lbc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15574,19 +15734,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::Lbc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -15608,7 +15768,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::Lbc::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -15624,35 +15784,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::Lbc::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::Lbc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe::EsNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsNe::EsNe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "es-ne"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "es-ne"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe::~EsNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsNe::~EsNe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -15660,14 +15821,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "es-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15679,19 +15840,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -15713,7 +15874,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -15729,35 +15890,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe::EsrNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrNe::EsrNe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "esr-ne"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "esr-ne"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe::~EsrNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrNe::~EsrNe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -15765,14 +15927,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "esr-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15784,19 +15946,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -15818,7 +15980,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -15834,35 +15996,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesNe::SesNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesNe::SesNe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "ses-ne"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ses-ne"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesNe::~SesNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesNe::~SesNe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesNe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesNe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -15870,14 +16033,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesNe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ses-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15889,19 +16052,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -15923,7 +16086,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -15939,35 +16102,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe::SesrNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrNe::SesrNe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "sesr-ne"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sesr-ne"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe::~SesrNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrNe::~SesrNe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -15975,14 +16139,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sesr-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15994,19 +16158,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16028,7 +16192,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16044,35 +16208,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe::UasNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasNe::UasNe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "uas-ne"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uas-ne"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe::~UasNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasNe::~UasNe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16080,14 +16245,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "uas-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16099,19 +16264,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16133,7 +16298,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16149,35 +16314,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeNe::BbeNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeNe::BbeNe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "bbe-ne"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bbe-ne"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeNe::~BbeNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeNe::~BbeNe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeNe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeNe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16185,14 +16351,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeNe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bbe-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16204,19 +16370,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16238,7 +16404,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16254,35 +16420,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberNe::BberNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberNe::BberNe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "bber-ne"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bber-ne"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberNe::~BberNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberNe::~BberNe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberNe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberNe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16290,14 +16457,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberNe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bber-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16309,19 +16476,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16343,7 +16510,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16359,35 +16526,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcNe::FcNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcNe::FcNe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "fc-ne"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fc-ne"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcNe::~FcNe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcNe::~FcNe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcNe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcNe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcNe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcNe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16395,14 +16563,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcNe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcNe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fc-ne";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcNe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcNe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16414,19 +16582,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcNe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16448,7 +16616,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcNe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcNe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16464,35 +16632,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcNe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcNe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsFe::EsFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsFe::EsFe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "es-fe"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "es-fe"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsFe::~EsFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsFe::~EsFe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsFe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsFe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16500,14 +16669,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsFe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "es-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16519,19 +16688,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16553,7 +16722,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16569,35 +16738,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrFe::EsrFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrFe::EsrFe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "esr-fe"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "esr-fe"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrFe::~EsrFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrFe::~EsrFe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrFe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrFe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16605,14 +16775,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrFe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "esr-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16624,19 +16794,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16658,7 +16828,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16674,35 +16844,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::EsrFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::EsrFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesFe::SesFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesFe::SesFe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "ses-fe"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ses-fe"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesFe::~SesFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesFe::~SesFe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesFe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesFe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16710,14 +16881,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesFe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ses-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16729,19 +16900,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16763,7 +16934,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16779,35 +16950,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrFe::SesrFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrFe::SesrFe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "sesr-fe"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sesr-fe"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrFe::~SesrFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrFe::~SesrFe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrFe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrFe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16815,14 +16987,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrFe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sesr-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16834,19 +17006,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16868,7 +17040,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16884,35 +17056,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::SesrFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::SesrFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe::UasFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasFe::UasFe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "uas-fe"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uas-fe"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe::~UasFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasFe::~UasFe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16920,14 +17093,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "uas-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16939,19 +17112,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16973,7 +17146,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16989,35 +17162,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::UasFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::UasFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeFe::BbeFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeFe::BbeFe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "bbe-fe"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bbe-fe"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeFe::~BbeFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeFe::~BbeFe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeFe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeFe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -17025,14 +17199,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeFe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bbe-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17044,19 +17218,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -17078,7 +17252,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -17094,35 +17268,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BbeFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BbeFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberFe::BberFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberFe::BberFe()
     :
     data{YType::str, "data"},
     threshold{YType::str, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "bber-fe"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bber-fe"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberFe::~BberFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberFe::~BberFe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberFe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberFe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -17130,14 +17305,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberFe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bber-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17149,19 +17324,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -17183,7 +17358,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -17199,35 +17374,36 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::BberFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::BberFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
     return false;
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcFe::FcFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcFe::FcFe()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
     tca_report{YType::boolean, "tca-report"}
 {
 
-    yang_name = "fc-fe"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fc-fe"; yang_parent_name = "odu-hour24otn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcFe::~FcFe()
+PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcFe::~FcFe()
 {
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcFe::has_data() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcFe::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set;
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcFe::has_operation() const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcFe::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -17235,14 +17411,14 @@ bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
 	|| ydk::is_set(tca_report.yfilter);
 }
 
-std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcFe::get_segment_path() const
+std::string PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcFe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fc-fe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcFe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcFe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17254,19 +17430,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Odu::OduPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcFe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -17288,7 +17464,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcFe::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcFe::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -17304,7 +17480,7 @@ void PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHo
     }
 }
 
-bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24Otns::OduHour24Otn::FcFe::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Odu::OduPorts::OduPort::OduCurrent::OduHour24::OduHour24otns::OduHour24otn::FcFe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report")
         return true;
@@ -17317,7 +17493,7 @@ PerformanceManagement::Otu::Otu()
 {
     otu_ports->parent = this;
 
-    yang_name = "otu"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "otu"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Otu::~Otu()
@@ -17326,6 +17502,7 @@ PerformanceManagement::Otu::~Otu()
 
 bool PerformanceManagement::Otu::has_data() const
 {
+    if (is_presence_container) return true;
     return (otu_ports !=  nullptr && otu_ports->has_data());
 }
 
@@ -17400,9 +17577,11 @@ bool PerformanceManagement::Otu::has_leaf_or_child_of_name(const std::string & n
 }
 
 PerformanceManagement::Otu::OtuPorts::OtuPorts()
+    :
+    otu_port(this, {"name"})
 {
 
-    yang_name = "otu-ports"; yang_parent_name = "otu"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "otu-ports"; yang_parent_name = "otu"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Otu::OtuPorts::~OtuPorts()
@@ -17411,7 +17590,8 @@ PerformanceManagement::Otu::OtuPorts::~OtuPorts()
 
 bool PerformanceManagement::Otu::OtuPorts::has_data() const
 {
-    for (std::size_t index=0; index<otu_port.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<otu_port.len(); index++)
     {
         if(otu_port[index]->has_data())
             return true;
@@ -17421,7 +17601,7 @@ bool PerformanceManagement::Otu::OtuPorts::has_data() const
 
 bool PerformanceManagement::Otu::OtuPorts::has_operation() const
 {
-    for (std::size_t index=0; index<otu_port.size(); index++)
+    for (std::size_t index=0; index<otu_port.len(); index++)
     {
         if(otu_port[index]->has_operation())
             return true;
@@ -17458,7 +17638,7 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::get_child_by_name(
     {
         auto c = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort>();
         c->parent = this;
-        otu_port.push_back(c);
+        otu_port.append(c);
         return c;
     }
 
@@ -17470,7 +17650,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : otu_port)
+    for (auto c : otu_port.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17499,12 +17679,12 @@ bool PerformanceManagement::Otu::OtuPorts::has_leaf_or_child_of_name(const std::
 PerformanceManagement::Otu::OtuPorts::OtuPort::OtuPort()
     :
     name{YType::str, "name"}
-    	,
+        ,
     otu_current(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent>())
 {
     otu_current->parent = this;
 
-    yang_name = "otu-port"; yang_parent_name = "otu-ports"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "otu-port"; yang_parent_name = "otu-ports"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Otu::OtuPorts::OtuPort::~OtuPort()
@@ -17513,6 +17693,7 @@ PerformanceManagement::Otu::OtuPorts::OtuPort::~OtuPort()
 
 bool PerformanceManagement::Otu::OtuPorts::OtuPort::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (otu_current !=  nullptr && otu_current->has_data());
 }
@@ -17534,7 +17715,8 @@ std::string PerformanceManagement::Otu::OtuPorts::OtuPort::get_absolute_path() c
 std::string PerformanceManagement::Otu::OtuPorts::OtuPort::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "otu-port" <<"[name='" <<name <<"']";
+    path_buffer << "otu-port";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -17602,14 +17784,14 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::has_leaf_or_child_of_name(co
 PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuCurrent()
     :
     otu_minute15(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15>())
-	,otu_second30(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30>())
-	,otu_hour24(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24>())
+    , otu_second30(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30>())
+    , otu_hour24(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24>())
 {
     otu_minute15->parent = this;
     otu_second30->parent = this;
     otu_hour24->parent = this;
 
-    yang_name = "otu-current"; yang_parent_name = "otu-port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "otu-current"; yang_parent_name = "otu-port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::~OtuCurrent()
@@ -17618,6 +17800,7 @@ PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::~OtuCurrent()
 
 bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::has_data() const
 {
+    if (is_presence_container) return true;
     return (otu_minute15 !=  nullptr && otu_minute15->has_data())
 	|| (otu_second30 !=  nullptr && otu_second30->has_data())
 	|| (otu_hour24 !=  nullptr && otu_hour24->has_data());
@@ -17718,15 +17901,15 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::has_leaf_or_chil
 
 PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15()
     :
-    otu_minute15fecs(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs>())
-	,otu_minute15otns(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns>())
-	,otu_minute15prbses(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Prbses>())
+    otu_minute15fecs(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs>())
+    , otu_minute15otns(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns>())
+    , otu_minute15prbses(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses>())
 {
     otu_minute15fecs->parent = this;
     otu_minute15otns->parent = this;
     otu_minute15prbses->parent = this;
 
-    yang_name = "otu-minute15"; yang_parent_name = "otu-current"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "otu-minute15"; yang_parent_name = "otu-current"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::~OtuMinute15()
@@ -17735,6 +17918,7 @@ PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::~OtuMinu
 
 bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::has_data() const
 {
+    if (is_presence_container) return true;
     return (otu_minute15fecs !=  nullptr && otu_minute15fecs->has_data())
 	|| (otu_minute15otns !=  nullptr && otu_minute15otns->has_data())
 	|| (otu_minute15prbses !=  nullptr && otu_minute15prbses->has_data());
@@ -17770,7 +17954,7 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
     {
         if(otu_minute15fecs == nullptr)
         {
-            otu_minute15fecs = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs>();
+            otu_minute15fecs = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs>();
         }
         return otu_minute15fecs;
     }
@@ -17779,7 +17963,7 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
     {
         if(otu_minute15otns == nullptr)
         {
-            otu_minute15otns = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Otns>();
+            otu_minute15otns = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns>();
         }
         return otu_minute15otns;
     }
@@ -17788,7 +17972,7 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
     {
         if(otu_minute15prbses == nullptr)
         {
-            otu_minute15prbses = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Prbses>();
+            otu_minute15prbses = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses>();
         }
         return otu_minute15prbses;
     }
@@ -17833,19 +18017,22 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::has
     return false;
 }
 
-PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fecs()
+PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fecs()
+    :
+    otu_minute15fec(this, {"number"})
 {
 
-    yang_name = "otu-minute15fecs"; yang_parent_name = "otu-minute15"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "otu-minute15fecs"; yang_parent_name = "otu-minute15"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::~OtuMinute15Fecs()
+PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::~OtuMinute15fecs()
 {
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::has_data() const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::has_data() const
 {
-    for (std::size_t index=0; index<otu_minute15fec.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<otu_minute15fec.len(); index++)
     {
         if(otu_minute15fec[index]->has_data())
             return true;
@@ -17853,9 +18040,9 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
     return false;
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::has_operation() const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::has_operation() const
 {
-    for (std::size_t index=0; index<otu_minute15fec.size(); index++)
+    for (std::size_t index=0; index<otu_minute15fec.len(); index++)
     {
         if(otu_minute15fec[index]->has_operation())
             return true;
@@ -17863,14 +18050,14 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::get_segment_path() const
+std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "otu-minute15fecs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17879,25 +18066,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otu-minute15fec")
     {
-        auto c = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec>();
+        auto c = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec>();
         c->parent = this;
-        otu_minute15fec.push_back(c);
+        otu_minute15fec.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : otu_minute15fec)
+    for (auto c : otu_minute15fec.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17908,22 +18095,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPo
     return children;
 }
 
-void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "otu-minute15fec")
         return true;
     return false;
 }
 
-PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::OtuMinute15Fec()
+PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::OtuMinute15fec()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -17934,13 +18121,13 @@ PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinut
     last_clear30_sec_time{YType::str, "last-clear30-sec-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"}
-    	,
-    ec_bits(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits>())
-	,uc_words(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords>())
-	,pre_fec_ber(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer>())
-	,post_fec_ber(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PostFecBer>())
-	,q(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q>())
-	,qmargin(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin>())
+        ,
+    ec_bits(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::EcBits>())
+    , uc_words(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::UcWords>())
+    , pre_fec_ber(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PreFecBer>())
+    , post_fec_ber(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PostFecBer>())
+    , q(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Q>())
+    , qmargin(std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Qmargin>())
 {
     ec_bits->parent = this;
     uc_words->parent = this;
@@ -17949,15 +18136,16 @@ PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinut
     q->parent = this;
     qmargin->parent = this;
 
-    yang_name = "otu-minute15fec"; yang_parent_name = "otu-minute15fecs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "otu-minute15fec"; yang_parent_name = "otu-minute15fecs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::~OtuMinute15Fec()
+PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::~OtuMinute15fec()
 {
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::has_data() const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -17975,7 +18163,7 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
 	|| (qmargin !=  nullptr && qmargin->has_data());
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::has_operation() const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -17995,14 +18183,15 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
 	|| (qmargin !=  nullptr && qmargin->has_operation());
 }
 
-std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::get_segment_path() const
+std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "otu-minute15fec" <<"[number='" <<number <<"']";
+    path_buffer << "otu-minute15fec";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18020,13 +18209,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ec-bits")
     {
         if(ec_bits == nullptr)
         {
-            ec_bits = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits>();
+            ec_bits = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::EcBits>();
         }
         return ec_bits;
     }
@@ -18035,7 +18224,7 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
     {
         if(uc_words == nullptr)
         {
-            uc_words = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords>();
+            uc_words = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::UcWords>();
         }
         return uc_words;
     }
@@ -18044,7 +18233,7 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
     {
         if(pre_fec_ber == nullptr)
         {
-            pre_fec_ber = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer>();
+            pre_fec_ber = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PreFecBer>();
         }
         return pre_fec_ber;
     }
@@ -18053,7 +18242,7 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
     {
         if(post_fec_ber == nullptr)
         {
-            post_fec_ber = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PostFecBer>();
+            post_fec_ber = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PostFecBer>();
         }
         return post_fec_ber;
     }
@@ -18062,7 +18251,7 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
     {
         if(q == nullptr)
         {
-            q = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q>();
+            q = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Q>();
         }
         return q;
     }
@@ -18071,7 +18260,7 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
     {
         if(qmargin == nullptr)
         {
-            qmargin = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin>();
+            qmargin = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Qmargin>();
         }
         return qmargin;
     }
@@ -18079,7 +18268,7 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -18116,7 +18305,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPo
     return children;
 }
 
-void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -18174,7 +18363,7 @@ void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
     }
 }
 
-void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -18214,14 +18403,14 @@ void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
     }
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ec-bits" || name == "uc-words" || name == "pre-fec-ber" || name == "post-fec-ber" || name == "q" || name == "qmargin" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support")
         return true;
     return false;
 }
 
-PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits::EcBits()
+PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::EcBits::EcBits()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -18229,22 +18418,23 @@ PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinut
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "ec-bits"; yang_parent_name = "otu-minute15fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ec-bits"; yang_parent_name = "otu-minute15fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits::~EcBits()
+PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::EcBits::~EcBits()
 {
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits::has_data() const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::EcBits::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits::has_operation() const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::EcBits::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -18253,14 +18443,14 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits::get_segment_path() const
+std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::EcBits::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ec-bits";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::EcBits::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18273,19 +18463,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::EcBits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -18313,7 +18503,7 @@ void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
     }
 }
 
-void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::EcBits::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -18333,14 +18523,14 @@ void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
     }
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::EcBits::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::EcBits::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords::UcWords()
+PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::UcWords::UcWords()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -18348,22 +18538,23 @@ PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinut
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "uc-words"; yang_parent_name = "otu-minute15fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uc-words"; yang_parent_name = "otu-minute15fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords::~UcWords()
+PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::UcWords::~UcWords()
 {
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords::has_data() const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::UcWords::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords::has_operation() const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::UcWords::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -18372,14 +18563,14 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords::get_segment_path() const
+std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::UcWords::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "uc-words";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::UcWords::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18392,19 +18583,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::UcWords::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -18432,7 +18623,7 @@ void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
     }
 }
 
-void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::UcWords::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -18452,14 +18643,14 @@ void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
     }
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::UcWords::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::UcWords::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer::PreFecBer()
+PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PreFecBer::PreFecBer()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -18471,15 +18662,16 @@ PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinut
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "pre-fec-ber"; yang_parent_name = "otu-minute15fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pre-fec-ber"; yang_parent_name = "otu-minute15fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer::~PreFecBer()
+PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PreFecBer::~PreFecBer()
 {
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer::has_data() const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PreFecBer::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -18490,7 +18682,7 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer::has_operation() const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PreFecBer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -18503,14 +18695,14 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer::get_segment_path() const
+std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PreFecBer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pre-fec-ber";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PreFecBer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18527,19 +18719,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PreFecBer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -18591,7 +18783,7 @@ void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
     }
 }
 
-void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PreFecBer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -18627,14 +18819,14 @@ void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
     }
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PreFecBer::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PreFecBer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PostFecBer::PostFecBer()
+PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PostFecBer::PostFecBer()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -18646,15 +18838,16 @@ PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinut
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "post-fec-ber"; yang_parent_name = "otu-minute15fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "post-fec-ber"; yang_parent_name = "otu-minute15fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PostFecBer::~PostFecBer()
+PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PostFecBer::~PostFecBer()
 {
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PostFecBer::has_data() const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PostFecBer::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -18665,7 +18858,7 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PostFecBer::has_operation() const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PostFecBer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -18678,14 +18871,14 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PostFecBer::get_segment_path() const
+std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PostFecBer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "post-fec-ber";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PostFecBer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PostFecBer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18702,19 +18895,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PostFecBer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PostFecBer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -18766,7 +18959,7 @@ void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
     }
 }
 
-void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PostFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PostFecBer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -18802,14 +18995,14 @@ void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
     }
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::PostFecBer::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::PostFecBer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q::Q()
+PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Q::Q()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -18821,15 +19014,16 @@ PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinut
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "q"; yang_parent_name = "otu-minute15fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "q"; yang_parent_name = "otu-minute15fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q::~Q()
+PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Q::~Q()
 {
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q::has_data() const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Q::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -18840,7 +19034,7 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q::has_operation() const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Q::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -18853,14 +19047,14 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q::get_segment_path() const
+std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Q::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "q";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Q::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18877,19 +19071,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -18941,7 +19135,7 @@ void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
     }
 }
 
-void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Q::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -18977,14 +19171,14 @@ void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
     }
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Q::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Q::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin::Qmargin()
+PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Qmargin::Qmargin()
     :
     minimum{YType::str, "minimum"},
     average{YType::str, "average"},
@@ -18996,15 +19190,16 @@ PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinut
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "qmargin"; yang_parent_name = "otu-minute15fec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qmargin"; yang_parent_name = "otu-minute15fec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin::~Qmargin()
+PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Qmargin::~Qmargin()
 {
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin::has_data() const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Qmargin::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| average.is_set
 	|| maximum.is_set
@@ -19015,7 +19210,7 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin::has_operation() const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Qmargin::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(minimum.yfilter)
@@ -19028,14 +19223,14 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin::get_segment_path() const
+std::string PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Qmargin::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "qmargin";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Qmargin::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19052,19 +19247,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Qmargin::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum")
     {
@@ -19116,7 +19311,7 @@ void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
     }
 }
 
-void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Qmargin::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "minimum")
     {
@@ -19152,7 +19347,7 @@ void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
     }
 }
 
-bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15Fecs::OtuMinute15Fec::Qmargin::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15fecs::OtuMinute15fec::Qmargin::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "minimum" || name == "average" || name == "maximum" || name == "minimum-threshold" || name == "minimum-tca-report" || name == "maximum-threshold" || name == "maximum-tca-report" || name == "valid")
         return true;

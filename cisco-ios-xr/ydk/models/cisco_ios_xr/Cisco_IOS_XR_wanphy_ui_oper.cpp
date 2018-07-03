@@ -17,7 +17,7 @@ Wanphy::Wanphy()
 {
     controllers->parent = this;
 
-    yang_name = "wanphy"; yang_parent_name = "Cisco-IOS-XR-wanphy-ui-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "wanphy"; yang_parent_name = "Cisco-IOS-XR-wanphy-ui-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Wanphy::~Wanphy()
@@ -26,6 +26,7 @@ Wanphy::~Wanphy()
 
 bool Wanphy::has_data() const
 {
+    if (is_presence_container) return true;
     return (controllers !=  nullptr && controllers->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Wanphy::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Wanphy::Controllers::Controllers()
+    :
+    controller(this, {"controller_name"})
 {
 
-    yang_name = "controllers"; yang_parent_name = "wanphy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controllers"; yang_parent_name = "wanphy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Wanphy::Controllers::~Controllers()
@@ -129,7 +132,8 @@ Wanphy::Controllers::~Controllers()
 
 bool Wanphy::Controllers::has_data() const
 {
-    for (std::size_t index=0; index<controller.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<controller.len(); index++)
     {
         if(controller[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Wanphy::Controllers::has_data() const
 
 bool Wanphy::Controllers::has_operation() const
 {
-    for (std::size_t index=0; index<controller.size(); index++)
+    for (std::size_t index=0; index<controller.len(); index++)
     {
         if(controller[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Wanphy::Controllers::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Wanphy::Controllers::Controller>();
         c->parent = this;
-        controller.push_back(c);
+        controller.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Wanphy::Controllers::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : controller)
+    for (auto c : controller.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,12 +221,12 @@ bool Wanphy::Controllers::has_leaf_or_child_of_name(const std::string & name) co
 Wanphy::Controllers::Controller::Controller()
     :
     controller_name{YType::str, "controller-name"}
-    	,
+        ,
     info(std::make_shared<Wanphy::Controllers::Controller::Info>())
 {
     info->parent = this;
 
-    yang_name = "controller"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controller"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Wanphy::Controllers::Controller::~Controller()
@@ -231,6 +235,7 @@ Wanphy::Controllers::Controller::~Controller()
 
 bool Wanphy::Controllers::Controller::has_data() const
 {
+    if (is_presence_container) return true;
     return controller_name.is_set
 	|| (info !=  nullptr && info->has_data());
 }
@@ -252,7 +257,8 @@ std::string Wanphy::Controllers::Controller::get_absolute_path() const
 std::string Wanphy::Controllers::Controller::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "controller" <<"[controller-name='" <<controller_name <<"']";
+    path_buffer << "controller";
+    ADD_KEY_TOKEN(controller_name, "controller-name");
     return path_buffer.str();
 }
 
@@ -366,7 +372,7 @@ Wanphy::Controllers::Controller::Info::Info()
     wanphy_poll_timer{YType::uint32, "wanphy-poll-timer"}
 {
 
-    yang_name = "info"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "info"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Wanphy::Controllers::Controller::Info::~Info()
@@ -375,6 +381,7 @@ Wanphy::Controllers::Controller::Info::~Info()
 
 bool Wanphy::Controllers::Controller::Info::has_data() const
 {
+    if (is_presence_container) return true;
     return admin_mode.is_set
 	|| port_state.is_set
 	|| section_lof.is_set

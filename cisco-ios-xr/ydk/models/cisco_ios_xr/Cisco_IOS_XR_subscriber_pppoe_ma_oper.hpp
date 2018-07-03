@@ -59,7 +59,7 @@ class Pppoe::AccessInterfaceStatistics : public ydk::Entity
 
         class AccessInterfaceStatistic; //type: Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::AccessInterfaceStatistics::AccessInterfaceStatistic> > access_interface_statistic;
+        ydk::YList access_interface_statistic;
         
 }; // Pppoe::AccessInterfaceStatistics
 
@@ -329,7 +329,7 @@ class Pppoe::Nodes : public ydk::Entity
 
         class Node; //type: Pppoe::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Pppoe::Nodes
 
@@ -726,7 +726,7 @@ class Pppoe::Nodes::Node::AccessInterface::Summaries : public ydk::Entity
 
         class Summary; //type: Pppoe::Nodes::Node::AccessInterface::Summaries::Summary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::AccessInterface::Summaries::Summary> > summary;
+        ydk::YList summary;
         
 }; // Pppoe::Nodes::Node::AccessInterface::Summaries
 
@@ -777,7 +777,7 @@ class Pppoe::Nodes::Node::Interfaces : public ydk::Entity
 
         class Interface; //type: Pppoe::Nodes::Node::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Pppoe::Nodes::Node::Interfaces
 
@@ -901,7 +901,7 @@ class Pppoe::Nodes::Node::BbaGroups : public ydk::Entity
 
         class BbaGroup; //type: Pppoe::Nodes::Node::BbaGroups::BbaGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::BbaGroups::BbaGroup> > bba_group;
+        ydk::YList bba_group;
         
 }; // Pppoe::Nodes::Node::BbaGroups
 
@@ -1275,7 +1275,7 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits : public ydk::Entity
 
         class Limit; //type: Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits::Limit> > limit;
+        ydk::YList limit;
         
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::Limits
 
@@ -1329,7 +1329,7 @@ class Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles : public ydk::Entity
 
         class Throttle; //type: Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles::Throttle> > throttle;
+        ydk::YList throttle;
         
 }; // Pppoe::Nodes::Node::BbaGroups::BbaGroup::Throttles
 

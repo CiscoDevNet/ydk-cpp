@@ -61,7 +61,7 @@ class Tpa::VrfNames : public ydk::Entity
 
         class VrfName; //type: Tpa::VrfNames::VrfName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_kim_tpa_cfg::Tpa::VrfNames::VrfName> > vrf_name;
+        ydk::YList vrf_name;
         
 }; // Tpa::VrfNames
 
@@ -84,6 +84,7 @@ class Tpa::VrfNames::VrfName : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf disable; //type: empty
         class EastWestNames; //type: Tpa::VrfNames::VrfName::EastWestNames
         class AddressFamily; //type: Tpa::VrfNames::VrfName::AddressFamily
 
@@ -111,7 +112,7 @@ class Tpa::VrfNames::VrfName::EastWestNames : public ydk::Entity
 
         class EastWestName; //type: Tpa::VrfNames::VrfName::EastWestNames::EastWestName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_kim_tpa_cfg::Tpa::VrfNames::VrfName::EastWestNames::EastWestName> > east_west_name;
+        ydk::YList east_west_name;
         
 }; // Tpa::VrfNames::VrfName::EastWestNames
 
@@ -181,9 +182,80 @@ class Tpa::VrfNames::VrfName::AddressFamily::Ipv6 : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf default_route; //type: string
-        ydk::YLeaf update_source; //type: string
+        class InterfaceNames; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames
+        class UpdateSource; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv6::UpdateSource
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_kim_tpa_cfg::Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames> interface_names;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_kim_tpa_cfg::Tpa::VrfNames::VrfName::AddressFamily::Ipv6::UpdateSource> update_source;
+        
 }; // Tpa::VrfNames::VrfName::AddressFamily::Ipv6
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames : public ydk::Entity
+{
+    public:
+        InterfaceNames();
+        ~InterfaceNames();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class InterfaceName; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames::InterfaceName
+
+        ydk::YList interface_name;
+        
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames::InterfaceName : public ydk::Entity
+{
+    public:
+        InterfaceName();
+        ~InterfaceName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf egress_interface_source; //type: string
+
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames::InterfaceName
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv6::UpdateSource : public ydk::Entity
+{
+    public:
+        UpdateSource();
+        ~UpdateSource();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf active_management; //type: empty
+
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv6::UpdateSource
 
 
 class Tpa::VrfNames::VrfName::AddressFamily::Ipv4 : public ydk::Entity
@@ -203,9 +275,80 @@ class Tpa::VrfNames::VrfName::AddressFamily::Ipv4 : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf default_route; //type: string
-        ydk::YLeaf update_source; //type: string
+        class InterfaceNames; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames
+        class UpdateSource; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv4::UpdateSource
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_kim_tpa_cfg::Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames> interface_names;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_kim_tpa_cfg::Tpa::VrfNames::VrfName::AddressFamily::Ipv4::UpdateSource> update_source;
+        
 }; // Tpa::VrfNames::VrfName::AddressFamily::Ipv4
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames : public ydk::Entity
+{
+    public:
+        InterfaceNames();
+        ~InterfaceNames();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class InterfaceName; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames::InterfaceName
+
+        ydk::YList interface_name;
+        
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames::InterfaceName : public ydk::Entity
+{
+    public:
+        InterfaceName();
+        ~InterfaceName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf egress_interface_source; //type: string
+
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames::InterfaceName
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv4::UpdateSource : public ydk::Entity
+{
+    public:
+        UpdateSource();
+        ~UpdateSource();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf active_management; //type: empty
+
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv4::UpdateSource
 
 
 class Tpa::Logging : public ydk::Entity
@@ -249,8 +392,8 @@ class Tpa::Logging::Kim : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf rotation_max; //type: int32
-        ydk::YLeaf file_size_max_kb; //type: int32
+        ydk::YLeaf rotation_max; //type: uint32
+        ydk::YLeaf file_size_max_kb; //type: uint32
 
 }; // Tpa::Logging::Kim
 
@@ -272,9 +415,9 @@ class Tpa::Statistics : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf max_intf_events; //type: int32
-        ydk::YLeaf max_lpts_events; //type: int32
-        ydk::YLeaf statistics_update_frequency; //type: int32
+        ydk::YLeaf max_intf_events; //type: uint32
+        ydk::YLeaf max_lpts_events; //type: uint32
+        ydk::YLeaf statistics_update_frequency; //type: uint32
 
 }; // Tpa::Statistics
 

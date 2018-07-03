@@ -11,6 +11,10 @@ submodule ydktest-sanity-submodule {
 
   //import Cisco-IOS-XR-types { prefix "xr"; }
 
+  import ydktest-types {
+    prefix "types";
+  }
+
   import ietf-yang-types {
     prefix yang;
   }
@@ -133,13 +137,30 @@ submodule ydktest-sanity-submodule {
     }
   }
 
+  grouping config-interface-tunnel-ipsec-grouping {
+    container ipsec {
+      description
+        "Use ipsec to protect this tunnel interface";
+      leaf profile {
+        description
+          "Determine the ipsec policy profile to use.";
+        type string;
+      }
+      leaf ikev2-profile {
+        description
+          "ikev2 policy profile";
+        type string;
+      }
+    }
+  }
+
   grouping config-interface-grouping {
     container interface { 
       description
         "Configure Interfaces";
  
       // interface GigabitEthernet
-      list Gigabitethernet {
+      list GigabitEthernet {
         description
           "GigabitEthernet IEEE 802.3z";
         key "name";
@@ -177,7 +198,12 @@ submodule ydktest-sanity-submodule {
         leaf name {
           type uint32;
         }
+
         uses interface-common-grouping;
+
+        uses config-interface-tunnel-ipsec-grouping {
+           if-feature types:crypto;
+        }
       }
     }
   }

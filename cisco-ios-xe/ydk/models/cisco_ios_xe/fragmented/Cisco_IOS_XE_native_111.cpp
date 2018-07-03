@@ -18,7 +18,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 {
     delimiter->parent = this;
 
-    yang_name = "one-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "one-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::OneByte::~OneByte()
@@ -27,6 +27,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::OneByte::has_data() const
 {
+    if (is_presence_container) return true;
     return (delimiter !=  nullptr && delimiter->has_data());
 }
 
@@ -96,11 +97,11 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStation
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Delimiter()
     :
     colon(nullptr) // presence node
-	,dot(nullptr) // presence node
-	,hyphen(nullptr) // presence node
+    , dot(nullptr) // presence node
+    , hyphen(nullptr) // presence node
 {
 
-    yang_name = "delimiter"; yang_parent_name = "one-byte"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delimiter"; yang_parent_name = "one-byte"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::~Delimiter()
@@ -109,6 +110,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::has_data() const
 {
+    if (is_presence_container) return true;
     return (colon !=  nullptr && colon->has_data())
 	|| (dot !=  nullptr && dot->has_data())
 	|| (hyphen !=  nullptr && hyphen->has_data());
@@ -212,7 +214,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::~Colon()
@@ -221,6 +223,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -289,7 +292,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::~Dot()
@@ -298,6 +301,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -366,7 +370,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::~Hyphen()
@@ -375,6 +379,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -444,7 +449,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 {
     delimiter->parent = this;
 
-    yang_name = "three-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "three-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::~ThreeByte()
@@ -453,6 +458,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::has_data() const
 {
+    if (is_presence_container) return true;
     return (delimiter !=  nullptr && delimiter->has_data());
 }
 
@@ -522,11 +528,11 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStation
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Delimiter()
     :
     colon(nullptr) // presence node
-	,dot(nullptr) // presence node
-	,hyphen(nullptr) // presence node
+    , dot(nullptr) // presence node
+    , hyphen(nullptr) // presence node
 {
 
-    yang_name = "delimiter"; yang_parent_name = "three-byte"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delimiter"; yang_parent_name = "three-byte"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::~Delimiter()
@@ -535,6 +541,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::has_data() const
 {
+    if (is_presence_container) return true;
     return (colon !=  nullptr && colon->has_data())
 	|| (dot !=  nullptr && dot->has_data())
 	|| (hyphen !=  nullptr && hyphen->has_data());
@@ -638,7 +645,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::~Colon()
@@ -647,6 +654,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -715,7 +723,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::~Dot()
@@ -724,6 +732,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -792,7 +801,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::~Hyphen()
@@ -801,6 +810,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -870,7 +880,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 {
     delimiter->parent = this;
 
-    yang_name = "two-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "two-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::TwoByte::~TwoByte()
@@ -879,6 +889,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::TwoByte::has_data() const
 {
+    if (is_presence_container) return true;
     return (delimiter !=  nullptr && delimiter->has_data());
 }
 
@@ -948,11 +959,11 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStation
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Delimiter()
     :
     colon(nullptr) // presence node
-	,dot(nullptr) // presence node
-	,hyphen(nullptr) // presence node
+    , dot(nullptr) // presence node
+    , hyphen(nullptr) // presence node
 {
 
-    yang_name = "delimiter"; yang_parent_name = "two-byte"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delimiter"; yang_parent_name = "two-byte"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::~Delimiter()
@@ -961,6 +972,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::has_data() const
 {
+    if (is_presence_container) return true;
     return (colon !=  nullptr && colon->has_data())
 	|| (dot !=  nullptr && dot->has_data())
 	|| (hyphen !=  nullptr && hyphen->has_data());
@@ -1064,7 +1076,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::~Colon()
@@ -1073,6 +1085,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -1141,7 +1154,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::~Dot()
@@ -1150,6 +1163,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -1218,7 +1232,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::~Hyphen()
@@ -1227,6 +1241,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -1295,7 +1310,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "unformatted"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unformatted"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::Unformatted::~Unformatted()
@@ -1304,6 +1319,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::Unformatted::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -1372,7 +1388,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::EapUser::EapUser()
     ignore_open_session{YType::empty, "ignore-open-session"}
 {
 
-    yang_name = "eap-user"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eap-user"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::EapUser::~EapUser()
@@ -1381,6 +1397,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::EapUser::~EapUser()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::EapUser::has_data() const
 {
+    if (is_presence_container) return true;
     return ignore_open_session.is_set;
 }
 
@@ -1447,14 +1464,14 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::EapUser::has_l
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Filter()
     :
     access(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access>())
-	,accounting(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting>())
-	,attribute(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Attribute>())
+    , accounting(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting>())
+    , attribute(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Attribute>())
 {
     access->parent = this;
     accounting->parent = this;
     attribute->parent = this;
 
-    yang_name = "filter"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "filter"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::~Filter()
@@ -1463,6 +1480,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::~Filter()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::has_data() const
 {
+    if (is_presence_container) return true;
     return (access !=  nullptr && access->has_data())
 	|| (accounting !=  nullptr && accounting->has_data())
 	|| (attribute !=  nullptr && attribute->has_data());
@@ -1564,14 +1582,14 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::has_le
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::Access()
     :
     ack(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::Ack>())
-	,drop(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::Drop>())
-	,ignore(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::Ignore>())
+    , drop(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::Drop>())
+    , ignore(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::Ignore>())
 {
     ack->parent = this;
     drop->parent = this;
     ignore->parent = this;
 
-    yang_name = "access"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::~Access()
@@ -1580,6 +1598,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::~Ac
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::has_data() const
 {
+    if (is_presence_container) return true;
     return (ack !=  nullptr && ack->has_data())
 	|| (drop !=  nullptr && drop->has_data())
 	|| (ignore !=  nullptr && ignore->has_data());
@@ -1686,7 +1705,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::Ack
     word4{YType::str, "word4"}
 {
 
-    yang_name = "ack"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ack"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::Ack::~Ack()
@@ -1695,6 +1714,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::Ack
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::Ack::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -1805,7 +1825,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::Dro
     word4{YType::str, "word4"}
 {
 
-    yang_name = "drop"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "drop"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::Drop::~Drop()
@@ -1814,6 +1834,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::Dro
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::Drop::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -1924,7 +1945,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::Ign
     word4{YType::str, "word4"}
 {
 
-    yang_name = "ignore"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ignore"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::Ignore::~Ignore()
@@ -1933,6 +1954,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::Ign
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access::Ignore::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -2038,14 +2060,14 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Access
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting::Accounting()
     :
     ack(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting::Ack>())
-	,drop(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting::Drop>())
-	,ignore(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting::Ignore>())
+    , drop(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting::Drop>())
+    , ignore(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting::Ignore>())
 {
     ack->parent = this;
     drop->parent = this;
     ignore->parent = this;
 
-    yang_name = "accounting"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting::~Accounting()
@@ -2054,6 +2076,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting:
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return (ack !=  nullptr && ack->has_data())
 	|| (drop !=  nullptr && drop->has_data())
 	|| (ignore !=  nullptr && ignore->has_data());
@@ -2160,7 +2183,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting:
     word4{YType::str, "word4"}
 {
 
-    yang_name = "ack"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ack"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting::Ack::~Ack()
@@ -2169,6 +2192,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting:
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting::Ack::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -2279,7 +2303,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting:
     word4{YType::str, "word4"}
 {
 
-    yang_name = "drop"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "drop"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting::Drop::~Drop()
@@ -2288,6 +2312,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting:
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting::Drop::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -2398,7 +2423,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting:
     word4{YType::str, "word4"}
 {
 
-    yang_name = "ignore"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ignore"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting::Ignore::~Ignore()
@@ -2407,6 +2432,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting:
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Accounting::Ignore::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -2515,7 +2541,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Attribute::
     block{YType::str, "block"}
 {
 
-    yang_name = "attribute"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attribute"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Attribute::~Attribute()
@@ -2524,6 +2550,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Attribute::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter::Attribute::has_data() const
 {
+    if (is_presence_container) return true;
     return allow.is_set
 	|| block.is_set;
 }
@@ -2606,7 +2633,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Key::Key()
     string{YType::str, "string"}
 {
 
-    yang_name = "key"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Key::~Key()
@@ -2615,6 +2642,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Key::~Key()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Key::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| string.is_set;
 }
@@ -2696,7 +2724,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::MessageAuthenticato
     ignore(nullptr) // presence node
 {
 
-    yang_name = "message-authenticator"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "message-authenticator"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::MessageAuthenticator::~MessageAuthenticator()
@@ -2705,6 +2733,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::MessageAuthenticato
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::MessageAuthenticator::has_data() const
 {
+    if (is_presence_container) return true;
     return (ignore !=  nullptr && ignore->has_data());
 }
 
@@ -2776,7 +2805,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::MessageAuthenticato
     accounting{YType::empty, "accounting"}
 {
 
-    yang_name = "ignore"; yang_parent_name = "message-authenticator"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ignore"; yang_parent_name = "message-authenticator"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::MessageAuthenticator::Ignore::~Ignore()
@@ -2785,6 +2814,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::MessageAuthenticato
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::MessageAuthenticator::Ignore::has_data() const
 {
+    if (is_presence_container) return true;
     return accounting.is_set;
 }
 
@@ -2853,7 +2883,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Mode::Mode()
     pass_through{YType::empty, "pass-through"}
 {
 
-    yang_name = "mode"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Mode::~Mode()
@@ -2862,6 +2892,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Mode::~Mode()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return pass_through.is_set;
 }
 
@@ -2930,7 +2961,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::PwlanSession::Pwlan
     reconnect{YType::empty, "reconnect"}
 {
 
-    yang_name = "pwlan-session"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pwlan-session"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::PwlanSession::~PwlanSession()
@@ -2939,6 +2970,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::PwlanSession::~Pwla
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::PwlanSession::has_data() const
 {
+    if (is_presence_container) return true;
     return reconnect.is_set;
 }
 
@@ -3007,7 +3039,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::ReAuthentication::R
     do_not_apply{YType::empty, "do-not-apply"}
 {
 
-    yang_name = "re-authentication"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "re-authentication"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::ReAuthentication::~ReAuthentication()
@@ -3016,6 +3048,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::ReAuthentication::~
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::ReAuthentication::has_data() const
 {
+    if (is_presence_container) return true;
     return do_not_apply.is_set;
 }
 
@@ -3082,12 +3115,12 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::ReAuthenticati
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::SessionIdentifier::SessionIdentifier()
     :
     attribute{YType::uint8, "attribute"}
-    	,
+        ,
     vsa(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::SessionIdentifier::Vsa>())
 {
     vsa->parent = this;
 
-    yang_name = "session-identifier"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-identifier"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::SessionIdentifier::~SessionIdentifier()
@@ -3096,6 +3129,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::SessionIdentifier::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::SessionIdentifier::has_data() const
 {
+    if (is_presence_container) return true;
     return attribute.is_set
 	|| (vsa !=  nullptr && vsa->has_data());
 }
@@ -3181,7 +3215,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::SessionIdentifier::
     type{YType::uint8, "type"}
 {
 
-    yang_name = "vsa"; yang_parent_name = "session-identifier"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vsa"; yang_parent_name = "session-identifier"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::SessionIdentifier::Vsa::~Vsa()
@@ -3190,6 +3224,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::SessionIdentifier::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::SessionIdentifier::Vsa::has_data() const
 {
+    if (is_presence_container) return true;
     return vendor.is_set
 	|| type.is_set;
 }
@@ -3272,12 +3307,12 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Timer::Timer()
     reconnect{YType::uint16, "reconnect"},
     request{YType::uint16, "request"},
     roaming{YType::uint16, "roaming"}
-    	,
+        ,
     disconnect(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Timer::Disconnect>())
 {
     disconnect->parent = this;
 
-    yang_name = "timer"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timer"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Timer::~Timer()
@@ -3286,6 +3321,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Timer::~Timer()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Timer::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_address.is_set
 	|| reconnect.is_set
 	|| request.is_set
@@ -3410,7 +3446,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Timer::Disconnect::
     reauth_fail{YType::uint16, "reauth-fail"}
 {
 
-    yang_name = "disconnect"; yang_parent_name = "timer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "disconnect"; yang_parent_name = "timer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Timer::Disconnect::~Disconnect()
@@ -3419,6 +3455,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Timer::Disconnect::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Timer::Disconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return acct_stop.is_set
 	|| reauth_fail.is_set;
 }
@@ -3501,7 +3538,7 @@ Native::Aaa::Server::Radius::Proxy::Send::Send()
 {
     vsa->parent = this;
 
-    yang_name = "send"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "send"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::Send::~Send()
@@ -3510,6 +3547,7 @@ Native::Aaa::Server::Radius::Proxy::Send::~Send()
 
 bool Native::Aaa::Server::Radius::Proxy::Send::has_data() const
 {
+    if (is_presence_container) return true;
     return (vsa !=  nullptr && vsa->has_data());
 }
 
@@ -3588,7 +3626,7 @@ Native::Aaa::Server::Radius::Proxy::Send::Vsa::Vsa()
     rpclient_source_address(nullptr) // presence node
 {
 
-    yang_name = "vsa"; yang_parent_name = "send"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vsa"; yang_parent_name = "send"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::Send::Vsa::~Vsa()
@@ -3597,6 +3635,7 @@ Native::Aaa::Server::Radius::Proxy::Send::Vsa::~Vsa()
 
 bool Native::Aaa::Server::Radius::Proxy::Send::Vsa::has_data() const
 {
+    if (is_presence_container) return true;
     return (rpclient_source_address !=  nullptr && rpclient_source_address->has_data());
 }
 
@@ -3676,7 +3715,7 @@ Native::Aaa::Server::Radius::Proxy::Send::Vsa::RpclientSourceAddress::RpclientSo
     authentication{YType::empty, "authentication"}
 {
 
-    yang_name = "rpclient-source-address"; yang_parent_name = "vsa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rpclient-source-address"; yang_parent_name = "vsa"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::Send::Vsa::RpclientSourceAddress::~RpclientSourceAddress()
@@ -3685,6 +3724,7 @@ Native::Aaa::Server::Radius::Proxy::Send::Vsa::RpclientSourceAddress::~RpclientS
 
 bool Native::Aaa::Server::Radius::Proxy::Send::Vsa::RpclientSourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return accounting.is_set
 	|| authentication.is_set;
 }
@@ -3771,14 +3811,15 @@ bool Native::Aaa::Server::Radius::Proxy::Send::Vsa::RpclientSourceAddress::has_l
 Native::Aaa::Server::Radius::Sesm::Sesm()
     :
     port{YType::uint16, "port"}
-    	,
-    key(std::make_shared<Native::Aaa::Server::Radius::Sesm::Key>())
-	,message_authenticator(std::make_shared<Native::Aaa::Server::Radius::Sesm::MessageAuthenticator>())
+        ,
+    client(this, {"ip"})
+    , key(std::make_shared<Native::Aaa::Server::Radius::Sesm::Key>())
+    , message_authenticator(std::make_shared<Native::Aaa::Server::Radius::Sesm::MessageAuthenticator>())
 {
     key->parent = this;
     message_authenticator->parent = this;
 
-    yang_name = "sesm"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sesm"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Sesm::~Sesm()
@@ -3787,7 +3828,8 @@ Native::Aaa::Server::Radius::Sesm::~Sesm()
 
 bool Native::Aaa::Server::Radius::Sesm::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_data())
             return true;
@@ -3799,7 +3841,7 @@ bool Native::Aaa::Server::Radius::Sesm::has_data() const
 
 bool Native::Aaa::Server::Radius::Sesm::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_operation())
             return true;
@@ -3840,7 +3882,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Sesm::get_child_by_name(con
     {
         auto c = std::make_shared<Native::Aaa::Server::Radius::Sesm::Client>();
         c->parent = this;
-        client.push_back(c);
+        client.append(c);
         return c;
     }
 
@@ -3870,7 +3912,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Sesm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client)
+    for (auto c : client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3919,12 +3961,13 @@ bool Native::Aaa::Server::Radius::Sesm::has_leaf_or_child_of_name(const std::str
 Native::Aaa::Server::Radius::Sesm::Client::Client()
     :
     ip{YType::str, "ip"}
-    	,
-    key(std::make_shared<Native::Aaa::Server::Radius::Sesm::Client::Key>())
+        ,
+    vrf(this, {"name"})
+    , key(std::make_shared<Native::Aaa::Server::Radius::Sesm::Client::Key>())
 {
     key->parent = this;
 
-    yang_name = "client"; yang_parent_name = "sesm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client"; yang_parent_name = "sesm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Sesm::Client::~Client()
@@ -3933,7 +3976,8 @@ Native::Aaa::Server::Radius::Sesm::Client::~Client()
 
 bool Native::Aaa::Server::Radius::Sesm::Client::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -3944,7 +3988,7 @@ bool Native::Aaa::Server::Radius::Sesm::Client::has_data() const
 
 bool Native::Aaa::Server::Radius::Sesm::Client::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -3964,7 +4008,8 @@ std::string Native::Aaa::Server::Radius::Sesm::Client::get_absolute_path() const
 std::string Native::Aaa::Server::Radius::Sesm::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "client" <<"[ip='" <<ip <<"']";
+    path_buffer << "client";
+    ADD_KEY_TOKEN(ip, "ip");
     return path_buffer.str();
 }
 
@@ -3984,7 +4029,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Sesm::Client::get_child_by_
     {
         auto c = std::make_shared<Native::Aaa::Server::Radius::Sesm::Client::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -4005,7 +4050,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Sesm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4049,12 +4094,12 @@ bool Native::Aaa::Server::Radius::Sesm::Client::has_leaf_or_child_of_name(const 
 Native::Aaa::Server::Radius::Sesm::Client::Vrf::Vrf()
     :
     name{YType::str, "name"}
-    	,
+        ,
     key(std::make_shared<Native::Aaa::Server::Radius::Sesm::Client::Vrf::Key>())
 {
     key->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Sesm::Client::Vrf::~Vrf()
@@ -4063,6 +4108,7 @@ Native::Aaa::Server::Radius::Sesm::Client::Vrf::~Vrf()
 
 bool Native::Aaa::Server::Radius::Sesm::Client::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (key !=  nullptr && key->has_data());
 }
@@ -4077,7 +4123,8 @@ bool Native::Aaa::Server::Radius::Sesm::Client::Vrf::has_operation() const
 std::string Native::Aaa::Server::Radius::Sesm::Client::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[name='" <<name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -4148,7 +4195,7 @@ Native::Aaa::Server::Radius::Sesm::Client::Vrf::Key::Key()
     string{YType::str, "string"}
 {
 
-    yang_name = "key"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Sesm::Client::Vrf::Key::~Key()
@@ -4157,6 +4204,7 @@ Native::Aaa::Server::Radius::Sesm::Client::Vrf::Key::~Key()
 
 bool Native::Aaa::Server::Radius::Sesm::Client::Vrf::Key::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| string.is_set;
 }
@@ -4239,7 +4287,7 @@ Native::Aaa::Server::Radius::Sesm::Client::Key::Key()
     string{YType::str, "string"}
 {
 
-    yang_name = "key"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Sesm::Client::Key::~Key()
@@ -4248,6 +4296,7 @@ Native::Aaa::Server::Radius::Sesm::Client::Key::~Key()
 
 bool Native::Aaa::Server::Radius::Sesm::Client::Key::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| string.is_set;
 }
@@ -4330,7 +4379,7 @@ Native::Aaa::Server::Radius::Sesm::Key::Key()
     string{YType::str, "string"}
 {
 
-    yang_name = "key"; yang_parent_name = "sesm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "key"; yang_parent_name = "sesm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Sesm::Key::~Key()
@@ -4339,6 +4388,7 @@ Native::Aaa::Server::Radius::Sesm::Key::~Key()
 
 bool Native::Aaa::Server::Radius::Sesm::Key::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| string.is_set;
 }
@@ -4427,7 +4477,7 @@ Native::Aaa::Server::Radius::Sesm::MessageAuthenticator::MessageAuthenticator()
     ignore{YType::empty, "ignore"}
 {
 
-    yang_name = "message-authenticator"; yang_parent_name = "sesm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "message-authenticator"; yang_parent_name = "sesm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Sesm::MessageAuthenticator::~MessageAuthenticator()
@@ -4436,6 +4486,7 @@ Native::Aaa::Server::Radius::Sesm::MessageAuthenticator::~MessageAuthenticator()
 
 bool Native::Aaa::Server::Radius::Sesm::MessageAuthenticator::has_data() const
 {
+    if (is_presence_container) return true;
     return ignore.is_set;
 }
 
@@ -4512,7 +4563,7 @@ Native::Aaa::Login::Login()
     success_track_conf_time{YType::uint8, "success-track-conf-time"}
 {
 
-    yang_name = "login"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "login"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Login::~Login()
@@ -4521,6 +4572,7 @@ Native::Aaa::Login::~Login()
 
 bool Native::Aaa::Login::has_data() const
 {
+    if (is_presence_container) return true;
     return display.is_set
 	|| success_track_conf_time.is_set;
 }
@@ -4610,7 +4662,7 @@ Native::Aaa::Memory::Memory()
 {
     threshold->parent = this;
 
-    yang_name = "memory"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "memory"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Memory::~Memory()
@@ -4619,6 +4671,7 @@ Native::Aaa::Memory::~Memory()
 
 bool Native::Aaa::Memory::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data());
 }
 
@@ -4695,12 +4748,12 @@ bool Native::Aaa::Memory::has_leaf_or_child_of_name(const std::string & name) co
 Native::Aaa::Memory::Threshold::Threshold()
     :
     accounting(std::make_shared<Native::Aaa::Memory::Threshold::Accounting>())
-	,authentication(std::make_shared<Native::Aaa::Memory::Threshold::Authentication>())
+    , authentication(std::make_shared<Native::Aaa::Memory::Threshold::Authentication>())
 {
     accounting->parent = this;
     authentication->parent = this;
 
-    yang_name = "threshold"; yang_parent_name = "memory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "threshold"; yang_parent_name = "memory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Memory::Threshold::~Threshold()
@@ -4709,6 +4762,7 @@ Native::Aaa::Memory::Threshold::~Threshold()
 
 bool Native::Aaa::Memory::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return (accounting !=  nullptr && accounting->has_data())
 	|| (authentication !=  nullptr && authentication->has_data());
 }
@@ -4803,7 +4857,7 @@ Native::Aaa::Memory::Threshold::Accounting::Accounting()
     disable{YType::uint8, "disable"}
 {
 
-    yang_name = "accounting"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "accounting"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Memory::Threshold::Accounting::~Accounting()
@@ -4812,6 +4866,7 @@ Native::Aaa::Memory::Threshold::Accounting::~Accounting()
 
 bool Native::Aaa::Memory::Threshold::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -4887,7 +4942,7 @@ Native::Aaa::Memory::Threshold::Authentication::Authentication()
     reject{YType::uint8, "reject"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authentication"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Memory::Threshold::Authentication::~Authentication()
@@ -4896,6 +4951,7 @@ Native::Aaa::Memory::Threshold::Authentication::~Authentication()
 
 bool Native::Aaa::Memory::Threshold::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return reject.is_set;
 }
 
@@ -4971,7 +5027,7 @@ Native::Aaa::Policy::Policy()
     interface_config{YType::enumeration, "interface-config"}
 {
 
-    yang_name = "policy"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Policy::~Policy()
@@ -4980,6 +5036,7 @@ Native::Aaa::Policy::~Policy()
 
 bool Native::Aaa::Policy::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_config.is_set;
 }
 
@@ -5056,7 +5113,7 @@ Native::Aaa::Route::Route()
 {
     download->parent = this;
 
-    yang_name = "route"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Route::~Route()
@@ -5065,6 +5122,7 @@ Native::Aaa::Route::~Route()
 
 bool Native::Aaa::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return (download !=  nullptr && download->has_data());
 }
 
@@ -5144,7 +5202,7 @@ Native::Aaa::Route::Download::Download()
     authorization{YType::str, "authorization"}
 {
 
-    yang_name = "download"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "download"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Route::Download::~Download()
@@ -5153,6 +5211,7 @@ Native::Aaa::Route::Download::~Download()
 
 bool Native::Aaa::Route::Download::has_data() const
 {
+    if (is_presence_container) return true;
     return update_period.is_set
 	|| authorization.is_set;
 }
@@ -5242,7 +5301,7 @@ Native::Privilege::Privilege()
 {
     exec->parent = this;
 
-    yang_name = "privilege"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "privilege"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Privilege::~Privilege()
@@ -5251,6 +5310,7 @@ Native::Privilege::~Privilege()
 
 bool Native::Privilege::has_data() const
 {
+    if (is_presence_container) return true;
     return (exec !=  nullptr && exec->has_data());
 }
 
@@ -5325,9 +5385,11 @@ bool Native::Privilege::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 Native::Privilege::Exec::Exec()
+    :
+    level(this, {"privilege"})
 {
 
-    yang_name = "exec"; yang_parent_name = "privilege"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "exec"; yang_parent_name = "privilege"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Privilege::Exec::~Exec()
@@ -5336,7 +5398,8 @@ Native::Privilege::Exec::~Exec()
 
 bool Native::Privilege::Exec::has_data() const
 {
-    for (std::size_t index=0; index<level.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<level.len(); index++)
     {
         if(level[index]->has_data())
             return true;
@@ -5346,7 +5409,7 @@ bool Native::Privilege::Exec::has_data() const
 
 bool Native::Privilege::Exec::has_operation() const
 {
-    for (std::size_t index=0; index<level.size(); index++)
+    for (std::size_t index=0; index<level.len(); index++)
     {
         if(level[index]->has_operation())
             return true;
@@ -5383,7 +5446,7 @@ std::shared_ptr<Entity> Native::Privilege::Exec::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Native::Privilege::Exec::Level>();
         c->parent = this;
-        level.push_back(c);
+        level.append(c);
         return c;
     }
 
@@ -5395,7 +5458,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Privilege::Exec::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : level)
+    for (auto c : level.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5424,9 +5487,11 @@ bool Native::Privilege::Exec::has_leaf_or_child_of_name(const std::string & name
 Native::Privilege::Exec::Level::Level()
     :
     privilege{YType::uint8, "privilege"}
+        ,
+    command_list(this, {"command"})
 {
 
-    yang_name = "level"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "level"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Privilege::Exec::Level::~Level()
@@ -5435,7 +5500,8 @@ Native::Privilege::Exec::Level::~Level()
 
 bool Native::Privilege::Exec::Level::has_data() const
 {
-    for (std::size_t index=0; index<command_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<command_list.len(); index++)
     {
         if(command_list[index]->has_data())
             return true;
@@ -5445,7 +5511,7 @@ bool Native::Privilege::Exec::Level::has_data() const
 
 bool Native::Privilege::Exec::Level::has_operation() const
 {
-    for (std::size_t index=0; index<command_list.size(); index++)
+    for (std::size_t index=0; index<command_list.len(); index++)
     {
         if(command_list[index]->has_operation())
             return true;
@@ -5464,7 +5530,8 @@ std::string Native::Privilege::Exec::Level::get_absolute_path() const
 std::string Native::Privilege::Exec::Level::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "level" <<"[privilege='" <<privilege <<"']";
+    path_buffer << "level";
+    ADD_KEY_TOKEN(privilege, "privilege");
     return path_buffer.str();
 }
 
@@ -5484,7 +5551,7 @@ std::shared_ptr<Entity> Native::Privilege::Exec::Level::get_child_by_name(const 
     {
         auto c = std::make_shared<Native::Privilege::Exec::Level::CommandList>();
         c->parent = this;
-        command_list.push_back(c);
+        command_list.append(c);
         return c;
     }
 
@@ -5496,7 +5563,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Privilege::Exec::Level::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : command_list)
+    for (auto c : command_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5537,7 +5604,7 @@ Native::Privilege::Exec::Level::CommandList::CommandList()
     command{YType::str, "command"}
 {
 
-    yang_name = "command-list"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "command-list"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Privilege::Exec::Level::CommandList::~CommandList()
@@ -5546,6 +5613,7 @@ Native::Privilege::Exec::Level::CommandList::~CommandList()
 
 bool Native::Privilege::Exec::Level::CommandList::has_data() const
 {
+    if (is_presence_container) return true;
     return command.is_set;
 }
 
@@ -5558,7 +5626,8 @@ bool Native::Privilege::Exec::Level::CommandList::has_operation() const
 std::string Native::Privilege::Exec::Level::CommandList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "command-list" <<"[command='" <<command <<"']";
+    path_buffer << "command-list";
+    ADD_KEY_TOKEN(command, "command");
     return path_buffer.str();
 }
 
@@ -5612,12 +5681,12 @@ bool Native::Privilege::Exec::Level::CommandList::has_leaf_or_child_of_name(cons
 Native::Login::Login()
     :
     delay{YType::uint8, "delay"}
-    	,
+        ,
     on_failure(nullptr) // presence node
-	,on_success(nullptr) // presence node
+    , on_success(nullptr) // presence node
 {
 
-    yang_name = "login"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "login"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Login::~Login()
@@ -5626,6 +5695,7 @@ Native::Login::~Login()
 
 bool Native::Login::has_data() const
 {
+    if (is_presence_container) return true;
     return delay.is_set
 	|| (on_failure !=  nullptr && on_failure->has_data())
 	|| (on_success !=  nullptr && on_success->has_data());
@@ -5733,7 +5803,7 @@ Native::Login::OnFailure::OnFailure()
     log(nullptr) // presence node
 {
 
-    yang_name = "on-failure"; yang_parent_name = "login"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "on-failure"; yang_parent_name = "login"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Login::OnFailure::~OnFailure()
@@ -5742,6 +5812,7 @@ Native::Login::OnFailure::~OnFailure()
 
 bool Native::Login::OnFailure::has_data() const
 {
+    if (is_presence_container) return true;
     return (log !=  nullptr && log->has_data());
 }
 
@@ -5820,7 +5891,7 @@ Native::Login::OnFailure::Log::Log()
     every{YType::uint16, "every"}
 {
 
-    yang_name = "log"; yang_parent_name = "on-failure"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "log"; yang_parent_name = "on-failure"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Login::OnFailure::Log::~Log()
@@ -5829,6 +5900,7 @@ Native::Login::OnFailure::Log::~Log()
 
 bool Native::Login::OnFailure::Log::has_data() const
 {
+    if (is_presence_container) return true;
     return every.is_set;
 }
 
@@ -5904,7 +5976,7 @@ Native::Login::OnSuccess::OnSuccess()
     log(nullptr) // presence node
 {
 
-    yang_name = "on-success"; yang_parent_name = "login"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "on-success"; yang_parent_name = "login"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Login::OnSuccess::~OnSuccess()
@@ -5913,6 +5985,7 @@ Native::Login::OnSuccess::~OnSuccess()
 
 bool Native::Login::OnSuccess::has_data() const
 {
+    if (is_presence_container) return true;
     return (log !=  nullptr && log->has_data());
 }
 
@@ -5991,7 +6064,7 @@ Native::Login::OnSuccess::Log::Log()
     every{YType::uint16, "every"}
 {
 
-    yang_name = "log"; yang_parent_name = "on-success"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "log"; yang_parent_name = "on-success"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Login::OnSuccess::Log::~Log()
@@ -6000,6 +6073,7 @@ Native::Login::OnSuccess::Log::~Log()
 
 bool Native::Login::OnSuccess::Log::has_data() const
 {
+    if (is_presence_container) return true;
     return every.is_set;
 }
 
@@ -6076,7 +6150,7 @@ Native::Multilink::Multilink()
     virtual_template{YType::uint16, "Cisco-IOS-XE-ppp:virtual-template"}
 {
 
-    yang_name = "multilink"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "multilink"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Multilink::~Multilink()
@@ -6085,6 +6159,7 @@ Native::Multilink::~Multilink()
 
 bool Native::Multilink::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_name.is_set
 	|| virtual_template.is_set;
 }
@@ -6171,14 +6246,14 @@ bool Native::Multilink::has_leaf_or_child_of_name(const std::string & name) cons
 Native::MacAddressTable::MacAddressTable()
     :
     evc_xconnect(std::make_shared<Native::MacAddressTable::EvcXconnect>())
-	,limit(std::make_shared<Native::MacAddressTable::Limit>())
-	,learning(std::make_shared<Native::MacAddressTable::Learning>())
+    , limit(std::make_shared<Native::MacAddressTable::Limit>())
+    , learning(std::make_shared<Native::MacAddressTable::Learning>())
 {
     evc_xconnect->parent = this;
     limit->parent = this;
     learning->parent = this;
 
-    yang_name = "mac-address-table"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-address-table"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::MacAddressTable::~MacAddressTable()
@@ -6187,6 +6262,7 @@ Native::MacAddressTable::~MacAddressTable()
 
 bool Native::MacAddressTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (evc_xconnect !=  nullptr && evc_xconnect->has_data())
 	|| (limit !=  nullptr && limit->has_data())
 	|| (learning !=  nullptr && learning->has_data());
@@ -6297,7 +6373,7 @@ Native::MacAddressTable::EvcXconnect::EvcXconnect()
     l2pt_forward_all{YType::empty, "l2pt-forward-all"}
 {
 
-    yang_name = "evc-xconnect"; yang_parent_name = "mac-address-table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evc-xconnect"; yang_parent_name = "mac-address-table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::MacAddressTable::EvcXconnect::~EvcXconnect()
@@ -6306,6 +6382,7 @@ Native::MacAddressTable::EvcXconnect::~EvcXconnect()
 
 bool Native::MacAddressTable::EvcXconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return l2pt_forward_all.is_set;
 }
 
@@ -6377,9 +6454,11 @@ bool Native::MacAddressTable::EvcXconnect::has_leaf_or_child_of_name(const std::
 }
 
 Native::MacAddressTable::Limit::Limit()
+    :
+    bdomain(this, {"number"})
 {
 
-    yang_name = "limit"; yang_parent_name = "mac-address-table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "limit"; yang_parent_name = "mac-address-table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::MacAddressTable::Limit::~Limit()
@@ -6388,7 +6467,8 @@ Native::MacAddressTable::Limit::~Limit()
 
 bool Native::MacAddressTable::Limit::has_data() const
 {
-    for (std::size_t index=0; index<bdomain.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bdomain.len(); index++)
     {
         if(bdomain[index]->has_data())
             return true;
@@ -6398,7 +6478,7 @@ bool Native::MacAddressTable::Limit::has_data() const
 
 bool Native::MacAddressTable::Limit::has_operation() const
 {
-    for (std::size_t index=0; index<bdomain.size(); index++)
+    for (std::size_t index=0; index<bdomain.len(); index++)
     {
         if(bdomain[index]->has_operation())
             return true;
@@ -6435,7 +6515,7 @@ std::shared_ptr<Entity> Native::MacAddressTable::Limit::get_child_by_name(const 
     {
         auto c = std::make_shared<Native::MacAddressTable::Limit::Bdomain>();
         c->parent = this;
-        bdomain.push_back(c);
+        bdomain.append(c);
         return c;
     }
 
@@ -6447,7 +6527,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::MacAddressTable::Limit::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bdomain)
+    for (auto c : bdomain.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6480,7 +6560,7 @@ Native::MacAddressTable::Limit::Bdomain::Bdomain()
     maximum{YType::uint32, "maximum"}
 {
 
-    yang_name = "bdomain"; yang_parent_name = "limit"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bdomain"; yang_parent_name = "limit"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::MacAddressTable::Limit::Bdomain::~Bdomain()
@@ -6489,6 +6569,7 @@ Native::MacAddressTable::Limit::Bdomain::~Bdomain()
 
 bool Native::MacAddressTable::Limit::Bdomain::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| action.is_set
 	|| maximum.is_set;
@@ -6512,7 +6593,8 @@ std::string Native::MacAddressTable::Limit::Bdomain::get_absolute_path() const
 std::string Native::MacAddressTable::Limit::Bdomain::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bdomain" <<"[number='" <<number <<"']";
+    path_buffer << "bdomain";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -6586,9 +6668,11 @@ bool Native::MacAddressTable::Limit::Bdomain::has_leaf_or_child_of_name(const st
 }
 
 Native::MacAddressTable::Learning::Learning()
+    :
+    vlan(this, {"id"})
 {
 
-    yang_name = "learning"; yang_parent_name = "mac-address-table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "learning"; yang_parent_name = "mac-address-table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::MacAddressTable::Learning::~Learning()
@@ -6597,7 +6681,8 @@ Native::MacAddressTable::Learning::~Learning()
 
 bool Native::MacAddressTable::Learning::has_data() const
 {
-    for (std::size_t index=0; index<vlan.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan.len(); index++)
     {
         if(vlan[index]->has_data())
             return true;
@@ -6607,7 +6692,7 @@ bool Native::MacAddressTable::Learning::has_data() const
 
 bool Native::MacAddressTable::Learning::has_operation() const
 {
-    for (std::size_t index=0; index<vlan.size(); index++)
+    for (std::size_t index=0; index<vlan.len(); index++)
     {
         if(vlan[index]->has_operation())
             return true;
@@ -6644,7 +6729,7 @@ std::shared_ptr<Entity> Native::MacAddressTable::Learning::get_child_by_name(con
     {
         auto c = std::make_shared<Native::MacAddressTable::Learning::Vlan>();
         c->parent = this;
-        vlan.push_back(c);
+        vlan.append(c);
         return c;
     }
 
@@ -6656,7 +6741,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::MacAddressTable::Learning
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan)
+    for (auto c : vlan.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6688,7 +6773,7 @@ Native::MacAddressTable::Learning::Vlan::Vlan()
     module{YType::uint8, "module"}
 {
 
-    yang_name = "vlan"; yang_parent_name = "learning"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlan"; yang_parent_name = "learning"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::MacAddressTable::Learning::Vlan::~Vlan()
@@ -6697,6 +6782,7 @@ Native::MacAddressTable::Learning::Vlan::~Vlan()
 
 bool Native::MacAddressTable::Learning::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| module.is_set;
 }
@@ -6718,7 +6804,8 @@ std::string Native::MacAddressTable::Learning::Vlan::get_absolute_path() const
 std::string Native::MacAddressTable::Learning::Vlan::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vlan" <<"[id='" <<id <<"']";
+    path_buffer << "vlan";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -6784,17 +6871,17 @@ Native::Redundancy::Redundancy()
     :
     maintenance_mode{YType::empty, "maintenance-mode"},
     mode{YType::enumeration, "mode"}
-    	,
+        ,
     main_cpu(nullptr) // presence node
-	,policy(std::make_shared<Native::Redundancy::Policy>())
-	,timer(std::make_shared<Native::Redundancy::Timer>())
-	,interchassis(std::make_shared<Native::Redundancy::Interchassis>())
+    , policy(std::make_shared<Native::Redundancy::Policy>())
+    , timer(std::make_shared<Native::Redundancy::Timer>())
+    , interchassis(std::make_shared<Native::Redundancy::Interchassis>())
 {
     policy->parent = this;
     timer->parent = this;
     interchassis->parent = this;
 
-    yang_name = "redundancy"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "redundancy"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Redundancy::~Redundancy()
@@ -6803,6 +6890,7 @@ Native::Redundancy::~Redundancy()
 
 bool Native::Redundancy::has_data() const
 {
+    if (is_presence_container) return true;
     return maintenance_mode.is_set
 	|| mode.is_set
 	|| (main_cpu !=  nullptr && main_cpu->has_data())
@@ -6953,12 +7041,12 @@ bool Native::Redundancy::has_leaf_or_child_of_name(const std::string & name) con
 Native::Redundancy::MainCpu::MainCpu()
     :
     auto_sync(std::make_shared<Native::Redundancy::MainCpu::AutoSync>())
-	,standby(std::make_shared<Native::Redundancy::MainCpu::Standby>())
+    , standby(std::make_shared<Native::Redundancy::MainCpu::Standby>())
 {
     auto_sync->parent = this;
     standby->parent = this;
 
-    yang_name = "main-cpu"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "main-cpu"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Redundancy::MainCpu::~MainCpu()
@@ -6967,6 +7055,7 @@ Native::Redundancy::MainCpu::~MainCpu()
 
 bool Native::Redundancy::MainCpu::has_data() const
 {
+    if (is_presence_container) return true;
     return (auto_sync !=  nullptr && auto_sync->has_data())
 	|| (standby !=  nullptr && standby->has_data());
 }
@@ -7064,7 +7153,7 @@ Native::Redundancy::MainCpu::AutoSync::AutoSync()
     standard{YType::empty, "standard"}
 {
 
-    yang_name = "auto-sync"; yang_parent_name = "main-cpu"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "auto-sync"; yang_parent_name = "main-cpu"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Redundancy::MainCpu::AutoSync::~AutoSync()
@@ -7073,6 +7162,7 @@ Native::Redundancy::MainCpu::AutoSync::~AutoSync()
 
 bool Native::Redundancy::MainCpu::AutoSync::has_data() const
 {
+    if (is_presence_container) return true;
     return running_config.is_set
 	|| config_register.is_set
 	|| bootvar.is_set
@@ -7185,12 +7275,12 @@ bool Native::Redundancy::MainCpu::AutoSync::has_leaf_or_child_of_name(const std:
 Native::Redundancy::MainCpu::Standby::Standby()
     :
     console(std::make_shared<Native::Redundancy::MainCpu::Standby::Console>())
-	,initialization(std::make_shared<Native::Redundancy::MainCpu::Standby::Initialization>())
+    , initialization(std::make_shared<Native::Redundancy::MainCpu::Standby::Initialization>())
 {
     console->parent = this;
     initialization->parent = this;
 
-    yang_name = "standby"; yang_parent_name = "main-cpu"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "standby"; yang_parent_name = "main-cpu"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Redundancy::MainCpu::Standby::~Standby()
@@ -7199,6 +7289,7 @@ Native::Redundancy::MainCpu::Standby::~Standby()
 
 bool Native::Redundancy::MainCpu::Standby::has_data() const
 {
+    if (is_presence_container) return true;
     return (console !=  nullptr && console->has_data())
 	|| (initialization !=  nullptr && initialization->has_data());
 }
@@ -7293,7 +7384,7 @@ Native::Redundancy::MainCpu::Standby::Console::Console()
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "console"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "console"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Redundancy::MainCpu::Standby::Console::~Console()
@@ -7302,6 +7393,7 @@ Native::Redundancy::MainCpu::Standby::Console::~Console()
 
 bool Native::Redundancy::MainCpu::Standby::Console::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set;
 }
 
@@ -7378,7 +7470,7 @@ Native::Redundancy::MainCpu::Standby::Initialization::Initialization()
 {
     delay->parent = this;
 
-    yang_name = "initialization"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "initialization"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Redundancy::MainCpu::Standby::Initialization::~Initialization()
@@ -7387,6 +7479,7 @@ Native::Redundancy::MainCpu::Standby::Initialization::~Initialization()
 
 bool Native::Redundancy::MainCpu::Standby::Initialization::has_data() const
 {
+    if (is_presence_container) return true;
     return (delay !=  nullptr && delay->has_data());
 }
 
@@ -7466,7 +7559,7 @@ Native::Redundancy::MainCpu::Standby::Initialization::Delay::Delay()
     boot_only{YType::empty, "boot-only"}
 {
 
-    yang_name = "delay"; yang_parent_name = "initialization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "delay"; yang_parent_name = "initialization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Redundancy::MainCpu::Standby::Initialization::Delay::~Delay()
@@ -7475,6 +7568,7 @@ Native::Redundancy::MainCpu::Standby::Initialization::Delay::~Delay()
 
 bool Native::Redundancy::MainCpu::Standby::Initialization::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return second.is_set
 	|| boot_only.is_set;
 }
@@ -7564,7 +7658,7 @@ Native::Redundancy::Policy::Policy()
 {
     config_sync->parent = this;
 
-    yang_name = "policy"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Redundancy::Policy::~Policy()
@@ -7573,6 +7667,7 @@ Native::Redundancy::Policy::~Policy()
 
 bool Native::Redundancy::Policy::has_data() const
 {
+    if (is_presence_container) return true;
     return (config_sync !=  nullptr && config_sync->has_data());
 }
 
@@ -7649,12 +7744,12 @@ bool Native::Redundancy::Policy::has_leaf_or_child_of_name(const std::string & n
 Native::Redundancy::Policy::ConfigSync::ConfigSync()
     :
     bulk(std::make_shared<Native::Redundancy::Policy::ConfigSync::Bulk>())
-	,lbl(std::make_shared<Native::Redundancy::Policy::ConfigSync::Lbl>())
+    , lbl(std::make_shared<Native::Redundancy::Policy::ConfigSync::Lbl>())
 {
     bulk->parent = this;
     lbl->parent = this;
 
-    yang_name = "config-sync"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "config-sync"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Redundancy::Policy::ConfigSync::~ConfigSync()
@@ -7663,6 +7758,7 @@ Native::Redundancy::Policy::ConfigSync::~ConfigSync()
 
 bool Native::Redundancy::Policy::ConfigSync::has_data() const
 {
+    if (is_presence_container) return true;
     return (bulk !=  nullptr && bulk->has_data())
 	|| (lbl !=  nullptr && lbl->has_data());
 }
@@ -7758,7 +7854,7 @@ Native::Redundancy::Policy::ConfigSync::Bulk::Bulk()
 {
     prc->parent = this;
 
-    yang_name = "bulk"; yang_parent_name = "config-sync"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bulk"; yang_parent_name = "config-sync"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Redundancy::Policy::ConfigSync::Bulk::~Bulk()
@@ -7767,6 +7863,7 @@ Native::Redundancy::Policy::ConfigSync::Bulk::~Bulk()
 
 bool Native::Redundancy::Policy::ConfigSync::Bulk::has_data() const
 {
+    if (is_presence_container) return true;
     return (prc !=  nullptr && prc->has_data());
 }
 
@@ -7845,7 +7942,7 @@ Native::Redundancy::Policy::ConfigSync::Bulk::Prc::Prc()
     reload{YType::boolean, "reload"}
 {
 
-    yang_name = "prc"; yang_parent_name = "bulk"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prc"; yang_parent_name = "bulk"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Redundancy::Policy::ConfigSync::Bulk::Prc::~Prc()
@@ -7854,6 +7951,7 @@ Native::Redundancy::Policy::ConfigSync::Bulk::Prc::~Prc()
 
 bool Native::Redundancy::Policy::ConfigSync::Bulk::Prc::has_data() const
 {
+    if (is_presence_container) return true;
     return reload.is_set;
 }
 
@@ -7930,7 +8028,7 @@ Native::Redundancy::Policy::ConfigSync::Lbl::Lbl()
 {
     prc->parent = this;
 
-    yang_name = "lbl"; yang_parent_name = "config-sync"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lbl"; yang_parent_name = "config-sync"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Redundancy::Policy::ConfigSync::Lbl::~Lbl()
@@ -7939,6 +8037,7 @@ Native::Redundancy::Policy::ConfigSync::Lbl::~Lbl()
 
 bool Native::Redundancy::Policy::ConfigSync::Lbl::has_data() const
 {
+    if (is_presence_container) return true;
     return (prc !=  nullptr && prc->has_data());
 }
 
@@ -8017,7 +8116,7 @@ Native::Redundancy::Policy::ConfigSync::Lbl::Prc::Prc()
     reload{YType::boolean, "reload"}
 {
 
-    yang_name = "prc"; yang_parent_name = "lbl"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prc"; yang_parent_name = "lbl"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Redundancy::Policy::ConfigSync::Lbl::Prc::~Prc()
@@ -8026,6 +8125,7 @@ Native::Redundancy::Policy::ConfigSync::Lbl::Prc::~Prc()
 
 bool Native::Redundancy::Policy::ConfigSync::Lbl::Prc::has_data() const
 {
+    if (is_presence_container) return true;
     return reload.is_set;
 }
 
@@ -8101,7 +8201,7 @@ Native::Redundancy::Timer::Timer()
     rpso{YType::uint16, "rpso"}
 {
 
-    yang_name = "timer"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "timer"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Redundancy::Timer::~Timer()
@@ -8110,6 +8210,7 @@ Native::Redundancy::Timer::~Timer()
 
 bool Native::Redundancy::Timer::has_data() const
 {
+    if (is_presence_container) return true;
     return rpso.is_set;
 }
 
@@ -8181,9 +8282,11 @@ bool Native::Redundancy::Timer::has_leaf_or_child_of_name(const std::string & na
 }
 
 Native::Redundancy::Interchassis::Interchassis()
+    :
+    group(this, {"group_number"})
 {
 
-    yang_name = "interchassis"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interchassis"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Redundancy::Interchassis::~Interchassis()
@@ -8192,7 +8295,8 @@ Native::Redundancy::Interchassis::~Interchassis()
 
 bool Native::Redundancy::Interchassis::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
@@ -8202,7 +8306,7 @@ bool Native::Redundancy::Interchassis::has_data() const
 
 bool Native::Redundancy::Interchassis::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
@@ -8239,7 +8343,7 @@ std::shared_ptr<Entity> Native::Redundancy::Interchassis::get_child_by_name(cons
     {
         auto c = std::make_shared<Native::Redundancy::Interchassis::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -8251,7 +8355,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Redundancy::Interchassis:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8280,16 +8384,16 @@ bool Native::Redundancy::Interchassis::has_leaf_or_child_of_name(const std::stri
 Native::Redundancy::Interchassis::Group::Group()
     :
     group_number{YType::uint64, "group-number"}
-    	,
+        ,
     monitor(std::make_shared<Native::Redundancy::Interchassis::Group::Monitor>())
-	,member(std::make_shared<Native::Redundancy::Interchassis::Group::Member>())
-	,backbone(std::make_shared<Native::Redundancy::Interchassis::Group::Backbone>())
+    , member(std::make_shared<Native::Redundancy::Interchassis::Group::Member>())
+    , backbone(std::make_shared<Native::Redundancy::Interchassis::Group::Backbone>())
 {
     monitor->parent = this;
     member->parent = this;
     backbone->parent = this;
 
-    yang_name = "group"; yang_parent_name = "interchassis"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "interchassis"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Redundancy::Interchassis::Group::~Group()
@@ -8298,6 +8402,7 @@ Native::Redundancy::Interchassis::Group::~Group()
 
 bool Native::Redundancy::Interchassis::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return group_number.is_set
 	|| (monitor !=  nullptr && monitor->has_data())
 	|| (member !=  nullptr && member->has_data())
@@ -8323,7 +8428,8 @@ std::string Native::Redundancy::Interchassis::Group::get_absolute_path() const
 std::string Native::Redundancy::Interchassis::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group" <<"[group-number='" <<group_number <<"']";
+    path_buffer << "group";
+    ADD_KEY_TOKEN(group_number, "group-number");
     return path_buffer.str();
 }
 
@@ -8422,7 +8528,7 @@ Native::Redundancy::Interchassis::Group::Monitor::Monitor()
     bfd{YType::empty, "bfd"}
 {
 
-    yang_name = "monitor"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "monitor"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Redundancy::Interchassis::Group::Monitor::~Monitor()
@@ -8431,6 +8537,7 @@ Native::Redundancy::Interchassis::Group::Monitor::~Monitor()
 
 bool Native::Redundancy::Interchassis::Group::Monitor::has_data() const
 {
+    if (is_presence_container) return true;
     return peer.is_set
 	|| bfd.is_set;
 }
@@ -8512,7 +8619,7 @@ Native::Redundancy::Interchassis::Group::Member::Member()
     ip{YType::str, "ip"}
 {
 
-    yang_name = "member"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Redundancy::Interchassis::Group::Member::~Member()
@@ -8521,6 +8628,7 @@ Native::Redundancy::Interchassis::Group::Member::~Member()
 
 bool Native::Redundancy::Interchassis::Group::Member::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set;
 }
 
@@ -8590,7 +8698,7 @@ Native::Redundancy::Interchassis::Group::Backbone::Backbone()
 {
     interface->parent = this;
 
-    yang_name = "backbone"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backbone"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Redundancy::Interchassis::Group::Backbone::~Backbone()
@@ -8599,6 +8707,7 @@ Native::Redundancy::Interchassis::Group::Backbone::~Backbone()
 
 bool Native::Redundancy::Interchassis::Group::Backbone::has_data() const
 {
+    if (is_presence_container) return true;
     return (interface !=  nullptr && interface->has_data());
 }
 
@@ -8699,18 +8808,18 @@ Native::Redundancy::Interchassis::Group::Backbone::Interface::Interface()
     virtualportgroup{YType::uint16, "VirtualPortGroup"},
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
-    	,
+        ,
     atm_subinterface(std::make_shared<Native::Redundancy::Interchassis::Group::Backbone::Interface::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::Redundancy::Interchassis::Group::Backbone::Interface::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::Redundancy::Interchassis::Group::Backbone::Interface::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::Redundancy::Interchassis::Group::Backbone::Interface::PortChannelSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::Redundancy::Interchassis::Group::Backbone::Interface::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::Redundancy::Interchassis::Group::Backbone::Interface::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::Redundancy::Interchassis::Group::Backbone::Interface::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "backbone"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "backbone"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Redundancy::Interchassis::Group::Backbone::Interface::~Interface()
@@ -8719,6 +8828,7 @@ Native::Redundancy::Interchassis::Group::Backbone::Interface::~Interface()
 
 bool Native::Redundancy::Interchassis::Group::Backbone::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
 	|| atm.is_set
@@ -9254,7 +9364,7 @@ Native::Redundancy::Interchassis::Group::Backbone::Interface::ATMSubinterface::A
     atm{YType::str, "ATM"}
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Redundancy::Interchassis::Group::Backbone::Interface::ATMSubinterface::~ATMSubinterface()
@@ -9263,6 +9373,7 @@ Native::Redundancy::Interchassis::Group::Backbone::Interface::ATMSubinterface::~
 
 bool Native::Redundancy::Interchassis::Group::Backbone::Interface::ATMSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm.is_set;
 }
 
@@ -9331,7 +9442,7 @@ Native::Redundancy::Interchassis::Group::Backbone::Interface::ATMACRsubinterface
     atm_acr{YType::str, "ATM-ACR"}
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Redundancy::Interchassis::Group::Backbone::Interface::ATMACRsubinterface::~ATMACRsubinterface()
@@ -9340,6 +9451,7 @@ Native::Redundancy::Interchassis::Group::Backbone::Interface::ATMACRsubinterface
 
 bool Native::Redundancy::Interchassis::Group::Backbone::Interface::ATMACRsubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_acr.is_set;
 }
 
@@ -9408,7 +9520,7 @@ Native::Redundancy::Interchassis::Group::Backbone::Interface::LISPSubinterface::
     lisp{YType::str, "LISP"}
 {
 
-    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Redundancy::Interchassis::Group::Backbone::Interface::LISPSubinterface::~LISPSubinterface()
@@ -9417,6 +9529,7 @@ Native::Redundancy::Interchassis::Group::Backbone::Interface::LISPSubinterface::
 
 bool Native::Redundancy::Interchassis::Group::Backbone::Interface::LISPSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return lisp.is_set;
 }
 
@@ -9485,7 +9598,7 @@ Native::Redundancy::Interchassis::Group::Backbone::Interface::PortChannelSubinte
     port_channel{YType::str, "Port-channel"}
 {
 
-    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Redundancy::Interchassis::Group::Backbone::Interface::PortChannelSubinterface::~PortChannelSubinterface()
@@ -9494,6 +9607,7 @@ Native::Redundancy::Interchassis::Group::Backbone::Interface::PortChannelSubinte
 
 bool Native::Redundancy::Interchassis::Group::Backbone::Interface::PortChannelSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return port_channel.is_set;
 }
 
@@ -9560,12 +9674,12 @@ bool Native::Redundancy::Interchassis::Group::Backbone::Interface::PortChannelSu
 Native::Scheduler::Scheduler()
     :
     runtime(std::make_shared<Native::Scheduler::Runtime>())
-	,allocate(std::make_shared<Native::Scheduler::Allocate>())
+    , allocate(std::make_shared<Native::Scheduler::Allocate>())
 {
     runtime->parent = this;
     allocate->parent = this;
 
-    yang_name = "scheduler"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "scheduler"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Scheduler::~Scheduler()
@@ -9574,6 +9688,7 @@ Native::Scheduler::~Scheduler()
 
 bool Native::Scheduler::has_data() const
 {
+    if (is_presence_container) return true;
     return (runtime !=  nullptr && runtime->has_data())
 	|| (allocate !=  nullptr && allocate->has_data());
 }
@@ -9668,7 +9783,7 @@ Native::Scheduler::Runtime::Runtime()
     netinput{YType::uint16, "netinput"}
 {
 
-    yang_name = "runtime"; yang_parent_name = "scheduler"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "runtime"; yang_parent_name = "scheduler"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Scheduler::Runtime::~Runtime()
@@ -9677,6 +9792,7 @@ Native::Scheduler::Runtime::~Runtime()
 
 bool Native::Scheduler::Runtime::has_data() const
 {
+    if (is_presence_container) return true;
     return netinput.is_set;
 }
 
@@ -9753,7 +9869,7 @@ Native::Scheduler::Allocate::Allocate()
     process_time{YType::uint16, "process-time"}
 {
 
-    yang_name = "allocate"; yang_parent_name = "scheduler"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "allocate"; yang_parent_name = "scheduler"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Scheduler::Allocate::~Allocate()
@@ -9762,6 +9878,7 @@ Native::Scheduler::Allocate::~Allocate()
 
 bool Native::Scheduler::Allocate::has_data() const
 {
+    if (is_presence_container) return true;
     return interrupt_time.is_set
 	|| process_time.is_set;
 }
@@ -9850,7 +9967,7 @@ Native::Epm::Epm()
     logging{YType::empty, "logging"}
 {
 
-    yang_name = "epm"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "epm"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Epm::~Epm()
@@ -9859,6 +9976,7 @@ Native::Epm::~Epm()
 
 bool Native::Epm::has_data() const
 {
+    if (is_presence_container) return true;
     return logging.is_set;
 }
 
@@ -9934,17 +10052,18 @@ Native::SpanningTree::SpanningTree()
     backbonefast{YType::empty, "Cisco-IOS-XE-spanning-tree:backbonefast"},
     logging{YType::empty, "Cisco-IOS-XE-spanning-tree:logging"},
     mode{YType::enumeration, "Cisco-IOS-XE-spanning-tree:mode"}
-    	,
+        ,
     bridge(std::make_shared<Native::SpanningTree::Bridge>())
-	,etherchannel(std::make_shared<Native::SpanningTree::Etherchannel>())
-	,extend(std::make_shared<Native::SpanningTree::Extend>())
-	,loopguard(std::make_shared<Native::SpanningTree::Loopguard>())
-	,mst(std::make_shared<Native::SpanningTree::Mst>())
-	,optimize(std::make_shared<Native::SpanningTree::Optimize>())
-	,pathcost(std::make_shared<Native::SpanningTree::Pathcost>())
-	,portfast(std::make_shared<Native::SpanningTree::Portfast>())
-	,transmit(std::make_shared<Native::SpanningTree::Transmit>())
-	,uplinkfast(nullptr) // presence node
+    , etherchannel(std::make_shared<Native::SpanningTree::Etherchannel>())
+    , extend(std::make_shared<Native::SpanningTree::Extend>())
+    , loopguard(std::make_shared<Native::SpanningTree::Loopguard>())
+    , mst(std::make_shared<Native::SpanningTree::Mst>())
+    , optimize(std::make_shared<Native::SpanningTree::Optimize>())
+    , pathcost(std::make_shared<Native::SpanningTree::Pathcost>())
+    , portfast(std::make_shared<Native::SpanningTree::Portfast>())
+    , transmit(std::make_shared<Native::SpanningTree::Transmit>())
+    , uplinkfast(nullptr) // presence node
+    , vlan(this, {"id"})
 {
     bridge->parent = this;
     etherchannel->parent = this;
@@ -9956,7 +10075,7 @@ Native::SpanningTree::SpanningTree()
     portfast->parent = this;
     transmit->parent = this;
 
-    yang_name = "spanning-tree"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "spanning-tree"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SpanningTree::~SpanningTree()
@@ -9965,7 +10084,8 @@ Native::SpanningTree::~SpanningTree()
 
 bool Native::SpanningTree::has_data() const
 {
-    for (std::size_t index=0; index<vlan.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan.len(); index++)
     {
         if(vlan[index]->has_data())
             return true;
@@ -9987,7 +10107,7 @@ bool Native::SpanningTree::has_data() const
 
 bool Native::SpanningTree::has_operation() const
 {
-    for (std::size_t index=0; index<vlan.size(); index++)
+    for (std::size_t index=0; index<vlan.len(); index++)
     {
         if(vlan[index]->has_operation())
             return true;
@@ -10130,7 +10250,7 @@ std::shared_ptr<Entity> Native::SpanningTree::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<Native::SpanningTree::Vlan>();
         c->parent = this;
-        vlan.push_back(c);
+        vlan.append(c);
         return c;
     }
 
@@ -10192,7 +10312,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::SpanningTree::get_childre
     }
 
     count = 0;
-    for (auto const & c : vlan)
+    for (auto c : vlan.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10255,7 +10375,7 @@ Native::SpanningTree::Bridge::Bridge()
     assurance{YType::boolean, "assurance"}
 {
 
-    yang_name = "bridge"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bridge"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SpanningTree::Bridge::~Bridge()
@@ -10264,6 +10384,7 @@ Native::SpanningTree::Bridge::~Bridge()
 
 bool Native::SpanningTree::Bridge::has_data() const
 {
+    if (is_presence_container) return true;
     return priority.is_set
 	|| id.is_set
 	|| assurance.is_set;
@@ -10366,7 +10487,7 @@ Native::SpanningTree::Etherchannel::Etherchannel()
 {
     guard->parent = this;
 
-    yang_name = "etherchannel"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "etherchannel"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SpanningTree::Etherchannel::~Etherchannel()
@@ -10375,6 +10496,7 @@ Native::SpanningTree::Etherchannel::~Etherchannel()
 
 bool Native::SpanningTree::Etherchannel::has_data() const
 {
+    if (is_presence_container) return true;
     return (guard !=  nullptr && guard->has_data());
 }
 
@@ -10453,7 +10575,7 @@ Native::SpanningTree::Etherchannel::Guard::Guard()
     misconfig{YType::boolean, "misconfig"}
 {
 
-    yang_name = "guard"; yang_parent_name = "etherchannel"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "guard"; yang_parent_name = "etherchannel"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SpanningTree::Etherchannel::Guard::~Guard()
@@ -10462,6 +10584,7 @@ Native::SpanningTree::Etherchannel::Guard::~Guard()
 
 bool Native::SpanningTree::Etherchannel::Guard::has_data() const
 {
+    if (is_presence_container) return true;
     return misconfig.is_set;
 }
 
@@ -10537,7 +10660,7 @@ Native::SpanningTree::Extend::Extend()
     system_id{YType::empty, "system-id"}
 {
 
-    yang_name = "extend"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "extend"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SpanningTree::Extend::~Extend()
@@ -10546,6 +10669,7 @@ Native::SpanningTree::Extend::~Extend()
 
 bool Native::SpanningTree::Extend::has_data() const
 {
+    if (is_presence_container) return true;
     return system_id.is_set;
 }
 
@@ -10621,7 +10745,7 @@ Native::SpanningTree::Loopguard::Loopguard()
     default_{YType::empty, "default"}
 {
 
-    yang_name = "loopguard"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "loopguard"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SpanningTree::Loopguard::~Loopguard()
@@ -10630,6 +10754,7 @@ Native::SpanningTree::Loopguard::~Loopguard()
 
 bool Native::SpanningTree::Loopguard::has_data() const
 {
+    if (is_presence_container) return true;
     return default_.is_set;
 }
 
@@ -10706,12 +10831,13 @@ Native::SpanningTree::Mst::Mst()
     hello_time{YType::uint8, "hello-time"},
     max_age{YType::uint8, "max-age"},
     max_hops{YType::uint8, "max-hops"}
-    	,
-    configuration(std::make_shared<Native::SpanningTree::Mst::Configuration>())
+        ,
+    instance_range(this, {"id"})
+    , configuration(std::make_shared<Native::SpanningTree::Mst::Configuration>())
 {
     configuration->parent = this;
 
-    yang_name = "mst"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mst"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SpanningTree::Mst::~Mst()
@@ -10720,7 +10846,8 @@ Native::SpanningTree::Mst::~Mst()
 
 bool Native::SpanningTree::Mst::has_data() const
 {
-    for (std::size_t index=0; index<instance_range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance_range.len(); index++)
     {
         if(instance_range[index]->has_data())
             return true;
@@ -10734,7 +10861,7 @@ bool Native::SpanningTree::Mst::has_data() const
 
 bool Native::SpanningTree::Mst::has_operation() const
 {
-    for (std::size_t index=0; index<instance_range.size(); index++)
+    for (std::size_t index=0; index<instance_range.len(); index++)
     {
         if(instance_range[index]->has_operation())
             return true;
@@ -10780,7 +10907,7 @@ std::shared_ptr<Entity> Native::SpanningTree::Mst::get_child_by_name(const std::
     {
         auto c = std::make_shared<Native::SpanningTree::Mst::InstanceRange>();
         c->parent = this;
-        instance_range.push_back(c);
+        instance_range.append(c);
         return c;
     }
 
@@ -10801,7 +10928,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::SpanningTree::Mst::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance_range)
+    for (auto c : instance_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10879,7 +11006,7 @@ Native::SpanningTree::Mst::InstanceRange::InstanceRange()
     root{YType::enumeration, "root"}
 {
 
-    yang_name = "instance-range"; yang_parent_name = "mst"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance-range"; yang_parent_name = "mst"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SpanningTree::Mst::InstanceRange::~InstanceRange()
@@ -10888,6 +11015,7 @@ Native::SpanningTree::Mst::InstanceRange::~InstanceRange()
 
 bool Native::SpanningTree::Mst::InstanceRange::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| priority.is_set
 	|| root.is_set;
@@ -10911,7 +11039,8 @@ std::string Native::SpanningTree::Mst::InstanceRange::get_absolute_path() const
 std::string Native::SpanningTree::Mst::InstanceRange::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance-range" <<"[id='" <<id <<"']";
+    path_buffer << "instance-range";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -10988,12 +11117,13 @@ Native::SpanningTree::Mst::Configuration::Configuration()
     :
     name{YType::str, "name"},
     revision{YType::uint16, "revision"}
-    	,
-    private_vlan(std::make_shared<Native::SpanningTree::Mst::Configuration::PrivateVlan>())
+        ,
+    instance(this, {"id"})
+    , private_vlan(std::make_shared<Native::SpanningTree::Mst::Configuration::PrivateVlan>())
 {
     private_vlan->parent = this;
 
-    yang_name = "configuration"; yang_parent_name = "mst"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "configuration"; yang_parent_name = "mst"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SpanningTree::Mst::Configuration::~Configuration()
@@ -11002,7 +11132,8 @@ Native::SpanningTree::Mst::Configuration::~Configuration()
 
 bool Native::SpanningTree::Mst::Configuration::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -11014,7 +11145,7 @@ bool Native::SpanningTree::Mst::Configuration::has_data() const
 
 bool Native::SpanningTree::Mst::Configuration::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -11056,7 +11187,7 @@ std::shared_ptr<Entity> Native::SpanningTree::Mst::Configuration::get_child_by_n
     {
         auto c = std::make_shared<Native::SpanningTree::Mst::Configuration::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -11077,7 +11208,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::SpanningTree::Mst::Config
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11134,7 +11265,7 @@ Native::SpanningTree::Mst::Configuration::Instance::Instance()
     vlan{YType::str, "vlan"}
 {
 
-    yang_name = "instance"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SpanningTree::Mst::Configuration::Instance::~Instance()
@@ -11143,6 +11274,7 @@ Native::SpanningTree::Mst::Configuration::Instance::~Instance()
 
 bool Native::SpanningTree::Mst::Configuration::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : vlan.getYLeafs())
     {
         if(leaf.is_set)
@@ -11173,7 +11305,8 @@ std::string Native::SpanningTree::Mst::Configuration::Instance::get_absolute_pat
 std::string Native::SpanningTree::Mst::Configuration::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance" <<"[id='" <<id <<"']";
+    path_buffer << "instance";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -11239,7 +11372,7 @@ Native::SpanningTree::Mst::Configuration::PrivateVlan::PrivateVlan()
     synchronize{YType::empty, "synchronize"}
 {
 
-    yang_name = "private-vlan"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "private-vlan"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SpanningTree::Mst::Configuration::PrivateVlan::~PrivateVlan()
@@ -11248,6 +11381,7 @@ Native::SpanningTree::Mst::Configuration::PrivateVlan::~PrivateVlan()
 
 bool Native::SpanningTree::Mst::Configuration::PrivateVlan::has_data() const
 {
+    if (is_presence_container) return true;
     return synchronize.is_set;
 }
 
@@ -11324,7 +11458,7 @@ Native::SpanningTree::Optimize::Optimize()
 {
     bpdu->parent = this;
 
-    yang_name = "optimize"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "optimize"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SpanningTree::Optimize::~Optimize()
@@ -11333,6 +11467,7 @@ Native::SpanningTree::Optimize::~Optimize()
 
 bool Native::SpanningTree::Optimize::has_data() const
 {
+    if (is_presence_container) return true;
     return (bpdu !=  nullptr && bpdu->has_data());
 }
 
@@ -11411,7 +11546,7 @@ Native::SpanningTree::Optimize::Bpdu::Bpdu()
     transmission{YType::boolean, "transmission"}
 {
 
-    yang_name = "bpdu"; yang_parent_name = "optimize"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bpdu"; yang_parent_name = "optimize"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SpanningTree::Optimize::Bpdu::~Bpdu()
@@ -11420,6 +11555,7 @@ Native::SpanningTree::Optimize::Bpdu::~Bpdu()
 
 bool Native::SpanningTree::Optimize::Bpdu::has_data() const
 {
+    if (is_presence_container) return true;
     return transmission.is_set;
 }
 
@@ -11496,7 +11632,7 @@ Native::SpanningTree::Pathcost::Pathcost()
 {
     method->parent = this;
 
-    yang_name = "pathcost"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pathcost"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SpanningTree::Pathcost::~Pathcost()
@@ -11505,6 +11641,7 @@ Native::SpanningTree::Pathcost::~Pathcost()
 
 bool Native::SpanningTree::Pathcost::has_data() const
 {
+    if (is_presence_container) return true;
     return (method !=  nullptr && method->has_data());
 }
 
@@ -11584,7 +11721,7 @@ Native::SpanningTree::Pathcost::Method::Method()
     short_{YType::empty, "short"}
 {
 
-    yang_name = "method"; yang_parent_name = "pathcost"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "method"; yang_parent_name = "pathcost"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SpanningTree::Pathcost::Method::~Method()
@@ -11593,6 +11730,7 @@ Native::SpanningTree::Pathcost::Method::~Method()
 
 bool Native::SpanningTree::Pathcost::Method::has_data() const
 {
+    if (is_presence_container) return true;
     return long_.is_set
 	|| short_.is_set;
 }
@@ -11679,14 +11817,14 @@ bool Native::SpanningTree::Pathcost::Method::has_leaf_or_child_of_name(const std
 Native::SpanningTree::Portfast::Portfast()
     :
     default_{YType::empty, "default"}
-    	,
+        ,
     bpdufilter(std::make_shared<Native::SpanningTree::Portfast::Bpdufilter>())
-	,bpduguard(std::make_shared<Native::SpanningTree::Portfast::Bpduguard>())
+    , bpduguard(std::make_shared<Native::SpanningTree::Portfast::Bpduguard>())
 {
     bpdufilter->parent = this;
     bpduguard->parent = this;
 
-    yang_name = "portfast"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "portfast"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SpanningTree::Portfast::~Portfast()
@@ -11695,6 +11833,7 @@ Native::SpanningTree::Portfast::~Portfast()
 
 bool Native::SpanningTree::Portfast::has_data() const
 {
+    if (is_presence_container) return true;
     return default_.is_set
 	|| (bpdufilter !=  nullptr && bpdufilter->has_data())
 	|| (bpduguard !=  nullptr && bpduguard->has_data());
@@ -11802,7 +11941,7 @@ Native::SpanningTree::Portfast::Bpdufilter::Bpdufilter()
     default_{YType::empty, "default"}
 {
 
-    yang_name = "bpdufilter"; yang_parent_name = "portfast"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bpdufilter"; yang_parent_name = "portfast"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SpanningTree::Portfast::Bpdufilter::~Bpdufilter()
@@ -11811,6 +11950,7 @@ Native::SpanningTree::Portfast::Bpdufilter::~Bpdufilter()
 
 bool Native::SpanningTree::Portfast::Bpdufilter::has_data() const
 {
+    if (is_presence_container) return true;
     return default_.is_set;
 }
 
@@ -11886,7 +12026,7 @@ Native::SpanningTree::Portfast::Bpduguard::Bpduguard()
     default_{YType::empty, "default"}
 {
 
-    yang_name = "bpduguard"; yang_parent_name = "portfast"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bpduguard"; yang_parent_name = "portfast"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SpanningTree::Portfast::Bpduguard::~Bpduguard()
@@ -11895,6 +12035,7 @@ Native::SpanningTree::Portfast::Bpduguard::~Bpduguard()
 
 bool Native::SpanningTree::Portfast::Bpduguard::has_data() const
 {
+    if (is_presence_container) return true;
     return default_.is_set;
 }
 
@@ -11970,7 +12111,7 @@ Native::SpanningTree::Transmit::Transmit()
     hold_count{YType::uint8, "hold-count"}
 {
 
-    yang_name = "transmit"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transmit"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SpanningTree::Transmit::~Transmit()
@@ -11979,6 +12120,7 @@ Native::SpanningTree::Transmit::~Transmit()
 
 bool Native::SpanningTree::Transmit::has_data() const
 {
+    if (is_presence_container) return true;
     return hold_count.is_set;
 }
 
@@ -12054,7 +12196,7 @@ Native::SpanningTree::Uplinkfast::Uplinkfast()
     max_update_rate{YType::uint32, "max-update-rate"}
 {
 
-    yang_name = "uplinkfast"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "uplinkfast"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SpanningTree::Uplinkfast::~Uplinkfast()
@@ -12063,6 +12205,7 @@ Native::SpanningTree::Uplinkfast::~Uplinkfast()
 
 bool Native::SpanningTree::Uplinkfast::has_data() const
 {
+    if (is_presence_container) return true;
     return max_update_rate.is_set;
 }
 
@@ -12140,12 +12283,12 @@ Native::SpanningTree::Vlan::Vlan()
     forward_time{YType::uint8, "forward-time"},
     hello_time{YType::uint8, "hello-time"},
     priority{YType::uint16, "priority"}
-    	,
+        ,
     root(std::make_shared<Native::SpanningTree::Vlan::Root>())
 {
     root->parent = this;
 
-    yang_name = "vlan"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlan"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SpanningTree::Vlan::~Vlan()
@@ -12154,6 +12297,7 @@ Native::SpanningTree::Vlan::~Vlan()
 
 bool Native::SpanningTree::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| max_age.is_set
 	|| forward_time.is_set
@@ -12183,7 +12327,8 @@ std::string Native::SpanningTree::Vlan::get_absolute_path() const
 std::string Native::SpanningTree::Vlan::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-spanning-tree:vlan" <<"[id='" <<id <<"']";
+    path_buffer << "Cisco-IOS-XE-spanning-tree:vlan";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -12295,12 +12440,12 @@ bool Native::SpanningTree::Vlan::has_leaf_or_child_of_name(const std::string & n
 Native::SpanningTree::Vlan::Root::Root()
     :
     primary(std::make_shared<Native::SpanningTree::Vlan::Root::Primary>())
-	,secondary(std::make_shared<Native::SpanningTree::Vlan::Root::Secondary>())
+    , secondary(std::make_shared<Native::SpanningTree::Vlan::Root::Secondary>())
 {
     primary->parent = this;
     secondary->parent = this;
 
-    yang_name = "root"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "root"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SpanningTree::Vlan::Root::~Root()
@@ -12309,6 +12454,7 @@ Native::SpanningTree::Vlan::Root::~Root()
 
 bool Native::SpanningTree::Vlan::Root::has_data() const
 {
+    if (is_presence_container) return true;
     return (primary !=  nullptr && primary->has_data())
 	|| (secondary !=  nullptr && secondary->has_data());
 }
@@ -12397,7 +12543,7 @@ Native::SpanningTree::Vlan::Root::Primary::Primary()
     hello_time{YType::uint8, "hello-time"}
 {
 
-    yang_name = "primary"; yang_parent_name = "root"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "primary"; yang_parent_name = "root"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SpanningTree::Vlan::Root::Primary::~Primary()
@@ -12406,6 +12552,7 @@ Native::SpanningTree::Vlan::Root::Primary::~Primary()
 
 bool Native::SpanningTree::Vlan::Root::Primary::has_data() const
 {
+    if (is_presence_container) return true;
     return diameter.is_set
 	|| hello_time.is_set;
 }
@@ -12488,7 +12635,7 @@ Native::SpanningTree::Vlan::Root::Secondary::Secondary()
     hello_time{YType::uint8, "hello-time"}
 {
 
-    yang_name = "secondary"; yang_parent_name = "root"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secondary"; yang_parent_name = "root"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SpanningTree::Vlan::Root::Secondary::~Secondary()
@@ -12497,6 +12644,7 @@ Native::SpanningTree::Vlan::Root::Secondary::~Secondary()
 
 bool Native::SpanningTree::Vlan::Root::Secondary::has_data() const
 {
+    if (is_presence_container) return true;
     return diameter.is_set
 	|| hello_time.is_set;
 }
@@ -12578,7 +12726,7 @@ Native::Subscriber::Subscriber()
     templating{YType::empty, "templating"}
 {
 
-    yang_name = "subscriber"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "subscriber"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Subscriber::~Subscriber()
@@ -12587,6 +12735,7 @@ Native::Subscriber::~Subscriber()
 
 bool Native::Subscriber::has_data() const
 {
+    if (is_presence_container) return true;
     return templating.is_set;
 }
 
@@ -12659,13 +12808,14 @@ bool Native::Subscriber::has_leaf_or_child_of_name(const std::string & name) con
 
 Native::Track::Track()
     :
-    resolution(std::make_shared<Native::Track::Resolution>())
-	,timer(std::make_shared<Native::Track::Timer>())
+    tracked_object(this, {"object_number"})
+    , resolution(std::make_shared<Native::Track::Resolution>())
+    , timer(std::make_shared<Native::Track::Timer>())
 {
     resolution->parent = this;
     timer->parent = this;
 
-    yang_name = "track"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Track::~Track()
@@ -12674,7 +12824,8 @@ Native::Track::~Track()
 
 bool Native::Track::has_data() const
 {
-    for (std::size_t index=0; index<tracked_object.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tracked_object.len(); index++)
     {
         if(tracked_object[index]->has_data())
             return true;
@@ -12685,7 +12836,7 @@ bool Native::Track::has_data() const
 
 bool Native::Track::has_operation() const
 {
-    for (std::size_t index=0; index<tracked_object.size(); index++)
+    for (std::size_t index=0; index<tracked_object.len(); index++)
     {
         if(tracked_object[index]->has_operation())
             return true;
@@ -12724,7 +12875,7 @@ std::shared_ptr<Entity> Native::Track::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<Native::Track::TrackedObject>();
         c->parent = this;
-        tracked_object.push_back(c);
+        tracked_object.append(c);
         return c;
     }
 
@@ -12754,7 +12905,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Track::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tracked_object)
+    for (auto c : tracked_object.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12795,15 +12946,16 @@ Native::Track::TrackedObject::TrackedObject()
     object_number{YType::uint32, "object-number"},
     stub_object{YType::empty, "stub-object"},
     default_state{YType::enumeration, "default-state"}
-    	,
+        ,
     interface(std::make_shared<Native::Track::TrackedObject::Interface>())
-	,ip(std::make_shared<Native::Track::TrackedObject::Ip>())
-	,ipv6(std::make_shared<Native::Track::TrackedObject::Ipv6>())
-	,list(std::make_shared<Native::Track::TrackedObject::List>())
-	,default_(std::make_shared<Native::Track::TrackedObject::Default>())
-	,delay(std::make_shared<Native::Track::TrackedObject::Delay>())
-	,ipv6_object(std::make_shared<Native::Track::TrackedObject::Ipv6Object>())
-	,ip_object(std::make_shared<Native::Track::TrackedObject::IpObject>())
+    , ip(std::make_shared<Native::Track::TrackedObject::Ip>())
+    , ipv6(std::make_shared<Native::Track::TrackedObject::Ipv6>())
+    , list(std::make_shared<Native::Track::TrackedObject::List>())
+    , default_(std::make_shared<Native::Track::TrackedObject::Default>())
+    , delay(std::make_shared<Native::Track::TrackedObject::Delay>())
+    , object(this, {"number"})
+    , ipv6_object(std::make_shared<Native::Track::TrackedObject::Ipv6Object>())
+    , ip_object(std::make_shared<Native::Track::TrackedObject::IpObject>())
 {
     interface->parent = this;
     ip->parent = this;
@@ -12814,7 +12966,7 @@ Native::Track::TrackedObject::TrackedObject()
     ipv6_object->parent = this;
     ip_object->parent = this;
 
-    yang_name = "tracked-object"; yang_parent_name = "track"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tracked-object"; yang_parent_name = "track"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Track::TrackedObject::~TrackedObject()
@@ -12823,7 +12975,8 @@ Native::Track::TrackedObject::~TrackedObject()
 
 bool Native::Track::TrackedObject::has_data() const
 {
-    for (std::size_t index=0; index<object.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<object.len(); index++)
     {
         if(object[index]->has_data())
             return true;
@@ -12843,7 +12996,7 @@ bool Native::Track::TrackedObject::has_data() const
 
 bool Native::Track::TrackedObject::has_operation() const
 {
-    for (std::size_t index=0; index<object.size(); index++)
+    for (std::size_t index=0; index<object.len(); index++)
     {
         if(object[index]->has_operation())
             return true;
@@ -12872,7 +13025,8 @@ std::string Native::Track::TrackedObject::get_absolute_path() const
 std::string Native::Track::TrackedObject::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-track:tracked-object" <<"[object-number='" <<object_number <<"']";
+    path_buffer << "Cisco-IOS-XE-track:tracked-object";
+    ADD_KEY_TOKEN(object_number, "object-number");
     return path_buffer.str();
 }
 
@@ -12948,7 +13102,7 @@ std::shared_ptr<Entity> Native::Track::TrackedObject::get_child_by_name(const st
     {
         auto c = std::make_shared<Native::Track::TrackedObject::Object>();
         c->parent = this;
-        object.push_back(c);
+        object.append(c);
         return c;
     }
 
@@ -13008,7 +13162,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Track::TrackedObject::get
     }
 
     count = 0;
-    for (auto const & c : object)
+    for (auto c : object.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13081,7 +13235,7 @@ Native::Track::TrackedObject::Interface::Interface()
     routing{YType::empty, "routing"}
 {
 
-    yang_name = "interface"; yang_parent_name = "tracked-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "tracked-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Track::TrackedObject::Interface::~Interface()
@@ -13090,6 +13244,7 @@ Native::Track::TrackedObject::Interface::~Interface()
 
 bool Native::Track::TrackedObject::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| protocol.is_set
 	|| routing.is_set;
@@ -13182,12 +13337,12 @@ bool Native::Track::TrackedObject::Interface::has_leaf_or_child_of_name(const st
 Native::Track::TrackedObject::Ip::Ip()
     :
     route(std::make_shared<Native::Track::TrackedObject::Ip::Route>())
-	,sla(std::make_shared<Native::Track::TrackedObject::Ip::Sla>())
+    , sla(std::make_shared<Native::Track::TrackedObject::Ip::Sla>())
 {
     route->parent = this;
     sla->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "tracked-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "tracked-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Track::TrackedObject::Ip::~Ip()
@@ -13196,6 +13351,7 @@ Native::Track::TrackedObject::Ip::~Ip()
 
 bool Native::Track::TrackedObject::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (route !=  nullptr && route->has_data())
 	|| (sla !=  nullptr && sla->has_data());
 }
@@ -13286,7 +13442,7 @@ Native::Track::TrackedObject::Ip::Route::Route()
     metric{YType::enumeration, "metric"}
 {
 
-    yang_name = "route"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Track::TrackedObject::Ip::Route::~Route()
@@ -13295,6 +13451,7 @@ Native::Track::TrackedObject::Ip::Route::~Route()
 
 bool Native::Track::TrackedObject::Ip::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mask.is_set
 	|| reachability.is_set
@@ -13404,7 +13561,7 @@ Native::Track::TrackedObject::Ip::Sla::Sla()
     state{YType::empty, "state"}
 {
 
-    yang_name = "sla"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sla"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Track::TrackedObject::Ip::Sla::~Sla()
@@ -13413,6 +13570,7 @@ Native::Track::TrackedObject::Ip::Sla::~Sla()
 
 bool Native::Track::TrackedObject::Ip::Sla::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| reachability.is_set
 	|| state.is_set;
@@ -13508,7 +13666,7 @@ Native::Track::TrackedObject::Ipv6::Ipv6()
 {
     route->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "tracked-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "tracked-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Track::TrackedObject::Ipv6::~Ipv6()
@@ -13517,6 +13675,7 @@ Native::Track::TrackedObject::Ipv6::~Ipv6()
 
 bool Native::Track::TrackedObject::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (route !=  nullptr && route->has_data());
 }
 
@@ -13590,7 +13749,7 @@ Native::Track::TrackedObject::Ipv6::Route::Route()
     metric{YType::enumeration, "metric"}
 {
 
-    yang_name = "route"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Track::TrackedObject::Ipv6::Route::~Route()
@@ -13599,6 +13758,7 @@ Native::Track::TrackedObject::Ipv6::Route::~Route()
 
 bool Native::Track::TrackedObject::Ipv6::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| reachability.is_set
 	|| metric.is_set;
@@ -13694,7 +13854,7 @@ Native::Track::TrackedObject::List::List()
     threshold{YType::enumeration, "threshold"}
 {
 
-    yang_name = "list"; yang_parent_name = "tracked-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "list"; yang_parent_name = "tracked-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Track::TrackedObject::List::~List()
@@ -13703,6 +13863,7 @@ Native::Track::TrackedObject::List::~List()
 
 bool Native::Track::TrackedObject::List::has_data() const
 {
+    if (is_presence_container) return true;
     return boolean.is_set
 	|| threshold.is_set;
 }
@@ -13782,15 +13943,15 @@ bool Native::Track::TrackedObject::List::has_leaf_or_child_of_name(const std::st
 Native::Track::TrackedObject::Default::Default()
     :
     default_state{YType::enumeration, "default-state"}
-    	,
+        ,
     delay(nullptr) // presence node
-	,ip(std::make_shared<Native::Track::TrackedObject::Default::Ip>())
-	,ipv6(std::make_shared<Native::Track::TrackedObject::Default::Ipv6>())
+    , ip(std::make_shared<Native::Track::TrackedObject::Default::Ip>())
+    , ipv6(std::make_shared<Native::Track::TrackedObject::Default::Ipv6>())
 {
     ip->parent = this;
     ipv6->parent = this;
 
-    yang_name = "default"; yang_parent_name = "tracked-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "tracked-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Track::TrackedObject::Default::~Default()
@@ -13799,6 +13960,7 @@ Native::Track::TrackedObject::Default::~Default()
 
 bool Native::Track::TrackedObject::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return default_state.is_set
 	|| (delay !=  nullptr && delay->has_data())
 	|| (ip !=  nullptr && ip->has_data())
@@ -13913,7 +14075,7 @@ bool Native::Track::TrackedObject::Default::has_leaf_or_child_of_name(const std:
 Native::Track::TrackedObject::Default::Delay::Delay()
 {
 
-    yang_name = "delay"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Track::TrackedObject::Default::Delay::~Delay()
@@ -13922,6 +14084,7 @@ Native::Track::TrackedObject::Default::Delay::~Delay()
 
 bool Native::Track::TrackedObject::Default::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -13976,7 +14139,7 @@ Native::Track::TrackedObject::Default::Ip::Ip()
     vrf{YType::empty, "vrf"}
 {
 
-    yang_name = "ip"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Track::TrackedObject::Default::Ip::~Ip()
@@ -13985,6 +14148,7 @@ Native::Track::TrackedObject::Default::Ip::~Ip()
 
 bool Native::Track::TrackedObject::Default::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set;
 }
 
@@ -14053,7 +14217,7 @@ Native::Track::TrackedObject::Default::Ipv6::Ipv6()
     vrf{YType::empty, "vrf"}
 {
 
-    yang_name = "ipv6"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Track::TrackedObject::Default::Ipv6::~Ipv6()
@@ -14062,6 +14226,7 @@ Native::Track::TrackedObject::Default::Ipv6::~Ipv6()
 
 bool Native::Track::TrackedObject::Default::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set;
 }
 
@@ -14131,7 +14296,7 @@ Native::Track::TrackedObject::Delay::Delay()
     up{YType::uint32, "up"}
 {
 
-    yang_name = "delay"; yang_parent_name = "tracked-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "tracked-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Track::TrackedObject::Delay::~Delay()
@@ -14140,6 +14305,7 @@ Native::Track::TrackedObject::Delay::~Delay()
 
 bool Native::Track::TrackedObject::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return down.is_set
 	|| up.is_set;
 }
@@ -14222,7 +14388,7 @@ Native::Track::TrackedObject::Object::Object()
     not_{YType::empty, "not"}
 {
 
-    yang_name = "object"; yang_parent_name = "tracked-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "object"; yang_parent_name = "tracked-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Track::TrackedObject::Object::~Object()
@@ -14231,6 +14397,7 @@ Native::Track::TrackedObject::Object::~Object()
 
 bool Native::Track::TrackedObject::Object::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| not_.is_set;
 }
@@ -14245,7 +14412,8 @@ bool Native::Track::TrackedObject::Object::has_operation() const
 std::string Native::Track::TrackedObject::Object::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "object" <<"[number='" <<number <<"']";
+    path_buffer << "object";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -14312,7 +14480,7 @@ Native::Track::TrackedObject::Ipv6Object::Ipv6Object()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "ipv6-object"; yang_parent_name = "tracked-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-object"; yang_parent_name = "tracked-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Track::TrackedObject::Ipv6Object::~Ipv6Object()
@@ -14321,6 +14489,7 @@ Native::Track::TrackedObject::Ipv6Object::~Ipv6Object()
 
 bool Native::Track::TrackedObject::Ipv6Object::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set;
 }
 
@@ -14389,7 +14558,7 @@ Native::Track::TrackedObject::IpObject::IpObject()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "ip-object"; yang_parent_name = "tracked-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-object"; yang_parent_name = "tracked-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Track::TrackedObject::IpObject::~IpObject()
@@ -14398,6 +14567,7 @@ Native::Track::TrackedObject::IpObject::~IpObject()
 
 bool Native::Track::TrackedObject::IpObject::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set;
 }
 
@@ -14467,7 +14637,7 @@ Native::Track::Resolution::Resolution()
 {
     ip->parent = this;
 
-    yang_name = "resolution"; yang_parent_name = "track"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "resolution"; yang_parent_name = "track"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Track::Resolution::~Resolution()
@@ -14476,6 +14646,7 @@ Native::Track::Resolution::~Resolution()
 
 bool Native::Track::Resolution::has_data() const
 {
+    if (is_presence_container) return true;
     return (ip !=  nullptr && ip->has_data());
 }
 
@@ -14555,7 +14726,7 @@ Native::Track::Resolution::Ip::Ip()
 {
     route->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "resolution"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip"; yang_parent_name = "resolution"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Track::Resolution::Ip::~Ip()
@@ -14564,6 +14735,7 @@ Native::Track::Resolution::Ip::~Ip()
 
 bool Native::Track::Resolution::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (route !=  nullptr && route->has_data());
 }
 
@@ -14646,7 +14818,7 @@ Native::Track::Resolution::Ip::Route::Route()
     static_{YType::uint32, "static"}
 {
 
-    yang_name = "route"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Track::Resolution::Ip::Route::~Route()
@@ -14655,6 +14827,7 @@ Native::Track::Resolution::Ip::Route::~Route()
 
 bool Native::Track::Resolution::Ip::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return bgp.is_set
 	|| eigrp.is_set
 	|| isis.is_set
@@ -14780,10 +14953,10 @@ bool Native::Track::Resolution::Ip::Route::has_leaf_or_child_of_name(const std::
 Native::Track::Timer::Timer()
     :
     interface(std::make_shared<Native::Track::Timer::Interface>())
-	,ip(std::make_shared<Native::Track::Timer::Ip>())
-	,ipv6(std::make_shared<Native::Track::Timer::Ipv6>())
-	,list(std::make_shared<Native::Track::Timer::List>())
-	,stub_object(std::make_shared<Native::Track::Timer::StubObject>())
+    , ip(std::make_shared<Native::Track::Timer::Ip>())
+    , ipv6(std::make_shared<Native::Track::Timer::Ipv6>())
+    , list(std::make_shared<Native::Track::Timer::List>())
+    , stub_object(std::make_shared<Native::Track::Timer::StubObject>())
 {
     interface->parent = this;
     ip->parent = this;
@@ -14791,7 +14964,7 @@ Native::Track::Timer::Timer()
     list->parent = this;
     stub_object->parent = this;
 
-    yang_name = "timer"; yang_parent_name = "track"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "timer"; yang_parent_name = "track"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Track::Timer::~Timer()
@@ -14800,6 +14973,7 @@ Native::Track::Timer::~Timer()
 
 bool Native::Track::Timer::has_data() const
 {
+    if (is_presence_container) return true;
     return (interface !=  nullptr && interface->has_data())
 	|| (ip !=  nullptr && ip->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data())
@@ -14943,7 +15117,7 @@ Native::Track::Timer::Interface::Interface()
     ms{YType::uint32, "ms"}
 {
 
-    yang_name = "interface"; yang_parent_name = "timer"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "timer"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Track::Timer::Interface::~Interface()
@@ -14952,6 +15126,7 @@ Native::Track::Timer::Interface::~Interface()
 
 bool Native::Track::Timer::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| ms.is_set;
 }
@@ -15038,12 +15213,12 @@ bool Native::Track::Timer::Interface::has_leaf_or_child_of_name(const std::strin
 Native::Track::Timer::Ip::Ip()
     :
     route(std::make_shared<Native::Track::Timer::Ip::Route>())
-	,sla(std::make_shared<Native::Track::Timer::Ip::Sla>())
+    , sla(std::make_shared<Native::Track::Timer::Ip::Sla>())
 {
     route->parent = this;
     sla->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "timer"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip"; yang_parent_name = "timer"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Track::Timer::Ip::~Ip()
@@ -15052,6 +15227,7 @@ Native::Track::Timer::Ip::~Ip()
 
 bool Native::Track::Timer::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (route !=  nullptr && route->has_data())
 	|| (sla !=  nullptr && sla->has_data());
 }
@@ -15147,7 +15323,7 @@ Native::Track::Timer::Ip::Route::Route()
     ms{YType::uint32, "ms"}
 {
 
-    yang_name = "route"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Track::Timer::Ip::Route::~Route()
@@ -15156,6 +15332,7 @@ Native::Track::Timer::Ip::Route::~Route()
 
 bool Native::Track::Timer::Ip::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| ms.is_set;
 }
@@ -15245,7 +15422,7 @@ Native::Track::Timer::Ip::Sla::Sla()
     ms{YType::uint32, "ms"}
 {
 
-    yang_name = "sla"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sla"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Track::Timer::Ip::Sla::~Sla()
@@ -15254,6 +15431,7 @@ Native::Track::Timer::Ip::Sla::~Sla()
 
 bool Native::Track::Timer::Ip::Sla::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| ms.is_set;
 }
@@ -15343,7 +15521,7 @@ Native::Track::Timer::Ipv6::Ipv6()
 {
     route->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "timer"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6"; yang_parent_name = "timer"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Track::Timer::Ipv6::~Ipv6()
@@ -15352,6 +15530,7 @@ Native::Track::Timer::Ipv6::~Ipv6()
 
 bool Native::Track::Timer::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (route !=  nullptr && route->has_data());
 }
 

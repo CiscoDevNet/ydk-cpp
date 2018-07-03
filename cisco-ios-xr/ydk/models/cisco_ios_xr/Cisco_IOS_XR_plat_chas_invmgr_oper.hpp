@@ -57,7 +57,7 @@ class Platform::Racks : public ydk::Entity
 
         class Rack; //type: Platform::Racks::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::Platform::Racks::Rack> > rack;
+        ydk::YList rack;
         
 }; // Platform::Racks
 
@@ -105,7 +105,7 @@ class Platform::Racks::Rack::Slots : public ydk::Entity
 
         class Slot; //type: Platform::Racks::Rack::Slots::Slot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::Platform::Racks::Rack::Slots::Slot> > slot;
+        ydk::YList slot;
         
 }; // Platform::Racks::Rack::Slots
 
@@ -156,7 +156,7 @@ class Platform::Racks::Rack::Slots::Slot::Instances : public ydk::Entity
 
         class Instance; //type: Platform::Racks::Rack::Slots::Slot::Instances::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::Platform::Racks::Rack::Slots::Slot::Instances::Instance> > instance;
+        ydk::YList instance;
         
 }; // Platform::Racks::Rack::Slots::Slot::Instances
 
@@ -312,7 +312,7 @@ class PlatformInventory::Racks : public ydk::Entity
 
         class Rack; //type: PlatformInventory::Racks::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack> > rack;
+        ydk::YList rack;
         
 }; // PlatformInventory::Racks
 
@@ -362,7 +362,7 @@ class PlatformInventory::Racks::Rack::Slots : public ydk::Entity
 
         class Slot; //type: PlatformInventory::Racks::Rack::Slots::Slot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot> > slot;
+        ydk::YList slot;
         
 }; // PlatformInventory::Racks::Rack::Slots
 
@@ -411,7 +411,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards : public ydk::Entity
 
         class Card; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card> > card;
+        ydk::YList card;
         
 }; // PlatformInventory::Racks::Rack::Slots::Slot::Cards
 
@@ -435,6 +435,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card : public ydk::Ent
         ydk::YLeaf name; //type: string
         class HardwareInformation; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation
         class SubSlots; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots
+        class Portses; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses
         class PortSlots; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots
         class HwComponents; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents
         class Sensors; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors
@@ -442,6 +443,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card : public ydk::Ent
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation> hardware_information;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots> sub_slots;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses> portses;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots> port_slots;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents> hw_components;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors> sensors;
@@ -661,7 +663,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformat
         ydk::YLeaf sector_size; //type: uint32
         class Disks; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::DiskInformation::Disks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::DiskInformation::Disks> > disks;
+        ydk::YList disks;
         
 }; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::DiskInformation
 
@@ -707,7 +709,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots : publi
 
         class SubSlot; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot> > sub_slot;
+        ydk::YList sub_slot;
         
 }; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots
 
@@ -783,7 +785,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlo
 
         class PortSlot; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot> > port_slot;
+        ydk::YList port_slot;
         
 }; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots
 
@@ -834,7 +836,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlo
 
         class Ports; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports> > ports;
+        ydk::YList ports;
         
 }; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses
 
@@ -885,7 +887,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlo
 
         class HwComponent; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent> > hw_component;
+        ydk::YList hw_component;
         
 }; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents
 
@@ -934,7 +936,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlo
 
         class Sensor; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor> > sensor;
+        ydk::YList sensor;
         
 }; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors
 
@@ -1237,7 +1239,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlo
 
         class Sensor; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor> > sensor;
+        ydk::YList sensor;
         
 }; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors
 
@@ -1540,7 +1542,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlo
 
         class Sensor; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor> > sensor;
+        ydk::YList sensor;
         
 }; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors
 
@@ -1843,7 +1845,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlo
 
         class Sensor; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor> > sensor;
+        ydk::YList sensor;
         
 }; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors
 
@@ -2256,6 +2258,712 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlo
 }; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::FruInfo::ModuleUpTime
 
 
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses : public ydk::Entity
+{
+    public:
+        Portses();
+        ~Portses();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Ports; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports
+
+        ydk::YList ports;
+        
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports : public ydk::Entity
+{
+    public:
+        Ports();
+        ~Ports();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        class HwComponents; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents
+        class Sensors; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors
+        class Attributes; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents> hw_components;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors> sensors;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes> attributes;
+        
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents : public ydk::Entity
+{
+    public:
+        HwComponents();
+        ~HwComponents();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class HwComponent; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent
+
+        ydk::YList hw_component;
+        
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent : public ydk::Entity
+{
+    public:
+        HwComponent();
+        ~HwComponent();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        class Sensors; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors
+        class Attributes; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors> sensors;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes> attributes;
+        
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors : public ydk::Entity
+{
+    public:
+        Sensors();
+        ~Sensors();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Sensor; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor
+
+        ydk::YList sensor;
+        
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor : public ydk::Entity
+{
+    public:
+        Sensor();
+        ~Sensor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        class Attributes; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes> attributes;
+        
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes : public ydk::Entity
+{
+    public:
+        Attributes();
+        ~Attributes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class BasicInfo; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo
+        class FruInfo; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo> basic_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo> fru_info;
+        
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo : public ydk::Entity
+{
+    public:
+        BasicInfo();
+        ~BasicInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo : public ydk::Entity
+{
+    public:
+        FruInfo();
+        ~FruInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf module_administrative_state; //type: InvAdminState
+        ydk::YLeaf module_power_administrative_state; //type: InvPowerAdminState
+        ydk::YLeaf module_operational_state; //type: InvCardState
+        ydk::YLeaf module_monitor_state; //type: InvMonitorState
+        ydk::YLeaf module_reset_reason; //type: InvResetReason
+        class LastOperationalStateChange; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange
+        class ModuleUpTime; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime> module_up_time;
+        
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange : public ydk::Entity
+{
+    public:
+        LastOperationalStateChange();
+        ~LastOperationalStateChange();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
+
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime : public ydk::Entity
+{
+    public:
+        ModuleUpTime();
+        ~ModuleUpTime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
+
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes : public ydk::Entity
+{
+    public:
+        Attributes();
+        ~Attributes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class BasicInfo; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo
+        class FruInfo; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo> basic_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo> fru_info;
+        
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo : public ydk::Entity
+{
+    public:
+        BasicInfo();
+        ~BasicInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo : public ydk::Entity
+{
+    public:
+        FruInfo();
+        ~FruInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf module_administrative_state; //type: InvAdminState
+        ydk::YLeaf module_power_administrative_state; //type: InvPowerAdminState
+        ydk::YLeaf module_operational_state; //type: InvCardState
+        ydk::YLeaf module_monitor_state; //type: InvMonitorState
+        ydk::YLeaf module_reset_reason; //type: InvResetReason
+        class LastOperationalStateChange; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange
+        class ModuleUpTime; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime> module_up_time;
+        
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange : public ydk::Entity
+{
+    public:
+        LastOperationalStateChange();
+        ~LastOperationalStateChange();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
+
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime : public ydk::Entity
+{
+    public:
+        ModuleUpTime();
+        ~ModuleUpTime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
+
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors : public ydk::Entity
+{
+    public:
+        Sensors();
+        ~Sensors();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Sensor; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor
+
+        ydk::YList sensor;
+        
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor : public ydk::Entity
+{
+    public:
+        Sensor();
+        ~Sensor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        class Attributes; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes> attributes;
+        
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes : public ydk::Entity
+{
+    public:
+        Attributes();
+        ~Attributes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class BasicInfo; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo
+        class FruInfo; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo> basic_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo> fru_info;
+        
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo : public ydk::Entity
+{
+    public:
+        BasicInfo();
+        ~BasicInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo : public ydk::Entity
+{
+    public:
+        FruInfo();
+        ~FruInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf module_administrative_state; //type: InvAdminState
+        ydk::YLeaf module_power_administrative_state; //type: InvPowerAdminState
+        ydk::YLeaf module_operational_state; //type: InvCardState
+        ydk::YLeaf module_monitor_state; //type: InvMonitorState
+        ydk::YLeaf module_reset_reason; //type: InvResetReason
+        class LastOperationalStateChange; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange
+        class ModuleUpTime; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime> module_up_time;
+        
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange : public ydk::Entity
+{
+    public:
+        LastOperationalStateChange();
+        ~LastOperationalStateChange();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
+
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime : public ydk::Entity
+{
+    public:
+        ModuleUpTime();
+        ~ModuleUpTime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
+
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes : public ydk::Entity
+{
+    public:
+        Attributes();
+        ~Attributes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class BasicInfo; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::BasicInfo
+        class FruInfo; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::BasicInfo> basic_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo> fru_info;
+        
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::BasicInfo : public ydk::Entity
+{
+    public:
+        BasicInfo();
+        ~BasicInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::BasicInfo
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo : public ydk::Entity
+{
+    public:
+        FruInfo();
+        ~FruInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf module_administrative_state; //type: InvAdminState
+        ydk::YLeaf module_power_administrative_state; //type: InvPowerAdminState
+        ydk::YLeaf module_operational_state; //type: InvCardState
+        ydk::YLeaf module_monitor_state; //type: InvMonitorState
+        ydk::YLeaf module_reset_reason; //type: InvResetReason
+        class LastOperationalStateChange; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange
+        class ModuleUpTime; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::ModuleUpTime
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::ModuleUpTime> module_up_time;
+        
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange : public ydk::Entity
+{
+    public:
+        LastOperationalStateChange();
+        ~LastOperationalStateChange();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
+
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange
+
+
+class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::ModuleUpTime : public ydk::Entity
+{
+    public:
+        ModuleUpTime();
+        ~ModuleUpTime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
+
+}; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::ModuleUpTime
+
+
 class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots : public ydk::Entity
 {
     public:
@@ -2274,7 +2982,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots : publ
 
         class PortSlot; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot> > port_slot;
+        ydk::YList port_slot;
         
 }; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots
 
@@ -2325,7 +3033,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortS
 
         class Ports; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports> > ports;
+        ydk::YList ports;
         
 }; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses
 
@@ -2376,7 +3084,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortS
 
         class HwComponent; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent> > hw_component;
+        ydk::YList hw_component;
         
 }; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents
 
@@ -2425,7 +3133,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortS
 
         class Sensor; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor> > sensor;
+        ydk::YList sensor;
         
 }; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors
 
@@ -2728,7 +3436,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortS
 
         class Sensor; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor> > sensor;
+        ydk::YList sensor;
         
 }; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors
 
@@ -3031,7 +3739,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortS
 
         class Sensor; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor> > sensor;
+        ydk::YList sensor;
         
 }; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors
 
@@ -3334,7 +4042,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents : p
 
         class HwComponent; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent> > hw_component;
+        ydk::YList hw_component;
         
 }; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents
 
@@ -3383,7 +4091,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::Hw
 
         class Sensor; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor> > sensor;
+        ydk::YList sensor;
         
 }; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors
 
@@ -3686,7 +4394,7 @@ class PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors : public
 
         class Sensor; //type: PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_plat_chas_invmgr_oper::PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor> > sensor;
+        ydk::YList sensor;
         
 }; // PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors
 
@@ -4226,6 +4934,81 @@ class PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime : public
 
 }; // PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime
 
+class InvAdminState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf admin_state_invalid;
+        static const ydk::Enum::YLeaf admin_up;
+        static const ydk::Enum::YLeaf admin_down;
+
+};
+
+class InvResetReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf module_reset_reason_unknown;
+        static const ydk::Enum::YLeaf module_reset_reason_powerup;
+        static const ydk::Enum::YLeaf module_reset_reason_user_shutdown;
+        static const ydk::Enum::YLeaf module_reset_reason_user_reload;
+        static const ydk::Enum::YLeaf module_reset_reason_auto_reload;
+        static const ydk::Enum::YLeaf module_reset_reason_environment;
+        static const ydk::Enum::YLeaf module_reset_reason_user_unpower;
+
+};
+
+class InvCardState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf inv_card_not_present;
+        static const ydk::Enum::YLeaf inv_card_present;
+        static const ydk::Enum::YLeaf inv_card_reset;
+        static const ydk::Enum::YLeaf inv_card_booting;
+        static const ydk::Enum::YLeaf inv_card_mbi_booting;
+        static const ydk::Enum::YLeaf inv_card_running_mbi;
+        static const ydk::Enum::YLeaf inv_card_running_ena;
+        static const ydk::Enum::YLeaf inv_card_bring_down;
+        static const ydk::Enum::YLeaf inv_card_ena_failure;
+        static const ydk::Enum::YLeaf inv_card_f_diag_run;
+        static const ydk::Enum::YLeaf inv_card_f_diag_failure;
+        static const ydk::Enum::YLeaf inv_card_powered;
+        static const ydk::Enum::YLeaf inv_card_unpowered;
+        static const ydk::Enum::YLeaf inv_card_mdr;
+        static const ydk::Enum::YLeaf inv_card_mdr_running_mbi;
+        static const ydk::Enum::YLeaf inv_card_main_t_mode;
+        static const ydk::Enum::YLeaf inv_card_admin_down;
+        static const ydk::Enum::YLeaf inv_card_no_mon;
+        static const ydk::Enum::YLeaf inv_card_unknown;
+        static const ydk::Enum::YLeaf inv_card_failed;
+        static const ydk::Enum::YLeaf inv_card_ok;
+        static const ydk::Enum::YLeaf inv_card_missing;
+        static const ydk::Enum::YLeaf inv_card_field_diag_downloading;
+        static const ydk::Enum::YLeaf inv_card_field_diag_unmonitor;
+        static const ydk::Enum::YLeaf inv_card_fabric_field_diag_unmonitor;
+        static const ydk::Enum::YLeaf inv_card_field_diag_rp_launching;
+        static const ydk::Enum::YLeaf inv_card_field_diag_running;
+        static const ydk::Enum::YLeaf inv_card_field_diag_pass;
+        static const ydk::Enum::YLeaf inv_card_field_diag_fail;
+        static const ydk::Enum::YLeaf inv_card_field_diag_timeout;
+        static const ydk::Enum::YLeaf inv_card_disabled;
+        static const ydk::Enum::YLeaf inv_card_spa_booting;
+        static const ydk::Enum::YLeaf inv_card_not_allowed_online;
+        static const ydk::Enum::YLeaf inv_card_stopped;
+        static const ydk::Enum::YLeaf inv_card_incompatible_fw_ver;
+        static const ydk::Enum::YLeaf inv_card_fpd_hold;
+        static const ydk::Enum::YLeaf inv_card_node_prep;
+        static const ydk::Enum::YLeaf inv_card_updating_fpd;
+        static const ydk::Enum::YLeaf inv_card_num_states;
+
+};
+
+class InvMonitorState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unmonitored;
+        static const ydk::Enum::YLeaf monitored;
+
+};
+
 class NodeState : public ydk::Enum
 {
     public:
@@ -4291,87 +5074,12 @@ class CardRedundancyState : public ydk::Enum
 
 };
 
-class InvResetReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf module_reset_reason_unknown;
-        static const ydk::Enum::YLeaf module_reset_reason_powerup;
-        static const ydk::Enum::YLeaf module_reset_reason_user_shutdown;
-        static const ydk::Enum::YLeaf module_reset_reason_user_reload;
-        static const ydk::Enum::YLeaf module_reset_reason_auto_reload;
-        static const ydk::Enum::YLeaf module_reset_reason_environment;
-        static const ydk::Enum::YLeaf module_reset_reason_user_unpower;
-
-};
-
-class InvMonitorState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unmonitored;
-        static const ydk::Enum::YLeaf monitored;
-
-};
-
-class InvCardState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf inv_card_not_present;
-        static const ydk::Enum::YLeaf inv_card_present;
-        static const ydk::Enum::YLeaf inv_card_reset;
-        static const ydk::Enum::YLeaf inv_card_booting;
-        static const ydk::Enum::YLeaf inv_card_mbi_booting;
-        static const ydk::Enum::YLeaf inv_card_running_mbi;
-        static const ydk::Enum::YLeaf inv_card_running_ena;
-        static const ydk::Enum::YLeaf inv_card_bring_down;
-        static const ydk::Enum::YLeaf inv_card_ena_failure;
-        static const ydk::Enum::YLeaf inv_card_f_diag_run;
-        static const ydk::Enum::YLeaf inv_card_f_diag_failure;
-        static const ydk::Enum::YLeaf inv_card_powered;
-        static const ydk::Enum::YLeaf inv_card_unpowered;
-        static const ydk::Enum::YLeaf inv_card_mdr;
-        static const ydk::Enum::YLeaf inv_card_mdr_running_mbi;
-        static const ydk::Enum::YLeaf inv_card_main_t_mode;
-        static const ydk::Enum::YLeaf inv_card_admin_down;
-        static const ydk::Enum::YLeaf inv_card_no_mon;
-        static const ydk::Enum::YLeaf inv_card_unknown;
-        static const ydk::Enum::YLeaf inv_card_failed;
-        static const ydk::Enum::YLeaf inv_card_ok;
-        static const ydk::Enum::YLeaf inv_card_missing;
-        static const ydk::Enum::YLeaf inv_card_field_diag_downloading;
-        static const ydk::Enum::YLeaf inv_card_field_diag_unmonitor;
-        static const ydk::Enum::YLeaf inv_card_fabric_field_diag_unmonitor;
-        static const ydk::Enum::YLeaf inv_card_field_diag_rp_launching;
-        static const ydk::Enum::YLeaf inv_card_field_diag_running;
-        static const ydk::Enum::YLeaf inv_card_field_diag_pass;
-        static const ydk::Enum::YLeaf inv_card_field_diag_fail;
-        static const ydk::Enum::YLeaf inv_card_field_diag_timeout;
-        static const ydk::Enum::YLeaf inv_card_disabled;
-        static const ydk::Enum::YLeaf inv_card_spa_booting;
-        static const ydk::Enum::YLeaf inv_card_not_allowed_online;
-        static const ydk::Enum::YLeaf inv_card_stopped;
-        static const ydk::Enum::YLeaf inv_card_incompatible_fw_ver;
-        static const ydk::Enum::YLeaf inv_card_fpd_hold;
-        static const ydk::Enum::YLeaf inv_card_node_prep;
-        static const ydk::Enum::YLeaf inv_card_updating_fpd;
-        static const ydk::Enum::YLeaf inv_card_num_states;
-
-};
-
 class InvPowerAdminState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf admin_power_invalid;
         static const ydk::Enum::YLeaf admin_on;
         static const ydk::Enum::YLeaf admin_off;
-
-};
-
-class InvAdminState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf admin_state_invalid;
-        static const ydk::Enum::YLeaf admin_up;
-        static const ydk::Enum::YLeaf admin_down;
 
 };
 

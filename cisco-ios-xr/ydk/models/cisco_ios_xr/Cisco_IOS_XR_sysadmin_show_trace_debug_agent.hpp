@@ -33,7 +33,7 @@ class DebugAgent : public ydk::Entity
 
         class Trace; //type: DebugAgent::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_debug_agent::DebugAgent::Trace> > trace;
+        ydk::YList trace;
         
 }; // DebugAgent
 
@@ -58,7 +58,7 @@ class DebugAgent::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: DebugAgent::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_debug_agent::DebugAgent::Trace::Location> > location;
+        ydk::YList location;
         
 }; // DebugAgent::Trace
 
@@ -82,7 +82,7 @@ class DebugAgent::Trace::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: DebugAgent::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_debug_agent::DebugAgent::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // DebugAgent::Trace::Location
 
@@ -106,7 +106,7 @@ class DebugAgent::Trace::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: DebugAgent::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_debug_agent::DebugAgent::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // DebugAgent::Trace::Location::AllOptions
 

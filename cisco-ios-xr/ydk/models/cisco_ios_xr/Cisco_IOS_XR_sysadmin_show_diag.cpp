@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_sysadmin_show_diag {
 Diag::Diag()
     :
     default_(std::make_shared<Diag::Default>())
-	,fans(std::make_shared<Diag::Fans>())
-	,power_supply(std::make_shared<Diag::PowerSupply>())
-	,chassis(std::make_shared<Diag::Chassis>())
-	,summary(std::make_shared<Diag::Summary>())
-	,eeprom(std::make_shared<Diag::Eeprom>())
-	,detail(std::make_shared<Diag::Detail>())
+    , fans(std::make_shared<Diag::Fans>())
+    , power_supply(std::make_shared<Diag::PowerSupply>())
+    , chassis(std::make_shared<Diag::Chassis>())
+    , summary(std::make_shared<Diag::Summary>())
+    , eeprom(std::make_shared<Diag::Eeprom>())
+    , detail(std::make_shared<Diag::Detail>())
 {
     default_->parent = this;
     fans->parent = this;
@@ -29,7 +29,7 @@ Diag::Diag()
     eeprom->parent = this;
     detail->parent = this;
 
-    yang_name = "diag"; yang_parent_name = "Cisco-IOS-XR-sysadmin-show-diag"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "diag"; yang_parent_name = "Cisco-IOS-XR-sysadmin-show-diag"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Diag::~Diag()
@@ -38,6 +38,7 @@ Diag::~Diag()
 
 bool Diag::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data())
 	|| (fans !=  nullptr && fans->has_data())
 	|| (power_supply !=  nullptr && power_supply->has_data())
@@ -226,9 +227,11 @@ bool Diag::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Diag::Default::Default()
+    :
+    default_list(this, {"location"})
 {
 
-    yang_name = "default"; yang_parent_name = "diag"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "diag"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::Default::~Default()
@@ -237,7 +240,8 @@ Diag::Default::~Default()
 
 bool Diag::Default::has_data() const
 {
-    for (std::size_t index=0; index<default_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<default_list.len(); index++)
     {
         if(default_list[index]->has_data())
             return true;
@@ -247,7 +251,7 @@ bool Diag::Default::has_data() const
 
 bool Diag::Default::has_operation() const
 {
-    for (std::size_t index=0; index<default_list.size(); index++)
+    for (std::size_t index=0; index<default_list.len(); index++)
     {
         if(default_list[index]->has_operation())
             return true;
@@ -284,7 +288,7 @@ std::shared_ptr<Entity> Diag::Default::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<Diag::Default::DefaultList>();
         c->parent = this;
-        default_list.push_back(c);
+        default_list.append(c);
         return c;
     }
 
@@ -296,7 +300,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Default::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : default_list)
+    for (auto c : default_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -325,12 +329,12 @@ bool Diag::Default::has_leaf_or_child_of_name(const std::string & name) const
 Diag::Default::DefaultList::DefaultList()
     :
     location{YType::str, "location"}
-    	,
+        ,
     default_data(std::make_shared<Diag::Default::DefaultList::DefaultData>())
 {
     default_data->parent = this;
 
-    yang_name = "default_list"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default_list"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::Default::DefaultList::~DefaultList()
@@ -339,6 +343,7 @@ Diag::Default::DefaultList::~DefaultList()
 
 bool Diag::Default::DefaultList::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (default_data !=  nullptr && default_data->has_data());
 }
@@ -360,7 +365,8 @@ std::string Diag::Default::DefaultList::get_absolute_path() const
 std::string Diag::Default::DefaultList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "default_list" <<"[location='" <<location <<"']";
+    path_buffer << "default_list";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -430,7 +436,7 @@ Diag::Default::DefaultList::DefaultData::DefaultData()
     default_out_list{YType::str, "default_out_list"}
 {
 
-    yang_name = "default-data"; yang_parent_name = "default_list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default-data"; yang_parent_name = "default_list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Default::DefaultList::DefaultData::~DefaultData()
@@ -439,6 +445,7 @@ Diag::Default::DefaultList::DefaultData::~DefaultData()
 
 bool Diag::Default::DefaultList::DefaultData::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : default_out_list.getYLeafs())
     {
         if(leaf.is_set)
@@ -512,9 +519,11 @@ bool Diag::Default::DefaultList::DefaultData::has_leaf_or_child_of_name(const st
 }
 
 Diag::Fans::Fans()
+    :
+    fans_list(this, {"location"})
 {
 
-    yang_name = "fans"; yang_parent_name = "diag"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fans"; yang_parent_name = "diag"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::Fans::~Fans()
@@ -523,7 +532,8 @@ Diag::Fans::~Fans()
 
 bool Diag::Fans::has_data() const
 {
-    for (std::size_t index=0; index<fans_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fans_list.len(); index++)
     {
         if(fans_list[index]->has_data())
             return true;
@@ -533,7 +543,7 @@ bool Diag::Fans::has_data() const
 
 bool Diag::Fans::has_operation() const
 {
-    for (std::size_t index=0; index<fans_list.size(); index++)
+    for (std::size_t index=0; index<fans_list.len(); index++)
     {
         if(fans_list[index]->has_operation())
             return true;
@@ -570,7 +580,7 @@ std::shared_ptr<Entity> Diag::Fans::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Diag::Fans::FansList>();
         c->parent = this;
-        fans_list.push_back(c);
+        fans_list.append(c);
         return c;
     }
 
@@ -582,7 +592,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Fans::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fans_list)
+    for (auto c : fans_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -611,12 +621,12 @@ bool Diag::Fans::has_leaf_or_child_of_name(const std::string & name) const
 Diag::Fans::FansList::FansList()
     :
     location{YType::str, "location"}
-    	,
+        ,
     default_data(std::make_shared<Diag::Fans::FansList::DefaultData>())
 {
     default_data->parent = this;
 
-    yang_name = "fans_list"; yang_parent_name = "fans"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fans_list"; yang_parent_name = "fans"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::Fans::FansList::~FansList()
@@ -625,6 +635,7 @@ Diag::Fans::FansList::~FansList()
 
 bool Diag::Fans::FansList::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (default_data !=  nullptr && default_data->has_data());
 }
@@ -646,7 +657,8 @@ std::string Diag::Fans::FansList::get_absolute_path() const
 std::string Diag::Fans::FansList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fans_list" <<"[location='" <<location <<"']";
+    path_buffer << "fans_list";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -716,7 +728,7 @@ Diag::Fans::FansList::DefaultData::DefaultData()
     default_out_list{YType::str, "default_out_list"}
 {
 
-    yang_name = "default-data"; yang_parent_name = "fans_list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default-data"; yang_parent_name = "fans_list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Fans::FansList::DefaultData::~DefaultData()
@@ -725,6 +737,7 @@ Diag::Fans::FansList::DefaultData::~DefaultData()
 
 bool Diag::Fans::FansList::DefaultData::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : default_out_list.getYLeafs())
     {
         if(leaf.is_set)
@@ -798,9 +811,11 @@ bool Diag::Fans::FansList::DefaultData::has_leaf_or_child_of_name(const std::str
 }
 
 Diag::PowerSupply::PowerSupply()
+    :
+    pwr_list(this, {"location"})
 {
 
-    yang_name = "power-supply"; yang_parent_name = "diag"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "power-supply"; yang_parent_name = "diag"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::PowerSupply::~PowerSupply()
@@ -809,7 +824,8 @@ Diag::PowerSupply::~PowerSupply()
 
 bool Diag::PowerSupply::has_data() const
 {
-    for (std::size_t index=0; index<pwr_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pwr_list.len(); index++)
     {
         if(pwr_list[index]->has_data())
             return true;
@@ -819,7 +835,7 @@ bool Diag::PowerSupply::has_data() const
 
 bool Diag::PowerSupply::has_operation() const
 {
-    for (std::size_t index=0; index<pwr_list.size(); index++)
+    for (std::size_t index=0; index<pwr_list.len(); index++)
     {
         if(pwr_list[index]->has_operation())
             return true;
@@ -856,7 +872,7 @@ std::shared_ptr<Entity> Diag::PowerSupply::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Diag::PowerSupply::PwrList>();
         c->parent = this;
-        pwr_list.push_back(c);
+        pwr_list.append(c);
         return c;
     }
 
@@ -868,7 +884,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::PowerSupply::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pwr_list)
+    for (auto c : pwr_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -897,12 +913,12 @@ bool Diag::PowerSupply::has_leaf_or_child_of_name(const std::string & name) cons
 Diag::PowerSupply::PwrList::PwrList()
     :
     location{YType::str, "location"}
-    	,
+        ,
     default_data(std::make_shared<Diag::PowerSupply::PwrList::DefaultData>())
 {
     default_data->parent = this;
 
-    yang_name = "pwr_list"; yang_parent_name = "power-supply"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pwr_list"; yang_parent_name = "power-supply"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::PowerSupply::PwrList::~PwrList()
@@ -911,6 +927,7 @@ Diag::PowerSupply::PwrList::~PwrList()
 
 bool Diag::PowerSupply::PwrList::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (default_data !=  nullptr && default_data->has_data());
 }
@@ -932,7 +949,8 @@ std::string Diag::PowerSupply::PwrList::get_absolute_path() const
 std::string Diag::PowerSupply::PwrList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pwr_list" <<"[location='" <<location <<"']";
+    path_buffer << "pwr_list";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -1002,7 +1020,7 @@ Diag::PowerSupply::PwrList::DefaultData::DefaultData()
     default_out_list{YType::str, "default_out_list"}
 {
 
-    yang_name = "default-data"; yang_parent_name = "pwr_list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default-data"; yang_parent_name = "pwr_list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::PowerSupply::PwrList::DefaultData::~DefaultData()
@@ -1011,6 +1029,7 @@ Diag::PowerSupply::PwrList::DefaultData::~DefaultData()
 
 bool Diag::PowerSupply::PwrList::DefaultData::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : default_out_list.getYLeafs())
     {
         if(leaf.is_set)
@@ -1086,12 +1105,12 @@ bool Diag::PowerSupply::PwrList::DefaultData::has_leaf_or_child_of_name(const st
 Diag::Chassis::Chassis()
     :
     chassis_cnt(std::make_shared<Diag::Chassis::ChassisCnt>())
-	,chassis_eeprom_cnt(std::make_shared<Diag::Chassis::ChassisEepromCnt>())
+    , chassis_eeprom_cnt(std::make_shared<Diag::Chassis::ChassisEepromCnt>())
 {
     chassis_cnt->parent = this;
     chassis_eeprom_cnt->parent = this;
 
-    yang_name = "chassis"; yang_parent_name = "diag"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "chassis"; yang_parent_name = "diag"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::Chassis::~Chassis()
@@ -1100,6 +1119,7 @@ Diag::Chassis::~Chassis()
 
 bool Diag::Chassis::has_data() const
 {
+    if (is_presence_container) return true;
     return (chassis_cnt !=  nullptr && chassis_cnt->has_data())
 	|| (chassis_eeprom_cnt !=  nullptr && chassis_eeprom_cnt->has_data());
 }
@@ -1190,9 +1210,11 @@ bool Diag::Chassis::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Diag::Chassis::ChassisCnt::ChassisCnt()
+    :
+    chassis_list(this, {"location"})
 {
 
-    yang_name = "chassis_cnt"; yang_parent_name = "chassis"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "chassis_cnt"; yang_parent_name = "chassis"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::Chassis::ChassisCnt::~ChassisCnt()
@@ -1201,7 +1223,8 @@ Diag::Chassis::ChassisCnt::~ChassisCnt()
 
 bool Diag::Chassis::ChassisCnt::has_data() const
 {
-    for (std::size_t index=0; index<chassis_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<chassis_list.len(); index++)
     {
         if(chassis_list[index]->has_data())
             return true;
@@ -1211,7 +1234,7 @@ bool Diag::Chassis::ChassisCnt::has_data() const
 
 bool Diag::Chassis::ChassisCnt::has_operation() const
 {
-    for (std::size_t index=0; index<chassis_list.size(); index++)
+    for (std::size_t index=0; index<chassis_list.len(); index++)
     {
         if(chassis_list[index]->has_operation())
             return true;
@@ -1248,7 +1271,7 @@ std::shared_ptr<Entity> Diag::Chassis::ChassisCnt::get_child_by_name(const std::
     {
         auto c = std::make_shared<Diag::Chassis::ChassisCnt::ChassisList>();
         c->parent = this;
-        chassis_list.push_back(c);
+        chassis_list.append(c);
         return c;
     }
 
@@ -1260,7 +1283,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Chassis::ChassisCnt::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : chassis_list)
+    for (auto c : chassis_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1289,12 +1312,12 @@ bool Diag::Chassis::ChassisCnt::has_leaf_or_child_of_name(const std::string & na
 Diag::Chassis::ChassisCnt::ChassisList::ChassisList()
     :
     location{YType::str, "location"}
-    	,
+        ,
     default_data(std::make_shared<Diag::Chassis::ChassisCnt::ChassisList::DefaultData>())
 {
     default_data->parent = this;
 
-    yang_name = "chassis_list"; yang_parent_name = "chassis_cnt"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "chassis_list"; yang_parent_name = "chassis_cnt"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::Chassis::ChassisCnt::ChassisList::~ChassisList()
@@ -1303,6 +1326,7 @@ Diag::Chassis::ChassisCnt::ChassisList::~ChassisList()
 
 bool Diag::Chassis::ChassisCnt::ChassisList::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (default_data !=  nullptr && default_data->has_data());
 }
@@ -1324,7 +1348,8 @@ std::string Diag::Chassis::ChassisCnt::ChassisList::get_absolute_path() const
 std::string Diag::Chassis::ChassisCnt::ChassisList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "chassis_list" <<"[location='" <<location <<"']";
+    path_buffer << "chassis_list";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -1394,7 +1419,7 @@ Diag::Chassis::ChassisCnt::ChassisList::DefaultData::DefaultData()
     default_out_list{YType::str, "default_out_list"}
 {
 
-    yang_name = "default-data"; yang_parent_name = "chassis_list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default-data"; yang_parent_name = "chassis_list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Chassis::ChassisCnt::ChassisList::DefaultData::~DefaultData()
@@ -1403,6 +1428,7 @@ Diag::Chassis::ChassisCnt::ChassisList::DefaultData::~DefaultData()
 
 bool Diag::Chassis::ChassisCnt::ChassisList::DefaultData::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : default_out_list.getYLeafs())
     {
         if(leaf.is_set)
@@ -1476,9 +1502,11 @@ bool Diag::Chassis::ChassisCnt::ChassisList::DefaultData::has_leaf_or_child_of_n
 }
 
 Diag::Chassis::ChassisEepromCnt::ChassisEepromCnt()
+    :
+    chassis_eeprom_list(this, {"location"})
 {
 
-    yang_name = "chassis_eeprom_cnt"; yang_parent_name = "chassis"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "chassis_eeprom_cnt"; yang_parent_name = "chassis"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::Chassis::ChassisEepromCnt::~ChassisEepromCnt()
@@ -1487,7 +1515,8 @@ Diag::Chassis::ChassisEepromCnt::~ChassisEepromCnt()
 
 bool Diag::Chassis::ChassisEepromCnt::has_data() const
 {
-    for (std::size_t index=0; index<chassis_eeprom_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<chassis_eeprom_list.len(); index++)
     {
         if(chassis_eeprom_list[index]->has_data())
             return true;
@@ -1497,7 +1526,7 @@ bool Diag::Chassis::ChassisEepromCnt::has_data() const
 
 bool Diag::Chassis::ChassisEepromCnt::has_operation() const
 {
-    for (std::size_t index=0; index<chassis_eeprom_list.size(); index++)
+    for (std::size_t index=0; index<chassis_eeprom_list.len(); index++)
     {
         if(chassis_eeprom_list[index]->has_operation())
             return true;
@@ -1534,7 +1563,7 @@ std::shared_ptr<Entity> Diag::Chassis::ChassisEepromCnt::get_child_by_name(const
     {
         auto c = std::make_shared<Diag::Chassis::ChassisEepromCnt::ChassisEepromList>();
         c->parent = this;
-        chassis_eeprom_list.push_back(c);
+        chassis_eeprom_list.append(c);
         return c;
     }
 
@@ -1546,7 +1575,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Chassis::ChassisEepromCnt::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : chassis_eeprom_list)
+    for (auto c : chassis_eeprom_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1575,12 +1604,12 @@ bool Diag::Chassis::ChassisEepromCnt::has_leaf_or_child_of_name(const std::strin
 Diag::Chassis::ChassisEepromCnt::ChassisEepromList::ChassisEepromList()
     :
     location{YType::str, "location"}
-    	,
+        ,
     eeprom_data(std::make_shared<Diag::Chassis::ChassisEepromCnt::ChassisEepromList::EepromData>())
 {
     eeprom_data->parent = this;
 
-    yang_name = "chassis_eeprom_list"; yang_parent_name = "chassis_eeprom_cnt"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "chassis_eeprom_list"; yang_parent_name = "chassis_eeprom_cnt"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::Chassis::ChassisEepromCnt::ChassisEepromList::~ChassisEepromList()
@@ -1589,6 +1618,7 @@ Diag::Chassis::ChassisEepromCnt::ChassisEepromList::~ChassisEepromList()
 
 bool Diag::Chassis::ChassisEepromCnt::ChassisEepromList::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (eeprom_data !=  nullptr && eeprom_data->has_data());
 }
@@ -1610,7 +1640,8 @@ std::string Diag::Chassis::ChassisEepromCnt::ChassisEepromList::get_absolute_pat
 std::string Diag::Chassis::ChassisEepromCnt::ChassisEepromList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "chassis_eeprom_list" <<"[location='" <<location <<"']";
+    path_buffer << "chassis_eeprom_list";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -1680,7 +1711,7 @@ Diag::Chassis::ChassisEepromCnt::ChassisEepromList::EepromData::EepromData()
     raw_list{YType::str, "raw_list"}
 {
 
-    yang_name = "eeprom-data"; yang_parent_name = "chassis_eeprom_list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eeprom-data"; yang_parent_name = "chassis_eeprom_list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Chassis::ChassisEepromCnt::ChassisEepromList::EepromData::~EepromData()
@@ -1689,6 +1720,7 @@ Diag::Chassis::ChassisEepromCnt::ChassisEepromList::EepromData::~EepromData()
 
 bool Diag::Chassis::ChassisEepromCnt::ChassisEepromList::EepromData::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : raw_list.getYLeafs())
     {
         if(leaf.is_set)
@@ -1762,9 +1794,11 @@ bool Diag::Chassis::ChassisEepromCnt::ChassisEepromList::EepromData::has_leaf_or
 }
 
 Diag::Summary::Summary()
+    :
+    summary_list(this, {"location"})
 {
 
-    yang_name = "summary"; yang_parent_name = "diag"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "diag"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::Summary::~Summary()
@@ -1773,7 +1807,8 @@ Diag::Summary::~Summary()
 
 bool Diag::Summary::has_data() const
 {
-    for (std::size_t index=0; index<summary_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<summary_list.len(); index++)
     {
         if(summary_list[index]->has_data())
             return true;
@@ -1783,7 +1818,7 @@ bool Diag::Summary::has_data() const
 
 bool Diag::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<summary_list.size(); index++)
+    for (std::size_t index=0; index<summary_list.len(); index++)
     {
         if(summary_list[index]->has_operation())
             return true;
@@ -1820,7 +1855,7 @@ std::shared_ptr<Entity> Diag::Summary::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<Diag::Summary::SummaryList>();
         c->parent = this;
-        summary_list.push_back(c);
+        summary_list.append(c);
         return c;
     }
 
@@ -1832,7 +1867,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Summary::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : summary_list)
+    for (auto c : summary_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1861,12 +1896,12 @@ bool Diag::Summary::has_leaf_or_child_of_name(const std::string & name) const
 Diag::Summary::SummaryList::SummaryList()
     :
     location{YType::str, "location"}
-    	,
+        ,
     summary_data(std::make_shared<Diag::Summary::SummaryList::SummaryData>())
 {
     summary_data->parent = this;
 
-    yang_name = "summary_list"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary_list"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::Summary::SummaryList::~SummaryList()
@@ -1875,6 +1910,7 @@ Diag::Summary::SummaryList::~SummaryList()
 
 bool Diag::Summary::SummaryList::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (summary_data !=  nullptr && summary_data->has_data());
 }
@@ -1896,7 +1932,8 @@ std::string Diag::Summary::SummaryList::get_absolute_path() const
 std::string Diag::Summary::SummaryList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "summary_list" <<"[location='" <<location <<"']";
+    path_buffer << "summary_list";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -1966,7 +2003,7 @@ Diag::Summary::SummaryList::SummaryData::SummaryData()
     summary_out_list{YType::str, "summary_out_list"}
 {
 
-    yang_name = "summary-data"; yang_parent_name = "summary_list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary-data"; yang_parent_name = "summary_list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Summary::SummaryList::SummaryData::~SummaryData()
@@ -1975,6 +2012,7 @@ Diag::Summary::SummaryList::SummaryData::~SummaryData()
 
 bool Diag::Summary::SummaryList::SummaryData::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : summary_out_list.getYLeafs())
     {
         if(leaf.is_set)
@@ -2048,9 +2086,11 @@ bool Diag::Summary::SummaryList::SummaryData::has_leaf_or_child_of_name(const st
 }
 
 Diag::Eeprom::Eeprom()
+    :
+    eeprom_list(this, {"location"})
 {
 
-    yang_name = "eeprom"; yang_parent_name = "diag"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "eeprom"; yang_parent_name = "diag"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::Eeprom::~Eeprom()
@@ -2059,7 +2099,8 @@ Diag::Eeprom::~Eeprom()
 
 bool Diag::Eeprom::has_data() const
 {
-    for (std::size_t index=0; index<eeprom_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<eeprom_list.len(); index++)
     {
         if(eeprom_list[index]->has_data())
             return true;
@@ -2069,7 +2110,7 @@ bool Diag::Eeprom::has_data() const
 
 bool Diag::Eeprom::has_operation() const
 {
-    for (std::size_t index=0; index<eeprom_list.size(); index++)
+    for (std::size_t index=0; index<eeprom_list.len(); index++)
     {
         if(eeprom_list[index]->has_operation())
             return true;
@@ -2106,7 +2147,7 @@ std::shared_ptr<Entity> Diag::Eeprom::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Diag::Eeprom::EepromList>();
         c->parent = this;
-        eeprom_list.push_back(c);
+        eeprom_list.append(c);
         return c;
     }
 
@@ -2118,7 +2159,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Eeprom::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : eeprom_list)
+    for (auto c : eeprom_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2147,12 +2188,12 @@ bool Diag::Eeprom::has_leaf_or_child_of_name(const std::string & name) const
 Diag::Eeprom::EepromList::EepromList()
     :
     location{YType::str, "location"}
-    	,
+        ,
     eeprom_data(std::make_shared<Diag::Eeprom::EepromList::EepromData>())
 {
     eeprom_data->parent = this;
 
-    yang_name = "eeprom_list"; yang_parent_name = "eeprom"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "eeprom_list"; yang_parent_name = "eeprom"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::Eeprom::EepromList::~EepromList()
@@ -2161,6 +2202,7 @@ Diag::Eeprom::EepromList::~EepromList()
 
 bool Diag::Eeprom::EepromList::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (eeprom_data !=  nullptr && eeprom_data->has_data());
 }
@@ -2182,7 +2224,8 @@ std::string Diag::Eeprom::EepromList::get_absolute_path() const
 std::string Diag::Eeprom::EepromList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "eeprom_list" <<"[location='" <<location <<"']";
+    path_buffer << "eeprom_list";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -2252,7 +2295,7 @@ Diag::Eeprom::EepromList::EepromData::EepromData()
     raw_list{YType::str, "raw_list"}
 {
 
-    yang_name = "eeprom-data"; yang_parent_name = "eeprom_list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eeprom-data"; yang_parent_name = "eeprom_list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Eeprom::EepromList::EepromData::~EepromData()
@@ -2261,6 +2304,7 @@ Diag::Eeprom::EepromList::EepromData::~EepromData()
 
 bool Diag::Eeprom::EepromList::EepromData::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : raw_list.getYLeafs())
     {
         if(leaf.is_set)
@@ -2334,9 +2378,11 @@ bool Diag::Eeprom::EepromList::EepromData::has_leaf_or_child_of_name(const std::
 }
 
 Diag::Detail::Detail()
+    :
+    detail_list(this, {"location"})
 {
 
-    yang_name = "detail"; yang_parent_name = "diag"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail"; yang_parent_name = "diag"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::Detail::~Detail()
@@ -2345,7 +2391,8 @@ Diag::Detail::~Detail()
 
 bool Diag::Detail::has_data() const
 {
-    for (std::size_t index=0; index<detail_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail_list.len(); index++)
     {
         if(detail_list[index]->has_data())
             return true;
@@ -2355,7 +2402,7 @@ bool Diag::Detail::has_data() const
 
 bool Diag::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<detail_list.size(); index++)
+    for (std::size_t index=0; index<detail_list.len(); index++)
     {
         if(detail_list[index]->has_operation())
             return true;
@@ -2392,7 +2439,7 @@ std::shared_ptr<Entity> Diag::Detail::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Diag::Detail::DetailList>();
         c->parent = this;
-        detail_list.push_back(c);
+        detail_list.append(c);
         return c;
     }
 
@@ -2404,7 +2451,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Detail::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : detail_list)
+    for (auto c : detail_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2433,12 +2480,12 @@ bool Diag::Detail::has_leaf_or_child_of_name(const std::string & name) const
 Diag::Detail::DetailList::DetailList()
     :
     location{YType::str, "location"}
-    	,
+        ,
     detail_data(std::make_shared<Diag::Detail::DetailList::DetailData>())
 {
     detail_data->parent = this;
 
-    yang_name = "detail_list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail_list"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Diag::Detail::DetailList::~DetailList()
@@ -2447,6 +2494,7 @@ Diag::Detail::DetailList::~DetailList()
 
 bool Diag::Detail::DetailList::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| (detail_data !=  nullptr && detail_data->has_data());
 }
@@ -2468,7 +2516,8 @@ std::string Diag::Detail::DetailList::get_absolute_path() const
 std::string Diag::Detail::DetailList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "detail_list" <<"[location='" <<location <<"']";
+    path_buffer << "detail_list";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -2538,7 +2587,7 @@ Diag::Detail::DetailList::DetailData::DetailData()
     detail_out_list{YType::str, "detail_out_list"}
 {
 
-    yang_name = "detail-data"; yang_parent_name = "detail_list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail-data"; yang_parent_name = "detail_list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Diag::Detail::DetailList::DetailData::~DetailData()
@@ -2547,6 +2596,7 @@ Diag::Detail::DetailList::DetailData::~DetailData()
 
 bool Diag::Detail::DetailList::DetailData::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : detail_out_list.getYLeafs())
     {
         if(leaf.is_set)

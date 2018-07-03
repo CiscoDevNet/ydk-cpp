@@ -13,15 +13,15 @@ namespace TUNNEL_MIB {
 
 TUNNELMIB::TUNNELMIB()
     :
-    tunneliftable(std::make_shared<TUNNELMIB::Tunneliftable>())
-	,tunnelconfigtable(std::make_shared<TUNNELMIB::Tunnelconfigtable>())
-	,tunnelinetconfigtable(std::make_shared<TUNNELMIB::Tunnelinetconfigtable>())
+    tunneliftable(std::make_shared<TUNNELMIB::TunnelIfTable>())
+    , tunnelconfigtable(std::make_shared<TUNNELMIB::TunnelConfigTable>())
+    , tunnelinetconfigtable(std::make_shared<TUNNELMIB::TunnelInetConfigTable>())
 {
     tunneliftable->parent = this;
     tunnelconfigtable->parent = this;
     tunnelinetconfigtable->parent = this;
 
-    yang_name = "TUNNEL-MIB"; yang_parent_name = "TUNNEL-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "TUNNEL-MIB"; yang_parent_name = "TUNNEL-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 TUNNELMIB::~TUNNELMIB()
@@ -30,6 +30,7 @@ TUNNELMIB::~TUNNELMIB()
 
 bool TUNNELMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (tunneliftable !=  nullptr && tunneliftable->has_data())
 	|| (tunnelconfigtable !=  nullptr && tunnelconfigtable->has_data())
 	|| (tunnelinetconfigtable !=  nullptr && tunnelinetconfigtable->has_data());
@@ -65,7 +66,7 @@ std::shared_ptr<Entity> TUNNELMIB::get_child_by_name(const std::string & child_y
     {
         if(tunneliftable == nullptr)
         {
-            tunneliftable = std::make_shared<TUNNELMIB::Tunneliftable>();
+            tunneliftable = std::make_shared<TUNNELMIB::TunnelIfTable>();
         }
         return tunneliftable;
     }
@@ -74,7 +75,7 @@ std::shared_ptr<Entity> TUNNELMIB::get_child_by_name(const std::string & child_y
     {
         if(tunnelconfigtable == nullptr)
         {
-            tunnelconfigtable = std::make_shared<TUNNELMIB::Tunnelconfigtable>();
+            tunnelconfigtable = std::make_shared<TUNNELMIB::TunnelConfigTable>();
         }
         return tunnelconfigtable;
     }
@@ -83,7 +84,7 @@ std::shared_ptr<Entity> TUNNELMIB::get_child_by_name(const std::string & child_y
     {
         if(tunnelinetconfigtable == nullptr)
         {
-            tunnelinetconfigtable = std::make_shared<TUNNELMIB::Tunnelinetconfigtable>();
+            tunnelinetconfigtable = std::make_shared<TUNNELMIB::TunnelInetConfigTable>();
         }
         return tunnelinetconfigtable;
     }
@@ -153,19 +154,22 @@ bool TUNNELMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-TUNNELMIB::Tunneliftable::Tunneliftable()
+TUNNELMIB::TunnelIfTable::TunnelIfTable()
+    :
+    tunnelifentry(this, {"ifindex"})
 {
 
-    yang_name = "tunnelIfTable"; yang_parent_name = "TUNNEL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnelIfTable"; yang_parent_name = "TUNNEL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TUNNELMIB::Tunneliftable::~Tunneliftable()
+TUNNELMIB::TunnelIfTable::~TunnelIfTable()
 {
 }
 
-bool TUNNELMIB::Tunneliftable::has_data() const
+bool TUNNELMIB::TunnelIfTable::has_data() const
 {
-    for (std::size_t index=0; index<tunnelifentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tunnelifentry.len(); index++)
     {
         if(tunnelifentry[index]->has_data())
             return true;
@@ -173,9 +177,9 @@ bool TUNNELMIB::Tunneliftable::has_data() const
     return false;
 }
 
-bool TUNNELMIB::Tunneliftable::has_operation() const
+bool TUNNELMIB::TunnelIfTable::has_operation() const
 {
-    for (std::size_t index=0; index<tunnelifentry.size(); index++)
+    for (std::size_t index=0; index<tunnelifentry.len(); index++)
     {
         if(tunnelifentry[index]->has_operation())
             return true;
@@ -183,21 +187,21 @@ bool TUNNELMIB::Tunneliftable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string TUNNELMIB::Tunneliftable::get_absolute_path() const
+std::string TUNNELMIB::TunnelIfTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TUNNEL-MIB:TUNNEL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TUNNELMIB::Tunneliftable::get_segment_path() const
+std::string TUNNELMIB::TunnelIfTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnelIfTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TUNNELMIB::Tunneliftable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TUNNELMIB::TunnelIfTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -206,25 +210,25 @@ std::vector<std::pair<std::string, LeafData> > TUNNELMIB::Tunneliftable::get_nam
 
 }
 
-std::shared_ptr<Entity> TUNNELMIB::Tunneliftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TUNNELMIB::TunnelIfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tunnelIfEntry")
     {
-        auto c = std::make_shared<TUNNELMIB::Tunneliftable::Tunnelifentry>();
+        auto c = std::make_shared<TUNNELMIB::TunnelIfTable::TunnelIfEntry>();
         c->parent = this;
-        tunnelifentry.push_back(c);
+        tunnelifentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::Tunneliftable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::TunnelIfTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tunnelifentry)
+    for (auto c : tunnelifentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -235,22 +239,22 @@ std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::Tunneliftable::get_chi
     return children;
 }
 
-void TUNNELMIB::Tunneliftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TUNNELMIB::TunnelIfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void TUNNELMIB::Tunneliftable::set_filter(const std::string & value_path, YFilter yfilter)
+void TUNNELMIB::TunnelIfTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool TUNNELMIB::Tunneliftable::has_leaf_or_child_of_name(const std::string & name) const
+bool TUNNELMIB::TunnelIfTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tunnelIfEntry")
         return true;
     return false;
 }
 
-TUNNELMIB::Tunneliftable::Tunnelifentry::Tunnelifentry()
+TUNNELMIB::TunnelIfTable::TunnelIfEntry::TunnelIfEntry()
     :
     ifindex{YType::str, "ifIndex"},
     tunneliflocaladdress{YType::str, "tunnelIfLocalAddress"},
@@ -266,15 +270,16 @@ TUNNELMIB::Tunneliftable::Tunnelifentry::Tunnelifentry()
     tunnelifencapslimit{YType::int32, "tunnelIfEncapsLimit"}
 {
 
-    yang_name = "tunnelIfEntry"; yang_parent_name = "tunnelIfTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnelIfEntry"; yang_parent_name = "tunnelIfTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TUNNELMIB::Tunneliftable::Tunnelifentry::~Tunnelifentry()
+TUNNELMIB::TunnelIfTable::TunnelIfEntry::~TunnelIfEntry()
 {
 }
 
-bool TUNNELMIB::Tunneliftable::Tunnelifentry::has_data() const
+bool TUNNELMIB::TunnelIfTable::TunnelIfEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| tunneliflocaladdress.is_set
 	|| tunnelifremoteaddress.is_set
@@ -289,7 +294,7 @@ bool TUNNELMIB::Tunneliftable::Tunnelifentry::has_data() const
 	|| tunnelifencapslimit.is_set;
 }
 
-bool TUNNELMIB::Tunneliftable::Tunnelifentry::has_operation() const
+bool TUNNELMIB::TunnelIfTable::TunnelIfEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -306,21 +311,22 @@ bool TUNNELMIB::Tunneliftable::Tunnelifentry::has_operation() const
 	|| ydk::is_set(tunnelifencapslimit.yfilter);
 }
 
-std::string TUNNELMIB::Tunneliftable::Tunnelifentry::get_absolute_path() const
+std::string TUNNELMIB::TunnelIfTable::TunnelIfEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TUNNEL-MIB:TUNNEL-MIB/tunnelIfTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TUNNELMIB::Tunneliftable::Tunnelifentry::get_segment_path() const
+std::string TUNNELMIB::TunnelIfTable::TunnelIfEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tunnelIfEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "tunnelIfEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TUNNELMIB::Tunneliftable::Tunnelifentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TUNNELMIB::TunnelIfTable::TunnelIfEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -341,19 +347,19 @@ std::vector<std::pair<std::string, LeafData> > TUNNELMIB::Tunneliftable::Tunneli
 
 }
 
-std::shared_ptr<Entity> TUNNELMIB::Tunneliftable::Tunnelifentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TUNNELMIB::TunnelIfTable::TunnelIfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::Tunneliftable::Tunnelifentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::TunnelIfTable::TunnelIfEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void TUNNELMIB::Tunneliftable::Tunnelifentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TUNNELMIB::TunnelIfTable::TunnelIfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -429,7 +435,7 @@ void TUNNELMIB::Tunneliftable::Tunnelifentry::set_value(const std::string & valu
     }
 }
 
-void TUNNELMIB::Tunneliftable::Tunnelifentry::set_filter(const std::string & value_path, YFilter yfilter)
+void TUNNELMIB::TunnelIfTable::TunnelIfEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -481,26 +487,29 @@ void TUNNELMIB::Tunneliftable::Tunnelifentry::set_filter(const std::string & val
     }
 }
 
-bool TUNNELMIB::Tunneliftable::Tunnelifentry::has_leaf_or_child_of_name(const std::string & name) const
+bool TUNNELMIB::TunnelIfTable::TunnelIfEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "tunnelIfLocalAddress" || name == "tunnelIfRemoteAddress" || name == "tunnelIfEncapsMethod" || name == "tunnelIfHopLimit" || name == "tunnelIfSecurity" || name == "tunnelIfTOS" || name == "tunnelIfFlowLabel" || name == "tunnelIfAddressType" || name == "tunnelIfLocalInetAddress" || name == "tunnelIfRemoteInetAddress" || name == "tunnelIfEncapsLimit")
         return true;
     return false;
 }
 
-TUNNELMIB::Tunnelconfigtable::Tunnelconfigtable()
+TUNNELMIB::TunnelConfigTable::TunnelConfigTable()
+    :
+    tunnelconfigentry(this, {"tunnelconfiglocaladdress", "tunnelconfigremoteaddress", "tunnelconfigencapsmethod", "tunnelconfigid"})
 {
 
-    yang_name = "tunnelConfigTable"; yang_parent_name = "TUNNEL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnelConfigTable"; yang_parent_name = "TUNNEL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TUNNELMIB::Tunnelconfigtable::~Tunnelconfigtable()
+TUNNELMIB::TunnelConfigTable::~TunnelConfigTable()
 {
 }
 
-bool TUNNELMIB::Tunnelconfigtable::has_data() const
+bool TUNNELMIB::TunnelConfigTable::has_data() const
 {
-    for (std::size_t index=0; index<tunnelconfigentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tunnelconfigentry.len(); index++)
     {
         if(tunnelconfigentry[index]->has_data())
             return true;
@@ -508,9 +517,9 @@ bool TUNNELMIB::Tunnelconfigtable::has_data() const
     return false;
 }
 
-bool TUNNELMIB::Tunnelconfigtable::has_operation() const
+bool TUNNELMIB::TunnelConfigTable::has_operation() const
 {
-    for (std::size_t index=0; index<tunnelconfigentry.size(); index++)
+    for (std::size_t index=0; index<tunnelconfigentry.len(); index++)
     {
         if(tunnelconfigentry[index]->has_operation())
             return true;
@@ -518,21 +527,21 @@ bool TUNNELMIB::Tunnelconfigtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string TUNNELMIB::Tunnelconfigtable::get_absolute_path() const
+std::string TUNNELMIB::TunnelConfigTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TUNNEL-MIB:TUNNEL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TUNNELMIB::Tunnelconfigtable::get_segment_path() const
+std::string TUNNELMIB::TunnelConfigTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnelConfigTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TUNNELMIB::Tunnelconfigtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TUNNELMIB::TunnelConfigTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -541,25 +550,25 @@ std::vector<std::pair<std::string, LeafData> > TUNNELMIB::Tunnelconfigtable::get
 
 }
 
-std::shared_ptr<Entity> TUNNELMIB::Tunnelconfigtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TUNNELMIB::TunnelConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tunnelConfigEntry")
     {
-        auto c = std::make_shared<TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry>();
+        auto c = std::make_shared<TUNNELMIB::TunnelConfigTable::TunnelConfigEntry>();
         c->parent = this;
-        tunnelconfigentry.push_back(c);
+        tunnelconfigentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::Tunnelconfigtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::TunnelConfigTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tunnelconfigentry)
+    for (auto c : tunnelconfigentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -570,22 +579,22 @@ std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::Tunnelconfigtable::get
     return children;
 }
 
-void TUNNELMIB::Tunnelconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TUNNELMIB::TunnelConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void TUNNELMIB::Tunnelconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+void TUNNELMIB::TunnelConfigTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool TUNNELMIB::Tunnelconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+bool TUNNELMIB::TunnelConfigTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tunnelConfigEntry")
         return true;
     return false;
 }
 
-TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry::Tunnelconfigentry()
+TUNNELMIB::TunnelConfigTable::TunnelConfigEntry::TunnelConfigEntry()
     :
     tunnelconfiglocaladdress{YType::str, "tunnelConfigLocalAddress"},
     tunnelconfigremoteaddress{YType::str, "tunnelConfigRemoteAddress"},
@@ -595,15 +604,16 @@ TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry::Tunnelconfigentry()
     tunnelconfigstatus{YType::enumeration, "tunnelConfigStatus"}
 {
 
-    yang_name = "tunnelConfigEntry"; yang_parent_name = "tunnelConfigTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnelConfigEntry"; yang_parent_name = "tunnelConfigTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry::~Tunnelconfigentry()
+TUNNELMIB::TunnelConfigTable::TunnelConfigEntry::~TunnelConfigEntry()
 {
 }
 
-bool TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry::has_data() const
+bool TUNNELMIB::TunnelConfigTable::TunnelConfigEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnelconfiglocaladdress.is_set
 	|| tunnelconfigremoteaddress.is_set
 	|| tunnelconfigencapsmethod.is_set
@@ -612,7 +622,7 @@ bool TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry::has_data() const
 	|| tunnelconfigstatus.is_set;
 }
 
-bool TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry::has_operation() const
+bool TUNNELMIB::TunnelConfigTable::TunnelConfigEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tunnelconfiglocaladdress.yfilter)
@@ -623,21 +633,25 @@ bool TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry::has_operation() const
 	|| ydk::is_set(tunnelconfigstatus.yfilter);
 }
 
-std::string TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry::get_absolute_path() const
+std::string TUNNELMIB::TunnelConfigTable::TunnelConfigEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TUNNEL-MIB:TUNNEL-MIB/tunnelConfigTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry::get_segment_path() const
+std::string TUNNELMIB::TunnelConfigTable::TunnelConfigEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tunnelConfigEntry" <<"[tunnelConfigLocalAddress='" <<tunnelconfiglocaladdress <<"']" <<"[tunnelConfigRemoteAddress='" <<tunnelconfigremoteaddress <<"']" <<"[tunnelConfigEncapsMethod='" <<tunnelconfigencapsmethod <<"']" <<"[tunnelConfigID='" <<tunnelconfigid <<"']";
+    path_buffer << "tunnelConfigEntry";
+    ADD_KEY_TOKEN(tunnelconfiglocaladdress, "tunnelConfigLocalAddress");
+    ADD_KEY_TOKEN(tunnelconfigremoteaddress, "tunnelConfigRemoteAddress");
+    ADD_KEY_TOKEN(tunnelconfigencapsmethod, "tunnelConfigEncapsMethod");
+    ADD_KEY_TOKEN(tunnelconfigid, "tunnelConfigID");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TUNNELMIB::TunnelConfigTable::TunnelConfigEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -652,19 +666,19 @@ std::vector<std::pair<std::string, LeafData> > TUNNELMIB::Tunnelconfigtable::Tun
 
 }
 
-std::shared_ptr<Entity> TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TUNNELMIB::TunnelConfigTable::TunnelConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::TunnelConfigTable::TunnelConfigEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TUNNELMIB::TunnelConfigTable::TunnelConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tunnelConfigLocalAddress")
     {
@@ -704,7 +718,7 @@ void TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry::set_value(const std::strin
     }
 }
 
-void TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+void TUNNELMIB::TunnelConfigTable::TunnelConfigEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tunnelConfigLocalAddress")
     {
@@ -732,26 +746,29 @@ void TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry::set_filter(const std::stri
     }
 }
 
-bool TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+bool TUNNELMIB::TunnelConfigTable::TunnelConfigEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tunnelConfigLocalAddress" || name == "tunnelConfigRemoteAddress" || name == "tunnelConfigEncapsMethod" || name == "tunnelConfigID" || name == "tunnelConfigIfIndex" || name == "tunnelConfigStatus")
         return true;
     return false;
 }
 
-TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigtable()
+TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigTable()
+    :
+    tunnelinetconfigentry(this, {"tunnelinetconfigaddresstype", "tunnelinetconfiglocaladdress", "tunnelinetconfigremoteaddress", "tunnelinetconfigencapsmethod", "tunnelinetconfigid"})
 {
 
-    yang_name = "tunnelInetConfigTable"; yang_parent_name = "TUNNEL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnelInetConfigTable"; yang_parent_name = "TUNNEL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TUNNELMIB::Tunnelinetconfigtable::~Tunnelinetconfigtable()
+TUNNELMIB::TunnelInetConfigTable::~TunnelInetConfigTable()
 {
 }
 
-bool TUNNELMIB::Tunnelinetconfigtable::has_data() const
+bool TUNNELMIB::TunnelInetConfigTable::has_data() const
 {
-    for (std::size_t index=0; index<tunnelinetconfigentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tunnelinetconfigentry.len(); index++)
     {
         if(tunnelinetconfigentry[index]->has_data())
             return true;
@@ -759,9 +776,9 @@ bool TUNNELMIB::Tunnelinetconfigtable::has_data() const
     return false;
 }
 
-bool TUNNELMIB::Tunnelinetconfigtable::has_operation() const
+bool TUNNELMIB::TunnelInetConfigTable::has_operation() const
 {
-    for (std::size_t index=0; index<tunnelinetconfigentry.size(); index++)
+    for (std::size_t index=0; index<tunnelinetconfigentry.len(); index++)
     {
         if(tunnelinetconfigentry[index]->has_operation())
             return true;
@@ -769,21 +786,21 @@ bool TUNNELMIB::Tunnelinetconfigtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string TUNNELMIB::Tunnelinetconfigtable::get_absolute_path() const
+std::string TUNNELMIB::TunnelInetConfigTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TUNNEL-MIB:TUNNEL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TUNNELMIB::Tunnelinetconfigtable::get_segment_path() const
+std::string TUNNELMIB::TunnelInetConfigTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnelInetConfigTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TUNNELMIB::Tunnelinetconfigtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TUNNELMIB::TunnelInetConfigTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -792,25 +809,25 @@ std::vector<std::pair<std::string, LeafData> > TUNNELMIB::Tunnelinetconfigtable:
 
 }
 
-std::shared_ptr<Entity> TUNNELMIB::Tunnelinetconfigtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TUNNELMIB::TunnelInetConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tunnelInetConfigEntry")
     {
-        auto c = std::make_shared<TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry>();
+        auto c = std::make_shared<TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry>();
         c->parent = this;
-        tunnelinetconfigentry.push_back(c);
+        tunnelinetconfigentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::Tunnelinetconfigtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::TunnelInetConfigTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tunnelinetconfigentry)
+    for (auto c : tunnelinetconfigentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -821,22 +838,22 @@ std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::Tunnelinetconfigtable:
     return children;
 }
 
-void TUNNELMIB::Tunnelinetconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TUNNELMIB::TunnelInetConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void TUNNELMIB::Tunnelinetconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+void TUNNELMIB::TunnelInetConfigTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool TUNNELMIB::Tunnelinetconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+bool TUNNELMIB::TunnelInetConfigTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tunnelInetConfigEntry")
         return true;
     return false;
 }
 
-TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry::Tunnelinetconfigentry()
+TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry::TunnelInetConfigEntry()
     :
     tunnelinetconfigaddresstype{YType::enumeration, "tunnelInetConfigAddressType"},
     tunnelinetconfiglocaladdress{YType::str, "tunnelInetConfigLocalAddress"},
@@ -848,15 +865,16 @@ TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry::Tunnelinetconfigentry()
     tunnelinetconfigstoragetype{YType::enumeration, "tunnelInetConfigStorageType"}
 {
 
-    yang_name = "tunnelInetConfigEntry"; yang_parent_name = "tunnelInetConfigTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnelInetConfigEntry"; yang_parent_name = "tunnelInetConfigTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry::~Tunnelinetconfigentry()
+TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry::~TunnelInetConfigEntry()
 {
 }
 
-bool TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry::has_data() const
+bool TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnelinetconfigaddresstype.is_set
 	|| tunnelinetconfiglocaladdress.is_set
 	|| tunnelinetconfigremoteaddress.is_set
@@ -867,7 +885,7 @@ bool TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry::has_data() const
 	|| tunnelinetconfigstoragetype.is_set;
 }
 
-bool TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry::has_operation() const
+bool TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tunnelinetconfigaddresstype.yfilter)
@@ -880,21 +898,26 @@ bool TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry::has_operation() co
 	|| ydk::is_set(tunnelinetconfigstoragetype.yfilter);
 }
 
-std::string TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry::get_absolute_path() const
+std::string TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TUNNEL-MIB:TUNNEL-MIB/tunnelInetConfigTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry::get_segment_path() const
+std::string TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tunnelInetConfigEntry" <<"[tunnelInetConfigAddressType='" <<tunnelinetconfigaddresstype <<"']" <<"[tunnelInetConfigLocalAddress='" <<tunnelinetconfiglocaladdress <<"']" <<"[tunnelInetConfigRemoteAddress='" <<tunnelinetconfigremoteaddress <<"']" <<"[tunnelInetConfigEncapsMethod='" <<tunnelinetconfigencapsmethod <<"']" <<"[tunnelInetConfigID='" <<tunnelinetconfigid <<"']";
+    path_buffer << "tunnelInetConfigEntry";
+    ADD_KEY_TOKEN(tunnelinetconfigaddresstype, "tunnelInetConfigAddressType");
+    ADD_KEY_TOKEN(tunnelinetconfiglocaladdress, "tunnelInetConfigLocalAddress");
+    ADD_KEY_TOKEN(tunnelinetconfigremoteaddress, "tunnelInetConfigRemoteAddress");
+    ADD_KEY_TOKEN(tunnelinetconfigencapsmethod, "tunnelInetConfigEncapsMethod");
+    ADD_KEY_TOKEN(tunnelinetconfigid, "tunnelInetConfigID");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -911,19 +934,19 @@ std::vector<std::pair<std::string, LeafData> > TUNNELMIB::Tunnelinetconfigtable:
 
 }
 
-std::shared_ptr<Entity> TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tunnelInetConfigAddressType")
     {
@@ -975,7 +998,7 @@ void TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry::set_value(const st
     }
 }
 
-void TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+void TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tunnelInetConfigAddressType")
     {
@@ -1011,16 +1034,16 @@ void TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry::set_filter(const s
     }
 }
 
-bool TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+bool TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tunnelInetConfigAddressType" || name == "tunnelInetConfigLocalAddress" || name == "tunnelInetConfigRemoteAddress" || name == "tunnelInetConfigEncapsMethod" || name == "tunnelInetConfigID" || name == "tunnelInetConfigIfIndex" || name == "tunnelInetConfigStatus" || name == "tunnelInetConfigStorageType")
         return true;
     return false;
 }
 
-const Enum::YLeaf TUNNELMIB::Tunneliftable::Tunnelifentry::Tunnelifsecurity::none {1, "none"};
-const Enum::YLeaf TUNNELMIB::Tunneliftable::Tunnelifentry::Tunnelifsecurity::ipsec {2, "ipsec"};
-const Enum::YLeaf TUNNELMIB::Tunneliftable::Tunnelifentry::Tunnelifsecurity::other {3, "other"};
+const Enum::YLeaf TUNNELMIB::TunnelIfTable::TunnelIfEntry::TunnelIfSecurity::none {1, "none"};
+const Enum::YLeaf TUNNELMIB::TunnelIfTable::TunnelIfEntry::TunnelIfSecurity::ipsec {2, "ipsec"};
+const Enum::YLeaf TUNNELMIB::TunnelIfTable::TunnelIfEntry::TunnelIfSecurity::other {3, "other"};
 
 
 }

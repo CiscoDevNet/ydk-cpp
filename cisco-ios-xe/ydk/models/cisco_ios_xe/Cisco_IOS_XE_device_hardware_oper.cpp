@@ -16,7 +16,7 @@ DeviceHardwareData::DeviceHardwareData()
     device_hardware(nullptr) // presence node
 {
 
-    yang_name = "device-hardware-data"; yang_parent_name = "Cisco-IOS-XE-device-hardware-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "device-hardware-data"; yang_parent_name = "Cisco-IOS-XE-device-hardware-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 DeviceHardwareData::~DeviceHardwareData()
@@ -25,6 +25,7 @@ DeviceHardwareData::~DeviceHardwareData()
 
 bool DeviceHardwareData::has_data() const
 {
+    if (is_presence_container) return true;
     return (device_hardware !=  nullptr && device_hardware->has_data());
 }
 
@@ -118,10 +119,12 @@ bool DeviceHardwareData::has_leaf_or_child_of_name(const std::string & name) con
 
 DeviceHardwareData::DeviceHardware::DeviceHardware()
     :
-    device_system_data(nullptr) // presence node
+    device_inventory(this, {"hw_type", "hw_dev_index"})
+    , device_alarm(this, {"alarm_id", "alarm_instance"})
+    , device_system_data(nullptr) // presence node
 {
 
-    yang_name = "device-hardware"; yang_parent_name = "device-hardware-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "device-hardware"; yang_parent_name = "device-hardware-data"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 DeviceHardwareData::DeviceHardware::~DeviceHardware()
@@ -130,12 +133,13 @@ DeviceHardwareData::DeviceHardware::~DeviceHardware()
 
 bool DeviceHardwareData::DeviceHardware::has_data() const
 {
-    for (std::size_t index=0; index<device_inventory.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<device_inventory.len(); index++)
     {
         if(device_inventory[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<device_alarm.size(); index++)
+    for (std::size_t index=0; index<device_alarm.len(); index++)
     {
         if(device_alarm[index]->has_data())
             return true;
@@ -145,12 +149,12 @@ bool DeviceHardwareData::DeviceHardware::has_data() const
 
 bool DeviceHardwareData::DeviceHardware::has_operation() const
 {
-    for (std::size_t index=0; index<device_inventory.size(); index++)
+    for (std::size_t index=0; index<device_inventory.len(); index++)
     {
         if(device_inventory[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<device_alarm.size(); index++)
+    for (std::size_t index=0; index<device_alarm.len(); index++)
     {
         if(device_alarm[index]->has_operation())
             return true;
@@ -188,7 +192,7 @@ std::shared_ptr<Entity> DeviceHardwareData::DeviceHardware::get_child_by_name(co
     {
         auto c = std::make_shared<DeviceHardwareData::DeviceHardware::DeviceInventory>();
         c->parent = this;
-        device_inventory.push_back(c);
+        device_inventory.append(c);
         return c;
     }
 
@@ -196,7 +200,7 @@ std::shared_ptr<Entity> DeviceHardwareData::DeviceHardware::get_child_by_name(co
     {
         auto c = std::make_shared<DeviceHardwareData::DeviceHardware::DeviceAlarm>();
         c->parent = this;
-        device_alarm.push_back(c);
+        device_alarm.append(c);
         return c;
     }
 
@@ -217,7 +221,7 @@ std::map<std::string, std::shared_ptr<Entity>> DeviceHardwareData::DeviceHardwar
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : device_inventory)
+    for (auto c : device_inventory.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -226,7 +230,7 @@ std::map<std::string, std::shared_ptr<Entity>> DeviceHardwareData::DeviceHardwar
     }
 
     count = 0;
-    for (auto const & c : device_alarm)
+    for (auto c : device_alarm.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -267,7 +271,7 @@ DeviceHardwareData::DeviceHardware::DeviceInventory::DeviceInventory()
     hw_description{YType::str, "hw-description"}
 {
 
-    yang_name = "device-inventory"; yang_parent_name = "device-hardware"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "device-inventory"; yang_parent_name = "device-hardware"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 DeviceHardwareData::DeviceHardware::DeviceInventory::~DeviceInventory()
@@ -276,6 +280,7 @@ DeviceHardwareData::DeviceHardware::DeviceInventory::~DeviceInventory()
 
 bool DeviceHardwareData::DeviceHardware::DeviceInventory::has_data() const
 {
+    if (is_presence_container) return true;
     return hw_type.is_set
 	|| hw_dev_index.is_set
 	|| version.is_set
@@ -305,7 +310,9 @@ std::string DeviceHardwareData::DeviceHardware::DeviceInventory::get_absolute_pa
 std::string DeviceHardwareData::DeviceHardware::DeviceInventory::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "device-inventory" <<"[hw-type='" <<hw_type <<"']" <<"[hw-dev-index='" <<hw_dev_index <<"']";
+    path_buffer << "device-inventory";
+    ADD_KEY_TOKEN(hw_type, "hw-type");
+    ADD_KEY_TOKEN(hw_dev_index, "hw-dev-index");
     return path_buffer.str();
 }
 
@@ -421,7 +428,7 @@ DeviceHardwareData::DeviceHardware::DeviceAlarm::DeviceAlarm()
     alarm_description{YType::str, "alarm-description"}
 {
 
-    yang_name = "device-alarm"; yang_parent_name = "device-hardware"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "device-alarm"; yang_parent_name = "device-hardware"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 DeviceHardwareData::DeviceHardware::DeviceAlarm::~DeviceAlarm()
@@ -430,6 +437,7 @@ DeviceHardwareData::DeviceHardware::DeviceAlarm::~DeviceAlarm()
 
 bool DeviceHardwareData::DeviceHardware::DeviceAlarm::has_data() const
 {
+    if (is_presence_container) return true;
     return alarm_id.is_set
 	|| alarm_instance.is_set
 	|| alarm_name.is_set
@@ -459,7 +467,9 @@ std::string DeviceHardwareData::DeviceHardware::DeviceAlarm::get_absolute_path()
 std::string DeviceHardwareData::DeviceHardware::DeviceAlarm::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "device-alarm" <<"[alarm-id='" <<alarm_id <<"']" <<"[alarm-instance='" <<alarm_instance <<"']";
+    path_buffer << "device-alarm";
+    ADD_KEY_TOKEN(alarm_id, "alarm-id");
+    ADD_KEY_TOKEN(alarm_instance, "alarm-instance");
     return path_buffer.str();
 }
 
@@ -574,7 +584,7 @@ DeviceHardwareData::DeviceHardware::DeviceSystemData::DeviceSystemData()
     last_reboot_reason{YType::str, "last-reboot-reason"}
 {
 
-    yang_name = "device-system-data"; yang_parent_name = "device-hardware"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "device-system-data"; yang_parent_name = "device-hardware"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 DeviceHardwareData::DeviceHardware::DeviceSystemData::~DeviceSystemData()
@@ -583,6 +593,7 @@ DeviceHardwareData::DeviceHardware::DeviceSystemData::~DeviceSystemData()
 
 bool DeviceHardwareData::DeviceHardware::DeviceSystemData::has_data() const
 {
+    if (is_presence_container) return true;
     return current_time.is_set
 	|| boot_time.is_set
 	|| software_version.is_set
@@ -705,6 +716,10 @@ bool DeviceHardwareData::DeviceHardware::DeviceSystemData::has_leaf_or_child_of_
     return false;
 }
 
+const Enum::YLeaf AlarmSeverity::alarm_severity_critical {0, "alarm-severity-critical"};
+const Enum::YLeaf AlarmSeverity::alarm_severity_major {1, "alarm-severity-major"};
+const Enum::YLeaf AlarmSeverity::alarm_severity_minor {2, "alarm-severity-minor"};
+
 const Enum::YLeaf HwType::hw_type_unknown {0, "hw-type-unknown"};
 const Enum::YLeaf HwType::hw_type_chassis {1, "hw-type-chassis"};
 const Enum::YLeaf HwType::hw_type_cpu {2, "hw-type-cpu"};
@@ -717,10 +732,6 @@ const Enum::YLeaf HwType::hw_type_pim {8, "hw-type-pim"};
 const Enum::YLeaf HwType::hw_type_transceiver {9, "hw-type-transceiver"};
 const Enum::YLeaf HwType::hw_type_fantray {10, "hw-type-fantray"};
 const Enum::YLeaf HwType::hw_type_pem {11, "hw-type-pem"};
-
-const Enum::YLeaf AlarmSeverity::alarm_severity_critical {0, "alarm-severity-critical"};
-const Enum::YLeaf AlarmSeverity::alarm_severity_major {1, "alarm-severity-major"};
-const Enum::YLeaf AlarmSeverity::alarm_severity_minor {2, "alarm-severity-minor"};
 
 
 }

@@ -19,7 +19,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
     lsa_id_options{YType::bits, "lsa-id-options"}
 {
 
-    yang_name = "link-data"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-data"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LinkData::~LinkData()
@@ -28,6 +28,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LinkData::has_data() const
 {
+    if (is_presence_container) return true;
     return rtr_priority.is_set
 	|| link_local_interface_address.is_set
 	|| num_of_prefixes.is_set
@@ -136,7 +137,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
     num_of_prefixes{YType::uint16, "num-of-prefixes"}
 {
 
-    yang_name = "ia-prefix"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ia-prefix"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaPrefix::~IaPrefix()
@@ -145,6 +146,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return referenced_ls_type.is_set
 	|| referenced_link_state_id.is_set
 	|| referenced_adv_router.is_set
@@ -256,7 +258,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Link::
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "ospfv3-link"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-link"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Link::~Ospfv3Link()
@@ -265,6 +267,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Link::
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Link::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_id.is_set
 	|| neighbor_interface_id.is_set
 	|| neighbor_router_id.is_set
@@ -285,7 +288,10 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3L
 std::string OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv3-link" <<"[interface-id='" <<interface_id <<"']" <<"[neighbor-interface-id='" <<neighbor_interface_id <<"']" <<"[neighbor-router-id='" <<neighbor_router_id <<"']";
+    path_buffer << "ospfv3-link";
+    ADD_KEY_TOKEN(interface_id, "interface-id");
+    ADD_KEY_TOKEN(neighbor_interface_id, "neighbor-interface-id");
+    ADD_KEY_TOKEN(neighbor_router_id, "neighbor-router-id");
     return path_buffer.str();
 }
 
@@ -386,7 +392,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Prefix
     prefix_options{YType::str, "prefix-options"}
 {
 
-    yang_name = "ospfv3-prefix"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-prefix"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Prefix::~Ospfv3Prefix()
@@ -395,6 +401,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Prefix
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_options.is_set;
 }
@@ -409,7 +416,8 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3P
 std::string OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Prefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv3-prefix" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "ospfv3-prefix";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -477,7 +485,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3IaPref
     prefix_options{YType::str, "prefix-options"}
 {
 
-    yang_name = "ospfv3-ia-prefix"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-ia-prefix"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix::~Ospfv3IaPrefix()
@@ -486,6 +494,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3IaPref
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_options.is_set;
 }
@@ -500,7 +509,8 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3I
 std::string OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv3-ia-prefix" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "ospfv3-ia-prefix";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -567,7 +577,7 @@ OspfOperData::OspfState::OspfInstance::MultiTopology::MultiTopology()
     name{YType::str, "name"}
 {
 
-    yang_name = "multi-topology"; yang_parent_name = "ospf-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multi-topology"; yang_parent_name = "ospf-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::MultiTopology::~MultiTopology()
@@ -576,6 +586,7 @@ OspfOperData::OspfState::OspfInstance::MultiTopology::~MultiTopology()
 
 bool OspfOperData::OspfState::OspfInstance::MultiTopology::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -588,7 +599,8 @@ bool OspfOperData::OspfState::OspfInstance::MultiTopology::has_operation() const
 std::string OspfOperData::OspfState::OspfInstance::MultiTopology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "multi-topology" <<"[name='" <<name <<"']";
+    path_buffer << "multi-topology";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 

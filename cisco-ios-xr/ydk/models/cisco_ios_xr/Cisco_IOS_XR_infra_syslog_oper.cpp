@@ -11,13 +11,933 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_syslog_oper {
 
+GetSyslog::GetSyslog()
+    :
+    input(std::make_shared<GetSyslog::Input>())
+    , output(std::make_shared<GetSyslog::Output>())
+{
+    input->parent = this;
+    output->parent = this;
+
+    yang_name = "get-syslog"; yang_parent_name = "Cisco-IOS-XR-infra-syslog-oper"; is_top_level_class = true; has_list_ancestor = false; 
+}
+
+GetSyslog::~GetSyslog()
+{
+}
+
+bool GetSyslog::has_data() const
+{
+    if (is_presence_container) return true;
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
+}
+
+bool GetSyslog::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
+}
+
+std::string GetSyslog::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:get-syslog";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GetSyslog::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GetSyslog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<GetSyslog::Input>();
+        }
+        return input;
+    }
+
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<GetSyslog::Output>();
+        }
+        return output;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GetSyslog::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    if(output != nullptr)
+    {
+        children["output"] = output;
+    }
+
+    return children;
+}
+
+void GetSyslog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void GetSyslog::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> GetSyslog::clone_ptr() const
+{
+    return std::make_shared<GetSyslog>();
+}
+
+std::string GetSyslog::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xr_models_path;
+}
+
+std::string GetSyslog::get_bundle_name() const
+{
+    return "cisco_ios_xr";
+}
+
+augment_capabilities_function GetSyslog::get_augment_capabilities_function() const
+{
+    return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> GetSyslog::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool GetSyslog::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
+}
+
+GetSyslog::Input::Input()
+    :
+    filters(std::make_shared<GetSyslog::Input::Filters>())
+{
+    filters->parent = this;
+
+    yang_name = "input"; yang_parent_name = "get-syslog"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+GetSyslog::Input::~Input()
+{
+}
+
+bool GetSyslog::Input::has_data() const
+{
+    if (is_presence_container) return true;
+    return (filters !=  nullptr && filters->has_data());
+}
+
+bool GetSyslog::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| (filters !=  nullptr && filters->has_operation());
+}
+
+std::string GetSyslog::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:get-syslog/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string GetSyslog::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GetSyslog::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GetSyslog::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "filters")
+    {
+        if(filters == nullptr)
+        {
+            filters = std::make_shared<GetSyslog::Input::Filters>();
+        }
+        return filters;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GetSyslog::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(filters != nullptr)
+    {
+        children["filters"] = filters;
+    }
+
+    return children;
+}
+
+void GetSyslog::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void GetSyslog::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool GetSyslog::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "filters")
+        return true;
+    return false;
+}
+
+GetSyslog::Input::Filters::Filters()
+    :
+    start_time{YType::str, "start-time"},
+    end_time{YType::str, "end-time"}
+{
+
+    yang_name = "filters"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+GetSyslog::Input::Filters::~Filters()
+{
+}
+
+bool GetSyslog::Input::Filters::has_data() const
+{
+    if (is_presence_container) return true;
+    return start_time.is_set
+	|| end_time.is_set;
+}
+
+bool GetSyslog::Input::Filters::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(start_time.yfilter)
+	|| ydk::is_set(end_time.yfilter);
+}
+
+std::string GetSyslog::Input::Filters::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:get-syslog/input/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string GetSyslog::Input::Filters::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "filters";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GetSyslog::Input::Filters::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
+    if (end_time.is_set || is_set(end_time.yfilter)) leaf_name_data.push_back(end_time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GetSyslog::Input::Filters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GetSyslog::Input::Filters::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void GetSyslog::Input::Filters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "start-time")
+    {
+        start_time = value;
+        start_time.value_namespace = name_space;
+        start_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-time")
+    {
+        end_time = value;
+        end_time.value_namespace = name_space;
+        end_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void GetSyslog::Input::Filters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "start-time")
+    {
+        start_time.yfilter = yfilter;
+    }
+    if(value_path == "end-time")
+    {
+        end_time.yfilter = yfilter;
+    }
+}
+
+bool GetSyslog::Input::Filters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "start-time" || name == "end-time")
+        return true;
+    return false;
+}
+
+GetSyslog::Output::Output()
+    :
+    data(std::make_shared<GetSyslog::Output::Data>())
+{
+    data->parent = this;
+
+    yang_name = "output"; yang_parent_name = "get-syslog"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+GetSyslog::Output::~Output()
+{
+}
+
+bool GetSyslog::Output::has_data() const
+{
+    if (is_presence_container) return true;
+    return (data !=  nullptr && data->has_data());
+}
+
+bool GetSyslog::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| (data !=  nullptr && data->has_operation());
+}
+
+std::string GetSyslog::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:get-syslog/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string GetSyslog::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GetSyslog::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GetSyslog::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "data")
+    {
+        if(data == nullptr)
+        {
+            data = std::make_shared<GetSyslog::Output::Data>();
+        }
+        return data;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GetSyslog::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(data != nullptr)
+    {
+        children["data"] = data;
+    }
+
+    return children;
+}
+
+void GetSyslog::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void GetSyslog::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool GetSyslog::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data")
+        return true;
+    return false;
+}
+
+GetSyslog::Output::Data::Data()
+    :
+    syslog(std::make_shared<GetSyslog::Output::Data::Syslog>())
+{
+    syslog->parent = this;
+
+    yang_name = "data"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+GetSyslog::Output::Data::~Data()
+{
+}
+
+bool GetSyslog::Output::Data::has_data() const
+{
+    if (is_presence_container) return true;
+    return (syslog !=  nullptr && syslog->has_data());
+}
+
+bool GetSyslog::Output::Data::has_operation() const
+{
+    return is_set(yfilter)
+	|| (syslog !=  nullptr && syslog->has_operation());
+}
+
+std::string GetSyslog::Output::Data::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:get-syslog/output/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string GetSyslog::Output::Data::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "data";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GetSyslog::Output::Data::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GetSyslog::Output::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "syslog")
+    {
+        if(syslog == nullptr)
+        {
+            syslog = std::make_shared<GetSyslog::Output::Data::Syslog>();
+        }
+        return syslog;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GetSyslog::Output::Data::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(syslog != nullptr)
+    {
+        children["syslog"] = syslog;
+    }
+
+    return children;
+}
+
+void GetSyslog::Output::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void GetSyslog::Output::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool GetSyslog::Output::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "syslog")
+        return true;
+    return false;
+}
+
+GetSyslog::Output::Data::Syslog::Syslog()
+    :
+    messages(std::make_shared<GetSyslog::Output::Data::Syslog::Messages>())
+{
+    messages->parent = this;
+
+    yang_name = "syslog"; yang_parent_name = "data"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+GetSyslog::Output::Data::Syslog::~Syslog()
+{
+}
+
+bool GetSyslog::Output::Data::Syslog::has_data() const
+{
+    if (is_presence_container) return true;
+    return (messages !=  nullptr && messages->has_data());
+}
+
+bool GetSyslog::Output::Data::Syslog::has_operation() const
+{
+    return is_set(yfilter)
+	|| (messages !=  nullptr && messages->has_operation());
+}
+
+std::string GetSyslog::Output::Data::Syslog::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:get-syslog/output/data/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string GetSyslog::Output::Data::Syslog::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "syslog";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GetSyslog::Output::Data::Syslog::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GetSyslog::Output::Data::Syslog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "messages")
+    {
+        if(messages == nullptr)
+        {
+            messages = std::make_shared<GetSyslog::Output::Data::Syslog::Messages>();
+        }
+        return messages;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GetSyslog::Output::Data::Syslog::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(messages != nullptr)
+    {
+        children["messages"] = messages;
+    }
+
+    return children;
+}
+
+void GetSyslog::Output::Data::Syslog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void GetSyslog::Output::Data::Syslog::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool GetSyslog::Output::Data::Syslog::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "messages")
+        return true;
+    return false;
+}
+
+GetSyslog::Output::Data::Syslog::Messages::Messages()
+    :
+    message(this, {"message_id"})
+{
+
+    yang_name = "messages"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+GetSyslog::Output::Data::Syslog::Messages::~Messages()
+{
+}
+
+bool GetSyslog::Output::Data::Syslog::Messages::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<message.len(); index++)
+    {
+        if(message[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool GetSyslog::Output::Data::Syslog::Messages::has_operation() const
+{
+    for (std::size_t index=0; index<message.len(); index++)
+    {
+        if(message[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string GetSyslog::Output::Data::Syslog::Messages::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:get-syslog/output/data/syslog/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string GetSyslog::Output::Data::Syslog::Messages::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "messages";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GetSyslog::Output::Data::Syslog::Messages::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GetSyslog::Output::Data::Syslog::Messages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "message")
+    {
+        auto c = std::make_shared<GetSyslog::Output::Data::Syslog::Messages::Message>();
+        c->parent = this;
+        message.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GetSyslog::Output::Data::Syslog::Messages::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : message.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void GetSyslog::Output::Data::Syslog::Messages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void GetSyslog::Output::Data::Syslog::Messages::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool GetSyslog::Output::Data::Syslog::Messages::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "message")
+        return true;
+    return false;
+}
+
+GetSyslog::Output::Data::Syslog::Messages::Message::Message()
+    :
+    message_id{YType::uint32, "message-id"},
+    card_type{YType::str, "card-type"},
+    node_name{YType::str, "node-name"},
+    time_stamp{YType::uint64, "time-stamp"},
+    time_of_day{YType::str, "time-of-day"},
+    time_zone{YType::str, "time-zone"},
+    process_name{YType::str, "process-name"},
+    category{YType::str, "category"},
+    group{YType::str, "group"},
+    message_name{YType::str, "message-name"},
+    severity{YType::enumeration, "severity"},
+    text{YType::str, "text"}
+{
+
+    yang_name = "message"; yang_parent_name = "messages"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+GetSyslog::Output::Data::Syslog::Messages::Message::~Message()
+{
+}
+
+bool GetSyslog::Output::Data::Syslog::Messages::Message::has_data() const
+{
+    if (is_presence_container) return true;
+    return message_id.is_set
+	|| card_type.is_set
+	|| node_name.is_set
+	|| time_stamp.is_set
+	|| time_of_day.is_set
+	|| time_zone.is_set
+	|| process_name.is_set
+	|| category.is_set
+	|| group.is_set
+	|| message_name.is_set
+	|| severity.is_set
+	|| text.is_set;
+}
+
+bool GetSyslog::Output::Data::Syslog::Messages::Message::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(message_id.yfilter)
+	|| ydk::is_set(card_type.yfilter)
+	|| ydk::is_set(node_name.yfilter)
+	|| ydk::is_set(time_stamp.yfilter)
+	|| ydk::is_set(time_of_day.yfilter)
+	|| ydk::is_set(time_zone.yfilter)
+	|| ydk::is_set(process_name.yfilter)
+	|| ydk::is_set(category.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(message_name.yfilter)
+	|| ydk::is_set(severity.yfilter)
+	|| ydk::is_set(text.yfilter);
+}
+
+std::string GetSyslog::Output::Data::Syslog::Messages::Message::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-oper:get-syslog/output/data/syslog/messages/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string GetSyslog::Output::Data::Syslog::Messages::Message::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "message";
+    ADD_KEY_TOKEN(message_id, "message-id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GetSyslog::Output::Data::Syslog::Messages::Message::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (message_id.is_set || is_set(message_id.yfilter)) leaf_name_data.push_back(message_id.get_name_leafdata());
+    if (card_type.is_set || is_set(card_type.yfilter)) leaf_name_data.push_back(card_type.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (time_stamp.is_set || is_set(time_stamp.yfilter)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
+    if (time_of_day.is_set || is_set(time_of_day.yfilter)) leaf_name_data.push_back(time_of_day.get_name_leafdata());
+    if (time_zone.is_set || is_set(time_zone.yfilter)) leaf_name_data.push_back(time_zone.get_name_leafdata());
+    if (process_name.is_set || is_set(process_name.yfilter)) leaf_name_data.push_back(process_name.get_name_leafdata());
+    if (category.is_set || is_set(category.yfilter)) leaf_name_data.push_back(category.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (message_name.is_set || is_set(message_name.yfilter)) leaf_name_data.push_back(message_name.get_name_leafdata());
+    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
+    if (text.is_set || is_set(text.yfilter)) leaf_name_data.push_back(text.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GetSyslog::Output::Data::Syslog::Messages::Message::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GetSyslog::Output::Data::Syslog::Messages::Message::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void GetSyslog::Output::Data::Syslog::Messages::Message::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "message-id")
+    {
+        message_id = value;
+        message_id.value_namespace = name_space;
+        message_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "card-type")
+    {
+        card_type = value;
+        card_type.value_namespace = name_space;
+        card_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "node-name")
+    {
+        node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-stamp")
+    {
+        time_stamp = value;
+        time_stamp.value_namespace = name_space;
+        time_stamp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-of-day")
+    {
+        time_of_day = value;
+        time_of_day.value_namespace = name_space;
+        time_of_day.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-zone")
+    {
+        time_zone = value;
+        time_zone.value_namespace = name_space;
+        time_zone.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "process-name")
+    {
+        process_name = value;
+        process_name.value_namespace = name_space;
+        process_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "category")
+    {
+        category = value;
+        category.value_namespace = name_space;
+        category.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "group")
+    {
+        group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "message-name")
+    {
+        message_name = value;
+        message_name.value_namespace = name_space;
+        message_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severity")
+    {
+        severity = value;
+        severity.value_namespace = name_space;
+        severity.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "text")
+    {
+        text = value;
+        text.value_namespace = name_space;
+        text.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void GetSyslog::Output::Data::Syslog::Messages::Message::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "message-id")
+    {
+        message_id.yfilter = yfilter;
+    }
+    if(value_path == "card-type")
+    {
+        card_type.yfilter = yfilter;
+    }
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+    if(value_path == "time-stamp")
+    {
+        time_stamp.yfilter = yfilter;
+    }
+    if(value_path == "time-of-day")
+    {
+        time_of_day.yfilter = yfilter;
+    }
+    if(value_path == "time-zone")
+    {
+        time_zone.yfilter = yfilter;
+    }
+    if(value_path == "process-name")
+    {
+        process_name.yfilter = yfilter;
+    }
+    if(value_path == "category")
+    {
+        category.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "message-name")
+    {
+        message_name.yfilter = yfilter;
+    }
+    if(value_path == "severity")
+    {
+        severity.yfilter = yfilter;
+    }
+    if(value_path == "text")
+    {
+        text.yfilter = yfilter;
+    }
+}
+
+bool GetSyslog::Output::Data::Syslog::Messages::Message::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "message-id" || name == "card-type" || name == "node-name" || name == "time-stamp" || name == "time-of-day" || name == "time-zone" || name == "process-name" || name == "category" || name == "group" || name == "message-name" || name == "severity" || name == "text")
+        return true;
+    return false;
+}
+
 Logging::Logging()
     :
     history(std::make_shared<Logging::History>())
 {
     history->parent = this;
 
-    yang_name = "logging"; yang_parent_name = "Cisco-IOS-XR-infra-syslog-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "logging"; yang_parent_name = "Cisco-IOS-XR-infra-syslog-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Logging::~Logging()
@@ -26,6 +946,7 @@ Logging::~Logging()
 
 bool Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return (history !=  nullptr && history->has_data());
 }
 
@@ -123,7 +1044,7 @@ Logging::History::History()
     message{YType::str, "message"}
 {
 
-    yang_name = "history"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "history"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Logging::History::~History()
@@ -132,6 +1053,7 @@ Logging::History::~History()
 
 bool Logging::History::has_data() const
 {
+    if (is_presence_container) return true;
     return properties.is_set
 	|| message.is_set;
 }
@@ -218,16 +1140,16 @@ bool Logging::History::has_leaf_or_child_of_name(const std::string & name) const
 Syslog::Syslog()
     :
     logging_files(std::make_shared<Syslog::LoggingFiles>())
-	,an_remote_servers(std::make_shared<Syslog::AnRemoteServers>())
-	,messages(std::make_shared<Syslog::Messages>())
-	,logging_statistics(std::make_shared<Syslog::LoggingStatistics>())
+    , an_remote_servers(std::make_shared<Syslog::AnRemoteServers>())
+    , messages(std::make_shared<Syslog::Messages>())
+    , logging_statistics(std::make_shared<Syslog::LoggingStatistics>())
 {
     logging_files->parent = this;
     an_remote_servers->parent = this;
     messages->parent = this;
     logging_statistics->parent = this;
 
-    yang_name = "syslog"; yang_parent_name = "Cisco-IOS-XR-infra-syslog-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "syslog"; yang_parent_name = "Cisco-IOS-XR-infra-syslog-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Syslog::~Syslog()
@@ -236,6 +1158,7 @@ Syslog::~Syslog()
 
 bool Syslog::has_data() const
 {
+    if (is_presence_container) return true;
     return (logging_files !=  nullptr && logging_files->has_data())
 	|| (an_remote_servers !=  nullptr && an_remote_servers->has_data())
 	|| (messages !=  nullptr && messages->has_data())
@@ -376,9 +1299,11 @@ bool Syslog::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Syslog::LoggingFiles::LoggingFiles()
+    :
+    file_log_detail(this, {})
 {
 
-    yang_name = "logging-files"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "logging-files"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::LoggingFiles::~LoggingFiles()
@@ -387,7 +1312,8 @@ Syslog::LoggingFiles::~LoggingFiles()
 
 bool Syslog::LoggingFiles::has_data() const
 {
-    for (std::size_t index=0; index<file_log_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<file_log_detail.len(); index++)
     {
         if(file_log_detail[index]->has_data())
             return true;
@@ -397,7 +1323,7 @@ bool Syslog::LoggingFiles::has_data() const
 
 bool Syslog::LoggingFiles::has_operation() const
 {
-    for (std::size_t index=0; index<file_log_detail.size(); index++)
+    for (std::size_t index=0; index<file_log_detail.len(); index++)
     {
         if(file_log_detail[index]->has_operation())
             return true;
@@ -434,7 +1360,7 @@ std::shared_ptr<Entity> Syslog::LoggingFiles::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<Syslog::LoggingFiles::FileLogDetail>();
         c->parent = this;
-        file_log_detail.push_back(c);
+        file_log_detail.append(c);
         return c;
     }
 
@@ -446,7 +1372,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingFiles::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : file_log_detail)
+    for (auto c : file_log_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -478,7 +1404,7 @@ Syslog::LoggingFiles::FileLogDetail::FileLogDetail()
     file_name{YType::str, "file-name"}
 {
 
-    yang_name = "file-log-detail"; yang_parent_name = "logging-files"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "file-log-detail"; yang_parent_name = "logging-files"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::LoggingFiles::FileLogDetail::~FileLogDetail()
@@ -487,6 +1413,7 @@ Syslog::LoggingFiles::FileLogDetail::~FileLogDetail()
 
 bool Syslog::LoggingFiles::FileLogDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return file_path.is_set
 	|| file_name.is_set;
 }
@@ -571,9 +1498,11 @@ bool Syslog::LoggingFiles::FileLogDetail::has_leaf_or_child_of_name(const std::s
 }
 
 Syslog::AnRemoteServers::AnRemoteServers()
+    :
+    an_remote_log_server(this, {})
 {
 
-    yang_name = "an-remote-servers"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "an-remote-servers"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::AnRemoteServers::~AnRemoteServers()
@@ -582,7 +1511,8 @@ Syslog::AnRemoteServers::~AnRemoteServers()
 
 bool Syslog::AnRemoteServers::has_data() const
 {
-    for (std::size_t index=0; index<an_remote_log_server.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<an_remote_log_server.len(); index++)
     {
         if(an_remote_log_server[index]->has_data())
             return true;
@@ -592,7 +1522,7 @@ bool Syslog::AnRemoteServers::has_data() const
 
 bool Syslog::AnRemoteServers::has_operation() const
 {
-    for (std::size_t index=0; index<an_remote_log_server.size(); index++)
+    for (std::size_t index=0; index<an_remote_log_server.len(); index++)
     {
         if(an_remote_log_server[index]->has_operation())
             return true;
@@ -629,7 +1559,7 @@ std::shared_ptr<Entity> Syslog::AnRemoteServers::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Syslog::AnRemoteServers::AnRemoteLogServer>();
         c->parent = this;
-        an_remote_log_server.push_back(c);
+        an_remote_log_server.append(c);
         return c;
     }
 
@@ -641,7 +1571,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::AnRemoteServers::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : an_remote_log_server)
+    for (auto c : an_remote_log_server.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -675,7 +1605,7 @@ Syslog::AnRemoteServers::AnRemoteLogServer::AnRemoteLogServer()
     rh_discriminator{YType::str, "rh-discriminator"}
 {
 
-    yang_name = "an-remote-log-server"; yang_parent_name = "an-remote-servers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "an-remote-log-server"; yang_parent_name = "an-remote-servers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::AnRemoteServers::AnRemoteLogServer::~AnRemoteLogServer()
@@ -684,6 +1614,7 @@ Syslog::AnRemoteServers::AnRemoteLogServer::~AnRemoteLogServer()
 
 bool Syslog::AnRemoteServers::AnRemoteLogServer::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_address.is_set
 	|| vrf_name.is_set
 	|| vrf_severity.is_set
@@ -794,9 +1725,11 @@ bool Syslog::AnRemoteServers::AnRemoteLogServer::has_leaf_or_child_of_name(const
 }
 
 Syslog::Messages::Messages()
+    :
+    message(this, {"message_id"})
 {
 
-    yang_name = "messages"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "messages"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::Messages::~Messages()
@@ -805,7 +1738,8 @@ Syslog::Messages::~Messages()
 
 bool Syslog::Messages::has_data() const
 {
-    for (std::size_t index=0; index<message.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<message.len(); index++)
     {
         if(message[index]->has_data())
             return true;
@@ -815,7 +1749,7 @@ bool Syslog::Messages::has_data() const
 
 bool Syslog::Messages::has_operation() const
 {
-    for (std::size_t index=0; index<message.size(); index++)
+    for (std::size_t index=0; index<message.len(); index++)
     {
         if(message[index]->has_operation())
             return true;
@@ -852,7 +1786,7 @@ std::shared_ptr<Entity> Syslog::Messages::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<Syslog::Messages::Message>();
         c->parent = this;
-        message.push_back(c);
+        message.append(c);
         return c;
     }
 
@@ -864,7 +1798,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::Messages::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : message)
+    for (auto c : message.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -892,7 +1826,7 @@ bool Syslog::Messages::has_leaf_or_child_of_name(const std::string & name) const
 
 Syslog::Messages::Message::Message()
     :
-    message_id{YType::int32, "message-id"},
+    message_id{YType::uint32, "message-id"},
     card_type{YType::str, "card-type"},
     node_name{YType::str, "node-name"},
     time_stamp{YType::uint64, "time-stamp"},
@@ -906,7 +1840,7 @@ Syslog::Messages::Message::Message()
     text{YType::str, "text"}
 {
 
-    yang_name = "message"; yang_parent_name = "messages"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "message"; yang_parent_name = "messages"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::Messages::Message::~Message()
@@ -915,6 +1849,7 @@ Syslog::Messages::Message::~Message()
 
 bool Syslog::Messages::Message::has_data() const
 {
+    if (is_presence_container) return true;
     return message_id.is_set
 	|| card_type.is_set
 	|| node_name.is_set
@@ -956,7 +1891,8 @@ std::string Syslog::Messages::Message::get_absolute_path() const
 std::string Syslog::Messages::Message::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "message" <<"[message-id='" <<message_id <<"']";
+    path_buffer << "message";
+    ADD_KEY_TOKEN(message_id, "message-id");
     return path_buffer.str();
 }
 
@@ -1131,10 +2067,13 @@ bool Syslog::Messages::Message::has_leaf_or_child_of_name(const std::string & na
 Syslog::LoggingStatistics::LoggingStatistics()
     :
     logging_stats(std::make_shared<Syslog::LoggingStatistics::LoggingStats>())
-	,console_logging_stats(std::make_shared<Syslog::LoggingStatistics::ConsoleLoggingStats>())
-	,monitor_logging_stats(std::make_shared<Syslog::LoggingStatistics::MonitorLoggingStats>())
-	,trap_logging_stats(std::make_shared<Syslog::LoggingStatistics::TrapLoggingStats>())
-	,buffer_logging_stats(std::make_shared<Syslog::LoggingStatistics::BufferLoggingStats>())
+    , console_logging_stats(std::make_shared<Syslog::LoggingStatistics::ConsoleLoggingStats>())
+    , monitor_logging_stats(std::make_shared<Syslog::LoggingStatistics::MonitorLoggingStats>())
+    , trap_logging_stats(std::make_shared<Syslog::LoggingStatistics::TrapLoggingStats>())
+    , buffer_logging_stats(std::make_shared<Syslog::LoggingStatistics::BufferLoggingStats>())
+    , remote_logging_stat(this, {})
+    , tls_remote_logging_stat(this, {})
+    , file_logging_stat(this, {})
 {
     logging_stats->parent = this;
     console_logging_stats->parent = this;
@@ -1142,7 +2081,7 @@ Syslog::LoggingStatistics::LoggingStatistics()
     trap_logging_stats->parent = this;
     buffer_logging_stats->parent = this;
 
-    yang_name = "logging-statistics"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "logging-statistics"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::LoggingStatistics::~LoggingStatistics()
@@ -1151,17 +2090,18 @@ Syslog::LoggingStatistics::~LoggingStatistics()
 
 bool Syslog::LoggingStatistics::has_data() const
 {
-    for (std::size_t index=0; index<remote_logging_stat.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<remote_logging_stat.len(); index++)
     {
         if(remote_logging_stat[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<tls_remote_logging_stat.size(); index++)
+    for (std::size_t index=0; index<tls_remote_logging_stat.len(); index++)
     {
         if(tls_remote_logging_stat[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<file_logging_stat.size(); index++)
+    for (std::size_t index=0; index<file_logging_stat.len(); index++)
     {
         if(file_logging_stat[index]->has_data())
             return true;
@@ -1175,17 +2115,17 @@ bool Syslog::LoggingStatistics::has_data() const
 
 bool Syslog::LoggingStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<remote_logging_stat.size(); index++)
+    for (std::size_t index=0; index<remote_logging_stat.len(); index++)
     {
         if(remote_logging_stat[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<tls_remote_logging_stat.size(); index++)
+    for (std::size_t index=0; index<tls_remote_logging_stat.len(); index++)
     {
         if(tls_remote_logging_stat[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<file_logging_stat.size(); index++)
+    for (std::size_t index=0; index<file_logging_stat.len(); index++)
     {
         if(file_logging_stat[index]->has_operation())
             return true;
@@ -1272,7 +2212,7 @@ std::shared_ptr<Entity> Syslog::LoggingStatistics::get_child_by_name(const std::
     {
         auto c = std::make_shared<Syslog::LoggingStatistics::RemoteLoggingStat>();
         c->parent = this;
-        remote_logging_stat.push_back(c);
+        remote_logging_stat.append(c);
         return c;
     }
 
@@ -1280,7 +2220,7 @@ std::shared_ptr<Entity> Syslog::LoggingStatistics::get_child_by_name(const std::
     {
         auto c = std::make_shared<Syslog::LoggingStatistics::TlsRemoteLoggingStat>();
         c->parent = this;
-        tls_remote_logging_stat.push_back(c);
+        tls_remote_logging_stat.append(c);
         return c;
     }
 
@@ -1288,7 +2228,7 @@ std::shared_ptr<Entity> Syslog::LoggingStatistics::get_child_by_name(const std::
     {
         auto c = std::make_shared<Syslog::LoggingStatistics::FileLoggingStat>();
         c->parent = this;
-        file_logging_stat.push_back(c);
+        file_logging_stat.append(c);
         return c;
     }
 
@@ -1325,7 +2265,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::get_ch
     }
 
     count = 0;
-    for (auto const & c : remote_logging_stat)
+    for (auto c : remote_logging_stat.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1334,7 +2274,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::get_ch
     }
 
     count = 0;
-    for (auto const & c : tls_remote_logging_stat)
+    for (auto c : tls_remote_logging_stat.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1343,7 +2283,7 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::get_ch
     }
 
     count = 0;
-    for (auto const & c : file_logging_stat)
+    for (auto c : file_logging_stat.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1377,7 +2317,7 @@ Syslog::LoggingStatistics::LoggingStats::LoggingStats()
     overrun_count{YType::uint32, "overrun-count"}
 {
 
-    yang_name = "logging-stats"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "logging-stats"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::LoggingStatistics::LoggingStats::~LoggingStats()
@@ -1386,6 +2326,7 @@ Syslog::LoggingStatistics::LoggingStats::~LoggingStats()
 
 bool Syslog::LoggingStatistics::LoggingStats::has_data() const
 {
+    if (is_presence_container) return true;
     return is_log_enabled.is_set
 	|| drop_count.is_set
 	|| flush_count.is_set
@@ -1503,7 +2444,7 @@ Syslog::LoggingStatistics::ConsoleLoggingStats::ConsoleLoggingStats()
     buffer_size{YType::uint32, "buffer-size"}
 {
 
-    yang_name = "console-logging-stats"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "console-logging-stats"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::LoggingStatistics::ConsoleLoggingStats::~ConsoleLoggingStats()
@@ -1512,6 +2453,7 @@ Syslog::LoggingStatistics::ConsoleLoggingStats::~ConsoleLoggingStats()
 
 bool Syslog::LoggingStatistics::ConsoleLoggingStats::has_data() const
 {
+    if (is_presence_container) return true;
     return is_log_enabled.is_set
 	|| severity.is_set
 	|| message_count.is_set
@@ -1629,7 +2571,7 @@ Syslog::LoggingStatistics::MonitorLoggingStats::MonitorLoggingStats()
     buffer_size{YType::uint32, "buffer-size"}
 {
 
-    yang_name = "monitor-logging-stats"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "monitor-logging-stats"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::LoggingStatistics::MonitorLoggingStats::~MonitorLoggingStats()
@@ -1638,6 +2580,7 @@ Syslog::LoggingStatistics::MonitorLoggingStats::~MonitorLoggingStats()
 
 bool Syslog::LoggingStatistics::MonitorLoggingStats::has_data() const
 {
+    if (is_presence_container) return true;
     return is_log_enabled.is_set
 	|| severity.is_set
 	|| message_count.is_set
@@ -1755,7 +2698,7 @@ Syslog::LoggingStatistics::TrapLoggingStats::TrapLoggingStats()
     buffer_size{YType::uint32, "buffer-size"}
 {
 
-    yang_name = "trap-logging-stats"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trap-logging-stats"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::LoggingStatistics::TrapLoggingStats::~TrapLoggingStats()
@@ -1764,6 +2707,7 @@ Syslog::LoggingStatistics::TrapLoggingStats::~TrapLoggingStats()
 
 bool Syslog::LoggingStatistics::TrapLoggingStats::has_data() const
 {
+    if (is_presence_container) return true;
     return is_log_enabled.is_set
 	|| severity.is_set
 	|| message_count.is_set
@@ -1881,7 +2825,7 @@ Syslog::LoggingStatistics::BufferLoggingStats::BufferLoggingStats()
     buffer_size{YType::uint32, "buffer-size"}
 {
 
-    yang_name = "buffer-logging-stats"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "buffer-logging-stats"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::LoggingStatistics::BufferLoggingStats::~BufferLoggingStats()
@@ -1890,6 +2834,7 @@ Syslog::LoggingStatistics::BufferLoggingStats::~BufferLoggingStats()
 
 bool Syslog::LoggingStatistics::BufferLoggingStats::has_data() const
 {
+    if (is_presence_container) return true;
     return is_log_enabled.is_set
 	|| severity.is_set
 	|| message_count.is_set
@@ -2005,7 +2950,7 @@ Syslog::LoggingStatistics::RemoteLoggingStat::RemoteLoggingStat()
     message_count{YType::uint32, "message-count"}
 {
 
-    yang_name = "remote-logging-stat"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "remote-logging-stat"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::LoggingStatistics::RemoteLoggingStat::~RemoteLoggingStat()
@@ -2014,6 +2959,7 @@ Syslog::LoggingStatistics::RemoteLoggingStat::~RemoteLoggingStat()
 
 bool Syslog::LoggingStatistics::RemoteLoggingStat::has_data() const
 {
+    if (is_presence_container) return true;
     return remote_host_name.is_set
 	|| message_count.is_set;
 }
@@ -2103,7 +3049,7 @@ Syslog::LoggingStatistics::TlsRemoteLoggingStat::TlsRemoteLoggingStat()
     message_count{YType::uint32, "message-count"}
 {
 
-    yang_name = "tls-remote-logging-stat"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tls-remote-logging-stat"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::LoggingStatistics::TlsRemoteLoggingStat::~TlsRemoteLoggingStat()
@@ -2112,6 +3058,7 @@ Syslog::LoggingStatistics::TlsRemoteLoggingStat::~TlsRemoteLoggingStat()
 
 bool Syslog::LoggingStatistics::TlsRemoteLoggingStat::has_data() const
 {
+    if (is_presence_container) return true;
     return remote_host_name.is_set
 	|| message_count.is_set;
 }
@@ -2201,7 +3148,7 @@ Syslog::LoggingStatistics::FileLoggingStat::FileLoggingStat()
     message_count{YType::uint32, "message-count"}
 {
 
-    yang_name = "file-logging-stat"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "file-logging-stat"; yang_parent_name = "logging-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Syslog::LoggingStatistics::FileLoggingStat::~FileLoggingStat()
@@ -2210,6 +3157,7 @@ Syslog::LoggingStatistics::FileLoggingStat::~FileLoggingStat()
 
 bool Syslog::LoggingStatistics::FileLoggingStat::has_data() const
 {
+    if (is_presence_container) return true;
     return file_name.is_set
 	|| message_count.is_set;
 }

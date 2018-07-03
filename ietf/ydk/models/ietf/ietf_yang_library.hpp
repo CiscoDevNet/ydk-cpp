@@ -34,7 +34,7 @@ class ModulesState : public ydk::Entity
         ydk::YLeaf module_set_id; //type: string
         class Module; //type: ModulesState::Module
 
-        std::vector<std::shared_ptr<ietf::ietf_yang_library::ModulesState::Module> > module;
+        ydk::YList module;
         
 }; // ModulesState
 
@@ -65,8 +65,8 @@ class ModulesState::Module : public ydk::Entity
         class Deviation; //type: ModulesState::Module::Deviation
         class Submodule; //type: ModulesState::Module::Submodule
 
-        std::vector<std::shared_ptr<ietf::ietf_yang_library::ModulesState::Module::Deviation> > deviation;
-        std::vector<std::shared_ptr<ietf::ietf_yang_library::ModulesState::Module::Submodule> > submodule;
+        ydk::YList deviation;
+        ydk::YList submodule;
                 class ConformanceType;
 
 }; // ModulesState::Module

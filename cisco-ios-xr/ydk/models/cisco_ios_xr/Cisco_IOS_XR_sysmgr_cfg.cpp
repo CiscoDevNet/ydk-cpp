@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_sysmgr_cfg {
 ProcessMandatory::ProcessMandatory()
     :
     nodes(std::make_shared<ProcessMandatory::Nodes>())
-	,all(std::make_shared<ProcessMandatory::All>())
+    , all(std::make_shared<ProcessMandatory::All>())
 {
     nodes->parent = this;
     all->parent = this;
 
-    yang_name = "process-mandatory"; yang_parent_name = "Cisco-IOS-XR-sysmgr-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "process-mandatory"; yang_parent_name = "Cisco-IOS-XR-sysmgr-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ProcessMandatory::~ProcessMandatory()
@@ -28,6 +28,7 @@ ProcessMandatory::~ProcessMandatory()
 
 bool ProcessMandatory::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data())
 	|| (all !=  nullptr && all->has_data());
 }
@@ -136,9 +137,11 @@ bool ProcessMandatory::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 ProcessMandatory::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "process-mandatory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "process-mandatory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ProcessMandatory::Nodes::~Nodes()
@@ -147,7 +150,8 @@ ProcessMandatory::Nodes::~Nodes()
 
 bool ProcessMandatory::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -157,7 +161,7 @@ bool ProcessMandatory::Nodes::has_data() const
 
 bool ProcessMandatory::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -194,7 +198,7 @@ std::shared_ptr<Entity> ProcessMandatory::Nodes::get_child_by_name(const std::st
     {
         auto c = std::make_shared<ProcessMandatory::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -206,7 +210,7 @@ std::map<std::string, std::shared_ptr<Entity>> ProcessMandatory::Nodes::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -235,12 +239,12 @@ bool ProcessMandatory::Nodes::has_leaf_or_child_of_name(const std::string & name
 ProcessMandatory::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     processes(std::make_shared<ProcessMandatory::Nodes::Node::Processes>())
 {
     processes->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ProcessMandatory::Nodes::Node::~Node()
@@ -249,6 +253,7 @@ ProcessMandatory::Nodes::Node::~Node()
 
 bool ProcessMandatory::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (processes !=  nullptr && processes->has_data());
 }
@@ -270,7 +275,8 @@ std::string ProcessMandatory::Nodes::Node::get_absolute_path() const
 std::string ProcessMandatory::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -336,9 +342,11 @@ bool ProcessMandatory::Nodes::Node::has_leaf_or_child_of_name(const std::string 
 }
 
 ProcessMandatory::Nodes::Node::Processes::Processes()
+    :
+    process(this, {"process_name"})
 {
 
-    yang_name = "processes"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "processes"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ProcessMandatory::Nodes::Node::Processes::~Processes()
@@ -347,7 +355,8 @@ ProcessMandatory::Nodes::Node::Processes::~Processes()
 
 bool ProcessMandatory::Nodes::Node::Processes::has_data() const
 {
-    for (std::size_t index=0; index<process.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<process.len(); index++)
     {
         if(process[index]->has_data())
             return true;
@@ -357,7 +366,7 @@ bool ProcessMandatory::Nodes::Node::Processes::has_data() const
 
 bool ProcessMandatory::Nodes::Node::Processes::has_operation() const
 {
-    for (std::size_t index=0; index<process.size(); index++)
+    for (std::size_t index=0; index<process.len(); index++)
     {
         if(process[index]->has_operation())
             return true;
@@ -387,7 +396,7 @@ std::shared_ptr<Entity> ProcessMandatory::Nodes::Node::Processes::get_child_by_n
     {
         auto c = std::make_shared<ProcessMandatory::Nodes::Node::Processes::Process>();
         c->parent = this;
-        process.push_back(c);
+        process.append(c);
         return c;
     }
 
@@ -399,7 +408,7 @@ std::map<std::string, std::shared_ptr<Entity>> ProcessMandatory::Nodes::Node::Pr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : process)
+    for (auto c : process.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -430,7 +439,7 @@ ProcessMandatory::Nodes::Node::Processes::Process::Process()
     process_name{YType::str, "process-name"}
 {
 
-    yang_name = "process"; yang_parent_name = "processes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "process"; yang_parent_name = "processes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ProcessMandatory::Nodes::Node::Processes::Process::~Process()
@@ -439,6 +448,7 @@ ProcessMandatory::Nodes::Node::Processes::Process::~Process()
 
 bool ProcessMandatory::Nodes::Node::Processes::Process::has_data() const
 {
+    if (is_presence_container) return true;
     return process_name.is_set;
 }
 
@@ -451,7 +461,8 @@ bool ProcessMandatory::Nodes::Node::Processes::Process::has_operation() const
 std::string ProcessMandatory::Nodes::Node::Processes::Process::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "process" <<"[process-name='" <<process_name <<"']";
+    path_buffer << "process";
+    ADD_KEY_TOKEN(process_name, "process-name");
     return path_buffer.str();
 }
 
@@ -508,7 +519,7 @@ ProcessMandatory::All::All()
 {
     processes->parent = this;
 
-    yang_name = "all"; yang_parent_name = "process-mandatory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all"; yang_parent_name = "process-mandatory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ProcessMandatory::All::~All()
@@ -517,6 +528,7 @@ ProcessMandatory::All::~All()
 
 bool ProcessMandatory::All::has_data() const
 {
+    if (is_presence_container) return true;
     return (processes !=  nullptr && processes->has_data());
 }
 
@@ -591,9 +603,11 @@ bool ProcessMandatory::All::has_leaf_or_child_of_name(const std::string & name) 
 }
 
 ProcessMandatory::All::Processes::Processes()
+    :
+    process(this, {"process_name"})
 {
 
-    yang_name = "processes"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "processes"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ProcessMandatory::All::Processes::~Processes()
@@ -602,7 +616,8 @@ ProcessMandatory::All::Processes::~Processes()
 
 bool ProcessMandatory::All::Processes::has_data() const
 {
-    for (std::size_t index=0; index<process.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<process.len(); index++)
     {
         if(process[index]->has_data())
             return true;
@@ -612,7 +627,7 @@ bool ProcessMandatory::All::Processes::has_data() const
 
 bool ProcessMandatory::All::Processes::has_operation() const
 {
-    for (std::size_t index=0; index<process.size(); index++)
+    for (std::size_t index=0; index<process.len(); index++)
     {
         if(process[index]->has_operation())
             return true;
@@ -649,7 +664,7 @@ std::shared_ptr<Entity> ProcessMandatory::All::Processes::get_child_by_name(cons
     {
         auto c = std::make_shared<ProcessMandatory::All::Processes::Process>();
         c->parent = this;
-        process.push_back(c);
+        process.append(c);
         return c;
     }
 
@@ -661,7 +676,7 @@ std::map<std::string, std::shared_ptr<Entity>> ProcessMandatory::All::Processes:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : process)
+    for (auto c : process.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -692,7 +707,7 @@ ProcessMandatory::All::Processes::Process::Process()
     process_name{YType::str, "process-name"}
 {
 
-    yang_name = "process"; yang_parent_name = "processes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process"; yang_parent_name = "processes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ProcessMandatory::All::Processes::Process::~Process()
@@ -701,6 +716,7 @@ ProcessMandatory::All::Processes::Process::~Process()
 
 bool ProcessMandatory::All::Processes::Process::has_data() const
 {
+    if (is_presence_container) return true;
     return process_name.is_set;
 }
 
@@ -720,7 +736,8 @@ std::string ProcessMandatory::All::Processes::Process::get_absolute_path() const
 std::string ProcessMandatory::All::Processes::Process::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "process" <<"[process-name='" <<process_name <<"']";
+    path_buffer << "process";
+    ADD_KEY_TOKEN(process_name, "process-name");
     return path_buffer.str();
 }
 
@@ -777,7 +794,7 @@ ProcessSingleCrash::ProcessSingleCrash()
     minimum_up_time{YType::uint32, "minimum-up-time"}
 {
 
-    yang_name = "process-single-crash"; yang_parent_name = "Cisco-IOS-XR-sysmgr-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "process-single-crash"; yang_parent_name = "Cisco-IOS-XR-sysmgr-cfg"; is_top_level_class = true; has_list_ancestor = false; is_presence_container = true;
 }
 
 ProcessSingleCrash::~ProcessSingleCrash()
@@ -786,6 +803,7 @@ ProcessSingleCrash::~ProcessSingleCrash()
 
 bool ProcessSingleCrash::has_data() const
 {
+    if (is_presence_container) return true;
     return crashes.is_set
 	|| minimum_up_time.is_set;
 }

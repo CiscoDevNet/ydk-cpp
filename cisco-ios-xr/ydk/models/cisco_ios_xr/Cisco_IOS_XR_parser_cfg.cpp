@@ -14,26 +14,28 @@ namespace Cisco_IOS_XR_parser_cfg {
 Parser::Parser()
     :
     indentation(std::make_shared<Parser::Indentation>())
-	,alias(std::make_shared<Parser::Alias>())
-	,history(std::make_shared<Parser::History>())
-	,interactive(std::make_shared<Parser::Interactive>())
-	,sysadmin_login_banner(std::make_shared<Parser::SysadminLoginBanner>())
-	,interface_display(std::make_shared<Parser::InterfaceDisplay>())
-	,netmask_format(std::make_shared<Parser::NetmaskFormat>())
-	,configuration(std::make_shared<Parser::Configuration>())
-	,submode_exit(std::make_shared<Parser::SubmodeExit>())
+    , alias(std::make_shared<Parser::Alias>())
+    , history(std::make_shared<Parser::History>())
+    , interactive(std::make_shared<Parser::Interactive>())
+    , commit_optimized(std::make_shared<Parser::CommitOptimized>())
+    , sysadmin_login_banner(std::make_shared<Parser::SysadminLoginBanner>())
+    , interface_display(std::make_shared<Parser::InterfaceDisplay>())
+    , netmask_format(std::make_shared<Parser::NetmaskFormat>())
+    , configuration(std::make_shared<Parser::Configuration>())
+    , submode_exit(std::make_shared<Parser::SubmodeExit>())
 {
     indentation->parent = this;
     alias->parent = this;
     history->parent = this;
     interactive->parent = this;
+    commit_optimized->parent = this;
     sysadmin_login_banner->parent = this;
     interface_display->parent = this;
     netmask_format->parent = this;
     configuration->parent = this;
     submode_exit->parent = this;
 
-    yang_name = "parser"; yang_parent_name = "Cisco-IOS-XR-parser-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "parser"; yang_parent_name = "Cisco-IOS-XR-parser-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Parser::~Parser()
@@ -42,10 +44,12 @@ Parser::~Parser()
 
 bool Parser::has_data() const
 {
+    if (is_presence_container) return true;
     return (indentation !=  nullptr && indentation->has_data())
 	|| (alias !=  nullptr && alias->has_data())
 	|| (history !=  nullptr && history->has_data())
 	|| (interactive !=  nullptr && interactive->has_data())
+	|| (commit_optimized !=  nullptr && commit_optimized->has_data())
 	|| (sysadmin_login_banner !=  nullptr && sysadmin_login_banner->has_data())
 	|| (interface_display !=  nullptr && interface_display->has_data())
 	|| (netmask_format !=  nullptr && netmask_format->has_data())
@@ -60,6 +64,7 @@ bool Parser::has_operation() const
 	|| (alias !=  nullptr && alias->has_operation())
 	|| (history !=  nullptr && history->has_operation())
 	|| (interactive !=  nullptr && interactive->has_operation())
+	|| (commit_optimized !=  nullptr && commit_optimized->has_operation())
 	|| (sysadmin_login_banner !=  nullptr && sysadmin_login_banner->has_operation())
 	|| (interface_display !=  nullptr && interface_display->has_operation())
 	|| (netmask_format !=  nullptr && netmask_format->has_operation())
@@ -119,6 +124,15 @@ std::shared_ptr<Entity> Parser::get_child_by_name(const std::string & child_yang
             interactive = std::make_shared<Parser::Interactive>();
         }
         return interactive;
+    }
+
+    if(child_yang_name == "commit-optimized")
+    {
+        if(commit_optimized == nullptr)
+        {
+            commit_optimized = std::make_shared<Parser::CommitOptimized>();
+        }
+        return commit_optimized;
     }
 
     if(child_yang_name == "sysadmin-login-banner")
@@ -193,6 +207,11 @@ std::map<std::string, std::shared_ptr<Entity>> Parser::get_children() const
         children["interactive"] = interactive;
     }
 
+    if(commit_optimized != nullptr)
+    {
+        children["commit-optimized"] = commit_optimized;
+    }
+
     if(sysadmin_login_banner != nullptr)
     {
         children["sysadmin-login-banner"] = sysadmin_login_banner;
@@ -256,7 +275,7 @@ std::map<std::pair<std::string, std::string>, std::string> Parser::get_namespace
 
 bool Parser::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "indentation" || name == "alias" || name == "history" || name == "interactive" || name == "sysadmin-login-banner" || name == "interface-display" || name == "netmask-format" || name == "configuration" || name == "submode-exit")
+    if(name == "indentation" || name == "alias" || name == "history" || name == "interactive" || name == "commit-optimized" || name == "sysadmin-login-banner" || name == "interface-display" || name == "netmask-format" || name == "configuration" || name == "submode-exit")
         return true;
     return false;
 }
@@ -266,7 +285,7 @@ Parser::Indentation::Indentation()
     indentation_disable{YType::boolean, "indentation-disable"}
 {
 
-    yang_name = "indentation"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "indentation"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Parser::Indentation::~Indentation()
@@ -275,6 +294,7 @@ Parser::Indentation::~Indentation()
 
 bool Parser::Indentation::has_data() const
 {
+    if (is_presence_container) return true;
     return indentation_disable.is_set;
 }
 
@@ -348,14 +368,14 @@ bool Parser::Indentation::has_leaf_or_child_of_name(const std::string & name) co
 Parser::Alias::Alias()
     :
     execs(std::make_shared<Parser::Alias::Execs>())
-	,configurations(std::make_shared<Parser::Alias::Configurations>())
-	,alls(std::make_shared<Parser::Alias::Alls>())
+    , configurations(std::make_shared<Parser::Alias::Configurations>())
+    , alls(std::make_shared<Parser::Alias::Alls>())
 {
     execs->parent = this;
     configurations->parent = this;
     alls->parent = this;
 
-    yang_name = "alias"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alias"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Parser::Alias::~Alias()
@@ -364,6 +384,7 @@ Parser::Alias::~Alias()
 
 bool Parser::Alias::has_data() const
 {
+    if (is_presence_container) return true;
     return (execs !=  nullptr && execs->has_data())
 	|| (configurations !=  nullptr && configurations->has_data())
 	|| (alls !=  nullptr && alls->has_data());
@@ -470,9 +491,11 @@ bool Parser::Alias::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Parser::Alias::Execs::Execs()
+    :
+    exec(this, {"identifier"})
 {
 
-    yang_name = "execs"; yang_parent_name = "alias"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "execs"; yang_parent_name = "alias"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Parser::Alias::Execs::~Execs()
@@ -481,7 +504,8 @@ Parser::Alias::Execs::~Execs()
 
 bool Parser::Alias::Execs::has_data() const
 {
-    for (std::size_t index=0; index<exec.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<exec.len(); index++)
     {
         if(exec[index]->has_data())
             return true;
@@ -491,7 +515,7 @@ bool Parser::Alias::Execs::has_data() const
 
 bool Parser::Alias::Execs::has_operation() const
 {
-    for (std::size_t index=0; index<exec.size(); index++)
+    for (std::size_t index=0; index<exec.len(); index++)
     {
         if(exec[index]->has_operation())
             return true;
@@ -528,7 +552,7 @@ std::shared_ptr<Entity> Parser::Alias::Execs::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<Parser::Alias::Execs::Exec>();
         c->parent = this;
-        exec.push_back(c);
+        exec.append(c);
         return c;
     }
 
@@ -540,7 +564,7 @@ std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Execs::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : exec)
+    for (auto c : exec.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -572,7 +596,7 @@ Parser::Alias::Execs::Exec::Exec()
     identifier_xr{YType::str, "identifier-xr"}
 {
 
-    yang_name = "exec"; yang_parent_name = "execs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "exec"; yang_parent_name = "execs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Parser::Alias::Execs::Exec::~Exec()
@@ -581,6 +605,7 @@ Parser::Alias::Execs::Exec::~Exec()
 
 bool Parser::Alias::Execs::Exec::has_data() const
 {
+    if (is_presence_container) return true;
     return identifier.is_set
 	|| identifier_xr.is_set;
 }
@@ -602,7 +627,8 @@ std::string Parser::Alias::Execs::Exec::get_absolute_path() const
 std::string Parser::Alias::Execs::Exec::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exec" <<"[identifier='" <<identifier <<"']";
+    path_buffer << "exec";
+    ADD_KEY_TOKEN(identifier, "identifier");
     return path_buffer.str();
 }
 
@@ -665,9 +691,11 @@ bool Parser::Alias::Execs::Exec::has_leaf_or_child_of_name(const std::string & n
 }
 
 Parser::Alias::Configurations::Configurations()
+    :
+    configuration(this, {"identifier"})
 {
 
-    yang_name = "configurations"; yang_parent_name = "alias"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "configurations"; yang_parent_name = "alias"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Parser::Alias::Configurations::~Configurations()
@@ -676,7 +704,8 @@ Parser::Alias::Configurations::~Configurations()
 
 bool Parser::Alias::Configurations::has_data() const
 {
-    for (std::size_t index=0; index<configuration.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<configuration.len(); index++)
     {
         if(configuration[index]->has_data())
             return true;
@@ -686,7 +715,7 @@ bool Parser::Alias::Configurations::has_data() const
 
 bool Parser::Alias::Configurations::has_operation() const
 {
-    for (std::size_t index=0; index<configuration.size(); index++)
+    for (std::size_t index=0; index<configuration.len(); index++)
     {
         if(configuration[index]->has_operation())
             return true;
@@ -723,7 +752,7 @@ std::shared_ptr<Entity> Parser::Alias::Configurations::get_child_by_name(const s
     {
         auto c = std::make_shared<Parser::Alias::Configurations::Configuration>();
         c->parent = this;
-        configuration.push_back(c);
+        configuration.append(c);
         return c;
     }
 
@@ -735,7 +764,7 @@ std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Configurations::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : configuration)
+    for (auto c : configuration.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -767,7 +796,7 @@ Parser::Alias::Configurations::Configuration::Configuration()
     identifier_xr{YType::str, "identifier-xr"}
 {
 
-    yang_name = "configuration"; yang_parent_name = "configurations"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "configuration"; yang_parent_name = "configurations"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Parser::Alias::Configurations::Configuration::~Configuration()
@@ -776,6 +805,7 @@ Parser::Alias::Configurations::Configuration::~Configuration()
 
 bool Parser::Alias::Configurations::Configuration::has_data() const
 {
+    if (is_presence_container) return true;
     return identifier.is_set
 	|| identifier_xr.is_set;
 }
@@ -797,7 +827,8 @@ std::string Parser::Alias::Configurations::Configuration::get_absolute_path() co
 std::string Parser::Alias::Configurations::Configuration::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "configuration" <<"[identifier='" <<identifier <<"']";
+    path_buffer << "configuration";
+    ADD_KEY_TOKEN(identifier, "identifier");
     return path_buffer.str();
 }
 
@@ -860,9 +891,11 @@ bool Parser::Alias::Configurations::Configuration::has_leaf_or_child_of_name(con
 }
 
 Parser::Alias::Alls::Alls()
+    :
+    all(this, {"identifier"})
 {
 
-    yang_name = "alls"; yang_parent_name = "alias"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alls"; yang_parent_name = "alias"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Parser::Alias::Alls::~Alls()
@@ -871,7 +904,8 @@ Parser::Alias::Alls::~Alls()
 
 bool Parser::Alias::Alls::has_data() const
 {
-    for (std::size_t index=0; index<all.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all.len(); index++)
     {
         if(all[index]->has_data())
             return true;
@@ -881,7 +915,7 @@ bool Parser::Alias::Alls::has_data() const
 
 bool Parser::Alias::Alls::has_operation() const
 {
-    for (std::size_t index=0; index<all.size(); index++)
+    for (std::size_t index=0; index<all.len(); index++)
     {
         if(all[index]->has_operation())
             return true;
@@ -918,7 +952,7 @@ std::shared_ptr<Entity> Parser::Alias::Alls::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Parser::Alias::Alls::All>();
         c->parent = this;
-        all.push_back(c);
+        all.append(c);
         return c;
     }
 
@@ -930,7 +964,7 @@ std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Alls::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all)
+    for (auto c : all.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -962,7 +996,7 @@ Parser::Alias::Alls::All::All()
     identifier_xr{YType::str, "identifier-xr"}
 {
 
-    yang_name = "all"; yang_parent_name = "alls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all"; yang_parent_name = "alls"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Parser::Alias::Alls::All::~All()
@@ -971,6 +1005,7 @@ Parser::Alias::Alls::All::~All()
 
 bool Parser::Alias::Alls::All::has_data() const
 {
+    if (is_presence_container) return true;
     return identifier.is_set
 	|| identifier_xr.is_set;
 }
@@ -992,7 +1027,8 @@ std::string Parser::Alias::Alls::All::get_absolute_path() const
 std::string Parser::Alias::Alls::All::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all" <<"[identifier='" <<identifier <<"']";
+    path_buffer << "all";
+    ADD_KEY_TOKEN(identifier, "identifier");
     return path_buffer.str();
 }
 
@@ -1059,7 +1095,7 @@ Parser::History::History()
     size{YType::uint32, "size"}
 {
 
-    yang_name = "history"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "history"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Parser::History::~History()
@@ -1068,6 +1104,7 @@ Parser::History::~History()
 
 bool Parser::History::has_data() const
 {
+    if (is_presence_container) return true;
     return size.is_set;
 }
 
@@ -1143,7 +1180,7 @@ Parser::Interactive::Interactive()
     interactive_disable{YType::boolean, "interactive-disable"}
 {
 
-    yang_name = "interactive"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interactive"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Parser::Interactive::~Interactive()
@@ -1152,6 +1189,7 @@ Parser::Interactive::~Interactive()
 
 bool Parser::Interactive::has_data() const
 {
+    if (is_presence_container) return true;
     return interactive_disable.is_set;
 }
 
@@ -1222,12 +1260,97 @@ bool Parser::Interactive::has_leaf_or_child_of_name(const std::string & name) co
     return false;
 }
 
+Parser::CommitOptimized::CommitOptimized()
+    :
+    commit_optimized_enable{YType::boolean, "commit-optimized-enable"}
+{
+
+    yang_name = "commit-optimized"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Parser::CommitOptimized::~CommitOptimized()
+{
+}
+
+bool Parser::CommitOptimized::has_data() const
+{
+    if (is_presence_container) return true;
+    return commit_optimized_enable.is_set;
+}
+
+bool Parser::CommitOptimized::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(commit_optimized_enable.yfilter);
+}
+
+std::string Parser::CommitOptimized::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-parser-cfg:parser/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Parser::CommitOptimized::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "commit-optimized";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Parser::CommitOptimized::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (commit_optimized_enable.is_set || is_set(commit_optimized_enable.yfilter)) leaf_name_data.push_back(commit_optimized_enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Parser::CommitOptimized::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Parser::CommitOptimized::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Parser::CommitOptimized::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "commit-optimized-enable")
+    {
+        commit_optimized_enable = value;
+        commit_optimized_enable.value_namespace = name_space;
+        commit_optimized_enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Parser::CommitOptimized::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "commit-optimized-enable")
+    {
+        commit_optimized_enable.yfilter = yfilter;
+    }
+}
+
+bool Parser::CommitOptimized::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "commit-optimized-enable")
+        return true;
+    return false;
+}
+
 Parser::SysadminLoginBanner::SysadminLoginBanner()
     :
     sysadmin_login_banner_disable{YType::boolean, "sysadmin-login-banner-disable"}
 {
 
-    yang_name = "sysadmin-login-banner"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sysadmin-login-banner"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Parser::SysadminLoginBanner::~SysadminLoginBanner()
@@ -1236,6 +1359,7 @@ Parser::SysadminLoginBanner::~SysadminLoginBanner()
 
 bool Parser::SysadminLoginBanner::has_data() const
 {
+    if (is_presence_container) return true;
     return sysadmin_login_banner_disable.is_set;
 }
 
@@ -1311,7 +1435,7 @@ Parser::InterfaceDisplay::InterfaceDisplay()
     slot_order{YType::boolean, "slot-order"}
 {
 
-    yang_name = "interface-display"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-display"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Parser::InterfaceDisplay::~InterfaceDisplay()
@@ -1320,6 +1444,7 @@ Parser::InterfaceDisplay::~InterfaceDisplay()
 
 bool Parser::InterfaceDisplay::has_data() const
 {
+    if (is_presence_container) return true;
     return slot_order.is_set;
 }
 
@@ -1395,7 +1520,7 @@ Parser::NetmaskFormat::NetmaskFormat()
     bit_count{YType::boolean, "bit-count"}
 {
 
-    yang_name = "netmask-format"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "netmask-format"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Parser::NetmaskFormat::~NetmaskFormat()
@@ -1404,6 +1529,7 @@ Parser::NetmaskFormat::~NetmaskFormat()
 
 bool Parser::NetmaskFormat::has_data() const
 {
+    if (is_presence_container) return true;
     return bit_count.is_set;
 }
 
@@ -1480,7 +1606,7 @@ Parser::Configuration::Configuration()
 {
     disable->parent = this;
 
-    yang_name = "configuration"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "configuration"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Parser::Configuration::~Configuration()
@@ -1489,6 +1615,7 @@ Parser::Configuration::~Configuration()
 
 bool Parser::Configuration::has_data() const
 {
+    if (is_presence_container) return true;
     return (disable !=  nullptr && disable->has_data());
 }
 
@@ -1567,7 +1694,7 @@ Parser::Configuration::Disable::Disable()
     usergroup{YType::str, "usergroup"}
 {
 
-    yang_name = "disable"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "disable"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Parser::Configuration::Disable::~Disable()
@@ -1576,6 +1703,7 @@ Parser::Configuration::Disable::~Disable()
 
 bool Parser::Configuration::Disable::has_data() const
 {
+    if (is_presence_container) return true;
     return usergroup.is_set;
 }
 
@@ -1651,7 +1779,7 @@ Parser::SubmodeExit::SubmodeExit()
     enable{YType::boolean, "enable"}
 {
 
-    yang_name = "submode-exit"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "submode-exit"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Parser::SubmodeExit::~SubmodeExit()
@@ -1660,6 +1788,7 @@ Parser::SubmodeExit::~SubmodeExit()
 
 bool Parser::SubmodeExit::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set;
 }
 

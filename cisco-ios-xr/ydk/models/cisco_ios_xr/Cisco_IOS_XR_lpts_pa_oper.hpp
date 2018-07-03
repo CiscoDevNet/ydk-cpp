@@ -59,7 +59,7 @@ class LptsPa::EntryXr : public ydk::Entity
 
         class Entry; //type: LptsPa::EntryXr::Entry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pa_oper::LptsPa::EntryXr::Entry> > entry;
+        ydk::YList entry;
         
 }; // LptsPa::EntryXr
 
@@ -175,7 +175,7 @@ class LptsPa::Entries : public ydk::Entity
 
         class Entry; //type: LptsPa::Entries::Entry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pa_oper::LptsPa::Entries::Entry> > entry;
+        ydk::YList entry;
         
 }; // LptsPa::Entries
 

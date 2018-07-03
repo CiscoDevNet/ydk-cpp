@@ -12,40 +12,41 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv6_ospfv3_cfg {
 
-Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit::OnStartup::OnStartup()
+Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::OnStartup::OnStartup()
     :
     wait_for_bgp{YType::boolean, "wait-for-bgp"},
     wait_time{YType::uint32, "wait-time"}
 {
 
-    yang_name = "on-startup"; yang_parent_name = "v6bit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "on-startup"; yang_parent_name = "v6bit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit::OnStartup::~OnStartup()
+Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::OnStartup::~OnStartup()
 {
 }
 
-bool Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit::OnStartup::has_data() const
+bool Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::OnStartup::has_data() const
 {
+    if (is_presence_container) return true;
     return wait_for_bgp.is_set
 	|| wait_time.is_set;
 }
 
-bool Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit::OnStartup::has_operation() const
+bool Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::OnStartup::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(wait_for_bgp.yfilter)
 	|| ydk::is_set(wait_time.yfilter);
 }
 
-std::string Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit::OnStartup::get_segment_path() const
+std::string Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::OnStartup::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on-startup";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit::OnStartup::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::OnStartup::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -56,19 +57,19 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit::OnStartup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::OnStartup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit::OnStartup::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::OnStartup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit::OnStartup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::OnStartup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "wait-for-bgp")
     {
@@ -84,7 +85,7 @@ void Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit::OnStartup::set_v
     }
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit::OnStartup::set_filter(const std::string & value_path, YFilter yfilter)
+void Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::OnStartup::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "wait-for-bgp")
     {
@@ -96,7 +97,7 @@ void Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit::OnStartup::set_f
     }
 }
 
-bool Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit::OnStartup::has_leaf_or_child_of_name(const std::string & name) const
+bool Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::OnStartup::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "wait-for-bgp" || name == "wait-time")
         return true;
@@ -113,12 +114,12 @@ Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::MaxMetric()
     enable{YType::empty, "enable"},
     on_proc_migration{YType::uint32, "on-proc-migration"},
     on_proc_restart{YType::uint32, "on-proc-restart"}
-    	,
+        ,
     on_startup(std::make_shared<Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::OnStartup>())
 {
     on_startup->parent = this;
 
-    yang_name = "max-metric"; yang_parent_name = "stub-router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-metric"; yang_parent_name = "stub-router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::~MaxMetric()
@@ -127,6 +128,7 @@ Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::~MaxMetric()
 
 bool Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::has_data() const
 {
+    if (is_presence_container) return true;
     return external_lsa.is_set
 	|| summary_lsa.is_set
 	|| on_switchover.is_set
@@ -303,7 +305,7 @@ Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::OnStartup::OnStar
     wait_time{YType::uint32, "wait-time"}
 {
 
-    yang_name = "on-startup"; yang_parent_name = "max-metric"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "on-startup"; yang_parent_name = "max-metric"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::OnStartup::~OnStartup()
@@ -312,6 +314,7 @@ Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::OnStartup::~OnSta
 
 bool Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::OnStartup::has_data() const
 {
+    if (is_presence_container) return true;
     return wait_for_bgp.is_set
 	|| wait_time.is_set;
 }
@@ -395,7 +398,7 @@ Ospfv3::Processes::Process::DefaultVrf::Bfd::Bfd()
     fast_detect_mode{YType::enumeration, "fast-detect-mode"}
 {
 
-    yang_name = "bfd"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Bfd::~Bfd()
@@ -404,6 +407,7 @@ Ospfv3::Processes::Process::DefaultVrf::Bfd::~Bfd()
 
 bool Ospfv3::Processes::Process::DefaultVrf::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return interval.is_set
 	|| detection_multiplier.is_set
 	|| fast_detect_mode.is_set;
@@ -499,7 +503,7 @@ Ospfv3::Processes::Process::DefaultVrf::DatabaseFilter::DatabaseFilter()
 {
     all->parent = this;
 
-    yang_name = "database-filter"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "database-filter"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::DatabaseFilter::~DatabaseFilter()
@@ -508,6 +512,7 @@ Ospfv3::Processes::Process::DefaultVrf::DatabaseFilter::~DatabaseFilter()
 
 bool Ospfv3::Processes::Process::DefaultVrf::DatabaseFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return (all !=  nullptr && all->has_data());
 }
 
@@ -579,7 +584,7 @@ Ospfv3::Processes::Process::DefaultVrf::DatabaseFilter::All::All()
     out{YType::empty, "out"}
 {
 
-    yang_name = "all"; yang_parent_name = "database-filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all"; yang_parent_name = "database-filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::DatabaseFilter::All::~All()
@@ -588,6 +593,7 @@ Ospfv3::Processes::Process::DefaultVrf::DatabaseFilter::All::~All()
 
 bool Ospfv3::Processes::Process::DefaultVrf::DatabaseFilter::All::has_data() const
 {
+    if (is_presence_container) return true;
     return out.is_set;
 }
 
@@ -651,6 +657,112 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseFilter::All::has_leaf_or_ch
     return false;
 }
 
+Ospfv3::Processes::Process::DefaultVrf::Capability::Capability()
+    :
+    type7_prefer{YType::boolean, "type7-prefer"},
+    vrf_lite{YType::boolean, "vrf-lite"},
+    type7_translate_zero_forwarding_addr{YType::boolean, "type7-translate-zero-forwarding-addr"}
+{
+
+    yang_name = "capability"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospfv3::Processes::Process::DefaultVrf::Capability::~Capability()
+{
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Capability::has_data() const
+{
+    if (is_presence_container) return true;
+    return type7_prefer.is_set
+	|| vrf_lite.is_set
+	|| type7_translate_zero_forwarding_addr.is_set;
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Capability::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type7_prefer.yfilter)
+	|| ydk::is_set(vrf_lite.yfilter)
+	|| ydk::is_set(type7_translate_zero_forwarding_addr.yfilter);
+}
+
+std::string Ospfv3::Processes::Process::DefaultVrf::Capability::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "capability";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::DefaultVrf::Capability::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type7_prefer.is_set || is_set(type7_prefer.yfilter)) leaf_name_data.push_back(type7_prefer.get_name_leafdata());
+    if (vrf_lite.is_set || is_set(vrf_lite.yfilter)) leaf_name_data.push_back(vrf_lite.get_name_leafdata());
+    if (type7_translate_zero_forwarding_addr.is_set || is_set(type7_translate_zero_forwarding_addr.yfilter)) leaf_name_data.push_back(type7_translate_zero_forwarding_addr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::Capability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::Capability::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Capability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type7-prefer")
+    {
+        type7_prefer = value;
+        type7_prefer.value_namespace = name_space;
+        type7_prefer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-lite")
+    {
+        vrf_lite = value;
+        vrf_lite.value_namespace = name_space;
+        vrf_lite.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type7-translate-zero-forwarding-addr")
+    {
+        type7_translate_zero_forwarding_addr = value;
+        type7_translate_zero_forwarding_addr.value_namespace = name_space;
+        type7_translate_zero_forwarding_addr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Capability::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type7-prefer")
+    {
+        type7_prefer.yfilter = yfilter;
+    }
+    if(value_path == "vrf-lite")
+    {
+        vrf_lite.yfilter = yfilter;
+    }
+    if(value_path == "type7-translate-zero-forwarding-addr")
+    {
+        type7_translate_zero_forwarding_addr.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Capability::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type7-prefer" || name == "vrf-lite" || name == "type7-translate-zero-forwarding-addr")
+        return true;
+    return false;
+}
+
 Ospfv3::Processes::Process::DefaultVrf::Authentication::Authentication()
     :
     enable{YType::boolean, "enable"},
@@ -659,7 +771,7 @@ Ospfv3::Processes::Process::DefaultVrf::Authentication::Authentication()
     password{YType::str, "password"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Authentication::~Authentication()
@@ -668,6 +780,7 @@ Ospfv3::Processes::Process::DefaultVrf::Authentication::~Authentication()
 
 bool Ospfv3::Processes::Process::DefaultVrf::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| spi.is_set
 	|| algorithm.is_set
@@ -779,7 +892,7 @@ Ospfv3::Processes::Process::DefaultVrf::GracefulRestart::GracefulRestart()
     lifetime{YType::uint32, "lifetime"}
 {
 
-    yang_name = "graceful-restart"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "graceful-restart"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::GracefulRestart::~GracefulRestart()
@@ -788,6 +901,7 @@ Ospfv3::Processes::Process::DefaultVrf::GracefulRestart::~GracefulRestart()
 
 bool Ospfv3::Processes::Process::DefaultVrf::GracefulRestart::has_data() const
 {
+    if (is_presence_container) return true;
     return interval.is_set
 	|| strict_lsa_checking.is_set
 	|| helper.is_set
@@ -908,7 +1022,7 @@ Ospfv3::Processes::Process::DefaultVrf::DefaultInformation::DefaultInformation()
     originate(nullptr) // presence node
 {
 
-    yang_name = "default-information"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default-information"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::DefaultInformation::~DefaultInformation()
@@ -917,6 +1031,7 @@ Ospfv3::Processes::Process::DefaultVrf::DefaultInformation::~DefaultInformation(
 
 bool Ospfv3::Processes::Process::DefaultVrf::DefaultInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return (originate !=  nullptr && originate->has_data());
 }
 
@@ -992,7 +1107,7 @@ Ospfv3::Processes::Process::DefaultVrf::DefaultInformation::Originate::Originate
     route_policy_name{YType::str, "route-policy-name"}
 {
 
-    yang_name = "originate"; yang_parent_name = "default-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "originate"; yang_parent_name = "default-information"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::DefaultInformation::Originate::~Originate()
@@ -1001,6 +1116,7 @@ Ospfv3::Processes::Process::DefaultVrf::DefaultInformation::Originate::~Originat
 
 bool Ospfv3::Processes::Process::DefaultVrf::DefaultInformation::Originate::has_data() const
 {
+    if (is_presence_container) return true;
     return always.is_set
 	|| metric.is_set
 	|| metric_type.is_set
@@ -1122,7 +1238,7 @@ Ospfv3::Processes::Process::DefaultVrf::ProcessScope::ProcessScope()
 {
     fast_reroute->parent = this;
 
-    yang_name = "process-scope"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "process-scope"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ProcessScope::~ProcessScope()
@@ -1131,6 +1247,7 @@ Ospfv3::Processes::Process::DefaultVrf::ProcessScope::~ProcessScope()
 
 bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::has_data() const
 {
+    if (is_presence_container) return true;
     return (fast_reroute !=  nullptr && fast_reroute->has_data());
 }
 
@@ -1200,14 +1317,14 @@ bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::has_leaf_or_child_of_
 Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::FastReroute()
     :
     fast_reroute_enable{YType::enumeration, "fast-reroute-enable"}
-    	,
+        ,
     per_link(std::make_shared<Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink>())
-	,per_prefix(std::make_shared<Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix>())
+    , per_prefix(std::make_shared<Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix>())
 {
     per_link->parent = this;
     per_prefix->parent = this;
 
-    yang_name = "fast-reroute"; yang_parent_name = "process-scope"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fast-reroute"; yang_parent_name = "process-scope"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::~FastReroute()
@@ -1216,6 +1333,7 @@ Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::~FastReroute(
 
 bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::has_data() const
 {
+    if (is_presence_container) return true;
     return fast_reroute_enable.is_set
 	|| (per_link !=  nullptr && per_link->has_data())
 	|| (per_prefix !=  nullptr && per_prefix->has_data());
@@ -1314,14 +1432,14 @@ bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::has_leaf
 Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::PerLink()
     :
     fast_reroute_use_candidate_only{YType::boolean, "fast-reroute-use-candidate-only"}
-    	,
+        ,
     candidate_interfaces(std::make_shared<Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces>())
-	,exclude_interfaces(std::make_shared<Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces>())
+    , exclude_interfaces(std::make_shared<Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces>())
 {
     candidate_interfaces->parent = this;
     exclude_interfaces->parent = this;
 
-    yang_name = "per-link"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "per-link"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::~PerLink()
@@ -1330,6 +1448,7 @@ Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::~Per
 
 bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::has_data() const
 {
+    if (is_presence_container) return true;
     return fast_reroute_use_candidate_only.is_set
 	|| (candidate_interfaces !=  nullptr && candidate_interfaces->has_data())
 	|| (exclude_interfaces !=  nullptr && exclude_interfaces->has_data());
@@ -1426,9 +1545,11 @@ bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink:
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterfaces()
+    :
+    candidate_interface(this, {"interface_name"})
 {
 
-    yang_name = "candidate-interfaces"; yang_parent_name = "per-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-interfaces"; yang_parent_name = "per-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::~CandidateInterfaces()
@@ -1437,7 +1558,8 @@ Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::Cand
 
 bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<candidate_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<candidate_interface.len(); index++)
     {
         if(candidate_interface[index]->has_data())
             return true;
@@ -1447,7 +1569,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink:
 
 bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<candidate_interface.size(); index++)
+    for (std::size_t index=0; index<candidate_interface.len(); index++)
     {
         if(candidate_interface[index]->has_operation())
             return true;
@@ -1477,7 +1599,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ProcessScope::Fa
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface>();
         c->parent = this;
-        candidate_interface.push_back(c);
+        candidate_interface.append(c);
         return c;
     }
 
@@ -1489,7 +1611,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : candidate_interface)
+    for (auto c : candidate_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1520,7 +1642,7 @@ Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::Cand
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "candidate-interface"; yang_parent_name = "candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-interface"; yang_parent_name = "candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::~CandidateInterface()
@@ -1529,6 +1651,7 @@ Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::Cand
 
 bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -1541,7 +1664,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink:
 std::string Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "candidate-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "candidate-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -1593,9 +1717,11 @@ bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink:
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterfaces()
+    :
+    exclude_interface(this, {"interface_name"})
 {
 
-    yang_name = "exclude-interfaces"; yang_parent_name = "per-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interfaces"; yang_parent_name = "per-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::~ExcludeInterfaces()
@@ -1604,7 +1730,8 @@ Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::Excl
 
 bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_data())
             return true;
@@ -1614,7 +1741,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink:
 
 bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_operation())
             return true;
@@ -1644,7 +1771,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ProcessScope::Fa
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        exclude_interface.push_back(c);
+        exclude_interface.append(c);
         return c;
     }
 
@@ -1656,7 +1783,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : exclude_interface)
+    for (auto c : exclude_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1687,7 +1814,7 @@ Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::Excl
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::~ExcludeInterface()
@@ -1696,6 +1823,7 @@ Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::Excl
 
 bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -1708,7 +1836,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink:
 std::string Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exclude-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "exclude-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -1762,14 +1891,14 @@ bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink:
 Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::PerPrefix()
     :
     fast_reroute_use_candidate_only{YType::boolean, "fast-reroute-use-candidate-only"}
-    	,
+        ,
     candidate_interfaces(std::make_shared<Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces>())
-	,exclude_interfaces(std::make_shared<Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces>())
+    , exclude_interfaces(std::make_shared<Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces>())
 {
     candidate_interfaces->parent = this;
     exclude_interfaces->parent = this;
 
-    yang_name = "per-prefix"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "per-prefix"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::~PerPrefix()
@@ -1778,6 +1907,7 @@ Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::~P
 
 bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return fast_reroute_use_candidate_only.is_set
 	|| (candidate_interfaces !=  nullptr && candidate_interfaces->has_data())
 	|| (exclude_interfaces !=  nullptr && exclude_interfaces->has_data());
@@ -1874,9 +2004,11 @@ bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefi
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterfaces()
+    :
+    candidate_interface(this, {"interface_name"})
 {
 
-    yang_name = "candidate-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::~CandidateInterfaces()
@@ -1885,7 +2017,8 @@ Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::Ca
 
 bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<candidate_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<candidate_interface.len(); index++)
     {
         if(candidate_interface[index]->has_data())
             return true;
@@ -1895,7 +2028,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefi
 
 bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<candidate_interface.size(); index++)
+    for (std::size_t index=0; index<candidate_interface.len(); index++)
     {
         if(candidate_interface[index]->has_operation())
             return true;
@@ -1925,7 +2058,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ProcessScope::Fa
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface>();
         c->parent = this;
-        candidate_interface.push_back(c);
+        candidate_interface.append(c);
         return c;
     }
 
@@ -1937,7 +2070,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : candidate_interface)
+    for (auto c : candidate_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1968,7 +2101,7 @@ Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::Ca
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "candidate-interface"; yang_parent_name = "candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-interface"; yang_parent_name = "candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::~CandidateInterface()
@@ -1977,6 +2110,7 @@ Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::Ca
 
 bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -1989,7 +2123,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefi
 std::string Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "candidate-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "candidate-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -2041,9 +2176,11 @@ bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefi
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterfaces()
+    :
+    exclude_interface(this, {"interface_name"})
 {
 
-    yang_name = "exclude-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::~ExcludeInterfaces()
@@ -2052,7 +2189,8 @@ Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::Ex
 
 bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_data())
             return true;
@@ -2062,7 +2200,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefi
 
 bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_operation())
             return true;
@@ -2092,7 +2230,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ProcessScope::Fa
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        exclude_interface.push_back(c);
+        exclude_interface.append(c);
         return c;
     }
 
@@ -2104,7 +2242,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : exclude_interface)
+    for (auto c : exclude_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2135,7 +2273,7 @@ Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::Ex
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::~ExcludeInterface()
@@ -2144,6 +2282,7 @@ Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::Ex
 
 bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -2156,7 +2295,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefi
 std::string Ospfv3::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exclude-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "exclude-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -2217,7 +2357,7 @@ Ospfv3::Processes::Process::DefaultVrf::Encryption::Encryption()
     authentication_password{YType::str, "authentication-password"}
 {
 
-    yang_name = "encryption"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encryption"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Encryption::~Encryption()
@@ -2226,6 +2366,7 @@ Ospfv3::Processes::Process::DefaultVrf::Encryption::~Encryption()
 
 bool Ospfv3::Processes::Process::DefaultVrf::Encryption::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| spi.is_set
 	|| encryption_algorithm.is_set
@@ -2360,7 +2501,7 @@ Ospfv3::Processes::Process::DefaultVrf::AutoCost::AutoCost()
     reference_bandwidth{YType::uint32, "reference-bandwidth"}
 {
 
-    yang_name = "auto-cost"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auto-cost"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::AutoCost::~AutoCost()
@@ -2369,6 +2510,7 @@ Ospfv3::Processes::Process::DefaultVrf::AutoCost::~AutoCost()
 
 bool Ospfv3::Processes::Process::DefaultVrf::AutoCost::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set
 	|| reference_bandwidth.is_set;
 }
@@ -2446,9 +2588,11 @@ bool Ospfv3::Processes::Process::DefaultVrf::AutoCost::has_leaf_or_child_of_name
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfs"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::~Vrfs()
@@ -2457,7 +2601,8 @@ Ospfv3::Processes::Process::Vrfs::~Vrfs()
 
 bool Ospfv3::Processes::Process::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -2467,7 +2612,7 @@ bool Ospfv3::Processes::Process::Vrfs::has_data() const
 
 bool Ospfv3::Processes::Process::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -2497,7 +2642,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::get_child_by_name(cons
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -2509,7 +2654,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2558,31 +2703,30 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Vrf()
     log_adjacency_changes{YType::enumeration, "log-adjacency-changes"},
     demand_circuit{YType::boolean, "demand-circuit"},
     transmit_delay{YType::uint32, "transmit-delay"}
-    	,
-    capability(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Capability>())
-	,domain_id(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DomainId>())
-	,area_addresses(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses>())
-	,timers(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Timers>())
-	,summary_prefixes(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes>())
-	,snmp(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Snmp>())
-	,fast_reroute(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute>())
-	,distance(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Distance>())
-	,maximum(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Maximum>())
-	,redistributes(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes>())
-	,ignore(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Ignore>())
-	,distribute_list_out(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut>())
-	,distribute_list(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DistributeList>())
-	,stub_router(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter>())
-	,bfd(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Bfd>())
-	,database_filter(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseFilter>())
-	,authentication(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Authentication>())
-	,graceful_restart(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::GracefulRestart>())
-	,default_information(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DefaultInformation>())
-	,process_scope(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope>())
-	,encryption(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Encryption>())
-	,auto_cost(nullptr) // presence node
+        ,
+    domain_id(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DomainId>())
+    , area_addresses(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses>())
+    , timers(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Timers>())
+    , summary_prefixes(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes>())
+    , snmp(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Snmp>())
+    , fast_reroute(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute>())
+    , distance(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Distance>())
+    , maximum(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Maximum>())
+    , redistributes(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes>())
+    , ignore(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Ignore>())
+    , distribute_list_out(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut>())
+    , distribute_list(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DistributeList>())
+    , stub_router(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter>())
+    , bfd(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Bfd>())
+    , database_filter(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseFilter>())
+    , capability(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Capability>())
+    , authentication(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Authentication>())
+    , graceful_restart(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::GracefulRestart>())
+    , default_information(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DefaultInformation>())
+    , process_scope(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope>())
+    , encryption(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Encryption>())
+    , auto_cost(nullptr) // presence node
 {
-    capability->parent = this;
     domain_id->parent = this;
     area_addresses->parent = this;
     timers->parent = this;
@@ -2598,13 +2742,14 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Vrf()
     stub_router->parent = this;
     bfd->parent = this;
     database_filter->parent = this;
+    capability->parent = this;
     authentication->parent = this;
     graceful_restart->parent = this;
     default_information->parent = this;
     process_scope->parent = this;
     encryption->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::~Vrf()
@@ -2613,6 +2758,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::~Vrf()
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| enable.is_set
 	|| snmpvrf_trap.is_set
@@ -2634,7 +2780,6 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::has_data() const
 	|| log_adjacency_changes.is_set
 	|| demand_circuit.is_set
 	|| transmit_delay.is_set
-	|| (capability !=  nullptr && capability->has_data())
 	|| (domain_id !=  nullptr && domain_id->has_data())
 	|| (area_addresses !=  nullptr && area_addresses->has_data())
 	|| (timers !=  nullptr && timers->has_data())
@@ -2650,6 +2795,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::has_data() const
 	|| (stub_router !=  nullptr && stub_router->has_data())
 	|| (bfd !=  nullptr && bfd->has_data())
 	|| (database_filter !=  nullptr && database_filter->has_data())
+	|| (capability !=  nullptr && capability->has_data())
 	|| (authentication !=  nullptr && authentication->has_data())
 	|| (graceful_restart !=  nullptr && graceful_restart->has_data())
 	|| (default_information !=  nullptr && default_information->has_data())
@@ -2682,7 +2828,6 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::has_operation() const
 	|| ydk::is_set(log_adjacency_changes.yfilter)
 	|| ydk::is_set(demand_circuit.yfilter)
 	|| ydk::is_set(transmit_delay.yfilter)
-	|| (capability !=  nullptr && capability->has_operation())
 	|| (domain_id !=  nullptr && domain_id->has_operation())
 	|| (area_addresses !=  nullptr && area_addresses->has_operation())
 	|| (timers !=  nullptr && timers->has_operation())
@@ -2698,6 +2843,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::has_operation() const
 	|| (stub_router !=  nullptr && stub_router->has_operation())
 	|| (bfd !=  nullptr && bfd->has_operation())
 	|| (database_filter !=  nullptr && database_filter->has_operation())
+	|| (capability !=  nullptr && capability->has_operation())
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
 	|| (default_information !=  nullptr && default_information->has_operation())
@@ -2709,7 +2855,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::has_operation() const
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -2745,15 +2892,6 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "capability")
-    {
-        if(capability == nullptr)
-        {
-            capability = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Capability>();
-        }
-        return capability;
-    }
-
     if(child_yang_name == "domain-id")
     {
         if(domain_id == nullptr)
@@ -2889,6 +3027,15 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::get_child_by_name
         return database_filter;
     }
 
+    if(child_yang_name == "capability")
+    {
+        if(capability == nullptr)
+        {
+            capability = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Capability>();
+        }
+        return capability;
+    }
+
     if(child_yang_name == "authentication")
     {
         if(authentication == nullptr)
@@ -2950,11 +3097,6 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(capability != nullptr)
-    {
-        children["capability"] = capability;
-    }
-
     if(domain_id != nullptr)
     {
         children["domain-id"] = domain_id;
@@ -3028,6 +3170,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     if(database_filter != nullptr)
     {
         children["database-filter"] = database_filter;
+    }
+
+    if(capability != nullptr)
+    {
+        children["capability"] = capability;
     }
 
     if(authentication != nullptr)
@@ -3283,84 +3430,7 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::set_filter(const std::string & value
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "capability" || name == "domain-id" || name == "area-addresses" || name == "timers" || name == "summary-prefixes" || name == "snmp" || name == "fast-reroute" || name == "distance" || name == "maximum" || name == "redistributes" || name == "ignore" || name == "distribute-list-out" || name == "distribute-list" || name == "stub-router" || name == "bfd" || name == "database-filter" || name == "authentication" || name == "graceful-restart" || name == "default-information" || name == "process-scope" || name == "encryption" || name == "auto-cost" || name == "vrf-name" || name == "enable" || name == "snmpvrf-trap" || name == "prefix-suppression" || name == "retransmit-interval" || name == "passive" || name == "default-metric" || name == "flood-reduction" || name == "hello-interval" || name == "priority" || name == "cost" || name == "dead-interval" || name == "packet-size" || name == "instance" || name == "spf-prefix-priority-policy" || name == "router-id" || name == "network" || name == "mtu-ignore" || name == "log-adjacency-changes" || name == "demand-circuit" || name == "transmit-delay")
-        return true;
-    return false;
-}
-
-Ospfv3::Processes::Process::Vrfs::Vrf::Capability::Capability()
-    :
-    vrf_lite{YType::boolean, "vrf-lite"}
-{
-
-    yang_name = "capability"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Ospfv3::Processes::Process::Vrfs::Vrf::Capability::~Capability()
-{
-}
-
-bool Ospfv3::Processes::Process::Vrfs::Vrf::Capability::has_data() const
-{
-    return vrf_lite.is_set;
-}
-
-bool Ospfv3::Processes::Process::Vrfs::Vrf::Capability::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(vrf_lite.yfilter);
-}
-
-std::string Ospfv3::Processes::Process::Vrfs::Vrf::Capability::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "capability";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs::Vrf::Capability::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (vrf_lite.is_set || is_set(vrf_lite.yfilter)) leaf_name_data.push_back(vrf_lite.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Capability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Capability::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Ospfv3::Processes::Process::Vrfs::Vrf::Capability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "vrf-lite")
-    {
-        vrf_lite = value;
-        vrf_lite.value_namespace = name_space;
-        vrf_lite.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospfv3::Processes::Process::Vrfs::Vrf::Capability::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "vrf-lite")
-    {
-        vrf_lite.yfilter = yfilter;
-    }
-}
-
-bool Ospfv3::Processes::Process::Vrfs::Vrf::Capability::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vrf-lite")
+    if(name == "domain-id" || name == "area-addresses" || name == "timers" || name == "summary-prefixes" || name == "snmp" || name == "fast-reroute" || name == "distance" || name == "maximum" || name == "redistributes" || name == "ignore" || name == "distribute-list-out" || name == "distribute-list" || name == "stub-router" || name == "bfd" || name == "database-filter" || name == "capability" || name == "authentication" || name == "graceful-restart" || name == "default-information" || name == "process-scope" || name == "encryption" || name == "auto-cost" || name == "vrf-name" || name == "enable" || name == "snmpvrf-trap" || name == "prefix-suppression" || name == "retransmit-interval" || name == "passive" || name == "default-metric" || name == "flood-reduction" || name == "hello-interval" || name == "priority" || name == "cost" || name == "dead-interval" || name == "packet-size" || name == "instance" || name == "spf-prefix-priority-policy" || name == "router-id" || name == "network" || name == "mtu-ignore" || name == "log-adjacency-changes" || name == "demand-circuit" || name == "transmit-delay")
         return true;
     return false;
 }
@@ -3368,12 +3438,12 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Capability::has_leaf_or_child_of_nam
 Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::DomainId()
     :
     secondary_domain_ids(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::SecondaryDomainIds>())
-	,primary_domain_id(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::PrimaryDomainId>())
+    , primary_domain_id(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::PrimaryDomainId>())
 {
     secondary_domain_ids->parent = this;
     primary_domain_id->parent = this;
 
-    yang_name = "domain-id"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "domain-id"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::~DomainId()
@@ -3382,6 +3452,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::~DomainId()
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::has_data() const
 {
+    if (is_presence_container) return true;
     return (secondary_domain_ids !=  nullptr && secondary_domain_ids->has_data())
 	|| (primary_domain_id !=  nullptr && primary_domain_id->has_data());
 }
@@ -3465,9 +3536,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::has_leaf_or_child_of_name(
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::SecondaryDomainIds::SecondaryDomainIds()
+    :
+    secondary_domain_id(this, {"domain_id_type", "domain_id_name"})
 {
 
-    yang_name = "secondary-domain-ids"; yang_parent_name = "domain-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secondary-domain-ids"; yang_parent_name = "domain-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::SecondaryDomainIds::~SecondaryDomainIds()
@@ -3476,7 +3549,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::SecondaryDomainIds::~SecondaryD
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::SecondaryDomainIds::has_data() const
 {
-    for (std::size_t index=0; index<secondary_domain_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<secondary_domain_id.len(); index++)
     {
         if(secondary_domain_id[index]->has_data())
             return true;
@@ -3486,7 +3560,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::SecondaryDomainIds::has_da
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::SecondaryDomainIds::has_operation() const
 {
-    for (std::size_t index=0; index<secondary_domain_id.size(); index++)
+    for (std::size_t index=0; index<secondary_domain_id.len(); index++)
     {
         if(secondary_domain_id[index]->has_operation())
             return true;
@@ -3516,7 +3590,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::Seconda
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::SecondaryDomainIds::SecondaryDomainId>();
         c->parent = this;
-        secondary_domain_id.push_back(c);
+        secondary_domain_id.append(c);
         return c;
     }
 
@@ -3528,7 +3602,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : secondary_domain_id)
+    for (auto c : secondary_domain_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3560,7 +3634,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::SecondaryDomainIds::SecondaryDo
     domain_id_name{YType::str, "domain-id-name"}
 {
 
-    yang_name = "secondary-domain-id"; yang_parent_name = "secondary-domain-ids"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secondary-domain-id"; yang_parent_name = "secondary-domain-ids"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::SecondaryDomainIds::SecondaryDomainId::~SecondaryDomainId()
@@ -3569,6 +3643,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::SecondaryDomainIds::SecondaryDo
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::SecondaryDomainIds::SecondaryDomainId::has_data() const
 {
+    if (is_presence_container) return true;
     return domain_id_type.is_set
 	|| domain_id_name.is_set;
 }
@@ -3583,7 +3658,9 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::SecondaryDomainIds::Second
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::SecondaryDomainIds::SecondaryDomainId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "secondary-domain-id" <<"[domain-id-type='" <<domain_id_type <<"']" <<"[domain-id-name='" <<domain_id_name <<"']";
+    path_buffer << "secondary-domain-id";
+    ADD_KEY_TOKEN(domain_id_type, "domain-id-type");
+    ADD_KEY_TOKEN(domain_id_name, "domain-id-name");
     return path_buffer.str();
 }
 
@@ -3651,7 +3728,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::PrimaryDomainId::PrimaryDomainI
     domain_id_name{YType::str, "domain-id-name"}
 {
 
-    yang_name = "primary-domain-id"; yang_parent_name = "domain-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "primary-domain-id"; yang_parent_name = "domain-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::PrimaryDomainId::~PrimaryDomainId()
@@ -3660,6 +3737,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::PrimaryDomainId::~PrimaryDomain
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::PrimaryDomainId::has_data() const
 {
+    if (is_presence_container) return true;
     return domain_id_type.is_set
 	|| domain_id_name.is_set;
 }
@@ -3737,9 +3815,12 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DomainId::PrimaryDomainId::has_leaf_
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddresses()
+    :
+    area_address(this, {"address"})
+    , area_area_id(this, {"area_id"})
 {
 
-    yang_name = "area-addresses"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "area-addresses"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::~AreaAddresses()
@@ -3748,12 +3829,13 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::~AreaAddresses()
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::has_data() const
 {
-    for (std::size_t index=0; index<area_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<area_address.len(); index++)
     {
         if(area_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<area_area_id.size(); index++)
+    for (std::size_t index=0; index<area_area_id.len(); index++)
     {
         if(area_area_id[index]->has_data())
             return true;
@@ -3763,12 +3845,12 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::has_data() const
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<area_address.size(); index++)
+    for (std::size_t index=0; index<area_address.len(); index++)
     {
         if(area_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<area_area_id.size(); index++)
+    for (std::size_t index=0; index<area_area_id.len(); index++)
     {
         if(area_area_id[index]->has_operation())
             return true;
@@ -3798,7 +3880,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::ge
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress>();
         c->parent = this;
-        area_address.push_back(c);
+        area_address.append(c);
         return c;
     }
 
@@ -3806,7 +3888,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::ge
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId>();
         c->parent = this;
-        area_area_id.push_back(c);
+        area_area_id.append(c);
         return c;
     }
 
@@ -3818,7 +3900,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : area_address)
+    for (auto c : area_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3827,7 +3909,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     }
 
     count = 0;
-    for (auto const & c : area_area_id)
+    for (auto c : area_area_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3861,6 +3943,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaAddress()
     instance{YType::uint32, "instance"},
     demand_circuit{YType::boolean, "demand-circuit"},
     priority{YType::uint32, "priority"},
+    type7_translate_always{YType::boolean, "type7-translate-always"},
     prefix_suppression{YType::boolean, "prefix-suppression"},
     enable{YType::empty, "enable"},
     mtu_ignore{YType::boolean, "mtu-ignore"},
@@ -3874,18 +3957,18 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaAddress()
     network{YType::enumeration, "network"},
     transmit_delay{YType::uint32, "transmit-delay"},
     cost{YType::uint32, "cost"}
-    	,
+        ,
     authentication(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Authentication>())
-	,bfd(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Bfd>())
-	,ranges(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Ranges>())
-	,encryption(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Encryption>())
-	,nssa(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Nssa>())
-	,database_filter(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::DatabaseFilter>())
-	,distribute_list(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::DistributeList>())
-	,interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces>())
-	,area_scope(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope>())
-	,sham_links(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks>())
-	,virtual_links(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks>())
+    , bfd(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Bfd>())
+    , ranges(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Ranges>())
+    , encryption(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Encryption>())
+    , nssa(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Nssa>())
+    , database_filter(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::DatabaseFilter>())
+    , distribute_list(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::DistributeList>())
+    , interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces>())
+    , area_scope(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope>())
+    , sham_links(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks>())
+    , virtual_links(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks>())
 {
     authentication->parent = this;
     bfd->parent = this;
@@ -3899,7 +3982,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaAddress()
     sham_links->parent = this;
     virtual_links->parent = this;
 
-    yang_name = "area-address"; yang_parent_name = "area-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "area-address"; yang_parent_name = "area-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::~AreaAddress()
@@ -3908,12 +3991,14 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::~AreaAddress(
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| stub.is_set
 	|| packet_size.is_set
 	|| instance.is_set
 	|| demand_circuit.is_set
 	|| priority.is_set
+	|| type7_translate_always.is_set
 	|| prefix_suppression.is_set
 	|| enable.is_set
 	|| mtu_ignore.is_set
@@ -3949,6 +4034,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::has_oper
 	|| ydk::is_set(instance.yfilter)
 	|| ydk::is_set(demand_circuit.yfilter)
 	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(type7_translate_always.yfilter)
 	|| ydk::is_set(prefix_suppression.yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(mtu_ignore.yfilter)
@@ -3978,7 +4064,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::has_oper
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "area-address" <<"[address='" <<address <<"']";
+    path_buffer << "area-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -3992,6 +4079,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
     if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
     if (demand_circuit.is_set || is_set(demand_circuit.yfilter)) leaf_name_data.push_back(demand_circuit.get_name_leafdata());
     if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (type7_translate_always.is_set || is_set(type7_translate_always.yfilter)) leaf_name_data.push_back(type7_translate_always.get_name_leafdata());
     if (prefix_suppression.is_set || is_set(prefix_suppression.yfilter)) leaf_name_data.push_back(prefix_suppression.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (mtu_ignore.is_set || is_set(mtu_ignore.yfilter)) leaf_name_data.push_back(mtu_ignore.get_name_leafdata());
@@ -4214,6 +4302,12 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::set_valu
         priority.value_namespace = name_space;
         priority.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "type7-translate-always")
+    {
+        type7_translate_always = value;
+        type7_translate_always.value_namespace = name_space;
+        type7_translate_always.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "prefix-suppression")
     {
         prefix_suppression = value;
@@ -4320,6 +4414,10 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::set_filt
     {
         priority.yfilter = yfilter;
     }
+    if(value_path == "type7-translate-always")
+    {
+        type7_translate_always.yfilter = yfilter;
+    }
     if(value_path == "prefix-suppression")
     {
         prefix_suppression.yfilter = yfilter;
@@ -4376,7 +4474,7 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::set_filt
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "authentication" || name == "bfd" || name == "ranges" || name == "encryption" || name == "nssa" || name == "database-filter" || name == "distribute-list" || name == "interfaces" || name == "area-scope" || name == "sham-links" || name == "virtual-links" || name == "address" || name == "stub" || name == "packet-size" || name == "instance" || name == "demand-circuit" || name == "priority" || name == "prefix-suppression" || name == "enable" || name == "mtu-ignore" || name == "passive" || name == "hello-interval" || name == "dead-interval" || name == "default-cost" || name == "flood-reduction" || name == "retransmit-interval" || name == "ldp-sync" || name == "network" || name == "transmit-delay" || name == "cost")
+    if(name == "authentication" || name == "bfd" || name == "ranges" || name == "encryption" || name == "nssa" || name == "database-filter" || name == "distribute-list" || name == "interfaces" || name == "area-scope" || name == "sham-links" || name == "virtual-links" || name == "address" || name == "stub" || name == "packet-size" || name == "instance" || name == "demand-circuit" || name == "priority" || name == "type7-translate-always" || name == "prefix-suppression" || name == "enable" || name == "mtu-ignore" || name == "passive" || name == "hello-interval" || name == "dead-interval" || name == "default-cost" || name == "flood-reduction" || name == "retransmit-interval" || name == "ldp-sync" || name == "network" || name == "transmit-delay" || name == "cost")
         return true;
     return false;
 }
@@ -4389,7 +4487,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Authenticatio
     password{YType::str, "password"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Authentication::~Authentication()
@@ -4398,6 +4496,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Authenticatio
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| spi.is_set
 	|| algorithm.is_set
@@ -4507,7 +4606,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Bfd::Bfd()
     fast_detect_mode{YType::enumeration, "fast-detect-mode"}
 {
 
-    yang_name = "bfd"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Bfd::~Bfd()
@@ -4516,6 +4615,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Bfd::~Bfd()
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return detection_multiplier.is_set
 	|| interval.is_set
 	|| fast_detect_mode.is_set;
@@ -4606,9 +4706,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Bfd::has
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Ranges::Ranges()
+    :
+    range(this, {"prefix", "prefix_length"})
 {
 
-    yang_name = "ranges"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ranges"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Ranges::~Ranges()
@@ -4617,7 +4719,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Ranges::~Rang
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Ranges::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_data())
             return true;
@@ -4627,7 +4730,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Ranges::
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Ranges::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_operation())
             return true;
@@ -4657,7 +4760,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Ranges::Range>();
         c->parent = this;
-        range.push_back(c);
+        range.append(c);
         return c;
     }
 
@@ -4669,7 +4772,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : range)
+    for (auto c : range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4703,7 +4806,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Ranges::Range
     cost{YType::uint32, "cost"}
 {
 
-    yang_name = "range"; yang_parent_name = "ranges"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "range"; yang_parent_name = "ranges"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Ranges::Range::~Range()
@@ -4712,6 +4815,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Ranges::Range
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Ranges::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| not_advertise.is_set
@@ -4730,7 +4834,9 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Ranges::
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Ranges::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "range" <<"[prefix='" <<prefix <<"']" <<"[prefix-length='" <<prefix_length <<"']";
+    path_buffer << "range";
+    ADD_KEY_TOKEN(prefix, "prefix");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -4824,7 +4930,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Encryption::E
     authentication_password{YType::str, "authentication-password"}
 {
 
-    yang_name = "encryption"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encryption"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Encryption::~Encryption()
@@ -4833,6 +4939,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Encryption::~
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Encryption::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| spi.is_set
 	|| encryption_algorithm.is_set
@@ -4970,7 +5077,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Nssa::Nssa()
     no_summary{YType::empty, "no-summary"}
 {
 
-    yang_name = "nssa"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nssa"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Nssa::~Nssa()
@@ -4979,6 +5086,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Nssa::~Nssa()
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Nssa::has_data() const
 {
+    if (is_presence_container) return true;
     return no_redistribution.is_set
 	|| default_info_originate.is_set
 	|| metric.is_set
@@ -5100,7 +5208,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::DatabaseFilte
 {
     all->parent = this;
 
-    yang_name = "database-filter"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "database-filter"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::DatabaseFilter::~DatabaseFilter()
@@ -5109,6 +5217,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::DatabaseFilte
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::DatabaseFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return (all !=  nullptr && all->has_data());
 }
 
@@ -5180,7 +5289,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::DatabaseFilte
     out{YType::boolean, "out"}
 {
 
-    yang_name = "all"; yang_parent_name = "database-filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all"; yang_parent_name = "database-filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::DatabaseFilter::All::~All()
@@ -5189,6 +5298,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::DatabaseFilte
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::DatabaseFilter::All::has_data() const
 {
+    if (is_presence_container) return true;
     return out.is_set;
 }
 
@@ -5258,7 +5368,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::DistributeLis
 {
     in->parent = this;
 
-    yang_name = "distribute-list"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "distribute-list"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::DistributeList::~DistributeList()
@@ -5267,6 +5377,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::DistributeLis
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::DistributeList::has_data() const
 {
+    if (is_presence_container) return true;
     return (in !=  nullptr && in->has_data());
 }
 
@@ -5338,7 +5449,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::DistributeLis
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "in"; yang_parent_name = "distribute-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in"; yang_parent_name = "distribute-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::DistributeList::In::~In()
@@ -5347,6 +5458,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::DistributeLis
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::DistributeList::In::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_list.is_set;
 }
 
@@ -5411,9 +5523,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Distribu
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::~Interfaces()
@@ -5422,7 +5536,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::~
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -5432,7 +5547,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfac
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -5462,7 +5577,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -5474,7 +5589,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5519,14 +5634,14 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
     priority{YType::uint32, "priority"},
     network{YType::enumeration, "network"},
     demand_circuit{YType::boolean, "demand-circuit"}
-    	,
+        ,
     authentication(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Authentication>())
-	,neighbors(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Neighbors>())
-	,encryption(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Encryption>())
-	,bfd(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Bfd>())
-	,database_filter(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::DatabaseFilter>())
-	,distribute_list(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::DistributeList>())
-	,fast_reroute(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute>())
+    , neighbors(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Neighbors>())
+    , encryption(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Encryption>())
+    , bfd(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Bfd>())
+    , database_filter(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::DatabaseFilter>())
+    , distribute_list(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::DistributeList>())
+    , fast_reroute(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute>())
 {
     authentication->parent = this;
     neighbors->parent = this;
@@ -5536,7 +5651,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
     distribute_list->parent = this;
     fast_reroute->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::~Interface()
@@ -5545,6 +5660,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| enable.is_set
 	|| dead_interval.is_set
@@ -5603,7 +5719,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfac
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -5936,7 +6053,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
     password{YType::str, "password"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Authentication::~Authentication()
@@ -5945,6 +6062,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| spi.is_set
 	|| algorithm.is_set
@@ -6048,9 +6166,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfac
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Neighbors::Neighbors()
+    :
+    neighbor(this, {"neighbor_address"})
 {
 
-    yang_name = "neighbors"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbors"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Neighbors::~Neighbors()
@@ -6059,7 +6179,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -6069,7 +6190,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfac
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -6099,7 +6220,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -6111,7 +6232,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6147,7 +6268,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
     zone{YType::str, "zone"}
 {
 
-    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Neighbors::Neighbor::~Neighbor()
@@ -6156,6 +6277,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Neighbors::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_address.is_set
 	|| priority.is_set
 	|| poll_interval.is_set
@@ -6178,7 +6300,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfac
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Neighbors::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[neighbor-address='" <<neighbor_address <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(neighbor_address, "neighbor-address");
     return path_buffer.str();
 }
 
@@ -6294,7 +6417,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
     authentication_password{YType::str, "authentication-password"}
 {
 
-    yang_name = "encryption"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encryption"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Encryption::~Encryption()
@@ -6303,6 +6426,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Encryption::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| spi.is_set
 	|| encryption_algorithm.is_set
@@ -6438,7 +6562,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
     detection_multiplier{YType::uint32, "detection-multiplier"}
 {
 
-    yang_name = "bfd"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Bfd::~Bfd()
@@ -6447,6 +6571,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return interval.is_set
 	|| fast_detect_mode.is_set
 	|| detection_multiplier.is_set;
@@ -6542,7 +6667,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 {
     all->parent = this;
 
-    yang_name = "database-filter"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "database-filter"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::DatabaseFilter::~DatabaseFilter()
@@ -6551,6 +6676,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::DatabaseFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return (all !=  nullptr && all->has_data());
 }
 
@@ -6622,7 +6748,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
     out{YType::boolean, "out"}
 {
 
-    yang_name = "all"; yang_parent_name = "database-filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all"; yang_parent_name = "database-filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::DatabaseFilter::All::~All()
@@ -6631,6 +6757,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::DatabaseFilter::All::has_data() const
 {
+    if (is_presence_container) return true;
     return out.is_set;
 }
 
@@ -6700,7 +6827,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 {
     in->parent = this;
 
-    yang_name = "distribute-list"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "distribute-list"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::DistributeList::~DistributeList()
@@ -6709,6 +6836,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::DistributeList::has_data() const
 {
+    if (is_presence_container) return true;
     return (in !=  nullptr && in->has_data());
 }
 
@@ -6780,7 +6908,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "in"; yang_parent_name = "distribute-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in"; yang_parent_name = "distribute-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::DistributeList::In::~In()
@@ -6789,6 +6917,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::DistributeList::In::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_list.is_set;
 }
 
@@ -6855,14 +6984,14 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfac
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::FastReroute()
     :
     fast_reroute_enable{YType::enumeration, "fast-reroute-enable"}
-    	,
+        ,
     per_link(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink>())
-	,per_prefix(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix>())
+    , per_prefix(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix>())
 {
     per_link->parent = this;
     per_prefix->parent = this;
 
-    yang_name = "fast-reroute"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fast-reroute"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::~FastReroute()
@@ -6871,6 +7000,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::has_data() const
 {
+    if (is_presence_container) return true;
     return fast_reroute_enable.is_set
 	|| (per_link !=  nullptr && per_link->has_data())
 	|| (per_prefix !=  nullptr && per_prefix->has_data());
@@ -6969,14 +7099,14 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfac
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::PerLink()
     :
     fast_reroute_use_candidate_only{YType::boolean, "fast-reroute-use-candidate-only"}
-    	,
+        ,
     candidate_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces>())
-	,exclude_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces>())
+    , exclude_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces>())
 {
     candidate_interfaces->parent = this;
     exclude_interfaces->parent = this;
 
-    yang_name = "per-link"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "per-link"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::~PerLink()
@@ -6985,6 +7115,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::has_data() const
 {
+    if (is_presence_container) return true;
     return fast_reroute_use_candidate_only.is_set
 	|| (candidate_interfaces !=  nullptr && candidate_interfaces->has_data())
 	|| (exclude_interfaces !=  nullptr && exclude_interfaces->has_data());
@@ -7081,9 +7212,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfac
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces::CandidateInterfaces()
+    :
+    candidate_interface(this, {"interface_name"})
 {
 
-    yang_name = "candidate-interfaces"; yang_parent_name = "per-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-interfaces"; yang_parent_name = "per-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces::~CandidateInterfaces()
@@ -7092,7 +7225,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<candidate_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<candidate_interface.len(); index++)
     {
         if(candidate_interface[index]->has_data())
             return true;
@@ -7102,7 +7236,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfac
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<candidate_interface.size(); index++)
+    for (std::size_t index=0; index<candidate_interface.len(); index++)
     {
         if(candidate_interface[index]->has_operation())
             return true;
@@ -7132,7 +7266,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces::CandidateInterface>();
         c->parent = this;
-        candidate_interface.push_back(c);
+        candidate_interface.append(c);
         return c;
     }
 
@@ -7144,7 +7278,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : candidate_interface)
+    for (auto c : candidate_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7175,7 +7309,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "candidate-interface"; yang_parent_name = "candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-interface"; yang_parent_name = "candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::~CandidateInterface()
@@ -7184,6 +7318,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -7196,7 +7331,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfac
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "candidate-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "candidate-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -7248,9 +7384,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfac
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterfaces()
+    :
+    exclude_interface(this, {"interface_name"})
 {
 
-    yang_name = "exclude-interfaces"; yang_parent_name = "per-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interfaces"; yang_parent_name = "per-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces::~ExcludeInterfaces()
@@ -7259,7 +7397,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_data())
             return true;
@@ -7269,7 +7408,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfac
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_operation())
             return true;
@@ -7299,7 +7438,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        exclude_interface.push_back(c);
+        exclude_interface.append(c);
         return c;
     }
 
@@ -7311,7 +7450,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : exclude_interface)
+    for (auto c : exclude_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7342,7 +7481,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::~ExcludeInterface()
@@ -7351,6 +7490,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -7363,7 +7503,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfac
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exclude-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "exclude-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -7417,14 +7558,14 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfac
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::PerPrefix()
     :
     fast_reroute_use_candidate_only{YType::boolean, "fast-reroute-use-candidate-only"}
-    	,
+        ,
     candidate_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces>())
-	,exclude_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces>())
+    , exclude_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces>())
 {
     candidate_interfaces->parent = this;
     exclude_interfaces->parent = this;
 
-    yang_name = "per-prefix"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "per-prefix"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::~PerPrefix()
@@ -7433,6 +7574,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return fast_reroute_use_candidate_only.is_set
 	|| (candidate_interfaces !=  nullptr && candidate_interfaces->has_data())
 	|| (exclude_interfaces !=  nullptr && exclude_interfaces->has_data());
@@ -7529,9 +7671,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfac
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterfaces()
+    :
+    candidate_interface(this, {"interface_name"})
 {
 
-    yang_name = "candidate-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces::~CandidateInterfaces()
@@ -7540,7 +7684,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<candidate_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<candidate_interface.len(); index++)
     {
         if(candidate_interface[index]->has_data())
             return true;
@@ -7550,7 +7695,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfac
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<candidate_interface.size(); index++)
+    for (std::size_t index=0; index<candidate_interface.len(); index++)
     {
         if(candidate_interface[index]->has_operation())
             return true;
@@ -7580,7 +7725,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface>();
         c->parent = this;
-        candidate_interface.push_back(c);
+        candidate_interface.append(c);
         return c;
     }
 
@@ -7592,7 +7737,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : candidate_interface)
+    for (auto c : candidate_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7623,7 +7768,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "candidate-interface"; yang_parent_name = "candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-interface"; yang_parent_name = "candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::~CandidateInterface()
@@ -7632,6 +7777,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -7644,7 +7790,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfac
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "candidate-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "candidate-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -7696,9 +7843,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfac
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterfaces()
+    :
+    exclude_interface(this, {"interface_name"})
 {
 
-    yang_name = "exclude-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces::~ExcludeInterfaces()
@@ -7707,7 +7856,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_data())
             return true;
@@ -7717,7 +7867,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfac
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_operation())
             return true;
@@ -7747,7 +7897,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        exclude_interface.push_back(c);
+        exclude_interface.append(c);
         return c;
     }
 
@@ -7759,7 +7909,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : exclude_interface)
+    for (auto c : exclude_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7790,7 +7940,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::~ExcludeInterface()
@@ -7799,6 +7949,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -7811,7 +7962,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfac
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exclude-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "exclude-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -7868,7 +8020,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Ar
 {
     fast_reroute->parent = this;
 
-    yang_name = "area-scope"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "area-scope"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::~AreaScope()
@@ -7877,6 +8029,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::~A
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::has_data() const
 {
+    if (is_presence_container) return true;
     return (fast_reroute !=  nullptr && fast_reroute->has_data());
 }
 
@@ -7946,14 +8099,14 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScop
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::FastReroute()
     :
     fast_reroute_enable{YType::enumeration, "fast-reroute-enable"}
-    	,
+        ,
     per_link(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink>())
-	,per_prefix(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix>())
+    , per_prefix(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix>())
 {
     per_link->parent = this;
     per_prefix->parent = this;
 
-    yang_name = "fast-reroute"; yang_parent_name = "area-scope"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fast-reroute"; yang_parent_name = "area-scope"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::~FastReroute()
@@ -7962,6 +8115,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Fa
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::has_data() const
 {
+    if (is_presence_container) return true;
     return fast_reroute_enable.is_set
 	|| (per_link !=  nullptr && per_link->has_data())
 	|| (per_prefix !=  nullptr && per_prefix->has_data());
@@ -8060,14 +8214,14 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScop
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::PerLink()
     :
     fast_reroute_use_candidate_only{YType::boolean, "fast-reroute-use-candidate-only"}
-    	,
+        ,
     candidate_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::CandidateInterfaces>())
-	,exclude_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::ExcludeInterfaces>())
+    , exclude_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::ExcludeInterfaces>())
 {
     candidate_interfaces->parent = this;
     exclude_interfaces->parent = this;
 
-    yang_name = "per-link"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "per-link"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::~PerLink()
@@ -8076,6 +8230,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Fa
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::has_data() const
 {
+    if (is_presence_container) return true;
     return fast_reroute_use_candidate_only.is_set
 	|| (candidate_interfaces !=  nullptr && candidate_interfaces->has_data())
 	|| (exclude_interfaces !=  nullptr && exclude_interfaces->has_data());
@@ -8172,9 +8327,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScop
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterfaces()
+    :
+    candidate_interface(this, {"interface_name"})
 {
 
-    yang_name = "candidate-interfaces"; yang_parent_name = "per-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-interfaces"; yang_parent_name = "per-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::CandidateInterfaces::~CandidateInterfaces()
@@ -8183,7 +8340,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Fa
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::CandidateInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<candidate_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<candidate_interface.len(); index++)
     {
         if(candidate_interface[index]->has_data())
             return true;
@@ -8193,7 +8351,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScop
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::CandidateInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<candidate_interface.size(); index++)
+    for (std::size_t index=0; index<candidate_interface.len(); index++)
     {
         if(candidate_interface[index]->has_operation())
             return true;
@@ -8223,7 +8381,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface>();
         c->parent = this;
-        candidate_interface.push_back(c);
+        candidate_interface.append(c);
         return c;
     }
 
@@ -8235,7 +8393,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : candidate_interface)
+    for (auto c : candidate_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8266,7 +8424,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Fa
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "candidate-interface"; yang_parent_name = "candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-interface"; yang_parent_name = "candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::~CandidateInterface()
@@ -8275,6 +8433,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Fa
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -8287,7 +8446,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScop
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "candidate-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "candidate-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -8339,9 +8499,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScop
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterfaces()
+    :
+    exclude_interface(this, {"interface_name"})
 {
 
-    yang_name = "exclude-interfaces"; yang_parent_name = "per-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interfaces"; yang_parent_name = "per-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::ExcludeInterfaces::~ExcludeInterfaces()
@@ -8350,7 +8512,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Fa
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::ExcludeInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_data())
             return true;
@@ -8360,7 +8523,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScop
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::ExcludeInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_operation())
             return true;
@@ -8390,7 +8553,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        exclude_interface.push_back(c);
+        exclude_interface.append(c);
         return c;
     }
 
@@ -8402,7 +8565,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : exclude_interface)
+    for (auto c : exclude_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8433,7 +8596,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Fa
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::~ExcludeInterface()
@@ -8442,6 +8605,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Fa
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -8454,7 +8618,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScop
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exclude-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "exclude-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -8508,14 +8673,14 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScop
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::PerPrefix()
     :
     fast_reroute_use_candidate_only{YType::boolean, "fast-reroute-use-candidate-only"}
-    	,
+        ,
     candidate_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::CandidateInterfaces>())
-	,exclude_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces>())
+    , exclude_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces>())
 {
     candidate_interfaces->parent = this;
     exclude_interfaces->parent = this;
 
-    yang_name = "per-prefix"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "per-prefix"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::~PerPrefix()
@@ -8524,6 +8689,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Fa
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return fast_reroute_use_candidate_only.is_set
 	|| (candidate_interfaces !=  nullptr && candidate_interfaces->has_data())
 	|| (exclude_interfaces !=  nullptr && exclude_interfaces->has_data());
@@ -8620,9 +8786,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScop
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterfaces()
+    :
+    candidate_interface(this, {"interface_name"})
 {
 
-    yang_name = "candidate-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::~CandidateInterfaces()
@@ -8631,7 +8799,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Fa
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<candidate_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<candidate_interface.len(); index++)
     {
         if(candidate_interface[index]->has_data())
             return true;
@@ -8641,7 +8810,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScop
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<candidate_interface.size(); index++)
+    for (std::size_t index=0; index<candidate_interface.len(); index++)
     {
         if(candidate_interface[index]->has_operation())
             return true;
@@ -8671,7 +8840,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface>();
         c->parent = this;
-        candidate_interface.push_back(c);
+        candidate_interface.append(c);
         return c;
     }
 
@@ -8683,7 +8852,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : candidate_interface)
+    for (auto c : candidate_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8714,7 +8883,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Fa
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "candidate-interface"; yang_parent_name = "candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-interface"; yang_parent_name = "candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::~CandidateInterface()
@@ -8723,6 +8892,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Fa
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -8735,7 +8905,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScop
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "candidate-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "candidate-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -8787,9 +8958,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScop
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterfaces()
+    :
+    exclude_interface(this, {"interface_name"})
 {
 
-    yang_name = "exclude-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::~ExcludeInterfaces()
@@ -8798,7 +8971,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Fa
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_data())
             return true;
@@ -8808,7 +8982,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScop
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_operation())
             return true;
@@ -8838,7 +9012,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        exclude_interface.push_back(c);
+        exclude_interface.append(c);
         return c;
     }
 
@@ -8850,7 +9024,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : exclude_interface)
+    for (auto c : exclude_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8881,7 +9055,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Fa
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::~ExcludeInterface()
@@ -8890,6 +9064,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Fa
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -8902,7 +9077,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScop
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exclude-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "exclude-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -8954,9 +9130,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScop
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::ShamLinks()
+    :
+    sham_link(this, {"source_address", "destination_address"})
 {
 
-    yang_name = "sham-links"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sham-links"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::~ShamLinks()
@@ -8965,7 +9143,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::~S
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::has_data() const
 {
-    for (std::size_t index=0; index<sham_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sham_link.len(); index++)
     {
         if(sham_link[index]->has_data())
             return true;
@@ -8975,7 +9154,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLink
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::has_operation() const
 {
-    for (std::size_t index=0; index<sham_link.size(); index++)
+    for (std::size_t index=0; index<sham_link.len(); index++)
     {
         if(sham_link[index]->has_operation())
             return true;
@@ -9005,7 +9184,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::ShamLink>();
         c->parent = this;
-        sham_link.push_back(c);
+        sham_link.append(c);
         return c;
     }
 
@@ -9017,7 +9196,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sham_link)
+    for (auto c : sham_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9052,14 +9231,14 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::Sh
     dead_interval{YType::uint32, "dead-interval"},
     retransmit_interval{YType::uint32, "retransmit-interval"},
     transmit_delay{YType::uint32, "transmit-delay"}
-    	,
+        ,
     authentication(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::ShamLink::Authentication>())
-	,encryption(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::ShamLink::Encryption>())
+    , encryption(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::ShamLink::Encryption>())
 {
     authentication->parent = this;
     encryption->parent = this;
 
-    yang_name = "sham-link"; yang_parent_name = "sham-links"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sham-link"; yang_parent_name = "sham-links"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::ShamLink::~ShamLink()
@@ -9068,6 +9247,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::Sh
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::ShamLink::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| destination_address.is_set
 	|| enable.is_set
@@ -9096,7 +9276,9 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLink
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::ShamLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sham-link" <<"[source-address='" <<source_address <<"']" <<"[destination-address='" <<destination_address <<"']";
+    path_buffer << "sham-link";
+    ADD_KEY_TOKEN(source_address, "source-address");
+    ADD_KEY_TOKEN(destination_address, "destination-address");
     return path_buffer.str();
 }
 
@@ -9249,7 +9431,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::Sh
     password{YType::str, "password"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "sham-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "sham-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::ShamLink::Authentication::~Authentication()
@@ -9258,6 +9440,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::Sh
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::ShamLink::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| spi.is_set
 	|| algorithm.is_set
@@ -9370,7 +9553,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::Sh
     authentication_password{YType::str, "authentication-password"}
 {
 
-    yang_name = "encryption"; yang_parent_name = "sham-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encryption"; yang_parent_name = "sham-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::ShamLink::Encryption::~Encryption()
@@ -9379,6 +9562,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::Sh
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinks::ShamLink::Encryption::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| spi.is_set
 	|| encryption_algorithm.is_set
@@ -9508,9 +9692,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLink
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks::VirtualLinks()
+    :
+    virtual_link(this, {"virtual_link_address"})
 {
 
-    yang_name = "virtual-links"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "virtual-links"; yang_parent_name = "area-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks::~VirtualLinks()
@@ -9519,7 +9705,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks:
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks::has_data() const
 {
-    for (std::size_t index=0; index<virtual_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<virtual_link.len(); index++)
     {
         if(virtual_link[index]->has_data())
             return true;
@@ -9529,7 +9716,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualL
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks::has_operation() const
 {
-    for (std::size_t index=0; index<virtual_link.size(); index++)
+    for (std::size_t index=0; index<virtual_link.len(); index++)
     {
         if(virtual_link[index]->has_operation())
             return true;
@@ -9559,7 +9746,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks::VirtualLink>();
         c->parent = this;
-        virtual_link.push_back(c);
+        virtual_link.append(c);
         return c;
     }
 
@@ -9571,7 +9758,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : virtual_link)
+    for (auto c : virtual_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9605,14 +9792,14 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks:
     dead_interval{YType::uint32, "dead-interval"},
     retransmit_interval{YType::uint32, "retransmit-interval"},
     transmit_delay{YType::uint32, "transmit-delay"}
-    	,
+        ,
     authentication(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks::VirtualLink::Authentication>())
-	,encryption(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks::VirtualLink::Encryption>())
+    , encryption(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks::VirtualLink::Encryption>())
 {
     authentication->parent = this;
     encryption->parent = this;
 
-    yang_name = "virtual-link"; yang_parent_name = "virtual-links"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "virtual-link"; yang_parent_name = "virtual-links"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks::VirtualLink::~VirtualLink()
@@ -9621,6 +9808,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks:
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks::VirtualLink::has_data() const
 {
+    if (is_presence_container) return true;
     return virtual_link_address.is_set
 	|| enable.is_set
 	|| hello_interval.is_set
@@ -9647,7 +9835,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualL
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks::VirtualLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "virtual-link" <<"[virtual-link-address='" <<virtual_link_address <<"']";
+    path_buffer << "virtual-link";
+    ADD_KEY_TOKEN(virtual_link_address, "virtual-link-address");
     return path_buffer.str();
 }
 
@@ -9789,7 +9978,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks:
     password{YType::str, "password"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "virtual-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "virtual-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks::VirtualLink::Authentication::~Authentication()
@@ -9798,6 +9987,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks:
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks::VirtualLink::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| spi.is_set
 	|| algorithm.is_set
@@ -9910,7 +10100,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks:
     authentication_password{YType::str, "authentication-password"}
 {
 
-    yang_name = "encryption"; yang_parent_name = "virtual-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encryption"; yang_parent_name = "virtual-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks::VirtualLink::Encryption::~Encryption()
@@ -9919,6 +10109,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks:
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinks::VirtualLink::Encryption::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| spi.is_set
 	|| encryption_algorithm.is_set
@@ -10055,6 +10246,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaAreaId()
     instance{YType::uint32, "instance"},
     demand_circuit{YType::boolean, "demand-circuit"},
     priority{YType::uint32, "priority"},
+    type7_translate_always{YType::boolean, "type7-translate-always"},
     prefix_suppression{YType::boolean, "prefix-suppression"},
     enable{YType::empty, "enable"},
     mtu_ignore{YType::boolean, "mtu-ignore"},
@@ -10068,18 +10260,18 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaAreaId()
     network{YType::enumeration, "network"},
     transmit_delay{YType::uint32, "transmit-delay"},
     cost{YType::uint32, "cost"}
-    	,
+        ,
     authentication(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Authentication>())
-	,bfd(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Bfd>())
-	,ranges(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Ranges>())
-	,encryption(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Encryption>())
-	,nssa(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Nssa>())
-	,database_filter(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::DatabaseFilter>())
-	,distribute_list(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::DistributeList>())
-	,interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces>())
-	,area_scope(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope>())
-	,sham_links(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks>())
-	,virtual_links(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks>())
+    , bfd(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Bfd>())
+    , ranges(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Ranges>())
+    , encryption(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Encryption>())
+    , nssa(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Nssa>())
+    , database_filter(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::DatabaseFilter>())
+    , distribute_list(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::DistributeList>())
+    , interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces>())
+    , area_scope(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope>())
+    , sham_links(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks>())
+    , virtual_links(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks>())
 {
     authentication->parent = this;
     bfd->parent = this;
@@ -10093,7 +10285,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaAreaId()
     sham_links->parent = this;
     virtual_links->parent = this;
 
-    yang_name = "area-area-id"; yang_parent_name = "area-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "area-area-id"; yang_parent_name = "area-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::~AreaAreaId()
@@ -10102,12 +10294,14 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::~AreaAreaId()
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::has_data() const
 {
+    if (is_presence_container) return true;
     return area_id.is_set
 	|| stub.is_set
 	|| packet_size.is_set
 	|| instance.is_set
 	|| demand_circuit.is_set
 	|| priority.is_set
+	|| type7_translate_always.is_set
 	|| prefix_suppression.is_set
 	|| enable.is_set
 	|| mtu_ignore.is_set
@@ -10143,6 +10337,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::has_opera
 	|| ydk::is_set(instance.yfilter)
 	|| ydk::is_set(demand_circuit.yfilter)
 	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(type7_translate_always.yfilter)
 	|| ydk::is_set(prefix_suppression.yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(mtu_ignore.yfilter)
@@ -10172,7 +10367,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::has_opera
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "area-area-id" <<"[area-id='" <<area_id <<"']";
+    path_buffer << "area-area-id";
+    ADD_KEY_TOKEN(area_id, "area-id");
     return path_buffer.str();
 }
 
@@ -10186,6 +10382,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
     if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
     if (demand_circuit.is_set || is_set(demand_circuit.yfilter)) leaf_name_data.push_back(demand_circuit.get_name_leafdata());
     if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (type7_translate_always.is_set || is_set(type7_translate_always.yfilter)) leaf_name_data.push_back(type7_translate_always.get_name_leafdata());
     if (prefix_suppression.is_set || is_set(prefix_suppression.yfilter)) leaf_name_data.push_back(prefix_suppression.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (mtu_ignore.is_set || is_set(mtu_ignore.yfilter)) leaf_name_data.push_back(mtu_ignore.get_name_leafdata());
@@ -10408,6 +10605,12 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::set_value
         priority.value_namespace = name_space;
         priority.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "type7-translate-always")
+    {
+        type7_translate_always = value;
+        type7_translate_always.value_namespace = name_space;
+        type7_translate_always.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "prefix-suppression")
     {
         prefix_suppression = value;
@@ -10514,6 +10717,10 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::set_filte
     {
         priority.yfilter = yfilter;
     }
+    if(value_path == "type7-translate-always")
+    {
+        type7_translate_always.yfilter = yfilter;
+    }
     if(value_path == "prefix-suppression")
     {
         prefix_suppression.yfilter = yfilter;
@@ -10570,7 +10777,7 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::set_filte
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "authentication" || name == "bfd" || name == "ranges" || name == "encryption" || name == "nssa" || name == "database-filter" || name == "distribute-list" || name == "interfaces" || name == "area-scope" || name == "sham-links" || name == "virtual-links" || name == "area-id" || name == "stub" || name == "packet-size" || name == "instance" || name == "demand-circuit" || name == "priority" || name == "prefix-suppression" || name == "enable" || name == "mtu-ignore" || name == "passive" || name == "hello-interval" || name == "dead-interval" || name == "default-cost" || name == "flood-reduction" || name == "retransmit-interval" || name == "ldp-sync" || name == "network" || name == "transmit-delay" || name == "cost")
+    if(name == "authentication" || name == "bfd" || name == "ranges" || name == "encryption" || name == "nssa" || name == "database-filter" || name == "distribute-list" || name == "interfaces" || name == "area-scope" || name == "sham-links" || name == "virtual-links" || name == "area-id" || name == "stub" || name == "packet-size" || name == "instance" || name == "demand-circuit" || name == "priority" || name == "type7-translate-always" || name == "prefix-suppression" || name == "enable" || name == "mtu-ignore" || name == "passive" || name == "hello-interval" || name == "dead-interval" || name == "default-cost" || name == "flood-reduction" || name == "retransmit-interval" || name == "ldp-sync" || name == "network" || name == "transmit-delay" || name == "cost")
         return true;
     return false;
 }
@@ -10583,7 +10790,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Authentication
     password{YType::str, "password"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Authentication::~Authentication()
@@ -10592,6 +10799,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Authentication
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| spi.is_set
 	|| algorithm.is_set
@@ -10701,7 +10909,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Bfd::Bfd()
     fast_detect_mode{YType::enumeration, "fast-detect-mode"}
 {
 
-    yang_name = "bfd"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Bfd::~Bfd()
@@ -10710,6 +10918,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Bfd::~Bfd()
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return detection_multiplier.is_set
 	|| interval.is_set
 	|| fast_detect_mode.is_set;
@@ -10800,9 +11009,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Bfd::has_
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Ranges::Ranges()
+    :
+    range(this, {"prefix", "prefix_length"})
 {
 
-    yang_name = "ranges"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ranges"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Ranges::~Ranges()
@@ -10811,7 +11022,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Ranges::~Range
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Ranges::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_data())
             return true;
@@ -10821,7 +11033,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Ranges::h
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Ranges::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_operation())
             return true;
@@ -10851,7 +11063,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Ranges::Range>();
         c->parent = this;
-        range.push_back(c);
+        range.append(c);
         return c;
     }
 
@@ -10863,7 +11075,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : range)
+    for (auto c : range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10897,7 +11109,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Ranges::Range:
     cost{YType::uint32, "cost"}
 {
 
-    yang_name = "range"; yang_parent_name = "ranges"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "range"; yang_parent_name = "ranges"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Ranges::Range::~Range()
@@ -10906,6 +11118,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Ranges::Range:
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Ranges::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| not_advertise.is_set
@@ -10924,7 +11137,9 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Ranges::R
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Ranges::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "range" <<"[prefix='" <<prefix <<"']" <<"[prefix-length='" <<prefix_length <<"']";
+    path_buffer << "range";
+    ADD_KEY_TOKEN(prefix, "prefix");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -11018,7 +11233,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Encryption::En
     authentication_password{YType::str, "authentication-password"}
 {
 
-    yang_name = "encryption"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encryption"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Encryption::~Encryption()
@@ -11027,6 +11242,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Encryption::~E
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Encryption::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| spi.is_set
 	|| encryption_algorithm.is_set
@@ -11164,7 +11380,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Nssa::Nssa()
     no_summary{YType::empty, "no-summary"}
 {
 
-    yang_name = "nssa"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nssa"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Nssa::~Nssa()
@@ -11173,6 +11389,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Nssa::~Nssa()
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Nssa::has_data() const
 {
+    if (is_presence_container) return true;
     return no_redistribution.is_set
 	|| default_info_originate.is_set
 	|| metric.is_set
@@ -11294,7 +11511,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::DatabaseFilter
 {
     all->parent = this;
 
-    yang_name = "database-filter"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "database-filter"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::DatabaseFilter::~DatabaseFilter()
@@ -11303,6 +11520,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::DatabaseFilter
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::DatabaseFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return (all !=  nullptr && all->has_data());
 }
 
@@ -11374,7 +11592,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::DatabaseFilter
     out{YType::boolean, "out"}
 {
 
-    yang_name = "all"; yang_parent_name = "database-filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all"; yang_parent_name = "database-filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::DatabaseFilter::All::~All()
@@ -11383,6 +11601,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::DatabaseFilter
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::DatabaseFilter::All::has_data() const
 {
+    if (is_presence_container) return true;
     return out.is_set;
 }
 
@@ -11452,7 +11671,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::DistributeList
 {
     in->parent = this;
 
-    yang_name = "distribute-list"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "distribute-list"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::DistributeList::~DistributeList()
@@ -11461,6 +11680,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::DistributeList
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::DistributeList::has_data() const
 {
+    if (is_presence_container) return true;
     return (in !=  nullptr && in->has_data());
 }
 
@@ -11532,7 +11752,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::DistributeList
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "in"; yang_parent_name = "distribute-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in"; yang_parent_name = "distribute-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::DistributeList::In::~In()
@@ -11541,6 +11761,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::DistributeList
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::DistributeList::In::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_list.is_set;
 }
 
@@ -11605,9 +11826,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Distribut
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::~Interfaces()
@@ -11616,7 +11839,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::~I
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -11626,7 +11850,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interface
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -11656,7 +11880,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -11668,7 +11892,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11713,14 +11937,14 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
     priority{YType::uint32, "priority"},
     network{YType::enumeration, "network"},
     demand_circuit{YType::boolean, "demand-circuit"}
-    	,
+        ,
     authentication(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Authentication>())
-	,neighbors(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Neighbors>())
-	,encryption(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Encryption>())
-	,bfd(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Bfd>())
-	,database_filter(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::DatabaseFilter>())
-	,distribute_list(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::DistributeList>())
-	,fast_reroute(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute>())
+    , neighbors(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Neighbors>())
+    , encryption(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Encryption>())
+    , bfd(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Bfd>())
+    , database_filter(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::DatabaseFilter>())
+    , distribute_list(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::DistributeList>())
+    , fast_reroute(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute>())
 {
     authentication->parent = this;
     neighbors->parent = this;
@@ -11730,7 +11954,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
     distribute_list->parent = this;
     fast_reroute->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::~Interface()
@@ -11739,6 +11963,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| enable.is_set
 	|| dead_interval.is_set
@@ -11797,7 +12022,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interface
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -12130,7 +12356,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
     password{YType::str, "password"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Authentication::~Authentication()
@@ -12139,6 +12365,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| spi.is_set
 	|| algorithm.is_set
@@ -12242,9 +12469,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interface
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Neighbors::Neighbors()
+    :
+    neighbor(this, {"neighbor_address"})
 {
 
-    yang_name = "neighbors"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbors"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Neighbors::~Neighbors()
@@ -12253,7 +12482,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -12263,7 +12493,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interface
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -12293,7 +12523,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -12305,7 +12535,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12341,7 +12571,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
     zone{YType::str, "zone"}
 {
 
-    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Neighbors::Neighbor::~Neighbor()
@@ -12350,6 +12580,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Neighbors::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_address.is_set
 	|| priority.is_set
 	|| poll_interval.is_set
@@ -12372,7 +12603,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interface
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Neighbors::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[neighbor-address='" <<neighbor_address <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(neighbor_address, "neighbor-address");
     return path_buffer.str();
 }
 
@@ -12488,7 +12720,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
     authentication_password{YType::str, "authentication-password"}
 {
 
-    yang_name = "encryption"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encryption"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Encryption::~Encryption()
@@ -12497,6 +12729,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Encryption::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| spi.is_set
 	|| encryption_algorithm.is_set
@@ -12632,7 +12865,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
     detection_multiplier{YType::uint32, "detection-multiplier"}
 {
 
-    yang_name = "bfd"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Bfd::~Bfd()
@@ -12641,6 +12874,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return interval.is_set
 	|| fast_detect_mode.is_set
 	|| detection_multiplier.is_set;
@@ -12736,7 +12970,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 {
     all->parent = this;
 
-    yang_name = "database-filter"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "database-filter"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::DatabaseFilter::~DatabaseFilter()
@@ -12745,6 +12979,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::DatabaseFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return (all !=  nullptr && all->has_data());
 }
 
@@ -12816,7 +13051,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
     out{YType::boolean, "out"}
 {
 
-    yang_name = "all"; yang_parent_name = "database-filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all"; yang_parent_name = "database-filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::DatabaseFilter::All::~All()
@@ -12825,6 +13060,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::DatabaseFilter::All::has_data() const
 {
+    if (is_presence_container) return true;
     return out.is_set;
 }
 
@@ -12894,7 +13130,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 {
     in->parent = this;
 
-    yang_name = "distribute-list"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "distribute-list"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::DistributeList::~DistributeList()
@@ -12903,6 +13139,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::DistributeList::has_data() const
 {
+    if (is_presence_container) return true;
     return (in !=  nullptr && in->has_data());
 }
 
@@ -12974,7 +13211,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "in"; yang_parent_name = "distribute-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in"; yang_parent_name = "distribute-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::DistributeList::In::~In()
@@ -12983,6 +13220,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::DistributeList::In::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_list.is_set;
 }
 
@@ -13049,14 +13287,14 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interface
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::FastReroute()
     :
     fast_reroute_enable{YType::enumeration, "fast-reroute-enable"}
-    	,
+        ,
     per_link(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink>())
-	,per_prefix(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix>())
+    , per_prefix(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix>())
 {
     per_link->parent = this;
     per_prefix->parent = this;
 
-    yang_name = "fast-reroute"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fast-reroute"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::~FastReroute()
@@ -13065,6 +13303,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::has_data() const
 {
+    if (is_presence_container) return true;
     return fast_reroute_enable.is_set
 	|| (per_link !=  nullptr && per_link->has_data())
 	|| (per_prefix !=  nullptr && per_prefix->has_data());
@@ -13163,14 +13402,14 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interface
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::PerLink()
     :
     fast_reroute_use_candidate_only{YType::boolean, "fast-reroute-use-candidate-only"}
-    	,
+        ,
     candidate_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces>())
-	,exclude_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces>())
+    , exclude_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces>())
 {
     candidate_interfaces->parent = this;
     exclude_interfaces->parent = this;
 
-    yang_name = "per-link"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "per-link"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::~PerLink()
@@ -13179,6 +13418,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::has_data() const
 {
+    if (is_presence_container) return true;
     return fast_reroute_use_candidate_only.is_set
 	|| (candidate_interfaces !=  nullptr && candidate_interfaces->has_data())
 	|| (exclude_interfaces !=  nullptr && exclude_interfaces->has_data());
@@ -13275,9 +13515,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interface
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces::CandidateInterfaces()
+    :
+    candidate_interface(this, {"interface_name"})
 {
 
-    yang_name = "candidate-interfaces"; yang_parent_name = "per-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-interfaces"; yang_parent_name = "per-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces::~CandidateInterfaces()
@@ -13286,7 +13528,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<candidate_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<candidate_interface.len(); index++)
     {
         if(candidate_interface[index]->has_data())
             return true;
@@ -13296,7 +13539,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interface
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<candidate_interface.size(); index++)
+    for (std::size_t index=0; index<candidate_interface.len(); index++)
     {
         if(candidate_interface[index]->has_operation())
             return true;
@@ -13326,7 +13569,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces::CandidateInterface>();
         c->parent = this;
-        candidate_interface.push_back(c);
+        candidate_interface.append(c);
         return c;
     }
 
@@ -13338,7 +13581,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : candidate_interface)
+    for (auto c : candidate_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13369,7 +13612,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "candidate-interface"; yang_parent_name = "candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-interface"; yang_parent_name = "candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::~CandidateInterface()
@@ -13378,6 +13621,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -13390,7 +13634,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interface
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "candidate-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "candidate-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -13442,9 +13687,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interface
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterfaces()
+    :
+    exclude_interface(this, {"interface_name"})
 {
 
-    yang_name = "exclude-interfaces"; yang_parent_name = "per-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interfaces"; yang_parent_name = "per-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces::~ExcludeInterfaces()
@@ -13453,7 +13700,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_data())
             return true;
@@ -13463,7 +13711,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interface
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_operation())
             return true;
@@ -13493,7 +13741,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        exclude_interface.push_back(c);
+        exclude_interface.append(c);
         return c;
     }
 
@@ -13505,7 +13753,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : exclude_interface)
+    for (auto c : exclude_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13536,7 +13784,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::~ExcludeInterface()
@@ -13545,6 +13793,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -13557,7 +13806,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interface
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exclude-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "exclude-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -13611,14 +13861,14 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interface
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::PerPrefix()
     :
     fast_reroute_use_candidate_only{YType::boolean, "fast-reroute-use-candidate-only"}
-    	,
+        ,
     candidate_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces>())
-	,exclude_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces>())
+    , exclude_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces>())
 {
     candidate_interfaces->parent = this;
     exclude_interfaces->parent = this;
 
-    yang_name = "per-prefix"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "per-prefix"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::~PerPrefix()
@@ -13627,6 +13877,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return fast_reroute_use_candidate_only.is_set
 	|| (candidate_interfaces !=  nullptr && candidate_interfaces->has_data())
 	|| (exclude_interfaces !=  nullptr && exclude_interfaces->has_data());
@@ -13723,9 +13974,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interface
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterfaces()
+    :
+    candidate_interface(this, {"interface_name"})
 {
 
-    yang_name = "candidate-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces::~CandidateInterfaces()
@@ -13734,7 +13987,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<candidate_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<candidate_interface.len(); index++)
     {
         if(candidate_interface[index]->has_data())
             return true;
@@ -13744,7 +13998,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interface
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<candidate_interface.size(); index++)
+    for (std::size_t index=0; index<candidate_interface.len(); index++)
     {
         if(candidate_interface[index]->has_operation())
             return true;
@@ -13774,7 +14028,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface>();
         c->parent = this;
-        candidate_interface.push_back(c);
+        candidate_interface.append(c);
         return c;
     }
 
@@ -13786,7 +14040,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : candidate_interface)
+    for (auto c : candidate_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13817,7 +14071,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "candidate-interface"; yang_parent_name = "candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-interface"; yang_parent_name = "candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::~CandidateInterface()
@@ -13826,6 +14080,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -13838,7 +14093,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interface
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "candidate-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "candidate-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -13890,9 +14146,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interface
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterfaces()
+    :
+    exclude_interface(this, {"interface_name"})
 {
 
-    yang_name = "exclude-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces::~ExcludeInterfaces()
@@ -13901,7 +14159,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_data())
             return true;
@@ -13911,7 +14170,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interface
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_operation())
             return true;
@@ -13941,7 +14200,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        exclude_interface.push_back(c);
+        exclude_interface.append(c);
         return c;
     }
 
@@ -13953,7 +14212,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : exclude_interface)
+    for (auto c : exclude_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13984,7 +14243,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::~ExcludeInterface()
@@ -13993,6 +14252,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::In
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -14005,7 +14265,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interface
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exclude-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "exclude-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -14062,7 +14323,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Are
 {
     fast_reroute->parent = this;
 
-    yang_name = "area-scope"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "area-scope"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::~AreaScope()
@@ -14071,6 +14332,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::~Ar
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::has_data() const
 {
+    if (is_presence_container) return true;
     return (fast_reroute !=  nullptr && fast_reroute->has_data());
 }
 
@@ -14140,14 +14402,14 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::FastReroute()
     :
     fast_reroute_enable{YType::enumeration, "fast-reroute-enable"}
-    	,
+        ,
     per_link(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink>())
-	,per_prefix(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix>())
+    , per_prefix(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix>())
 {
     per_link->parent = this;
     per_prefix->parent = this;
 
-    yang_name = "fast-reroute"; yang_parent_name = "area-scope"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fast-reroute"; yang_parent_name = "area-scope"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::~FastReroute()
@@ -14156,6 +14418,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Fas
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::has_data() const
 {
+    if (is_presence_container) return true;
     return fast_reroute_enable.is_set
 	|| (per_link !=  nullptr && per_link->has_data())
 	|| (per_prefix !=  nullptr && per_prefix->has_data());
@@ -14254,14 +14517,14 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::PerLink()
     :
     fast_reroute_use_candidate_only{YType::boolean, "fast-reroute-use-candidate-only"}
-    	,
+        ,
     candidate_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces>())
-	,exclude_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces>())
+    , exclude_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces>())
 {
     candidate_interfaces->parent = this;
     exclude_interfaces->parent = this;
 
-    yang_name = "per-link"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "per-link"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::~PerLink()
@@ -14270,6 +14533,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Fas
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::has_data() const
 {
+    if (is_presence_container) return true;
     return fast_reroute_use_candidate_only.is_set
 	|| (candidate_interfaces !=  nullptr && candidate_interfaces->has_data())
 	|| (exclude_interfaces !=  nullptr && exclude_interfaces->has_data());
@@ -14366,9 +14630,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterfaces()
+    :
+    candidate_interface(this, {"interface_name"})
 {
 
-    yang_name = "candidate-interfaces"; yang_parent_name = "per-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-interfaces"; yang_parent_name = "per-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::~CandidateInterfaces()
@@ -14377,7 +14643,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Fas
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<candidate_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<candidate_interface.len(); index++)
     {
         if(candidate_interface[index]->has_data())
             return true;
@@ -14387,7 +14654,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<candidate_interface.size(); index++)
+    for (std::size_t index=0; index<candidate_interface.len(); index++)
     {
         if(candidate_interface[index]->has_operation())
             return true;
@@ -14417,7 +14684,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface>();
         c->parent = this;
-        candidate_interface.push_back(c);
+        candidate_interface.append(c);
         return c;
     }
 
@@ -14429,7 +14696,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : candidate_interface)
+    for (auto c : candidate_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14460,7 +14727,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Fas
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "candidate-interface"; yang_parent_name = "candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-interface"; yang_parent_name = "candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::~CandidateInterface()
@@ -14469,6 +14736,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Fas
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -14481,7 +14749,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "candidate-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "candidate-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -14533,9 +14802,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterfaces()
+    :
+    exclude_interface(this, {"interface_name"})
 {
 
-    yang_name = "exclude-interfaces"; yang_parent_name = "per-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interfaces"; yang_parent_name = "per-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::~ExcludeInterfaces()
@@ -14544,7 +14815,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Fas
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_data())
             return true;
@@ -14554,7 +14826,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_operation())
             return true;
@@ -14584,7 +14856,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        exclude_interface.push_back(c);
+        exclude_interface.append(c);
         return c;
     }
 
@@ -14596,7 +14868,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : exclude_interface)
+    for (auto c : exclude_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14627,7 +14899,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Fas
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::~ExcludeInterface()
@@ -14636,6 +14908,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Fas
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -14648,7 +14921,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exclude-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "exclude-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -14702,14 +14976,14 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::PerPrefix()
     :
     fast_reroute_use_candidate_only{YType::boolean, "fast-reroute-use-candidate-only"}
-    	,
+        ,
     candidate_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces>())
-	,exclude_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces>())
+    , exclude_interfaces(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces>())
 {
     candidate_interfaces->parent = this;
     exclude_interfaces->parent = this;
 
-    yang_name = "per-prefix"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "per-prefix"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::~PerPrefix()
@@ -14718,6 +14992,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Fas
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return fast_reroute_use_candidate_only.is_set
 	|| (candidate_interfaces !=  nullptr && candidate_interfaces->has_data())
 	|| (exclude_interfaces !=  nullptr && exclude_interfaces->has_data());
@@ -14814,9 +15089,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterfaces()
+    :
+    candidate_interface(this, {"interface_name"})
 {
 
-    yang_name = "candidate-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::~CandidateInterfaces()
@@ -14825,7 +15102,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Fas
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<candidate_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<candidate_interface.len(); index++)
     {
         if(candidate_interface[index]->has_data())
             return true;
@@ -14835,7 +15113,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<candidate_interface.size(); index++)
+    for (std::size_t index=0; index<candidate_interface.len(); index++)
     {
         if(candidate_interface[index]->has_operation())
             return true;
@@ -14865,7 +15143,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface>();
         c->parent = this;
-        candidate_interface.push_back(c);
+        candidate_interface.append(c);
         return c;
     }
 
@@ -14877,7 +15155,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : candidate_interface)
+    for (auto c : candidate_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14908,7 +15186,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Fas
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "candidate-interface"; yang_parent_name = "candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-interface"; yang_parent_name = "candidate-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::~CandidateInterface()
@@ -14917,6 +15195,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Fas
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -14929,7 +15208,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "candidate-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "candidate-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -14981,9 +15261,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterfaces()
+    :
+    exclude_interface(this, {"interface_name"})
 {
 
-    yang_name = "exclude-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::~ExcludeInterfaces()
@@ -14992,7 +15274,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Fas
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_data())
             return true;
@@ -15002,7 +15285,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<exclude_interface.size(); index++)
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
     {
         if(exclude_interface[index]->has_operation())
             return true;
@@ -15032,7 +15315,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface>();
         c->parent = this;
-        exclude_interface.push_back(c);
+        exclude_interface.append(c);
         return c;
     }
 
@@ -15044,7 +15327,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : exclude_interface)
+    for (auto c : exclude_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15075,7 +15358,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Fas
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::~ExcludeInterface()
@@ -15084,6 +15367,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Fas
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -15096,7 +15380,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exclude-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "exclude-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -15148,9 +15433,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::ShamLinks()
+    :
+    sham_link(this, {"source_address", "destination_address"})
 {
 
-    yang_name = "sham-links"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sham-links"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::~ShamLinks()
@@ -15159,7 +15446,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::~Sh
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::has_data() const
 {
-    for (std::size_t index=0; index<sham_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sham_link.len(); index++)
     {
         if(sham_link[index]->has_data())
             return true;
@@ -15169,7 +15457,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::has_operation() const
 {
-    for (std::size_t index=0; index<sham_link.size(); index++)
+    for (std::size_t index=0; index<sham_link.len(); index++)
     {
         if(sham_link[index]->has_operation())
             return true;
@@ -15199,7 +15487,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::ShamLink>();
         c->parent = this;
-        sham_link.push_back(c);
+        sham_link.append(c);
         return c;
     }
 
@@ -15211,7 +15499,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sham_link)
+    for (auto c : sham_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15246,14 +15534,14 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::Sha
     dead_interval{YType::uint32, "dead-interval"},
     retransmit_interval{YType::uint32, "retransmit-interval"},
     transmit_delay{YType::uint32, "transmit-delay"}
-    	,
+        ,
     authentication(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::ShamLink::Authentication>())
-	,encryption(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::ShamLink::Encryption>())
+    , encryption(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::ShamLink::Encryption>())
 {
     authentication->parent = this;
     encryption->parent = this;
 
-    yang_name = "sham-link"; yang_parent_name = "sham-links"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sham-link"; yang_parent_name = "sham-links"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::ShamLink::~ShamLink()
@@ -15262,6 +15550,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::Sha
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::ShamLink::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| destination_address.is_set
 	|| enable.is_set
@@ -15290,7 +15579,9 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::ShamLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sham-link" <<"[source-address='" <<source_address <<"']" <<"[destination-address='" <<destination_address <<"']";
+    path_buffer << "sham-link";
+    ADD_KEY_TOKEN(source_address, "source-address");
+    ADD_KEY_TOKEN(destination_address, "destination-address");
     return path_buffer.str();
 }
 
@@ -15443,7 +15734,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::Sha
     password{YType::str, "password"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "sham-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "sham-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::ShamLink::Authentication::~Authentication()
@@ -15452,6 +15743,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::Sha
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::ShamLink::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| spi.is_set
 	|| algorithm.is_set
@@ -15564,7 +15856,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::Sha
     authentication_password{YType::str, "authentication-password"}
 {
 
-    yang_name = "encryption"; yang_parent_name = "sham-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encryption"; yang_parent_name = "sham-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::ShamLink::Encryption::~Encryption()
@@ -15573,6 +15865,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::Sha
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks::ShamLink::Encryption::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| spi.is_set
 	|| encryption_algorithm.is_set
@@ -15702,9 +15995,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinks
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::VirtualLinks()
+    :
+    virtual_link(this, {"virtual_link_address"})
 {
 
-    yang_name = "virtual-links"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "virtual-links"; yang_parent_name = "area-area-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::~VirtualLinks()
@@ -15713,7 +16008,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::has_data() const
 {
-    for (std::size_t index=0; index<virtual_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<virtual_link.len(); index++)
     {
         if(virtual_link[index]->has_data())
             return true;
@@ -15723,7 +16019,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLi
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::has_operation() const
 {
-    for (std::size_t index=0; index<virtual_link.size(); index++)
+    for (std::size_t index=0; index<virtual_link.len(); index++)
     {
         if(virtual_link[index]->has_operation())
             return true;
@@ -15753,7 +16049,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::Ar
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::VirtualLink>();
         c->parent = this;
-        virtual_link.push_back(c);
+        virtual_link.append(c);
         return c;
     }
 
@@ -15765,7 +16061,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : virtual_link)
+    for (auto c : virtual_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15799,14 +16095,14 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::
     dead_interval{YType::uint32, "dead-interval"},
     retransmit_interval{YType::uint32, "retransmit-interval"},
     transmit_delay{YType::uint32, "transmit-delay"}
-    	,
+        ,
     authentication(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::VirtualLink::Authentication>())
-	,encryption(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::VirtualLink::Encryption>())
+    , encryption(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::VirtualLink::Encryption>())
 {
     authentication->parent = this;
     encryption->parent = this;
 
-    yang_name = "virtual-link"; yang_parent_name = "virtual-links"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "virtual-link"; yang_parent_name = "virtual-links"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::VirtualLink::~VirtualLink()
@@ -15815,6 +16111,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::VirtualLink::has_data() const
 {
+    if (is_presence_container) return true;
     return virtual_link_address.is_set
 	|| enable.is_set
 	|| hello_interval.is_set
@@ -15841,7 +16138,8 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLi
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::VirtualLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "virtual-link" <<"[virtual-link-address='" <<virtual_link_address <<"']";
+    path_buffer << "virtual-link";
+    ADD_KEY_TOKEN(virtual_link_address, "virtual-link-address");
     return path_buffer.str();
 }
 
@@ -15983,7 +16281,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::
     password{YType::str, "password"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "virtual-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "virtual-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::VirtualLink::Authentication::~Authentication()
@@ -15992,6 +16290,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::VirtualLink::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| spi.is_set
 	|| algorithm.is_set
@@ -16104,7 +16403,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::
     authentication_password{YType::str, "authentication-password"}
 {
 
-    yang_name = "encryption"; yang_parent_name = "virtual-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encryption"; yang_parent_name = "virtual-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::VirtualLink::Encryption::~Encryption()
@@ -16113,6 +16412,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinks::VirtualLink::Encryption::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| spi.is_set
 	|| encryption_algorithm.is_set
@@ -16244,14 +16544,14 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLi
 Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Timers()
     :
     pacing(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Pacing>())
-	,lsa_timers(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Timers::LsaTimers>())
-	,throttle(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Throttle>())
+    , lsa_timers(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Timers::LsaTimers>())
+    , throttle(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Throttle>())
 {
     pacing->parent = this;
     lsa_timers->parent = this;
     throttle->parent = this;
 
-    yang_name = "timers"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::Timers::~Timers()
@@ -16260,6 +16560,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Timers::~Timers()
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return (pacing !=  nullptr && pacing->has_data())
 	|| (lsa_timers !=  nullptr && lsa_timers->has_data())
 	|| (throttle !=  nullptr && throttle->has_data());
@@ -16365,7 +16666,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Pacing::Pacing()
     lsa_group{YType::uint32, "lsa-group"}
 {
 
-    yang_name = "pacing"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pacing"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Pacing::~Pacing()
@@ -16374,6 +16675,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Pacing::~Pacing()
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Pacing::has_data() const
 {
+    if (is_presence_container) return true;
     return flood.is_set
 	|| retransmission.is_set
 	|| lsa_group.is_set;
@@ -16468,7 +16770,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Timers::LsaTimers::LsaTimers()
     arrival{YType::uint32, "arrival"}
 {
 
-    yang_name = "lsa-timers"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-timers"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::Timers::LsaTimers::~LsaTimers()
@@ -16477,6 +16779,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Timers::LsaTimers::~LsaTimers()
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Timers::LsaTimers::has_data() const
 {
+    if (is_presence_container) return true;
     return arrival.is_set;
 }
 
@@ -16543,12 +16846,12 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Timers::LsaTimers::has_leaf_or_child
 Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Throttle::Throttle()
     :
     lsa(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Throttle::Lsa>())
-	,spf(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Throttle::Spf>())
+    , spf(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Throttle::Spf>())
 {
     lsa->parent = this;
     spf->parent = this;
 
-    yang_name = "throttle"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "throttle"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Throttle::~Throttle()
@@ -16557,6 +16860,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Throttle::~Throttle()
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Throttle::has_data() const
 {
+    if (is_presence_container) return true;
     return (lsa !=  nullptr && lsa->has_data())
 	|| (spf !=  nullptr && spf->has_data());
 }
@@ -16646,7 +16950,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Throttle::Lsa::Lsa()
     maximum_delay{YType::uint32, "maximum-delay"}
 {
 
-    yang_name = "lsa"; yang_parent_name = "throttle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa"; yang_parent_name = "throttle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Throttle::Lsa::~Lsa()
@@ -16655,6 +16959,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Throttle::Lsa::~Lsa()
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Throttle::Lsa::has_data() const
 {
+    if (is_presence_container) return true;
     return first_delay.is_set
 	|| minimum_delay.is_set
 	|| maximum_delay.is_set;
@@ -16751,7 +17056,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Throttle::Spf::Spf()
     maximum_delay{YType::uint32, "maximum-delay"}
 {
 
-    yang_name = "spf"; yang_parent_name = "throttle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spf"; yang_parent_name = "throttle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Throttle::Spf::~Spf()
@@ -16760,6 +17065,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Throttle::Spf::~Spf()
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Throttle::Spf::has_data() const
 {
+    if (is_presence_container) return true;
     return first_delay.is_set
 	|| minimum_delay.is_set
 	|| maximum_delay.is_set;
@@ -16850,9 +17156,11 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Timers::Throttle::Spf::has_leaf_or_c
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefixes()
+    :
+    summary_prefix(this, {"prefix", "prefix_length"})
 {
 
-    yang_name = "summary-prefixes"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary-prefixes"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::~SummaryPrefixes()
@@ -16861,7 +17169,8 @@ Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::~SummaryPrefixes()
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<summary_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<summary_prefix.len(); index++)
     {
         if(summary_prefix[index]->has_data())
             return true;
@@ -16871,7 +17180,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::has_data() const
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<summary_prefix.size(); index++)
+    for (std::size_t index=0; index<summary_prefix.len(); index++)
     {
         if(summary_prefix[index]->has_operation())
             return true;
@@ -16901,7 +17210,7 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::
     {
         auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix>();
         c->parent = this;
-        summary_prefix.push_back(c);
+        summary_prefix.append(c);
         return c;
     }
 
@@ -16913,7 +17222,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : summary_prefix)
+    for (auto c : summary_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16947,7 +17256,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix::SummaryPr
     tag{YType::uint32, "tag"}
 {
 
-    yang_name = "summary-prefix"; yang_parent_name = "summary-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary-prefix"; yang_parent_name = "summary-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix::~SummaryPrefix()
@@ -16956,6 +17265,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix::~SummaryP
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| not_advertise.is_set
@@ -16974,7 +17284,9 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix::has_
 std::string Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "summary-prefix" <<"[prefix='" <<prefix <<"']" <<"[prefix-length='" <<prefix_length <<"']";
+    path_buffer << "summary-prefix";
+    ADD_KEY_TOKEN(prefix, "prefix");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -17061,12 +17373,12 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix::has_
 Ospfv3::Processes::Process::Vrfs::Vrf::Snmp::Snmp()
     :
     context{YType::str, "context"}
-    	,
+        ,
     trap_rate_limit(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Snmp::TrapRateLimit>())
 {
     trap_rate_limit->parent = this;
 
-    yang_name = "snmp"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "snmp"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::Snmp::~Snmp()
@@ -17075,6 +17387,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Snmp::~Snmp()
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Snmp::has_data() const
 {
+    if (is_presence_container) return true;
     return context.is_set
 	|| (trap_rate_limit !=  nullptr && trap_rate_limit->has_data());
 }
@@ -17160,7 +17473,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Snmp::TrapRateLimit::TrapRateLimit()
     max_window_traps{YType::uint32, "max-window-traps"}
 {
 
-    yang_name = "trap-rate-limit"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trap-rate-limit"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::Snmp::TrapRateLimit::~TrapRateLimit()
@@ -17169,6 +17482,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::Snmp::TrapRateLimit::~TrapRateLimit()
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::Snmp::TrapRateLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return window_size.is_set
 	|| max_window_traps.is_set;
 }
@@ -17248,12 +17562,12 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Snmp::TrapRateLimit::has_leaf_or_chi
 Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::FastReroute()
     :
     per_link(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerLink>())
-	,per_prefix(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix>())
+    , per_prefix(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix>())
 {
     per_link->parent = this;
     per_prefix->parent = this;
 
-    yang_name = "fast-reroute"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fast-reroute"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::~FastReroute()
@@ -17262,6 +17576,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::~FastReroute()
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::has_data() const
 {
+    if (is_presence_container) return true;
     return (per_link !=  nullptr && per_link->has_data())
 	|| (per_prefix !=  nullptr && per_prefix->has_data());
 }
@@ -17349,7 +17664,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerLink::PerLink()
     priority{YType::enumeration, "priority"}
 {
 
-    yang_name = "per-link"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "per-link"; yang_parent_name = "fast-reroute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerLink::~PerLink()
@@ -17358,6 +17673,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerLink::~PerLink()
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerLink::has_data() const
 {
+    if (is_presence_container) return true;
     return priority.is_set;
 }
 

@@ -137,7 +137,7 @@ class Eem::EnvVariables : public ydk::Entity
 
         class EnvVariable; //type: Eem::EnvVariables::EnvVariable
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ha_eem_policy_oper::Eem::EnvVariables::EnvVariable> > env_variable;
+        ydk::YList env_variable;
         
 }; // Eem::EnvVariables
 
@@ -207,7 +207,7 @@ class Eem::RegPolicies : public ydk::Entity
 
         class RegPolicy; //type: Eem::RegPolicies::RegPolicy
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ha_eem_policy_oper::Eem::RegPolicies::RegPolicy> > reg_policy;
+        ydk::YList reg_policy;
         
 }; // Eem::RegPolicies
 
@@ -262,7 +262,7 @@ class Eem::AvlPolicies : public ydk::Entity
 
         class AvlPolicy; //type: Eem::AvlPolicies::AvlPolicy
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ha_eem_policy_oper::Eem::AvlPolicies::AvlPolicy> > avl_policy;
+        ydk::YList avl_policy;
         
 }; // Eem::AvlPolicies
 

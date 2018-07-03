@@ -79,7 +79,7 @@ class Igmp::Active::DefaultContext::Ranges : public ydk::Entity
 
         class Range; //type: Igmp::Active::DefaultContext::Ranges::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::Ranges::Range> > range;
+        ydk::YList range;
         
 }; // Igmp::Active::DefaultContext::Ranges
 
@@ -102,7 +102,7 @@ class Igmp::Active::DefaultContext::Ranges::Range : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf group_address; //type: string
-        ydk::YLeaf group_mask; //type: int32
+        ydk::YLeaf group_mask; //type: uint32
         ydk::YLeaf prefix_length; //type: uint32
         ydk::YLeaf protocol; //type: IgmpEdmProtocol
         ydk::YLeaf is_stale; //type: boolean
@@ -156,7 +156,7 @@ class Igmp::Active::DefaultContext::IfrsInterfaces : public ydk::Entity
 
         class IfrsInterface; //type: Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface> > ifrs_interface;
+        ydk::YList ifrs_interface;
         
 }; // Igmp::Active::DefaultContext::IfrsInterfaces
 
@@ -406,7 +406,7 @@ class Igmp::Active::DefaultContext::Groups : public ydk::Entity
 
         class Group; //type: Igmp::Active::DefaultContext::Groups::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::Groups::Group> > group;
+        ydk::YList group;
         
 }; // Igmp::Active::DefaultContext::Groups
 
@@ -592,7 +592,7 @@ class Igmp::Active::DefaultContext::GlobalInterfaceTable : public ydk::Entity
 
         class Interface; //type: Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface> > interface;
+        ydk::YList interface;
         
 }; // Igmp::Active::DefaultContext::GlobalInterfaceTable
 
@@ -762,7 +762,7 @@ class Igmp::Active::DefaultContext::SsmMapDetails : public ydk::Entity
 
         class SsmMapDetail; //type: Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail> > ssm_map_detail;
+        ydk::YList ssm_map_detail;
         
 }; // Igmp::Active::DefaultContext::SsmMapDetails
 
@@ -794,7 +794,7 @@ class Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail : public ydk::En
         class Sources; //type: Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::Sources
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo> map_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::Sources> > sources;
+        ydk::YList sources;
         
 }; // Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail
 
@@ -892,7 +892,7 @@ class Igmp::Active::DefaultContext::InterfaceStateOffs : public ydk::Entity
 
         class InterfaceStateOff; //type: Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff> > interface_state_off;
+        ydk::YList interface_state_off;
         
 }; // Igmp::Active::DefaultContext::InterfaceStateOffs
 

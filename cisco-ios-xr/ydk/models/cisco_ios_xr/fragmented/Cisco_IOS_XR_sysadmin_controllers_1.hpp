@@ -32,7 +32,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics : p
 
         class BportStatsAllRacks; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics::BportStatsAllRacks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics::BportStatsAllRacks> > bport_stats_all_racks;
+        ydk::YList bport_stats_all_racks;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics
 
@@ -58,7 +58,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics::Bp
         ydk::YLeaf total_racks; //type: uint32
         class BportStatsRack; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics::BportStatsAllRacks::BportStatsRack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics::BportStatsAllRacks::BportStatsRack> > bport_stats_rack;
+        ydk::YList bport_stats_rack;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics::BportStatsAllRacks
 
@@ -83,7 +83,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics::Bp
         ydk::YLeaf rack_num_str; //type: string
         class BportStats; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics::BportStatsAllRacks::BportStatsRack::BportStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics::BportStatsAllRacks::BportStatsRack::BportStats> > bport_stats;
+        ydk::YList bport_stats;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics::BportStatsAllRacks::BportStatsRack
 
@@ -140,7 +140,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location : public y
         class BportAllList; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::BportAllList
         class Statistics; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::BportAllList> > bport_all_list;
+        ydk::YList bport_all_list;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics> statistics;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location
@@ -189,7 +189,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistic
 
         class BportStatsAllRacks; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics::BportStatsAllRacks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics::BportStatsAllRacks> > bport_stats_all_racks;
+        ydk::YList bport_stats_all_racks;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics
 
@@ -214,7 +214,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistic
         ydk::YLeaf total_racks; //type: uint32
         class BportStatsRack; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics::BportStatsAllRacks::BportStatsRack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics::BportStatsAllRacks::BportStatsRack> > bport_stats_rack;
+        ydk::YList bport_stats_rack;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics::BportStatsAllRacks
 
@@ -239,7 +239,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistic
         ydk::YLeaf rack_num_str; //type: string
         class BportStats; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics::BportStatsAllRacks::BportStatsRack::BportStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics::BportStatsAllRacks::BportStatsRack::BportStats> > bport_stats;
+        ydk::YList bport_stats;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics::BportStatsAllRacks::BportStatsRack
 
@@ -295,7 +295,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Location : public ydk::En
         ydk::YLeaf loc_str; //type: string
         class BundleAllList; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Location::BundleAllList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Location::BundleAllList> > bundle_all_list;
+        ydk::YList bundle_all_list;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Location
 
@@ -347,7 +347,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Statistics : public ydk::Entity
 
         class Plane; //type: Controller::Fabric::Oper::FsdbaggActive::Statistics::Plane
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Statistics::Plane> > plane;
+        ydk::YList plane;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Statistics
 
@@ -402,7 +402,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Statistics::Plane : public ydk::E
         ydk::YLeaf ppu_state; //type: string
         class AsicInternalError; //type: Controller::Fabric::Oper::FsdbaggActive::Statistics::Plane::AsicInternalError
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Statistics::Plane::AsicInternalError> > asic_internal_error;
+        ydk::YList asic_internal_error;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Statistics::Plane
 
@@ -457,7 +457,7 @@ class Controller::Fabric::Oper::FsdbaggLink : public ydk::Entity
 
         class Port; //type: Controller::Fabric::Oper::FsdbaggLink::Port
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggLink::Port> > port;
+        ydk::YList port;
         
 }; // Controller::Fabric::Oper::FsdbaggLink
 
@@ -504,7 +504,7 @@ class Controller::Fabric::Oper::FsdbaggSfeAsicType : public ydk::Entity
 
         class AsicTypes; //type: Controller::Fabric::Oper::FsdbaggSfeAsicType::AsicTypes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggSfeAsicType::AsicTypes> > asic_types;
+        ydk::YList asic_types;
         
 }; // Controller::Fabric::Oper::FsdbaggSfeAsicType
 
@@ -530,7 +530,7 @@ class Controller::Fabric::Oper::FsdbaggSfeAsicType::AsicTypes : public ydk::Enti
         ydk::YLeaf description; //type: string
         class Block; //type: Controller::Fabric::Oper::FsdbaggSfeAsicType::AsicTypes::Block
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggSfeAsicType::AsicTypes::Block> > block;
+        ydk::YList block;
         
 }; // Controller::Fabric::Oper::FsdbaggSfeAsicType::AsicTypes
 
@@ -576,7 +576,7 @@ class Controller::Fabric::Oper::FsdbaggStandby : public ydk::Entity
         class Plane; //type: Controller::Fabric::Oper::FsdbaggStandby::Plane
         class Statistics; //type: Controller::Fabric::Oper::FsdbaggStandby::Statistics
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggStandby::Plane> > plane;
+        ydk::YList plane;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggStandby::Statistics> statistics;
         
 }; // Controller::Fabric::Oper::FsdbaggStandby
@@ -632,7 +632,7 @@ class Controller::Fabric::Oper::FsdbaggStandby::Plane : public ydk::Entity
         ydk::YLeaf ppu_state; //type: string
         class AsicInternalError; //type: Controller::Fabric::Oper::FsdbaggStandby::Plane::AsicInternalError
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggStandby::Plane::AsicInternalError> > asic_internal_error;
+        ydk::YList asic_internal_error;
         
 }; // Controller::Fabric::Oper::FsdbaggStandby::Plane
 
@@ -687,7 +687,7 @@ class Controller::Fabric::Oper::FsdbaggStandby::Statistics : public ydk::Entity
 
         class Plane; //type: Controller::Fabric::Oper::FsdbaggStandby::Statistics::Plane
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggStandby::Statistics::Plane> > plane;
+        ydk::YList plane;
         
 }; // Controller::Fabric::Oper::FsdbaggStandby::Statistics
 
@@ -742,7 +742,7 @@ class Controller::Fabric::Oper::FsdbaggStandby::Statistics::Plane : public ydk::
         ydk::YLeaf ppu_state; //type: string
         class AsicInternalError; //type: Controller::Fabric::Oper::FsdbaggStandby::Statistics::Plane::AsicInternalError
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggStandby::Statistics::Plane::AsicInternalError> > asic_internal_error;
+        ydk::YList asic_internal_error;
         
 }; // Controller::Fabric::Oper::FsdbaggStandby::Statistics::Plane
 
@@ -797,7 +797,7 @@ class Controller::Fabric::Oper::FabHealth : public ydk::Entity
 
         class SysInfoList; //type: Controller::Fabric::Oper::FabHealth::SysInfoList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FabHealth::SysInfoList> > sys_info_list;
+        ydk::YList sys_info_list;
         
 }; // Controller::Fabric::Oper::FabHealth
 
@@ -846,12 +846,12 @@ class Controller::Fabric::Oper::FabHealth::SysInfoList : public ydk::Entity
         class SfeDrvrLoc; //type: Controller::Fabric::Oper::FabHealth::SysInfoList::SfeDrvrLoc
         class SfeFmSep; //type: Controller::Fabric::Oper::FabHealth::SysInfoList::SfeFmSep
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FabHealth::SysInfoList::SysPlaneInfoList> > sys_plane_info_list;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FabHealth::SysInfoList::RackInfoList> > rack_info_list;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FabHealth::SysInfoList::FsdbStatus> > fsdb_status;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FabHealth::SysInfoList::SfeStatus> > sfe_status;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FabHealth::SysInfoList::SfeDrvrLoc> > sfe_drvr_loc;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FabHealth::SysInfoList::SfeFmSep> > sfe_fm_sep;
+        ydk::YList sys_plane_info_list;
+        ydk::YList rack_info_list;
+        ydk::YList fsdb_status;
+        ydk::YList sfe_status;
+        ydk::YList sfe_drvr_loc;
+        ydk::YList sfe_fm_sep;
         
 }; // Controller::Fabric::Oper::FabHealth::SysInfoList
 
@@ -915,7 +915,7 @@ class Controller::Fabric::Oper::FabHealth::SysInfoList::RackInfoList : public yd
         ydk::YLeaf amba_valid; //type: int32
         class RackPlaneInfoList; //type: Controller::Fabric::Oper::FabHealth::SysInfoList::RackInfoList::RackPlaneInfoList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FabHealth::SysInfoList::RackInfoList::RackPlaneInfoList> > rack_plane_info_list;
+        ydk::YList rack_plane_info_list;
         
 }; // Controller::Fabric::Oper::FabHealth::SysInfoList::RackInfoList
 
@@ -944,7 +944,7 @@ class Controller::Fabric::Oper::FabHealth::SysInfoList::RackInfoList::RackPlaneI
         ydk::YLeaf asics_dn; //type: int32
         class ReachableAmba; //type: Controller::Fabric::Oper::FabHealth::SysInfoList::RackInfoList::RackPlaneInfoList::ReachableAmba
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FabHealth::SysInfoList::RackInfoList::RackPlaneInfoList::ReachableAmba> > reachable_amba;
+        ydk::YList reachable_amba;
         
 }; // Controller::Fabric::Oper::FabHealth::SysInfoList::RackInfoList::RackPlaneInfoList
 
@@ -1100,7 +1100,7 @@ class Controller::Fabric::Oper::FsdbAggregator::Fsdbagg : public ydk::Entity
 
         class Trace; //type: Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace> > trace;
+        ydk::YList trace;
         
 }; // Controller::Fabric::Oper::FsdbAggregator::Fsdbagg
 
@@ -1125,7 +1125,7 @@ class Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace : public ydk::Ent
         ydk::YLeaf buffer; //type: string
         class Location; //type: Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace
 
@@ -1149,7 +1149,7 @@ class Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace::Location : publi
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace::Location
 
@@ -1173,7 +1173,7 @@ class Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace::Location::AllOpt
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace::Location::AllOptions
 
@@ -1219,8 +1219,8 @@ class Controller::Fabric::Oper::Link : public ydk::Entity
         class Rack; //type: Controller::Fabric::Oper::Link::Rack
         class NodeLocation; //type: Controller::Fabric::Oper::Link::NodeLocation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack> > rack;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::NodeLocation> > node_location;
+        ydk::YList rack;
+        ydk::YList node_location;
         
 }; // Controller::Fabric::Oper::Link
 
@@ -1245,7 +1245,7 @@ class Controller::Fabric::Oper::Link::Rack : public ydk::Entity
         ydk::YLeaf rack_number; //type: int32
         class Port; //type: Controller::Fabric::Oper::Link::Rack::Port
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port> > port;
+        ydk::YList port;
         
 }; // Controller::Fabric::Oper::Link::Rack
 
@@ -1272,7 +1272,7 @@ class Controller::Fabric::Oper::Link::Rack::Port : public ydk::Entity
         class Rx; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx
         class Tx; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location> > location;
+        ydk::YList location;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx> rx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx> tx;
         
@@ -1327,7 +1327,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx : public ydk::Ent
         class State; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State
         class Statistics; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Detail> detail;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State> state;
@@ -1363,7 +1363,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::DataIdx : public
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::DataIdx
 
@@ -1411,7 +1411,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Brief : public y
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Brief
 
@@ -1443,7 +1443,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Brief::DataIdx :
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Brief::DataIdx
 
@@ -1491,7 +1491,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Detail : public 
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Detail
 
@@ -1523,7 +1523,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Detail::DataIdx 
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Detail::DataIdx
 
@@ -1602,7 +1602,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up : publ
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Detail> detail;
         
@@ -1636,7 +1636,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::DataI
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::DataIdx
 
@@ -1684,7 +1684,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Brief
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Brief
 
@@ -1716,7 +1716,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Brief
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Brief::DataIdx
 
@@ -1764,7 +1764,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Detai
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Detail
 
@@ -1796,7 +1796,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Detai
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Detail::DataIdx
 
@@ -1846,7 +1846,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down : pu
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Detail> detail;
         
@@ -1880,7 +1880,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Dat
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::DataIdx
 
@@ -1928,7 +1928,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Bri
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Brief
 
@@ -1960,7 +1960,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Bri
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Brief::DataIdx
 
@@ -2008,7 +2008,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Det
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Detail
 
@@ -2040,7 +2040,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Det
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Detail::DataIdx
 
@@ -2090,7 +2090,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er : publ
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Detail> detail;
         
@@ -2124,7 +2124,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::DataI
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::DataIdx
 
@@ -2172,7 +2172,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Brief
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Brief
 
@@ -2204,7 +2204,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Brief
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Brief::DataIdx
 
@@ -2252,7 +2252,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Detai
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Detail
 
@@ -2284,7 +2284,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Detai
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Detail::DataIdx
 
@@ -2334,7 +2334,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch 
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Detail> detail;
         
@@ -2368,7 +2368,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch:
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::DataIdx
 
@@ -2416,7 +2416,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch:
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Brief
 
@@ -2448,7 +2448,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch:
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Brief::DataIdx
 
@@ -2496,7 +2496,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch:
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Detail
 
@@ -2528,7 +2528,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch:
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Detail::DataIdx
 
@@ -2578,7 +2578,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics : pub
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Detail> detail;
         
@@ -2649,7 +2649,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Brie
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Brief
 
@@ -2718,7 +2718,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Deta
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Detail
 
@@ -2791,7 +2791,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx : public ydk::Ent
         class State; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State
         class Statistics; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Detail> detail;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State> state;
@@ -2827,7 +2827,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::DataIdx : public
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::DataIdx
 
@@ -2875,7 +2875,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Brief : public y
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Brief
 
@@ -2907,7 +2907,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Brief::DataIdx :
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Brief::DataIdx
 
@@ -2955,7 +2955,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Detail : public 
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Detail
 
@@ -2987,7 +2987,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Detail::DataIdx 
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Detail::DataIdx
 
@@ -3066,7 +3066,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up : publ
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Detail> detail;
         
@@ -3100,7 +3100,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::DataI
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::DataIdx
 
@@ -3148,7 +3148,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Brief
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Brief
 
@@ -3180,7 +3180,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Brief
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Brief::DataIdx
 
@@ -3228,7 +3228,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Detai
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Detail
 
@@ -3260,7 +3260,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Detai
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Detail::DataIdx
 
@@ -3310,7 +3310,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down : pu
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Detail> detail;
         
@@ -3344,7 +3344,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Dat
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::DataIdx
 
@@ -3392,7 +3392,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Bri
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Brief
 
@@ -3424,7 +3424,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Bri
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Brief::DataIdx
 
@@ -3472,7 +3472,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Det
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Detail
 
@@ -3504,7 +3504,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Det
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Detail::DataIdx
 
@@ -3554,7 +3554,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er : publ
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Detail> detail;
         
@@ -3588,7 +3588,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::DataI
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::DataIdx
 
@@ -3636,7 +3636,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Brief
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Brief
 
@@ -3668,7 +3668,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Brief
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Brief::DataIdx
 
@@ -3716,7 +3716,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Detai
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Detail
 
@@ -3748,7 +3748,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Detai
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Detail::DataIdx
 
@@ -3798,7 +3798,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch 
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Detail> detail;
         
@@ -3832,7 +3832,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch:
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::DataIdx
 
@@ -3880,7 +3880,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch:
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Brief
 
@@ -3912,7 +3912,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch:
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Brief::DataIdx
 
@@ -3960,7 +3960,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch:
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Detail
 
@@ -3992,7 +3992,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch:
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Detail::DataIdx
 
@@ -4042,7 +4042,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics : pub
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Detail> detail;
         
@@ -4113,7 +4113,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Brie
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Brief
 
@@ -4182,7 +4182,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Deta
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Detail
 

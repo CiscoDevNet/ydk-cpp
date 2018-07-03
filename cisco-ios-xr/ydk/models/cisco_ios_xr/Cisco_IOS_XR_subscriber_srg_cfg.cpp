@@ -20,14 +20,14 @@ SubscriberRedundancy::SubscriberRedundancy()
     slave_mode{YType::enumeration, "slave-mode"},
     hold_timer{YType::uint32, "hold-timer"},
     redundancy_disable{YType::empty, "redundancy-disable"}
-    	,
+        ,
     groups(std::make_shared<SubscriberRedundancy::Groups>())
-	,revertive_timer(std::make_shared<SubscriberRedundancy::RevertiveTimer>())
+    , revertive_timer(std::make_shared<SubscriberRedundancy::RevertiveTimer>())
 {
     groups->parent = this;
     revertive_timer->parent = this;
 
-    yang_name = "subscriber-redundancy"; yang_parent_name = "Cisco-IOS-XR-subscriber-srg-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "subscriber-redundancy"; yang_parent_name = "Cisco-IOS-XR-subscriber-srg-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SubscriberRedundancy::~SubscriberRedundancy()
@@ -36,6 +36,7 @@ SubscriberRedundancy::~SubscriberRedundancy()
 
 bool SubscriberRedundancy::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| virtual_mac_prefix.is_set
 	|| preferred_role.is_set
@@ -235,9 +236,11 @@ bool SubscriberRedundancy::has_leaf_or_child_of_name(const std::string & name) c
 }
 
 SubscriberRedundancy::Groups::Groups()
+    :
+    group(this, {"group_id"})
 {
 
-    yang_name = "groups"; yang_parent_name = "subscriber-redundancy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "groups"; yang_parent_name = "subscriber-redundancy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberRedundancy::Groups::~Groups()
@@ -246,7 +249,8 @@ SubscriberRedundancy::Groups::~Groups()
 
 bool SubscriberRedundancy::Groups::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
@@ -256,7 +260,7 @@ bool SubscriberRedundancy::Groups::has_data() const
 
 bool SubscriberRedundancy::Groups::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
@@ -293,7 +297,7 @@ std::shared_ptr<Entity> SubscriberRedundancy::Groups::get_child_by_name(const st
     {
         auto c = std::make_shared<SubscriberRedundancy::Groups::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -305,7 +309,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -345,12 +349,12 @@ SubscriberRedundancy::Groups::Group::Group()
     access_tracking_object{YType::str, "access-tracking-object"},
     enable_fast_switchover{YType::empty, "enable-fast-switchover"},
     redundancy_disable{YType::empty, "redundancy-disable"}
-    	,
+        ,
     interface_list(std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList>())
-	,peer(std::make_shared<SubscriberRedundancy::Groups::Group::Peer>())
-	,revertive_timer(std::make_shared<SubscriberRedundancy::Groups::Group::RevertiveTimer>())
-	,virtual_mac(std::make_shared<SubscriberRedundancy::Groups::Group::VirtualMac>())
-	,state_control_route(std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute>())
+    , peer(std::make_shared<SubscriberRedundancy::Groups::Group::Peer>())
+    , revertive_timer(std::make_shared<SubscriberRedundancy::Groups::Group::RevertiveTimer>())
+    , virtual_mac(std::make_shared<SubscriberRedundancy::Groups::Group::VirtualMac>())
+    , state_control_route(std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute>())
 {
     interface_list->parent = this;
     peer->parent = this;
@@ -358,7 +362,7 @@ SubscriberRedundancy::Groups::Group::Group()
     virtual_mac->parent = this;
     state_control_route->parent = this;
 
-    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberRedundancy::Groups::Group::~Group()
@@ -367,6 +371,7 @@ SubscriberRedundancy::Groups::Group::~Group()
 
 bool SubscriberRedundancy::Groups::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return group_id.is_set
 	|| disable_tracking_object.is_set
 	|| core_tracking_object.is_set
@@ -418,7 +423,8 @@ std::string SubscriberRedundancy::Groups::Group::get_absolute_path() const
 std::string SubscriberRedundancy::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group" <<"[group-id='" <<group_id <<"']";
+    path_buffer << "group";
+    ADD_KEY_TOKEN(group_id, "group-id");
     return path_buffer.str();
 }
 
@@ -663,14 +669,14 @@ bool SubscriberRedundancy::Groups::Group::has_leaf_or_child_of_name(const std::s
 SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceList()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     interfaces(std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces>())
-	,interface_ranges(std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges>())
+    , interface_ranges(std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges>())
 {
     interfaces->parent = this;
     interface_ranges->parent = this;
 
-    yang_name = "interface-list"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-list"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancy::Groups::Group::InterfaceList::~InterfaceList()
@@ -679,6 +685,7 @@ SubscriberRedundancy::Groups::Group::InterfaceList::~InterfaceList()
 
 bool SubscriberRedundancy::Groups::Group::InterfaceList::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (interfaces !=  nullptr && interfaces->has_data())
 	|| (interface_ranges !=  nullptr && interface_ranges->has_data());
@@ -775,9 +782,11 @@ bool SubscriberRedundancy::Groups::Group::InterfaceList::has_leaf_or_child_of_na
 }
 
 SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "interface-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "interface-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::~Interfaces()
@@ -786,7 +795,8 @@ SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::~Interfaces()
 
 bool SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -796,7 +806,7 @@ bool SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::has_data() 
 
 bool SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -826,7 +836,7 @@ std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::InterfaceList::Inte
     {
         auto c = std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -838,7 +848,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Gro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -870,7 +880,7 @@ SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::Inter
     interface_id{YType::uint32, "interface-id"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::~Interface()
@@ -879,6 +889,7 @@ SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::~Inte
 
 bool SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_id.is_set;
 }
@@ -893,7 +904,8 @@ bool SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::
 std::string SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -956,9 +968,11 @@ bool SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::
 }
 
 SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRanges()
+    :
+    interface_range(this, {"interface_name", "sub_interface_range_start", "sub_interface_range_end"})
 {
 
-    yang_name = "interface-ranges"; yang_parent_name = "interface-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-ranges"; yang_parent_name = "interface-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::~InterfaceRanges()
@@ -967,7 +981,8 @@ SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::~InterfaceR
 
 bool SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::has_data() const
 {
-    for (std::size_t index=0; index<interface_range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_range.len(); index++)
     {
         if(interface_range[index]->has_data())
             return true;
@@ -977,7 +992,7 @@ bool SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::has_da
 
 bool SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::has_operation() const
 {
-    for (std::size_t index=0; index<interface_range.size(); index++)
+    for (std::size_t index=0; index<interface_range.len(); index++)
     {
         if(interface_range[index]->has_operation())
             return true;
@@ -1007,7 +1022,7 @@ std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::InterfaceList::Inte
     {
         auto c = std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange>();
         c->parent = this;
-        interface_range.push_back(c);
+        interface_range.append(c);
         return c;
     }
 
@@ -1019,7 +1034,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Gro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_range)
+    for (auto c : interface_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1054,7 +1069,7 @@ SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRa
     interface_id_range_end{YType::uint32, "interface-id-range-end"}
 {
 
-    yang_name = "interface-range"; yang_parent_name = "interface-ranges"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-range"; yang_parent_name = "interface-ranges"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::~InterfaceRange()
@@ -1063,6 +1078,7 @@ SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRa
 
 bool SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| sub_interface_range_start.is_set
 	|| sub_interface_range_end.is_set
@@ -1083,7 +1099,10 @@ bool SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::Interf
 std::string SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-range" <<"[interface-name='" <<interface_name <<"']" <<"[sub-interface-range-start='" <<sub_interface_range_start <<"']" <<"[sub-interface-range-end='" <<sub_interface_range_end <<"']";
+    path_buffer << "interface-range";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
+    ADD_KEY_TOKEN(sub_interface_range_start, "sub-interface-range-start");
+    ADD_KEY_TOKEN(sub_interface_range_end, "sub-interface-range-end");
     return path_buffer.str();
 }
 
@@ -1181,12 +1200,12 @@ bool SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::Interf
 SubscriberRedundancy::Groups::Group::Peer::Peer()
     :
     route_add_disable{YType::empty, "route-add-disable"}
-    	,
+        ,
     ipaddress(std::make_shared<SubscriberRedundancy::Groups::Group::Peer::Ipaddress>())
 {
     ipaddress->parent = this;
 
-    yang_name = "peer"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancy::Groups::Group::Peer::~Peer()
@@ -1195,6 +1214,7 @@ SubscriberRedundancy::Groups::Group::Peer::~Peer()
 
 bool SubscriberRedundancy::Groups::Group::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return route_add_disable.is_set
 	|| (ipaddress !=  nullptr && ipaddress->has_data());
 }
@@ -1280,7 +1300,7 @@ SubscriberRedundancy::Groups::Group::Peer::Ipaddress::Ipaddress()
     prefix_string{YType::str, "prefix-string"}
 {
 
-    yang_name = "ipaddress"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipaddress"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancy::Groups::Group::Peer::Ipaddress::~Ipaddress()
@@ -1289,6 +1309,7 @@ SubscriberRedundancy::Groups::Group::Peer::Ipaddress::~Ipaddress()
 
 bool SubscriberRedundancy::Groups::Group::Peer::Ipaddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| prefix_string.is_set;
 }
@@ -1371,7 +1392,7 @@ SubscriberRedundancy::Groups::Group::RevertiveTimer::RevertiveTimer()
     value_{YType::uint32, "value"}
 {
 
-    yang_name = "revertive-timer"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "revertive-timer"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancy::Groups::Group::RevertiveTimer::~RevertiveTimer()
@@ -1380,6 +1401,7 @@ SubscriberRedundancy::Groups::Group::RevertiveTimer::~RevertiveTimer()
 
 bool SubscriberRedundancy::Groups::Group::RevertiveTimer::has_data() const
 {
+    if (is_presence_container) return true;
     return max_value.is_set
 	|| value_.is_set;
 }
@@ -1462,7 +1484,7 @@ SubscriberRedundancy::Groups::Group::VirtualMac::VirtualMac()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "virtual-mac"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "virtual-mac"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancy::Groups::Group::VirtualMac::~VirtualMac()
@@ -1471,6 +1493,7 @@ SubscriberRedundancy::Groups::Group::VirtualMac::~VirtualMac()
 
 bool SubscriberRedundancy::Groups::Group::VirtualMac::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| disable.is_set;
 }
@@ -1550,12 +1573,12 @@ bool SubscriberRedundancy::Groups::Group::VirtualMac::has_leaf_or_child_of_name(
 SubscriberRedundancy::Groups::Group::StateControlRoute::StateControlRoute()
     :
     ipv4_routes(std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes>())
-	,ipv6_route(std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route>())
+    , ipv6_route(std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route>())
 {
     ipv4_routes->parent = this;
     ipv6_route->parent = this;
 
-    yang_name = "state-control-route"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state-control-route"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::~StateControlRoute()
@@ -1564,6 +1587,7 @@ SubscriberRedundancy::Groups::Group::StateControlRoute::~StateControlRoute()
 
 bool SubscriberRedundancy::Groups::Group::StateControlRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4_routes !=  nullptr && ipv4_routes->has_data())
 	|| (ipv6_route !=  nullptr && ipv6_route->has_data());
 }
@@ -1647,9 +1671,11 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::has_leaf_or_child_o
 }
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Routes()
+    :
+    ipv4_route(this, {"prefix_string", "prefix_length"})
 {
 
-    yang_name = "ipv4-routes"; yang_parent_name = "state-control-route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-routes"; yang_parent_name = "state-control-route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::~Ipv4Routes()
@@ -1658,7 +1684,8 @@ SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::~Ipv4Routes(
 
 bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_route.len(); index++)
     {
         if(ipv4_route[index]->has_data())
             return true;
@@ -1668,7 +1695,7 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::has_dat
 
 bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_route.size(); index++)
+    for (std::size_t index=0; index<ipv4_route.len(); index++)
     {
         if(ipv4_route[index]->has_operation())
             return true;
@@ -1698,7 +1725,7 @@ std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::
     {
         auto c = std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route>();
         c->parent = this;
-        ipv4_route.push_back(c);
+        ipv4_route.append(c);
         return c;
     }
 
@@ -1710,7 +1737,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Gro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_route)
+    for (auto c : ipv4_route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1739,13 +1766,14 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::has_lea
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4Route()
     :
     prefix_string{YType::str, "prefix-string"},
-    prefix_length{YType::int32, "prefix-length"}
-    	,
+    prefix_length{YType::uint32, "prefix-length"}
+        ,
     ipv4_route_data(std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData>())
+    , vrfname(this, {"vrfname"})
 {
     ipv4_route_data->parent = this;
 
-    yang_name = "ipv4-route"; yang_parent_name = "ipv4-routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-route"; yang_parent_name = "ipv4-routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::~Ipv4Route()
@@ -1754,7 +1782,8 @@ SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::~
 
 bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::has_data() const
 {
-    for (std::size_t index=0; index<vrfname.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrfname.len(); index++)
     {
         if(vrfname[index]->has_data())
             return true;
@@ -1766,7 +1795,7 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Rou
 
 bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::has_operation() const
 {
-    for (std::size_t index=0; index<vrfname.size(); index++)
+    for (std::size_t index=0; index<vrfname.len(); index++)
     {
         if(vrfname[index]->has_operation())
             return true;
@@ -1780,7 +1809,9 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Rou
 std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-route" <<"[prefix-string='" <<prefix_string <<"']" <<"[prefix-length='" <<prefix_length <<"']";
+    path_buffer << "ipv4-route";
+    ADD_KEY_TOKEN(prefix_string, "prefix-string");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -1810,7 +1841,7 @@ std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::
     {
         auto c = std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname>();
         c->parent = this;
-        vrfname.push_back(c);
+        vrfname.append(c);
         return c;
     }
 
@@ -1827,7 +1858,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Gro
     }
 
     count = 0;
-    for (auto const & c : vrfname)
+    for (auto c : vrfname.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1878,7 +1909,7 @@ SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::I
     tagvalue{YType::uint32, "tagvalue"}
 {
 
-    yang_name = "ipv4-route-data"; yang_parent_name = "ipv4-route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-route-data"; yang_parent_name = "ipv4-route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData::~Ipv4RouteData()
@@ -1887,6 +1918,7 @@ SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::I
 
 bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData::has_data() const
 {
+    if (is_presence_container) return true;
     return tagvalue.is_set;
 }
 
@@ -1956,7 +1988,7 @@ SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::V
     tagvalue{YType::uint32, "tagvalue"}
 {
 
-    yang_name = "vrfname"; yang_parent_name = "ipv4-route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfname"; yang_parent_name = "ipv4-route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname::~Vrfname()
@@ -1965,6 +1997,7 @@ SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::V
 
 bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname::has_data() const
 {
+    if (is_presence_container) return true;
     return vrfname.is_set
 	|| tagvalue.is_set;
 }
@@ -1979,7 +2012,8 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Rou
 std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrfname" <<"[vrfname='" <<vrfname <<"']";
+    path_buffer << "vrfname";
+    ADD_KEY_TOKEN(vrfname, "vrfname");
     return path_buffer.str();
 }
 
@@ -2043,13 +2077,13 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Rou
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6Route()
     :
-    ipv6na_routes(std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes>())
-	,ipv6pd_routes(std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes>())
+    ipv6na_routes(std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes>())
+    , ipv6pd_routes(std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes>())
 {
     ipv6na_routes->parent = this;
     ipv6pd_routes->parent = this;
 
-    yang_name = "ipv6-route"; yang_parent_name = "state-control-route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-route"; yang_parent_name = "state-control-route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::~Ipv6Route()
@@ -2058,6 +2092,7 @@ SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::~Ipv6Route()
 
 bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv6na_routes !=  nullptr && ipv6na_routes->has_data())
 	|| (ipv6pd_routes !=  nullptr && ipv6pd_routes->has_data());
 }
@@ -2091,7 +2126,7 @@ std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::
     {
         if(ipv6na_routes == nullptr)
         {
-            ipv6na_routes = std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes>();
+            ipv6na_routes = std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes>();
         }
         return ipv6na_routes;
     }
@@ -2100,7 +2135,7 @@ std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::
     {
         if(ipv6pd_routes == nullptr)
         {
-            ipv6pd_routes = std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes>();
+            ipv6pd_routes = std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes>();
         }
         return ipv6pd_routes;
     }
@@ -2140,19 +2175,22 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::has_leaf
     return false;
 }
 
-SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoutes()
+SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoutes()
+    :
+    ipv6na_route(this, {"vrfname", "prefix_length", "prefix_string"})
 {
 
-    yang_name = "ipv6na-routes"; yang_parent_name = "ipv6-route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6na-routes"; yang_parent_name = "ipv6-route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::~Ipv6NaRoutes()
+SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::~Ipv6naRoutes()
 {
 }
 
-bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::has_data() const
+bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::has_data() const
 {
-    for (std::size_t index=0; index<ipv6na_route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv6na_route.len(); index++)
     {
         if(ipv6na_route[index]->has_data())
             return true;
@@ -2160,9 +2198,9 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRo
     return false;
 }
 
-bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::has_operation() const
+bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::has_operation() const
 {
-    for (std::size_t index=0; index<ipv6na_route.size(); index++)
+    for (std::size_t index=0; index<ipv6na_route.len(); index++)
     {
         if(ipv6na_route[index]->has_operation())
             return true;
@@ -2170,14 +2208,14 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRo
     return is_set(yfilter);
 }
 
-std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::get_segment_path() const
+std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6na-routes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2186,25 +2224,25 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6na-route")
     {
-        auto c = std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute>();
+        auto c = std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute>();
         c->parent = this;
-        ipv6na_route.push_back(c);
+        ipv6na_route.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv6na_route)
+    for (auto c : ipv6na_route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2215,45 +2253,46 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Gro
     return children;
 }
 
-void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::set_filter(const std::string & value_path, YFilter yfilter)
+void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::has_leaf_or_child_of_name(const std::string & name) const
+bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv6na-route")
         return true;
     return false;
 }
 
-SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute::Ipv6NaRoute()
+SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute::Ipv6naRoute()
     :
     vrfname{YType::str, "vrfname"},
-    prefix_length{YType::int32, "prefix-length"},
+    prefix_length{YType::uint32, "prefix-length"},
     prefix_string{YType::str, "prefix-string"},
     tagvalue{YType::uint32, "tagvalue"}
 {
 
-    yang_name = "ipv6na-route"; yang_parent_name = "ipv6na-routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6na-route"; yang_parent_name = "ipv6na-routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute::~Ipv6NaRoute()
+SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute::~Ipv6naRoute()
 {
 }
 
-bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute::has_data() const
+bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return vrfname.is_set
 	|| prefix_length.is_set
 	|| prefix_string.is_set
 	|| tagvalue.is_set;
 }
 
-bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute::has_operation() const
+bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vrfname.yfilter)
@@ -2262,14 +2301,17 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRo
 	|| ydk::is_set(tagvalue.yfilter);
 }
 
-std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute::get_segment_path() const
+std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv6na-route" <<"[vrfname='" <<vrfname <<"']" <<"[prefix-length='" <<prefix_length <<"']" <<"[prefix-string='" <<prefix_string <<"']";
+    path_buffer << "ipv6na-route";
+    ADD_KEY_TOKEN(vrfname, "vrfname");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
+    ADD_KEY_TOKEN(prefix_string, "prefix-string");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2282,19 +2324,19 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrfname")
     {
@@ -2322,7 +2364,7 @@ void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRo
     }
 }
 
-void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute::set_filter(const std::string & value_path, YFilter yfilter)
+void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vrfname")
     {
@@ -2342,26 +2384,29 @@ void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRo
     }
 }
 
-bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute::has_leaf_or_child_of_name(const std::string & name) const
+bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrfname" || name == "prefix-length" || name == "prefix-string" || name == "tagvalue")
         return true;
     return false;
 }
 
-SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoutes()
+SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoutes()
+    :
+    ipv6pd_route(this, {"vrfname", "prefix_length", "prefix_string"})
 {
 
-    yang_name = "ipv6pd-routes"; yang_parent_name = "ipv6-route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6pd-routes"; yang_parent_name = "ipv6-route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::~Ipv6PdRoutes()
+SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::~Ipv6pdRoutes()
 {
 }
 
-bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::has_data() const
+bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::has_data() const
 {
-    for (std::size_t index=0; index<ipv6pd_route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv6pd_route.len(); index++)
     {
         if(ipv6pd_route[index]->has_data())
             return true;
@@ -2369,9 +2414,9 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRo
     return false;
 }
 
-bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::has_operation() const
+bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::has_operation() const
 {
-    for (std::size_t index=0; index<ipv6pd_route.size(); index++)
+    for (std::size_t index=0; index<ipv6pd_route.len(); index++)
     {
         if(ipv6pd_route[index]->has_operation())
             return true;
@@ -2379,14 +2424,14 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRo
     return is_set(yfilter);
 }
 
-std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::get_segment_path() const
+std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6pd-routes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2395,25 +2440,25 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6pd-route")
     {
-        auto c = std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute>();
+        auto c = std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute>();
         c->parent = this;
-        ipv6pd_route.push_back(c);
+        ipv6pd_route.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv6pd_route)
+    for (auto c : ipv6pd_route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2424,45 +2469,46 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Gro
     return children;
 }
 
-void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::set_filter(const std::string & value_path, YFilter yfilter)
+void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::has_leaf_or_child_of_name(const std::string & name) const
+bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv6pd-route")
         return true;
     return false;
 }
 
-SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute::Ipv6PdRoute()
+SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute::Ipv6pdRoute()
     :
     vrfname{YType::str, "vrfname"},
-    prefix_length{YType::int32, "prefix-length"},
+    prefix_length{YType::uint32, "prefix-length"},
     prefix_string{YType::str, "prefix-string"},
     tagvalue{YType::uint32, "tagvalue"}
 {
 
-    yang_name = "ipv6pd-route"; yang_parent_name = "ipv6pd-routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6pd-route"; yang_parent_name = "ipv6pd-routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute::~Ipv6PdRoute()
+SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute::~Ipv6pdRoute()
 {
 }
 
-bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute::has_data() const
+bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return vrfname.is_set
 	|| prefix_length.is_set
 	|| prefix_string.is_set
 	|| tagvalue.is_set;
 }
 
-bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute::has_operation() const
+bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vrfname.yfilter)
@@ -2471,14 +2517,17 @@ bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRo
 	|| ydk::is_set(tagvalue.yfilter);
 }
 
-std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute::get_segment_path() const
+std::string SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv6pd-route" <<"[vrfname='" <<vrfname <<"']" <<"[prefix-length='" <<prefix_length <<"']" <<"[prefix-string='" <<prefix_string <<"']";
+    path_buffer << "ipv6pd-route";
+    ADD_KEY_TOKEN(vrfname, "vrfname");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
+    ADD_KEY_TOKEN(prefix_string, "prefix-string");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2491,19 +2540,19 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrfname")
     {
@@ -2531,7 +2580,7 @@ void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRo
     }
 }
 
-void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute::set_filter(const std::string & value_path, YFilter yfilter)
+void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vrfname")
     {
@@ -2551,7 +2600,7 @@ void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRo
     }
 }
 
-bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute::has_leaf_or_child_of_name(const std::string & name) const
+bool SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrfname" || name == "prefix-length" || name == "prefix-string" || name == "tagvalue")
         return true;
@@ -2564,7 +2613,7 @@ SubscriberRedundancy::RevertiveTimer::RevertiveTimer()
     value_{YType::uint32, "value"}
 {
 
-    yang_name = "revertive-timer"; yang_parent_name = "subscriber-redundancy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "revertive-timer"; yang_parent_name = "subscriber-redundancy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberRedundancy::RevertiveTimer::~RevertiveTimer()
@@ -2573,6 +2622,7 @@ SubscriberRedundancy::RevertiveTimer::~RevertiveTimer()
 
 bool SubscriberRedundancy::RevertiveTimer::has_data() const
 {
+    if (is_presence_container) return true;
     return max_value.is_set
 	|| value_.is_set;
 }
@@ -2659,11 +2709,11 @@ bool SubscriberRedundancy::RevertiveTimer::has_leaf_or_child_of_name(const std::
 const Enum::YLeaf SubscriberRedundancyGroupSlaveMode::warm {1, "warm"};
 const Enum::YLeaf SubscriberRedundancyGroupSlaveMode::hot {2, "hot"};
 
-const Enum::YLeaf SubscriberRedundancyGroupRole::master {1, "master"};
-const Enum::YLeaf SubscriberRedundancyGroupRole::slave {2, "slave"};
-
 const Enum::YLeaf SrgAddrFamily::ipv4 {2, "ipv4"};
 const Enum::YLeaf SrgAddrFamily::ipv6 {10, "ipv6"};
+
+const Enum::YLeaf SubscriberRedundancyGroupRole::master {1, "master"};
+const Enum::YLeaf SubscriberRedundancyGroupRole::slave {2, "slave"};
 
 
 }

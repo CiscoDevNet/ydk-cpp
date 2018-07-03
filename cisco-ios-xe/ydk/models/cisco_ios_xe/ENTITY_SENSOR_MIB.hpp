@@ -31,18 +31,18 @@ class ENTITYSENSORMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Entphysensortable; //type: ENTITYSENSORMIB::Entphysensortable
+        class EntPhySensorTable; //type: ENTITYSENSORMIB::EntPhySensorTable
 
-        std::shared_ptr<cisco_ios_xe::ENTITY_SENSOR_MIB::ENTITYSENSORMIB::Entphysensortable> entphysensortable;
+        std::shared_ptr<cisco_ios_xe::ENTITY_SENSOR_MIB::ENTITYSENSORMIB::EntPhySensorTable> entphysensortable;
         
 }; // ENTITYSENSORMIB
 
 
-class ENTITYSENSORMIB::Entphysensortable : public ydk::Entity
+class ENTITYSENSORMIB::EntPhySensorTable : public ydk::Entity
 {
     public:
-        Entphysensortable();
-        ~Entphysensortable();
+        EntPhySensorTable();
+        ~EntPhySensorTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -55,18 +55,18 @@ class ENTITYSENSORMIB::Entphysensortable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Entphysensorentry; //type: ENTITYSENSORMIB::Entphysensortable::Entphysensorentry
+        class EntPhySensorEntry; //type: ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::ENTITY_SENSOR_MIB::ENTITYSENSORMIB::Entphysensortable::Entphysensorentry> > entphysensorentry;
+        ydk::YList entphysensorentry;
         
-}; // ENTITYSENSORMIB::Entphysensortable
+}; // ENTITYSENSORMIB::EntPhySensorTable
 
 
-class ENTITYSENSORMIB::Entphysensortable::Entphysensorentry : public ydk::Entity
+class ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry : public ydk::Entity
 {
     public:
-        Entphysensorentry();
-        ~Entphysensorentry();
+        EntPhySensorEntry();
+        ~EntPhySensorEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -79,7 +79,7 @@ class ENTITYSENSORMIB::Entphysensortable::Entphysensorentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf entphysensortype; //type: EntitySensorDataType
         ydk::YLeaf entphysensorscale; //type: EntitySensorDataScale
@@ -90,7 +90,7 @@ class ENTITYSENSORMIB::Entphysensortable::Entphysensorentry : public ydk::Entity
         ydk::YLeaf entphysensorvaluetimestamp; //type: uint32
         ydk::YLeaf entphysensorvalueupdaterate; //type: uint32
 
-}; // ENTITYSENSORMIB::Entphysensortable::Entphysensorentry
+}; // ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry
 
 class EntitySensorDataType : public ydk::Enum
 {
@@ -107,6 +107,15 @@ class EntitySensorDataType : public ydk::Enum
         static const ydk::Enum::YLeaf rpm;
         static const ydk::Enum::YLeaf cmm;
         static const ydk::Enum::YLeaf truthvalue;
+
+};
+
+class EntitySensorStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ok;
+        static const ydk::Enum::YLeaf unavailable;
+        static const ydk::Enum::YLeaf nonoperational;
 
 };
 
@@ -130,15 +139,6 @@ class EntitySensorDataScale : public ydk::Enum
         static const ydk::Enum::YLeaf peta;
         static const ydk::Enum::YLeaf zetta;
         static const ydk::Enum::YLeaf yotta;
-
-};
-
-class EntitySensorStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ok;
-        static const ydk::Enum::YLeaf unavailable;
-        static const ydk::Enum::YLeaf nonoperational;
 
 };
 

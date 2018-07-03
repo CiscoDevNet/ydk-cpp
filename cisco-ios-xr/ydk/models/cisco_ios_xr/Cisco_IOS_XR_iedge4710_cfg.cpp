@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_iedge4710_cfg {
 SubscriberManager::SubscriberManager()
     :
     accounting(std::make_shared<SubscriberManager::Accounting>())
-	,srg(std::make_shared<SubscriberManager::Srg>())
+    , srg(std::make_shared<SubscriberManager::Srg>())
 {
     accounting->parent = this;
     srg->parent = this;
 
-    yang_name = "subscriber-manager"; yang_parent_name = "Cisco-IOS-XR-iedge4710-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "subscriber-manager"; yang_parent_name = "Cisco-IOS-XR-iedge4710-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SubscriberManager::~SubscriberManager()
@@ -28,6 +28,7 @@ SubscriberManager::~SubscriberManager()
 
 bool SubscriberManager::has_data() const
 {
+    if (is_presence_container) return true;
     return (accounting !=  nullptr && accounting->has_data())
 	|| (srg !=  nullptr && srg->has_data());
 }
@@ -138,12 +139,12 @@ bool SubscriberManager::has_leaf_or_child_of_name(const std::string & name) cons
 SubscriberManager::Accounting::Accounting()
     :
     send_stop(std::make_shared<SubscriberManager::Accounting::SendStop>())
-	,interim(std::make_shared<SubscriberManager::Accounting::Interim>())
+    , interim(std::make_shared<SubscriberManager::Accounting::Interim>())
 {
     send_stop->parent = this;
     interim->parent = this;
 
-    yang_name = "accounting"; yang_parent_name = "subscriber-manager"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "accounting"; yang_parent_name = "subscriber-manager"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberManager::Accounting::~Accounting()
@@ -152,6 +153,7 @@ SubscriberManager::Accounting::~Accounting()
 
 bool SubscriberManager::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return (send_stop !=  nullptr && send_stop->has_data())
 	|| (interim !=  nullptr && interim->has_data());
 }
@@ -247,7 +249,7 @@ SubscriberManager::Accounting::SendStop::SendStop()
 {
     setup_failure->parent = this;
 
-    yang_name = "send-stop"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "send-stop"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberManager::Accounting::SendStop::~SendStop()
@@ -256,6 +258,7 @@ SubscriberManager::Accounting::SendStop::~SendStop()
 
 bool SubscriberManager::Accounting::SendStop::has_data() const
 {
+    if (is_presence_container) return true;
     return (setup_failure !=  nullptr && setup_failure->has_data());
 }
 
@@ -334,7 +337,7 @@ SubscriberManager::Accounting::SendStop::SetupFailure::SetupFailure()
     method_list_name{YType::str, "method-list-name"}
 {
 
-    yang_name = "setup-failure"; yang_parent_name = "send-stop"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "setup-failure"; yang_parent_name = "send-stop"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberManager::Accounting::SendStop::SetupFailure::~SetupFailure()
@@ -343,6 +346,7 @@ SubscriberManager::Accounting::SendStop::SetupFailure::~SetupFailure()
 
 bool SubscriberManager::Accounting::SendStop::SetupFailure::has_data() const
 {
+    if (is_presence_container) return true;
     return method_list_name.is_set;
 }
 
@@ -419,7 +423,7 @@ SubscriberManager::Accounting::Interim::Interim()
 {
     variation->parent = this;
 
-    yang_name = "interim"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interim"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberManager::Accounting::Interim::~Interim()
@@ -428,6 +432,7 @@ SubscriberManager::Accounting::Interim::~Interim()
 
 bool SubscriberManager::Accounting::Interim::has_data() const
 {
+    if (is_presence_container) return true;
     return (variation !=  nullptr && variation->has_data());
 }
 
@@ -506,7 +511,7 @@ SubscriberManager::Accounting::Interim::Variation::Variation()
     maximum_percentage_variation{YType::uint32, "maximum-percentage-variation"}
 {
 
-    yang_name = "variation"; yang_parent_name = "interim"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "variation"; yang_parent_name = "interim"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberManager::Accounting::Interim::Variation::~Variation()
@@ -515,6 +520,7 @@ SubscriberManager::Accounting::Interim::Variation::~Variation()
 
 bool SubscriberManager::Accounting::Interim::Variation::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum_percentage_variation.is_set;
 }
 
@@ -590,7 +596,7 @@ SubscriberManager::Srg::Srg()
     sync_account_session_id{YType::empty, "sync-account-session-id"}
 {
 
-    yang_name = "srg"; yang_parent_name = "subscriber-manager"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "srg"; yang_parent_name = "subscriber-manager"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberManager::Srg::~Srg()
@@ -599,6 +605,7 @@ SubscriberManager::Srg::~Srg()
 
 bool SubscriberManager::Srg::has_data() const
 {
+    if (is_presence_container) return true;
     return sync_account_session_id.is_set;
 }
 
@@ -670,9 +677,11 @@ bool SubscriberManager::Srg::has_leaf_or_child_of_name(const std::string & name)
 }
 
 SubscriberFeaturette::SubscriberFeaturette()
+    :
+    featurette_name(this, {"featurette"})
 {
 
-    yang_name = "subscriber-featurette"; yang_parent_name = "Cisco-IOS-XR-iedge4710-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "subscriber-featurette"; yang_parent_name = "Cisco-IOS-XR-iedge4710-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SubscriberFeaturette::~SubscriberFeaturette()
@@ -681,7 +690,8 @@ SubscriberFeaturette::~SubscriberFeaturette()
 
 bool SubscriberFeaturette::has_data() const
 {
-    for (std::size_t index=0; index<featurette_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<featurette_name.len(); index++)
     {
         if(featurette_name[index]->has_data())
             return true;
@@ -691,7 +701,7 @@ bool SubscriberFeaturette::has_data() const
 
 bool SubscriberFeaturette::has_operation() const
 {
-    for (std::size_t index=0; index<featurette_name.size(); index++)
+    for (std::size_t index=0; index<featurette_name.len(); index++)
     {
         if(featurette_name[index]->has_operation())
             return true;
@@ -721,7 +731,7 @@ std::shared_ptr<Entity> SubscriberFeaturette::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<SubscriberFeaturette::FeaturetteName>();
         c->parent = this;
-        featurette_name.push_back(c);
+        featurette_name.append(c);
         return c;
     }
 
@@ -733,7 +743,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberFeaturette::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : featurette_name)
+    for (auto c : featurette_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -787,10 +797,10 @@ bool SubscriberFeaturette::has_leaf_or_child_of_name(const std::string & name) c
 SubscriberFeaturette::FeaturetteName::FeaturetteName()
     :
     featurette{YType::str, "featurette"},
-    enable{YType::int32, "enable"}
+    enable{YType::uint32, "enable"}
 {
 
-    yang_name = "featurette-name"; yang_parent_name = "subscriber-featurette"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "featurette-name"; yang_parent_name = "subscriber-featurette"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberFeaturette::FeaturetteName::~FeaturetteName()
@@ -799,6 +809,7 @@ SubscriberFeaturette::FeaturetteName::~FeaturetteName()
 
 bool SubscriberFeaturette::FeaturetteName::has_data() const
 {
+    if (is_presence_container) return true;
     return featurette.is_set
 	|| enable.is_set;
 }
@@ -820,7 +831,8 @@ std::string SubscriberFeaturette::FeaturetteName::get_absolute_path() const
 std::string SubscriberFeaturette::FeaturetteName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "featurette-name" <<"[featurette='" <<featurette <<"']";
+    path_buffer << "featurette-name";
+    ADD_KEY_TOKEN(featurette, "featurette");
     return path_buffer.str();
 }
 
@@ -883,9 +895,11 @@ bool SubscriberFeaturette::FeaturetteName::has_leaf_or_child_of_name(const std::
 }
 
 IedgeLicenseManager::IedgeLicenseManager()
+    :
+    session_limit{YType::uint32, "session-limit"}
 {
 
-    yang_name = "iedge-license-manager"; yang_parent_name = "Cisco-IOS-XR-iedge4710-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "iedge-license-manager"; yang_parent_name = "Cisco-IOS-XR-iedge4710-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 IedgeLicenseManager::~IedgeLicenseManager()
@@ -894,22 +908,14 @@ IedgeLicenseManager::~IedgeLicenseManager()
 
 bool IedgeLicenseManager::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
-    {
-        if(node[index]->has_data())
-            return true;
-    }
-    return false;
+    if (is_presence_container) return true;
+    return session_limit.is_set;
 }
 
 bool IedgeLicenseManager::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
-    {
-        if(node[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
+    return is_set(yfilter)
+	|| ydk::is_set(session_limit.yfilter);
 }
 
 std::string IedgeLicenseManager::get_segment_path() const
@@ -923,6 +929,7 @@ std::vector<std::pair<std::string, LeafData> > IedgeLicenseManager::get_name_lea
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (session_limit.is_set || is_set(session_limit.yfilter)) leaf_name_data.push_back(session_limit.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -930,14 +937,6 @@ std::vector<std::pair<std::string, LeafData> > IedgeLicenseManager::get_name_lea
 
 std::shared_ptr<Entity> IedgeLicenseManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "node")
-    {
-        auto c = std::make_shared<IedgeLicenseManager::Node>();
-        c->parent = this;
-        node.push_back(c);
-        return c;
-    }
-
     return nullptr;
 }
 
@@ -945,24 +944,25 @@ std::map<std::string, std::shared_ptr<Entity>> IedgeLicenseManager::get_children
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    count = 0;
-    for (auto const & c : node)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
     return children;
 }
 
 void IedgeLicenseManager::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "session-limit")
+    {
+        session_limit = value;
+        session_limit.value_namespace = name_space;
+        session_limit.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void IedgeLicenseManager::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "session-limit")
+    {
+        session_limit.yfilter = yfilter;
+    }
 }
 
 std::shared_ptr<Entity> IedgeLicenseManager::clone_ptr() const
@@ -992,127 +992,17 @@ std::map<std::pair<std::string, std::string>, std::string> IedgeLicenseManager::
 
 bool IedgeLicenseManager::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "node")
-        return true;
-    return false;
-}
-
-IedgeLicenseManager::Node::Node()
-    :
-    node_name{YType::str, "node-name"},
-    session_limit{YType::int32, "session-limit"},
-    session_threshold{YType::int32, "session-threshold"}
-{
-
-    yang_name = "node"; yang_parent_name = "iedge-license-manager"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-IedgeLicenseManager::Node::~Node()
-{
-}
-
-bool IedgeLicenseManager::Node::has_data() const
-{
-    return node_name.is_set
-	|| session_limit.is_set
-	|| session_threshold.is_set;
-}
-
-bool IedgeLicenseManager::Node::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(node_name.yfilter)
-	|| ydk::is_set(session_limit.yfilter)
-	|| ydk::is_set(session_threshold.yfilter);
-}
-
-std::string IedgeLicenseManager::Node::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-iedge4710-cfg:iedge-license-manager/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string IedgeLicenseManager::Node::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > IedgeLicenseManager::Node::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
-    if (session_limit.is_set || is_set(session_limit.yfilter)) leaf_name_data.push_back(session_limit.get_name_leafdata());
-    if (session_threshold.is_set || is_set(session_threshold.yfilter)) leaf_name_data.push_back(session_threshold.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> IedgeLicenseManager::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> IedgeLicenseManager::Node::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void IedgeLicenseManager::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "node-name")
-    {
-        node_name = value;
-        node_name.value_namespace = name_space;
-        node_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "session-limit")
-    {
-        session_limit = value;
-        session_limit.value_namespace = name_space;
-        session_limit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "session-threshold")
-    {
-        session_threshold = value;
-        session_threshold.value_namespace = name_space;
-        session_threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void IedgeLicenseManager::Node::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "node-name")
-    {
-        node_name.yfilter = yfilter;
-    }
-    if(value_path == "session-limit")
-    {
-        session_limit.yfilter = yfilter;
-    }
-    if(value_path == "session-threshold")
-    {
-        session_threshold.yfilter = yfilter;
-    }
-}
-
-bool IedgeLicenseManager::Node::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "node-name" || name == "session-limit" || name == "session-threshold")
+    if(name == "session-limit")
         return true;
     return false;
 }
 
 SubManager::SubManager()
+    :
+    location(this, {"location1"})
 {
 
-    yang_name = "sub-manager"; yang_parent_name = "Cisco-IOS-XR-iedge4710-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "sub-manager"; yang_parent_name = "Cisco-IOS-XR-iedge4710-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SubManager::~SubManager()
@@ -1121,7 +1011,8 @@ SubManager::~SubManager()
 
 bool SubManager::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1131,7 +1022,7 @@ bool SubManager::has_data() const
 
 bool SubManager::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1161,7 +1052,7 @@ std::shared_ptr<Entity> SubManager::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<SubManager::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1173,7 +1064,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubManager::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1228,12 +1119,12 @@ SubManager::Location::Location()
     :
     location1{YType::str, "location1"},
     history{YType::empty, "history"}
-    	,
+        ,
     trace(std::make_shared<SubManager::Location::Trace>())
 {
     trace->parent = this;
 
-    yang_name = "location"; yang_parent_name = "sub-manager"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "sub-manager"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubManager::Location::~Location()
@@ -1242,6 +1133,7 @@ SubManager::Location::~Location()
 
 bool SubManager::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return location1.is_set
 	|| history.is_set
 	|| (trace !=  nullptr && trace->has_data());
@@ -1265,7 +1157,8 @@ std::string SubManager::Location::get_absolute_path() const
 std::string SubManager::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location1='" <<location1 <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location1, "location1");
     return path_buffer.str();
 }
 
@@ -1343,10 +1236,10 @@ bool SubManager::Location::has_leaf_or_child_of_name(const std::string & name) c
 
 SubManager::Location::Trace::Trace()
     :
-    trace_level{YType::int32, "trace-level"}
+    trace_level{YType::uint32, "trace-level"}
 {
 
-    yang_name = "trace"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubManager::Location::Trace::~Trace()
@@ -1355,6 +1248,7 @@ SubManager::Location::Trace::~Trace()
 
 bool SubManager::Location::Trace::has_data() const
 {
+    if (is_presence_container) return true;
     return trace_level.is_set;
 }
 

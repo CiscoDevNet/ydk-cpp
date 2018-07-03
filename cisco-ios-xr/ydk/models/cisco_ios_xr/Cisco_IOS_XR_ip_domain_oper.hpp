@@ -66,7 +66,7 @@ class IpDomain::Vrfs : public ydk::Entity
 
         class Vrf; //type: IpDomain::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_domain_oper::IpDomain::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // IpDomain::Vrfs
 
@@ -119,7 +119,7 @@ class IpDomain::Vrfs::Vrf::Server : public ydk::Entity
         ydk::YLeafList domain; //type: list of  string
         class ServerAddress; //type: IpDomain::Vrfs::Vrf::Server::ServerAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_domain_oper::IpDomain::Vrfs::Vrf::Server::ServerAddress> > server_address;
+        ydk::YList server_address;
         
 }; // IpDomain::Vrfs::Vrf::Server
 
@@ -165,7 +165,7 @@ class IpDomain::Vrfs::Vrf::Hosts : public ydk::Entity
 
         class Host; //type: IpDomain::Vrfs::Vrf::Hosts::Host
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_domain_oper::IpDomain::Vrfs::Vrf::Hosts::Host> > host;
+        ydk::YList host;
         
 }; // IpDomain::Vrfs::Vrf::Hosts
 
@@ -193,7 +193,7 @@ class IpDomain::Vrfs::Vrf::Hosts::Host : public ydk::Entity
         class HostAddress; //type: IpDomain::Vrfs::Vrf::Hosts::Host::HostAddress
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_domain_oper::IpDomain::Vrfs::Vrf::Hosts::Host::HostAliasList> host_alias_list;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_domain_oper::IpDomain::Vrfs::Vrf::Hosts::Host::HostAddress> > host_address;
+        ydk::YList host_address;
         
 }; // IpDomain::Vrfs::Vrf::Hosts::Host
 

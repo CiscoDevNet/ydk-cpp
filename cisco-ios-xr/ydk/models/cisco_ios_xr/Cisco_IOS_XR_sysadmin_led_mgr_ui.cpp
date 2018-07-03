@@ -12,9 +12,12 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_led_mgr_ui {
 
 Led::Led()
+    :
+    location(this, {"location"})
+    , trace(this, {"buffer"})
 {
 
-    yang_name = "led"; yang_parent_name = "Cisco-IOS-XR-sysadmin-led-mgr-ui"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "led"; yang_parent_name = "Cisco-IOS-XR-sysadmin-led-mgr-ui"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Led::~Led()
@@ -23,12 +26,13 @@ Led::~Led()
 
 bool Led::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<trace.size(); index++)
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_data())
             return true;
@@ -38,12 +42,12 @@ bool Led::has_data() const
 
 bool Led::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<trace.size(); index++)
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_operation())
             return true;
@@ -73,7 +77,7 @@ std::shared_ptr<Entity> Led::get_child_by_name(const std::string & child_yang_na
     {
         auto c = std::make_shared<Led::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -81,7 +85,7 @@ std::shared_ptr<Entity> Led::get_child_by_name(const std::string & child_yang_na
     {
         auto c = std::make_shared<Led::Trace>();
         c->parent = this;
-        trace.push_back(c);
+        trace.append(c);
         return c;
     }
 
@@ -93,7 +97,7 @@ std::map<std::string, std::shared_ptr<Entity>> Led::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -102,7 +106,7 @@ std::map<std::string, std::shared_ptr<Entity>> Led::get_children() const
     }
 
     count = 0;
-    for (auto const & c : trace)
+    for (auto c : trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -156,9 +160,11 @@ bool Led::has_leaf_or_child_of_name(const std::string & name) const
 Led::Location::Location()
     :
     location{YType::str, "location"}
+        ,
+    led_attributes(this, {"led_name"})
 {
 
-    yang_name = "location"; yang_parent_name = "led"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "led"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Led::Location::~Location()
@@ -167,7 +173,8 @@ Led::Location::~Location()
 
 bool Led::Location::has_data() const
 {
-    for (std::size_t index=0; index<led_attributes.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<led_attributes.len(); index++)
     {
         if(led_attributes[index]->has_data())
             return true;
@@ -177,7 +184,7 @@ bool Led::Location::has_data() const
 
 bool Led::Location::has_operation() const
 {
-    for (std::size_t index=0; index<led_attributes.size(); index++)
+    for (std::size_t index=0; index<led_attributes.len(); index++)
     {
         if(led_attributes[index]->has_operation())
             return true;
@@ -196,7 +203,8 @@ std::string Led::Location::get_absolute_path() const
 std::string Led::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location='" <<location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -216,7 +224,7 @@ std::shared_ptr<Entity> Led::Location::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<Led::Location::LedAttributes>();
         c->parent = this;
-        led_attributes.push_back(c);
+        led_attributes.append(c);
         return c;
     }
 
@@ -228,7 +236,7 @@ std::map<std::string, std::shared_ptr<Entity>> Led::Location::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : led_attributes)
+    for (auto c : led_attributes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -271,7 +279,7 @@ Led::Location::LedAttributes::LedAttributes()
     led_color{YType::str, "led_color"}
 {
 
-    yang_name = "led_attributes"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "led_attributes"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Led::Location::LedAttributes::~LedAttributes()
@@ -280,6 +288,7 @@ Led::Location::LedAttributes::~LedAttributes()
 
 bool Led::Location::LedAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return led_name.is_set
 	|| led_mode.is_set
 	|| led_color.is_set;
@@ -296,7 +305,8 @@ bool Led::Location::LedAttributes::has_operation() const
 std::string Led::Location::LedAttributes::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "led_attributes" <<"[led_name='" <<led_name <<"']";
+    path_buffer << "led_attributes";
+    ADD_KEY_TOKEN(led_name, "led_name");
     return path_buffer.str();
 }
 
@@ -372,9 +382,11 @@ bool Led::Location::LedAttributes::has_leaf_or_child_of_name(const std::string &
 Led::Trace::Trace()
     :
     buffer{YType::str, "buffer"}
+        ,
+    location(this, {"location_name"})
 {
 
-    yang_name = "trace"; yang_parent_name = "led"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace"; yang_parent_name = "led"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Led::Trace::~Trace()
@@ -383,7 +395,8 @@ Led::Trace::~Trace()
 
 bool Led::Trace::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -393,7 +406,7 @@ bool Led::Trace::has_data() const
 
 bool Led::Trace::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -412,7 +425,8 @@ std::string Led::Trace::get_absolute_path() const
 std::string Led::Trace::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trace" <<"[buffer='" <<buffer <<"']";
+    path_buffer << "trace";
+    ADD_KEY_TOKEN(buffer, "buffer");
     return path_buffer.str();
 }
 
@@ -432,7 +446,7 @@ std::shared_ptr<Entity> Led::Trace::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Led::Trace::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -444,7 +458,7 @@ std::map<std::string, std::shared_ptr<Entity>> Led::Trace::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -483,9 +497,11 @@ bool Led::Trace::has_leaf_or_child_of_name(const std::string & name) const
 Led::Trace::Location::Location()
     :
     location_name{YType::str, "location_name"}
+        ,
+    all_options(this, {"option"})
 {
 
-    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Led::Trace::Location::~Location()
@@ -494,7 +510,8 @@ Led::Trace::Location::~Location()
 
 bool Led::Trace::Location::has_data() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_data())
             return true;
@@ -504,7 +521,7 @@ bool Led::Trace::Location::has_data() const
 
 bool Led::Trace::Location::has_operation() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_operation())
             return true;
@@ -516,7 +533,8 @@ bool Led::Trace::Location::has_operation() const
 std::string Led::Trace::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location_name");
     return path_buffer.str();
 }
 
@@ -536,7 +554,7 @@ std::shared_ptr<Entity> Led::Trace::Location::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<Led::Trace::Location::AllOptions>();
         c->parent = this;
-        all_options.push_back(c);
+        all_options.append(c);
         return c;
     }
 
@@ -548,7 +566,7 @@ std::map<std::string, std::shared_ptr<Entity>> Led::Trace::Location::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_options)
+    for (auto c : all_options.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -587,9 +605,11 @@ bool Led::Trace::Location::has_leaf_or_child_of_name(const std::string & name) c
 Led::Trace::Location::AllOptions::AllOptions()
     :
     option{YType::str, "option"}
+        ,
+    trace_blocks(this, {})
 {
 
-    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Led::Trace::Location::AllOptions::~AllOptions()
@@ -598,7 +618,8 @@ Led::Trace::Location::AllOptions::~AllOptions()
 
 bool Led::Trace::Location::AllOptions::has_data() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_data())
             return true;
@@ -608,7 +629,7 @@ bool Led::Trace::Location::AllOptions::has_data() const
 
 bool Led::Trace::Location::AllOptions::has_operation() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_operation())
             return true;
@@ -620,7 +641,8 @@ bool Led::Trace::Location::AllOptions::has_operation() const
 std::string Led::Trace::Location::AllOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-options" <<"[option='" <<option <<"']";
+    path_buffer << "all-options";
+    ADD_KEY_TOKEN(option, "option");
     return path_buffer.str();
 }
 
@@ -640,7 +662,7 @@ std::shared_ptr<Entity> Led::Trace::Location::AllOptions::get_child_by_name(cons
     {
         auto c = std::make_shared<Led::Trace::Location::AllOptions::TraceBlocks>();
         c->parent = this;
-        trace_blocks.push_back(c);
+        trace_blocks.append(c);
         return c;
     }
 
@@ -652,7 +674,7 @@ std::map<std::string, std::shared_ptr<Entity>> Led::Trace::Location::AllOptions:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace_blocks)
+    for (auto c : trace_blocks.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -693,7 +715,7 @@ Led::Trace::Location::AllOptions::TraceBlocks::TraceBlocks()
     data{YType::str, "data"}
 {
 
-    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Led::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
@@ -702,6 +724,7 @@ Led::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
 
 bool Led::Trace::Location::AllOptions::TraceBlocks::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 

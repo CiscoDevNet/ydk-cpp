@@ -18,7 +18,7 @@ BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData:
     local_link_threshold{YType::uint32, "local-link-threshold"}
 {
 
-    yang_name = "load-balance-data"; yang_parent_name = "sub-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load-balance-data"; yang_parent_name = "sub-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData::~LoadBalanceData()
@@ -27,6 +27,7 @@ BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData:
 
 bool BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| value_.is_set
 	|| local_link_threshold.is_set;
@@ -117,9 +118,11 @@ bool BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalance
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::Bundles()
+    :
+    bundle(this, {"bundle_name"})
 {
 
-    yang_name = "bundles"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundles"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::~Bundles()
@@ -128,7 +131,8 @@ BundlesAdjacency::Nodes::Node::Bundles::~Bundles()
 
 bool BundlesAdjacency::Nodes::Node::Bundles::has_data() const
 {
-    for (std::size_t index=0; index<bundle.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle.len(); index++)
     {
         if(bundle[index]->has_data())
             return true;
@@ -138,7 +142,7 @@ bool BundlesAdjacency::Nodes::Node::Bundles::has_data() const
 
 bool BundlesAdjacency::Nodes::Node::Bundles::has_operation() const
 {
-    for (std::size_t index=0; index<bundle.size(); index++)
+    for (std::size_t index=0; index<bundle.len(); index++)
     {
         if(bundle[index]->has_operation())
             return true;
@@ -168,7 +172,7 @@ std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::get_child_by_nam
     {
         auto c = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle>();
         c->parent = this;
-        bundle.push_back(c);
+        bundle.append(c);
         return c;
     }
 
@@ -180,7 +184,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bundle)
+    for (auto c : bundle.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -209,12 +213,12 @@ bool BundlesAdjacency::Nodes::Node::Bundles::has_leaf_or_child_of_name(const std
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::Bundle()
     :
     bundle_name{YType::str, "bundle-name"}
-    	,
+        ,
     bundle_info(std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo>())
 {
     bundle_info->parent = this;
 
-    yang_name = "bundle"; yang_parent_name = "bundles"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle"; yang_parent_name = "bundles"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::~Bundle()
@@ -223,6 +227,7 @@ BundlesAdjacency::Nodes::Node::Bundles::Bundle::~Bundle()
 
 bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_name.is_set
 	|| (bundle_info !=  nullptr && bundle_info->has_data());
 }
@@ -237,7 +242,8 @@ bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::has_operation() const
 std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bundle" <<"[bundle-name='" <<bundle_name <<"']";
+    path_buffer << "bundle";
+    ADD_KEY_TOKEN(bundle_name, "bundle-name");
     return path_buffer.str();
 }
 
@@ -307,14 +313,16 @@ BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::BundleInfo()
     media{YType::enumeration, "media"},
     max_member_count{YType::uint32, "max-member-count"},
     avoid_rebalance{YType::boolean, "avoid-rebalance"}
-    	,
+        ,
     brief(std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief>())
-	,load_balance_data(std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData>())
+    , load_balance_data(std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData>())
+    , member(this, {})
+    , sub_interface(this, {})
 {
     brief->parent = this;
     load_balance_data->parent = this;
 
-    yang_name = "bundle-info"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-info"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::~BundleInfo()
@@ -323,12 +331,13 @@ BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::~BundleInfo()
 
 bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::has_data() const
 {
-    for (std::size_t index=0; index<member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<member.len(); index++)
     {
         if(member[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<sub_interface.size(); index++)
+    for (std::size_t index=0; index<sub_interface.len(); index++)
     {
         if(sub_interface[index]->has_data())
             return true;
@@ -342,12 +351,12 @@ bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::has_data() cons
 
 bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::has_operation() const
 {
-    for (std::size_t index=0; index<member.size(); index++)
+    for (std::size_t index=0; index<member.len(); index++)
     {
         if(member[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<sub_interface.size(); index++)
+    for (std::size_t index=0; index<sub_interface.len(); index++)
     {
         if(sub_interface[index]->has_operation())
             return true;
@@ -403,7 +412,7 @@ std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleIn
     {
         auto c = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member>();
         c->parent = this;
-        member.push_back(c);
+        member.append(c);
         return c;
     }
 
@@ -411,7 +420,7 @@ std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleIn
     {
         auto c = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface>();
         c->parent = this;
-        sub_interface.push_back(c);
+        sub_interface.append(c);
         return c;
     }
 
@@ -433,7 +442,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bu
     }
 
     count = 0;
-    for (auto const & c : member)
+    for (auto c : member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -442,7 +451,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bu
     }
 
     count = 0;
-    for (auto const & c : sub_interface)
+    for (auto c : sub_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -504,9 +513,11 @@ BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::Brief()
     sub_interface_count{YType::uint32, "sub-interface-count"},
     member_count{YType::uint32, "member-count"},
     total_weight{YType::uint32, "total-weight"}
+        ,
+    sub_interface(this, {})
 {
 
-    yang_name = "brief"; yang_parent_name = "bundle-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "bundle-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::~Brief()
@@ -515,7 +526,8 @@ BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::~Brief()
 
 bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::has_data() const
 {
-    for (std::size_t index=0; index<sub_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sub_interface.len(); index++)
     {
         if(sub_interface[index]->has_data())
             return true;
@@ -528,7 +540,7 @@ bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::has_data
 
 bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::has_operation() const
 {
-    for (std::size_t index=0; index<sub_interface.size(); index++)
+    for (std::size_t index=0; index<sub_interface.len(); index++)
     {
         if(sub_interface[index]->has_operation())
             return true;
@@ -566,7 +578,7 @@ std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleIn
     {
         auto c = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface>();
         c->parent = this;
-        sub_interface.push_back(c);
+        sub_interface.append(c);
         return c;
     }
 
@@ -578,7 +590,7 @@ std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sub_interface)
+    for (auto c : sub_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -647,12 +659,12 @@ bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::has_leaf
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::SubInterface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     load_balance_data(std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData>())
 {
     load_balance_data->parent = this;
 
-    yang_name = "sub-interface"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sub-interface"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::~SubInterface()
@@ -661,6 +673,7 @@ BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface:
 
 bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (load_balance_data !=  nullptr && load_balance_data->has_data());
 }
@@ -747,7 +760,7 @@ BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface:
     local_link_threshold{YType::uint32, "local-link-threshold"}
 {
 
-    yang_name = "load-balance-data"; yang_parent_name = "sub-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load-balance-data"; yang_parent_name = "sub-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData::~LoadBalanceData()
@@ -756,6 +769,7 @@ BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface:
 
 bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| value_.is_set
 	|| local_link_threshold.is_set;
@@ -852,7 +866,7 @@ BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::Loa
     local_link_threshold{YType::uint32, "local-link-threshold"}
 {
 
-    yang_name = "load-balance-data"; yang_parent_name = "bundle-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load-balance-data"; yang_parent_name = "bundle-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::~LoadBalanceData()
@@ -861,6 +875,7 @@ BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::~Lo
 
 bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| value_.is_set
 	|| local_link_threshold.is_set;
@@ -958,7 +973,7 @@ BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::Member()
     bandwidth{YType::uint8, "bandwidth"}
 {
 
-    yang_name = "member"; yang_parent_name = "bundle-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member"; yang_parent_name = "bundle-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::~Member()
@@ -967,6 +982,7 @@ BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::~Member()
 
 bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| link_id.is_set
 	|| link_order_number.is_set
@@ -1072,12 +1088,12 @@ bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::has_lea
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::SubInterface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     load_balance_data(std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData>())
 {
     load_balance_data->parent = this;
 
-    yang_name = "sub-interface"; yang_parent_name = "bundle-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sub-interface"; yang_parent_name = "bundle-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::~SubInterface()
@@ -1086,6 +1102,7 @@ BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::~SubIn
 
 bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (load_balance_data !=  nullptr && load_balance_data->has_data());
 }
@@ -1172,7 +1189,7 @@ BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBa
     local_link_threshold{YType::uint32, "local-link-threshold"}
 {
 
-    yang_name = "load-balance-data"; yang_parent_name = "sub-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load-balance-data"; yang_parent_name = "sub-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData::~LoadBalanceData()
@@ -1181,6 +1198,7 @@ BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBa
 
 bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| value_.is_set
 	|| local_link_threshold.is_set;

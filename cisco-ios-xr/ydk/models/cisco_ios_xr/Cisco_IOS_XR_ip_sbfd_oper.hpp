@@ -83,7 +83,7 @@ class Sbfd::TargetIdentifier::RemoteVrfs : public ydk::Entity
 
         class RemoteVrf; //type: Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_sbfd_oper::Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf> > remote_vrf;
+        ydk::YList remote_vrf;
         
 }; // Sbfd::TargetIdentifier::RemoteVrfs
 
@@ -108,7 +108,7 @@ class Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf : public ydk::Entity
         ydk::YLeaf vrf_name; //type: string
         class RemoteDiscriminator; //type: Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_sbfd_oper::Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator> > remote_discriminator;
+        ydk::YList remote_discriminator;
         
 }; // Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf
 
@@ -130,7 +130,7 @@ class Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf remote_discriminator; //type: int32
+        ydk::YLeaf remote_discriminator; //type: uint32
         ydk::YLeaf address; //type: string
         ydk::YLeaf tid_type; //type: SbfdAddressFamily
         ydk::YLeaf discr; //type: uint32
@@ -187,7 +187,7 @@ class Sbfd::TargetIdentifier::LocalVrfs : public ydk::Entity
 
         class LocalVrf; //type: Sbfd::TargetIdentifier::LocalVrfs::LocalVrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_sbfd_oper::Sbfd::TargetIdentifier::LocalVrfs::LocalVrf> > local_vrf;
+        ydk::YList local_vrf;
         
 }; // Sbfd::TargetIdentifier::LocalVrfs
 
@@ -212,7 +212,7 @@ class Sbfd::TargetIdentifier::LocalVrfs::LocalVrf : public ydk::Entity
         ydk::YLeaf vrf_name; //type: string
         class LocalDiscriminator; //type: Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_sbfd_oper::Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator> > local_discriminator;
+        ydk::YList local_discriminator;
         
 }; // Sbfd::TargetIdentifier::LocalVrfs::LocalVrf
 
@@ -233,7 +233,7 @@ class Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf local_discriminator; //type: int32
+        ydk::YLeaf local_discriminator; //type: uint32
         ydk::YLeaf vrf_name; //type: string
         ydk::YLeaf discr; //type: uint32
         ydk::YLeaf vrf_name_xr; //type: string
@@ -243,20 +243,20 @@ class Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator : public y
 
 }; // Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator
 
+class SbfdAddressFamily : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+};
+
 class BfdAfId : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf bfd_af_id_none;
         static const ydk::Enum::YLeaf bfd_af_id_ipv4;
         static const ydk::Enum::YLeaf bfd_af_id_ipv6;
-
-};
-
-class SbfdAddressFamily : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
 
 };
 

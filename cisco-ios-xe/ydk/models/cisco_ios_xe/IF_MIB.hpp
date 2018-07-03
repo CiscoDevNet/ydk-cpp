@@ -33,16 +33,16 @@ class IFMIB : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Interfaces; //type: IFMIB::Interfaces
-        class Ifmibobjects; //type: IFMIB::Ifmibobjects
-        class Iftable; //type: IFMIB::Iftable
-        class Ifstacktable; //type: IFMIB::Ifstacktable
-        class Ifrcvaddresstable; //type: IFMIB::Ifrcvaddresstable
+        class IfMIBObjects; //type: IFMIB::IfMIBObjects
+        class IfTable; //type: IFMIB::IfTable
+        class IfStackTable; //type: IFMIB::IfStackTable
+        class IfRcvAddressTable; //type: IFMIB::IfRcvAddressTable
 
         std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Interfaces> interfaces;
-        std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Ifmibobjects> ifmibobjects;
-        std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Iftable> iftable;
-        std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Ifstacktable> ifstacktable;
-        std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Ifrcvaddresstable> ifrcvaddresstable;
+        std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::IfMIBObjects> ifmibobjects;
+        std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::IfTable> iftable;
+        std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::IfStackTable> ifstacktable;
+        std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::IfRcvAddressTable> ifrcvaddresstable;
         
 }; // IFMIB
 
@@ -69,11 +69,11 @@ class IFMIB::Interfaces : public ydk::Entity
 }; // IFMIB::Interfaces
 
 
-class IFMIB::Ifmibobjects : public ydk::Entity
+class IFMIB::IfMIBObjects : public ydk::Entity
 {
     public:
-        Ifmibobjects();
-        ~Ifmibobjects();
+        IfMIBObjects();
+        ~IfMIBObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -89,14 +89,14 @@ class IFMIB::Ifmibobjects : public ydk::Entity
         ydk::YLeaf iftablelastchange; //type: uint32
         ydk::YLeaf ifstacklastchange; //type: uint32
 
-}; // IFMIB::Ifmibobjects
+}; // IFMIB::IfMIBObjects
 
 
-class IFMIB::Iftable : public ydk::Entity
+class IFMIB::IfTable : public ydk::Entity
 {
     public:
-        Iftable();
-        ~Iftable();
+        IfTable();
+        ~IfTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -109,18 +109,18 @@ class IFMIB::Iftable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ifentry; //type: IFMIB::Iftable::Ifentry
+        class IfEntry; //type: IFMIB::IfTable::IfEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry> > ifentry;
+        ydk::YList ifentry;
         
-}; // IFMIB::Iftable
+}; // IFMIB::IfTable
 
 
-class IFMIB::Iftable::Ifentry : public ydk::Entity
+class IFMIB::IfTable::IfEntry : public ydk::Entity
 {
     public:
-        Ifentry();
-        ~Ifentry();
+        IfEntry();
+        ~IfEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -139,8 +139,8 @@ class IFMIB::Iftable::Ifentry : public ydk::Entity
         ydk::YLeaf ifmtu; //type: int32
         ydk::YLeaf ifspeed; //type: uint32
         ydk::YLeaf ifphysaddress; //type: string
-        ydk::YLeaf ifadminstatus; //type: Ifadminstatus
-        ydk::YLeaf ifoperstatus; //type: Ifoperstatus
+        ydk::YLeaf ifadminstatus; //type: IfAdminStatus
+        ydk::YLeaf ifoperstatus; //type: IfOperStatus
         ydk::YLeaf iflastchange; //type: uint32
         ydk::YLeaf ifinoctets; //type: uint32
         ydk::YLeaf ifinucastpkts; //type: uint32
@@ -168,32 +168,32 @@ class IFMIB::Iftable::Ifentry : public ydk::Entity
         ydk::YLeaf ifhcoutucastpkts; //type: uint64
         ydk::YLeaf ifhcoutmulticastpkts; //type: uint64
         ydk::YLeaf ifhcoutbroadcastpkts; //type: uint64
-        ydk::YLeaf iflinkupdowntrapenable; //type: Iflinkupdowntrapenable
+        ydk::YLeaf iflinkupdowntrapenable; //type: IfLinkUpDownTrapEnable
         ydk::YLeaf ifhighspeed; //type: uint32
         ydk::YLeaf ifpromiscuousmode; //type: boolean
         ydk::YLeaf ifconnectorpresent; //type: boolean
         ydk::YLeaf ifalias; //type: string
         ydk::YLeaf ifcounterdiscontinuitytime; //type: uint32
         ydk::YLeaf iftestid; //type: int32
-        ydk::YLeaf ifteststatus; //type: Ifteststatus
+        ydk::YLeaf ifteststatus; //type: IfTestStatus
         ydk::YLeaf iftesttype; //type: string
-        ydk::YLeaf iftestresult; //type: Iftestresult
+        ydk::YLeaf iftestresult; //type: IfTestResult
         ydk::YLeaf iftestcode; //type: string
         ydk::YLeaf iftestowner; //type: string
-        class Ifadminstatus;
-        class Ifoperstatus;
-        class Iflinkupdowntrapenable;
-        class Ifteststatus;
-        class Iftestresult;
+        class IfAdminStatus;
+        class IfOperStatus;
+        class IfLinkUpDownTrapEnable;
+        class IfTestStatus;
+        class IfTestResult;
 
-}; // IFMIB::Iftable::Ifentry
+}; // IFMIB::IfTable::IfEntry
 
 
-class IFMIB::Ifstacktable : public ydk::Entity
+class IFMIB::IfStackTable : public ydk::Entity
 {
     public:
-        Ifstacktable();
-        ~Ifstacktable();
+        IfStackTable();
+        ~IfStackTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -206,18 +206,18 @@ class IFMIB::Ifstacktable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ifstackentry; //type: IFMIB::Ifstacktable::Ifstackentry
+        class IfStackEntry; //type: IFMIB::IfStackTable::IfStackEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Ifstacktable::Ifstackentry> > ifstackentry;
+        ydk::YList ifstackentry;
         
-}; // IFMIB::Ifstacktable
+}; // IFMIB::IfStackTable
 
 
-class IFMIB::Ifstacktable::Ifstackentry : public ydk::Entity
+class IFMIB::IfStackTable::IfStackEntry : public ydk::Entity
 {
     public:
-        Ifstackentry();
-        ~Ifstackentry();
+        IfStackEntry();
+        ~IfStackEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -234,14 +234,14 @@ class IFMIB::Ifstacktable::Ifstackentry : public ydk::Entity
         ydk::YLeaf ifstacklowerlayer; //type: int32
         ydk::YLeaf ifstackstatus; //type: RowStatus
 
-}; // IFMIB::Ifstacktable::Ifstackentry
+}; // IFMIB::IfStackTable::IfStackEntry
 
 
-class IFMIB::Ifrcvaddresstable : public ydk::Entity
+class IFMIB::IfRcvAddressTable : public ydk::Entity
 {
     public:
-        Ifrcvaddresstable();
-        ~Ifrcvaddresstable();
+        IfRcvAddressTable();
+        ~IfRcvAddressTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -254,18 +254,18 @@ class IFMIB::Ifrcvaddresstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ifrcvaddressentry; //type: IFMIB::Ifrcvaddresstable::Ifrcvaddressentry
+        class IfRcvAddressEntry; //type: IFMIB::IfRcvAddressTable::IfRcvAddressEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IF_MIB::IFMIB::Ifrcvaddresstable::Ifrcvaddressentry> > ifrcvaddressentry;
+        ydk::YList ifrcvaddressentry;
         
-}; // IFMIB::Ifrcvaddresstable
+}; // IFMIB::IfRcvAddressTable
 
 
-class IFMIB::Ifrcvaddresstable::Ifrcvaddressentry : public ydk::Entity
+class IFMIB::IfRcvAddressTable::IfRcvAddressEntry : public ydk::Entity
 {
     public:
-        Ifrcvaddressentry();
-        ~Ifrcvaddressentry();
+        IfRcvAddressEntry();
+        ~IfRcvAddressEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -278,16 +278,16 @@ class IFMIB::Ifrcvaddresstable::Ifrcvaddressentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf ifrcvaddressaddress; //type: string
         ydk::YLeaf ifrcvaddressstatus; //type: RowStatus
-        ydk::YLeaf ifrcvaddresstype; //type: Ifrcvaddresstype
-        class Ifrcvaddresstype;
+        ydk::YLeaf ifrcvaddresstype; //type: IfRcvAddressType
+        class IfRcvAddressType;
 
-}; // IFMIB::Ifrcvaddresstable::Ifrcvaddressentry
+}; // IFMIB::IfRcvAddressTable::IfRcvAddressEntry
 
-class IFMIB::Iftable::Ifentry::Ifadminstatus : public ydk::Enum
+class IFMIB::IfTable::IfEntry::IfAdminStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;
@@ -296,7 +296,7 @@ class IFMIB::Iftable::Ifentry::Ifadminstatus : public ydk::Enum
 
 };
 
-class IFMIB::Iftable::Ifentry::Ifoperstatus : public ydk::Enum
+class IFMIB::IfTable::IfEntry::IfOperStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;
@@ -309,7 +309,7 @@ class IFMIB::Iftable::Ifentry::Ifoperstatus : public ydk::Enum
 
 };
 
-class IFMIB::Iftable::Ifentry::Iflinkupdowntrapenable : public ydk::Enum
+class IFMIB::IfTable::IfEntry::IfLinkUpDownTrapEnable : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;
@@ -317,7 +317,7 @@ class IFMIB::Iftable::Ifentry::Iflinkupdowntrapenable : public ydk::Enum
 
 };
 
-class IFMIB::Iftable::Ifentry::Ifteststatus : public ydk::Enum
+class IFMIB::IfTable::IfEntry::IfTestStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notInUse;
@@ -325,7 +325,7 @@ class IFMIB::Iftable::Ifentry::Ifteststatus : public ydk::Enum
 
 };
 
-class IFMIB::Iftable::Ifentry::Iftestresult : public ydk::Enum
+class IFMIB::IfTable::IfEntry::IfTestResult : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -338,7 +338,7 @@ class IFMIB::Iftable::Ifentry::Iftestresult : public ydk::Enum
 
 };
 
-class IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::Ifrcvaddresstype : public ydk::Enum
+class IFMIB::IfRcvAddressTable::IfRcvAddressEntry::IfRcvAddressType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;

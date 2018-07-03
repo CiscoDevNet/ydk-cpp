@@ -33,7 +33,7 @@ class EfpStats : public ydk::Entity
 
         class EfpStat; //type: EfpStats::EfpStat
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_efp_oper::EfpStats::EfpStat> > efp_stat;
+        ydk::YList efp_stat;
         
 }; // EfpStats
 

@@ -15,12 +15,12 @@ MplsOam::MplsOam()
     :
     enable_oam{YType::empty, "enable-oam"},
     disable_vendor_extension{YType::empty, "disable-vendor-extension"}
-    	,
+        ,
     reply_mode(std::make_shared<MplsOam::ReplyMode>())
 {
     reply_mode->parent = this;
 
-    yang_name = "mpls-oam"; yang_parent_name = "Cisco-IOS-XR-mpls-oam-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mpls-oam"; yang_parent_name = "Cisco-IOS-XR-mpls-oam-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MplsOam::~MplsOam()
@@ -29,6 +29,7 @@ MplsOam::~MplsOam()
 
 bool MplsOam::has_data() const
 {
+    if (is_presence_container) return true;
     return enable_oam.is_set
 	|| disable_vendor_extension.is_set
 	|| (reply_mode !=  nullptr && reply_mode->has_data());
@@ -152,7 +153,7 @@ MplsOam::ReplyMode::ReplyMode()
 {
     control_channel->parent = this;
 
-    yang_name = "reply-mode"; yang_parent_name = "mpls-oam"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reply-mode"; yang_parent_name = "mpls-oam"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::ReplyMode::~ReplyMode()
@@ -161,6 +162,7 @@ MplsOam::ReplyMode::~ReplyMode()
 
 bool MplsOam::ReplyMode::has_data() const
 {
+    if (is_presence_container) return true;
     return (control_channel !=  nullptr && control_channel->has_data());
 }
 
@@ -239,7 +241,7 @@ MplsOam::ReplyMode::ControlChannel::ControlChannel()
     allow_reverse_lsp{YType::empty, "allow-reverse-lsp"}
 {
 
-    yang_name = "control-channel"; yang_parent_name = "reply-mode"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "control-channel"; yang_parent_name = "reply-mode"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::ReplyMode::ControlChannel::~ControlChannel()
@@ -248,6 +250,7 @@ MplsOam::ReplyMode::ControlChannel::~ControlChannel()
 
 bool MplsOam::ReplyMode::ControlChannel::has_data() const
 {
+    if (is_presence_container) return true;
     return allow_reverse_lsp.is_set;
 }
 

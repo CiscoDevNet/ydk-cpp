@@ -13,14 +13,14 @@ namespace RSVP_MIB {
 
 RSVPMIB::RSVPMIB()
     :
-    rsvpgenobjects(std::make_shared<RSVPMIB::Rsvpgenobjects>())
-	,rsvpsessiontable(std::make_shared<RSVPMIB::Rsvpsessiontable>())
-	,rsvpsendertable(std::make_shared<RSVPMIB::Rsvpsendertable>())
-	,rsvpsenderoutinterfacetable(std::make_shared<RSVPMIB::Rsvpsenderoutinterfacetable>())
-	,rsvpresvtable(std::make_shared<RSVPMIB::Rsvpresvtable>())
-	,rsvpresvfwdtable(std::make_shared<RSVPMIB::Rsvpresvfwdtable>())
-	,rsvpiftable(std::make_shared<RSVPMIB::Rsvpiftable>())
-	,rsvpnbrtable(std::make_shared<RSVPMIB::Rsvpnbrtable>())
+    rsvpgenobjects(std::make_shared<RSVPMIB::RsvpGenObjects>())
+    , rsvpsessiontable(std::make_shared<RSVPMIB::RsvpSessionTable>())
+    , rsvpsendertable(std::make_shared<RSVPMIB::RsvpSenderTable>())
+    , rsvpsenderoutinterfacetable(std::make_shared<RSVPMIB::RsvpSenderOutInterfaceTable>())
+    , rsvpresvtable(std::make_shared<RSVPMIB::RsvpResvTable>())
+    , rsvpresvfwdtable(std::make_shared<RSVPMIB::RsvpResvFwdTable>())
+    , rsvpiftable(std::make_shared<RSVPMIB::RsvpIfTable>())
+    , rsvpnbrtable(std::make_shared<RSVPMIB::RsvpNbrTable>())
 {
     rsvpgenobjects->parent = this;
     rsvpsessiontable->parent = this;
@@ -31,7 +31,7 @@ RSVPMIB::RSVPMIB()
     rsvpiftable->parent = this;
     rsvpnbrtable->parent = this;
 
-    yang_name = "RSVP-MIB"; yang_parent_name = "RSVP-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "RSVP-MIB"; yang_parent_name = "RSVP-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RSVPMIB::~RSVPMIB()
@@ -40,6 +40,7 @@ RSVPMIB::~RSVPMIB()
 
 bool RSVPMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (rsvpgenobjects !=  nullptr && rsvpgenobjects->has_data())
 	|| (rsvpsessiontable !=  nullptr && rsvpsessiontable->has_data())
 	|| (rsvpsendertable !=  nullptr && rsvpsendertable->has_data())
@@ -85,7 +86,7 @@ std::shared_ptr<Entity> RSVPMIB::get_child_by_name(const std::string & child_yan
     {
         if(rsvpgenobjects == nullptr)
         {
-            rsvpgenobjects = std::make_shared<RSVPMIB::Rsvpgenobjects>();
+            rsvpgenobjects = std::make_shared<RSVPMIB::RsvpGenObjects>();
         }
         return rsvpgenobjects;
     }
@@ -94,7 +95,7 @@ std::shared_ptr<Entity> RSVPMIB::get_child_by_name(const std::string & child_yan
     {
         if(rsvpsessiontable == nullptr)
         {
-            rsvpsessiontable = std::make_shared<RSVPMIB::Rsvpsessiontable>();
+            rsvpsessiontable = std::make_shared<RSVPMIB::RsvpSessionTable>();
         }
         return rsvpsessiontable;
     }
@@ -103,7 +104,7 @@ std::shared_ptr<Entity> RSVPMIB::get_child_by_name(const std::string & child_yan
     {
         if(rsvpsendertable == nullptr)
         {
-            rsvpsendertable = std::make_shared<RSVPMIB::Rsvpsendertable>();
+            rsvpsendertable = std::make_shared<RSVPMIB::RsvpSenderTable>();
         }
         return rsvpsendertable;
     }
@@ -112,7 +113,7 @@ std::shared_ptr<Entity> RSVPMIB::get_child_by_name(const std::string & child_yan
     {
         if(rsvpsenderoutinterfacetable == nullptr)
         {
-            rsvpsenderoutinterfacetable = std::make_shared<RSVPMIB::Rsvpsenderoutinterfacetable>();
+            rsvpsenderoutinterfacetable = std::make_shared<RSVPMIB::RsvpSenderOutInterfaceTable>();
         }
         return rsvpsenderoutinterfacetable;
     }
@@ -121,7 +122,7 @@ std::shared_ptr<Entity> RSVPMIB::get_child_by_name(const std::string & child_yan
     {
         if(rsvpresvtable == nullptr)
         {
-            rsvpresvtable = std::make_shared<RSVPMIB::Rsvpresvtable>();
+            rsvpresvtable = std::make_shared<RSVPMIB::RsvpResvTable>();
         }
         return rsvpresvtable;
     }
@@ -130,7 +131,7 @@ std::shared_ptr<Entity> RSVPMIB::get_child_by_name(const std::string & child_yan
     {
         if(rsvpresvfwdtable == nullptr)
         {
-            rsvpresvfwdtable = std::make_shared<RSVPMIB::Rsvpresvfwdtable>();
+            rsvpresvfwdtable = std::make_shared<RSVPMIB::RsvpResvFwdTable>();
         }
         return rsvpresvfwdtable;
     }
@@ -139,7 +140,7 @@ std::shared_ptr<Entity> RSVPMIB::get_child_by_name(const std::string & child_yan
     {
         if(rsvpiftable == nullptr)
         {
-            rsvpiftable = std::make_shared<RSVPMIB::Rsvpiftable>();
+            rsvpiftable = std::make_shared<RSVPMIB::RsvpIfTable>();
         }
         return rsvpiftable;
     }
@@ -148,7 +149,7 @@ std::shared_ptr<Entity> RSVPMIB::get_child_by_name(const std::string & child_yan
     {
         if(rsvpnbrtable == nullptr)
         {
-            rsvpnbrtable = std::make_shared<RSVPMIB::Rsvpnbrtable>();
+            rsvpnbrtable = std::make_shared<RSVPMIB::RsvpNbrTable>();
         }
         return rsvpnbrtable;
     }
@@ -243,7 +244,7 @@ bool RSVPMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-RSVPMIB::Rsvpgenobjects::Rsvpgenobjects()
+RSVPMIB::RsvpGenObjects::RsvpGenObjects()
     :
     rsvpbadpackets{YType::uint32, "rsvpBadPackets"},
     rsvpsendernewindex{YType::int32, "rsvpSenderNewIndex"},
@@ -252,15 +253,16 @@ RSVPMIB::Rsvpgenobjects::Rsvpgenobjects()
     rsvpsessionnewindex{YType::int32, "rsvpSessionNewIndex"}
 {
 
-    yang_name = "rsvpGenObjects"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpGenObjects"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RSVPMIB::Rsvpgenobjects::~Rsvpgenobjects()
+RSVPMIB::RsvpGenObjects::~RsvpGenObjects()
 {
 }
 
-bool RSVPMIB::Rsvpgenobjects::has_data() const
+bool RSVPMIB::RsvpGenObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return rsvpbadpackets.is_set
 	|| rsvpsendernewindex.is_set
 	|| rsvpresvnewindex.is_set
@@ -268,7 +270,7 @@ bool RSVPMIB::Rsvpgenobjects::has_data() const
 	|| rsvpsessionnewindex.is_set;
 }
 
-bool RSVPMIB::Rsvpgenobjects::has_operation() const
+bool RSVPMIB::RsvpGenObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rsvpbadpackets.yfilter)
@@ -278,21 +280,21 @@ bool RSVPMIB::Rsvpgenobjects::has_operation() const
 	|| ydk::is_set(rsvpsessionnewindex.yfilter);
 }
 
-std::string RSVPMIB::Rsvpgenobjects::get_absolute_path() const
+std::string RSVPMIB::RsvpGenObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RSVP-MIB:RSVP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpgenobjects::get_segment_path() const
+std::string RSVPMIB::RsvpGenObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rsvpGenObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpgenobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::RsvpGenObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -306,19 +308,19 @@ std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpgenobjects::get_name
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpgenobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::RsvpGenObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpgenobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::RsvpGenObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RSVPMIB::Rsvpgenobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::RsvpGenObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rsvpBadPackets")
     {
@@ -352,7 +354,7 @@ void RSVPMIB::Rsvpgenobjects::set_value(const std::string & value_path, const st
     }
 }
 
-void RSVPMIB::Rsvpgenobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::RsvpGenObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rsvpBadPackets")
     {
@@ -376,26 +378,29 @@ void RSVPMIB::Rsvpgenobjects::set_filter(const std::string & value_path, YFilter
     }
 }
 
-bool RSVPMIB::Rsvpgenobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::RsvpGenObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rsvpBadPackets" || name == "rsvpSenderNewIndex" || name == "rsvpResvNewIndex" || name == "rsvpResvFwdNewIndex" || name == "rsvpSessionNewIndex")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpsessiontable::Rsvpsessiontable()
+RSVPMIB::RsvpSessionTable::RsvpSessionTable()
+    :
+    rsvpsessionentry(this, {"rsvpsessionnumber"})
 {
 
-    yang_name = "rsvpSessionTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpSessionTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RSVPMIB::Rsvpsessiontable::~Rsvpsessiontable()
+RSVPMIB::RsvpSessionTable::~RsvpSessionTable()
 {
 }
 
-bool RSVPMIB::Rsvpsessiontable::has_data() const
+bool RSVPMIB::RsvpSessionTable::has_data() const
 {
-    for (std::size_t index=0; index<rsvpsessionentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rsvpsessionentry.len(); index++)
     {
         if(rsvpsessionentry[index]->has_data())
             return true;
@@ -403,9 +408,9 @@ bool RSVPMIB::Rsvpsessiontable::has_data() const
     return false;
 }
 
-bool RSVPMIB::Rsvpsessiontable::has_operation() const
+bool RSVPMIB::RsvpSessionTable::has_operation() const
 {
-    for (std::size_t index=0; index<rsvpsessionentry.size(); index++)
+    for (std::size_t index=0; index<rsvpsessionentry.len(); index++)
     {
         if(rsvpsessionentry[index]->has_operation())
             return true;
@@ -413,21 +418,21 @@ bool RSVPMIB::Rsvpsessiontable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RSVPMIB::Rsvpsessiontable::get_absolute_path() const
+std::string RSVPMIB::RsvpSessionTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RSVP-MIB:RSVP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpsessiontable::get_segment_path() const
+std::string RSVPMIB::RsvpSessionTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rsvpSessionTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsessiontable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::RsvpSessionTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -436,25 +441,25 @@ std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsessiontable::get_na
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpsessiontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::RsvpSessionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvpSessionEntry")
     {
-        auto c = std::make_shared<RSVPMIB::Rsvpsessiontable::Rsvpsessionentry>();
+        auto c = std::make_shared<RSVPMIB::RsvpSessionTable::RsvpSessionEntry>();
         c->parent = this;
-        rsvpsessionentry.push_back(c);
+        rsvpsessionentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsessiontable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::RsvpSessionTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rsvpsessionentry)
+    for (auto c : rsvpsessionentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -465,22 +470,22 @@ std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsessiontable::get_ch
     return children;
 }
 
-void RSVPMIB::Rsvpsessiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::RsvpSessionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RSVPMIB::Rsvpsessiontable::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::RsvpSessionTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RSVPMIB::Rsvpsessiontable::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::RsvpSessionTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rsvpSessionEntry")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::Rsvpsessionentry()
+RSVPMIB::RsvpSessionTable::RsvpSessionEntry::RsvpSessionEntry()
     :
     rsvpsessionnumber{YType::int32, "rsvpSessionNumber"},
     rsvpsessiontype{YType::int32, "rsvpSessionType"},
@@ -493,15 +498,16 @@ RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::Rsvpsessionentry()
     rsvpsessionrequests{YType::uint32, "rsvpSessionRequests"}
 {
 
-    yang_name = "rsvpSessionEntry"; yang_parent_name = "rsvpSessionTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpSessionEntry"; yang_parent_name = "rsvpSessionTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::~Rsvpsessionentry()
+RSVPMIB::RsvpSessionTable::RsvpSessionEntry::~RsvpSessionEntry()
 {
 }
 
-bool RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::has_data() const
+bool RSVPMIB::RsvpSessionTable::RsvpSessionEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return rsvpsessionnumber.is_set
 	|| rsvpsessiontype.is_set
 	|| rsvpsessiondestaddr.is_set
@@ -513,7 +519,7 @@ bool RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::has_data() const
 	|| rsvpsessionrequests.is_set;
 }
 
-bool RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::has_operation() const
+bool RSVPMIB::RsvpSessionTable::RsvpSessionEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rsvpsessionnumber.yfilter)
@@ -527,21 +533,22 @@ bool RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::has_operation() const
 	|| ydk::is_set(rsvpsessionrequests.yfilter);
 }
 
-std::string RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::get_absolute_path() const
+std::string RSVPMIB::RsvpSessionTable::RsvpSessionEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RSVP-MIB:RSVP-MIB/rsvpSessionTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::get_segment_path() const
+std::string RSVPMIB::RsvpSessionTable::RsvpSessionEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rsvpSessionEntry" <<"[rsvpSessionNumber='" <<rsvpsessionnumber <<"']";
+    path_buffer << "rsvpSessionEntry";
+    ADD_KEY_TOKEN(rsvpsessionnumber, "rsvpSessionNumber");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::RsvpSessionTable::RsvpSessionEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -559,19 +566,19 @@ std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsessiontable::Rsvpse
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::RsvpSessionTable::RsvpSessionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::RsvpSessionTable::RsvpSessionEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::RsvpSessionTable::RsvpSessionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rsvpSessionNumber")
     {
@@ -629,7 +636,7 @@ void RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::set_value(const std::string & 
     }
 }
 
-void RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::RsvpSessionTable::RsvpSessionEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rsvpSessionNumber")
     {
@@ -669,26 +676,29 @@ void RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::set_filter(const std::string &
     }
 }
 
-bool RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::RsvpSessionTable::RsvpSessionEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rsvpSessionNumber" || name == "rsvpSessionType" || name == "rsvpSessionDestAddr" || name == "rsvpSessionDestAddrLength" || name == "rsvpSessionProtocol" || name == "rsvpSessionPort" || name == "rsvpSessionSenders" || name == "rsvpSessionReceivers" || name == "rsvpSessionRequests")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpsendertable::Rsvpsendertable()
+RSVPMIB::RsvpSenderTable::RsvpSenderTable()
+    :
+    rsvpsenderentry(this, {"rsvpsessionnumber", "rsvpsendernumber"})
 {
 
-    yang_name = "rsvpSenderTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpSenderTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RSVPMIB::Rsvpsendertable::~Rsvpsendertable()
+RSVPMIB::RsvpSenderTable::~RsvpSenderTable()
 {
 }
 
-bool RSVPMIB::Rsvpsendertable::has_data() const
+bool RSVPMIB::RsvpSenderTable::has_data() const
 {
-    for (std::size_t index=0; index<rsvpsenderentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rsvpsenderentry.len(); index++)
     {
         if(rsvpsenderentry[index]->has_data())
             return true;
@@ -696,9 +706,9 @@ bool RSVPMIB::Rsvpsendertable::has_data() const
     return false;
 }
 
-bool RSVPMIB::Rsvpsendertable::has_operation() const
+bool RSVPMIB::RsvpSenderTable::has_operation() const
 {
-    for (std::size_t index=0; index<rsvpsenderentry.size(); index++)
+    for (std::size_t index=0; index<rsvpsenderentry.len(); index++)
     {
         if(rsvpsenderentry[index]->has_operation())
             return true;
@@ -706,21 +716,21 @@ bool RSVPMIB::Rsvpsendertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RSVPMIB::Rsvpsendertable::get_absolute_path() const
+std::string RSVPMIB::RsvpSenderTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RSVP-MIB:RSVP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpsendertable::get_segment_path() const
+std::string RSVPMIB::RsvpSenderTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rsvpSenderTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsendertable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::RsvpSenderTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -729,25 +739,25 @@ std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsendertable::get_nam
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpsendertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::RsvpSenderTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvpSenderEntry")
     {
-        auto c = std::make_shared<RSVPMIB::Rsvpsendertable::Rsvpsenderentry>();
+        auto c = std::make_shared<RSVPMIB::RsvpSenderTable::RsvpSenderEntry>();
         c->parent = this;
-        rsvpsenderentry.push_back(c);
+        rsvpsenderentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsendertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::RsvpSenderTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rsvpsenderentry)
+    for (auto c : rsvpsenderentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -758,22 +768,22 @@ std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsendertable::get_chi
     return children;
 }
 
-void RSVPMIB::Rsvpsendertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::RsvpSenderTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RSVPMIB::Rsvpsendertable::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::RsvpSenderTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RSVPMIB::Rsvpsendertable::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::RsvpSenderTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rsvpSenderEntry")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpsendertable::Rsvpsenderentry::Rsvpsenderentry()
+RSVPMIB::RsvpSenderTable::RsvpSenderEntry::RsvpSenderEntry()
     :
     rsvpsessionnumber{YType::str, "rsvpSessionNumber"},
     rsvpsendernumber{YType::int32, "rsvpSenderNumber"},
@@ -823,15 +833,16 @@ RSVPMIB::Rsvpsendertable::Rsvpsenderentry::Rsvpsenderentry()
     rsvpsenderttl{YType::int32, "rsvpSenderTTL"}
 {
 
-    yang_name = "rsvpSenderEntry"; yang_parent_name = "rsvpSenderTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpSenderEntry"; yang_parent_name = "rsvpSenderTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RSVPMIB::Rsvpsendertable::Rsvpsenderentry::~Rsvpsenderentry()
+RSVPMIB::RsvpSenderTable::RsvpSenderEntry::~RsvpSenderEntry()
 {
 }
 
-bool RSVPMIB::Rsvpsendertable::Rsvpsenderentry::has_data() const
+bool RSVPMIB::RsvpSenderTable::RsvpSenderEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return rsvpsessionnumber.is_set
 	|| rsvpsendernumber.is_set
 	|| rsvpsendertype.is_set
@@ -880,7 +891,7 @@ bool RSVPMIB::Rsvpsendertable::Rsvpsenderentry::has_data() const
 	|| rsvpsenderttl.is_set;
 }
 
-bool RSVPMIB::Rsvpsendertable::Rsvpsenderentry::has_operation() const
+bool RSVPMIB::RsvpSenderTable::RsvpSenderEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rsvpsessionnumber.yfilter)
@@ -931,21 +942,23 @@ bool RSVPMIB::Rsvpsendertable::Rsvpsenderentry::has_operation() const
 	|| ydk::is_set(rsvpsenderttl.yfilter);
 }
 
-std::string RSVPMIB::Rsvpsendertable::Rsvpsenderentry::get_absolute_path() const
+std::string RSVPMIB::RsvpSenderTable::RsvpSenderEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RSVP-MIB:RSVP-MIB/rsvpSenderTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpsendertable::Rsvpsenderentry::get_segment_path() const
+std::string RSVPMIB::RsvpSenderTable::RsvpSenderEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rsvpSenderEntry" <<"[rsvpSessionNumber='" <<rsvpsessionnumber <<"']" <<"[rsvpSenderNumber='" <<rsvpsendernumber <<"']";
+    path_buffer << "rsvpSenderEntry";
+    ADD_KEY_TOKEN(rsvpsessionnumber, "rsvpSessionNumber");
+    ADD_KEY_TOKEN(rsvpsendernumber, "rsvpSenderNumber");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsendertable::Rsvpsenderentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::RsvpSenderTable::RsvpSenderEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1000,19 +1013,19 @@ std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsendertable::Rsvpsen
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpsendertable::Rsvpsenderentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::RsvpSenderTable::RsvpSenderEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsendertable::Rsvpsenderentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::RsvpSenderTable::RsvpSenderEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RSVPMIB::Rsvpsendertable::Rsvpsenderentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::RsvpSenderTable::RsvpSenderEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rsvpSessionNumber")
     {
@@ -1292,7 +1305,7 @@ void RSVPMIB::Rsvpsendertable::Rsvpsenderentry::set_value(const std::string & va
     }
 }
 
-void RSVPMIB::Rsvpsendertable::Rsvpsenderentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::RsvpSenderTable::RsvpSenderEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rsvpSessionNumber")
     {
@@ -1480,26 +1493,29 @@ void RSVPMIB::Rsvpsendertable::Rsvpsenderentry::set_filter(const std::string & v
     }
 }
 
-bool RSVPMIB::Rsvpsendertable::Rsvpsenderentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::RsvpSenderTable::RsvpSenderEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rsvpSessionNumber" || name == "rsvpSenderNumber" || name == "rsvpSenderType" || name == "rsvpSenderDestAddr" || name == "rsvpSenderAddr" || name == "rsvpSenderDestAddrLength" || name == "rsvpSenderAddrLength" || name == "rsvpSenderProtocol" || name == "rsvpSenderDestPort" || name == "rsvpSenderPort" || name == "rsvpSenderFlowId" || name == "rsvpSenderHopAddr" || name == "rsvpSenderHopLih" || name == "rsvpSenderInterface" || name == "rsvpSenderTSpecRate" || name == "rsvpSenderTSpecPeakRate" || name == "rsvpSenderTSpecBurst" || name == "rsvpSenderTSpecMinTU" || name == "rsvpSenderTSpecMaxTU" || name == "rsvpSenderInterval" || name == "rsvpSenderRSVPHop" || name == "rsvpSenderLastChange" || name == "rsvpSenderPolicy" || name == "rsvpSenderAdspecBreak" || name == "rsvpSenderAdspecHopCount" || name == "rsvpSenderAdspecPathBw" || name == "rsvpSenderAdspecMinLatency" || name == "rsvpSenderAdspecMtu" || name == "rsvpSenderAdspecGuaranteedSvc" || name == "rsvpSenderAdspecGuaranteedBreak" || name == "rsvpSenderAdspecGuaranteedCtot" || name == "rsvpSenderAdspecGuaranteedDtot" || name == "rsvpSenderAdspecGuaranteedCsum" || name == "rsvpSenderAdspecGuaranteedDsum" || name == "rsvpSenderAdspecGuaranteedHopCount" || name == "rsvpSenderAdspecGuaranteedPathBw" || name == "rsvpSenderAdspecGuaranteedMinLatency" || name == "rsvpSenderAdspecGuaranteedMtu" || name == "rsvpSenderAdspecCtrlLoadSvc" || name == "rsvpSenderAdspecCtrlLoadBreak" || name == "rsvpSenderAdspecCtrlLoadHopCount" || name == "rsvpSenderAdspecCtrlLoadPathBw" || name == "rsvpSenderAdspecCtrlLoadMinLatency" || name == "rsvpSenderAdspecCtrlLoadMtu" || name == "rsvpSenderStatus" || name == "rsvpSenderTTL")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfacetable()
+RSVPMIB::RsvpSenderOutInterfaceTable::RsvpSenderOutInterfaceTable()
+    :
+    rsvpsenderoutinterfaceentry(this, {"rsvpsessionnumber", "rsvpsendernumber", "ifindex"})
 {
 
-    yang_name = "rsvpSenderOutInterfaceTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpSenderOutInterfaceTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RSVPMIB::Rsvpsenderoutinterfacetable::~Rsvpsenderoutinterfacetable()
+RSVPMIB::RsvpSenderOutInterfaceTable::~RsvpSenderOutInterfaceTable()
 {
 }
 
-bool RSVPMIB::Rsvpsenderoutinterfacetable::has_data() const
+bool RSVPMIB::RsvpSenderOutInterfaceTable::has_data() const
 {
-    for (std::size_t index=0; index<rsvpsenderoutinterfaceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rsvpsenderoutinterfaceentry.len(); index++)
     {
         if(rsvpsenderoutinterfaceentry[index]->has_data())
             return true;
@@ -1507,9 +1523,9 @@ bool RSVPMIB::Rsvpsenderoutinterfacetable::has_data() const
     return false;
 }
 
-bool RSVPMIB::Rsvpsenderoutinterfacetable::has_operation() const
+bool RSVPMIB::RsvpSenderOutInterfaceTable::has_operation() const
 {
-    for (std::size_t index=0; index<rsvpsenderoutinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<rsvpsenderoutinterfaceentry.len(); index++)
     {
         if(rsvpsenderoutinterfaceentry[index]->has_operation())
             return true;
@@ -1517,21 +1533,21 @@ bool RSVPMIB::Rsvpsenderoutinterfacetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RSVPMIB::Rsvpsenderoutinterfacetable::get_absolute_path() const
+std::string RSVPMIB::RsvpSenderOutInterfaceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RSVP-MIB:RSVP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpsenderoutinterfacetable::get_segment_path() const
+std::string RSVPMIB::RsvpSenderOutInterfaceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rsvpSenderOutInterfaceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsenderoutinterfacetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::RsvpSenderOutInterfaceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1540,25 +1556,25 @@ std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsenderoutinterfaceta
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpsenderoutinterfacetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::RsvpSenderOutInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvpSenderOutInterfaceEntry")
     {
-        auto c = std::make_shared<RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry>();
+        auto c = std::make_shared<RSVPMIB::RsvpSenderOutInterfaceTable::RsvpSenderOutInterfaceEntry>();
         c->parent = this;
-        rsvpsenderoutinterfaceentry.push_back(c);
+        rsvpsenderoutinterfaceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsenderoutinterfacetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::RsvpSenderOutInterfaceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rsvpsenderoutinterfaceentry)
+    for (auto c : rsvpsenderoutinterfaceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1569,22 +1585,22 @@ std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsenderoutinterfaceta
     return children;
 }
 
-void RSVPMIB::Rsvpsenderoutinterfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::RsvpSenderOutInterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RSVPMIB::Rsvpsenderoutinterfacetable::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::RsvpSenderOutInterfaceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RSVPMIB::Rsvpsenderoutinterfacetable::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::RsvpSenderOutInterfaceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rsvpSenderOutInterfaceEntry")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry::Rsvpsenderoutinterfaceentry()
+RSVPMIB::RsvpSenderOutInterfaceTable::RsvpSenderOutInterfaceEntry::RsvpSenderOutInterfaceEntry()
     :
     rsvpsessionnumber{YType::str, "rsvpSessionNumber"},
     rsvpsendernumber{YType::str, "rsvpSenderNumber"},
@@ -1592,22 +1608,23 @@ RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry::Rsvpsenderout
     rsvpsenderoutinterfacestatus{YType::enumeration, "rsvpSenderOutInterfaceStatus"}
 {
 
-    yang_name = "rsvpSenderOutInterfaceEntry"; yang_parent_name = "rsvpSenderOutInterfaceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpSenderOutInterfaceEntry"; yang_parent_name = "rsvpSenderOutInterfaceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry::~Rsvpsenderoutinterfaceentry()
+RSVPMIB::RsvpSenderOutInterfaceTable::RsvpSenderOutInterfaceEntry::~RsvpSenderOutInterfaceEntry()
 {
 }
 
-bool RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry::has_data() const
+bool RSVPMIB::RsvpSenderOutInterfaceTable::RsvpSenderOutInterfaceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return rsvpsessionnumber.is_set
 	|| rsvpsendernumber.is_set
 	|| ifindex.is_set
 	|| rsvpsenderoutinterfacestatus.is_set;
 }
 
-bool RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry::has_operation() const
+bool RSVPMIB::RsvpSenderOutInterfaceTable::RsvpSenderOutInterfaceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rsvpsessionnumber.yfilter)
@@ -1616,21 +1633,24 @@ bool RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry::has_oper
 	|| ydk::is_set(rsvpsenderoutinterfacestatus.yfilter);
 }
 
-std::string RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry::get_absolute_path() const
+std::string RSVPMIB::RsvpSenderOutInterfaceTable::RsvpSenderOutInterfaceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RSVP-MIB:RSVP-MIB/rsvpSenderOutInterfaceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry::get_segment_path() const
+std::string RSVPMIB::RsvpSenderOutInterfaceTable::RsvpSenderOutInterfaceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rsvpSenderOutInterfaceEntry" <<"[rsvpSessionNumber='" <<rsvpsessionnumber <<"']" <<"[rsvpSenderNumber='" <<rsvpsendernumber <<"']" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "rsvpSenderOutInterfaceEntry";
+    ADD_KEY_TOKEN(rsvpsessionnumber, "rsvpSessionNumber");
+    ADD_KEY_TOKEN(rsvpsendernumber, "rsvpSenderNumber");
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::RsvpSenderOutInterfaceTable::RsvpSenderOutInterfaceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1643,19 +1663,19 @@ std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpsenderoutinterfaceta
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::RsvpSenderOutInterfaceTable::RsvpSenderOutInterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::RsvpSenderOutInterfaceTable::RsvpSenderOutInterfaceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::RsvpSenderOutInterfaceTable::RsvpSenderOutInterfaceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rsvpSessionNumber")
     {
@@ -1683,7 +1703,7 @@ void RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry::set_valu
     }
 }
 
-void RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::RsvpSenderOutInterfaceTable::RsvpSenderOutInterfaceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rsvpSessionNumber")
     {
@@ -1703,26 +1723,29 @@ void RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry::set_filt
     }
 }
 
-bool RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::RsvpSenderOutInterfaceTable::RsvpSenderOutInterfaceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rsvpSessionNumber" || name == "rsvpSenderNumber" || name == "ifIndex" || name == "rsvpSenderOutInterfaceStatus")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpresvtable::Rsvpresvtable()
+RSVPMIB::RsvpResvTable::RsvpResvTable()
+    :
+    rsvpresventry(this, {"rsvpsessionnumber", "rsvpresvnumber"})
 {
 
-    yang_name = "rsvpResvTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpResvTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RSVPMIB::Rsvpresvtable::~Rsvpresvtable()
+RSVPMIB::RsvpResvTable::~RsvpResvTable()
 {
 }
 
-bool RSVPMIB::Rsvpresvtable::has_data() const
+bool RSVPMIB::RsvpResvTable::has_data() const
 {
-    for (std::size_t index=0; index<rsvpresventry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rsvpresventry.len(); index++)
     {
         if(rsvpresventry[index]->has_data())
             return true;
@@ -1730,9 +1753,9 @@ bool RSVPMIB::Rsvpresvtable::has_data() const
     return false;
 }
 
-bool RSVPMIB::Rsvpresvtable::has_operation() const
+bool RSVPMIB::RsvpResvTable::has_operation() const
 {
-    for (std::size_t index=0; index<rsvpresventry.size(); index++)
+    for (std::size_t index=0; index<rsvpresventry.len(); index++)
     {
         if(rsvpresventry[index]->has_operation())
             return true;
@@ -1740,21 +1763,21 @@ bool RSVPMIB::Rsvpresvtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RSVPMIB::Rsvpresvtable::get_absolute_path() const
+std::string RSVPMIB::RsvpResvTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RSVP-MIB:RSVP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpresvtable::get_segment_path() const
+std::string RSVPMIB::RsvpResvTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rsvpResvTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpresvtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::RsvpResvTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1763,25 +1786,25 @@ std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpresvtable::get_name_
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpresvtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::RsvpResvTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvpResvEntry")
     {
-        auto c = std::make_shared<RSVPMIB::Rsvpresvtable::Rsvpresventry>();
+        auto c = std::make_shared<RSVPMIB::RsvpResvTable::RsvpResvEntry>();
         c->parent = this;
-        rsvpresventry.push_back(c);
+        rsvpresventry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpresvtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::RsvpResvTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rsvpresventry)
+    for (auto c : rsvpresventry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1792,22 +1815,22 @@ std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpresvtable::get_child
     return children;
 }
 
-void RSVPMIB::Rsvpresvtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::RsvpResvTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RSVPMIB::Rsvpresvtable::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::RsvpResvTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RSVPMIB::Rsvpresvtable::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::RsvpResvTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rsvpResvEntry")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpresvtable::Rsvpresventry::Rsvpresventry()
+RSVPMIB::RsvpResvTable::RsvpResvEntry::RsvpResvEntry()
     :
     rsvpsessionnumber{YType::str, "rsvpSessionNumber"},
     rsvpresvnumber{YType::int32, "rsvpResvNumber"},
@@ -1842,15 +1865,16 @@ RSVPMIB::Rsvpresvtable::Rsvpresventry::Rsvpresventry()
     rsvpresvflowid{YType::int32, "rsvpResvFlowId"}
 {
 
-    yang_name = "rsvpResvEntry"; yang_parent_name = "rsvpResvTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpResvEntry"; yang_parent_name = "rsvpResvTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RSVPMIB::Rsvpresvtable::Rsvpresventry::~Rsvpresventry()
+RSVPMIB::RsvpResvTable::RsvpResvEntry::~RsvpResvEntry()
 {
 }
 
-bool RSVPMIB::Rsvpresvtable::Rsvpresventry::has_data() const
+bool RSVPMIB::RsvpResvTable::RsvpResvEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return rsvpsessionnumber.is_set
 	|| rsvpresvnumber.is_set
 	|| rsvpresvtype.is_set
@@ -1884,7 +1908,7 @@ bool RSVPMIB::Rsvpresvtable::Rsvpresventry::has_data() const
 	|| rsvpresvflowid.is_set;
 }
 
-bool RSVPMIB::Rsvpresvtable::Rsvpresventry::has_operation() const
+bool RSVPMIB::RsvpResvTable::RsvpResvEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rsvpsessionnumber.yfilter)
@@ -1920,21 +1944,23 @@ bool RSVPMIB::Rsvpresvtable::Rsvpresventry::has_operation() const
 	|| ydk::is_set(rsvpresvflowid.yfilter);
 }
 
-std::string RSVPMIB::Rsvpresvtable::Rsvpresventry::get_absolute_path() const
+std::string RSVPMIB::RsvpResvTable::RsvpResvEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RSVP-MIB:RSVP-MIB/rsvpResvTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpresvtable::Rsvpresventry::get_segment_path() const
+std::string RSVPMIB::RsvpResvTable::RsvpResvEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rsvpResvEntry" <<"[rsvpSessionNumber='" <<rsvpsessionnumber <<"']" <<"[rsvpResvNumber='" <<rsvpresvnumber <<"']";
+    path_buffer << "rsvpResvEntry";
+    ADD_KEY_TOKEN(rsvpsessionnumber, "rsvpSessionNumber");
+    ADD_KEY_TOKEN(rsvpresvnumber, "rsvpResvNumber");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpresvtable::Rsvpresventry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::RsvpResvTable::RsvpResvEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1974,19 +2000,19 @@ std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpresvtable::Rsvpresve
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpresvtable::Rsvpresventry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::RsvpResvTable::RsvpResvEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpresvtable::Rsvpresventry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::RsvpResvTable::RsvpResvEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RSVPMIB::Rsvpresvtable::Rsvpresventry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::RsvpResvTable::RsvpResvEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rsvpSessionNumber")
     {
@@ -2176,7 +2202,7 @@ void RSVPMIB::Rsvpresvtable::Rsvpresventry::set_value(const std::string & value_
     }
 }
 
-void RSVPMIB::Rsvpresvtable::Rsvpresventry::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::RsvpResvTable::RsvpResvEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rsvpSessionNumber")
     {
@@ -2304,26 +2330,29 @@ void RSVPMIB::Rsvpresvtable::Rsvpresventry::set_filter(const std::string & value
     }
 }
 
-bool RSVPMIB::Rsvpresvtable::Rsvpresventry::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::RsvpResvTable::RsvpResvEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rsvpSessionNumber" || name == "rsvpResvNumber" || name == "rsvpResvType" || name == "rsvpResvDestAddr" || name == "rsvpResvSenderAddr" || name == "rsvpResvDestAddrLength" || name == "rsvpResvSenderAddrLength" || name == "rsvpResvProtocol" || name == "rsvpResvDestPort" || name == "rsvpResvPort" || name == "rsvpResvHopAddr" || name == "rsvpResvHopLih" || name == "rsvpResvInterface" || name == "rsvpResvService" || name == "rsvpResvTSpecRate" || name == "rsvpResvTSpecPeakRate" || name == "rsvpResvTSpecBurst" || name == "rsvpResvTSpecMinTU" || name == "rsvpResvTSpecMaxTU" || name == "rsvpResvRSpecRate" || name == "rsvpResvRSpecSlack" || name == "rsvpResvInterval" || name == "rsvpResvScope" || name == "rsvpResvShared" || name == "rsvpResvExplicit" || name == "rsvpResvRSVPHop" || name == "rsvpResvLastChange" || name == "rsvpResvPolicy" || name == "rsvpResvStatus" || name == "rsvpResvTTL" || name == "rsvpResvFlowId")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdtable()
+RSVPMIB::RsvpResvFwdTable::RsvpResvFwdTable()
+    :
+    rsvpresvfwdentry(this, {"rsvpsessionnumber", "rsvpresvfwdnumber"})
 {
 
-    yang_name = "rsvpResvFwdTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpResvFwdTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RSVPMIB::Rsvpresvfwdtable::~Rsvpresvfwdtable()
+RSVPMIB::RsvpResvFwdTable::~RsvpResvFwdTable()
 {
 }
 
-bool RSVPMIB::Rsvpresvfwdtable::has_data() const
+bool RSVPMIB::RsvpResvFwdTable::has_data() const
 {
-    for (std::size_t index=0; index<rsvpresvfwdentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rsvpresvfwdentry.len(); index++)
     {
         if(rsvpresvfwdentry[index]->has_data())
             return true;
@@ -2331,9 +2360,9 @@ bool RSVPMIB::Rsvpresvfwdtable::has_data() const
     return false;
 }
 
-bool RSVPMIB::Rsvpresvfwdtable::has_operation() const
+bool RSVPMIB::RsvpResvFwdTable::has_operation() const
 {
-    for (std::size_t index=0; index<rsvpresvfwdentry.size(); index++)
+    for (std::size_t index=0; index<rsvpresvfwdentry.len(); index++)
     {
         if(rsvpresvfwdentry[index]->has_operation())
             return true;
@@ -2341,21 +2370,21 @@ bool RSVPMIB::Rsvpresvfwdtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RSVPMIB::Rsvpresvfwdtable::get_absolute_path() const
+std::string RSVPMIB::RsvpResvFwdTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RSVP-MIB:RSVP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpresvfwdtable::get_segment_path() const
+std::string RSVPMIB::RsvpResvFwdTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rsvpResvFwdTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpresvfwdtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::RsvpResvFwdTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2364,25 +2393,25 @@ std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpresvfwdtable::get_na
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpresvfwdtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::RsvpResvFwdTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvpResvFwdEntry")
     {
-        auto c = std::make_shared<RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry>();
+        auto c = std::make_shared<RSVPMIB::RsvpResvFwdTable::RsvpResvFwdEntry>();
         c->parent = this;
-        rsvpresvfwdentry.push_back(c);
+        rsvpresvfwdentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpresvfwdtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::RsvpResvFwdTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rsvpresvfwdentry)
+    for (auto c : rsvpresvfwdentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2393,22 +2422,22 @@ std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpresvfwdtable::get_ch
     return children;
 }
 
-void RSVPMIB::Rsvpresvfwdtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::RsvpResvFwdTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RSVPMIB::Rsvpresvfwdtable::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::RsvpResvFwdTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RSVPMIB::Rsvpresvfwdtable::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::RsvpResvFwdTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rsvpResvFwdEntry")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::Rsvpresvfwdentry()
+RSVPMIB::RsvpResvFwdTable::RsvpResvFwdEntry::RsvpResvFwdEntry()
     :
     rsvpsessionnumber{YType::str, "rsvpSessionNumber"},
     rsvpresvfwdnumber{YType::int32, "rsvpResvFwdNumber"},
@@ -2443,15 +2472,16 @@ RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::Rsvpresvfwdentry()
     rsvpresvfwdflowid{YType::int32, "rsvpResvFwdFlowId"}
 {
 
-    yang_name = "rsvpResvFwdEntry"; yang_parent_name = "rsvpResvFwdTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpResvFwdEntry"; yang_parent_name = "rsvpResvFwdTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::~Rsvpresvfwdentry()
+RSVPMIB::RsvpResvFwdTable::RsvpResvFwdEntry::~RsvpResvFwdEntry()
 {
 }
 
-bool RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::has_data() const
+bool RSVPMIB::RsvpResvFwdTable::RsvpResvFwdEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return rsvpsessionnumber.is_set
 	|| rsvpresvfwdnumber.is_set
 	|| rsvpresvfwdtype.is_set
@@ -2485,7 +2515,7 @@ bool RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::has_data() const
 	|| rsvpresvfwdflowid.is_set;
 }
 
-bool RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::has_operation() const
+bool RSVPMIB::RsvpResvFwdTable::RsvpResvFwdEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rsvpsessionnumber.yfilter)
@@ -2521,21 +2551,23 @@ bool RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::has_operation() const
 	|| ydk::is_set(rsvpresvfwdflowid.yfilter);
 }
 
-std::string RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::get_absolute_path() const
+std::string RSVPMIB::RsvpResvFwdTable::RsvpResvFwdEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RSVP-MIB:RSVP-MIB/rsvpResvFwdTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::get_segment_path() const
+std::string RSVPMIB::RsvpResvFwdTable::RsvpResvFwdEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rsvpResvFwdEntry" <<"[rsvpSessionNumber='" <<rsvpsessionnumber <<"']" <<"[rsvpResvFwdNumber='" <<rsvpresvfwdnumber <<"']";
+    path_buffer << "rsvpResvFwdEntry";
+    ADD_KEY_TOKEN(rsvpsessionnumber, "rsvpSessionNumber");
+    ADD_KEY_TOKEN(rsvpresvfwdnumber, "rsvpResvFwdNumber");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::RsvpResvFwdTable::RsvpResvFwdEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2575,19 +2607,19 @@ std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpresvfwdtable::Rsvpre
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::RsvpResvFwdTable::RsvpResvFwdEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::RsvpResvFwdTable::RsvpResvFwdEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::RsvpResvFwdTable::RsvpResvFwdEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rsvpSessionNumber")
     {
@@ -2777,7 +2809,7 @@ void RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::set_value(const std::string & 
     }
 }
 
-void RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::RsvpResvFwdTable::RsvpResvFwdEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rsvpSessionNumber")
     {
@@ -2905,26 +2937,29 @@ void RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::set_filter(const std::string &
     }
 }
 
-bool RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::RsvpResvFwdTable::RsvpResvFwdEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rsvpSessionNumber" || name == "rsvpResvFwdNumber" || name == "rsvpResvFwdType" || name == "rsvpResvFwdDestAddr" || name == "rsvpResvFwdSenderAddr" || name == "rsvpResvFwdDestAddrLength" || name == "rsvpResvFwdSenderAddrLength" || name == "rsvpResvFwdProtocol" || name == "rsvpResvFwdDestPort" || name == "rsvpResvFwdPort" || name == "rsvpResvFwdHopAddr" || name == "rsvpResvFwdHopLih" || name == "rsvpResvFwdInterface" || name == "rsvpResvFwdService" || name == "rsvpResvFwdTSpecRate" || name == "rsvpResvFwdTSpecPeakRate" || name == "rsvpResvFwdTSpecBurst" || name == "rsvpResvFwdTSpecMinTU" || name == "rsvpResvFwdTSpecMaxTU" || name == "rsvpResvFwdRSpecRate" || name == "rsvpResvFwdRSpecSlack" || name == "rsvpResvFwdInterval" || name == "rsvpResvFwdScope" || name == "rsvpResvFwdShared" || name == "rsvpResvFwdExplicit" || name == "rsvpResvFwdRSVPHop" || name == "rsvpResvFwdLastChange" || name == "rsvpResvFwdPolicy" || name == "rsvpResvFwdStatus" || name == "rsvpResvFwdTTL" || name == "rsvpResvFwdFlowId")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpiftable::Rsvpiftable()
+RSVPMIB::RsvpIfTable::RsvpIfTable()
+    :
+    rsvpifentry(this, {"ifindex"})
 {
 
-    yang_name = "rsvpIfTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpIfTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RSVPMIB::Rsvpiftable::~Rsvpiftable()
+RSVPMIB::RsvpIfTable::~RsvpIfTable()
 {
 }
 
-bool RSVPMIB::Rsvpiftable::has_data() const
+bool RSVPMIB::RsvpIfTable::has_data() const
 {
-    for (std::size_t index=0; index<rsvpifentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rsvpifentry.len(); index++)
     {
         if(rsvpifentry[index]->has_data())
             return true;
@@ -2932,9 +2967,9 @@ bool RSVPMIB::Rsvpiftable::has_data() const
     return false;
 }
 
-bool RSVPMIB::Rsvpiftable::has_operation() const
+bool RSVPMIB::RsvpIfTable::has_operation() const
 {
-    for (std::size_t index=0; index<rsvpifentry.size(); index++)
+    for (std::size_t index=0; index<rsvpifentry.len(); index++)
     {
         if(rsvpifentry[index]->has_operation())
             return true;
@@ -2942,21 +2977,21 @@ bool RSVPMIB::Rsvpiftable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RSVPMIB::Rsvpiftable::get_absolute_path() const
+std::string RSVPMIB::RsvpIfTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RSVP-MIB:RSVP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpiftable::get_segment_path() const
+std::string RSVPMIB::RsvpIfTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rsvpIfTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpiftable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::RsvpIfTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2965,25 +3000,25 @@ std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpiftable::get_name_le
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpiftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::RsvpIfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvpIfEntry")
     {
-        auto c = std::make_shared<RSVPMIB::Rsvpiftable::Rsvpifentry>();
+        auto c = std::make_shared<RSVPMIB::RsvpIfTable::RsvpIfEntry>();
         c->parent = this;
-        rsvpifentry.push_back(c);
+        rsvpifentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpiftable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::RsvpIfTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rsvpifentry)
+    for (auto c : rsvpifentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2994,22 +3029,22 @@ std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpiftable::get_childre
     return children;
 }
 
-void RSVPMIB::Rsvpiftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::RsvpIfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RSVPMIB::Rsvpiftable::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::RsvpIfTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RSVPMIB::Rsvpiftable::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::RsvpIfTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rsvpIfEntry")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpiftable::Rsvpifentry::Rsvpifentry()
+RSVPMIB::RsvpIfTable::RsvpIfEntry::RsvpIfEntry()
     :
     ifindex{YType::str, "ifIndex"},
     rsvpifudpnbrs{YType::uint32, "rsvpIfUdpNbrs"},
@@ -3025,15 +3060,16 @@ RSVPMIB::Rsvpiftable::Rsvpifentry::Rsvpifentry()
     rsvpifstatus{YType::enumeration, "rsvpIfStatus"}
 {
 
-    yang_name = "rsvpIfEntry"; yang_parent_name = "rsvpIfTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpIfEntry"; yang_parent_name = "rsvpIfTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RSVPMIB::Rsvpiftable::Rsvpifentry::~Rsvpifentry()
+RSVPMIB::RsvpIfTable::RsvpIfEntry::~RsvpIfEntry()
 {
 }
 
-bool RSVPMIB::Rsvpiftable::Rsvpifentry::has_data() const
+bool RSVPMIB::RsvpIfTable::RsvpIfEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| rsvpifudpnbrs.is_set
 	|| rsvpifipnbrs.is_set
@@ -3048,7 +3084,7 @@ bool RSVPMIB::Rsvpiftable::Rsvpifentry::has_data() const
 	|| rsvpifstatus.is_set;
 }
 
-bool RSVPMIB::Rsvpiftable::Rsvpifentry::has_operation() const
+bool RSVPMIB::RsvpIfTable::RsvpIfEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -3065,21 +3101,22 @@ bool RSVPMIB::Rsvpiftable::Rsvpifentry::has_operation() const
 	|| ydk::is_set(rsvpifstatus.yfilter);
 }
 
-std::string RSVPMIB::Rsvpiftable::Rsvpifentry::get_absolute_path() const
+std::string RSVPMIB::RsvpIfTable::RsvpIfEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RSVP-MIB:RSVP-MIB/rsvpIfTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpiftable::Rsvpifentry::get_segment_path() const
+std::string RSVPMIB::RsvpIfTable::RsvpIfEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rsvpIfEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "rsvpIfEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpiftable::Rsvpifentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::RsvpIfTable::RsvpIfEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3100,19 +3137,19 @@ std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpiftable::Rsvpifentry
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpiftable::Rsvpifentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::RsvpIfTable::RsvpIfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpiftable::Rsvpifentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::RsvpIfTable::RsvpIfEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RSVPMIB::Rsvpiftable::Rsvpifentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::RsvpIfTable::RsvpIfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -3188,7 +3225,7 @@ void RSVPMIB::Rsvpiftable::Rsvpifentry::set_value(const std::string & value_path
     }
 }
 
-void RSVPMIB::Rsvpiftable::Rsvpifentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::RsvpIfTable::RsvpIfEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -3240,26 +3277,29 @@ void RSVPMIB::Rsvpiftable::Rsvpifentry::set_filter(const std::string & value_pat
     }
 }
 
-bool RSVPMIB::Rsvpiftable::Rsvpifentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::RsvpIfTable::RsvpIfEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "rsvpIfUdpNbrs" || name == "rsvpIfIpNbrs" || name == "rsvpIfNbrs" || name == "rsvpIfRefreshBlockadeMultiple" || name == "rsvpIfRefreshMultiple" || name == "rsvpIfTTL" || name == "rsvpIfRefreshInterval" || name == "rsvpIfRouteDelay" || name == "rsvpIfEnabled" || name == "rsvpIfUdpRequired" || name == "rsvpIfStatus")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpnbrtable::Rsvpnbrtable()
+RSVPMIB::RsvpNbrTable::RsvpNbrTable()
+    :
+    rsvpnbrentry(this, {"ifindex", "rsvpnbraddress"})
 {
 
-    yang_name = "rsvpNbrTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpNbrTable"; yang_parent_name = "RSVP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RSVPMIB::Rsvpnbrtable::~Rsvpnbrtable()
+RSVPMIB::RsvpNbrTable::~RsvpNbrTable()
 {
 }
 
-bool RSVPMIB::Rsvpnbrtable::has_data() const
+bool RSVPMIB::RsvpNbrTable::has_data() const
 {
-    for (std::size_t index=0; index<rsvpnbrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rsvpnbrentry.len(); index++)
     {
         if(rsvpnbrentry[index]->has_data())
             return true;
@@ -3267,9 +3307,9 @@ bool RSVPMIB::Rsvpnbrtable::has_data() const
     return false;
 }
 
-bool RSVPMIB::Rsvpnbrtable::has_operation() const
+bool RSVPMIB::RsvpNbrTable::has_operation() const
 {
-    for (std::size_t index=0; index<rsvpnbrentry.size(); index++)
+    for (std::size_t index=0; index<rsvpnbrentry.len(); index++)
     {
         if(rsvpnbrentry[index]->has_operation())
             return true;
@@ -3277,21 +3317,21 @@ bool RSVPMIB::Rsvpnbrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RSVPMIB::Rsvpnbrtable::get_absolute_path() const
+std::string RSVPMIB::RsvpNbrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RSVP-MIB:RSVP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpnbrtable::get_segment_path() const
+std::string RSVPMIB::RsvpNbrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rsvpNbrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpnbrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::RsvpNbrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3300,25 +3340,25 @@ std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpnbrtable::get_name_l
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpnbrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::RsvpNbrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvpNbrEntry")
     {
-        auto c = std::make_shared<RSVPMIB::Rsvpnbrtable::Rsvpnbrentry>();
+        auto c = std::make_shared<RSVPMIB::RsvpNbrTable::RsvpNbrEntry>();
         c->parent = this;
-        rsvpnbrentry.push_back(c);
+        rsvpnbrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpnbrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::RsvpNbrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rsvpnbrentry)
+    for (auto c : rsvpnbrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3329,22 +3369,22 @@ std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpnbrtable::get_childr
     return children;
 }
 
-void RSVPMIB::Rsvpnbrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::RsvpNbrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RSVPMIB::Rsvpnbrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::RsvpNbrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RSVPMIB::Rsvpnbrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::RsvpNbrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rsvpNbrEntry")
         return true;
     return false;
 }
 
-RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::Rsvpnbrentry()
+RSVPMIB::RsvpNbrTable::RsvpNbrEntry::RsvpNbrEntry()
     :
     ifindex{YType::str, "ifIndex"},
     rsvpnbraddress{YType::str, "rsvpNbrAddress"},
@@ -3352,22 +3392,23 @@ RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::Rsvpnbrentry()
     rsvpnbrstatus{YType::enumeration, "rsvpNbrStatus"}
 {
 
-    yang_name = "rsvpNbrEntry"; yang_parent_name = "rsvpNbrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvpNbrEntry"; yang_parent_name = "rsvpNbrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::~Rsvpnbrentry()
+RSVPMIB::RsvpNbrTable::RsvpNbrEntry::~RsvpNbrEntry()
 {
 }
 
-bool RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::has_data() const
+bool RSVPMIB::RsvpNbrTable::RsvpNbrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| rsvpnbraddress.is_set
 	|| rsvpnbrprotocol.is_set
 	|| rsvpnbrstatus.is_set;
 }
 
-bool RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::has_operation() const
+bool RSVPMIB::RsvpNbrTable::RsvpNbrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -3376,21 +3417,23 @@ bool RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::has_operation() const
 	|| ydk::is_set(rsvpnbrstatus.yfilter);
 }
 
-std::string RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::get_absolute_path() const
+std::string RSVPMIB::RsvpNbrTable::RsvpNbrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RSVP-MIB:RSVP-MIB/rsvpNbrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::get_segment_path() const
+std::string RSVPMIB::RsvpNbrTable::RsvpNbrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rsvpNbrEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[rsvpNbrAddress='" <<rsvpnbraddress <<"']";
+    path_buffer << "rsvpNbrEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(rsvpnbraddress, "rsvpNbrAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RSVPMIB::RsvpNbrTable::RsvpNbrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3403,19 +3446,19 @@ std::vector<std::pair<std::string, LeafData> > RSVPMIB::Rsvpnbrtable::Rsvpnbrent
 
 }
 
-std::shared_ptr<Entity> RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RSVPMIB::RsvpNbrTable::RsvpNbrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::RsvpNbrTable::RsvpNbrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RSVPMIB::RsvpNbrTable::RsvpNbrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -3443,7 +3486,7 @@ void RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::set_value(const std::string & value_pa
     }
 }
 
-void RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RSVPMIB::RsvpNbrTable::RsvpNbrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -3463,7 +3506,7 @@ void RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::set_filter(const std::string & value_p
     }
 }
 
-bool RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RSVPMIB::RsvpNbrTable::RsvpNbrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "rsvpNbrAddress" || name == "rsvpNbrProtocol" || name == "rsvpNbrStatus")
         return true;

@@ -17,7 +17,7 @@ Keychain::Keychain()
 {
     keies->parent = this;
 
-    yang_name = "keychain"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "keychain"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Keychain::~Keychain()
@@ -26,6 +26,7 @@ Keychain::~Keychain()
 
 bool Keychain::has_data() const
 {
+    if (is_presence_container) return true;
     return (keies !=  nullptr && keies->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Keychain::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Keychain::Keies::Keies()
+    :
+    key(this, {"key_name"})
 {
 
-    yang_name = "keies"; yang_parent_name = "keychain"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "keies"; yang_parent_name = "keychain"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Keychain::Keies::~Keies()
@@ -129,7 +132,8 @@ Keychain::Keies::~Keies()
 
 bool Keychain::Keies::has_data() const
 {
-    for (std::size_t index=0; index<key.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<key.len(); index++)
     {
         if(key[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Keychain::Keies::has_data() const
 
 bool Keychain::Keies::has_operation() const
 {
-    for (std::size_t index=0; index<key.size(); index++)
+    for (std::size_t index=0; index<key.len(); index++)
     {
         if(key[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Keychain::Keies::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<Keychain::Keies::Key>();
         c->parent = this;
-        key.push_back(c);
+        key.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Keychain::Keies::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : key)
+    for (auto c : key.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -218,12 +222,12 @@ Keychain::Keies::Key::Key()
     :
     key_name{YType::str, "key-name"},
     accept_tolerance{YType::str, "accept-tolerance"}
-    	,
+        ,
     key(std::make_shared<Keychain::Keies::Key::Key_>())
 {
     key->parent = this;
 
-    yang_name = "key"; yang_parent_name = "keies"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "key"; yang_parent_name = "keies"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Keychain::Keies::Key::~Key()
@@ -232,6 +236,7 @@ Keychain::Keies::Key::~Key()
 
 bool Keychain::Keies::Key::has_data() const
 {
+    if (is_presence_container) return true;
     return key_name.is_set
 	|| accept_tolerance.is_set
 	|| (key !=  nullptr && key->has_data());
@@ -255,7 +260,8 @@ std::string Keychain::Keies::Key::get_absolute_path() const
 std::string Keychain::Keies::Key::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "key" <<"[key-name='" <<key_name <<"']";
+    path_buffer << "key";
+    ADD_KEY_TOKEN(key_name, "key-name");
     return path_buffer.str();
 }
 
@@ -332,9 +338,11 @@ bool Keychain::Keies::Key::has_leaf_or_child_of_name(const std::string & name) c
 }
 
 Keychain::Keies::Key::Key_::Key_()
+    :
+    key_id(this, {})
 {
 
-    yang_name = "key"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Keychain::Keies::Key::Key_::~Key_()
@@ -343,7 +351,8 @@ Keychain::Keies::Key::Key_::~Key_()
 
 bool Keychain::Keies::Key::Key_::has_data() const
 {
-    for (std::size_t index=0; index<key_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<key_id.len(); index++)
     {
         if(key_id[index]->has_data())
             return true;
@@ -353,7 +362,7 @@ bool Keychain::Keies::Key::Key_::has_data() const
 
 bool Keychain::Keies::Key::Key_::has_operation() const
 {
-    for (std::size_t index=0; index<key_id.size(); index++)
+    for (std::size_t index=0; index<key_id.len(); index++)
     {
         if(key_id[index]->has_operation())
             return true;
@@ -383,7 +392,7 @@ std::shared_ptr<Entity> Keychain::Keies::Key::Key_::get_child_by_name(const std:
     {
         auto c = std::make_shared<Keychain::Keies::Key::Key_::KeyId>();
         c->parent = this;
-        key_id.push_back(c);
+        key_id.append(c);
         return c;
     }
 
@@ -395,7 +404,7 @@ std::map<std::string, std::shared_ptr<Entity>> Keychain::Keies::Key::Key_::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : key_id)
+    for (auto c : key_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -427,16 +436,16 @@ Keychain::Keies::Key::Key_::KeyId::KeyId()
     type{YType::enumeration, "type"},
     key_id{YType::str, "key-id"},
     cryptographic_algorithm{YType::enumeration, "cryptographic-algorithm"}
-    	,
+        ,
     macsec(std::make_shared<Keychain::Keies::Key::Key_::KeyId::Macsec>())
-	,send_lifetime(std::make_shared<Keychain::Keies::Key::Key_::KeyId::SendLifetime>())
-	,accept_lifetime(std::make_shared<Keychain::Keies::Key::Key_::KeyId::AcceptLifetime>())
+    , send_lifetime(std::make_shared<Keychain::Keies::Key::Key_::KeyId::SendLifetime>())
+    , accept_lifetime(std::make_shared<Keychain::Keies::Key::Key_::KeyId::AcceptLifetime>())
 {
     macsec->parent = this;
     send_lifetime->parent = this;
     accept_lifetime->parent = this;
 
-    yang_name = "key-id"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-id"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Keychain::Keies::Key::Key_::KeyId::~KeyId()
@@ -445,6 +454,7 @@ Keychain::Keies::Key::Key_::KeyId::~KeyId()
 
 bool Keychain::Keies::Key::Key_::KeyId::has_data() const
 {
+    if (is_presence_container) return true;
     return key_string.is_set
 	|| type.is_set
 	|| key_id.is_set
@@ -600,7 +610,7 @@ Keychain::Keies::Key::Key_::KeyId::Macsec::Macsec()
     is_macsec_key{YType::boolean, "is-macsec-key"}
 {
 
-    yang_name = "macsec"; yang_parent_name = "key-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec"; yang_parent_name = "key-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Keychain::Keies::Key::Key_::KeyId::Macsec::~Macsec()
@@ -609,6 +619,7 @@ Keychain::Keies::Key::Key_::KeyId::Macsec::~Macsec()
 
 bool Keychain::Keies::Key::Key_::KeyId::Macsec::has_data() const
 {
+    if (is_presence_container) return true;
     return is_macsec_key.is_set;
 }
 
@@ -681,7 +692,7 @@ Keychain::Keies::Key::Key_::KeyId::SendLifetime::SendLifetime()
     is_valid_now{YType::boolean, "is-valid-now"}
 {
 
-    yang_name = "send-lifetime"; yang_parent_name = "key-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "send-lifetime"; yang_parent_name = "key-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Keychain::Keies::Key::Key_::KeyId::SendLifetime::~SendLifetime()
@@ -690,6 +701,7 @@ Keychain::Keies::Key::Key_::KeyId::SendLifetime::~SendLifetime()
 
 bool Keychain::Keies::Key::Key_::KeyId::SendLifetime::has_data() const
 {
+    if (is_presence_container) return true;
     return start.is_set
 	|| end.is_set
 	|| duration.is_set
@@ -814,7 +826,7 @@ Keychain::Keies::Key::Key_::KeyId::AcceptLifetime::AcceptLifetime()
     is_valid_now{YType::boolean, "is-valid-now"}
 {
 
-    yang_name = "accept-lifetime"; yang_parent_name = "key-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accept-lifetime"; yang_parent_name = "key-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Keychain::Keies::Key::Key_::KeyId::AcceptLifetime::~AcceptLifetime()
@@ -823,6 +835,7 @@ Keychain::Keies::Key::Key_::KeyId::AcceptLifetime::~AcceptLifetime()
 
 bool Keychain::Keies::Key::Key_::KeyId::AcceptLifetime::has_data() const
 {
+    if (is_presence_container) return true;
     return start.is_set
 	|| end.is_set
 	|| duration.is_set
@@ -938,6 +951,9 @@ bool Keychain::Keies::Key::Key_::KeyId::AcceptLifetime::has_leaf_or_child_of_nam
     return false;
 }
 
+const Enum::YLeaf Enc::password_type7 {0, "password-type7"};
+const Enum::YLeaf Enc::password_type6 {2, "password-type6"};
+
 const Enum::YLeaf CrytoAlgo::not_configured {0, "not-configured"};
 const Enum::YLeaf CrytoAlgo::hmac_sha1_12 {2, "hmac-sha1-12"};
 const Enum::YLeaf CrytoAlgo::md5 {3, "md5"};
@@ -946,9 +962,6 @@ const Enum::YLeaf CrytoAlgo::hmac_md5 {5, "hmac-md5"};
 const Enum::YLeaf CrytoAlgo::hmac_sha1_20 {6, "hmac-sha1-20"};
 const Enum::YLeaf CrytoAlgo::aes_128_cmac {7, "aes-128-cmac"};
 const Enum::YLeaf CrytoAlgo::aes_256_cmac {8, "aes-256-cmac"};
-
-const Enum::YLeaf Enc::password_type7 {0, "password-type7"};
-const Enum::YLeaf Enc::password_type6 {2, "password-type6"};
 
 
 }

@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_pfm_oper {
 PlatformFaultManager::PlatformFaultManager()
     :
     exclude(std::make_shared<PlatformFaultManager::Exclude>())
-	,racks(std::make_shared<PlatformFaultManager::Racks>())
+    , racks(std::make_shared<PlatformFaultManager::Racks>())
 {
     exclude->parent = this;
     racks->parent = this;
 
-    yang_name = "platform-fault-manager"; yang_parent_name = "Cisco-IOS-XR-pfm-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "platform-fault-manager"; yang_parent_name = "Cisco-IOS-XR-pfm-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 PlatformFaultManager::~PlatformFaultManager()
@@ -28,6 +28,7 @@ PlatformFaultManager::~PlatformFaultManager()
 
 bool PlatformFaultManager::has_data() const
 {
+    if (is_presence_container) return true;
     return (exclude !=  nullptr && exclude->has_data())
 	|| (racks !=  nullptr && racks->has_data());
 }
@@ -137,11 +138,11 @@ bool PlatformFaultManager::has_leaf_or_child_of_name(const std::string & name) c
 
 PlatformFaultManager::Exclude::Exclude()
     :
-    fault_type1s(std::make_shared<PlatformFaultManager::Exclude::FaultType1S>())
+    fault_type1s(std::make_shared<PlatformFaultManager::Exclude::FaultType1s>())
 {
     fault_type1s->parent = this;
 
-    yang_name = "exclude"; yang_parent_name = "platform-fault-manager"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "exclude"; yang_parent_name = "platform-fault-manager"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformFaultManager::Exclude::~Exclude()
@@ -150,6 +151,7 @@ PlatformFaultManager::Exclude::~Exclude()
 
 bool PlatformFaultManager::Exclude::has_data() const
 {
+    if (is_presence_container) return true;
     return (fault_type1s !=  nullptr && fault_type1s->has_data());
 }
 
@@ -188,7 +190,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::get_child_by_name(const s
     {
         if(fault_type1s == nullptr)
         {
-            fault_type1s = std::make_shared<PlatformFaultManager::Exclude::FaultType1S>();
+            fault_type1s = std::make_shared<PlatformFaultManager::Exclude::FaultType1s>();
         }
         return fault_type1s;
     }
@@ -223,19 +225,22 @@ bool PlatformFaultManager::Exclude::has_leaf_or_child_of_name(const std::string 
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1S()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1s()
+    :
+    fault_type1(this, {"hw_fault_type1"})
 {
 
-    yang_name = "fault-type1s"; yang_parent_name = "exclude"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fault-type1s"; yang_parent_name = "exclude"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::~FaultType1S()
+PlatformFaultManager::Exclude::FaultType1s::~FaultType1s()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::has_data() const
 {
-    for (std::size_t index=0; index<fault_type1.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fault_type1.len(); index++)
     {
         if(fault_type1[index]->has_data())
             return true;
@@ -243,9 +248,9 @@ bool PlatformFaultManager::Exclude::FaultType1S::has_data() const
     return false;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::has_operation() const
 {
-    for (std::size_t index=0; index<fault_type1.size(); index++)
+    for (std::size_t index=0; index<fault_type1.len(); index++)
     {
         if(fault_type1[index]->has_operation())
             return true;
@@ -253,21 +258,21 @@ bool PlatformFaultManager::Exclude::FaultType1S::has_operation() const
     return is_set(yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::get_absolute_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-pfm-oper:platform-fault-manager/exclude/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fault-type1s";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -276,25 +281,25 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fault-type1")
     {
-        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1>();
+        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1>();
         c->parent = this;
-        fault_type1.push_back(c);
+        fault_type1.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fault_type1)
+    for (auto c : fault_type1.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -305,46 +310,47 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "fault-type1")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType1()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType1()
     :
     hw_fault_type1{YType::str, "hw-fault-type1"}
-    	,
-    fault_type2s(std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S>())
-	,racks(std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks>())
+        ,
+    fault_type2s(std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s>())
+    , racks(std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks>())
 {
     fault_type2s->parent = this;
     racks->parent = this;
 
-    yang_name = "fault-type1"; yang_parent_name = "fault-type1s"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fault-type1"; yang_parent_name = "fault-type1s"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::~FaultType1()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::~FaultType1()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::has_data() const
 {
+    if (is_presence_container) return true;
     return hw_fault_type1.is_set
 	|| (fault_type2s !=  nullptr && fault_type2s->has_data())
 	|| (racks !=  nullptr && racks->has_data());
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hw_fault_type1.yfilter)
@@ -352,21 +358,22 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::has_operation() con
 	|| (racks !=  nullptr && racks->has_operation());
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::get_absolute_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-pfm-oper:platform-fault-manager/exclude/fault-type1s/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fault-type1" <<"[hw-fault-type1='" <<hw_fault_type1 <<"']";
+    path_buffer << "fault-type1";
+    ADD_KEY_TOKEN(hw_fault_type1, "hw-fault-type1");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -376,13 +383,13 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fault-type2s")
     {
         if(fault_type2s == nullptr)
         {
-            fault_type2s = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S>();
+            fault_type2s = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s>();
         }
         return fault_type2s;
     }
@@ -391,7 +398,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
     {
         if(racks == nullptr)
         {
-            racks = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks>();
+            racks = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks>();
         }
         return racks;
     }
@@ -399,7 +406,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -416,7 +423,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hw-fault-type1")
     {
@@ -426,7 +433,7 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::set_value(const std
     }
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hw-fault-type1")
     {
@@ -434,26 +441,29 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::set_filter(const st
     }
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "fault-type2s" || name == "racks" || name == "hw-fault-type1")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2S()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2s()
+    :
+    fault_type2(this, {"hw_fault_type2"})
 {
 
-    yang_name = "fault-type2s"; yang_parent_name = "fault-type1"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fault-type2s"; yang_parent_name = "fault-type1"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::~FaultType2S()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::~FaultType2s()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::has_data() const
 {
-    for (std::size_t index=0; index<fault_type2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fault_type2.len(); index++)
     {
         if(fault_type2[index]->has_data())
             return true;
@@ -461,9 +471,9 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::has_da
     return false;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::has_operation() const
 {
-    for (std::size_t index=0; index<fault_type2.size(); index++)
+    for (std::size_t index=0; index<fault_type2.len(); index++)
     {
         if(fault_type2[index]->has_operation())
             return true;
@@ -471,14 +481,14 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::has_op
     return is_set(yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fault-type2s";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -487,25 +497,25 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fault-type2")
     {
-        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2>();
+        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2>();
         c->parent = this;
-        fault_type2.push_back(c);
+        fault_type2.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fault_type2)
+    for (auto c : fault_type2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -516,46 +526,47 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "fault-type2")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType2()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType2()
     :
     hw_fault_type2{YType::str, "hw-fault-type2"}
-    	,
-    fault_type3s(std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S>())
-	,racks(std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks>())
+        ,
+    fault_type3s(std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s>())
+    , racks(std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks>())
 {
     fault_type3s->parent = this;
     racks->parent = this;
 
-    yang_name = "fault-type2"; yang_parent_name = "fault-type2s"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fault-type2"; yang_parent_name = "fault-type2s"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::~FaultType2()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::~FaultType2()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::has_data() const
 {
+    if (is_presence_container) return true;
     return hw_fault_type2.is_set
 	|| (fault_type3s !=  nullptr && fault_type3s->has_data())
 	|| (racks !=  nullptr && racks->has_data());
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hw_fault_type2.yfilter)
@@ -563,14 +574,15 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 	|| (racks !=  nullptr && racks->has_operation());
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fault-type2" <<"[hw-fault-type2='" <<hw_fault_type2 <<"']";
+    path_buffer << "fault-type2";
+    ADD_KEY_TOKEN(hw_fault_type2, "hw-fault-type2");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -580,13 +592,13 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fault-type3s")
     {
         if(fault_type3s == nullptr)
         {
-            fault_type3s = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S>();
+            fault_type3s = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s>();
         }
         return fault_type3s;
     }
@@ -595,7 +607,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
     {
         if(racks == nullptr)
         {
-            racks = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks>();
+            racks = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks>();
         }
         return racks;
     }
@@ -603,7 +615,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -620,7 +632,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hw-fault-type2")
     {
@@ -630,7 +642,7 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hw-fault-type2")
     {
@@ -638,26 +650,29 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "fault-type3s" || name == "racks" || name == "hw-fault-type2")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3S()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3s()
+    :
+    fault_type3(this, {"hw_fault_type3"})
 {
 
-    yang_name = "fault-type3s"; yang_parent_name = "fault-type2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fault-type3s"; yang_parent_name = "fault-type2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::~FaultType3S()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::~FaultType3s()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::has_data() const
 {
-    for (std::size_t index=0; index<fault_type3.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fault_type3.len(); index++)
     {
         if(fault_type3[index]->has_data())
             return true;
@@ -665,9 +680,9 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     return false;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::has_operation() const
 {
-    for (std::size_t index=0; index<fault_type3.size(); index++)
+    for (std::size_t index=0; index<fault_type3.len(); index++)
     {
         if(fault_type3[index]->has_operation())
             return true;
@@ -675,14 +690,14 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     return is_set(yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fault-type3s";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -691,25 +706,25 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fault-type3")
     {
-        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3>();
+        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3>();
         c->parent = this;
-        fault_type3.push_back(c);
+        fault_type3.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fault_type3)
+    for (auto c : fault_type3.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -720,57 +735,59 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "fault-type3")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::FaultType3()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::FaultType3()
     :
     hw_fault_type3{YType::str, "hw-fault-type3"}
-    	,
-    racks(std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks>())
+        ,
+    racks(std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks>())
 {
     racks->parent = this;
 
-    yang_name = "fault-type3"; yang_parent_name = "fault-type3s"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fault-type3"; yang_parent_name = "fault-type3s"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::~FaultType3()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::~FaultType3()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::has_data() const
 {
+    if (is_presence_container) return true;
     return hw_fault_type3.is_set
 	|| (racks !=  nullptr && racks->has_data());
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hw_fault_type3.yfilter)
 	|| (racks !=  nullptr && racks->has_operation());
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fault-type3" <<"[hw-fault-type3='" <<hw_fault_type3 <<"']";
+    path_buffer << "fault-type3";
+    ADD_KEY_TOKEN(hw_fault_type3, "hw-fault-type3");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -780,13 +797,13 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "racks")
     {
         if(racks == nullptr)
         {
-            racks = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks>();
+            racks = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks>();
         }
         return racks;
     }
@@ -794,7 +811,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -806,7 +823,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hw-fault-type3")
     {
@@ -816,7 +833,7 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hw-fault-type3")
     {
@@ -824,26 +841,29 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "racks" || name == "hw-fault-type3")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Racks()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Racks()
+    :
+    rack(this, {"rack"})
 {
 
-    yang_name = "racks"; yang_parent_name = "fault-type3"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "racks"; yang_parent_name = "fault-type3"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::~Racks()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::~Racks()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -851,9 +871,9 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     return false;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -861,14 +881,14 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     return is_set(yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "racks";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -877,25 +897,25 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rack")
     {
-        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack>();
+        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -906,57 +926,59 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rack")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Rack()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Rack()
     :
-    rack{YType::int32, "rack"}
-    	,
-    slots(std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots>())
+    rack{YType::uint32, "rack"}
+        ,
+    slots(std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots>())
 {
     slots->parent = this;
 
-    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::~Rack()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::~Rack()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| (slots !=  nullptr && slots->has_data());
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rack.yfilter)
 	|| (slots !=  nullptr && slots->has_operation());
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[rack='" <<rack <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(rack, "rack");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -966,13 +988,13 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "slots")
     {
         if(slots == nullptr)
         {
-            slots = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots>();
+            slots = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots>();
         }
         return slots;
     }
@@ -980,7 +1002,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -992,7 +1014,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rack")
     {
@@ -1002,7 +1024,7 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rack")
     {
@@ -1010,26 +1032,29 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "slots" || name == "rack")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slots()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slots()
+    :
+    slot(this, {"slot"})
 {
 
-    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::~Slots()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::~Slots()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::has_data() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_data())
             return true;
@@ -1037,9 +1062,9 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     return false;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::has_operation() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_operation())
             return true;
@@ -1047,14 +1072,14 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     return is_set(yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "slots";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1063,25 +1088,25 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "slot")
     {
-        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot>();
+        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot>();
         c->parent = this;
-        slot.push_back(c);
+        slot.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slot)
+    for (auto c : slot.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1092,46 +1117,47 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "slot")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::Slot()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::Slot()
     :
     slot{YType::str, "slot"}
-    	,
-    fault_summary(std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary>())
-	,hardware_fault_devices(std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices>())
+        ,
+    fault_summary(std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::FaultSummary>())
+    , hardware_fault_devices(std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices>())
 {
     fault_summary->parent = this;
     hardware_fault_devices->parent = this;
 
-    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::~Slot()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::~Slot()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::has_data() const
 {
+    if (is_presence_container) return true;
     return slot.is_set
 	|| (fault_summary !=  nullptr && fault_summary->has_data())
 	|| (hardware_fault_devices !=  nullptr && hardware_fault_devices->has_data());
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(slot.yfilter)
@@ -1139,14 +1165,15 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 	|| (hardware_fault_devices !=  nullptr && hardware_fault_devices->has_operation());
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slot" <<"[slot='" <<slot <<"']";
+    path_buffer << "slot";
+    ADD_KEY_TOKEN(slot, "slot");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1156,13 +1183,13 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fault-summary")
     {
         if(fault_summary == nullptr)
         {
-            fault_summary = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary>();
+            fault_summary = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::FaultSummary>();
         }
         return fault_summary;
     }
@@ -1171,7 +1198,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
     {
         if(hardware_fault_devices == nullptr)
         {
-            hardware_fault_devices = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices>();
+            hardware_fault_devices = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices>();
         }
         return hardware_fault_devices;
     }
@@ -1179,7 +1206,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1196,7 +1223,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "slot")
     {
@@ -1206,7 +1233,7 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "slot")
     {
@@ -1214,14 +1241,14 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "fault-summary" || name == "hardware-fault-devices" || name == "slot")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::FaultSummary()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::FaultSummary()
     :
     severity_critical_count{YType::int32, "severity-critical-count"},
     severity_emergency_or_alert_count{YType::int32, "severity-emergency-or-alert-count"},
@@ -1229,22 +1256,23 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2:
     severity_error_count{YType::int32, "severity-error-count"}
 {
 
-    yang_name = "fault-summary"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fault-summary"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::~FaultSummary()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::~FaultSummary()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return severity_critical_count.is_set
 	|| severity_emergency_or_alert_count.is_set
 	|| total.is_set
 	|| severity_error_count.is_set;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(severity_critical_count.yfilter)
@@ -1253,14 +1281,14 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 	|| ydk::is_set(severity_error_count.yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fault-summary";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1273,19 +1301,19 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "severity-critical-count")
     {
@@ -1313,7 +1341,7 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "severity-critical-count")
     {
@@ -1333,26 +1361,29 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "severity-critical-count" || name == "severity-emergency-or-alert-count" || name == "total" || name == "severity-error-count")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevices()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevices()
+    :
+    hardware_fault_device(this, {"hw_fault_device"})
 {
 
-    yang_name = "hardware-fault-devices"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-fault-devices"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::~HardwareFaultDevices()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::~HardwareFaultDevices()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_data() const
 {
-    for (std::size_t index=0; index<hardware_fault_device.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hardware_fault_device.len(); index++)
     {
         if(hardware_fault_device[index]->has_data())
             return true;
@@ -1360,9 +1391,9 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     return false;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_operation() const
 {
-    for (std::size_t index=0; index<hardware_fault_device.size(); index++)
+    for (std::size_t index=0; index<hardware_fault_device.len(); index++)
     {
         if(hardware_fault_device[index]->has_operation())
             return true;
@@ -1370,14 +1401,14 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     return is_set(yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hardware-fault-devices";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1386,25 +1417,25 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hardware-fault-device")
     {
-        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice>();
+        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice>();
         c->parent = this;
-        hardware_fault_device.push_back(c);
+        hardware_fault_device.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hardware_fault_device)
+    for (auto c : hardware_fault_device.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1415,36 +1446,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hardware-fault-device")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultDevice()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultDevice()
     :
     hw_fault_device{YType::str, "hw-fault-device"}
+        ,
+    hardware_fault_type(this, {"hw_fault_type"})
 {
 
-    yang_name = "hardware-fault-device"; yang_parent_name = "hardware-fault-devices"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-fault-device"; yang_parent_name = "hardware-fault-devices"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::~HardwareFaultDevice()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::~HardwareFaultDevice()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::has_data() const
 {
-    for (std::size_t index=0; index<hardware_fault_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hardware_fault_type.len(); index++)
     {
         if(hardware_fault_type[index]->has_data())
             return true;
@@ -1452,9 +1486,9 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     return hw_fault_device.is_set;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::has_operation() const
 {
-    for (std::size_t index=0; index<hardware_fault_type.size(); index++)
+    for (std::size_t index=0; index<hardware_fault_type.len(); index++)
     {
         if(hardware_fault_type[index]->has_operation())
             return true;
@@ -1463,14 +1497,15 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 	|| ydk::is_set(hw_fault_device.yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hardware-fault-device" <<"[hw-fault-device='" <<hw_fault_device <<"']";
+    path_buffer << "hardware-fault-device";
+    ADD_KEY_TOKEN(hw_fault_device, "hw-fault-device");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1480,25 +1515,25 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hardware-fault-type")
     {
-        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType>();
+        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType>();
         c->parent = this;
-        hardware_fault_type.push_back(c);
+        hardware_fault_type.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hardware_fault_type)
+    for (auto c : hardware_fault_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1509,7 +1544,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hw-fault-device")
     {
@@ -1519,7 +1554,7 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hw-fault-device")
     {
@@ -1527,14 +1562,14 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hardware-fault-type" || name == "hw-fault-device")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::HardwareFaultType()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::HardwareFaultType()
     :
     hw_fault_type{YType::str, "hw-fault-type"},
     condition_description{YType::str, "condition-description"},
@@ -1547,15 +1582,16 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2:
     condition_severity{YType::str, "condition-severity"}
 {
 
-    yang_name = "hardware-fault-type"; yang_parent_name = "hardware-fault-device"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-fault-type"; yang_parent_name = "hardware-fault-device"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::~HardwareFaultType()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::~HardwareFaultType()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_data() const
 {
+    if (is_presence_container) return true;
     return hw_fault_type.is_set
 	|| condition_description.is_set
 	|| condition_name.is_set
@@ -1567,7 +1603,7 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 	|| condition_severity.is_set;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hw_fault_type.yfilter)
@@ -1581,14 +1617,15 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 	|| ydk::is_set(condition_severity.yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hardware-fault-type" <<"[hw-fault-type='" <<hw_fault_type <<"']";
+    path_buffer << "hardware-fault-type";
+    ADD_KEY_TOKEN(hw_fault_type, "hw-fault-type");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1606,19 +1643,19 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hw-fault-type")
     {
@@ -1676,7 +1713,7 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hw-fault-type")
     {
@@ -1716,26 +1753,29 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::FaultType3s::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hw-fault-type" || name == "condition-description" || name == "condition-name" || name == "device-key" || name == "device-version" || name == "condition-raised-timestamp" || name == "process-id" || name == "device-description" || name == "condition-severity")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Racks()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Racks()
+    :
+    rack(this, {"rack"})
 {
 
-    yang_name = "racks"; yang_parent_name = "fault-type2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "racks"; yang_parent_name = "fault-type2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::~Racks()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::~Racks()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -1743,9 +1783,9 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     return false;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -1753,14 +1793,14 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     return is_set(yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "racks";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1769,25 +1809,25 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rack")
     {
-        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack>();
+        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1798,57 +1838,59 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rack")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Rack()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Rack()
     :
-    rack{YType::int32, "rack"}
-    	,
-    slots(std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots>())
+    rack{YType::uint32, "rack"}
+        ,
+    slots(std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots>())
 {
     slots->parent = this;
 
-    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::~Rack()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::~Rack()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| (slots !=  nullptr && slots->has_data());
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rack.yfilter)
 	|| (slots !=  nullptr && slots->has_operation());
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[rack='" <<rack <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(rack, "rack");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1858,13 +1900,13 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "slots")
     {
         if(slots == nullptr)
         {
-            slots = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots>();
+            slots = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots>();
         }
         return slots;
     }
@@ -1872,7 +1914,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1884,7 +1926,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rack")
     {
@@ -1894,7 +1936,7 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rack")
     {
@@ -1902,26 +1944,29 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "slots" || name == "rack")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slots()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slots()
+    :
+    slot(this, {"slot"})
 {
 
-    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::~Slots()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::~Slots()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::has_data() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_data())
             return true;
@@ -1929,9 +1974,9 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     return false;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::has_operation() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_operation())
             return true;
@@ -1939,14 +1984,14 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     return is_set(yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "slots";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1955,25 +2000,25 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "slot")
     {
-        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot>();
+        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot>();
         c->parent = this;
-        slot.push_back(c);
+        slot.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slot)
+    for (auto c : slot.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1984,46 +2029,47 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "slot")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::Slot()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::Slot()
     :
     slot{YType::str, "slot"}
-    	,
-    fault_summary(std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary>())
-	,hardware_fault_devices(std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices>())
+        ,
+    fault_summary(std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::FaultSummary>())
+    , hardware_fault_devices(std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices>())
 {
     fault_summary->parent = this;
     hardware_fault_devices->parent = this;
 
-    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::~Slot()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::~Slot()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::has_data() const
 {
+    if (is_presence_container) return true;
     return slot.is_set
 	|| (fault_summary !=  nullptr && fault_summary->has_data())
 	|| (hardware_fault_devices !=  nullptr && hardware_fault_devices->has_data());
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(slot.yfilter)
@@ -2031,14 +2077,15 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 	|| (hardware_fault_devices !=  nullptr && hardware_fault_devices->has_operation());
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slot" <<"[slot='" <<slot <<"']";
+    path_buffer << "slot";
+    ADD_KEY_TOKEN(slot, "slot");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2048,13 +2095,13 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fault-summary")
     {
         if(fault_summary == nullptr)
         {
-            fault_summary = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary>();
+            fault_summary = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::FaultSummary>();
         }
         return fault_summary;
     }
@@ -2063,7 +2110,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
     {
         if(hardware_fault_devices == nullptr)
         {
-            hardware_fault_devices = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices>();
+            hardware_fault_devices = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices>();
         }
         return hardware_fault_devices;
     }
@@ -2071,7 +2118,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2088,7 +2135,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "slot")
     {
@@ -2098,7 +2145,7 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "slot")
     {
@@ -2106,14 +2153,14 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "fault-summary" || name == "hardware-fault-devices" || name == "slot")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::FaultSummary()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::FaultSummary()
     :
     severity_critical_count{YType::int32, "severity-critical-count"},
     severity_emergency_or_alert_count{YType::int32, "severity-emergency-or-alert-count"},
@@ -2121,22 +2168,23 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2:
     severity_error_count{YType::int32, "severity-error-count"}
 {
 
-    yang_name = "fault-summary"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fault-summary"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::~FaultSummary()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::~FaultSummary()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return severity_critical_count.is_set
 	|| severity_emergency_or_alert_count.is_set
 	|| total.is_set
 	|| severity_error_count.is_set;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(severity_critical_count.yfilter)
@@ -2145,14 +2193,14 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 	|| ydk::is_set(severity_error_count.yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fault-summary";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2165,19 +2213,19 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "severity-critical-count")
     {
@@ -2205,7 +2253,7 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "severity-critical-count")
     {
@@ -2225,26 +2273,29 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "severity-critical-count" || name == "severity-emergency-or-alert-count" || name == "total" || name == "severity-error-count")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevices()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevices()
+    :
+    hardware_fault_device(this, {"hw_fault_device"})
 {
 
-    yang_name = "hardware-fault-devices"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-fault-devices"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::~HardwareFaultDevices()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::~HardwareFaultDevices()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_data() const
 {
-    for (std::size_t index=0; index<hardware_fault_device.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hardware_fault_device.len(); index++)
     {
         if(hardware_fault_device[index]->has_data())
             return true;
@@ -2252,9 +2303,9 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     return false;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_operation() const
 {
-    for (std::size_t index=0; index<hardware_fault_device.size(); index++)
+    for (std::size_t index=0; index<hardware_fault_device.len(); index++)
     {
         if(hardware_fault_device[index]->has_operation())
             return true;
@@ -2262,14 +2313,14 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     return is_set(yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hardware-fault-devices";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2278,25 +2329,25 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hardware-fault-device")
     {
-        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice>();
+        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice>();
         c->parent = this;
-        hardware_fault_device.push_back(c);
+        hardware_fault_device.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hardware_fault_device)
+    for (auto c : hardware_fault_device.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2307,36 +2358,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hardware-fault-device")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultDevice()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultDevice()
     :
     hw_fault_device{YType::str, "hw-fault-device"}
+        ,
+    hardware_fault_type(this, {"hw_fault_type"})
 {
 
-    yang_name = "hardware-fault-device"; yang_parent_name = "hardware-fault-devices"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-fault-device"; yang_parent_name = "hardware-fault-devices"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::~HardwareFaultDevice()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::~HardwareFaultDevice()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::has_data() const
 {
-    for (std::size_t index=0; index<hardware_fault_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hardware_fault_type.len(); index++)
     {
         if(hardware_fault_type[index]->has_data())
             return true;
@@ -2344,9 +2398,9 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     return hw_fault_device.is_set;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::has_operation() const
 {
-    for (std::size_t index=0; index<hardware_fault_type.size(); index++)
+    for (std::size_t index=0; index<hardware_fault_type.len(); index++)
     {
         if(hardware_fault_type[index]->has_operation())
             return true;
@@ -2355,14 +2409,15 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 	|| ydk::is_set(hw_fault_device.yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hardware-fault-device" <<"[hw-fault-device='" <<hw_fault_device <<"']";
+    path_buffer << "hardware-fault-device";
+    ADD_KEY_TOKEN(hw_fault_device, "hw-fault-device");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2372,25 +2427,25 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hardware-fault-type")
     {
-        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType>();
+        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType>();
         c->parent = this;
-        hardware_fault_type.push_back(c);
+        hardware_fault_type.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hardware_fault_type)
+    for (auto c : hardware_fault_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2401,7 +2456,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hw-fault-device")
     {
@@ -2411,7 +2466,7 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hw-fault-device")
     {
@@ -2419,14 +2474,14 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hardware-fault-type" || name == "hw-fault-device")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::HardwareFaultType()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::HardwareFaultType()
     :
     hw_fault_type{YType::str, "hw-fault-type"},
     condition_description{YType::str, "condition-description"},
@@ -2439,15 +2494,16 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2:
     condition_severity{YType::str, "condition-severity"}
 {
 
-    yang_name = "hardware-fault-type"; yang_parent_name = "hardware-fault-device"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-fault-type"; yang_parent_name = "hardware-fault-device"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::~HardwareFaultType()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::~HardwareFaultType()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_data() const
 {
+    if (is_presence_container) return true;
     return hw_fault_type.is_set
 	|| condition_description.is_set
 	|| condition_name.is_set
@@ -2459,7 +2515,7 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 	|| condition_severity.is_set;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hw_fault_type.yfilter)
@@ -2473,14 +2529,15 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
 	|| ydk::is_set(condition_severity.yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hardware-fault-type" <<"[hw-fault-type='" <<hw_fault_type <<"']";
+    path_buffer << "hardware-fault-type";
+    ADD_KEY_TOKEN(hw_fault_type, "hw-fault-type");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2498,19 +2555,19 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hw-fault-type")
     {
@@ -2568,7 +2625,7 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hw-fault-type")
     {
@@ -2608,26 +2665,29 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultT
     }
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::FaultType2s::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hw-fault-type" || name == "condition-description" || name == "condition-name" || name == "device-key" || name == "device-version" || name == "condition-raised-timestamp" || name == "process-id" || name == "device-description" || name == "condition-severity")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Racks()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Racks()
+    :
+    rack(this, {"rack"})
 {
 
-    yang_name = "racks"; yang_parent_name = "fault-type1"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "racks"; yang_parent_name = "fault-type1"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::~Racks()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::~Racks()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -2635,9 +2695,9 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::has_data() c
     return false;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -2645,14 +2705,14 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::has_operatio
     return is_set(yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "racks";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2661,25 +2721,25 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rack")
     {
-        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack>();
+        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2690,57 +2750,59 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rack")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Rack()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Rack()
     :
-    rack{YType::int32, "rack"}
-    	,
-    slots(std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots>())
+    rack{YType::uint32, "rack"}
+        ,
+    slots(std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots>())
 {
     slots->parent = this;
 
-    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::~Rack()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::~Rack()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| (slots !=  nullptr && slots->has_data());
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rack.yfilter)
 	|| (slots !=  nullptr && slots->has_operation());
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[rack='" <<rack <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(rack, "rack");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2750,13 +2812,13 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "slots")
     {
         if(slots == nullptr)
         {
-            slots = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots>();
+            slots = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots>();
         }
         return slots;
     }
@@ -2764,7 +2826,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2776,7 +2838,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rack")
     {
@@ -2786,7 +2848,7 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::set_va
     }
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rack")
     {
@@ -2794,26 +2856,29 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::set_fi
     }
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "slots" || name == "rack")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slots()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slots()
+    :
+    slot(this, {"slot"})
 {
 
-    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::~Slots()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::~Slots()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::has_data() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_data())
             return true;
@@ -2821,9 +2886,9 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
     return false;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::has_operation() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_operation())
             return true;
@@ -2831,14 +2896,14 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
     return is_set(yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "slots";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2847,25 +2912,25 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "slot")
     {
-        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot>();
+        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot>();
         c->parent = this;
-        slot.push_back(c);
+        slot.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slot)
+    for (auto c : slot.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2876,46 +2941,47 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "slot")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::Slot()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::Slot()
     :
     slot{YType::str, "slot"}
-    	,
-    fault_summary(std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary>())
-	,hardware_fault_devices(std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices>())
+        ,
+    fault_summary(std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::FaultSummary>())
+    , hardware_fault_devices(std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices>())
 {
     fault_summary->parent = this;
     hardware_fault_devices->parent = this;
 
-    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::~Slot()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::~Slot()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::has_data() const
 {
+    if (is_presence_container) return true;
     return slot.is_set
 	|| (fault_summary !=  nullptr && fault_summary->has_data())
 	|| (hardware_fault_devices !=  nullptr && hardware_fault_devices->has_data());
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(slot.yfilter)
@@ -2923,14 +2989,15 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
 	|| (hardware_fault_devices !=  nullptr && hardware_fault_devices->has_operation());
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slot" <<"[slot='" <<slot <<"']";
+    path_buffer << "slot";
+    ADD_KEY_TOKEN(slot, "slot");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2940,13 +3007,13 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fault-summary")
     {
         if(fault_summary == nullptr)
         {
-            fault_summary = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary>();
+            fault_summary = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::FaultSummary>();
         }
         return fault_summary;
     }
@@ -2955,7 +3022,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
     {
         if(hardware_fault_devices == nullptr)
         {
-            hardware_fault_devices = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices>();
+            hardware_fault_devices = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices>();
         }
         return hardware_fault_devices;
     }
@@ -2963,7 +3030,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2980,7 +3047,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "slot")
     {
@@ -2990,7 +3057,7 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
     }
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "slot")
     {
@@ -2998,14 +3065,14 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
     }
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "fault-summary" || name == "hardware-fault-devices" || name == "slot")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::FaultSummary()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::FaultSummary()
     :
     severity_critical_count{YType::int32, "severity-critical-count"},
     severity_emergency_or_alert_count{YType::int32, "severity-emergency-or-alert-count"},
@@ -3013,22 +3080,23 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot
     severity_error_count{YType::int32, "severity-error-count"}
 {
 
-    yang_name = "fault-summary"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fault-summary"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::~FaultSummary()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::~FaultSummary()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return severity_critical_count.is_set
 	|| severity_emergency_or_alert_count.is_set
 	|| total.is_set
 	|| severity_error_count.is_set;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(severity_critical_count.yfilter)
@@ -3037,14 +3105,14 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
 	|| ydk::is_set(severity_error_count.yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fault-summary";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3057,19 +3125,19 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "severity-critical-count")
     {
@@ -3097,7 +3165,7 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
     }
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "severity-critical-count")
     {
@@ -3117,26 +3185,29 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
     }
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "severity-critical-count" || name == "severity-emergency-or-alert-count" || name == "total" || name == "severity-error-count")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevices()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevices()
+    :
+    hardware_fault_device(this, {"hw_fault_device"})
 {
 
-    yang_name = "hardware-fault-devices"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-fault-devices"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::~HardwareFaultDevices()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::~HardwareFaultDevices()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_data() const
 {
-    for (std::size_t index=0; index<hardware_fault_device.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hardware_fault_device.len(); index++)
     {
         if(hardware_fault_device[index]->has_data())
             return true;
@@ -3144,9 +3215,9 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
     return false;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_operation() const
 {
-    for (std::size_t index=0; index<hardware_fault_device.size(); index++)
+    for (std::size_t index=0; index<hardware_fault_device.len(); index++)
     {
         if(hardware_fault_device[index]->has_operation())
             return true;
@@ -3154,14 +3225,14 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
     return is_set(yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hardware-fault-devices";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3170,25 +3241,25 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hardware-fault-device")
     {
-        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice>();
+        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice>();
         c->parent = this;
-        hardware_fault_device.push_back(c);
+        hardware_fault_device.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hardware_fault_device)
+    for (auto c : hardware_fault_device.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3199,36 +3270,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hardware-fault-device")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultDevice()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultDevice()
     :
     hw_fault_device{YType::str, "hw-fault-device"}
+        ,
+    hardware_fault_type(this, {"hw_fault_type"})
 {
 
-    yang_name = "hardware-fault-device"; yang_parent_name = "hardware-fault-devices"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-fault-device"; yang_parent_name = "hardware-fault-devices"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::~HardwareFaultDevice()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::~HardwareFaultDevice()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::has_data() const
 {
-    for (std::size_t index=0; index<hardware_fault_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hardware_fault_type.len(); index++)
     {
         if(hardware_fault_type[index]->has_data())
             return true;
@@ -3236,9 +3310,9 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
     return hw_fault_device.is_set;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::has_operation() const
 {
-    for (std::size_t index=0; index<hardware_fault_type.size(); index++)
+    for (std::size_t index=0; index<hardware_fault_type.len(); index++)
     {
         if(hardware_fault_type[index]->has_operation())
             return true;
@@ -3247,14 +3321,15 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
 	|| ydk::is_set(hw_fault_device.yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hardware-fault-device" <<"[hw-fault-device='" <<hw_fault_device <<"']";
+    path_buffer << "hardware-fault-device";
+    ADD_KEY_TOKEN(hw_fault_device, "hw-fault-device");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3264,25 +3339,25 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hardware-fault-type")
     {
-        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType>();
+        auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType>();
         c->parent = this;
-        hardware_fault_type.push_back(c);
+        hardware_fault_type.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hardware_fault_type)
+    for (auto c : hardware_fault_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3293,7 +3368,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::Fa
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hw-fault-device")
     {
@@ -3303,7 +3378,7 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
     }
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hw-fault-device")
     {
@@ -3311,14 +3386,14 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
     }
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hardware-fault-type" || name == "hw-fault-device")
         return true;
     return false;
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::HardwareFaultType()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::HardwareFaultType()
     :
     hw_fault_type{YType::str, "hw-fault-type"},
     condition_description{YType::str, "condition-description"},
@@ -3331,15 +3406,16 @@ PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot
     condition_severity{YType::str, "condition-severity"}
 {
 
-    yang_name = "hardware-fault-type"; yang_parent_name = "hardware-fault-device"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-fault-type"; yang_parent_name = "hardware-fault-device"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::~HardwareFaultType()
+PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::~HardwareFaultType()
 {
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_data() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_data() const
 {
+    if (is_presence_container) return true;
     return hw_fault_type.is_set
 	|| condition_description.is_set
 	|| condition_name.is_set
@@ -3351,7 +3427,7 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
 	|| condition_severity.is_set;
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_operation() const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hw_fault_type.yfilter)
@@ -3365,14 +3441,15 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
 	|| ydk::is_set(condition_severity.yfilter);
 }
 
-std::string PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_segment_path() const
+std::string PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hardware-fault-type" <<"[hw-fault-type='" <<hw_fault_type <<"']";
+    path_buffer << "hardware-fault-type";
+    ADD_KEY_TOKEN(hw_fault_type, "hw-fault-type");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3390,19 +3467,19 @@ std::vector<std::pair<std::string, LeafData> > PlatformFaultManager::Exclude::Fa
 
 }
 
-std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hw-fault-type")
     {
@@ -3460,7 +3537,7 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
     }
 }
 
-void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::set_filter(const std::string & value_path, YFilter yfilter)
+void PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hw-fault-type")
     {
@@ -3500,7 +3577,7 @@ void PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
     }
 }
 
-bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_leaf_or_child_of_name(const std::string & name) const
+bool PlatformFaultManager::Exclude::FaultType1s::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hw-fault-type" || name == "condition-description" || name == "condition-name" || name == "device-key" || name == "device-version" || name == "condition-raised-timestamp" || name == "process-id" || name == "device-description" || name == "condition-severity")
         return true;
@@ -3508,9 +3585,11 @@ bool PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots:
 }
 
 PlatformFaultManager::Racks::Racks()
+    :
+    rack(this, {"rack"})
 {
 
-    yang_name = "racks"; yang_parent_name = "platform-fault-manager"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "racks"; yang_parent_name = "platform-fault-manager"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformFaultManager::Racks::~Racks()
@@ -3519,7 +3598,8 @@ PlatformFaultManager::Racks::~Racks()
 
 bool PlatformFaultManager::Racks::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -3529,7 +3609,7 @@ bool PlatformFaultManager::Racks::has_data() const
 
 bool PlatformFaultManager::Racks::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -3566,7 +3646,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Racks::get_child_by_name(const std
     {
         auto c = std::make_shared<PlatformFaultManager::Racks::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
@@ -3578,7 +3658,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Racks::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3606,13 +3686,13 @@ bool PlatformFaultManager::Racks::has_leaf_or_child_of_name(const std::string & 
 
 PlatformFaultManager::Racks::Rack::Rack()
     :
-    rack{YType::int32, "rack"}
-    	,
+    rack{YType::uint32, "rack"}
+        ,
     slots(std::make_shared<PlatformFaultManager::Racks::Rack::Slots>())
 {
     slots->parent = this;
 
-    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformFaultManager::Racks::Rack::~Rack()
@@ -3621,6 +3701,7 @@ PlatformFaultManager::Racks::Rack::~Rack()
 
 bool PlatformFaultManager::Racks::Rack::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| (slots !=  nullptr && slots->has_data());
 }
@@ -3642,7 +3723,8 @@ std::string PlatformFaultManager::Racks::Rack::get_absolute_path() const
 std::string PlatformFaultManager::Racks::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[rack='" <<rack <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(rack, "rack");
     return path_buffer.str();
 }
 
@@ -3708,9 +3790,11 @@ bool PlatformFaultManager::Racks::Rack::has_leaf_or_child_of_name(const std::str
 }
 
 PlatformFaultManager::Racks::Rack::Slots::Slots()
+    :
+    slot(this, {"slot"})
 {
 
-    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformFaultManager::Racks::Rack::Slots::~Slots()
@@ -3719,7 +3803,8 @@ PlatformFaultManager::Racks::Rack::Slots::~Slots()
 
 bool PlatformFaultManager::Racks::Rack::Slots::has_data() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_data())
             return true;
@@ -3729,7 +3814,7 @@ bool PlatformFaultManager::Racks::Rack::Slots::has_data() const
 
 bool PlatformFaultManager::Racks::Rack::Slots::has_operation() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_operation())
             return true;
@@ -3759,7 +3844,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Racks::Rack::Slots::get_child_by_n
     {
         auto c = std::make_shared<PlatformFaultManager::Racks::Rack::Slots::Slot>();
         c->parent = this;
-        slot.push_back(c);
+        slot.append(c);
         return c;
     }
 
@@ -3771,7 +3856,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Racks::Rack
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slot)
+    for (auto c : slot.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3800,14 +3885,14 @@ bool PlatformFaultManager::Racks::Rack::Slots::has_leaf_or_child_of_name(const s
 PlatformFaultManager::Racks::Rack::Slots::Slot::Slot()
     :
     slot{YType::str, "slot"}
-    	,
+        ,
     fault_summary(std::make_shared<PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary>())
-	,hardware_fault_devices(std::make_shared<PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices>())
+    , hardware_fault_devices(std::make_shared<PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices>())
 {
     fault_summary->parent = this;
     hardware_fault_devices->parent = this;
 
-    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformFaultManager::Racks::Rack::Slots::Slot::~Slot()
@@ -3816,6 +3901,7 @@ PlatformFaultManager::Racks::Rack::Slots::Slot::~Slot()
 
 bool PlatformFaultManager::Racks::Rack::Slots::Slot::has_data() const
 {
+    if (is_presence_container) return true;
     return slot.is_set
 	|| (fault_summary !=  nullptr && fault_summary->has_data())
 	|| (hardware_fault_devices !=  nullptr && hardware_fault_devices->has_data());
@@ -3832,7 +3918,8 @@ bool PlatformFaultManager::Racks::Rack::Slots::Slot::has_operation() const
 std::string PlatformFaultManager::Racks::Rack::Slots::Slot::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slot" <<"[slot='" <<slot <<"']";
+    path_buffer << "slot";
+    ADD_KEY_TOKEN(slot, "slot");
     return path_buffer.str();
 }
 
@@ -3919,7 +4006,7 @@ PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::FaultSummary()
     severity_error_count{YType::int32, "severity-error-count"}
 {
 
-    yang_name = "fault-summary"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fault-summary"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::~FaultSummary()
@@ -3928,6 +4015,7 @@ PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::~FaultSummary()
 
 bool PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return severity_critical_count.is_set
 	|| severity_emergency_or_alert_count.is_set
 	|| total.is_set
@@ -4031,9 +4119,11 @@ bool PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::has_leaf_or_c
 }
 
 PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevices()
+    :
+    hardware_fault_device(this, {"hw_fault_device"})
 {
 
-    yang_name = "hardware-fault-devices"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-fault-devices"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::~HardwareFaultDevices()
@@ -4042,7 +4132,8 @@ PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::~HardwareF
 
 bool PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_data() const
 {
-    for (std::size_t index=0; index<hardware_fault_device.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hardware_fault_device.len(); index++)
     {
         if(hardware_fault_device[index]->has_data())
             return true;
@@ -4052,7 +4143,7 @@ bool PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_d
 
 bool PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_operation() const
 {
-    for (std::size_t index=0; index<hardware_fault_device.size(); index++)
+    for (std::size_t index=0; index<hardware_fault_device.len(); index++)
     {
         if(hardware_fault_device[index]->has_operation())
             return true;
@@ -4082,7 +4173,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Racks::Rack::Slots::Slot::Hardware
     {
         auto c = std::make_shared<PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice>();
         c->parent = this;
-        hardware_fault_device.push_back(c);
+        hardware_fault_device.append(c);
         return c;
     }
 
@@ -4094,7 +4185,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Racks::Rack
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hardware_fault_device)
+    for (auto c : hardware_fault_device.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4123,9 +4214,11 @@ bool PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::has_l
 PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultDevice()
     :
     hw_fault_device{YType::str, "hw-fault-device"}
+        ,
+    hardware_fault_type(this, {"hw_fault_type"})
 {
 
-    yang_name = "hardware-fault-device"; yang_parent_name = "hardware-fault-devices"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-fault-device"; yang_parent_name = "hardware-fault-devices"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::~HardwareFaultDevice()
@@ -4134,7 +4227,8 @@ PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFa
 
 bool PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::has_data() const
 {
-    for (std::size_t index=0; index<hardware_fault_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hardware_fault_type.len(); index++)
     {
         if(hardware_fault_type[index]->has_data())
             return true;
@@ -4144,7 +4238,7 @@ bool PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::Hardw
 
 bool PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::has_operation() const
 {
-    for (std::size_t index=0; index<hardware_fault_type.size(); index++)
+    for (std::size_t index=0; index<hardware_fault_type.len(); index++)
     {
         if(hardware_fault_type[index]->has_operation())
             return true;
@@ -4156,7 +4250,8 @@ bool PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::Hardw
 std::string PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hardware-fault-device" <<"[hw-fault-device='" <<hw_fault_device <<"']";
+    path_buffer << "hardware-fault-device";
+    ADD_KEY_TOKEN(hw_fault_device, "hw-fault-device");
     return path_buffer.str();
 }
 
@@ -4176,7 +4271,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Racks::Rack::Slots::Slot::Hardware
     {
         auto c = std::make_shared<PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType>();
         c->parent = this;
-        hardware_fault_type.push_back(c);
+        hardware_fault_type.append(c);
         return c;
     }
 
@@ -4188,7 +4283,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Racks::Rack
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hardware_fault_type)
+    for (auto c : hardware_fault_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4237,7 +4332,7 @@ PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFa
     condition_severity{YType::str, "condition-severity"}
 {
 
-    yang_name = "hardware-fault-type"; yang_parent_name = "hardware-fault-device"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-fault-type"; yang_parent_name = "hardware-fault-device"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::~HardwareFaultType()
@@ -4246,6 +4341,7 @@ PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFa
 
 bool PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::has_data() const
 {
+    if (is_presence_container) return true;
     return hw_fault_type.is_set
 	|| condition_description.is_set
 	|| condition_name.is_set
@@ -4274,7 +4370,8 @@ bool PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::Hardw
 std::string PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hardware-fault-type" <<"[hw-fault-type='" <<hw_fault_type <<"']";
+    path_buffer << "hardware-fault-type";
+    ADD_KEY_TOKEN(hw_fault_type, "hw-fault-type");
     return path_buffer.str();
 }
 

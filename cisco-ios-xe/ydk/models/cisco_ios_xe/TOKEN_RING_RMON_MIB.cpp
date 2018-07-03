@@ -13,16 +13,16 @@ namespace TOKEN_RING_RMON_MIB {
 
 TOKENRINGRMONMIB::TOKENRINGRMONMIB()
     :
-    tokenringmlstatstable(std::make_shared<TOKENRINGRMONMIB::Tokenringmlstatstable>())
-	,tokenringpstatstable(std::make_shared<TOKENRINGRMONMIB::Tokenringpstatstable>())
-	,tokenringmlhistorytable(std::make_shared<TOKENRINGRMONMIB::Tokenringmlhistorytable>())
-	,tokenringphistorytable(std::make_shared<TOKENRINGRMONMIB::Tokenringphistorytable>())
-	,ringstationcontroltable(std::make_shared<TOKENRINGRMONMIB::Ringstationcontroltable>())
-	,ringstationtable(std::make_shared<TOKENRINGRMONMIB::Ringstationtable>())
-	,ringstationordertable(std::make_shared<TOKENRINGRMONMIB::Ringstationordertable>())
-	,ringstationconfigcontroltable(std::make_shared<TOKENRINGRMONMIB::Ringstationconfigcontroltable>())
-	,ringstationconfigtable(std::make_shared<TOKENRINGRMONMIB::Ringstationconfigtable>())
-	,sourceroutingstatstable(std::make_shared<TOKENRINGRMONMIB::Sourceroutingstatstable>())
+    tokenringmlstatstable(std::make_shared<TOKENRINGRMONMIB::TokenRingMLStatsTable>())
+    , tokenringpstatstable(std::make_shared<TOKENRINGRMONMIB::TokenRingPStatsTable>())
+    , tokenringmlhistorytable(std::make_shared<TOKENRINGRMONMIB::TokenRingMLHistoryTable>())
+    , tokenringphistorytable(std::make_shared<TOKENRINGRMONMIB::TokenRingPHistoryTable>())
+    , ringstationcontroltable(std::make_shared<TOKENRINGRMONMIB::RingStationControlTable>())
+    , ringstationtable(std::make_shared<TOKENRINGRMONMIB::RingStationTable>())
+    , ringstationordertable(std::make_shared<TOKENRINGRMONMIB::RingStationOrderTable>())
+    , ringstationconfigcontroltable(std::make_shared<TOKENRINGRMONMIB::RingStationConfigControlTable>())
+    , ringstationconfigtable(std::make_shared<TOKENRINGRMONMIB::RingStationConfigTable>())
+    , sourceroutingstatstable(std::make_shared<TOKENRINGRMONMIB::SourceRoutingStatsTable>())
 {
     tokenringmlstatstable->parent = this;
     tokenringpstatstable->parent = this;
@@ -35,7 +35,7 @@ TOKENRINGRMONMIB::TOKENRINGRMONMIB()
     ringstationconfigtable->parent = this;
     sourceroutingstatstable->parent = this;
 
-    yang_name = "TOKEN-RING-RMON-MIB"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "TOKEN-RING-RMON-MIB"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 TOKENRINGRMONMIB::~TOKENRINGRMONMIB()
@@ -44,6 +44,7 @@ TOKENRINGRMONMIB::~TOKENRINGRMONMIB()
 
 bool TOKENRINGRMONMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (tokenringmlstatstable !=  nullptr && tokenringmlstatstable->has_data())
 	|| (tokenringpstatstable !=  nullptr && tokenringpstatstable->has_data())
 	|| (tokenringmlhistorytable !=  nullptr && tokenringmlhistorytable->has_data())
@@ -93,7 +94,7 @@ std::shared_ptr<Entity> TOKENRINGRMONMIB::get_child_by_name(const std::string & 
     {
         if(tokenringmlstatstable == nullptr)
         {
-            tokenringmlstatstable = std::make_shared<TOKENRINGRMONMIB::Tokenringmlstatstable>();
+            tokenringmlstatstable = std::make_shared<TOKENRINGRMONMIB::TokenRingMLStatsTable>();
         }
         return tokenringmlstatstable;
     }
@@ -102,7 +103,7 @@ std::shared_ptr<Entity> TOKENRINGRMONMIB::get_child_by_name(const std::string & 
     {
         if(tokenringpstatstable == nullptr)
         {
-            tokenringpstatstable = std::make_shared<TOKENRINGRMONMIB::Tokenringpstatstable>();
+            tokenringpstatstable = std::make_shared<TOKENRINGRMONMIB::TokenRingPStatsTable>();
         }
         return tokenringpstatstable;
     }
@@ -111,7 +112,7 @@ std::shared_ptr<Entity> TOKENRINGRMONMIB::get_child_by_name(const std::string & 
     {
         if(tokenringmlhistorytable == nullptr)
         {
-            tokenringmlhistorytable = std::make_shared<TOKENRINGRMONMIB::Tokenringmlhistorytable>();
+            tokenringmlhistorytable = std::make_shared<TOKENRINGRMONMIB::TokenRingMLHistoryTable>();
         }
         return tokenringmlhistorytable;
     }
@@ -120,7 +121,7 @@ std::shared_ptr<Entity> TOKENRINGRMONMIB::get_child_by_name(const std::string & 
     {
         if(tokenringphistorytable == nullptr)
         {
-            tokenringphistorytable = std::make_shared<TOKENRINGRMONMIB::Tokenringphistorytable>();
+            tokenringphistorytable = std::make_shared<TOKENRINGRMONMIB::TokenRingPHistoryTable>();
         }
         return tokenringphistorytable;
     }
@@ -129,7 +130,7 @@ std::shared_ptr<Entity> TOKENRINGRMONMIB::get_child_by_name(const std::string & 
     {
         if(ringstationcontroltable == nullptr)
         {
-            ringstationcontroltable = std::make_shared<TOKENRINGRMONMIB::Ringstationcontroltable>();
+            ringstationcontroltable = std::make_shared<TOKENRINGRMONMIB::RingStationControlTable>();
         }
         return ringstationcontroltable;
     }
@@ -138,7 +139,7 @@ std::shared_ptr<Entity> TOKENRINGRMONMIB::get_child_by_name(const std::string & 
     {
         if(ringstationtable == nullptr)
         {
-            ringstationtable = std::make_shared<TOKENRINGRMONMIB::Ringstationtable>();
+            ringstationtable = std::make_shared<TOKENRINGRMONMIB::RingStationTable>();
         }
         return ringstationtable;
     }
@@ -147,7 +148,7 @@ std::shared_ptr<Entity> TOKENRINGRMONMIB::get_child_by_name(const std::string & 
     {
         if(ringstationordertable == nullptr)
         {
-            ringstationordertable = std::make_shared<TOKENRINGRMONMIB::Ringstationordertable>();
+            ringstationordertable = std::make_shared<TOKENRINGRMONMIB::RingStationOrderTable>();
         }
         return ringstationordertable;
     }
@@ -156,7 +157,7 @@ std::shared_ptr<Entity> TOKENRINGRMONMIB::get_child_by_name(const std::string & 
     {
         if(ringstationconfigcontroltable == nullptr)
         {
-            ringstationconfigcontroltable = std::make_shared<TOKENRINGRMONMIB::Ringstationconfigcontroltable>();
+            ringstationconfigcontroltable = std::make_shared<TOKENRINGRMONMIB::RingStationConfigControlTable>();
         }
         return ringstationconfigcontroltable;
     }
@@ -165,7 +166,7 @@ std::shared_ptr<Entity> TOKENRINGRMONMIB::get_child_by_name(const std::string & 
     {
         if(ringstationconfigtable == nullptr)
         {
-            ringstationconfigtable = std::make_shared<TOKENRINGRMONMIB::Ringstationconfigtable>();
+            ringstationconfigtable = std::make_shared<TOKENRINGRMONMIB::RingStationConfigTable>();
         }
         return ringstationconfigtable;
     }
@@ -174,7 +175,7 @@ std::shared_ptr<Entity> TOKENRINGRMONMIB::get_child_by_name(const std::string & 
     {
         if(sourceroutingstatstable == nullptr)
         {
-            sourceroutingstatstable = std::make_shared<TOKENRINGRMONMIB::Sourceroutingstatstable>();
+            sourceroutingstatstable = std::make_shared<TOKENRINGRMONMIB::SourceRoutingStatsTable>();
         }
         return sourceroutingstatstable;
     }
@@ -279,19 +280,22 @@ bool TOKENRINGRMONMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatstable()
+TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsTable()
+    :
+    tokenringmlstatsentry(this, {"tokenringmlstatsindex"})
 {
 
-    yang_name = "tokenRingMLStatsTable"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tokenRingMLStatsTable"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TOKENRINGRMONMIB::Tokenringmlstatstable::~Tokenringmlstatstable()
+TOKENRINGRMONMIB::TokenRingMLStatsTable::~TokenRingMLStatsTable()
 {
 }
 
-bool TOKENRINGRMONMIB::Tokenringmlstatstable::has_data() const
+bool TOKENRINGRMONMIB::TokenRingMLStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<tokenringmlstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tokenringmlstatsentry.len(); index++)
     {
         if(tokenringmlstatsentry[index]->has_data())
             return true;
@@ -299,9 +303,9 @@ bool TOKENRINGRMONMIB::Tokenringmlstatstable::has_data() const
     return false;
 }
 
-bool TOKENRINGRMONMIB::Tokenringmlstatstable::has_operation() const
+bool TOKENRINGRMONMIB::TokenRingMLStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<tokenringmlstatsentry.size(); index++)
+    for (std::size_t index=0; index<tokenringmlstatsentry.len(); index++)
     {
         if(tokenringmlstatsentry[index]->has_operation())
             return true;
@@ -309,21 +313,21 @@ bool TOKENRINGRMONMIB::Tokenringmlstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string TOKENRINGRMONMIB::Tokenringmlstatstable::get_absolute_path() const
+std::string TOKENRINGRMONMIB::TokenRingMLStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TOKEN-RING-RMON-MIB:TOKEN-RING-RMON-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TOKENRINGRMONMIB::Tokenringmlstatstable::get_segment_path() const
+std::string TOKENRINGRMONMIB::TokenRingMLStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tokenRingMLStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Tokenringmlstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::TokenRingMLStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -332,25 +336,25 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Tokenringmlstat
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::Tokenringmlstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TOKENRINGRMONMIB::TokenRingMLStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tokenRingMLStatsEntry")
     {
-        auto c = std::make_shared<TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry>();
+        auto c = std::make_shared<TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry>();
         c->parent = this;
-        tokenringmlstatsentry.push_back(c);
+        tokenringmlstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Tokenringmlstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::TokenRingMLStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tokenringmlstatsentry)
+    for (auto c : tokenringmlstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -361,22 +365,22 @@ std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Tokenringmlstat
     return children;
 }
 
-void TOKENRINGRMONMIB::Tokenringmlstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TOKENRINGRMONMIB::TokenRingMLStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void TOKENRINGRMONMIB::Tokenringmlstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void TOKENRINGRMONMIB::TokenRingMLStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool TOKENRINGRMONMIB::Tokenringmlstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool TOKENRINGRMONMIB::TokenRingMLStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tokenRingMLStatsEntry")
         return true;
     return false;
 }
 
-TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry::Tokenringmlstatsentry()
+TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry::TokenRingMLStatsEntry()
     :
     tokenringmlstatsindex{YType::int32, "tokenRingMLStatsIndex"},
     tokenringmlstatsdatasource{YType::str, "tokenRingMLStatsDataSource"},
@@ -409,15 +413,16 @@ TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry::Tokenringmlstats
     tokenringmlstatscreatetime{YType::uint32, "RMON2-MIB:tokenRingMLStatsCreateTime"}
 {
 
-    yang_name = "tokenRingMLStatsEntry"; yang_parent_name = "tokenRingMLStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tokenRingMLStatsEntry"; yang_parent_name = "tokenRingMLStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry::~Tokenringmlstatsentry()
+TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry::~TokenRingMLStatsEntry()
 {
 }
 
-bool TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry::has_data() const
+bool TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return tokenringmlstatsindex.is_set
 	|| tokenringmlstatsdatasource.is_set
 	|| tokenringmlstatsdropevents.is_set
@@ -449,7 +454,7 @@ bool TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry::has_data() 
 	|| tokenringmlstatscreatetime.is_set;
 }
 
-bool TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry::has_operation() const
+bool TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tokenringmlstatsindex.yfilter)
@@ -483,21 +488,22 @@ bool TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry::has_operati
 	|| ydk::is_set(tokenringmlstatscreatetime.yfilter);
 }
 
-std::string TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry::get_absolute_path() const
+std::string TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TOKEN-RING-RMON-MIB:TOKEN-RING-RMON-MIB/tokenRingMLStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry::get_segment_path() const
+std::string TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tokenRingMLStatsEntry" <<"[tokenRingMLStatsIndex='" <<tokenringmlstatsindex <<"']";
+    path_buffer << "tokenRingMLStatsEntry";
+    ADD_KEY_TOKEN(tokenringmlstatsindex, "tokenRingMLStatsIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -535,19 +541,19 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Tokenringmlstat
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tokenRingMLStatsIndex")
     {
@@ -725,7 +731,7 @@ void TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry::set_value(c
     }
 }
 
-void TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tokenRingMLStatsIndex")
     {
@@ -845,26 +851,29 @@ void TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry::set_filter(
     }
 }
 
-bool TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tokenRingMLStatsIndex" || name == "tokenRingMLStatsDataSource" || name == "tokenRingMLStatsDropEvents" || name == "tokenRingMLStatsMacOctets" || name == "tokenRingMLStatsMacPkts" || name == "tokenRingMLStatsRingPurgeEvents" || name == "tokenRingMLStatsRingPurgePkts" || name == "tokenRingMLStatsBeaconEvents" || name == "tokenRingMLStatsBeaconTime" || name == "tokenRingMLStatsBeaconPkts" || name == "tokenRingMLStatsClaimTokenEvents" || name == "tokenRingMLStatsClaimTokenPkts" || name == "tokenRingMLStatsNAUNChanges" || name == "tokenRingMLStatsLineErrors" || name == "tokenRingMLStatsInternalErrors" || name == "tokenRingMLStatsBurstErrors" || name == "tokenRingMLStatsACErrors" || name == "tokenRingMLStatsAbortErrors" || name == "tokenRingMLStatsLostFrameErrors" || name == "tokenRingMLStatsCongestionErrors" || name == "tokenRingMLStatsFrameCopiedErrors" || name == "tokenRingMLStatsFrequencyErrors" || name == "tokenRingMLStatsTokenErrors" || name == "tokenRingMLStatsSoftErrorReports" || name == "tokenRingMLStatsRingPollEvents" || name == "tokenRingMLStatsOwner" || name == "tokenRingMLStatsStatus" || name == "tokenRingMLStatsDroppedFrames" || name == "tokenRingMLStatsCreateTime")
         return true;
     return false;
 }
 
-TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatstable()
+TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsTable()
+    :
+    tokenringpstatsentry(this, {"tokenringpstatsindex"})
 {
 
-    yang_name = "tokenRingPStatsTable"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tokenRingPStatsTable"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TOKENRINGRMONMIB::Tokenringpstatstable::~Tokenringpstatstable()
+TOKENRINGRMONMIB::TokenRingPStatsTable::~TokenRingPStatsTable()
 {
 }
 
-bool TOKENRINGRMONMIB::Tokenringpstatstable::has_data() const
+bool TOKENRINGRMONMIB::TokenRingPStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<tokenringpstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tokenringpstatsentry.len(); index++)
     {
         if(tokenringpstatsentry[index]->has_data())
             return true;
@@ -872,9 +881,9 @@ bool TOKENRINGRMONMIB::Tokenringpstatstable::has_data() const
     return false;
 }
 
-bool TOKENRINGRMONMIB::Tokenringpstatstable::has_operation() const
+bool TOKENRINGRMONMIB::TokenRingPStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<tokenringpstatsentry.size(); index++)
+    for (std::size_t index=0; index<tokenringpstatsentry.len(); index++)
     {
         if(tokenringpstatsentry[index]->has_operation())
             return true;
@@ -882,21 +891,21 @@ bool TOKENRINGRMONMIB::Tokenringpstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string TOKENRINGRMONMIB::Tokenringpstatstable::get_absolute_path() const
+std::string TOKENRINGRMONMIB::TokenRingPStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TOKEN-RING-RMON-MIB:TOKEN-RING-RMON-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TOKENRINGRMONMIB::Tokenringpstatstable::get_segment_path() const
+std::string TOKENRINGRMONMIB::TokenRingPStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tokenRingPStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Tokenringpstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::TokenRingPStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -905,25 +914,25 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Tokenringpstats
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::Tokenringpstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TOKENRINGRMONMIB::TokenRingPStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tokenRingPStatsEntry")
     {
-        auto c = std::make_shared<TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry>();
+        auto c = std::make_shared<TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry>();
         c->parent = this;
-        tokenringpstatsentry.push_back(c);
+        tokenringpstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Tokenringpstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::TokenRingPStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tokenringpstatsentry)
+    for (auto c : tokenringpstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -934,22 +943,22 @@ std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Tokenringpstats
     return children;
 }
 
-void TOKENRINGRMONMIB::Tokenringpstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TOKENRINGRMONMIB::TokenRingPStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void TOKENRINGRMONMIB::Tokenringpstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void TOKENRINGRMONMIB::TokenRingPStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool TOKENRINGRMONMIB::Tokenringpstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool TOKENRINGRMONMIB::TokenRingPStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tokenRingPStatsEntry")
         return true;
     return false;
 }
 
-TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry::Tokenringpstatsentry()
+TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry::TokenRingPStatsEntry()
     :
     tokenringpstatsindex{YType::int32, "tokenRingPStatsIndex"},
     tokenringpstatsdatasource{YType::str, "tokenRingPStatsDataSource"},
@@ -974,15 +983,16 @@ TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry::Tokenringpstatsent
     tokenringpstatscreatetime{YType::uint32, "RMON2-MIB:tokenRingPStatsCreateTime"}
 {
 
-    yang_name = "tokenRingPStatsEntry"; yang_parent_name = "tokenRingPStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tokenRingPStatsEntry"; yang_parent_name = "tokenRingPStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry::~Tokenringpstatsentry()
+TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry::~TokenRingPStatsEntry()
 {
 }
 
-bool TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry::has_data() const
+bool TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return tokenringpstatsindex.is_set
 	|| tokenringpstatsdatasource.is_set
 	|| tokenringpstatsdropevents.is_set
@@ -1006,7 +1016,7 @@ bool TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry::has_data() co
 	|| tokenringpstatscreatetime.is_set;
 }
 
-bool TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry::has_operation() const
+bool TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tokenringpstatsindex.yfilter)
@@ -1032,21 +1042,22 @@ bool TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry::has_operation
 	|| ydk::is_set(tokenringpstatscreatetime.yfilter);
 }
 
-std::string TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry::get_absolute_path() const
+std::string TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TOKEN-RING-RMON-MIB:TOKEN-RING-RMON-MIB/tokenRingPStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry::get_segment_path() const
+std::string TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tokenRingPStatsEntry" <<"[tokenRingPStatsIndex='" <<tokenringpstatsindex <<"']";
+    path_buffer << "tokenRingPStatsEntry";
+    ADD_KEY_TOKEN(tokenringpstatsindex, "tokenRingPStatsIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1076,19 +1087,19 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Tokenringpstats
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tokenRingPStatsIndex")
     {
@@ -1218,7 +1229,7 @@ void TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry::set_value(con
     }
 }
 
-void TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tokenRingPStatsIndex")
     {
@@ -1306,26 +1317,29 @@ void TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry::set_filter(co
     }
 }
 
-bool TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tokenRingPStatsIndex" || name == "tokenRingPStatsDataSource" || name == "tokenRingPStatsDropEvents" || name == "tokenRingPStatsDataOctets" || name == "tokenRingPStatsDataPkts" || name == "tokenRingPStatsDataBroadcastPkts" || name == "tokenRingPStatsDataMulticastPkts" || name == "tokenRingPStatsDataPkts18to63Octets" || name == "tokenRingPStatsDataPkts64to127Octets" || name == "tokenRingPStatsDataPkts128to255Octets" || name == "tokenRingPStatsDataPkts256to511Octets" || name == "tokenRingPStatsDataPkts512to1023Octets" || name == "tokenRingPStatsDataPkts1024to2047Octets" || name == "tokenRingPStatsDataPkts2048to4095Octets" || name == "tokenRingPStatsDataPkts4096to8191Octets" || name == "tokenRingPStatsDataPkts8192to18000Octets" || name == "tokenRingPStatsDataPktsGreaterThan18000Octets" || name == "tokenRingPStatsOwner" || name == "tokenRingPStatsStatus" || name == "tokenRingPStatsDroppedFrames" || name == "tokenRingPStatsCreateTime")
         return true;
     return false;
 }
 
-TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistorytable()
+TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryTable()
+    :
+    tokenringmlhistoryentry(this, {"tokenringmlhistoryindex", "tokenringmlhistorysampleindex"})
 {
 
-    yang_name = "tokenRingMLHistoryTable"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tokenRingMLHistoryTable"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TOKENRINGRMONMIB::Tokenringmlhistorytable::~Tokenringmlhistorytable()
+TOKENRINGRMONMIB::TokenRingMLHistoryTable::~TokenRingMLHistoryTable()
 {
 }
 
-bool TOKENRINGRMONMIB::Tokenringmlhistorytable::has_data() const
+bool TOKENRINGRMONMIB::TokenRingMLHistoryTable::has_data() const
 {
-    for (std::size_t index=0; index<tokenringmlhistoryentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tokenringmlhistoryentry.len(); index++)
     {
         if(tokenringmlhistoryentry[index]->has_data())
             return true;
@@ -1333,9 +1347,9 @@ bool TOKENRINGRMONMIB::Tokenringmlhistorytable::has_data() const
     return false;
 }
 
-bool TOKENRINGRMONMIB::Tokenringmlhistorytable::has_operation() const
+bool TOKENRINGRMONMIB::TokenRingMLHistoryTable::has_operation() const
 {
-    for (std::size_t index=0; index<tokenringmlhistoryentry.size(); index++)
+    for (std::size_t index=0; index<tokenringmlhistoryentry.len(); index++)
     {
         if(tokenringmlhistoryentry[index]->has_operation())
             return true;
@@ -1343,21 +1357,21 @@ bool TOKENRINGRMONMIB::Tokenringmlhistorytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string TOKENRINGRMONMIB::Tokenringmlhistorytable::get_absolute_path() const
+std::string TOKENRINGRMONMIB::TokenRingMLHistoryTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TOKEN-RING-RMON-MIB:TOKEN-RING-RMON-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TOKENRINGRMONMIB::Tokenringmlhistorytable::get_segment_path() const
+std::string TOKENRINGRMONMIB::TokenRingMLHistoryTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tokenRingMLHistoryTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Tokenringmlhistorytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::TokenRingMLHistoryTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1366,25 +1380,25 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Tokenringmlhist
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::Tokenringmlhistorytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TOKENRINGRMONMIB::TokenRingMLHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tokenRingMLHistoryEntry")
     {
-        auto c = std::make_shared<TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry>();
+        auto c = std::make_shared<TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry>();
         c->parent = this;
-        tokenringmlhistoryentry.push_back(c);
+        tokenringmlhistoryentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Tokenringmlhistorytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::TokenRingMLHistoryTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tokenringmlhistoryentry)
+    for (auto c : tokenringmlhistoryentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1395,22 +1409,22 @@ std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Tokenringmlhist
     return children;
 }
 
-void TOKENRINGRMONMIB::Tokenringmlhistorytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TOKENRINGRMONMIB::TokenRingMLHistoryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void TOKENRINGRMONMIB::Tokenringmlhistorytable::set_filter(const std::string & value_path, YFilter yfilter)
+void TOKENRINGRMONMIB::TokenRingMLHistoryTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool TOKENRINGRMONMIB::Tokenringmlhistorytable::has_leaf_or_child_of_name(const std::string & name) const
+bool TOKENRINGRMONMIB::TokenRingMLHistoryTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tokenRingMLHistoryEntry")
         return true;
     return false;
 }
 
-TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry::Tokenringmlhistoryentry()
+TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry::TokenRingMLHistoryEntry()
     :
     tokenringmlhistoryindex{YType::int32, "tokenRingMLHistoryIndex"},
     tokenringmlhistorysampleindex{YType::int32, "tokenRingMLHistorySampleIndex"},
@@ -1441,15 +1455,16 @@ TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry::Tokenringmlh
     tokenringmlhistoryactivestations{YType::int32, "tokenRingMLHistoryActiveStations"}
 {
 
-    yang_name = "tokenRingMLHistoryEntry"; yang_parent_name = "tokenRingMLHistoryTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tokenRingMLHistoryEntry"; yang_parent_name = "tokenRingMLHistoryTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry::~Tokenringmlhistoryentry()
+TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry::~TokenRingMLHistoryEntry()
 {
 }
 
-bool TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry::has_data() const
+bool TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return tokenringmlhistoryindex.is_set
 	|| tokenringmlhistorysampleindex.is_set
 	|| tokenringmlhistoryintervalstart.is_set
@@ -1479,7 +1494,7 @@ bool TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry::has_dat
 	|| tokenringmlhistoryactivestations.is_set;
 }
 
-bool TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry::has_operation() const
+bool TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tokenringmlhistoryindex.yfilter)
@@ -1511,21 +1526,23 @@ bool TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry::has_ope
 	|| ydk::is_set(tokenringmlhistoryactivestations.yfilter);
 }
 
-std::string TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry::get_absolute_path() const
+std::string TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TOKEN-RING-RMON-MIB:TOKEN-RING-RMON-MIB/tokenRingMLHistoryTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry::get_segment_path() const
+std::string TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tokenRingMLHistoryEntry" <<"[tokenRingMLHistoryIndex='" <<tokenringmlhistoryindex <<"']" <<"[tokenRingMLHistorySampleIndex='" <<tokenringmlhistorysampleindex <<"']";
+    path_buffer << "tokenRingMLHistoryEntry";
+    ADD_KEY_TOKEN(tokenringmlhistoryindex, "tokenRingMLHistoryIndex");
+    ADD_KEY_TOKEN(tokenringmlhistorysampleindex, "tokenRingMLHistorySampleIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1561,19 +1578,19 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Tokenringmlhist
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tokenRingMLHistoryIndex")
     {
@@ -1739,7 +1756,7 @@ void TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry::set_val
     }
 }
 
-void TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry::set_filter(const std::string & value_path, YFilter yfilter)
+void TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tokenRingMLHistoryIndex")
     {
@@ -1851,26 +1868,29 @@ void TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry::set_fil
     }
 }
 
-bool TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry::has_leaf_or_child_of_name(const std::string & name) const
+bool TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tokenRingMLHistoryIndex" || name == "tokenRingMLHistorySampleIndex" || name == "tokenRingMLHistoryIntervalStart" || name == "tokenRingMLHistoryDropEvents" || name == "tokenRingMLHistoryMacOctets" || name == "tokenRingMLHistoryMacPkts" || name == "tokenRingMLHistoryRingPurgeEvents" || name == "tokenRingMLHistoryRingPurgePkts" || name == "tokenRingMLHistoryBeaconEvents" || name == "tokenRingMLHistoryBeaconTime" || name == "tokenRingMLHistoryBeaconPkts" || name == "tokenRingMLHistoryClaimTokenEvents" || name == "tokenRingMLHistoryClaimTokenPkts" || name == "tokenRingMLHistoryNAUNChanges" || name == "tokenRingMLHistoryLineErrors" || name == "tokenRingMLHistoryInternalErrors" || name == "tokenRingMLHistoryBurstErrors" || name == "tokenRingMLHistoryACErrors" || name == "tokenRingMLHistoryAbortErrors" || name == "tokenRingMLHistoryLostFrameErrors" || name == "tokenRingMLHistoryCongestionErrors" || name == "tokenRingMLHistoryFrameCopiedErrors" || name == "tokenRingMLHistoryFrequencyErrors" || name == "tokenRingMLHistoryTokenErrors" || name == "tokenRingMLHistorySoftErrorReports" || name == "tokenRingMLHistoryRingPollEvents" || name == "tokenRingMLHistoryActiveStations")
         return true;
     return false;
 }
 
-TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistorytable()
+TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryTable()
+    :
+    tokenringphistoryentry(this, {"tokenringphistoryindex", "tokenringphistorysampleindex"})
 {
 
-    yang_name = "tokenRingPHistoryTable"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tokenRingPHistoryTable"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TOKENRINGRMONMIB::Tokenringphistorytable::~Tokenringphistorytable()
+TOKENRINGRMONMIB::TokenRingPHistoryTable::~TokenRingPHistoryTable()
 {
 }
 
-bool TOKENRINGRMONMIB::Tokenringphistorytable::has_data() const
+bool TOKENRINGRMONMIB::TokenRingPHistoryTable::has_data() const
 {
-    for (std::size_t index=0; index<tokenringphistoryentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tokenringphistoryentry.len(); index++)
     {
         if(tokenringphistoryentry[index]->has_data())
             return true;
@@ -1878,9 +1898,9 @@ bool TOKENRINGRMONMIB::Tokenringphistorytable::has_data() const
     return false;
 }
 
-bool TOKENRINGRMONMIB::Tokenringphistorytable::has_operation() const
+bool TOKENRINGRMONMIB::TokenRingPHistoryTable::has_operation() const
 {
-    for (std::size_t index=0; index<tokenringphistoryentry.size(); index++)
+    for (std::size_t index=0; index<tokenringphistoryentry.len(); index++)
     {
         if(tokenringphistoryentry[index]->has_operation())
             return true;
@@ -1888,21 +1908,21 @@ bool TOKENRINGRMONMIB::Tokenringphistorytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string TOKENRINGRMONMIB::Tokenringphistorytable::get_absolute_path() const
+std::string TOKENRINGRMONMIB::TokenRingPHistoryTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TOKEN-RING-RMON-MIB:TOKEN-RING-RMON-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TOKENRINGRMONMIB::Tokenringphistorytable::get_segment_path() const
+std::string TOKENRINGRMONMIB::TokenRingPHistoryTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tokenRingPHistoryTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Tokenringphistorytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::TokenRingPHistoryTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1911,25 +1931,25 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Tokenringphisto
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::Tokenringphistorytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TOKENRINGRMONMIB::TokenRingPHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tokenRingPHistoryEntry")
     {
-        auto c = std::make_shared<TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry>();
+        auto c = std::make_shared<TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry>();
         c->parent = this;
-        tokenringphistoryentry.push_back(c);
+        tokenringphistoryentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Tokenringphistorytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::TokenRingPHistoryTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tokenringphistoryentry)
+    for (auto c : tokenringphistoryentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1940,22 +1960,22 @@ std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Tokenringphisto
     return children;
 }
 
-void TOKENRINGRMONMIB::Tokenringphistorytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TOKENRINGRMONMIB::TokenRingPHistoryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void TOKENRINGRMONMIB::Tokenringphistorytable::set_filter(const std::string & value_path, YFilter yfilter)
+void TOKENRINGRMONMIB::TokenRingPHistoryTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool TOKENRINGRMONMIB::Tokenringphistorytable::has_leaf_or_child_of_name(const std::string & name) const
+bool TOKENRINGRMONMIB::TokenRingPHistoryTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tokenRingPHistoryEntry")
         return true;
     return false;
 }
 
-TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry::Tokenringphistoryentry()
+TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry::TokenRingPHistoryEntry()
     :
     tokenringphistoryindex{YType::int32, "tokenRingPHistoryIndex"},
     tokenringphistorysampleindex{YType::int32, "tokenRingPHistorySampleIndex"},
@@ -1977,15 +1997,16 @@ TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry::Tokenringphist
     tokenringphistorydatapktsgreaterthan18000octets{YType::uint32, "tokenRingPHistoryDataPktsGreaterThan18000Octets"}
 {
 
-    yang_name = "tokenRingPHistoryEntry"; yang_parent_name = "tokenRingPHistoryTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tokenRingPHistoryEntry"; yang_parent_name = "tokenRingPHistoryTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry::~Tokenringphistoryentry()
+TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry::~TokenRingPHistoryEntry()
 {
 }
 
-bool TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry::has_data() const
+bool TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return tokenringphistoryindex.is_set
 	|| tokenringphistorysampleindex.is_set
 	|| tokenringphistoryintervalstart.is_set
@@ -2006,7 +2027,7 @@ bool TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry::has_data(
 	|| tokenringphistorydatapktsgreaterthan18000octets.is_set;
 }
 
-bool TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry::has_operation() const
+bool TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tokenringphistoryindex.yfilter)
@@ -2029,21 +2050,23 @@ bool TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry::has_opera
 	|| ydk::is_set(tokenringphistorydatapktsgreaterthan18000octets.yfilter);
 }
 
-std::string TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry::get_absolute_path() const
+std::string TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TOKEN-RING-RMON-MIB:TOKEN-RING-RMON-MIB/tokenRingPHistoryTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry::get_segment_path() const
+std::string TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tokenRingPHistoryEntry" <<"[tokenRingPHistoryIndex='" <<tokenringphistoryindex <<"']" <<"[tokenRingPHistorySampleIndex='" <<tokenringphistorysampleindex <<"']";
+    path_buffer << "tokenRingPHistoryEntry";
+    ADD_KEY_TOKEN(tokenringphistoryindex, "tokenRingPHistoryIndex");
+    ADD_KEY_TOKEN(tokenringphistorysampleindex, "tokenRingPHistorySampleIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2070,19 +2093,19 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Tokenringphisto
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tokenRingPHistoryIndex")
     {
@@ -2194,7 +2217,7 @@ void TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry::set_value
     }
 }
 
-void TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry::set_filter(const std::string & value_path, YFilter yfilter)
+void TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tokenRingPHistoryIndex")
     {
@@ -2270,26 +2293,29 @@ void TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry::set_filte
     }
 }
 
-bool TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry::has_leaf_or_child_of_name(const std::string & name) const
+bool TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tokenRingPHistoryIndex" || name == "tokenRingPHistorySampleIndex" || name == "tokenRingPHistoryIntervalStart" || name == "tokenRingPHistoryDropEvents" || name == "tokenRingPHistoryDataOctets" || name == "tokenRingPHistoryDataPkts" || name == "tokenRingPHistoryDataBroadcastPkts" || name == "tokenRingPHistoryDataMulticastPkts" || name == "tokenRingPHistoryDataPkts18to63Octets" || name == "tokenRingPHistoryDataPkts64to127Octets" || name == "tokenRingPHistoryDataPkts128to255Octets" || name == "tokenRingPHistoryDataPkts256to511Octets" || name == "tokenRingPHistoryDataPkts512to1023Octets" || name == "tokenRingPHistoryDataPkts1024to2047Octets" || name == "tokenRingPHistoryDataPkts2048to4095Octets" || name == "tokenRingPHistoryDataPkts4096to8191Octets" || name == "tokenRingPHistoryDataPkts8192to18000Octets" || name == "tokenRingPHistoryDataPktsGreaterThan18000Octets")
         return true;
     return false;
 }
 
-TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontroltable()
+TOKENRINGRMONMIB::RingStationControlTable::RingStationControlTable()
+    :
+    ringstationcontrolentry(this, {"ringstationcontrolifindex"})
 {
 
-    yang_name = "ringStationControlTable"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ringStationControlTable"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TOKENRINGRMONMIB::Ringstationcontroltable::~Ringstationcontroltable()
+TOKENRINGRMONMIB::RingStationControlTable::~RingStationControlTable()
 {
 }
 
-bool TOKENRINGRMONMIB::Ringstationcontroltable::has_data() const
+bool TOKENRINGRMONMIB::RingStationControlTable::has_data() const
 {
-    for (std::size_t index=0; index<ringstationcontrolentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ringstationcontrolentry.len(); index++)
     {
         if(ringstationcontrolentry[index]->has_data())
             return true;
@@ -2297,9 +2323,9 @@ bool TOKENRINGRMONMIB::Ringstationcontroltable::has_data() const
     return false;
 }
 
-bool TOKENRINGRMONMIB::Ringstationcontroltable::has_operation() const
+bool TOKENRINGRMONMIB::RingStationControlTable::has_operation() const
 {
-    for (std::size_t index=0; index<ringstationcontrolentry.size(); index++)
+    for (std::size_t index=0; index<ringstationcontrolentry.len(); index++)
     {
         if(ringstationcontrolentry[index]->has_operation())
             return true;
@@ -2307,21 +2333,21 @@ bool TOKENRINGRMONMIB::Ringstationcontroltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string TOKENRINGRMONMIB::Ringstationcontroltable::get_absolute_path() const
+std::string TOKENRINGRMONMIB::RingStationControlTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TOKEN-RING-RMON-MIB:TOKEN-RING-RMON-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TOKENRINGRMONMIB::Ringstationcontroltable::get_segment_path() const
+std::string TOKENRINGRMONMIB::RingStationControlTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ringStationControlTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Ringstationcontroltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::RingStationControlTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2330,25 +2356,25 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Ringstationcont
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::Ringstationcontroltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TOKENRINGRMONMIB::RingStationControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ringStationControlEntry")
     {
-        auto c = std::make_shared<TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry>();
+        auto c = std::make_shared<TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry>();
         c->parent = this;
-        ringstationcontrolentry.push_back(c);
+        ringstationcontrolentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Ringstationcontroltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::RingStationControlTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ringstationcontrolentry)
+    for (auto c : ringstationcontrolentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2359,22 +2385,22 @@ std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Ringstationcont
     return children;
 }
 
-void TOKENRINGRMONMIB::Ringstationcontroltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TOKENRINGRMONMIB::RingStationControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void TOKENRINGRMONMIB::Ringstationcontroltable::set_filter(const std::string & value_path, YFilter yfilter)
+void TOKENRINGRMONMIB::RingStationControlTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool TOKENRINGRMONMIB::Ringstationcontroltable::has_leaf_or_child_of_name(const std::string & name) const
+bool TOKENRINGRMONMIB::RingStationControlTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ringStationControlEntry")
         return true;
     return false;
 }
 
-TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::Ringstationcontrolentry()
+TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::RingStationControlEntry()
     :
     ringstationcontrolifindex{YType::int32, "ringStationControlIfIndex"},
     ringstationcontroltablesize{YType::int32, "ringStationControlTableSize"},
@@ -2390,15 +2416,16 @@ TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::Ringstationc
     ringstationcontrolcreatetime{YType::uint32, "RMON2-MIB:ringStationControlCreateTime"}
 {
 
-    yang_name = "ringStationControlEntry"; yang_parent_name = "ringStationControlTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ringStationControlEntry"; yang_parent_name = "ringStationControlTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::~Ringstationcontrolentry()
+TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::~RingStationControlEntry()
 {
 }
 
-bool TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::has_data() const
+bool TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ringstationcontrolifindex.is_set
 	|| ringstationcontroltablesize.is_set
 	|| ringstationcontrolactivestations.is_set
@@ -2413,7 +2440,7 @@ bool TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::has_dat
 	|| ringstationcontrolcreatetime.is_set;
 }
 
-bool TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::has_operation() const
+bool TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ringstationcontrolifindex.yfilter)
@@ -2430,21 +2457,22 @@ bool TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::has_ope
 	|| ydk::is_set(ringstationcontrolcreatetime.yfilter);
 }
 
-std::string TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::get_absolute_path() const
+std::string TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TOKEN-RING-RMON-MIB:TOKEN-RING-RMON-MIB/ringStationControlTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::get_segment_path() const
+std::string TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ringStationControlEntry" <<"[ringStationControlIfIndex='" <<ringstationcontrolifindex <<"']";
+    path_buffer << "ringStationControlEntry";
+    ADD_KEY_TOKEN(ringstationcontrolifindex, "ringStationControlIfIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2465,19 +2493,19 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Ringstationcont
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ringStationControlIfIndex")
     {
@@ -2553,7 +2581,7 @@ void TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::set_val
     }
 }
 
-void TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::set_filter(const std::string & value_path, YFilter yfilter)
+void TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ringStationControlIfIndex")
     {
@@ -2605,26 +2633,29 @@ void TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::set_fil
     }
 }
 
-bool TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::has_leaf_or_child_of_name(const std::string & name) const
+bool TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ringStationControlIfIndex" || name == "ringStationControlTableSize" || name == "ringStationControlActiveStations" || name == "ringStationControlRingState" || name == "ringStationControlBeaconSender" || name == "ringStationControlBeaconNAUN" || name == "ringStationControlActiveMonitor" || name == "ringStationControlOrderChanges" || name == "ringStationControlOwner" || name == "ringStationControlStatus" || name == "ringStationControlDroppedFrames" || name == "ringStationControlCreateTime")
         return true;
     return false;
 }
 
-TOKENRINGRMONMIB::Ringstationtable::Ringstationtable()
+TOKENRINGRMONMIB::RingStationTable::RingStationTable()
+    :
+    ringstationentry(this, {"ringstationifindex", "ringstationmacaddress"})
 {
 
-    yang_name = "ringStationTable"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ringStationTable"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TOKENRINGRMONMIB::Ringstationtable::~Ringstationtable()
+TOKENRINGRMONMIB::RingStationTable::~RingStationTable()
 {
 }
 
-bool TOKENRINGRMONMIB::Ringstationtable::has_data() const
+bool TOKENRINGRMONMIB::RingStationTable::has_data() const
 {
-    for (std::size_t index=0; index<ringstationentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ringstationentry.len(); index++)
     {
         if(ringstationentry[index]->has_data())
             return true;
@@ -2632,9 +2663,9 @@ bool TOKENRINGRMONMIB::Ringstationtable::has_data() const
     return false;
 }
 
-bool TOKENRINGRMONMIB::Ringstationtable::has_operation() const
+bool TOKENRINGRMONMIB::RingStationTable::has_operation() const
 {
-    for (std::size_t index=0; index<ringstationentry.size(); index++)
+    for (std::size_t index=0; index<ringstationentry.len(); index++)
     {
         if(ringstationentry[index]->has_operation())
             return true;
@@ -2642,21 +2673,21 @@ bool TOKENRINGRMONMIB::Ringstationtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string TOKENRINGRMONMIB::Ringstationtable::get_absolute_path() const
+std::string TOKENRINGRMONMIB::RingStationTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TOKEN-RING-RMON-MIB:TOKEN-RING-RMON-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TOKENRINGRMONMIB::Ringstationtable::get_segment_path() const
+std::string TOKENRINGRMONMIB::RingStationTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ringStationTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Ringstationtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::RingStationTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2665,25 +2696,25 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Ringstationtabl
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::Ringstationtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TOKENRINGRMONMIB::RingStationTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ringStationEntry")
     {
-        auto c = std::make_shared<TOKENRINGRMONMIB::Ringstationtable::Ringstationentry>();
+        auto c = std::make_shared<TOKENRINGRMONMIB::RingStationTable::RingStationEntry>();
         c->parent = this;
-        ringstationentry.push_back(c);
+        ringstationentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Ringstationtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::RingStationTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ringstationentry)
+    for (auto c : ringstationentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2694,22 +2725,22 @@ std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Ringstationtabl
     return children;
 }
 
-void TOKENRINGRMONMIB::Ringstationtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TOKENRINGRMONMIB::RingStationTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void TOKENRINGRMONMIB::Ringstationtable::set_filter(const std::string & value_path, YFilter yfilter)
+void TOKENRINGRMONMIB::RingStationTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool TOKENRINGRMONMIB::Ringstationtable::has_leaf_or_child_of_name(const std::string & name) const
+bool TOKENRINGRMONMIB::RingStationTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ringStationEntry")
         return true;
     return false;
 }
 
-TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::Ringstationentry()
+TOKENRINGRMONMIB::RingStationTable::RingStationEntry::RingStationEntry()
     :
     ringstationifindex{YType::int32, "ringStationIfIndex"},
     ringstationmacaddress{YType::str, "ringStationMacAddress"},
@@ -2735,15 +2766,16 @@ TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::Ringstationentry()
     ringstationinsertions{YType::uint32, "ringStationInsertions"}
 {
 
-    yang_name = "ringStationEntry"; yang_parent_name = "ringStationTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ringStationEntry"; yang_parent_name = "ringStationTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::~Ringstationentry()
+TOKENRINGRMONMIB::RingStationTable::RingStationEntry::~RingStationEntry()
 {
 }
 
-bool TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::has_data() const
+bool TOKENRINGRMONMIB::RingStationTable::RingStationEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ringstationifindex.is_set
 	|| ringstationmacaddress.is_set
 	|| ringstationlastnaun.is_set
@@ -2768,7 +2800,7 @@ bool TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::has_data() const
 	|| ringstationinsertions.is_set;
 }
 
-bool TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::has_operation() const
+bool TOKENRINGRMONMIB::RingStationTable::RingStationEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ringstationifindex.yfilter)
@@ -2795,21 +2827,23 @@ bool TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::has_operation() const
 	|| ydk::is_set(ringstationinsertions.yfilter);
 }
 
-std::string TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::get_absolute_path() const
+std::string TOKENRINGRMONMIB::RingStationTable::RingStationEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TOKEN-RING-RMON-MIB:TOKEN-RING-RMON-MIB/ringStationTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::get_segment_path() const
+std::string TOKENRINGRMONMIB::RingStationTable::RingStationEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ringStationEntry" <<"[ringStationIfIndex='" <<ringstationifindex <<"']" <<"[ringStationMacAddress='" <<ringstationmacaddress <<"']";
+    path_buffer << "ringStationEntry";
+    ADD_KEY_TOKEN(ringstationifindex, "ringStationIfIndex");
+    ADD_KEY_TOKEN(ringstationmacaddress, "ringStationMacAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::RingStationTable::RingStationEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2840,19 +2874,19 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Ringstationtabl
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TOKENRINGRMONMIB::RingStationTable::RingStationEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::RingStationTable::RingStationEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TOKENRINGRMONMIB::RingStationTable::RingStationEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ringStationIfIndex")
     {
@@ -2988,7 +3022,7 @@ void TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::set_value(const std::
     }
 }
 
-void TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::set_filter(const std::string & value_path, YFilter yfilter)
+void TOKENRINGRMONMIB::RingStationTable::RingStationEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ringStationIfIndex")
     {
@@ -3080,26 +3114,29 @@ void TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::set_filter(const std:
     }
 }
 
-bool TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::has_leaf_or_child_of_name(const std::string & name) const
+bool TOKENRINGRMONMIB::RingStationTable::RingStationEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ringStationIfIndex" || name == "ringStationMacAddress" || name == "ringStationLastNAUN" || name == "ringStationStationStatus" || name == "ringStationLastEnterTime" || name == "ringStationLastExitTime" || name == "ringStationDuplicateAddresses" || name == "ringStationInLineErrors" || name == "ringStationOutLineErrors" || name == "ringStationInternalErrors" || name == "ringStationInBurstErrors" || name == "ringStationOutBurstErrors" || name == "ringStationACErrors" || name == "ringStationAbortErrors" || name == "ringStationLostFrameErrors" || name == "ringStationCongestionErrors" || name == "ringStationFrameCopiedErrors" || name == "ringStationFrequencyErrors" || name == "ringStationTokenErrors" || name == "ringStationInBeaconErrors" || name == "ringStationOutBeaconErrors" || name == "ringStationInsertions")
         return true;
     return false;
 }
 
-TOKENRINGRMONMIB::Ringstationordertable::Ringstationordertable()
+TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderTable()
+    :
+    ringstationorderentry(this, {"ringstationorderifindex", "ringstationorderorderindex"})
 {
 
-    yang_name = "ringStationOrderTable"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ringStationOrderTable"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TOKENRINGRMONMIB::Ringstationordertable::~Ringstationordertable()
+TOKENRINGRMONMIB::RingStationOrderTable::~RingStationOrderTable()
 {
 }
 
-bool TOKENRINGRMONMIB::Ringstationordertable::has_data() const
+bool TOKENRINGRMONMIB::RingStationOrderTable::has_data() const
 {
-    for (std::size_t index=0; index<ringstationorderentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ringstationorderentry.len(); index++)
     {
         if(ringstationorderentry[index]->has_data())
             return true;
@@ -3107,9 +3144,9 @@ bool TOKENRINGRMONMIB::Ringstationordertable::has_data() const
     return false;
 }
 
-bool TOKENRINGRMONMIB::Ringstationordertable::has_operation() const
+bool TOKENRINGRMONMIB::RingStationOrderTable::has_operation() const
 {
-    for (std::size_t index=0; index<ringstationorderentry.size(); index++)
+    for (std::size_t index=0; index<ringstationorderentry.len(); index++)
     {
         if(ringstationorderentry[index]->has_operation())
             return true;
@@ -3117,21 +3154,21 @@ bool TOKENRINGRMONMIB::Ringstationordertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string TOKENRINGRMONMIB::Ringstationordertable::get_absolute_path() const
+std::string TOKENRINGRMONMIB::RingStationOrderTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TOKEN-RING-RMON-MIB:TOKEN-RING-RMON-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TOKENRINGRMONMIB::Ringstationordertable::get_segment_path() const
+std::string TOKENRINGRMONMIB::RingStationOrderTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ringStationOrderTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Ringstationordertable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::RingStationOrderTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3140,25 +3177,25 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Ringstationorde
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::Ringstationordertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TOKENRINGRMONMIB::RingStationOrderTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ringStationOrderEntry")
     {
-        auto c = std::make_shared<TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry>();
+        auto c = std::make_shared<TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry>();
         c->parent = this;
-        ringstationorderentry.push_back(c);
+        ringstationorderentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Ringstationordertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::RingStationOrderTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ringstationorderentry)
+    for (auto c : ringstationorderentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3169,43 +3206,44 @@ std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Ringstationorde
     return children;
 }
 
-void TOKENRINGRMONMIB::Ringstationordertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TOKENRINGRMONMIB::RingStationOrderTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void TOKENRINGRMONMIB::Ringstationordertable::set_filter(const std::string & value_path, YFilter yfilter)
+void TOKENRINGRMONMIB::RingStationOrderTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool TOKENRINGRMONMIB::Ringstationordertable::has_leaf_or_child_of_name(const std::string & name) const
+bool TOKENRINGRMONMIB::RingStationOrderTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ringStationOrderEntry")
         return true;
     return false;
 }
 
-TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry::Ringstationorderentry()
+TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry::RingStationOrderEntry()
     :
     ringstationorderifindex{YType::int32, "ringStationOrderIfIndex"},
     ringstationorderorderindex{YType::int32, "ringStationOrderOrderIndex"},
     ringstationordermacaddress{YType::str, "ringStationOrderMacAddress"}
 {
 
-    yang_name = "ringStationOrderEntry"; yang_parent_name = "ringStationOrderTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ringStationOrderEntry"; yang_parent_name = "ringStationOrderTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry::~Ringstationorderentry()
+TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry::~RingStationOrderEntry()
 {
 }
 
-bool TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry::has_data() const
+bool TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ringstationorderifindex.is_set
 	|| ringstationorderorderindex.is_set
 	|| ringstationordermacaddress.is_set;
 }
 
-bool TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry::has_operation() const
+bool TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ringstationorderifindex.yfilter)
@@ -3213,21 +3251,23 @@ bool TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry::has_operati
 	|| ydk::is_set(ringstationordermacaddress.yfilter);
 }
 
-std::string TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry::get_absolute_path() const
+std::string TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TOKEN-RING-RMON-MIB:TOKEN-RING-RMON-MIB/ringStationOrderTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry::get_segment_path() const
+std::string TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ringStationOrderEntry" <<"[ringStationOrderIfIndex='" <<ringstationorderifindex <<"']" <<"[ringStationOrderOrderIndex='" <<ringstationorderorderindex <<"']";
+    path_buffer << "ringStationOrderEntry";
+    ADD_KEY_TOKEN(ringstationorderifindex, "ringStationOrderIfIndex");
+    ADD_KEY_TOKEN(ringstationorderorderindex, "ringStationOrderOrderIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3239,19 +3279,19 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Ringstationorde
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ringStationOrderIfIndex")
     {
@@ -3273,7 +3313,7 @@ void TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry::set_value(c
     }
 }
 
-void TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry::set_filter(const std::string & value_path, YFilter yfilter)
+void TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ringStationOrderIfIndex")
     {
@@ -3289,26 +3329,29 @@ void TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry::set_filter(
     }
 }
 
-bool TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry::has_leaf_or_child_of_name(const std::string & name) const
+bool TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ringStationOrderIfIndex" || name == "ringStationOrderOrderIndex" || name == "ringStationOrderMacAddress")
         return true;
     return false;
 }
 
-TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontroltable()
+TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlTable()
+    :
+    ringstationconfigcontrolentry(this, {"ringstationconfigcontrolifindex", "ringstationconfigcontrolmacaddress"})
 {
 
-    yang_name = "ringStationConfigControlTable"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ringStationConfigControlTable"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TOKENRINGRMONMIB::Ringstationconfigcontroltable::~Ringstationconfigcontroltable()
+TOKENRINGRMONMIB::RingStationConfigControlTable::~RingStationConfigControlTable()
 {
 }
 
-bool TOKENRINGRMONMIB::Ringstationconfigcontroltable::has_data() const
+bool TOKENRINGRMONMIB::RingStationConfigControlTable::has_data() const
 {
-    for (std::size_t index=0; index<ringstationconfigcontrolentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ringstationconfigcontrolentry.len(); index++)
     {
         if(ringstationconfigcontrolentry[index]->has_data())
             return true;
@@ -3316,9 +3359,9 @@ bool TOKENRINGRMONMIB::Ringstationconfigcontroltable::has_data() const
     return false;
 }
 
-bool TOKENRINGRMONMIB::Ringstationconfigcontroltable::has_operation() const
+bool TOKENRINGRMONMIB::RingStationConfigControlTable::has_operation() const
 {
-    for (std::size_t index=0; index<ringstationconfigcontrolentry.size(); index++)
+    for (std::size_t index=0; index<ringstationconfigcontrolentry.len(); index++)
     {
         if(ringstationconfigcontrolentry[index]->has_operation())
             return true;
@@ -3326,21 +3369,21 @@ bool TOKENRINGRMONMIB::Ringstationconfigcontroltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string TOKENRINGRMONMIB::Ringstationconfigcontroltable::get_absolute_path() const
+std::string TOKENRINGRMONMIB::RingStationConfigControlTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TOKEN-RING-RMON-MIB:TOKEN-RING-RMON-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TOKENRINGRMONMIB::Ringstationconfigcontroltable::get_segment_path() const
+std::string TOKENRINGRMONMIB::RingStationConfigControlTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ringStationConfigControlTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Ringstationconfigcontroltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::RingStationConfigControlTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3349,25 +3392,25 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Ringstationconf
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::Ringstationconfigcontroltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TOKENRINGRMONMIB::RingStationConfigControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ringStationConfigControlEntry")
     {
-        auto c = std::make_shared<TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry>();
+        auto c = std::make_shared<TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry>();
         c->parent = this;
-        ringstationconfigcontrolentry.push_back(c);
+        ringstationconfigcontrolentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Ringstationconfigcontroltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::RingStationConfigControlTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ringstationconfigcontrolentry)
+    for (auto c : ringstationconfigcontrolentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3378,22 +3421,22 @@ std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Ringstationconf
     return children;
 }
 
-void TOKENRINGRMONMIB::Ringstationconfigcontroltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TOKENRINGRMONMIB::RingStationConfigControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void TOKENRINGRMONMIB::Ringstationconfigcontroltable::set_filter(const std::string & value_path, YFilter yfilter)
+void TOKENRINGRMONMIB::RingStationConfigControlTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool TOKENRINGRMONMIB::Ringstationconfigcontroltable::has_leaf_or_child_of_name(const std::string & name) const
+bool TOKENRINGRMONMIB::RingStationConfigControlTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ringStationConfigControlEntry")
         return true;
     return false;
 }
 
-TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::Ringstationconfigcontrolentry()
+TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::RingStationConfigControlEntry()
     :
     ringstationconfigcontrolifindex{YType::int32, "ringStationConfigControlIfIndex"},
     ringstationconfigcontrolmacaddress{YType::str, "ringStationConfigControlMacAddress"},
@@ -3401,22 +3444,23 @@ TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::
     ringstationconfigcontrolupdatestats{YType::enumeration, "ringStationConfigControlUpdateStats"}
 {
 
-    yang_name = "ringStationConfigControlEntry"; yang_parent_name = "ringStationConfigControlTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ringStationConfigControlEntry"; yang_parent_name = "ringStationConfigControlTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::~Ringstationconfigcontrolentry()
+TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::~RingStationConfigControlEntry()
 {
 }
 
-bool TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::has_data() const
+bool TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ringstationconfigcontrolifindex.is_set
 	|| ringstationconfigcontrolmacaddress.is_set
 	|| ringstationconfigcontrolremove.is_set
 	|| ringstationconfigcontrolupdatestats.is_set;
 }
 
-bool TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::has_operation() const
+bool TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ringstationconfigcontrolifindex.yfilter)
@@ -3425,21 +3469,23 @@ bool TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolen
 	|| ydk::is_set(ringstationconfigcontrolupdatestats.yfilter);
 }
 
-std::string TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::get_absolute_path() const
+std::string TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TOKEN-RING-RMON-MIB:TOKEN-RING-RMON-MIB/ringStationConfigControlTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::get_segment_path() const
+std::string TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ringStationConfigControlEntry" <<"[ringStationConfigControlIfIndex='" <<ringstationconfigcontrolifindex <<"']" <<"[ringStationConfigControlMacAddress='" <<ringstationconfigcontrolmacaddress <<"']";
+    path_buffer << "ringStationConfigControlEntry";
+    ADD_KEY_TOKEN(ringstationconfigcontrolifindex, "ringStationConfigControlIfIndex");
+    ADD_KEY_TOKEN(ringstationconfigcontrolmacaddress, "ringStationConfigControlMacAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3452,19 +3498,19 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Ringstationconf
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ringStationConfigControlIfIndex")
     {
@@ -3492,7 +3538,7 @@ void TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolen
     }
 }
 
-void TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::set_filter(const std::string & value_path, YFilter yfilter)
+void TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ringStationConfigControlIfIndex")
     {
@@ -3512,26 +3558,29 @@ void TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolen
     }
 }
 
-bool TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::has_leaf_or_child_of_name(const std::string & name) const
+bool TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ringStationConfigControlIfIndex" || name == "ringStationConfigControlMacAddress" || name == "ringStationConfigControlRemove" || name == "ringStationConfigControlUpdateStats")
         return true;
     return false;
 }
 
-TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigtable()
+TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigTable()
+    :
+    ringstationconfigentry(this, {"ringstationconfigifindex", "ringstationconfigmacaddress"})
 {
 
-    yang_name = "ringStationConfigTable"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ringStationConfigTable"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TOKENRINGRMONMIB::Ringstationconfigtable::~Ringstationconfigtable()
+TOKENRINGRMONMIB::RingStationConfigTable::~RingStationConfigTable()
 {
 }
 
-bool TOKENRINGRMONMIB::Ringstationconfigtable::has_data() const
+bool TOKENRINGRMONMIB::RingStationConfigTable::has_data() const
 {
-    for (std::size_t index=0; index<ringstationconfigentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ringstationconfigentry.len(); index++)
     {
         if(ringstationconfigentry[index]->has_data())
             return true;
@@ -3539,9 +3588,9 @@ bool TOKENRINGRMONMIB::Ringstationconfigtable::has_data() const
     return false;
 }
 
-bool TOKENRINGRMONMIB::Ringstationconfigtable::has_operation() const
+bool TOKENRINGRMONMIB::RingStationConfigTable::has_operation() const
 {
-    for (std::size_t index=0; index<ringstationconfigentry.size(); index++)
+    for (std::size_t index=0; index<ringstationconfigentry.len(); index++)
     {
         if(ringstationconfigentry[index]->has_operation())
             return true;
@@ -3549,21 +3598,21 @@ bool TOKENRINGRMONMIB::Ringstationconfigtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string TOKENRINGRMONMIB::Ringstationconfigtable::get_absolute_path() const
+std::string TOKENRINGRMONMIB::RingStationConfigTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TOKEN-RING-RMON-MIB:TOKEN-RING-RMON-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TOKENRINGRMONMIB::Ringstationconfigtable::get_segment_path() const
+std::string TOKENRINGRMONMIB::RingStationConfigTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ringStationConfigTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Ringstationconfigtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::RingStationConfigTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3572,25 +3621,25 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Ringstationconf
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::Ringstationconfigtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TOKENRINGRMONMIB::RingStationConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ringStationConfigEntry")
     {
-        auto c = std::make_shared<TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry>();
+        auto c = std::make_shared<TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry>();
         c->parent = this;
-        ringstationconfigentry.push_back(c);
+        ringstationconfigentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Ringstationconfigtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::RingStationConfigTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ringstationconfigentry)
+    for (auto c : ringstationconfigentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3601,22 +3650,22 @@ std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Ringstationconf
     return children;
 }
 
-void TOKENRINGRMONMIB::Ringstationconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TOKENRINGRMONMIB::RingStationConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void TOKENRINGRMONMIB::Ringstationconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+void TOKENRINGRMONMIB::RingStationConfigTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool TOKENRINGRMONMIB::Ringstationconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+bool TOKENRINGRMONMIB::RingStationConfigTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ringStationConfigEntry")
         return true;
     return false;
 }
 
-TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry::Ringstationconfigentry()
+TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry::RingStationConfigEntry()
     :
     ringstationconfigifindex{YType::int32, "ringStationConfigIfIndex"},
     ringstationconfigmacaddress{YType::str, "ringStationConfigMacAddress"},
@@ -3627,15 +3676,16 @@ TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry::Ringstationcon
     ringstationconfigfunctionaladdress{YType::str, "ringStationConfigFunctionalAddress"}
 {
 
-    yang_name = "ringStationConfigEntry"; yang_parent_name = "ringStationConfigTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ringStationConfigEntry"; yang_parent_name = "ringStationConfigTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry::~Ringstationconfigentry()
+TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry::~RingStationConfigEntry()
 {
 }
 
-bool TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry::has_data() const
+bool TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ringstationconfigifindex.is_set
 	|| ringstationconfigmacaddress.is_set
 	|| ringstationconfigupdatetime.is_set
@@ -3645,7 +3695,7 @@ bool TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry::has_data(
 	|| ringstationconfigfunctionaladdress.is_set;
 }
 
-bool TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry::has_operation() const
+bool TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ringstationconfigifindex.yfilter)
@@ -3657,21 +3707,23 @@ bool TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry::has_opera
 	|| ydk::is_set(ringstationconfigfunctionaladdress.yfilter);
 }
 
-std::string TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry::get_absolute_path() const
+std::string TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TOKEN-RING-RMON-MIB:TOKEN-RING-RMON-MIB/ringStationConfigTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry::get_segment_path() const
+std::string TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ringStationConfigEntry" <<"[ringStationConfigIfIndex='" <<ringstationconfigifindex <<"']" <<"[ringStationConfigMacAddress='" <<ringstationconfigmacaddress <<"']";
+    path_buffer << "ringStationConfigEntry";
+    ADD_KEY_TOKEN(ringstationconfigifindex, "ringStationConfigIfIndex");
+    ADD_KEY_TOKEN(ringstationconfigmacaddress, "ringStationConfigMacAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3687,19 +3739,19 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Ringstationconf
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ringStationConfigIfIndex")
     {
@@ -3745,7 +3797,7 @@ void TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry::set_value
     }
 }
 
-void TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+void TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ringStationConfigIfIndex")
     {
@@ -3777,26 +3829,29 @@ void TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry::set_filte
     }
 }
 
-bool TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+bool TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ringStationConfigIfIndex" || name == "ringStationConfigMacAddress" || name == "ringStationConfigUpdateTime" || name == "ringStationConfigLocation" || name == "ringStationConfigMicrocode" || name == "ringStationConfigGroupAddress" || name == "ringStationConfigFunctionalAddress")
         return true;
     return false;
 }
 
-TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatstable()
+TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsTable()
+    :
+    sourceroutingstatsentry(this, {"sourceroutingstatsifindex"})
 {
 
-    yang_name = "sourceRoutingStatsTable"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sourceRoutingStatsTable"; yang_parent_name = "TOKEN-RING-RMON-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TOKENRINGRMONMIB::Sourceroutingstatstable::~Sourceroutingstatstable()
+TOKENRINGRMONMIB::SourceRoutingStatsTable::~SourceRoutingStatsTable()
 {
 }
 
-bool TOKENRINGRMONMIB::Sourceroutingstatstable::has_data() const
+bool TOKENRINGRMONMIB::SourceRoutingStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<sourceroutingstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sourceroutingstatsentry.len(); index++)
     {
         if(sourceroutingstatsentry[index]->has_data())
             return true;
@@ -3804,9 +3859,9 @@ bool TOKENRINGRMONMIB::Sourceroutingstatstable::has_data() const
     return false;
 }
 
-bool TOKENRINGRMONMIB::Sourceroutingstatstable::has_operation() const
+bool TOKENRINGRMONMIB::SourceRoutingStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<sourceroutingstatsentry.size(); index++)
+    for (std::size_t index=0; index<sourceroutingstatsentry.len(); index++)
     {
         if(sourceroutingstatsentry[index]->has_operation())
             return true;
@@ -3814,21 +3869,21 @@ bool TOKENRINGRMONMIB::Sourceroutingstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string TOKENRINGRMONMIB::Sourceroutingstatstable::get_absolute_path() const
+std::string TOKENRINGRMONMIB::SourceRoutingStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TOKEN-RING-RMON-MIB:TOKEN-RING-RMON-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TOKENRINGRMONMIB::Sourceroutingstatstable::get_segment_path() const
+std::string TOKENRINGRMONMIB::SourceRoutingStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sourceRoutingStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Sourceroutingstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::SourceRoutingStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3837,25 +3892,25 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Sourceroutingst
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::Sourceroutingstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TOKENRINGRMONMIB::SourceRoutingStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sourceRoutingStatsEntry")
     {
-        auto c = std::make_shared<TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry>();
+        auto c = std::make_shared<TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry>();
         c->parent = this;
-        sourceroutingstatsentry.push_back(c);
+        sourceroutingstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Sourceroutingstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::SourceRoutingStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sourceroutingstatsentry)
+    for (auto c : sourceroutingstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3866,22 +3921,22 @@ std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Sourceroutingst
     return children;
 }
 
-void TOKENRINGRMONMIB::Sourceroutingstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TOKENRINGRMONMIB::SourceRoutingStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void TOKENRINGRMONMIB::Sourceroutingstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void TOKENRINGRMONMIB::SourceRoutingStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool TOKENRINGRMONMIB::Sourceroutingstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool TOKENRINGRMONMIB::SourceRoutingStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sourceRoutingStatsEntry")
         return true;
     return false;
 }
 
-TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry::Sourceroutingstatsentry()
+TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry::SourceRoutingStatsEntry()
     :
     sourceroutingstatsifindex{YType::int32, "sourceRoutingStatsIfIndex"},
     sourceroutingstatsringnumber{YType::int32, "sourceRoutingStatsRingNumber"},
@@ -3911,15 +3966,16 @@ TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry::Sourceroutin
     sourceroutingstatscreatetime{YType::uint32, "RMON2-MIB:sourceRoutingStatsCreateTime"}
 {
 
-    yang_name = "sourceRoutingStatsEntry"; yang_parent_name = "sourceRoutingStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sourceRoutingStatsEntry"; yang_parent_name = "sourceRoutingStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry::~Sourceroutingstatsentry()
+TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry::~SourceRoutingStatsEntry()
 {
 }
 
-bool TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry::has_data() const
+bool TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return sourceroutingstatsifindex.is_set
 	|| sourceroutingstatsringnumber.is_set
 	|| sourceroutingstatsinframes.is_set
@@ -3948,7 +4004,7 @@ bool TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry::has_dat
 	|| sourceroutingstatscreatetime.is_set;
 }
 
-bool TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry::has_operation() const
+bool TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sourceroutingstatsifindex.yfilter)
@@ -3979,21 +4035,22 @@ bool TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry::has_ope
 	|| ydk::is_set(sourceroutingstatscreatetime.yfilter);
 }
 
-std::string TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry::get_absolute_path() const
+std::string TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "TOKEN-RING-RMON-MIB:TOKEN-RING-RMON-MIB/sourceRoutingStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry::get_segment_path() const
+std::string TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sourceRoutingStatsEntry" <<"[sourceRoutingStatsIfIndex='" <<sourceroutingstatsifindex <<"']";
+    path_buffer << "sourceRoutingStatsEntry";
+    ADD_KEY_TOKEN(sourceroutingstatsifindex, "sourceRoutingStatsIfIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4028,19 +4085,19 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::Sourceroutingst
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sourceRoutingStatsIfIndex")
     {
@@ -4200,7 +4257,7 @@ void TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry::set_val
     }
 }
 
-void TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sourceRoutingStatsIfIndex")
     {
@@ -4308,7 +4365,7 @@ void TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry::set_fil
     }
 }
 
-bool TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sourceRoutingStatsIfIndex" || name == "sourceRoutingStatsRingNumber" || name == "sourceRoutingStatsInFrames" || name == "sourceRoutingStatsOutFrames" || name == "sourceRoutingStatsThroughFrames" || name == "sourceRoutingStatsAllRoutesBroadcastFrames" || name == "sourceRoutingStatsSingleRouteBroadcastFrames" || name == "sourceRoutingStatsInOctets" || name == "sourceRoutingStatsOutOctets" || name == "sourceRoutingStatsThroughOctets" || name == "sourceRoutingStatsAllRoutesBroadcastOctets" || name == "sourceRoutingStatsSingleRoutesBroadcastOctets" || name == "sourceRoutingStatsLocalLLCFrames" || name == "sourceRoutingStats1HopFrames" || name == "sourceRoutingStats2HopsFrames" || name == "sourceRoutingStats3HopsFrames" || name == "sourceRoutingStats4HopsFrames" || name == "sourceRoutingStats5HopsFrames" || name == "sourceRoutingStats6HopsFrames" || name == "sourceRoutingStats7HopsFrames" || name == "sourceRoutingStats8HopsFrames" || name == "sourceRoutingStatsMoreThan8HopsFrames" || name == "sourceRoutingStatsOwner" || name == "sourceRoutingStatsStatus" || name == "sourceRoutingStatsDroppedFrames" || name == "sourceRoutingStatsCreateTime")
         return true;
@@ -4320,23 +4377,23 @@ const Enum::YLeaf EntryStatus::createRequest {2, "createRequest"};
 const Enum::YLeaf EntryStatus::underCreation {3, "underCreation"};
 const Enum::YLeaf EntryStatus::invalid {4, "invalid"};
 
-const Enum::YLeaf TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::Ringstationcontrolringstate::normalOperation {1, "normalOperation"};
-const Enum::YLeaf TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::Ringstationcontrolringstate::ringPurgeState {2, "ringPurgeState"};
-const Enum::YLeaf TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::Ringstationcontrolringstate::claimTokenState {3, "claimTokenState"};
-const Enum::YLeaf TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::Ringstationcontrolringstate::beaconFrameStreamingState {4, "beaconFrameStreamingState"};
-const Enum::YLeaf TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::Ringstationcontrolringstate::beaconBitStreamingState {5, "beaconBitStreamingState"};
-const Enum::YLeaf TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::Ringstationcontrolringstate::beaconRingSignalLossState {6, "beaconRingSignalLossState"};
-const Enum::YLeaf TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::Ringstationcontrolringstate::beaconSetRecoveryModeState {7, "beaconSetRecoveryModeState"};
+const Enum::YLeaf TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::RingStationControlRingState::normalOperation {1, "normalOperation"};
+const Enum::YLeaf TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::RingStationControlRingState::ringPurgeState {2, "ringPurgeState"};
+const Enum::YLeaf TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::RingStationControlRingState::claimTokenState {3, "claimTokenState"};
+const Enum::YLeaf TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::RingStationControlRingState::beaconFrameStreamingState {4, "beaconFrameStreamingState"};
+const Enum::YLeaf TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::RingStationControlRingState::beaconBitStreamingState {5, "beaconBitStreamingState"};
+const Enum::YLeaf TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::RingStationControlRingState::beaconRingSignalLossState {6, "beaconRingSignalLossState"};
+const Enum::YLeaf TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::RingStationControlRingState::beaconSetRecoveryModeState {7, "beaconSetRecoveryModeState"};
 
-const Enum::YLeaf TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::Ringstationstationstatus::active {1, "active"};
-const Enum::YLeaf TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::Ringstationstationstatus::inactive {2, "inactive"};
-const Enum::YLeaf TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::Ringstationstationstatus::forcedRemoval {3, "forcedRemoval"};
+const Enum::YLeaf TOKENRINGRMONMIB::RingStationTable::RingStationEntry::RingStationStationStatus::active {1, "active"};
+const Enum::YLeaf TOKENRINGRMONMIB::RingStationTable::RingStationEntry::RingStationStationStatus::inactive {2, "inactive"};
+const Enum::YLeaf TOKENRINGRMONMIB::RingStationTable::RingStationEntry::RingStationStationStatus::forcedRemoval {3, "forcedRemoval"};
 
-const Enum::YLeaf TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::Ringstationconfigcontrolremove::stable {1, "stable"};
-const Enum::YLeaf TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::Ringstationconfigcontrolremove::removing {2, "removing"};
+const Enum::YLeaf TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::RingStationConfigControlRemove::stable {1, "stable"};
+const Enum::YLeaf TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::RingStationConfigControlRemove::removing {2, "removing"};
 
-const Enum::YLeaf TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::Ringstationconfigcontrolupdatestats::stable {1, "stable"};
-const Enum::YLeaf TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::Ringstationconfigcontrolupdatestats::updating {2, "updating"};
+const Enum::YLeaf TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::RingStationConfigControlUpdateStats::stable {1, "stable"};
+const Enum::YLeaf TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::RingStationConfigControlUpdateStats::updating {2, "updating"};
 
 
 }

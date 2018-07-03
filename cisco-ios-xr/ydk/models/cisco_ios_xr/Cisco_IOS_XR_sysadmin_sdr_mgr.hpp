@@ -33,7 +33,7 @@ class SdrConfig : public ydk::Entity
 
         class Sdr; //type: SdrConfig::Sdr
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrConfig::Sdr> > sdr;
+        ydk::YList sdr;
         
 }; // SdrConfig
 
@@ -70,13 +70,13 @@ class SdrConfig::Sdr : public ydk::Entity
         class Pairing; //type: SdrConfig::Sdr::Pairing
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrConfig::Sdr::Resources> resources;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrConfig::Sdr::Location> > location;
+        ydk::YList location;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrConfig::Sdr::Action> action;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrConfig::Sdr::Detail> detail;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrConfig::Sdr::RebootHistory> reboot_history;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrConfig::Sdr::Nodes> nodes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrConfig::Sdr::Pairing2> pairing2;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrConfig::Sdr::Pairing> > pairing;
+        ydk::YList pairing;
                 class PairingMode;
         class Issu;
 
@@ -104,7 +104,7 @@ class SdrConfig::Sdr::Resources : public ydk::Entity
         ydk::YLeaf disk_space_size; //type: uint32
         class CardType; //type: SdrConfig::Sdr::Resources::CardType
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrConfig::Sdr::Resources::CardType> > card_type;
+        ydk::YList card_type;
         
 }; // SdrConfig::Sdr::Resources
 
@@ -171,7 +171,7 @@ class SdrConfig::Sdr::Action : public ydk::Entity
 
         class Location; //type: SdrConfig::Sdr::Action::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrConfig::Sdr::Action::Location> > location;
+        ydk::YList location;
         
 }; // SdrConfig::Sdr::Action
 
@@ -215,7 +215,7 @@ class SdrConfig::Sdr::Detail : public ydk::Entity
 
         class Location; //type: SdrConfig::Sdr::Detail::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrConfig::Sdr::Detail::Location> > location;
+        ydk::YList location;
         
 }; // SdrConfig::Sdr::Detail
 
@@ -258,7 +258,7 @@ class SdrConfig::Sdr::Detail::Location : public ydk::Entity
         ydk::YLeaf rh_count; //type: uint32
         class RebootHist1; //type: SdrConfig::Sdr::Detail::Location::RebootHist1
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrConfig::Sdr::Detail::Location::RebootHist1> > reboot_hist1;
+        ydk::YList reboot_hist1;
         
 }; // SdrConfig::Sdr::Detail::Location
 
@@ -329,7 +329,7 @@ class SdrConfig::Sdr::RebootHistory::Reverse : public ydk::Entity
 
         class Location; //type: SdrConfig::Sdr::RebootHistory::Reverse::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrConfig::Sdr::RebootHistory::Reverse::Location> > location;
+        ydk::YList location;
         
 }; // SdrConfig::Sdr::RebootHistory::Reverse
 
@@ -355,7 +355,7 @@ class SdrConfig::Sdr::RebootHistory::Reverse::Location : public ydk::Entity
         ydk::YLeaf rh_count; //type: uint32
         class RebootHist2; //type: SdrConfig::Sdr::RebootHistory::Reverse::Location::RebootHist2
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrConfig::Sdr::RebootHistory::Reverse::Location::RebootHist2> > reboot_hist2;
+        ydk::YList reboot_hist2;
         
 }; // SdrConfig::Sdr::RebootHistory::Reverse::Location
 
@@ -401,7 +401,7 @@ class SdrConfig::Sdr::RebootHistory::DefaultDisp : public ydk::Entity
 
         class Location; //type: SdrConfig::Sdr::RebootHistory::DefaultDisp::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrConfig::Sdr::RebootHistory::DefaultDisp::Location> > location;
+        ydk::YList location;
         
 }; // SdrConfig::Sdr::RebootHistory::DefaultDisp
 
@@ -427,7 +427,7 @@ class SdrConfig::Sdr::RebootHistory::DefaultDisp::Location : public ydk::Entity
         ydk::YLeaf rh_count; //type: uint32
         class RebootHist2; //type: SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::RebootHist2
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::RebootHist2> > reboot_hist2;
+        ydk::YList reboot_hist2;
         
 }; // SdrConfig::Sdr::RebootHistory::DefaultDisp::Location
 
@@ -473,7 +473,7 @@ class SdrConfig::Sdr::Nodes : public ydk::Entity
 
         class Location; //type: SdrConfig::Sdr::Nodes::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrConfig::Sdr::Nodes::Location> > location;
+        ydk::YList location;
         
 }; // SdrConfig::Sdr::Nodes
 
@@ -528,7 +528,7 @@ class SdrConfig::Sdr::Pairing2 : public ydk::Entity
         class Pairing; //type: SdrConfig::Sdr::Pairing2::Pairing
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrConfig::Sdr::Pairing2::Sdrlead> sdrlead;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrConfig::Sdr::Pairing2::Pairing> > pairing;
+        ydk::YList pairing;
         
 }; // SdrConfig::Sdr::Pairing2
 
@@ -647,7 +647,7 @@ class SdrManager::SdrMgr : public ydk::Entity
 
         class Trace; //type: SdrManager::SdrMgr::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrManager::SdrMgr::Trace> > trace;
+        ydk::YList trace;
         
 }; // SdrManager::SdrMgr
 
@@ -672,7 +672,7 @@ class SdrManager::SdrMgr::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: SdrManager::SdrMgr::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrManager::SdrMgr::Trace::Location> > location;
+        ydk::YList location;
         
 }; // SdrManager::SdrMgr::Trace
 
@@ -696,7 +696,7 @@ class SdrManager::SdrMgr::Trace::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: SdrManager::SdrMgr::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrManager::SdrMgr::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // SdrManager::SdrMgr::Trace::Location
 
@@ -720,7 +720,7 @@ class SdrManager::SdrMgr::Trace::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: SdrManager::SdrMgr::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::SdrManager::SdrMgr::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // SdrManager::SdrMgr::Trace::Location::AllOptions
 
@@ -768,7 +768,7 @@ class PrivateSdr : public ydk::Entity
 
         class SdrName; //type: PrivateSdr::SdrName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::PrivateSdr::SdrName> > sdr_name;
+        ydk::YList sdr_name;
         
 }; // PrivateSdr
 
@@ -796,7 +796,7 @@ class PrivateSdr::SdrName : public ydk::Entity
         ydk::YLeaf lead_rack1; //type: uint32
         class Pairing; //type: PrivateSdr::SdrName::Pairing
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdr_mgr::PrivateSdr::SdrName::Pairing> > pairing;
+        ydk::YList pairing;
         
 }; // PrivateSdr::SdrName
 
@@ -826,14 +826,6 @@ class PrivateSdr::SdrName::Pairing : public ydk::Entity
 
 }; // PrivateSdr::SdrName::Pairing
 
-class CardType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf RP;
-        static const ydk::Enum::YLeaf LC;
-
-};
-
 class VmReloadReason : public ydk::Enum
 {
     public:
@@ -848,6 +840,15 @@ class VmReloadReason : public ydk::Enum
         static const ydk::Enum::YLeaf FIRST_BOOT;
         static const ydk::Enum::YLeaf SMU;
         static const ydk::Enum::YLeaf REASON_UNKNOWN;
+
+};
+
+class CardType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf RP;
+        static const ydk::Enum::YLeaf LC;
+        static const ydk::Enum::YLeaf CC;
 
 };
 

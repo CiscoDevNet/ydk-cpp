@@ -57,7 +57,7 @@ class Ipv6Network::Nodes : public ydk::Entity
 
         class Node; //type: Ipv6Network::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Ipv6Network::Nodes
 
@@ -130,7 +130,7 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs : public ydk::Entity
 
         class Vrf; //type: Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Ipv6Network::Nodes::Node::InterfaceData::Vrfs
 
@@ -183,7 +183,7 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs : public ydk::E
 
         class Brief; //type: Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief> > brief;
+        ydk::YList brief;
         
 }; // Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs
 
@@ -211,7 +211,7 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief : public
         class Address; //type: Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Address
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::LinkLocalAddress> link_local_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Address> > address;
+        ydk::YList address;
         
 }; // Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief
 
@@ -284,7 +284,7 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails : public
 
         class GlobalDetail; //type: Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail> > global_detail;
+        ydk::YList global_detail;
         
 }; // Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails
 
@@ -339,9 +339,9 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalD
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime> caps_utime;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime> fwd_en_utime;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime> fwd_dis_utime;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MulticastGroup> > multicast_group;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Address> > address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::ClientMulticastGroup> > client_multicast_group;
+        ydk::YList multicast_group;
+        ydk::YList address;
+        ydk::YList client_multicast_group;
         
 }; // Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail
 
@@ -415,9 +415,9 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalD
         class Outbound; //type: Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Outbound
         class Common; //type: Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Common
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Inbound> > inbound;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Outbound> > outbound;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::Common> > common;
+        ydk::YList inbound;
+        ydk::YList outbound;
+        ydk::YList common;
         
 }; // Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList
 
@@ -765,7 +765,7 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs : public 
 
         class GlobalBrief; //type: Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief> > global_brief;
+        ydk::YList global_brief;
         
 }; // Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs
 
@@ -793,7 +793,7 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBr
         class Address; //type: Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::Address
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::LinkLocalAddress> link_local_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::Address> > address;
+        ydk::YList address;
         
 }; // Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief
 
@@ -866,7 +866,7 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details : public ydk::
 
         class Detail; //type: Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail> > detail;
+        ydk::YList detail;
         
 }; // Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details
 
@@ -921,9 +921,9 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail : publ
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime> caps_utime;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime> fwd_en_utime;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime> fwd_dis_utime;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup> > multicast_group;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Address> > address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::ClientMulticastGroup> > client_multicast_group;
+        ydk::YList multicast_group;
+        ydk::YList address;
+        ydk::YList client_multicast_group;
         
 }; // Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail
 
@@ -997,9 +997,9 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Multi
         class Outbound; //type: Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Outbound
         class Common; //type: Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Common
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Inbound> > inbound;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Outbound> > outbound;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ma_oper::Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::Common> > common;
+        ydk::YList inbound;
+        ydk::YList outbound;
+        ydk::YList common;
         
 }; // Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList
 
@@ -1458,6 +1458,16 @@ class Ipv6MaOperState : public ydk::Enum
 
 };
 
+class Ipv6MaIfLineState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf error;
+
+};
+
 class Ipv6MaIfAddrState : public ydk::Enum
 {
     public:
@@ -1466,16 +1476,6 @@ class Ipv6MaIfAddrState : public ydk::Enum
         static const ydk::Enum::YLeaf duplicate;
         static const ydk::Enum::YLeaf inaccessible;
         static const ydk::Enum::YLeaf tentative;
-
-};
-
-class Ipv6MaIfLineState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf error;
 
 };
 

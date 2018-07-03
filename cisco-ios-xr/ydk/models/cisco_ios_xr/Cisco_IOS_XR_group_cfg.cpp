@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_group_cfg {
 
 Groups::Groups()
+    :
+    group(this, {"group_name"})
 {
 
-    yang_name = "groups"; yang_parent_name = "Cisco-IOS-XR-group-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "groups"; yang_parent_name = "Cisco-IOS-XR-group-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Groups::~Groups()
@@ -23,7 +25,8 @@ Groups::~Groups()
 
 bool Groups::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool Groups::has_data() const
 
 bool Groups::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> Groups::get_child_by_name(const std::string & child_yang
     {
         auto c = std::make_shared<Groups::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> Groups::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -131,7 +134,7 @@ Groups::Group::Group()
     group_name{YType::str, "group-name"}
 {
 
-    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Groups::Group::~Group()
@@ -140,6 +143,7 @@ Groups::Group::~Group()
 
 bool Groups::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return group_name.is_set;
 }
 
@@ -159,7 +163,8 @@ std::string Groups::Group::get_absolute_path() const
 std::string Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group" <<"[group-name='" <<group_name <<"']";
+    path_buffer << "group";
+    ADD_KEY_TOKEN(group_name, "group-name");
     return path_buffer.str();
 }
 
@@ -215,7 +220,7 @@ ApplyGroups::ApplyGroups()
     apply_group{YType::str, "apply-group"}
 {
 
-    yang_name = "apply-groups"; yang_parent_name = "Cisco-IOS-XR-group-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "apply-groups"; yang_parent_name = "Cisco-IOS-XR-group-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ApplyGroups::~ApplyGroups()
@@ -224,6 +229,7 @@ ApplyGroups::~ApplyGroups()
 
 bool ApplyGroups::has_data() const
 {
+    if (is_presence_container) return true;
     return apply_group.is_set;
 }
 

@@ -151,7 +151,7 @@ class Lldp::Interfaces : public ydk::Entity
 
         class Interface; //type: Lldp::Interfaces::Interface
 
-        std::vector<std::shared_ptr<openconfig::openconfig_lldp::Lldp::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Lldp::Interfaces
 
@@ -281,7 +281,7 @@ class Lldp::Interfaces::Interface::Neighbors : public ydk::Entity
 
         class Neighbor; //type: Lldp::Interfaces::Interface::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<openconfig::openconfig_lldp::Lldp::Interfaces::Interface::Neighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // Lldp::Interfaces::Interface::Neighbors
 
@@ -387,7 +387,7 @@ class Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs : public ydk:
 
         class Tlv; //type: Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv
 
-        std::vector<std::shared_ptr<openconfig::openconfig_lldp::Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv> > tlv;
+        ydk::YList tlv;
         
 }; // Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs
 
@@ -485,7 +485,7 @@ class Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities : public yd
 
         class Capability; //type: Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability
 
-        std::vector<std::shared_ptr<openconfig::openconfig_lldp::Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability> > capability;
+        ydk::YList capability;
         
 }; // Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities
 

@@ -17,7 +17,7 @@ Pppea::Pppea()
 {
     nodes->parent = this;
 
-    yang_name = "pppea"; yang_parent_name = "Cisco-IOS-XR-ppp-ea-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "pppea"; yang_parent_name = "Cisco-IOS-XR-ppp-ea-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Pppea::~Pppea()
@@ -26,6 +26,7 @@ Pppea::~Pppea()
 
 bool Pppea::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Pppea::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Pppea::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "pppea"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "pppea"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pppea::Nodes::~Nodes()
@@ -129,7 +132,8 @@ Pppea::Nodes::~Nodes()
 
 bool Pppea::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Pppea::Nodes::has_data() const
 
 bool Pppea::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Pppea::Nodes::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Pppea::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pppea::Nodes::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,12 +221,12 @@ bool Pppea::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Pppea::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     ea_interface_names(std::make_shared<Pppea::Nodes::Node::EaInterfaceNames>())
 {
     ea_interface_names->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pppea::Nodes::Node::~Node()
@@ -231,6 +235,7 @@ Pppea::Nodes::Node::~Node()
 
 bool Pppea::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (ea_interface_names !=  nullptr && ea_interface_names->has_data());
 }
@@ -252,7 +257,8 @@ std::string Pppea::Nodes::Node::get_absolute_path() const
 std::string Pppea::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -318,9 +324,11 @@ bool Pppea::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) con
 }
 
 Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceNames()
+    :
+    ea_interface_name(this, {"interface_name"})
 {
 
-    yang_name = "ea-interface-names"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ea-interface-names"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppea::Nodes::Node::EaInterfaceNames::~EaInterfaceNames()
@@ -329,7 +337,8 @@ Pppea::Nodes::Node::EaInterfaceNames::~EaInterfaceNames()
 
 bool Pppea::Nodes::Node::EaInterfaceNames::has_data() const
 {
-    for (std::size_t index=0; index<ea_interface_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ea_interface_name.len(); index++)
     {
         if(ea_interface_name[index]->has_data())
             return true;
@@ -339,7 +348,7 @@ bool Pppea::Nodes::Node::EaInterfaceNames::has_data() const
 
 bool Pppea::Nodes::Node::EaInterfaceNames::has_operation() const
 {
-    for (std::size_t index=0; index<ea_interface_name.size(); index++)
+    for (std::size_t index=0; index<ea_interface_name.len(); index++)
     {
         if(ea_interface_name[index]->has_operation())
             return true;
@@ -369,7 +378,7 @@ std::shared_ptr<Entity> Pppea::Nodes::Node::EaInterfaceNames::get_child_by_name(
     {
         auto c = std::make_shared<Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName>();
         c->parent = this;
-        ea_interface_name.push_back(c);
+        ea_interface_name.append(c);
         return c;
     }
 
@@ -381,7 +390,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pppea::Nodes::Node::EaInterfaceNa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ea_interface_name)
+    for (auto c : ea_interface_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -445,7 +454,7 @@ Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName::EaInterfaceName()
     mpls_adjacency_state{YType::enumeration, "mpls-adjacency-state"}
 {
 
-    yang_name = "ea-interface-name"; yang_parent_name = "ea-interface-names"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ea-interface-name"; yang_parent_name = "ea-interface-names"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName::~EaInterfaceName()
@@ -454,6 +463,7 @@ Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName::~EaInterfaceName()
 
 bool Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface.is_set
 	|| is_lcp_running.is_set
@@ -532,7 +542,8 @@ bool Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName::has_operation() cons
 std::string Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ea-interface-name" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "ea-interface-name";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 

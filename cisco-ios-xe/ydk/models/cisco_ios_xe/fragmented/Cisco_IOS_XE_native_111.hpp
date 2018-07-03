@@ -972,7 +972,7 @@ class Native::Aaa::Server::Radius::Sesm : public ydk::Entity
         class Key; //type: Native::Aaa::Server::Radius::Sesm::Key
         class MessageAuthenticator; //type: Native::Aaa::Server::Radius::Sesm::MessageAuthenticator
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Server::Radius::Sesm::Client> > client;
+        ydk::YList client;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Server::Radius::Sesm::Key> key;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Server::Radius::Sesm::MessageAuthenticator> message_authenticator;
         
@@ -1000,7 +1000,7 @@ class Native::Aaa::Server::Radius::Sesm::Client : public ydk::Entity
         class Vrf; //type: Native::Aaa::Server::Radius::Sesm::Client::Vrf
         class Key; //type: Native::Aaa::Server::Radius::Sesm::Client::Key
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Server::Radius::Sesm::Client::Vrf> > vrf;
+        ydk::YList vrf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Server::Radius::Sesm::Client::Key> key;
         
 }; // Native::Aaa::Server::Radius::Sesm::Client
@@ -1353,7 +1353,7 @@ class Native::Privilege::Exec : public ydk::Entity
 
         class Level; //type: Native::Privilege::Exec::Level
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Privilege::Exec::Level> > level;
+        ydk::YList level;
         
 }; // Native::Privilege::Exec
 
@@ -1378,7 +1378,7 @@ class Native::Privilege::Exec::Level : public ydk::Entity
         ydk::YLeaf privilege; //type: uint8
         class CommandList; //type: Native::Privilege::Exec::Level::CommandList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Privilege::Exec::Level::CommandList> > command_list;
+        ydk::YList command_list;
         
 }; // Native::Privilege::Exec::Level
 
@@ -1616,7 +1616,7 @@ class Native::MacAddressTable::Limit : public ydk::Entity
 
         class Bdomain; //type: Native::MacAddressTable::Limit::Bdomain
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::MacAddressTable::Limit::Bdomain> > bdomain;
+        ydk::YList bdomain;
         
 }; // Native::MacAddressTable::Limit
 
@@ -1665,7 +1665,7 @@ class Native::MacAddressTable::Learning : public ydk::Entity
 
         class Vlan; //type: Native::MacAddressTable::Learning::Vlan
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::MacAddressTable::Learning::Vlan> > vlan;
+        ydk::YList vlan;
         
 }; // Native::MacAddressTable::Learning
 
@@ -2055,7 +2055,7 @@ class Native::Redundancy::Interchassis : public ydk::Entity
 
         class Group; //type: Native::Redundancy::Interchassis::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Redundancy::Interchassis::Group> > group;
+        ydk::YList group;
         
 }; // Native::Redundancy::Interchassis
 
@@ -2435,7 +2435,7 @@ class Native::SpanningTree : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SpanningTree::Portfast> portfast;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SpanningTree::Transmit> transmit;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SpanningTree::Uplinkfast> uplinkfast; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SpanningTree::Vlan> > vlan;
+        ydk::YList vlan;
                 class Mode;
 
 }; // Native::SpanningTree
@@ -2579,7 +2579,7 @@ class Native::SpanningTree::Mst : public ydk::Entity
         class InstanceRange; //type: Native::SpanningTree::Mst::InstanceRange
         class Configuration; //type: Native::SpanningTree::Mst::Configuration
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SpanningTree::Mst::InstanceRange> > instance_range;
+        ydk::YList instance_range;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SpanningTree::Mst::Configuration> configuration;
         
 }; // Native::SpanningTree::Mst
@@ -2632,7 +2632,7 @@ class Native::SpanningTree::Mst::Configuration : public ydk::Entity
         class Instance; //type: Native::SpanningTree::Mst::Configuration::Instance
         class PrivateVlan; //type: Native::SpanningTree::Mst::Configuration::PrivateVlan
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SpanningTree::Mst::Configuration::Instance> > instance;
+        ydk::YList instance;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SpanningTree::Mst::Configuration::PrivateVlan> private_vlan;
         
 }; // Native::SpanningTree::Mst::Configuration
@@ -3032,7 +3032,7 @@ class Native::Track : public ydk::Entity
         class Resolution; //type: Native::Track::Resolution
         class Timer; //type: Native::Track::Timer
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject> > tracked_object;
+        ydk::YList tracked_object;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::Resolution> resolution;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::Timer> timer;
         
@@ -3075,7 +3075,7 @@ class Native::Track::TrackedObject : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject::List> list;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject::Delay> delay;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject::Object> > object;
+        ydk::YList object;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject::Ipv6Object> ipv6_object;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject::IpObject> ip_object;
                 class DefaultState;

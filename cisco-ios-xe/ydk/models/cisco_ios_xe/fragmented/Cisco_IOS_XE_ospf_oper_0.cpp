@@ -17,7 +17,7 @@ OspfOperData::OspfOperData()
     ospf_state(nullptr) // presence node
 {
 
-    yang_name = "ospf-oper-data"; yang_parent_name = "Cisco-IOS-XE-ospf-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ospf-oper-data"; yang_parent_name = "Cisco-IOS-XE-ospf-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 OspfOperData::~OspfOperData()
@@ -26,6 +26,7 @@ OspfOperData::~OspfOperData()
 
 bool OspfOperData::has_data() const
 {
+    if (is_presence_container) return true;
     return (ospf_state !=  nullptr && ospf_state->has_data());
 }
 
@@ -120,9 +121,11 @@ bool OspfOperData::has_leaf_or_child_of_name(const std::string & name) const
 OspfOperData::OspfState::OspfState()
     :
     op_mode{YType::enumeration, "op-mode"}
+        ,
+    ospf_instance(this, {"af", "router_id"})
 {
 
-    yang_name = "ospf-state"; yang_parent_name = "ospf-oper-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospf-state"; yang_parent_name = "ospf-oper-data"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 OspfOperData::OspfState::~OspfState()
@@ -131,7 +134,8 @@ OspfOperData::OspfState::~OspfState()
 
 bool OspfOperData::OspfState::has_data() const
 {
-    for (std::size_t index=0; index<ospf_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospf_instance.len(); index++)
     {
         if(ospf_instance[index]->has_data())
             return true;
@@ -141,7 +145,7 @@ bool OspfOperData::OspfState::has_data() const
 
 bool OspfOperData::OspfState::has_operation() const
 {
-    for (std::size_t index=0; index<ospf_instance.size(); index++)
+    for (std::size_t index=0; index<ospf_instance.len(); index++)
     {
         if(ospf_instance[index]->has_operation())
             return true;
@@ -180,7 +184,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::get_child_by_name(const std::st
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance>();
         c->parent = this;
-        ospf_instance.push_back(c);
+        ospf_instance.append(c);
         return c;
     }
 
@@ -192,7 +196,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ospf_instance)
+    for (auto c : ospf_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -232,9 +236,13 @@ OspfOperData::OspfState::OspfInstance::OspfInstance()
     :
     af{YType::enumeration, "af"},
     router_id{YType::uint32, "router-id"}
+        ,
+    ospf_area(this, {"area_id"})
+    , link_scope_lsas(this, {"lsa_type"})
+    , multi_topology(this, {"name"})
 {
 
-    yang_name = "ospf-instance"; yang_parent_name = "ospf-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospf-instance"; yang_parent_name = "ospf-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OspfOperData::OspfState::OspfInstance::~OspfInstance()
@@ -243,17 +251,18 @@ OspfOperData::OspfState::OspfInstance::~OspfInstance()
 
 bool OspfOperData::OspfState::OspfInstance::has_data() const
 {
-    for (std::size_t index=0; index<ospf_area.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospf_area.len(); index++)
     {
         if(ospf_area[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<link_scope_lsas.size(); index++)
+    for (std::size_t index=0; index<link_scope_lsas.len(); index++)
     {
         if(link_scope_lsas[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<multi_topology.size(); index++)
+    for (std::size_t index=0; index<multi_topology.len(); index++)
     {
         if(multi_topology[index]->has_data())
             return true;
@@ -264,17 +273,17 @@ bool OspfOperData::OspfState::OspfInstance::has_data() const
 
 bool OspfOperData::OspfState::OspfInstance::has_operation() const
 {
-    for (std::size_t index=0; index<ospf_area.size(); index++)
+    for (std::size_t index=0; index<ospf_area.len(); index++)
     {
         if(ospf_area[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<link_scope_lsas.size(); index++)
+    for (std::size_t index=0; index<link_scope_lsas.len(); index++)
     {
         if(link_scope_lsas[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<multi_topology.size(); index++)
+    for (std::size_t index=0; index<multi_topology.len(); index++)
     {
         if(multi_topology[index]->has_operation())
             return true;
@@ -294,7 +303,9 @@ std::string OspfOperData::OspfState::OspfInstance::get_absolute_path() const
 std::string OspfOperData::OspfState::OspfInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospf-instance" <<"[af='" <<af <<"']" <<"[router-id='" <<router_id <<"']";
+    path_buffer << "ospf-instance";
+    ADD_KEY_TOKEN(af, "af");
+    ADD_KEY_TOKEN(router_id, "router-id");
     return path_buffer.str();
 }
 
@@ -315,7 +326,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::get_child_by_name
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea>();
         c->parent = this;
-        ospf_area.push_back(c);
+        ospf_area.append(c);
         return c;
     }
 
@@ -323,7 +334,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::get_child_by_name
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas>();
         c->parent = this;
-        link_scope_lsas.push_back(c);
+        link_scope_lsas.append(c);
         return c;
     }
 
@@ -331,7 +342,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::get_child_by_name
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::MultiTopology>();
         c->parent = this;
-        multi_topology.push_back(c);
+        multi_topology.append(c);
         return c;
     }
 
@@ -343,7 +354,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ospf_area)
+    for (auto c : ospf_area.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -352,7 +363,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : link_scope_lsas)
+    for (auto c : link_scope_lsas.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -361,7 +372,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : multi_topology)
+    for (auto c : multi_topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -410,9 +421,12 @@ bool OspfOperData::OspfState::OspfInstance::has_leaf_or_child_of_name(const std:
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfArea()
     :
     area_id{YType::uint32, "area-id"}
+        ,
+    ospf_interface(this, {"name"})
+    , area_scope_lsa(this, {"lsa_type"})
 {
 
-    yang_name = "ospf-area"; yang_parent_name = "ospf-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospf-area"; yang_parent_name = "ospf-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::~OspfArea()
@@ -421,12 +435,13 @@ OspfOperData::OspfState::OspfInstance::OspfArea::~OspfArea()
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::has_data() const
 {
-    for (std::size_t index=0; index<ospf_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospf_interface.len(); index++)
     {
         if(ospf_interface[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<area_scope_lsa.size(); index++)
+    for (std::size_t index=0; index<area_scope_lsa.len(); index++)
     {
         if(area_scope_lsa[index]->has_data())
             return true;
@@ -436,12 +451,12 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::has_data() const
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::has_operation() const
 {
-    for (std::size_t index=0; index<ospf_interface.size(); index++)
+    for (std::size_t index=0; index<ospf_interface.len(); index++)
     {
         if(ospf_interface[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<area_scope_lsa.size(); index++)
+    for (std::size_t index=0; index<area_scope_lsa.len(); index++)
     {
         if(area_scope_lsa[index]->has_operation())
             return true;
@@ -453,7 +468,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::has_operation() const
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospf-area" <<"[area-id='" <<area_id <<"']";
+    path_buffer << "ospf-area";
+    ADD_KEY_TOKEN(area_id, "area-id");
     return path_buffer.str();
 }
 
@@ -473,7 +489,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::get_chi
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface>();
         c->parent = this;
-        ospf_interface.push_back(c);
+        ospf_interface.append(c);
         return c;
     }
 
@@ -481,7 +497,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::get_chi
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa>();
         c->parent = this;
-        area_scope_lsa.push_back(c);
+        area_scope_lsa.append(c);
         return c;
     }
 
@@ -493,7 +509,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ospf_interface)
+    for (auto c : ospf_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -502,7 +518,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : area_scope_lsa)
+    for (auto c : area_scope_lsa.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -561,18 +577,22 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfInterface()
     dr{YType::str, "dr"},
     bdr{YType::str, "bdr"},
     priority{YType::uint8, "priority"}
-    	,
+        ,
     multi_area(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::MultiArea>())
-	,fast_reroute(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::FastReroute>())
-	,ttl_security(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::TtlSecurity>())
-	,authentication(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication>())
+    , static_neighbor(this, {"address"})
+    , fast_reroute(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::FastReroute>())
+    , ttl_security(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::TtlSecurity>())
+    , authentication(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication>())
+    , ospf_neighbor(this, {"neighbor_id"})
+    , intf_link_scope_lsas(this, {"lsa_type"})
+    , intf_multi_topology(this, {"name"})
 {
     multi_area->parent = this;
     fast_reroute->parent = this;
     ttl_security->parent = this;
     authentication->parent = this;
 
-    yang_name = "ospf-interface"; yang_parent_name = "ospf-area"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospf-interface"; yang_parent_name = "ospf-area"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::~OspfInterface()
@@ -581,22 +601,23 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::~OspfInterface()
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::has_data() const
 {
-    for (std::size_t index=0; index<static_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<static_neighbor.len(); index++)
     {
         if(static_neighbor[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospf_neighbor.size(); index++)
+    for (std::size_t index=0; index<ospf_neighbor.len(); index++)
     {
         if(ospf_neighbor[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<intf_link_scope_lsas.size(); index++)
+    for (std::size_t index=0; index<intf_link_scope_lsas.len(); index++)
     {
         if(intf_link_scope_lsas[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<intf_multi_topology.size(); index++)
+    for (std::size_t index=0; index<intf_multi_topology.len(); index++)
     {
         if(intf_multi_topology[index]->has_data())
             return true;
@@ -630,22 +651,22 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::has_data() 
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::has_operation() const
 {
-    for (std::size_t index=0; index<static_neighbor.size(); index++)
+    for (std::size_t index=0; index<static_neighbor.len(); index++)
     {
         if(static_neighbor[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospf_neighbor.size(); index++)
+    for (std::size_t index=0; index<ospf_neighbor.len(); index++)
     {
         if(ospf_neighbor[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<intf_link_scope_lsas.size(); index++)
+    for (std::size_t index=0; index<intf_link_scope_lsas.len(); index++)
     {
         if(intf_link_scope_lsas[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<intf_multi_topology.size(); index++)
+    for (std::size_t index=0; index<intf_multi_topology.len(); index++)
     {
         if(intf_multi_topology[index]->has_operation())
             return true;
@@ -681,7 +702,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::has_operati
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospf-interface" <<"[name='" <<name <<"']";
+    path_buffer << "ospf-interface";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -730,7 +752,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::StaticNeighbor>();
         c->parent = this;
-        static_neighbor.push_back(c);
+        static_neighbor.append(c);
         return c;
     }
 
@@ -765,7 +787,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor>();
         c->parent = this;
-        ospf_neighbor.push_back(c);
+        ospf_neighbor.append(c);
         return c;
     }
 
@@ -773,7 +795,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas>();
         c->parent = this;
-        intf_link_scope_lsas.push_back(c);
+        intf_link_scope_lsas.append(c);
         return c;
     }
 
@@ -781,7 +803,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfMultiTopology>();
         c->parent = this;
-        intf_multi_topology.push_back(c);
+        intf_multi_topology.append(c);
         return c;
     }
 
@@ -798,7 +820,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : static_neighbor)
+    for (auto c : static_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -822,7 +844,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospf_neighbor)
+    for (auto c : ospf_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -831,7 +853,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : intf_link_scope_lsas)
+    for (auto c : intf_link_scope_lsas.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -840,7 +862,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : intf_multi_topology)
+    for (auto c : intf_multi_topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1082,7 +1104,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::MultiArea::Multi
     cost{YType::uint16, "cost"}
 {
 
-    yang_name = "multi-area"; yang_parent_name = "ospf-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multi-area"; yang_parent_name = "ospf-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::MultiArea::~MultiArea()
@@ -1091,6 +1113,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::MultiArea::~Mult
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::MultiArea::has_data() const
 {
+    if (is_presence_container) return true;
     return multi_area_id.is_set
 	|| cost.is_set;
 }
@@ -1174,7 +1197,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::StaticNeighbor::
     poll_interval{YType::uint16, "poll-interval"}
 {
 
-    yang_name = "static-neighbor"; yang_parent_name = "ospf-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-neighbor"; yang_parent_name = "ospf-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::StaticNeighbor::~StaticNeighbor()
@@ -1183,6 +1206,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::StaticNeighbor::
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::StaticNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| cost.is_set
 	|| poll_interval.is_set;
@@ -1199,7 +1223,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::StaticNeigh
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::StaticNeighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-neighbor" <<"[address='" <<address <<"']";
+    path_buffer << "static-neighbor";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -1279,7 +1304,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::FastReroute::Fas
     remote_lfa_enabled{YType::boolean, "remote-lfa-enabled"}
 {
 
-    yang_name = "fast-reroute"; yang_parent_name = "ospf-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fast-reroute"; yang_parent_name = "ospf-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::FastReroute::~FastReroute()
@@ -1288,6 +1313,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::FastReroute::~Fa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::FastReroute::has_data() const
 {
+    if (is_presence_container) return true;
     return candidate_disabled.is_set
 	|| enabled.is_set
 	|| remote_lfa_enabled.is_set;
@@ -1383,7 +1409,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::TtlSecurity::Ttl
     hops{YType::uint8, "hops"}
 {
 
-    yang_name = "ttl-security"; yang_parent_name = "ospf-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ttl-security"; yang_parent_name = "ospf-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::TtlSecurity::~TtlSecurity()
@@ -1392,6 +1418,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::TtlSecurity::~Tt
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::TtlSecurity::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| hops.is_set;
 }
@@ -1474,12 +1501,12 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication::
     key_chain{YType::str, "key-chain"},
     key_string{YType::str, "key-string"},
     no_auth{YType::uint32, "no-auth"}
-    	,
+        ,
     crypto_algorithm_val(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication::CryptoAlgorithmVal>())
 {
     crypto_algorithm_val->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "ospf-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "ospf-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication::~Authentication()
@@ -1488,6 +1515,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication::
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return sa.is_set
 	|| key_chain.is_set
 	|| key_string.is_set
@@ -1618,7 +1646,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication::
     hmac_sha_512{YType::empty, "hmac-sha-512"}
 {
 
-    yang_name = "crypto-algorithm-val"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crypto-algorithm-val"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication::CryptoAlgorithmVal::~CryptoAlgorithmVal()
@@ -1627,6 +1655,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication::
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication::CryptoAlgorithmVal::has_data() const
 {
+    if (is_presence_container) return true;
     return hmac_sha1_12.is_set
 	|| hmac_sha1_20.is_set
 	|| md5.is_set
@@ -1788,12 +1817,12 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor::Os
     dr{YType::str, "dr"},
     bdr{YType::str, "bdr"},
     state{YType::enumeration, "state"}
-    	,
+        ,
     stats(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor::Stats>())
 {
     stats->parent = this;
 
-    yang_name = "ospf-neighbor"; yang_parent_name = "ospf-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospf-neighbor"; yang_parent_name = "ospf-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor::~OspfNeighbor()
@@ -1802,6 +1831,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor::~O
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_id.is_set
 	|| address.is_set
 	|| dr.is_set
@@ -1824,7 +1854,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbo
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospf-neighbor" <<"[neighbor-id='" <<neighbor_id <<"']";
+    path_buffer << "ospf-neighbor";
+    ADD_KEY_TOKEN(neighbor_id, "neighbor-id");
     return path_buffer.str();
 }
 
@@ -1939,7 +1970,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor::St
     nbr_retrans_qlen{YType::uint32, "nbr-retrans-qlen"}
 {
 
-    yang_name = "stats"; yang_parent_name = "ospf-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stats"; yang_parent_name = "ospf-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor::Stats::~Stats()
@@ -1948,6 +1979,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor::St
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor::Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return nbr_event_count.is_set
 	|| nbr_retrans_qlen.is_set;
 }
@@ -2027,9 +2059,12 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbo
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::IntfLinkScopeLsas()
     :
     lsa_type{YType::uint32, "lsa-type"}
+        ,
+    link_scope_lsa(this, {"lsa_id", "adv_router"})
+    , area_scope_lsa(this, {"lsa_type", "adv_router"})
 {
 
-    yang_name = "intf-link-scope-lsas"; yang_parent_name = "ospf-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "intf-link-scope-lsas"; yang_parent_name = "ospf-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::~IntfLinkScopeLsas()
@@ -2038,12 +2073,13 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::has_data() const
 {
-    for (std::size_t index=0; index<link_scope_lsa.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<link_scope_lsa.len(); index++)
     {
         if(link_scope_lsa[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<area_scope_lsa.size(); index++)
+    for (std::size_t index=0; index<area_scope_lsa.len(); index++)
     {
         if(area_scope_lsa[index]->has_data())
             return true;
@@ -2053,12 +2089,12 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::has_operation() const
 {
-    for (std::size_t index=0; index<link_scope_lsa.size(); index++)
+    for (std::size_t index=0; index<link_scope_lsa.len(); index++)
     {
         if(link_scope_lsa[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<area_scope_lsa.size(); index++)
+    for (std::size_t index=0; index<area_scope_lsa.len(); index++)
     {
         if(area_scope_lsa[index]->has_operation())
             return true;
@@ -2070,7 +2106,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "intf-link-scope-lsas" <<"[lsa-type='" <<lsa_type <<"']";
+    path_buffer << "intf-link-scope-lsas";
+    ADD_KEY_TOKEN(lsa_type, "lsa-type");
     return path_buffer.str();
 }
 
@@ -2090,7 +2127,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa>();
         c->parent = this;
-        link_scope_lsa.push_back(c);
+        link_scope_lsa.append(c);
         return c;
     }
 
@@ -2098,7 +2135,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa>();
         c->parent = this;
-        area_scope_lsa.push_back(c);
+        area_scope_lsa.append(c);
         return c;
     }
 
@@ -2110,7 +2147,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : link_scope_lsa)
+    for (auto c : link_scope_lsa.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2119,7 +2156,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : area_scope_lsa)
+    for (auto c : area_scope_lsa.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2163,16 +2200,25 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     raw_data{YType::uint8, "raw-data"},
     version{YType::uint32, "version"},
     router_address{YType::str, "router-address"}
-    	,
+        ,
     ospfv2_lsa(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa>())
-	,ospfv3_lsa_val(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal>())
-	,tlv(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Tlv>())
+    , ospfv2_link(this, {"link_id", "link_data"})
+    , ospfv2_topology(this, {"mt_id"})
+    , ospfv2_external(this, {"mt_id"})
+    , ospfv2_unknown_tlv(this, {"type"})
+    , ospfv3_lsa_val(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal>())
+    , ospfv3_link(this, {"interface_id", "neighbor_interface_id", "neighbor_router_id"})
+    , ospfv3_prefix_list(this, {"prefix"})
+    , ospfv3_ia_prefix(this, {"prefix"})
+    , multi_topology(this, {"name"})
+    , tlv(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Tlv>())
+    , unknown_sub_tlv(this, {"type"})
 {
     ospfv2_lsa->parent = this;
     ospfv3_lsa_val->parent = this;
     tlv->parent = this;
 
-    yang_name = "link-scope-lsa"; yang_parent_name = "intf-link-scope-lsas"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-scope-lsa"; yang_parent_name = "intf-link-scope-lsas"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::~LinkScopeLsa()
@@ -2181,47 +2227,48 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::has_data() const
 {
-    for (std::size_t index=0; index<ospfv2_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospfv2_link.len(); index++)
     {
         if(ospfv2_link[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_topology.size(); index++)
+    for (std::size_t index=0; index<ospfv2_topology.len(); index++)
     {
         if(ospfv2_topology[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_external.size(); index++)
+    for (std::size_t index=0; index<ospfv2_external.len(); index++)
     {
         if(ospfv2_external[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_unknown_tlv.size(); index++)
+    for (std::size_t index=0; index<ospfv2_unknown_tlv.len(); index++)
     {
         if(ospfv2_unknown_tlv[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_link.size(); index++)
+    for (std::size_t index=0; index<ospfv3_link.len(); index++)
     {
         if(ospfv3_link[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_prefix_list.size(); index++)
+    for (std::size_t index=0; index<ospfv3_prefix_list.len(); index++)
     {
         if(ospfv3_prefix_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_ia_prefix.size(); index++)
+    for (std::size_t index=0; index<ospfv3_ia_prefix.len(); index++)
     {
         if(ospfv3_ia_prefix[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<multi_topology.size(); index++)
+    for (std::size_t index=0; index<multi_topology.len(); index++)
     {
         if(multi_topology[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<unknown_sub_tlv.size(); index++)
+    for (std::size_t index=0; index<unknown_sub_tlv.len(); index++)
     {
         if(unknown_sub_tlv[index]->has_data())
             return true;
@@ -2243,47 +2290,47 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::has_operation() const
 {
-    for (std::size_t index=0; index<ospfv2_link.size(); index++)
+    for (std::size_t index=0; index<ospfv2_link.len(); index++)
     {
         if(ospfv2_link[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_topology.size(); index++)
+    for (std::size_t index=0; index<ospfv2_topology.len(); index++)
     {
         if(ospfv2_topology[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_external.size(); index++)
+    for (std::size_t index=0; index<ospfv2_external.len(); index++)
     {
         if(ospfv2_external[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_unknown_tlv.size(); index++)
+    for (std::size_t index=0; index<ospfv2_unknown_tlv.len(); index++)
     {
         if(ospfv2_unknown_tlv[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_link.size(); index++)
+    for (std::size_t index=0; index<ospfv3_link.len(); index++)
     {
         if(ospfv3_link[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_prefix_list.size(); index++)
+    for (std::size_t index=0; index<ospfv3_prefix_list.len(); index++)
     {
         if(ospfv3_prefix_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_ia_prefix.size(); index++)
+    for (std::size_t index=0; index<ospfv3_ia_prefix.len(); index++)
     {
         if(ospfv3_ia_prefix[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<multi_topology.size(); index++)
+    for (std::size_t index=0; index<multi_topology.len(); index++)
     {
         if(multi_topology[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<unknown_sub_tlv.size(); index++)
+    for (std::size_t index=0; index<unknown_sub_tlv.len(); index++)
     {
         if(unknown_sub_tlv[index]->has_operation())
             return true;
@@ -2308,7 +2355,9 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link-scope-lsa" <<"[lsa-id='" <<lsa_id <<"']" <<"[adv-router='" <<adv_router <<"']";
+    path_buffer << "link-scope-lsa";
+    ADD_KEY_TOKEN(lsa_id, "lsa-id");
+    ADD_KEY_TOKEN(adv_router, "adv-router");
     return path_buffer.str();
 }
 
@@ -2343,7 +2392,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link>();
         c->parent = this;
-        ospfv2_link.push_back(c);
+        ospfv2_link.append(c);
         return c;
     }
 
@@ -2351,7 +2400,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Topology>();
         c->parent = this;
-        ospfv2_topology.push_back(c);
+        ospfv2_topology.append(c);
         return c;
     }
 
@@ -2359,7 +2408,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2External>();
         c->parent = this;
-        ospfv2_external.push_back(c);
+        ospfv2_external.append(c);
         return c;
     }
 
@@ -2367,7 +2416,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv>();
         c->parent = this;
-        ospfv2_unknown_tlv.push_back(c);
+        ospfv2_unknown_tlv.append(c);
         return c;
     }
 
@@ -2384,7 +2433,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3Link>();
         c->parent = this;
-        ospfv3_link.push_back(c);
+        ospfv3_link.append(c);
         return c;
     }
 
@@ -2392,7 +2441,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList>();
         c->parent = this;
-        ospfv3_prefix_list.push_back(c);
+        ospfv3_prefix_list.append(c);
         return c;
     }
 
@@ -2400,7 +2449,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix>();
         c->parent = this;
-        ospfv3_ia_prefix.push_back(c);
+        ospfv3_ia_prefix.append(c);
         return c;
     }
 
@@ -2408,7 +2457,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::MultiTopology>();
         c->parent = this;
-        multi_topology.push_back(c);
+        multi_topology.append(c);
         return c;
     }
 
@@ -2425,7 +2474,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::UnknownSubTlv>();
         c->parent = this;
-        unknown_sub_tlv.push_back(c);
+        unknown_sub_tlv.append(c);
         return c;
     }
 
@@ -2442,7 +2491,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv2_link)
+    for (auto c : ospfv2_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2451,7 +2500,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv2_topology)
+    for (auto c : ospfv2_topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2460,7 +2509,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv2_external)
+    for (auto c : ospfv2_external.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2469,7 +2518,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv2_unknown_tlv)
+    for (auto c : ospfv2_unknown_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2483,7 +2532,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv3_link)
+    for (auto c : ospfv3_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2492,7 +2541,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv3_prefix_list)
+    for (auto c : ospfv3_prefix_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2501,7 +2550,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv3_ia_prefix)
+    for (auto c : ospfv3_ia_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2510,7 +2559,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : multi_topology)
+    for (auto c : multi_topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2524,7 +2573,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : unknown_sub_tlv)
+    for (auto c : unknown_sub_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2611,12 +2660,12 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::Ospfv2Lsa()
     :
     header(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::Header>())
-	,lsa_body(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody>())
+    , lsa_body(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody>())
 {
     header->parent = this;
     lsa_body->parent = this;
 
-    yang_name = "ospfv2-lsa"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-lsa"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::~Ospfv2Lsa()
@@ -2625,6 +2674,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::has_data() const
 {
+    if (is_presence_container) return true;
     return (header !=  nullptr && header->has_data())
 	|| (lsa_body !=  nullptr && lsa_body->has_data());
 }
@@ -2721,7 +2771,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     flag_options{YType::bits, "flag-options"}
 {
 
-    yang_name = "header"; yang_parent_name = "ospfv2-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "ospfv2-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::Header::~Header()
@@ -2730,6 +2780,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| opaque_type.is_set
 	|| opaque_id.is_set
@@ -2914,12 +2965,12 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     summary_mask{YType::str, "summary-mask"},
     external_mask{YType::str, "external-mask"},
     body_flag_options{YType::bits, "body-flag-options"}
-    	,
+        ,
     network(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::Network>())
 {
     network->parent = this;
 
-    yang_name = "lsa-body"; yang_parent_name = "ospfv2-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-body"; yang_parent_name = "ospfv2-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::~LsaBody()
@@ -2928,6 +2979,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::has_data() const
 {
+    if (is_presence_container) return true;
     return num_of_links.is_set
 	|| summary_mask.is_set
 	|| external_mask.is_set
@@ -3050,7 +3102,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     attached_router{YType::uint32, "attached-router"}
 {
 
-    yang_name = "network"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::Network::~Network()
@@ -3059,6 +3111,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::Network::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : attached_router.getYLeafs())
     {
         if(leaf.is_set)
@@ -3148,9 +3201,11 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     link_id{YType::uint32, "link-id"},
     link_data{YType::uint32, "link-data"},
     type{YType::uint8, "type"}
+        ,
+    ospfv2_topology(this, {"mt_id"})
 {
 
-    yang_name = "ospfv2-link"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-link"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::~Ospfv2Link()
@@ -3159,7 +3214,8 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::has_data() const
 {
-    for (std::size_t index=0; index<ospfv2_topology.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospfv2_topology.len(); index++)
     {
         if(ospfv2_topology[index]->has_data())
             return true;
@@ -3171,7 +3227,7 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::has_operation() const
 {
-    for (std::size_t index=0; index<ospfv2_topology.size(); index++)
+    for (std::size_t index=0; index<ospfv2_topology.len(); index++)
     {
         if(ospfv2_topology[index]->has_operation())
             return true;
@@ -3185,7 +3241,9 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-link" <<"[link-id='" <<link_id <<"']" <<"[link-data='" <<link_data <<"']";
+    path_buffer << "ospfv2-link";
+    ADD_KEY_TOKEN(link_id, "link-id");
+    ADD_KEY_TOKEN(link_data, "link-data");
     return path_buffer.str();
 }
 
@@ -3207,7 +3265,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology>();
         c->parent = this;
-        ospfv2_topology.push_back(c);
+        ospfv2_topology.append(c);
         return c;
     }
 
@@ -3219,7 +3277,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ospfv2_topology)
+    for (auto c : ospfv2_topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3281,7 +3339,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "ospfv2-topology"; yang_parent_name = "ospfv2-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-topology"; yang_parent_name = "ospfv2-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology::~Ospfv2Topology()
@@ -3290,6 +3348,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set;
 }
@@ -3304,7 +3363,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-topology" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "ospfv2-topology";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -3372,7 +3432,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "ospfv2-topology"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-topology"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Topology::~Ospfv2Topology()
@@ -3381,6 +3441,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set;
 }
@@ -3395,7 +3456,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-topology" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "ospfv2-topology";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -3465,7 +3527,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     external_route_tag{YType::uint32, "external-route-tag"}
 {
 
-    yang_name = "ospfv2-external"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-external"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2External::~Ospfv2External()
@@ -3474,6 +3536,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2External::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set
 	|| forwarding_address.is_set
@@ -3492,7 +3555,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2External::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-external" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "ospfv2-external";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -3583,7 +3647,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "ospfv2-unknown-tlv"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-unknown-tlv"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv::~Ospfv2UnknownTlv()
@@ -3592,6 +3656,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
@@ -3617,7 +3682,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-unknown-tlv" <<"[type='" <<type <<"']";
+    path_buffer << "ospfv2-unknown-tlv";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -3692,12 +3758,12 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Ospfv3LsaVal()
     :
     header(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header>())
-	,lsa_body(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody>())
+    , lsa_body(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody>())
 {
     header->parent = this;
     lsa_body->parent = this;
 
-    yang_name = "ospfv3-lsa-val"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-lsa-val"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::~Ospfv3LsaVal()
@@ -3706,6 +3772,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::has_data() const
 {
+    if (is_presence_container) return true;
     return (header !=  nullptr && header->has_data())
 	|| (lsa_body !=  nullptr && lsa_body->has_data());
 }
@@ -3792,12 +3859,12 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     :
     lsa_id{YType::str, "lsa-id"},
     lsa_hdr_options{YType::bits, "lsa-hdr-options"}
-    	,
+        ,
     lsa_header(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::LsaHeader>())
 {
     lsa_header->parent = this;
 
-    yang_name = "header"; yang_parent_name = "ospfv3-lsa-val"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "ospfv3-lsa-val"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::~Header()
@@ -3806,6 +3873,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| lsa_hdr_options.is_set
 	|| (lsa_header !=  nullptr && lsa_header->has_data());
@@ -3906,7 +3974,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     length{YType::uint16, "length"}
 {
 
-    yang_name = "lsa-header"; yang_parent_name = "header"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-header"; yang_parent_name = "header"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::LsaHeader::~LsaHeader()
@@ -3915,6 +3983,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::LsaHeader::has_data() const
 {
+    if (is_presence_container) return true;
     return age.is_set
 	|| type.is_set
 	|| adv_router.is_set
@@ -4047,14 +4116,14 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     :
     lsa_flag_options{YType::bits, "lsa-flag-options"},
     lsa_body_flags{YType::bits, "lsa-body-flags"}
-    	,
+        ,
     network(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Network>())
-	,prefix(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Prefix>())
-	,ia_router(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaRouter>())
-	,lsa_external(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal>())
-	,nssa(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa>())
-	,link_data(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LinkData>())
-	,ia_prefix(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaPrefix>())
+    , prefix(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Prefix>())
+    , ia_router(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaRouter>())
+    , lsa_external(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal>())
+    , nssa(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa>())
+    , link_data(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LinkData>())
+    , ia_prefix(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaPrefix>())
 {
     network->parent = this;
     prefix->parent = this;
@@ -4064,7 +4133,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     link_data->parent = this;
     ia_prefix->parent = this;
 
-    yang_name = "lsa-body"; yang_parent_name = "ospfv3-lsa-val"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-body"; yang_parent_name = "ospfv3-lsa-val"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::~LsaBody()
@@ -4073,6 +4142,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_flag_options.is_set
 	|| lsa_body_flags.is_set
 	|| (network !=  nullptr && network->has_data())
@@ -4263,7 +4333,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     lsa_net_options{YType::bits, "lsa-net-options"}
 {
 
-    yang_name = "network"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Network::~Network()
@@ -4272,6 +4342,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Network::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : attached_router.getYLeafs())
     {
         if(leaf.is_set)
@@ -4361,7 +4432,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     ia_prefix_options{YType::str, "ia-prefix-options"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Prefix::~Prefix()
@@ -4370,6 +4441,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| ia_prefix.is_set
 	|| ia_prefix_options.is_set;
@@ -4466,7 +4538,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     lsa_ia_options{YType::bits, "lsa-ia-options"}
 {
 
-    yang_name = "ia-router"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ia-router"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaRouter::~IaRouter()
@@ -4475,6 +4547,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaRouter::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| destination_router_id.is_set
 	|| lsa_ia_options.is_set;
@@ -4571,12 +4644,12 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     forwarding_address{YType::str, "forwarding-address"},
     external_route_tag{YType::uint32, "external-route-tag"},
     referenced_link_state_id{YType::uint32, "referenced-link-state-id"}
-    	,
+        ,
     flags(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::Flags>())
 {
     flags->parent = this;
 
-    yang_name = "lsa-external"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-external"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::~LsaExternal()
@@ -4585,6 +4658,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| referenced_ls_type.is_set
 	|| external_prefix.is_set
@@ -4747,7 +4821,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     e_flag{YType::boolean, "e-flag"}
 {
 
-    yang_name = "flags"; yang_parent_name = "lsa-external"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flags"; yang_parent_name = "lsa-external"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::Flags::~Flags()
@@ -4756,6 +4830,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::Flags::has_data() const
 {
+    if (is_presence_container) return true;
     return e_flag.is_set;
 }
 
@@ -4825,7 +4900,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 {
     lsa_nssa_external->parent = this;
 
-    yang_name = "nssa"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nssa"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::~Nssa()
@@ -4834,6 +4909,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::has_data() const
 {
+    if (is_presence_container) return true;
     return (lsa_nssa_external !=  nullptr && lsa_nssa_external->has_data());
 }
 
@@ -4909,12 +4985,12 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     forwarding_address{YType::str, "forwarding-address"},
     external_route_tag{YType::uint32, "external-route-tag"},
     referenced_link_state_id{YType::uint32, "referenced-link-state-id"}
-    	,
+        ,
     flags(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::Flags>())
 {
     flags->parent = this;
 
-    yang_name = "lsa-nssa-external"; yang_parent_name = "nssa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-nssa-external"; yang_parent_name = "nssa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::~LsaNssaExternal()
@@ -4923,6 +4999,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| referenced_ls_type.is_set
 	|| external_prefix.is_set
@@ -5085,7 +5162,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     e_flag{YType::boolean, "e-flag"}
 {
 
-    yang_name = "flags"; yang_parent_name = "lsa-nssa-external"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flags"; yang_parent_name = "lsa-nssa-external"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::Flags::~Flags()
@@ -5094,6 +5171,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::Flags::has_data() const
 {
+    if (is_presence_container) return true;
     return e_flag.is_set;
 }
 
@@ -5165,7 +5243,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     lsa_id_options{YType::bits, "lsa-id-options"}
 {
 
-    yang_name = "link-data"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-data"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LinkData::~LinkData()
@@ -5174,6 +5252,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LinkData::has_data() const
 {
+    if (is_presence_container) return true;
     return rtr_priority.is_set
 	|| link_local_interface_address.is_set
 	|| num_of_prefixes.is_set
@@ -5282,7 +5361,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     num_of_prefixes{YType::uint16, "num-of-prefixes"}
 {
 
-    yang_name = "ia-prefix"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ia-prefix"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaPrefix::~IaPrefix()
@@ -5291,6 +5370,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return referenced_ls_type.is_set
 	|| referenced_link_state_id.is_set
 	|| referenced_adv_router.is_set
@@ -5402,7 +5482,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "ospfv3-link"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-link"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3Link::~Ospfv3Link()
@@ -5411,6 +5491,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3Link::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_id.is_set
 	|| neighbor_interface_id.is_set
 	|| neighbor_router_id.is_set
@@ -5431,7 +5512,10 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv3-link" <<"[interface-id='" <<interface_id <<"']" <<"[neighbor-interface-id='" <<neighbor_interface_id <<"']" <<"[neighbor-router-id='" <<neighbor_router_id <<"']";
+    path_buffer << "ospfv3-link";
+    ADD_KEY_TOKEN(interface_id, "interface-id");
+    ADD_KEY_TOKEN(neighbor_interface_id, "neighbor-interface-id");
+    ADD_KEY_TOKEN(neighbor_router_id, "neighbor-router-id");
     return path_buffer.str();
 }
 
@@ -5532,7 +5616,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     prefix_options{YType::str, "prefix-options"}
 {
 
-    yang_name = "ospfv3-prefix-list"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-prefix-list"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList::~Ospfv3PrefixList()
@@ -5541,6 +5625,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_options.is_set;
 }
@@ -5555,7 +5640,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv3-prefix-list" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "ospfv3-prefix-list";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -5623,7 +5709,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     prefix_options{YType::str, "prefix-options"}
 {
 
-    yang_name = "ospfv3-ia-prefix"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-ia-prefix"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix::~Ospfv3IaPrefix()
@@ -5632,6 +5718,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_options.is_set;
 }
@@ -5646,7 +5733,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv3-ia-prefix" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "ospfv3-ia-prefix";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -5713,7 +5801,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     name{YType::str, "name"}
 {
 
-    yang_name = "multi-topology"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multi-topology"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::MultiTopology::~MultiTopology()
@@ -5722,6 +5810,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::MultiTopology::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -5734,7 +5823,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::MultiTopology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "multi-topology" <<"[name='" <<name <<"']";
+    path_buffer << "multi-topology";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -5798,7 +5888,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     admin_group{YType::uint32, "admin-group"}
 {
 
-    yang_name = "tlv"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tlv"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Tlv::~Tlv()
@@ -5807,6 +5897,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Tlv::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : local_if_ipv4_addr.getYLeafs())
     {
         if(leaf.is_set)
@@ -5997,7 +6088,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "unknown-sub-tlv"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-sub-tlv"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::UnknownSubTlv::~UnknownSubTlv()
@@ -6006,6 +6097,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::UnknownSubTlv::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
@@ -6031,7 +6123,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::UnknownSubTlv::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "unknown-sub-tlv" <<"[type='" <<type <<"']";
+    path_buffer << "unknown-sub-tlv";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -6109,14 +6202,20 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     adv_router{YType::str, "adv-router"},
     decoded_completed{YType::boolean, "decoded-completed"},
     raw_data{YType::uint8, "raw-data"}
-    	,
+        ,
     ospfv2_lsa(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa>())
-	,ospfv3_lsa(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa>())
+    , ospfv2_link(this, {"link_id", "link_data"})
+    , ospfv2_topology(this, {"mt_id"})
+    , ospfv2_external(this, {"mt_id"})
+    , ospfv3_lsa(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa>())
+    , ospfv3_link(this, {"interface_id", "neighbor_interface_id", "neighbor_router_id"})
+    , ospfv3_prefix(this, {"prefix"})
+    , ospfv3_ia_prefix(this, {"prefix"})
 {
     ospfv2_lsa->parent = this;
     ospfv3_lsa->parent = this;
 
-    yang_name = "area-scope-lsa"; yang_parent_name = "intf-link-scope-lsas"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "area-scope-lsa"; yang_parent_name = "intf-link-scope-lsas"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::~AreaScopeLsa()
@@ -6125,32 +6224,33 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::has_data() const
 {
-    for (std::size_t index=0; index<ospfv2_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospfv2_link.len(); index++)
     {
         if(ospfv2_link[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_topology.size(); index++)
+    for (std::size_t index=0; index<ospfv2_topology.len(); index++)
     {
         if(ospfv2_topology[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_external.size(); index++)
+    for (std::size_t index=0; index<ospfv2_external.len(); index++)
     {
         if(ospfv2_external[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_link.size(); index++)
+    for (std::size_t index=0; index<ospfv3_link.len(); index++)
     {
         if(ospfv3_link[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_prefix.size(); index++)
+    for (std::size_t index=0; index<ospfv3_prefix.len(); index++)
     {
         if(ospfv3_prefix[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_ia_prefix.size(); index++)
+    for (std::size_t index=0; index<ospfv3_ia_prefix.len(); index++)
     {
         if(ospfv3_ia_prefix[index]->has_data())
             return true;
@@ -6169,32 +6269,32 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::has_operation() const
 {
-    for (std::size_t index=0; index<ospfv2_link.size(); index++)
+    for (std::size_t index=0; index<ospfv2_link.len(); index++)
     {
         if(ospfv2_link[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_topology.size(); index++)
+    for (std::size_t index=0; index<ospfv2_topology.len(); index++)
     {
         if(ospfv2_topology[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_external.size(); index++)
+    for (std::size_t index=0; index<ospfv2_external.len(); index++)
     {
         if(ospfv2_external[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_link.size(); index++)
+    for (std::size_t index=0; index<ospfv3_link.len(); index++)
     {
         if(ospfv3_link[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_prefix.size(); index++)
+    for (std::size_t index=0; index<ospfv3_prefix.len(); index++)
     {
         if(ospfv3_prefix[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_ia_prefix.size(); index++)
+    for (std::size_t index=0; index<ospfv3_ia_prefix.len(); index++)
     {
         if(ospfv3_ia_prefix[index]->has_operation())
             return true;
@@ -6216,7 +6316,9 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "area-scope-lsa" <<"[lsa-type='" <<lsa_type <<"']" <<"[adv-router='" <<adv_router <<"']";
+    path_buffer << "area-scope-lsa";
+    ADD_KEY_TOKEN(lsa_type, "lsa-type");
+    ADD_KEY_TOKEN(adv_router, "adv-router");
     return path_buffer.str();
 }
 
@@ -6249,7 +6351,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link>();
         c->parent = this;
-        ospfv2_link.push_back(c);
+        ospfv2_link.append(c);
         return c;
     }
 
@@ -6257,7 +6359,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Topology>();
         c->parent = this;
-        ospfv2_topology.push_back(c);
+        ospfv2_topology.append(c);
         return c;
     }
 
@@ -6265,7 +6367,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2External>();
         c->parent = this;
-        ospfv2_external.push_back(c);
+        ospfv2_external.append(c);
         return c;
     }
 
@@ -6282,7 +6384,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Link>();
         c->parent = this;
-        ospfv3_link.push_back(c);
+        ospfv3_link.append(c);
         return c;
     }
 
@@ -6290,7 +6392,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Prefix>();
         c->parent = this;
-        ospfv3_prefix.push_back(c);
+        ospfv3_prefix.append(c);
         return c;
     }
 
@@ -6298,7 +6400,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix>();
         c->parent = this;
-        ospfv3_ia_prefix.push_back(c);
+        ospfv3_ia_prefix.append(c);
         return c;
     }
 
@@ -6315,7 +6417,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv2_link)
+    for (auto c : ospfv2_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6324,7 +6426,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv2_topology)
+    for (auto c : ospfv2_topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6333,7 +6435,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv2_external)
+    for (auto c : ospfv2_external.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6347,7 +6449,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv3_link)
+    for (auto c : ospfv3_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6356,7 +6458,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv3_prefix)
+    for (auto c : ospfv3_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6365,7 +6467,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv3_ia_prefix)
+    for (auto c : ospfv3_ia_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6432,12 +6534,12 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::Ospfv2Lsa()
     :
     header(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::Header>())
-	,lsa_body(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody>())
+    , lsa_body(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody>())
 {
     header->parent = this;
     lsa_body->parent = this;
 
-    yang_name = "ospfv2-lsa"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-lsa"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::~Ospfv2Lsa()
@@ -6446,6 +6548,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::has_data() const
 {
+    if (is_presence_container) return true;
     return (header !=  nullptr && header->has_data())
 	|| (lsa_body !=  nullptr && lsa_body->has_data());
 }
@@ -6542,7 +6645,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     flag_options{YType::bits, "flag-options"}
 {
 
-    yang_name = "header"; yang_parent_name = "ospfv2-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "ospfv2-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::Header::~Header()
@@ -6551,6 +6654,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| opaque_type.is_set
 	|| opaque_id.is_set
@@ -6735,12 +6839,12 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     summary_mask{YType::str, "summary-mask"},
     external_mask{YType::str, "external-mask"},
     body_flag_options{YType::bits, "body-flag-options"}
-    	,
+        ,
     network(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::Network>())
 {
     network->parent = this;
 
-    yang_name = "lsa-body"; yang_parent_name = "ospfv2-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-body"; yang_parent_name = "ospfv2-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::~LsaBody()
@@ -6749,6 +6853,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::has_data() const
 {
+    if (is_presence_container) return true;
     return num_of_links.is_set
 	|| summary_mask.is_set
 	|| external_mask.is_set
@@ -6871,7 +6976,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     attached_router{YType::uint32, "attached-router"}
 {
 
-    yang_name = "network"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::Network::~Network()
@@ -6880,6 +6985,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::Network::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : attached_router.getYLeafs())
     {
         if(leaf.is_set)
@@ -6969,9 +7075,11 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     link_id{YType::uint32, "link-id"},
     link_data{YType::uint32, "link-data"},
     type{YType::uint8, "type"}
+        ,
+    ospfv2_topology(this, {"mt_id"})
 {
 
-    yang_name = "ospfv2-link"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-link"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::~Ospfv2Link()
@@ -6980,7 +7088,8 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::has_data() const
 {
-    for (std::size_t index=0; index<ospfv2_topology.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospfv2_topology.len(); index++)
     {
         if(ospfv2_topology[index]->has_data())
             return true;
@@ -6992,7 +7101,7 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::has_operation() const
 {
-    for (std::size_t index=0; index<ospfv2_topology.size(); index++)
+    for (std::size_t index=0; index<ospfv2_topology.len(); index++)
     {
         if(ospfv2_topology[index]->has_operation())
             return true;
@@ -7006,7 +7115,9 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-link" <<"[link-id='" <<link_id <<"']" <<"[link-data='" <<link_data <<"']";
+    path_buffer << "ospfv2-link";
+    ADD_KEY_TOKEN(link_id, "link-id");
+    ADD_KEY_TOKEN(link_data, "link-data");
     return path_buffer.str();
 }
 
@@ -7028,7 +7139,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology>();
         c->parent = this;
-        ospfv2_topology.push_back(c);
+        ospfv2_topology.append(c);
         return c;
     }
 
@@ -7040,7 +7151,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ospfv2_topology)
+    for (auto c : ospfv2_topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7102,7 +7213,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "ospfv2-topology"; yang_parent_name = "ospfv2-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-topology"; yang_parent_name = "ospfv2-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology::~Ospfv2Topology()
@@ -7111,6 +7222,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set;
 }
@@ -7125,7 +7237,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-topology" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "ospfv2-topology";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -7193,7 +7306,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "ospfv2-topology"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-topology"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Topology::~Ospfv2Topology()
@@ -7202,6 +7315,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set;
 }
@@ -7216,7 +7330,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-topology" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "ospfv2-topology";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -7286,7 +7401,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     external_route_tag{YType::uint32, "external-route-tag"}
 {
 
-    yang_name = "ospfv2-external"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-external"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2External::~Ospfv2External()
@@ -7295,6 +7410,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2External::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set
 	|| forwarding_address.is_set
@@ -7313,7 +7429,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2External::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-external" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "ospfv2-external";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -7400,12 +7517,12 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Ospfv3Lsa()
     :
     header(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header>())
-	,lsa_body(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody>())
+    , lsa_body(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody>())
 {
     header->parent = this;
     lsa_body->parent = this;
 
-    yang_name = "ospfv3-lsa"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-lsa"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::~Ospfv3Lsa()
@@ -7414,6 +7531,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::has_data() const
 {
+    if (is_presence_container) return true;
     return (header !=  nullptr && header->has_data())
 	|| (lsa_body !=  nullptr && lsa_body->has_data());
 }
@@ -7500,12 +7618,12 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     :
     lsa_id{YType::str, "lsa-id"},
     lsa_hdr_options{YType::bits, "lsa-hdr-options"}
-    	,
+        ,
     lsa_header(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::LsaHeader>())
 {
     lsa_header->parent = this;
 
-    yang_name = "header"; yang_parent_name = "ospfv3-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "ospfv3-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::~Header()
@@ -7514,6 +7632,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| lsa_hdr_options.is_set
 	|| (lsa_header !=  nullptr && lsa_header->has_data());
@@ -7614,7 +7733,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     length{YType::uint16, "length"}
 {
 
-    yang_name = "lsa-header"; yang_parent_name = "header"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-header"; yang_parent_name = "header"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::LsaHeader::~LsaHeader()
@@ -7623,6 +7742,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::LsaHeader::has_data() const
 {
+    if (is_presence_container) return true;
     return age.is_set
 	|| type.is_set
 	|| adv_router.is_set
@@ -7755,14 +7875,14 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     :
     lsa_flag_options{YType::bits, "lsa-flag-options"},
     lsa_body_flags{YType::bits, "lsa-body-flags"}
-    	,
+        ,
     network(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Network>())
-	,prefix(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Prefix>())
-	,ia_router(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaRouter>())
-	,lsa_external(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal>())
-	,nssa(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa>())
-	,link_data(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LinkData>())
-	,ia_prefix(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaPrefix>())
+    , prefix(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Prefix>())
+    , ia_router(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaRouter>())
+    , lsa_external(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal>())
+    , nssa(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa>())
+    , link_data(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LinkData>())
+    , ia_prefix(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaPrefix>())
 {
     network->parent = this;
     prefix->parent = this;
@@ -7772,7 +7892,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     link_data->parent = this;
     ia_prefix->parent = this;
 
-    yang_name = "lsa-body"; yang_parent_name = "ospfv3-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-body"; yang_parent_name = "ospfv3-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::~LsaBody()
@@ -7781,6 +7901,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_flag_options.is_set
 	|| lsa_body_flags.is_set
 	|| (network !=  nullptr && network->has_data())
@@ -7971,7 +8092,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     lsa_net_options{YType::bits, "lsa-net-options"}
 {
 
-    yang_name = "network"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Network::~Network()
@@ -7980,6 +8101,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Network::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : attached_router.getYLeafs())
     {
         if(leaf.is_set)
@@ -8069,7 +8191,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     ia_prefix_options{YType::str, "ia-prefix-options"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Prefix::~Prefix()
@@ -8078,6 +8200,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| ia_prefix.is_set
 	|| ia_prefix_options.is_set;
@@ -8174,7 +8297,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     lsa_ia_options{YType::bits, "lsa-ia-options"}
 {
 
-    yang_name = "ia-router"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ia-router"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaRouter::~IaRouter()
@@ -8183,6 +8306,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaRouter::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| destination_router_id.is_set
 	|| lsa_ia_options.is_set;
@@ -8279,12 +8403,12 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     forwarding_address{YType::str, "forwarding-address"},
     external_route_tag{YType::uint32, "external-route-tag"},
     referenced_link_state_id{YType::uint32, "referenced-link-state-id"}
-    	,
+        ,
     flags(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::Flags>())
 {
     flags->parent = this;
 
-    yang_name = "lsa-external"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-external"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::~LsaExternal()
@@ -8293,6 +8417,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| referenced_ls_type.is_set
 	|| external_prefix.is_set
@@ -8455,7 +8580,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     e_flag{YType::boolean, "e-flag"}
 {
 
-    yang_name = "flags"; yang_parent_name = "lsa-external"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flags"; yang_parent_name = "lsa-external"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::Flags::~Flags()
@@ -8464,6 +8589,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::Flags::has_data() const
 {
+    if (is_presence_container) return true;
     return e_flag.is_set;
 }
 
@@ -8533,7 +8659,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 {
     lsa_nssa_external->parent = this;
 
-    yang_name = "nssa"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nssa"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::~Nssa()
@@ -8542,6 +8668,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::has_data() const
 {
+    if (is_presence_container) return true;
     return (lsa_nssa_external !=  nullptr && lsa_nssa_external->has_data());
 }
 
@@ -8617,12 +8744,12 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     forwarding_address{YType::str, "forwarding-address"},
     external_route_tag{YType::uint32, "external-route-tag"},
     referenced_link_state_id{YType::uint32, "referenced-link-state-id"}
-    	,
+        ,
     flags(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags>())
 {
     flags->parent = this;
 
-    yang_name = "lsa-nssa-external"; yang_parent_name = "nssa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-nssa-external"; yang_parent_name = "nssa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::~LsaNssaExternal()
@@ -8631,6 +8758,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| referenced_ls_type.is_set
 	|| external_prefix.is_set
@@ -8793,7 +8921,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     e_flag{YType::boolean, "e-flag"}
 {
 
-    yang_name = "flags"; yang_parent_name = "lsa-nssa-external"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flags"; yang_parent_name = "lsa-nssa-external"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::~Flags()
@@ -8802,6 +8930,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::has_data() const
 {
+    if (is_presence_container) return true;
     return e_flag.is_set;
 }
 
@@ -8873,7 +9002,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     lsa_id_options{YType::bits, "lsa-id-options"}
 {
 
-    yang_name = "link-data"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-data"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LinkData::~LinkData()
@@ -8882,6 +9011,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LinkData::has_data() const
 {
+    if (is_presence_container) return true;
     return rtr_priority.is_set
 	|| link_local_interface_address.is_set
 	|| num_of_prefixes.is_set
@@ -8990,7 +9120,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     num_of_prefixes{YType::uint16, "num-of-prefixes"}
 {
 
-    yang_name = "ia-prefix"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ia-prefix"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaPrefix::~IaPrefix()
@@ -8999,6 +9129,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return referenced_ls_type.is_set
 	|| referenced_link_state_id.is_set
 	|| referenced_adv_router.is_set
@@ -9110,7 +9241,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "ospfv3-link"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-link"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Link::~Ospfv3Link()
@@ -9119,6 +9250,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Link::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_id.is_set
 	|| neighbor_interface_id.is_set
 	|| neighbor_router_id.is_set
@@ -9139,7 +9271,10 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv3-link" <<"[interface-id='" <<interface_id <<"']" <<"[neighbor-interface-id='" <<neighbor_interface_id <<"']" <<"[neighbor-router-id='" <<neighbor_router_id <<"']";
+    path_buffer << "ospfv3-link";
+    ADD_KEY_TOKEN(interface_id, "interface-id");
+    ADD_KEY_TOKEN(neighbor_interface_id, "neighbor-interface-id");
+    ADD_KEY_TOKEN(neighbor_router_id, "neighbor-router-id");
     return path_buffer.str();
 }
 
@@ -9240,7 +9375,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     prefix_options{YType::str, "prefix-options"}
 {
 
-    yang_name = "ospfv3-prefix"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-prefix"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Prefix::~Ospfv3Prefix()
@@ -9249,6 +9384,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_options.is_set;
 }
@@ -9263,7 +9399,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Prefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv3-prefix" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "ospfv3-prefix";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -9331,7 +9468,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
     prefix_options{YType::str, "prefix-options"}
 {
 
-    yang_name = "ospfv3-ia-prefix"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-ia-prefix"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix::~Ospfv3IaPrefix()
@@ -9340,6 +9477,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_options.is_set;
 }
@@ -9354,7 +9492,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkSco
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv3-ia-prefix" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "ospfv3-ia-prefix";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -9421,7 +9560,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfMultiTopolog
     name{YType::str, "name"}
 {
 
-    yang_name = "intf-multi-topology"; yang_parent_name = "ospf-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "intf-multi-topology"; yang_parent_name = "ospf-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfMultiTopology::~IntfMultiTopology()
@@ -9430,6 +9569,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfMultiTopolog
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfMultiTopology::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -9442,7 +9582,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfMultiTo
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfMultiTopology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "intf-multi-topology" <<"[name='" <<name <<"']";
+    path_buffer << "intf-multi-topology";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -9496,9 +9637,11 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfMultiTo
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa()
     :
     lsa_type{YType::uint32, "lsa-type"}
+        ,
+    area_scope_lsa(this, {"lsa_type", "adv_router"})
 {
 
-    yang_name = "area-scope-lsa"; yang_parent_name = "ospf-area"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "area-scope-lsa"; yang_parent_name = "ospf-area"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::~AreaScopeLsa()
@@ -9507,7 +9650,8 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::~AreaScopeLsa()
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::has_data() const
 {
-    for (std::size_t index=0; index<area_scope_lsa.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<area_scope_lsa.len(); index++)
     {
         if(area_scope_lsa[index]->has_data())
             return true;
@@ -9517,7 +9661,7 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::has_data() c
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::has_operation() const
 {
-    for (std::size_t index=0; index<area_scope_lsa.size(); index++)
+    for (std::size_t index=0; index<area_scope_lsa.len(); index++)
     {
         if(area_scope_lsa[index]->has_operation())
             return true;
@@ -9529,7 +9673,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::has_operatio
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "area-scope-lsa" <<"[lsa-type='" <<lsa_type <<"']";
+    path_buffer << "area-scope-lsa";
+    ADD_KEY_TOKEN(lsa_type, "lsa-type");
     return path_buffer.str();
 }
 
@@ -9549,7 +9694,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaSco
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_>();
         c->parent = this;
-        area_scope_lsa.push_back(c);
+        area_scope_lsa.append(c);
         return c;
     }
 
@@ -9561,7 +9706,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : area_scope_lsa)
+    for (auto c : area_scope_lsa.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9603,14 +9748,20 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ar
     adv_router{YType::str, "adv-router"},
     decoded_completed{YType::boolean, "decoded-completed"},
     raw_data{YType::uint8, "raw-data"}
-    	,
+        ,
     ospfv2_lsa(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa>())
-	,ospfv3_lsa(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa>())
+    , ospfv2_link(this, {"link_id", "link_data"})
+    , ospfv2_topology(this, {"mt_id"})
+    , ospfv2_external(this, {"mt_id"})
+    , ospfv3_lsa(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa>())
+    , ospfv3_link(this, {"interface_id", "neighbor_interface_id", "neighbor_router_id"})
+    , ospfv3_prefix(this, {"prefix"})
+    , ospfv3_ia_prefix(this, {"prefix"})
 {
     ospfv2_lsa->parent = this;
     ospfv3_lsa->parent = this;
 
-    yang_name = "area-scope-lsa"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "area-scope-lsa"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::~AreaScopeLsa_()
@@ -9619,32 +9770,33 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::~A
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::has_data() const
 {
-    for (std::size_t index=0; index<ospfv2_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospfv2_link.len(); index++)
     {
         if(ospfv2_link[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_topology.size(); index++)
+    for (std::size_t index=0; index<ospfv2_topology.len(); index++)
     {
         if(ospfv2_topology[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_external.size(); index++)
+    for (std::size_t index=0; index<ospfv2_external.len(); index++)
     {
         if(ospfv2_external[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_link.size(); index++)
+    for (std::size_t index=0; index<ospfv3_link.len(); index++)
     {
         if(ospfv3_link[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_prefix.size(); index++)
+    for (std::size_t index=0; index<ospfv3_prefix.len(); index++)
     {
         if(ospfv3_prefix[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_ia_prefix.size(); index++)
+    for (std::size_t index=0; index<ospfv3_ia_prefix.len(); index++)
     {
         if(ospfv3_ia_prefix[index]->has_data())
             return true;
@@ -9663,32 +9815,32 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::has_operation() const
 {
-    for (std::size_t index=0; index<ospfv2_link.size(); index++)
+    for (std::size_t index=0; index<ospfv2_link.len(); index++)
     {
         if(ospfv2_link[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_topology.size(); index++)
+    for (std::size_t index=0; index<ospfv2_topology.len(); index++)
     {
         if(ospfv2_topology[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_external.size(); index++)
+    for (std::size_t index=0; index<ospfv2_external.len(); index++)
     {
         if(ospfv2_external[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_link.size(); index++)
+    for (std::size_t index=0; index<ospfv3_link.len(); index++)
     {
         if(ospfv3_link[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_prefix.size(); index++)
+    for (std::size_t index=0; index<ospfv3_prefix.len(); index++)
     {
         if(ospfv3_prefix[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_ia_prefix.size(); index++)
+    for (std::size_t index=0; index<ospfv3_ia_prefix.len(); index++)
     {
         if(ospfv3_ia_prefix[index]->has_operation())
             return true;
@@ -9710,7 +9862,9 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "area-scope-lsa" <<"[lsa-type='" <<lsa_type <<"']" <<"[adv-router='" <<adv_router <<"']";
+    path_buffer << "area-scope-lsa";
+    ADD_KEY_TOKEN(lsa_type, "lsa-type");
+    ADD_KEY_TOKEN(adv_router, "adv-router");
     return path_buffer.str();
 }
 
@@ -9743,7 +9897,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaSco
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link>();
         c->parent = this;
-        ospfv2_link.push_back(c);
+        ospfv2_link.append(c);
         return c;
     }
 
@@ -9751,7 +9905,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaSco
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Topology>();
         c->parent = this;
-        ospfv2_topology.push_back(c);
+        ospfv2_topology.append(c);
         return c;
     }
 
@@ -9759,7 +9913,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaSco
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2External>();
         c->parent = this;
-        ospfv2_external.push_back(c);
+        ospfv2_external.append(c);
         return c;
     }
 
@@ -9776,7 +9930,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaSco
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Link>();
         c->parent = this;
-        ospfv3_link.push_back(c);
+        ospfv3_link.append(c);
         return c;
     }
 
@@ -9784,7 +9938,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaSco
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Prefix>();
         c->parent = this;
-        ospfv3_prefix.push_back(c);
+        ospfv3_prefix.append(c);
         return c;
     }
 
@@ -9792,7 +9946,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaSco
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3IaPrefix>();
         c->parent = this;
-        ospfv3_ia_prefix.push_back(c);
+        ospfv3_ia_prefix.append(c);
         return c;
     }
 
@@ -9809,7 +9963,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv2_link)
+    for (auto c : ospfv2_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9818,7 +9972,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv2_topology)
+    for (auto c : ospfv2_topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9827,7 +9981,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv2_external)
+    for (auto c : ospfv2_external.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9841,7 +9995,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv3_link)
+    for (auto c : ospfv3_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9850,7 +10004,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv3_prefix)
+    for (auto c : ospfv3_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9859,7 +10013,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv3_ia_prefix)
+    for (auto c : ospfv3_ia_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9926,12 +10080,12 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::Ospfv2Lsa()
     :
     header(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::Header>())
-	,lsa_body(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::LsaBody>())
+    , lsa_body(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::LsaBody>())
 {
     header->parent = this;
     lsa_body->parent = this;
 
-    yang_name = "ospfv2-lsa"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-lsa"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::~Ospfv2Lsa()
@@ -9940,6 +10094,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::has_data() const
 {
+    if (is_presence_container) return true;
     return (header !=  nullptr && header->has_data())
 	|| (lsa_body !=  nullptr && lsa_body->has_data());
 }
@@ -10036,7 +10191,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     flag_options{YType::bits, "flag-options"}
 {
 
-    yang_name = "header"; yang_parent_name = "ospfv2-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "ospfv2-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::Header::~Header()
@@ -10045,6 +10200,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| opaque_type.is_set
 	|| opaque_id.is_set
@@ -10229,12 +10385,12 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     summary_mask{YType::str, "summary-mask"},
     external_mask{YType::str, "external-mask"},
     body_flag_options{YType::bits, "body-flag-options"}
-    	,
+        ,
     network(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::LsaBody::Network>())
 {
     network->parent = this;
 
-    yang_name = "lsa-body"; yang_parent_name = "ospfv2-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-body"; yang_parent_name = "ospfv2-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::LsaBody::~LsaBody()
@@ -10243,6 +10399,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::LsaBody::has_data() const
 {
+    if (is_presence_container) return true;
     return num_of_links.is_set
 	|| summary_mask.is_set
 	|| external_mask.is_set
@@ -10365,7 +10522,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     attached_router{YType::uint32, "attached-router"}
 {
 
-    yang_name = "network"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::LsaBody::Network::~Network()
@@ -10374,6 +10531,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::LsaBody::Network::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : attached_router.getYLeafs())
     {
         if(leaf.is_set)
@@ -10463,9 +10621,11 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     link_id{YType::uint32, "link-id"},
     link_data{YType::uint32, "link-data"},
     type{YType::uint8, "type"}
+        ,
+    ospfv2_topology(this, {"mt_id"})
 {
 
-    yang_name = "ospfv2-link"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-link"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::~Ospfv2Link()
@@ -10474,7 +10634,8 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::has_data() const
 {
-    for (std::size_t index=0; index<ospfv2_topology.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospfv2_topology.len(); index++)
     {
         if(ospfv2_topology[index]->has_data())
             return true;
@@ -10486,7 +10647,7 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::has_operation() const
 {
-    for (std::size_t index=0; index<ospfv2_topology.size(); index++)
+    for (std::size_t index=0; index<ospfv2_topology.len(); index++)
     {
         if(ospfv2_topology[index]->has_operation())
             return true;
@@ -10500,7 +10661,9 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-link" <<"[link-id='" <<link_id <<"']" <<"[link-data='" <<link_data <<"']";
+    path_buffer << "ospfv2-link";
+    ADD_KEY_TOKEN(link_id, "link-id");
+    ADD_KEY_TOKEN(link_data, "link-data");
     return path_buffer.str();
 }
 
@@ -10522,7 +10685,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaSco
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::Ospfv2Topology>();
         c->parent = this;
-        ospfv2_topology.push_back(c);
+        ospfv2_topology.append(c);
         return c;
     }
 
@@ -10534,7 +10697,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ospfv2_topology)
+    for (auto c : ospfv2_topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10596,7 +10759,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "ospfv2-topology"; yang_parent_name = "ospfv2-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-topology"; yang_parent_name = "ospfv2-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::Ospfv2Topology::~Ospfv2Topology()
@@ -10605,6 +10768,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::Ospfv2Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set;
 }
@@ -10619,7 +10783,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::Ospfv2Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-topology" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "ospfv2-topology";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -10687,7 +10852,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "ospfv2-topology"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-topology"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Topology::~Ospfv2Topology()
@@ -10696,6 +10861,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set;
 }
@@ -10710,7 +10876,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-topology" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "ospfv2-topology";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -10780,7 +10947,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     external_route_tag{YType::uint32, "external-route-tag"}
 {
 
-    yang_name = "ospfv2-external"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-external"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2External::~Ospfv2External()
@@ -10789,6 +10956,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2External::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set
 	|| forwarding_address.is_set
@@ -10807,7 +10975,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2External::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-external" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "ospfv2-external";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -10894,12 +11063,12 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::Ospfv3Lsa()
     :
     header(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::Header>())
-	,lsa_body(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody>())
+    , lsa_body(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody>())
 {
     header->parent = this;
     lsa_body->parent = this;
 
-    yang_name = "ospfv3-lsa"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-lsa"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::~Ospfv3Lsa()
@@ -10908,6 +11077,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::has_data() const
 {
+    if (is_presence_container) return true;
     return (header !=  nullptr && header->has_data())
 	|| (lsa_body !=  nullptr && lsa_body->has_data());
 }
@@ -10994,12 +11164,12 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     :
     lsa_id{YType::str, "lsa-id"},
     lsa_hdr_options{YType::bits, "lsa-hdr-options"}
-    	,
+        ,
     lsa_header(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::Header::LsaHeader>())
 {
     lsa_header->parent = this;
 
-    yang_name = "header"; yang_parent_name = "ospfv3-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "ospfv3-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::Header::~Header()
@@ -11008,6 +11178,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| lsa_hdr_options.is_set
 	|| (lsa_header !=  nullptr && lsa_header->has_data());
@@ -11108,7 +11279,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     length{YType::uint16, "length"}
 {
 
-    yang_name = "lsa-header"; yang_parent_name = "header"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-header"; yang_parent_name = "header"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::Header::LsaHeader::~LsaHeader()
@@ -11117,6 +11288,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::Header::LsaHeader::has_data() const
 {
+    if (is_presence_container) return true;
     return age.is_set
 	|| type.is_set
 	|| adv_router.is_set
@@ -11249,14 +11421,14 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     :
     lsa_flag_options{YType::bits, "lsa-flag-options"},
     lsa_body_flags{YType::bits, "lsa-body-flags"}
-    	,
+        ,
     network(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Network>())
-	,prefix(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Prefix>())
-	,ia_router(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::IaRouter>())
-	,lsa_external(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LsaExternal>())
-	,nssa(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa>())
-	,link_data(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LinkData>())
-	,ia_prefix(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::IaPrefix>())
+    , prefix(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Prefix>())
+    , ia_router(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::IaRouter>())
+    , lsa_external(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LsaExternal>())
+    , nssa(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa>())
+    , link_data(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LinkData>())
+    , ia_prefix(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::IaPrefix>())
 {
     network->parent = this;
     prefix->parent = this;
@@ -11266,7 +11438,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     link_data->parent = this;
     ia_prefix->parent = this;
 
-    yang_name = "lsa-body"; yang_parent_name = "ospfv3-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-body"; yang_parent_name = "ospfv3-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::~LsaBody()
@@ -11275,6 +11447,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_flag_options.is_set
 	|| lsa_body_flags.is_set
 	|| (network !=  nullptr && network->has_data())
@@ -11465,7 +11638,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     lsa_net_options{YType::bits, "lsa-net-options"}
 {
 
-    yang_name = "network"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Network::~Network()
@@ -11474,6 +11647,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Network::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : attached_router.getYLeafs())
     {
         if(leaf.is_set)
@@ -11563,7 +11737,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     ia_prefix_options{YType::str, "ia-prefix-options"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Prefix::~Prefix()
@@ -11572,6 +11746,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| ia_prefix.is_set
 	|| ia_prefix_options.is_set;
@@ -11668,7 +11843,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     lsa_ia_options{YType::bits, "lsa-ia-options"}
 {
 
-    yang_name = "ia-router"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ia-router"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::IaRouter::~IaRouter()
@@ -11677,6 +11852,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::IaRouter::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| destination_router_id.is_set
 	|| lsa_ia_options.is_set;
@@ -11773,12 +11949,12 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     forwarding_address{YType::str, "forwarding-address"},
     external_route_tag{YType::uint32, "external-route-tag"},
     referenced_link_state_id{YType::uint32, "referenced-link-state-id"}
-    	,
+        ,
     flags(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LsaExternal::Flags>())
 {
     flags->parent = this;
 
-    yang_name = "lsa-external"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-external"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LsaExternal::~LsaExternal()
@@ -11787,6 +11963,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LsaExternal::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| referenced_ls_type.is_set
 	|| external_prefix.is_set
@@ -11949,7 +12126,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     e_flag{YType::boolean, "e-flag"}
 {
 
-    yang_name = "flags"; yang_parent_name = "lsa-external"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flags"; yang_parent_name = "lsa-external"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LsaExternal::Flags::~Flags()
@@ -11958,6 +12135,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LsaExternal::Flags::has_data() const
 {
+    if (is_presence_container) return true;
     return e_flag.is_set;
 }
 
@@ -12027,7 +12205,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 {
     lsa_nssa_external->parent = this;
 
-    yang_name = "nssa"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nssa"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::~Nssa()
@@ -12036,6 +12214,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::has_data() const
 {
+    if (is_presence_container) return true;
     return (lsa_nssa_external !=  nullptr && lsa_nssa_external->has_data());
 }
 
@@ -12111,12 +12290,12 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     forwarding_address{YType::str, "forwarding-address"},
     external_route_tag{YType::uint32, "external-route-tag"},
     referenced_link_state_id{YType::uint32, "referenced-link-state-id"}
-    	,
+        ,
     flags(std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags>())
 {
     flags->parent = this;
 
-    yang_name = "lsa-nssa-external"; yang_parent_name = "nssa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-nssa-external"; yang_parent_name = "nssa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::~LsaNssaExternal()
@@ -12125,6 +12304,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| referenced_ls_type.is_set
 	|| external_prefix.is_set
@@ -12287,7 +12467,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     e_flag{YType::boolean, "e-flag"}
 {
 
-    yang_name = "flags"; yang_parent_name = "lsa-nssa-external"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flags"; yang_parent_name = "lsa-nssa-external"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::~Flags()
@@ -12296,6 +12476,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::has_data() const
 {
+    if (is_presence_container) return true;
     return e_flag.is_set;
 }
 
@@ -12367,7 +12548,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     lsa_id_options{YType::bits, "lsa-id-options"}
 {
 
-    yang_name = "link-data"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-data"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LinkData::~LinkData()
@@ -12376,6 +12557,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LinkData::has_data() const
 {
+    if (is_presence_container) return true;
     return rtr_priority.is_set
 	|| link_local_interface_address.is_set
 	|| num_of_prefixes.is_set
@@ -12484,7 +12666,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     num_of_prefixes{YType::uint16, "num-of-prefixes"}
 {
 
-    yang_name = "ia-prefix"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ia-prefix"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::IaPrefix::~IaPrefix()
@@ -12493,6 +12675,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::IaPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return referenced_ls_type.is_set
 	|| referenced_link_state_id.is_set
 	|| referenced_adv_router.is_set
@@ -12604,7 +12787,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "ospfv3-link"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-link"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Link::~Ospfv3Link()
@@ -12613,6 +12796,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Link::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_id.is_set
 	|| neighbor_interface_id.is_set
 	|| neighbor_router_id.is_set
@@ -12633,7 +12817,10 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv3-link" <<"[interface-id='" <<interface_id <<"']" <<"[neighbor-interface-id='" <<neighbor_interface_id <<"']" <<"[neighbor-router-id='" <<neighbor_router_id <<"']";
+    path_buffer << "ospfv3-link";
+    ADD_KEY_TOKEN(interface_id, "interface-id");
+    ADD_KEY_TOKEN(neighbor_interface_id, "neighbor-interface-id");
+    ADD_KEY_TOKEN(neighbor_router_id, "neighbor-router-id");
     return path_buffer.str();
 }
 
@@ -12734,7 +12921,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     prefix_options{YType::str, "prefix-options"}
 {
 
-    yang_name = "ospfv3-prefix"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-prefix"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Prefix::~Ospfv3Prefix()
@@ -12743,6 +12930,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_options.is_set;
 }
@@ -12757,7 +12945,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Prefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv3-prefix" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "ospfv3-prefix";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -12825,7 +13014,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
     prefix_options{YType::str, "prefix-options"}
 {
 
-    yang_name = "ospfv3-ia-prefix"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-ia-prefix"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3IaPrefix::~Ospfv3IaPrefix()
@@ -12834,6 +13023,7 @@ OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Os
 
 bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3IaPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_options.is_set;
 }
@@ -12848,7 +13038,8 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa
 std::string OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3IaPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv3-ia-prefix" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "ospfv3-ia-prefix";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -12913,9 +13104,12 @@ bool OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsas()
     :
     lsa_type{YType::uint32, "lsa-type"}
+        ,
+    link_scope_lsa(this, {"lsa_id", "adv_router"})
+    , area_scope_lsa(this, {"lsa_type", "adv_router"})
 {
 
-    yang_name = "link-scope-lsas"; yang_parent_name = "ospf-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-scope-lsas"; yang_parent_name = "ospf-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::~LinkScopeLsas()
@@ -12924,12 +13118,13 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::~LinkScopeLsas()
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::has_data() const
 {
-    for (std::size_t index=0; index<link_scope_lsa.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<link_scope_lsa.len(); index++)
     {
         if(link_scope_lsa[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<area_scope_lsa.size(); index++)
+    for (std::size_t index=0; index<area_scope_lsa.len(); index++)
     {
         if(area_scope_lsa[index]->has_data())
             return true;
@@ -12939,12 +13134,12 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::has_data() const
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::has_operation() const
 {
-    for (std::size_t index=0; index<link_scope_lsa.size(); index++)
+    for (std::size_t index=0; index<link_scope_lsa.len(); index++)
     {
         if(link_scope_lsa[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<area_scope_lsa.size(); index++)
+    for (std::size_t index=0; index<area_scope_lsa.len(); index++)
     {
         if(area_scope_lsa[index]->has_operation())
             return true;
@@ -12956,7 +13151,8 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::has_operation() const
 std::string OspfOperData::OspfState::OspfInstance::LinkScopeLsas::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link-scope-lsas" <<"[lsa-type='" <<lsa_type <<"']";
+    path_buffer << "link-scope-lsas";
+    ADD_KEY_TOKEN(lsa_type, "lsa-type");
     return path_buffer.str();
 }
 
@@ -12976,7 +13172,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::ge
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa>();
         c->parent = this;
-        link_scope_lsa.push_back(c);
+        link_scope_lsa.append(c);
         return c;
     }
 
@@ -12984,7 +13180,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::ge
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa>();
         c->parent = this;
-        area_scope_lsa.push_back(c);
+        area_scope_lsa.append(c);
         return c;
     }
 
@@ -12996,7 +13192,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : link_scope_lsa)
+    for (auto c : link_scope_lsa.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13005,7 +13201,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : area_scope_lsa)
+    for (auto c : area_scope_lsa.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13049,16 +13245,25 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::LinkScopeLsa
     raw_data{YType::uint8, "raw-data"},
     version{YType::uint32, "version"},
     router_address{YType::str, "router-address"}
-    	,
+        ,
     ospfv2_lsa(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa>())
-	,ospfv3_lsa_val(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal>())
-	,tlv(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Tlv>())
+    , ospfv2_link(this, {"link_id", "link_data"})
+    , ospfv2_topology(this, {"mt_id"})
+    , ospfv2_external(this, {"mt_id"})
+    , ospfv2_unknown_tlv(this, {"type"})
+    , ospfv3_lsa_val(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal>())
+    , ospfv3_link(this, {"interface_id", "neighbor_interface_id", "neighbor_router_id"})
+    , ospfv3_prefix_list(this, {"prefix"})
+    , ospfv3_ia_prefix(this, {"prefix"})
+    , multi_topology(this, {"name"})
+    , tlv(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Tlv>())
+    , unknown_sub_tlv(this, {"type"})
 {
     ospfv2_lsa->parent = this;
     ospfv3_lsa_val->parent = this;
     tlv->parent = this;
 
-    yang_name = "link-scope-lsa"; yang_parent_name = "link-scope-lsas"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-scope-lsa"; yang_parent_name = "link-scope-lsas"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::~LinkScopeLsa()
@@ -13067,47 +13272,48 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::~LinkScopeLs
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::has_data() const
 {
-    for (std::size_t index=0; index<ospfv2_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospfv2_link.len(); index++)
     {
         if(ospfv2_link[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_topology.size(); index++)
+    for (std::size_t index=0; index<ospfv2_topology.len(); index++)
     {
         if(ospfv2_topology[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_external.size(); index++)
+    for (std::size_t index=0; index<ospfv2_external.len(); index++)
     {
         if(ospfv2_external[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_unknown_tlv.size(); index++)
+    for (std::size_t index=0; index<ospfv2_unknown_tlv.len(); index++)
     {
         if(ospfv2_unknown_tlv[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_link.size(); index++)
+    for (std::size_t index=0; index<ospfv3_link.len(); index++)
     {
         if(ospfv3_link[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_prefix_list.size(); index++)
+    for (std::size_t index=0; index<ospfv3_prefix_list.len(); index++)
     {
         if(ospfv3_prefix_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_ia_prefix.size(); index++)
+    for (std::size_t index=0; index<ospfv3_ia_prefix.len(); index++)
     {
         if(ospfv3_ia_prefix[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<multi_topology.size(); index++)
+    for (std::size_t index=0; index<multi_topology.len(); index++)
     {
         if(multi_topology[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<unknown_sub_tlv.size(); index++)
+    for (std::size_t index=0; index<unknown_sub_tlv.len(); index++)
     {
         if(unknown_sub_tlv[index]->has_data())
             return true;
@@ -13129,47 +13335,47 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::has_dat
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::has_operation() const
 {
-    for (std::size_t index=0; index<ospfv2_link.size(); index++)
+    for (std::size_t index=0; index<ospfv2_link.len(); index++)
     {
         if(ospfv2_link[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_topology.size(); index++)
+    for (std::size_t index=0; index<ospfv2_topology.len(); index++)
     {
         if(ospfv2_topology[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_external.size(); index++)
+    for (std::size_t index=0; index<ospfv2_external.len(); index++)
     {
         if(ospfv2_external[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_unknown_tlv.size(); index++)
+    for (std::size_t index=0; index<ospfv2_unknown_tlv.len(); index++)
     {
         if(ospfv2_unknown_tlv[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_link.size(); index++)
+    for (std::size_t index=0; index<ospfv3_link.len(); index++)
     {
         if(ospfv3_link[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_prefix_list.size(); index++)
+    for (std::size_t index=0; index<ospfv3_prefix_list.len(); index++)
     {
         if(ospfv3_prefix_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_ia_prefix.size(); index++)
+    for (std::size_t index=0; index<ospfv3_ia_prefix.len(); index++)
     {
         if(ospfv3_ia_prefix[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<multi_topology.size(); index++)
+    for (std::size_t index=0; index<multi_topology.len(); index++)
     {
         if(multi_topology[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<unknown_sub_tlv.size(); index++)
+    for (std::size_t index=0; index<unknown_sub_tlv.len(); index++)
     {
         if(unknown_sub_tlv[index]->has_operation())
             return true;
@@ -13194,7 +13400,9 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::has_ope
 std::string OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link-scope-lsa" <<"[lsa-id='" <<lsa_id <<"']" <<"[adv-router='" <<adv_router <<"']";
+    path_buffer << "link-scope-lsa";
+    ADD_KEY_TOKEN(lsa_id, "lsa-id");
+    ADD_KEY_TOKEN(adv_router, "adv-router");
     return path_buffer.str();
 }
 
@@ -13229,7 +13437,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link>();
         c->parent = this;
-        ospfv2_link.push_back(c);
+        ospfv2_link.append(c);
         return c;
     }
 
@@ -13237,7 +13445,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Topology>();
         c->parent = this;
-        ospfv2_topology.push_back(c);
+        ospfv2_topology.append(c);
         return c;
     }
 
@@ -13245,7 +13453,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2External>();
         c->parent = this;
-        ospfv2_external.push_back(c);
+        ospfv2_external.append(c);
         return c;
     }
 
@@ -13253,7 +13461,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv>();
         c->parent = this;
-        ospfv2_unknown_tlv.push_back(c);
+        ospfv2_unknown_tlv.append(c);
         return c;
     }
 
@@ -13270,7 +13478,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3Link>();
         c->parent = this;
-        ospfv3_link.push_back(c);
+        ospfv3_link.append(c);
         return c;
     }
 
@@ -13278,7 +13486,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList>();
         c->parent = this;
-        ospfv3_prefix_list.push_back(c);
+        ospfv3_prefix_list.append(c);
         return c;
     }
 
@@ -13286,7 +13494,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix>();
         c->parent = this;
-        ospfv3_ia_prefix.push_back(c);
+        ospfv3_ia_prefix.append(c);
         return c;
     }
 
@@ -13294,7 +13502,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::MultiTopology>();
         c->parent = this;
-        multi_topology.push_back(c);
+        multi_topology.append(c);
         return c;
     }
 
@@ -13311,7 +13519,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::UnknownSubTlv>();
         c->parent = this;
-        unknown_sub_tlv.push_back(c);
+        unknown_sub_tlv.append(c);
         return c;
     }
 
@@ -13328,7 +13536,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv2_link)
+    for (auto c : ospfv2_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13337,7 +13545,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv2_topology)
+    for (auto c : ospfv2_topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13346,7 +13554,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv2_external)
+    for (auto c : ospfv2_external.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13355,7 +13563,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv2_unknown_tlv)
+    for (auto c : ospfv2_unknown_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13369,7 +13577,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv3_link)
+    for (auto c : ospfv3_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13378,7 +13586,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv3_prefix_list)
+    for (auto c : ospfv3_prefix_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13387,7 +13595,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv3_ia_prefix)
+    for (auto c : ospfv3_ia_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13396,7 +13604,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : multi_topology)
+    for (auto c : multi_topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13410,7 +13618,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : unknown_sub_tlv)
+    for (auto c : unknown_sub_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13497,12 +13705,12 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::has_lea
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::Ospfv2Lsa()
     :
     header(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::Header>())
-	,lsa_body(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody>())
+    , lsa_body(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody>())
 {
     header->parent = this;
     lsa_body->parent = this;
 
-    yang_name = "ospfv2-lsa"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-lsa"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::~Ospfv2Lsa()
@@ -13511,6 +13719,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::~
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::has_data() const
 {
+    if (is_presence_container) return true;
     return (header !=  nullptr && header->has_data())
 	|| (lsa_body !=  nullptr && lsa_body->has_data());
 }
@@ -13607,7 +13816,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::H
     flag_options{YType::bits, "flag-options"}
 {
 
-    yang_name = "header"; yang_parent_name = "ospfv2-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "ospfv2-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::Header::~Header()
@@ -13616,6 +13825,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::H
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| opaque_type.is_set
 	|| opaque_id.is_set
@@ -13800,12 +14010,12 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::L
     summary_mask{YType::str, "summary-mask"},
     external_mask{YType::str, "external-mask"},
     body_flag_options{YType::bits, "body-flag-options"}
-    	,
+        ,
     network(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::Network>())
 {
     network->parent = this;
 
-    yang_name = "lsa-body"; yang_parent_name = "ospfv2-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-body"; yang_parent_name = "ospfv2-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::~LsaBody()
@@ -13814,6 +14024,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::L
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::has_data() const
 {
+    if (is_presence_container) return true;
     return num_of_links.is_set
 	|| summary_mask.is_set
 	|| external_mask.is_set
@@ -13936,7 +14147,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::L
     attached_router{YType::uint32, "attached-router"}
 {
 
-    yang_name = "network"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::Network::~Network()
@@ -13945,6 +14156,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::L
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::Network::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : attached_router.getYLeafs())
     {
         if(leaf.is_set)
@@ -14034,9 +14246,11 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::
     link_id{YType::uint32, "link-id"},
     link_data{YType::uint32, "link-data"},
     type{YType::uint8, "type"}
+        ,
+    ospfv2_topology(this, {"mt_id"})
 {
 
-    yang_name = "ospfv2-link"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-link"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::~Ospfv2Link()
@@ -14045,7 +14259,8 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::has_data() const
 {
-    for (std::size_t index=0; index<ospfv2_topology.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospfv2_topology.len(); index++)
     {
         if(ospfv2_topology[index]->has_data())
             return true;
@@ -14057,7 +14272,7 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2L
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::has_operation() const
 {
-    for (std::size_t index=0; index<ospfv2_topology.size(); index++)
+    for (std::size_t index=0; index<ospfv2_topology.len(); index++)
     {
         if(ospfv2_topology[index]->has_operation())
             return true;
@@ -14071,7 +14286,9 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2L
 std::string OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-link" <<"[link-id='" <<link_id <<"']" <<"[link-data='" <<link_data <<"']";
+    path_buffer << "ospfv2-link";
+    ADD_KEY_TOKEN(link_id, "link-id");
+    ADD_KEY_TOKEN(link_data, "link-data");
     return path_buffer.str();
 }
 
@@ -14093,7 +14310,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology>();
         c->parent = this;
-        ospfv2_topology.push_back(c);
+        ospfv2_topology.append(c);
         return c;
     }
 
@@ -14105,7 +14322,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ospfv2_topology)
+    for (auto c : ospfv2_topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14167,7 +14384,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "ospfv2-topology"; yang_parent_name = "ospfv2-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-topology"; yang_parent_name = "ospfv2-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology::~Ospfv2Topology()
@@ -14176,6 +14393,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set;
 }
@@ -14190,7 +14408,8 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2L
 std::string OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-topology" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "ospfv2-topology";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -14258,7 +14477,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Topolo
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "ospfv2-topology"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-topology"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Topology::~Ospfv2Topology()
@@ -14267,6 +14486,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Topolo
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set;
 }
@@ -14281,7 +14501,8 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2T
 std::string OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-topology" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "ospfv2-topology";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -14351,7 +14572,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Extern
     external_route_tag{YType::uint32, "external-route-tag"}
 {
 
-    yang_name = "ospfv2-external"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-external"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2External::~Ospfv2External()
@@ -14360,6 +14581,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Extern
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2External::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set
 	|| forwarding_address.is_set
@@ -14378,7 +14600,8 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2E
 std::string OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2External::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-external" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "ospfv2-external";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -14469,7 +14692,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Unknow
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "ospfv2-unknown-tlv"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-unknown-tlv"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv::~Ospfv2UnknownTlv()
@@ -14478,6 +14701,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Unknow
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
@@ -14503,7 +14727,8 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2U
 std::string OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-unknown-tlv" <<"[type='" <<type <<"']";
+    path_buffer << "ospfv2-unknown-tlv";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -14578,12 +14803,12 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2U
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Ospfv3LsaVal()
     :
     header(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header>())
-	,lsa_body(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody>())
+    , lsa_body(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody>())
 {
     header->parent = this;
     lsa_body->parent = this;
 
-    yang_name = "ospfv3-lsa-val"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-lsa-val"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::~Ospfv3LsaVal()
@@ -14592,6 +14817,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::has_data() const
 {
+    if (is_presence_container) return true;
     return (header !=  nullptr && header->has_data())
 	|| (lsa_body !=  nullptr && lsa_body->has_data());
 }
@@ -14678,12 +14904,12 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
     :
     lsa_id{YType::str, "lsa-id"},
     lsa_hdr_options{YType::bits, "lsa-hdr-options"}
-    	,
+        ,
     lsa_header(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::LsaHeader>())
 {
     lsa_header->parent = this;
 
-    yang_name = "header"; yang_parent_name = "ospfv3-lsa-val"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "ospfv3-lsa-val"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::~Header()
@@ -14692,6 +14918,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| lsa_hdr_options.is_set
 	|| (lsa_header !=  nullptr && lsa_header->has_data());
@@ -14792,7 +15019,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
     length{YType::uint16, "length"}
 {
 
-    yang_name = "lsa-header"; yang_parent_name = "header"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-header"; yang_parent_name = "header"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::LsaHeader::~LsaHeader()
@@ -14801,6 +15028,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::LsaHeader::has_data() const
 {
+    if (is_presence_container) return true;
     return age.is_set
 	|| type.is_set
 	|| adv_router.is_set
@@ -14933,14 +15161,14 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
     :
     lsa_flag_options{YType::bits, "lsa-flag-options"},
     lsa_body_flags{YType::bits, "lsa-body-flags"}
-    	,
+        ,
     network(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Network>())
-	,prefix(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Prefix>())
-	,ia_router(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaRouter>())
-	,lsa_external(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal>())
-	,nssa(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa>())
-	,link_data(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LinkData>())
-	,ia_prefix(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaPrefix>())
+    , prefix(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Prefix>())
+    , ia_router(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaRouter>())
+    , lsa_external(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal>())
+    , nssa(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa>())
+    , link_data(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LinkData>())
+    , ia_prefix(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaPrefix>())
 {
     network->parent = this;
     prefix->parent = this;
@@ -14950,7 +15178,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
     link_data->parent = this;
     ia_prefix->parent = this;
 
-    yang_name = "lsa-body"; yang_parent_name = "ospfv3-lsa-val"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-body"; yang_parent_name = "ospfv3-lsa-val"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::~LsaBody()
@@ -14959,6 +15187,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_flag_options.is_set
 	|| lsa_body_flags.is_set
 	|| (network !=  nullptr && network->has_data())
@@ -15149,7 +15378,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
     lsa_net_options{YType::bits, "lsa-net-options"}
 {
 
-    yang_name = "network"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Network::~Network()
@@ -15158,6 +15387,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Network::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : attached_router.getYLeafs())
     {
         if(leaf.is_set)
@@ -15247,7 +15477,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
     ia_prefix_options{YType::str, "ia-prefix-options"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Prefix::~Prefix()
@@ -15256,6 +15486,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| ia_prefix.is_set
 	|| ia_prefix_options.is_set;
@@ -15352,7 +15583,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
     lsa_ia_options{YType::bits, "lsa-ia-options"}
 {
 
-    yang_name = "ia-router"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ia-router"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaRouter::~IaRouter()
@@ -15361,6 +15592,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaRouter::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| destination_router_id.is_set
 	|| lsa_ia_options.is_set;
@@ -15457,12 +15689,12 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
     forwarding_address{YType::str, "forwarding-address"},
     external_route_tag{YType::uint32, "external-route-tag"},
     referenced_link_state_id{YType::uint32, "referenced-link-state-id"}
-    	,
+        ,
     flags(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::Flags>())
 {
     flags->parent = this;
 
-    yang_name = "lsa-external"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-external"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::~LsaExternal()
@@ -15471,6 +15703,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| referenced_ls_type.is_set
 	|| external_prefix.is_set
@@ -15633,7 +15866,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
     e_flag{YType::boolean, "e-flag"}
 {
 
-    yang_name = "flags"; yang_parent_name = "lsa-external"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flags"; yang_parent_name = "lsa-external"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::Flags::~Flags()
@@ -15642,6 +15875,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::Flags::has_data() const
 {
+    if (is_presence_container) return true;
     return e_flag.is_set;
 }
 
@@ -15711,7 +15945,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
 {
     lsa_nssa_external->parent = this;
 
-    yang_name = "nssa"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nssa"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::~Nssa()
@@ -15720,6 +15954,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::has_data() const
 {
+    if (is_presence_container) return true;
     return (lsa_nssa_external !=  nullptr && lsa_nssa_external->has_data());
 }
 
@@ -15795,12 +16030,12 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
     forwarding_address{YType::str, "forwarding-address"},
     external_route_tag{YType::uint32, "external-route-tag"},
     referenced_link_state_id{YType::uint32, "referenced-link-state-id"}
-    	,
+        ,
     flags(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::Flags>())
 {
     flags->parent = this;
 
-    yang_name = "lsa-nssa-external"; yang_parent_name = "nssa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-nssa-external"; yang_parent_name = "nssa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::~LsaNssaExternal()
@@ -15809,6 +16044,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| referenced_ls_type.is_set
 	|| external_prefix.is_set
@@ -15971,7 +16207,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
     e_flag{YType::boolean, "e-flag"}
 {
 
-    yang_name = "flags"; yang_parent_name = "lsa-nssa-external"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flags"; yang_parent_name = "lsa-nssa-external"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::Flags::~Flags()
@@ -15980,6 +16216,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::Flags::has_data() const
 {
+    if (is_presence_container) return true;
     return e_flag.is_set;
 }
 
@@ -16051,7 +16288,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
     lsa_id_options{YType::bits, "lsa-id-options"}
 {
 
-    yang_name = "link-data"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-data"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LinkData::~LinkData()
@@ -16060,6 +16297,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LinkData::has_data() const
 {
+    if (is_presence_container) return true;
     return rtr_priority.is_set
 	|| link_local_interface_address.is_set
 	|| num_of_prefixes.is_set
@@ -16168,7 +16406,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
     num_of_prefixes{YType::uint16, "num-of-prefixes"}
 {
 
-    yang_name = "ia-prefix"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ia-prefix"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaPrefix::~IaPrefix()
@@ -16177,6 +16415,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return referenced_ls_type.is_set
 	|| referenced_link_state_id.is_set
 	|| referenced_adv_router.is_set
@@ -16288,7 +16527,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3Link::
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "ospfv3-link"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-link"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3Link::~Ospfv3Link()
@@ -16297,6 +16536,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3Link::
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3Link::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_id.is_set
 	|| neighbor_interface_id.is_set
 	|| neighbor_router_id.is_set
@@ -16317,7 +16557,10 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3L
 std::string OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv3-link" <<"[interface-id='" <<interface_id <<"']" <<"[neighbor-interface-id='" <<neighbor_interface_id <<"']" <<"[neighbor-router-id='" <<neighbor_router_id <<"']";
+    path_buffer << "ospfv3-link";
+    ADD_KEY_TOKEN(interface_id, "interface-id");
+    ADD_KEY_TOKEN(neighbor_interface_id, "neighbor-interface-id");
+    ADD_KEY_TOKEN(neighbor_router_id, "neighbor-router-id");
     return path_buffer.str();
 }
 
@@ -16418,7 +16661,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3Prefix
     prefix_options{YType::str, "prefix-options"}
 {
 
-    yang_name = "ospfv3-prefix-list"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-prefix-list"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList::~Ospfv3PrefixList()
@@ -16427,6 +16670,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3Prefix
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_options.is_set;
 }
@@ -16441,7 +16685,8 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3P
 std::string OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv3-prefix-list" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "ospfv3-prefix-list";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -16509,7 +16754,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3IaPref
     prefix_options{YType::str, "prefix-options"}
 {
 
-    yang_name = "ospfv3-ia-prefix"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-ia-prefix"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix::~Ospfv3IaPrefix()
@@ -16518,6 +16763,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3IaPref
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_options.is_set;
 }
@@ -16532,7 +16778,8 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3I
 std::string OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv3-ia-prefix" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "ospfv3-ia-prefix";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -16599,7 +16846,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::MultiTopolog
     name{YType::str, "name"}
 {
 
-    yang_name = "multi-topology"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multi-topology"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::MultiTopology::~MultiTopology()
@@ -16608,6 +16855,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::MultiTopolog
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::MultiTopology::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -16620,7 +16868,8 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::MultiTo
 std::string OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::MultiTopology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "multi-topology" <<"[name='" <<name <<"']";
+    path_buffer << "multi-topology";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -16684,7 +16933,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Tlv::Tlv()
     admin_group{YType::uint32, "admin-group"}
 {
 
-    yang_name = "tlv"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tlv"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Tlv::~Tlv()
@@ -16693,6 +16942,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Tlv::~Tlv()
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Tlv::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : local_if_ipv4_addr.getYLeafs())
     {
         if(leaf.is_set)
@@ -16883,7 +17133,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::UnknownSubTl
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "unknown-sub-tlv"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-sub-tlv"; yang_parent_name = "link-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::UnknownSubTlv::~UnknownSubTlv()
@@ -16892,6 +17142,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::UnknownSubTl
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::UnknownSubTlv::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
@@ -16917,7 +17168,8 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Unknown
 std::string OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::UnknownSubTlv::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "unknown-sub-tlv" <<"[type='" <<type <<"']";
+    path_buffer << "unknown-sub-tlv";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -16995,14 +17247,20 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::AreaScopeLsa
     adv_router{YType::str, "adv-router"},
     decoded_completed{YType::boolean, "decoded-completed"},
     raw_data{YType::uint8, "raw-data"}
-    	,
+        ,
     ospfv2_lsa(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa>())
-	,ospfv3_lsa(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa>())
+    , ospfv2_link(this, {"link_id", "link_data"})
+    , ospfv2_topology(this, {"mt_id"})
+    , ospfv2_external(this, {"mt_id"})
+    , ospfv3_lsa(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa>())
+    , ospfv3_link(this, {"interface_id", "neighbor_interface_id", "neighbor_router_id"})
+    , ospfv3_prefix(this, {"prefix"})
+    , ospfv3_ia_prefix(this, {"prefix"})
 {
     ospfv2_lsa->parent = this;
     ospfv3_lsa->parent = this;
 
-    yang_name = "area-scope-lsa"; yang_parent_name = "link-scope-lsas"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "area-scope-lsa"; yang_parent_name = "link-scope-lsas"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::~AreaScopeLsa()
@@ -17011,32 +17269,33 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::~AreaScopeLs
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::has_data() const
 {
-    for (std::size_t index=0; index<ospfv2_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospfv2_link.len(); index++)
     {
         if(ospfv2_link[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_topology.size(); index++)
+    for (std::size_t index=0; index<ospfv2_topology.len(); index++)
     {
         if(ospfv2_topology[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_external.size(); index++)
+    for (std::size_t index=0; index<ospfv2_external.len(); index++)
     {
         if(ospfv2_external[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_link.size(); index++)
+    for (std::size_t index=0; index<ospfv3_link.len(); index++)
     {
         if(ospfv3_link[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_prefix.size(); index++)
+    for (std::size_t index=0; index<ospfv3_prefix.len(); index++)
     {
         if(ospfv3_prefix[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_ia_prefix.size(); index++)
+    for (std::size_t index=0; index<ospfv3_ia_prefix.len(); index++)
     {
         if(ospfv3_ia_prefix[index]->has_data())
             return true;
@@ -17055,32 +17314,32 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::has_dat
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::has_operation() const
 {
-    for (std::size_t index=0; index<ospfv2_link.size(); index++)
+    for (std::size_t index=0; index<ospfv2_link.len(); index++)
     {
         if(ospfv2_link[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_topology.size(); index++)
+    for (std::size_t index=0; index<ospfv2_topology.len(); index++)
     {
         if(ospfv2_topology[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv2_external.size(); index++)
+    for (std::size_t index=0; index<ospfv2_external.len(); index++)
     {
         if(ospfv2_external[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_link.size(); index++)
+    for (std::size_t index=0; index<ospfv3_link.len(); index++)
     {
         if(ospfv3_link[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_prefix.size(); index++)
+    for (std::size_t index=0; index<ospfv3_prefix.len(); index++)
     {
         if(ospfv3_prefix[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ospfv3_ia_prefix.size(); index++)
+    for (std::size_t index=0; index<ospfv3_ia_prefix.len(); index++)
     {
         if(ospfv3_ia_prefix[index]->has_operation())
             return true;
@@ -17102,7 +17361,9 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::has_ope
 std::string OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "area-scope-lsa" <<"[lsa-type='" <<lsa_type <<"']" <<"[adv-router='" <<adv_router <<"']";
+    path_buffer << "area-scope-lsa";
+    ADD_KEY_TOKEN(lsa_type, "lsa-type");
+    ADD_KEY_TOKEN(adv_router, "adv-router");
     return path_buffer.str();
 }
 
@@ -17135,7 +17396,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Ar
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link>();
         c->parent = this;
-        ospfv2_link.push_back(c);
+        ospfv2_link.append(c);
         return c;
     }
 
@@ -17143,7 +17404,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Ar
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Topology>();
         c->parent = this;
-        ospfv2_topology.push_back(c);
+        ospfv2_topology.append(c);
         return c;
     }
 
@@ -17151,7 +17412,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Ar
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2External>();
         c->parent = this;
-        ospfv2_external.push_back(c);
+        ospfv2_external.append(c);
         return c;
     }
 
@@ -17168,7 +17429,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Ar
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Link>();
         c->parent = this;
-        ospfv3_link.push_back(c);
+        ospfv3_link.append(c);
         return c;
     }
 
@@ -17176,7 +17437,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Ar
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Prefix>();
         c->parent = this;
-        ospfv3_prefix.push_back(c);
+        ospfv3_prefix.append(c);
         return c;
     }
 
@@ -17184,7 +17445,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Ar
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix>();
         c->parent = this;
-        ospfv3_ia_prefix.push_back(c);
+        ospfv3_ia_prefix.append(c);
         return c;
     }
 
@@ -17201,7 +17462,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv2_link)
+    for (auto c : ospfv2_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17210,7 +17471,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv2_topology)
+    for (auto c : ospfv2_topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17219,7 +17480,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv2_external)
+    for (auto c : ospfv2_external.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17233,7 +17494,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv3_link)
+    for (auto c : ospfv3_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17242,7 +17503,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv3_prefix)
+    for (auto c : ospfv3_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17251,7 +17512,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     }
 
     count = 0;
-    for (auto const & c : ospfv3_ia_prefix)
+    for (auto c : ospfv3_ia_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17318,12 +17579,12 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::has_lea
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::Ospfv2Lsa()
     :
     header(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::Header>())
-	,lsa_body(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody>())
+    , lsa_body(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody>())
 {
     header->parent = this;
     lsa_body->parent = this;
 
-    yang_name = "ospfv2-lsa"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-lsa"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::~Ospfv2Lsa()
@@ -17332,6 +17593,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::~
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::has_data() const
 {
+    if (is_presence_container) return true;
     return (header !=  nullptr && header->has_data())
 	|| (lsa_body !=  nullptr && lsa_body->has_data());
 }
@@ -17428,7 +17690,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::H
     flag_options{YType::bits, "flag-options"}
 {
 
-    yang_name = "header"; yang_parent_name = "ospfv2-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "ospfv2-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::Header::~Header()
@@ -17437,6 +17699,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::H
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| opaque_type.is_set
 	|| opaque_id.is_set
@@ -17621,12 +17884,12 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::L
     summary_mask{YType::str, "summary-mask"},
     external_mask{YType::str, "external-mask"},
     body_flag_options{YType::bits, "body-flag-options"}
-    	,
+        ,
     network(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::Network>())
 {
     network->parent = this;
 
-    yang_name = "lsa-body"; yang_parent_name = "ospfv2-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-body"; yang_parent_name = "ospfv2-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::~LsaBody()
@@ -17635,6 +17898,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::L
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::has_data() const
 {
+    if (is_presence_container) return true;
     return num_of_links.is_set
 	|| summary_mask.is_set
 	|| external_mask.is_set
@@ -17757,7 +18021,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::L
     attached_router{YType::uint32, "attached-router"}
 {
 
-    yang_name = "network"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::Network::~Network()
@@ -17766,6 +18030,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::L
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::Network::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : attached_router.getYLeafs())
     {
         if(leaf.is_set)
@@ -17855,9 +18120,11 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::
     link_id{YType::uint32, "link-id"},
     link_data{YType::uint32, "link-data"},
     type{YType::uint8, "type"}
+        ,
+    ospfv2_topology(this, {"mt_id"})
 {
 
-    yang_name = "ospfv2-link"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-link"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::~Ospfv2Link()
@@ -17866,7 +18133,8 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::has_data() const
 {
-    for (std::size_t index=0; index<ospfv2_topology.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospfv2_topology.len(); index++)
     {
         if(ospfv2_topology[index]->has_data())
             return true;
@@ -17878,7 +18146,7 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2L
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::has_operation() const
 {
-    for (std::size_t index=0; index<ospfv2_topology.size(); index++)
+    for (std::size_t index=0; index<ospfv2_topology.len(); index++)
     {
         if(ospfv2_topology[index]->has_operation())
             return true;
@@ -17892,7 +18160,9 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2L
 std::string OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-link" <<"[link-id='" <<link_id <<"']" <<"[link-data='" <<link_data <<"']";
+    path_buffer << "ospfv2-link";
+    ADD_KEY_TOKEN(link_id, "link-id");
+    ADD_KEY_TOKEN(link_data, "link-data");
     return path_buffer.str();
 }
 
@@ -17914,7 +18184,7 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Ar
     {
         auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology>();
         c->parent = this;
-        ospfv2_topology.push_back(c);
+        ospfv2_topology.append(c);
         return c;
     }
 
@@ -17926,7 +18196,7 @@ std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInst
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ospfv2_topology)
+    for (auto c : ospfv2_topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17988,7 +18258,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "ospfv2-topology"; yang_parent_name = "ospfv2-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-topology"; yang_parent_name = "ospfv2-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology::~Ospfv2Topology()
@@ -17997,6 +18267,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set;
 }
@@ -18011,7 +18282,8 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2L
 std::string OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-topology" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "ospfv2-topology";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -18079,7 +18351,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Topolo
     metric{YType::uint16, "metric"}
 {
 
-    yang_name = "ospfv2-topology"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-topology"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Topology::~Ospfv2Topology()
@@ -18088,6 +18360,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Topolo
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Topology::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set;
 }
@@ -18102,7 +18375,8 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2T
 std::string OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Topology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-topology" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "ospfv2-topology";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -18172,7 +18446,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Extern
     external_route_tag{YType::uint32, "external-route-tag"}
 {
 
-    yang_name = "ospfv2-external"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv2-external"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2External::~Ospfv2External()
@@ -18181,6 +18455,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Extern
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2External::has_data() const
 {
+    if (is_presence_container) return true;
     return mt_id.is_set
 	|| metric.is_set
 	|| forwarding_address.is_set
@@ -18199,7 +18474,8 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2E
 std::string OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2External::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospfv2-external" <<"[mt-id='" <<mt_id <<"']";
+    path_buffer << "ospfv2-external";
+    ADD_KEY_TOKEN(mt_id, "mt-id");
     return path_buffer.str();
 }
 
@@ -18286,12 +18562,12 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2E
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Ospfv3Lsa()
     :
     header(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header>())
-	,lsa_body(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody>())
+    , lsa_body(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody>())
 {
     header->parent = this;
     lsa_body->parent = this;
 
-    yang_name = "ospfv3-lsa"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfv3-lsa"; yang_parent_name = "area-scope-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::~Ospfv3Lsa()
@@ -18300,6 +18576,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::~
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::has_data() const
 {
+    if (is_presence_container) return true;
     return (header !=  nullptr && header->has_data())
 	|| (lsa_body !=  nullptr && lsa_body->has_data());
 }
@@ -18386,12 +18663,12 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::H
     :
     lsa_id{YType::str, "lsa-id"},
     lsa_hdr_options{YType::bits, "lsa-hdr-options"}
-    	,
+        ,
     lsa_header(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::LsaHeader>())
 {
     lsa_header->parent = this;
 
-    yang_name = "header"; yang_parent_name = "ospfv3-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "ospfv3-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::~Header()
@@ -18400,6 +18677,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::H
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| lsa_hdr_options.is_set
 	|| (lsa_header !=  nullptr && lsa_header->has_data());
@@ -18500,7 +18778,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::H
     length{YType::uint16, "length"}
 {
 
-    yang_name = "lsa-header"; yang_parent_name = "header"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-header"; yang_parent_name = "header"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::LsaHeader::~LsaHeader()
@@ -18509,6 +18787,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::H
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::LsaHeader::has_data() const
 {
+    if (is_presence_container) return true;
     return age.is_set
 	|| type.is_set
 	|| adv_router.is_set
@@ -18641,14 +18920,14 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
     :
     lsa_flag_options{YType::bits, "lsa-flag-options"},
     lsa_body_flags{YType::bits, "lsa-body-flags"}
-    	,
+        ,
     network(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Network>())
-	,prefix(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Prefix>())
-	,ia_router(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaRouter>())
-	,lsa_external(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal>())
-	,nssa(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa>())
-	,link_data(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LinkData>())
-	,ia_prefix(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaPrefix>())
+    , prefix(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Prefix>())
+    , ia_router(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaRouter>())
+    , lsa_external(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal>())
+    , nssa(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa>())
+    , link_data(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LinkData>())
+    , ia_prefix(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaPrefix>())
 {
     network->parent = this;
     prefix->parent = this;
@@ -18658,7 +18937,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
     link_data->parent = this;
     ia_prefix->parent = this;
 
-    yang_name = "lsa-body"; yang_parent_name = "ospfv3-lsa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-body"; yang_parent_name = "ospfv3-lsa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::~LsaBody()
@@ -18667,6 +18946,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_flag_options.is_set
 	|| lsa_body_flags.is_set
 	|| (network !=  nullptr && network->has_data())
@@ -18857,7 +19137,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
     lsa_net_options{YType::bits, "lsa-net-options"}
 {
 
-    yang_name = "network"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Network::~Network()
@@ -18866,6 +19146,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Network::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : attached_router.getYLeafs())
     {
         if(leaf.is_set)
@@ -18955,7 +19236,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
     ia_prefix_options{YType::str, "ia-prefix-options"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Prefix::~Prefix()
@@ -18964,6 +19245,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| ia_prefix.is_set
 	|| ia_prefix_options.is_set;
@@ -19060,7 +19342,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
     lsa_ia_options{YType::bits, "lsa-ia-options"}
 {
 
-    yang_name = "ia-router"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ia-router"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaRouter::~IaRouter()
@@ -19069,6 +19351,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaRouter::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| destination_router_id.is_set
 	|| lsa_ia_options.is_set;
@@ -19165,12 +19448,12 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
     forwarding_address{YType::str, "forwarding-address"},
     external_route_tag{YType::uint32, "external-route-tag"},
     referenced_link_state_id{YType::uint32, "referenced-link-state-id"}
-    	,
+        ,
     flags(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::Flags>())
 {
     flags->parent = this;
 
-    yang_name = "lsa-external"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-external"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::~LsaExternal()
@@ -19179,6 +19462,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| referenced_ls_type.is_set
 	|| external_prefix.is_set
@@ -19341,7 +19625,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
     e_flag{YType::boolean, "e-flag"}
 {
 
-    yang_name = "flags"; yang_parent_name = "lsa-external"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flags"; yang_parent_name = "lsa-external"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::Flags::~Flags()
@@ -19350,6 +19634,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::Flags::has_data() const
 {
+    if (is_presence_container) return true;
     return e_flag.is_set;
 }
 
@@ -19419,7 +19704,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
 {
     lsa_nssa_external->parent = this;
 
-    yang_name = "nssa"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nssa"; yang_parent_name = "lsa-body"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::~Nssa()
@@ -19428,6 +19713,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::has_data() const
 {
+    if (is_presence_container) return true;
     return (lsa_nssa_external !=  nullptr && lsa_nssa_external->has_data());
 }
 
@@ -19503,12 +19789,12 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
     forwarding_address{YType::str, "forwarding-address"},
     external_route_tag{YType::uint32, "external-route-tag"},
     referenced_link_state_id{YType::uint32, "referenced-link-state-id"}
-    	,
+        ,
     flags(std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags>())
 {
     flags->parent = this;
 
-    yang_name = "lsa-nssa-external"; yang_parent_name = "nssa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-nssa-external"; yang_parent_name = "nssa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::~LsaNssaExternal()
@@ -19517,6 +19803,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::has_data() const
 {
+    if (is_presence_container) return true;
     return metric.is_set
 	|| referenced_ls_type.is_set
 	|| external_prefix.is_set
@@ -19679,7 +19966,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
     e_flag{YType::boolean, "e-flag"}
 {
 
-    yang_name = "flags"; yang_parent_name = "lsa-nssa-external"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flags"; yang_parent_name = "lsa-nssa-external"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::~Flags()
@@ -19688,6 +19975,7 @@ OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::L
 
 bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::has_data() const
 {
+    if (is_presence_container) return true;
     return e_flag.is_set;
 }
 
@@ -19751,8 +20039,14 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3L
     return false;
 }
 
-const Enum::YLeaf AddressFamily::address_family_ipv4 {0, "address-family-ipv4"};
-const Enum::YLeaf AddressFamily::address_family_ipv6 {1, "address-family-ipv6"};
+const Enum::YLeaf NbrStateType::ospf_nbr_down {1, "ospf-nbr-down"};
+const Enum::YLeaf NbrStateType::ospf_nbr_attempt {2, "ospf-nbr-attempt"};
+const Enum::YLeaf NbrStateType::ospf_nbr_init {3, "ospf-nbr-init"};
+const Enum::YLeaf NbrStateType::ospf_nbr_two_way {4, "ospf-nbr-two-way"};
+const Enum::YLeaf NbrStateType::ospf_nbr_exchange_start {5, "ospf-nbr-exchange-start"};
+const Enum::YLeaf NbrStateType::ospf_nbr_exchange {6, "ospf-nbr-exchange"};
+const Enum::YLeaf NbrStateType::ospf_nbr_loading {7, "ospf-nbr-loading"};
+const Enum::YLeaf NbrStateType::ospf_nbr_full {8, "ospf-nbr-full"};
 
 const Enum::YLeaf OspfOperationMode::ospf_ships_in_the_night {0, "ospf-ships-in-the-night"};
 
@@ -19766,14 +20060,8 @@ const Enum::YLeaf OspfAuthType::ospf_auth_trailer_keychain {1, "ospf-auth-traile
 const Enum::YLeaf OspfAuthType::ospf_auth_trailer_key {2, "ospf-auth-trailer-key"};
 const Enum::YLeaf OspfAuthType::ospf_auth_type_none {3, "ospf-auth-type-none"};
 
-const Enum::YLeaf NbrStateType::ospf_nbr_down {1, "ospf-nbr-down"};
-const Enum::YLeaf NbrStateType::ospf_nbr_attempt {2, "ospf-nbr-attempt"};
-const Enum::YLeaf NbrStateType::ospf_nbr_init {3, "ospf-nbr-init"};
-const Enum::YLeaf NbrStateType::ospf_nbr_two_way {4, "ospf-nbr-two-way"};
-const Enum::YLeaf NbrStateType::ospf_nbr_exchange_start {5, "ospf-nbr-exchange-start"};
-const Enum::YLeaf NbrStateType::ospf_nbr_exchange {6, "ospf-nbr-exchange"};
-const Enum::YLeaf NbrStateType::ospf_nbr_loading {7, "ospf-nbr-loading"};
-const Enum::YLeaf NbrStateType::ospf_nbr_full {8, "ospf-nbr-full"};
+const Enum::YLeaf AddressFamily::address_family_ipv4 {0, "address-family-ipv4"};
+const Enum::YLeaf AddressFamily::address_family_ipv6 {1, "address-family-ipv6"};
 
 
 }

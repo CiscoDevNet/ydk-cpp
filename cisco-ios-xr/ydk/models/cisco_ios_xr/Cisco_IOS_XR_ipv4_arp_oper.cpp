@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_ipv4_arp_oper {
 ArpGmp::ArpGmp()
     :
     vrf_infos(std::make_shared<ArpGmp::VrfInfos>())
-	,vrfs(std::make_shared<ArpGmp::Vrfs>())
+    , vrfs(std::make_shared<ArpGmp::Vrfs>())
 {
     vrf_infos->parent = this;
     vrfs->parent = this;
 
-    yang_name = "arp-gmp"; yang_parent_name = "Cisco-IOS-XR-ipv4-arp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "arp-gmp"; yang_parent_name = "Cisco-IOS-XR-ipv4-arp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ArpGmp::~ArpGmp()
@@ -28,6 +28,7 @@ ArpGmp::~ArpGmp()
 
 bool ArpGmp::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrf_infos !=  nullptr && vrf_infos->has_data())
 	|| (vrfs !=  nullptr && vrfs->has_data());
 }
@@ -136,9 +137,11 @@ bool ArpGmp::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 ArpGmp::VrfInfos::VrfInfos()
+    :
+    vrf_info(this, {"vrf_name"})
 {
 
-    yang_name = "vrf-infos"; yang_parent_name = "arp-gmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf-infos"; yang_parent_name = "arp-gmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ArpGmp::VrfInfos::~VrfInfos()
@@ -147,7 +150,8 @@ ArpGmp::VrfInfos::~VrfInfos()
 
 bool ArpGmp::VrfInfos::has_data() const
 {
-    for (std::size_t index=0; index<vrf_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf_info.len(); index++)
     {
         if(vrf_info[index]->has_data())
             return true;
@@ -157,7 +161,7 @@ bool ArpGmp::VrfInfos::has_data() const
 
 bool ArpGmp::VrfInfos::has_operation() const
 {
-    for (std::size_t index=0; index<vrf_info.size(); index++)
+    for (std::size_t index=0; index<vrf_info.len(); index++)
     {
         if(vrf_info[index]->has_operation())
             return true;
@@ -194,7 +198,7 @@ std::shared_ptr<Entity> ArpGmp::VrfInfos::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<ArpGmp::VrfInfos::VrfInfo>();
         c->parent = this;
-        vrf_info.push_back(c);
+        vrf_info.append(c);
         return c;
     }
 
@@ -206,7 +210,7 @@ std::map<std::string, std::shared_ptr<Entity>> ArpGmp::VrfInfos::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf_info)
+    for (auto c : vrf_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -242,7 +246,7 @@ ArpGmp::VrfInfos::VrfInfo::VrfInfo()
     rsi_handle_high{YType::uint32, "rsi-handle-high"}
 {
 
-    yang_name = "vrf-info"; yang_parent_name = "vrf-infos"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf-info"; yang_parent_name = "vrf-infos"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ArpGmp::VrfInfos::VrfInfo::~VrfInfo()
@@ -251,6 +255,7 @@ ArpGmp::VrfInfos::VrfInfo::~VrfInfo()
 
 bool ArpGmp::VrfInfos::VrfInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| vrf_name_xr.is_set
 	|| vrf_id_number.is_set
@@ -280,7 +285,8 @@ std::string ArpGmp::VrfInfos::VrfInfo::get_absolute_path() const
 std::string ArpGmp::VrfInfos::VrfInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-info" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf-info";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -387,9 +393,11 @@ bool ArpGmp::VrfInfos::VrfInfo::has_leaf_or_child_of_name(const std::string & na
 }
 
 ArpGmp::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "arp-gmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "arp-gmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ArpGmp::Vrfs::~Vrfs()
@@ -398,7 +406,8 @@ ArpGmp::Vrfs::~Vrfs()
 
 bool ArpGmp::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -408,7 +417,7 @@ bool ArpGmp::Vrfs::has_data() const
 
 bool ArpGmp::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -445,7 +454,7 @@ std::shared_ptr<Entity> ArpGmp::Vrfs::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<ArpGmp::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -457,7 +466,7 @@ std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -486,16 +495,16 @@ bool ArpGmp::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
 ArpGmp::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     configured_ip_addresses(std::make_shared<ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses>())
-	,routes(std::make_shared<ArpGmp::Vrfs::Vrf::Routes>())
-	,interface_configured_ips(std::make_shared<ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps>())
+    , routes(std::make_shared<ArpGmp::Vrfs::Vrf::Routes>())
+    , interface_configured_ips(std::make_shared<ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps>())
 {
     configured_ip_addresses->parent = this;
     routes->parent = this;
     interface_configured_ips->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ArpGmp::Vrfs::Vrf::~Vrf()
@@ -504,6 +513,7 @@ ArpGmp::Vrfs::Vrf::~Vrf()
 
 bool ArpGmp::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (configured_ip_addresses !=  nullptr && configured_ip_addresses->has_data())
 	|| (routes !=  nullptr && routes->has_data())
@@ -529,7 +539,8 @@ std::string ArpGmp::Vrfs::Vrf::get_absolute_path() const
 std::string ArpGmp::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -623,9 +634,11 @@ bool ArpGmp::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddresses()
+    :
+    configured_ip_address(this, {"address"})
 {
 
-    yang_name = "configured-ip-addresses"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "configured-ip-addresses"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::~ConfiguredIpAddresses()
@@ -634,7 +647,8 @@ ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::~ConfiguredIpAddresses()
 
 bool ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::has_data() const
 {
-    for (std::size_t index=0; index<configured_ip_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<configured_ip_address.len(); index++)
     {
         if(configured_ip_address[index]->has_data())
             return true;
@@ -644,7 +658,7 @@ bool ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::has_data() const
 
 bool ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<configured_ip_address.size(); index++)
+    for (std::size_t index=0; index<configured_ip_address.len(); index++)
     {
         if(configured_ip_address[index]->has_operation())
             return true;
@@ -674,7 +688,7 @@ std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::get_child_by_n
     {
         auto c = std::make_shared<ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress>();
         c->parent = this;
-        configured_ip_address.push_back(c);
+        configured_ip_address.append(c);
         return c;
     }
 
@@ -686,7 +700,7 @@ std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::ConfiguredIpAd
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : configured_ip_address)
+    for (auto c : configured_ip_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -721,7 +735,7 @@ ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::ConfiguredIpAddre
     entry_type{YType::enumeration, "entry-type"}
 {
 
-    yang_name = "configured-ip-address"; yang_parent_name = "configured-ip-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "configured-ip-address"; yang_parent_name = "configured-ip-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::~ConfiguredIpAddress()
@@ -730,6 +744,7 @@ ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::~ConfiguredIpAddr
 
 bool ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| ip_address.is_set
 	|| hardware_address.is_set
@@ -750,7 +765,8 @@ bool ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::has_operatio
 std::string ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "configured-ip-address" <<"[address='" <<address <<"']";
+    path_buffer << "configured-ip-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -846,9 +862,11 @@ bool ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::has_leaf_or_
 }
 
 ArpGmp::Vrfs::Vrf::Routes::Routes()
+    :
+    route(this, {})
 {
 
-    yang_name = "routes"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routes"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ArpGmp::Vrfs::Vrf::Routes::~Routes()
@@ -857,7 +875,8 @@ ArpGmp::Vrfs::Vrf::Routes::~Routes()
 
 bool ArpGmp::Vrfs::Vrf::Routes::has_data() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_data())
             return true;
@@ -867,7 +886,7 @@ bool ArpGmp::Vrfs::Vrf::Routes::has_data() const
 
 bool ArpGmp::Vrfs::Vrf::Routes::has_operation() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_operation())
             return true;
@@ -897,7 +916,7 @@ std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::Routes::get_child_by_name(const std::
     {
         auto c = std::make_shared<ArpGmp::Vrfs::Vrf::Routes::Route>();
         c->parent = this;
-        route.push_back(c);
+        route.append(c);
         return c;
     }
 
@@ -909,7 +928,7 @@ std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::Routes::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route)
+    for (auto c : route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -945,7 +964,7 @@ ArpGmp::Vrfs::Vrf::Routes::Route::Route()
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ArpGmp::Vrfs::Vrf::Routes::Route::~Route()
@@ -954,6 +973,7 @@ ArpGmp::Vrfs::Vrf::Routes::Route::~Route()
 
 bool ArpGmp::Vrfs::Vrf::Routes::Route::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : interface_name.getYLeafs())
     {
         if(leaf.is_set)
@@ -1091,9 +1111,11 @@ bool ArpGmp::Vrfs::Vrf::Routes::Route::has_leaf_or_child_of_name(const std::stri
 }
 
 ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIps()
+    :
+    interface_configured_ip(this, {})
 {
 
-    yang_name = "interface-configured-ips"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-configured-ips"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::~InterfaceConfiguredIps()
@@ -1102,7 +1124,8 @@ ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::~InterfaceConfiguredIps()
 
 bool ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::has_data() const
 {
-    for (std::size_t index=0; index<interface_configured_ip.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_configured_ip.len(); index++)
     {
         if(interface_configured_ip[index]->has_data())
             return true;
@@ -1112,7 +1135,7 @@ bool ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::has_data() const
 
 bool ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::has_operation() const
 {
-    for (std::size_t index=0; index<interface_configured_ip.size(); index++)
+    for (std::size_t index=0; index<interface_configured_ip.len(); index++)
     {
         if(interface_configured_ip[index]->has_operation())
             return true;
@@ -1142,7 +1165,7 @@ std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::get_child_by_
     {
         auto c = std::make_shared<ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp>();
         c->parent = this;
-        interface_configured_ip.push_back(c);
+        interface_configured_ip.append(c);
         return c;
     }
 
@@ -1154,7 +1177,7 @@ std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::InterfaceConfi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_configured_ip)
+    for (auto c : interface_configured_ip.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1186,12 +1209,12 @@ ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::InterfaceConfi
     address{YType::str, "address"},
     interface_name_xr{YType::str, "interface-name-xr"},
     reference_count{YType::uint32, "reference-count"}
-    	,
+        ,
     associated_configuration_entry(std::make_shared<ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::AssociatedConfigurationEntry>())
 {
     associated_configuration_entry->parent = this;
 
-    yang_name = "interface-configured-ip"; yang_parent_name = "interface-configured-ips"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-configured-ip"; yang_parent_name = "interface-configured-ips"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::~InterfaceConfiguredIp()
@@ -1200,6 +1223,7 @@ ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::~InterfaceConf
 
 bool ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| address.is_set
 	|| interface_name_xr.is_set
@@ -1326,7 +1350,7 @@ ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::AssociatedConf
     entry_type{YType::enumeration, "entry-type"}
 {
 
-    yang_name = "associated-configuration-entry"; yang_parent_name = "interface-configured-ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "associated-configuration-entry"; yang_parent_name = "interface-configured-ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::AssociatedConfigurationEntry::~AssociatedConfigurationEntry()
@@ -1335,6 +1359,7 @@ ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::AssociatedConf
 
 bool ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::AssociatedConfigurationEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_address.is_set
 	|| hardware_address.is_set
 	|| encapsulation_type.is_set
@@ -1443,7 +1468,7 @@ Arp::Arp()
 {
     nodes->parent = this;
 
-    yang_name = "arp"; yang_parent_name = "Cisco-IOS-XR-ipv4-arp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "arp"; yang_parent_name = "Cisco-IOS-XR-ipv4-arp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Arp::~Arp()
@@ -1452,6 +1477,7 @@ Arp::~Arp()
 
 bool Arp::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -1544,9 +1570,11 @@ bool Arp::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Arp::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "arp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "arp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Arp::Nodes::~Nodes()
@@ -1555,7 +1583,8 @@ Arp::Nodes::~Nodes()
 
 bool Arp::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -1565,7 +1594,7 @@ bool Arp::Nodes::has_data() const
 
 bool Arp::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -1602,7 +1631,7 @@ std::shared_ptr<Entity> Arp::Nodes::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Arp::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -1614,7 +1643,7 @@ std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1643,13 +1672,13 @@ bool Arp::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Arp::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     resolution_history_dynamic(std::make_shared<Arp::Nodes::Node::ResolutionHistoryDynamic>())
-	,traffic_vrfs(std::make_shared<Arp::Nodes::Node::TrafficVrfs>())
-	,traffic_node(std::make_shared<Arp::Nodes::Node::TrafficNode>())
-	,resolution_history_client(std::make_shared<Arp::Nodes::Node::ResolutionHistoryClient>())
-	,entries(std::make_shared<Arp::Nodes::Node::Entries>())
-	,traffic_interfaces(std::make_shared<Arp::Nodes::Node::TrafficInterfaces>())
+    , traffic_vrfs(std::make_shared<Arp::Nodes::Node::TrafficVrfs>())
+    , traffic_node(std::make_shared<Arp::Nodes::Node::TrafficNode>())
+    , resolution_history_client(std::make_shared<Arp::Nodes::Node::ResolutionHistoryClient>())
+    , entries(std::make_shared<Arp::Nodes::Node::Entries>())
+    , traffic_interfaces(std::make_shared<Arp::Nodes::Node::TrafficInterfaces>())
 {
     resolution_history_dynamic->parent = this;
     traffic_vrfs->parent = this;
@@ -1658,7 +1687,7 @@ Arp::Nodes::Node::Node()
     entries->parent = this;
     traffic_interfaces->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Arp::Nodes::Node::~Node()
@@ -1667,6 +1696,7 @@ Arp::Nodes::Node::~Node()
 
 bool Arp::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (resolution_history_dynamic !=  nullptr && resolution_history_dynamic->has_data())
 	|| (traffic_vrfs !=  nullptr && traffic_vrfs->has_data())
@@ -1698,7 +1728,8 @@ std::string Arp::Nodes::Node::get_absolute_path() const
 std::string Arp::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -1834,9 +1865,11 @@ bool Arp::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Arp::Nodes::Node::ResolutionHistoryDynamic::ResolutionHistoryDynamic()
+    :
+    arp_entry(this, {})
 {
 
-    yang_name = "resolution-history-dynamic"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resolution-history-dynamic"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Arp::Nodes::Node::ResolutionHistoryDynamic::~ResolutionHistoryDynamic()
@@ -1845,7 +1878,8 @@ Arp::Nodes::Node::ResolutionHistoryDynamic::~ResolutionHistoryDynamic()
 
 bool Arp::Nodes::Node::ResolutionHistoryDynamic::has_data() const
 {
-    for (std::size_t index=0; index<arp_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<arp_entry.len(); index++)
     {
         if(arp_entry[index]->has_data())
             return true;
@@ -1855,7 +1889,7 @@ bool Arp::Nodes::Node::ResolutionHistoryDynamic::has_data() const
 
 bool Arp::Nodes::Node::ResolutionHistoryDynamic::has_operation() const
 {
-    for (std::size_t index=0; index<arp_entry.size(); index++)
+    for (std::size_t index=0; index<arp_entry.len(); index++)
     {
         if(arp_entry[index]->has_operation())
             return true;
@@ -1885,7 +1919,7 @@ std::shared_ptr<Entity> Arp::Nodes::Node::ResolutionHistoryDynamic::get_child_by
     {
         auto c = std::make_shared<Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry>();
         c->parent = this;
-        arp_entry.push_back(c);
+        arp_entry.append(c);
         return c;
     }
 
@@ -1897,7 +1931,7 @@ std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::ResolutionHisto
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : arp_entry)
+    for (auto c : arp_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1935,7 +1969,7 @@ Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::ArpEntry()
     resolution_request_count{YType::uint32, "resolution-request-count"}
 {
 
-    yang_name = "arp-entry"; yang_parent_name = "resolution-history-dynamic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "arp-entry"; yang_parent_name = "resolution-history-dynamic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::~ArpEntry()
@@ -1944,6 +1978,7 @@ Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::~ArpEntry()
 
 bool Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return nsec_timestamp.is_set
 	|| idb_interface_name.is_set
 	|| ipv4_address.is_set
@@ -2099,9 +2134,11 @@ bool Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::has_leaf_or_child_of_
 }
 
 Arp::Nodes::Node::TrafficVrfs::TrafficVrfs()
+    :
+    traffic_vrf(this, {"vrf_name"})
 {
 
-    yang_name = "traffic-vrfs"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-vrfs"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Arp::Nodes::Node::TrafficVrfs::~TrafficVrfs()
@@ -2110,7 +2147,8 @@ Arp::Nodes::Node::TrafficVrfs::~TrafficVrfs()
 
 bool Arp::Nodes::Node::TrafficVrfs::has_data() const
 {
-    for (std::size_t index=0; index<traffic_vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<traffic_vrf.len(); index++)
     {
         if(traffic_vrf[index]->has_data())
             return true;
@@ -2120,7 +2158,7 @@ bool Arp::Nodes::Node::TrafficVrfs::has_data() const
 
 bool Arp::Nodes::Node::TrafficVrfs::has_operation() const
 {
-    for (std::size_t index=0; index<traffic_vrf.size(); index++)
+    for (std::size_t index=0; index<traffic_vrf.len(); index++)
     {
         if(traffic_vrf[index]->has_operation())
             return true;
@@ -2150,7 +2188,7 @@ std::shared_ptr<Entity> Arp::Nodes::Node::TrafficVrfs::get_child_by_name(const s
     {
         auto c = std::make_shared<Arp::Nodes::Node::TrafficVrfs::TrafficVrf>();
         c->parent = this;
-        traffic_vrf.push_back(c);
+        traffic_vrf.append(c);
         return c;
     }
 
@@ -2162,7 +2200,7 @@ std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::TrafficVrfs::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : traffic_vrf)
+    for (auto c : traffic_vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2222,7 +2260,7 @@ Arp::Nodes::Node::TrafficVrfs::TrafficVrf::TrafficVrf()
     idb_structures{YType::uint32, "idb-structures"}
 {
 
-    yang_name = "traffic-vrf"; yang_parent_name = "traffic-vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-vrf"; yang_parent_name = "traffic-vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Arp::Nodes::Node::TrafficVrfs::TrafficVrf::~TrafficVrf()
@@ -2231,6 +2269,7 @@ Arp::Nodes::Node::TrafficVrfs::TrafficVrf::~TrafficVrf()
 
 bool Arp::Nodes::Node::TrafficVrfs::TrafficVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| requests_received.is_set
 	|| replies_received.is_set
@@ -2301,7 +2340,8 @@ bool Arp::Nodes::Node::TrafficVrfs::TrafficVrf::has_operation() const
 std::string Arp::Nodes::Node::TrafficVrfs::TrafficVrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "traffic-vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "traffic-vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -2704,7 +2744,7 @@ Arp::Nodes::Node::TrafficNode::TrafficNode()
     idb_structures{YType::uint32, "idb-structures"}
 {
 
-    yang_name = "traffic-node"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-node"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Arp::Nodes::Node::TrafficNode::~TrafficNode()
@@ -2713,6 +2753,7 @@ Arp::Nodes::Node::TrafficNode::~TrafficNode()
 
 bool Arp::Nodes::Node::TrafficNode::has_data() const
 {
+    if (is_presence_container) return true;
     return requests_received.is_set
 	|| replies_received.is_set
 	|| requests_sent.is_set
@@ -3141,9 +3182,11 @@ bool Arp::Nodes::Node::TrafficNode::has_leaf_or_child_of_name(const std::string 
 }
 
 Arp::Nodes::Node::ResolutionHistoryClient::ResolutionHistoryClient()
+    :
+    arp_entry(this, {})
 {
 
-    yang_name = "resolution-history-client"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resolution-history-client"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Arp::Nodes::Node::ResolutionHistoryClient::~ResolutionHistoryClient()
@@ -3152,7 +3195,8 @@ Arp::Nodes::Node::ResolutionHistoryClient::~ResolutionHistoryClient()
 
 bool Arp::Nodes::Node::ResolutionHistoryClient::has_data() const
 {
-    for (std::size_t index=0; index<arp_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<arp_entry.len(); index++)
     {
         if(arp_entry[index]->has_data())
             return true;
@@ -3162,7 +3206,7 @@ bool Arp::Nodes::Node::ResolutionHistoryClient::has_data() const
 
 bool Arp::Nodes::Node::ResolutionHistoryClient::has_operation() const
 {
-    for (std::size_t index=0; index<arp_entry.size(); index++)
+    for (std::size_t index=0; index<arp_entry.len(); index++)
     {
         if(arp_entry[index]->has_operation())
             return true;
@@ -3192,7 +3236,7 @@ std::shared_ptr<Entity> Arp::Nodes::Node::ResolutionHistoryClient::get_child_by_
     {
         auto c = std::make_shared<Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry>();
         c->parent = this;
-        arp_entry.push_back(c);
+        arp_entry.append(c);
         return c;
     }
 
@@ -3204,7 +3248,7 @@ std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::ResolutionHisto
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : arp_entry)
+    for (auto c : arp_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3242,7 +3286,7 @@ Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::ArpEntry()
     resolution_request_count{YType::uint32, "resolution-request-count"}
 {
 
-    yang_name = "arp-entry"; yang_parent_name = "resolution-history-client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "arp-entry"; yang_parent_name = "resolution-history-client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::~ArpEntry()
@@ -3251,6 +3295,7 @@ Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::~ArpEntry()
 
 bool Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return nsec_timestamp.is_set
 	|| idb_interface_name.is_set
 	|| ipv4_address.is_set
@@ -3406,9 +3451,11 @@ bool Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::has_leaf_or_child_of_n
 }
 
 Arp::Nodes::Node::Entries::Entries()
+    :
+    entry(this, {"address", "interface_name"})
 {
 
-    yang_name = "entries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "entries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Arp::Nodes::Node::Entries::~Entries()
@@ -3417,7 +3464,8 @@ Arp::Nodes::Node::Entries::~Entries()
 
 bool Arp::Nodes::Node::Entries::has_data() const
 {
-    for (std::size_t index=0; index<entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<entry.len(); index++)
     {
         if(entry[index]->has_data())
             return true;
@@ -3427,7 +3475,7 @@ bool Arp::Nodes::Node::Entries::has_data() const
 
 bool Arp::Nodes::Node::Entries::has_operation() const
 {
-    for (std::size_t index=0; index<entry.size(); index++)
+    for (std::size_t index=0; index<entry.len(); index++)
     {
         if(entry[index]->has_operation())
             return true;
@@ -3457,7 +3505,7 @@ std::shared_ptr<Entity> Arp::Nodes::Node::Entries::get_child_by_name(const std::
     {
         auto c = std::make_shared<Arp::Nodes::Node::Entries::Entry>();
         c->parent = this;
-        entry.push_back(c);
+        entry.append(c);
         return c;
     }
 
@@ -3469,7 +3517,7 @@ std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::Entries::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : entry)
+    for (auto c : entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3508,7 +3556,7 @@ Arp::Nodes::Node::Entries::Entry::Entry()
     hardware_address{YType::str, "hardware-address"}
 {
 
-    yang_name = "entry"; yang_parent_name = "entries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "entry"; yang_parent_name = "entries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Arp::Nodes::Node::Entries::Entry::~Entry()
@@ -3517,6 +3565,7 @@ Arp::Nodes::Node::Entries::Entry::~Entry()
 
 bool Arp::Nodes::Node::Entries::Entry::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| interface_name.is_set
 	|| media_type.is_set
@@ -3545,7 +3594,9 @@ bool Arp::Nodes::Node::Entries::Entry::has_operation() const
 std::string Arp::Nodes::Node::Entries::Entry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "entry" <<"[address='" <<address <<"']" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "entry";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -3685,9 +3736,11 @@ bool Arp::Nodes::Node::Entries::Entry::has_leaf_or_child_of_name(const std::stri
 }
 
 Arp::Nodes::Node::TrafficInterfaces::TrafficInterfaces()
+    :
+    traffic_interface(this, {"interface_name"})
 {
 
-    yang_name = "traffic-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Arp::Nodes::Node::TrafficInterfaces::~TrafficInterfaces()
@@ -3696,7 +3749,8 @@ Arp::Nodes::Node::TrafficInterfaces::~TrafficInterfaces()
 
 bool Arp::Nodes::Node::TrafficInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<traffic_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<traffic_interface.len(); index++)
     {
         if(traffic_interface[index]->has_data())
             return true;
@@ -3706,7 +3760,7 @@ bool Arp::Nodes::Node::TrafficInterfaces::has_data() const
 
 bool Arp::Nodes::Node::TrafficInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<traffic_interface.size(); index++)
+    for (std::size_t index=0; index<traffic_interface.len(); index++)
     {
         if(traffic_interface[index]->has_operation())
             return true;
@@ -3736,7 +3790,7 @@ std::shared_ptr<Entity> Arp::Nodes::Node::TrafficInterfaces::get_child_by_name(c
     {
         auto c = std::make_shared<Arp::Nodes::Node::TrafficInterfaces::TrafficInterface>();
         c->parent = this;
-        traffic_interface.push_back(c);
+        traffic_interface.append(c);
         return c;
     }
 
@@ -3748,7 +3802,7 @@ std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::TrafficInterfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : traffic_interface)
+    for (auto c : traffic_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3808,7 +3862,7 @@ Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::TrafficInterface()
     idb_structures{YType::uint32, "idb-structures"}
 {
 
-    yang_name = "traffic-interface"; yang_parent_name = "traffic-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-interface"; yang_parent_name = "traffic-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::~TrafficInterface()
@@ -3817,6 +3871,7 @@ Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::~TrafficInterface()
 
 bool Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| requests_received.is_set
 	|| replies_received.is_set
@@ -3887,7 +3942,8 @@ bool Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::has_operation() cons
 std::string Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "traffic-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "traffic-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -4257,52 +4313,10 @@ bool Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::has_leaf_or_child_of
     return false;
 }
 
-const Enum::YLeaf ArpGmpBagEntry::null {0, "null"};
-const Enum::YLeaf ArpGmpBagEntry::static_ {1, "static"};
-const Enum::YLeaf ArpGmpBagEntry::alias {2, "alias"};
-
-const Enum::YLeaf ArpGmpBagEncap::none {0, "none"};
-const Enum::YLeaf ArpGmpBagEncap::arpa {1, "arpa"};
-const Enum::YLeaf ArpGmpBagEncap::snap {2, "snap"};
-const Enum::YLeaf ArpGmpBagEncap::ieee802_1q {3, "ieee802-1q"};
-const Enum::YLeaf ArpGmpBagEncap::srp {4, "srp"};
-const Enum::YLeaf ArpGmpBagEncap::srpa {5, "srpa"};
-const Enum::YLeaf ArpGmpBagEncap::srpb {6, "srpb"};
-
-const Enum::YLeaf IpArpBagEncap::none {0, "none"};
-const Enum::YLeaf IpArpBagEncap::arpa {1, "arpa"};
-const Enum::YLeaf IpArpBagEncap::snap {2, "snap"};
-const Enum::YLeaf IpArpBagEncap::ieee802_1q {3, "ieee802-1q"};
-const Enum::YLeaf IpArpBagEncap::srp {4, "srp"};
-const Enum::YLeaf IpArpBagEncap::srpa {5, "srpa"};
-const Enum::YLeaf IpArpBagEncap::srpb {6, "srpb"};
-
 const Enum::YLeaf IpArpBagFlags::flag_none {0, "flag-none"};
 const Enum::YLeaf IpArpBagFlags::flag_dynamic {1, "flag-dynamic"};
 const Enum::YLeaf IpArpBagFlags::flag_evpn_sync {2, "flag-evpn-sync"};
 const Enum::YLeaf IpArpBagFlags::flag_max {3, "flag-max"};
-
-const Enum::YLeaf IpArpBagState::state_none {0, "state-none"};
-const Enum::YLeaf IpArpBagState::state_interface {1, "state-interface"};
-const Enum::YLeaf IpArpBagState::state_standby {2, "state-standby"};
-const Enum::YLeaf IpArpBagState::state_static {3, "state-static"};
-const Enum::YLeaf IpArpBagState::state_alias {4, "state-alias"};
-const Enum::YLeaf IpArpBagState::state_mobile {5, "state-mobile"};
-const Enum::YLeaf IpArpBagState::state_incomplete {6, "state-incomplete"};
-const Enum::YLeaf IpArpBagState::state_deleted {7, "state-deleted"};
-const Enum::YLeaf IpArpBagState::state_dynamic {8, "state-dynamic"};
-const Enum::YLeaf IpArpBagState::state_probe {9, "state-probe"};
-const Enum::YLeaf IpArpBagState::state_purge_delayed {10, "state-purge-delayed"};
-const Enum::YLeaf IpArpBagState::state_dhcp {11, "state-dhcp"};
-const Enum::YLeaf IpArpBagState::state_vxlan {12, "state-vxlan"};
-const Enum::YLeaf IpArpBagState::state_evpn_sync {13, "state-evpn-sync"};
-const Enum::YLeaf IpArpBagState::state_sat {14, "state-sat"};
-const Enum::YLeaf IpArpBagState::state_r_sync {15, "state-r-sync"};
-const Enum::YLeaf IpArpBagState::state_max {16, "state-max"};
-
-const Enum::YLeaf IpArpBagMedia::media_arpa {0, "media-arpa"};
-const Enum::YLeaf IpArpBagMedia::media_srp {1, "media-srp"};
-const Enum::YLeaf IpArpBagMedia::media_unknown {2, "media-unknown"};
 
 const Enum::YLeaf ArpResolutionHistoryStatus::status_none {0, "status-none"};
 const Enum::YLeaf ArpResolutionHistoryStatus::status_resolution_request {1, "status-resolution-request"};
@@ -4327,6 +4341,48 @@ const Enum::YLeaf ArpResolutionHistoryStatus::status_added_v1 {19, "status-added
 const Enum::YLeaf ArpResolutionHistoryStatus::status_removed_v1 {20, "status-removed-v1"};
 const Enum::YLeaf ArpResolutionHistoryStatus::status_resolved_peer_sync {21, "status-resolved-peer-sync"};
 const Enum::YLeaf ArpResolutionHistoryStatus::status_dropped_unsolicited_pak {22, "status-dropped-unsolicited-pak"};
+
+const Enum::YLeaf IpArpBagEncap::none {0, "none"};
+const Enum::YLeaf IpArpBagEncap::arpa {1, "arpa"};
+const Enum::YLeaf IpArpBagEncap::snap {2, "snap"};
+const Enum::YLeaf IpArpBagEncap::ieee802_1q {3, "ieee802-1q"};
+const Enum::YLeaf IpArpBagEncap::srp {4, "srp"};
+const Enum::YLeaf IpArpBagEncap::srpa {5, "srpa"};
+const Enum::YLeaf IpArpBagEncap::srpb {6, "srpb"};
+
+const Enum::YLeaf ArpGmpBagEncap::none {0, "none"};
+const Enum::YLeaf ArpGmpBagEncap::arpa {1, "arpa"};
+const Enum::YLeaf ArpGmpBagEncap::snap {2, "snap"};
+const Enum::YLeaf ArpGmpBagEncap::ieee802_1q {3, "ieee802-1q"};
+const Enum::YLeaf ArpGmpBagEncap::srp {4, "srp"};
+const Enum::YLeaf ArpGmpBagEncap::srpa {5, "srpa"};
+const Enum::YLeaf ArpGmpBagEncap::srpb {6, "srpb"};
+
+const Enum::YLeaf IpArpBagMedia::media_arpa {0, "media-arpa"};
+const Enum::YLeaf IpArpBagMedia::media_srp {1, "media-srp"};
+const Enum::YLeaf IpArpBagMedia::media_unknown {2, "media-unknown"};
+
+const Enum::YLeaf ArpGmpBagEntry::null {0, "null"};
+const Enum::YLeaf ArpGmpBagEntry::static_ {1, "static"};
+const Enum::YLeaf ArpGmpBagEntry::alias {2, "alias"};
+
+const Enum::YLeaf IpArpBagState::state_none {0, "state-none"};
+const Enum::YLeaf IpArpBagState::state_interface {1, "state-interface"};
+const Enum::YLeaf IpArpBagState::state_standby {2, "state-standby"};
+const Enum::YLeaf IpArpBagState::state_static {3, "state-static"};
+const Enum::YLeaf IpArpBagState::state_alias {4, "state-alias"};
+const Enum::YLeaf IpArpBagState::state_mobile {5, "state-mobile"};
+const Enum::YLeaf IpArpBagState::state_incomplete {6, "state-incomplete"};
+const Enum::YLeaf IpArpBagState::state_deleted {7, "state-deleted"};
+const Enum::YLeaf IpArpBagState::state_dynamic {8, "state-dynamic"};
+const Enum::YLeaf IpArpBagState::state_probe {9, "state-probe"};
+const Enum::YLeaf IpArpBagState::state_purge_delayed {10, "state-purge-delayed"};
+const Enum::YLeaf IpArpBagState::state_dhcp {11, "state-dhcp"};
+const Enum::YLeaf IpArpBagState::state_vxlan {12, "state-vxlan"};
+const Enum::YLeaf IpArpBagState::state_evpn_sync {13, "state-evpn-sync"};
+const Enum::YLeaf IpArpBagState::state_sat {14, "state-sat"};
+const Enum::YLeaf IpArpBagState::state_r_sync {15, "state-r-sync"};
+const Enum::YLeaf IpArpBagState::state_max {16, "state-max"};
 
 
 }

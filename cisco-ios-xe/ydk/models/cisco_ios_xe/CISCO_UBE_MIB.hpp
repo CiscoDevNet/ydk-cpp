@@ -31,18 +31,18 @@ class CISCOUBEMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ciscoubemibobjects; //type: CISCOUBEMIB::Ciscoubemibobjects
+        class CiscoUbeMIBObjects; //type: CISCOUBEMIB::CiscoUbeMIBObjects
 
-        std::shared_ptr<cisco_ios_xe::CISCO_UBE_MIB::CISCOUBEMIB::Ciscoubemibobjects> ciscoubemibobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_UBE_MIB::CISCOUBEMIB::CiscoUbeMIBObjects> ciscoubemibobjects;
         
 }; // CISCOUBEMIB
 
 
-class CISCOUBEMIB::Ciscoubemibobjects : public ydk::Entity
+class CISCOUBEMIB::CiscoUbeMIBObjects : public ydk::Entity
 {
     public:
-        Ciscoubemibobjects();
-        ~Ciscoubemibobjects();
+        CiscoUbeMIBObjects();
+        ~CiscoUbeMIBObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -59,7 +59,7 @@ class CISCOUBEMIB::Ciscoubemibobjects : public ydk::Entity
         ydk::YLeaf cubeversion; //type: string
         ydk::YLeaf cubetotalsessionallowed; //type: uint32
 
-}; // CISCOUBEMIB::Ciscoubemibobjects
+}; // CISCOUBEMIB::CiscoUbeMIBObjects
 
 
 }

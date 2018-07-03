@@ -13,17 +13,17 @@ namespace CISCO_HSRP_EXT_MIB {
 
 CISCOHSRPEXTMIB::CISCOHSRPEXTMIB()
     :
-    chsrpextiftrackedtable(std::make_shared<CISCOHSRPEXTMIB::Chsrpextiftrackedtable>())
-	,chsrpextsecaddrtable(std::make_shared<CISCOHSRPEXTMIB::Chsrpextsecaddrtable>())
-	,chsrpextifstandbytable(std::make_shared<CISCOHSRPEXTMIB::Chsrpextifstandbytable>())
-	,chsrpextiftable(std::make_shared<CISCOHSRPEXTMIB::Chsrpextiftable>())
+    chsrpextiftrackedtable(std::make_shared<CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable>())
+    , chsrpextsecaddrtable(std::make_shared<CISCOHSRPEXTMIB::CHsrpExtSecAddrTable>())
+    , chsrpextifstandbytable(std::make_shared<CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable>())
+    , chsrpextiftable(std::make_shared<CISCOHSRPEXTMIB::CHsrpExtIfTable>())
 {
     chsrpextiftrackedtable->parent = this;
     chsrpextsecaddrtable->parent = this;
     chsrpextifstandbytable->parent = this;
     chsrpextiftable->parent = this;
 
-    yang_name = "CISCO-HSRP-EXT-MIB"; yang_parent_name = "CISCO-HSRP-EXT-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-HSRP-EXT-MIB"; yang_parent_name = "CISCO-HSRP-EXT-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOHSRPEXTMIB::~CISCOHSRPEXTMIB()
@@ -32,6 +32,7 @@ CISCOHSRPEXTMIB::~CISCOHSRPEXTMIB()
 
 bool CISCOHSRPEXTMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (chsrpextiftrackedtable !=  nullptr && chsrpextiftrackedtable->has_data())
 	|| (chsrpextsecaddrtable !=  nullptr && chsrpextsecaddrtable->has_data())
 	|| (chsrpextifstandbytable !=  nullptr && chsrpextifstandbytable->has_data())
@@ -69,7 +70,7 @@ std::shared_ptr<Entity> CISCOHSRPEXTMIB::get_child_by_name(const std::string & c
     {
         if(chsrpextiftrackedtable == nullptr)
         {
-            chsrpextiftrackedtable = std::make_shared<CISCOHSRPEXTMIB::Chsrpextiftrackedtable>();
+            chsrpextiftrackedtable = std::make_shared<CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable>();
         }
         return chsrpextiftrackedtable;
     }
@@ -78,7 +79,7 @@ std::shared_ptr<Entity> CISCOHSRPEXTMIB::get_child_by_name(const std::string & c
     {
         if(chsrpextsecaddrtable == nullptr)
         {
-            chsrpextsecaddrtable = std::make_shared<CISCOHSRPEXTMIB::Chsrpextsecaddrtable>();
+            chsrpextsecaddrtable = std::make_shared<CISCOHSRPEXTMIB::CHsrpExtSecAddrTable>();
         }
         return chsrpextsecaddrtable;
     }
@@ -87,7 +88,7 @@ std::shared_ptr<Entity> CISCOHSRPEXTMIB::get_child_by_name(const std::string & c
     {
         if(chsrpextifstandbytable == nullptr)
         {
-            chsrpextifstandbytable = std::make_shared<CISCOHSRPEXTMIB::Chsrpextifstandbytable>();
+            chsrpextifstandbytable = std::make_shared<CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable>();
         }
         return chsrpextifstandbytable;
     }
@@ -96,7 +97,7 @@ std::shared_ptr<Entity> CISCOHSRPEXTMIB::get_child_by_name(const std::string & c
     {
         if(chsrpextiftable == nullptr)
         {
-            chsrpextiftable = std::make_shared<CISCOHSRPEXTMIB::Chsrpextiftable>();
+            chsrpextiftable = std::make_shared<CISCOHSRPEXTMIB::CHsrpExtIfTable>();
         }
         return chsrpextiftable;
     }
@@ -171,19 +172,22 @@ bool CISCOHSRPEXTMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedtable()
+CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::CHsrpExtIfTrackedTable()
+    :
+    chsrpextiftrackedentry(this, {"ifindex", "chsrpgrpnumber", "chsrpextiftracked"})
 {
 
-    yang_name = "cHsrpExtIfTrackedTable"; yang_parent_name = "CISCO-HSRP-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cHsrpExtIfTrackedTable"; yang_parent_name = "CISCO-HSRP-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOHSRPEXTMIB::Chsrpextiftrackedtable::~Chsrpextiftrackedtable()
+CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::~CHsrpExtIfTrackedTable()
 {
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextiftrackedtable::has_data() const
+bool CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::has_data() const
 {
-    for (std::size_t index=0; index<chsrpextiftrackedentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<chsrpextiftrackedentry.len(); index++)
     {
         if(chsrpextiftrackedentry[index]->has_data())
             return true;
@@ -191,9 +195,9 @@ bool CISCOHSRPEXTMIB::Chsrpextiftrackedtable::has_data() const
     return false;
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextiftrackedtable::has_operation() const
+bool CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::has_operation() const
 {
-    for (std::size_t index=0; index<chsrpextiftrackedentry.size(); index++)
+    for (std::size_t index=0; index<chsrpextiftrackedentry.len(); index++)
     {
         if(chsrpextiftrackedentry[index]->has_operation())
             return true;
@@ -201,21 +205,21 @@ bool CISCOHSRPEXTMIB::Chsrpextiftrackedtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOHSRPEXTMIB::Chsrpextiftrackedtable::get_absolute_path() const
+std::string CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-HSRP-EXT-MIB:CISCO-HSRP-EXT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOHSRPEXTMIB::Chsrpextiftrackedtable::get_segment_path() const
+std::string CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cHsrpExtIfTrackedTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::Chsrpextiftrackedtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -224,25 +228,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::Chsrpextiftracke
 
 }
 
-std::shared_ptr<Entity> CISCOHSRPEXTMIB::Chsrpextiftrackedtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cHsrpExtIfTrackedEntry")
     {
-        auto c = std::make_shared<CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry>();
+        auto c = std::make_shared<CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::CHsrpExtIfTrackedEntry>();
         c->parent = this;
-        chsrpextiftrackedentry.push_back(c);
+        chsrpextiftrackedentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::Chsrpextiftrackedtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : chsrpextiftrackedentry)
+    for (auto c : chsrpextiftrackedentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -253,22 +257,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::Chsrpextiftracke
     return children;
 }
 
-void CISCOHSRPEXTMIB::Chsrpextiftrackedtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOHSRPEXTMIB::Chsrpextiftrackedtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextiftrackedtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cHsrpExtIfTrackedEntry")
         return true;
     return false;
 }
 
-CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry::Chsrpextiftrackedentry()
+CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::CHsrpExtIfTrackedEntry::CHsrpExtIfTrackedEntry()
     :
     ifindex{YType::str, "ifIndex"},
     chsrpgrpnumber{YType::str, "cHsrpGrpNumber"},
@@ -278,15 +282,16 @@ CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry::Chsrpextiftrack
     chsrpextiftrackedipnone{YType::boolean, "cHsrpExtIfTrackedIpNone"}
 {
 
-    yang_name = "cHsrpExtIfTrackedEntry"; yang_parent_name = "cHsrpExtIfTrackedTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cHsrpExtIfTrackedEntry"; yang_parent_name = "cHsrpExtIfTrackedTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry::~Chsrpextiftrackedentry()
+CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::CHsrpExtIfTrackedEntry::~CHsrpExtIfTrackedEntry()
 {
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry::has_data() const
+bool CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::CHsrpExtIfTrackedEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| chsrpgrpnumber.is_set
 	|| chsrpextiftracked.is_set
@@ -295,7 +300,7 @@ bool CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry::has_data()
 	|| chsrpextiftrackedipnone.is_set;
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry::has_operation() const
+bool CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::CHsrpExtIfTrackedEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -306,21 +311,24 @@ bool CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry::has_operat
 	|| ydk::is_set(chsrpextiftrackedipnone.yfilter);
 }
 
-std::string CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry::get_absolute_path() const
+std::string CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::CHsrpExtIfTrackedEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-HSRP-EXT-MIB:CISCO-HSRP-EXT-MIB/cHsrpExtIfTrackedTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry::get_segment_path() const
+std::string CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::CHsrpExtIfTrackedEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cHsrpExtIfTrackedEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[cHsrpGrpNumber='" <<chsrpgrpnumber <<"']" <<"[cHsrpExtIfTracked='" <<chsrpextiftracked <<"']";
+    path_buffer << "cHsrpExtIfTrackedEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(chsrpgrpnumber, "cHsrpGrpNumber");
+    ADD_KEY_TOKEN(chsrpextiftracked, "cHsrpExtIfTracked");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::CHsrpExtIfTrackedEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -335,19 +343,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::Chsrpextiftracke
 
 }
 
-std::shared_ptr<Entity> CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::CHsrpExtIfTrackedEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::CHsrpExtIfTrackedEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::CHsrpExtIfTrackedEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -387,7 +395,7 @@ void CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry::set_value(
     }
 }
 
-void CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::CHsrpExtIfTrackedEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -415,26 +423,29 @@ void CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry::set_filter
     }
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::CHsrpExtIfTrackedEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cHsrpGrpNumber" || name == "cHsrpExtIfTracked" || name == "cHsrpExtIfTrackedPriority" || name == "cHsrpExtIfTrackedRowStatus" || name == "cHsrpExtIfTrackedIpNone")
         return true;
     return false;
 }
 
-CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrtable()
+CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::CHsrpExtSecAddrTable()
+    :
+    chsrpextsecaddrentry(this, {"ifindex", "chsrpgrpnumber", "chsrpextsecaddraddress"})
 {
 
-    yang_name = "cHsrpExtSecAddrTable"; yang_parent_name = "CISCO-HSRP-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cHsrpExtSecAddrTable"; yang_parent_name = "CISCO-HSRP-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOHSRPEXTMIB::Chsrpextsecaddrtable::~Chsrpextsecaddrtable()
+CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::~CHsrpExtSecAddrTable()
 {
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextsecaddrtable::has_data() const
+bool CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::has_data() const
 {
-    for (std::size_t index=0; index<chsrpextsecaddrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<chsrpextsecaddrentry.len(); index++)
     {
         if(chsrpextsecaddrentry[index]->has_data())
             return true;
@@ -442,9 +453,9 @@ bool CISCOHSRPEXTMIB::Chsrpextsecaddrtable::has_data() const
     return false;
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextsecaddrtable::has_operation() const
+bool CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::has_operation() const
 {
-    for (std::size_t index=0; index<chsrpextsecaddrentry.size(); index++)
+    for (std::size_t index=0; index<chsrpextsecaddrentry.len(); index++)
     {
         if(chsrpextsecaddrentry[index]->has_operation())
             return true;
@@ -452,21 +463,21 @@ bool CISCOHSRPEXTMIB::Chsrpextsecaddrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOHSRPEXTMIB::Chsrpextsecaddrtable::get_absolute_path() const
+std::string CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-HSRP-EXT-MIB:CISCO-HSRP-EXT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOHSRPEXTMIB::Chsrpextsecaddrtable::get_segment_path() const
+std::string CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cHsrpExtSecAddrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::Chsrpextsecaddrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -475,25 +486,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::Chsrpextsecaddrt
 
 }
 
-std::shared_ptr<Entity> CISCOHSRPEXTMIB::Chsrpextsecaddrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cHsrpExtSecAddrEntry")
     {
-        auto c = std::make_shared<CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry>();
+        auto c = std::make_shared<CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::CHsrpExtSecAddrEntry>();
         c->parent = this;
-        chsrpextsecaddrentry.push_back(c);
+        chsrpextsecaddrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::Chsrpextsecaddrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : chsrpextsecaddrentry)
+    for (auto c : chsrpextsecaddrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -504,22 +515,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::Chsrpextsecaddrt
     return children;
 }
 
-void CISCOHSRPEXTMIB::Chsrpextsecaddrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOHSRPEXTMIB::Chsrpextsecaddrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextsecaddrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cHsrpExtSecAddrEntry")
         return true;
     return false;
 }
 
-CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry::Chsrpextsecaddrentry()
+CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::CHsrpExtSecAddrEntry::CHsrpExtSecAddrEntry()
     :
     ifindex{YType::str, "ifIndex"},
     chsrpgrpnumber{YType::str, "cHsrpGrpNumber"},
@@ -527,22 +538,23 @@ CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry::Chsrpextsecaddrentr
     chsrpextsecaddrrowstatus{YType::enumeration, "cHsrpExtSecAddrRowStatus"}
 {
 
-    yang_name = "cHsrpExtSecAddrEntry"; yang_parent_name = "cHsrpExtSecAddrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cHsrpExtSecAddrEntry"; yang_parent_name = "cHsrpExtSecAddrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry::~Chsrpextsecaddrentry()
+CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::CHsrpExtSecAddrEntry::~CHsrpExtSecAddrEntry()
 {
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry::has_data() const
+bool CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::CHsrpExtSecAddrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| chsrpgrpnumber.is_set
 	|| chsrpextsecaddraddress.is_set
 	|| chsrpextsecaddrrowstatus.is_set;
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry::has_operation() const
+bool CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::CHsrpExtSecAddrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -551,21 +563,24 @@ bool CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry::has_operation(
 	|| ydk::is_set(chsrpextsecaddrrowstatus.yfilter);
 }
 
-std::string CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry::get_absolute_path() const
+std::string CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::CHsrpExtSecAddrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-HSRP-EXT-MIB:CISCO-HSRP-EXT-MIB/cHsrpExtSecAddrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry::get_segment_path() const
+std::string CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::CHsrpExtSecAddrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cHsrpExtSecAddrEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[cHsrpGrpNumber='" <<chsrpgrpnumber <<"']" <<"[cHsrpExtSecAddrAddress='" <<chsrpextsecaddraddress <<"']";
+    path_buffer << "cHsrpExtSecAddrEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(chsrpgrpnumber, "cHsrpGrpNumber");
+    ADD_KEY_TOKEN(chsrpextsecaddraddress, "cHsrpExtSecAddrAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::CHsrpExtSecAddrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -578,19 +593,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::Chsrpextsecaddrt
 
 }
 
-std::shared_ptr<Entity> CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::CHsrpExtSecAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::CHsrpExtSecAddrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::CHsrpExtSecAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -618,7 +633,7 @@ void CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry::set_value(cons
     }
 }
 
-void CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::CHsrpExtSecAddrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -638,26 +653,29 @@ void CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry::set_filter(con
     }
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::CHsrpExtSecAddrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cHsrpGrpNumber" || name == "cHsrpExtSecAddrAddress" || name == "cHsrpExtSecAddrRowStatus")
         return true;
     return false;
 }
 
-CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbytable()
+CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::CHsrpExtIfStandbyTable()
+    :
+    chsrpextifstandbyentry(this, {"ifindex", "chsrpgrpnumber", "chsrpextifstandbyindex"})
 {
 
-    yang_name = "cHsrpExtIfStandbyTable"; yang_parent_name = "CISCO-HSRP-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cHsrpExtIfStandbyTable"; yang_parent_name = "CISCO-HSRP-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOHSRPEXTMIB::Chsrpextifstandbytable::~Chsrpextifstandbytable()
+CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::~CHsrpExtIfStandbyTable()
 {
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextifstandbytable::has_data() const
+bool CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::has_data() const
 {
-    for (std::size_t index=0; index<chsrpextifstandbyentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<chsrpextifstandbyentry.len(); index++)
     {
         if(chsrpextifstandbyentry[index]->has_data())
             return true;
@@ -665,9 +683,9 @@ bool CISCOHSRPEXTMIB::Chsrpextifstandbytable::has_data() const
     return false;
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextifstandbytable::has_operation() const
+bool CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::has_operation() const
 {
-    for (std::size_t index=0; index<chsrpextifstandbyentry.size(); index++)
+    for (std::size_t index=0; index<chsrpextifstandbyentry.len(); index++)
     {
         if(chsrpextifstandbyentry[index]->has_operation())
             return true;
@@ -675,21 +693,21 @@ bool CISCOHSRPEXTMIB::Chsrpextifstandbytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOHSRPEXTMIB::Chsrpextifstandbytable::get_absolute_path() const
+std::string CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-HSRP-EXT-MIB:CISCO-HSRP-EXT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOHSRPEXTMIB::Chsrpextifstandbytable::get_segment_path() const
+std::string CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cHsrpExtIfStandbyTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::Chsrpextifstandbytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -698,25 +716,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::Chsrpextifstandb
 
 }
 
-std::shared_ptr<Entity> CISCOHSRPEXTMIB::Chsrpextifstandbytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cHsrpExtIfStandbyEntry")
     {
-        auto c = std::make_shared<CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry>();
+        auto c = std::make_shared<CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::CHsrpExtIfStandbyEntry>();
         c->parent = this;
-        chsrpextifstandbyentry.push_back(c);
+        chsrpextifstandbyentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::Chsrpextifstandbytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : chsrpextifstandbyentry)
+    for (auto c : chsrpextifstandbyentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -727,22 +745,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::Chsrpextifstandb
     return children;
 }
 
-void CISCOHSRPEXTMIB::Chsrpextifstandbytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOHSRPEXTMIB::Chsrpextifstandbytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextifstandbytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cHsrpExtIfStandbyEntry")
         return true;
     return false;
 }
 
-CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry::Chsrpextifstandbyentry()
+CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::CHsrpExtIfStandbyEntry::CHsrpExtIfStandbyEntry()
     :
     ifindex{YType::str, "ifIndex"},
     chsrpgrpnumber{YType::str, "cHsrpGrpNumber"},
@@ -754,15 +772,16 @@ CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry::Chsrpextifstand
     chsrpextifstandbyrowstatus{YType::enumeration, "cHsrpExtIfStandbyRowStatus"}
 {
 
-    yang_name = "cHsrpExtIfStandbyEntry"; yang_parent_name = "cHsrpExtIfStandbyTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cHsrpExtIfStandbyEntry"; yang_parent_name = "cHsrpExtIfStandbyTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry::~Chsrpextifstandbyentry()
+CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::CHsrpExtIfStandbyEntry::~CHsrpExtIfStandbyEntry()
 {
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry::has_data() const
+bool CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::CHsrpExtIfStandbyEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| chsrpgrpnumber.is_set
 	|| chsrpextifstandbyindex.is_set
@@ -773,7 +792,7 @@ bool CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry::has_data()
 	|| chsrpextifstandbyrowstatus.is_set;
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry::has_operation() const
+bool CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::CHsrpExtIfStandbyEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -786,21 +805,24 @@ bool CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry::has_operat
 	|| ydk::is_set(chsrpextifstandbyrowstatus.yfilter);
 }
 
-std::string CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry::get_absolute_path() const
+std::string CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::CHsrpExtIfStandbyEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-HSRP-EXT-MIB:CISCO-HSRP-EXT-MIB/cHsrpExtIfStandbyTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry::get_segment_path() const
+std::string CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::CHsrpExtIfStandbyEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cHsrpExtIfStandbyEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[cHsrpGrpNumber='" <<chsrpgrpnumber <<"']" <<"[cHsrpExtIfStandbyIndex='" <<chsrpextifstandbyindex <<"']";
+    path_buffer << "cHsrpExtIfStandbyEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(chsrpgrpnumber, "cHsrpGrpNumber");
+    ADD_KEY_TOKEN(chsrpextifstandbyindex, "cHsrpExtIfStandbyIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::CHsrpExtIfStandbyEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -817,19 +839,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::Chsrpextifstandb
 
 }
 
-std::shared_ptr<Entity> CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::CHsrpExtIfStandbyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::CHsrpExtIfStandbyEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::CHsrpExtIfStandbyEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -881,7 +903,7 @@ void CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry::set_value(
     }
 }
 
-void CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::CHsrpExtIfStandbyEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -917,26 +939,29 @@ void CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry::set_filter
     }
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::CHsrpExtIfStandbyEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cHsrpGrpNumber" || name == "cHsrpExtIfStandbyIndex" || name == "cHsrpExtIfStandbyDestAddrType" || name == "cHsrpExtIfStandbyDestAddr" || name == "cHsrpExtIfStandbySourceAddrType" || name == "cHsrpExtIfStandbySourceAddr" || name == "cHsrpExtIfStandbyRowStatus")
         return true;
     return false;
 }
 
-CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextiftable()
+CISCOHSRPEXTMIB::CHsrpExtIfTable::CHsrpExtIfTable()
+    :
+    chsrpextifentry(this, {"ifindex"})
 {
 
-    yang_name = "cHsrpExtIfTable"; yang_parent_name = "CISCO-HSRP-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cHsrpExtIfTable"; yang_parent_name = "CISCO-HSRP-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOHSRPEXTMIB::Chsrpextiftable::~Chsrpextiftable()
+CISCOHSRPEXTMIB::CHsrpExtIfTable::~CHsrpExtIfTable()
 {
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextiftable::has_data() const
+bool CISCOHSRPEXTMIB::CHsrpExtIfTable::has_data() const
 {
-    for (std::size_t index=0; index<chsrpextifentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<chsrpextifentry.len(); index++)
     {
         if(chsrpextifentry[index]->has_data())
             return true;
@@ -944,9 +969,9 @@ bool CISCOHSRPEXTMIB::Chsrpextiftable::has_data() const
     return false;
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextiftable::has_operation() const
+bool CISCOHSRPEXTMIB::CHsrpExtIfTable::has_operation() const
 {
-    for (std::size_t index=0; index<chsrpextifentry.size(); index++)
+    for (std::size_t index=0; index<chsrpextifentry.len(); index++)
     {
         if(chsrpextifentry[index]->has_operation())
             return true;
@@ -954,21 +979,21 @@ bool CISCOHSRPEXTMIB::Chsrpextiftable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOHSRPEXTMIB::Chsrpextiftable::get_absolute_path() const
+std::string CISCOHSRPEXTMIB::CHsrpExtIfTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-HSRP-EXT-MIB:CISCO-HSRP-EXT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOHSRPEXTMIB::Chsrpextiftable::get_segment_path() const
+std::string CISCOHSRPEXTMIB::CHsrpExtIfTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cHsrpExtIfTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::Chsrpextiftable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::CHsrpExtIfTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -977,25 +1002,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::Chsrpextiftable:
 
 }
 
-std::shared_ptr<Entity> CISCOHSRPEXTMIB::Chsrpextiftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOHSRPEXTMIB::CHsrpExtIfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cHsrpExtIfEntry")
     {
-        auto c = std::make_shared<CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry>();
+        auto c = std::make_shared<CISCOHSRPEXTMIB::CHsrpExtIfTable::CHsrpExtIfEntry>();
         c->parent = this;
-        chsrpextifentry.push_back(c);
+        chsrpextifentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::Chsrpextiftable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::CHsrpExtIfTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : chsrpextifentry)
+    for (auto c : chsrpextifentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1006,43 +1031,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::Chsrpextiftable:
     return children;
 }
 
-void CISCOHSRPEXTMIB::Chsrpextiftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOHSRPEXTMIB::CHsrpExtIfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOHSRPEXTMIB::Chsrpextiftable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOHSRPEXTMIB::CHsrpExtIfTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextiftable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOHSRPEXTMIB::CHsrpExtIfTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cHsrpExtIfEntry")
         return true;
     return false;
 }
 
-CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry::Chsrpextifentry()
+CISCOHSRPEXTMIB::CHsrpExtIfTable::CHsrpExtIfEntry::CHsrpExtIfEntry()
     :
     ifindex{YType::str, "ifIndex"},
     chsrpextifusebia{YType::boolean, "cHsrpExtIfUseBIA"},
     chsrpextifrowstatus{YType::enumeration, "cHsrpExtIfRowStatus"}
 {
 
-    yang_name = "cHsrpExtIfEntry"; yang_parent_name = "cHsrpExtIfTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cHsrpExtIfEntry"; yang_parent_name = "cHsrpExtIfTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry::~Chsrpextifentry()
+CISCOHSRPEXTMIB::CHsrpExtIfTable::CHsrpExtIfEntry::~CHsrpExtIfEntry()
 {
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry::has_data() const
+bool CISCOHSRPEXTMIB::CHsrpExtIfTable::CHsrpExtIfEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| chsrpextifusebia.is_set
 	|| chsrpextifrowstatus.is_set;
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry::has_operation() const
+bool CISCOHSRPEXTMIB::CHsrpExtIfTable::CHsrpExtIfEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1050,21 +1076,22 @@ bool CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry::has_operation() const
 	|| ydk::is_set(chsrpextifrowstatus.yfilter);
 }
 
-std::string CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry::get_absolute_path() const
+std::string CISCOHSRPEXTMIB::CHsrpExtIfTable::CHsrpExtIfEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-HSRP-EXT-MIB:CISCO-HSRP-EXT-MIB/cHsrpExtIfTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry::get_segment_path() const
+std::string CISCOHSRPEXTMIB::CHsrpExtIfTable::CHsrpExtIfEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cHsrpExtIfEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cHsrpExtIfEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::CHsrpExtIfTable::CHsrpExtIfEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1076,19 +1103,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOHSRPEXTMIB::Chsrpextiftable:
 
 }
 
-std::shared_ptr<Entity> CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOHSRPEXTMIB::CHsrpExtIfTable::CHsrpExtIfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPEXTMIB::CHsrpExtIfTable::CHsrpExtIfEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOHSRPEXTMIB::CHsrpExtIfTable::CHsrpExtIfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1110,7 +1137,7 @@ void CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry::set_value(const std::str
     }
 }
 
-void CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOHSRPEXTMIB::CHsrpExtIfTable::CHsrpExtIfEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1126,7 +1153,7 @@ void CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry::set_filter(const std::st
     }
 }
 
-bool CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOHSRPEXTMIB::CHsrpExtIfTable::CHsrpExtIfEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cHsrpExtIfUseBIA" || name == "cHsrpExtIfRowStatus")
         return true;

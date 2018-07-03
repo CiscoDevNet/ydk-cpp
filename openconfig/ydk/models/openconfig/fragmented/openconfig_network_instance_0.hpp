@@ -34,7 +34,7 @@ class NetworkInstances : public ydk::Entity
 
         class NetworkInstance; //type: NetworkInstances::NetworkInstance
 
-        std::vector<std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance> > network_instance;
+        ydk::YList network_instance;
         
 }; // NetworkInstances
 
@@ -205,7 +205,7 @@ class NetworkInstances::NetworkInstance::Fdb::MacTable::Entries : public ydk::En
 
         class Entry; //type: NetworkInstances::NetworkInstance::Fdb::MacTable::Entries::Entry
 
-        std::vector<std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Fdb::MacTable::Entries::Entry> > entry;
+        ydk::YList entry;
         
 }; // NetworkInstances::NetworkInstance::Fdb::MacTable::Entries
 
@@ -629,7 +629,7 @@ class NetworkInstances::NetworkInstance::TableConnections : public ydk::Entity
 
         class TableConnection; //type: NetworkInstances::NetworkInstance::TableConnections::TableConnection
 
-        std::vector<std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::TableConnections::TableConnection> > table_connection;
+        ydk::YList table_connection;
         
 }; // NetworkInstances::NetworkInstance::TableConnections
 
@@ -732,7 +732,7 @@ class NetworkInstances::NetworkInstance::Interfaces : public ydk::Entity
 
         class Interface; //type: NetworkInstances::NetworkInstance::Interfaces::Interface
 
-        std::vector<std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // NetworkInstances::NetworkInstance::Interfaces
 
@@ -834,7 +834,7 @@ class NetworkInstances::NetworkInstance::Tables : public ydk::Entity
 
         class Table; //type: NetworkInstances::NetworkInstance::Tables::Table
 
-        std::vector<std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Tables::Table> > table;
+        ydk::YList table;
         
 }; // NetworkInstances::NetworkInstance::Tables
 
@@ -928,7 +928,7 @@ class NetworkInstances::NetworkInstance::ConnectionPoints : public ydk::Entity
 
         class ConnectionPoint; //type: NetworkInstances::NetworkInstance::ConnectionPoints::ConnectionPoint
 
-        std::vector<std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::ConnectionPoints::ConnectionPoint> > connection_point;
+        ydk::YList connection_point;
         
 }; // NetworkInstances::NetworkInstance::ConnectionPoints
 
@@ -1022,7 +1022,7 @@ class NetworkInstances::NetworkInstance::ConnectionPoints::ConnectionPoint::Endp
 
         class Endpoint; //type: NetworkInstances::NetworkInstance::ConnectionPoints::ConnectionPoint::Endpoints::Endpoint
 
-        std::vector<std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::ConnectionPoints::ConnectionPoint::Endpoints::Endpoint> > endpoint;
+        ydk::YList endpoint;
         
 }; // NetworkInstances::NetworkInstance::ConnectionPoints::ConnectionPoint::Endpoints
 
@@ -1264,8 +1264,16 @@ class NetworkInstances::NetworkInstance::Mpls : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Global; //type: NetworkInstances::NetworkInstance::Mpls::Global
+        class TeGlobalAttributes; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes
+        class TeInterfaceAttributes; //type: NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes
+        class SignalingProtocols; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols
+        class Lsps; //type: NetworkInstances::NetworkInstance::Mpls::Lsps
 
         std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::Global> global;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes> te_global_attributes;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes> te_interface_attributes;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols> signaling_protocols;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::Lsps> lsps;
         
 }; // NetworkInstances::NetworkInstance::Mpls
 
@@ -1286,11 +1294,228 @@ class NetworkInstances::NetworkInstance::Mpls::Global : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::Global::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::Global::State
+        class InterfaceAttributes; //type: NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes
         class ReservedLabelBlocks; //type: NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks
 
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::Global::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::Global::State> state;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes> interface_attributes;
         std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks> reserved_label_blocks;
         
 }; // NetworkInstances::NetworkInstance::Mpls::Global
+
+
+class NetworkInstances::NetworkInstance::Mpls::Global::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf null_label; //type: NULLLABELTYPE
+
+}; // NetworkInstances::NetworkInstance::Mpls::Global::Config
+
+
+class NetworkInstances::NetworkInstance::Mpls::Global::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf null_label; //type: NULLLABELTYPE
+
+}; // NetworkInstances::NetworkInstance::Mpls::Global::State
+
+
+class NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes : public ydk::Entity
+{
+    public:
+        InterfaceAttributes();
+        ~InterfaceAttributes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Interface; //type: NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface
+
+        ydk::YList interface;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes
+
+
+class NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface : public ydk::Entity
+{
+    public:
+        Interface();
+        ~Interface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        //type: string (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::Config::interface_id)
+        ydk::YLeaf interface_id;
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::State
+        class InterfaceRef; //type: NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::InterfaceRef
+
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::State> state;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::InterfaceRef> interface_ref;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface
+
+
+class NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_id; //type: string
+        ydk::YLeaf mpls_enabled; //type: boolean
+
+}; // NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::Config
+
+
+class NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_id; //type: string
+        ydk::YLeaf mpls_enabled; //type: boolean
+
+}; // NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::State
+
+
+class NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::InterfaceRef : public ydk::Entity
+{
+    public:
+        InterfaceRef();
+        ~InterfaceRef();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::State
+
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::State> state;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::InterfaceRef
+
+
+class NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::name)
+        ydk::YLeaf interface;
+        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
+        ydk::YLeaf subinterface;
+
+}; // NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::Config
+
+
+class NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::name)
+        ydk::YLeaf interface;
+        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
+        ydk::YLeaf subinterface;
+
+}; // NetworkInstances::NetworkInstance::Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::State
 
 
 class NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks : public ydk::Entity
@@ -1311,7 +1536,7 @@ class NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks : pub
 
         class ReservedLabelBlock; //type: NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock
 
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock> reserved_label_block;
+        ydk::YList reserved_label_block;
         
 }; // NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks
 
@@ -1332,9 +1557,13 @@ class NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks::Rese
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        //type: string (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::Config::local_id)
+        ydk::YLeaf local_id;
         class Config; //type: NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::State
 
         std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::State> state;
         
 }; // NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock
 
@@ -1355,112 +1584,14 @@ class NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks::Rese
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList local_id; //type: list of  string
+        ydk::YLeaf local_id; //type: string
+        ydk::YLeaf lower_bound; //type: one of uint32, enumeration
+        ydk::YLeaf upper_bound; //type: one of uint32, enumeration
 
 }; // NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::Config
 
 
-class NetworkInstances::NetworkInstance::SegmentRouting : public ydk::Entity
-{
-    public:
-        SegmentRouting();
-        ~SegmentRouting();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Srgbs; //type: NetworkInstances::NetworkInstance::SegmentRouting::Srgbs
-        class Srlbs; //type: NetworkInstances::NetworkInstance::SegmentRouting::Srlbs
-
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::SegmentRouting::Srgbs> srgbs;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::SegmentRouting::Srlbs> srlbs;
-        
-}; // NetworkInstances::NetworkInstance::SegmentRouting
-
-
-class NetworkInstances::NetworkInstance::SegmentRouting::Srgbs : public ydk::Entity
-{
-    public:
-        Srgbs();
-        ~Srgbs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Srgb; //type: NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb
-
-        std::vector<std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb> > srgb;
-        
-}; // NetworkInstances::NetworkInstance::SegmentRouting::Srgbs
-
-
-class NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb : public ydk::Entity
-{
-    public:
-        Srgb();
-        ~Srgb();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: string (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::Config::local_id)
-        ydk::YLeaf local_id;
-        class Config; //type: NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::Config
-        class State; //type: NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::State
-
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::State> state;
-        
-}; // NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb
-
-
-class NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::Config : public ydk::Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf local_id; //type: string
-        ydk::YLeaf dataplane_type; //type: SrDataplaneType
-        //type: list of  string (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::Config::local_id)
-        ydk::YLeafList mpls_label_blocks;
-        ydk::YLeafList ipv6_prefixes; //type: list of  string
-
-}; // NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::Config
-
-
-class NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::State : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::State : public ydk::Entity
 {
     public:
         State();
@@ -1477,21 +1608,17 @@ class NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::State : pu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf local_id; //type: string
-        ydk::YLeaf dataplane_type; //type: SrDataplaneType
-        ydk::YLeaf size; //type: uint32
-        ydk::YLeaf used; //type: uint32
-        //type: list of  string (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::Config::local_id)
-        ydk::YLeafList mpls_label_blocks;
-        ydk::YLeafList ipv6_prefixes; //type: list of  string
+        ydk::YLeaf lower_bound; //type: one of uint32, enumeration
+        ydk::YLeaf upper_bound; //type: one of uint32, enumeration
 
-}; // NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::State
+}; // NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::State
 
 
-class NetworkInstances::NetworkInstance::SegmentRouting::Srlbs : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes : public ydk::Entity
 {
     public:
-        Srlbs();
-        ~Srlbs();
+        TeGlobalAttributes();
+        ~TeGlobalAttributes();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1503,18 +1630,24 @@ class NetworkInstances::NetworkInstance::SegmentRouting::Srlbs : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Srlb; //type: NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb
+        class Srlgs; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs
+        class MplsAdminGroups; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::MplsAdminGroups
+        class TeLspTimers; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::TeLspTimers
+        class BandwidthMeasurement; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement
 
-        std::vector<std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb> > srlb;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs> srlgs;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::MplsAdminGroups> mpls_admin_groups;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::TeLspTimers> te_lsp_timers;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement> bandwidth_measurement;
         
-}; // NetworkInstances::NetworkInstance::SegmentRouting::Srlbs
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes
 
 
-class NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs : public ydk::Entity
 {
     public:
-        Srlb();
-        ~Srlb();
+        Srlgs();
+        ~Srlgs();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1526,22 +1659,18 @@ class NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        //type: string (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::Config::local_id)
-        ydk::YLeaf local_id;
-        class Config; //type: NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::Config
-        class State; //type: NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::State
+        class Srlg; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg
 
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::State> state;
+        ydk::YList srlg;
         
-}; // NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs
 
 
-class NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::Config : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg : public ydk::Entity
 {
     public:
-        Config();
-        ~Config();
+        Srlg();
+        ~Srlg();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1553,787 +1682,20 @@ class NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::Config : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf local_id; //type: string
-        ydk::YLeaf dataplane_type; //type: SrDataplaneType
-        //type: string (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::Config::local_id)
-        ydk::YLeaf mpls_label_block;
-        ydk::YLeaf ipv6_prefix; //type: string
-
-}; // NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::Config
-
-
-class NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf local_id; //type: string
-        ydk::YLeaf dataplane_type; //type: SrDataplaneType
-        //type: string (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::Config::local_id)
-        ydk::YLeaf mpls_label_block;
-        ydk::YLeaf ipv6_prefix; //type: string
-
-}; // NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::State
-
-
-class NetworkInstances::NetworkInstance::Vlans : public ydk::Entity
-{
-    public:
-        Vlans();
-        ~Vlans();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Vlan; //type: NetworkInstances::NetworkInstance::Vlans::Vlan
-
-        std::vector<std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Vlans::Vlan> > vlan;
-        
-}; // NetworkInstances::NetworkInstance::Vlans
-
-
-class NetworkInstances::NetworkInstance::Vlans::Vlan : public ydk::Entity
-{
-    public:
-        Vlan();
-        ~Vlan();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: uint16 (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Vlans::Vlan::Config::vlan_id)
-        ydk::YLeaf vlan_id;
-        class Config; //type: NetworkInstances::NetworkInstance::Vlans::Vlan::Config
-        class State; //type: NetworkInstances::NetworkInstance::Vlans::Vlan::State
-        class Members; //type: NetworkInstances::NetworkInstance::Vlans::Vlan::Members
-
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Vlans::Vlan::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Vlans::Vlan::State> state;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Vlans::Vlan::Members> members;
-        
-}; // NetworkInstances::NetworkInstance::Vlans::Vlan
-
-
-class NetworkInstances::NetworkInstance::Vlans::Vlan::Config : public ydk::Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf vlan_id; //type: uint16
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf status; //type: Status
-        ydk::YLeaf tpid; //type: TPIDTYPES
-        class Status;
-
-}; // NetworkInstances::NetworkInstance::Vlans::Vlan::Config
-
-
-class NetworkInstances::NetworkInstance::Vlans::Vlan::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf vlan_id; //type: uint16
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf status; //type: Status
-        ydk::YLeaf tpid; //type: TPIDTYPES
-        class Status;
-
-}; // NetworkInstances::NetworkInstance::Vlans::Vlan::State
-
-
-class NetworkInstances::NetworkInstance::Vlans::Vlan::Members : public ydk::Entity
-{
-    public:
-        Members();
-        ~Members();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Member; //type: NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member
-
-        std::vector<std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member> > member;
-        
-}; // NetworkInstances::NetworkInstance::Vlans::Vlan::Members
-
-
-class NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member : public ydk::Entity
-{
-    public:
-        Member();
-        ~Member();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class InterfaceRef; //type: NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::InterfaceRef
-
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::InterfaceRef> interface_ref;
-        
-}; // NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member
-
-
-class NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::InterfaceRef : public ydk::Entity
-{
-    public:
-        InterfaceRef();
-        ~InterfaceRef();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class State; //type: NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::InterfaceRef::State
-
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::InterfaceRef::State> state;
-        
-}; // NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::InterfaceRef
-
-
-class NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::InterfaceRef::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::name)
-        ydk::YLeaf interface;
-        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
-        ydk::YLeaf subinterface;
-
-}; // NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::InterfaceRef::State
-
-
-class NetworkInstances::NetworkInstance::Afts : public ydk::Entity
-{
-    public:
-        Afts();
-        ~Afts();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Aft; //type: NetworkInstances::NetworkInstance::Afts::Aft
-
-        std::vector<std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft> > aft;
-        
-}; // NetworkInstances::NetworkInstance::Afts
-
-
-class NetworkInstances::NetworkInstance::Afts::Aft : public ydk::Entity
-{
-    public:
-        Aft();
-        ~Aft();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address_family; //type: ADDRESSFAMILY
-        class Config; //type: NetworkInstances::NetworkInstance::Afts::Aft::Config
-        class State; //type: NetworkInstances::NetworkInstance::Afts::Aft::State
-        class Entries; //type: NetworkInstances::NetworkInstance::Afts::Aft::Entries
-
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft::State> state;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft::Entries> entries;
-        
-}; // NetworkInstances::NetworkInstance::Afts::Aft
-
-
-class NetworkInstances::NetworkInstance::Afts::Aft::Config : public ydk::Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address_family; //type: ADDRESSFAMILY
-
-}; // NetworkInstances::NetworkInstance::Afts::Aft::Config
-
-
-class NetworkInstances::NetworkInstance::Afts::Aft::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address_family; //type: ADDRESSFAMILY
-
-}; // NetworkInstances::NetworkInstance::Afts::Aft::State
-
-
-class NetworkInstances::NetworkInstance::Afts::Aft::Entries : public ydk::Entity
-{
-    public:
-        Entries();
-        ~Entries();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Entry; //type: NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry
-
-        std::vector<std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry> > entry;
-        
-}; // NetworkInstances::NetworkInstance::Afts::Aft::Entries
-
-
-class NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry : public ydk::Entity
-{
-    public:
-        Entry();
-        ~Entry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: uint64 (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Config::index_)
-        ydk::YLeaf index_;
-        class Config; //type: NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Config
-        class State; //type: NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::State
-        class Match; //type: NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Match
-        class NextHops; //type: NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops
-
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::State> state;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Match> match;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops> next_hops;
-        
-}; // NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry
-
-
-class NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Config : public ydk::Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf index_; //type: uint64
-
-}; // NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Config
-
-
-class NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf index_; //type: uint64
-        ydk::YLeaf packets_forwarded; //type: uint64
-        ydk::YLeaf octets_forwarded; //type: uint64
-
-}; // NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::State
-
-
-class NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Match : public ydk::Entity
-{
-    public:
-        Match();
-        ~Match();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Config; //type: NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Match::Config
-        class State; //type: NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Match::State
-        class InterfaceRef; //type: NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Match::InterfaceRef
-
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Match::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Match::State> state;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Match::InterfaceRef> interface_ref;
-        
-}; // NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Match
-
-
-class NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Match::Config : public ydk::Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-
-}; // NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Match::Config
-
-
-class NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Match::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ip_prefix; //type: string
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf mpls_label; //type: one of enumeration, uint32
-        ydk::YLeaf mpls_tc; //type: uint8
-        ydk::YLeaf ip_dscp; //type: uint8
-        ydk::YLeaf ip_protocol; //type: one of uint8, identityref
-        ydk::YLeaf l4_src_port; //type: uint16
-        ydk::YLeaf l4_dst_port; //type: uint16
-        //type: string (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Config::name)
-        ydk::YLeaf origin_network_instance;
-
-}; // NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Match::State
-
-
-class NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Match::InterfaceRef : public ydk::Entity
-{
-    public:
-        InterfaceRef();
-        ~InterfaceRef();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class State; //type: NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Match::InterfaceRef::State
-
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Match::InterfaceRef::State> state;
-        
-}; // NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Match::InterfaceRef
-
-
-class NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Match::InterfaceRef::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::name)
-        ydk::YLeaf interface;
-        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
-        ydk::YLeaf subinterface;
-
-}; // NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::Match::InterfaceRef::State
-
-
-class NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops : public ydk::Entity
-{
-    public:
-        NextHops();
-        ~NextHops();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class NextHop; //type: NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop
-
-        std::vector<std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop> > next_hop;
-        
-}; // NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops
-
-
-class NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop : public ydk::Entity
-{
-    public:
-        NextHop();
-        ~NextHop();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: uint64 (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::Config::index_)
-        ydk::YLeaf index_;
-        class Config; //type: NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::Config
-        class State; //type: NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::State
-        class InterfaceRef; //type: NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::InterfaceRef
-
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::State> state;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::InterfaceRef> interface_ref;
-        
-}; // NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop
-
-
-class NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::Config : public ydk::Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf index_; //type: uint64
-
-}; // NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::Config
-
-
-class NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf index_; //type: uint64
-        ydk::YLeaf weight; //type: uint32
-        ydk::YLeaf ip_address; //type: string
-        ydk::YLeaf mac_address; //type: string
-        ydk::YLeaf decapsulate_header; //type: EncapsulationHeaderType
-        ydk::YLeaf encapsulate_header; //type: EncapsulationHeaderType
-        ydk::YLeaf origin_protocol; //type: INSTALLPROTOCOLTYPE
-        //type: string (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Config::name)
-        ydk::YLeaf network_instance;
-        ydk::YLeafList popped_mpls_label_stack; //type: list of  one of enumeration, uint32
-        ydk::YLeafList pushed_mpls_label_stack; //type: list of  one of enumeration, uint32
-
-}; // NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::State
-
-
-class NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::InterfaceRef : public ydk::Entity
-{
-    public:
-        InterfaceRef();
-        ~InterfaceRef();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Config; //type: NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::InterfaceRef::Config
-        class State; //type: NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::InterfaceRef::State
-
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::InterfaceRef::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::InterfaceRef::State> state;
-        
-}; // NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::InterfaceRef
-
-
-class NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::InterfaceRef::Config : public ydk::Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::name)
-        ydk::YLeaf interface;
-        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
-        ydk::YLeaf subinterface;
-
-}; // NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::InterfaceRef::Config
-
-
-class NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::InterfaceRef::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::name)
-        ydk::YLeaf interface;
-        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
-        ydk::YLeaf subinterface;
-
-}; // NetworkInstances::NetworkInstance::Afts::Aft::Entries::Entry::NextHops::NextHop::InterfaceRef::State
-
-
-class NetworkInstances::NetworkInstance::Protocols : public ydk::Entity
-{
-    public:
-        Protocols();
-        ~Protocols();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Protocol; //type: NetworkInstances::NetworkInstance::Protocols::Protocol
-
-        std::vector<std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol> > protocol;
-        
-}; // NetworkInstances::NetworkInstance::Protocols
-
-
-class NetworkInstances::NetworkInstance::Protocols::Protocol : public ydk::Entity
-{
-    public:
-        Protocol();
-        ~Protocol();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf identifier; //type: INSTALLPROTOCOLTYPE
-        //type: string (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Config::name)
+        //type: string (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::Config::name)
         ydk::YLeaf name;
-        class Config; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Config
-        class State; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::State
-        class StaticRoutes; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes
-        class LocalAggregates; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::LocalAggregates
-        class Bgp; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp
-        class Isis; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Isis
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::State
+        class StaticSrlgMembers; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers
 
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::State> state;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes> static_routes;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::LocalAggregates> local_aggregates;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp> bgp;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis> isis;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::State> state;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers> static_srlg_members;
         
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Config : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::Config : public ydk::Entity
 {
     public:
         Config();
@@ -2349,15 +1711,15 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Config : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf identifier; //type: INSTALLPROTOCOLTYPE
         ydk::YLeaf name; //type: string
-        ydk::YLeaf enabled; //type: boolean
-        ydk::YLeaf default_metric; //type: uint32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf cost; //type: uint32
+        ydk::YLeaf flooding_type; //type: MplsSrlgFloodingType
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Config
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::Config
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::State : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::State : public ydk::Entity
 {
     public:
         State();
@@ -2373,19 +1735,19 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::State : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf identifier; //type: INSTALLPROTOCOLTYPE
         ydk::YLeaf name; //type: string
-        ydk::YLeaf enabled; //type: boolean
-        ydk::YLeaf default_metric; //type: uint32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf cost; //type: uint32
+        ydk::YLeaf flooding_type; //type: MplsSrlgFloodingType
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::State
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::State
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers : public ydk::Entity
 {
     public:
-        StaticRoutes();
-        ~StaticRoutes();
+        StaticSrlgMembers();
+        ~StaticSrlgMembers();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2397,18 +1759,18 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Static; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static
+        class MembersList; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList
 
-        std::vector<std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static> > static_;
+        ydk::YList members_list;
         
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList : public ydk::Entity
 {
     public:
-        Static();
-        ~Static();
+        MembersList();
+        ~MembersList();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2420,20 +1782,18 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Stat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        //type: union (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::Config::prefix)
-        ydk::YLeaf prefix;
-        class Config; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::Config
-        class State; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::State
-        class NextHops; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops
+        //type: union (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::Config::from_address)
+        ydk::YLeaf from_address;
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::State
 
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::State> state;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops> next_hops;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::State> state;
         
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::Config : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::Config : public ydk::Entity
 {
     public:
         Config();
@@ -2449,13 +1809,13 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Stat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf prefix; //type: string
-        ydk::YLeaf set_tag; //type: one of string, uint32
+        ydk::YLeaf from_address; //type: string
+        ydk::YLeaf to_address; //type: string
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::Config
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::Config
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::State : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::State : public ydk::Entity
 {
     public:
         State();
@@ -2471,17 +1831,17 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Stat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf prefix; //type: string
-        ydk::YLeaf set_tag; //type: one of string, uint32
+        ydk::YLeaf from_address; //type: string
+        ydk::YLeaf to_address; //type: string
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::State
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::State
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::MplsAdminGroups : public ydk::Entity
 {
     public:
-        NextHops();
-        ~NextHops();
+        MplsAdminGroups();
+        ~MplsAdminGroups();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2493,18 +1853,18 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Stat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class NextHop; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop
+        class AdminGroup; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup
 
-        std::vector<std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop> > next_hop;
+        ydk::YList admin_group;
         
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::MplsAdminGroups
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup : public ydk::Entity
 {
     public:
-        NextHop();
-        ~NextHop();
+        AdminGroup();
+        ~AdminGroup();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2516,20 +1876,18 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Stat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        //type: string (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::Config::index_)
-        ydk::YLeaf index_;
-        class Config; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::Config
-        class State; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::State
-        class InterfaceRef; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::InterfaceRef
+        //type: string (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config::admin_group_name)
+        ydk::YLeaf admin_group_name;
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::State
 
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::State> state;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::InterfaceRef> interface_ref;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::State> state;
         
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::Config : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config : public ydk::Entity
 {
     public:
         Config();
@@ -2545,15 +1903,13 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Stat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf index_; //type: string
-        ydk::YLeaf next_hop; //type: one of union, identityref
-        ydk::YLeaf metric; //type: uint32
-        ydk::YLeaf recurse; //type: boolean
+        ydk::YLeaf admin_group_name; //type: string
+        ydk::YLeaf bit_position; //type: uint32
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::Config
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::State : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::State : public ydk::Entity
 {
     public:
         State();
@@ -2569,15 +1925,339 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Stat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf index_; //type: string
-        ydk::YLeaf next_hop; //type: one of union, identityref
-        ydk::YLeaf metric; //type: uint32
-        ydk::YLeaf recurse; //type: boolean
+        ydk::YLeaf admin_group_name; //type: string
+        ydk::YLeaf bit_position; //type: uint32
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::State
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::State
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::InterfaceRef : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::TeLspTimers : public ydk::Entity
+{
+    public:
+        TeLspTimers();
+        ~TeLspTimers();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::TeLspTimers::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::TeLspTimers::State
+
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::TeLspTimers::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::TeLspTimers::State> state;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::TeLspTimers
+
+
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::TeLspTimers::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf install_delay; //type: uint16
+        ydk::YLeaf cleanup_delay; //type: uint16
+        ydk::YLeaf reoptimize_timer; //type: uint16
+
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::TeLspTimers::Config
+
+
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::TeLspTimers::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf install_delay; //type: uint16
+        ydk::YLeaf cleanup_delay; //type: uint16
+        ydk::YLeaf reoptimize_timer; //type: uint16
+
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::TeLspTimers::State
+
+
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement : public ydk::Entity
+{
+    public:
+        BandwidthMeasurement();
+        ~BandwidthMeasurement();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::State
+        class UpdateTrigger; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::UpdateTrigger
+
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::State> state;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::UpdateTrigger> update_trigger;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement
+
+
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf measure_sr_traffic; //type: boolean
+        ydk::YLeaf collection_interval; //type: uint32
+        ydk::YLeaf adjustment_interval; //type: uint32
+        ydk::YLeaf bandwidth_multiplier; //type: decimal64
+
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::Config
+
+
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf measure_sr_traffic; //type: boolean
+        ydk::YLeaf collection_interval; //type: uint32
+        ydk::YLeaf adjustment_interval; //type: uint32
+        ydk::YLeaf bandwidth_multiplier; //type: decimal64
+        ydk::YLeaf effective_adjustment_interval; //type: uint32
+
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::State
+
+
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::UpdateTrigger : public ydk::Entity
+{
+    public:
+        UpdateTrigger();
+        ~UpdateTrigger();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::UpdateTrigger::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::UpdateTrigger::State
+
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::UpdateTrigger::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::UpdateTrigger::State> state;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::UpdateTrigger
+
+
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::UpdateTrigger::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf update_trigger; //type: UpdateTrigger_
+        ydk::YLeaf adjusted_max_reservable_bw_pct; //type: uint8
+        ydk::YLeaf sr_traffic_pct; //type: uint8
+        class UpdateTrigger_;
+
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::UpdateTrigger::Config
+
+
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::UpdateTrigger::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf update_trigger; //type: UpdateTrigger_
+        ydk::YLeaf adjusted_max_reservable_bw_pct; //type: uint8
+        ydk::YLeaf sr_traffic_pct; //type: uint8
+        class UpdateTrigger_;
+
+}; // NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::UpdateTrigger::State
+
+
+class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes : public ydk::Entity
+{
+    public:
+        TeInterfaceAttributes();
+        ~TeInterfaceAttributes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Interface; //type: NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface
+
+        ydk::YList interface;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes
+
+
+class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface : public ydk::Entity
+{
+    public:
+        Interface();
+        ~Interface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        //type: string (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::Config::interface_id)
+        ydk::YLeaf interface_id;
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::State
+        class InterfaceRef; //type: NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::InterfaceRef
+        class IgpFloodingBandwidth; //type: NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth
+        class BandwidthMeasurement; //type: NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::BandwidthMeasurement
+
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::State> state;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::InterfaceRef> interface_ref;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth> igp_flooding_bandwidth;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::BandwidthMeasurement> bandwidth_measurement;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface
+
+
+class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_id; //type: string
+        ydk::YLeaf te_metric; //type: uint32
+        //type: list of  leafref (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::name)
+        ydk::YLeafList srlg_membership;
+        ydk::YLeafList admin_group; //type: list of  string
+
+}; // NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::Config
+
+
+class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_id; //type: string
+        ydk::YLeaf te_metric; //type: uint32
+        //type: list of  leafref (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::Srlgs::Srlg::name)
+        ydk::YLeafList srlg_membership;
+        ydk::YLeafList admin_group; //type: list of  string
+
+}; // NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::State
+
+
+class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::InterfaceRef : public ydk::Entity
 {
     public:
         InterfaceRef();
@@ -2593,16 +2273,16 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Stat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config
-        class State; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::InterfaceRef::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::InterfaceRef::State
 
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State> state;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::InterfaceRef::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::InterfaceRef::State> state;
         
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::InterfaceRef
+}; // NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::InterfaceRef
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::InterfaceRef::Config : public ydk::Entity
 {
     public:
         Config();
@@ -2623,10 +2303,10 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Stat
         //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
         ydk::YLeaf subinterface;
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::Config
+}; // NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::InterfaceRef::Config
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::InterfaceRef::State : public ydk::Entity
 {
     public:
         State();
@@ -2647,14 +2327,14 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Stat
         //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
         ydk::YLeaf subinterface;
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::Static::NextHops::NextHop::InterfaceRef::State
+}; // NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::InterfaceRef::State
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::LocalAggregates : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth : public ydk::Entity
 {
     public:
-        LocalAggregates();
-        ~LocalAggregates();
+        IgpFloodingBandwidth();
+        ~IgpFloodingBandwidth();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2666,41 +2346,16 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::LocalAggregates : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Aggregate; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::LocalAggregates::Aggregate
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State
 
-        std::vector<std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::LocalAggregates::Aggregate> > aggregate;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State> state;
         
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::LocalAggregates
+}; // NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::LocalAggregates::Aggregate : public ydk::Entity
-{
-    public:
-        Aggregate();
-        ~Aggregate();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        //type: union (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::LocalAggregates::Aggregate::Config::prefix)
-        ydk::YLeaf prefix;
-        class Config; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::LocalAggregates::Aggregate::Config
-        class State; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::LocalAggregates::Aggregate::State
-
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::LocalAggregates::Aggregate::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::LocalAggregates::Aggregate::State> state;
-        
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::LocalAggregates::Aggregate
-
-
-class NetworkInstances::NetworkInstance::Protocols::Protocol::LocalAggregates::Aggregate::Config : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config : public ydk::Entity
 {
     public:
         Config();
@@ -2716,14 +2371,19 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::LocalAggregates::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf prefix; //type: string
-        ydk::YLeaf discard; //type: boolean
-        ydk::YLeaf set_tag; //type: one of string, uint32
+        ydk::YLeaf threshold_type; //type: ThresholdType
+        ydk::YLeaf delta_percentage; //type: uint8
+        ydk::YLeaf threshold_specification; //type: ThresholdSpecification
+        ydk::YLeafList up_thresholds; //type: list of  uint8
+        ydk::YLeafList down_thresholds; //type: list of  uint8
+        ydk::YLeafList up_down_thresholds; //type: list of  uint8
+        class ThresholdType;
+        class ThresholdSpecification;
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::LocalAggregates::Aggregate::Config
+}; // NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::LocalAggregates::Aggregate::State : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State : public ydk::Entity
 {
     public:
         State();
@@ -2739,18 +2399,23 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::LocalAggregates::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf prefix; //type: string
-        ydk::YLeaf discard; //type: boolean
-        ydk::YLeaf set_tag; //type: one of string, uint32
+        ydk::YLeaf threshold_type; //type: ThresholdType
+        ydk::YLeaf delta_percentage; //type: uint8
+        ydk::YLeaf threshold_specification; //type: ThresholdSpecification
+        ydk::YLeafList up_thresholds; //type: list of  uint8
+        ydk::YLeafList down_thresholds; //type: list of  uint8
+        ydk::YLeafList up_down_thresholds; //type: list of  uint8
+        class ThresholdType;
+        class ThresholdSpecification;
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::LocalAggregates::Aggregate::State
+}; // NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::BandwidthMeasurement : public ydk::Entity
 {
     public:
-        Bgp();
-        ~Bgp();
+        BandwidthMeasurement();
+        ~BandwidthMeasurement();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2762,18 +2427,350 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Global; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global
-        class Neighbors; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors
-        class PeerGroups; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::PeerGroups
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::BandwidthMeasurement::State
 
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global> global;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors> neighbors;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::PeerGroups> peer_groups;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::BandwidthMeasurement::State> state;
         
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp
+}; // NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::BandwidthMeasurement
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::BandwidthMeasurement::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf last_sample_time; //type: uint64
+        ydk::YLeaf last_sample_measured_rsvp_util; //type: uint64
+        ydk::YLeaf last_sample_measured_sr_util; //type: uint64
+        ydk::YLeaf last_calculated_time; //type: uint64
+        ydk::YLeaf last_calculated_sr_utilisation; //type: uint64
+        ydk::YLeaf last_flooded_time; //type: uint64
+
+}; // NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::BandwidthMeasurement::State
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols : public ydk::Entity
+{
+    public:
+        SignalingProtocols();
+        ~SignalingProtocols();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class RsvpTe; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe
+        class Ldp; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::Ldp
+        class SegmentRouting; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting
+
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe> rsvp_te;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::Ldp> ldp;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting> segment_routing;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe : public ydk::Entity
+{
+    public:
+        RsvpTe();
+        ~RsvpTe();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Sessions; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions
+        class Neighbors; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Neighbors
+        class Global; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global
+        class InterfaceAttributes; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes
+
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions> sessions;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Neighbors> neighbors;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global> global;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes> interface_attributes;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions : public ydk::Entity
+{
+    public:
+        Sessions();
+        ~Sessions();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Session; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session
+
+        ydk::YList session;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session : public ydk::Entity
+{
+    public:
+        Session();
+        ~Session();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        //type: uint64 (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::local_index)
+        ydk::YLeaf local_index;
+        class RecordRouteObjects; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State
+
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects> record_route_objects;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State> state;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects : public ydk::Entity
+{
+    public:
+        RecordRouteObjects();
+        ~RecordRouteObjects();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class RecordRouteObject; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::RecordRouteObject
+
+        ydk::YList record_route_object;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::RecordRouteObject : public ydk::Entity
+{
+    public:
+        RecordRouteObject();
+        ~RecordRouteObject();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        //type: uint8 (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::RecordRouteObject::State::index_)
+        ydk::YLeaf index_;
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::RecordRouteObject::State
+
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::RecordRouteObject::State> state;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::RecordRouteObject
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::RecordRouteObject::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf index_; //type: uint8
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf reported_label; //type: one of uint32, enumeration
+        ydk::YLeaf reported_flags; //type: uint8
+
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::RecordRouteObject::State
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_index; //type: uint64
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf lsp_id; //type: uint16
+        ydk::YLeaf session_name; //type: string
+        ydk::YLeaf status; //type: Status
+        ydk::YLeaf type; //type: LSPROLE
+        ydk::YLeaf protection_requested; //type: PROTECTIONTYPE
+        ydk::YLeaf label_in; //type: one of uint32, enumeration
+        ydk::YLeaf label_out; //type: one of uint32, enumeration
+        class SenderTspec; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::SenderTspec
+
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::SenderTspec> sender_tspec;
+                class Status;
+
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::SenderTspec : public ydk::Entity
+{
+    public:
+        SenderTspec();
+        ~SenderTspec();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf rate; //type: binary
+        ydk::YLeaf size; //type: binary
+        ydk::YLeaf peak_data_rate; //type: one of binary, enumeration
+        class PeakDataRate;
+
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::SenderTspec
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Neighbors : public ydk::Entity
+{
+    public:
+        Neighbors();
+        ~Neighbors();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Neighbor; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor
+
+        ydk::YList neighbor;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Neighbors
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor : public ydk::Entity
+{
+    public:
+        Neighbor();
+        ~Neighbor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        //type: union (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::State::address)
+        ydk::YLeaf address;
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::State
+
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::State> state;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf detected_interface; //type: string
+        ydk::YLeaf neighbor_status; //type: NeighborStatus
+        ydk::YLeaf refresh_reduction; //type: boolean
+        class NeighborStatus;
+
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::State
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global : public ydk::Entity
 {
     public:
         Global();
@@ -2789,216 +2786,20 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Config
-        class State; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::State
-        class DefaultRouteDistance; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::DefaultRouteDistance
-        class Confederation; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Confederation
-        class GracefulRestart; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::GracefulRestart
-        class UseMultiplePaths; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths
-        class RouteSelectionOptions; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::RouteSelectionOptions
-        class AfiSafis; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis
-        class ApplyPolicy; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::ApplyPolicy
+        class GracefulRestart; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart
+        class SoftPreemption; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption
+        class Hellos; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::Hellos
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::State
 
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::State> state;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::DefaultRouteDistance> default_route_distance;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Confederation> confederation;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::GracefulRestart> graceful_restart;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths> use_multiple_paths;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::RouteSelectionOptions> route_selection_options;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis> afi_safis;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::ApplyPolicy> apply_policy;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart> graceful_restart;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption> soft_preemption;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::Hellos> hellos;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::State> state;
         
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Config : public ydk::Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf as; //type: uint32
-        ydk::YLeaf router_id; //type: string
-
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Config
-
-
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf as; //type: uint32
-        ydk::YLeaf router_id; //type: string
-        ydk::YLeaf total_paths; //type: uint32
-        ydk::YLeaf total_prefixes; //type: uint32
-
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::State
-
-
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::DefaultRouteDistance : public ydk::Entity
-{
-    public:
-        DefaultRouteDistance();
-        ~DefaultRouteDistance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Config; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::DefaultRouteDistance::Config
-        class State; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::DefaultRouteDistance::State
-
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::DefaultRouteDistance::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::DefaultRouteDistance::State> state;
-        
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::DefaultRouteDistance
-
-
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::DefaultRouteDistance::Config : public ydk::Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf external_route_distance; //type: uint8
-        ydk::YLeaf internal_route_distance; //type: uint8
-
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::DefaultRouteDistance::Config
-
-
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::DefaultRouteDistance::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf external_route_distance; //type: uint8
-        ydk::YLeaf internal_route_distance; //type: uint8
-
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::DefaultRouteDistance::State
-
-
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Confederation : public ydk::Entity
-{
-    public:
-        Confederation();
-        ~Confederation();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Config; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Confederation::Config
-        class State; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Confederation::State
-
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Confederation::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Confederation::State> state;
-        
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Confederation
-
-
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Confederation::Config : public ydk::Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf enabled; //type: boolean
-        ydk::YLeaf identifier; //type: uint32
-        ydk::YLeafList member_as; //type: list of  uint32
-
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Confederation::Config
-
-
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Confederation::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf enabled; //type: boolean
-        ydk::YLeaf identifier; //type: uint32
-        ydk::YLeafList member_as; //type: list of  uint32
-
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Confederation::State
-
-
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::GracefulRestart : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart : public ydk::Entity
 {
     public:
         GracefulRestart();
@@ -3014,16 +2815,16 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Grace
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::GracefulRestart::Config
-        class State; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::GracefulRestart::State
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::State
 
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::GracefulRestart::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::GracefulRestart::State> state;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::State> state;
         
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::GracefulRestart
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::GracefulRestart::Config : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::Config : public ydk::Entity
 {
     public:
         Config();
@@ -3039,15 +2840,14 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Grace
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enabled; //type: boolean
-        ydk::YLeaf restart_time; //type: uint16
-        ydk::YLeaf stale_routes_time; //type: decimal64
-        ydk::YLeaf helper_only; //type: boolean
+        ydk::YLeaf enable; //type: boolean
+        ydk::YLeaf restart_time; //type: uint32
+        ydk::YLeaf recovery_time; //type: uint32
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::GracefulRestart::Config
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::Config
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::GracefulRestart::State : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::State : public ydk::Entity
 {
     public:
         State();
@@ -3063,19 +2863,18 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Grace
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enabled; //type: boolean
-        ydk::YLeaf restart_time; //type: uint16
-        ydk::YLeaf stale_routes_time; //type: decimal64
-        ydk::YLeaf helper_only; //type: boolean
+        ydk::YLeaf enable; //type: boolean
+        ydk::YLeaf restart_time; //type: uint32
+        ydk::YLeaf recovery_time; //type: uint32
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::GracefulRestart::State
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::State
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption : public ydk::Entity
 {
     public:
-        UseMultiplePaths();
-        ~UseMultiplePaths();
+        SoftPreemption();
+        ~SoftPreemption();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3087,20 +2886,16 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Config
-        class State; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::State
-        class Ebgp; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ebgp
-        class Ibgp; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ibgp
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::State
 
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::State> state;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ebgp> ebgp;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ibgp> ibgp;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::State> state;
         
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Config : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::Config : public ydk::Entity
 {
     public:
         Config();
@@ -3116,12 +2911,13 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf enable; //type: boolean
+        ydk::YLeaf soft_preemption_timeout; //type: uint16
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Config
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::Config
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::State : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::State : public ydk::Entity
 {
     public:
         State();
@@ -3137,16 +2933,17 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf enable; //type: boolean
+        ydk::YLeaf soft_preemption_timeout; //type: uint16
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::State
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::State
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ebgp : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::Hellos : public ydk::Entity
 {
     public:
-        Ebgp();
-        ~Ebgp();
+        Hellos();
+        ~Hellos();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3158,16 +2955,16 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ebgp::Config
-        class State; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ebgp::State
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::Hellos::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::Hellos::State
 
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ebgp::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ebgp::State> state;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::Hellos::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::Hellos::State> state;
         
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ebgp
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::Hellos
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ebgp::Config : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::Hellos::Config : public ydk::Entity
 {
     public:
         Config();
@@ -3183,13 +2980,13 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf allow_multiple_as; //type: boolean
-        ydk::YLeaf maximum_paths; //type: uint32
+        ydk::YLeaf hello_interval; //type: uint16
+        ydk::YLeaf refresh_reduction; //type: boolean
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ebgp::Config
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::Hellos::Config
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ebgp::State : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::Hellos::State : public ydk::Entity
 {
     public:
         State();
@@ -3205,59 +3002,13 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf allow_multiple_as; //type: boolean
-        ydk::YLeaf maximum_paths; //type: uint32
+        ydk::YLeaf hello_interval; //type: uint16
+        ydk::YLeaf refresh_reduction; //type: boolean
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ebgp::State
-
-
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ibgp : public ydk::Entity
-{
-    public:
-        Ibgp();
-        ~Ibgp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Config; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ibgp::Config
-        class State; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ibgp::State
-
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ibgp::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ibgp::State> state;
-        
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ibgp
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::Hellos::State
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ibgp::Config : public ydk::Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf maximum_paths; //type: uint32
-
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ibgp::Config
-
-
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ibgp::State : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::State : public ydk::Entity
 {
     public:
         State();
@@ -3273,16 +3024,18 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf maximum_paths; //type: uint32
+        class Counters; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::State::Counters
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::UseMultiplePaths::Ibgp::State
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::State::Counters> counters;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::State
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::RouteSelectionOptions : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::State::Counters : public ydk::Entity
 {
     public:
-        RouteSelectionOptions();
-        ~RouteSelectionOptions();
+        Counters();
+        ~Counters();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3294,16 +3047,94 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Route
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::RouteSelectionOptions::Config
-        class State; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::RouteSelectionOptions::State
+        ydk::YLeaf path_timeouts; //type: uint64
+        ydk::YLeaf reservation_timeouts; //type: uint64
+        ydk::YLeaf rate_limited_messages; //type: uint64
+        ydk::YLeaf in_path_messages; //type: uint64
+        ydk::YLeaf in_path_error_messages; //type: uint64
+        ydk::YLeaf in_path_tear_messages; //type: uint64
+        ydk::YLeaf in_reservation_messages; //type: uint64
+        ydk::YLeaf in_reservation_error_messages; //type: uint64
+        ydk::YLeaf in_reservation_tear_messages; //type: uint64
+        ydk::YLeaf in_hello_messages; //type: uint64
+        ydk::YLeaf in_srefresh_messages; //type: uint64
+        ydk::YLeaf in_ack_messages; //type: uint64
+        ydk::YLeaf out_path_messages; //type: uint64
+        ydk::YLeaf out_path_error_messages; //type: uint64
+        ydk::YLeaf out_path_tear_messages; //type: uint64
+        ydk::YLeaf out_reservation_messages; //type: uint64
+        ydk::YLeaf out_reservation_error_messages; //type: uint64
+        ydk::YLeaf out_reservation_tear_messages; //type: uint64
+        ydk::YLeaf out_hello_messages; //type: uint64
+        ydk::YLeaf out_srefresh_messages; //type: uint64
+        ydk::YLeaf out_ack_messages; //type: uint64
 
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::RouteSelectionOptions::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::RouteSelectionOptions::State> state;
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Global::State::Counters
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes : public ydk::Entity
+{
+    public:
+        InterfaceAttributes();
+        ~InterfaceAttributes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Interface; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface
+
+        ydk::YList interface;
         
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::RouteSelectionOptions
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::RouteSelectionOptions::Config : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface : public ydk::Entity
+{
+    public:
+        Interface();
+        ~Interface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        //type: string (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Config::interface_id)
+        ydk::YLeaf interface_id;
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State
+        class InterfaceRef; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef
+        class BandwidthReservations; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations
+        class Hellos; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos
+        class Authentication; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication
+        class Subscription; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription
+        class Protection; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection
+
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State> state;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef> interface_ref;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations> bandwidth_reservations;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos> hellos;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication> authentication;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription> subscription;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection> protection;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Config : public ydk::Entity
 {
     public:
         Config();
@@ -3319,17 +3150,12 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Route
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf always_compare_med; //type: boolean
-        ydk::YLeaf ignore_as_path_length; //type: boolean
-        ydk::YLeaf external_compare_router_id; //type: boolean
-        ydk::YLeaf advertise_inactive_routes; //type: boolean
-        ydk::YLeaf enable_aigp; //type: boolean
-        ydk::YLeaf ignore_next_hop_igp_metric; //type: boolean
+        ydk::YLeaf interface_id; //type: string
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::RouteSelectionOptions::Config
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Config
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::RouteSelectionOptions::State : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State : public ydk::Entity
 {
     public:
         State();
@@ -3345,21 +3171,19 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::Route
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf always_compare_med; //type: boolean
-        ydk::YLeaf ignore_as_path_length; //type: boolean
-        ydk::YLeaf external_compare_router_id; //type: boolean
-        ydk::YLeaf advertise_inactive_routes; //type: boolean
-        ydk::YLeaf enable_aigp; //type: boolean
-        ydk::YLeaf ignore_next_hop_igp_metric; //type: boolean
+        ydk::YLeaf interface_id; //type: string
+        class Counters; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Counters
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::RouteSelectionOptions::State
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Counters> counters;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Counters : public ydk::Entity
 {
     public:
-        AfiSafis();
-        ~AfiSafis();
+        Counters();
+        ~Counters();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3371,18 +3195,33 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class AfiSafi; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi
+        ydk::YLeaf in_path_messages; //type: uint64
+        ydk::YLeaf in_path_error_messages; //type: uint64
+        ydk::YLeaf in_path_tear_messages; //type: uint64
+        ydk::YLeaf in_reservation_messages; //type: uint64
+        ydk::YLeaf in_reservation_error_messages; //type: uint64
+        ydk::YLeaf in_reservation_tear_messages; //type: uint64
+        ydk::YLeaf in_hello_messages; //type: uint64
+        ydk::YLeaf in_srefresh_messages; //type: uint64
+        ydk::YLeaf in_ack_messages; //type: uint64
+        ydk::YLeaf out_path_messages; //type: uint64
+        ydk::YLeaf out_path_error_messages; //type: uint64
+        ydk::YLeaf out_path_tear_messages; //type: uint64
+        ydk::YLeaf out_reservation_messages; //type: uint64
+        ydk::YLeaf out_reservation_error_messages; //type: uint64
+        ydk::YLeaf out_reservation_tear_messages; //type: uint64
+        ydk::YLeaf out_hello_messages; //type: uint64
+        ydk::YLeaf out_srefresh_messages; //type: uint64
+        ydk::YLeaf out_ack_messages; //type: uint64
 
-        std::vector<std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi> > afi_safi;
-        
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Counters
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef : public ydk::Entity
 {
     public:
-        AfiSafi();
-        ~AfiSafi();
+        InterfaceRef();
+        ~InterfaceRef();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3394,45 +3233,16 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf afi_safi_name; //type: AFISAFITYPE
-        class Config; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::Config
-        class State; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::State
-        class GracefulRestart; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::GracefulRestart
-        class RouteSelectionOptions; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions
-        class UseMultiplePaths; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths
-        class ApplyPolicy; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy
-        class Ipv4Unicast; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast
-        class Ipv6Unicast; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast
-        class Ipv4LabeledUnicast; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast
-        class Ipv6LabeledUnicast; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast
-        class L3VpnIpv4Unicast; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast
-        class L3VpnIpv6Unicast; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast
-        class L3VpnIpv4Multicast; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast
-        class L3VpnIpv6Multicast; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast
-        class L2VpnVpls; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls
-        class L2VpnEvpn; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::State
 
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::State> state;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::GracefulRestart> graceful_restart;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions> route_selection_options;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths> use_multiple_paths;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy> apply_policy;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast> ipv4_unicast;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast> ipv6_unicast;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast> ipv4_labeled_unicast;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast> ipv6_labeled_unicast;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast> l3vpn_ipv4_unicast;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast> l3vpn_ipv6_unicast;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast> l3vpn_ipv4_multicast;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast> l3vpn_ipv6_multicast;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls> l2vpn_vpls;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn> l2vpn_evpn;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::State> state;
         
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::Config : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::Config : public ydk::Entity
 {
     public:
         Config();
@@ -3448,13 +3258,15 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf afi_safi_name; //type: AFISAFITYPE
-        ydk::YLeaf enabled; //type: boolean
+        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::name)
+        ydk::YLeaf interface;
+        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
+        ydk::YLeaf subinterface;
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::Config
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::Config
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::State : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::State : public ydk::Entity
 {
     public:
         State();
@@ -3470,19 +3282,19 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf afi_safi_name; //type: AFISAFITYPE
-        ydk::YLeaf enabled; //type: boolean
-        ydk::YLeaf total_paths; //type: uint32
-        ydk::YLeaf total_prefixes; //type: uint32
+        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::name)
+        ydk::YLeaf interface;
+        //type: leafref (refers to openconfig::openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
+        ydk::YLeaf subinterface;
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::State
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::State
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::GracefulRestart : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations : public ydk::Entity
 {
     public:
-        GracefulRestart();
-        ~GracefulRestart();
+        BandwidthReservations();
+        ~BandwidthReservations();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3494,20 +3306,18 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config
-        class State; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State
+        class BandwidthReservation; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation
 
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State> state;
+        ydk::YList bandwidth_reservation;
         
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::GracefulRestart
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation : public ydk::Entity
 {
     public:
-        Config();
-        ~Config();
+        BandwidthReservation();
+        ~BandwidthReservation();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3519,12 +3329,16 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enabled; //type: boolean
+        //type: union (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation::State::priority)
+        ydk::YLeaf priority;
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation::State
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation::State> state;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation::State : public ydk::Entity
 {
     public:
         State();
@@ -3540,16 +3354,21 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf priority; //type: one of uint8, enumeration
+        ydk::YLeaf available_bandwidth; //type: uint64
+        ydk::YLeaf reserved_bandwidth; //type: uint64
+        ydk::YLeaf active_reservations_count; //type: uint64
+        ydk::YLeaf highwater_mark; //type: uint64
+        class Priority;
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation::State
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos : public ydk::Entity
 {
     public:
-        RouteSelectionOptions();
-        ~RouteSelectionOptions();
+        Hellos();
+        ~Hellos();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3561,16 +3380,16 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config
-        class State; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::State
 
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State> state;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::State> state;
         
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::Config : public ydk::Entity
 {
     public:
         Config();
@@ -3586,17 +3405,13 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf always_compare_med; //type: boolean
-        ydk::YLeaf ignore_as_path_length; //type: boolean
-        ydk::YLeaf external_compare_router_id; //type: boolean
-        ydk::YLeaf advertise_inactive_routes; //type: boolean
-        ydk::YLeaf enable_aigp; //type: boolean
-        ydk::YLeaf ignore_next_hop_igp_metric; //type: boolean
+        ydk::YLeaf hello_interval; //type: uint16
+        ydk::YLeaf refresh_reduction; //type: boolean
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::Config
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::State : public ydk::Entity
 {
     public:
         State();
@@ -3612,21 +3427,17 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf always_compare_med; //type: boolean
-        ydk::YLeaf ignore_as_path_length; //type: boolean
-        ydk::YLeaf external_compare_router_id; //type: boolean
-        ydk::YLeaf advertise_inactive_routes; //type: boolean
-        ydk::YLeaf enable_aigp; //type: boolean
-        ydk::YLeaf ignore_next_hop_igp_metric; //type: boolean
+        ydk::YLeaf hello_interval; //type: uint16
+        ydk::YLeaf refresh_reduction; //type: boolean
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::State
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication : public ydk::Entity
 {
     public:
-        UseMultiplePaths();
-        ~UseMultiplePaths();
+        Authentication();
+        ~Authentication();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3638,20 +3449,16 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config
-        class State; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State
-        class Ebgp; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp
-        class Ibgp; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::State
 
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State> state;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp> ebgp;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp> ibgp;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::State> state;
         
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::Config : public ydk::Entity
 {
     public:
         Config();
@@ -3667,12 +3474,13 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf enable; //type: boolean
+        ydk::YLeaf authentication_key; //type: string
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::Config
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::State : public ydk::Entity
 {
     public:
         State();
@@ -3688,16 +3496,17 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf enable; //type: boolean
+        ydk::YLeaf authentication_key; //type: string
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::State
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription : public ydk::Entity
 {
     public:
-        Ebgp();
-        ~Ebgp();
+        Subscription();
+        ~Subscription();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3709,16 +3518,16 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config
-        class State; //type: NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::State
 
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config> config;
-        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State> state;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::State> state;
         
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription
 
 
-class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config : public ydk::Entity
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::Config : public ydk::Entity
 {
     public:
         Config();
@@ -3734,10 +3543,219 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf allow_multiple_as; //type: boolean
-        ydk::YLeaf maximum_paths; //type: uint32
+        ydk::YLeaf subscription; //type: uint8
 
-}; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::Config
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf subscription; //type: uint8
+        ydk::YLeaf calculated_absolute_subscription_bw; //type: uint64
+        ydk::YLeaf adjusted_absolute_subscription_bw; //type: uint64
+
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::State
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection : public ydk::Entity
+{
+    public:
+        Protection();
+        ~Protection();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::Config
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::State
+
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::Config> config;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::State> state;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_protection_style_requested; //type: PROTECTIONTYPE
+        ydk::YLeaf bypass_optimize_interval; //type: uint16
+
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::Config
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf link_protection_style_requested; //type: PROTECTIONTYPE
+        ydk::YLeaf bypass_optimize_interval; //type: uint16
+
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::State
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::Ldp : public ydk::Entity
+{
+    public:
+        Ldp();
+        ~Ldp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::Ldp
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting : public ydk::Entity
+{
+    public:
+        SegmentRouting();
+        ~SegmentRouting();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AggregateSidCounters; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters
+        class Interfaces; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces
+
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters> aggregate_sid_counters;
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces> interfaces;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters : public ydk::Entity
+{
+    public:
+        AggregateSidCounters();
+        ~AggregateSidCounters();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AggregateSidCounter; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::AggregateSidCounter
+
+        ydk::YList aggregate_sid_counter;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::AggregateSidCounter : public ydk::Entity
+{
+    public:
+        AggregateSidCounter();
+        ~AggregateSidCounter();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        //type: union (refers to openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::AggregateSidCounter::State::mpls_label)
+        ydk::YLeaf mpls_label;
+        class State; //type: NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::AggregateSidCounter::State
+
+        std::shared_ptr<openconfig::openconfig_network_instance::NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::AggregateSidCounter::State> state;
+        
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::AggregateSidCounter
+
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::AggregateSidCounter::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mpls_label; //type: one of uint32, enumeration
+        ydk::YLeaf in_pkts; //type: uint64
+        ydk::YLeaf in_octets; //type: uint64
+        ydk::YLeaf out_pkts; //type: uint64
+        ydk::YLeaf out_octets; //type: uint64
+
+}; // NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::AggregateSidCounter::State
 
 class NetworkInstances::NetworkInstance::Fdb::MacTable::Entries::Entry::State::EntryType : public ydk::Enum
 {
@@ -3747,19 +3765,81 @@ class NetworkInstances::NetworkInstance::Fdb::MacTable::Entries::Entry::State::E
 
 };
 
-class NetworkInstances::NetworkInstance::Vlans::Vlan::Config::Status : public ydk::Enum
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::UpdateTrigger::Config::UpdateTrigger_ : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ACTIVE;
-        static const ydk::Enum::YLeaf SUSPENDED;
+        static const ydk::Enum::YLeaf ADJUSTED_MAX_RESERVABLE_PCT;
+        static const ydk::Enum::YLeaf SR_TRAFFIC_PCT;
 
 };
 
-class NetworkInstances::NetworkInstance::Vlans::Vlan::State::Status : public ydk::Enum
+class NetworkInstances::NetworkInstance::Mpls::TeGlobalAttributes::BandwidthMeasurement::UpdateTrigger::State::UpdateTrigger_ : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ACTIVE;
-        static const ydk::Enum::YLeaf SUSPENDED;
+        static const ydk::Enum::YLeaf ADJUSTED_MAX_RESERVABLE_PCT;
+        static const ydk::Enum::YLeaf SR_TRAFFIC_PCT;
+
+};
+
+class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf DELTA;
+        static const ydk::Enum::YLeaf THRESHOLD_CROSSED;
+
+};
+
+class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdSpecification : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf MIRRORED_UP_DOWN;
+        static const ydk::Enum::YLeaf SEPARATE_UP_DOWN;
+
+};
+
+class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf DELTA;
+        static const ydk::Enum::YLeaf THRESHOLD_CROSSED;
+
+};
+
+class NetworkInstances::NetworkInstance::Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdSpecification : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf MIRRORED_UP_DOWN;
+        static const ydk::Enum::YLeaf SEPARATE_UP_DOWN;
+
+};
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::Status : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf UP;
+        static const ydk::Enum::YLeaf DOWN;
+
+};
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::SenderTspec::PeakDataRate : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf INFINITY_;
+
+};
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::State::NeighborStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf UP;
+        static const ydk::Enum::YLeaf DOWN;
+
+};
+
+class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation::State::Priority : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ALL;
 
 };
 

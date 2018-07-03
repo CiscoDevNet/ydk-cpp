@@ -95,7 +95,7 @@ class Aaa::Authentication::Users : public ydk::Entity
 
         class User; //type: Aaa::Authentication::Users::User
 
-        std::vector<std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authentication::Users::User> > user;
+        ydk::YList user;
         
 }; // Aaa::Authentication::Users
 
@@ -146,7 +146,7 @@ class Aaa::Authentication::Groups : public ydk::Entity
 
         class Group; //type: Aaa::Authentication::Groups::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authentication::Groups::Group> > group;
+        ydk::YList group;
         
 }; // Aaa::Authentication::Groups
 
@@ -220,7 +220,7 @@ class Aaa::Authorization::Cmdrules : public ydk::Entity
 
         class Cmdrule; //type: Aaa::Authorization::Cmdrules::Cmdrule
 
-        std::vector<std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authorization::Cmdrules::Cmdrule> > cmdrule;
+        ydk::YList cmdrule;
         
 }; // Aaa::Authorization::Cmdrules
 
@@ -246,7 +246,7 @@ class Aaa::Authorization::Cmdrules::Cmdrule : public ydk::Entity
         ydk::YLeaf context; //type: string
         ydk::YLeaf command; //type: string
         ydk::YLeaf group; //type: string
-        ydk::YLeaf ops; //type: Cmdoperationtype
+        ydk::YLeaf ops; //type: CmdOperationType
         ydk::YLeaf action; //type: Action
 
 }; // Aaa::Authorization::Cmdrules::Cmdrule
@@ -271,7 +271,7 @@ class Aaa::Authorization::Datarules : public ydk::Entity
 
         class Datarule; //type: Aaa::Authorization::Datarules::Datarule
 
-        std::vector<std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authorization::Datarules::Datarule> > datarule;
+        ydk::YList datarule;
         
 }; // Aaa::Authorization::Datarules
 
@@ -298,7 +298,7 @@ class Aaa::Authorization::Datarules::Datarule : public ydk::Entity
         ydk::YLeaf context; //type: string
         ydk::YLeaf keypath; //type: string
         ydk::YLeaf group; //type: string
-        ydk::YLeaf ops; //type: Dataoperationtype
+        ydk::YLeaf ops; //type: DataOperationType
         ydk::YLeaf action; //type: Action
 
 }; // Aaa::Authorization::Datarules::Datarule
@@ -324,8 +324,8 @@ class Aaa::Ios : public ydk::Entity
         class Level; //type: Aaa::Ios::Level
         class Privilege; //type: Aaa::Ios::Privilege
 
-        std::vector<std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Ios::Level> > level;
-        std::vector<std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Ios::Privilege> > privilege;
+        ydk::YList level;
+        ydk::YList privilege;
         
 }; // Aaa::Ios
 
@@ -375,7 +375,7 @@ class Aaa::Ios::Privilege : public ydk::Entity
         ydk::YLeaf mode; //type: one of string, enumeration
         class Level; //type: Aaa::Ios::Privilege::Level
 
-        std::vector<std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Ios::Privilege::Level> > level;
+        ydk::YList level;
         
 }; // Aaa::Ios::Privilege
 
@@ -399,7 +399,7 @@ class Aaa::Ios::Privilege::Level : public ydk::Entity
         ydk::YLeaf nr; //type: int32
         class Command; //type: Aaa::Ios::Privilege::Level::Command
 
-        std::vector<std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Ios::Privilege::Level::Command> > command;
+        ydk::YList command;
         
 }; // Aaa::Ios::Privilege::Level
 
@@ -603,7 +603,7 @@ class User : public ydk::Entity
         class Alias; //type: User::Alias
         class Session; //type: User::Session
 
-        std::vector<std::shared_ptr<cisco_ios_xr::tailf_aaa::User::Alias> > alias;
+        ydk::YList alias;
         std::shared_ptr<cisco_ios_xr::tailf_aaa::User::Session> session;
         
 }; // User
@@ -660,7 +660,7 @@ class User::Session : public ydk::Entity
 
 }; // User::Session
 
-class Dataoperationtype : public ydk::Enum
+class DataOperationType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf r;
@@ -699,7 +699,23 @@ class Dataoperationtype : public ydk::Enum
 
 };
 
-class Cmdoperationtype : public ydk::Enum
+class BuiltinModes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf exec;
+        static const ydk::Enum::YLeaf configure;
+
+};
+
+class BuiltinModes_ : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf exec;
+        static const ydk::Enum::YLeaf configure;
+
+};
+
+class CmdOperationType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf r;
@@ -714,22 +730,6 @@ class Action : public ydk::Enum
         static const ydk::Enum::YLeaf accept;
         static const ydk::Enum::YLeaf reject;
         static const ydk::Enum::YLeaf accept_log;
-
-};
-
-class Builtinmodes : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf exec;
-        static const ydk::Enum::YLeaf configure;
-
-};
-
-class Builtinmodes_ : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf exec;
-        static const ydk::Enum::YLeaf configure;
 
 };
 

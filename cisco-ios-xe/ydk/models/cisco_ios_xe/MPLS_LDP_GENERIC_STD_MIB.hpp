@@ -32,18 +32,18 @@ class MPLSLDPGENERICSTDMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Mplsldpentitygenericlrtable; //type: MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable
+        class MplsLdpEntityGenericLRTable; //type: MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable
 
-        std::shared_ptr<cisco_ios_xe::MPLS_LDP_GENERIC_STD_MIB::MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable> mplsldpentitygenericlrtable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LDP_GENERIC_STD_MIB::MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable> mplsldpentitygenericlrtable;
         
 }; // MPLSLDPGENERICSTDMIB
 
 
-class MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable : public ydk::Entity
+class MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable : public ydk::Entity
 {
     public:
-        Mplsldpentitygenericlrtable();
-        ~Mplsldpentitygenericlrtable();
+        MplsLdpEntityGenericLRTable();
+        ~MplsLdpEntityGenericLRTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -56,18 +56,18 @@ class MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsldpentitygenericlrentry; //type: MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry
+        class MplsLdpEntityGenericLREntry; //type: MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable::MplsLdpEntityGenericLREntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LDP_GENERIC_STD_MIB::MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry> > mplsldpentitygenericlrentry;
+        ydk::YList mplsldpentitygenericlrentry;
         
-}; // MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable
+}; // MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable
 
 
-class MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry : public ydk::Entity
+class MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable::MplsLdpEntityGenericLREntry : public ydk::Entity
 {
     public:
-        Mplsldpentitygenericlrentry();
-        ~Mplsldpentitygenericlrentry();
+        MplsLdpEntityGenericLREntry();
+        ~MplsLdpEntityGenericLREntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -80,21 +80,21 @@ class MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlre
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityldpid)
+        //type: string (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::mplsldpentityldpid)
         ydk::YLeaf mplsldpentityldpid;
-        //type: uint32 (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityindex)
+        //type: uint32 (refers to cisco_ios_xe::MPLS_LDP_STD_MIB::MPLSLDPSTDMIB::MplsLdpEntityTable::MplsLdpEntityEntry::mplsldpentityindex)
         ydk::YLeaf mplsldpentityindex;
         ydk::YLeaf mplsldpentitygenericlrmin; //type: uint32
         ydk::YLeaf mplsldpentitygenericlrmax; //type: uint32
-        ydk::YLeaf mplsldpentitygenericlabelspace; //type: Mplsldpentitygenericlabelspace
+        ydk::YLeaf mplsldpentitygenericlabelspace; //type: MplsLdpEntityGenericLabelSpace
         ydk::YLeaf mplsldpentitygenericifindexorzero; //type: int32
         ydk::YLeaf mplsldpentitygenericlrstoragetype; //type: StorageType
         ydk::YLeaf mplsldpentitygenericlrrowstatus; //type: RowStatus
-        class Mplsldpentitygenericlabelspace;
+        class MplsLdpEntityGenericLabelSpace;
 
-}; // MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry
+}; // MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable::MplsLdpEntityGenericLREntry
 
-class MPLSLDPGENERICSTDMIB::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::Mplsldpentitygenericlabelspace : public ydk::Enum
+class MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable::MplsLdpEntityGenericLREntry::MplsLdpEntityGenericLabelSpace : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf perPlatform;

@@ -399,7 +399,7 @@ class Native::Interface::AppNavUnCompress::RcvQueue : public ydk::Entity
 
         class CosMap; //type: Native::Interface::AppNavUnCompress::RcvQueue::CosMap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::AppNavUnCompress::RcvQueue::CosMap> > cos_map;
+        ydk::YList cos_map;
         
 }; // Native::Interface::AppNavUnCompress::RcvQueue
 
@@ -612,8 +612,8 @@ class Native::Interface::ATM : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip> ip;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Atm> atm;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Cem> > cem;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Pvc> > pvc;
+        ydk::YList cem;
+        ydk::YList pvc;
         
 }; // Native::Interface::ATM
 
@@ -659,7 +659,7 @@ class Native::Interface::ATM::Atm : public ydk::Entity
         ydk::YLeaf enable_ilmi_trap; //type: boolean
         class Pvp; //type: Native::Interface::ATM::Atm::Pvp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Atm::Pvp> > pvp;
+        ydk::YList pvp;
                 class Bandwidth;
 
 }; // Native::Interface::ATM::Atm
@@ -1357,7 +1357,7 @@ class Native::Interface::ATMSubinterface : public ydk::Entity
 
         class ATM; //type: Native::Interface::ATMSubinterface::ATM
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface::ATM> > atm;
+        ydk::YList atm;
         
 }; // Native::Interface::ATMSubinterface
 
@@ -1388,8 +1388,8 @@ class Native::Interface::ATMSubinterface::ATM : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface::ATM::Ip> ip;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface::ATM::Atm> atm;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface::ATM::Cem> > cem;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface::ATM::Pvc> > pvc;
+        ydk::YList cem;
+        ydk::YList pvc;
         
 }; // Native::Interface::ATMSubinterface::ATM
 
@@ -1435,7 +1435,7 @@ class Native::Interface::ATMSubinterface::ATM::Atm : public ydk::Entity
         ydk::YLeaf enable_ilmi_trap; //type: boolean
         class Pvp; //type: Native::Interface::ATMSubinterface::ATM::Atm::Pvp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface::ATM::Atm::Pvp> > pvp;
+        ydk::YList pvp;
                 class Bandwidth;
 
 }; // Native::Interface::ATMSubinterface::ATM::Atm
@@ -2140,8 +2140,8 @@ class Native::Interface::ATMACR : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMACR::Ip> ip;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMACR::Atm> atm;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMACR::Cem> > cem;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMACR::Pvc> > pvc;
+        ydk::YList cem;
+        ydk::YList pvc;
         
 }; // Native::Interface::ATMACR
 
@@ -2187,7 +2187,7 @@ class Native::Interface::ATMACR::Atm : public ydk::Entity
         ydk::YLeaf enable_ilmi_trap; //type: boolean
         class Pvp; //type: Native::Interface::ATMACR::Atm::Pvp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMACR::Atm::Pvp> > pvp;
+        ydk::YList pvp;
                 class Bandwidth;
 
 }; // Native::Interface::ATMACR::Atm
@@ -2885,7 +2885,7 @@ class Native::Interface::ATMACRsubinterface : public ydk::Entity
 
         class ATMACR; //type: Native::Interface::ATMACRsubinterface::ATMACR
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMACRsubinterface::ATMACR> > atm_acr;
+        ydk::YList atm_acr;
         
 }; // Native::Interface::ATMACRsubinterface
 
@@ -2916,8 +2916,8 @@ class Native::Interface::ATMACRsubinterface::ATMACR : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMACRsubinterface::ATMACR::Ip> ip;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMACRsubinterface::ATMACR::Atm> atm;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMACRsubinterface::ATMACR::Cem> > cem;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMACRsubinterface::ATMACR::Pvc> > pvc;
+        ydk::YList cem;
+        ydk::YList pvc;
         
 }; // Native::Interface::ATMACRsubinterface::ATMACR
 
@@ -2963,7 +2963,7 @@ class Native::Interface::ATMACRsubinterface::ATMACR::Atm : public ydk::Entity
         ydk::YLeaf enable_ilmi_trap; //type: boolean
         class Pvp; //type: Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMACRsubinterface::ATMACR::Atm::Pvp> > pvp;
+        ydk::YList pvp;
                 class Bandwidth;
 
 }; // Native::Interface::ATMACRsubinterface::ATMACR::Atm
@@ -3679,7 +3679,7 @@ class Native::Interface::BDI : public ydk::Entity
         class Backup; //type: Native::Interface::BDI::Backup
         class Cemoudp; //type: Native::Interface::BDI::Cemoudp
         class CwsTunnel; //type: Native::Interface::BDI::CwsTunnel
-        class L2ProtocolTunnel; //type: Native::Interface::BDI::L2ProtocolTunnel
+        class L2protocolTunnel; //type: Native::Interface::BDI::L2protocolTunnel
         class Encapsulation; //type: Native::Interface::BDI::Encapsulation
         class FairQueueConf; //type: Native::Interface::BDI::FairQueueConf
         class FairQueue; //type: Native::Interface::BDI::FairQueue
@@ -3708,6 +3708,7 @@ class Native::Interface::BDI : public ydk::Entity
         class RcvQueue; //type: Native::Interface::BDI::RcvQueue
         class Peer; //type: Native::Interface::BDI::Peer
         class PmPath; //type: Native::Interface::BDI::PmPath
+        class ServicePolicy; //type: Native::Interface::BDI::ServicePolicy
         class CarrierDelay; //type: Native::Interface::BDI::CarrierDelay
         class ChannelGroup; //type: Native::Interface::BDI::ChannelGroup
         class Ethernet; //type: Native::Interface::BDI::Ethernet
@@ -3718,7 +3719,6 @@ class Native::Interface::BDI : public ydk::Entity
         class Plim; //type: Native::Interface::BDI::Plim
         class Pppoe; //type: Native::Interface::BDI::Pppoe
         class Service; //type: Native::Interface::BDI::Service
-        class ServicePolicy; //type: Native::Interface::BDI::ServicePolicy
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::SwitchportConf> switchport_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Switchport> switchport;
@@ -3727,7 +3727,7 @@ class Native::Interface::BDI : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Backup> backup;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Cemoudp> cemoudp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::CwsTunnel> cws_tunnel;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::L2ProtocolTunnel> l2protocol_tunnel; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::L2protocolTunnel> l2protocol_tunnel; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Encapsulation> encapsulation;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::FairQueueConf> fair_queue_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::FairQueue> fair_queue;
@@ -3738,7 +3738,7 @@ class Native::Interface::BDI : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Bandwidth> bandwidth;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Dampening> dampening;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Domain> domain;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::HoldQueue> > hold_queue;
+        ydk::YList hold_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Mpls> mpls;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::IpVrf> ip_vrf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Vrf> vrf;
@@ -3756,6 +3756,7 @@ class Native::Interface::BDI : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::RcvQueue> rcv_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Peer> peer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::PmPath> pm_path;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::ServicePolicy> service_policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::CarrierDelay> carrier_delay;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::ChannelGroup> channel_group;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ethernet> ethernet;
@@ -3766,7 +3767,6 @@ class Native::Interface::BDI : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Plim> plim;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Pppoe> pppoe;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Service> service;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::ServicePolicy> service_policy;
                 class IfState;
         class ServiceInsertion;
         class ChannelProtocol;

@@ -32,24 +32,24 @@ class CISCOHSRPEXTMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Chsrpextiftrackedtable; //type: CISCOHSRPEXTMIB::Chsrpextiftrackedtable
-        class Chsrpextsecaddrtable; //type: CISCOHSRPEXTMIB::Chsrpextsecaddrtable
-        class Chsrpextifstandbytable; //type: CISCOHSRPEXTMIB::Chsrpextifstandbytable
-        class Chsrpextiftable; //type: CISCOHSRPEXTMIB::Chsrpextiftable
+        class CHsrpExtIfTrackedTable; //type: CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable
+        class CHsrpExtSecAddrTable; //type: CISCOHSRPEXTMIB::CHsrpExtSecAddrTable
+        class CHsrpExtIfStandbyTable; //type: CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable
+        class CHsrpExtIfTable; //type: CISCOHSRPEXTMIB::CHsrpExtIfTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_HSRP_EXT_MIB::CISCOHSRPEXTMIB::Chsrpextiftrackedtable> chsrpextiftrackedtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_HSRP_EXT_MIB::CISCOHSRPEXTMIB::Chsrpextsecaddrtable> chsrpextsecaddrtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_HSRP_EXT_MIB::CISCOHSRPEXTMIB::Chsrpextifstandbytable> chsrpextifstandbytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_HSRP_EXT_MIB::CISCOHSRPEXTMIB::Chsrpextiftable> chsrpextiftable;
+        std::shared_ptr<cisco_ios_xe::CISCO_HSRP_EXT_MIB::CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable> chsrpextiftrackedtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_HSRP_EXT_MIB::CISCOHSRPEXTMIB::CHsrpExtSecAddrTable> chsrpextsecaddrtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_HSRP_EXT_MIB::CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable> chsrpextifstandbytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_HSRP_EXT_MIB::CISCOHSRPEXTMIB::CHsrpExtIfTable> chsrpextiftable;
         
 }; // CISCOHSRPEXTMIB
 
 
-class CISCOHSRPEXTMIB::Chsrpextiftrackedtable : public ydk::Entity
+class CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable : public ydk::Entity
 {
     public:
-        Chsrpextiftrackedtable();
-        ~Chsrpextiftrackedtable();
+        CHsrpExtIfTrackedTable();
+        ~CHsrpExtIfTrackedTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -62,18 +62,18 @@ class CISCOHSRPEXTMIB::Chsrpextiftrackedtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Chsrpextiftrackedentry; //type: CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry
+        class CHsrpExtIfTrackedEntry; //type: CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::CHsrpExtIfTrackedEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_HSRP_EXT_MIB::CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry> > chsrpextiftrackedentry;
+        ydk::YList chsrpextiftrackedentry;
         
-}; // CISCOHSRPEXTMIB::Chsrpextiftrackedtable
+}; // CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable
 
 
-class CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry : public ydk::Entity
+class CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::CHsrpExtIfTrackedEntry : public ydk::Entity
 {
     public:
-        Chsrpextiftrackedentry();
-        ~Chsrpextiftrackedentry();
+        CHsrpExtIfTrackedEntry();
+        ~CHsrpExtIfTrackedEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -86,23 +86,23 @@ class CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_HSRP_MIB::CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::chsrpgrpnumber)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_HSRP_MIB::CISCOHSRPMIB::CHsrpGrpTable::CHsrpGrpEntry::chsrpgrpnumber)
         ydk::YLeaf chsrpgrpnumber;
         ydk::YLeaf chsrpextiftracked; //type: int32
         ydk::YLeaf chsrpextiftrackedpriority; //type: uint32
         ydk::YLeaf chsrpextiftrackedrowstatus; //type: RowStatus
         ydk::YLeaf chsrpextiftrackedipnone; //type: boolean
 
-}; // CISCOHSRPEXTMIB::Chsrpextiftrackedtable::Chsrpextiftrackedentry
+}; // CISCOHSRPEXTMIB::CHsrpExtIfTrackedTable::CHsrpExtIfTrackedEntry
 
 
-class CISCOHSRPEXTMIB::Chsrpextsecaddrtable : public ydk::Entity
+class CISCOHSRPEXTMIB::CHsrpExtSecAddrTable : public ydk::Entity
 {
     public:
-        Chsrpextsecaddrtable();
-        ~Chsrpextsecaddrtable();
+        CHsrpExtSecAddrTable();
+        ~CHsrpExtSecAddrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -115,18 +115,18 @@ class CISCOHSRPEXTMIB::Chsrpextsecaddrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Chsrpextsecaddrentry; //type: CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry
+        class CHsrpExtSecAddrEntry; //type: CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::CHsrpExtSecAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_HSRP_EXT_MIB::CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry> > chsrpextsecaddrentry;
+        ydk::YList chsrpextsecaddrentry;
         
-}; // CISCOHSRPEXTMIB::Chsrpextsecaddrtable
+}; // CISCOHSRPEXTMIB::CHsrpExtSecAddrTable
 
 
-class CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry : public ydk::Entity
+class CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::CHsrpExtSecAddrEntry : public ydk::Entity
 {
     public:
-        Chsrpextsecaddrentry();
-        ~Chsrpextsecaddrentry();
+        CHsrpExtSecAddrEntry();
+        ~CHsrpExtSecAddrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -139,21 +139,21 @@ class CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_HSRP_MIB::CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::chsrpgrpnumber)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_HSRP_MIB::CISCOHSRPMIB::CHsrpGrpTable::CHsrpGrpEntry::chsrpgrpnumber)
         ydk::YLeaf chsrpgrpnumber;
         ydk::YLeaf chsrpextsecaddraddress; //type: string
         ydk::YLeaf chsrpextsecaddrrowstatus; //type: RowStatus
 
-}; // CISCOHSRPEXTMIB::Chsrpextsecaddrtable::Chsrpextsecaddrentry
+}; // CISCOHSRPEXTMIB::CHsrpExtSecAddrTable::CHsrpExtSecAddrEntry
 
 
-class CISCOHSRPEXTMIB::Chsrpextifstandbytable : public ydk::Entity
+class CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable : public ydk::Entity
 {
     public:
-        Chsrpextifstandbytable();
-        ~Chsrpextifstandbytable();
+        CHsrpExtIfStandbyTable();
+        ~CHsrpExtIfStandbyTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -166,18 +166,18 @@ class CISCOHSRPEXTMIB::Chsrpextifstandbytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Chsrpextifstandbyentry; //type: CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry
+        class CHsrpExtIfStandbyEntry; //type: CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::CHsrpExtIfStandbyEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_HSRP_EXT_MIB::CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry> > chsrpextifstandbyentry;
+        ydk::YList chsrpextifstandbyentry;
         
-}; // CISCOHSRPEXTMIB::Chsrpextifstandbytable
+}; // CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable
 
 
-class CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry : public ydk::Entity
+class CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::CHsrpExtIfStandbyEntry : public ydk::Entity
 {
     public:
-        Chsrpextifstandbyentry();
-        ~Chsrpextifstandbyentry();
+        CHsrpExtIfStandbyEntry();
+        ~CHsrpExtIfStandbyEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -190,9 +190,9 @@ class CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_HSRP_MIB::CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::chsrpgrpnumber)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_HSRP_MIB::CISCOHSRPMIB::CHsrpGrpTable::CHsrpGrpEntry::chsrpgrpnumber)
         ydk::YLeaf chsrpgrpnumber;
         ydk::YLeaf chsrpextifstandbyindex; //type: uint32
         ydk::YLeaf chsrpextifstandbydestaddrtype; //type: InetAddressType
@@ -201,14 +201,14 @@ class CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry : public y
         ydk::YLeaf chsrpextifstandbysourceaddr; //type: binary
         ydk::YLeaf chsrpextifstandbyrowstatus; //type: RowStatus
 
-}; // CISCOHSRPEXTMIB::Chsrpextifstandbytable::Chsrpextifstandbyentry
+}; // CISCOHSRPEXTMIB::CHsrpExtIfStandbyTable::CHsrpExtIfStandbyEntry
 
 
-class CISCOHSRPEXTMIB::Chsrpextiftable : public ydk::Entity
+class CISCOHSRPEXTMIB::CHsrpExtIfTable : public ydk::Entity
 {
     public:
-        Chsrpextiftable();
-        ~Chsrpextiftable();
+        CHsrpExtIfTable();
+        ~CHsrpExtIfTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -221,18 +221,18 @@ class CISCOHSRPEXTMIB::Chsrpextiftable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Chsrpextifentry; //type: CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry
+        class CHsrpExtIfEntry; //type: CISCOHSRPEXTMIB::CHsrpExtIfTable::CHsrpExtIfEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_HSRP_EXT_MIB::CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry> > chsrpextifentry;
+        ydk::YList chsrpextifentry;
         
-}; // CISCOHSRPEXTMIB::Chsrpextiftable
+}; // CISCOHSRPEXTMIB::CHsrpExtIfTable
 
 
-class CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry : public ydk::Entity
+class CISCOHSRPEXTMIB::CHsrpExtIfTable::CHsrpExtIfEntry : public ydk::Entity
 {
     public:
-        Chsrpextifentry();
-        ~Chsrpextifentry();
+        CHsrpExtIfEntry();
+        ~CHsrpExtIfEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -245,12 +245,12 @@ class CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf chsrpextifusebia; //type: boolean
         ydk::YLeaf chsrpextifrowstatus; //type: RowStatus
 
-}; // CISCOHSRPEXTMIB::Chsrpextiftable::Chsrpextifentry
+}; // CISCOHSRPEXTMIB::CHsrpExtIfTable::CHsrpExtIfEntry
 
 
 }

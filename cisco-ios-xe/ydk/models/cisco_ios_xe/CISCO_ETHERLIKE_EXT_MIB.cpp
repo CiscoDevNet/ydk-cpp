@@ -13,13 +13,13 @@ namespace CISCO_ETHERLIKE_EXT_MIB {
 
 CISCOETHERLIKEEXTMIB::CISCOETHERLIKEEXTMIB()
     :
-    ceedot3pauseexttable(std::make_shared<CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable>())
-	,ceesubinterfacetable(std::make_shared<CISCOETHERLIKEEXTMIB::Ceesubinterfacetable>())
+    ceedot3pauseexttable(std::make_shared<CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable>())
+    , ceesubinterfacetable(std::make_shared<CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable>())
 {
     ceedot3pauseexttable->parent = this;
     ceesubinterfacetable->parent = this;
 
-    yang_name = "CISCO-ETHERLIKE-EXT-MIB"; yang_parent_name = "CISCO-ETHERLIKE-EXT-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-ETHERLIKE-EXT-MIB"; yang_parent_name = "CISCO-ETHERLIKE-EXT-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOETHERLIKEEXTMIB::~CISCOETHERLIKEEXTMIB()
@@ -28,6 +28,7 @@ CISCOETHERLIKEEXTMIB::~CISCOETHERLIKEEXTMIB()
 
 bool CISCOETHERLIKEEXTMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (ceedot3pauseexttable !=  nullptr && ceedot3pauseexttable->has_data())
 	|| (ceesubinterfacetable !=  nullptr && ceesubinterfacetable->has_data());
 }
@@ -61,7 +62,7 @@ std::shared_ptr<Entity> CISCOETHERLIKEEXTMIB::get_child_by_name(const std::strin
     {
         if(ceedot3pauseexttable == nullptr)
         {
-            ceedot3pauseexttable = std::make_shared<CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable>();
+            ceedot3pauseexttable = std::make_shared<CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable>();
         }
         return ceedot3pauseexttable;
     }
@@ -70,7 +71,7 @@ std::shared_ptr<Entity> CISCOETHERLIKEEXTMIB::get_child_by_name(const std::strin
     {
         if(ceesubinterfacetable == nullptr)
         {
-            ceesubinterfacetable = std::make_shared<CISCOETHERLIKEEXTMIB::Ceesubinterfacetable>();
+            ceesubinterfacetable = std::make_shared<CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable>();
         }
         return ceesubinterfacetable;
     }
@@ -135,19 +136,22 @@ bool CISCOETHERLIKEEXTMIB::has_leaf_or_child_of_name(const std::string & name) c
     return false;
 }
 
-CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseexttable()
+CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::CeeDot3PauseExtTable()
+    :
+    ceedot3pauseextentry(this, {"dot3statsindex"})
 {
 
-    yang_name = "ceeDot3PauseExtTable"; yang_parent_name = "CISCO-ETHERLIKE-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ceeDot3PauseExtTable"; yang_parent_name = "CISCO-ETHERLIKE-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::~Ceedot3Pauseexttable()
+CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::~CeeDot3PauseExtTable()
 {
 }
 
-bool CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::has_data() const
+bool CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::has_data() const
 {
-    for (std::size_t index=0; index<ceedot3pauseextentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ceedot3pauseextentry.len(); index++)
     {
         if(ceedot3pauseextentry[index]->has_data())
             return true;
@@ -155,9 +159,9 @@ bool CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::has_data() const
     return false;
 }
 
-bool CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::has_operation() const
+bool CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::has_operation() const
 {
-    for (std::size_t index=0; index<ceedot3pauseextentry.size(); index++)
+    for (std::size_t index=0; index<ceedot3pauseextentry.len(); index++)
     {
         if(ceedot3pauseextentry[index]->has_operation())
             return true;
@@ -165,21 +169,21 @@ bool CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::get_absolute_path() const
+std::string CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ETHERLIKE-EXT-MIB:CISCO-ETHERLIKE-EXT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::get_segment_path() const
+std::string CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ceeDot3PauseExtTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -188,25 +192,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOETHERLIKEEXTMIB::Ceedot3Paus
 
 }
 
-std::shared_ptr<Entity> CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceeDot3PauseExtEntry")
     {
-        auto c = std::make_shared<CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry>();
+        auto c = std::make_shared<CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::CeeDot3PauseExtEntry>();
         c->parent = this;
-        ceedot3pauseextentry.push_back(c);
+        ceedot3pauseextentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ceedot3pauseextentry)
+    for (auto c : ceedot3pauseextentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,43 +221,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOETHERLIKEEXTMIB::Ceedot3Paus
     return children;
 }
 
-void CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ceeDot3PauseExtEntry")
         return true;
     return false;
 }
 
-CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry::Ceedot3Pauseextentry()
+CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::CeeDot3PauseExtEntry::CeeDot3PauseExtEntry()
     :
     dot3statsindex{YType::str, "dot3StatsIndex"},
     ceedot3pauseextadminmode{YType::bits, "ceeDot3PauseExtAdminMode"},
     ceedot3pauseextopermode{YType::bits, "ceeDot3PauseExtOperMode"}
 {
 
-    yang_name = "ceeDot3PauseExtEntry"; yang_parent_name = "ceeDot3PauseExtTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ceeDot3PauseExtEntry"; yang_parent_name = "ceeDot3PauseExtTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry::~Ceedot3Pauseextentry()
+CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::CeeDot3PauseExtEntry::~CeeDot3PauseExtEntry()
 {
 }
 
-bool CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry::has_data() const
+bool CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::CeeDot3PauseExtEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot3statsindex.is_set
 	|| ceedot3pauseextadminmode.is_set
 	|| ceedot3pauseextopermode.is_set;
 }
 
-bool CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry::has_operation() const
+bool CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::CeeDot3PauseExtEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot3statsindex.yfilter)
@@ -261,21 +266,22 @@ bool CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry::has_opera
 	|| ydk::is_set(ceedot3pauseextopermode.yfilter);
 }
 
-std::string CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry::get_absolute_path() const
+std::string CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::CeeDot3PauseExtEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ETHERLIKE-EXT-MIB:CISCO-ETHERLIKE-EXT-MIB/ceeDot3PauseExtTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry::get_segment_path() const
+std::string CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::CeeDot3PauseExtEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ceeDot3PauseExtEntry" <<"[dot3StatsIndex='" <<dot3statsindex <<"']";
+    path_buffer << "ceeDot3PauseExtEntry";
+    ADD_KEY_TOKEN(dot3statsindex, "dot3StatsIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::CeeDot3PauseExtEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -287,19 +293,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOETHERLIKEEXTMIB::Ceedot3Paus
 
 }
 
-std::shared_ptr<Entity> CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::CeeDot3PauseExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::CeeDot3PauseExtEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::CeeDot3PauseExtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot3StatsIndex")
     {
@@ -317,7 +323,7 @@ void CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry::set_value
     }
 }
 
-void CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::CeeDot3PauseExtEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot3StatsIndex")
     {
@@ -333,26 +339,29 @@ void CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry::set_filte
     }
 }
 
-bool CISCOETHERLIKEEXTMIB::Ceedot3Pauseexttable::Ceedot3Pauseextentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOETHERLIKEEXTMIB::CeeDot3PauseExtTable::CeeDot3PauseExtEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot3StatsIndex" || name == "ceeDot3PauseExtAdminMode" || name == "ceeDot3PauseExtOperMode")
         return true;
     return false;
 }
 
-CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfacetable()
+CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::CeeSubInterfaceTable()
+    :
+    ceesubinterfaceentry(this, {"ifindex"})
 {
 
-    yang_name = "ceeSubInterfaceTable"; yang_parent_name = "CISCO-ETHERLIKE-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ceeSubInterfaceTable"; yang_parent_name = "CISCO-ETHERLIKE-EXT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::~Ceesubinterfacetable()
+CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::~CeeSubInterfaceTable()
 {
 }
 
-bool CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::has_data() const
+bool CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::has_data() const
 {
-    for (std::size_t index=0; index<ceesubinterfaceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ceesubinterfaceentry.len(); index++)
     {
         if(ceesubinterfaceentry[index]->has_data())
             return true;
@@ -360,9 +369,9 @@ bool CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::has_data() const
     return false;
 }
 
-bool CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::has_operation() const
+bool CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::has_operation() const
 {
-    for (std::size_t index=0; index<ceesubinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<ceesubinterfaceentry.len(); index++)
     {
         if(ceesubinterfaceentry[index]->has_operation())
             return true;
@@ -370,21 +379,21 @@ bool CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::get_absolute_path() const
+std::string CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ETHERLIKE-EXT-MIB:CISCO-ETHERLIKE-EXT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::get_segment_path() const
+std::string CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ceeSubInterfaceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -393,25 +402,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOETHERLIKEEXTMIB::Ceesubinter
 
 }
 
-std::shared_ptr<Entity> CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceeSubInterfaceEntry")
     {
-        auto c = std::make_shared<CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry>();
+        auto c = std::make_shared<CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::CeeSubInterfaceEntry>();
         c->parent = this;
-        ceesubinterfaceentry.push_back(c);
+        ceesubinterfaceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ceesubinterfaceentry)
+    for (auto c : ceesubinterfaceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -422,62 +431,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOETHERLIKEEXTMIB::Ceesubinter
     return children;
 }
 
-void CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ceeSubInterfaceEntry")
         return true;
     return false;
 }
 
-CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry::Ceesubinterfaceentry()
+CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::CeeSubInterfaceEntry::CeeSubInterfaceEntry()
     :
     ifindex{YType::str, "ifIndex"},
     ceesubinterfacecount{YType::uint32, "ceeSubInterfaceCount"}
 {
 
-    yang_name = "ceeSubInterfaceEntry"; yang_parent_name = "ceeSubInterfaceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ceeSubInterfaceEntry"; yang_parent_name = "ceeSubInterfaceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry::~Ceesubinterfaceentry()
+CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::CeeSubInterfaceEntry::~CeeSubInterfaceEntry()
 {
 }
 
-bool CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry::has_data() const
+bool CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::CeeSubInterfaceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| ceesubinterfacecount.is_set;
 }
 
-bool CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry::has_operation() const
+bool CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::CeeSubInterfaceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
 	|| ydk::is_set(ceesubinterfacecount.yfilter);
 }
 
-std::string CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry::get_absolute_path() const
+std::string CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::CeeSubInterfaceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ETHERLIKE-EXT-MIB:CISCO-ETHERLIKE-EXT-MIB/ceeSubInterfaceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry::get_segment_path() const
+std::string CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::CeeSubInterfaceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ceeSubInterfaceEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "ceeSubInterfaceEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::CeeSubInterfaceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -488,19 +499,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOETHERLIKEEXTMIB::Ceesubinter
 
 }
 
-std::shared_ptr<Entity> CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::CeeSubInterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::CeeSubInterfaceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::CeeSubInterfaceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -516,7 +527,7 @@ void CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry::set_value
     }
 }
 
-void CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::CeeSubInterfaceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -528,7 +539,7 @@ void CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry::set_filte
     }
 }
 
-bool CISCOETHERLIKEEXTMIB::Ceesubinterfacetable::Ceesubinterfaceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOETHERLIKEEXTMIB::CeeSubInterfaceTable::CeeSubInterfaceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "ceeSubInterfaceCount")
         return true;

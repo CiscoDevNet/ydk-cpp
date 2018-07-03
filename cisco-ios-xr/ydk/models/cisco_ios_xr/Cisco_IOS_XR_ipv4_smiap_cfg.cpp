@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_ipv4_smiap_cfg {
 Ipv4Virtual::Ipv4Virtual()
     :
     use_as_source_address{YType::empty, "use-as-source-address"}
-    	,
+        ,
     vrfs(std::make_shared<Ipv4Virtual::Vrfs>())
 {
     vrfs->parent = this;
 
-    yang_name = "ipv4-virtual"; yang_parent_name = "Cisco-IOS-XR-ipv4-smiap-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ipv4-virtual"; yang_parent_name = "Cisco-IOS-XR-ipv4-smiap-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ipv4Virtual::~Ipv4Virtual()
@@ -28,6 +28,7 @@ Ipv4Virtual::~Ipv4Virtual()
 
 bool Ipv4Virtual::has_data() const
 {
+    if (is_presence_container) return true;
     return use_as_source_address.is_set
 	|| (vrfs !=  nullptr && vrfs->has_data());
 }
@@ -133,9 +134,11 @@ bool Ipv4Virtual::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Ipv4Virtual::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "ipv4-virtual"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "ipv4-virtual"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Virtual::Vrfs::~Vrfs()
@@ -144,7 +147,8 @@ Ipv4Virtual::Vrfs::~Vrfs()
 
 bool Ipv4Virtual::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -154,7 +158,7 @@ bool Ipv4Virtual::Vrfs::has_data() const
 
 bool Ipv4Virtual::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -191,7 +195,7 @@ std::shared_ptr<Entity> Ipv4Virtual::Vrfs::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Ipv4Virtual::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -203,7 +207,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Virtual::Vrfs::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -232,11 +236,11 @@ bool Ipv4Virtual::Vrfs::has_leaf_or_child_of_name(const std::string & name) cons
 Ipv4Virtual::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     address(nullptr) // presence node
 {
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Virtual::Vrfs::Vrf::~Vrf()
@@ -245,6 +249,7 @@ Ipv4Virtual::Vrfs::Vrf::~Vrf()
 
 bool Ipv4Virtual::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (address !=  nullptr && address->has_data());
 }
@@ -266,7 +271,8 @@ std::string Ipv4Virtual::Vrfs::Vrf::get_absolute_path() const
 std::string Ipv4Virtual::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -337,7 +343,7 @@ Ipv4Virtual::Vrfs::Vrf::Address::Address()
     netmask{YType::uint8, "netmask"}
 {
 
-    yang_name = "address"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ipv4Virtual::Vrfs::Vrf::Address::~Address()
@@ -346,6 +352,7 @@ Ipv4Virtual::Vrfs::Vrf::Address::~Address()
 
 bool Ipv4Virtual::Vrfs::Vrf::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| netmask.is_set;
 }

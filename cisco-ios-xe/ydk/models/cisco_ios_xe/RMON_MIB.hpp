@@ -12,14 +12,14 @@
 namespace cisco_ios_xe {
 namespace RMON_MIB {
 
-class Rmoneventsv2 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class RmonEventsV2 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Rmoneventsv2();
-        ~Rmoneventsv2();
+        RmonEventsV2();
+        ~RmonEventsV2();
 
 
-}; // Rmoneventsv2
+}; // RmonEventsV2
 
 class RMONMIB : public ydk::Entity
 {
@@ -42,52 +42,52 @@ class RMONMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Etherstatstable; //type: RMONMIB::Etherstatstable
-        class Historycontroltable; //type: RMONMIB::Historycontroltable
-        class Etherhistorytable; //type: RMONMIB::Etherhistorytable
-        class Alarmtable; //type: RMONMIB::Alarmtable
-        class Hostcontroltable; //type: RMONMIB::Hostcontroltable
-        class Hosttable; //type: RMONMIB::Hosttable
-        class Hosttimetable; //type: RMONMIB::Hosttimetable
-        class Hosttopncontroltable; //type: RMONMIB::Hosttopncontroltable
-        class Hosttopntable; //type: RMONMIB::Hosttopntable
-        class Matrixcontroltable; //type: RMONMIB::Matrixcontroltable
-        class Matrixsdtable; //type: RMONMIB::Matrixsdtable
-        class Matrixdstable; //type: RMONMIB::Matrixdstable
-        class Filtertable; //type: RMONMIB::Filtertable
-        class Channeltable; //type: RMONMIB::Channeltable
-        class Buffercontroltable; //type: RMONMIB::Buffercontroltable
-        class Capturebuffertable; //type: RMONMIB::Capturebuffertable
-        class Eventtable; //type: RMONMIB::Eventtable
-        class Logtable; //type: RMONMIB::Logtable
+        class EtherStatsTable; //type: RMONMIB::EtherStatsTable
+        class HistoryControlTable; //type: RMONMIB::HistoryControlTable
+        class EtherHistoryTable; //type: RMONMIB::EtherHistoryTable
+        class AlarmTable; //type: RMONMIB::AlarmTable
+        class HostControlTable; //type: RMONMIB::HostControlTable
+        class HostTable; //type: RMONMIB::HostTable
+        class HostTimeTable; //type: RMONMIB::HostTimeTable
+        class HostTopNControlTable; //type: RMONMIB::HostTopNControlTable
+        class HostTopNTable; //type: RMONMIB::HostTopNTable
+        class MatrixControlTable; //type: RMONMIB::MatrixControlTable
+        class MatrixSDTable; //type: RMONMIB::MatrixSDTable
+        class MatrixDSTable; //type: RMONMIB::MatrixDSTable
+        class FilterTable; //type: RMONMIB::FilterTable
+        class ChannelTable; //type: RMONMIB::ChannelTable
+        class BufferControlTable; //type: RMONMIB::BufferControlTable
+        class CaptureBufferTable; //type: RMONMIB::CaptureBufferTable
+        class EventTable; //type: RMONMIB::EventTable
+        class LogTable; //type: RMONMIB::LogTable
 
-        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Etherstatstable> etherstatstable;
-        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Historycontroltable> historycontroltable;
-        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Etherhistorytable> etherhistorytable;
-        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Alarmtable> alarmtable;
-        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Hostcontroltable> hostcontroltable;
-        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Hosttable> hosttable;
-        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Hosttimetable> hosttimetable;
-        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Hosttopncontroltable> hosttopncontroltable;
-        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Hosttopntable> hosttopntable;
-        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Matrixcontroltable> matrixcontroltable;
-        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Matrixsdtable> matrixsdtable;
-        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Matrixdstable> matrixdstable;
-        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Filtertable> filtertable;
-        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Channeltable> channeltable;
-        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Buffercontroltable> buffercontroltable;
-        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Capturebuffertable> capturebuffertable;
-        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Eventtable> eventtable;
-        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Logtable> logtable;
+        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::EtherStatsTable> etherstatstable;
+        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::HistoryControlTable> historycontroltable;
+        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::EtherHistoryTable> etherhistorytable;
+        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::AlarmTable> alarmtable;
+        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::HostControlTable> hostcontroltable;
+        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::HostTable> hosttable;
+        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::HostTimeTable> hosttimetable;
+        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::HostTopNControlTable> hosttopncontroltable;
+        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::HostTopNTable> hosttopntable;
+        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::MatrixControlTable> matrixcontroltable;
+        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::MatrixSDTable> matrixsdtable;
+        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::MatrixDSTable> matrixdstable;
+        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::FilterTable> filtertable;
+        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::ChannelTable> channeltable;
+        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::BufferControlTable> buffercontroltable;
+        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::CaptureBufferTable> capturebuffertable;
+        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::EventTable> eventtable;
+        std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::LogTable> logtable;
         
 }; // RMONMIB
 
 
-class RMONMIB::Etherstatstable : public ydk::Entity
+class RMONMIB::EtherStatsTable : public ydk::Entity
 {
     public:
-        Etherstatstable();
-        ~Etherstatstable();
+        EtherStatsTable();
+        ~EtherStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -100,18 +100,18 @@ class RMONMIB::Etherstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Etherstatsentry; //type: RMONMIB::Etherstatstable::Etherstatsentry
+        class EtherStatsEntry; //type: RMONMIB::EtherStatsTable::EtherStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Etherstatstable::Etherstatsentry> > etherstatsentry;
+        ydk::YList etherstatsentry;
         
-}; // RMONMIB::Etherstatstable
+}; // RMONMIB::EtherStatsTable
 
 
-class RMONMIB::Etherstatstable::Etherstatsentry : public ydk::Entity
+class RMONMIB::EtherStatsTable::EtherStatsEntry : public ydk::Entity
 {
     public:
-        Etherstatsentry();
-        ~Etherstatsentry();
+        EtherStatsEntry();
+        ~EtherStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -148,14 +148,14 @@ class RMONMIB::Etherstatstable::Etherstatsentry : public ydk::Entity
         ydk::YLeaf etherstatsdroppedframes; //type: uint32
         ydk::YLeaf etherstatscreatetime; //type: uint32
 
-}; // RMONMIB::Etherstatstable::Etherstatsentry
+}; // RMONMIB::EtherStatsTable::EtherStatsEntry
 
 
-class RMONMIB::Historycontroltable : public ydk::Entity
+class RMONMIB::HistoryControlTable : public ydk::Entity
 {
     public:
-        Historycontroltable();
-        ~Historycontroltable();
+        HistoryControlTable();
+        ~HistoryControlTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -168,18 +168,18 @@ class RMONMIB::Historycontroltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Historycontrolentry; //type: RMONMIB::Historycontroltable::Historycontrolentry
+        class HistoryControlEntry; //type: RMONMIB::HistoryControlTable::HistoryControlEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Historycontroltable::Historycontrolentry> > historycontrolentry;
+        ydk::YList historycontrolentry;
         
-}; // RMONMIB::Historycontroltable
+}; // RMONMIB::HistoryControlTable
 
 
-class RMONMIB::Historycontroltable::Historycontrolentry : public ydk::Entity
+class RMONMIB::HistoryControlTable::HistoryControlEntry : public ydk::Entity
 {
     public:
-        Historycontrolentry();
-        ~Historycontrolentry();
+        HistoryControlEntry();
+        ~HistoryControlEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -201,14 +201,14 @@ class RMONMIB::Historycontroltable::Historycontrolentry : public ydk::Entity
         ydk::YLeaf historycontrolstatus; //type: EntryStatus
         ydk::YLeaf historycontroldroppedframes; //type: uint32
 
-}; // RMONMIB::Historycontroltable::Historycontrolentry
+}; // RMONMIB::HistoryControlTable::HistoryControlEntry
 
 
-class RMONMIB::Etherhistorytable : public ydk::Entity
+class RMONMIB::EtherHistoryTable : public ydk::Entity
 {
     public:
-        Etherhistorytable();
-        ~Etherhistorytable();
+        EtherHistoryTable();
+        ~EtherHistoryTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -221,18 +221,18 @@ class RMONMIB::Etherhistorytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Etherhistoryentry; //type: RMONMIB::Etherhistorytable::Etherhistoryentry
+        class EtherHistoryEntry; //type: RMONMIB::EtherHistoryTable::EtherHistoryEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Etherhistorytable::Etherhistoryentry> > etherhistoryentry;
+        ydk::YList etherhistoryentry;
         
-}; // RMONMIB::Etherhistorytable
+}; // RMONMIB::EtherHistoryTable
 
 
-class RMONMIB::Etherhistorytable::Etherhistoryentry : public ydk::Entity
+class RMONMIB::EtherHistoryTable::EtherHistoryEntry : public ydk::Entity
 {
     public:
-        Etherhistoryentry();
-        ~Etherhistoryentry();
+        EtherHistoryEntry();
+        ~EtherHistoryEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -261,14 +261,14 @@ class RMONMIB::Etherhistorytable::Etherhistoryentry : public ydk::Entity
         ydk::YLeaf etherhistorycollisions; //type: uint32
         ydk::YLeaf etherhistoryutilization; //type: int32
 
-}; // RMONMIB::Etherhistorytable::Etherhistoryentry
+}; // RMONMIB::EtherHistoryTable::EtherHistoryEntry
 
 
-class RMONMIB::Alarmtable : public ydk::Entity
+class RMONMIB::AlarmTable : public ydk::Entity
 {
     public:
-        Alarmtable();
-        ~Alarmtable();
+        AlarmTable();
+        ~AlarmTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -281,18 +281,18 @@ class RMONMIB::Alarmtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Alarmentry; //type: RMONMIB::Alarmtable::Alarmentry
+        class AlarmEntry; //type: RMONMIB::AlarmTable::AlarmEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Alarmtable::Alarmentry> > alarmentry;
+        ydk::YList alarmentry;
         
-}; // RMONMIB::Alarmtable
+}; // RMONMIB::AlarmTable
 
 
-class RMONMIB::Alarmtable::Alarmentry : public ydk::Entity
+class RMONMIB::AlarmTable::AlarmEntry : public ydk::Entity
 {
     public:
-        Alarmentry();
-        ~Alarmentry();
+        AlarmEntry();
+        ~AlarmEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -308,26 +308,26 @@ class RMONMIB::Alarmtable::Alarmentry : public ydk::Entity
         ydk::YLeaf alarmindex; //type: int32
         ydk::YLeaf alarminterval; //type: int32
         ydk::YLeaf alarmvariable; //type: string
-        ydk::YLeaf alarmsampletype; //type: Alarmsampletype
+        ydk::YLeaf alarmsampletype; //type: AlarmSampleType
         ydk::YLeaf alarmvalue; //type: int32
-        ydk::YLeaf alarmstartupalarm; //type: Alarmstartupalarm
+        ydk::YLeaf alarmstartupalarm; //type: AlarmStartupAlarm
         ydk::YLeaf alarmrisingthreshold; //type: int32
         ydk::YLeaf alarmfallingthreshold; //type: int32
         ydk::YLeaf alarmrisingeventindex; //type: int32
         ydk::YLeaf alarmfallingeventindex; //type: int32
         ydk::YLeaf alarmowner; //type: binary
         ydk::YLeaf alarmstatus; //type: EntryStatus
-        class Alarmsampletype;
-        class Alarmstartupalarm;
+        class AlarmSampleType;
+        class AlarmStartupAlarm;
 
-}; // RMONMIB::Alarmtable::Alarmentry
+}; // RMONMIB::AlarmTable::AlarmEntry
 
 
-class RMONMIB::Hostcontroltable : public ydk::Entity
+class RMONMIB::HostControlTable : public ydk::Entity
 {
     public:
-        Hostcontroltable();
-        ~Hostcontroltable();
+        HostControlTable();
+        ~HostControlTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -340,18 +340,18 @@ class RMONMIB::Hostcontroltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Hostcontrolentry; //type: RMONMIB::Hostcontroltable::Hostcontrolentry
+        class HostControlEntry; //type: RMONMIB::HostControlTable::HostControlEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Hostcontroltable::Hostcontrolentry> > hostcontrolentry;
+        ydk::YList hostcontrolentry;
         
-}; // RMONMIB::Hostcontroltable
+}; // RMONMIB::HostControlTable
 
 
-class RMONMIB::Hostcontroltable::Hostcontrolentry : public ydk::Entity
+class RMONMIB::HostControlTable::HostControlEntry : public ydk::Entity
 {
     public:
-        Hostcontrolentry();
-        ~Hostcontrolentry();
+        HostControlEntry();
+        ~HostControlEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -373,14 +373,14 @@ class RMONMIB::Hostcontroltable::Hostcontrolentry : public ydk::Entity
         ydk::YLeaf hostcontroldroppedframes; //type: uint32
         ydk::YLeaf hostcontrolcreatetime; //type: uint32
 
-}; // RMONMIB::Hostcontroltable::Hostcontrolentry
+}; // RMONMIB::HostControlTable::HostControlEntry
 
 
-class RMONMIB::Hosttable : public ydk::Entity
+class RMONMIB::HostTable : public ydk::Entity
 {
     public:
-        Hosttable();
-        ~Hosttable();
+        HostTable();
+        ~HostTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -393,18 +393,18 @@ class RMONMIB::Hosttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Hostentry; //type: RMONMIB::Hosttable::Hostentry
+        class HostEntry; //type: RMONMIB::HostTable::HostEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Hosttable::Hostentry> > hostentry;
+        ydk::YList hostentry;
         
-}; // RMONMIB::Hosttable
+}; // RMONMIB::HostTable
 
 
-class RMONMIB::Hosttable::Hostentry : public ydk::Entity
+class RMONMIB::HostTable::HostEntry : public ydk::Entity
 {
     public:
-        Hostentry();
-        ~Hostentry();
+        HostEntry();
+        ~HostEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -428,14 +428,14 @@ class RMONMIB::Hosttable::Hostentry : public ydk::Entity
         ydk::YLeaf hostoutbroadcastpkts; //type: uint32
         ydk::YLeaf hostoutmulticastpkts; //type: uint32
 
-}; // RMONMIB::Hosttable::Hostentry
+}; // RMONMIB::HostTable::HostEntry
 
 
-class RMONMIB::Hosttimetable : public ydk::Entity
+class RMONMIB::HostTimeTable : public ydk::Entity
 {
     public:
-        Hosttimetable();
-        ~Hosttimetable();
+        HostTimeTable();
+        ~HostTimeTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -448,18 +448,18 @@ class RMONMIB::Hosttimetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Hosttimeentry; //type: RMONMIB::Hosttimetable::Hosttimeentry
+        class HostTimeEntry; //type: RMONMIB::HostTimeTable::HostTimeEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Hosttimetable::Hosttimeentry> > hosttimeentry;
+        ydk::YList hosttimeentry;
         
-}; // RMONMIB::Hosttimetable
+}; // RMONMIB::HostTimeTable
 
 
-class RMONMIB::Hosttimetable::Hosttimeentry : public ydk::Entity
+class RMONMIB::HostTimeTable::HostTimeEntry : public ydk::Entity
 {
     public:
-        Hosttimeentry();
-        ~Hosttimeentry();
+        HostTimeEntry();
+        ~HostTimeEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -483,14 +483,14 @@ class RMONMIB::Hosttimetable::Hosttimeentry : public ydk::Entity
         ydk::YLeaf hosttimeoutbroadcastpkts; //type: uint32
         ydk::YLeaf hosttimeoutmulticastpkts; //type: uint32
 
-}; // RMONMIB::Hosttimetable::Hosttimeentry
+}; // RMONMIB::HostTimeTable::HostTimeEntry
 
 
-class RMONMIB::Hosttopncontroltable : public ydk::Entity
+class RMONMIB::HostTopNControlTable : public ydk::Entity
 {
     public:
-        Hosttopncontroltable();
-        ~Hosttopncontroltable();
+        HostTopNControlTable();
+        ~HostTopNControlTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -503,18 +503,18 @@ class RMONMIB::Hosttopncontroltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Hosttopncontrolentry; //type: RMONMIB::Hosttopncontroltable::Hosttopncontrolentry
+        class HostTopNControlEntry; //type: RMONMIB::HostTopNControlTable::HostTopNControlEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Hosttopncontroltable::Hosttopncontrolentry> > hosttopncontrolentry;
+        ydk::YList hosttopncontrolentry;
         
-}; // RMONMIB::Hosttopncontroltable
+}; // RMONMIB::HostTopNControlTable
 
 
-class RMONMIB::Hosttopncontroltable::Hosttopncontrolentry : public ydk::Entity
+class RMONMIB::HostTopNControlTable::HostTopNControlEntry : public ydk::Entity
 {
     public:
-        Hosttopncontrolentry();
-        ~Hosttopncontrolentry();
+        HostTopNControlEntry();
+        ~HostTopNControlEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -529,7 +529,7 @@ class RMONMIB::Hosttopncontroltable::Hosttopncontrolentry : public ydk::Entity
 
         ydk::YLeaf hosttopncontrolindex; //type: int32
         ydk::YLeaf hosttopnhostindex; //type: int32
-        ydk::YLeaf hosttopnratebase; //type: Hosttopnratebase
+        ydk::YLeaf hosttopnratebase; //type: HostTopNRateBase
         ydk::YLeaf hosttopntimeremaining; //type: int32
         ydk::YLeaf hosttopnduration; //type: int32
         ydk::YLeaf hosttopnrequestedsize; //type: int32
@@ -537,16 +537,16 @@ class RMONMIB::Hosttopncontroltable::Hosttopncontrolentry : public ydk::Entity
         ydk::YLeaf hosttopnstarttime; //type: uint32
         ydk::YLeaf hosttopnowner; //type: binary
         ydk::YLeaf hosttopnstatus; //type: EntryStatus
-        class Hosttopnratebase;
+        class HostTopNRateBase;
 
-}; // RMONMIB::Hosttopncontroltable::Hosttopncontrolentry
+}; // RMONMIB::HostTopNControlTable::HostTopNControlEntry
 
 
-class RMONMIB::Hosttopntable : public ydk::Entity
+class RMONMIB::HostTopNTable : public ydk::Entity
 {
     public:
-        Hosttopntable();
-        ~Hosttopntable();
+        HostTopNTable();
+        ~HostTopNTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -559,18 +559,18 @@ class RMONMIB::Hosttopntable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Hosttopnentry; //type: RMONMIB::Hosttopntable::Hosttopnentry
+        class HostTopNEntry; //type: RMONMIB::HostTopNTable::HostTopNEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Hosttopntable::Hosttopnentry> > hosttopnentry;
+        ydk::YList hosttopnentry;
         
-}; // RMONMIB::Hosttopntable
+}; // RMONMIB::HostTopNTable
 
 
-class RMONMIB::Hosttopntable::Hosttopnentry : public ydk::Entity
+class RMONMIB::HostTopNTable::HostTopNEntry : public ydk::Entity
 {
     public:
-        Hosttopnentry();
-        ~Hosttopnentry();
+        HostTopNEntry();
+        ~HostTopNEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -588,14 +588,14 @@ class RMONMIB::Hosttopntable::Hosttopnentry : public ydk::Entity
         ydk::YLeaf hosttopnaddress; //type: binary
         ydk::YLeaf hosttopnrate; //type: int32
 
-}; // RMONMIB::Hosttopntable::Hosttopnentry
+}; // RMONMIB::HostTopNTable::HostTopNEntry
 
 
-class RMONMIB::Matrixcontroltable : public ydk::Entity
+class RMONMIB::MatrixControlTable : public ydk::Entity
 {
     public:
-        Matrixcontroltable();
-        ~Matrixcontroltable();
+        MatrixControlTable();
+        ~MatrixControlTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -608,18 +608,18 @@ class RMONMIB::Matrixcontroltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Matrixcontrolentry; //type: RMONMIB::Matrixcontroltable::Matrixcontrolentry
+        class MatrixControlEntry; //type: RMONMIB::MatrixControlTable::MatrixControlEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Matrixcontroltable::Matrixcontrolentry> > matrixcontrolentry;
+        ydk::YList matrixcontrolentry;
         
-}; // RMONMIB::Matrixcontroltable
+}; // RMONMIB::MatrixControlTable
 
 
-class RMONMIB::Matrixcontroltable::Matrixcontrolentry : public ydk::Entity
+class RMONMIB::MatrixControlTable::MatrixControlEntry : public ydk::Entity
 {
     public:
-        Matrixcontrolentry();
-        ~Matrixcontrolentry();
+        MatrixControlEntry();
+        ~MatrixControlEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -641,14 +641,14 @@ class RMONMIB::Matrixcontroltable::Matrixcontrolentry : public ydk::Entity
         ydk::YLeaf matrixcontroldroppedframes; //type: uint32
         ydk::YLeaf matrixcontrolcreatetime; //type: uint32
 
-}; // RMONMIB::Matrixcontroltable::Matrixcontrolentry
+}; // RMONMIB::MatrixControlTable::MatrixControlEntry
 
 
-class RMONMIB::Matrixsdtable : public ydk::Entity
+class RMONMIB::MatrixSDTable : public ydk::Entity
 {
     public:
-        Matrixsdtable();
-        ~Matrixsdtable();
+        MatrixSDTable();
+        ~MatrixSDTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -661,18 +661,18 @@ class RMONMIB::Matrixsdtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Matrixsdentry; //type: RMONMIB::Matrixsdtable::Matrixsdentry
+        class MatrixSDEntry; //type: RMONMIB::MatrixSDTable::MatrixSDEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Matrixsdtable::Matrixsdentry> > matrixsdentry;
+        ydk::YList matrixsdentry;
         
-}; // RMONMIB::Matrixsdtable
+}; // RMONMIB::MatrixSDTable
 
 
-class RMONMIB::Matrixsdtable::Matrixsdentry : public ydk::Entity
+class RMONMIB::MatrixSDTable::MatrixSDEntry : public ydk::Entity
 {
     public:
-        Matrixsdentry();
-        ~Matrixsdentry();
+        MatrixSDEntry();
+        ~MatrixSDEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -692,14 +692,14 @@ class RMONMIB::Matrixsdtable::Matrixsdentry : public ydk::Entity
         ydk::YLeaf matrixsdoctets; //type: uint32
         ydk::YLeaf matrixsderrors; //type: uint32
 
-}; // RMONMIB::Matrixsdtable::Matrixsdentry
+}; // RMONMIB::MatrixSDTable::MatrixSDEntry
 
 
-class RMONMIB::Matrixdstable : public ydk::Entity
+class RMONMIB::MatrixDSTable : public ydk::Entity
 {
     public:
-        Matrixdstable();
-        ~Matrixdstable();
+        MatrixDSTable();
+        ~MatrixDSTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -712,18 +712,18 @@ class RMONMIB::Matrixdstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Matrixdsentry; //type: RMONMIB::Matrixdstable::Matrixdsentry
+        class MatrixDSEntry; //type: RMONMIB::MatrixDSTable::MatrixDSEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Matrixdstable::Matrixdsentry> > matrixdsentry;
+        ydk::YList matrixdsentry;
         
-}; // RMONMIB::Matrixdstable
+}; // RMONMIB::MatrixDSTable
 
 
-class RMONMIB::Matrixdstable::Matrixdsentry : public ydk::Entity
+class RMONMIB::MatrixDSTable::MatrixDSEntry : public ydk::Entity
 {
     public:
-        Matrixdsentry();
-        ~Matrixdsentry();
+        MatrixDSEntry();
+        ~MatrixDSEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -743,14 +743,14 @@ class RMONMIB::Matrixdstable::Matrixdsentry : public ydk::Entity
         ydk::YLeaf matrixdsoctets; //type: uint32
         ydk::YLeaf matrixdserrors; //type: uint32
 
-}; // RMONMIB::Matrixdstable::Matrixdsentry
+}; // RMONMIB::MatrixDSTable::MatrixDSEntry
 
 
-class RMONMIB::Filtertable : public ydk::Entity
+class RMONMIB::FilterTable : public ydk::Entity
 {
     public:
-        Filtertable();
-        ~Filtertable();
+        FilterTable();
+        ~FilterTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -763,18 +763,18 @@ class RMONMIB::Filtertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Filterentry; //type: RMONMIB::Filtertable::Filterentry
+        class FilterEntry; //type: RMONMIB::FilterTable::FilterEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Filtertable::Filterentry> > filterentry;
+        ydk::YList filterentry;
         
-}; // RMONMIB::Filtertable
+}; // RMONMIB::FilterTable
 
 
-class RMONMIB::Filtertable::Filterentry : public ydk::Entity
+class RMONMIB::FilterTable::FilterEntry : public ydk::Entity
 {
     public:
-        Filterentry();
-        ~Filterentry();
+        FilterEntry();
+        ~FilterEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -801,14 +801,14 @@ class RMONMIB::Filtertable::Filterentry : public ydk::Entity
         ydk::YLeaf filterprotocoldirdatalocalindex; //type: int32
         ydk::YLeaf filterprotocoldirlocalindex; //type: int32
 
-}; // RMONMIB::Filtertable::Filterentry
+}; // RMONMIB::FilterTable::FilterEntry
 
 
-class RMONMIB::Channeltable : public ydk::Entity
+class RMONMIB::ChannelTable : public ydk::Entity
 {
     public:
-        Channeltable();
-        ~Channeltable();
+        ChannelTable();
+        ~ChannelTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -821,18 +821,18 @@ class RMONMIB::Channeltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Channelentry; //type: RMONMIB::Channeltable::Channelentry
+        class ChannelEntry; //type: RMONMIB::ChannelTable::ChannelEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Channeltable::Channelentry> > channelentry;
+        ydk::YList channelentry;
         
-}; // RMONMIB::Channeltable
+}; // RMONMIB::ChannelTable
 
 
-class RMONMIB::Channeltable::Channelentry : public ydk::Entity
+class RMONMIB::ChannelTable::ChannelEntry : public ydk::Entity
 {
     public:
-        Channelentry();
-        ~Channelentry();
+        ChannelEntry();
+        ~ChannelEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -847,30 +847,30 @@ class RMONMIB::Channeltable::Channelentry : public ydk::Entity
 
         ydk::YLeaf channelindex; //type: int32
         ydk::YLeaf channelifindex; //type: int32
-        ydk::YLeaf channelaccepttype; //type: Channelaccepttype
-        ydk::YLeaf channeldatacontrol; //type: Channeldatacontrol
+        ydk::YLeaf channelaccepttype; //type: ChannelAcceptType
+        ydk::YLeaf channeldatacontrol; //type: ChannelDataControl
         ydk::YLeaf channelturnoneventindex; //type: int32
         ydk::YLeaf channelturnoffeventindex; //type: int32
         ydk::YLeaf channeleventindex; //type: int32
-        ydk::YLeaf channeleventstatus; //type: Channeleventstatus
+        ydk::YLeaf channeleventstatus; //type: ChannelEventStatus
         ydk::YLeaf channelmatches; //type: uint32
         ydk::YLeaf channeldescription; //type: string
         ydk::YLeaf channelowner; //type: binary
         ydk::YLeaf channelstatus; //type: EntryStatus
         ydk::YLeaf channeldroppedframes; //type: uint32
         ydk::YLeaf channelcreatetime; //type: uint32
-        class Channelaccepttype;
-        class Channeldatacontrol;
-        class Channeleventstatus;
+        class ChannelAcceptType;
+        class ChannelDataControl;
+        class ChannelEventStatus;
 
-}; // RMONMIB::Channeltable::Channelentry
+}; // RMONMIB::ChannelTable::ChannelEntry
 
 
-class RMONMIB::Buffercontroltable : public ydk::Entity
+class RMONMIB::BufferControlTable : public ydk::Entity
 {
     public:
-        Buffercontroltable();
-        ~Buffercontroltable();
+        BufferControlTable();
+        ~BufferControlTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -883,18 +883,18 @@ class RMONMIB::Buffercontroltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Buffercontrolentry; //type: RMONMIB::Buffercontroltable::Buffercontrolentry
+        class BufferControlEntry; //type: RMONMIB::BufferControlTable::BufferControlEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Buffercontroltable::Buffercontrolentry> > buffercontrolentry;
+        ydk::YList buffercontrolentry;
         
-}; // RMONMIB::Buffercontroltable
+}; // RMONMIB::BufferControlTable
 
 
-class RMONMIB::Buffercontroltable::Buffercontrolentry : public ydk::Entity
+class RMONMIB::BufferControlTable::BufferControlEntry : public ydk::Entity
 {
     public:
-        Buffercontrolentry();
-        ~Buffercontrolentry();
+        BufferControlEntry();
+        ~BufferControlEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -909,8 +909,8 @@ class RMONMIB::Buffercontroltable::Buffercontrolentry : public ydk::Entity
 
         ydk::YLeaf buffercontrolindex; //type: int32
         ydk::YLeaf buffercontrolchannelindex; //type: int32
-        ydk::YLeaf buffercontrolfullstatus; //type: Buffercontrolfullstatus
-        ydk::YLeaf buffercontrolfullaction; //type: Buffercontrolfullaction
+        ydk::YLeaf buffercontrolfullstatus; //type: BufferControlFullStatus
+        ydk::YLeaf buffercontrolfullaction; //type: BufferControlFullAction
         ydk::YLeaf buffercontrolcaptureslicesize; //type: int32
         ydk::YLeaf buffercontroldownloadslicesize; //type: int32
         ydk::YLeaf buffercontroldownloadoffset; //type: int32
@@ -920,17 +920,17 @@ class RMONMIB::Buffercontroltable::Buffercontrolentry : public ydk::Entity
         ydk::YLeaf buffercontrolturnontime; //type: uint32
         ydk::YLeaf buffercontrolowner; //type: binary
         ydk::YLeaf buffercontrolstatus; //type: EntryStatus
-        class Buffercontrolfullstatus;
-        class Buffercontrolfullaction;
+        class BufferControlFullStatus;
+        class BufferControlFullAction;
 
-}; // RMONMIB::Buffercontroltable::Buffercontrolentry
+}; // RMONMIB::BufferControlTable::BufferControlEntry
 
 
-class RMONMIB::Capturebuffertable : public ydk::Entity
+class RMONMIB::CaptureBufferTable : public ydk::Entity
 {
     public:
-        Capturebuffertable();
-        ~Capturebuffertable();
+        CaptureBufferTable();
+        ~CaptureBufferTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -943,18 +943,18 @@ class RMONMIB::Capturebuffertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Capturebufferentry; //type: RMONMIB::Capturebuffertable::Capturebufferentry
+        class CaptureBufferEntry; //type: RMONMIB::CaptureBufferTable::CaptureBufferEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Capturebuffertable::Capturebufferentry> > capturebufferentry;
+        ydk::YList capturebufferentry;
         
-}; // RMONMIB::Capturebuffertable
+}; // RMONMIB::CaptureBufferTable
 
 
-class RMONMIB::Capturebuffertable::Capturebufferentry : public ydk::Entity
+class RMONMIB::CaptureBufferTable::CaptureBufferEntry : public ydk::Entity
 {
     public:
-        Capturebufferentry();
-        ~Capturebufferentry();
+        CaptureBufferEntry();
+        ~CaptureBufferEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -975,14 +975,14 @@ class RMONMIB::Capturebuffertable::Capturebufferentry : public ydk::Entity
         ydk::YLeaf capturebufferpackettime; //type: int32
         ydk::YLeaf capturebufferpacketstatus; //type: int32
 
-}; // RMONMIB::Capturebuffertable::Capturebufferentry
+}; // RMONMIB::CaptureBufferTable::CaptureBufferEntry
 
 
-class RMONMIB::Eventtable : public ydk::Entity
+class RMONMIB::EventTable : public ydk::Entity
 {
     public:
-        Eventtable();
-        ~Eventtable();
+        EventTable();
+        ~EventTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -995,18 +995,18 @@ class RMONMIB::Eventtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Evententry; //type: RMONMIB::Eventtable::Evententry
+        class EventEntry; //type: RMONMIB::EventTable::EventEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Eventtable::Evententry> > evententry;
+        ydk::YList evententry;
         
-}; // RMONMIB::Eventtable
+}; // RMONMIB::EventTable
 
 
-class RMONMIB::Eventtable::Evententry : public ydk::Entity
+class RMONMIB::EventTable::EventEntry : public ydk::Entity
 {
     public:
-        Evententry();
-        ~Evententry();
+        EventEntry();
+        ~EventEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1021,21 +1021,21 @@ class RMONMIB::Eventtable::Evententry : public ydk::Entity
 
         ydk::YLeaf eventindex; //type: int32
         ydk::YLeaf eventdescription; //type: string
-        ydk::YLeaf eventtype; //type: Eventtype
+        ydk::YLeaf eventtype; //type: EventType
         ydk::YLeaf eventcommunity; //type: binary
         ydk::YLeaf eventlasttimesent; //type: uint32
         ydk::YLeaf eventowner; //type: binary
         ydk::YLeaf eventstatus; //type: EntryStatus
-        class Eventtype;
+        class EventType;
 
-}; // RMONMIB::Eventtable::Evententry
+}; // RMONMIB::EventTable::EventEntry
 
 
-class RMONMIB::Logtable : public ydk::Entity
+class RMONMIB::LogTable : public ydk::Entity
 {
     public:
-        Logtable();
-        ~Logtable();
+        LogTable();
+        ~LogTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1048,18 +1048,18 @@ class RMONMIB::Logtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Logentry; //type: RMONMIB::Logtable::Logentry
+        class LogEntry; //type: RMONMIB::LogTable::LogEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON_MIB::RMONMIB::Logtable::Logentry> > logentry;
+        ydk::YList logentry;
         
-}; // RMONMIB::Logtable
+}; // RMONMIB::LogTable
 
 
-class RMONMIB::Logtable::Logentry : public ydk::Entity
+class RMONMIB::LogTable::LogEntry : public ydk::Entity
 {
     public:
-        Logentry();
-        ~Logentry();
+        LogEntry();
+        ~LogEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1077,7 +1077,7 @@ class RMONMIB::Logtable::Logentry : public ydk::Entity
         ydk::YLeaf logtime; //type: uint32
         ydk::YLeaf logdescription; //type: string
 
-}; // RMONMIB::Logtable::Logentry
+}; // RMONMIB::LogTable::LogEntry
 
 class EntryStatus : public ydk::Enum
 {
@@ -1089,7 +1089,7 @@ class EntryStatus : public ydk::Enum
 
 };
 
-class RMONMIB::Alarmtable::Alarmentry::Alarmsampletype : public ydk::Enum
+class RMONMIB::AlarmTable::AlarmEntry::AlarmSampleType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf absoluteValue;
@@ -1097,7 +1097,7 @@ class RMONMIB::Alarmtable::Alarmentry::Alarmsampletype : public ydk::Enum
 
 };
 
-class RMONMIB::Alarmtable::Alarmentry::Alarmstartupalarm : public ydk::Enum
+class RMONMIB::AlarmTable::AlarmEntry::AlarmStartupAlarm : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf risingAlarm;
@@ -1106,7 +1106,7 @@ class RMONMIB::Alarmtable::Alarmentry::Alarmstartupalarm : public ydk::Enum
 
 };
 
-class RMONMIB::Hosttopncontroltable::Hosttopncontrolentry::Hosttopnratebase : public ydk::Enum
+class RMONMIB::HostTopNControlTable::HostTopNControlEntry::HostTopNRateBase : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf hostTopNInPkts;
@@ -1119,7 +1119,7 @@ class RMONMIB::Hosttopncontroltable::Hosttopncontrolentry::Hosttopnratebase : pu
 
 };
 
-class RMONMIB::Channeltable::Channelentry::Channelaccepttype : public ydk::Enum
+class RMONMIB::ChannelTable::ChannelEntry::ChannelAcceptType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf acceptMatched;
@@ -1127,7 +1127,7 @@ class RMONMIB::Channeltable::Channelentry::Channelaccepttype : public ydk::Enum
 
 };
 
-class RMONMIB::Channeltable::Channelentry::Channeldatacontrol : public ydk::Enum
+class RMONMIB::ChannelTable::ChannelEntry::ChannelDataControl : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf on;
@@ -1135,7 +1135,7 @@ class RMONMIB::Channeltable::Channelentry::Channeldatacontrol : public ydk::Enum
 
 };
 
-class RMONMIB::Channeltable::Channelentry::Channeleventstatus : public ydk::Enum
+class RMONMIB::ChannelTable::ChannelEntry::ChannelEventStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf eventReady;
@@ -1144,7 +1144,7 @@ class RMONMIB::Channeltable::Channelentry::Channeleventstatus : public ydk::Enum
 
 };
 
-class RMONMIB::Buffercontroltable::Buffercontrolentry::Buffercontrolfullstatus : public ydk::Enum
+class RMONMIB::BufferControlTable::BufferControlEntry::BufferControlFullStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf spaceAvailable;
@@ -1152,7 +1152,7 @@ class RMONMIB::Buffercontroltable::Buffercontrolentry::Buffercontrolfullstatus :
 
 };
 
-class RMONMIB::Buffercontroltable::Buffercontrolentry::Buffercontrolfullaction : public ydk::Enum
+class RMONMIB::BufferControlTable::BufferControlEntry::BufferControlFullAction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf lockWhenFull;
@@ -1160,7 +1160,7 @@ class RMONMIB::Buffercontroltable::Buffercontrolentry::Buffercontrolfullaction :
 
 };
 
-class RMONMIB::Eventtable::Evententry::Eventtype : public ydk::Enum
+class RMONMIB::EventTable::EventEntry::EventType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;

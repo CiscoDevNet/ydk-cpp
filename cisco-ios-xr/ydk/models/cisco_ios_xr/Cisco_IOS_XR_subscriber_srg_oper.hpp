@@ -61,7 +61,7 @@ class SubscriberRedundancyManager::Groups : public ydk::Entity
 
         class Group; //type: SubscriberRedundancyManager::Groups::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_oper::SubscriberRedundancyManager::Groups::Group> > group;
+        ydk::YList group;
         
 }; // SubscriberRedundancyManager::Groups
 
@@ -157,7 +157,7 @@ class SubscriberRedundancyManager::Interfaces : public ydk::Entity
 
         class Interface; //type: SubscriberRedundancyManager::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_oper::SubscriberRedundancyManager::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // SubscriberRedundancyManager::Interfaces
 
@@ -235,7 +235,7 @@ class SubscriberRedundancyAgent::Nodes : public ydk::Entity
 
         class Node; //type: SubscriberRedundancyAgent::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_oper::SubscriberRedundancyAgent::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // SubscriberRedundancyAgent::Nodes
 
@@ -289,7 +289,7 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupIdXr : public ydk::Entity
 
         class GroupId; //type: SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_oper::SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId> > group_id;
+        ydk::YList group_id;
         
 }; // SubscriberRedundancyAgent::Nodes::Node::GroupIdXr
 
@@ -324,8 +324,8 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId : public ydk::E
         class SessionDetailedInformation; //type: SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation
         class SessionSyncErrorInformation; //type: SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_oper::SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation> > session_detailed_information;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_oper::SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation> > session_sync_error_information;
+        ydk::YList session_detailed_information;
+        ydk::YList session_sync_error_information;
         
 }; // SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId
 
@@ -396,7 +396,7 @@ class SubscriberRedundancyAgent::Nodes::Node::Interfaces : public ydk::Entity
 
         class Interface; //type: SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_oper::SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // SubscriberRedundancyAgent::Nodes::Node::Interfaces
 
@@ -435,7 +435,7 @@ class SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface : public ydk
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_oper::SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper> interface_oper;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_oper::SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus> interface_status;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_oper::SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus> > client_status;
+        ydk::YList client_status;
         
 }; // SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface
 
@@ -535,7 +535,7 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupSummaries : public ydk::Entit
 
         class GroupSummary; //type: SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_oper::SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary> > group_summary;
+        ydk::YList group_summary;
         
 }; // SubscriberRedundancyAgent::Nodes::Node::GroupSummaries
 
@@ -591,7 +591,7 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupIds : public ydk::Entity
 
         class GroupId; //type: SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_oper::SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId> > group_id;
+        ydk::YList group_id;
         
 }; // SubscriberRedundancyAgent::Nodes::Node::GroupIds
 
@@ -653,7 +653,7 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId : public ydk::En
         ydk::YLeaf switchover_revert_time; //type: uint32
         class Interface; //type: SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_oper::SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface> > interface;
+        ydk::YList interface;
         
 }; // SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId
 
@@ -681,6 +681,24 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface : pub
 
 }; // SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface
 
+class SrgShowImRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
+
+};
+
+class SrgShowSessionError : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf hard;
+        static const ydk::Enum::YLeaf soft;
+
+};
+
 class SrgShowSoReason : public ydk::Enum
 {
     public:
@@ -690,6 +708,16 @@ class SrgShowSoReason : public ydk::Enum
         static const ydk::Enum::YLeaf peer_down;
         static const ydk::Enum::YLeaf object_tracking_status_change;
         static const ydk::Enum::YLeaf srg_show_so_reason_max;
+
+};
+
+class SrgShowSessionOperation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf update;
+        static const ydk::Enum::YLeaf delete_;
+        static const ydk::Enum::YLeaf in_sync;
 
 };
 
@@ -708,22 +736,21 @@ class SrgPeerStatus : public ydk::Enum
 
 };
 
-class SrgShowSessionError : public ydk::Enum
+class SrgShowRole : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf hard;
-        static const ydk::Enum::YLeaf soft;
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
 
 };
 
-class SrgShowSessionOperation : public ydk::Enum
+class SrgShowSlaveMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf update;
-        static const ydk::Enum::YLeaf delete_;
-        static const ydk::Enum::YLeaf in_sync;
+        static const ydk::Enum::YLeaf warm;
+        static const ydk::Enum::YLeaf hot;
 
 };
 
@@ -737,33 +764,6 @@ class SrgShowComp : public ydk::Enum
         static const ydk::Enum::YLeaf ppp;
         static const ydk::Enum::YLeaf l2tp;
         static const ydk::Enum::YLeaf iedge;
-
-};
-
-class SrgShowSlaveMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf warm;
-        static const ydk::Enum::YLeaf hot;
-
-};
-
-class SrgShowRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf master;
-        static const ydk::Enum::YLeaf slave;
-
-};
-
-class SrgShowImRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf master;
-        static const ydk::Enum::YLeaf slave;
 
 };
 

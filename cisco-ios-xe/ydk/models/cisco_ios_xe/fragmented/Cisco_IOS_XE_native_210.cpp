@@ -15,12 +15,12 @@ namespace Cisco_IOS_XE_native {
 Native::Template::MSPVCINTERFACETEMPLATE::ServicePolicy::ServicePolicy()
     :
     input(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::ServicePolicy::Input>())
-	,output(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::ServicePolicy::Output>())
+    , output(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::ServicePolicy::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "service-policy"; yang_parent_name = "MSP_VC_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "service-policy"; yang_parent_name = "MSP_VC_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::ServicePolicy::~ServicePolicy()
@@ -29,6 +29,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::ServicePolicy::~ServicePolicy()
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::ServicePolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -123,7 +124,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::ServicePolicy::Input::Input()
     policy_map_name{YType::str, "policy-map-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::ServicePolicy::Input::~Input()
@@ -132,6 +133,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::ServicePolicy::Input::~Input()
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::ServicePolicy::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return policy_map_name.is_set;
 }
 
@@ -207,7 +209,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::ServicePolicy::Output::Output()
     policy_map_name{YType::str, "policy-map-name"}
 {
 
-    yang_name = "output"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::ServicePolicy::Output::~Output()
@@ -216,6 +218,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::ServicePolicy::Output::~Output()
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::ServicePolicy::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return policy_map_name.is_set;
 }
 
@@ -289,19 +292,19 @@ bool Native::Template::MSPVCINTERFACETEMPLATE::ServicePolicy::Output::has_leaf_o
 Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Switchport()
     :
     nonegotiate{YType::empty, "nonegotiate"}
-    	,
+        ,
     mode(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Mode>())
-	,block(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Block>())
-	,port_security(nullptr) // presence node
-	,access(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Access>())
-	,voice(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Voice>())
+    , block(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Block>())
+    , port_security(nullptr) // presence node
+    , access(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Access>())
+    , voice(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Voice>())
 {
     mode->parent = this;
     block->parent = this;
     access->parent = this;
     voice->parent = this;
 
-    yang_name = "switchport"; yang_parent_name = "MSP_VC_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "switchport"; yang_parent_name = "MSP_VC_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::Switchport::~Switchport()
@@ -310,6 +313,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Switchport::~Switchport()
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::Switchport::has_data() const
 {
+    if (is_presence_container) return true;
     return nonegotiate.is_set
 	|| (mode !=  nullptr && mode->has_data())
 	|| (block !=  nullptr && block->has_data())
@@ -466,7 +470,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Mode::Mode()
     access{YType::empty, "access"}
 {
 
-    yang_name = "mode"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mode"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Mode::~Mode()
@@ -475,6 +479,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Mode::~Mode()
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return trunk.is_set
 	|| access.is_set;
 }
@@ -563,7 +568,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Block::Block()
     unicast{YType::empty, "unicast"}
 {
 
-    yang_name = "block"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "block"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Block::~Block()
@@ -572,6 +577,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Block::~Block()
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Block::has_data() const
 {
+    if (is_presence_container) return true;
     return unicast.is_set;
 }
 
@@ -645,14 +651,14 @@ bool Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Block::has_leaf_or_ch
 Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::PortSecurity()
     :
     aging(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Aging>())
-	,maximum(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum>())
-	,violation(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Violation>())
+    , maximum(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum>())
+    , violation(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Violation>())
 {
     aging->parent = this;
     maximum->parent = this;
     violation->parent = this;
 
-    yang_name = "port-security"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "port-security"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::~PortSecurity()
@@ -661,6 +667,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::~PortSecurit
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::has_data() const
 {
+    if (is_presence_container) return true;
     return (aging !=  nullptr && aging->has_data())
 	|| (maximum !=  nullptr && maximum->has_data())
 	|| (violation !=  nullptr && violation->has_data());
@@ -770,11 +777,11 @@ Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Aging
     :
     static_{YType::empty, "static"},
     time{YType::uint16, "time"}
-    	,
+        ,
     type(nullptr) // presence node
 {
 
-    yang_name = "aging"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aging"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Aging::~Aging()
@@ -783,6 +790,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Aging::~Agin
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Aging::has_data() const
 {
+    if (is_presence_container) return true;
     return static_.is_set
 	|| time.is_set
 	|| (type !=  nullptr && type->has_data());
@@ -887,7 +895,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type:
     inactivity{YType::empty, "inactivity"}
 {
 
-    yang_name = "type"; yang_parent_name = "aging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "type"; yang_parent_name = "aging"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type::~Type()
@@ -896,6 +904,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type:
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type::has_data() const
 {
+    if (is_presence_container) return true;
     return inactivity.is_set;
 }
 
@@ -967,9 +976,11 @@ bool Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Aging::
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Maximum()
+    :
+    range(this, {"range"})
 {
 
-    yang_name = "maximum"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "maximum"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::~Maximum()
@@ -978,7 +989,8 @@ Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::~Ma
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_data())
             return true;
@@ -988,7 +1000,7 @@ bool Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_operation())
             return true;
@@ -1025,7 +1037,7 @@ std::shared_ptr<Entity> Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Po
     {
         auto c = std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range>();
         c->parent = this;
-        range.push_back(c);
+        range.append(c);
         return c;
     }
 
@@ -1037,7 +1049,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template::MSPVCINTERFACET
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : range)
+    for (auto c : range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1066,11 +1078,11 @@ bool Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum
 Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Range()
     :
     range{YType::uint16, "range"}
-    	,
+        ,
     vlan(nullptr) // presence node
 {
 
-    yang_name = "range"; yang_parent_name = "maximum"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "range"; yang_parent_name = "maximum"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::~Range()
@@ -1079,6 +1091,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Ran
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return range.is_set
 	|| (vlan !=  nullptr && vlan->has_data());
 }
@@ -1100,7 +1113,8 @@ std::string Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::
 std::string Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "range" <<"[range='" <<range <<"']";
+    path_buffer << "range";
+    ADD_KEY_TOKEN(range, "range");
     return path_buffer.str();
 }
 
@@ -1170,7 +1184,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Ran
     access{YType::empty, "access"}
 {
 
-    yang_name = "vlan"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Vlan::~Vlan()
@@ -1179,6 +1193,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Ran
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return access.is_set;
 }
 
@@ -1249,7 +1264,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Violation::V
     shutdown{YType::empty, "shutdown"}
 {
 
-    yang_name = "violation"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "violation"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Violation::~Violation()
@@ -1258,6 +1273,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Violation::~
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::Switchport::PortSecurity::Violation::has_data() const
 {
+    if (is_presence_container) return true;
     return protect.is_set
 	|| restrict.is_set
 	|| shutdown.is_set;
@@ -1359,7 +1375,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Access::Access()
     vlan{YType::uint16, "vlan"}
 {
 
-    yang_name = "access"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "access"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Access::~Access()
@@ -1368,6 +1384,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Access::~Access()
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Access::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set;
 }
 
@@ -1443,7 +1460,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Voice::Voice()
     vlan{YType::uint16, "vlan"}
 {
 
-    yang_name = "voice"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "voice"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Voice::~Voice()
@@ -1452,6 +1469,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Voice::~Voice()
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Voice::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set;
 }
 
@@ -1525,13 +1543,13 @@ bool Native::Template::MSPVCINTERFACETEMPLATE::Switchport::Voice::has_leaf_or_ch
 Native::Template::MSPVCINTERFACETEMPLATE::SpanningTree::SpanningTree()
     :
     service_policy{YType::empty, "service-policy"}
-    	,
+        ,
     bpduguard(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::SpanningTree::Bpduguard>())
-	,portfast(nullptr) // presence node
+    , portfast(nullptr) // presence node
 {
     bpduguard->parent = this;
 
-    yang_name = "spanning-tree"; yang_parent_name = "MSP_VC_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "spanning-tree"; yang_parent_name = "MSP_VC_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::SpanningTree::~SpanningTree()
@@ -1540,6 +1558,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::SpanningTree::~SpanningTree()
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::SpanningTree::has_data() const
 {
+    if (is_presence_container) return true;
     return service_policy.is_set
 	|| (bpduguard !=  nullptr && bpduguard->has_data())
 	|| (portfast !=  nullptr && portfast->has_data());
@@ -1647,7 +1666,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::SpanningTree::Bpduguard::Bpduguard()
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "bpduguard"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bpduguard"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::SpanningTree::Bpduguard::~Bpduguard()
@@ -1656,6 +1675,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::SpanningTree::Bpduguard::~Bpduguard()
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::SpanningTree::Bpduguard::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set;
 }
 
@@ -1733,7 +1753,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::SpanningTree::Portfast::Portfast()
     network{YType::empty, "network"}
 {
 
-    yang_name = "portfast"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "portfast"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::SpanningTree::Portfast::~Portfast()
@@ -1742,6 +1762,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::SpanningTree::Portfast::~Portfast()
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::SpanningTree::Portfast::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set
 	|| edge.is_set
 	|| network.is_set;
@@ -1841,14 +1862,14 @@ bool Native::Template::MSPVCINTERFACETEMPLATE::SpanningTree::Portfast::has_leaf_
 Native::Template::MSPVCINTERFACETEMPLATE::StormControl::StormControl()
     :
     broadcast(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast>())
-	,multicast(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast>())
-	,action(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Action>())
+    , multicast(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast>())
+    , action(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Action>())
 {
     broadcast->parent = this;
     multicast->parent = this;
     action->parent = this;
 
-    yang_name = "storm-control"; yang_parent_name = "MSP_VC_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "storm-control"; yang_parent_name = "MSP_VC_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::StormControl::~StormControl()
@@ -1857,6 +1878,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::StormControl::~StormControl()
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::StormControl::has_data() const
 {
+    if (is_presence_container) return true;
     return (broadcast !=  nullptr && broadcast->has_data())
 	|| (multicast !=  nullptr && multicast->has_data())
 	|| (action !=  nullptr && action->has_data());
@@ -1968,7 +1990,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast::Broadcast()
 {
     level->parent = this;
 
-    yang_name = "broadcast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "broadcast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast::~Broadcast()
@@ -1977,6 +1999,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast::~Broadcast()
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -2053,14 +2076,14 @@ bool Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast::has_leaf
 Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast::Level::Level()
     :
     threshold{YType::str, "threshold"}
-    	,
+        ,
     pps(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps>())
-	,bps(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps>())
+    , bps(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps>())
 {
     pps->parent = this;
     bps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "level"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast::Level::~Level()
@@ -2069,6 +2092,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast::Level::~Level
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set
 	|| (pps !=  nullptr && pps->has_data())
 	|| (bps !=  nullptr && bps->has_data());
@@ -2176,7 +2200,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps::P
     threshold{YType::str, "threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps::~Pps()
@@ -2185,6 +2209,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps::~
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set;
 }
 
@@ -2261,7 +2286,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps::B
     b_unit{YType::str, "b-unit"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps::~Bps()
@@ -2270,6 +2295,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps::~
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set
 	|| b_unit.is_set;
 }
@@ -2359,7 +2385,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast::Multicast()
 {
     level->parent = this;
 
-    yang_name = "multicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "multicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast::~Multicast()
@@ -2368,6 +2394,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast::~Multicast()
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -2444,14 +2471,14 @@ bool Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast::has_leaf
 Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast::Level::Level()
     :
     threshold{YType::str, "threshold"}
-    	,
+        ,
     pps(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast::Level::Pps>())
-	,bps(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast::Level::Bps>())
+    , bps(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast::Level::Bps>())
 {
     pps->parent = this;
     bps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "level"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast::Level::~Level()
@@ -2460,6 +2487,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast::Level::~Level
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set
 	|| (pps !=  nullptr && pps->has_data())
 	|| (bps !=  nullptr && bps->has_data());
@@ -2567,7 +2595,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast::Level::Pps::P
     threshold{YType::str, "threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast::Level::Pps::~Pps()
@@ -2576,6 +2604,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast::Level::Pps::~
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set;
 }
 
@@ -2652,7 +2681,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast::Level::Bps::B
     b_unit{YType::str, "b-unit"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast::Level::Bps::~Bps()
@@ -2661,6 +2690,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast::Level::Bps::~
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Multicast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set
 	|| b_unit.is_set;
 }
@@ -2750,7 +2780,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Action::Action()
     trap{YType::empty, "trap"}
 {
 
-    yang_name = "action"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "action"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Action::~Action()
@@ -2759,6 +2789,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Action::~Action()
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::StormControl::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return shutdown.is_set
 	|| trap.is_set;
 }
@@ -2848,7 +2879,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Ip::Ip()
 {
     dhcp->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "MSP_VC_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip"; yang_parent_name = "MSP_VC_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::Ip::~Ip()
@@ -2857,6 +2888,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Ip::~Ip()
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (dhcp !=  nullptr && dhcp->has_data());
 }
 
@@ -2936,7 +2968,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Ip::Dhcp::Dhcp()
 {
     snooping->parent = this;
 
-    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::Ip::Dhcp::~Dhcp()
@@ -2945,6 +2977,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Ip::Dhcp::~Dhcp()
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::Ip::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return (snooping !=  nullptr && snooping->has_data());
 }
 
@@ -3021,12 +3054,12 @@ bool Native::Template::MSPVCINTERFACETEMPLATE::Ip::Dhcp::has_leaf_or_child_of_na
 Native::Template::MSPVCINTERFACETEMPLATE::Ip::Dhcp::Snooping::Snooping()
     :
     trust{YType::empty, "trust"}
-    	,
+        ,
     limit(std::make_shared<Native::Template::MSPVCINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit>())
 {
     limit->parent = this;
 
-    yang_name = "snooping"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snooping"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::Ip::Dhcp::Snooping::~Snooping()
@@ -3035,6 +3068,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Ip::Dhcp::Snooping::~Snooping()
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::Ip::Dhcp::Snooping::has_data() const
 {
+    if (is_presence_container) return true;
     return trust.is_set
 	|| (limit !=  nullptr && limit->has_data());
 }
@@ -3126,7 +3160,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit::Limit()
     rate{YType::uint16, "rate"}
 {
 
-    yang_name = "limit"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "limit"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::MSPVCINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit::~Limit()
@@ -3135,6 +3169,7 @@ Native::Template::MSPVCINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit::~Limit()
 
 bool Native::Template::MSPVCINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit::has_data() const
 {
+    if (is_presence_container) return true;
     return rate.is_set;
 }
 
@@ -3208,19 +3243,19 @@ bool Native::Template::MSPVCINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit::has_le
 Native::Template::PRINTERINTERFACETEMPLATE::PRINTERINTERFACETEMPLATE()
     :
     load_interval{YType::uint16, "load-interval"}
-    	,
+        ,
     service_policy(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::ServicePolicy>())
-	,switchport(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::Switchport>())
-	,spanning_tree(nullptr) // presence node
-	,storm_control(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::StormControl>())
-	,ip(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::Ip>())
+    , switchport(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::Switchport>())
+    , spanning_tree(nullptr) // presence node
+    , storm_control(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::StormControl>())
+    , ip(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::Ip>())
 {
     service_policy->parent = this;
     switchport->parent = this;
     storm_control->parent = this;
     ip->parent = this;
 
-    yang_name = "PRINTER_INTERFACE_TEMPLATE"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "PRINTER_INTERFACE_TEMPLATE"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::~PRINTERINTERFACETEMPLATE()
@@ -3229,6 +3264,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::~PRINTERINTERFACETEMPLATE()
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::has_data() const
 {
+    if (is_presence_container) return true;
     return load_interval.is_set
 	|| (service_policy !=  nullptr && service_policy->has_data())
 	|| (switchport !=  nullptr && switchport->has_data())
@@ -3382,12 +3418,12 @@ bool Native::Template::PRINTERINTERFACETEMPLATE::has_leaf_or_child_of_name(const
 Native::Template::PRINTERINTERFACETEMPLATE::ServicePolicy::ServicePolicy()
     :
     input(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::ServicePolicy::Input>())
-	,output(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::ServicePolicy::Output>())
+    , output(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::ServicePolicy::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "service-policy"; yang_parent_name = "PRINTER_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "service-policy"; yang_parent_name = "PRINTER_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::ServicePolicy::~ServicePolicy()
@@ -3396,6 +3432,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::ServicePolicy::~ServicePolicy()
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::ServicePolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -3490,7 +3527,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::ServicePolicy::Input::Input()
     policy_map_name{YType::str, "policy-map-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::ServicePolicy::Input::~Input()
@@ -3499,6 +3536,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::ServicePolicy::Input::~Input()
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::ServicePolicy::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return policy_map_name.is_set;
 }
 
@@ -3574,7 +3612,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::ServicePolicy::Output::Output()
     policy_map_name{YType::str, "policy-map-name"}
 {
 
-    yang_name = "output"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::ServicePolicy::Output::~Output()
@@ -3583,6 +3621,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::ServicePolicy::Output::~Output()
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::ServicePolicy::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return policy_map_name.is_set;
 }
 
@@ -3656,19 +3695,19 @@ bool Native::Template::PRINTERINTERFACETEMPLATE::ServicePolicy::Output::has_leaf
 Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Switchport()
     :
     nonegotiate{YType::empty, "nonegotiate"}
-    	,
+        ,
     mode(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Mode>())
-	,block(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Block>())
-	,port_security(nullptr) // presence node
-	,access(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Access>())
-	,voice(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Voice>())
+    , block(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Block>())
+    , port_security(nullptr) // presence node
+    , access(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Access>())
+    , voice(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Voice>())
 {
     mode->parent = this;
     block->parent = this;
     access->parent = this;
     voice->parent = this;
 
-    yang_name = "switchport"; yang_parent_name = "PRINTER_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "switchport"; yang_parent_name = "PRINTER_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::Switchport::~Switchport()
@@ -3677,6 +3716,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Switchport::~Switchport()
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::Switchport::has_data() const
 {
+    if (is_presence_container) return true;
     return nonegotiate.is_set
 	|| (mode !=  nullptr && mode->has_data())
 	|| (block !=  nullptr && block->has_data())
@@ -3833,7 +3873,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Mode::Mode()
     access{YType::empty, "access"}
 {
 
-    yang_name = "mode"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mode"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Mode::~Mode()
@@ -3842,6 +3882,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Mode::~Mode()
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return trunk.is_set
 	|| access.is_set;
 }
@@ -3930,7 +3971,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Block::Block()
     unicast{YType::empty, "unicast"}
 {
 
-    yang_name = "block"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "block"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Block::~Block()
@@ -3939,6 +3980,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Block::~Block()
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Block::has_data() const
 {
+    if (is_presence_container) return true;
     return unicast.is_set;
 }
 
@@ -4012,14 +4054,14 @@ bool Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Block::has_leaf_or_
 Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::PortSecurity()
     :
     aging(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Aging>())
-	,maximum(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum>())
-	,violation(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Violation>())
+    , maximum(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum>())
+    , violation(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Violation>())
 {
     aging->parent = this;
     maximum->parent = this;
     violation->parent = this;
 
-    yang_name = "port-security"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "port-security"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::~PortSecurity()
@@ -4028,6 +4070,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::~PortSecur
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::has_data() const
 {
+    if (is_presence_container) return true;
     return (aging !=  nullptr && aging->has_data())
 	|| (maximum !=  nullptr && maximum->has_data())
 	|| (violation !=  nullptr && violation->has_data());
@@ -4137,11 +4180,11 @@ Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Agi
     :
     static_{YType::empty, "static"},
     time{YType::uint16, "time"}
-    	,
+        ,
     type(nullptr) // presence node
 {
 
-    yang_name = "aging"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aging"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Aging::~Aging()
@@ -4150,6 +4193,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Aging::~Ag
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Aging::has_data() const
 {
+    if (is_presence_container) return true;
     return static_.is_set
 	|| time.is_set
 	|| (type !=  nullptr && type->has_data());
@@ -4254,7 +4298,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Typ
     inactivity{YType::empty, "inactivity"}
 {
 
-    yang_name = "type"; yang_parent_name = "aging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "type"; yang_parent_name = "aging"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type::~Type()
@@ -4263,6 +4307,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Typ
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type::has_data() const
 {
+    if (is_presence_container) return true;
     return inactivity.is_set;
 }
 
@@ -4334,9 +4379,11 @@ bool Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Aging
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Maximum()
+    :
+    range(this, {"range"})
 {
 
-    yang_name = "maximum"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "maximum"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::~Maximum()
@@ -4345,7 +4392,8 @@ Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::~
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_data())
             return true;
@@ -4355,7 +4403,7 @@ bool Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maxim
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_operation())
             return true;
@@ -4392,7 +4440,7 @@ std::shared_ptr<Entity> Native::Template::PRINTERINTERFACETEMPLATE::Switchport::
     {
         auto c = std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range>();
         c->parent = this;
-        range.push_back(c);
+        range.append(c);
         return c;
     }
 
@@ -4404,7 +4452,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template::PRINTERINTERFAC
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : range)
+    for (auto c : range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4433,11 +4481,11 @@ bool Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maxim
 Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Range()
     :
     range{YType::uint16, "range"}
-    	,
+        ,
     vlan(nullptr) // presence node
 {
 
-    yang_name = "range"; yang_parent_name = "maximum"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "range"; yang_parent_name = "maximum"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::~Range()
@@ -4446,6 +4494,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::R
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return range.is_set
 	|| (vlan !=  nullptr && vlan->has_data());
 }
@@ -4467,7 +4516,8 @@ std::string Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity
 std::string Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "range" <<"[range='" <<range <<"']";
+    path_buffer << "range";
+    ADD_KEY_TOKEN(range, "range");
     return path_buffer.str();
 }
 
@@ -4537,7 +4587,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::R
     access{YType::empty, "access"}
 {
 
-    yang_name = "vlan"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Vlan::~Vlan()
@@ -4546,6 +4596,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::R
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return access.is_set;
 }
 
@@ -4616,7 +4667,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Violation:
     shutdown{YType::empty, "shutdown"}
 {
 
-    yang_name = "violation"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "violation"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Violation::~Violation()
@@ -4625,6 +4676,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Violation:
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::Switchport::PortSecurity::Violation::has_data() const
 {
+    if (is_presence_container) return true;
     return protect.is_set
 	|| restrict.is_set
 	|| shutdown.is_set;
@@ -4726,7 +4778,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Access::Access()
     vlan{YType::uint16, "vlan"}
 {
 
-    yang_name = "access"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "access"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Access::~Access()
@@ -4735,6 +4787,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Access::~Access()
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Access::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set;
 }
 
@@ -4810,7 +4863,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Voice::Voice()
     vlan{YType::uint16, "vlan"}
 {
 
-    yang_name = "voice"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "voice"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Voice::~Voice()
@@ -4819,6 +4872,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Voice::~Voice()
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Voice::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set;
 }
 
@@ -4892,13 +4946,13 @@ bool Native::Template::PRINTERINTERFACETEMPLATE::Switchport::Voice::has_leaf_or_
 Native::Template::PRINTERINTERFACETEMPLATE::SpanningTree::SpanningTree()
     :
     service_policy{YType::empty, "service-policy"}
-    	,
+        ,
     bpduguard(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::SpanningTree::Bpduguard>())
-	,portfast(nullptr) // presence node
+    , portfast(nullptr) // presence node
 {
     bpduguard->parent = this;
 
-    yang_name = "spanning-tree"; yang_parent_name = "PRINTER_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "spanning-tree"; yang_parent_name = "PRINTER_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::SpanningTree::~SpanningTree()
@@ -4907,6 +4961,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::SpanningTree::~SpanningTree()
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::SpanningTree::has_data() const
 {
+    if (is_presence_container) return true;
     return service_policy.is_set
 	|| (bpduguard !=  nullptr && bpduguard->has_data())
 	|| (portfast !=  nullptr && portfast->has_data());
@@ -5014,7 +5069,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::SpanningTree::Bpduguard::Bpduguard()
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "bpduguard"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bpduguard"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::SpanningTree::Bpduguard::~Bpduguard()
@@ -5023,6 +5078,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::SpanningTree::Bpduguard::~Bpduguard(
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::SpanningTree::Bpduguard::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set;
 }
 
@@ -5100,7 +5156,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::SpanningTree::Portfast::Portfast()
     network{YType::empty, "network"}
 {
 
-    yang_name = "portfast"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "portfast"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::SpanningTree::Portfast::~Portfast()
@@ -5109,6 +5165,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::SpanningTree::Portfast::~Portfast()
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::SpanningTree::Portfast::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set
 	|| edge.is_set
 	|| network.is_set;
@@ -5208,14 +5265,14 @@ bool Native::Template::PRINTERINTERFACETEMPLATE::SpanningTree::Portfast::has_lea
 Native::Template::PRINTERINTERFACETEMPLATE::StormControl::StormControl()
     :
     broadcast(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast>())
-	,multicast(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast>())
-	,action(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Action>())
+    , multicast(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast>())
+    , action(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Action>())
 {
     broadcast->parent = this;
     multicast->parent = this;
     action->parent = this;
 
-    yang_name = "storm-control"; yang_parent_name = "PRINTER_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "storm-control"; yang_parent_name = "PRINTER_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::StormControl::~StormControl()
@@ -5224,6 +5281,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::StormControl::~StormControl()
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::StormControl::has_data() const
 {
+    if (is_presence_container) return true;
     return (broadcast !=  nullptr && broadcast->has_data())
 	|| (multicast !=  nullptr && multicast->has_data())
 	|| (action !=  nullptr && action->has_data());
@@ -5335,7 +5393,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast::Broadcast()
 {
     level->parent = this;
 
-    yang_name = "broadcast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "broadcast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast::~Broadcast()
@@ -5344,6 +5402,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast::~Broadcast(
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -5420,14 +5479,14 @@ bool Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast::has_le
 Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Level()
     :
     threshold{YType::str, "threshold"}
-    	,
+        ,
     pps(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps>())
-	,bps(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps>())
+    , bps(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps>())
 {
     pps->parent = this;
     bps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "level"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast::Level::~Level()
@@ -5436,6 +5495,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast::Level::~Lev
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set
 	|| (pps !=  nullptr && pps->has_data())
 	|| (bps !=  nullptr && bps->has_data());
@@ -5543,7 +5603,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps:
     threshold{YType::str, "threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps::~Pps()
@@ -5552,6 +5612,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps:
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set;
 }
 
@@ -5628,7 +5689,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps:
     b_unit{YType::str, "b-unit"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps::~Bps()
@@ -5637,6 +5698,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps:
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set
 	|| b_unit.is_set;
 }
@@ -5726,7 +5788,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast::Multicast()
 {
     level->parent = this;
 
-    yang_name = "multicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "multicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast::~Multicast()
@@ -5735,6 +5797,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast::~Multicast(
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -5811,14 +5874,14 @@ bool Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast::has_le
 Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast::Level::Level()
     :
     threshold{YType::str, "threshold"}
-    	,
+        ,
     pps(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast::Level::Pps>())
-	,bps(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast::Level::Bps>())
+    , bps(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast::Level::Bps>())
 {
     pps->parent = this;
     bps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "level"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast::Level::~Level()
@@ -5827,6 +5890,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast::Level::~Lev
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set
 	|| (pps !=  nullptr && pps->has_data())
 	|| (bps !=  nullptr && bps->has_data());
@@ -5934,7 +5998,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast::Level::Pps:
     threshold{YType::str, "threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast::Level::Pps::~Pps()
@@ -5943,6 +6007,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast::Level::Pps:
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set;
 }
 
@@ -6019,7 +6084,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast::Level::Bps:
     b_unit{YType::str, "b-unit"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast::Level::Bps::~Bps()
@@ -6028,6 +6093,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast::Level::Bps:
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Multicast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set
 	|| b_unit.is_set;
 }
@@ -6117,7 +6183,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Action::Action()
     trap{YType::empty, "trap"}
 {
 
-    yang_name = "action"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "action"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Action::~Action()
@@ -6126,6 +6192,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Action::~Action()
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::StormControl::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return shutdown.is_set
 	|| trap.is_set;
 }
@@ -6215,7 +6282,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Ip::Ip()
 {
     dhcp->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "PRINTER_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip"; yang_parent_name = "PRINTER_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::Ip::~Ip()
@@ -6224,6 +6291,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Ip::~Ip()
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (dhcp !=  nullptr && dhcp->has_data());
 }
 
@@ -6303,7 +6371,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Ip::Dhcp::Dhcp()
 {
     snooping->parent = this;
 
-    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::Ip::Dhcp::~Dhcp()
@@ -6312,6 +6380,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Ip::Dhcp::~Dhcp()
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::Ip::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return (snooping !=  nullptr && snooping->has_data());
 }
 
@@ -6388,12 +6457,12 @@ bool Native::Template::PRINTERINTERFACETEMPLATE::Ip::Dhcp::has_leaf_or_child_of_
 Native::Template::PRINTERINTERFACETEMPLATE::Ip::Dhcp::Snooping::Snooping()
     :
     trust{YType::empty, "trust"}
-    	,
+        ,
     limit(std::make_shared<Native::Template::PRINTERINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit>())
 {
     limit->parent = this;
 
-    yang_name = "snooping"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snooping"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::Ip::Dhcp::Snooping::~Snooping()
@@ -6402,6 +6471,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Ip::Dhcp::Snooping::~Snooping()
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::Ip::Dhcp::Snooping::has_data() const
 {
+    if (is_presence_container) return true;
     return trust.is_set
 	|| (limit !=  nullptr && limit->has_data());
 }
@@ -6493,7 +6563,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit::Limit()
     rate{YType::uint16, "rate"}
 {
 
-    yang_name = "limit"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "limit"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::PRINTERINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit::~Limit()
@@ -6502,6 +6572,7 @@ Native::Template::PRINTERINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit::~Limit()
 
 bool Native::Template::PRINTERINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit::has_data() const
 {
+    if (is_presence_container) return true;
     return rate.is_set;
 }
 
@@ -6575,19 +6646,19 @@ bool Native::Template::PRINTERINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit::has_
 Native::Template::ROUTERINTERFACETEMPLATE::ROUTERINTERFACETEMPLATE()
     :
     load_interval{YType::uint16, "load-interval"}
-    	,
+        ,
     service_policy(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::ServicePolicy>())
-	,switchport(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::Switchport>())
-	,spanning_tree(nullptr) // presence node
-	,storm_control(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::StormControl>())
-	,ip(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::Ip>())
+    , switchport(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::Switchport>())
+    , spanning_tree(nullptr) // presence node
+    , storm_control(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::StormControl>())
+    , ip(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::Ip>())
 {
     service_policy->parent = this;
     switchport->parent = this;
     storm_control->parent = this;
     ip->parent = this;
 
-    yang_name = "ROUTER_INTERFACE_TEMPLATE"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ROUTER_INTERFACE_TEMPLATE"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::~ROUTERINTERFACETEMPLATE()
@@ -6596,6 +6667,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::~ROUTERINTERFACETEMPLATE()
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::has_data() const
 {
+    if (is_presence_container) return true;
     return load_interval.is_set
 	|| (service_policy !=  nullptr && service_policy->has_data())
 	|| (switchport !=  nullptr && switchport->has_data())
@@ -6749,12 +6821,12 @@ bool Native::Template::ROUTERINTERFACETEMPLATE::has_leaf_or_child_of_name(const 
 Native::Template::ROUTERINTERFACETEMPLATE::ServicePolicy::ServicePolicy()
     :
     input(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::ServicePolicy::Input>())
-	,output(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::ServicePolicy::Output>())
+    , output(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::ServicePolicy::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "service-policy"; yang_parent_name = "ROUTER_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "service-policy"; yang_parent_name = "ROUTER_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::ServicePolicy::~ServicePolicy()
@@ -6763,6 +6835,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::ServicePolicy::~ServicePolicy()
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::ServicePolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -6857,7 +6930,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::ServicePolicy::Input::Input()
     policy_map_name{YType::str, "policy-map-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::ServicePolicy::Input::~Input()
@@ -6866,6 +6939,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::ServicePolicy::Input::~Input()
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::ServicePolicy::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return policy_map_name.is_set;
 }
 
@@ -6941,7 +7015,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::ServicePolicy::Output::Output()
     policy_map_name{YType::str, "policy-map-name"}
 {
 
-    yang_name = "output"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::ServicePolicy::Output::~Output()
@@ -6950,6 +7024,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::ServicePolicy::Output::~Output()
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::ServicePolicy::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return policy_map_name.is_set;
 }
 
@@ -7023,19 +7098,19 @@ bool Native::Template::ROUTERINTERFACETEMPLATE::ServicePolicy::Output::has_leaf_
 Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Switchport()
     :
     nonegotiate{YType::empty, "nonegotiate"}
-    	,
+        ,
     mode(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Mode>())
-	,block(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Block>())
-	,port_security(nullptr) // presence node
-	,access(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Access>())
-	,voice(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Voice>())
+    , block(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Block>())
+    , port_security(nullptr) // presence node
+    , access(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Access>())
+    , voice(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Voice>())
 {
     mode->parent = this;
     block->parent = this;
     access->parent = this;
     voice->parent = this;
 
-    yang_name = "switchport"; yang_parent_name = "ROUTER_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "switchport"; yang_parent_name = "ROUTER_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::Switchport::~Switchport()
@@ -7044,6 +7119,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Switchport::~Switchport()
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::Switchport::has_data() const
 {
+    if (is_presence_container) return true;
     return nonegotiate.is_set
 	|| (mode !=  nullptr && mode->has_data())
 	|| (block !=  nullptr && block->has_data())
@@ -7200,7 +7276,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Mode::Mode()
     access{YType::empty, "access"}
 {
 
-    yang_name = "mode"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mode"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Mode::~Mode()
@@ -7209,6 +7285,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Mode::~Mode()
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return trunk.is_set
 	|| access.is_set;
 }
@@ -7297,7 +7374,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Block::Block()
     unicast{YType::empty, "unicast"}
 {
 
-    yang_name = "block"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "block"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Block::~Block()
@@ -7306,6 +7383,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Block::~Block()
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Block::has_data() const
 {
+    if (is_presence_container) return true;
     return unicast.is_set;
 }
 
@@ -7379,14 +7457,14 @@ bool Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Block::has_leaf_or_c
 Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::PortSecurity()
     :
     aging(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Aging>())
-	,maximum(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum>())
-	,violation(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Violation>())
+    , maximum(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum>())
+    , violation(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Violation>())
 {
     aging->parent = this;
     maximum->parent = this;
     violation->parent = this;
 
-    yang_name = "port-security"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "port-security"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::~PortSecurity()
@@ -7395,6 +7473,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::~PortSecuri
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::has_data() const
 {
+    if (is_presence_container) return true;
     return (aging !=  nullptr && aging->has_data())
 	|| (maximum !=  nullptr && maximum->has_data())
 	|| (violation !=  nullptr && violation->has_data());
@@ -7504,11 +7583,11 @@ Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Agin
     :
     static_{YType::empty, "static"},
     time{YType::uint16, "time"}
-    	,
+        ,
     type(nullptr) // presence node
 {
 
-    yang_name = "aging"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aging"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Aging::~Aging()
@@ -7517,6 +7596,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Aging::~Agi
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Aging::has_data() const
 {
+    if (is_presence_container) return true;
     return static_.is_set
 	|| time.is_set
 	|| (type !=  nullptr && type->has_data());
@@ -7621,7 +7701,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type
     inactivity{YType::empty, "inactivity"}
 {
 
-    yang_name = "type"; yang_parent_name = "aging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "type"; yang_parent_name = "aging"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type::~Type()
@@ -7630,6 +7710,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type::has_data() const
 {
+    if (is_presence_container) return true;
     return inactivity.is_set;
 }
 
@@ -7701,9 +7782,11 @@ bool Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Aging:
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Maximum()
+    :
+    range(this, {"range"})
 {
 
-    yang_name = "maximum"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "maximum"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::~Maximum()
@@ -7712,7 +7795,8 @@ Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::~M
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_data())
             return true;
@@ -7722,7 +7806,7 @@ bool Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximu
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_operation())
             return true;
@@ -7759,7 +7843,7 @@ std::shared_ptr<Entity> Native::Template::ROUTERINTERFACETEMPLATE::Switchport::P
     {
         auto c = std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range>();
         c->parent = this;
-        range.push_back(c);
+        range.append(c);
         return c;
     }
 
@@ -7771,7 +7855,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template::ROUTERINTERFACE
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : range)
+    for (auto c : range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7800,11 +7884,11 @@ bool Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximu
 Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Range()
     :
     range{YType::uint16, "range"}
-    	,
+        ,
     vlan(nullptr) // presence node
 {
 
-    yang_name = "range"; yang_parent_name = "maximum"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "range"; yang_parent_name = "maximum"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::~Range()
@@ -7813,6 +7897,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Ra
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return range.is_set
 	|| (vlan !=  nullptr && vlan->has_data());
 }
@@ -7834,7 +7919,8 @@ std::string Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity:
 std::string Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "range" <<"[range='" <<range <<"']";
+    path_buffer << "range";
+    ADD_KEY_TOKEN(range, "range");
     return path_buffer.str();
 }
 
@@ -7904,7 +7990,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Ra
     access{YType::empty, "access"}
 {
 
-    yang_name = "vlan"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Vlan::~Vlan()
@@ -7913,6 +7999,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Ra
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return access.is_set;
 }
 
@@ -7983,7 +8070,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Violation::
     shutdown{YType::empty, "shutdown"}
 {
 
-    yang_name = "violation"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "violation"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Violation::~Violation()
@@ -7992,6 +8079,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Violation::
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::Switchport::PortSecurity::Violation::has_data() const
 {
+    if (is_presence_container) return true;
     return protect.is_set
 	|| restrict.is_set
 	|| shutdown.is_set;
@@ -8093,7 +8181,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Access::Access()
     vlan{YType::uint16, "vlan"}
 {
 
-    yang_name = "access"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "access"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Access::~Access()
@@ -8102,6 +8190,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Access::~Access()
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Access::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set;
 }
 
@@ -8177,7 +8266,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Voice::Voice()
     vlan{YType::uint16, "vlan"}
 {
 
-    yang_name = "voice"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "voice"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Voice::~Voice()
@@ -8186,6 +8275,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Voice::~Voice()
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Voice::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set;
 }
 
@@ -8259,13 +8349,13 @@ bool Native::Template::ROUTERINTERFACETEMPLATE::Switchport::Voice::has_leaf_or_c
 Native::Template::ROUTERINTERFACETEMPLATE::SpanningTree::SpanningTree()
     :
     service_policy{YType::empty, "service-policy"}
-    	,
+        ,
     bpduguard(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::SpanningTree::Bpduguard>())
-	,portfast(nullptr) // presence node
+    , portfast(nullptr) // presence node
 {
     bpduguard->parent = this;
 
-    yang_name = "spanning-tree"; yang_parent_name = "ROUTER_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "spanning-tree"; yang_parent_name = "ROUTER_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::SpanningTree::~SpanningTree()
@@ -8274,6 +8364,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::SpanningTree::~SpanningTree()
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::SpanningTree::has_data() const
 {
+    if (is_presence_container) return true;
     return service_policy.is_set
 	|| (bpduguard !=  nullptr && bpduguard->has_data())
 	|| (portfast !=  nullptr && portfast->has_data());
@@ -8381,7 +8472,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::SpanningTree::Bpduguard::Bpduguard()
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "bpduguard"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bpduguard"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::SpanningTree::Bpduguard::~Bpduguard()
@@ -8390,6 +8481,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::SpanningTree::Bpduguard::~Bpduguard()
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::SpanningTree::Bpduguard::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set;
 }
 
@@ -8467,7 +8559,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::SpanningTree::Portfast::Portfast()
     network{YType::empty, "network"}
 {
 
-    yang_name = "portfast"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "portfast"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::SpanningTree::Portfast::~Portfast()
@@ -8476,6 +8568,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::SpanningTree::Portfast::~Portfast()
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::SpanningTree::Portfast::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set
 	|| edge.is_set
 	|| network.is_set;
@@ -8575,14 +8668,14 @@ bool Native::Template::ROUTERINTERFACETEMPLATE::SpanningTree::Portfast::has_leaf
 Native::Template::ROUTERINTERFACETEMPLATE::StormControl::StormControl()
     :
     broadcast(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast>())
-	,multicast(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast>())
-	,action(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Action>())
+    , multicast(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast>())
+    , action(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Action>())
 {
     broadcast->parent = this;
     multicast->parent = this;
     action->parent = this;
 
-    yang_name = "storm-control"; yang_parent_name = "ROUTER_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "storm-control"; yang_parent_name = "ROUTER_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::StormControl::~StormControl()
@@ -8591,6 +8684,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::StormControl::~StormControl()
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::StormControl::has_data() const
 {
+    if (is_presence_container) return true;
     return (broadcast !=  nullptr && broadcast->has_data())
 	|| (multicast !=  nullptr && multicast->has_data())
 	|| (action !=  nullptr && action->has_data());
@@ -8702,7 +8796,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast::Broadcast()
 {
     level->parent = this;
 
-    yang_name = "broadcast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "broadcast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast::~Broadcast()
@@ -8711,6 +8805,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast::~Broadcast()
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -8787,14 +8882,14 @@ bool Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast::has_lea
 Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Level()
     :
     threshold{YType::str, "threshold"}
-    	,
+        ,
     pps(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps>())
-	,bps(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps>())
+    , bps(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps>())
 {
     pps->parent = this;
     bps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "level"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast::Level::~Level()
@@ -8803,6 +8898,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast::Level::~Leve
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set
 	|| (pps !=  nullptr && pps->has_data())
 	|| (bps !=  nullptr && bps->has_data());
@@ -8910,7 +9006,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps::
     threshold{YType::str, "threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps::~Pps()
@@ -8919,6 +9015,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps::
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set;
 }
 
@@ -8995,7 +9092,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps::
     b_unit{YType::str, "b-unit"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps::~Bps()
@@ -9004,6 +9101,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps::
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set
 	|| b_unit.is_set;
 }
@@ -9093,7 +9191,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast::Multicast()
 {
     level->parent = this;
 
-    yang_name = "multicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "multicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast::~Multicast()
@@ -9102,6 +9200,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast::~Multicast()
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -9178,14 +9277,14 @@ bool Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast::has_lea
 Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast::Level::Level()
     :
     threshold{YType::str, "threshold"}
-    	,
+        ,
     pps(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast::Level::Pps>())
-	,bps(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast::Level::Bps>())
+    , bps(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast::Level::Bps>())
 {
     pps->parent = this;
     bps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "level"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast::Level::~Level()
@@ -9194,6 +9293,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast::Level::~Leve
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set
 	|| (pps !=  nullptr && pps->has_data())
 	|| (bps !=  nullptr && bps->has_data());
@@ -9301,7 +9401,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast::Level::Pps::
     threshold{YType::str, "threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast::Level::Pps::~Pps()
@@ -9310,6 +9410,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast::Level::Pps::
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set;
 }
 
@@ -9386,7 +9487,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast::Level::Bps::
     b_unit{YType::str, "b-unit"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast::Level::Bps::~Bps()
@@ -9395,6 +9496,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast::Level::Bps::
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Multicast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set
 	|| b_unit.is_set;
 }
@@ -9484,7 +9586,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Action::Action()
     trap{YType::empty, "trap"}
 {
 
-    yang_name = "action"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "action"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Action::~Action()
@@ -9493,6 +9595,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Action::~Action()
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::StormControl::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return shutdown.is_set
 	|| trap.is_set;
 }
@@ -9582,7 +9685,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Ip::Ip()
 {
     dhcp->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "ROUTER_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip"; yang_parent_name = "ROUTER_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::Ip::~Ip()
@@ -9591,6 +9694,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Ip::~Ip()
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (dhcp !=  nullptr && dhcp->has_data());
 }
 
@@ -9670,7 +9774,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Ip::Dhcp::Dhcp()
 {
     snooping->parent = this;
 
-    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::Ip::Dhcp::~Dhcp()
@@ -9679,6 +9783,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Ip::Dhcp::~Dhcp()
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::Ip::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return (snooping !=  nullptr && snooping->has_data());
 }
 
@@ -9755,12 +9860,12 @@ bool Native::Template::ROUTERINTERFACETEMPLATE::Ip::Dhcp::has_leaf_or_child_of_n
 Native::Template::ROUTERINTERFACETEMPLATE::Ip::Dhcp::Snooping::Snooping()
     :
     trust{YType::empty, "trust"}
-    	,
+        ,
     limit(std::make_shared<Native::Template::ROUTERINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit>())
 {
     limit->parent = this;
 
-    yang_name = "snooping"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snooping"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::Ip::Dhcp::Snooping::~Snooping()
@@ -9769,6 +9874,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Ip::Dhcp::Snooping::~Snooping()
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::Ip::Dhcp::Snooping::has_data() const
 {
+    if (is_presence_container) return true;
     return trust.is_set
 	|| (limit !=  nullptr && limit->has_data());
 }
@@ -9860,7 +9966,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit::Limit()
     rate{YType::uint16, "rate"}
 {
 
-    yang_name = "limit"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "limit"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::ROUTERINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit::~Limit()
@@ -9869,6 +9975,7 @@ Native::Template::ROUTERINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit::~Limit()
 
 bool Native::Template::ROUTERINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit::has_data() const
 {
+    if (is_presence_container) return true;
     return rate.is_set;
 }
 
@@ -9942,19 +10049,19 @@ bool Native::Template::ROUTERINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit::has_l
 Native::Template::SWITCHINTERFACETEMPLATE::SWITCHINTERFACETEMPLATE()
     :
     load_interval{YType::uint16, "load-interval"}
-    	,
+        ,
     service_policy(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::ServicePolicy>())
-	,switchport(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::Switchport>())
-	,spanning_tree(nullptr) // presence node
-	,storm_control(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::StormControl>())
-	,ip(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::Ip>())
+    , switchport(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::Switchport>())
+    , spanning_tree(nullptr) // presence node
+    , storm_control(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::StormControl>())
+    , ip(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::Ip>())
 {
     service_policy->parent = this;
     switchport->parent = this;
     storm_control->parent = this;
     ip->parent = this;
 
-    yang_name = "SWITCH_INTERFACE_TEMPLATE"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "SWITCH_INTERFACE_TEMPLATE"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::~SWITCHINTERFACETEMPLATE()
@@ -9963,6 +10070,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::~SWITCHINTERFACETEMPLATE()
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::has_data() const
 {
+    if (is_presence_container) return true;
     return load_interval.is_set
 	|| (service_policy !=  nullptr && service_policy->has_data())
 	|| (switchport !=  nullptr && switchport->has_data())
@@ -10116,12 +10224,12 @@ bool Native::Template::SWITCHINTERFACETEMPLATE::has_leaf_or_child_of_name(const 
 Native::Template::SWITCHINTERFACETEMPLATE::ServicePolicy::ServicePolicy()
     :
     input(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::ServicePolicy::Input>())
-	,output(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::ServicePolicy::Output>())
+    , output(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::ServicePolicy::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "service-policy"; yang_parent_name = "SWITCH_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "service-policy"; yang_parent_name = "SWITCH_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::ServicePolicy::~ServicePolicy()
@@ -10130,6 +10238,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::ServicePolicy::~ServicePolicy()
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::ServicePolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -10224,7 +10333,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::ServicePolicy::Input::Input()
     policy_map_name{YType::str, "policy-map-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::ServicePolicy::Input::~Input()
@@ -10233,6 +10342,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::ServicePolicy::Input::~Input()
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::ServicePolicy::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return policy_map_name.is_set;
 }
 
@@ -10308,7 +10418,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::ServicePolicy::Output::Output()
     policy_map_name{YType::str, "policy-map-name"}
 {
 
-    yang_name = "output"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::ServicePolicy::Output::~Output()
@@ -10317,6 +10427,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::ServicePolicy::Output::~Output()
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::ServicePolicy::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return policy_map_name.is_set;
 }
 
@@ -10390,19 +10501,19 @@ bool Native::Template::SWITCHINTERFACETEMPLATE::ServicePolicy::Output::has_leaf_
 Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Switchport()
     :
     nonegotiate{YType::empty, "nonegotiate"}
-    	,
+        ,
     mode(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Mode>())
-	,block(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Block>())
-	,port_security(nullptr) // presence node
-	,access(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Access>())
-	,voice(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Voice>())
+    , block(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Block>())
+    , port_security(nullptr) // presence node
+    , access(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Access>())
+    , voice(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Voice>())
 {
     mode->parent = this;
     block->parent = this;
     access->parent = this;
     voice->parent = this;
 
-    yang_name = "switchport"; yang_parent_name = "SWITCH_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "switchport"; yang_parent_name = "SWITCH_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::Switchport::~Switchport()
@@ -10411,6 +10522,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Switchport::~Switchport()
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::Switchport::has_data() const
 {
+    if (is_presence_container) return true;
     return nonegotiate.is_set
 	|| (mode !=  nullptr && mode->has_data())
 	|| (block !=  nullptr && block->has_data())
@@ -10567,7 +10679,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Mode::Mode()
     access{YType::empty, "access"}
 {
 
-    yang_name = "mode"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mode"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Mode::~Mode()
@@ -10576,6 +10688,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Mode::~Mode()
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return trunk.is_set
 	|| access.is_set;
 }
@@ -10664,7 +10777,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Block::Block()
     unicast{YType::empty, "unicast"}
 {
 
-    yang_name = "block"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "block"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Block::~Block()
@@ -10673,6 +10786,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Block::~Block()
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Block::has_data() const
 {
+    if (is_presence_container) return true;
     return unicast.is_set;
 }
 
@@ -10746,14 +10860,14 @@ bool Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Block::has_leaf_or_c
 Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::PortSecurity()
     :
     aging(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Aging>())
-	,maximum(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximum>())
-	,violation(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Violation>())
+    , maximum(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximum>())
+    , violation(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Violation>())
 {
     aging->parent = this;
     maximum->parent = this;
     violation->parent = this;
 
-    yang_name = "port-security"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "port-security"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::~PortSecurity()
@@ -10762,6 +10876,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::~PortSecuri
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::has_data() const
 {
+    if (is_presence_container) return true;
     return (aging !=  nullptr && aging->has_data())
 	|| (maximum !=  nullptr && maximum->has_data())
 	|| (violation !=  nullptr && violation->has_data());
@@ -10871,11 +10986,11 @@ Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Agin
     :
     static_{YType::empty, "static"},
     time{YType::uint16, "time"}
-    	,
+        ,
     type(nullptr) // presence node
 {
 
-    yang_name = "aging"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aging"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Aging::~Aging()
@@ -10884,6 +10999,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Aging::~Agi
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Aging::has_data() const
 {
+    if (is_presence_container) return true;
     return static_.is_set
 	|| time.is_set
 	|| (type !=  nullptr && type->has_data());
@@ -10988,7 +11104,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type
     inactivity{YType::empty, "inactivity"}
 {
 
-    yang_name = "type"; yang_parent_name = "aging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "type"; yang_parent_name = "aging"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type::~Type()
@@ -10997,6 +11113,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type::has_data() const
 {
+    if (is_presence_container) return true;
     return inactivity.is_set;
 }
 
@@ -11068,9 +11185,11 @@ bool Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Aging:
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Maximum()
+    :
+    range(this, {"range"})
 {
 
-    yang_name = "maximum"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "maximum"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::~Maximum()
@@ -11079,7 +11198,8 @@ Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::~M
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_data())
             return true;
@@ -11089,7 +11209,7 @@ bool Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximu
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_operation())
             return true;
@@ -11126,7 +11246,7 @@ std::shared_ptr<Entity> Native::Template::SWITCHINTERFACETEMPLATE::Switchport::P
     {
         auto c = std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range>();
         c->parent = this;
-        range.push_back(c);
+        range.append(c);
         return c;
     }
 
@@ -11138,7 +11258,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template::SWITCHINTERFACE
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : range)
+    for (auto c : range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11167,11 +11287,11 @@ bool Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximu
 Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Range()
     :
     range{YType::uint16, "range"}
-    	,
+        ,
     vlan(nullptr) // presence node
 {
 
-    yang_name = "range"; yang_parent_name = "maximum"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "range"; yang_parent_name = "maximum"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::~Range()
@@ -11180,6 +11300,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Ra
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return range.is_set
 	|| (vlan !=  nullptr && vlan->has_data());
 }
@@ -11201,7 +11322,8 @@ std::string Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity:
 std::string Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "range" <<"[range='" <<range <<"']";
+    path_buffer << "range";
+    ADD_KEY_TOKEN(range, "range");
     return path_buffer.str();
 }
 
@@ -11271,7 +11393,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Ra
     access{YType::empty, "access"}
 {
 
-    yang_name = "vlan"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Vlan::~Vlan()
@@ -11280,6 +11402,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Ra
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return access.is_set;
 }
 
@@ -11350,7 +11473,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Violation::
     shutdown{YType::empty, "shutdown"}
 {
 
-    yang_name = "violation"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "violation"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Violation::~Violation()
@@ -11359,6 +11482,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Violation::
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::Switchport::PortSecurity::Violation::has_data() const
 {
+    if (is_presence_container) return true;
     return protect.is_set
 	|| restrict.is_set
 	|| shutdown.is_set;
@@ -11460,7 +11584,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Access::Access()
     vlan{YType::uint16, "vlan"}
 {
 
-    yang_name = "access"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "access"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Access::~Access()
@@ -11469,6 +11593,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Access::~Access()
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Access::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set;
 }
 
@@ -11544,7 +11669,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Voice::Voice()
     vlan{YType::uint16, "vlan"}
 {
 
-    yang_name = "voice"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "voice"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Voice::~Voice()
@@ -11553,6 +11678,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Voice::~Voice()
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Voice::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set;
 }
 
@@ -11626,13 +11752,13 @@ bool Native::Template::SWITCHINTERFACETEMPLATE::Switchport::Voice::has_leaf_or_c
 Native::Template::SWITCHINTERFACETEMPLATE::SpanningTree::SpanningTree()
     :
     service_policy{YType::empty, "service-policy"}
-    	,
+        ,
     bpduguard(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::SpanningTree::Bpduguard>())
-	,portfast(nullptr) // presence node
+    , portfast(nullptr) // presence node
 {
     bpduguard->parent = this;
 
-    yang_name = "spanning-tree"; yang_parent_name = "SWITCH_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "spanning-tree"; yang_parent_name = "SWITCH_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::SpanningTree::~SpanningTree()
@@ -11641,6 +11767,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::SpanningTree::~SpanningTree()
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::SpanningTree::has_data() const
 {
+    if (is_presence_container) return true;
     return service_policy.is_set
 	|| (bpduguard !=  nullptr && bpduguard->has_data())
 	|| (portfast !=  nullptr && portfast->has_data());
@@ -11748,7 +11875,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::SpanningTree::Bpduguard::Bpduguard()
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "bpduguard"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bpduguard"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::SpanningTree::Bpduguard::~Bpduguard()
@@ -11757,6 +11884,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::SpanningTree::Bpduguard::~Bpduguard()
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::SpanningTree::Bpduguard::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set;
 }
 
@@ -11834,7 +11962,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::SpanningTree::Portfast::Portfast()
     network{YType::empty, "network"}
 {
 
-    yang_name = "portfast"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "portfast"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::SpanningTree::Portfast::~Portfast()
@@ -11843,6 +11971,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::SpanningTree::Portfast::~Portfast()
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::SpanningTree::Portfast::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set
 	|| edge.is_set
 	|| network.is_set;
@@ -11942,14 +12071,14 @@ bool Native::Template::SWITCHINTERFACETEMPLATE::SpanningTree::Portfast::has_leaf
 Native::Template::SWITCHINTERFACETEMPLATE::StormControl::StormControl()
     :
     broadcast(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast>())
-	,multicast(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast>())
-	,action(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Action>())
+    , multicast(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast>())
+    , action(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Action>())
 {
     broadcast->parent = this;
     multicast->parent = this;
     action->parent = this;
 
-    yang_name = "storm-control"; yang_parent_name = "SWITCH_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "storm-control"; yang_parent_name = "SWITCH_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::StormControl::~StormControl()
@@ -11958,6 +12087,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::StormControl::~StormControl()
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::StormControl::has_data() const
 {
+    if (is_presence_container) return true;
     return (broadcast !=  nullptr && broadcast->has_data())
 	|| (multicast !=  nullptr && multicast->has_data())
 	|| (action !=  nullptr && action->has_data());
@@ -12069,7 +12199,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast::Broadcast()
 {
     level->parent = this;
 
-    yang_name = "broadcast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "broadcast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast::~Broadcast()
@@ -12078,6 +12208,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast::~Broadcast()
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -12154,14 +12285,14 @@ bool Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast::has_lea
 Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast::Level::Level()
     :
     threshold{YType::str, "threshold"}
-    	,
+        ,
     pps(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps>())
-	,bps(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps>())
+    , bps(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps>())
 {
     pps->parent = this;
     bps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "level"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast::Level::~Level()
@@ -12170,6 +12301,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast::Level::~Leve
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set
 	|| (pps !=  nullptr && pps->has_data())
 	|| (bps !=  nullptr && bps->has_data());
@@ -12277,7 +12409,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps::
     threshold{YType::str, "threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps::~Pps()
@@ -12286,6 +12418,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps::
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set;
 }
 
@@ -12362,7 +12495,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps::
     b_unit{YType::str, "b-unit"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps::~Bps()
@@ -12371,6 +12504,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps::
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Broadcast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set
 	|| b_unit.is_set;
 }
@@ -12460,7 +12594,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast::Multicast()
 {
     level->parent = this;
 
-    yang_name = "multicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "multicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast::~Multicast()
@@ -12469,6 +12603,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast::~Multicast()
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -12545,14 +12680,14 @@ bool Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast::has_lea
 Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast::Level::Level()
     :
     threshold{YType::str, "threshold"}
-    	,
+        ,
     pps(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast::Level::Pps>())
-	,bps(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast::Level::Bps>())
+    , bps(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast::Level::Bps>())
 {
     pps->parent = this;
     bps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "level"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast::Level::~Level()
@@ -12561,6 +12696,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast::Level::~Leve
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set
 	|| (pps !=  nullptr && pps->has_data())
 	|| (bps !=  nullptr && bps->has_data());
@@ -12668,7 +12804,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast::Level::Pps::
     threshold{YType::str, "threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast::Level::Pps::~Pps()
@@ -12677,6 +12813,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast::Level::Pps::
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set;
 }
 
@@ -12753,7 +12890,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast::Level::Bps::
     b_unit{YType::str, "b-unit"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast::Level::Bps::~Bps()
@@ -12762,6 +12899,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast::Level::Bps::
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Multicast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set
 	|| b_unit.is_set;
 }
@@ -12851,7 +12989,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Action::Action()
     trap{YType::empty, "trap"}
 {
 
-    yang_name = "action"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "action"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Action::~Action()
@@ -12860,6 +12998,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Action::~Action()
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::StormControl::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return shutdown.is_set
 	|| trap.is_set;
 }
@@ -12949,7 +13088,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Ip::Ip()
 {
     dhcp->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "SWITCH_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip"; yang_parent_name = "SWITCH_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::Ip::~Ip()
@@ -12958,6 +13097,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Ip::~Ip()
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (dhcp !=  nullptr && dhcp->has_data());
 }
 
@@ -13037,7 +13177,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Ip::Dhcp::Dhcp()
 {
     snooping->parent = this;
 
-    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::Ip::Dhcp::~Dhcp()
@@ -13046,6 +13186,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Ip::Dhcp::~Dhcp()
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::Ip::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return (snooping !=  nullptr && snooping->has_data());
 }
 
@@ -13122,12 +13263,12 @@ bool Native::Template::SWITCHINTERFACETEMPLATE::Ip::Dhcp::has_leaf_or_child_of_n
 Native::Template::SWITCHINTERFACETEMPLATE::Ip::Dhcp::Snooping::Snooping()
     :
     trust{YType::empty, "trust"}
-    	,
+        ,
     limit(std::make_shared<Native::Template::SWITCHINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit>())
 {
     limit->parent = this;
 
-    yang_name = "snooping"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snooping"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::Ip::Dhcp::Snooping::~Snooping()
@@ -13136,6 +13277,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Ip::Dhcp::Snooping::~Snooping()
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::Ip::Dhcp::Snooping::has_data() const
 {
+    if (is_presence_container) return true;
     return trust.is_set
 	|| (limit !=  nullptr && limit->has_data());
 }
@@ -13227,7 +13369,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit::Limit()
     rate{YType::uint16, "rate"}
 {
 
-    yang_name = "limit"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "limit"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::SWITCHINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit::~Limit()
@@ -13236,6 +13378,7 @@ Native::Template::SWITCHINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit::~Limit()
 
 bool Native::Template::SWITCHINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit::has_data() const
 {
+    if (is_presence_container) return true;
     return rate.is_set;
 }
 
@@ -13309,19 +13452,19 @@ bool Native::Template::SWITCHINTERFACETEMPLATE::Ip::Dhcp::Snooping::Limit::has_l
 Native::Template::TPINTERFACETEMPLATE::TPINTERFACETEMPLATE()
     :
     load_interval{YType::uint16, "load-interval"}
-    	,
+        ,
     service_policy(std::make_shared<Native::Template::TPINTERFACETEMPLATE::ServicePolicy>())
-	,switchport(std::make_shared<Native::Template::TPINTERFACETEMPLATE::Switchport>())
-	,spanning_tree(nullptr) // presence node
-	,storm_control(std::make_shared<Native::Template::TPINTERFACETEMPLATE::StormControl>())
-	,ip(std::make_shared<Native::Template::TPINTERFACETEMPLATE::Ip>())
+    , switchport(std::make_shared<Native::Template::TPINTERFACETEMPLATE::Switchport>())
+    , spanning_tree(nullptr) // presence node
+    , storm_control(std::make_shared<Native::Template::TPINTERFACETEMPLATE::StormControl>())
+    , ip(std::make_shared<Native::Template::TPINTERFACETEMPLATE::Ip>())
 {
     service_policy->parent = this;
     switchport->parent = this;
     storm_control->parent = this;
     ip->parent = this;
 
-    yang_name = "TP_INTERFACE_TEMPLATE"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "TP_INTERFACE_TEMPLATE"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::TPINTERFACETEMPLATE::~TPINTERFACETEMPLATE()
@@ -13330,6 +13473,7 @@ Native::Template::TPINTERFACETEMPLATE::~TPINTERFACETEMPLATE()
 
 bool Native::Template::TPINTERFACETEMPLATE::has_data() const
 {
+    if (is_presence_container) return true;
     return load_interval.is_set
 	|| (service_policy !=  nullptr && service_policy->has_data())
 	|| (switchport !=  nullptr && switchport->has_data())
@@ -13483,12 +13627,12 @@ bool Native::Template::TPINTERFACETEMPLATE::has_leaf_or_child_of_name(const std:
 Native::Template::TPINTERFACETEMPLATE::ServicePolicy::ServicePolicy()
     :
     input(std::make_shared<Native::Template::TPINTERFACETEMPLATE::ServicePolicy::Input>())
-	,output(std::make_shared<Native::Template::TPINTERFACETEMPLATE::ServicePolicy::Output>())
+    , output(std::make_shared<Native::Template::TPINTERFACETEMPLATE::ServicePolicy::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "service-policy"; yang_parent_name = "TP_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "service-policy"; yang_parent_name = "TP_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::TPINTERFACETEMPLATE::ServicePolicy::~ServicePolicy()
@@ -13497,6 +13641,7 @@ Native::Template::TPINTERFACETEMPLATE::ServicePolicy::~ServicePolicy()
 
 bool Native::Template::TPINTERFACETEMPLATE::ServicePolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -13591,7 +13736,7 @@ Native::Template::TPINTERFACETEMPLATE::ServicePolicy::Input::Input()
     policy_map_name{YType::str, "policy-map-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::TPINTERFACETEMPLATE::ServicePolicy::Input::~Input()
@@ -13600,6 +13745,7 @@ Native::Template::TPINTERFACETEMPLATE::ServicePolicy::Input::~Input()
 
 bool Native::Template::TPINTERFACETEMPLATE::ServicePolicy::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return policy_map_name.is_set;
 }
 
@@ -13675,7 +13821,7 @@ Native::Template::TPINTERFACETEMPLATE::ServicePolicy::Output::Output()
     policy_map_name{YType::str, "policy-map-name"}
 {
 
-    yang_name = "output"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::TPINTERFACETEMPLATE::ServicePolicy::Output::~Output()
@@ -13684,6 +13830,7 @@ Native::Template::TPINTERFACETEMPLATE::ServicePolicy::Output::~Output()
 
 bool Native::Template::TPINTERFACETEMPLATE::ServicePolicy::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return policy_map_name.is_set;
 }
 
@@ -13757,19 +13904,19 @@ bool Native::Template::TPINTERFACETEMPLATE::ServicePolicy::Output::has_leaf_or_c
 Native::Template::TPINTERFACETEMPLATE::Switchport::Switchport()
     :
     nonegotiate{YType::empty, "nonegotiate"}
-    	,
+        ,
     mode(std::make_shared<Native::Template::TPINTERFACETEMPLATE::Switchport::Mode>())
-	,block(std::make_shared<Native::Template::TPINTERFACETEMPLATE::Switchport::Block>())
-	,port_security(nullptr) // presence node
-	,access(std::make_shared<Native::Template::TPINTERFACETEMPLATE::Switchport::Access>())
-	,voice(std::make_shared<Native::Template::TPINTERFACETEMPLATE::Switchport::Voice>())
+    , block(std::make_shared<Native::Template::TPINTERFACETEMPLATE::Switchport::Block>())
+    , port_security(nullptr) // presence node
+    , access(std::make_shared<Native::Template::TPINTERFACETEMPLATE::Switchport::Access>())
+    , voice(std::make_shared<Native::Template::TPINTERFACETEMPLATE::Switchport::Voice>())
 {
     mode->parent = this;
     block->parent = this;
     access->parent = this;
     voice->parent = this;
 
-    yang_name = "switchport"; yang_parent_name = "TP_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "switchport"; yang_parent_name = "TP_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::TPINTERFACETEMPLATE::Switchport::~Switchport()
@@ -13778,6 +13925,7 @@ Native::Template::TPINTERFACETEMPLATE::Switchport::~Switchport()
 
 bool Native::Template::TPINTERFACETEMPLATE::Switchport::has_data() const
 {
+    if (is_presence_container) return true;
     return nonegotiate.is_set
 	|| (mode !=  nullptr && mode->has_data())
 	|| (block !=  nullptr && block->has_data())
@@ -13934,7 +14082,7 @@ Native::Template::TPINTERFACETEMPLATE::Switchport::Mode::Mode()
     access{YType::empty, "access"}
 {
 
-    yang_name = "mode"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mode"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::TPINTERFACETEMPLATE::Switchport::Mode::~Mode()
@@ -13943,6 +14091,7 @@ Native::Template::TPINTERFACETEMPLATE::Switchport::Mode::~Mode()
 
 bool Native::Template::TPINTERFACETEMPLATE::Switchport::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return trunk.is_set
 	|| access.is_set;
 }
@@ -14031,7 +14180,7 @@ Native::Template::TPINTERFACETEMPLATE::Switchport::Block::Block()
     unicast{YType::empty, "unicast"}
 {
 
-    yang_name = "block"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "block"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::TPINTERFACETEMPLATE::Switchport::Block::~Block()
@@ -14040,6 +14189,7 @@ Native::Template::TPINTERFACETEMPLATE::Switchport::Block::~Block()
 
 bool Native::Template::TPINTERFACETEMPLATE::Switchport::Block::has_data() const
 {
+    if (is_presence_container) return true;
     return unicast.is_set;
 }
 
@@ -14113,14 +14263,14 @@ bool Native::Template::TPINTERFACETEMPLATE::Switchport::Block::has_leaf_or_child
 Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::PortSecurity()
     :
     aging(std::make_shared<Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Aging>())
-	,maximum(std::make_shared<Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum>())
-	,violation(std::make_shared<Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Violation>())
+    , maximum(std::make_shared<Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum>())
+    , violation(std::make_shared<Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Violation>())
 {
     aging->parent = this;
     maximum->parent = this;
     violation->parent = this;
 
-    yang_name = "port-security"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "port-security"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::~PortSecurity()
@@ -14129,6 +14279,7 @@ Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::~PortSecurity()
 
 bool Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::has_data() const
 {
+    if (is_presence_container) return true;
     return (aging !=  nullptr && aging->has_data())
 	|| (maximum !=  nullptr && maximum->has_data())
 	|| (violation !=  nullptr && violation->has_data());
@@ -14238,11 +14389,11 @@ Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Aging()
     :
     static_{YType::empty, "static"},
     time{YType::uint16, "time"}
-    	,
+        ,
     type(nullptr) // presence node
 {
 
-    yang_name = "aging"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aging"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Aging::~Aging()
@@ -14251,6 +14402,7 @@ Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Aging::~Aging()
 
 bool Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Aging::has_data() const
 {
+    if (is_presence_container) return true;
     return static_.is_set
 	|| time.is_set
 	|| (type !=  nullptr && type->has_data());
@@ -14355,7 +14507,7 @@ Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type::Ty
     inactivity{YType::empty, "inactivity"}
 {
 
-    yang_name = "type"; yang_parent_name = "aging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "type"; yang_parent_name = "aging"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type::~Type()
@@ -14364,6 +14516,7 @@ Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type::~T
 
 bool Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Type::has_data() const
 {
+    if (is_presence_container) return true;
     return inactivity.is_set;
 }
 
@@ -14435,9 +14588,11 @@ bool Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Aging::Typ
 }
 
 Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Maximum()
+    :
+    range(this, {"range"})
 {
 
-    yang_name = "maximum"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "maximum"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::~Maximum()
@@ -14446,7 +14601,8 @@ Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::~Maxim
 
 bool Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_data())
             return true;
@@ -14456,7 +14612,7 @@ bool Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::h
 
 bool Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_operation())
             return true;
@@ -14493,7 +14649,7 @@ std::shared_ptr<Entity> Native::Template::TPINTERFACETEMPLATE::Switchport::PortS
     {
         auto c = std::make_shared<Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range>();
         c->parent = this;
-        range.push_back(c);
+        range.append(c);
         return c;
     }
 
@@ -14505,7 +14661,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template::TPINTERFACETEMP
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : range)
+    for (auto c : range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14534,11 +14690,11 @@ bool Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::h
 Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Range()
     :
     range{YType::uint16, "range"}
-    	,
+        ,
     vlan(nullptr) // presence node
 {
 
-    yang_name = "range"; yang_parent_name = "maximum"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "range"; yang_parent_name = "maximum"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::~Range()
@@ -14547,6 +14703,7 @@ Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range:
 
 bool Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return range.is_set
 	|| (vlan !=  nullptr && vlan->has_data());
 }
@@ -14568,7 +14725,8 @@ std::string Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Max
 std::string Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "range" <<"[range='" <<range <<"']";
+    path_buffer << "range";
+    ADD_KEY_TOKEN(range, "range");
     return path_buffer.str();
 }
 
@@ -14638,7 +14796,7 @@ Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range:
     access{YType::empty, "access"}
 {
 
-    yang_name = "vlan"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Vlan::~Vlan()
@@ -14647,6 +14805,7 @@ Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range:
 
 bool Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Maximum::Range::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return access.is_set;
 }
 
@@ -14717,7 +14876,7 @@ Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Violation::Viol
     shutdown{YType::empty, "shutdown"}
 {
 
-    yang_name = "violation"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "violation"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Violation::~Violation()
@@ -14726,6 +14885,7 @@ Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Violation::~Vio
 
 bool Native::Template::TPINTERFACETEMPLATE::Switchport::PortSecurity::Violation::has_data() const
 {
+    if (is_presence_container) return true;
     return protect.is_set
 	|| restrict.is_set
 	|| shutdown.is_set;
@@ -14827,7 +14987,7 @@ Native::Template::TPINTERFACETEMPLATE::Switchport::Access::Access()
     vlan{YType::uint16, "vlan"}
 {
 
-    yang_name = "access"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "access"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::TPINTERFACETEMPLATE::Switchport::Access::~Access()
@@ -14836,6 +14996,7 @@ Native::Template::TPINTERFACETEMPLATE::Switchport::Access::~Access()
 
 bool Native::Template::TPINTERFACETEMPLATE::Switchport::Access::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set;
 }
 
@@ -14911,7 +15072,7 @@ Native::Template::TPINTERFACETEMPLATE::Switchport::Voice::Voice()
     vlan{YType::uint16, "vlan"}
 {
 
-    yang_name = "voice"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "voice"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::TPINTERFACETEMPLATE::Switchport::Voice::~Voice()
@@ -14920,6 +15081,7 @@ Native::Template::TPINTERFACETEMPLATE::Switchport::Voice::~Voice()
 
 bool Native::Template::TPINTERFACETEMPLATE::Switchport::Voice::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set;
 }
 
@@ -14993,13 +15155,13 @@ bool Native::Template::TPINTERFACETEMPLATE::Switchport::Voice::has_leaf_or_child
 Native::Template::TPINTERFACETEMPLATE::SpanningTree::SpanningTree()
     :
     service_policy{YType::empty, "service-policy"}
-    	,
+        ,
     bpduguard(std::make_shared<Native::Template::TPINTERFACETEMPLATE::SpanningTree::Bpduguard>())
-	,portfast(nullptr) // presence node
+    , portfast(nullptr) // presence node
 {
     bpduguard->parent = this;
 
-    yang_name = "spanning-tree"; yang_parent_name = "TP_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "spanning-tree"; yang_parent_name = "TP_INTERFACE_TEMPLATE"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Template::TPINTERFACETEMPLATE::SpanningTree::~SpanningTree()
@@ -15008,6 +15170,7 @@ Native::Template::TPINTERFACETEMPLATE::SpanningTree::~SpanningTree()
 
 bool Native::Template::TPINTERFACETEMPLATE::SpanningTree::has_data() const
 {
+    if (is_presence_container) return true;
     return service_policy.is_set
 	|| (bpduguard !=  nullptr && bpduguard->has_data())
 	|| (portfast !=  nullptr && portfast->has_data());
@@ -15115,7 +15278,7 @@ Native::Template::TPINTERFACETEMPLATE::SpanningTree::Bpduguard::Bpduguard()
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "bpduguard"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bpduguard"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Template::TPINTERFACETEMPLATE::SpanningTree::Bpduguard::~Bpduguard()
@@ -15124,6 +15287,7 @@ Native::Template::TPINTERFACETEMPLATE::SpanningTree::Bpduguard::~Bpduguard()
 
 bool Native::Template::TPINTERFACETEMPLATE::SpanningTree::Bpduguard::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set;
 }
 
@@ -15201,7 +15365,7 @@ Native::Template::TPINTERFACETEMPLATE::SpanningTree::Portfast::Portfast()
     network{YType::empty, "network"}
 {
 
-    yang_name = "portfast"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "portfast"; yang_parent_name = "spanning-tree"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Template::TPINTERFACETEMPLATE::SpanningTree::Portfast::~Portfast()
@@ -15210,6 +15374,7 @@ Native::Template::TPINTERFACETEMPLATE::SpanningTree::Portfast::~Portfast()
 
 bool Native::Template::TPINTERFACETEMPLATE::SpanningTree::Portfast::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set
 	|| edge.is_set
 	|| network.is_set;

@@ -32,28 +32,28 @@ class CISCOIPLOCALPOOLMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ciplocalpoolconfig; //type: CISCOIPLOCALPOOLMIB::Ciplocalpoolconfig
-        class Ciplocalpoolconfigtable; //type: CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable
-        class Ciplocalpoolgroupcontainstable; //type: CISCOIPLOCALPOOLMIB::Ciplocalpoolgroupcontainstable
-        class Ciplocalpoolgrouptable; //type: CISCOIPLOCALPOOLMIB::Ciplocalpoolgrouptable
-        class Ciplocalpoolstatstable; //type: CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable
-        class Ciplocalpoolalloctable; //type: CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable
+        class CIpLocalPoolConfig; //type: CISCOIPLOCALPOOLMIB::CIpLocalPoolConfig
+        class CIpLocalPoolConfigTable; //type: CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable
+        class CIpLocalPoolGroupContainsTable; //type: CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupContainsTable
+        class CIpLocalPoolGroupTable; //type: CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupTable
+        class CIpLocalPoolStatsTable; //type: CISCOIPLOCALPOOLMIB::CIpLocalPoolStatsTable
+        class CIpLocalPoolAllocTable; //type: CISCOIPLOCALPOOLMIB::CIpLocalPoolAllocTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolconfig> ciplocalpoolconfig;
-        std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable> ciplocalpoolconfigtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolgroupcontainstable> ciplocalpoolgroupcontainstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolgrouptable> ciplocalpoolgrouptable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable> ciplocalpoolstatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable> ciplocalpoolalloctable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::CIpLocalPoolConfig> ciplocalpoolconfig;
+        std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable> ciplocalpoolconfigtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupContainsTable> ciplocalpoolgroupcontainstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupTable> ciplocalpoolgrouptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::CIpLocalPoolStatsTable> ciplocalpoolstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::CIpLocalPoolAllocTable> ciplocalpoolalloctable;
         
 }; // CISCOIPLOCALPOOLMIB
 
 
-class CISCOIPLOCALPOOLMIB::Ciplocalpoolconfig : public ydk::Entity
+class CISCOIPLOCALPOOLMIB::CIpLocalPoolConfig : public ydk::Entity
 {
     public:
-        Ciplocalpoolconfig();
-        ~Ciplocalpoolconfig();
+        CIpLocalPoolConfig();
+        ~CIpLocalPoolConfig();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -68,14 +68,14 @@ class CISCOIPLOCALPOOLMIB::Ciplocalpoolconfig : public ydk::Entity
 
         ydk::YLeaf ciplocalpoolnotificationsenable; //type: boolean
 
-}; // CISCOIPLOCALPOOLMIB::Ciplocalpoolconfig
+}; // CISCOIPLOCALPOOLMIB::CIpLocalPoolConfig
 
 
-class CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable : public ydk::Entity
+class CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable : public ydk::Entity
 {
     public:
-        Ciplocalpoolconfigtable();
-        ~Ciplocalpoolconfigtable();
+        CIpLocalPoolConfigTable();
+        ~CIpLocalPoolConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -88,18 +88,18 @@ class CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciplocalpoolconfigentry; //type: CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry
+        class CIpLocalPoolConfigEntry; //type: CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable::CIpLocalPoolConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry> > ciplocalpoolconfigentry;
+        ydk::YList ciplocalpoolconfigentry;
         
-}; // CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable
+}; // CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable
 
 
-class CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry : public ydk::Entity
+class CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable::CIpLocalPoolConfigEntry : public ydk::Entity
 {
     public:
-        Ciplocalpoolconfigentry();
-        ~Ciplocalpoolconfigentry();
+        CIpLocalPoolConfigEntry();
+        ~CIpLocalPoolConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -122,14 +122,14 @@ class CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry : pu
         ydk::YLeaf ciplocalpoolrowstatus; //type: RowStatus
         ydk::YLeaf ciplocalpoolpriority; //type: uint32
 
-}; // CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry
+}; // CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable::CIpLocalPoolConfigEntry
 
 
-class CISCOIPLOCALPOOLMIB::Ciplocalpoolgroupcontainstable : public ydk::Entity
+class CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupContainsTable : public ydk::Entity
 {
     public:
-        Ciplocalpoolgroupcontainstable();
-        ~Ciplocalpoolgroupcontainstable();
+        CIpLocalPoolGroupContainsTable();
+        ~CIpLocalPoolGroupContainsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -142,18 +142,18 @@ class CISCOIPLOCALPOOLMIB::Ciplocalpoolgroupcontainstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciplocalpoolgroupcontainsentry; //type: CISCOIPLOCALPOOLMIB::Ciplocalpoolgroupcontainstable::Ciplocalpoolgroupcontainsentry
+        class CIpLocalPoolGroupContainsEntry; //type: CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupContainsTable::CIpLocalPoolGroupContainsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolgroupcontainstable::Ciplocalpoolgroupcontainsentry> > ciplocalpoolgroupcontainsentry;
+        ydk::YList ciplocalpoolgroupcontainsentry;
         
-}; // CISCOIPLOCALPOOLMIB::Ciplocalpoolgroupcontainstable
+}; // CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupContainsTable
 
 
-class CISCOIPLOCALPOOLMIB::Ciplocalpoolgroupcontainstable::Ciplocalpoolgroupcontainsentry : public ydk::Entity
+class CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupContainsTable::CIpLocalPoolGroupContainsEntry : public ydk::Entity
 {
     public:
-        Ciplocalpoolgroupcontainsentry();
-        ~Ciplocalpoolgroupcontainsentry();
+        CIpLocalPoolGroupContainsEntry();
+        ~CIpLocalPoolGroupContainsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -169,14 +169,14 @@ class CISCOIPLOCALPOOLMIB::Ciplocalpoolgroupcontainstable::Ciplocalpoolgroupcont
         ydk::YLeaf ciplocalpoolgroupname; //type: binary
         ydk::YLeaf ciplocalpoolchildindex; //type: binary
 
-}; // CISCOIPLOCALPOOLMIB::Ciplocalpoolgroupcontainstable::Ciplocalpoolgroupcontainsentry
+}; // CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupContainsTable::CIpLocalPoolGroupContainsEntry
 
 
-class CISCOIPLOCALPOOLMIB::Ciplocalpoolgrouptable : public ydk::Entity
+class CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupTable : public ydk::Entity
 {
     public:
-        Ciplocalpoolgrouptable();
-        ~Ciplocalpoolgrouptable();
+        CIpLocalPoolGroupTable();
+        ~CIpLocalPoolGroupTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -189,18 +189,18 @@ class CISCOIPLOCALPOOLMIB::Ciplocalpoolgrouptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciplocalpoolgroupentry; //type: CISCOIPLOCALPOOLMIB::Ciplocalpoolgrouptable::Ciplocalpoolgroupentry
+        class CIpLocalPoolGroupEntry; //type: CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupTable::CIpLocalPoolGroupEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolgrouptable::Ciplocalpoolgroupentry> > ciplocalpoolgroupentry;
+        ydk::YList ciplocalpoolgroupentry;
         
-}; // CISCOIPLOCALPOOLMIB::Ciplocalpoolgrouptable
+}; // CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupTable
 
 
-class CISCOIPLOCALPOOLMIB::Ciplocalpoolgrouptable::Ciplocalpoolgroupentry : public ydk::Entity
+class CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupTable::CIpLocalPoolGroupEntry : public ydk::Entity
 {
     public:
-        Ciplocalpoolgroupentry();
-        ~Ciplocalpoolgroupentry();
+        CIpLocalPoolGroupEntry();
+        ~CIpLocalPoolGroupEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -213,19 +213,19 @@ class CISCOIPLOCALPOOLMIB::Ciplocalpoolgrouptable::Ciplocalpoolgroupentry : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: binary (refers to cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolgroupcontainstable::Ciplocalpoolgroupcontainsentry::ciplocalpoolgroupname)
+        //type: binary (refers to cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupContainsTable::CIpLocalPoolGroupContainsEntry::ciplocalpoolgroupname)
         ydk::YLeaf ciplocalpoolgroupname;
         ydk::YLeaf ciplocalpoolgroupfreeaddrs; //type: uint32
         ydk::YLeaf ciplocalpoolgroupinuseaddrs; //type: uint32
 
-}; // CISCOIPLOCALPOOLMIB::Ciplocalpoolgrouptable::Ciplocalpoolgroupentry
+}; // CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupTable::CIpLocalPoolGroupEntry
 
 
-class CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable : public ydk::Entity
+class CISCOIPLOCALPOOLMIB::CIpLocalPoolStatsTable : public ydk::Entity
 {
     public:
-        Ciplocalpoolstatstable();
-        ~Ciplocalpoolstatstable();
+        CIpLocalPoolStatsTable();
+        ~CIpLocalPoolStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -238,18 +238,18 @@ class CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciplocalpoolstatsentry; //type: CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::Ciplocalpoolstatsentry
+        class CIpLocalPoolStatsEntry; //type: CISCOIPLOCALPOOLMIB::CIpLocalPoolStatsTable::CIpLocalPoolStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::Ciplocalpoolstatsentry> > ciplocalpoolstatsentry;
+        ydk::YList ciplocalpoolstatsentry;
         
-}; // CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable
+}; // CISCOIPLOCALPOOLMIB::CIpLocalPoolStatsTable
 
 
-class CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::Ciplocalpoolstatsentry : public ydk::Entity
+class CISCOIPLOCALPOOLMIB::CIpLocalPoolStatsTable::CIpLocalPoolStatsEntry : public ydk::Entity
 {
     public:
-        Ciplocalpoolstatsentry();
-        ~Ciplocalpoolstatsentry();
+        CIpLocalPoolStatsEntry();
+        ~CIpLocalPoolStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -262,7 +262,7 @@ class CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::Ciplocalpoolstatsentry : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: binary (refers to cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry::ciplocalpoolname)
+        //type: binary (refers to cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable::CIpLocalPoolConfigEntry::ciplocalpoolname)
         ydk::YLeaf ciplocalpoolname;
         ydk::YLeaf ciplocalpoolstatfreeaddrs; //type: uint32
         ydk::YLeaf ciplocalpoolstatinuseaddrs; //type: uint32
@@ -272,14 +272,14 @@ class CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::Ciplocalpoolstatsentry : publ
         ydk::YLeaf ciplocalpoolpercentaddrthldlo; //type: uint32
         ydk::YLeaf ciplocalpoolpercentaddrthldhi; //type: uint32
 
-}; // CISCOIPLOCALPOOLMIB::Ciplocalpoolstatstable::Ciplocalpoolstatsentry
+}; // CISCOIPLOCALPOOLMIB::CIpLocalPoolStatsTable::CIpLocalPoolStatsEntry
 
 
-class CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable : public ydk::Entity
+class CISCOIPLOCALPOOLMIB::CIpLocalPoolAllocTable : public ydk::Entity
 {
     public:
-        Ciplocalpoolalloctable();
-        ~Ciplocalpoolalloctable();
+        CIpLocalPoolAllocTable();
+        ~CIpLocalPoolAllocTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -292,18 +292,18 @@ class CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciplocalpoolallocentry; //type: CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry
+        class CIpLocalPoolAllocEntry; //type: CISCOIPLOCALPOOLMIB::CIpLocalPoolAllocTable::CIpLocalPoolAllocEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry> > ciplocalpoolallocentry;
+        ydk::YList ciplocalpoolallocentry;
         
-}; // CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable
+}; // CISCOIPLOCALPOOLMIB::CIpLocalPoolAllocTable
 
 
-class CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry : public ydk::Entity
+class CISCOIPLOCALPOOLMIB::CIpLocalPoolAllocTable::CIpLocalPoolAllocEntry : public ydk::Entity
 {
     public:
-        Ciplocalpoolallocentry();
-        ~Ciplocalpoolallocentry();
+        CIpLocalPoolAllocEntry();
+        ~CIpLocalPoolAllocEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -316,14 +316,14 @@ class CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: binary (refers to cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::Ciplocalpoolconfigtable::Ciplocalpoolconfigentry::ciplocalpoolname)
+        //type: binary (refers to cisco_ios_xe::CISCO_IP_LOCAL_POOL_MIB::CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable::CIpLocalPoolConfigEntry::ciplocalpoolname)
         ydk::YLeaf ciplocalpoolname;
         ydk::YLeaf ciplocalpoolallocaddrtype; //type: InetAddressType
         ydk::YLeaf ciplocalpoolallocaddr; //type: binary
         ydk::YLeaf ciplocalpoolallocifindex; //type: int32
         ydk::YLeaf ciplocalpoolallocuser; //type: string
 
-}; // CISCOIPLOCALPOOLMIB::Ciplocalpoolalloctable::Ciplocalpoolallocentry
+}; // CISCOIPLOCALPOOLMIB::CIpLocalPoolAllocTable::CIpLocalPoolAllocEntry
 
 
 }

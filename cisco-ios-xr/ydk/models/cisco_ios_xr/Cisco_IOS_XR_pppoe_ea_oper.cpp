@@ -17,7 +17,7 @@ PppoeEa::PppoeEa()
 {
     nodes->parent = this;
 
-    yang_name = "pppoe-ea"; yang_parent_name = "Cisco-IOS-XR-pppoe-ea-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "pppoe-ea"; yang_parent_name = "Cisco-IOS-XR-pppoe-ea-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 PppoeEa::~PppoeEa()
@@ -26,6 +26,7 @@ PppoeEa::~PppoeEa()
 
 bool PppoeEa::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool PppoeEa::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 PppoeEa::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "pppoe-ea"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "pppoe-ea"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PppoeEa::Nodes::~Nodes()
@@ -129,7 +132,8 @@ PppoeEa::Nodes::~Nodes()
 
 bool PppoeEa::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool PppoeEa::Nodes::has_data() const
 
 bool PppoeEa::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> PppoeEa::Nodes::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<PppoeEa::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,14 +221,14 @@ bool PppoeEa::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 PppoeEa::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     parent_interface_ids(std::make_shared<PppoeEa::Nodes::Node::ParentInterfaceIds>())
-	,interface_ids(std::make_shared<PppoeEa::Nodes::Node::InterfaceIds>())
+    , interface_ids(std::make_shared<PppoeEa::Nodes::Node::InterfaceIds>())
 {
     parent_interface_ids->parent = this;
     interface_ids->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PppoeEa::Nodes::Node::~Node()
@@ -233,6 +237,7 @@ PppoeEa::Nodes::Node::~Node()
 
 bool PppoeEa::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (parent_interface_ids !=  nullptr && parent_interface_ids->has_data())
 	|| (interface_ids !=  nullptr && interface_ids->has_data());
@@ -256,7 +261,8 @@ std::string PppoeEa::Nodes::Node::get_absolute_path() const
 std::string PppoeEa::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -336,9 +342,11 @@ bool PppoeEa::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) c
 }
 
 PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceIds()
+    :
+    parent_interface_id(this, {"parent_interface_name"})
 {
 
-    yang_name = "parent-interface-ids"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-interface-ids"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeEa::Nodes::Node::ParentInterfaceIds::~ParentInterfaceIds()
@@ -347,7 +355,8 @@ PppoeEa::Nodes::Node::ParentInterfaceIds::~ParentInterfaceIds()
 
 bool PppoeEa::Nodes::Node::ParentInterfaceIds::has_data() const
 {
-    for (std::size_t index=0; index<parent_interface_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<parent_interface_id.len(); index++)
     {
         if(parent_interface_id[index]->has_data())
             return true;
@@ -357,7 +366,7 @@ bool PppoeEa::Nodes::Node::ParentInterfaceIds::has_data() const
 
 bool PppoeEa::Nodes::Node::ParentInterfaceIds::has_operation() const
 {
-    for (std::size_t index=0; index<parent_interface_id.size(); index++)
+    for (std::size_t index=0; index<parent_interface_id.len(); index++)
     {
         if(parent_interface_id[index]->has_operation())
             return true;
@@ -387,7 +396,7 @@ std::shared_ptr<Entity> PppoeEa::Nodes::Node::ParentInterfaceIds::get_child_by_n
     {
         auto c = std::make_shared<PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId>();
         c->parent = this;
-        parent_interface_id.push_back(c);
+        parent_interface_id.append(c);
         return c;
     }
 
@@ -399,7 +408,7 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::ParentInter
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : parent_interface_id)
+    for (auto c : parent_interface_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -430,12 +439,12 @@ PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::ParentInterfaceId()
     parent_interface_name{YType::str, "parent-interface-name"},
     interface{YType::str, "interface"},
     is_in_sync{YType::boolean, "is-in-sync"}
-    	,
+        ,
     srgv_mac(std::make_shared<PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac>())
 {
     srgv_mac->parent = this;
 
-    yang_name = "parent-interface-id"; yang_parent_name = "parent-interface-ids"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-interface-id"; yang_parent_name = "parent-interface-ids"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::~ParentInterfaceId()
@@ -444,6 +453,7 @@ PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::~ParentInterfaceId(
 
 bool PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::has_data() const
 {
+    if (is_presence_container) return true;
     return parent_interface_name.is_set
 	|| interface.is_set
 	|| is_in_sync.is_set
@@ -462,7 +472,8 @@ bool PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::has_operation(
 std::string PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "parent-interface-id" <<"[parent-interface-name='" <<parent_interface_name <<"']";
+    path_buffer << "parent-interface-id";
+    ADD_KEY_TOKEN(parent_interface_name, "parent-interface-name");
     return path_buffer.str();
 }
 
@@ -554,7 +565,7 @@ PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::SrgvMac()
     macaddr{YType::str, "macaddr"}
 {
 
-    yang_name = "srgv-mac"; yang_parent_name = "parent-interface-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "srgv-mac"; yang_parent_name = "parent-interface-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::~SrgvMac()
@@ -563,6 +574,7 @@ PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::~SrgvMac()
 
 bool PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::has_data() const
 {
+    if (is_presence_container) return true;
     return macaddr.is_set;
 }
 
@@ -627,9 +639,11 @@ bool PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::has_l
 }
 
 PppoeEa::Nodes::Node::InterfaceIds::InterfaceIds()
+    :
+    interface_id(this, {"interface_name"})
 {
 
-    yang_name = "interface-ids"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-ids"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeEa::Nodes::Node::InterfaceIds::~InterfaceIds()
@@ -638,7 +652,8 @@ PppoeEa::Nodes::Node::InterfaceIds::~InterfaceIds()
 
 bool PppoeEa::Nodes::Node::InterfaceIds::has_data() const
 {
-    for (std::size_t index=0; index<interface_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_id.len(); index++)
     {
         if(interface_id[index]->has_data())
             return true;
@@ -648,7 +663,7 @@ bool PppoeEa::Nodes::Node::InterfaceIds::has_data() const
 
 bool PppoeEa::Nodes::Node::InterfaceIds::has_operation() const
 {
-    for (std::size_t index=0; index<interface_id.size(); index++)
+    for (std::size_t index=0; index<interface_id.len(); index++)
     {
         if(interface_id[index]->has_operation())
             return true;
@@ -678,7 +693,7 @@ std::shared_ptr<Entity> PppoeEa::Nodes::Node::InterfaceIds::get_child_by_name(co
     {
         auto c = std::make_shared<PppoeEa::Nodes::Node::InterfaceIds::InterfaceId>();
         c->parent = this;
-        interface_id.push_back(c);
+        interface_id.append(c);
         return c;
     }
 
@@ -690,7 +705,7 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::InterfaceId
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_id)
+    for (auto c : interface_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -727,16 +742,16 @@ PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::InterfaceId()
     is_in_sync{YType::boolean, "is-in-sync"},
     is_platform_created{YType::boolean, "is-platform-created"},
     vlanid{YType::uint16, "vlanid"}
-    	,
+        ,
     peer_mac(std::make_shared<PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac>())
-	,local_mac(std::make_shared<PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac>())
-	,srgv_mac(std::make_shared<PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac>())
+    , local_mac(std::make_shared<PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac>())
+    , srgv_mac(std::make_shared<PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac>())
 {
     peer_mac->parent = this;
     local_mac->parent = this;
     srgv_mac->parent = this;
 
-    yang_name = "interface-id"; yang_parent_name = "interface-ids"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-id"; yang_parent_name = "interface-ids"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::~InterfaceId()
@@ -745,6 +760,7 @@ PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::~InterfaceId()
 
 bool PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : vlanid.getYLeafs())
     {
         if(leaf.is_set)
@@ -788,7 +804,8 @@ bool PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::has_operation() const
 std::string PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-id" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-id";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -973,7 +990,7 @@ PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::PeerMac()
     macaddr{YType::str, "macaddr"}
 {
 
-    yang_name = "peer-mac"; yang_parent_name = "interface-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-mac"; yang_parent_name = "interface-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::~PeerMac()
@@ -982,6 +999,7 @@ PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::~PeerMac()
 
 bool PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::has_data() const
 {
+    if (is_presence_container) return true;
     return macaddr.is_set;
 }
 
@@ -1050,7 +1068,7 @@ PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::LocalMac()
     macaddr{YType::str, "macaddr"}
 {
 
-    yang_name = "local-mac"; yang_parent_name = "interface-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-mac"; yang_parent_name = "interface-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::~LocalMac()
@@ -1059,6 +1077,7 @@ PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::~LocalMac()
 
 bool PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::has_data() const
 {
+    if (is_presence_container) return true;
     return macaddr.is_set;
 }
 
@@ -1127,7 +1146,7 @@ PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::SrgvMac()
     macaddr{YType::str, "macaddr"}
 {
 
-    yang_name = "srgv-mac"; yang_parent_name = "interface-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "srgv-mac"; yang_parent_name = "interface-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::~SrgvMac()
@@ -1136,6 +1155,7 @@ PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::~SrgvMac()
 
 bool PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::has_data() const
 {
+    if (is_presence_container) return true;
     return macaddr.is_set;
 }
 

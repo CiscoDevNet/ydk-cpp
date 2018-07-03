@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_mpls_ldp_oper {
 MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::AdjacencyGroup()
     :
     hello_type{YType::enumeration, "hello-type"}
-    	,
+        ,
     link_hello_data(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::LinkHelloData>())
-	,target_hello_data(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData>())
+    , target_hello_data(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData>())
 {
     link_hello_data->parent = this;
     target_hello_data->parent = this;
 
-    yang_name = "adjacency-group"; yang_parent_name = "ldp-nbr-ipv4-adj-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adjacency-group"; yang_parent_name = "ldp-nbr-ipv4-adj-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::~AdjacencyGroup()
@@ -30,6 +30,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::Adjacen
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return hello_type.is_set
 	|| (link_hello_data !=  nullptr && link_hello_data->has_data())
 	|| (target_hello_data !=  nullptr && target_hello_data->has_data());
@@ -131,7 +132,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::Adjacen
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "link-hello-data"; yang_parent_name = "adjacency-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-hello-data"; yang_parent_name = "adjacency-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::LinkHelloData::~LinkHelloData()
@@ -140,6 +141,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::Adjacen
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::LinkHelloData::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| interface_name.is_set;
 }
@@ -219,14 +221,14 @@ bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::Ad
 MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetHelloData()
     :
     state{YType::enumeration, "state"}
-    	,
+        ,
     local_address(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress>())
-	,target_address(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress>())
+    , target_address(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress>())
 {
     local_address->parent = this;
     target_address->parent = this;
 
-    yang_name = "target-hello-data"; yang_parent_name = "adjacency-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "target-hello-data"; yang_parent_name = "adjacency-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::~TargetHelloData()
@@ -235,6 +237,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::Adjacen
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::has_data() const
 {
+    if (is_presence_container) return true;
     return state.is_set
 	|| (local_address !=  nullptr && local_address->has_data())
 	|| (target_address !=  nullptr && target_address->has_data());
@@ -338,7 +341,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::Adjacen
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "local-address"; yang_parent_name = "target-hello-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-address"; yang_parent_name = "target-hello-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::~LocalAddress()
@@ -347,6 +350,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::Adjacen
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| dummy.is_set
 	|| ipv4.is_set
@@ -457,7 +461,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::Adjacen
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "target-address"; yang_parent_name = "target-hello-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "target-address"; yang_parent_name = "target-hello-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::~TargetAddress()
@@ -466,6 +470,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::Adjacen
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| dummy.is_set
 	|| ipv4.is_set
@@ -574,7 +579,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::LdpNbrI
 {
     adjacency_group->parent = this;
 
-    yang_name = "ldp-nbr-ipv6-adj-info"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ldp-nbr-ipv6-adj-info"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::~LdpNbrIpv6AdjInfo()
@@ -583,6 +588,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::~LdpNbr
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return (adjacency_group !=  nullptr && adjacency_group->has_data());
 }
 
@@ -652,14 +658,14 @@ bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::ha
 MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::AdjacencyGroup()
     :
     hello_type{YType::enumeration, "hello-type"}
-    	,
+        ,
     link_hello_data(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::LinkHelloData>())
-	,target_hello_data(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData>())
+    , target_hello_data(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData>())
 {
     link_hello_data->parent = this;
     target_hello_data->parent = this;
 
-    yang_name = "adjacency-group"; yang_parent_name = "ldp-nbr-ipv6-adj-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adjacency-group"; yang_parent_name = "ldp-nbr-ipv6-adj-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::~AdjacencyGroup()
@@ -668,6 +674,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::Adjacen
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return hello_type.is_set
 	|| (link_hello_data !=  nullptr && link_hello_data->has_data())
 	|| (target_hello_data !=  nullptr && target_hello_data->has_data());
@@ -769,7 +776,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::Adjacen
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "link-hello-data"; yang_parent_name = "adjacency-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-hello-data"; yang_parent_name = "adjacency-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::LinkHelloData::~LinkHelloData()
@@ -778,6 +785,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::Adjacen
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::LinkHelloData::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| interface_name.is_set;
 }
@@ -857,14 +865,14 @@ bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::Ad
 MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetHelloData()
     :
     state{YType::enumeration, "state"}
-    	,
+        ,
     local_address(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress>())
-	,target_address(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress>())
+    , target_address(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress>())
 {
     local_address->parent = this;
     target_address->parent = this;
 
-    yang_name = "target-hello-data"; yang_parent_name = "adjacency-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "target-hello-data"; yang_parent_name = "adjacency-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::~TargetHelloData()
@@ -873,6 +881,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::Adjacen
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::has_data() const
 {
+    if (is_presence_container) return true;
     return state.is_set
 	|| (local_address !=  nullptr && local_address->has_data())
 	|| (target_address !=  nullptr && target_address->has_data());
@@ -976,7 +985,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::Adjacen
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "local-address"; yang_parent_name = "target-hello-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-address"; yang_parent_name = "target-hello-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::~LocalAddress()
@@ -985,6 +994,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::Adjacen
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| dummy.is_set
 	|| ipv4.is_set
@@ -1095,7 +1105,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::Adjacen
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "target-address"; yang_parent_name = "target-hello-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "target-address"; yang_parent_name = "target-hello-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::~TargetAddress()
@@ -1104,6 +1114,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::Adjacen
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| dummy.is_set
 	|| ipv4.is_set
@@ -1213,7 +1224,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::LdpId::LdpId()
     ldp_id{YType::str, "ldp-id"}
 {
 
-    yang_name = "ldp-id"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ldp-id"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::LdpId::~LdpId()
@@ -1222,6 +1233,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::LdpId::~LdpId()
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::LdpId::has_data() const
 {
+    if (is_presence_container) return true;
     return lsr_id.is_set
 	|| label_space_id.is_set
 	|| ldp_id.is_set;
@@ -1312,9 +1324,11 @@ bool MplsLdp::Nodes::Node::Vrfs::Vrf::LdpId::has_leaf_or_child_of_name(const std
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistics()
+    :
+    statistic(this, {})
 {
 
-    yang_name = "statistics"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::~Statistics()
@@ -1323,7 +1337,8 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::~Statistics()
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<statistic.len(); index++)
     {
         if(statistic[index]->has_data())
             return true;
@@ -1333,7 +1348,7 @@ bool MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::has_data() const
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<statistic.size(); index++)
+    for (std::size_t index=0; index<statistic.len(); index++)
     {
         if(statistic[index]->has_operation())
             return true;
@@ -1363,7 +1378,7 @@ std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::get_child_b
     {
         auto c = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic>();
         c->parent = this;
-        statistic.push_back(c);
+        statistic.append(c);
         return c;
     }
 
@@ -1375,7 +1390,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : statistic)
+    for (auto c : statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1406,14 +1421,14 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::Statistic()
     lsr_id{YType::str, "lsr-id"},
     label_space_id{YType::uint32, "label-space-id"},
     iccp_enabled{YType::boolean, "iccp-enabled"}
-    	,
+        ,
     message_out(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageOut>())
-	,message_in(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageIn>())
+    , message_in(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageIn>())
 {
     message_out->parent = this;
     message_in->parent = this;
 
-    yang_name = "statistic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::~Statistic()
@@ -1422,6 +1437,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::~Statistic()
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::has_data() const
 {
+    if (is_presence_container) return true;
     return lsr_id.is_set
 	|| label_space_id.is_set
 	|| iccp_enabled.is_set
@@ -1562,7 +1578,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageOut::MessageOut()
     iccp_rg_app_data_count{YType::uint32, "iccp-rg-app-data-count"}
 {
 
-    yang_name = "message-out"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "message-out"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageOut::~MessageOut()
@@ -1571,6 +1587,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageOut::~MessageOut(
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageOut::has_data() const
 {
+    if (is_presence_container) return true;
     return total_count.is_set
 	|| init_count.is_set
 	|| address_count.is_set
@@ -1835,7 +1852,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageIn::MessageIn()
     iccp_rg_app_data_count{YType::uint32, "iccp-rg-app-data-count"}
 {
 
-    yang_name = "message-in"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "message-in"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageIn::~MessageIn()
@@ -1844,6 +1861,7 @@ MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageIn::~MessageIn()
 
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageIn::has_data() const
 {
+    if (is_presence_container) return true;
     return total_count.is_set
 	|| init_count.is_set
 	|| address_count.is_set
@@ -2103,12 +2121,12 @@ MplsLdp::Nodes::Node::DiscoverySummaryAll::DiscoverySummaryAll()
     num_of_disc_with_bad_xport_addr{YType::uint32, "num-of-disc-with-bad-xport-addr"},
     num_of_disc_with_same_router_id{YType::uint32, "num-of-disc-with-same-router-id"},
     num_of_disc_with_wrong_router_id{YType::uint32, "num-of-disc-with-wrong-router-id"}
-    	,
+        ,
     vrf(std::make_shared<MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf>())
 {
     vrf->parent = this;
 
-    yang_name = "discovery-summary-all"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "discovery-summary-all"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DiscoverySummaryAll::~DiscoverySummaryAll()
@@ -2117,6 +2135,7 @@ MplsLdp::Nodes::Node::DiscoverySummaryAll::~DiscoverySummaryAll()
 
 bool MplsLdp::Nodes::Node::DiscoverySummaryAll::has_data() const
 {
+    if (is_presence_container) return true;
     return local_ldp_id.is_set
 	|| num_of_ldp_interfaces.is_set
 	|| num_of_active_ldp_interfaces.is_set
@@ -2345,7 +2364,7 @@ MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf::Vrf()
     id{YType::uint32, "id"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "discovery-summary-all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "discovery-summary-all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf::~Vrf()
@@ -2354,6 +2373,7 @@ MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf::~Vrf()
 
 bool MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| id.is_set;
 }

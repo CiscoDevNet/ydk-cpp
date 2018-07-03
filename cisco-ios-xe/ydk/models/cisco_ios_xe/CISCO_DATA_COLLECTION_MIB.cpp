@@ -13,13 +13,13 @@ namespace CISCO_DATA_COLLECTION_MIB {
 
 CISCODATACOLLECTIONMIB::CISCODATACOLLECTIONMIB()
     :
-    cdcvfile(std::make_shared<CISCODATACOLLECTIONMIB::Cdcvfile>())
-	,cdcvfiletable(std::make_shared<CISCODATACOLLECTIONMIB::Cdcvfiletable>())
-	,cdcvfilemgmttable(std::make_shared<CISCODATACOLLECTIONMIB::Cdcvfilemgmttable>())
-	,cdcdgtable(std::make_shared<CISCODATACOLLECTIONMIB::Cdcdgtable>())
-	,cdcdgbaseobjecttable(std::make_shared<CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable>())
-	,cdcdginstancetable(std::make_shared<CISCODATACOLLECTIONMIB::Cdcdginstancetable>())
-	,cdcfilexferconftable(std::make_shared<CISCODATACOLLECTIONMIB::Cdcfilexferconftable>())
+    cdcvfile(std::make_shared<CISCODATACOLLECTIONMIB::CdcVFile>())
+    , cdcvfiletable(std::make_shared<CISCODATACOLLECTIONMIB::CdcVFileTable>())
+    , cdcvfilemgmttable(std::make_shared<CISCODATACOLLECTIONMIB::CdcVFileMgmtTable>())
+    , cdcdgtable(std::make_shared<CISCODATACOLLECTIONMIB::CdcDGTable>())
+    , cdcdgbaseobjecttable(std::make_shared<CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable>())
+    , cdcdginstancetable(std::make_shared<CISCODATACOLLECTIONMIB::CdcDGInstanceTable>())
+    , cdcfilexferconftable(std::make_shared<CISCODATACOLLECTIONMIB::CdcFileXferConfTable>())
 {
     cdcvfile->parent = this;
     cdcvfiletable->parent = this;
@@ -29,7 +29,7 @@ CISCODATACOLLECTIONMIB::CISCODATACOLLECTIONMIB()
     cdcdginstancetable->parent = this;
     cdcfilexferconftable->parent = this;
 
-    yang_name = "CISCO-DATA-COLLECTION-MIB"; yang_parent_name = "CISCO-DATA-COLLECTION-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-DATA-COLLECTION-MIB"; yang_parent_name = "CISCO-DATA-COLLECTION-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCODATACOLLECTIONMIB::~CISCODATACOLLECTIONMIB()
@@ -38,6 +38,7 @@ CISCODATACOLLECTIONMIB::~CISCODATACOLLECTIONMIB()
 
 bool CISCODATACOLLECTIONMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cdcvfile !=  nullptr && cdcvfile->has_data())
 	|| (cdcvfiletable !=  nullptr && cdcvfiletable->has_data())
 	|| (cdcvfilemgmttable !=  nullptr && cdcvfilemgmttable->has_data())
@@ -81,7 +82,7 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::get_child_by_name(const std::str
     {
         if(cdcvfile == nullptr)
         {
-            cdcvfile = std::make_shared<CISCODATACOLLECTIONMIB::Cdcvfile>();
+            cdcvfile = std::make_shared<CISCODATACOLLECTIONMIB::CdcVFile>();
         }
         return cdcvfile;
     }
@@ -90,7 +91,7 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::get_child_by_name(const std::str
     {
         if(cdcvfiletable == nullptr)
         {
-            cdcvfiletable = std::make_shared<CISCODATACOLLECTIONMIB::Cdcvfiletable>();
+            cdcvfiletable = std::make_shared<CISCODATACOLLECTIONMIB::CdcVFileTable>();
         }
         return cdcvfiletable;
     }
@@ -99,7 +100,7 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::get_child_by_name(const std::str
     {
         if(cdcvfilemgmttable == nullptr)
         {
-            cdcvfilemgmttable = std::make_shared<CISCODATACOLLECTIONMIB::Cdcvfilemgmttable>();
+            cdcvfilemgmttable = std::make_shared<CISCODATACOLLECTIONMIB::CdcVFileMgmtTable>();
         }
         return cdcvfilemgmttable;
     }
@@ -108,7 +109,7 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::get_child_by_name(const std::str
     {
         if(cdcdgtable == nullptr)
         {
-            cdcdgtable = std::make_shared<CISCODATACOLLECTIONMIB::Cdcdgtable>();
+            cdcdgtable = std::make_shared<CISCODATACOLLECTIONMIB::CdcDGTable>();
         }
         return cdcdgtable;
     }
@@ -117,7 +118,7 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::get_child_by_name(const std::str
     {
         if(cdcdgbaseobjecttable == nullptr)
         {
-            cdcdgbaseobjecttable = std::make_shared<CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable>();
+            cdcdgbaseobjecttable = std::make_shared<CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable>();
         }
         return cdcdgbaseobjecttable;
     }
@@ -126,7 +127,7 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::get_child_by_name(const std::str
     {
         if(cdcdginstancetable == nullptr)
         {
-            cdcdginstancetable = std::make_shared<CISCODATACOLLECTIONMIB::Cdcdginstancetable>();
+            cdcdginstancetable = std::make_shared<CISCODATACOLLECTIONMIB::CdcDGInstanceTable>();
         }
         return cdcdginstancetable;
     }
@@ -135,7 +136,7 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::get_child_by_name(const std::str
     {
         if(cdcfilexferconftable == nullptr)
         {
-            cdcfilexferconftable = std::make_shared<CISCODATACOLLECTIONMIB::Cdcfilexferconftable>();
+            cdcfilexferconftable = std::make_shared<CISCODATACOLLECTIONMIB::CdcFileXferConfTable>();
         }
         return cdcfilexferconftable;
     }
@@ -225,47 +226,48 @@ bool CISCODATACOLLECTIONMIB::has_leaf_or_child_of_name(const std::string & name)
     return false;
 }
 
-CISCODATACOLLECTIONMIB::Cdcvfile::Cdcvfile()
+CISCODATACOLLECTIONMIB::CdcVFile::CdcVFile()
     :
     cdcvfilepersistentstorage{YType::boolean, "cdcVFilePersistentStorage"},
     cdcvfilemaxsizehitslimit{YType::uint32, "cdcVFileMaxSizeHitsLimit"}
 {
 
-    yang_name = "cdcVFile"; yang_parent_name = "CISCO-DATA-COLLECTION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdcVFile"; yang_parent_name = "CISCO-DATA-COLLECTION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODATACOLLECTIONMIB::Cdcvfile::~Cdcvfile()
+CISCODATACOLLECTIONMIB::CdcVFile::~CdcVFile()
 {
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcvfile::has_data() const
+bool CISCODATACOLLECTIONMIB::CdcVFile::has_data() const
 {
+    if (is_presence_container) return true;
     return cdcvfilepersistentstorage.is_set
 	|| cdcvfilemaxsizehitslimit.is_set;
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcvfile::has_operation() const
+bool CISCODATACOLLECTIONMIB::CdcVFile::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cdcvfilepersistentstorage.yfilter)
 	|| ydk::is_set(cdcvfilemaxsizehitslimit.yfilter);
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcvfile::get_absolute_path() const
+std::string CISCODATACOLLECTIONMIB::CdcVFile::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DATA-COLLECTION-MIB:CISCO-DATA-COLLECTION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcvfile::get_segment_path() const
+std::string CISCODATACOLLECTIONMIB::CdcVFile::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdcVFile";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcvfile::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcVFile::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -276,19 +278,19 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcvfile:
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcvfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcVFile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcvfile::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcVFile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCODATACOLLECTIONMIB::Cdcvfile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODATACOLLECTIONMIB::CdcVFile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdcVFilePersistentStorage")
     {
@@ -304,7 +306,7 @@ void CISCODATACOLLECTIONMIB::Cdcvfile::set_value(const std::string & value_path,
     }
 }
 
-void CISCODATACOLLECTIONMIB::Cdcvfile::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODATACOLLECTIONMIB::CdcVFile::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cdcVFilePersistentStorage")
     {
@@ -316,26 +318,29 @@ void CISCODATACOLLECTIONMIB::Cdcvfile::set_filter(const std::string & value_path
     }
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcvfile::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODATACOLLECTIONMIB::CdcVFile::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdcVFilePersistentStorage" || name == "cdcVFileMaxSizeHitsLimit")
         return true;
     return false;
 }
 
-CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfiletable()
+CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileTable()
+    :
+    cdcvfileentry(this, {"cdcvfileindex"})
 {
 
-    yang_name = "cdcVFileTable"; yang_parent_name = "CISCO-DATA-COLLECTION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdcVFileTable"; yang_parent_name = "CISCO-DATA-COLLECTION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODATACOLLECTIONMIB::Cdcvfiletable::~Cdcvfiletable()
+CISCODATACOLLECTIONMIB::CdcVFileTable::~CdcVFileTable()
 {
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcvfiletable::has_data() const
+bool CISCODATACOLLECTIONMIB::CdcVFileTable::has_data() const
 {
-    for (std::size_t index=0; index<cdcvfileentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdcvfileentry.len(); index++)
     {
         if(cdcvfileentry[index]->has_data())
             return true;
@@ -343,9 +348,9 @@ bool CISCODATACOLLECTIONMIB::Cdcvfiletable::has_data() const
     return false;
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcvfiletable::has_operation() const
+bool CISCODATACOLLECTIONMIB::CdcVFileTable::has_operation() const
 {
-    for (std::size_t index=0; index<cdcvfileentry.size(); index++)
+    for (std::size_t index=0; index<cdcvfileentry.len(); index++)
     {
         if(cdcvfileentry[index]->has_operation())
             return true;
@@ -353,21 +358,21 @@ bool CISCODATACOLLECTIONMIB::Cdcvfiletable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcvfiletable::get_absolute_path() const
+std::string CISCODATACOLLECTIONMIB::CdcVFileTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DATA-COLLECTION-MIB:CISCO-DATA-COLLECTION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcvfiletable::get_segment_path() const
+std::string CISCODATACOLLECTIONMIB::CdcVFileTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdcVFileTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcvfiletable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcVFileTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -376,25 +381,25 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcvfilet
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcvfiletable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcVFileTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdcVFileEntry")
     {
-        auto c = std::make_shared<CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry>();
+        auto c = std::make_shared<CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry>();
         c->parent = this;
-        cdcvfileentry.push_back(c);
+        cdcvfileentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcvfiletable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcVFileTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdcvfileentry)
+    for (auto c : cdcvfileentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -405,22 +410,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcvfilet
     return children;
 }
 
-void CISCODATACOLLECTIONMIB::Cdcvfiletable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODATACOLLECTIONMIB::CdcVFileTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCODATACOLLECTIONMIB::Cdcvfiletable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODATACOLLECTIONMIB::CdcVFileTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcvfiletable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODATACOLLECTIONMIB::CdcVFileTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdcVFileEntry")
         return true;
     return false;
 }
 
-CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfileentry()
+CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileEntry()
     :
     cdcvfileindex{YType::uint32, "cdcVFileIndex"},
     cdcvfilename{YType::str, "cdcVFileName"},
@@ -439,15 +444,16 @@ CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfileentry()
     cdcvfilerowstatus{YType::enumeration, "cdcVFileRowStatus"}
 {
 
-    yang_name = "cdcVFileEntry"; yang_parent_name = "cdcVFileTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdcVFileEntry"; yang_parent_name = "cdcVFileTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::~Cdcvfileentry()
+CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::~CdcVFileEntry()
 {
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::has_data() const
+bool CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cdcvfileindex.is_set
 	|| cdcvfilename.is_set
 	|| cdcvfiledescription.is_set
@@ -465,7 +471,7 @@ bool CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::has_data() const
 	|| cdcvfilerowstatus.is_set;
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::has_operation() const
+bool CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cdcvfileindex.yfilter)
@@ -485,21 +491,22 @@ bool CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::has_operation() const
 	|| ydk::is_set(cdcvfilerowstatus.yfilter);
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::get_absolute_path() const
+std::string CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DATA-COLLECTION-MIB:CISCO-DATA-COLLECTION-MIB/cdcVFileTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::get_segment_path() const
+std::string CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cdcVFileEntry" <<"[cdcVFileIndex='" <<cdcvfileindex <<"']";
+    path_buffer << "cdcVFileEntry";
+    ADD_KEY_TOKEN(cdcvfileindex, "cdcVFileIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -523,19 +530,19 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcvfilet
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdcVFileIndex")
     {
@@ -629,7 +636,7 @@ void CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::set_value(const std::
     }
 }
 
-void CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cdcVFileIndex")
     {
@@ -693,26 +700,29 @@ void CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::set_filter(const std:
     }
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdcVFileIndex" || name == "cdcVFileName" || name == "cdcVFileDescription" || name == "cdcVFileCommand" || name == "cdcVFileMaxSize" || name == "cdcVFileCurrentSize" || name == "cdcVFileFormat" || name == "cdcVFileCollectMode" || name == "cdcVFileCollectionPeriod" || name == "cdcVFileRetentionPeriod" || name == "cdcVFileAdminStatus" || name == "cdcVFileOperStatus" || name == "cdcVFileErrorCode" || name == "cdcVFileCollectionErrorEnable" || name == "cdcVFileRowStatus")
         return true;
     return false;
 }
 
-CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmttable()
+CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtTable()
+    :
+    cdcvfilemgmtentry(this, {"cdcvfileindex", "cdcvfilemgmtindex"})
 {
 
-    yang_name = "cdcVFileMgmtTable"; yang_parent_name = "CISCO-DATA-COLLECTION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdcVFileMgmtTable"; yang_parent_name = "CISCO-DATA-COLLECTION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::~Cdcvfilemgmttable()
+CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::~CdcVFileMgmtTable()
 {
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::has_data() const
+bool CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::has_data() const
 {
-    for (std::size_t index=0; index<cdcvfilemgmtentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdcvfilemgmtentry.len(); index++)
     {
         if(cdcvfilemgmtentry[index]->has_data())
             return true;
@@ -720,9 +730,9 @@ bool CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::has_data() const
     return false;
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::has_operation() const
+bool CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::has_operation() const
 {
-    for (std::size_t index=0; index<cdcvfilemgmtentry.size(); index++)
+    for (std::size_t index=0; index<cdcvfilemgmtentry.len(); index++)
     {
         if(cdcvfilemgmtentry[index]->has_operation())
             return true;
@@ -730,21 +740,21 @@ bool CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::get_absolute_path() const
+std::string CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DATA-COLLECTION-MIB:CISCO-DATA-COLLECTION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::get_segment_path() const
+std::string CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdcVFileMgmtTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -753,25 +763,25 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcvfilem
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdcVFileMgmtEntry")
     {
-        auto c = std::make_shared<CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry>();
+        auto c = std::make_shared<CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry>();
         c->parent = this;
-        cdcvfilemgmtentry.push_back(c);
+        cdcvfilemgmtentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdcvfilemgmtentry)
+    for (auto c : cdcvfilemgmtentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -782,22 +792,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcvfilem
     return children;
 }
 
-void CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdcVFileMgmtEntry")
         return true;
     return false;
 }
 
-CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::Cdcvfilemgmtentry()
+CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::CdcVFileMgmtEntry()
     :
     cdcvfileindex{YType::str, "cdcVFileIndex"},
     cdcvfilemgmtindex{YType::uint32, "cdcVFileMgmtIndex"},
@@ -810,15 +820,16 @@ CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::Cdcvfilemgmtentry(
     cdcvfilemgmtlastxferurl{YType::str, "cdcVFileMgmtLastXferURL"}
 {
 
-    yang_name = "cdcVFileMgmtEntry"; yang_parent_name = "cdcVFileMgmtTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdcVFileMgmtEntry"; yang_parent_name = "cdcVFileMgmtTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::~Cdcvfilemgmtentry()
+CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::~CdcVFileMgmtEntry()
 {
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::has_data() const
+bool CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cdcvfileindex.is_set
 	|| cdcvfilemgmtindex.is_set
 	|| cdcvfilemgmtname.is_set
@@ -830,7 +841,7 @@ bool CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::has_data() co
 	|| cdcvfilemgmtlastxferurl.is_set;
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::has_operation() const
+bool CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cdcvfileindex.yfilter)
@@ -844,21 +855,23 @@ bool CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::has_operation
 	|| ydk::is_set(cdcvfilemgmtlastxferurl.yfilter);
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::get_absolute_path() const
+std::string CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DATA-COLLECTION-MIB:CISCO-DATA-COLLECTION-MIB/cdcVFileMgmtTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::get_segment_path() const
+std::string CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cdcVFileMgmtEntry" <<"[cdcVFileIndex='" <<cdcvfileindex <<"']" <<"[cdcVFileMgmtIndex='" <<cdcvfilemgmtindex <<"']";
+    path_buffer << "cdcVFileMgmtEntry";
+    ADD_KEY_TOKEN(cdcvfileindex, "cdcVFileIndex");
+    ADD_KEY_TOKEN(cdcvfilemgmtindex, "cdcVFileMgmtIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -876,19 +889,19 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcvfilem
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdcVFileIndex")
     {
@@ -946,7 +959,7 @@ void CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::set_value(con
     }
 }
 
-void CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cdcVFileIndex")
     {
@@ -986,26 +999,29 @@ void CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::set_filter(co
     }
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdcVFileIndex" || name == "cdcVFileMgmtIndex" || name == "cdcVFileMgmtName" || name == "cdcVFileMgmtTimestamp" || name == "cdcVFileMgmtTimeToLive" || name == "cdcVFileMgmtCommand" || name == "cdcVFileMgmtXferURL" || name == "cdcVFileMgmtLastXferStatus" || name == "cdcVFileMgmtLastXferURL")
         return true;
     return false;
 }
 
-CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgtable()
+CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGTable()
+    :
+    cdcdgentry(this, {"cdcdgindex"})
 {
 
-    yang_name = "cdcDGTable"; yang_parent_name = "CISCO-DATA-COLLECTION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdcDGTable"; yang_parent_name = "CISCO-DATA-COLLECTION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODATACOLLECTIONMIB::Cdcdgtable::~Cdcdgtable()
+CISCODATACOLLECTIONMIB::CdcDGTable::~CdcDGTable()
 {
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcdgtable::has_data() const
+bool CISCODATACOLLECTIONMIB::CdcDGTable::has_data() const
 {
-    for (std::size_t index=0; index<cdcdgentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdcdgentry.len(); index++)
     {
         if(cdcdgentry[index]->has_data())
             return true;
@@ -1013,9 +1029,9 @@ bool CISCODATACOLLECTIONMIB::Cdcdgtable::has_data() const
     return false;
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcdgtable::has_operation() const
+bool CISCODATACOLLECTIONMIB::CdcDGTable::has_operation() const
 {
-    for (std::size_t index=0; index<cdcdgentry.size(); index++)
+    for (std::size_t index=0; index<cdcdgentry.len(); index++)
     {
         if(cdcdgentry[index]->has_operation())
             return true;
@@ -1023,21 +1039,21 @@ bool CISCODATACOLLECTIONMIB::Cdcdgtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcdgtable::get_absolute_path() const
+std::string CISCODATACOLLECTIONMIB::CdcDGTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DATA-COLLECTION-MIB:CISCO-DATA-COLLECTION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcdgtable::get_segment_path() const
+std::string CISCODATACOLLECTIONMIB::CdcDGTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdcDGTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcdgtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcDGTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1046,25 +1062,25 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcdgtabl
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcdgtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcDGTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdcDGEntry")
     {
-        auto c = std::make_shared<CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry>();
+        auto c = std::make_shared<CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry>();
         c->parent = this;
-        cdcdgentry.push_back(c);
+        cdcdgentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcdgtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcDGTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdcdgentry)
+    for (auto c : cdcdgentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1075,22 +1091,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcdgtabl
     return children;
 }
 
-void CISCODATACOLLECTIONMIB::Cdcdgtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODATACOLLECTIONMIB::CdcDGTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCODATACOLLECTIONMIB::Cdcdgtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODATACOLLECTIONMIB::CdcDGTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcdgtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODATACOLLECTIONMIB::CdcDGTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdcDGEntry")
         return true;
     return false;
 }
 
-CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::Cdcdgentry()
+CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::CdcDGEntry()
     :
     cdcdgindex{YType::uint32, "cdcDGIndex"},
     cdcdgcomment{YType::str, "cdcDGComment"},
@@ -1105,15 +1121,16 @@ CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::Cdcdgentry()
     cdcdgrowstatus{YType::enumeration, "cdcDGRowStatus"}
 {
 
-    yang_name = "cdcDGEntry"; yang_parent_name = "cdcDGTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdcDGEntry"; yang_parent_name = "cdcDGTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::~Cdcdgentry()
+CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::~CdcDGEntry()
 {
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::has_data() const
+bool CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cdcdgindex.is_set
 	|| cdcdgcomment.is_set
 	|| cdcdgtype.is_set
@@ -1127,7 +1144,7 @@ bool CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::has_data() const
 	|| cdcdgrowstatus.is_set;
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::has_operation() const
+bool CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cdcdgindex.yfilter)
@@ -1143,21 +1160,22 @@ bool CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::has_operation() const
 	|| ydk::is_set(cdcdgrowstatus.yfilter);
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::get_absolute_path() const
+std::string CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DATA-COLLECTION-MIB:CISCO-DATA-COLLECTION-MIB/cdcDGTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::get_segment_path() const
+std::string CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cdcDGEntry" <<"[cdcDGIndex='" <<cdcdgindex <<"']";
+    path_buffer << "cdcDGEntry";
+    ADD_KEY_TOKEN(cdcdgindex, "cdcDGIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1177,19 +1195,19 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcdgtabl
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdcDGIndex")
     {
@@ -1259,7 +1277,7 @@ void CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::set_value(const std::string
     }
 }
 
-void CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cdcDGIndex")
     {
@@ -1307,26 +1325,29 @@ void CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::set_filter(const std::strin
     }
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdcDGIndex" || name == "cdcDGComment" || name == "cdcDGType" || name == "cdcDGVFileIndex" || name == "cdcDGTargetTag" || name == "cdcDGContextName" || name == "cdcDGObject" || name == "cdcDGObjectGrpIndex" || name == "cdcDGInstGrpIndex" || name == "cdcDGPollPeriod" || name == "cdcDGRowStatus")
         return true;
     return false;
 }
 
-CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjecttable()
+CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectTable()
+    :
+    cdcdgbaseobjectentry(this, {"cdcdgbaseobjectgrpindex", "cdcdgbaseobjectindex"})
 {
 
-    yang_name = "cdcDGBaseObjectTable"; yang_parent_name = "CISCO-DATA-COLLECTION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdcDGBaseObjectTable"; yang_parent_name = "CISCO-DATA-COLLECTION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::~Cdcdgbaseobjecttable()
+CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::~CdcDGBaseObjectTable()
 {
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::has_data() const
+bool CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::has_data() const
 {
-    for (std::size_t index=0; index<cdcdgbaseobjectentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdcdgbaseobjectentry.len(); index++)
     {
         if(cdcdgbaseobjectentry[index]->has_data())
             return true;
@@ -1334,9 +1355,9 @@ bool CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::has_data() const
     return false;
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::has_operation() const
+bool CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::has_operation() const
 {
-    for (std::size_t index=0; index<cdcdgbaseobjectentry.size(); index++)
+    for (std::size_t index=0; index<cdcdgbaseobjectentry.len(); index++)
     {
         if(cdcdgbaseobjectentry[index]->has_operation())
             return true;
@@ -1344,21 +1365,21 @@ bool CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::get_absolute_path() const
+std::string CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DATA-COLLECTION-MIB:CISCO-DATA-COLLECTION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::get_segment_path() const
+std::string CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdcDGBaseObjectTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1367,25 +1388,25 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcdgbase
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdcDGBaseObjectEntry")
     {
-        auto c = std::make_shared<CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry>();
+        auto c = std::make_shared<CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectEntry>();
         c->parent = this;
-        cdcdgbaseobjectentry.push_back(c);
+        cdcdgbaseobjectentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdcdgbaseobjectentry)
+    for (auto c : cdcdgbaseobjectentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1396,22 +1417,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcdgbase
     return children;
 }
 
-void CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdcDGBaseObjectEntry")
         return true;
     return false;
 }
 
-CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::Cdcdgbaseobjectentry()
+CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectEntry::CdcDGBaseObjectEntry()
     :
     cdcdgbaseobjectgrpindex{YType::uint32, "cdcDGBaseObjectGrpIndex"},
     cdcdgbaseobjectindex{YType::uint32, "cdcDGBaseObjectIndex"},
@@ -1420,15 +1441,16 @@ CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::Cdcdgbaseobj
     cdcdgbaseobjectrowstatus{YType::enumeration, "cdcDGBaseObjectRowStatus"}
 {
 
-    yang_name = "cdcDGBaseObjectEntry"; yang_parent_name = "cdcDGBaseObjectTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdcDGBaseObjectEntry"; yang_parent_name = "cdcDGBaseObjectTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::~Cdcdgbaseobjectentry()
+CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectEntry::~CdcDGBaseObjectEntry()
 {
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::has_data() const
+bool CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cdcdgbaseobjectgrpindex.is_set
 	|| cdcdgbaseobjectindex.is_set
 	|| cdcdgbaseobjectsubtree.is_set
@@ -1436,7 +1458,7 @@ bool CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::has_dat
 	|| cdcdgbaseobjectrowstatus.is_set;
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::has_operation() const
+bool CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cdcdgbaseobjectgrpindex.yfilter)
@@ -1446,21 +1468,23 @@ bool CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::has_ope
 	|| ydk::is_set(cdcdgbaseobjectrowstatus.yfilter);
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::get_absolute_path() const
+std::string CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DATA-COLLECTION-MIB:CISCO-DATA-COLLECTION-MIB/cdcDGBaseObjectTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::get_segment_path() const
+std::string CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cdcDGBaseObjectEntry" <<"[cdcDGBaseObjectGrpIndex='" <<cdcdgbaseobjectgrpindex <<"']" <<"[cdcDGBaseObjectIndex='" <<cdcdgbaseobjectindex <<"']";
+    path_buffer << "cdcDGBaseObjectEntry";
+    ADD_KEY_TOKEN(cdcdgbaseobjectgrpindex, "cdcDGBaseObjectGrpIndex");
+    ADD_KEY_TOKEN(cdcdgbaseobjectindex, "cdcDGBaseObjectIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1474,19 +1498,19 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcdgbase
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdcDGBaseObjectGrpIndex")
     {
@@ -1520,7 +1544,7 @@ void CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::set_val
     }
 }
 
-void CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cdcDGBaseObjectGrpIndex")
     {
@@ -1544,26 +1568,29 @@ void CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::set_fil
     }
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdcDGBaseObjectGrpIndex" || name == "cdcDGBaseObjectIndex" || name == "cdcDGBaseObjectSubtree" || name == "cdcDGBaseObjectList" || name == "cdcDGBaseObjectRowStatus")
         return true;
     return false;
 }
 
-CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstancetable()
+CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceTable()
+    :
+    cdcdginstanceentry(this, {"cdcdginstancegrpindex", "cdcdginstanceindex"})
 {
 
-    yang_name = "cdcDGInstanceTable"; yang_parent_name = "CISCO-DATA-COLLECTION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdcDGInstanceTable"; yang_parent_name = "CISCO-DATA-COLLECTION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODATACOLLECTIONMIB::Cdcdginstancetable::~Cdcdginstancetable()
+CISCODATACOLLECTIONMIB::CdcDGInstanceTable::~CdcDGInstanceTable()
 {
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcdginstancetable::has_data() const
+bool CISCODATACOLLECTIONMIB::CdcDGInstanceTable::has_data() const
 {
-    for (std::size_t index=0; index<cdcdginstanceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdcdginstanceentry.len(); index++)
     {
         if(cdcdginstanceentry[index]->has_data())
             return true;
@@ -1571,9 +1598,9 @@ bool CISCODATACOLLECTIONMIB::Cdcdginstancetable::has_data() const
     return false;
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcdginstancetable::has_operation() const
+bool CISCODATACOLLECTIONMIB::CdcDGInstanceTable::has_operation() const
 {
-    for (std::size_t index=0; index<cdcdginstanceentry.size(); index++)
+    for (std::size_t index=0; index<cdcdginstanceentry.len(); index++)
     {
         if(cdcdginstanceentry[index]->has_operation())
             return true;
@@ -1581,21 +1608,21 @@ bool CISCODATACOLLECTIONMIB::Cdcdginstancetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcdginstancetable::get_absolute_path() const
+std::string CISCODATACOLLECTIONMIB::CdcDGInstanceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DATA-COLLECTION-MIB:CISCO-DATA-COLLECTION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcdginstancetable::get_segment_path() const
+std::string CISCODATACOLLECTIONMIB::CdcDGInstanceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdcDGInstanceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcdginstancetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcDGInstanceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1604,25 +1631,25 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcdginst
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcdginstancetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcDGInstanceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdcDGInstanceEntry")
     {
-        auto c = std::make_shared<CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry>();
+        auto c = std::make_shared<CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry>();
         c->parent = this;
-        cdcdginstanceentry.push_back(c);
+        cdcdginstanceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcdginstancetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcDGInstanceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdcdginstanceentry)
+    for (auto c : cdcdginstanceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1633,22 +1660,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcdginst
     return children;
 }
 
-void CISCODATACOLLECTIONMIB::Cdcdginstancetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODATACOLLECTIONMIB::CdcDGInstanceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCODATACOLLECTIONMIB::Cdcdginstancetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODATACOLLECTIONMIB::CdcDGInstanceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcdginstancetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODATACOLLECTIONMIB::CdcDGInstanceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdcDGInstanceEntry")
         return true;
     return false;
 }
 
-CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::Cdcdginstanceentry()
+CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::CdcDGInstanceEntry()
     :
     cdcdginstancegrpindex{YType::uint32, "cdcDGInstanceGrpIndex"},
     cdcdginstanceindex{YType::uint32, "cdcDGInstanceIndex"},
@@ -1660,15 +1687,16 @@ CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::Cdcdginstanceent
     cdcdginstancerowstatus{YType::enumeration, "cdcDGInstanceRowStatus"}
 {
 
-    yang_name = "cdcDGInstanceEntry"; yang_parent_name = "cdcDGInstanceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdcDGInstanceEntry"; yang_parent_name = "cdcDGInstanceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::~Cdcdginstanceentry()
+CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::~CdcDGInstanceEntry()
 {
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::has_data() const
+bool CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cdcdginstancegrpindex.is_set
 	|| cdcdginstanceindex.is_set
 	|| cdcdginstancetype.is_set
@@ -1679,7 +1707,7 @@ bool CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::has_data() 
 	|| cdcdginstancerowstatus.is_set;
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::has_operation() const
+bool CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cdcdginstancegrpindex.yfilter)
@@ -1692,21 +1720,23 @@ bool CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::has_operati
 	|| ydk::is_set(cdcdginstancerowstatus.yfilter);
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::get_absolute_path() const
+std::string CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DATA-COLLECTION-MIB:CISCO-DATA-COLLECTION-MIB/cdcDGInstanceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::get_segment_path() const
+std::string CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cdcDGInstanceEntry" <<"[cdcDGInstanceGrpIndex='" <<cdcdginstancegrpindex <<"']" <<"[cdcDGInstanceIndex='" <<cdcdginstanceindex <<"']";
+    path_buffer << "cdcDGInstanceEntry";
+    ADD_KEY_TOKEN(cdcdginstancegrpindex, "cdcDGInstanceGrpIndex");
+    ADD_KEY_TOKEN(cdcdginstanceindex, "cdcDGInstanceIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1723,19 +1753,19 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcdginst
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdcDGInstanceGrpIndex")
     {
@@ -1787,7 +1817,7 @@ void CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::set_value(c
     }
 }
 
-void CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cdcDGInstanceGrpIndex")
     {
@@ -1823,26 +1853,29 @@ void CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::set_filter(
     }
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdcDGInstanceGrpIndex" || name == "cdcDGInstanceIndex" || name == "cdcDGInstanceType" || name == "cdcDGInstanceOid" || name == "cdcDGInstanceOidEnd" || name == "cdcDGInstanceNumRepititions" || name == "cdcDGInstanceOtherPtr" || name == "cdcDGInstanceRowStatus")
         return true;
     return false;
 }
 
-CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconftable()
+CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfTable()
+    :
+    cdcfilexferconfentry(this, {"cdcvfileindex"})
 {
 
-    yang_name = "cdcFileXferConfTable"; yang_parent_name = "CISCO-DATA-COLLECTION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdcFileXferConfTable"; yang_parent_name = "CISCO-DATA-COLLECTION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODATACOLLECTIONMIB::Cdcfilexferconftable::~Cdcfilexferconftable()
+CISCODATACOLLECTIONMIB::CdcFileXferConfTable::~CdcFileXferConfTable()
 {
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcfilexferconftable::has_data() const
+bool CISCODATACOLLECTIONMIB::CdcFileXferConfTable::has_data() const
 {
-    for (std::size_t index=0; index<cdcfilexferconfentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdcfilexferconfentry.len(); index++)
     {
         if(cdcfilexferconfentry[index]->has_data())
             return true;
@@ -1850,9 +1883,9 @@ bool CISCODATACOLLECTIONMIB::Cdcfilexferconftable::has_data() const
     return false;
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcfilexferconftable::has_operation() const
+bool CISCODATACOLLECTIONMIB::CdcFileXferConfTable::has_operation() const
 {
-    for (std::size_t index=0; index<cdcfilexferconfentry.size(); index++)
+    for (std::size_t index=0; index<cdcfilexferconfentry.len(); index++)
     {
         if(cdcfilexferconfentry[index]->has_operation())
             return true;
@@ -1860,21 +1893,21 @@ bool CISCODATACOLLECTIONMIB::Cdcfilexferconftable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcfilexferconftable::get_absolute_path() const
+std::string CISCODATACOLLECTIONMIB::CdcFileXferConfTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DATA-COLLECTION-MIB:CISCO-DATA-COLLECTION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcfilexferconftable::get_segment_path() const
+std::string CISCODATACOLLECTIONMIB::CdcFileXferConfTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdcFileXferConfTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcfilexferconftable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcFileXferConfTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1883,25 +1916,25 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcfilexf
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcfilexferconftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcFileXferConfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdcFileXferConfEntry")
     {
-        auto c = std::make_shared<CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry>();
+        auto c = std::make_shared<CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry>();
         c->parent = this;
-        cdcfilexferconfentry.push_back(c);
+        cdcfilexferconfentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcfilexferconftable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcFileXferConfTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdcfilexferconfentry)
+    for (auto c : cdcfilexferconfentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1912,22 +1945,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcfilexf
     return children;
 }
 
-void CISCODATACOLLECTIONMIB::Cdcfilexferconftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODATACOLLECTIONMIB::CdcFileXferConfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCODATACOLLECTIONMIB::Cdcfilexferconftable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODATACOLLECTIONMIB::CdcFileXferConfTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcfilexferconftable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODATACOLLECTIONMIB::CdcFileXferConfTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdcFileXferConfEntry")
         return true;
     return false;
 }
 
-CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry::Cdcfilexferconfentry()
+CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry::CdcFileXferConfEntry()
     :
     cdcvfileindex{YType::str, "cdcVFileIndex"},
     cdcfilexferconfpriurl{YType::str, "cdcFileXferConfPriUrl"},
@@ -1938,15 +1971,16 @@ CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry::Cdcfilexferc
     cdcfilexferconffailureenable{YType::boolean, "cdcFileXferConfFailureEnable"}
 {
 
-    yang_name = "cdcFileXferConfEntry"; yang_parent_name = "cdcFileXferConfTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdcFileXferConfEntry"; yang_parent_name = "cdcFileXferConfTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry::~Cdcfilexferconfentry()
+CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry::~CdcFileXferConfEntry()
 {
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry::has_data() const
+bool CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cdcvfileindex.is_set
 	|| cdcfilexferconfpriurl.is_set
 	|| cdcfilexferconfsecurl.is_set
@@ -1956,7 +1990,7 @@ bool CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry::has_dat
 	|| cdcfilexferconffailureenable.is_set;
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry::has_operation() const
+bool CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cdcvfileindex.yfilter)
@@ -1968,21 +2002,22 @@ bool CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry::has_ope
 	|| ydk::is_set(cdcfilexferconffailureenable.yfilter);
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry::get_absolute_path() const
+std::string CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DATA-COLLECTION-MIB:CISCO-DATA-COLLECTION-MIB/cdcFileXferConfTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry::get_segment_path() const
+std::string CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cdcFileXferConfEntry" <<"[cdcVFileIndex='" <<cdcvfileindex <<"']";
+    path_buffer << "cdcFileXferConfEntry";
+    ADD_KEY_TOKEN(cdcvfileindex, "cdcVFileIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1998,19 +2033,19 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::Cdcfilexf
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdcVFileIndex")
     {
@@ -2056,7 +2091,7 @@ void CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry::set_val
     }
 }
 
-void CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cdcVFileIndex")
     {
@@ -2088,16 +2123,12 @@ void CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry::set_fil
     }
 }
 
-bool CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdcVFileIndex" || name == "cdcFileXferConfPriUrl" || name == "cdcFileXferConfSecUrl" || name == "cdcFileXferConfRetryPeriod" || name == "cdcFileXferConfRetryCount" || name == "cdcFileXferConfSuccessEnable" || name == "cdcFileXferConfFailureEnable")
         return true;
     return false;
 }
-
-const Enum::YLeaf CdcFileFormat::cdcBulkASCII {1, "cdcBulkASCII"};
-const Enum::YLeaf CdcFileFormat::cdcBulkBinary {2, "cdcBulkBinary"};
-const Enum::YLeaf CdcFileFormat::cdcSchemaASCII {3, "cdcSchemaASCII"};
 
 const Enum::YLeaf CdcFileXferStatus::notStarted {1, "notStarted"};
 const Enum::YLeaf CdcFileXferStatus::success {2, "success"};
@@ -2109,41 +2140,45 @@ const Enum::YLeaf CdcFileXferStatus::networkFailed {7, "networkFailed"};
 const Enum::YLeaf CdcFileXferStatus::fileWriteFailed {8, "fileWriteFailed"};
 const Enum::YLeaf CdcFileXferStatus::authFailed {9, "authFailed"};
 
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfilecommand::idle {1, "idle"};
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfilecommand::swapToNewFile {2, "swapToNewFile"};
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfilecommand::collectNow {3, "collectNow"};
+const Enum::YLeaf CdcFileFormat::cdcBulkASCII {1, "cdcBulkASCII"};
+const Enum::YLeaf CdcFileFormat::cdcBulkBinary {2, "cdcBulkBinary"};
+const Enum::YLeaf CdcFileFormat::cdcSchemaASCII {3, "cdcSchemaASCII"};
 
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfilecollectmode::auto_ {1, "auto"};
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfilecollectmode::manual {2, "manual"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileCommand::idle {1, "idle"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileCommand::swapToNewFile {2, "swapToNewFile"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileCommand::collectNow {3, "collectNow"};
 
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfileadminstatus::enabled {1, "enabled"};
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfileadminstatus::disabled {2, "disabled"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileCollectMode::auto_ {1, "auto"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileCollectMode::manual {2, "manual"};
 
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfileoperstatus::enabled {1, "enabled"};
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfileoperstatus::disabled {2, "disabled"};
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfileoperstatus::error {3, "error"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileAdminStatus::enabled {1, "enabled"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileAdminStatus::disabled {2, "disabled"};
 
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfileerrorcode::noError {1, "noError"};
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfileerrorcode::otherError {2, "otherError"};
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfileerrorcode::noSpace {3, "noSpace"};
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfileerrorcode::openError {4, "openError"};
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfileerrorcode::tooSmallMaxSize {5, "tooSmallMaxSize"};
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfileerrorcode::tooManyMaxSizeHits {6, "tooManyMaxSizeHits"};
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::Cdcvfileerrorcode::noResource {7, "noResource"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileOperStatus::enabled {1, "enabled"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileOperStatus::disabled {2, "disabled"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileOperStatus::error {3, "error"};
 
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::Cdcvfilemgmtcommand::idle {1, "idle"};
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::Cdcvfilemgmtcommand::delete_ {2, "delete"};
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::Cdcvfilemgmtcommand::transfer {3, "transfer"};
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::Cdcvfilemgmtcommand::abortTransfer {4, "abortTransfer"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileErrorCode::noError {1, "noError"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileErrorCode::otherError {2, "otherError"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileErrorCode::noSpace {3, "noSpace"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileErrorCode::openError {4, "openError"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileErrorCode::tooSmallMaxSize {5, "tooSmallMaxSize"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileErrorCode::tooManyMaxSizeHits {6, "tooManyMaxSizeHits"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileErrorCode::noResource {7, "noResource"};
 
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::Cdcdgtype::object {1, "object"};
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::Cdcdgtype::table {2, "table"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::CdcVFileMgmtCommand::idle {1, "idle"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::CdcVFileMgmtCommand::delete_ {2, "delete"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::CdcVFileMgmtCommand::transfer {3, "transfer"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::CdcVFileMgmtCommand::abortTransfer {4, "abortTransfer"};
 
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::Cdcdginstancetype::individual {1, "individual"};
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::Cdcdginstancetype::range {2, "range"};
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::Cdcdginstancetype::repititions {3, "repititions"};
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::Cdcdginstancetype::subTree {4, "subTree"};
-const Enum::YLeaf CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::Cdcdginstancetype::other {5, "other"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::CdcDGType::object {1, "object"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::CdcDGType::table {2, "table"};
+
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::CdcDGInstanceType::individual {1, "individual"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::CdcDGInstanceType::range {2, "range"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::CdcDGInstanceType::repititions {3, "repititions"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::CdcDGInstanceType::subTree {4, "subTree"};
+const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::CdcDGInstanceType::other {5, "other"};
 
 
 }

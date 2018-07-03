@@ -38,12 +38,12 @@ class Inventory : public ydk::Entity
         class Fan; //type: Inventory::Fan
         class Raw; //type: Inventory::Raw
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_inv::Inventory::Location> > location;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_inv::Inventory::All> > all;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_inv::Inventory::Chassis> > chassis;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_inv::Inventory::Power> > power;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_inv::Inventory::Fan> > fan;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_inv::Inventory::Raw> > raw;
+        ydk::YList location;
+        ydk::YList all;
+        ydk::YList chassis;
+        ydk::YList power;
+        ydk::YList fan;
+        ydk::YList raw;
         
 }; // Inventory
 

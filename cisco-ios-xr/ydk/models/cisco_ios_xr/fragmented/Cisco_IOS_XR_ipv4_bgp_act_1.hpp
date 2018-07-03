@@ -162,11 +162,11 @@ class ClearBgpBestpathAfiSafiRdIpv4Prefix::Input : public ydk::Entity
 
 }; // ClearBgpBestpathAfiSafiRdIpv4Prefix::Input
 
-class ClearBgpBestpathAfiSafiMp2MpIpv4Prefix : public ydk::Entity
+class ClearBgpBestpathAfiSafiMp2mpIpv4Prefix : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiMp2MpIpv4Prefix();
-        ~ClearBgpBestpathAfiSafiMp2MpIpv4Prefix();
+        ClearBgpBestpathAfiSafiMp2mpIpv4Prefix();
+        ~ClearBgpBestpathAfiSafiMp2mpIpv4Prefix();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -183,14 +183,14 @@ class ClearBgpBestpathAfiSafiMp2MpIpv4Prefix : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiMp2MpIpv4Prefix::Input
+        class Input; //type: ClearBgpBestpathAfiSafiMp2mpIpv4Prefix::Input
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiMp2MpIpv4Prefix::Input> input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiMp2mpIpv4Prefix::Input> input;
         
-}; // ClearBgpBestpathAfiSafiMp2MpIpv4Prefix
+}; // ClearBgpBestpathAfiSafiMp2mpIpv4Prefix
 
 
-class ClearBgpBestpathAfiSafiMp2MpIpv4Prefix::Input : public ydk::Entity
+class ClearBgpBestpathAfiSafiMp2mpIpv4Prefix::Input : public ydk::Entity
 {
     public:
         Input();
@@ -211,7 +211,7 @@ class ClearBgpBestpathAfiSafiMp2MpIpv4Prefix::Input : public ydk::Entity
         ydk::YLeaf mp2mp; //type: string
         ydk::YLeaf ipv4_prefix; //type: string
 
-}; // ClearBgpBestpathAfiSafiMp2MpIpv4Prefix::Input
+}; // ClearBgpBestpathAfiSafiMp2mpIpv4Prefix::Input
 
 class ClearBgpBestpathAfiSafiVrfIpv4Prefix : public ydk::Entity
 {
@@ -2240,7 +2240,7 @@ class ClearBgpInstanceAfiSafiAsSoftInPrefixFilter::Input : public ydk::Entity
 
         ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of uint16, union
+        ydk::YLeaf as_number; //type: one of union, uint16
 
 }; // ClearBgpInstanceAfiSafiAsSoftInPrefixFilter::Input
 
@@ -2291,7 +2291,7 @@ class ClearBgpInstanceAfiSafiAsSoftIn::Input : public ydk::Entity
 
         ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of uint16, union
+        ydk::YLeaf as_number; //type: one of union, uint16
 
 }; // ClearBgpInstanceAfiSafiAsSoftIn::Input
 
@@ -2342,7 +2342,7 @@ class ClearBgpInstanceAfiSafiAsSoftOut::Input : public ydk::Entity
 
         ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of uint16, union
+        ydk::YLeaf as_number; //type: one of union, uint16
 
 }; // ClearBgpInstanceAfiSafiAsSoftOut::Input
 
@@ -2393,7 +2393,7 @@ class ClearBgpInstanceAfiSafiAsSoft::Input : public ydk::Entity
 
         ydk::YLeaf instance_name; //type: one of string, enumeration
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of uint16, union
+        ydk::YLeaf as_number; //type: one of union, uint16
 
 }; // ClearBgpInstanceAfiSafiAsSoft::Input
 

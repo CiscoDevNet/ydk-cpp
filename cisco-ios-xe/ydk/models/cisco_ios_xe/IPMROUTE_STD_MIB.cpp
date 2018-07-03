@@ -13,12 +13,12 @@ namespace IPMROUTE_STD_MIB {
 
 IPMROUTESTDMIB::IPMROUTESTDMIB()
     :
-    ipmroute(std::make_shared<IPMROUTESTDMIB::Ipmroute>())
-	,ipmroutetable(std::make_shared<IPMROUTESTDMIB::Ipmroutetable>())
-	,ipmroutenexthoptable(std::make_shared<IPMROUTESTDMIB::Ipmroutenexthoptable>())
-	,ipmrouteinterfacetable(std::make_shared<IPMROUTESTDMIB::Ipmrouteinterfacetable>())
-	,ipmrouteboundarytable(std::make_shared<IPMROUTESTDMIB::Ipmrouteboundarytable>())
-	,ipmroutescopenametable(std::make_shared<IPMROUTESTDMIB::Ipmroutescopenametable>())
+    ipmroute(std::make_shared<IPMROUTESTDMIB::IpMRoute>())
+    , ipmroutetable(std::make_shared<IPMROUTESTDMIB::IpMRouteTable>())
+    , ipmroutenexthoptable(std::make_shared<IPMROUTESTDMIB::IpMRouteNextHopTable>())
+    , ipmrouteinterfacetable(std::make_shared<IPMROUTESTDMIB::IpMRouteInterfaceTable>())
+    , ipmrouteboundarytable(std::make_shared<IPMROUTESTDMIB::IpMRouteBoundaryTable>())
+    , ipmroutescopenametable(std::make_shared<IPMROUTESTDMIB::IpMRouteScopeNameTable>())
 {
     ipmroute->parent = this;
     ipmroutetable->parent = this;
@@ -27,7 +27,7 @@ IPMROUTESTDMIB::IPMROUTESTDMIB()
     ipmrouteboundarytable->parent = this;
     ipmroutescopenametable->parent = this;
 
-    yang_name = "IPMROUTE-STD-MIB"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "IPMROUTE-STD-MIB"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 IPMROUTESTDMIB::~IPMROUTESTDMIB()
@@ -36,6 +36,7 @@ IPMROUTESTDMIB::~IPMROUTESTDMIB()
 
 bool IPMROUTESTDMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipmroute !=  nullptr && ipmroute->has_data())
 	|| (ipmroutetable !=  nullptr && ipmroutetable->has_data())
 	|| (ipmroutenexthoptable !=  nullptr && ipmroutenexthoptable->has_data())
@@ -77,7 +78,7 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::get_child_by_name(const std::string & ch
     {
         if(ipmroute == nullptr)
         {
-            ipmroute = std::make_shared<IPMROUTESTDMIB::Ipmroute>();
+            ipmroute = std::make_shared<IPMROUTESTDMIB::IpMRoute>();
         }
         return ipmroute;
     }
@@ -86,7 +87,7 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::get_child_by_name(const std::string & ch
     {
         if(ipmroutetable == nullptr)
         {
-            ipmroutetable = std::make_shared<IPMROUTESTDMIB::Ipmroutetable>();
+            ipmroutetable = std::make_shared<IPMROUTESTDMIB::IpMRouteTable>();
         }
         return ipmroutetable;
     }
@@ -95,7 +96,7 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::get_child_by_name(const std::string & ch
     {
         if(ipmroutenexthoptable == nullptr)
         {
-            ipmroutenexthoptable = std::make_shared<IPMROUTESTDMIB::Ipmroutenexthoptable>();
+            ipmroutenexthoptable = std::make_shared<IPMROUTESTDMIB::IpMRouteNextHopTable>();
         }
         return ipmroutenexthoptable;
     }
@@ -104,7 +105,7 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::get_child_by_name(const std::string & ch
     {
         if(ipmrouteinterfacetable == nullptr)
         {
-            ipmrouteinterfacetable = std::make_shared<IPMROUTESTDMIB::Ipmrouteinterfacetable>();
+            ipmrouteinterfacetable = std::make_shared<IPMROUTESTDMIB::IpMRouteInterfaceTable>();
         }
         return ipmrouteinterfacetable;
     }
@@ -113,7 +114,7 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::get_child_by_name(const std::string & ch
     {
         if(ipmrouteboundarytable == nullptr)
         {
-            ipmrouteboundarytable = std::make_shared<IPMROUTESTDMIB::Ipmrouteboundarytable>();
+            ipmrouteboundarytable = std::make_shared<IPMROUTESTDMIB::IpMRouteBoundaryTable>();
         }
         return ipmrouteboundarytable;
     }
@@ -122,7 +123,7 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::get_child_by_name(const std::string & ch
     {
         if(ipmroutescopenametable == nullptr)
         {
-            ipmroutescopenametable = std::make_shared<IPMROUTESTDMIB::Ipmroutescopenametable>();
+            ipmroutescopenametable = std::make_shared<IPMROUTESTDMIB::IpMRouteScopeNameTable>();
         }
         return ipmroutescopenametable;
     }
@@ -207,47 +208,48 @@ bool IPMROUTESTDMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-IPMROUTESTDMIB::Ipmroute::Ipmroute()
+IPMROUTESTDMIB::IpMRoute::IpMRoute()
     :
     ipmrouteenable{YType::enumeration, "ipMRouteEnable"},
     ipmrouteentrycount{YType::uint32, "ipMRouteEntryCount"}
 {
 
-    yang_name = "ipMRoute"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipMRoute"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMROUTESTDMIB::Ipmroute::~Ipmroute()
+IPMROUTESTDMIB::IpMRoute::~IpMRoute()
 {
 }
 
-bool IPMROUTESTDMIB::Ipmroute::has_data() const
+bool IPMROUTESTDMIB::IpMRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return ipmrouteenable.is_set
 	|| ipmrouteentrycount.is_set;
 }
 
-bool IPMROUTESTDMIB::Ipmroute::has_operation() const
+bool IPMROUTESTDMIB::IpMRoute::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipmrouteenable.yfilter)
 	|| ydk::is_set(ipmrouteentrycount.yfilter);
 }
 
-std::string IPMROUTESTDMIB::Ipmroute::get_absolute_path() const
+std::string IPMROUTESTDMIB::IpMRoute::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMROUTESTDMIB::Ipmroute::get_segment_path() const
+std::string IPMROUTESTDMIB::IpMRoute::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipMRoute";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroute::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRoute::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -258,19 +260,19 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroute::get_nam
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroute::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMROUTESTDMIB::Ipmroute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMROUTESTDMIB::IpMRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipMRouteEnable")
     {
@@ -286,7 +288,7 @@ void IPMROUTESTDMIB::Ipmroute::set_value(const std::string & value_path, const s
     }
 }
 
-void IPMROUTESTDMIB::Ipmroute::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMROUTESTDMIB::IpMRoute::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipMRouteEnable")
     {
@@ -298,26 +300,29 @@ void IPMROUTESTDMIB::Ipmroute::set_filter(const std::string & value_path, YFilte
     }
 }
 
-bool IPMROUTESTDMIB::Ipmroute::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMROUTESTDMIB::IpMRoute::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipMRouteEnable" || name == "ipMRouteEntryCount")
         return true;
     return false;
 }
 
-IPMROUTESTDMIB::Ipmroutetable::Ipmroutetable()
+IPMROUTESTDMIB::IpMRouteTable::IpMRouteTable()
+    :
+    ipmrouteentry(this, {"ipmroutegroup", "ipmroutesource", "ipmroutesourcemask"})
 {
 
-    yang_name = "ipMRouteTable"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipMRouteTable"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMROUTESTDMIB::Ipmroutetable::~Ipmroutetable()
+IPMROUTESTDMIB::IpMRouteTable::~IpMRouteTable()
 {
 }
 
-bool IPMROUTESTDMIB::Ipmroutetable::has_data() const
+bool IPMROUTESTDMIB::IpMRouteTable::has_data() const
 {
-    for (std::size_t index=0; index<ipmrouteentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipmrouteentry.len(); index++)
     {
         if(ipmrouteentry[index]->has_data())
             return true;
@@ -325,9 +330,9 @@ bool IPMROUTESTDMIB::Ipmroutetable::has_data() const
     return false;
 }
 
-bool IPMROUTESTDMIB::Ipmroutetable::has_operation() const
+bool IPMROUTESTDMIB::IpMRouteTable::has_operation() const
 {
-    for (std::size_t index=0; index<ipmrouteentry.size(); index++)
+    for (std::size_t index=0; index<ipmrouteentry.len(); index++)
     {
         if(ipmrouteentry[index]->has_operation())
             return true;
@@ -335,21 +340,21 @@ bool IPMROUTESTDMIB::Ipmroutetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IPMROUTESTDMIB::Ipmroutetable::get_absolute_path() const
+std::string IPMROUTESTDMIB::IpMRouteTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMROUTESTDMIB::Ipmroutetable::get_segment_path() const
+std::string IPMROUTESTDMIB::IpMRouteTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipMRouteTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroutetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRouteTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -358,25 +363,25 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroutetable::ge
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRouteTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipMRouteEntry")
     {
-        auto c = std::make_shared<IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry>();
+        auto c = std::make_shared<IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry>();
         c->parent = this;
-        ipmrouteentry.push_back(c);
+        ipmrouteentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRouteTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipmrouteentry)
+    for (auto c : ipmrouteentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -387,22 +392,22 @@ std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutetable::ge
     return children;
 }
 
-void IPMROUTESTDMIB::Ipmroutetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMROUTESTDMIB::IpMRouteTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IPMROUTESTDMIB::Ipmroutetable::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMROUTESTDMIB::IpMRouteTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IPMROUTESTDMIB::Ipmroutetable::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMROUTESTDMIB::IpMRouteTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipMRouteEntry")
         return true;
     return false;
 }
 
-IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::Ipmrouteentry()
+IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::IpMRouteEntry()
     :
     ipmroutegroup{YType::str, "ipMRouteGroup"},
     ipmroutesource{YType::str, "ipMRouteSource"},
@@ -443,15 +448,16 @@ IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::Ipmrouteentry()
     ciscoipmroutemetric2{YType::uint32, "CISCO-IPMROUTE-MIB:ciscoIpMRouteMetric2"}
 {
 
-    yang_name = "ipMRouteEntry"; yang_parent_name = "ipMRouteTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipMRouteEntry"; yang_parent_name = "ipMRouteTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::~Ipmrouteentry()
+IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::~IpMRouteEntry()
 {
 }
 
-bool IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::has_data() const
+bool IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipmroutegroup.is_set
 	|| ipmroutesource.is_set
 	|| ipmroutesourcemask.is_set
@@ -491,7 +497,7 @@ bool IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::has_data() const
 	|| ciscoipmroutemetric2.is_set;
 }
 
-bool IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::has_operation() const
+bool IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipmroutegroup.yfilter)
@@ -533,21 +539,24 @@ bool IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::has_operation() const
 	|| ydk::is_set(ciscoipmroutemetric2.yfilter);
 }
 
-std::string IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::get_absolute_path() const
+std::string IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/ipMRouteTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::get_segment_path() const
+std::string IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipMRouteEntry" <<"[ipMRouteGroup='" <<ipmroutegroup <<"']" <<"[ipMRouteSource='" <<ipmroutesource <<"']" <<"[ipMRouteSourceMask='" <<ipmroutesourcemask <<"']";
+    path_buffer << "ipMRouteEntry";
+    ADD_KEY_TOKEN(ipmroutegroup, "ipMRouteGroup");
+    ADD_KEY_TOKEN(ipmroutesource, "ipMRouteSource");
+    ADD_KEY_TOKEN(ipmroutesourcemask, "ipMRouteSourceMask");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -593,19 +602,19 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroutetable::Ip
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipMRouteGroup")
     {
@@ -831,7 +840,7 @@ void IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::set_value(const std::string &
     }
 }
 
-void IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipMRouteGroup")
     {
@@ -983,26 +992,29 @@ void IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::set_filter(const std::string 
     }
 }
 
-bool IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipMRouteGroup" || name == "ipMRouteSource" || name == "ipMRouteSourceMask" || name == "ipMRouteUpstreamNeighbor" || name == "ipMRouteInIfIndex" || name == "ipMRouteUpTime" || name == "ipMRouteExpiryTime" || name == "ipMRoutePkts" || name == "ipMRouteDifferentInIfPackets" || name == "ipMRouteOctets" || name == "ipMRouteProtocol" || name == "ipMRouteRtProto" || name == "ipMRouteRtAddress" || name == "ipMRouteRtMask" || name == "ipMRouteRtType" || name == "ipMRouteHCOctets" || name == "ciscoIpMRoutePruneFlag" || name == "ciscoIpMRouteSparseFlag" || name == "ciscoIpMRouteConnectedFlag" || name == "ciscoIpMRouteLocalFlag" || name == "ciscoIpMRouteRegisterFlag" || name == "ciscoIpMRouteRpFlag" || name == "ciscoIpMRouteSptFlag" || name == "ciscoIpMRouteBps" || name == "ciscoIpMRouteMetric" || name == "ciscoIpMRouteMetricPreference" || name == "ciscoIpMRouteInLimit" || name == "ciscoIpMRouteLastUsed" || name == "ciscoIpMRouteInLimit2" || name == "ciscoIpMRouteJoinFlag" || name == "ciscoIpMRouteMsdpFlag" || name == "ciscoIpMRouteProxyJoinFlag" || name == "ciscoIpMRoutePkts" || name == "ciscoIpMRouteDifferentInIfPkts" || name == "ciscoIpMRouteOctets" || name == "ciscoIpMRouteBps2" || name == "ciscoIpMRouteMetric2")
         return true;
     return false;
 }
 
-IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthoptable()
+IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopTable()
+    :
+    ipmroutenexthopentry(this, {"ipmroutenexthopgroup", "ipmroutenexthopsource", "ipmroutenexthopsourcemask", "ipmroutenexthopifindex", "ipmroutenexthopaddress"})
 {
 
-    yang_name = "ipMRouteNextHopTable"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipMRouteNextHopTable"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMROUTESTDMIB::Ipmroutenexthoptable::~Ipmroutenexthoptable()
+IPMROUTESTDMIB::IpMRouteNextHopTable::~IpMRouteNextHopTable()
 {
 }
 
-bool IPMROUTESTDMIB::Ipmroutenexthoptable::has_data() const
+bool IPMROUTESTDMIB::IpMRouteNextHopTable::has_data() const
 {
-    for (std::size_t index=0; index<ipmroutenexthopentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipmroutenexthopentry.len(); index++)
     {
         if(ipmroutenexthopentry[index]->has_data())
             return true;
@@ -1010,9 +1022,9 @@ bool IPMROUTESTDMIB::Ipmroutenexthoptable::has_data() const
     return false;
 }
 
-bool IPMROUTESTDMIB::Ipmroutenexthoptable::has_operation() const
+bool IPMROUTESTDMIB::IpMRouteNextHopTable::has_operation() const
 {
-    for (std::size_t index=0; index<ipmroutenexthopentry.size(); index++)
+    for (std::size_t index=0; index<ipmroutenexthopentry.len(); index++)
     {
         if(ipmroutenexthopentry[index]->has_operation())
             return true;
@@ -1020,21 +1032,21 @@ bool IPMROUTESTDMIB::Ipmroutenexthoptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IPMROUTESTDMIB::Ipmroutenexthoptable::get_absolute_path() const
+std::string IPMROUTESTDMIB::IpMRouteNextHopTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMROUTESTDMIB::Ipmroutenexthoptable::get_segment_path() const
+std::string IPMROUTESTDMIB::IpMRouteNextHopTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipMRouteNextHopTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroutenexthoptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRouteNextHopTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1043,25 +1055,25 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroutenexthopta
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutenexthoptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRouteNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipMRouteNextHopEntry")
     {
-        auto c = std::make_shared<IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry>();
+        auto c = std::make_shared<IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry>();
         c->parent = this;
-        ipmroutenexthopentry.push_back(c);
+        ipmroutenexthopentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutenexthoptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRouteNextHopTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipmroutenexthopentry)
+    for (auto c : ipmroutenexthopentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1072,22 +1084,22 @@ std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutenexthopta
     return children;
 }
 
-void IPMROUTESTDMIB::Ipmroutenexthoptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMROUTESTDMIB::IpMRouteNextHopTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IPMROUTESTDMIB::Ipmroutenexthoptable::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMROUTESTDMIB::IpMRouteNextHopTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IPMROUTESTDMIB::Ipmroutenexthoptable::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMROUTESTDMIB::IpMRouteNextHopTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipMRouteNextHopEntry")
         return true;
     return false;
 }
 
-IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::Ipmroutenexthopentry()
+IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::IpMRouteNextHopEntry()
     :
     ipmroutenexthopgroup{YType::str, "ipMRouteNextHopGroup"},
     ipmroutenexthopsource{YType::str, "ipMRouteNextHopSource"},
@@ -1105,15 +1117,16 @@ IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::Ipmroutenexthopentry
     ciscoipmroutenexthoppkts{YType::uint64, "CISCO-IPMROUTE-MIB:ciscoIpMRouteNextHopPkts"}
 {
 
-    yang_name = "ipMRouteNextHopEntry"; yang_parent_name = "ipMRouteNextHopTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipMRouteNextHopEntry"; yang_parent_name = "ipMRouteNextHopTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::~Ipmroutenexthopentry()
+IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::~IpMRouteNextHopEntry()
 {
 }
 
-bool IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::has_data() const
+bool IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipmroutenexthopgroup.is_set
 	|| ipmroutenexthopsource.is_set
 	|| ipmroutenexthopsourcemask.is_set
@@ -1130,7 +1143,7 @@ bool IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::has_data() cons
 	|| ciscoipmroutenexthoppkts.is_set;
 }
 
-bool IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::has_operation() const
+bool IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipmroutenexthopgroup.yfilter)
@@ -1149,21 +1162,26 @@ bool IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::has_operation()
 	|| ydk::is_set(ciscoipmroutenexthoppkts.yfilter);
 }
 
-std::string IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::get_absolute_path() const
+std::string IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/ipMRouteNextHopTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::get_segment_path() const
+std::string IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipMRouteNextHopEntry" <<"[ipMRouteNextHopGroup='" <<ipmroutenexthopgroup <<"']" <<"[ipMRouteNextHopSource='" <<ipmroutenexthopsource <<"']" <<"[ipMRouteNextHopSourceMask='" <<ipmroutenexthopsourcemask <<"']" <<"[ipMRouteNextHopIfIndex='" <<ipmroutenexthopifindex <<"']" <<"[ipMRouteNextHopAddress='" <<ipmroutenexthopaddress <<"']";
+    path_buffer << "ipMRouteNextHopEntry";
+    ADD_KEY_TOKEN(ipmroutenexthopgroup, "ipMRouteNextHopGroup");
+    ADD_KEY_TOKEN(ipmroutenexthopsource, "ipMRouteNextHopSource");
+    ADD_KEY_TOKEN(ipmroutenexthopsourcemask, "ipMRouteNextHopSourceMask");
+    ADD_KEY_TOKEN(ipmroutenexthopifindex, "ipMRouteNextHopIfIndex");
+    ADD_KEY_TOKEN(ipmroutenexthopaddress, "ipMRouteNextHopAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1186,19 +1204,19 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroutenexthopta
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipMRouteNextHopGroup")
     {
@@ -1286,7 +1304,7 @@ void IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::set_value(const
     }
 }
 
-void IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipMRouteNextHopGroup")
     {
@@ -1346,26 +1364,29 @@ void IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::set_filter(cons
     }
 }
 
-bool IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipMRouteNextHopGroup" || name == "ipMRouteNextHopSource" || name == "ipMRouteNextHopSourceMask" || name == "ipMRouteNextHopIfIndex" || name == "ipMRouteNextHopAddress" || name == "ipMRouteNextHopState" || name == "ipMRouteNextHopUpTime" || name == "ipMRouteNextHopExpiryTime" || name == "ipMRouteNextHopClosestMemberHops" || name == "ipMRouteNextHopProtocol" || name == "ipMRouteNextHopPkts" || name == "ciscoIpMRouteNextHopOutLimit" || name == "ciscoIpMRouteNextHopMacHdr" || name == "ciscoIpMRouteNextHopPkts")
         return true;
     return false;
 }
 
-IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfacetable()
+IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceTable()
+    :
+    ipmrouteinterfaceentry(this, {"ipmrouteinterfaceifindex"})
 {
 
-    yang_name = "ipMRouteInterfaceTable"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipMRouteInterfaceTable"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMROUTESTDMIB::Ipmrouteinterfacetable::~Ipmrouteinterfacetable()
+IPMROUTESTDMIB::IpMRouteInterfaceTable::~IpMRouteInterfaceTable()
 {
 }
 
-bool IPMROUTESTDMIB::Ipmrouteinterfacetable::has_data() const
+bool IPMROUTESTDMIB::IpMRouteInterfaceTable::has_data() const
 {
-    for (std::size_t index=0; index<ipmrouteinterfaceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipmrouteinterfaceentry.len(); index++)
     {
         if(ipmrouteinterfaceentry[index]->has_data())
             return true;
@@ -1373,9 +1394,9 @@ bool IPMROUTESTDMIB::Ipmrouteinterfacetable::has_data() const
     return false;
 }
 
-bool IPMROUTESTDMIB::Ipmrouteinterfacetable::has_operation() const
+bool IPMROUTESTDMIB::IpMRouteInterfaceTable::has_operation() const
 {
-    for (std::size_t index=0; index<ipmrouteinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<ipmrouteinterfaceentry.len(); index++)
     {
         if(ipmrouteinterfaceentry[index]->has_operation())
             return true;
@@ -1383,21 +1404,21 @@ bool IPMROUTESTDMIB::Ipmrouteinterfacetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IPMROUTESTDMIB::Ipmrouteinterfacetable::get_absolute_path() const
+std::string IPMROUTESTDMIB::IpMRouteInterfaceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMROUTESTDMIB::Ipmrouteinterfacetable::get_segment_path() const
+std::string IPMROUTESTDMIB::IpMRouteInterfaceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipMRouteInterfaceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmrouteinterfacetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRouteInterfaceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1406,25 +1427,25 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmrouteinterface
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmrouteinterfacetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRouteInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipMRouteInterfaceEntry")
     {
-        auto c = std::make_shared<IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry>();
+        auto c = std::make_shared<IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry>();
         c->parent = this;
-        ipmrouteinterfaceentry.push_back(c);
+        ipmrouteinterfaceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmrouteinterfacetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRouteInterfaceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipmrouteinterfaceentry)
+    for (auto c : ipmrouteinterfaceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1435,22 +1456,22 @@ std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmrouteinterface
     return children;
 }
 
-void IPMROUTESTDMIB::Ipmrouteinterfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMROUTESTDMIB::IpMRouteInterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IPMROUTESTDMIB::Ipmrouteinterfacetable::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMROUTESTDMIB::IpMRouteInterfaceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IPMROUTESTDMIB::Ipmrouteinterfacetable::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMROUTESTDMIB::IpMRouteInterfaceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipMRouteInterfaceEntry")
         return true;
     return false;
 }
 
-IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::Ipmrouteinterfaceentry()
+IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry::IpMRouteInterfaceEntry()
     :
     ipmrouteinterfaceifindex{YType::int32, "ipMRouteInterfaceIfIndex"},
     ipmrouteinterfacettl{YType::int32, "ipMRouteInterfaceTtl"},
@@ -1468,15 +1489,16 @@ IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::Ipmrouteinterfac
     ciscoipmrouteifhcoutmcastpkts{YType::uint64, "CISCO-IPMROUTE-MIB:ciscoIpMRouteIfHCOutMcastPkts"}
 {
 
-    yang_name = "ipMRouteInterfaceEntry"; yang_parent_name = "ipMRouteInterfaceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipMRouteInterfaceEntry"; yang_parent_name = "ipMRouteInterfaceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::~Ipmrouteinterfaceentry()
+IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry::~IpMRouteInterfaceEntry()
 {
 }
 
-bool IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::has_data() const
+bool IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipmrouteinterfaceifindex.is_set
 	|| ipmrouteinterfacettl.is_set
 	|| ipmrouteinterfaceprotocol.is_set
@@ -1493,7 +1515,7 @@ bool IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::has_data() 
 	|| ciscoipmrouteifhcoutmcastpkts.is_set;
 }
 
-bool IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::has_operation() const
+bool IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipmrouteinterfaceifindex.yfilter)
@@ -1512,21 +1534,22 @@ bool IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::has_operati
 	|| ydk::is_set(ciscoipmrouteifhcoutmcastpkts.yfilter);
 }
 
-std::string IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::get_absolute_path() const
+std::string IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/ipMRouteInterfaceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::get_segment_path() const
+std::string IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipMRouteInterfaceEntry" <<"[ipMRouteInterfaceIfIndex='" <<ipmrouteinterfaceifindex <<"']";
+    path_buffer << "ipMRouteInterfaceEntry";
+    ADD_KEY_TOKEN(ipmrouteinterfaceifindex, "ipMRouteInterfaceIfIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1549,19 +1572,19 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmrouteinterface
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipMRouteInterfaceIfIndex")
     {
@@ -1649,7 +1672,7 @@ void IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::set_value(c
     }
 }
 
-void IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipMRouteInterfaceIfIndex")
     {
@@ -1709,26 +1732,29 @@ void IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::set_filter(
     }
 }
 
-bool IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipMRouteInterfaceIfIndex" || name == "ipMRouteInterfaceTtl" || name == "ipMRouteInterfaceProtocol" || name == "ipMRouteInterfaceRateLimit" || name == "ipMRouteInterfaceInMcastOctets" || name == "ipMRouteInterfaceOutMcastOctets" || name == "ipMRouteInterfaceHCInMcastOctets" || name == "ipMRouteInterfaceHCOutMcastOctets" || name == "ciscoIpMRouteIfInMcastOctets" || name == "ciscoIpMRouteIfOutMcastOctets" || name == "ciscoIpMRouteIfInMcastPkts" || name == "ciscoIpMRouteIfHCInMcastPkts" || name == "ciscoIpMRouteIfOutMcastPkts" || name == "ciscoIpMRouteIfHCOutMcastPkts")
         return true;
     return false;
 }
 
-IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundarytable()
+IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryTable()
+    :
+    ipmrouteboundaryentry(this, {"ipmrouteboundaryifindex", "ipmrouteboundaryaddress", "ipmrouteboundaryaddressmask"})
 {
 
-    yang_name = "ipMRouteBoundaryTable"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipMRouteBoundaryTable"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMROUTESTDMIB::Ipmrouteboundarytable::~Ipmrouteboundarytable()
+IPMROUTESTDMIB::IpMRouteBoundaryTable::~IpMRouteBoundaryTable()
 {
 }
 
-bool IPMROUTESTDMIB::Ipmrouteboundarytable::has_data() const
+bool IPMROUTESTDMIB::IpMRouteBoundaryTable::has_data() const
 {
-    for (std::size_t index=0; index<ipmrouteboundaryentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipmrouteboundaryentry.len(); index++)
     {
         if(ipmrouteboundaryentry[index]->has_data())
             return true;
@@ -1736,9 +1762,9 @@ bool IPMROUTESTDMIB::Ipmrouteboundarytable::has_data() const
     return false;
 }
 
-bool IPMROUTESTDMIB::Ipmrouteboundarytable::has_operation() const
+bool IPMROUTESTDMIB::IpMRouteBoundaryTable::has_operation() const
 {
-    for (std::size_t index=0; index<ipmrouteboundaryentry.size(); index++)
+    for (std::size_t index=0; index<ipmrouteboundaryentry.len(); index++)
     {
         if(ipmrouteboundaryentry[index]->has_operation())
             return true;
@@ -1746,21 +1772,21 @@ bool IPMROUTESTDMIB::Ipmrouteboundarytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IPMROUTESTDMIB::Ipmrouteboundarytable::get_absolute_path() const
+std::string IPMROUTESTDMIB::IpMRouteBoundaryTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMROUTESTDMIB::Ipmrouteboundarytable::get_segment_path() const
+std::string IPMROUTESTDMIB::IpMRouteBoundaryTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipMRouteBoundaryTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmrouteboundarytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRouteBoundaryTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1769,25 +1795,25 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmrouteboundaryt
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmrouteboundarytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRouteBoundaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipMRouteBoundaryEntry")
     {
-        auto c = std::make_shared<IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry>();
+        auto c = std::make_shared<IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry>();
         c->parent = this;
-        ipmrouteboundaryentry.push_back(c);
+        ipmrouteboundaryentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmrouteboundarytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRouteBoundaryTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipmrouteboundaryentry)
+    for (auto c : ipmrouteboundaryentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1798,22 +1824,22 @@ std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmrouteboundaryt
     return children;
 }
 
-void IPMROUTESTDMIB::Ipmrouteboundarytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMROUTESTDMIB::IpMRouteBoundaryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IPMROUTESTDMIB::Ipmrouteboundarytable::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMROUTESTDMIB::IpMRouteBoundaryTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IPMROUTESTDMIB::Ipmrouteboundarytable::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMROUTESTDMIB::IpMRouteBoundaryTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipMRouteBoundaryEntry")
         return true;
     return false;
 }
 
-IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::Ipmrouteboundaryentry()
+IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry::IpMRouteBoundaryEntry()
     :
     ipmrouteboundaryifindex{YType::int32, "ipMRouteBoundaryIfIndex"},
     ipmrouteboundaryaddress{YType::str, "ipMRouteBoundaryAddress"},
@@ -1821,22 +1847,23 @@ IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::Ipmrouteboundaryen
     ipmrouteboundarystatus{YType::enumeration, "ipMRouteBoundaryStatus"}
 {
 
-    yang_name = "ipMRouteBoundaryEntry"; yang_parent_name = "ipMRouteBoundaryTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipMRouteBoundaryEntry"; yang_parent_name = "ipMRouteBoundaryTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::~Ipmrouteboundaryentry()
+IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry::~IpMRouteBoundaryEntry()
 {
 }
 
-bool IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::has_data() const
+bool IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipmrouteboundaryifindex.is_set
 	|| ipmrouteboundaryaddress.is_set
 	|| ipmrouteboundaryaddressmask.is_set
 	|| ipmrouteboundarystatus.is_set;
 }
 
-bool IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::has_operation() const
+bool IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipmrouteboundaryifindex.yfilter)
@@ -1845,21 +1872,24 @@ bool IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::has_operation
 	|| ydk::is_set(ipmrouteboundarystatus.yfilter);
 }
 
-std::string IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::get_absolute_path() const
+std::string IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/ipMRouteBoundaryTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::get_segment_path() const
+std::string IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipMRouteBoundaryEntry" <<"[ipMRouteBoundaryIfIndex='" <<ipmrouteboundaryifindex <<"']" <<"[ipMRouteBoundaryAddress='" <<ipmrouteboundaryaddress <<"']" <<"[ipMRouteBoundaryAddressMask='" <<ipmrouteboundaryaddressmask <<"']";
+    path_buffer << "ipMRouteBoundaryEntry";
+    ADD_KEY_TOKEN(ipmrouteboundaryifindex, "ipMRouteBoundaryIfIndex");
+    ADD_KEY_TOKEN(ipmrouteboundaryaddress, "ipMRouteBoundaryAddress");
+    ADD_KEY_TOKEN(ipmrouteboundaryaddressmask, "ipMRouteBoundaryAddressMask");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1872,19 +1902,19 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmrouteboundaryt
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipMRouteBoundaryIfIndex")
     {
@@ -1912,7 +1942,7 @@ void IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::set_value(con
     }
 }
 
-void IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipMRouteBoundaryIfIndex")
     {
@@ -1932,26 +1962,29 @@ void IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::set_filter(co
     }
 }
 
-bool IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipMRouteBoundaryIfIndex" || name == "ipMRouteBoundaryAddress" || name == "ipMRouteBoundaryAddressMask" || name == "ipMRouteBoundaryStatus")
         return true;
     return false;
 }
 
-IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenametable()
+IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameTable()
+    :
+    ipmroutescopenameentry(this, {"ipmroutescopenameaddress", "ipmroutescopenameaddressmask", "ipmroutescopenamelanguage"})
 {
 
-    yang_name = "ipMRouteScopeNameTable"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipMRouteScopeNameTable"; yang_parent_name = "IPMROUTE-STD-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMROUTESTDMIB::Ipmroutescopenametable::~Ipmroutescopenametable()
+IPMROUTESTDMIB::IpMRouteScopeNameTable::~IpMRouteScopeNameTable()
 {
 }
 
-bool IPMROUTESTDMIB::Ipmroutescopenametable::has_data() const
+bool IPMROUTESTDMIB::IpMRouteScopeNameTable::has_data() const
 {
-    for (std::size_t index=0; index<ipmroutescopenameentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipmroutescopenameentry.len(); index++)
     {
         if(ipmroutescopenameentry[index]->has_data())
             return true;
@@ -1959,9 +1992,9 @@ bool IPMROUTESTDMIB::Ipmroutescopenametable::has_data() const
     return false;
 }
 
-bool IPMROUTESTDMIB::Ipmroutescopenametable::has_operation() const
+bool IPMROUTESTDMIB::IpMRouteScopeNameTable::has_operation() const
 {
-    for (std::size_t index=0; index<ipmroutescopenameentry.size(); index++)
+    for (std::size_t index=0; index<ipmroutescopenameentry.len(); index++)
     {
         if(ipmroutescopenameentry[index]->has_operation())
             return true;
@@ -1969,21 +2002,21 @@ bool IPMROUTESTDMIB::Ipmroutescopenametable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IPMROUTESTDMIB::Ipmroutescopenametable::get_absolute_path() const
+std::string IPMROUTESTDMIB::IpMRouteScopeNameTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMROUTESTDMIB::Ipmroutescopenametable::get_segment_path() const
+std::string IPMROUTESTDMIB::IpMRouteScopeNameTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipMRouteScopeNameTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroutescopenametable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRouteScopeNameTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1992,25 +2025,25 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroutescopename
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutescopenametable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRouteScopeNameTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipMRouteScopeNameEntry")
     {
-        auto c = std::make_shared<IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry>();
+        auto c = std::make_shared<IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry>();
         c->parent = this;
-        ipmroutescopenameentry.push_back(c);
+        ipmroutescopenameentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutescopenametable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRouteScopeNameTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipmroutescopenameentry)
+    for (auto c : ipmroutescopenameentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2021,22 +2054,22 @@ std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutescopename
     return children;
 }
 
-void IPMROUTESTDMIB::Ipmroutescopenametable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMROUTESTDMIB::IpMRouteScopeNameTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IPMROUTESTDMIB::Ipmroutescopenametable::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMROUTESTDMIB::IpMRouteScopeNameTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IPMROUTESTDMIB::Ipmroutescopenametable::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMROUTESTDMIB::IpMRouteScopeNameTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipMRouteScopeNameEntry")
         return true;
     return false;
 }
 
-IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::Ipmroutescopenameentry()
+IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry::IpMRouteScopeNameEntry()
     :
     ipmroutescopenameaddress{YType::str, "ipMRouteScopeNameAddress"},
     ipmroutescopenameaddressmask{YType::str, "ipMRouteScopeNameAddressMask"},
@@ -2046,15 +2079,16 @@ IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::Ipmroutescopenam
     ipmroutescopenamestatus{YType::enumeration, "ipMRouteScopeNameStatus"}
 {
 
-    yang_name = "ipMRouteScopeNameEntry"; yang_parent_name = "ipMRouteScopeNameTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipMRouteScopeNameEntry"; yang_parent_name = "ipMRouteScopeNameTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::~Ipmroutescopenameentry()
+IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry::~IpMRouteScopeNameEntry()
 {
 }
 
-bool IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::has_data() const
+bool IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ipmroutescopenameaddress.is_set
 	|| ipmroutescopenameaddressmask.is_set
 	|| ipmroutescopenamelanguage.is_set
@@ -2063,7 +2097,7 @@ bool IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::has_data() 
 	|| ipmroutescopenamestatus.is_set;
 }
 
-bool IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::has_operation() const
+bool IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipmroutescopenameaddress.yfilter)
@@ -2074,21 +2108,24 @@ bool IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::has_operati
 	|| ydk::is_set(ipmroutescopenamestatus.yfilter);
 }
 
-std::string IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::get_absolute_path() const
+std::string IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IPMROUTE-STD-MIB:IPMROUTE-STD-MIB/ipMRouteScopeNameTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::get_segment_path() const
+std::string IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipMRouteScopeNameEntry" <<"[ipMRouteScopeNameAddress='" <<ipmroutescopenameaddress <<"']" <<"[ipMRouteScopeNameAddressMask='" <<ipmroutescopenameaddressmask <<"']" <<"[ipMRouteScopeNameLanguage='" <<ipmroutescopenamelanguage <<"']";
+    path_buffer << "ipMRouteScopeNameEntry";
+    ADD_KEY_TOKEN(ipmroutescopenameaddress, "ipMRouteScopeNameAddress");
+    ADD_KEY_TOKEN(ipmroutescopenameaddressmask, "ipMRouteScopeNameAddressMask");
+    ADD_KEY_TOKEN(ipmroutescopenamelanguage, "ipMRouteScopeNameLanguage");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2103,19 +2140,19 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::Ipmroutescopename
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipMRouteScopeNameAddress")
     {
@@ -2155,7 +2192,7 @@ void IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::set_value(c
     }
 }
 
-void IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipMRouteScopeNameAddress")
     {
@@ -2183,21 +2220,21 @@ void IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::set_filter(
     }
 }
 
-bool IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipMRouteScopeNameAddress" || name == "ipMRouteScopeNameAddressMask" || name == "ipMRouteScopeNameLanguage" || name == "ipMRouteScopeNameString" || name == "ipMRouteScopeNameDefault" || name == "ipMRouteScopeNameStatus")
         return true;
     return false;
 }
 
-const Enum::YLeaf IPMROUTESTDMIB::Ipmroute::Ipmrouteenable::enabled {1, "enabled"};
-const Enum::YLeaf IPMROUTESTDMIB::Ipmroute::Ipmrouteenable::disabled {2, "disabled"};
+const Enum::YLeaf IPMROUTESTDMIB::IpMRoute::IpMRouteEnable::enabled {1, "enabled"};
+const Enum::YLeaf IPMROUTESTDMIB::IpMRoute::IpMRouteEnable::disabled {2, "disabled"};
 
-const Enum::YLeaf IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::Ipmrouterttype::unicast {1, "unicast"};
-const Enum::YLeaf IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::Ipmrouterttype::multicast {2, "multicast"};
+const Enum::YLeaf IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::IpMRouteRtType::unicast {1, "unicast"};
+const Enum::YLeaf IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::IpMRouteRtType::multicast {2, "multicast"};
 
-const Enum::YLeaf IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::Ipmroutenexthopstate::pruned {1, "pruned"};
-const Enum::YLeaf IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::Ipmroutenexthopstate::forwarding {2, "forwarding"};
+const Enum::YLeaf IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::IpMRouteNextHopState::pruned {1, "pruned"};
+const Enum::YLeaf IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::IpMRouteNextHopState::forwarding {2, "forwarding"};
 
 
 }

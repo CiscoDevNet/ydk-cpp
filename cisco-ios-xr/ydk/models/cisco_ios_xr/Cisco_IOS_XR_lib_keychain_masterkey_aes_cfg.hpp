@@ -55,7 +55,7 @@ class Password::Encryption : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf aes; //type: int32
+        ydk::YLeaf aes; //type: uint32
 
 }; // Password::Encryption
 

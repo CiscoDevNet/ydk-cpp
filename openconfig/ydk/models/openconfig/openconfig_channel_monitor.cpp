@@ -12,9 +12,11 @@ namespace openconfig {
 namespace openconfig_channel_monitor {
 
 ChannelMonitors::ChannelMonitors()
+    :
+    channel_monitor(this, {"name"})
 {
 
-    yang_name = "channel-monitors"; yang_parent_name = "openconfig-channel-monitor"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "channel-monitors"; yang_parent_name = "openconfig-channel-monitor"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ChannelMonitors::~ChannelMonitors()
@@ -23,7 +25,8 @@ ChannelMonitors::~ChannelMonitors()
 
 bool ChannelMonitors::has_data() const
 {
-    for (std::size_t index=0; index<channel_monitor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<channel_monitor.len(); index++)
     {
         if(channel_monitor[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool ChannelMonitors::has_data() const
 
 bool ChannelMonitors::has_operation() const
 {
-    for (std::size_t index=0; index<channel_monitor.size(); index++)
+    for (std::size_t index=0; index<channel_monitor.len(); index++)
     {
         if(channel_monitor[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> ChannelMonitors::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<ChannelMonitors::ChannelMonitor>();
         c->parent = this;
-        channel_monitor.push_back(c);
+        channel_monitor.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : channel_monitor)
+    for (auto c : channel_monitor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,16 +132,16 @@ bool ChannelMonitors::has_leaf_or_child_of_name(const std::string & name) const
 ChannelMonitors::ChannelMonitor::ChannelMonitor()
     :
     name{YType::str, "name"}
-    	,
+        ,
     config(std::make_shared<ChannelMonitors::ChannelMonitor::Config>())
-	,state(std::make_shared<ChannelMonitors::ChannelMonitor::State>())
-	,channels(std::make_shared<ChannelMonitors::ChannelMonitor::Channels>())
+    , state(std::make_shared<ChannelMonitors::ChannelMonitor::State>())
+    , channels(std::make_shared<ChannelMonitors::ChannelMonitor::Channels>())
 {
     config->parent = this;
     state->parent = this;
     channels->parent = this;
 
-    yang_name = "channel-monitor"; yang_parent_name = "channel-monitors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "channel-monitor"; yang_parent_name = "channel-monitors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ChannelMonitors::ChannelMonitor::~ChannelMonitor()
@@ -147,6 +150,7 @@ ChannelMonitors::ChannelMonitor::~ChannelMonitor()
 
 bool ChannelMonitors::ChannelMonitor::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -172,7 +176,8 @@ std::string ChannelMonitors::ChannelMonitor::get_absolute_path() const
 std::string ChannelMonitors::ChannelMonitor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "channel-monitor" <<"[name='" <<name <<"']";
+    path_buffer << "channel-monitor";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -271,7 +276,7 @@ ChannelMonitors::ChannelMonitor::Config::Config()
     monitor_port{YType::str, "monitor-port"}
 {
 
-    yang_name = "config"; yang_parent_name = "channel-monitor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "channel-monitor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ChannelMonitors::ChannelMonitor::Config::~Config()
@@ -280,6 +285,7 @@ ChannelMonitors::ChannelMonitor::Config::~Config()
 
 bool ChannelMonitors::ChannelMonitor::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| monitor_port.is_set;
 }
@@ -362,7 +368,7 @@ ChannelMonitors::ChannelMonitor::State::State()
     monitor_port{YType::str, "monitor-port"}
 {
 
-    yang_name = "state"; yang_parent_name = "channel-monitor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "channel-monitor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ChannelMonitors::ChannelMonitor::State::~State()
@@ -371,6 +377,7 @@ ChannelMonitors::ChannelMonitor::State::~State()
 
 bool ChannelMonitors::ChannelMonitor::State::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| monitor_port.is_set;
 }
@@ -448,9 +455,11 @@ bool ChannelMonitors::ChannelMonitor::State::has_leaf_or_child_of_name(const std
 }
 
 ChannelMonitors::ChannelMonitor::Channels::Channels()
+    :
+    channel(this, {"lower_frequency", "upper_frequency"})
 {
 
-    yang_name = "channels"; yang_parent_name = "channel-monitor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "channels"; yang_parent_name = "channel-monitor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ChannelMonitors::ChannelMonitor::Channels::~Channels()
@@ -459,7 +468,8 @@ ChannelMonitors::ChannelMonitor::Channels::~Channels()
 
 bool ChannelMonitors::ChannelMonitor::Channels::has_data() const
 {
-    for (std::size_t index=0; index<channel.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<channel.len(); index++)
     {
         if(channel[index]->has_data())
             return true;
@@ -469,7 +479,7 @@ bool ChannelMonitors::ChannelMonitor::Channels::has_data() const
 
 bool ChannelMonitors::ChannelMonitor::Channels::has_operation() const
 {
-    for (std::size_t index=0; index<channel.size(); index++)
+    for (std::size_t index=0; index<channel.len(); index++)
     {
         if(channel[index]->has_operation())
             return true;
@@ -499,7 +509,7 @@ std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::Channels::get_child_by_
     {
         auto c = std::make_shared<ChannelMonitors::ChannelMonitor::Channels::Channel>();
         c->parent = this;
-        channel.push_back(c);
+        channel.append(c);
         return c;
     }
 
@@ -511,7 +521,7 @@ std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::ChannelMonitor::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : channel)
+    for (auto c : channel.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -541,12 +551,12 @@ ChannelMonitors::ChannelMonitor::Channels::Channel::Channel()
     :
     lower_frequency{YType::str, "lower-frequency"},
     upper_frequency{YType::str, "upper-frequency"}
-    	,
+        ,
     state(std::make_shared<ChannelMonitors::ChannelMonitor::Channels::Channel::State>())
 {
     state->parent = this;
 
-    yang_name = "channel"; yang_parent_name = "channels"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "channel"; yang_parent_name = "channels"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ChannelMonitors::ChannelMonitor::Channels::Channel::~Channel()
@@ -555,6 +565,7 @@ ChannelMonitors::ChannelMonitor::Channels::Channel::~Channel()
 
 bool ChannelMonitors::ChannelMonitor::Channels::Channel::has_data() const
 {
+    if (is_presence_container) return true;
     return lower_frequency.is_set
 	|| upper_frequency.is_set
 	|| (state !=  nullptr && state->has_data());
@@ -571,7 +582,9 @@ bool ChannelMonitors::ChannelMonitor::Channels::Channel::has_operation() const
 std::string ChannelMonitors::ChannelMonitor::Channels::Channel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "channel" <<"[lower-frequency='" <<lower_frequency <<"']" <<"[upper-frequency='" <<upper_frequency <<"']";
+    path_buffer << "channel";
+    ADD_KEY_TOKEN(lower_frequency, "lower-frequency");
+    ADD_KEY_TOKEN(upper_frequency, "upper-frequency");
     return path_buffer.str();
 }
 
@@ -654,7 +667,7 @@ ChannelMonitors::ChannelMonitor::Channels::Channel::State::State()
     psd{YType::str, "psd"}
 {
 
-    yang_name = "state"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ChannelMonitors::ChannelMonitor::Channels::Channel::State::~State()
@@ -663,6 +676,7 @@ ChannelMonitors::ChannelMonitor::Channels::Channel::State::~State()
 
 bool ChannelMonitors::ChannelMonitor::Channels::Channel::State::has_data() const
 {
+    if (is_presence_container) return true;
     return lower_frequency.is_set
 	|| upper_frequency.is_set
 	|| psd.is_set;

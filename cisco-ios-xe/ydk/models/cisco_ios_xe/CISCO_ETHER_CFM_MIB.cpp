@@ -13,13 +13,13 @@ namespace CISCO_ETHER_CFM_MIB {
 
 CISCOETHERCFMMIB::CISCOETHERCFMMIB()
     :
-    ceccfmevents(std::make_shared<CISCOETHERCFMMIB::Ceccfmevents>())
-	,cethercfmeventtable(std::make_shared<CISCOETHERCFMMIB::Cethercfmeventtable>())
+    ceccfmevents(std::make_shared<CISCOETHERCFMMIB::CecCfmEvents>())
+    , cethercfmeventtable(std::make_shared<CISCOETHERCFMMIB::CEtherCfmEventTable>())
 {
     ceccfmevents->parent = this;
     cethercfmeventtable->parent = this;
 
-    yang_name = "CISCO-ETHER-CFM-MIB"; yang_parent_name = "CISCO-ETHER-CFM-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-ETHER-CFM-MIB"; yang_parent_name = "CISCO-ETHER-CFM-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOETHERCFMMIB::~CISCOETHERCFMMIB()
@@ -28,6 +28,7 @@ CISCOETHERCFMMIB::~CISCOETHERCFMMIB()
 
 bool CISCOETHERCFMMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (ceccfmevents !=  nullptr && ceccfmevents->has_data())
 	|| (cethercfmeventtable !=  nullptr && cethercfmeventtable->has_data());
 }
@@ -61,7 +62,7 @@ std::shared_ptr<Entity> CISCOETHERCFMMIB::get_child_by_name(const std::string & 
     {
         if(ceccfmevents == nullptr)
         {
-            ceccfmevents = std::make_shared<CISCOETHERCFMMIB::Ceccfmevents>();
+            ceccfmevents = std::make_shared<CISCOETHERCFMMIB::CecCfmEvents>();
         }
         return ceccfmevents;
     }
@@ -70,7 +71,7 @@ std::shared_ptr<Entity> CISCOETHERCFMMIB::get_child_by_name(const std::string & 
     {
         if(cethercfmeventtable == nullptr)
         {
-            cethercfmeventtable = std::make_shared<CISCOETHERCFMMIB::Cethercfmeventtable>();
+            cethercfmeventtable = std::make_shared<CISCOETHERCFMMIB::CEtherCfmEventTable>();
         }
         return cethercfmeventtable;
     }
@@ -135,44 +136,45 @@ bool CISCOETHERCFMMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOETHERCFMMIB::Ceccfmevents::Ceccfmevents()
+CISCOETHERCFMMIB::CecCfmEvents::CecCfmEvents()
     :
     cethercfmmaxeventindex{YType::uint32, "cEtherCfmMaxEventIndex"}
 {
 
-    yang_name = "cecCfmEvents"; yang_parent_name = "CISCO-ETHER-CFM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cecCfmEvents"; yang_parent_name = "CISCO-ETHER-CFM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOETHERCFMMIB::Ceccfmevents::~Ceccfmevents()
+CISCOETHERCFMMIB::CecCfmEvents::~CecCfmEvents()
 {
 }
 
-bool CISCOETHERCFMMIB::Ceccfmevents::has_data() const
+bool CISCOETHERCFMMIB::CecCfmEvents::has_data() const
 {
+    if (is_presence_container) return true;
     return cethercfmmaxeventindex.is_set;
 }
 
-bool CISCOETHERCFMMIB::Ceccfmevents::has_operation() const
+bool CISCOETHERCFMMIB::CecCfmEvents::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cethercfmmaxeventindex.yfilter);
 }
 
-std::string CISCOETHERCFMMIB::Ceccfmevents::get_absolute_path() const
+std::string CISCOETHERCFMMIB::CecCfmEvents::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ETHER-CFM-MIB:CISCO-ETHER-CFM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOETHERCFMMIB::Ceccfmevents::get_segment_path() const
+std::string CISCOETHERCFMMIB::CecCfmEvents::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cecCfmEvents";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOETHERCFMMIB::Ceccfmevents::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOETHERCFMMIB::CecCfmEvents::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -182,19 +184,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOETHERCFMMIB::Ceccfmevents::g
 
 }
 
-std::shared_ptr<Entity> CISCOETHERCFMMIB::Ceccfmevents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOETHERCFMMIB::CecCfmEvents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOETHERCFMMIB::Ceccfmevents::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOETHERCFMMIB::CecCfmEvents::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOETHERCFMMIB::Ceccfmevents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOETHERCFMMIB::CecCfmEvents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cEtherCfmMaxEventIndex")
     {
@@ -204,7 +206,7 @@ void CISCOETHERCFMMIB::Ceccfmevents::set_value(const std::string & value_path, c
     }
 }
 
-void CISCOETHERCFMMIB::Ceccfmevents::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOETHERCFMMIB::CecCfmEvents::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cEtherCfmMaxEventIndex")
     {
@@ -212,26 +214,29 @@ void CISCOETHERCFMMIB::Ceccfmevents::set_filter(const std::string & value_path, 
     }
 }
 
-bool CISCOETHERCFMMIB::Ceccfmevents::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOETHERCFMMIB::CecCfmEvents::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cEtherCfmMaxEventIndex")
         return true;
     return false;
 }
 
-CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmeventtable()
+CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventTable()
+    :
+    cethercfmevententry(this, {"cethercfmeventdomainindex", "cethercfmeventsvlan", "cethercfmeventindex"})
 {
 
-    yang_name = "cEtherCfmEventTable"; yang_parent_name = "CISCO-ETHER-CFM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cEtherCfmEventTable"; yang_parent_name = "CISCO-ETHER-CFM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOETHERCFMMIB::Cethercfmeventtable::~Cethercfmeventtable()
+CISCOETHERCFMMIB::CEtherCfmEventTable::~CEtherCfmEventTable()
 {
 }
 
-bool CISCOETHERCFMMIB::Cethercfmeventtable::has_data() const
+bool CISCOETHERCFMMIB::CEtherCfmEventTable::has_data() const
 {
-    for (std::size_t index=0; index<cethercfmevententry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cethercfmevententry.len(); index++)
     {
         if(cethercfmevententry[index]->has_data())
             return true;
@@ -239,9 +244,9 @@ bool CISCOETHERCFMMIB::Cethercfmeventtable::has_data() const
     return false;
 }
 
-bool CISCOETHERCFMMIB::Cethercfmeventtable::has_operation() const
+bool CISCOETHERCFMMIB::CEtherCfmEventTable::has_operation() const
 {
-    for (std::size_t index=0; index<cethercfmevententry.size(); index++)
+    for (std::size_t index=0; index<cethercfmevententry.len(); index++)
     {
         if(cethercfmevententry[index]->has_operation())
             return true;
@@ -249,21 +254,21 @@ bool CISCOETHERCFMMIB::Cethercfmeventtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOETHERCFMMIB::Cethercfmeventtable::get_absolute_path() const
+std::string CISCOETHERCFMMIB::CEtherCfmEventTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ETHER-CFM-MIB:CISCO-ETHER-CFM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOETHERCFMMIB::Cethercfmeventtable::get_segment_path() const
+std::string CISCOETHERCFMMIB::CEtherCfmEventTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cEtherCfmEventTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOETHERCFMMIB::Cethercfmeventtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOETHERCFMMIB::CEtherCfmEventTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -272,25 +277,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOETHERCFMMIB::Cethercfmeventt
 
 }
 
-std::shared_ptr<Entity> CISCOETHERCFMMIB::Cethercfmeventtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOETHERCFMMIB::CEtherCfmEventTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cEtherCfmEventEntry")
     {
-        auto c = std::make_shared<CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry>();
+        auto c = std::make_shared<CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry>();
         c->parent = this;
-        cethercfmevententry.push_back(c);
+        cethercfmevententry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOETHERCFMMIB::Cethercfmeventtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOETHERCFMMIB::CEtherCfmEventTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cethercfmevententry)
+    for (auto c : cethercfmevententry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -301,22 +306,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOETHERCFMMIB::Cethercfmeventt
     return children;
 }
 
-void CISCOETHERCFMMIB::Cethercfmeventtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOETHERCFMMIB::CEtherCfmEventTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOETHERCFMMIB::Cethercfmeventtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOETHERCFMMIB::CEtherCfmEventTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOETHERCFMMIB::Cethercfmeventtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOETHERCFMMIB::CEtherCfmEventTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cEtherCfmEventEntry")
         return true;
     return false;
 }
 
-CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmevententry()
+CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventEntry()
     :
     cethercfmeventdomainindex{YType::uint32, "cEtherCfmEventDomainIndex"},
     cethercfmeventsvlan{YType::int32, "cEtherCfmEventSvlan"},
@@ -337,15 +342,16 @@ CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmevententry(
     cethercfmeventdeleterow{YType::enumeration, "cEtherCfmEventDeleteRow"}
 {
 
-    yang_name = "cEtherCfmEventEntry"; yang_parent_name = "cEtherCfmEventTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cEtherCfmEventEntry"; yang_parent_name = "cEtherCfmEventTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::~Cethercfmevententry()
+CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::~CEtherCfmEventEntry()
 {
 }
 
-bool CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::has_data() const
+bool CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cethercfmeventdomainindex.is_set
 	|| cethercfmeventsvlan.is_set
 	|| cethercfmeventindex.is_set
@@ -365,7 +371,7 @@ bool CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::has_data() cons
 	|| cethercfmeventdeleterow.is_set;
 }
 
-bool CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::has_operation() const
+bool CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cethercfmeventdomainindex.yfilter)
@@ -387,21 +393,24 @@ bool CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::has_operation()
 	|| ydk::is_set(cethercfmeventdeleterow.yfilter);
 }
 
-std::string CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::get_absolute_path() const
+std::string CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ETHER-CFM-MIB:CISCO-ETHER-CFM-MIB/cEtherCfmEventTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::get_segment_path() const
+std::string CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cEtherCfmEventEntry" <<"[cEtherCfmEventDomainIndex='" <<cethercfmeventdomainindex <<"']" <<"[cEtherCfmEventSvlan='" <<cethercfmeventsvlan <<"']" <<"[cEtherCfmEventIndex='" <<cethercfmeventindex <<"']";
+    path_buffer << "cEtherCfmEventEntry";
+    ADD_KEY_TOKEN(cethercfmeventdomainindex, "cEtherCfmEventDomainIndex");
+    ADD_KEY_TOKEN(cethercfmeventsvlan, "cEtherCfmEventSvlan");
+    ADD_KEY_TOKEN(cethercfmeventindex, "cEtherCfmEventIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -427,19 +436,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOETHERCFMMIB::Cethercfmeventt
 
 }
 
-std::shared_ptr<Entity> CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cEtherCfmEventDomainIndex")
     {
@@ -545,7 +554,7 @@ void CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::set_value(const
     }
 }
 
-void CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cEtherCfmEventDomainIndex")
     {
@@ -617,42 +626,42 @@ void CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::set_filter(cons
     }
 }
 
-bool CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cEtherCfmEventDomainIndex" || name == "cEtherCfmEventSvlan" || name == "cEtherCfmEventIndex" || name == "cEtherCfmEventDomainName" || name == "cEtherCfmEventType" || name == "cEtherCfmEventLastChange" || name == "cEtherCfmEventServiceId" || name == "cEtherCfmEventLclMepid" || name == "cEtherCfmEventLclMacAddress" || name == "cEtherCfmEventLclMepCount" || name == "cEtherCfmEventLclIfCount" || name == "cEtherCfmEventRmtMepid" || name == "cEtherCfmEventRmtMacAddress" || name == "cEtherCfmEventRmtPortState" || name == "cEtherCfmEventRmtServiceId" || name == "cEtherCfmEventCode" || name == "cEtherCfmEventDeleteRow")
         return true;
     return false;
 }
 
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventtype::mepUp {1, "mepUp"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventtype::mepDown {2, "mepDown"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventtype::xconnect {3, "xconnect"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventtype::loop {4, "loop"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventtype::config {5, "config"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventtype::xcheckMissing {6, "xcheckMissing"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventtype::xcheckUnknown {7, "xcheckUnknown"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventtype::xcheckServiceUp {8, "xcheckServiceUp"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventType::mepUp {1, "mepUp"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventType::mepDown {2, "mepDown"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventType::xconnect {3, "xconnect"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventType::loop {4, "loop"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventType::config {5, "config"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventType::xcheckMissing {6, "xcheckMissing"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventType::xcheckUnknown {7, "xcheckUnknown"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventType::xcheckServiceUp {8, "xcheckServiceUp"};
 
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventrmtportstate::up {1, "up"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventrmtportstate::down {2, "down"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventrmtportstate::adminDown {3, "adminDown"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventrmtportstate::test {4, "test"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventrmtportstate::remoteExcessiveErrors {5, "remoteExcessiveErrors"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventrmtportstate::localExcessiveErrors {6, "localExcessiveErrors"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventrmtportstate::localNoData {7, "localNoData"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventRmtPortState::up {1, "up"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventRmtPortState::down {2, "down"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventRmtPortState::adminDown {3, "adminDown"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventRmtPortState::test {4, "test"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventRmtPortState::remoteExcessiveErrors {5, "remoteExcessiveErrors"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventRmtPortState::localExcessiveErrors {6, "localExcessiveErrors"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventRmtPortState::localNoData {7, "localNoData"};
 
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventcode::new_ {1, "new"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventcode::returning {2, "returning"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventcode::portState {3, "portState"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventcode::lastGasp {4, "lastGasp"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventcode::timeout {5, "timeout"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventcode::configClear {6, "configClear"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventcode::loopClear {7, "loopClear"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventcode::xconnectClear {8, "xconnectClear"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventcode::unknownClear {9, "unknownClear"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventCode::new_ {1, "new"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventCode::returning {2, "returning"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventCode::portState {3, "portState"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventCode::lastGasp {4, "lastGasp"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventCode::timeout {5, "timeout"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventCode::configClear {6, "configClear"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventCode::loopClear {7, "loopClear"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventCode::xconnectClear {8, "xconnectClear"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventCode::unknownClear {9, "unknownClear"};
 
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventdeleterow::noop {1, "noop"};
-const Enum::YLeaf CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventdeleterow::delete_ {2, "delete"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventDeleteRow::noop {1, "noop"};
+const Enum::YLeaf CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventDeleteRow::delete_ {2, "delete"};
 
 
 }

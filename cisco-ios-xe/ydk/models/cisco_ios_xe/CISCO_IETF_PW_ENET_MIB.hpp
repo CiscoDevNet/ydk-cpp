@@ -32,22 +32,22 @@ class CISCOIETFPWENETMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cpwvcenettable; //type: CISCOIETFPWENETMIB::Cpwvcenettable
-        class Cpwvcenetmplsprimappingtable; //type: CISCOIETFPWENETMIB::Cpwvcenetmplsprimappingtable
-        class Cpwvcenetstatstable; //type: CISCOIETFPWENETMIB::Cpwvcenetstatstable
+        class CpwVcEnetTable; //type: CISCOIETFPWENETMIB::CpwVcEnetTable
+        class CpwVcEnetMplsPriMappingTable; //type: CISCOIETFPWENETMIB::CpwVcEnetMplsPriMappingTable
+        class CpwVcEnetStatsTable; //type: CISCOIETFPWENETMIB::CpwVcEnetStatsTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_ENET_MIB::CISCOIETFPWENETMIB::Cpwvcenettable> cpwvcenettable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_ENET_MIB::CISCOIETFPWENETMIB::Cpwvcenetmplsprimappingtable> cpwvcenetmplsprimappingtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_ENET_MIB::CISCOIETFPWENETMIB::Cpwvcenetstatstable> cpwvcenetstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_ENET_MIB::CISCOIETFPWENETMIB::CpwVcEnetTable> cpwvcenettable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_ENET_MIB::CISCOIETFPWENETMIB::CpwVcEnetMplsPriMappingTable> cpwvcenetmplsprimappingtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_ENET_MIB::CISCOIETFPWENETMIB::CpwVcEnetStatsTable> cpwvcenetstatstable;
         
 }; // CISCOIETFPWENETMIB
 
 
-class CISCOIETFPWENETMIB::Cpwvcenettable : public ydk::Entity
+class CISCOIETFPWENETMIB::CpwVcEnetTable : public ydk::Entity
 {
     public:
-        Cpwvcenettable();
-        ~Cpwvcenettable();
+        CpwVcEnetTable();
+        ~CpwVcEnetTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -60,18 +60,18 @@ class CISCOIETFPWENETMIB::Cpwvcenettable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpwvcenetentry; //type: CISCOIETFPWENETMIB::Cpwvcenettable::Cpwvcenetentry
+        class CpwVcEnetEntry; //type: CISCOIETFPWENETMIB::CpwVcEnetTable::CpwVcEnetEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_ENET_MIB::CISCOIETFPWENETMIB::Cpwvcenettable::Cpwvcenetentry> > cpwvcenetentry;
+        ydk::YList cpwvcenetentry;
         
-}; // CISCOIETFPWENETMIB::Cpwvcenettable
+}; // CISCOIETFPWENETMIB::CpwVcEnetTable
 
 
-class CISCOIETFPWENETMIB::Cpwvcenettable::Cpwvcenetentry : public ydk::Entity
+class CISCOIETFPWENETMIB::CpwVcEnetTable::CpwVcEnetEntry : public ydk::Entity
 {
     public:
-        Cpwvcenetentry();
-        ~Cpwvcenetentry();
+        CpwVcEnetEntry();
+        ~CpwVcEnetEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -84,25 +84,25 @@ class CISCOIETFPWENETMIB::Cpwvcenettable::Cpwvcenetentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::cpwvcindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::cpwvcindex)
         ydk::YLeaf cpwvcindex;
         ydk::YLeaf cpwvcenetpwvlan; //type: int32
-        ydk::YLeaf cpwvcenetvlanmode; //type: Cpwvcenetvlanmode
+        ydk::YLeaf cpwvcenetvlanmode; //type: CpwVcEnetVlanMode
         ydk::YLeaf cpwvcenetportvlan; //type: int32
         ydk::YLeaf cpwvcenetvcifindex; //type: int32
         ydk::YLeaf cpwvcenetportifindex; //type: int32
         ydk::YLeaf cpwvcenetrowstatus; //type: RowStatus
         ydk::YLeaf cpwvcenetstoragetype; //type: StorageType
-        class Cpwvcenetvlanmode;
+        class CpwVcEnetVlanMode;
 
-}; // CISCOIETFPWENETMIB::Cpwvcenettable::Cpwvcenetentry
+}; // CISCOIETFPWENETMIB::CpwVcEnetTable::CpwVcEnetEntry
 
 
-class CISCOIETFPWENETMIB::Cpwvcenetmplsprimappingtable : public ydk::Entity
+class CISCOIETFPWENETMIB::CpwVcEnetMplsPriMappingTable : public ydk::Entity
 {
     public:
-        Cpwvcenetmplsprimappingtable();
-        ~Cpwvcenetmplsprimappingtable();
+        CpwVcEnetMplsPriMappingTable();
+        ~CpwVcEnetMplsPriMappingTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -115,18 +115,18 @@ class CISCOIETFPWENETMIB::Cpwvcenetmplsprimappingtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpwvcenetmplsprimappingtableentry; //type: CISCOIETFPWENETMIB::Cpwvcenetmplsprimappingtable::Cpwvcenetmplsprimappingtableentry
+        class CpwVcEnetMplsPriMappingTableEntry; //type: CISCOIETFPWENETMIB::CpwVcEnetMplsPriMappingTable::CpwVcEnetMplsPriMappingTableEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_ENET_MIB::CISCOIETFPWENETMIB::Cpwvcenetmplsprimappingtable::Cpwvcenetmplsprimappingtableentry> > cpwvcenetmplsprimappingtableentry;
+        ydk::YList cpwvcenetmplsprimappingtableentry;
         
-}; // CISCOIETFPWENETMIB::Cpwvcenetmplsprimappingtable
+}; // CISCOIETFPWENETMIB::CpwVcEnetMplsPriMappingTable
 
 
-class CISCOIETFPWENETMIB::Cpwvcenetmplsprimappingtable::Cpwvcenetmplsprimappingtableentry : public ydk::Entity
+class CISCOIETFPWENETMIB::CpwVcEnetMplsPriMappingTable::CpwVcEnetMplsPriMappingTableEntry : public ydk::Entity
 {
     public:
-        Cpwvcenetmplsprimappingtableentry();
-        ~Cpwvcenetmplsprimappingtableentry();
+        CpwVcEnetMplsPriMappingTableEntry();
+        ~CpwVcEnetMplsPriMappingTableEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -139,20 +139,20 @@ class CISCOIETFPWENETMIB::Cpwvcenetmplsprimappingtable::Cpwvcenetmplsprimappingt
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::cpwvcindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::cpwvcindex)
         ydk::YLeaf cpwvcindex;
-        ydk::YLeaf cpwvcenetmplsprimapping; //type: Cpwvcenetmplsprimapping
+        ydk::YLeaf cpwvcenetmplsprimapping; //type: CpwVcEnetMplsPriMapping
         ydk::YLeaf cpwvcenetmplsprimappingrowstatus; //type: RowStatus
         ydk::YLeaf cpwvcenetmplsprimappingstoragetype; //type: StorageType
 
-}; // CISCOIETFPWENETMIB::Cpwvcenetmplsprimappingtable::Cpwvcenetmplsprimappingtableentry
+}; // CISCOIETFPWENETMIB::CpwVcEnetMplsPriMappingTable::CpwVcEnetMplsPriMappingTableEntry
 
 
-class CISCOIETFPWENETMIB::Cpwvcenetstatstable : public ydk::Entity
+class CISCOIETFPWENETMIB::CpwVcEnetStatsTable : public ydk::Entity
 {
     public:
-        Cpwvcenetstatstable();
-        ~Cpwvcenetstatstable();
+        CpwVcEnetStatsTable();
+        ~CpwVcEnetStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -165,18 +165,18 @@ class CISCOIETFPWENETMIB::Cpwvcenetstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpwvcenetstatsentry; //type: CISCOIETFPWENETMIB::Cpwvcenetstatstable::Cpwvcenetstatsentry
+        class CpwVcEnetStatsEntry; //type: CISCOIETFPWENETMIB::CpwVcEnetStatsTable::CpwVcEnetStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_ENET_MIB::CISCOIETFPWENETMIB::Cpwvcenetstatstable::Cpwvcenetstatsentry> > cpwvcenetstatsentry;
+        ydk::YList cpwvcenetstatsentry;
         
-}; // CISCOIETFPWENETMIB::Cpwvcenetstatstable
+}; // CISCOIETFPWENETMIB::CpwVcEnetStatsTable
 
 
-class CISCOIETFPWENETMIB::Cpwvcenetstatstable::Cpwvcenetstatsentry : public ydk::Entity
+class CISCOIETFPWENETMIB::CpwVcEnetStatsTable::CpwVcEnetStatsEntry : public ydk::Entity
 {
     public:
-        Cpwvcenetstatsentry();
-        ~Cpwvcenetstatsentry();
+        CpwVcEnetStatsEntry();
+        ~CpwVcEnetStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -189,14 +189,14 @@ class CISCOIETFPWENETMIB::Cpwvcenetstatstable::Cpwvcenetstatsentry : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::cpwvcindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::cpwvcindex)
         ydk::YLeaf cpwvcindex;
         ydk::YLeaf cpwvcenetstatsillegalvlan; //type: uint64
         ydk::YLeaf cpwvcenetstatsillegallength; //type: uint64
 
-}; // CISCOIETFPWENETMIB::Cpwvcenetstatstable::Cpwvcenetstatsentry
+}; // CISCOIETFPWENETMIB::CpwVcEnetStatsTable::CpwVcEnetStatsEntry
 
-class CISCOIETFPWENETMIB::Cpwvcenettable::Cpwvcenetentry::Cpwvcenetvlanmode : public ydk::Enum
+class CISCOIETFPWENETMIB::CpwVcEnetTable::CpwVcEnetEntry::CpwVcEnetVlanMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;

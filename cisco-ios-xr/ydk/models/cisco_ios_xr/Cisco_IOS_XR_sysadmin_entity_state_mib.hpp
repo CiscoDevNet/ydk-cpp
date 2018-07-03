@@ -32,18 +32,18 @@ class ENTITYSTATEMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Entstatetable; //type: ENTITYSTATEMIB::Entstatetable
+        class EntStateTable; //type: ENTITYSTATEMIB::EntStateTable
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_entity_state_mib::ENTITYSTATEMIB::Entstatetable> entstatetable;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_entity_state_mib::ENTITYSTATEMIB::EntStateTable> entstatetable;
         
 }; // ENTITYSTATEMIB
 
 
-class ENTITYSTATEMIB::Entstatetable : public ydk::Entity
+class ENTITYSTATEMIB::EntStateTable : public ydk::Entity
 {
     public:
-        Entstatetable();
-        ~Entstatetable();
+        EntStateTable();
+        ~EntStateTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -56,18 +56,18 @@ class ENTITYSTATEMIB::Entstatetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Entstateentry; //type: ENTITYSTATEMIB::Entstatetable::Entstateentry
+        class EntStateEntry; //type: ENTITYSTATEMIB::EntStateTable::EntStateEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_entity_state_mib::ENTITYSTATEMIB::Entstatetable::Entstateentry> > entstateentry;
+        ydk::YList entstateentry;
         
-}; // ENTITYSTATEMIB::Entstatetable
+}; // ENTITYSTATEMIB::EntStateTable
 
 
-class ENTITYSTATEMIB::Entstatetable::Entstateentry : public ydk::Entity
+class ENTITYSTATEMIB::EntStateTable::EntStateEntry : public ydk::Entity
 {
     public:
-        Entstateentry();
-        ~Entstateentry();
+        EntStateEntry();
+        ~EntStateEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -88,7 +88,7 @@ class ENTITYSTATEMIB::Entstatetable::Entstateentry : public ydk::Entity
         ydk::YLeaf entstatealarm; //type: EntityAlarmStatus
         ydk::YLeaf entstatestandby; //type: EntityStandbyStatus
 
-}; // ENTITYSTATEMIB::Entstatetable::Entstateentry
+}; // ENTITYSTATEMIB::EntStateTable::EntStateEntry
 
 
 }

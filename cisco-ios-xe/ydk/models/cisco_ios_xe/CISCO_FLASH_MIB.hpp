@@ -32,36 +32,36 @@ class CISCOFLASHMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ciscoflashdevice; //type: CISCOFLASHMIB::Ciscoflashdevice
-        class Ciscoflashcfg; //type: CISCOFLASHMIB::Ciscoflashcfg
-        class Ciscoflashdevicetable; //type: CISCOFLASHMIB::Ciscoflashdevicetable
-        class Ciscoflashchiptable; //type: CISCOFLASHMIB::Ciscoflashchiptable
-        class Ciscoflashpartitiontable; //type: CISCOFLASHMIB::Ciscoflashpartitiontable
-        class Ciscoflashfiletable; //type: CISCOFLASHMIB::Ciscoflashfiletable
-        class Ciscoflashfilebytypetable; //type: CISCOFLASHMIB::Ciscoflashfilebytypetable
-        class Ciscoflashcopytable; //type: CISCOFLASHMIB::Ciscoflashcopytable
-        class Ciscoflashpartitioningtable; //type: CISCOFLASHMIB::Ciscoflashpartitioningtable
-        class Ciscoflashmiscoptable; //type: CISCOFLASHMIB::Ciscoflashmiscoptable
+        class CiscoFlashDevice; //type: CISCOFLASHMIB::CiscoFlashDevice
+        class CiscoFlashCfg; //type: CISCOFLASHMIB::CiscoFlashCfg
+        class CiscoFlashDeviceTable; //type: CISCOFLASHMIB::CiscoFlashDeviceTable
+        class CiscoFlashChipTable; //type: CISCOFLASHMIB::CiscoFlashChipTable
+        class CiscoFlashPartitionTable; //type: CISCOFLASHMIB::CiscoFlashPartitionTable
+        class CiscoFlashFileTable; //type: CISCOFLASHMIB::CiscoFlashFileTable
+        class CiscoFlashFileByTypeTable; //type: CISCOFLASHMIB::CiscoFlashFileByTypeTable
+        class CiscoFlashCopyTable; //type: CISCOFLASHMIB::CiscoFlashCopyTable
+        class CiscoFlashPartitioningTable; //type: CISCOFLASHMIB::CiscoFlashPartitioningTable
+        class CiscoFlashMiscOpTable; //type: CISCOFLASHMIB::CiscoFlashMiscOpTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashdevice> ciscoflashdevice;
-        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashcfg> ciscoflashcfg;
-        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashdevicetable> ciscoflashdevicetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashchiptable> ciscoflashchiptable;
-        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashpartitiontable> ciscoflashpartitiontable;
-        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashfiletable> ciscoflashfiletable;
-        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashfilebytypetable> ciscoflashfilebytypetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashcopytable> ciscoflashcopytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashpartitioningtable> ciscoflashpartitioningtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashmiscoptable> ciscoflashmiscoptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::CiscoFlashDevice> ciscoflashdevice;
+        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::CiscoFlashCfg> ciscoflashcfg;
+        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::CiscoFlashDeviceTable> ciscoflashdevicetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::CiscoFlashChipTable> ciscoflashchiptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::CiscoFlashPartitionTable> ciscoflashpartitiontable;
+        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::CiscoFlashFileTable> ciscoflashfiletable;
+        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::CiscoFlashFileByTypeTable> ciscoflashfilebytypetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::CiscoFlashCopyTable> ciscoflashcopytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::CiscoFlashPartitioningTable> ciscoflashpartitioningtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::CiscoFlashMiscOpTable> ciscoflashmiscoptable;
         
 }; // CISCOFLASHMIB
 
 
-class CISCOFLASHMIB::Ciscoflashdevice : public ydk::Entity
+class CISCOFLASHMIB::CiscoFlashDevice : public ydk::Entity
 {
     public:
-        Ciscoflashdevice();
-        ~Ciscoflashdevice();
+        CiscoFlashDevice();
+        ~CiscoFlashDevice();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -76,14 +76,14 @@ class CISCOFLASHMIB::Ciscoflashdevice : public ydk::Entity
 
         ydk::YLeaf ciscoflashdevicessupported; //type: uint32
 
-}; // CISCOFLASHMIB::Ciscoflashdevice
+}; // CISCOFLASHMIB::CiscoFlashDevice
 
 
-class CISCOFLASHMIB::Ciscoflashcfg : public ydk::Entity
+class CISCOFLASHMIB::CiscoFlashCfg : public ydk::Entity
 {
     public:
-        Ciscoflashcfg();
-        ~Ciscoflashcfg();
+        CiscoFlashCfg();
+        ~CiscoFlashCfg();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -100,14 +100,14 @@ class CISCOFLASHMIB::Ciscoflashcfg : public ydk::Entity
         ydk::YLeaf ciscoflashcfgdevremnotifenable; //type: boolean
         ydk::YLeaf ciscoflashpartitionlowspacenotifenable; //type: boolean
 
-}; // CISCOFLASHMIB::Ciscoflashcfg
+}; // CISCOFLASHMIB::CiscoFlashCfg
 
 
-class CISCOFLASHMIB::Ciscoflashdevicetable : public ydk::Entity
+class CISCOFLASHMIB::CiscoFlashDeviceTable : public ydk::Entity
 {
     public:
-        Ciscoflashdevicetable();
-        ~Ciscoflashdevicetable();
+        CiscoFlashDeviceTable();
+        ~CiscoFlashDeviceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -120,18 +120,18 @@ class CISCOFLASHMIB::Ciscoflashdevicetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciscoflashdeviceentry; //type: CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry
+        class CiscoFlashDeviceEntry; //type: CISCOFLASHMIB::CiscoFlashDeviceTable::CiscoFlashDeviceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry> > ciscoflashdeviceentry;
+        ydk::YList ciscoflashdeviceentry;
         
-}; // CISCOFLASHMIB::Ciscoflashdevicetable
+}; // CISCOFLASHMIB::CiscoFlashDeviceTable
 
 
-class CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry : public ydk::Entity
+class CISCOFLASHMIB::CiscoFlashDeviceTable::CiscoFlashDeviceEntry : public ydk::Entity
 {
     public:
-        Ciscoflashdeviceentry();
-        ~Ciscoflashdeviceentry();
+        CiscoFlashDeviceEntry();
+        ~CiscoFlashDeviceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -154,23 +154,23 @@ class CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry : public ydk::
         ydk::YLeaf ciscoflashdevicedescr; //type: string
         ydk::YLeaf ciscoflashdevicecontroller; //type: string
         ydk::YLeaf ciscoflashdevicecard; //type: string
-        ydk::YLeaf ciscoflashdeviceprogrammingjumper; //type: Ciscoflashdeviceprogrammingjumper
+        ydk::YLeaf ciscoflashdeviceprogrammingjumper; //type: CiscoFlashDeviceProgrammingJumper
         ydk::YLeaf ciscoflashdeviceinittime; //type: uint32
         ydk::YLeaf ciscoflashdeviceremovable; //type: boolean
         ydk::YLeaf ciscoflashphyentindex; //type: int32
         ydk::YLeaf ciscoflashdevicenameextended; //type: string
         ydk::YLeaf ciscoflashdevicesizeextended; //type: uint64
         ydk::YLeaf ciscoflashdeviceminpartitionsizeextended; //type: uint64
-        class Ciscoflashdeviceprogrammingjumper;
+        class CiscoFlashDeviceProgrammingJumper;
 
-}; // CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry
+}; // CISCOFLASHMIB::CiscoFlashDeviceTable::CiscoFlashDeviceEntry
 
 
-class CISCOFLASHMIB::Ciscoflashchiptable : public ydk::Entity
+class CISCOFLASHMIB::CiscoFlashChipTable : public ydk::Entity
 {
     public:
-        Ciscoflashchiptable();
-        ~Ciscoflashchiptable();
+        CiscoFlashChipTable();
+        ~CiscoFlashChipTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -183,18 +183,18 @@ class CISCOFLASHMIB::Ciscoflashchiptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciscoflashchipentry; //type: CISCOFLASHMIB::Ciscoflashchiptable::Ciscoflashchipentry
+        class CiscoFlashChipEntry; //type: CISCOFLASHMIB::CiscoFlashChipTable::CiscoFlashChipEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashchiptable::Ciscoflashchipentry> > ciscoflashchipentry;
+        ydk::YList ciscoflashchipentry;
         
-}; // CISCOFLASHMIB::Ciscoflashchiptable
+}; // CISCOFLASHMIB::CiscoFlashChipTable
 
 
-class CISCOFLASHMIB::Ciscoflashchiptable::Ciscoflashchipentry : public ydk::Entity
+class CISCOFLASHMIB::CiscoFlashChipTable::CiscoFlashChipEntry : public ydk::Entity
 {
     public:
-        Ciscoflashchipentry();
-        ~Ciscoflashchipentry();
+        CiscoFlashChipEntry();
+        ~CiscoFlashChipEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -207,7 +207,7 @@ class CISCOFLASHMIB::Ciscoflashchiptable::Ciscoflashchipentry : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry::ciscoflashdeviceindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::CiscoFlashDeviceTable::CiscoFlashDeviceEntry::ciscoflashdeviceindex)
         ydk::YLeaf ciscoflashdeviceindex;
         ydk::YLeaf ciscoflashchipindex; //type: int32
         ydk::YLeaf ciscoflashchipcode; //type: string
@@ -217,14 +217,14 @@ class CISCOFLASHMIB::Ciscoflashchiptable::Ciscoflashchipentry : public ydk::Enti
         ydk::YLeaf ciscoflashchipmaxwriteretries; //type: uint32
         ydk::YLeaf ciscoflashchipmaxeraseretries; //type: uint32
 
-}; // CISCOFLASHMIB::Ciscoflashchiptable::Ciscoflashchipentry
+}; // CISCOFLASHMIB::CiscoFlashChipTable::CiscoFlashChipEntry
 
 
-class CISCOFLASHMIB::Ciscoflashpartitiontable : public ydk::Entity
+class CISCOFLASHMIB::CiscoFlashPartitionTable : public ydk::Entity
 {
     public:
-        Ciscoflashpartitiontable();
-        ~Ciscoflashpartitiontable();
+        CiscoFlashPartitionTable();
+        ~CiscoFlashPartitionTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -237,18 +237,18 @@ class CISCOFLASHMIB::Ciscoflashpartitiontable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciscoflashpartitionentry; //type: CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry
+        class CiscoFlashPartitionEntry; //type: CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry> > ciscoflashpartitionentry;
+        ydk::YList ciscoflashpartitionentry;
         
-}; // CISCOFLASHMIB::Ciscoflashpartitiontable
+}; // CISCOFLASHMIB::CiscoFlashPartitionTable
 
 
-class CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry : public ydk::Entity
+class CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry : public ydk::Entity
 {
     public:
-        Ciscoflashpartitionentry();
-        ~Ciscoflashpartitionentry();
+        CiscoFlashPartitionEntry();
+        ~CiscoFlashPartitionEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -261,7 +261,7 @@ class CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry::ciscoflashdeviceindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::CiscoFlashDeviceTable::CiscoFlashDeviceEntry::ciscoflashdeviceindex)
         ydk::YLeaf ciscoflashdeviceindex;
         ydk::YLeaf ciscoflashpartitionindex; //type: uint32
         ydk::YLeaf ciscoflashpartitionstartchip; //type: int32
@@ -269,27 +269,27 @@ class CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry : public
         ydk::YLeaf ciscoflashpartitionsize; //type: uint32
         ydk::YLeaf ciscoflashpartitionfreespace; //type: uint32
         ydk::YLeaf ciscoflashpartitionfilecount; //type: uint32
-        ydk::YLeaf ciscoflashpartitionchecksumalgorithm; //type: Ciscoflashpartitionchecksumalgorithm
-        ydk::YLeaf ciscoflashpartitionstatus; //type: Ciscoflashpartitionstatus
-        ydk::YLeaf ciscoflashpartitionupgrademethod; //type: Ciscoflashpartitionupgrademethod
+        ydk::YLeaf ciscoflashpartitionchecksumalgorithm; //type: CiscoFlashPartitionChecksumAlgorithm
+        ydk::YLeaf ciscoflashpartitionstatus; //type: CiscoFlashPartitionStatus
+        ydk::YLeaf ciscoflashpartitionupgrademethod; //type: CiscoFlashPartitionUpgradeMethod
         ydk::YLeaf ciscoflashpartitionname; //type: string
         ydk::YLeaf ciscoflashpartitionneederasure; //type: boolean
         ydk::YLeaf ciscoflashpartitionfilenamelength; //type: int32
         ydk::YLeaf ciscoflashpartitionsizeextended; //type: uint64
         ydk::YLeaf ciscoflashpartitionfreespaceextended; //type: uint64
         ydk::YLeaf ciscoflashpartitionlowspacenotifthreshold; //type: int32
-        class Ciscoflashpartitionchecksumalgorithm;
-        class Ciscoflashpartitionstatus;
-        class Ciscoflashpartitionupgrademethod;
+        class CiscoFlashPartitionChecksumAlgorithm;
+        class CiscoFlashPartitionStatus;
+        class CiscoFlashPartitionUpgradeMethod;
 
-}; // CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry
+}; // CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry
 
 
-class CISCOFLASHMIB::Ciscoflashfiletable : public ydk::Entity
+class CISCOFLASHMIB::CiscoFlashFileTable : public ydk::Entity
 {
     public:
-        Ciscoflashfiletable();
-        ~Ciscoflashfiletable();
+        CiscoFlashFileTable();
+        ~CiscoFlashFileTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -302,18 +302,18 @@ class CISCOFLASHMIB::Ciscoflashfiletable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciscoflashfileentry; //type: CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry
+        class CiscoFlashFileEntry; //type: CISCOFLASHMIB::CiscoFlashFileTable::CiscoFlashFileEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry> > ciscoflashfileentry;
+        ydk::YList ciscoflashfileentry;
         
-}; // CISCOFLASHMIB::Ciscoflashfiletable
+}; // CISCOFLASHMIB::CiscoFlashFileTable
 
 
-class CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry : public ydk::Entity
+class CISCOFLASHMIB::CiscoFlashFileTable::CiscoFlashFileEntry : public ydk::Entity
 {
     public:
-        Ciscoflashfileentry();
-        ~Ciscoflashfileentry();
+        CiscoFlashFileEntry();
+        ~CiscoFlashFileEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -326,27 +326,27 @@ class CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry::ciscoflashdeviceindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::CiscoFlashDeviceTable::CiscoFlashDeviceEntry::ciscoflashdeviceindex)
         ydk::YLeaf ciscoflashdeviceindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry::ciscoflashpartitionindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry::ciscoflashpartitionindex)
         ydk::YLeaf ciscoflashpartitionindex;
         ydk::YLeaf ciscoflashfileindex; //type: uint32
         ydk::YLeaf ciscoflashfilesize; //type: uint32
         ydk::YLeaf ciscoflashfilechecksum; //type: binary
-        ydk::YLeaf ciscoflashfilestatus; //type: Ciscoflashfilestatus
+        ydk::YLeaf ciscoflashfilestatus; //type: CiscoFlashFileStatus
         ydk::YLeaf ciscoflashfilename; //type: string
         ydk::YLeaf ciscoflashfiletype; //type: FlashFileType
         ydk::YLeaf ciscoflashfiledate; //type: string
-        class Ciscoflashfilestatus;
+        class CiscoFlashFileStatus;
 
-}; // CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry
+}; // CISCOFLASHMIB::CiscoFlashFileTable::CiscoFlashFileEntry
 
 
-class CISCOFLASHMIB::Ciscoflashfilebytypetable : public ydk::Entity
+class CISCOFLASHMIB::CiscoFlashFileByTypeTable : public ydk::Entity
 {
     public:
-        Ciscoflashfilebytypetable();
-        ~Ciscoflashfilebytypetable();
+        CiscoFlashFileByTypeTable();
+        ~CiscoFlashFileByTypeTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -359,18 +359,18 @@ class CISCOFLASHMIB::Ciscoflashfilebytypetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciscoflashfilebytypeentry; //type: CISCOFLASHMIB::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry
+        class CiscoFlashFileByTypeEntry; //type: CISCOFLASHMIB::CiscoFlashFileByTypeTable::CiscoFlashFileByTypeEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry> > ciscoflashfilebytypeentry;
+        ydk::YList ciscoflashfilebytypeentry;
         
-}; // CISCOFLASHMIB::Ciscoflashfilebytypetable
+}; // CISCOFLASHMIB::CiscoFlashFileByTypeTable
 
 
-class CISCOFLASHMIB::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry : public ydk::Entity
+class CISCOFLASHMIB::CiscoFlashFileByTypeTable::CiscoFlashFileByTypeEntry : public ydk::Entity
 {
     public:
-        Ciscoflashfilebytypeentry();
-        ~Ciscoflashfilebytypeentry();
+        CiscoFlashFileByTypeEntry();
+        ~CiscoFlashFileByTypeEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -384,27 +384,27 @@ class CISCOFLASHMIB::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry : publ
         std::string get_absolute_path() const override;
 
         ydk::YLeaf ciscoflashfiletype; //type: FlashFileType
-        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry::ciscoflashdeviceindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::CiscoFlashDeviceTable::CiscoFlashDeviceEntry::ciscoflashdeviceindex)
         ydk::YLeaf ciscoflashdeviceindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry::ciscoflashpartitionindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry::ciscoflashpartitionindex)
         ydk::YLeaf ciscoflashpartitionindex;
-        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry::ciscoflashfileindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::CiscoFlashFileTable::CiscoFlashFileEntry::ciscoflashfileindex)
         ydk::YLeaf ciscoflashfileindex;
         ydk::YLeaf ciscoflashfilebytypesize; //type: uint32
         ydk::YLeaf ciscoflashfilebytypechecksum; //type: binary
-        ydk::YLeaf ciscoflashfilebytypestatus; //type: Ciscoflashfilebytypestatus
+        ydk::YLeaf ciscoflashfilebytypestatus; //type: CiscoFlashFileByTypeStatus
         ydk::YLeaf ciscoflashfilebytypename; //type: string
         ydk::YLeaf ciscoflashfilebytypedate; //type: string
-        class Ciscoflashfilebytypestatus;
+        class CiscoFlashFileByTypeStatus;
 
-}; // CISCOFLASHMIB::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry
+}; // CISCOFLASHMIB::CiscoFlashFileByTypeTable::CiscoFlashFileByTypeEntry
 
 
-class CISCOFLASHMIB::Ciscoflashcopytable : public ydk::Entity
+class CISCOFLASHMIB::CiscoFlashCopyTable : public ydk::Entity
 {
     public:
-        Ciscoflashcopytable();
-        ~Ciscoflashcopytable();
+        CiscoFlashCopyTable();
+        ~CiscoFlashCopyTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -417,18 +417,18 @@ class CISCOFLASHMIB::Ciscoflashcopytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciscoflashcopyentry; //type: CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry
+        class CiscoFlashCopyEntry; //type: CISCOFLASHMIB::CiscoFlashCopyTable::CiscoFlashCopyEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry> > ciscoflashcopyentry;
+        ydk::YList ciscoflashcopyentry;
         
-}; // CISCOFLASHMIB::Ciscoflashcopytable
+}; // CISCOFLASHMIB::CiscoFlashCopyTable
 
 
-class CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry : public ydk::Entity
+class CISCOFLASHMIB::CiscoFlashCopyTable::CiscoFlashCopyEntry : public ydk::Entity
 {
     public:
-        Ciscoflashcopyentry();
-        ~Ciscoflashcopyentry();
+        CiscoFlashCopyEntry();
+        ~CiscoFlashCopyEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -442,13 +442,13 @@ class CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry : public ydk::Enti
         std::string get_absolute_path() const override;
 
         ydk::YLeaf ciscoflashcopyserialnumber; //type: int32
-        ydk::YLeaf ciscoflashcopycommand; //type: Ciscoflashcopycommand
-        ydk::YLeaf ciscoflashcopyprotocol; //type: Ciscoflashcopyprotocol
+        ydk::YLeaf ciscoflashcopycommand; //type: CiscoFlashCopyCommand
+        ydk::YLeaf ciscoflashcopyprotocol; //type: CiscoFlashCopyProtocol
         ydk::YLeaf ciscoflashcopyserveraddress; //type: string
         ydk::YLeaf ciscoflashcopysourcename; //type: string
         ydk::YLeaf ciscoflashcopydestinationname; //type: string
         ydk::YLeaf ciscoflashcopyremoteusername; //type: string
-        ydk::YLeaf ciscoflashcopystatus; //type: Ciscoflashcopystatus
+        ydk::YLeaf ciscoflashcopystatus; //type: CiscoFlashCopyStatus
         ydk::YLeaf ciscoflashcopynotifyoncompletion; //type: boolean
         ydk::YLeaf ciscoflashcopytime; //type: uint32
         ydk::YLeaf ciscoflashcopyentrystatus; //type: RowStatus
@@ -456,18 +456,18 @@ class CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry : public ydk::Enti
         ydk::YLeaf ciscoflashcopyserveraddrtype; //type: InetAddressType
         ydk::YLeaf ciscoflashcopyserveraddrrev1; //type: binary
         ydk::YLeaf ciscoflashcopyremotepassword; //type: string
-        class Ciscoflashcopycommand;
-        class Ciscoflashcopyprotocol;
-        class Ciscoflashcopystatus;
+        class CiscoFlashCopyCommand;
+        class CiscoFlashCopyProtocol;
+        class CiscoFlashCopyStatus;
 
-}; // CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry
+}; // CISCOFLASHMIB::CiscoFlashCopyTable::CiscoFlashCopyEntry
 
 
-class CISCOFLASHMIB::Ciscoflashpartitioningtable : public ydk::Entity
+class CISCOFLASHMIB::CiscoFlashPartitioningTable : public ydk::Entity
 {
     public:
-        Ciscoflashpartitioningtable();
-        ~Ciscoflashpartitioningtable();
+        CiscoFlashPartitioningTable();
+        ~CiscoFlashPartitioningTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -480,18 +480,18 @@ class CISCOFLASHMIB::Ciscoflashpartitioningtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciscoflashpartitioningentry; //type: CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry
+        class CiscoFlashPartitioningEntry; //type: CISCOFLASHMIB::CiscoFlashPartitioningTable::CiscoFlashPartitioningEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry> > ciscoflashpartitioningentry;
+        ydk::YList ciscoflashpartitioningentry;
         
-}; // CISCOFLASHMIB::Ciscoflashpartitioningtable
+}; // CISCOFLASHMIB::CiscoFlashPartitioningTable
 
 
-class CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry : public ydk::Entity
+class CISCOFLASHMIB::CiscoFlashPartitioningTable::CiscoFlashPartitioningEntry : public ydk::Entity
 {
     public:
-        Ciscoflashpartitioningentry();
-        ~Ciscoflashpartitioningentry();
+        CiscoFlashPartitioningEntry();
+        ~CiscoFlashPartitioningEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -505,25 +505,25 @@ class CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry : 
         std::string get_absolute_path() const override;
 
         ydk::YLeaf ciscoflashpartitioningserialnumber; //type: int32
-        ydk::YLeaf ciscoflashpartitioningcommand; //type: Ciscoflashpartitioningcommand
+        ydk::YLeaf ciscoflashpartitioningcommand; //type: CiscoFlashPartitioningCommand
         ydk::YLeaf ciscoflashpartitioningdestinationname; //type: string
         ydk::YLeaf ciscoflashpartitioningpartitioncount; //type: uint32
         ydk::YLeaf ciscoflashpartitioningpartitionsizes; //type: string
-        ydk::YLeaf ciscoflashpartitioningstatus; //type: Ciscoflashpartitioningstatus
+        ydk::YLeaf ciscoflashpartitioningstatus; //type: CiscoFlashPartitioningStatus
         ydk::YLeaf ciscoflashpartitioningnotifyoncompletion; //type: boolean
         ydk::YLeaf ciscoflashpartitioningtime; //type: uint32
         ydk::YLeaf ciscoflashpartitioningentrystatus; //type: RowStatus
-        class Ciscoflashpartitioningcommand;
-        class Ciscoflashpartitioningstatus;
+        class CiscoFlashPartitioningCommand;
+        class CiscoFlashPartitioningStatus;
 
-}; // CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry
+}; // CISCOFLASHMIB::CiscoFlashPartitioningTable::CiscoFlashPartitioningEntry
 
 
-class CISCOFLASHMIB::Ciscoflashmiscoptable : public ydk::Entity
+class CISCOFLASHMIB::CiscoFlashMiscOpTable : public ydk::Entity
 {
     public:
-        Ciscoflashmiscoptable();
-        ~Ciscoflashmiscoptable();
+        CiscoFlashMiscOpTable();
+        ~CiscoFlashMiscOpTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -536,18 +536,18 @@ class CISCOFLASHMIB::Ciscoflashmiscoptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciscoflashmiscopentry; //type: CISCOFLASHMIB::Ciscoflashmiscoptable::Ciscoflashmiscopentry
+        class CiscoFlashMiscOpEntry; //type: CISCOFLASHMIB::CiscoFlashMiscOpTable::CiscoFlashMiscOpEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_FLASH_MIB::CISCOFLASHMIB::Ciscoflashmiscoptable::Ciscoflashmiscopentry> > ciscoflashmiscopentry;
+        ydk::YList ciscoflashmiscopentry;
         
-}; // CISCOFLASHMIB::Ciscoflashmiscoptable
+}; // CISCOFLASHMIB::CiscoFlashMiscOpTable
 
 
-class CISCOFLASHMIB::Ciscoflashmiscoptable::Ciscoflashmiscopentry : public ydk::Entity
+class CISCOFLASHMIB::CiscoFlashMiscOpTable::CiscoFlashMiscOpEntry : public ydk::Entity
 {
     public:
-        Ciscoflashmiscopentry();
-        ~Ciscoflashmiscopentry();
+        CiscoFlashMiscOpEntry();
+        ~CiscoFlashMiscOpEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -561,16 +561,16 @@ class CISCOFLASHMIB::Ciscoflashmiscoptable::Ciscoflashmiscopentry : public ydk::
         std::string get_absolute_path() const override;
 
         ydk::YLeaf ciscoflashmiscopserialnumber; //type: int32
-        ydk::YLeaf ciscoflashmiscopcommand; //type: Ciscoflashmiscopcommand
+        ydk::YLeaf ciscoflashmiscopcommand; //type: CiscoFlashMiscOpCommand
         ydk::YLeaf ciscoflashmiscopdestinationname; //type: string
-        ydk::YLeaf ciscoflashmiscopstatus; //type: Ciscoflashmiscopstatus
+        ydk::YLeaf ciscoflashmiscopstatus; //type: CiscoFlashMiscOpStatus
         ydk::YLeaf ciscoflashmiscopnotifyoncompletion; //type: boolean
         ydk::YLeaf ciscoflashmiscoptime; //type: uint32
         ydk::YLeaf ciscoflashmiscopentrystatus; //type: RowStatus
-        class Ciscoflashmiscopcommand;
-        class Ciscoflashmiscopstatus;
+        class CiscoFlashMiscOpCommand;
+        class CiscoFlashMiscOpStatus;
 
-}; // CISCOFLASHMIB::Ciscoflashmiscoptable::Ciscoflashmiscopentry
+}; // CISCOFLASHMIB::CiscoFlashMiscOpTable::CiscoFlashMiscOpEntry
 
 class FlashFileType : public ydk::Enum
 {
@@ -583,7 +583,7 @@ class FlashFileType : public ydk::Enum
 
 };
 
-class CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry::Ciscoflashdeviceprogrammingjumper : public ydk::Enum
+class CISCOFLASHMIB::CiscoFlashDeviceTable::CiscoFlashDeviceEntry::CiscoFlashDeviceProgrammingJumper : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf installed;
@@ -592,7 +592,7 @@ class CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry::Ciscoflashdev
 
 };
 
-class CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscoflashpartitionchecksumalgorithm : public ydk::Enum
+class CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry::CiscoFlashPartitionChecksumAlgorithm : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf simpleChecksum;
@@ -601,7 +601,7 @@ class CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscofl
 
 };
 
-class CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscoflashpartitionstatus : public ydk::Enum
+class CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry::CiscoFlashPartitionStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf readOnly;
@@ -610,7 +610,7 @@ class CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscofl
 
 };
 
-class CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscoflashpartitionupgrademethod : public ydk::Enum
+class CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry::CiscoFlashPartitionUpgradeMethod : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -619,7 +619,7 @@ class CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscofl
 
 };
 
-class CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry::Ciscoflashfilestatus : public ydk::Enum
+class CISCOFLASHMIB::CiscoFlashFileTable::CiscoFlashFileEntry::CiscoFlashFileStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf deleted;
@@ -628,7 +628,7 @@ class CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry::Ciscoflashfilesta
 
 };
 
-class CISCOFLASHMIB::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry::Ciscoflashfilebytypestatus : public ydk::Enum
+class CISCOFLASHMIB::CiscoFlashFileByTypeTable::CiscoFlashFileByTypeEntry::CiscoFlashFileByTypeStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf deleted;
@@ -637,7 +637,7 @@ class CISCOFLASHMIB::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry::Cisco
 
 };
 
-class CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopycommand : public ydk::Enum
+class CISCOFLASHMIB::CiscoFlashCopyTable::CiscoFlashCopyEntry::CiscoFlashCopyCommand : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf copyToFlashWithErase;
@@ -647,7 +647,7 @@ class CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopycom
 
 };
 
-class CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopyprotocol : public ydk::Enum
+class CISCOFLASHMIB::CiscoFlashCopyTable::CiscoFlashCopyEntry::CiscoFlashCopyProtocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf tftp;
@@ -659,7 +659,7 @@ class CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopypro
 
 };
 
-class CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus : public ydk::Enum
+class CISCOFLASHMIB::CiscoFlashCopyTable::CiscoFlashCopyEntry::CiscoFlashCopyStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf copyOperationPending;
@@ -685,14 +685,14 @@ class CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopysta
 
 };
 
-class CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::Ciscoflashpartitioningcommand : public ydk::Enum
+class CISCOFLASHMIB::CiscoFlashPartitioningTable::CiscoFlashPartitioningEntry::CiscoFlashPartitioningCommand : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf partition;
 
 };
 
-class CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::Ciscoflashpartitioningstatus : public ydk::Enum
+class CISCOFLASHMIB::CiscoFlashPartitioningTable::CiscoFlashPartitioningEntry::CiscoFlashPartitioningStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf partitioningInProgress;
@@ -709,7 +709,7 @@ class CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::C
 
 };
 
-class CISCOFLASHMIB::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopcommand : public ydk::Enum
+class CISCOFLASHMIB::CiscoFlashMiscOpTable::CiscoFlashMiscOpEntry::CiscoFlashMiscOpCommand : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf erase;
@@ -721,7 +721,7 @@ class CISCOFLASHMIB::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmis
 
 };
 
-class CISCOFLASHMIB::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopstatus : public ydk::Enum
+class CISCOFLASHMIB::CiscoFlashMiscOpTable::CiscoFlashMiscOpEntry::CiscoFlashMiscOpStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf miscOpInProgress;

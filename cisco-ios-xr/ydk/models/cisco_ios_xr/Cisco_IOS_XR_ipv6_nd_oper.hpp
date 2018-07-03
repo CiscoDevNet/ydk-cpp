@@ -57,7 +57,7 @@ class Ipv6NodeDiscovery::Nodes : public ydk::Entity
 
         class Node; //type: Ipv6NodeDiscovery::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Ipv6NodeDiscovery::Nodes
 
@@ -117,7 +117,7 @@ class Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces : public ydk::Entity
 
         class NeighborInterface; //type: Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface> > neighbor_interface;
+        ydk::YList neighbor_interface;
         
 }; // Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces
 
@@ -164,7 +164,7 @@ class Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::Hos
 
         class HostAddress; //type: Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses::HostAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses::HostAddress> > host_address;
+        ydk::YList host_address;
         
 }; // Ipv6NodeDiscovery::Nodes::Node::NeighborInterfaces::NeighborInterface::HostAddresses
 
@@ -351,7 +351,7 @@ class Ipv6NodeDiscovery::Nodes::Node::BundleNodes : public ydk::Entity
 
         class BundleNode; //type: Ipv6NodeDiscovery::Nodes::Node::BundleNodes::BundleNode
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::BundleNodes::BundleNode> > bundle_node;
+        ydk::YList bundle_node;
         
 }; // Ipv6NodeDiscovery::Nodes::Node::BundleNodes
 
@@ -427,7 +427,7 @@ class Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces : public ydk::Entity
 
         class BundleInterface; //type: Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface> > bundle_interface;
+        ydk::YList bundle_interface;
         
 }; // Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces
 
@@ -467,8 +467,8 @@ class Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface : public
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::NdParameters> nd_parameters;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAddress> local_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAddress> > global_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::MemberNode> > member_node;
+        ydk::YList global_address;
+        ydk::YList member_node;
         
 }; // Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface
 
@@ -529,6 +529,8 @@ class Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ipv6_address; //type: string
+        ydk::YLeaf valid_lifetime; //type: uint32
+        ydk::YLeaf pref_lifetime; //type: uint32
 
 }; // Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAddress
 
@@ -550,6 +552,8 @@ class Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalA
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ipv6_address; //type: string
+        ydk::YLeaf valid_lifetime; //type: uint32
+        ydk::YLeaf pref_lifetime; //type: uint32
 
 }; // Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAddress
 
@@ -594,7 +598,7 @@ class Ipv6NodeDiscovery::Nodes::Node::Interfaces : public ydk::Entity
 
         class Interface; //type: Ipv6NodeDiscovery::Nodes::Node::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Ipv6NodeDiscovery::Nodes::Node::Interfaces
 
@@ -657,7 +661,7 @@ class Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters : public ydk::Entity
 
         class NdVirtualRouter; //type: Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter> > nd_virtual_router;
+        ydk::YList nd_virtual_router;
         
 }; // Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters
 
@@ -688,7 +692,7 @@ class Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter : public
         class VrGlobalAddress; //type: Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobalAddress
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAddress> local_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobalAddress> > vr_global_address;
+        ydk::YList vr_global_address;
         
 }; // Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter
 
@@ -710,6 +714,8 @@ class Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ipv6_address; //type: string
+        ydk::YLeaf valid_lifetime; //type: uint32
+        ydk::YLeaf pref_lifetime; //type: uint32
 
 }; // Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAddress
 
@@ -731,6 +737,8 @@ class Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGloba
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ipv6_address; //type: string
+        ydk::YLeaf valid_lifetime; //type: uint32
+        ydk::YLeaf pref_lifetime; //type: uint32
 
 }; // Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobalAddress
 
@@ -753,7 +761,7 @@ class Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces : public ydk::Entity
 
         class SlaacInterface; //type: Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface> > slaac_interface;
+        ydk::YList slaac_interface;
         
 }; // Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces
 
@@ -801,7 +809,7 @@ class Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdv
         ydk::YLeaf idb; //type: string
         class Ra; //type: Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra> > ra;
+        ydk::YList ra;
         
 }; // Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail
 
@@ -841,7 +849,7 @@ class Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdv
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::ElapsedRaTime> elapsed_ra_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::ReachableTime> reachable_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::RetransTime> retrans_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::PrefixQ> > prefix_q;
+        ydk::YList prefix_q;
         
 }; // Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra
 
@@ -935,14 +943,6 @@ class Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdv
 
 }; // Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::PrefixQ
 
-class Ipv6NdShVrFlags : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_flags;
-        static const ydk::Enum::YLeaf final_ra;
-
-};
-
 class Ipv6NdShVrState : public ydk::Enum
 {
     public:
@@ -958,15 +958,6 @@ class Ipv6NdBndlState : public ydk::Enum
         static const ydk::Enum::YLeaf run;
         static const ydk::Enum::YLeaf error;
         static const ydk::Enum::YLeaf wait;
-
-};
-
-class Ipv6NdNeighborOrigin : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf dynamic;
 
 };
 
@@ -989,6 +980,15 @@ class Ipv6NdMediaEncap : public ydk::Enum
 
 };
 
+class Ipv6NdNeighborOrigin : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf dynamic;
+
+};
+
 class Ipv6NdShState : public ydk::Enum
 {
     public:
@@ -999,6 +999,14 @@ class Ipv6NdShState : public ydk::Enum
         static const ydk::Enum::YLeaf delay;
         static const ydk::Enum::YLeaf probe;
         static const ydk::Enum::YLeaf delete_;
+
+};
+
+class Ipv6NdShVrFlags : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_flags;
+        static const ydk::Enum::YLeaf final_ra;
 
 };
 

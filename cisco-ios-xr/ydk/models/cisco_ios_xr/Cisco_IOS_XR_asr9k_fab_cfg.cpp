@@ -17,7 +17,7 @@ FabVqiConfig::FabVqiConfig()
 {
     mode->parent = this;
 
-    yang_name = "fab-vqi-config"; yang_parent_name = "Cisco-IOS-XR-asr9k-fab-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "fab-vqi-config"; yang_parent_name = "Cisco-IOS-XR-asr9k-fab-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 FabVqiConfig::~FabVqiConfig()
@@ -26,6 +26,7 @@ FabVqiConfig::~FabVqiConfig()
 
 bool FabVqiConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return (mode !=  nullptr && mode->has_data());
 }
 
@@ -123,7 +124,7 @@ FabVqiConfig::Mode::Mode()
     fab_mode_type{YType::enumeration, "fab-mode-type"}
 {
 
-    yang_name = "mode"; yang_parent_name = "fab-vqi-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mode"; yang_parent_name = "fab-vqi-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FabVqiConfig::Mode::~Mode()
@@ -132,6 +133,7 @@ FabVqiConfig::Mode::~Mode()
 
 bool FabVqiConfig::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return fab_mode_type_xr.is_set
 	|| fab_mode_type.is_set;
 }

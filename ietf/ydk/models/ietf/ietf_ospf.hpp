@@ -12,41 +12,14 @@
 namespace ietf {
 namespace ietf_ospf {
 
-class Ospf : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
+class IfLinkType : public virtual ydk::Identity
 {
     public:
-        Ospf();
-        ~Ospf();
+        IfLinkType();
+        ~IfLinkType();
 
 
-}; // Ospf
-
-class Ospfv2 : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
-{
-    public:
-        Ospfv2();
-        ~Ospfv2();
-
-
-}; // Ospfv2
-
-class Ospfv3 : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
-{
-    public:
-        Ospfv3();
-        ~Ospfv3();
-
-
-}; // Ospfv3
-
-class OperationMode : public virtual ydk::Identity
-{
-    public:
-        OperationMode();
-        ~OperationMode();
-
-
-}; // OperationMode
+}; // IfLinkType
 
 class AreaType : public virtual ydk::Identity
 {
@@ -57,23 +30,41 @@ class AreaType : public virtual ydk::Identity
 
 }; // AreaType
 
-class IfLinkType : public virtual ydk::Identity
+class Ospfv3 : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
-        IfLinkType();
-        ~IfLinkType();
+        Ospfv3();
+        ~Ospfv3();
 
 
-}; // IfLinkType
+}; // Ospfv3
 
-class ShipsInTheNight : public ietf::ietf_ospf::OperationMode, virtual ydk::Identity
+class Ospfv2 : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
-        ShipsInTheNight();
-        ~ShipsInTheNight();
+        Ospfv2();
+        ~Ospfv2();
 
 
-}; // ShipsInTheNight
+}; // Ospfv2
+
+class OperationMode : public virtual ydk::Identity
+{
+    public:
+        OperationMode();
+        ~OperationMode();
+
+
+}; // OperationMode
+
+class Ospf : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
+{
+    public:
+        Ospf();
+        ~Ospf();
+
+
+}; // Ospf
 
 class Normal : public ietf::ietf_ospf::AreaType, virtual ydk::Identity
 {
@@ -84,15 +75,6 @@ class Normal : public ietf::ietf_ospf::AreaType, virtual ydk::Identity
 
 }; // Normal
 
-class Stub : public ietf::ietf_ospf::AreaType, virtual ydk::Identity
-{
-    public:
-        Stub();
-        ~Stub();
-
-
-}; // Stub
-
 class Nssa : public ietf::ietf_ospf::AreaType, virtual ydk::Identity
 {
     public:
@@ -102,14 +84,23 @@ class Nssa : public ietf::ietf_ospf::AreaType, virtual ydk::Identity
 
 }; // Nssa
 
-class IfLinkTypeNormal : public ietf::ietf_ospf::IfLinkType, virtual ydk::Identity
+class ShipsInTheNight : public ietf::ietf_ospf::OperationMode, virtual ydk::Identity
 {
     public:
-        IfLinkTypeNormal();
-        ~IfLinkTypeNormal();
+        ShipsInTheNight();
+        ~ShipsInTheNight();
 
 
-}; // IfLinkTypeNormal
+}; // ShipsInTheNight
+
+class Stub : public ietf::ietf_ospf::AreaType, virtual ydk::Identity
+{
+    public:
+        Stub();
+        ~Stub();
+
+
+}; // Stub
 
 class IfLinkTypeVirtualLink : public ietf::ietf_ospf::IfLinkType, virtual ydk::Identity
 {
@@ -120,6 +111,15 @@ class IfLinkTypeVirtualLink : public ietf::ietf_ospf::IfLinkType, virtual ydk::I
 
 }; // IfLinkTypeVirtualLink
 
+class IfLinkTypeNormal : public ietf::ietf_ospf::IfLinkType, virtual ydk::Identity
+{
+    public:
+        IfLinkTypeNormal();
+        ~IfLinkTypeNormal();
+
+
+}; // IfLinkTypeNormal
+
 class IfLinkTypeShamLink : public ietf::ietf_ospf::IfLinkType, virtual ydk::Identity
 {
     public:
@@ -128,19 +128,6 @@ class IfLinkTypeShamLink : public ietf::ietf_ospf::IfLinkType, virtual ydk::Iden
 
 
 }; // IfLinkTypeShamLink
-
-class IfStateType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf Down;
-        static const ydk::Enum::YLeaf Loopback;
-        static const ydk::Enum::YLeaf Waiting;
-        static const ydk::Enum::YLeaf Point_to_Point;
-        static const ydk::Enum::YLeaf DR;
-        static const ydk::Enum::YLeaf BDR;
-        static const ydk::Enum::YLeaf DR_Other;
-
-};
 
 class NbrStateType : public ydk::Enum
 {
@@ -156,22 +143,16 @@ class NbrStateType : public ydk::Enum
 
 };
 
-class RestartHelperStatusType : public ydk::Enum
+class IfStateType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf Not_Helping;
-        static const ydk::Enum::YLeaf Helping;
-
-};
-
-class RestartExitReasonType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf None;
-        static const ydk::Enum::YLeaf InProgress;
-        static const ydk::Enum::YLeaf Completed;
-        static const ydk::Enum::YLeaf TimedOut;
-        static const ydk::Enum::YLeaf TopologyChanged;
+        static const ydk::Enum::YLeaf Down;
+        static const ydk::Enum::YLeaf Loopback;
+        static const ydk::Enum::YLeaf Waiting;
+        static const ydk::Enum::YLeaf Point_to_Point;
+        static const ydk::Enum::YLeaf DR;
+        static const ydk::Enum::YLeaf BDR;
+        static const ydk::Enum::YLeaf DR_Other;
 
 };
 
@@ -186,12 +167,31 @@ class PacketType : public ydk::Enum
 
 };
 
+class RestartExitReasonType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf None;
+        static const ydk::Enum::YLeaf InProgress;
+        static const ydk::Enum::YLeaf Completed;
+        static const ydk::Enum::YLeaf TimedOut;
+        static const ydk::Enum::YLeaf TopologyChanged;
+
+};
+
 class NssaTranslatorStateType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Enabled;
         static const ydk::Enum::YLeaf Elected;
         static const ydk::Enum::YLeaf Disabled;
+
+};
+
+class RestartHelperStatusType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Not_Helping;
+        static const ydk::Enum::YLeaf Helping;
 
 };
 

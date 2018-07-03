@@ -57,7 +57,7 @@ class Ospf::Processes : public ydk::Entity
 
         class Process; //type: Ospf::Processes::Process
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process> > process;
+        ydk::YList process;
         
 }; // Ospf::Processes
 
@@ -109,7 +109,7 @@ class Ospf::Processes::Process::Vrfs : public ydk::Entity
 
         class Vrf; //type: Ospf::Processes::Process::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Ospf::Processes::Process::Vrfs
 
@@ -133,6 +133,7 @@ class Ospf::Processes::Process::Vrfs::Vrf : public ydk::Entity
         ydk::YLeaf vrf_name; //type: string
         class InterfaceVrfInformation; //type: Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation
         class FloodListTable; //type: Ospf::Processes::Process::Vrfs::Vrf::FloodListTable
+        class SegmentRouting; //type: Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting
         class MplsTe; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe
         class Statistics; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics
         class AdjacencyInformation; //type: Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation
@@ -149,6 +150,7 @@ class Ospf::Processes::Process::Vrfs::Vrf : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation> interface_vrf_information;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::FloodListTable> flood_list_table;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting> segment_routing;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe> mpls_te;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics> statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation> adjacency_information;
@@ -207,7 +209,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks : 
 
         class ShamLink; //type: Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink> > sham_link;
+        ydk::YList sham_link;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks
 
@@ -260,7 +262,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::S
         class ShamLinkMdKey; //type: Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkMdKey
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkNeighbor> sham_link_neighbor;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkMdKey> > sham_link_md_key;
+        ydk::YList sham_link_md_key;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink
 
@@ -368,7 +370,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::FloodListTable : public ydk::Entity
 
         class Flood; //type: Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood> > flood;
+        ydk::YList flood;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::FloodListTable
 
@@ -396,8 +398,8 @@ class Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood : public ydk::E
         class AreaFlood; //type: Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AreaFlood
         class AsFlood; //type: Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AsFlood
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AreaFlood> > area_flood;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AsFlood> > as_flood;
+        ydk::YList area_flood;
+        ydk::YList as_flood;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood
 
@@ -454,6 +456,116 @@ class Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AsFlood : publ
 }; // Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AsFlood
 
 
+class Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting : public ydk::Entity
+{
+    public:
+        SegmentRouting();
+        ~SegmentRouting();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SrEndpointPolicies; //type: Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies> sr_endpoint_policies;
+        
+}; // Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting
+
+
+class Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies : public ydk::Entity
+{
+    public:
+        SrEndpointPolicies();
+        ~SrEndpointPolicies();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SrEndpointPolicy; //type: Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy
+
+        ydk::YList sr_endpoint_policy;
+        
+}; // Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies
+
+
+class Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy : public ydk::Entity
+{
+    public:
+        SrEndpointPolicy();
+        ~SrEndpointPolicy();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf endpoint_ip; //type: string
+        ydk::YLeaf sr_endpoint; //type: string
+        ydk::YLeaf sr_router_id; //type: uint32
+        ydk::YLeaf sr_area_id_string; //type: string
+        ydk::YLeaf sr_policy_count; //type: uint32
+        ydk::YLeaf sr_valid_policy_count; //type: uint32
+        ydk::YLeaf sr_endp_state_is_valid; //type: boolean
+        ydk::YLeaf sr_endp_state_is_stale; //type: boolean
+        ydk::YLeaf sr_endp_state_is_unres; //type: boolean
+        ydk::YLeaf sr_endp_resolution_fail_reason; //type: OspfSrEndpResFailReason
+        class SrPolicy; //type: Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::SrPolicy
+
+        ydk::YList sr_policy;
+        
+}; // Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy
+
+
+class Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::SrPolicy : public ydk::Entity
+{
+    public:
+        SrPolicy();
+        ~SrPolicy();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf policy_if_handle; //type: string
+        ydk::YLeaf policy_metric; //type: int32
+        ydk::YLeaf policy_metric_mode; //type: OspfSrPolMetricMode
+        ydk::YLeaf policy_is_sspf; //type: boolean
+        ydk::YLeaf policy_is_autoroute_include; //type: boolean
+        ydk::YLeaf policy_state_is_valid; //type: boolean
+        ydk::YLeaf policy_state_is_stale; //type: boolean
+        ydk::YLeaf policy_state_is_ifh_error; //type: boolean
+        ydk::YLeaf policy_state_is_idb_pending; //type: boolean
+        ydk::YLeaf policy_update_timestamp; //type: uint32
+
+}; // Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::SrPolicy
+
+
 class Ospf::Processes::Process::Vrfs::Vrf::MplsTe : public ydk::Entity
 {
     public:
@@ -497,7 +609,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks : public ydk::Ent
 
         class MplsTeLink; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink> > mpls_te_link;
+        ydk::YList mpls_te_link;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 
@@ -518,7 +630,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf area_id; //type: int32
+        ydk::YLeaf area_id; //type: uint32
         ydk::YLeaf mpls_te_router_id; //type: string
         ydk::YLeaf mpls_te_enabled; //type: boolean
         ydk::YLeaf mpls_te_initialized; //type: boolean
@@ -530,8 +642,8 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink : pub
         class MplsTeLink_; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_
         class MplsTeFragment; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_> > mpls_te_link;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment> > mpls_te_fragment;
+        ydk::YList mpls_te_link;
+        ydk::YList mpls_te_fragment;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 
@@ -583,7 +695,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability> link_protocol_priority_capability;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability> link_sw_capability;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList> extended_admin_group_list;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv> > mplste_link_opt_tlv;
+        ydk::YList mplste_link_opt_tlv;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_
 
@@ -606,7 +718,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         class BwPerPriority; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority::BwPerPriority
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority::BwPerPriority> > bw_per_priority;
+        ydk::YList bw_per_priority;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority
 
@@ -650,7 +762,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         class BwPerPriority; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority> > bw_per_priority;
+        ydk::YList bw_per_priority;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority
 
@@ -720,7 +832,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         ydk::YLeaf link_mtu; //type: uint16
         class MaximumLspBwPerPriority; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority> > maximum_lsp_bw_per_priority;
+        ydk::YList maximum_lsp_bw_per_priority;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability
 
@@ -765,7 +877,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         ydk::YLeaf extended_admin_size; //type: uint32
         class ExtAdminData; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList::ExtAdminData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList::ExtAdminData> > ext_admin_data;
+        ydk::YList ext_admin_data;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList
 
@@ -811,7 +923,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         ydk::YLeaf mplste_link_opt_tlv_len; //type: uint16
         class MplsteLinkOptTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue> > mplste_link_opt_tlv_value;
+        ydk::YList mplste_link_opt_tlv_value;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv
 
@@ -866,7 +978,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         ydk::YLeaf num_b_cs; //type: uint32
         class MplsteLinkBcBandwidth; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth> > mplste_link_bc_bandwidth;
+        ydk::YList mplste_link_bc_bandwidth;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue
 
@@ -912,7 +1024,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         ydk::YLeaf num_srl_gs; //type: uint32
         class MplsteLinkSrlgData; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData> > mplste_link_srlg_data;
+        ydk::YList mplste_link_srlg_data;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue
 
@@ -962,7 +1074,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         class MaxLspbw; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType> ixcd_switching_cap_type;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw> > max_lspbw;
+        ydk::YList max_lspbw;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue
 
@@ -1033,7 +1145,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         class ArrBwSubTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv> > arr_bw_sub_tlv;
+        ydk::YList arr_bw_sub_tlv;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv
 
@@ -1109,7 +1221,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         class UnresOdujPrio; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue> fixed_sub_tlv_value;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio> > unres_oduj_prio;
+        ydk::YList unres_oduj_prio;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue
 
@@ -1191,8 +1303,8 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         class MaxLspbw; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon> flex_sub_tlv_value_common;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw> > unres_lspbw;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw> > max_lspbw;
+        ydk::YList unres_lspbw;
+        ydk::YList max_lspbw;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue
 
@@ -1338,7 +1450,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         ydk::YLeaf same_fragment_count; //type: uint8
         class MplsTeLink_; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_> > mpls_te_link;
+        ydk::YList mpls_te_link;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment
 
@@ -1390,7 +1502,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkProtocolPriorityCapability> link_protocol_priority_capability;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability> link_sw_capability;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList> extended_admin_group_list;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv> > mplste_link_opt_tlv;
+        ydk::YList mplste_link_opt_tlv;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_
 
@@ -1413,7 +1525,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         class BwPerPriority; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority::BwPerPriority
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority::BwPerPriority> > bw_per_priority;
+        ydk::YList bw_per_priority;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority
 
@@ -1457,7 +1569,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         class BwPerPriority; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority> > bw_per_priority;
+        ydk::YList bw_per_priority;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority
 
@@ -1527,7 +1639,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         ydk::YLeaf link_mtu; //type: uint16
         class MaximumLspBwPerPriority; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority> > maximum_lsp_bw_per_priority;
+        ydk::YList maximum_lsp_bw_per_priority;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability
 
@@ -1572,7 +1684,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         ydk::YLeaf extended_admin_size; //type: uint32
         class ExtAdminData; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList::ExtAdminData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList::ExtAdminData> > ext_admin_data;
+        ydk::YList ext_admin_data;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList
 
@@ -1618,7 +1730,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         ydk::YLeaf mplste_link_opt_tlv_len; //type: uint16
         class MplsteLinkOptTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue> > mplste_link_opt_tlv_value;
+        ydk::YList mplste_link_opt_tlv_value;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv
 
@@ -1673,7 +1785,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         ydk::YLeaf num_b_cs; //type: uint32
         class MplsteLinkBcBandwidth; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth> > mplste_link_bc_bandwidth;
+        ydk::YList mplste_link_bc_bandwidth;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue
 
@@ -1719,7 +1831,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         ydk::YLeaf num_srl_gs; //type: uint32
         class MplsteLinkSrlgData; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData> > mplste_link_srlg_data;
+        ydk::YList mplste_link_srlg_data;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue
 
@@ -1769,7 +1881,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         class MaxLspbw; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType> ixcd_switching_cap_type;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw> > max_lspbw;
+        ydk::YList max_lspbw;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue
 
@@ -1840,7 +1952,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
 
         class ArrBwSubTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv> > arr_bw_sub_tlv;
+        ydk::YList arr_bw_sub_tlv;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv
 
@@ -1916,7 +2028,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         class UnresOdujPrio; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue> fixed_sub_tlv_value;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio> > unres_oduj_prio;
+        ydk::YList unres_oduj_prio;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue
 
@@ -1998,8 +2110,8 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::Mpls
         class MaxLspbw; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon> flex_sub_tlv_value_common;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw> > unres_lspbw;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw> > max_lspbw;
+        ydk::YList unres_lspbw;
+        ydk::YList max_lspbw;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue
 
@@ -2141,7 +2253,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments : public ydk:
 
         class MplsTeFragment; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment> > mpls_te_fragment;
+        ydk::YList mpls_te_fragment;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments
 
@@ -2162,7 +2274,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf area_id; //type: int32
+        ydk::YLeaf area_id; //type: uint32
         ydk::YLeaf mpls_te_router_id; //type: string
         ydk::YLeaf mpls_te_enabled; //type: boolean
         ydk::YLeaf mpls_te_initialized; //type: boolean
@@ -2174,8 +2286,8 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         class MplsTeLink; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink
         class MplsTeFragment_; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink> > mpls_te_link;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_> > mpls_te_fragment;
+        ydk::YList mpls_te_link;
+        ydk::YList mpls_te_fragment;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment
 
@@ -2227,7 +2339,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkProtocolPriorityCapability> link_protocol_priority_capability;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability> link_sw_capability;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList> extended_admin_group_list;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv> > mplste_link_opt_tlv;
+        ydk::YList mplste_link_opt_tlv;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink
 
@@ -2250,7 +2362,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         class BwPerPriority; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority::BwPerPriority
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority::BwPerPriority> > bw_per_priority;
+        ydk::YList bw_per_priority;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority
 
@@ -2294,7 +2406,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         class BwPerPriority; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority::BwPerPriority
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority::BwPerPriority> > bw_per_priority;
+        ydk::YList bw_per_priority;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority
 
@@ -2364,7 +2476,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         ydk::YLeaf link_mtu; //type: uint16
         class MaximumLspBwPerPriority; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability::MaximumLspBwPerPriority
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability::MaximumLspBwPerPriority> > maximum_lsp_bw_per_priority;
+        ydk::YList maximum_lsp_bw_per_priority;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability
 
@@ -2409,7 +2521,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         ydk::YLeaf extended_admin_size; //type: uint32
         class ExtAdminData; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList::ExtAdminData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList::ExtAdminData> > ext_admin_data;
+        ydk::YList ext_admin_data;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList
 
@@ -2455,7 +2567,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         ydk::YLeaf mplste_link_opt_tlv_len; //type: uint16
         class MplsteLinkOptTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue> > mplste_link_opt_tlv_value;
+        ydk::YList mplste_link_opt_tlv_value;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv
 
@@ -2510,7 +2622,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         ydk::YLeaf num_b_cs; //type: uint32
         class MplsteLinkBcBandwidth; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth> > mplste_link_bc_bandwidth;
+        ydk::YList mplste_link_bc_bandwidth;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue
 
@@ -2556,7 +2668,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         ydk::YLeaf num_srl_gs; //type: uint32
         class MplsteLinkSrlgData; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData> > mplste_link_srlg_data;
+        ydk::YList mplste_link_srlg_data;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue
 
@@ -2606,7 +2718,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         class MaxLspbw; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType> ixcd_switching_cap_type;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw> > max_lspbw;
+        ydk::YList max_lspbw;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue
 
@@ -2677,7 +2789,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         class ArrBwSubTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv> > arr_bw_sub_tlv;
+        ydk::YList arr_bw_sub_tlv;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv
 
@@ -2753,7 +2865,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         class UnresOdujPrio; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue> fixed_sub_tlv_value;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio> > unres_oduj_prio;
+        ydk::YList unres_oduj_prio;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue
 
@@ -2835,8 +2947,8 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         class MaxLspbw; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon> flex_sub_tlv_value_common;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw> > unres_lspbw;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw> > max_lspbw;
+        ydk::YList unres_lspbw;
+        ydk::YList max_lspbw;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue
 
@@ -2982,7 +3094,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         ydk::YLeaf same_fragment_count; //type: uint8
         class MplsTeLink; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink> > mpls_te_link;
+        ydk::YList mpls_te_link;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_
 
@@ -3034,7 +3146,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkProtocolPriorityCapability> link_protocol_priority_capability;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability> link_sw_capability;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList> extended_admin_group_list;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv> > mplste_link_opt_tlv;
+        ydk::YList mplste_link_opt_tlv;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink
 
@@ -3057,7 +3169,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         class BwPerPriority; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority::BwPerPriority
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority::BwPerPriority> > bw_per_priority;
+        ydk::YList bw_per_priority;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority
 
@@ -3101,7 +3213,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         class BwPerPriority; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority::BwPerPriority
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority::BwPerPriority> > bw_per_priority;
+        ydk::YList bw_per_priority;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority
 
@@ -3171,7 +3283,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         ydk::YLeaf link_mtu; //type: uint16
         class MaximumLspBwPerPriority; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability::MaximumLspBwPerPriority
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability::MaximumLspBwPerPriority> > maximum_lsp_bw_per_priority;
+        ydk::YList maximum_lsp_bw_per_priority;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability
 
@@ -3216,7 +3328,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         ydk::YLeaf extended_admin_size; //type: uint32
         class ExtAdminData; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList::ExtAdminData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList::ExtAdminData> > ext_admin_data;
+        ydk::YList ext_admin_data;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList
 
@@ -3262,7 +3374,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         ydk::YLeaf mplste_link_opt_tlv_len; //type: uint16
         class MplsteLinkOptTlvValue; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue> > mplste_link_opt_tlv_value;
+        ydk::YList mplste_link_opt_tlv_value;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv
 
@@ -3317,7 +3429,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         ydk::YLeaf num_b_cs; //type: uint32
         class MplsteLinkBcBandwidth; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth> > mplste_link_bc_bandwidth;
+        ydk::YList mplste_link_bc_bandwidth;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue
 
@@ -3363,7 +3475,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         ydk::YLeaf num_srl_gs; //type: uint32
         class MplsteLinkSrlgData; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData> > mplste_link_srlg_data;
+        ydk::YList mplste_link_srlg_data;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue
 
@@ -3413,7 +3525,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         class MaxLspbw; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType> ixcd_switching_cap_type;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw> > max_lspbw;
+        ydk::YList max_lspbw;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue
 
@@ -3484,7 +3596,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
         class ArrBwSubTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv> > arr_bw_sub_tlv;
+        ydk::YList arr_bw_sub_tlv;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv
 
@@ -3560,7 +3672,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         class UnresOdujPrio; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue> fixed_sub_tlv_value;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio> > unres_oduj_prio;
+        ydk::YList unres_oduj_prio;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue
 
@@ -3642,8 +3754,8 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
         class MaxLspbw; //type: Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon> flex_sub_tlv_value_common;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw> > unres_lspbw;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw> > max_lspbw;
+        ydk::YList unres_lspbw;
+        ydk::YList max_lspbw;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue
 
@@ -3766,343 +3878,12 @@ class Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragme
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue
 
-
-class Ospf::Processes::Process::Vrfs::Vrf::Statistics : public ydk::Entity
+class NsfRtr : public ydk::Enum
 {
     public:
-        Statistics();
-        ~Statistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class SpfStats; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats
-        class RibBatchStats; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibBatchStats
-        class IssuStats; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats
-        class RibThreadStats; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats
-        class NsrPlStats; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats
-        class NsrStats; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats
-        class FrrStats; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::FrrStats
-        class TeStats; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::TeStats
-        class ProtocolStats; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::ProtocolStats
-        class RawIoStats; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::RawIoStats
-        class InterfaceStatsEntries; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntries
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats> spf_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibBatchStats> rib_batch_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats> issu_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats> rib_thread_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats> nsr_pl_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats> nsr_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::FrrStats> frr_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::TeStats> te_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::ProtocolStats> protocol_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::RawIoStats> raw_io_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntries> interface_stats_entries;
-        
-}; // Ospf::Processes::Process::Vrfs::Vrf::Statistics
-
-
-class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats : public ydk::Entity
-{
-    public:
-        SpfStats();
-        ~SpfStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class SpfHeader; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader
-        class OsRuntime; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsRuntime
-        class OsSumRuntime; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsSumRuntime
-        class OsExRuntime; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsExRuntime
-        class Runtime; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader> spf_header;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsRuntime> > os_runtime;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsSumRuntime> > os_sum_runtime;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsExRuntime> > os_ex_runtime;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime> > runtime;
-        
-}; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats
-
-
-class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader : public ydk::Entity
-{
-    public:
-        SpfHeader();
-        ~SpfHeader();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf router_id; //type: string
-        ydk::YLeaf spf_count; //type: uint32
-        class AreaSumm; //type: Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm> > area_summ;
-        
-}; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader
-
-
-class Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm : public ydk::Entity
-{
-    public:
-        AreaSumm();
-        ~AreaSumm();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf area_id; //type: uint32
-        ydk::YLeaf spf_count; //type: uint32
-
-}; // Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm
-
-class OspfLs : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf router;
-        static const ydk::Enum::YLeaf network;
-        static const ydk::Enum::YLeaf summary;
-        static const ydk::Enum::YLeaf asbr_summary;
-        static const ydk::Enum::YLeaf external;
-        static const ydk::Enum::YLeaf nssa_external;
-        static const ydk::Enum::YLeaf opaque_link;
-        static const ydk::Enum::YLeaf opaque_area;
-        static const ydk::Enum::YLeaf opaque_as;
-
-};
-
-class OspfShOpqRiPceAddrTypes : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_ospf_opq_pce_addr_type_invalid;
-        static const ydk::Enum::YLeaf mgmt_ospf_opq_pce_addr_type_ipv4;
-        static const ydk::Enum::YLeaf mgmt_ospf_opq_pce_addr_type_ipv6;
-
-};
-
-class OspfShOpqRiTlvTypes : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_unknown;
-        static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_rtrcap;
-        static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_pce_discovery;
-        static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_sr_algo;
-        static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_sr_range;
-        static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_node_msd;
-
-};
-
-class OspfLsaOpqRiScope : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_lsa_opq_ri_scope_link;
-        static const ydk::Enum::YLeaf mgmt_lsa_opq_ri_scope_area;
-        static const ydk::Enum::YLeaf mgmt_lsa_opq_ri_scope_as;
-
-};
-
-class OspfGrReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_gr_reason_unknown;
-        static const ydk::Enum::YLeaf mgmt_gr_reason_sw_restart;
-        static const ydk::Enum::YLeaf mgmt_gr_reason_sw_upgrade;
-        static const ydk::Enum::YLeaf mgmt_gr_reason_switchover;
-
-};
-
-class Stlv : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_rrr_link_type;
-        static const ydk::Enum::YLeaf mgmt_rrr_link_id;
-        static const ydk::Enum::YLeaf mgmt_rrr_link_local_if_addr;
-        static const ydk::Enum::YLeaf mgmt_rrr_link_remote_if_addr;
-        static const ydk::Enum::YLeaf mgmt_rrr_link_metric;
-        static const ydk::Enum::YLeaf mgmt_rrr_link_max_bw;
-        static const ydk::Enum::YLeaf mgmt_rrr_link_max_reservable_bw;
-        static const ydk::Enum::YLeaf mgmt_rrr_link_unreserved_bw;
-        static const ydk::Enum::YLeaf mgmt_rrr_link_re_source_class;
-        static const ydk::Enum::YLeaf mgmt_rrr_link_in_out_if_id;
-        static const ydk::Enum::YLeaf mgmt_rrr_link_if_switching_cap_desc;
-        static const ydk::Enum::YLeaf mgmt_ospf_rrr_link_srlg;
-        static const ydk::Enum::YLeaf mgmt_rrr_link_bw_constraints_sub;
-        static const ydk::Enum::YLeaf mgmt_ospf_rrr_link_uni_delay;
-        static const ydk::Enum::YLeaf mgmt_ospf_rrr_link_max_reservable_bw_sub;
-        static const ydk::Enum::YLeaf mgmt_ospf_rrr_link_unreserved_bw_sub;
-        static const ydk::Enum::YLeaf mgmt_rrr_link_igp_metric;
-        static const ydk::Enum::YLeaf mgmt_ospf_rrr_link_ext_admin_sub;
-
-};
-
-class ExMetric : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_ex_metric_type_none;
-        static const ydk::Enum::YLeaf mgmt_ex_metric_type_1;
-        static const ydk::Enum::YLeaf mgmt_ex_metric_type_2;
-
-};
-
-class OspfLinkTypes : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_rtr_link;
-        static const ydk::Enum::YLeaf mgmt_trans_link;
-        static const ydk::Enum::YLeaf mgmt_stub_net;
-        static const ydk::Enum::YLeaf mgmt_vitural_link;
-
-};
-
-class OspfInternalLsaTypes : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_rtr_type;
-        static const ydk::Enum::YLeaf mgmt_ntwk_type;
-        static const ydk::Enum::YLeaf mgmt_sum_type;
-        static const ydk::Enum::YLeaf mgmt_ext_type;
-        static const ydk::Enum::YLeaf mgmt_opq_type;
-        static const ydk::Enum::YLeaf mgmt_opq_link_type;
-        static const ydk::Enum::YLeaf mgmt_opq_rrr_type;
-        static const ydk::Enum::YLeaf mgmt_opq_gr_type;
-        static const ydk::Enum::YLeaf mgmt_opq_ri_type;
-        static const ydk::Enum::YLeaf mgmt_opq_epl_type;
-        static const ydk::Enum::YLeaf mgmt_opq_ell_type;
-
-};
-
-class Timer : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_db_stop;
-        static const ydk::Enum::YLeaf mgmt_db_refresh;
-        static const ydk::Enum::YLeaf mgmt_db_checksum;
-        static const ydk::Enum::YLeaf mgmt_db_max_age;
-
-};
-
-class TimerTable : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_db_no_table;
-        static const ydk::Enum::YLeaf mgmt_db_sec_table;
-        static const ydk::Enum::YLeaf mgmt_db_buffer_table;
-        static const ydk::Enum::YLeaf mgmt_db_min_table;
-
-};
-
-class OspfSrgbStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_allocated;
-        static const ydk::Enum::YLeaf pending;
-        static const ydk::Enum::YLeaf allocated;
-
-};
-
-class UloopAvoidance : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf protected_prefixes;
-        static const ydk::Enum::YLeaf all_prefixes;
-        static const ydk::Enum::YLeaf segment_routing_uloop;
-
-};
-
-class GsState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_gs_init;
-        static const ydk::Enum::YLeaf mgmt_gs_normal;
-        static const ydk::Enum::YLeaf mgmt_gs_delay;
-        static const ydk::Enum::YLeaf mgmt_gs_flush;
-        static const ydk::Enum::YLeaf mgmt_gs_hello;
-        static const ydk::Enum::YLeaf mgmt_gs_quiet;
-
-};
-
-class MaxMetricUnsetReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_max_metric_unset_none;
-        static const ydk::Enum::YLeaf mgmt_max_metric_unset_bgp;
-        static const ydk::Enum::YLeaf mgmt_max_metric_unset_timer;
-        static const ydk::Enum::YLeaf mgmt_max_metric_unset_cfg;
-        static const ydk::Enum::YLeaf mgmt_max_metric_unset_process_cleared;
-        static const ydk::Enum::YLeaf mgmt_max_metric_unset_over_write;
-
-};
-
-class OspfMaxMetricAbrOffReasons : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ospf_max_metric_abr_off_reason_none;
-        static const ydk::Enum::YLeaf ospf_max_metric_abr_off_reason_no_nbr;
-        static const ydk::Enum::YLeaf ospf_max_metric_abr_off_reason_new_nbr;
-        static const ydk::Enum::YLeaf ospf_max_metric_abr_off_reason_nbr_full;
-        static const ydk::Enum::YLeaf ospf_max_metric_abr_off_reason_flush_p_end;
-
-};
-
-class MaxMetricSetReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_max_metric_on_proc_migration;
-        static const ydk::Enum::YLeaf mgmt_max_metric_on_proc_restart;
-        static const ydk::Enum::YLeaf mgmt_max_metric_on_switchover;
-        static const ydk::Enum::YLeaf mgmt_max_metric_on_startup;
-        static const ydk::Enum::YLeaf mgmt_max_metric_always;
-        static const ydk::Enum::YLeaf mgmt_max_metric_reason_none;
-
-};
-
-class SrUloopEvent : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf link_down;
-        static const ydk::Enum::YLeaf link_up;
-
-};
-
-class OspfBr : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_d_type_abr_asbr;
-        static const ydk::Enum::YLeaf mgmt_d_type_asbr;
-        static const ydk::Enum::YLeaf mgmt_d_type_abr;
+        static const ydk::Enum::YLeaf mgmt_nsf_rtr_none;
+        static const ydk::Enum::YLeaf mgmt_nsf_rtr_requester;
+        static const ydk::Enum::YLeaf mgmt_nsf_rtr_receiver;
 
 };
 
@@ -4121,23 +3902,25 @@ class IpfrrTbrkr : public ydk::Enum
 
 };
 
-class Ipfrr : public ydk::Enum
+class IgpteLibBwModel : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf per_link;
-        static const ydk::Enum::YLeaf per_prefix;
+        static const ydk::Enum::YLeaf rdm;
+        static const ydk::Enum::YLeaf mam;
+        static const ydk::Enum::YLeaf not_set;
 
 };
 
-class InterfaceState : public ydk::Enum
+class LinkSubnet : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mgmt_ifs_unknown;
-        static const ydk::Enum::YLeaf mgmt_ifs_admin_down;
-        static const ydk::Enum::YLeaf mgmt_ifs_down;
-        static const ydk::Enum::YLeaf mgmt_ifs_up;
-        static const ydk::Enum::YLeaf mgmt_ifs_shutdown;
+        static const ydk::Enum::YLeaf mgmt_igp_subnet_type_none;
+        static const ydk::Enum::YLeaf mgmt_igp_subnet_type_p2p;
+        static const ydk::Enum::YLeaf mgmt_igp_subnet_type_broadcast;
+        static const ydk::Enum::YLeaf mgmt_igp_subnet_type_nbma;
+        static const ydk::Enum::YLeaf mgmt_igp_subnet_type_p2mp;
+        static const ydk::Enum::YLeaf mgmt_igp_subnet_type_loop_back;
+        static const ydk::Enum::YLeaf mgmt_igp_subnet_type_max;
 
 };
 
@@ -4148,6 +3931,43 @@ class Authentication : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_ospf_auth_ct;
         static const ydk::Enum::YLeaf mgmt_ospf_auth_md;
         static const ydk::Enum::YLeaf mgmt_ospf_auth_kc;
+
+};
+
+class OspfShNnhValTypes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_nnh_val_type_ip_addr;
+        static const ydk::Enum::YLeaf mgmt_nnh_val_type_if_index;
+
+};
+
+class UloopAvoidance : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf protected_prefixes;
+        static const ydk::Enum::YLeaf all_prefixes;
+        static const ydk::Enum::YLeaf segment_routing_uloop;
+
+};
+
+class OspfLinkTypes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_rtr_link;
+        static const ydk::Enum::YLeaf mgmt_trans_link;
+        static const ydk::Enum::YLeaf mgmt_stub_net;
+        static const ydk::Enum::YLeaf mgmt_vitural_link;
+
+};
+
+class SrmsMiSrcEB : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf remote;
 
 };
 
@@ -4165,22 +3985,115 @@ class OspfInterfaceState : public ydk::Enum
 
 };
 
-class RedistProtocol : public ydk::Enum
+class Ipfrr : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mgmt_rib_protocol_all;
-        static const ydk::Enum::YLeaf mgmt_rib_protocol_connected;
-        static const ydk::Enum::YLeaf mgmt_rib_protocol_local;
-        static const ydk::Enum::YLeaf mgmt_rib_protocol_static;
-        static const ydk::Enum::YLeaf mgmt_rib_protocol_bgp;
-        static const ydk::Enum::YLeaf mgmt_rib_protocol_rip;
-        static const ydk::Enum::YLeaf mgmt_rib_protocol_isis;
-        static const ydk::Enum::YLeaf mgmt_rib_protocol_ospf;
-        static const ydk::Enum::YLeaf mgmt_rib_protocol_eigrp;
-        static const ydk::Enum::YLeaf mgmt_rib_protocol_dagr;
-        static const ydk::Enum::YLeaf mgmt_rib_protocol_subscriber;
-        static const ydk::Enum::YLeaf mgmt_rib_protocol_application;
-        static const ydk::Enum::YLeaf mgmt_rib_protocol_mobile;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf per_link;
+        static const ydk::Enum::YLeaf per_prefix;
+
+};
+
+class OspfSrgbStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_allocated;
+        static const ydk::Enum::YLeaf pending;
+        static const ydk::Enum::YLeaf allocated;
+
+};
+
+class OspfSrEndpResFailReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ospf_se_res_fail_none;
+        static const ydk::Enum::YLeaf ospf_se_res_fail_no_route;
+        static const ydk::Enum::YLeaf ospf_se_res_fail_inv_route_type;
+        static const ydk::Enum::YLeaf ospf_se_res_fail_default_route;
+        static const ydk::Enum::YLeaf ospf_se_res_fail_intra_multi_home_d;
+        static const ydk::Enum::YLeaf ospf_se_res_fail_no_path;
+        static const ydk::Enum::YLeaf ospf_se_res_fail_no_epl;
+        static const ydk::Enum::YLeaf ospf_se_res_fail_area_not_sr_enable;
+        static const ydk::Enum::YLeaf ospf_se_res_fail_epl_multi_home_d;
+        static const ydk::Enum::YLeaf ospf_se_res_fail_no_n_bit_epl;
+        static const ydk::Enum::YLeaf ospf_se_res_fail_no_na_bit_epl;
+        static const ydk::Enum::YLeaf ospf_se_res_fail_area_mismatch;
+        static const ydk::Enum::YLeaf ospf_se_res_fail_rid_mismatch;
+
+};
+
+class SrDp : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_ospf_sr_dp_none;
+        static const ydk::Enum::YLeaf mgmt_ospf_sr_dp_mpls;
+
+};
+
+class Interface : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_if_broadcast;
+        static const ydk::Enum::YLeaf mgmt_if_nonbroadcast;
+        static const ydk::Enum::YLeaf mgmt_if_point_to_point;
+        static const ydk::Enum::YLeaf mgmt_if_point_to_m_point;
+        static const ydk::Enum::YLeaf mgmt_if_p2mp_non_bcast;
+        static const ydk::Enum::YLeaf mgmt_if_virtual_link;
+        static const ydk::Enum::YLeaf mgmt_if_sham_link;
+        static const ydk::Enum::YLeaf mgmt_if_loop_back;
+
+};
+
+class InterfaceState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_ifs_unknown;
+        static const ydk::Enum::YLeaf mgmt_ifs_admin_down;
+        static const ydk::Enum::YLeaf mgmt_ifs_down;
+        static const ydk::Enum::YLeaf mgmt_ifs_up;
+        static const ydk::Enum::YLeaf mgmt_ifs_shutdown;
+
+};
+
+class ExMetric : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_ex_metric_type_none;
+        static const ydk::Enum::YLeaf mgmt_ex_metric_type_1;
+        static const ydk::Enum::YLeaf mgmt_ex_metric_type_2;
+
+};
+
+class GsState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_gs_init;
+        static const ydk::Enum::YLeaf mgmt_gs_normal;
+        static const ydk::Enum::YLeaf mgmt_gs_delay;
+        static const ydk::Enum::YLeaf mgmt_gs_flush;
+        static const ydk::Enum::YLeaf mgmt_gs_hello;
+        static const ydk::Enum::YLeaf mgmt_gs_quiet;
+
+};
+
+class OspfShOpqRiPceAddrTypes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_ospf_opq_pce_addr_type_invalid;
+        static const ydk::Enum::YLeaf mgmt_ospf_opq_pce_addr_type_ipv4;
+        static const ydk::Enum::YLeaf mgmt_ospf_opq_pce_addr_type_ipv6;
+
+};
+
+class MaxMetricSetReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_max_metric_on_proc_migration;
+        static const ydk::Enum::YLeaf mgmt_max_metric_on_proc_restart;
+        static const ydk::Enum::YLeaf mgmt_max_metric_on_switchover;
+        static const ydk::Enum::YLeaf mgmt_max_metric_on_startup;
+        static const ydk::Enum::YLeaf mgmt_max_metric_always;
+        static const ydk::Enum::YLeaf mgmt_max_metric_reason_none;
 
 };
 
@@ -4207,101 +4120,79 @@ class OspfRoute : public ydk::Enum
 
 };
 
-class NsfRtr : public ydk::Enum
+class SrUloopEvent : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mgmt_nsf_rtr_none;
-        static const ydk::Enum::YLeaf mgmt_nsf_rtr_requester;
-        static const ydk::Enum::YLeaf mgmt_nsf_rtr_receiver;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf link_down;
+        static const ydk::Enum::YLeaf link_up;
 
 };
 
-class Interface : public ydk::Enum
+class OspfShOpqRiTlvTypes : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mgmt_if_broadcast;
-        static const ydk::Enum::YLeaf mgmt_if_nonbroadcast;
-        static const ydk::Enum::YLeaf mgmt_if_point_to_point;
-        static const ydk::Enum::YLeaf mgmt_if_point_to_m_point;
-        static const ydk::Enum::YLeaf mgmt_if_p2mp_non_bcast;
-        static const ydk::Enum::YLeaf mgmt_if_virtual_link;
-        static const ydk::Enum::YLeaf mgmt_if_sham_link;
-        static const ydk::Enum::YLeaf mgmt_if_loop_back;
+        static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_unknown;
+        static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_rtrcap;
+        static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_pce_discovery;
+        static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_sr_algo;
+        static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_sr_range;
+        static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_node_msd;
 
 };
 
-class DrBdrState : public ydk::Enum
+class Timer : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mgmt_dbdr_none;
-        static const ydk::Enum::YLeaf mgmt_dbdr_dr;
-        static const ydk::Enum::YLeaf mgmt_dbdr_bdr;
-        static const ydk::Enum::YLeaf mgmt_dbdr_dr_other;
+        static const ydk::Enum::YLeaf mgmt_db_stop;
+        static const ydk::Enum::YLeaf mgmt_db_refresh;
+        static const ydk::Enum::YLeaf mgmt_db_checksum;
+        static const ydk::Enum::YLeaf mgmt_db_max_age;
 
 };
 
-class NeighborState : public ydk::Enum
+class MaxMetricUnsetReason : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mgmt_nbr_down;
-        static const ydk::Enum::YLeaf mgmt_nbr_attempt;
-        static const ydk::Enum::YLeaf mgmt_nbr_init;
-        static const ydk::Enum::YLeaf mgmt_nbr_2way;
-        static const ydk::Enum::YLeaf mgmt_nbr_ex_start;
-        static const ydk::Enum::YLeaf mgmt_nbr_ex_change;
-        static const ydk::Enum::YLeaf mgmt_nbr_load_ing;
-        static const ydk::Enum::YLeaf mgmt_nbr_full;
-        static const ydk::Enum::YLeaf mgmt_nbr_sc_virtual;
+        static const ydk::Enum::YLeaf mgmt_max_metric_unset_none;
+        static const ydk::Enum::YLeaf mgmt_max_metric_unset_bgp;
+        static const ydk::Enum::YLeaf mgmt_max_metric_unset_timer;
+        static const ydk::Enum::YLeaf mgmt_max_metric_unset_cfg;
+        static const ydk::Enum::YLeaf mgmt_max_metric_unset_process_cleared;
+        static const ydk::Enum::YLeaf mgmt_max_metric_unset_over_write;
 
 };
 
-class MplsTeOptTlv : public ydk::Enum
+class OspfBr : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mpls_te_opt_tlv_type_none;
-        static const ydk::Enum::YLeaf mpls_te_opt_tlv_type_srlg;
-        static const ydk::Enum::YLeaf mpls_te_opt_tlv_type_bc;
-        static const ydk::Enum::YLeaf mpls_te_opt_tlv_type_ixcd;
-        static const ydk::Enum::YLeaf mpls_te_opt_tlv_type_uni_delay;
+        static const ydk::Enum::YLeaf mgmt_d_type_abr_asbr;
+        static const ydk::Enum::YLeaf mgmt_d_type_asbr;
+        static const ydk::Enum::YLeaf mgmt_d_type_abr;
 
 };
 
-class IgpteLibBwModel : public ydk::Enum
+class Stlv : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf rdm;
-        static const ydk::Enum::YLeaf mam;
-        static const ydk::Enum::YLeaf not_set;
-
-};
-
-class LinkSubnet : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_igp_subnet_type_none;
-        static const ydk::Enum::YLeaf mgmt_igp_subnet_type_p2p;
-        static const ydk::Enum::YLeaf mgmt_igp_subnet_type_broadcast;
-        static const ydk::Enum::YLeaf mgmt_igp_subnet_type_nbma;
-        static const ydk::Enum::YLeaf mgmt_igp_subnet_type_p2mp;
-        static const ydk::Enum::YLeaf mgmt_igp_subnet_type_loop_back;
-        static const ydk::Enum::YLeaf mgmt_igp_subnet_type_max;
-
-};
-
-class Lsa : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_lsa_type_rtr;
-        static const ydk::Enum::YLeaf mgmt_lsa_type_net;
-        static const ydk::Enum::YLeaf mgmt_lsa_type_sum_net;
-        static const ydk::Enum::YLeaf mgmt_lsa_type_sum_asb;
-        static const ydk::Enum::YLeaf mgmt_lsa_type_ext;
-        static const ydk::Enum::YLeaf mgmt_lsa_type_mospf;
-        static const ydk::Enum::YLeaf mgmt_lsa_type_7_ase;
-        static const ydk::Enum::YLeaf mgmt_lsa_type_8_ignore;
-        static const ydk::Enum::YLeaf mgmt_lsa_type_opq_link;
-        static const ydk::Enum::YLeaf mgmt_lsa_type_opq_area;
-        static const ydk::Enum::YLeaf mgmt_lsa_type_opq_as;
+        static const ydk::Enum::YLeaf mgmt_rrr_link_type;
+        static const ydk::Enum::YLeaf mgmt_rrr_link_id;
+        static const ydk::Enum::YLeaf mgmt_rrr_link_local_if_addr;
+        static const ydk::Enum::YLeaf mgmt_rrr_link_remote_if_addr;
+        static const ydk::Enum::YLeaf mgmt_rrr_link_metric;
+        static const ydk::Enum::YLeaf mgmt_rrr_link_max_bw;
+        static const ydk::Enum::YLeaf mgmt_rrr_link_max_reservable_bw;
+        static const ydk::Enum::YLeaf mgmt_rrr_link_unreserved_bw;
+        static const ydk::Enum::YLeaf mgmt_rrr_link_re_source_class;
+        static const ydk::Enum::YLeaf mgmt_rrr_link_in_out_if_id;
+        static const ydk::Enum::YLeaf mgmt_rrr_link_if_switching_cap_desc;
+        static const ydk::Enum::YLeaf mgmt_ospf_rrr_link_srlg;
+        static const ydk::Enum::YLeaf mgmt_rrr_link_bw_constraints_sub;
+        static const ydk::Enum::YLeaf mgmt_ospf_rrr_link_ext_admin_sub;
+        static const ydk::Enum::YLeaf mgmt_ospf_rrr_link_uni_delay;
+        static const ydk::Enum::YLeaf mgmt_ospf_rrr_link_max_reservable_bw_sub;
+        static const ydk::Enum::YLeaf mgmt_ospf_rrr_link_unreserved_bw_sub;
+        static const ydk::Enum::YLeaf mgmt_rrr_link_igp_metric;
 
 };
 
@@ -4322,12 +4213,167 @@ class SrmsMiAfEB : public ydk::Enum
 
 };
 
-class SrmsMiSrcEB : public ydk::Enum
+class NeighborState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf remote;
+        static const ydk::Enum::YLeaf mgmt_nbr_down;
+        static const ydk::Enum::YLeaf mgmt_nbr_attempt;
+        static const ydk::Enum::YLeaf mgmt_nbr_init;
+        static const ydk::Enum::YLeaf mgmt_nbr_2way;
+        static const ydk::Enum::YLeaf mgmt_nbr_ex_start;
+        static const ydk::Enum::YLeaf mgmt_nbr_ex_change;
+        static const ydk::Enum::YLeaf mgmt_nbr_load_ing;
+        static const ydk::Enum::YLeaf mgmt_nbr_full;
+        static const ydk::Enum::YLeaf mgmt_nbr_sc_virtual;
+
+};
+
+class OspfInternalLsaTypes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_rtr_type;
+        static const ydk::Enum::YLeaf mgmt_ntwk_type;
+        static const ydk::Enum::YLeaf mgmt_sum_type;
+        static const ydk::Enum::YLeaf mgmt_ext_type;
+        static const ydk::Enum::YLeaf mgmt_opq_type;
+        static const ydk::Enum::YLeaf mgmt_opq_link_type;
+        static const ydk::Enum::YLeaf mgmt_opq_rrr_type;
+        static const ydk::Enum::YLeaf mgmt_opq_gr_type;
+        static const ydk::Enum::YLeaf mgmt_opq_ri_type;
+        static const ydk::Enum::YLeaf mgmt_opq_epl_type;
+        static const ydk::Enum::YLeaf mgmt_opq_ell_type;
+
+};
+
+class MplsTeOptTlv : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mpls_te_opt_tlv_type_none;
+        static const ydk::Enum::YLeaf mpls_te_opt_tlv_type_srlg;
+        static const ydk::Enum::YLeaf mpls_te_opt_tlv_type_bc;
+        static const ydk::Enum::YLeaf mpls_te_opt_tlv_type_ixcd;
+        static const ydk::Enum::YLeaf mpls_te_opt_tlv_type_uni_delay;
+
+};
+
+class RedistProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_rib_protocol_all;
+        static const ydk::Enum::YLeaf mgmt_rib_protocol_connected;
+        static const ydk::Enum::YLeaf mgmt_rib_protocol_local;
+        static const ydk::Enum::YLeaf mgmt_rib_protocol_static;
+        static const ydk::Enum::YLeaf mgmt_rib_protocol_bgp;
+        static const ydk::Enum::YLeaf mgmt_rib_protocol_rip;
+        static const ydk::Enum::YLeaf mgmt_rib_protocol_isis;
+        static const ydk::Enum::YLeaf mgmt_rib_protocol_ospf;
+        static const ydk::Enum::YLeaf mgmt_rib_protocol_eigrp;
+        static const ydk::Enum::YLeaf mgmt_rib_protocol_dagr;
+        static const ydk::Enum::YLeaf mgmt_rib_protocol_subscriber;
+        static const ydk::Enum::YLeaf mgmt_rib_protocol_application;
+        static const ydk::Enum::YLeaf mgmt_rib_protocol_mobile;
+
+};
+
+class Lfa : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_ospf_unknown_lfa;
+        static const ydk::Enum::YLeaf mgmt_ospf_direct_lfa;
+        static const ydk::Enum::YLeaf mgmt_ospf_ti_lfa;
+        static const ydk::Enum::YLeaf mgmt_ospf_remote_lfa;
+
+};
+
+class OspfLsaOpqRiScope : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_lsa_opq_ri_scope_link;
+        static const ydk::Enum::YLeaf mgmt_lsa_opq_ri_scope_area;
+        static const ydk::Enum::YLeaf mgmt_lsa_opq_ri_scope_as;
+
+};
+
+class Lsa : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_lsa_type_rtr;
+        static const ydk::Enum::YLeaf mgmt_lsa_type_net;
+        static const ydk::Enum::YLeaf mgmt_lsa_type_sum_net;
+        static const ydk::Enum::YLeaf mgmt_lsa_type_sum_asb;
+        static const ydk::Enum::YLeaf mgmt_lsa_type_ext;
+        static const ydk::Enum::YLeaf mgmt_lsa_type_mospf;
+        static const ydk::Enum::YLeaf mgmt_lsa_type_7_ase;
+        static const ydk::Enum::YLeaf mgmt_lsa_type_8_ignore;
+        static const ydk::Enum::YLeaf mgmt_lsa_type_opq_link;
+        static const ydk::Enum::YLeaf mgmt_lsa_type_opq_area;
+        static const ydk::Enum::YLeaf mgmt_lsa_type_opq_as;
+
+};
+
+class OspfSrPolMetricMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_ospf_metric_mode_none;
+        static const ydk::Enum::YLeaf mgmt_ospf_metric_mode_relative;
+        static const ydk::Enum::YLeaf mgmt_ospf_metric_mode_constant;
+        static const ydk::Enum::YLeaf mgmt_ospf_metric_mode_absolute;
+
+};
+
+class DrBdrState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_dbdr_none;
+        static const ydk::Enum::YLeaf mgmt_dbdr_dr;
+        static const ydk::Enum::YLeaf mgmt_dbdr_bdr;
+        static const ydk::Enum::YLeaf mgmt_dbdr_dr_other;
+
+};
+
+class TimerTable : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_db_no_table;
+        static const ydk::Enum::YLeaf mgmt_db_sec_table;
+        static const ydk::Enum::YLeaf mgmt_db_buffer_table;
+        static const ydk::Enum::YLeaf mgmt_db_min_table;
+
+};
+
+class OspfGrReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_gr_reason_unknown;
+        static const ydk::Enum::YLeaf mgmt_gr_reason_sw_restart;
+        static const ydk::Enum::YLeaf mgmt_gr_reason_sw_upgrade;
+        static const ydk::Enum::YLeaf mgmt_gr_reason_switchover;
+
+};
+
+class OspfMaxMetricAbrOffReasons : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ospf_max_metric_abr_off_reason_none;
+        static const ydk::Enum::YLeaf ospf_max_metric_abr_off_reason_no_nbr;
+        static const ydk::Enum::YLeaf ospf_max_metric_abr_off_reason_new_nbr;
+        static const ydk::Enum::YLeaf ospf_max_metric_abr_off_reason_nbr_full;
+        static const ydk::Enum::YLeaf ospf_max_metric_abr_off_reason_flush_p_end;
+
+};
+
+class OspfLs : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf router;
+        static const ydk::Enum::YLeaf network;
+        static const ydk::Enum::YLeaf summary;
+        static const ydk::Enum::YLeaf asbr_summary;
+        static const ydk::Enum::YLeaf external;
+        static const ydk::Enum::YLeaf nssa_external;
+        static const ydk::Enum::YLeaf opaque_link;
+        static const ydk::Enum::YLeaf opaque_area;
+        static const ydk::Enum::YLeaf opaque_as;
 
 };
 

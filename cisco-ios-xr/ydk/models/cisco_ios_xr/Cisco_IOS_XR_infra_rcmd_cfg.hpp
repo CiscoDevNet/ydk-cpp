@@ -44,8 +44,8 @@ class RouterConvergence : public ydk::Entity
         class Nodes; //type: RouterConvergence::Nodes
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::Protocols> protocols;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::StorageLocation> storage_location; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::MplsLdp> mpls_ldp; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::StorageLocation> storage_location;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::MplsLdp> mpls_ldp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::CollectDiagnostics> collect_diagnostics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::Nodes> nodes;
         
@@ -71,7 +71,7 @@ class RouterConvergence::Protocols : public ydk::Entity
 
         class Protocol; //type: RouterConvergence::Protocols::Protocol
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::Protocols::Protocol> > protocol;
+        ydk::YList protocol;
         
 }; // RouterConvergence::Protocols
 
@@ -120,7 +120,7 @@ class RouterConvergence::Protocols::Protocol::Priorities : public ydk::Entity
 
         class Priority; //type: RouterConvergence::Protocols::Protocol::Priorities::Priority
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::Protocols::Protocol::Priorities::Priority> > priority;
+        ydk::YList priority;
         
 }; // RouterConvergence::Protocols::Protocol::Priorities
 
@@ -142,7 +142,7 @@ class RouterConvergence::Protocols::Protocol::Priorities::Priority : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf rcmd_priority; //type: RcmdPriority
-        ydk::YLeaf threshold; //type: int32
+        ydk::YLeaf threshold; //type: uint32
         ydk::YLeaf leaf_networks; //type: uint32
         ydk::YLeaf disable; //type: empty
         ydk::YLeaf enable; //type: empty
@@ -195,7 +195,7 @@ class RouterConvergence::MplsLdp : public ydk::Entity
 
         class RemoteLfa; //type: RouterConvergence::MplsLdp::RemoteLfa
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::MplsLdp::RemoteLfa> remote_lfa; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::MplsLdp::RemoteLfa> remote_lfa;
         
 }; // RouterConvergence::MplsLdp
 
@@ -241,7 +241,7 @@ class RouterConvergence::CollectDiagnostics : public ydk::Entity
 
         class CollectDiagnostic; //type: RouterConvergence::CollectDiagnostics::CollectDiagnostic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::CollectDiagnostics::CollectDiagnostic> > collect_diagnostic;
+        ydk::YList collect_diagnostic;
         
 }; // RouterConvergence::CollectDiagnostics
 
@@ -288,7 +288,7 @@ class RouterConvergence::Nodes : public ydk::Entity
 
         class Node; //type: RouterConvergence::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // RouterConvergence::Nodes
 

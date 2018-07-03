@@ -40,14 +40,14 @@ class RFC1213MIB : public ydk::Entity
         class Udp; //type: RFC1213MIB::Udp
         class Egp; //type: RFC1213MIB::Egp
         class Snmp; //type: RFC1213MIB::Snmp
-        class Iftable; //type: RFC1213MIB::Iftable
-        class Attable; //type: RFC1213MIB::Attable
-        class Ipaddrtable; //type: RFC1213MIB::Ipaddrtable
-        class Iproutetable; //type: RFC1213MIB::Iproutetable
-        class Ipnettomediatable; //type: RFC1213MIB::Ipnettomediatable
-        class Tcpconntable; //type: RFC1213MIB::Tcpconntable
-        class Udptable; //type: RFC1213MIB::Udptable
-        class Egpneightable; //type: RFC1213MIB::Egpneightable
+        class IfTable; //type: RFC1213MIB::IfTable
+        class AtTable; //type: RFC1213MIB::AtTable
+        class IpAddrTable; //type: RFC1213MIB::IpAddrTable
+        class IpRouteTable; //type: RFC1213MIB::IpRouteTable
+        class IpNetToMediaTable; //type: RFC1213MIB::IpNetToMediaTable
+        class TcpConnTable; //type: RFC1213MIB::TcpConnTable
+        class UdpTable; //type: RFC1213MIB::UdpTable
+        class EgpNeighTable; //type: RFC1213MIB::EgpNeighTable
 
         std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::System> system;
         std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Interfaces> interfaces;
@@ -57,14 +57,14 @@ class RFC1213MIB : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Udp> udp;
         std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Egp> egp;
         std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Snmp> snmp;
-        std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Iftable> iftable;
-        std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Attable> attable;
-        std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Ipaddrtable> ipaddrtable;
-        std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Iproutetable> iproutetable;
-        std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Ipnettomediatable> ipnettomediatable;
-        std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Tcpconntable> tcpconntable;
-        std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Udptable> udptable;
-        std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Egpneightable> egpneightable;
+        std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::IfTable> iftable;
+        std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::AtTable> attable;
+        std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::IpAddrTable> ipaddrtable;
+        std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::IpRouteTable> iproutetable;
+        std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::IpNetToMediaTable> ipnettomediatable;
+        std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::TcpConnTable> tcpconntable;
+        std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::UdpTable> udptable;
+        std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::EgpNeighTable> egpneightable;
         
 }; // RFC1213MIB
 
@@ -136,7 +136,7 @@ class RFC1213MIB::Ip : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ipforwarding; //type: Ipforwarding
+        ydk::YLeaf ipforwarding; //type: IpForwarding
         ydk::YLeaf ipdefaultttl; //type: int32
         ydk::YLeaf ipinreceives; //type: uint32
         ydk::YLeaf ipinhdrerrors; //type: uint32
@@ -156,7 +156,7 @@ class RFC1213MIB::Ip : public ydk::Entity
         ydk::YLeaf ipfragfails; //type: uint32
         ydk::YLeaf ipfragcreates; //type: uint32
         ydk::YLeaf iproutingdiscards; //type: uint32
-        class Ipforwarding;
+        class IpForwarding;
 
 }; // RFC1213MIB::Ip
 
@@ -225,7 +225,7 @@ class RFC1213MIB::Tcp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf tcprtoalgorithm; //type: Tcprtoalgorithm
+        ydk::YLeaf tcprtoalgorithm; //type: TcpRtoAlgorithm
         ydk::YLeaf tcprtomin; //type: int32
         ydk::YLeaf tcprtomax; //type: int32
         ydk::YLeaf tcpmaxconn; //type: int32
@@ -239,7 +239,7 @@ class RFC1213MIB::Tcp : public ydk::Entity
         ydk::YLeaf tcpretranssegs; //type: uint32
         ydk::YLeaf tcpinerrs; //type: uint32
         ydk::YLeaf tcpoutrsts; //type: uint32
-        class Tcprtoalgorithm;
+        class TcpRtoAlgorithm;
 
 }; // RFC1213MIB::Tcp
 
@@ -339,17 +339,17 @@ class RFC1213MIB::Snmp : public ydk::Entity
         ydk::YLeaf snmpoutsetrequests; //type: uint32
         ydk::YLeaf snmpoutgetresponses; //type: uint32
         ydk::YLeaf snmpouttraps; //type: uint32
-        ydk::YLeaf snmpenableauthentraps; //type: Snmpenableauthentraps
-        class Snmpenableauthentraps;
+        ydk::YLeaf snmpenableauthentraps; //type: SnmpEnableAuthenTraps
+        class SnmpEnableAuthenTraps;
 
 }; // RFC1213MIB::Snmp
 
 
-class RFC1213MIB::Iftable : public ydk::Entity
+class RFC1213MIB::IfTable : public ydk::Entity
 {
     public:
-        Iftable();
-        ~Iftable();
+        IfTable();
+        ~IfTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -362,18 +362,18 @@ class RFC1213MIB::Iftable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ifentry; //type: RFC1213MIB::Iftable::Ifentry
+        class IfEntry; //type: RFC1213MIB::IfTable::IfEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Iftable::Ifentry> > ifentry;
+        ydk::YList ifentry;
         
-}; // RFC1213MIB::Iftable
+}; // RFC1213MIB::IfTable
 
 
-class RFC1213MIB::Iftable::Ifentry : public ydk::Entity
+class RFC1213MIB::IfTable::IfEntry : public ydk::Entity
 {
     public:
-        Ifentry();
-        ~Ifentry();
+        IfEntry();
+        ~IfEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -392,8 +392,8 @@ class RFC1213MIB::Iftable::Ifentry : public ydk::Entity
         ydk::YLeaf ifmtu; //type: int32
         ydk::YLeaf ifspeed; //type: uint32
         ydk::YLeaf ifphysaddress; //type: binary
-        ydk::YLeaf ifadminstatus; //type: Ifadminstatus
-        ydk::YLeaf ifoperstatus; //type: Ifoperstatus
+        ydk::YLeaf ifadminstatus; //type: IfAdminStatus
+        ydk::YLeaf ifoperstatus; //type: IfOperStatus
         ydk::YLeaf iflastchange; //type: uint32
         ydk::YLeaf ifinoctets; //type: uint32
         ydk::YLeaf ifinucastpkts; //type: uint32
@@ -408,17 +408,17 @@ class RFC1213MIB::Iftable::Ifentry : public ydk::Entity
         ydk::YLeaf ifouterrors; //type: uint32
         ydk::YLeaf ifoutqlen; //type: uint32
         ydk::YLeaf ifspecific; //type: string
-        class Ifadminstatus;
-        class Ifoperstatus;
+        class IfAdminStatus;
+        class IfOperStatus;
 
-}; // RFC1213MIB::Iftable::Ifentry
+}; // RFC1213MIB::IfTable::IfEntry
 
 
-class RFC1213MIB::Attable : public ydk::Entity
+class RFC1213MIB::AtTable : public ydk::Entity
 {
     public:
-        Attable();
-        ~Attable();
+        AtTable();
+        ~AtTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -431,18 +431,18 @@ class RFC1213MIB::Attable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Atentry; //type: RFC1213MIB::Attable::Atentry
+        class AtEntry; //type: RFC1213MIB::AtTable::AtEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Attable::Atentry> > atentry;
+        ydk::YList atentry;
         
-}; // RFC1213MIB::Attable
+}; // RFC1213MIB::AtTable
 
 
-class RFC1213MIB::Attable::Atentry : public ydk::Entity
+class RFC1213MIB::AtTable::AtEntry : public ydk::Entity
 {
     public:
-        Atentry();
-        ~Atentry();
+        AtEntry();
+        ~AtEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -460,14 +460,14 @@ class RFC1213MIB::Attable::Atentry : public ydk::Entity
         ydk::YLeaf atnetaddress; //type: string
         ydk::YLeaf atphysaddress; //type: binary
 
-}; // RFC1213MIB::Attable::Atentry
+}; // RFC1213MIB::AtTable::AtEntry
 
 
-class RFC1213MIB::Ipaddrtable : public ydk::Entity
+class RFC1213MIB::IpAddrTable : public ydk::Entity
 {
     public:
-        Ipaddrtable();
-        ~Ipaddrtable();
+        IpAddrTable();
+        ~IpAddrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -480,18 +480,18 @@ class RFC1213MIB::Ipaddrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipaddrentry; //type: RFC1213MIB::Ipaddrtable::Ipaddrentry
+        class IpAddrEntry; //type: RFC1213MIB::IpAddrTable::IpAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Ipaddrtable::Ipaddrentry> > ipaddrentry;
+        ydk::YList ipaddrentry;
         
-}; // RFC1213MIB::Ipaddrtable
+}; // RFC1213MIB::IpAddrTable
 
 
-class RFC1213MIB::Ipaddrtable::Ipaddrentry : public ydk::Entity
+class RFC1213MIB::IpAddrTable::IpAddrEntry : public ydk::Entity
 {
     public:
-        Ipaddrentry();
-        ~Ipaddrentry();
+        IpAddrEntry();
+        ~IpAddrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -510,14 +510,14 @@ class RFC1213MIB::Ipaddrtable::Ipaddrentry : public ydk::Entity
         ydk::YLeaf ipadentbcastaddr; //type: int32
         ydk::YLeaf ipadentreasmmaxsize; //type: int32
 
-}; // RFC1213MIB::Ipaddrtable::Ipaddrentry
+}; // RFC1213MIB::IpAddrTable::IpAddrEntry
 
 
-class RFC1213MIB::Iproutetable : public ydk::Entity
+class RFC1213MIB::IpRouteTable : public ydk::Entity
 {
     public:
-        Iproutetable();
-        ~Iproutetable();
+        IpRouteTable();
+        ~IpRouteTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -530,18 +530,18 @@ class RFC1213MIB::Iproutetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Iprouteentry; //type: RFC1213MIB::Iproutetable::Iprouteentry
+        class IpRouteEntry; //type: RFC1213MIB::IpRouteTable::IpRouteEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Iproutetable::Iprouteentry> > iprouteentry;
+        ydk::YList iprouteentry;
         
-}; // RFC1213MIB::Iproutetable
+}; // RFC1213MIB::IpRouteTable
 
 
-class RFC1213MIB::Iproutetable::Iprouteentry : public ydk::Entity
+class RFC1213MIB::IpRouteTable::IpRouteEntry : public ydk::Entity
 {
     public:
-        Iprouteentry();
-        ~Iprouteentry();
+        IpRouteEntry();
+        ~IpRouteEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -561,23 +561,23 @@ class RFC1213MIB::Iproutetable::Iprouteentry : public ydk::Entity
         ydk::YLeaf iproutemetric3; //type: int32
         ydk::YLeaf iproutemetric4; //type: int32
         ydk::YLeaf iproutenexthop; //type: string
-        ydk::YLeaf iproutetype; //type: Iproutetype
-        ydk::YLeaf iprouteproto; //type: Iprouteproto
+        ydk::YLeaf iproutetype; //type: IpRouteType
+        ydk::YLeaf iprouteproto; //type: IpRouteProto
         ydk::YLeaf iprouteage; //type: int32
         ydk::YLeaf iproutemask; //type: string
         ydk::YLeaf iproutemetric5; //type: int32
         ydk::YLeaf iprouteinfo; //type: string
-        class Iproutetype;
-        class Iprouteproto;
+        class IpRouteType;
+        class IpRouteProto;
 
-}; // RFC1213MIB::Iproutetable::Iprouteentry
+}; // RFC1213MIB::IpRouteTable::IpRouteEntry
 
 
-class RFC1213MIB::Ipnettomediatable : public ydk::Entity
+class RFC1213MIB::IpNetToMediaTable : public ydk::Entity
 {
     public:
-        Ipnettomediatable();
-        ~Ipnettomediatable();
+        IpNetToMediaTable();
+        ~IpNetToMediaTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -590,18 +590,18 @@ class RFC1213MIB::Ipnettomediatable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipnettomediaentry; //type: RFC1213MIB::Ipnettomediatable::Ipnettomediaentry
+        class IpNetToMediaEntry; //type: RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Ipnettomediatable::Ipnettomediaentry> > ipnettomediaentry;
+        ydk::YList ipnettomediaentry;
         
-}; // RFC1213MIB::Ipnettomediatable
+}; // RFC1213MIB::IpNetToMediaTable
 
 
-class RFC1213MIB::Ipnettomediatable::Ipnettomediaentry : public ydk::Entity
+class RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry : public ydk::Entity
 {
     public:
-        Ipnettomediaentry();
-        ~Ipnettomediaentry();
+        IpNetToMediaEntry();
+        ~IpNetToMediaEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -617,17 +617,17 @@ class RFC1213MIB::Ipnettomediatable::Ipnettomediaentry : public ydk::Entity
         ydk::YLeaf ipnettomediaifindex; //type: int32
         ydk::YLeaf ipnettomedianetaddress; //type: string
         ydk::YLeaf ipnettomediaphysaddress; //type: binary
-        ydk::YLeaf ipnettomediatype; //type: Ipnettomediatype
-        class Ipnettomediatype;
+        ydk::YLeaf ipnettomediatype; //type: IpNetToMediaType
+        class IpNetToMediaType;
 
-}; // RFC1213MIB::Ipnettomediatable::Ipnettomediaentry
+}; // RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry
 
 
-class RFC1213MIB::Tcpconntable : public ydk::Entity
+class RFC1213MIB::TcpConnTable : public ydk::Entity
 {
     public:
-        Tcpconntable();
-        ~Tcpconntable();
+        TcpConnTable();
+        ~TcpConnTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -640,18 +640,18 @@ class RFC1213MIB::Tcpconntable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Tcpconnentry; //type: RFC1213MIB::Tcpconntable::Tcpconnentry
+        class TcpConnEntry; //type: RFC1213MIB::TcpConnTable::TcpConnEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Tcpconntable::Tcpconnentry> > tcpconnentry;
+        ydk::YList tcpconnentry;
         
-}; // RFC1213MIB::Tcpconntable
+}; // RFC1213MIB::TcpConnTable
 
 
-class RFC1213MIB::Tcpconntable::Tcpconnentry : public ydk::Entity
+class RFC1213MIB::TcpConnTable::TcpConnEntry : public ydk::Entity
 {
     public:
-        Tcpconnentry();
-        ~Tcpconnentry();
+        TcpConnEntry();
+        ~TcpConnEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -668,17 +668,17 @@ class RFC1213MIB::Tcpconntable::Tcpconnentry : public ydk::Entity
         ydk::YLeaf tcpconnlocalport; //type: int32
         ydk::YLeaf tcpconnremaddress; //type: string
         ydk::YLeaf tcpconnremport; //type: int32
-        ydk::YLeaf tcpconnstate; //type: Tcpconnstate
-        class Tcpconnstate;
+        ydk::YLeaf tcpconnstate; //type: TcpConnState
+        class TcpConnState;
 
-}; // RFC1213MIB::Tcpconntable::Tcpconnentry
+}; // RFC1213MIB::TcpConnTable::TcpConnEntry
 
 
-class RFC1213MIB::Udptable : public ydk::Entity
+class RFC1213MIB::UdpTable : public ydk::Entity
 {
     public:
-        Udptable();
-        ~Udptable();
+        UdpTable();
+        ~UdpTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -691,18 +691,18 @@ class RFC1213MIB::Udptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Udpentry; //type: RFC1213MIB::Udptable::Udpentry
+        class UdpEntry; //type: RFC1213MIB::UdpTable::UdpEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Udptable::Udpentry> > udpentry;
+        ydk::YList udpentry;
         
-}; // RFC1213MIB::Udptable
+}; // RFC1213MIB::UdpTable
 
 
-class RFC1213MIB::Udptable::Udpentry : public ydk::Entity
+class RFC1213MIB::UdpTable::UdpEntry : public ydk::Entity
 {
     public:
-        Udpentry();
-        ~Udpentry();
+        UdpEntry();
+        ~UdpEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -718,14 +718,14 @@ class RFC1213MIB::Udptable::Udpentry : public ydk::Entity
         ydk::YLeaf udplocaladdress; //type: string
         ydk::YLeaf udplocalport; //type: int32
 
-}; // RFC1213MIB::Udptable::Udpentry
+}; // RFC1213MIB::UdpTable::UdpEntry
 
 
-class RFC1213MIB::Egpneightable : public ydk::Entity
+class RFC1213MIB::EgpNeighTable : public ydk::Entity
 {
     public:
-        Egpneightable();
-        ~Egpneightable();
+        EgpNeighTable();
+        ~EgpNeighTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -738,18 +738,18 @@ class RFC1213MIB::Egpneightable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Egpneighentry; //type: RFC1213MIB::Egpneightable::Egpneighentry
+        class EgpNeighEntry; //type: RFC1213MIB::EgpNeighTable::EgpNeighEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Egpneightable::Egpneighentry> > egpneighentry;
+        ydk::YList egpneighentry;
         
-}; // RFC1213MIB::Egpneightable
+}; // RFC1213MIB::EgpNeighTable
 
 
-class RFC1213MIB::Egpneightable::Egpneighentry : public ydk::Entity
+class RFC1213MIB::EgpNeighTable::EgpNeighEntry : public ydk::Entity
 {
     public:
-        Egpneighentry();
-        ~Egpneighentry();
+        EgpNeighEntry();
+        ~EgpNeighEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -763,7 +763,7 @@ class RFC1213MIB::Egpneightable::Egpneighentry : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf egpneighaddr; //type: string
-        ydk::YLeaf egpneighstate; //type: Egpneighstate
+        ydk::YLeaf egpneighstate; //type: EgpNeighState
         ydk::YLeaf egpneighas; //type: int32
         ydk::YLeaf egpneighinmsgs; //type: uint32
         ydk::YLeaf egpneighinerrs; //type: uint32
@@ -775,15 +775,15 @@ class RFC1213MIB::Egpneightable::Egpneighentry : public ydk::Entity
         ydk::YLeaf egpneighstatedowns; //type: uint32
         ydk::YLeaf egpneighintervalhello; //type: int32
         ydk::YLeaf egpneighintervalpoll; //type: int32
-        ydk::YLeaf egpneighmode; //type: Egpneighmode
-        ydk::YLeaf egpneigheventtrigger; //type: Egpneigheventtrigger
-        class Egpneighstate;
-        class Egpneighmode;
-        class Egpneigheventtrigger;
+        ydk::YLeaf egpneighmode; //type: EgpNeighMode
+        ydk::YLeaf egpneigheventtrigger; //type: EgpNeighEventTrigger
+        class EgpNeighState;
+        class EgpNeighMode;
+        class EgpNeighEventTrigger;
 
-}; // RFC1213MIB::Egpneightable::Egpneighentry
+}; // RFC1213MIB::EgpNeighTable::EgpNeighEntry
 
-class RFC1213MIB::Ip::Ipforwarding : public ydk::Enum
+class RFC1213MIB::Ip::IpForwarding : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf forwarding;
@@ -791,7 +791,7 @@ class RFC1213MIB::Ip::Ipforwarding : public ydk::Enum
 
 };
 
-class RFC1213MIB::Tcp::Tcprtoalgorithm : public ydk::Enum
+class RFC1213MIB::Tcp::TcpRtoAlgorithm : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -802,7 +802,7 @@ class RFC1213MIB::Tcp::Tcprtoalgorithm : public ydk::Enum
 
 };
 
-class RFC1213MIB::Snmp::Snmpenableauthentraps : public ydk::Enum
+class RFC1213MIB::Snmp::SnmpEnableAuthenTraps : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;
@@ -810,7 +810,7 @@ class RFC1213MIB::Snmp::Snmpenableauthentraps : public ydk::Enum
 
 };
 
-class RFC1213MIB::Iftable::Ifentry::Ifadminstatus : public ydk::Enum
+class RFC1213MIB::IfTable::IfEntry::IfAdminStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;
@@ -819,7 +819,7 @@ class RFC1213MIB::Iftable::Ifentry::Ifadminstatus : public ydk::Enum
 
 };
 
-class RFC1213MIB::Iftable::Ifentry::Ifoperstatus : public ydk::Enum
+class RFC1213MIB::IfTable::IfEntry::IfOperStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;
@@ -830,7 +830,7 @@ class RFC1213MIB::Iftable::Ifentry::Ifoperstatus : public ydk::Enum
 
 };
 
-class RFC1213MIB::Iproutetable::Iprouteentry::Iproutetype : public ydk::Enum
+class RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -840,7 +840,7 @@ class RFC1213MIB::Iproutetable::Iprouteentry::Iproutetype : public ydk::Enum
 
 };
 
-class RFC1213MIB::Iproutetable::Iprouteentry::Iprouteproto : public ydk::Enum
+class RFC1213MIB::IpRouteTable::IpRouteEntry::IpRouteProto : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -860,7 +860,7 @@ class RFC1213MIB::Iproutetable::Iprouteentry::Iprouteproto : public ydk::Enum
 
 };
 
-class RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::Ipnettomediatype : public ydk::Enum
+class RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::IpNetToMediaType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -870,7 +870,7 @@ class RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::Ipnettomediatype : publi
 
 };
 
-class RFC1213MIB::Tcpconntable::Tcpconnentry::Tcpconnstate : public ydk::Enum
+class RFC1213MIB::TcpConnTable::TcpConnEntry::TcpConnState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf closed;
@@ -888,7 +888,7 @@ class RFC1213MIB::Tcpconntable::Tcpconnentry::Tcpconnstate : public ydk::Enum
 
 };
 
-class RFC1213MIB::Egpneightable::Egpneighentry::Egpneighstate : public ydk::Enum
+class RFC1213MIB::EgpNeighTable::EgpNeighEntry::EgpNeighState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf idle;
@@ -899,7 +899,7 @@ class RFC1213MIB::Egpneightable::Egpneighentry::Egpneighstate : public ydk::Enum
 
 };
 
-class RFC1213MIB::Egpneightable::Egpneighentry::Egpneighmode : public ydk::Enum
+class RFC1213MIB::EgpNeighTable::EgpNeighEntry::EgpNeighMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf active;
@@ -907,7 +907,7 @@ class RFC1213MIB::Egpneightable::Egpneighentry::Egpneighmode : public ydk::Enum
 
 };
 
-class RFC1213MIB::Egpneightable::Egpneighentry::Egpneigheventtrigger : public ydk::Enum
+class RFC1213MIB::EgpNeighTable::EgpNeighEntry::EgpNeighEventTrigger : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf start;

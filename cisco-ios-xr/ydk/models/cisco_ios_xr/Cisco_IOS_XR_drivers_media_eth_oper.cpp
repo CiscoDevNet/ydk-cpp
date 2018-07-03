@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_drivers_media_eth_oper {
 EthernetInterface::EthernetInterface()
     :
     statistics(std::make_shared<EthernetInterface::Statistics>())
-	,interfaces(std::make_shared<EthernetInterface::Interfaces>())
-	,berts(std::make_shared<EthernetInterface::Berts>())
+    , interfaces(std::make_shared<EthernetInterface::Interfaces>())
+    , berts(std::make_shared<EthernetInterface::Berts>())
 {
     statistics->parent = this;
     interfaces->parent = this;
     berts->parent = this;
 
-    yang_name = "ethernet-interface"; yang_parent_name = "Cisco-IOS-XR-drivers-media-eth-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ethernet-interface"; yang_parent_name = "Cisco-IOS-XR-drivers-media-eth-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EthernetInterface::~EthernetInterface()
@@ -30,6 +30,7 @@ EthernetInterface::~EthernetInterface()
 
 bool EthernetInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return (statistics !=  nullptr && statistics->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data())
 	|| (berts !=  nullptr && berts->has_data());
@@ -154,9 +155,11 @@ bool EthernetInterface::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 EthernetInterface::Statistics::Statistics()
+    :
+    statistic(this, {"interface_name"})
 {
 
-    yang_name = "statistics"; yang_parent_name = "ethernet-interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "ethernet-interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EthernetInterface::Statistics::~Statistics()
@@ -165,7 +168,8 @@ EthernetInterface::Statistics::~Statistics()
 
 bool EthernetInterface::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<statistic.len(); index++)
     {
         if(statistic[index]->has_data())
             return true;
@@ -175,7 +179,7 @@ bool EthernetInterface::Statistics::has_data() const
 
 bool EthernetInterface::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<statistic.size(); index++)
+    for (std::size_t index=0; index<statistic.len(); index++)
     {
         if(statistic[index]->has_operation())
             return true;
@@ -212,7 +216,7 @@ std::shared_ptr<Entity> EthernetInterface::Statistics::get_child_by_name(const s
     {
         auto c = std::make_shared<EthernetInterface::Statistics::Statistic>();
         c->parent = this;
-        statistic.push_back(c);
+        statistic.append(c);
         return c;
     }
 
@@ -224,7 +228,7 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Statistics::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : statistic)
+    for (auto c : statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -310,7 +314,7 @@ EthernetInterface::Statistics::Statistic::Statistic()
     miscellaneous_output_errors{YType::uint64, "miscellaneous-output-errors"}
 {
 
-    yang_name = "statistic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EthernetInterface::Statistics::Statistic::~Statistic()
@@ -319,6 +323,7 @@ EthernetInterface::Statistics::Statistic::~Statistic()
 
 bool EthernetInterface::Statistics::Statistic::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| received_total_bytes.is_set
 	|| received_good_bytes.is_set
@@ -448,7 +453,8 @@ std::string EthernetInterface::Statistics::Statistic::get_absolute_path() const
 std::string EthernetInterface::Statistics::Statistic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "statistic" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "statistic";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -1105,9 +1111,11 @@ bool EthernetInterface::Statistics::Statistic::has_leaf_or_child_of_name(const s
 }
 
 EthernetInterface::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "ethernet-interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "ethernet-interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EthernetInterface::Interfaces::~Interfaces()
@@ -1116,7 +1124,8 @@ EthernetInterface::Interfaces::~Interfaces()
 
 bool EthernetInterface::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -1126,7 +1135,7 @@ bool EthernetInterface::Interfaces::has_data() const
 
 bool EthernetInterface::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -1163,7 +1172,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::get_child_by_name(const s
     {
         auto c = std::make_shared<EthernetInterface::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -1175,7 +1184,7 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1206,18 +1215,18 @@ EthernetInterface::Interfaces::Interface::Interface()
     interface_name{YType::str, "interface-name"},
     admin_state{YType::enumeration, "admin-state"},
     oper_state_up{YType::boolean, "oper-state-up"}
-    	,
+        ,
     phy_info(std::make_shared<EthernetInterface::Interfaces::Interface::PhyInfo>())
-	,layer1_info(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info>())
-	,mac_info(std::make_shared<EthernetInterface::Interfaces::Interface::MacInfo>())
-	,transport_info(std::make_shared<EthernetInterface::Interfaces::Interface::TransportInfo>())
+    , layer1_info(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info>())
+    , mac_info(std::make_shared<EthernetInterface::Interfaces::Interface::MacInfo>())
+    , transport_info(std::make_shared<EthernetInterface::Interfaces::Interface::TransportInfo>())
 {
     phy_info->parent = this;
     layer1_info->parent = this;
     mac_info->parent = this;
     transport_info->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EthernetInterface::Interfaces::Interface::~Interface()
@@ -1226,6 +1235,7 @@ EthernetInterface::Interfaces::Interface::~Interface()
 
 bool EthernetInterface::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| admin_state.is_set
 	|| oper_state_up.is_set
@@ -1257,7 +1267,8 @@ std::string EthernetInterface::Interfaces::Interface::get_absolute_path() const
 std::string EthernetInterface::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -1391,14 +1402,15 @@ EthernetInterface::Interfaces::Interface::PhyInfo::PhyInfo()
     media_type{YType::enumeration, "media-type"},
     phy_present{YType::enumeration, "phy-present"},
     loopback{YType::enumeration, "loopback"}
-    	,
+        ,
     phy_details(std::make_shared<EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails>())
-	,fec_details(std::make_shared<EthernetInterface::Interfaces::Interface::PhyInfo::FecDetails>())
+    , fec_details(std::make_shared<EthernetInterface::Interfaces::Interface::PhyInfo::FecDetails>())
+    , extended_loopback(this, {})
 {
     phy_details->parent = this;
     fec_details->parent = this;
 
-    yang_name = "phy-info"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "phy-info"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::PhyInfo::~PhyInfo()
@@ -1407,7 +1419,8 @@ EthernetInterface::Interfaces::Interface::PhyInfo::~PhyInfo()
 
 bool EthernetInterface::Interfaces::Interface::PhyInfo::has_data() const
 {
-    for (std::size_t index=0; index<extended_loopback.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<extended_loopback.len(); index++)
     {
         if(extended_loopback[index]->has_data())
             return true;
@@ -1421,7 +1434,7 @@ bool EthernetInterface::Interfaces::Interface::PhyInfo::has_data() const
 
 bool EthernetInterface::Interfaces::Interface::PhyInfo::has_operation() const
 {
-    for (std::size_t index=0; index<extended_loopback.size(); index++)
+    for (std::size_t index=0; index<extended_loopback.len(); index++)
     {
         if(extended_loopback[index]->has_operation())
             return true;
@@ -1477,7 +1490,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::PhyInfo::get_c
     {
         auto c = std::make_shared<EthernetInterface::Interfaces::Interface::PhyInfo::ExtendedLoopback>();
         c->parent = this;
-        extended_loopback.push_back(c);
+        extended_loopback.append(c);
         return c;
     }
 
@@ -1499,7 +1512,7 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::In
     }
 
     count = 0;
-    for (auto const & c : extended_loopback)
+    for (auto c : extended_loopback.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1568,16 +1581,17 @@ EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::PhyDetails()
     optics_wavelength{YType::uint32, "optics-wavelength"},
     optics_type{YType::str, "optics-type"},
     revision_number{YType::str, "revision-number"}
-    	,
+        ,
     lane_field_validity(std::make_shared<EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::LaneFieldValidity>())
-	,dig_opt_mon_alarm_thresholds(std::make_shared<EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarmThresholds>())
-	,dig_opt_mon_alarms(std::make_shared<EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarms>())
+    , dig_opt_mon_alarm_thresholds(std::make_shared<EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarmThresholds>())
+    , dig_opt_mon_alarms(std::make_shared<EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarms>())
+    , lane(this, {})
 {
     lane_field_validity->parent = this;
     dig_opt_mon_alarm_thresholds->parent = this;
     dig_opt_mon_alarms->parent = this;
 
-    yang_name = "phy-details"; yang_parent_name = "phy-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "phy-details"; yang_parent_name = "phy-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::~PhyDetails()
@@ -1586,7 +1600,8 @@ EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::~PhyDetails()
 
 bool EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::has_data() const
 {
-    for (std::size_t index=0; index<lane.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lane.len(); index++)
     {
         if(lane[index]->has_data())
             return true;
@@ -1609,7 +1624,7 @@ bool EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::has_data() c
 
 bool EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::has_operation() const
 {
-    for (std::size_t index=0; index<lane.size(); index++)
+    for (std::size_t index=0; index<lane.len(); index++)
     {
         if(lane[index]->has_operation())
             return true;
@@ -1691,7 +1706,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::PhyInfo::PhyDe
     {
         auto c = std::make_shared<EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane>();
         c->parent = this;
-        lane.push_back(c);
+        lane.append(c);
         return c;
     }
 
@@ -1718,7 +1733,7 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::In
     }
 
     count = 0;
-    for (auto const & c : lane)
+    for (auto c : lane.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1862,7 +1877,7 @@ EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::LaneFieldValidity
     laser_bias_valid{YType::int32, "laser-bias-valid"}
 {
 
-    yang_name = "lane-field-validity"; yang_parent_name = "phy-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lane-field-validity"; yang_parent_name = "phy-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::LaneFieldValidity::~LaneFieldValidity()
@@ -1871,6 +1886,7 @@ EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::LaneFieldValidity
 
 bool EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::LaneFieldValidity::has_data() const
 {
+    if (is_presence_container) return true;
     return wavelength_valid.is_set
 	|| transmit_power_valid.is_set
 	|| receive_power_valid.is_set
@@ -1995,12 +2011,12 @@ EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarmThr
     optical_receive_power_warning_high{YType::uint32, "optical-receive-power-warning-high"},
     optical_receive_power_warning_low{YType::uint32, "optical-receive-power-warning-low"},
     optical_receive_power_alarm_low{YType::uint32, "optical-receive-power-alarm-low"}
-    	,
+        ,
     field_validity(std::make_shared<EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarmThresholds::FieldValidity>())
 {
     field_validity->parent = this;
 
-    yang_name = "dig-opt-mon-alarm-thresholds"; yang_parent_name = "phy-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dig-opt-mon-alarm-thresholds"; yang_parent_name = "phy-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarmThresholds::~DigOptMonAlarmThresholds()
@@ -2009,6 +2025,7 @@ EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarmThr
 
 bool EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarmThresholds::has_data() const
 {
+    if (is_presence_container) return true;
     return transceiver_temperature_alarm_high.is_set
 	|| transceiver_temperature_warning_high.is_set
 	|| transceiver_temperature_warning_low.is_set
@@ -2344,7 +2361,7 @@ EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarmThr
     receive_power_valid{YType::int32, "receive-power-valid"}
 {
 
-    yang_name = "field-validity"; yang_parent_name = "dig-opt-mon-alarm-thresholds"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "field-validity"; yang_parent_name = "dig-opt-mon-alarm-thresholds"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarmThresholds::FieldValidity::~FieldValidity()
@@ -2353,6 +2370,7 @@ EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarmThr
 
 bool EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarmThresholds::FieldValidity::has_data() const
 {
+    if (is_presence_container) return true;
     return temperature_valid.is_set
 	|| voltage_valid.is_set
 	|| laser_bias_valid.is_set
@@ -2477,7 +2495,7 @@ EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarms::
     laser_bias_current{YType::enumeration, "laser-bias-current"}
 {
 
-    yang_name = "dig-opt-mon-alarms"; yang_parent_name = "phy-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dig-opt-mon-alarms"; yang_parent_name = "phy-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarms::~DigOptMonAlarms()
@@ -2486,6 +2504,7 @@ EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarms::
 
 bool EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarms::has_data() const
 {
+    if (is_presence_container) return true;
     return transceiver_temperature.is_set
 	|| transceiver_voltage.is_set
 	|| transmit_laser_power.is_set
@@ -2608,12 +2627,12 @@ EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane::Lane()
     received_laser_power{YType::int32, "received-laser-power"},
     laser_bias_current{YType::uint32, "laser-bias-current"},
     lane_id{YType::uint32, "lane-id"}
-    	,
+        ,
     dig_opt_mon_alarm(std::make_shared<EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane::DigOptMonAlarm>())
 {
     dig_opt_mon_alarm->parent = this;
 
-    yang_name = "lane"; yang_parent_name = "phy-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lane"; yang_parent_name = "phy-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane::~Lane()
@@ -2622,6 +2641,7 @@ EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane::~Lane()
 
 bool EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane::has_data() const
 {
+    if (is_presence_container) return true;
     return center_wavelength.is_set
 	|| transmit_laser_power.is_set
 	|| received_laser_power.is_set
@@ -2760,7 +2780,7 @@ EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane::DigOptMonAl
     laser_bias_current{YType::enumeration, "laser-bias-current"}
 {
 
-    yang_name = "dig-opt-mon-alarm"; yang_parent_name = "lane"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dig-opt-mon-alarm"; yang_parent_name = "lane"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane::DigOptMonAlarm::~DigOptMonAlarm()
@@ -2769,6 +2789,7 @@ EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane::DigOptMonAl
 
 bool EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane::DigOptMonAlarm::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit_laser_power.is_set
 	|| received_laser_power.is_set
 	|| laser_bias_current.is_set;
@@ -2865,7 +2886,7 @@ EthernetInterface::Interfaces::Interface::PhyInfo::FecDetails::FecDetails()
     uncorrected_codeword_count{YType::uint64, "uncorrected-codeword-count"}
 {
 
-    yang_name = "fec-details"; yang_parent_name = "phy-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fec-details"; yang_parent_name = "phy-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::PhyInfo::FecDetails::~FecDetails()
@@ -2874,6 +2895,7 @@ EthernetInterface::Interfaces::Interface::PhyInfo::FecDetails::~FecDetails()
 
 bool EthernetInterface::Interfaces::Interface::PhyInfo::FecDetails::has_data() const
 {
+    if (is_presence_container) return true;
     return fec.is_set
 	|| corrected_codeword_count.is_set
 	|| uncorrected_codeword_count.is_set;
@@ -2969,7 +2991,7 @@ EthernetInterface::Interfaces::Interface::PhyInfo::ExtendedLoopback::ExtendedLoo
     loopback{YType::enumeration, "loopback"}
 {
 
-    yang_name = "extended-loopback"; yang_parent_name = "phy-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "extended-loopback"; yang_parent_name = "phy-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::PhyInfo::ExtendedLoopback::~ExtendedLoopback()
@@ -2978,6 +3000,7 @@ EthernetInterface::Interfaces::Interface::PhyInfo::ExtendedLoopback::~ExtendedLo
 
 bool EthernetInterface::Interfaces::Interface::PhyInfo::ExtendedLoopback::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| loopback.is_set;
 }
@@ -3065,14 +3088,14 @@ EthernetInterface::Interfaces::Interface::Layer1Info::Layer1Info()
     laser_squelch_enabled{YType::boolean, "laser-squelch-enabled"},
     bandwidth_utilization{YType::uint32, "bandwidth-utilization"},
     bandwidth{YType::uint64, "bandwidth"}
-    	,
+        ,
     autoneg(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info::Autoneg>())
-	,current_alarms(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info::CurrentAlarms>())
-	,previous_alarms(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info::PreviousAlarms>())
-	,error_counts(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info::ErrorCounts>())
-	,ber_monitoring(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring>())
-	,opd_monitoring(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring>())
-	,pfc_info(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info::PfcInfo>())
+    , current_alarms(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info::CurrentAlarms>())
+    , previous_alarms(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info::PreviousAlarms>())
+    , error_counts(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info::ErrorCounts>())
+    , ber_monitoring(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring>())
+    , opd_monitoring(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring>())
+    , pfc_info(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info::PfcInfo>())
 {
     autoneg->parent = this;
     current_alarms->parent = this;
@@ -3082,7 +3105,7 @@ EthernetInterface::Interfaces::Interface::Layer1Info::Layer1Info()
     opd_monitoring->parent = this;
     pfc_info->parent = this;
 
-    yang_name = "layer1-info"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "layer1-info"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::Layer1Info::~Layer1Info()
@@ -3091,6 +3114,7 @@ EthernetInterface::Interfaces::Interface::Layer1Info::~Layer1Info()
 
 bool EthernetInterface::Interfaces::Interface::Layer1Info::has_data() const
 {
+    if (is_presence_container) return true;
     return link_state.is_set
 	|| led_state.is_set
 	|| speed.is_set
@@ -3381,7 +3405,7 @@ EthernetInterface::Interfaces::Interface::Layer1Info::Autoneg::Autoneg()
     fec{YType::enumeration, "fec"}
 {
 
-    yang_name = "autoneg"; yang_parent_name = "layer1-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "autoneg"; yang_parent_name = "layer1-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::Layer1Info::Autoneg::~Autoneg()
@@ -3390,6 +3414,7 @@ EthernetInterface::Interfaces::Interface::Layer1Info::Autoneg::~Autoneg()
 
 bool EthernetInterface::Interfaces::Interface::Layer1Info::Autoneg::has_data() const
 {
+    if (is_presence_container) return true;
     return autoneg_enabled.is_set
 	|| mask.is_set
 	|| speed.is_set
@@ -3545,7 +3570,7 @@ EthernetInterface::Interfaces::Interface::Layer1Info::CurrentAlarms::CurrentAlar
     rx_opd_alarm{YType::enumeration, "rx-opd-alarm"}
 {
 
-    yang_name = "current-alarms"; yang_parent_name = "layer1-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "current-alarms"; yang_parent_name = "layer1-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::Layer1Info::CurrentAlarms::~CurrentAlarms()
@@ -3554,6 +3579,7 @@ EthernetInterface::Interfaces::Interface::Layer1Info::CurrentAlarms::~CurrentAla
 
 bool EthernetInterface::Interfaces::Interface::Layer1Info::CurrentAlarms::has_data() const
 {
+    if (is_presence_container) return true;
     return received_loss_of_signal_alarm.is_set
 	|| pcs_loss_of_block_lock_alarm.is_set
 	|| local_fault_alarm.is_set
@@ -3748,7 +3774,7 @@ EthernetInterface::Interfaces::Interface::Layer1Info::PreviousAlarms::PreviousAl
     rx_opd_alarm{YType::enumeration, "rx-opd-alarm"}
 {
 
-    yang_name = "previous-alarms"; yang_parent_name = "layer1-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "previous-alarms"; yang_parent_name = "layer1-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::Layer1Info::PreviousAlarms::~PreviousAlarms()
@@ -3757,6 +3783,7 @@ EthernetInterface::Interfaces::Interface::Layer1Info::PreviousAlarms::~PreviousA
 
 bool EthernetInterface::Interfaces::Interface::Layer1Info::PreviousAlarms::has_data() const
 {
+    if (is_presence_container) return true;
     return received_loss_of_signal_alarm.is_set
 	|| pcs_loss_of_block_lock_alarm.is_set
 	|| local_fault_alarm.is_set
@@ -3943,7 +3970,7 @@ EthernetInterface::Interfaces::Interface::Layer1Info::ErrorCounts::ErrorCounts()
     pcsbip_errors{YType::uint64, "pcsbip-errors"}
 {
 
-    yang_name = "error-counts"; yang_parent_name = "layer1-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error-counts"; yang_parent_name = "layer1-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::Layer1Info::ErrorCounts::~ErrorCounts()
@@ -3952,6 +3979,7 @@ EthernetInterface::Interfaces::Interface::Layer1Info::ErrorCounts::~ErrorCounts(
 
 bool EthernetInterface::Interfaces::Interface::Layer1Info::ErrorCounts::has_data() const
 {
+    if (is_presence_container) return true;
     return sync_header_errors.is_set
 	|| pcsbip_errors.is_set;
 }
@@ -4031,14 +4059,14 @@ bool EthernetInterface::Interfaces::Interface::Layer1Info::ErrorCounts::has_leaf
 EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::BerMonitoring()
     :
     supported{YType::int32, "supported"}
-    	,
+        ,
     settings(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::Settings>())
-	,state(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State>())
+    , state(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State>())
 {
     settings->parent = this;
     state->parent = this;
 
-    yang_name = "ber-monitoring"; yang_parent_name = "layer1-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ber-monitoring"; yang_parent_name = "layer1-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::~BerMonitoring()
@@ -4047,6 +4075,7 @@ EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::~BerMonitor
 
 bool EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::has_data() const
 {
+    if (is_presence_container) return true;
     return supported.is_set
 	|| (settings !=  nullptr && settings->has_data())
 	|| (state !=  nullptr && state->has_data());
@@ -4151,7 +4180,7 @@ EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::Settings::S
     signal_remote_fault{YType::int32, "signal-remote-fault"}
 {
 
-    yang_name = "settings"; yang_parent_name = "ber-monitoring"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "settings"; yang_parent_name = "ber-monitoring"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::Settings::~Settings()
@@ -4160,6 +4189,7 @@ EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::Settings::~
 
 bool EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::Settings::has_data() const
 {
+    if (is_presence_container) return true;
     return signal_degrade_threshold.is_set
 	|| signal_degrade_alarm.is_set
 	|| signal_fail_threshold.is_set
@@ -4281,7 +4311,7 @@ EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State::Stat
     sf_current_ber{YType::uint32, "sf-current-ber"}
 {
 
-    yang_name = "state"; yang_parent_name = "ber-monitoring"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "ber-monitoring"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State::~State()
@@ -4290,6 +4320,7 @@ EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State::~Sta
 
 bool EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State::has_data() const
 {
+    if (is_presence_container) return true;
     return sd_current_ber.is_set
 	|| sf_current_ber.is_set;
 }
@@ -4369,12 +4400,12 @@ bool EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::State:
 EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring::OpdMonitoring()
     :
     supported{YType::int32, "supported"}
-    	,
+        ,
     settings(std::make_shared<EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring::Settings>())
 {
     settings->parent = this;
 
-    yang_name = "opd-monitoring"; yang_parent_name = "layer1-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "opd-monitoring"; yang_parent_name = "layer1-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring::~OpdMonitoring()
@@ -4383,6 +4414,7 @@ EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring::~OpdMonitor
 
 bool EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring::has_data() const
 {
+    if (is_presence_container) return true;
     return supported.is_set
 	|| (settings !=  nullptr && settings->has_data());
 }
@@ -4468,7 +4500,7 @@ EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring::Settings::S
     received_optical_power_degrade_threshold{YType::int32, "received-optical-power-degrade-threshold"}
 {
 
-    yang_name = "settings"; yang_parent_name = "opd-monitoring"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "settings"; yang_parent_name = "opd-monitoring"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring::Settings::~Settings()
@@ -4477,6 +4509,7 @@ EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring::Settings::~
 
 bool EthernetInterface::Interfaces::Interface::Layer1Info::OpdMonitoring::Settings::has_data() const
 {
+    if (is_presence_container) return true;
     return received_optical_power_degrade_threshold_set.is_set
 	|| received_optical_power_degrade_threshold.is_set;
 }
@@ -4561,7 +4594,7 @@ EthernetInterface::Interfaces::Interface::Layer1Info::PfcInfo::PfcInfo()
     tx_frame{YType::uint64, "tx-frame"}
 {
 
-    yang_name = "pfc-info"; yang_parent_name = "layer1-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pfc-info"; yang_parent_name = "layer1-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::Layer1Info::PfcInfo::~PfcInfo()
@@ -4570,6 +4603,7 @@ EthernetInterface::Interfaces::Interface::Layer1Info::PfcInfo::~PfcInfo()
 
 bool EthernetInterface::Interfaces::Interface::Layer1Info::PfcInfo::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : rx_frame.getYLeafs())
     {
         if(leaf.is_set)
@@ -4694,14 +4728,14 @@ EthernetInterface::Interfaces::Interface::MacInfo::MacInfo()
     mru{YType::uint32, "mru"},
     burned_in_mac_address{YType::str, "burned-in-mac-address"},
     operational_mac_address{YType::str, "operational-mac-address"}
-    	,
+        ,
     unicast_mac_filters(std::make_shared<EthernetInterface::Interfaces::Interface::MacInfo::UnicastMacFilters>())
-	,multicast_mac_filters(std::make_shared<EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters>())
+    , multicast_mac_filters(std::make_shared<EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters>())
 {
     unicast_mac_filters->parent = this;
     multicast_mac_filters->parent = this;
 
-    yang_name = "mac-info"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-info"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::MacInfo::~MacInfo()
@@ -4710,6 +4744,7 @@ EthernetInterface::Interfaces::Interface::MacInfo::~MacInfo()
 
 bool EthernetInterface::Interfaces::Interface::MacInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return mtu.is_set
 	|| mru.is_set
 	|| burned_in_mac_address.is_set
@@ -4849,7 +4884,7 @@ EthernetInterface::Interfaces::Interface::MacInfo::UnicastMacFilters::UnicastMac
     unicast_mac_address{YType::str, "unicast-mac-address"}
 {
 
-    yang_name = "unicast-mac-filters"; yang_parent_name = "mac-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unicast-mac-filters"; yang_parent_name = "mac-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::MacInfo::UnicastMacFilters::~UnicastMacFilters()
@@ -4858,6 +4893,7 @@ EthernetInterface::Interfaces::Interface::MacInfo::UnicastMacFilters::~UnicastMa
 
 bool EthernetInterface::Interfaces::Interface::MacInfo::UnicastMacFilters::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : unicast_mac_address.getYLeafs())
     {
         if(leaf.is_set)
@@ -4933,9 +4969,11 @@ bool EthernetInterface::Interfaces::Interface::MacInfo::UnicastMacFilters::has_l
 EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters::MulticastMacFilters()
     :
     multicast_promiscuous{YType::boolean, "multicast-promiscuous"}
+        ,
+    multicast_mac_address(this, {})
 {
 
-    yang_name = "multicast-mac-filters"; yang_parent_name = "mac-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multicast-mac-filters"; yang_parent_name = "mac-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters::~MulticastMacFilters()
@@ -4944,7 +4982,8 @@ EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters::~Multica
 
 bool EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters::has_data() const
 {
-    for (std::size_t index=0; index<multicast_mac_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<multicast_mac_address.len(); index++)
     {
         if(multicast_mac_address[index]->has_data())
             return true;
@@ -4954,7 +4993,7 @@ bool EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters::has
 
 bool EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters::has_operation() const
 {
-    for (std::size_t index=0; index<multicast_mac_address.size(); index++)
+    for (std::size_t index=0; index<multicast_mac_address.len(); index++)
     {
         if(multicast_mac_address[index]->has_operation())
             return true;
@@ -4986,7 +5025,7 @@ std::shared_ptr<Entity> EthernetInterface::Interfaces::Interface::MacInfo::Multi
     {
         auto c = std::make_shared<EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters::MulticastMacAddress>();
         c->parent = this;
-        multicast_mac_address.push_back(c);
+        multicast_mac_address.append(c);
         return c;
     }
 
@@ -4998,7 +5037,7 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Interfaces::In
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : multicast_mac_address)
+    for (auto c : multicast_mac_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5040,7 +5079,7 @@ EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters::Multicas
     mask{YType::str, "mask"}
 {
 
-    yang_name = "multicast-mac-address"; yang_parent_name = "multicast-mac-filters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multicast-mac-address"; yang_parent_name = "multicast-mac-filters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters::MulticastMacAddress::~MulticastMacAddress()
@@ -5049,6 +5088,7 @@ EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters::Multicas
 
 bool EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilters::MulticastMacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_address.is_set
 	|| mask.is_set;
 }
@@ -5133,7 +5173,7 @@ EthernetInterface::Interfaces::Interface::TransportInfo::TransportInfo()
     remaining_duration{YType::uint32, "remaining-duration"}
 {
 
-    yang_name = "transport-info"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport-info"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Interfaces::Interface::TransportInfo::~TransportInfo()
@@ -5142,6 +5182,7 @@ EthernetInterface::Interfaces::Interface::TransportInfo::~TransportInfo()
 
 bool EthernetInterface::Interfaces::Interface::TransportInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return maintenance_mode_enabled.is_set
 	|| ains_status.is_set
 	|| total_duration.is_set
@@ -5245,9 +5286,11 @@ bool EthernetInterface::Interfaces::Interface::TransportInfo::has_leaf_or_child_
 }
 
 EthernetInterface::Berts::Berts()
+    :
+    bert(this, {"interface_name"})
 {
 
-    yang_name = "berts"; yang_parent_name = "ethernet-interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "berts"; yang_parent_name = "ethernet-interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EthernetInterface::Berts::~Berts()
@@ -5256,7 +5299,8 @@ EthernetInterface::Berts::~Berts()
 
 bool EthernetInterface::Berts::has_data() const
 {
-    for (std::size_t index=0; index<bert.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bert.len(); index++)
     {
         if(bert[index]->has_data())
             return true;
@@ -5266,7 +5310,7 @@ bool EthernetInterface::Berts::has_data() const
 
 bool EthernetInterface::Berts::has_operation() const
 {
-    for (std::size_t index=0; index<bert.size(); index++)
+    for (std::size_t index=0; index<bert.len(); index++)
     {
         if(bert[index]->has_operation())
             return true;
@@ -5303,7 +5347,7 @@ std::shared_ptr<Entity> EthernetInterface::Berts::get_child_by_name(const std::s
     {
         auto c = std::make_shared<EthernetInterface::Berts::Bert>();
         c->parent = this;
-        bert.push_back(c);
+        bert.append(c);
         return c;
     }
 
@@ -5315,7 +5359,7 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetInterface::Berts::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bert)
+    for (auto c : bert.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5346,12 +5390,12 @@ EthernetInterface::Berts::Bert::Bert()
     interface_name{YType::str, "interface-name"},
     time_left{YType::uint32, "time-left"},
     port_bert_interval{YType::uint32, "port-bert-interval"}
-    	,
+        ,
     bert_status(std::make_shared<EthernetInterface::Berts::Bert::BertStatus>())
 {
     bert_status->parent = this;
 
-    yang_name = "bert"; yang_parent_name = "berts"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bert"; yang_parent_name = "berts"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EthernetInterface::Berts::Bert::~Bert()
@@ -5360,6 +5404,7 @@ EthernetInterface::Berts::Bert::~Bert()
 
 bool EthernetInterface::Berts::Bert::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| time_left.is_set
 	|| port_bert_interval.is_set
@@ -5385,7 +5430,8 @@ std::string EthernetInterface::Berts::Bert::get_absolute_path() const
 std::string EthernetInterface::Berts::Bert::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bert" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "bert";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -5485,7 +5531,7 @@ EthernetInterface::Berts::Bert::BertStatus::BertStatus()
     interface_device{YType::enumeration, "interface-device"}
 {
 
-    yang_name = "bert-status"; yang_parent_name = "bert"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bert-status"; yang_parent_name = "bert"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetInterface::Berts::Bert::BertStatus::~BertStatus()
@@ -5494,6 +5540,7 @@ EthernetInterface::Berts::Bert::BertStatus::~BertStatus()
 
 bool EthernetInterface::Berts::Bert::BertStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return bert_state_enabled.is_set
 	|| data_availability.is_set
 	|| receive_count.is_set
@@ -5661,85 +5708,6 @@ bool EthernetInterface::Berts::Bert::BertStatus::has_leaf_or_child_of_name(const
     return false;
 }
 
-const Enum::YLeaf EthernetDevIf::no_interface {0, "no-interface"};
-const Enum::YLeaf EthernetDevIf::xgmii {1, "xgmii"};
-const Enum::YLeaf EthernetDevIf::xaui {2, "xaui"};
-const Enum::YLeaf EthernetDevIf::ethernet_num_dev_if {3, "ethernet-num-dev-if"};
-
-const Enum::YLeaf EthernetDev::no_device {0, "no-device"};
-const Enum::YLeaf EthernetDev::pma_pmd {1, "pma-pmd"};
-const Enum::YLeaf EthernetDev::wis {2, "wis"};
-const Enum::YLeaf EthernetDev::pcs {3, "pcs"};
-const Enum::YLeaf EthernetDev::phy_xs {4, "phy-xs"};
-const Enum::YLeaf EthernetDev::dte_xs {5, "dte-xs"};
-const Enum::YLeaf EthernetDev::ethernet_num_dev {6, "ethernet-num-dev"};
-
-const Enum::YLeaf EthernetBertPattern::no_test_pattern {0, "no-test-pattern"};
-const Enum::YLeaf EthernetBertPattern::high_frequency {1, "high-frequency"};
-const Enum::YLeaf EthernetBertPattern::low_frequency {2, "low-frequency"};
-const Enum::YLeaf EthernetBertPattern::mixed_frequency {3, "mixed-frequency"};
-const Enum::YLeaf EthernetBertPattern::continuous_random {4, "continuous-random"};
-const Enum::YLeaf EthernetBertPattern::continuous_jitter {5, "continuous-jitter"};
-const Enum::YLeaf EthernetBertPattern::long_continuous_random {6, "long-continuous-random"};
-const Enum::YLeaf EthernetBertPattern::short_continuous_random {7, "short-continuous-random"};
-const Enum::YLeaf EthernetBertPattern::pseudorandom_seed_a {8, "pseudorandom-seed-a"};
-const Enum::YLeaf EthernetBertPattern::pseudorandom_seed_b {9, "pseudorandom-seed-b"};
-const Enum::YLeaf EthernetBertPattern::prbs31 {10, "prbs31"};
-const Enum::YLeaf EthernetBertPattern::square_wave {11, "square-wave"};
-const Enum::YLeaf EthernetBertPattern::pseudorandom {12, "pseudorandom"};
-const Enum::YLeaf EthernetBertPattern::ethernet_bert_pattern_types {13, "ethernet-bert-pattern-types"};
-
-const Enum::YLeaf EthernetBertErrCnt::no_count_type {0, "no-count-type"};
-const Enum::YLeaf EthernetBertErrCnt::bit_error_count {1, "bit-error-count"};
-const Enum::YLeaf EthernetBertErrCnt::frame_error_count {2, "frame-error-count"};
-const Enum::YLeaf EthernetBertErrCnt::block_error_count {3, "block-error-count"};
-const Enum::YLeaf EthernetBertErrCnt::ethernet_bert_err_cnt_types {4, "ethernet-bert-err-cnt-types"};
-
-const Enum::YLeaf EtherAinsStatus::ains_soak_status_none {0, "ains-soak-status-none"};
-const Enum::YLeaf EtherAinsStatus::ains_soak_status_pending {1, "ains-soak-status-pending"};
-const Enum::YLeaf EtherAinsStatus::ains_soak_status_running {2, "ains-soak-status-running"};
-
-const Enum::YLeaf EtherPfc::no_pfc {0, "no-pfc"};
-const Enum::YLeaf EtherPfc::on {1, "on"};
-
-const Enum::YLeaf EthCtrlrAlarmState::alarm_not_supported {0, "alarm-not-supported"};
-const Enum::YLeaf EthCtrlrAlarmState::alarm_set {1, "alarm-set"};
-const Enum::YLeaf EthCtrlrAlarmState::alarm_not_set {2, "alarm-not-set"};
-
-const Enum::YLeaf EthernetIpg::standard {0, "standard"};
-const Enum::YLeaf EthernetIpg::non_standard {1, "non-standard"};
-
-const Enum::YLeaf EtherFlowcontrol::no_flowcontrol {0, "no-flowcontrol"};
-const Enum::YLeaf EtherFlowcontrol::egress {1, "egress"};
-const Enum::YLeaf EtherFlowcontrol::ingress {2, "ingress"};
-const Enum::YLeaf EtherFlowcontrol::bidirectional {3, "bidirectional"};
-
-const Enum::YLeaf EthernetDuplex::ethernet_duplex_invalid {0, "ethernet-duplex-invalid"};
-const Enum::YLeaf EthernetDuplex::half_duplex {1, "half-duplex"};
-const Enum::YLeaf EthernetDuplex::full_duplex {2, "full-duplex"};
-
-const Enum::YLeaf EthernetSpeed::ethernet_speed_invalid {0, "ethernet-speed-invalid"};
-const Enum::YLeaf EthernetSpeed::ten_mbps {1, "ten-mbps"};
-const Enum::YLeaf EthernetSpeed::hundred_mbps {2, "hundred-mbps"};
-const Enum::YLeaf EthernetSpeed::one_gbps {3, "one-gbps"};
-const Enum::YLeaf EthernetSpeed::ten_gbps {4, "ten-gbps"};
-const Enum::YLeaf EthernetSpeed::twenty_five_gbps {5, "twenty-five-gbps"};
-const Enum::YLeaf EthernetSpeed::forty_gbps {6, "forty-gbps"};
-const Enum::YLeaf EthernetSpeed::fifty_gbps {7, "fifty-gbps"};
-const Enum::YLeaf EthernetSpeed::hundred_gbps {8, "hundred-gbps"};
-const Enum::YLeaf EthernetSpeed::two_hundred_gbps {9, "two-hundred-gbps"};
-const Enum::YLeaf EthernetSpeed::four_hundred_gbps {10, "four-hundred-gbps"};
-const Enum::YLeaf EthernetSpeed::ethernet_speed_types_count {11, "ethernet-speed-types-count"};
-
-const Enum::YLeaf EtherLedState::led_state_unknown {0, "led-state-unknown"};
-const Enum::YLeaf EtherLedState::led_off {1, "led-off"};
-const Enum::YLeaf EtherLedState::green_on {2, "green-on"};
-const Enum::YLeaf EtherLedState::green_flashing {3, "green-flashing"};
-const Enum::YLeaf EtherLedState::yellow_on {4, "yellow-on"};
-const Enum::YLeaf EtherLedState::yellow_flashing {5, "yellow-flashing"};
-const Enum::YLeaf EtherLedState::red_on {6, "red-on"};
-const Enum::YLeaf EtherLedState::red_flashing {7, "red-flashing"};
-
 const Enum::YLeaf EtherLinkState::state_undefined {0, "state-undefined"};
 const Enum::YLeaf EtherLinkState::unknown_state {1, "unknown-state"};
 const Enum::YLeaf EtherLinkState::available {2, "available"};
@@ -5768,17 +5736,52 @@ const Enum::YLeaf EtherLinkState::incompatible_config {24, "incompatible-config"
 const Enum::YLeaf EtherLinkState::system_error {25, "system-error"};
 const Enum::YLeaf EtherLinkState::wan_framing_error {26, "wan-framing-error"};
 const Enum::YLeaf EtherLinkState::otn_framing_error {27, "otn-framing-error"};
-const Enum::YLeaf EtherLinkState::shutdown {28, "shutdown"};
 
-const Enum::YLeaf EthernetFec::not_configured {0, "not-configured"};
-const Enum::YLeaf EthernetFec::standard {1, "standard"};
-const Enum::YLeaf EthernetFec::disabled {2, "disabled"};
-const Enum::YLeaf EthernetFec::base_r {3, "base-r"};
+const Enum::YLeaf EthernetBertPattern::no_test_pattern {0, "no-test-pattern"};
+const Enum::YLeaf EthernetBertPattern::high_frequency {1, "high-frequency"};
+const Enum::YLeaf EthernetBertPattern::low_frequency {2, "low-frequency"};
+const Enum::YLeaf EthernetBertPattern::mixed_frequency {3, "mixed-frequency"};
+const Enum::YLeaf EthernetBertPattern::continuous_random {4, "continuous-random"};
+const Enum::YLeaf EthernetBertPattern::continuous_jitter {5, "continuous-jitter"};
+const Enum::YLeaf EthernetBertPattern::long_continuous_random {6, "long-continuous-random"};
+const Enum::YLeaf EthernetBertPattern::short_continuous_random {7, "short-continuous-random"};
+const Enum::YLeaf EthernetBertPattern::pseudorandom_seed_a {8, "pseudorandom-seed-a"};
+const Enum::YLeaf EthernetBertPattern::pseudorandom_seed_b {9, "pseudorandom-seed-b"};
+const Enum::YLeaf EthernetBertPattern::prbs31 {10, "prbs31"};
+const Enum::YLeaf EthernetBertPattern::square_wave {11, "square-wave"};
+const Enum::YLeaf EthernetBertPattern::pseudorandom {12, "pseudorandom"};
+const Enum::YLeaf EthernetBertPattern::ethernet_bert_pattern_types {13, "ethernet-bert-pattern-types"};
 
-const Enum::YLeaf EthernetLoopback::no_loopback {0, "no-loopback"};
-const Enum::YLeaf EthernetLoopback::internal {1, "internal"};
-const Enum::YLeaf EthernetLoopback::line {2, "line"};
-const Enum::YLeaf EthernetLoopback::external {3, "external"};
+const Enum::YLeaf EthernetPortEnable::disabled {0, "disabled"};
+const Enum::YLeaf EthernetPortEnable::rx_enabled {1, "rx-enabled"};
+const Enum::YLeaf EthernetPortEnable::tx_enabled {2, "tx-enabled"};
+const Enum::YLeaf EthernetPortEnable::enabled {3, "enabled"};
+
+const Enum::YLeaf EthCtrlrAlarmState::alarm_not_supported {0, "alarm-not-supported"};
+const Enum::YLeaf EthCtrlrAlarmState::alarm_set {1, "alarm-set"};
+const Enum::YLeaf EthCtrlrAlarmState::alarm_not_set {2, "alarm-not-set"};
+
+const Enum::YLeaf EthernetDev::no_device {0, "no-device"};
+const Enum::YLeaf EthernetDev::pma_pmd {1, "pma-pmd"};
+const Enum::YLeaf EthernetDev::wis {2, "wis"};
+const Enum::YLeaf EthernetDev::pcs {3, "pcs"};
+const Enum::YLeaf EthernetDev::phy_xs {4, "phy-xs"};
+const Enum::YLeaf EthernetDev::dte_xs {5, "dte-xs"};
+const Enum::YLeaf EthernetDev::ethernet_num_dev {6, "ethernet-num-dev"};
+
+const Enum::YLeaf EtherPhyPresent::phy_not_present {0, "phy-not-present"};
+const Enum::YLeaf EtherPhyPresent::phy_present {1, "phy-present"};
+const Enum::YLeaf EtherPhyPresent::no_information {2, "no-information"};
+
+const Enum::YLeaf EthernetDevIf::no_interface {0, "no-interface"};
+const Enum::YLeaf EthernetDevIf::xgmii {1, "xgmii"};
+const Enum::YLeaf EthernetDevIf::xaui {2, "xaui"};
+const Enum::YLeaf EthernetDevIf::ethernet_num_dev_if {3, "ethernet-num-dev-if"};
+
+const Enum::YLeaf EtherFlowcontrol::no_flowcontrol {0, "no-flowcontrol"};
+const Enum::YLeaf EtherFlowcontrol::egress {1, "egress"};
+const Enum::YLeaf EtherFlowcontrol::ingress {2, "ingress"};
+const Enum::YLeaf EtherFlowcontrol::bidirectional {3, "bidirectional"};
 
 const Enum::YLeaf EtherDomAlarm::no_information {0, "no-information"};
 const Enum::YLeaf EtherDomAlarm::alarm_high {1, "alarm-high"};
@@ -5787,9 +5790,48 @@ const Enum::YLeaf EtherDomAlarm::normal {3, "normal"};
 const Enum::YLeaf EtherDomAlarm::warning_low {4, "warning-low"};
 const Enum::YLeaf EtherDomAlarm::alarm_low {5, "alarm-low"};
 
-const Enum::YLeaf EtherPhyPresent::phy_not_present {0, "phy-not-present"};
-const Enum::YLeaf EtherPhyPresent::phy_present {1, "phy-present"};
-const Enum::YLeaf EtherPhyPresent::no_information {2, "no-information"};
+const Enum::YLeaf EtherPfc::no_pfc {0, "no-pfc"};
+const Enum::YLeaf EtherPfc::on {1, "on"};
+
+const Enum::YLeaf EthernetBertErrCnt::no_count_type {0, "no-count-type"};
+const Enum::YLeaf EthernetBertErrCnt::bit_error_count {1, "bit-error-count"};
+const Enum::YLeaf EthernetBertErrCnt::frame_error_count {2, "frame-error-count"};
+const Enum::YLeaf EthernetBertErrCnt::block_error_count {3, "block-error-count"};
+const Enum::YLeaf EthernetBertErrCnt::ethernet_bert_err_cnt_types {4, "ethernet-bert-err-cnt-types"};
+
+const Enum::YLeaf EthernetDuplex::ethernet_duplex_invalid {0, "ethernet-duplex-invalid"};
+const Enum::YLeaf EthernetDuplex::half_duplex {1, "half-duplex"};
+const Enum::YLeaf EthernetDuplex::full_duplex {2, "full-duplex"};
+
+const Enum::YLeaf EthernetIpg::standard {0, "standard"};
+const Enum::YLeaf EthernetIpg::non_standard {1, "non-standard"};
+
+const Enum::YLeaf EthernetSpeed::ethernet_speed_invalid {0, "ethernet-speed-invalid"};
+const Enum::YLeaf EthernetSpeed::ten_mbps {1, "ten-mbps"};
+const Enum::YLeaf EthernetSpeed::hundred_mbps {2, "hundred-mbps"};
+const Enum::YLeaf EthernetSpeed::one_gbps {3, "one-gbps"};
+const Enum::YLeaf EthernetSpeed::ten_gbps {4, "ten-gbps"};
+const Enum::YLeaf EthernetSpeed::twenty_five_gbps {5, "twenty-five-gbps"};
+const Enum::YLeaf EthernetSpeed::forty_gbps {6, "forty-gbps"};
+const Enum::YLeaf EthernetSpeed::fifty_gbps {7, "fifty-gbps"};
+const Enum::YLeaf EthernetSpeed::hundred_gbps {8, "hundred-gbps"};
+const Enum::YLeaf EthernetSpeed::two_hundred_gbps {9, "two-hundred-gbps"};
+const Enum::YLeaf EthernetSpeed::four_hundred_gbps {10, "four-hundred-gbps"};
+const Enum::YLeaf EthernetSpeed::ethernet_speed_types_count {11, "ethernet-speed-types-count"};
+
+const Enum::YLeaf EtherLedState::led_state_unknown {0, "led-state-unknown"};
+const Enum::YLeaf EtherLedState::led_off {1, "led-off"};
+const Enum::YLeaf EtherLedState::green_on {2, "green-on"};
+const Enum::YLeaf EtherLedState::green_flashing {3, "green-flashing"};
+const Enum::YLeaf EtherLedState::yellow_on {4, "yellow-on"};
+const Enum::YLeaf EtherLedState::yellow_flashing {5, "yellow-flashing"};
+const Enum::YLeaf EtherLedState::red_on {6, "red-on"};
+const Enum::YLeaf EtherLedState::red_flashing {7, "red-flashing"};
+
+const Enum::YLeaf EthernetFec::not_configured {0, "not-configured"};
+const Enum::YLeaf EthernetFec::standard {1, "standard"};
+const Enum::YLeaf EthernetFec::disabled {2, "disabled"};
+const Enum::YLeaf EthernetFec::base_r {3, "base-r"};
 
 const Enum::YLeaf EthernetMedia::ethernet_other {0, "ethernet-other"};
 const Enum::YLeaf EthernetMedia::ethernet_unknown {1, "ethernet-unknown"};
@@ -6146,14 +6188,16 @@ const Enum::YLeaf EthernetMedia::ethernet_10gbase_cu3m {351, "ethernet-10gbase-c
 const Enum::YLeaf EthernetMedia::ethernet_10gbase_cu5m {352, "ethernet-10gbase-cu5m"};
 const Enum::YLeaf EthernetMedia::ethernet_10gbase_acu7m {353, "ethernet-10gbase-acu7m"};
 const Enum::YLeaf EthernetMedia::ethernet_10gbase_acu10m {354, "ethernet-10gbase-acu10m"};
-const Enum::YLeaf EthernetMedia::ethernet_40gbase_aoc {355, "ethernet-40gbase-aoc"};
-const Enum::YLeaf EthernetMedia::ethernet_4x10g_base_lr {356, "ethernet-4x10g-base-lr"};
-const Enum::YLeaf EthernetMedia::ethernet_base_max {357, "ethernet-base-max"};
+const Enum::YLeaf EthernetMedia::ethernet_base_max {355, "ethernet-base-max"};
 
-const Enum::YLeaf EthernetPortEnable::disabled {0, "disabled"};
-const Enum::YLeaf EthernetPortEnable::rx_enabled {1, "rx-enabled"};
-const Enum::YLeaf EthernetPortEnable::tx_enabled {2, "tx-enabled"};
-const Enum::YLeaf EthernetPortEnable::enabled {3, "enabled"};
+const Enum::YLeaf EtherAinsStatus::ains_soak_status_none {0, "ains-soak-status-none"};
+const Enum::YLeaf EtherAinsStatus::ains_soak_status_pending {1, "ains-soak-status-pending"};
+const Enum::YLeaf EtherAinsStatus::ains_soak_status_running {2, "ains-soak-status-running"};
+
+const Enum::YLeaf EthernetLoopback::no_loopback {0, "no-loopback"};
+const Enum::YLeaf EthernetLoopback::internal {1, "internal"};
+const Enum::YLeaf EthernetLoopback::line {2, "line"};
+const Enum::YLeaf EthernetLoopback::external {3, "external"};
 
 
 }

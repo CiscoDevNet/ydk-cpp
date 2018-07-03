@@ -59,7 +59,7 @@ class NodeInventory::Summary : public ydk::Entity
 
         class NodeLocations; //type: NodeInventory::Summary::NodeLocations
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_cm::NodeInventory::Summary::NodeLocations> > node_locations;
+        ydk::YList node_locations;
         
 }; // NodeInventory::Summary
 
@@ -84,7 +84,7 @@ class NodeInventory::Summary::NodeLocations : public ydk::Entity
         ydk::YLeaf node_location; //type: string
         class Nodei; //type: NodeInventory::Summary::NodeLocations::Nodei
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_cm::NodeInventory::Summary::NodeLocations::Nodei> > nodei;
+        ydk::YList nodei;
         
 }; // NodeInventory::Summary::NodeLocations
 
@@ -133,7 +133,7 @@ class NodeInventory::Detail : public ydk::Entity
 
         class NodeLocations; //type: NodeInventory::Detail::NodeLocations
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_cm::NodeInventory::Detail::NodeLocations> > node_locations;
+        ydk::YList node_locations;
         
 }; // NodeInventory::Detail
 
@@ -158,7 +158,7 @@ class NodeInventory::Detail::NodeLocations : public ydk::Entity
         ydk::YLeaf node_location; //type: string
         class Nodei; //type: NodeInventory::Detail::NodeLocations::Nodei
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_cm::NodeInventory::Detail::NodeLocations::Nodei> > nodei;
+        ydk::YList nodei;
         
 }; // NodeInventory::Detail::NodeLocations
 
@@ -213,7 +213,7 @@ class CardInventory : public ydk::Entity
 
         class CardLocations; //type: CardInventory::CardLocations
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_cm::CardInventory::CardLocations> > card_locations;
+        ydk::YList card_locations;
         
 }; // CardInventory
 
@@ -238,7 +238,7 @@ class CardInventory::CardLocations : public ydk::Entity
         ydk::YLeaf card_location; //type: string
         class Cardi; //type: CardInventory::CardLocations::Cardi
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_cm::CardInventory::CardLocations::Cardi> > cardi;
+        ydk::YList cardi;
         
 }; // CardInventory::CardLocations
 
@@ -292,7 +292,7 @@ class RackInventory : public ydk::Entity
 
         class RackLocations; //type: RackInventory::RackLocations
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_cm::RackInventory::RackLocations> > rack_locations;
+        ydk::YList rack_locations;
         
 }; // RackInventory
 
@@ -317,7 +317,7 @@ class RackInventory::RackLocations : public ydk::Entity
         ydk::YLeaf rack_location; //type: string
         class Racki; //type: RackInventory::RackLocations::Racki
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_cm::RackInventory::RackLocations::Racki> > racki;
+        ydk::YList racki;
         
 }; // RackInventory::RackLocations
 
@@ -367,7 +367,7 @@ class SystemServiceInventory : public ydk::Entity
 
         class SsvcLocations; //type: SystemServiceInventory::SsvcLocations
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_cm::SystemServiceInventory::SsvcLocations> > ssvc_locations;
+        ydk::YList ssvc_locations;
         
 }; // SystemServiceInventory
 
@@ -392,7 +392,7 @@ class SystemServiceInventory::SsvcLocations : public ydk::Entity
         ydk::YLeaf ssvc_location; //type: string
         class Ssvci; //type: SystemServiceInventory::SsvcLocations::Ssvci
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_cm::SystemServiceInventory::SsvcLocations::Ssvci> > ssvci;
+        ydk::YList ssvci;
         
 }; // SystemServiceInventory::SsvcLocations
 
@@ -445,7 +445,7 @@ class RackServiceInventory : public ydk::Entity
 
         class RsvcLocations; //type: RackServiceInventory::RsvcLocations
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_cm::RackServiceInventory::RsvcLocations> > rsvc_locations;
+        ydk::YList rsvc_locations;
         
 }; // RackServiceInventory
 
@@ -470,7 +470,7 @@ class RackServiceInventory::RsvcLocations : public ydk::Entity
         ydk::YLeaf rsvc_location; //type: string
         class Rsvci; //type: RackServiceInventory::RsvcLocations::Rsvci
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_cm::RackServiceInventory::RsvcLocations::Rsvci> > rsvci;
+        ydk::YList rsvci;
         
 }; // RackServiceInventory::RsvcLocations
 
@@ -523,7 +523,7 @@ class SdrInventory : public ydk::Entity
 
         class SdrLocations; //type: SdrInventory::SdrLocations
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_cm::SdrInventory::SdrLocations> > sdr_locations;
+        ydk::YList sdr_locations;
         
 }; // SdrInventory
 
@@ -548,7 +548,7 @@ class SdrInventory::SdrLocations : public ydk::Entity
         ydk::YLeaf sdr_location; //type: string
         class Sdri; //type: SdrInventory::SdrLocations::Sdri
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_cm::SdrInventory::SdrLocations::Sdri> > sdri;
+        ydk::YList sdri;
         
 }; // SdrInventory::SdrLocations
 
@@ -599,7 +599,7 @@ class LeaderStatistics : public ydk::Entity
 
         class LdrLocations; //type: LeaderStatistics::LdrLocations
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_cm::LeaderStatistics::LdrLocations> > ldr_locations;
+        ydk::YList ldr_locations;
         
 }; // LeaderStatistics
 
@@ -654,7 +654,7 @@ class TopologyNeighbors : public ydk::Entity
 
         class NbrLocations; //type: TopologyNeighbors::NbrLocations
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_cm::TopologyNeighbors::NbrLocations> > nbr_locations;
+        ydk::YList nbr_locations;
         
 }; // TopologyNeighbors
 
@@ -679,7 +679,7 @@ class TopologyNeighbors::NbrLocations : public ydk::Entity
         ydk::YLeaf nbr_location; //type: string
         class Nbri; //type: TopologyNeighbors::NbrLocations::Nbri
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_cm::TopologyNeighbors::NbrLocations::Nbri> > nbri;
+        ydk::YList nbri;
         
 }; // TopologyNeighbors::NbrLocations
 

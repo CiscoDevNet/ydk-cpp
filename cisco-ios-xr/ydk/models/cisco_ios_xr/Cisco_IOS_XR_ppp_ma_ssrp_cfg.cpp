@@ -17,7 +17,7 @@ Ssrp::Ssrp()
 {
     profiles->parent = this;
 
-    yang_name = "ssrp"; yang_parent_name = "Cisco-IOS-XR-ppp-ma-ssrp-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ssrp"; yang_parent_name = "Cisco-IOS-XR-ppp-ma-ssrp-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ssrp::~Ssrp()
@@ -26,6 +26,7 @@ Ssrp::~Ssrp()
 
 bool Ssrp::has_data() const
 {
+    if (is_presence_container) return true;
     return (profiles !=  nullptr && profiles->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Ssrp::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Ssrp::Profiles::Profiles()
+    :
+    profile(this, {"name"})
 {
 
-    yang_name = "profiles"; yang_parent_name = "ssrp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profiles"; yang_parent_name = "ssrp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssrp::Profiles::~Profiles()
@@ -129,7 +132,8 @@ Ssrp::Profiles::~Profiles()
 
 bool Ssrp::Profiles::has_data() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Ssrp::Profiles::has_data() const
 
 bool Ssrp::Profiles::has_operation() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Ssrp::Profiles::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Ssrp::Profiles::Profile>();
         c->parent = this;
-        profile.push_back(c);
+        profile.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ssrp::Profiles::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : profile)
+    for (auto c : profile.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -221,7 +225,7 @@ Ssrp::Profiles::Profile::Profile()
     peer_ipv4_address{YType::str, "peer-ipv4-address"}
 {
 
-    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssrp::Profiles::Profile::~Profile()
@@ -230,6 +234,7 @@ Ssrp::Profiles::Profile::~Profile()
 
 bool Ssrp::Profiles::Profile::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| max_hops.is_set
 	|| peer_ipv4_address.is_set;
@@ -253,7 +258,8 @@ std::string Ssrp::Profiles::Profile::get_absolute_path() const
 std::string Ssrp::Profiles::Profile::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[name='" <<name <<"']";
+    path_buffer << "profile";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 

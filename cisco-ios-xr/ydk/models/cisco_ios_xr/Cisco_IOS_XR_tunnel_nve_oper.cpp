@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_tunnel_nve_oper {
 Nve::Nve()
     :
     vnis(std::make_shared<Nve::Vnis>())
-	,interfaces(std::make_shared<Nve::Interfaces>())
+    , interfaces(std::make_shared<Nve::Interfaces>())
 {
     vnis->parent = this;
     interfaces->parent = this;
 
-    yang_name = "nve"; yang_parent_name = "Cisco-IOS-XR-tunnel-nve-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "nve"; yang_parent_name = "Cisco-IOS-XR-tunnel-nve-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Nve::~Nve()
@@ -28,6 +28,7 @@ Nve::~Nve()
 
 bool Nve::has_data() const
 {
+    if (is_presence_container) return true;
     return (vnis !=  nullptr && vnis->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data());
 }
@@ -136,9 +137,11 @@ bool Nve::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Nve::Vnis::Vnis()
+    :
+    vni(this, {"vni"})
 {
 
-    yang_name = "vnis"; yang_parent_name = "nve"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vnis"; yang_parent_name = "nve"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Nve::Vnis::~Vnis()
@@ -147,7 +150,8 @@ Nve::Vnis::~Vnis()
 
 bool Nve::Vnis::has_data() const
 {
-    for (std::size_t index=0; index<vni.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vni.len(); index++)
     {
         if(vni[index]->has_data())
             return true;
@@ -157,7 +161,7 @@ bool Nve::Vnis::has_data() const
 
 bool Nve::Vnis::has_operation() const
 {
-    for (std::size_t index=0; index<vni.size(); index++)
+    for (std::size_t index=0; index<vni.len(); index++)
     {
         if(vni[index]->has_operation())
             return true;
@@ -194,7 +198,7 @@ std::shared_ptr<Entity> Nve::Vnis::get_child_by_name(const std::string & child_y
     {
         auto c = std::make_shared<Nve::Vnis::Vni>();
         c->parent = this;
-        vni.push_back(c);
+        vni.append(c);
         return c;
     }
 
@@ -206,7 +210,7 @@ std::map<std::string, std::shared_ptr<Entity>> Nve::Vnis::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vni)
+    for (auto c : vni.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -257,7 +261,7 @@ Nve::Vnis::Vni::Vni()
     topo_name{YType::str, "topo-name"}
 {
 
-    yang_name = "vni"; yang_parent_name = "vnis"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vni"; yang_parent_name = "vnis"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Nve::Vnis::Vni::~Vni()
@@ -266,6 +270,7 @@ Nve::Vnis::Vni::~Vni()
 
 bool Nve::Vnis::Vni::has_data() const
 {
+    if (is_presence_container) return true;
     return vni.is_set
 	|| interface_name.is_set
 	|| vni_xr.is_set
@@ -325,7 +330,8 @@ std::string Nve::Vnis::Vni::get_absolute_path() const
 std::string Nve::Vnis::Vni::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vni" <<"[vni='" <<vni <<"']";
+    path_buffer << "vni";
+    ADD_KEY_TOKEN(vni, "vni");
     return path_buffer.str();
 }
 
@@ -597,9 +603,11 @@ bool Nve::Vnis::Vni::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Nve::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "nve"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "nve"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Nve::Interfaces::~Interfaces()
@@ -608,7 +616,8 @@ Nve::Interfaces::~Interfaces()
 
 bool Nve::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -618,7 +627,7 @@ bool Nve::Interfaces::has_data() const
 
 bool Nve::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -655,7 +664,7 @@ std::shared_ptr<Entity> Nve::Interfaces::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<Nve::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -667,7 +676,7 @@ std::map<std::string, std::shared_ptr<Entity>> Nve::Interfaces::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -713,7 +722,7 @@ Nve::Interfaces::Interface::Interface()
     sync_mcast_flags{YType::uint32, "sync-mcast-flags"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Nve::Interfaces::Interface::~Interface()
@@ -722,6 +731,7 @@ Nve::Interfaces::Interface::~Interface()
 
 bool Nve::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| state.is_set
@@ -771,7 +781,8 @@ std::string Nve::Interfaces::Interface::get_absolute_path() const
 std::string Nve::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 

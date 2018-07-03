@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_ship {
 
 Stat::Stat()
+    :
+    ship_comp(this, {"comp_name"})
 {
 
-    yang_name = "stat"; yang_parent_name = "Cisco-IOS-XR-sysadmin-ship"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "stat"; yang_parent_name = "Cisco-IOS-XR-sysadmin-ship"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Stat::~Stat()
@@ -23,7 +25,8 @@ Stat::~Stat()
 
 bool Stat::has_data() const
 {
-    for (std::size_t index=0; index<ship_comp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ship_comp.len(); index++)
     {
         if(ship_comp[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool Stat::has_data() const
 
 bool Stat::has_operation() const
 {
-    for (std::size_t index=0; index<ship_comp.size(); index++)
+    for (std::size_t index=0; index<ship_comp.len(); index++)
     {
         if(ship_comp[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> Stat::get_child_by_name(const std::string & child_yang_n
     {
         auto c = std::make_shared<Stat::ShipComp>();
         c->parent = this;
-        ship_comp.push_back(c);
+        ship_comp.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> Stat::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ship_comp)
+    for (auto c : ship_comp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,9 +132,11 @@ bool Stat::has_leaf_or_child_of_name(const std::string & name) const
 Stat::ShipComp::ShipComp()
     :
     comp_name{YType::str, "comp-name"}
+        ,
+    process(this, {"process_name"})
 {
 
-    yang_name = "ship_comp"; yang_parent_name = "stat"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ship_comp"; yang_parent_name = "stat"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Stat::ShipComp::~ShipComp()
@@ -140,7 +145,8 @@ Stat::ShipComp::~ShipComp()
 
 bool Stat::ShipComp::has_data() const
 {
-    for (std::size_t index=0; index<process.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<process.len(); index++)
     {
         if(process[index]->has_data())
             return true;
@@ -150,7 +156,7 @@ bool Stat::ShipComp::has_data() const
 
 bool Stat::ShipComp::has_operation() const
 {
-    for (std::size_t index=0; index<process.size(); index++)
+    for (std::size_t index=0; index<process.len(); index++)
     {
         if(process[index]->has_operation())
             return true;
@@ -169,7 +175,8 @@ std::string Stat::ShipComp::get_absolute_path() const
 std::string Stat::ShipComp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ship_comp" <<"[comp-name='" <<comp_name <<"']";
+    path_buffer << "ship_comp";
+    ADD_KEY_TOKEN(comp_name, "comp-name");
     return path_buffer.str();
 }
 
@@ -189,7 +196,7 @@ std::shared_ptr<Entity> Stat::ShipComp::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Stat::ShipComp::Process>();
         c->parent = this;
-        process.push_back(c);
+        process.append(c);
         return c;
     }
 
@@ -201,7 +208,7 @@ std::map<std::string, std::shared_ptr<Entity>> Stat::ShipComp::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : process)
+    for (auto c : process.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -240,9 +247,11 @@ bool Stat::ShipComp::has_leaf_or_child_of_name(const std::string & name) const
 Stat::ShipComp::Process::Process()
     :
     process_name{YType::str, "process-name"}
+        ,
+    client(this, {"client_name"})
 {
 
-    yang_name = "process"; yang_parent_name = "ship_comp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "process"; yang_parent_name = "ship_comp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Stat::ShipComp::Process::~Process()
@@ -251,7 +260,8 @@ Stat::ShipComp::Process::~Process()
 
 bool Stat::ShipComp::Process::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_data())
             return true;
@@ -261,7 +271,7 @@ bool Stat::ShipComp::Process::has_data() const
 
 bool Stat::ShipComp::Process::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_operation())
             return true;
@@ -273,7 +283,8 @@ bool Stat::ShipComp::Process::has_operation() const
 std::string Stat::ShipComp::Process::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "process" <<"[process-name='" <<process_name <<"']";
+    path_buffer << "process";
+    ADD_KEY_TOKEN(process_name, "process-name");
     return path_buffer.str();
 }
 
@@ -293,7 +304,7 @@ std::shared_ptr<Entity> Stat::ShipComp::Process::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Stat::ShipComp::Process::Client>();
         c->parent = this;
-        client.push_back(c);
+        client.append(c);
         return c;
     }
 
@@ -305,7 +316,7 @@ std::map<std::string, std::shared_ptr<Entity>> Stat::ShipComp::Process::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client)
+    for (auto c : client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -344,9 +355,11 @@ bool Stat::ShipComp::Process::has_leaf_or_child_of_name(const std::string & name
 Stat::ShipComp::Process::Client::Client()
     :
     client_name{YType::str, "client-name"}
+        ,
+    cat(this, {"cat_name"})
 {
 
-    yang_name = "client"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Stat::ShipComp::Process::Client::~Client()
@@ -355,7 +368,8 @@ Stat::ShipComp::Process::Client::~Client()
 
 bool Stat::ShipComp::Process::Client::has_data() const
 {
-    for (std::size_t index=0; index<cat.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cat.len(); index++)
     {
         if(cat[index]->has_data())
             return true;
@@ -365,7 +379,7 @@ bool Stat::ShipComp::Process::Client::has_data() const
 
 bool Stat::ShipComp::Process::Client::has_operation() const
 {
-    for (std::size_t index=0; index<cat.size(); index++)
+    for (std::size_t index=0; index<cat.len(); index++)
     {
         if(cat[index]->has_operation())
             return true;
@@ -377,7 +391,8 @@ bool Stat::ShipComp::Process::Client::has_operation() const
 std::string Stat::ShipComp::Process::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "client" <<"[client-name='" <<client_name <<"']";
+    path_buffer << "client";
+    ADD_KEY_TOKEN(client_name, "client-name");
     return path_buffer.str();
 }
 
@@ -397,7 +412,7 @@ std::shared_ptr<Entity> Stat::ShipComp::Process::Client::get_child_by_name(const
     {
         auto c = std::make_shared<Stat::ShipComp::Process::Client::Cat>();
         c->parent = this;
-        cat.push_back(c);
+        cat.append(c);
         return c;
     }
 
@@ -409,7 +424,7 @@ std::map<std::string, std::shared_ptr<Entity>> Stat::ShipComp::Process::Client::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cat)
+    for (auto c : cat.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -448,9 +463,11 @@ bool Stat::ShipComp::Process::Client::has_leaf_or_child_of_name(const std::strin
 Stat::ShipComp::Process::Client::Cat::Cat()
     :
     cat_name{YType::enumeration, "cat-name"}
+        ,
+    counter_32b(this, {"counter_name"})
 {
 
-    yang_name = "cat"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cat"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Stat::ShipComp::Process::Client::Cat::~Cat()
@@ -459,7 +476,8 @@ Stat::ShipComp::Process::Client::Cat::~Cat()
 
 bool Stat::ShipComp::Process::Client::Cat::has_data() const
 {
-    for (std::size_t index=0; index<counter_32b.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<counter_32b.len(); index++)
     {
         if(counter_32b[index]->has_data())
             return true;
@@ -469,7 +487,7 @@ bool Stat::ShipComp::Process::Client::Cat::has_data() const
 
 bool Stat::ShipComp::Process::Client::Cat::has_operation() const
 {
-    for (std::size_t index=0; index<counter_32b.size(); index++)
+    for (std::size_t index=0; index<counter_32b.len(); index++)
     {
         if(counter_32b[index]->has_operation())
             return true;
@@ -481,7 +499,8 @@ bool Stat::ShipComp::Process::Client::Cat::has_operation() const
 std::string Stat::ShipComp::Process::Client::Cat::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cat" <<"[cat-name='" <<cat_name <<"']";
+    path_buffer << "cat";
+    ADD_KEY_TOKEN(cat_name, "cat-name");
     return path_buffer.str();
 }
 
@@ -501,7 +520,7 @@ std::shared_ptr<Entity> Stat::ShipComp::Process::Client::Cat::get_child_by_name(
     {
         auto c = std::make_shared<Stat::ShipComp::Process::Client::Cat::Counter32b>();
         c->parent = this;
-        counter_32b.push_back(c);
+        counter_32b.append(c);
         return c;
     }
 
@@ -513,7 +532,7 @@ std::map<std::string, std::shared_ptr<Entity>> Stat::ShipComp::Process::Client::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : counter_32b)
+    for (auto c : counter_32b.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -565,7 +584,7 @@ Stat::ShipComp::Process::Client::Cat::Counter32b::Counter32b()
     hist_info8{YType::uint32, "hist-info8"}
 {
 
-    yang_name = "counter-32b"; yang_parent_name = "cat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counter-32b"; yang_parent_name = "cat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Stat::ShipComp::Process::Client::Cat::Counter32b::~Counter32b()
@@ -574,6 +593,7 @@ Stat::ShipComp::Process::Client::Cat::Counter32b::~Counter32b()
 
 bool Stat::ShipComp::Process::Client::Cat::Counter32b::has_data() const
 {
+    if (is_presence_container) return true;
     return counter_name.is_set
 	|| counter_value.is_set
 	|| watermark.is_set
@@ -608,7 +628,8 @@ bool Stat::ShipComp::Process::Client::Cat::Counter32b::has_operation() const
 std::string Stat::ShipComp::Process::Client::Cat::Counter32b::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "counter-32b" <<"[counter-name='" <<counter_name <<"']";
+    path_buffer << "counter-32b";
+    ADD_KEY_TOKEN(counter_name, "counter-name");
     return path_buffer.str();
 }
 

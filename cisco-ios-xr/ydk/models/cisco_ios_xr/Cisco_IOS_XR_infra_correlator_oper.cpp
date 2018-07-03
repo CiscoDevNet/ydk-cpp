@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_infra_correlator_oper {
 Suppression::Suppression()
     :
     rule_summaries(std::make_shared<Suppression::RuleSummaries>())
-	,rule_details(std::make_shared<Suppression::RuleDetails>())
+    , rule_details(std::make_shared<Suppression::RuleDetails>())
 {
     rule_summaries->parent = this;
     rule_details->parent = this;
 
-    yang_name = "suppression"; yang_parent_name = "Cisco-IOS-XR-infra-correlator-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "suppression"; yang_parent_name = "Cisco-IOS-XR-infra-correlator-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Suppression::~Suppression()
@@ -28,6 +28,7 @@ Suppression::~Suppression()
 
 bool Suppression::has_data() const
 {
+    if (is_presence_container) return true;
     return (rule_summaries !=  nullptr && rule_summaries->has_data())
 	|| (rule_details !=  nullptr && rule_details->has_data());
 }
@@ -136,9 +137,11 @@ bool Suppression::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Suppression::RuleSummaries::RuleSummaries()
+    :
+    rule_summary(this, {"rule_name"})
 {
 
-    yang_name = "rule-summaries"; yang_parent_name = "suppression"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule-summaries"; yang_parent_name = "suppression"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Suppression::RuleSummaries::~RuleSummaries()
@@ -147,7 +150,8 @@ Suppression::RuleSummaries::~RuleSummaries()
 
 bool Suppression::RuleSummaries::has_data() const
 {
-    for (std::size_t index=0; index<rule_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rule_summary.len(); index++)
     {
         if(rule_summary[index]->has_data())
             return true;
@@ -157,7 +161,7 @@ bool Suppression::RuleSummaries::has_data() const
 
 bool Suppression::RuleSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<rule_summary.size(); index++)
+    for (std::size_t index=0; index<rule_summary.len(); index++)
     {
         if(rule_summary[index]->has_operation())
             return true;
@@ -194,7 +198,7 @@ std::shared_ptr<Entity> Suppression::RuleSummaries::get_child_by_name(const std:
     {
         auto c = std::make_shared<Suppression::RuleSummaries::RuleSummary>();
         c->parent = this;
-        rule_summary.push_back(c);
+        rule_summary.append(c);
         return c;
     }
 
@@ -206,7 +210,7 @@ std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleSummaries::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rule_summary)
+    for (auto c : rule_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -240,7 +244,7 @@ Suppression::RuleSummaries::RuleSummary::RuleSummary()
     suppressed_alarms_count{YType::uint32, "suppressed-alarms-count"}
 {
 
-    yang_name = "rule-summary"; yang_parent_name = "rule-summaries"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule-summary"; yang_parent_name = "rule-summaries"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Suppression::RuleSummaries::RuleSummary::~RuleSummary()
@@ -249,6 +253,7 @@ Suppression::RuleSummaries::RuleSummary::~RuleSummary()
 
 bool Suppression::RuleSummaries::RuleSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return rule_name.is_set
 	|| rule_name_xr.is_set
 	|| rule_state.is_set
@@ -274,7 +279,8 @@ std::string Suppression::RuleSummaries::RuleSummary::get_absolute_path() const
 std::string Suppression::RuleSummaries::RuleSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rule-summary" <<"[rule-name='" <<rule_name <<"']";
+    path_buffer << "rule-summary";
+    ADD_KEY_TOKEN(rule_name, "rule-name");
     return path_buffer.str();
 }
 
@@ -359,9 +365,11 @@ bool Suppression::RuleSummaries::RuleSummary::has_leaf_or_child_of_name(const st
 }
 
 Suppression::RuleDetails::RuleDetails()
+    :
+    rule_detail(this, {"rule_name"})
 {
 
-    yang_name = "rule-details"; yang_parent_name = "suppression"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule-details"; yang_parent_name = "suppression"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Suppression::RuleDetails::~RuleDetails()
@@ -370,7 +378,8 @@ Suppression::RuleDetails::~RuleDetails()
 
 bool Suppression::RuleDetails::has_data() const
 {
-    for (std::size_t index=0; index<rule_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rule_detail.len(); index++)
     {
         if(rule_detail[index]->has_data())
             return true;
@@ -380,7 +389,7 @@ bool Suppression::RuleDetails::has_data() const
 
 bool Suppression::RuleDetails::has_operation() const
 {
-    for (std::size_t index=0; index<rule_detail.size(); index++)
+    for (std::size_t index=0; index<rule_detail.len(); index++)
     {
         if(rule_detail[index]->has_operation())
             return true;
@@ -417,7 +426,7 @@ std::shared_ptr<Entity> Suppression::RuleDetails::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Suppression::RuleDetails::RuleDetail>();
         c->parent = this;
-        rule_detail.push_back(c);
+        rule_detail.append(c);
         return c;
     }
 
@@ -429,7 +438,7 @@ std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleDetails::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rule_detail)
+    for (auto c : rule_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -461,12 +470,13 @@ Suppression::RuleDetails::RuleDetail::RuleDetail()
     all_alarms{YType::boolean, "all-alarms"},
     alarm_severity{YType::enumeration, "alarm-severity"},
     apply_source{YType::str, "apply-source"}
-    	,
+        ,
     rule_summary(std::make_shared<Suppression::RuleDetails::RuleDetail::RuleSummary>())
+    , codes(this, {})
 {
     rule_summary->parent = this;
 
-    yang_name = "rule-detail"; yang_parent_name = "rule-details"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule-detail"; yang_parent_name = "rule-details"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Suppression::RuleDetails::RuleDetail::~RuleDetail()
@@ -475,7 +485,8 @@ Suppression::RuleDetails::RuleDetail::~RuleDetail()
 
 bool Suppression::RuleDetails::RuleDetail::has_data() const
 {
-    for (std::size_t index=0; index<codes.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<codes.len(); index++)
     {
         if(codes[index]->has_data())
             return true;
@@ -493,7 +504,7 @@ bool Suppression::RuleDetails::RuleDetail::has_data() const
 
 bool Suppression::RuleDetails::RuleDetail::has_operation() const
 {
-    for (std::size_t index=0; index<codes.size(); index++)
+    for (std::size_t index=0; index<codes.len(); index++)
     {
         if(codes[index]->has_operation())
             return true;
@@ -521,7 +532,8 @@ std::string Suppression::RuleDetails::RuleDetail::get_absolute_path() const
 std::string Suppression::RuleDetails::RuleDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rule-detail" <<"[rule-name='" <<rule_name <<"']";
+    path_buffer << "rule-detail";
+    ADD_KEY_TOKEN(rule_name, "rule-name");
     return path_buffer.str();
 }
 
@@ -554,7 +566,7 @@ std::shared_ptr<Entity> Suppression::RuleDetails::RuleDetail::get_child_by_name(
     {
         auto c = std::make_shared<Suppression::RuleDetails::RuleDetail::Codes>();
         c->parent = this;
-        codes.push_back(c);
+        codes.append(c);
         return c;
     }
 
@@ -571,7 +583,7 @@ std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleDetails::RuleDet
     }
 
     count = 0;
-    for (auto const & c : codes)
+    for (auto c : codes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -642,7 +654,7 @@ Suppression::RuleDetails::RuleDetail::RuleSummary::RuleSummary()
     suppressed_alarms_count{YType::uint32, "suppressed-alarms-count"}
 {
 
-    yang_name = "rule-summary"; yang_parent_name = "rule-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rule-summary"; yang_parent_name = "rule-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Suppression::RuleDetails::RuleDetail::RuleSummary::~RuleSummary()
@@ -651,6 +663,7 @@ Suppression::RuleDetails::RuleDetail::RuleSummary::~RuleSummary()
 
 bool Suppression::RuleDetails::RuleDetail::RuleSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return rule_name_xr.is_set
 	|| rule_state.is_set
 	|| suppressed_alarms_count.is_set;
@@ -747,7 +760,7 @@ Suppression::RuleDetails::RuleDetail::Codes::Codes()
     code{YType::str, "code"}
 {
 
-    yang_name = "codes"; yang_parent_name = "rule-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "codes"; yang_parent_name = "rule-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Suppression::RuleDetails::RuleDetail::Codes::~Codes()
@@ -756,6 +769,7 @@ Suppression::RuleDetails::RuleDetail::Codes::~Codes()
 
 bool Suppression::RuleDetails::RuleDetail::Codes::has_data() const
 {
+    if (is_presence_container) return true;
     return category.is_set
 	|| group.is_set
 	|| code.is_set;
@@ -848,12 +862,12 @@ bool Suppression::RuleDetails::RuleDetail::Codes::has_leaf_or_child_of_name(cons
 Correlator::Correlator()
     :
     rules(std::make_shared<Correlator::Rules>())
-	,buffer_status(std::make_shared<Correlator::BufferStatus>())
-	,alarms(std::make_shared<Correlator::Alarms>())
-	,rule_set_summaries(std::make_shared<Correlator::RuleSetSummaries>())
-	,rule_set_details(std::make_shared<Correlator::RuleSetDetails>())
-	,rule_details(std::make_shared<Correlator::RuleDetails>())
-	,rule_summaries(std::make_shared<Correlator::RuleSummaries>())
+    , buffer_status(std::make_shared<Correlator::BufferStatus>())
+    , alarms(std::make_shared<Correlator::Alarms>())
+    , rule_set_summaries(std::make_shared<Correlator::RuleSetSummaries>())
+    , rule_set_details(std::make_shared<Correlator::RuleSetDetails>())
+    , rule_details(std::make_shared<Correlator::RuleDetails>())
+    , rule_summaries(std::make_shared<Correlator::RuleSummaries>())
 {
     rules->parent = this;
     buffer_status->parent = this;
@@ -863,7 +877,7 @@ Correlator::Correlator()
     rule_details->parent = this;
     rule_summaries->parent = this;
 
-    yang_name = "correlator"; yang_parent_name = "Cisco-IOS-XR-infra-correlator-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "correlator"; yang_parent_name = "Cisco-IOS-XR-infra-correlator-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Correlator::~Correlator()
@@ -872,6 +886,7 @@ Correlator::~Correlator()
 
 bool Correlator::has_data() const
 {
+    if (is_presence_container) return true;
     return (rules !=  nullptr && rules->has_data())
 	|| (buffer_status !=  nullptr && buffer_status->has_data())
 	|| (alarms !=  nullptr && alarms->has_data())
@@ -1060,9 +1075,11 @@ bool Correlator::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Correlator::Rules::Rules()
+    :
+    rule(this, {"rule_name"})
 {
 
-    yang_name = "rules"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rules"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Correlator::Rules::~Rules()
@@ -1071,7 +1088,8 @@ Correlator::Rules::~Rules()
 
 bool Correlator::Rules::has_data() const
 {
-    for (std::size_t index=0; index<rule.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rule.len(); index++)
     {
         if(rule[index]->has_data())
             return true;
@@ -1081,7 +1099,7 @@ bool Correlator::Rules::has_data() const
 
 bool Correlator::Rules::has_operation() const
 {
-    for (std::size_t index=0; index<rule.size(); index++)
+    for (std::size_t index=0; index<rule.len(); index++)
     {
         if(rule[index]->has_operation())
             return true;
@@ -1118,7 +1136,7 @@ std::shared_ptr<Entity> Correlator::Rules::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Correlator::Rules::Rule>();
         c->parent = this;
-        rule.push_back(c);
+        rule.append(c);
         return c;
     }
 
@@ -1130,7 +1148,7 @@ std::map<std::string, std::shared_ptr<Entity>> Correlator::Rules::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rule)
+    for (auto c : rule.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1164,9 +1182,11 @@ Correlator::Rules::Rule::Rule()
     rule_state{YType::enumeration, "rule-state"},
     apply_location{YType::str, "apply-location"},
     apply_context{YType::str, "apply-context"}
+        ,
+    codes(this, {})
 {
 
-    yang_name = "rule"; yang_parent_name = "rules"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule"; yang_parent_name = "rules"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Correlator::Rules::Rule::~Rule()
@@ -1175,7 +1195,8 @@ Correlator::Rules::Rule::~Rule()
 
 bool Correlator::Rules::Rule::has_data() const
 {
-    for (std::size_t index=0; index<codes.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<codes.len(); index++)
     {
         if(codes[index]->has_data())
             return true;
@@ -1198,7 +1219,7 @@ bool Correlator::Rules::Rule::has_data() const
 
 bool Correlator::Rules::Rule::has_operation() const
 {
-    for (std::size_t index=0; index<codes.size(); index++)
+    for (std::size_t index=0; index<codes.len(); index++)
     {
         if(codes[index]->has_operation())
             return true;
@@ -1232,7 +1253,8 @@ std::string Correlator::Rules::Rule::get_absolute_path() const
 std::string Correlator::Rules::Rule::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rule" <<"[rule-name='" <<rule_name <<"']";
+    path_buffer << "rule";
+    ADD_KEY_TOKEN(rule_name, "rule-name");
     return path_buffer.str();
 }
 
@@ -1259,7 +1281,7 @@ std::shared_ptr<Entity> Correlator::Rules::Rule::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Correlator::Rules::Rule::Codes>();
         c->parent = this;
-        codes.push_back(c);
+        codes.append(c);
         return c;
     }
 
@@ -1271,7 +1293,7 @@ std::map<std::string, std::shared_ptr<Entity>> Correlator::Rules::Rule::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : codes)
+    for (auto c : codes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1360,7 +1382,7 @@ Correlator::Rules::Rule::Codes::Codes()
     code{YType::str, "code"}
 {
 
-    yang_name = "codes"; yang_parent_name = "rule"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "codes"; yang_parent_name = "rule"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Correlator::Rules::Rule::Codes::~Codes()
@@ -1369,6 +1391,7 @@ Correlator::Rules::Rule::Codes::~Codes()
 
 bool Correlator::Rules::Rule::Codes::has_data() const
 {
+    if (is_presence_container) return true;
     return category.is_set
 	|| group.is_set
 	|| code.is_set;
@@ -1464,7 +1487,7 @@ Correlator::BufferStatus::BufferStatus()
     configured_size{YType::uint32, "configured-size"}
 {
 
-    yang_name = "buffer-status"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "buffer-status"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Correlator::BufferStatus::~BufferStatus()
@@ -1473,6 +1496,7 @@ Correlator::BufferStatus::~BufferStatus()
 
 bool Correlator::BufferStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return current_size.is_set
 	|| configured_size.is_set;
 }
@@ -1557,9 +1581,11 @@ bool Correlator::BufferStatus::has_leaf_or_child_of_name(const std::string & nam
 }
 
 Correlator::Alarms::Alarms()
+    :
+    alarm(this, {"alarm_id"})
 {
 
-    yang_name = "alarms"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alarms"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Correlator::Alarms::~Alarms()
@@ -1568,7 +1594,8 @@ Correlator::Alarms::~Alarms()
 
 bool Correlator::Alarms::has_data() const
 {
-    for (std::size_t index=0; index<alarm.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alarm.len(); index++)
     {
         if(alarm[index]->has_data())
             return true;
@@ -1578,7 +1605,7 @@ bool Correlator::Alarms::has_data() const
 
 bool Correlator::Alarms::has_operation() const
 {
-    for (std::size_t index=0; index<alarm.size(); index++)
+    for (std::size_t index=0; index<alarm.len(); index++)
     {
         if(alarm[index]->has_operation())
             return true;
@@ -1615,7 +1642,7 @@ std::shared_ptr<Entity> Correlator::Alarms::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Correlator::Alarms::Alarm>();
         c->parent = this;
-        alarm.push_back(c);
+        alarm.append(c);
         return c;
     }
 
@@ -1627,7 +1654,7 @@ std::map<std::string, std::shared_ptr<Entity>> Correlator::Alarms::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : alarm)
+    for (auto c : alarm.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1655,15 +1682,15 @@ bool Correlator::Alarms::has_leaf_or_child_of_name(const std::string & name) con
 
 Correlator::Alarms::Alarm::Alarm()
     :
-    alarm_id{YType::int32, "alarm-id"},
+    alarm_id{YType::uint32, "alarm-id"},
     rule_name{YType::str, "rule-name"},
     context{YType::str, "context"}
-    	,
+        ,
     alarm_info(std::make_shared<Correlator::Alarms::Alarm::AlarmInfo>())
 {
     alarm_info->parent = this;
 
-    yang_name = "alarm"; yang_parent_name = "alarms"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alarm"; yang_parent_name = "alarms"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Correlator::Alarms::Alarm::~Alarm()
@@ -1672,6 +1699,7 @@ Correlator::Alarms::Alarm::~Alarm()
 
 bool Correlator::Alarms::Alarm::has_data() const
 {
+    if (is_presence_container) return true;
     return alarm_id.is_set
 	|| rule_name.is_set
 	|| context.is_set
@@ -1697,7 +1725,8 @@ std::string Correlator::Alarms::Alarm::get_absolute_path() const
 std::string Correlator::Alarms::Alarm::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "alarm" <<"[alarm-id='" <<alarm_id <<"']";
+    path_buffer << "alarm";
+    ADD_KEY_TOKEN(alarm_id, "alarm-id");
     return path_buffer.str();
 }
 
@@ -1798,7 +1827,7 @@ Correlator::Alarms::Alarm::AlarmInfo::AlarmInfo()
     additional_text{YType::str, "additional-text"}
 {
 
-    yang_name = "alarm-info"; yang_parent_name = "alarm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "alarm-info"; yang_parent_name = "alarm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Correlator::Alarms::Alarm::AlarmInfo::~AlarmInfo()
@@ -1807,6 +1836,7 @@ Correlator::Alarms::Alarm::AlarmInfo::~AlarmInfo()
 
 bool Correlator::Alarms::Alarm::AlarmInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return source_id.is_set
 	|| timestamp.is_set
 	|| category.is_set
@@ -1988,9 +2018,11 @@ bool Correlator::Alarms::Alarm::AlarmInfo::has_leaf_or_child_of_name(const std::
 }
 
 Correlator::RuleSetSummaries::RuleSetSummaries()
+    :
+    rule_set_summary(this, {"rule_set_name"})
 {
 
-    yang_name = "rule-set-summaries"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule-set-summaries"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Correlator::RuleSetSummaries::~RuleSetSummaries()
@@ -1999,7 +2031,8 @@ Correlator::RuleSetSummaries::~RuleSetSummaries()
 
 bool Correlator::RuleSetSummaries::has_data() const
 {
-    for (std::size_t index=0; index<rule_set_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rule_set_summary.len(); index++)
     {
         if(rule_set_summary[index]->has_data())
             return true;
@@ -2009,7 +2042,7 @@ bool Correlator::RuleSetSummaries::has_data() const
 
 bool Correlator::RuleSetSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<rule_set_summary.size(); index++)
+    for (std::size_t index=0; index<rule_set_summary.len(); index++)
     {
         if(rule_set_summary[index]->has_operation())
             return true;
@@ -2046,7 +2079,7 @@ std::shared_ptr<Entity> Correlator::RuleSetSummaries::get_child_by_name(const st
     {
         auto c = std::make_shared<Correlator::RuleSetSummaries::RuleSetSummary>();
         c->parent = this;
-        rule_set_summary.push_back(c);
+        rule_set_summary.append(c);
         return c;
     }
 
@@ -2058,7 +2091,7 @@ std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetSummaries::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rule_set_summary)
+    for (auto c : rule_set_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2090,7 +2123,7 @@ Correlator::RuleSetSummaries::RuleSetSummary::RuleSetSummary()
     rule_set_name_xr{YType::str, "rule-set-name-xr"}
 {
 
-    yang_name = "rule-set-summary"; yang_parent_name = "rule-set-summaries"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule-set-summary"; yang_parent_name = "rule-set-summaries"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Correlator::RuleSetSummaries::RuleSetSummary::~RuleSetSummary()
@@ -2099,6 +2132,7 @@ Correlator::RuleSetSummaries::RuleSetSummary::~RuleSetSummary()
 
 bool Correlator::RuleSetSummaries::RuleSetSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return rule_set_name.is_set
 	|| rule_set_name_xr.is_set;
 }
@@ -2120,7 +2154,8 @@ std::string Correlator::RuleSetSummaries::RuleSetSummary::get_absolute_path() co
 std::string Correlator::RuleSetSummaries::RuleSetSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rule-set-summary" <<"[rule-set-name='" <<rule_set_name <<"']";
+    path_buffer << "rule-set-summary";
+    ADD_KEY_TOKEN(rule_set_name, "rule-set-name");
     return path_buffer.str();
 }
 
@@ -2183,9 +2218,11 @@ bool Correlator::RuleSetSummaries::RuleSetSummary::has_leaf_or_child_of_name(con
 }
 
 Correlator::RuleSetDetails::RuleSetDetails()
+    :
+    rule_set_detail(this, {"rule_set_name"})
 {
 
-    yang_name = "rule-set-details"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule-set-details"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Correlator::RuleSetDetails::~RuleSetDetails()
@@ -2194,7 +2231,8 @@ Correlator::RuleSetDetails::~RuleSetDetails()
 
 bool Correlator::RuleSetDetails::has_data() const
 {
-    for (std::size_t index=0; index<rule_set_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rule_set_detail.len(); index++)
     {
         if(rule_set_detail[index]->has_data())
             return true;
@@ -2204,7 +2242,7 @@ bool Correlator::RuleSetDetails::has_data() const
 
 bool Correlator::RuleSetDetails::has_operation() const
 {
-    for (std::size_t index=0; index<rule_set_detail.size(); index++)
+    for (std::size_t index=0; index<rule_set_detail.len(); index++)
     {
         if(rule_set_detail[index]->has_operation())
             return true;
@@ -2241,7 +2279,7 @@ std::shared_ptr<Entity> Correlator::RuleSetDetails::get_child_by_name(const std:
     {
         auto c = std::make_shared<Correlator::RuleSetDetails::RuleSetDetail>();
         c->parent = this;
-        rule_set_detail.push_back(c);
+        rule_set_detail.append(c);
         return c;
     }
 
@@ -2253,7 +2291,7 @@ std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetDetails::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rule_set_detail)
+    for (auto c : rule_set_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2283,9 +2321,11 @@ Correlator::RuleSetDetails::RuleSetDetail::RuleSetDetail()
     :
     rule_set_name{YType::str, "rule-set-name"},
     rule_set_name_xr{YType::str, "rule-set-name-xr"}
+        ,
+    rules(this, {})
 {
 
-    yang_name = "rule-set-detail"; yang_parent_name = "rule-set-details"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule-set-detail"; yang_parent_name = "rule-set-details"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Correlator::RuleSetDetails::RuleSetDetail::~RuleSetDetail()
@@ -2294,7 +2334,8 @@ Correlator::RuleSetDetails::RuleSetDetail::~RuleSetDetail()
 
 bool Correlator::RuleSetDetails::RuleSetDetail::has_data() const
 {
-    for (std::size_t index=0; index<rules.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rules.len(); index++)
     {
         if(rules[index]->has_data())
             return true;
@@ -2305,7 +2346,7 @@ bool Correlator::RuleSetDetails::RuleSetDetail::has_data() const
 
 bool Correlator::RuleSetDetails::RuleSetDetail::has_operation() const
 {
-    for (std::size_t index=0; index<rules.size(); index++)
+    for (std::size_t index=0; index<rules.len(); index++)
     {
         if(rules[index]->has_operation())
             return true;
@@ -2325,7 +2366,8 @@ std::string Correlator::RuleSetDetails::RuleSetDetail::get_absolute_path() const
 std::string Correlator::RuleSetDetails::RuleSetDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rule-set-detail" <<"[rule-set-name='" <<rule_set_name <<"']";
+    path_buffer << "rule-set-detail";
+    ADD_KEY_TOKEN(rule_set_name, "rule-set-name");
     return path_buffer.str();
 }
 
@@ -2346,7 +2388,7 @@ std::shared_ptr<Entity> Correlator::RuleSetDetails::RuleSetDetail::get_child_by_
     {
         auto c = std::make_shared<Correlator::RuleSetDetails::RuleSetDetail::Rules>();
         c->parent = this;
-        rules.push_back(c);
+        rules.append(c);
         return c;
     }
 
@@ -2358,7 +2400,7 @@ std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetDetails::RuleS
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rules)
+    for (auto c : rules.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2412,7 +2454,7 @@ Correlator::RuleSetDetails::RuleSetDetail::Rules::Rules()
     buffered_alarms_count{YType::uint32, "buffered-alarms-count"}
 {
 
-    yang_name = "rules"; yang_parent_name = "rule-set-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rules"; yang_parent_name = "rule-set-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Correlator::RuleSetDetails::RuleSetDetail::Rules::~Rules()
@@ -2421,6 +2463,7 @@ Correlator::RuleSetDetails::RuleSetDetail::Rules::~Rules()
 
 bool Correlator::RuleSetDetails::RuleSetDetail::Rules::has_data() const
 {
+    if (is_presence_container) return true;
     return rule_name_xr.is_set
 	|| stateful.is_set
 	|| rule_state.is_set
@@ -2524,9 +2567,11 @@ bool Correlator::RuleSetDetails::RuleSetDetail::Rules::has_leaf_or_child_of_name
 }
 
 Correlator::RuleDetails::RuleDetails()
+    :
+    rule_detail(this, {"rule_name"})
 {
 
-    yang_name = "rule-details"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule-details"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Correlator::RuleDetails::~RuleDetails()
@@ -2535,7 +2580,8 @@ Correlator::RuleDetails::~RuleDetails()
 
 bool Correlator::RuleDetails::has_data() const
 {
-    for (std::size_t index=0; index<rule_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rule_detail.len(); index++)
     {
         if(rule_detail[index]->has_data())
             return true;
@@ -2545,7 +2591,7 @@ bool Correlator::RuleDetails::has_data() const
 
 bool Correlator::RuleDetails::has_operation() const
 {
-    for (std::size_t index=0; index<rule_detail.size(); index++)
+    for (std::size_t index=0; index<rule_detail.len(); index++)
     {
         if(rule_detail[index]->has_operation())
             return true;
@@ -2582,7 +2628,7 @@ std::shared_ptr<Entity> Correlator::RuleDetails::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Correlator::RuleDetails::RuleDetail>();
         c->parent = this;
-        rule_detail.push_back(c);
+        rule_detail.append(c);
         return c;
     }
 
@@ -2594,7 +2640,7 @@ std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleDetails::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rule_detail)
+    for (auto c : rule_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2631,12 +2677,13 @@ Correlator::RuleDetails::RuleDetail::RuleDetail()
     context_correlation{YType::boolean, "context-correlation"},
     apply_location{YType::str, "apply-location"},
     apply_context{YType::str, "apply-context"}
-    	,
+        ,
     rule_summary(std::make_shared<Correlator::RuleDetails::RuleDetail::RuleSummary>())
+    , codes(this, {})
 {
     rule_summary->parent = this;
 
-    yang_name = "rule-detail"; yang_parent_name = "rule-details"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule-detail"; yang_parent_name = "rule-details"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Correlator::RuleDetails::RuleDetail::~RuleDetail()
@@ -2645,7 +2692,8 @@ Correlator::RuleDetails::RuleDetail::~RuleDetail()
 
 bool Correlator::RuleDetails::RuleDetail::has_data() const
 {
-    for (std::size_t index=0; index<codes.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<codes.len(); index++)
     {
         if(codes[index]->has_data())
             return true;
@@ -2672,7 +2720,7 @@ bool Correlator::RuleDetails::RuleDetail::has_data() const
 
 bool Correlator::RuleDetails::RuleDetail::has_operation() const
 {
-    for (std::size_t index=0; index<codes.size(); index++)
+    for (std::size_t index=0; index<codes.len(); index++)
     {
         if(codes[index]->has_operation())
             return true;
@@ -2710,7 +2758,8 @@ std::string Correlator::RuleDetails::RuleDetail::get_absolute_path() const
 std::string Correlator::RuleDetails::RuleDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rule-detail" <<"[rule-name='" <<rule_name <<"']";
+    path_buffer << "rule-detail";
+    ADD_KEY_TOKEN(rule_name, "rule-name");
     return path_buffer.str();
 }
 
@@ -2749,7 +2798,7 @@ std::shared_ptr<Entity> Correlator::RuleDetails::RuleDetail::get_child_by_name(c
     {
         auto c = std::make_shared<Correlator::RuleDetails::RuleDetail::Codes>();
         c->parent = this;
-        codes.push_back(c);
+        codes.append(c);
         return c;
     }
 
@@ -2766,7 +2815,7 @@ std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleDetails::RuleDeta
     }
 
     count = 0;
-    for (auto const & c : codes)
+    for (auto c : codes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2886,7 +2935,7 @@ Correlator::RuleDetails::RuleDetail::RuleSummary::RuleSummary()
     buffered_alarms_count{YType::uint32, "buffered-alarms-count"}
 {
 
-    yang_name = "rule-summary"; yang_parent_name = "rule-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rule-summary"; yang_parent_name = "rule-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Correlator::RuleDetails::RuleDetail::RuleSummary::~RuleSummary()
@@ -2895,6 +2944,7 @@ Correlator::RuleDetails::RuleDetail::RuleSummary::~RuleSummary()
 
 bool Correlator::RuleDetails::RuleDetail::RuleSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return rule_name_xr.is_set
 	|| stateful.is_set
 	|| rule_state.is_set
@@ -3004,7 +3054,7 @@ Correlator::RuleDetails::RuleDetail::Codes::Codes()
     code{YType::str, "code"}
 {
 
-    yang_name = "codes"; yang_parent_name = "rule-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "codes"; yang_parent_name = "rule-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Correlator::RuleDetails::RuleDetail::Codes::~Codes()
@@ -3013,6 +3063,7 @@ Correlator::RuleDetails::RuleDetail::Codes::~Codes()
 
 bool Correlator::RuleDetails::RuleDetail::Codes::has_data() const
 {
+    if (is_presence_container) return true;
     return category.is_set
 	|| group.is_set
 	|| code.is_set;
@@ -3103,9 +3154,11 @@ bool Correlator::RuleDetails::RuleDetail::Codes::has_leaf_or_child_of_name(const
 }
 
 Correlator::RuleSummaries::RuleSummaries()
+    :
+    rule_summary(this, {"rule_name"})
 {
 
-    yang_name = "rule-summaries"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule-summaries"; yang_parent_name = "correlator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Correlator::RuleSummaries::~RuleSummaries()
@@ -3114,7 +3167,8 @@ Correlator::RuleSummaries::~RuleSummaries()
 
 bool Correlator::RuleSummaries::has_data() const
 {
-    for (std::size_t index=0; index<rule_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rule_summary.len(); index++)
     {
         if(rule_summary[index]->has_data())
             return true;
@@ -3124,7 +3178,7 @@ bool Correlator::RuleSummaries::has_data() const
 
 bool Correlator::RuleSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<rule_summary.size(); index++)
+    for (std::size_t index=0; index<rule_summary.len(); index++)
     {
         if(rule_summary[index]->has_operation())
             return true;
@@ -3161,7 +3215,7 @@ std::shared_ptr<Entity> Correlator::RuleSummaries::get_child_by_name(const std::
     {
         auto c = std::make_shared<Correlator::RuleSummaries::RuleSummary>();
         c->parent = this;
-        rule_summary.push_back(c);
+        rule_summary.append(c);
         return c;
     }
 
@@ -3173,7 +3227,7 @@ std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSummaries::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rule_summary)
+    for (auto c : rule_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3208,7 +3262,7 @@ Correlator::RuleSummaries::RuleSummary::RuleSummary()
     buffered_alarms_count{YType::uint32, "buffered-alarms-count"}
 {
 
-    yang_name = "rule-summary"; yang_parent_name = "rule-summaries"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rule-summary"; yang_parent_name = "rule-summaries"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Correlator::RuleSummaries::RuleSummary::~RuleSummary()
@@ -3217,6 +3271,7 @@ Correlator::RuleSummaries::RuleSummary::~RuleSummary()
 
 bool Correlator::RuleSummaries::RuleSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return rule_name.is_set
 	|| rule_name_xr.is_set
 	|| stateful.is_set
@@ -3244,7 +3299,8 @@ std::string Correlator::RuleSummaries::RuleSummary::get_absolute_path() const
 std::string Correlator::RuleSummaries::RuleSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rule-summary" <<"[rule-name='" <<rule_name <<"']";
+    path_buffer << "rule-summary";
+    ADD_KEY_TOKEN(rule_name, "rule-name");
     return path_buffer.str();
 }
 

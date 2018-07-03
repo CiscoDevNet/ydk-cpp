@@ -5,12 +5,11 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_pmengine_oper_0.hpp"
-#include "Cisco_IOS_XR_pmengine_oper_4.hpp"
-#include "Cisco_IOS_XR_pmengine_oper_5.hpp"
-#include "Cisco_IOS_XR_pmengine_oper_6.hpp"
 #include "Cisco_IOS_XR_pmengine_oper_2.hpp"
-#include "Cisco_IOS_XR_pmengine_oper_3.hpp"
 #include "Cisco_IOS_XR_pmengine_oper_1.hpp"
+#include "Cisco_IOS_XR_pmengine_oper_4.hpp"
+#include "Cisco_IOS_XR_pmengine_oper_3.hpp"
+#include "Cisco_IOS_XR_pmengine_oper_5.hpp"
 
 using namespace ydk;
 
@@ -20,16 +19,16 @@ namespace Cisco_IOS_XR_pmengine_oper {
 PerformanceManagement::PerformanceManagement()
     :
     macsec(std::make_shared<PerformanceManagement::Macsec>())
-	,ho_vc(std::make_shared<PerformanceManagement::HoVc>())
-	,odu(std::make_shared<PerformanceManagement::Odu>())
-	,otu(std::make_shared<PerformanceManagement::Otu>())
-	,stm(std::make_shared<PerformanceManagement::Stm>())
-	,sonet(std::make_shared<PerformanceManagement::Sonet>())
-	,optics(std::make_shared<PerformanceManagement::Optics>())
-	,sts(std::make_shared<PerformanceManagement::Sts>())
-	,dwdm(std::make_shared<PerformanceManagement::Dwdm>())
-	,oc(std::make_shared<PerformanceManagement::Oc>())
-	,ethernet(std::make_shared<PerformanceManagement::Ethernet>())
+    , ho_vc(std::make_shared<PerformanceManagement::HoVc>())
+    , odu(std::make_shared<PerformanceManagement::Odu>())
+    , otu(std::make_shared<PerformanceManagement::Otu>())
+    , stm(std::make_shared<PerformanceManagement::Stm>())
+    , sonet(std::make_shared<PerformanceManagement::Sonet>())
+    , optics(std::make_shared<PerformanceManagement::Optics>())
+    , sts(std::make_shared<PerformanceManagement::Sts>())
+    , dwdm(std::make_shared<PerformanceManagement::Dwdm>())
+    , oc(std::make_shared<PerformanceManagement::Oc>())
+    , ethernet(std::make_shared<PerformanceManagement::Ethernet>())
 {
     macsec->parent = this;
     ho_vc->parent = this;
@@ -43,7 +42,7 @@ PerformanceManagement::PerformanceManagement()
     oc->parent = this;
     ethernet->parent = this;
 
-    yang_name = "performance-management"; yang_parent_name = "Cisco-IOS-XR-pmengine-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "performance-management"; yang_parent_name = "Cisco-IOS-XR-pmengine-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 PerformanceManagement::~PerformanceManagement()
@@ -52,6 +51,7 @@ PerformanceManagement::~PerformanceManagement()
 
 bool PerformanceManagement::has_data() const
 {
+    if (is_presence_container) return true;
     return (macsec !=  nullptr && macsec->has_data())
 	|| (ho_vc !=  nullptr && ho_vc->has_data())
 	|| (odu !=  nullptr && odu->has_data())
@@ -309,7 +309,7 @@ PerformanceManagement::Macsec::Macsec()
 {
     macsec_ports->parent = this;
 
-    yang_name = "macsec"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "macsec"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Macsec::~Macsec()
@@ -318,6 +318,7 @@ PerformanceManagement::Macsec::~Macsec()
 
 bool PerformanceManagement::Macsec::has_data() const
 {
+    if (is_presence_container) return true;
     return (macsec_ports !=  nullptr && macsec_ports->has_data());
 }
 
@@ -392,9 +393,11 @@ bool PerformanceManagement::Macsec::has_leaf_or_child_of_name(const std::string 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPorts()
+    :
+    macsec_port(this, {"name"})
 {
 
-    yang_name = "macsec-ports"; yang_parent_name = "macsec"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "macsec-ports"; yang_parent_name = "macsec"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::~MacsecPorts()
@@ -403,7 +406,8 @@ PerformanceManagement::Macsec::MacsecPorts::~MacsecPorts()
 
 bool PerformanceManagement::Macsec::MacsecPorts::has_data() const
 {
-    for (std::size_t index=0; index<macsec_port.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<macsec_port.len(); index++)
     {
         if(macsec_port[index]->has_data())
             return true;
@@ -413,7 +417,7 @@ bool PerformanceManagement::Macsec::MacsecPorts::has_data() const
 
 bool PerformanceManagement::Macsec::MacsecPorts::has_operation() const
 {
-    for (std::size_t index=0; index<macsec_port.size(); index++)
+    for (std::size_t index=0; index<macsec_port.len(); index++)
     {
         if(macsec_port[index]->has_operation())
             return true;
@@ -450,7 +454,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::get_child_by
     {
         auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort>();
         c->parent = this;
-        macsec_port.push_back(c);
+        macsec_port.append(c);
         return c;
     }
 
@@ -462,7 +466,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::Ma
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : macsec_port)
+    for (auto c : macsec_port.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -491,12 +495,12 @@ bool PerformanceManagement::Macsec::MacsecPorts::has_leaf_or_child_of_name(const
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecPort()
     :
     name{YType::str, "name"}
-    	,
+        ,
     macsec_current(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent>())
 {
     macsec_current->parent = this;
 
-    yang_name = "macsec-port"; yang_parent_name = "macsec-ports"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "macsec-port"; yang_parent_name = "macsec-ports"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::~MacsecPort()
@@ -505,6 +509,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::~MacsecPort()
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (macsec_current !=  nullptr && macsec_current->has_data());
 }
@@ -526,7 +531,8 @@ std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::get_absolute
 std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "macsec-port" <<"[name='" <<name <<"']";
+    path_buffer << "macsec-port";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -594,14 +600,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::has_leaf_or_child_o
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecCurrent()
     :
     macsec_minute15(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15>())
-	,macsec_second30(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30>())
-	,macsec_hour24(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24>())
+    , macsec_second30(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30>())
+    , macsec_hour24(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecHour24>())
 {
     macsec_minute15->parent = this;
     macsec_second30->parent = this;
     macsec_hour24->parent = this;
 
-    yang_name = "macsec-current"; yang_parent_name = "macsec-port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-current"; yang_parent_name = "macsec-port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::~MacsecCurrent()
@@ -610,6 +616,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::~MacsecCu
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::has_data() const
 {
+    if (is_presence_container) return true;
     return (macsec_minute15 !=  nullptr && macsec_minute15->has_data())
 	|| (macsec_second30 !=  nullptr && macsec_second30->has_data())
 	|| (macsec_hour24 !=  nullptr && macsec_hour24->has_data());
@@ -710,17 +717,17 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::has_
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15()
     :
-    macsec_minute15secyifs(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs>())
-	,macsec_minute15secyrxes(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes>())
-	,macsec_minute15secytxes(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes>())
-	,macsec_minute15_ether_s(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS>())
+    macsec_minute15secyifs(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs>())
+    , macsec_minute15secyrxes(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes>())
+    , macsec_minute15secytxes(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes>())
+    , macsec_minute15_ether_s(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS>())
 {
     macsec_minute15secyifs->parent = this;
     macsec_minute15secyrxes->parent = this;
     macsec_minute15secytxes->parent = this;
     macsec_minute15_ether_s->parent = this;
 
-    yang_name = "macsec-minute15"; yang_parent_name = "macsec-current"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-minute15"; yang_parent_name = "macsec-current"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::~MacsecMinute15()
@@ -729,6 +736,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::has_data() const
 {
+    if (is_presence_container) return true;
     return (macsec_minute15secyifs !=  nullptr && macsec_minute15secyifs->has_data())
 	|| (macsec_minute15secyrxes !=  nullptr && macsec_minute15secyrxes->has_data())
 	|| (macsec_minute15secytxes !=  nullptr && macsec_minute15secytxes->has_data())
@@ -766,7 +774,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(macsec_minute15secyifs == nullptr)
         {
-            macsec_minute15secyifs = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs>();
+            macsec_minute15secyifs = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs>();
         }
         return macsec_minute15secyifs;
     }
@@ -775,7 +783,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(macsec_minute15secyrxes == nullptr)
         {
-            macsec_minute15secyrxes = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes>();
+            macsec_minute15secyrxes = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes>();
         }
         return macsec_minute15secyrxes;
     }
@@ -784,7 +792,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(macsec_minute15secytxes == nullptr)
         {
-            macsec_minute15secytxes = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes>();
+            macsec_minute15secytxes = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes>();
         }
         return macsec_minute15secytxes;
     }
@@ -843,19 +851,22 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyifs()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyifs()
+    :
+    macsec_minute15secyif(this, {"number"})
 {
 
-    yang_name = "macsec-minute15secyifs"; yang_parent_name = "macsec-minute15"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-minute15secyifs"; yang_parent_name = "macsec-minute15"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::~MacsecMinute15Secyifs()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::~MacsecMinute15secyifs()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::has_data() const
 {
-    for (std::size_t index=0; index<macsec_minute15secyif.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<macsec_minute15secyif.len(); index++)
     {
         if(macsec_minute15secyif[index]->has_data())
             return true;
@@ -863,9 +874,9 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return false;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::has_operation() const
 {
-    for (std::size_t index=0; index<macsec_minute15secyif.size(); index++)
+    for (std::size_t index=0; index<macsec_minute15secyif.len(); index++)
     {
         if(macsec_minute15secyif[index]->has_operation())
             return true;
@@ -873,14 +884,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "macsec-minute15secyifs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -889,25 +900,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-minute15secyif")
     {
-        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif>();
+        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif>();
         c->parent = this;
-        macsec_minute15secyif.push_back(c);
+        macsec_minute15secyif.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : macsec_minute15secyif)
+    for (auto c : macsec_minute15secyif.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -918,22 +929,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::Ma
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "macsec-minute15secyif")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::MacsecMinute15Secyif()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::MacsecMinute15secyif()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -945,19 +956,19 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"},
     sample_count{YType::uint64, "sample-count"}
-    	,
-    in_pkts_untagged(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUntagged>())
-	,in_pkts_no_tag(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoTag>())
-	,in_pkts_bad_tag(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsBadTag>())
-	,in_pkts_unknown_sci(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUnknownSci>())
-	,in_pkts_no_sci(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoSci>())
-	,in_pkts_overrun(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsOverrun>())
-	,in_octets_validated(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsValidated>())
-	,in_octets_decrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsDecrypted>())
-	,out_pkts_untagged(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsUntagged>())
-	,out_pkts_too_long(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsTooLong>())
-	,out_octets_protected(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsProtected>())
-	,out_octets_encrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsEncrypted>())
+        ,
+    in_pkts_untagged(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged>())
+    , in_pkts_no_tag(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag>())
+    , in_pkts_bad_tag(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag>())
+    , in_pkts_unknown_sci(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci>())
+    , in_pkts_no_sci(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci>())
+    , in_pkts_overrun(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun>())
+    , in_octets_validated(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated>())
+    , in_octets_decrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted>())
+    , out_pkts_untagged(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged>())
+    , out_pkts_too_long(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong>())
+    , out_octets_protected(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected>())
+    , out_octets_encrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted>())
 {
     in_pkts_untagged->parent = this;
     in_pkts_no_tag->parent = this;
@@ -972,15 +983,16 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     out_octets_protected->parent = this;
     out_octets_encrypted->parent = this;
 
-    yang_name = "macsec-minute15secyif"; yang_parent_name = "macsec-minute15secyifs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-minute15secyif"; yang_parent_name = "macsec-minute15secyifs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::~MacsecMinute15Secyif()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::~MacsecMinute15secyif()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -1005,7 +1017,7 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| (out_octets_encrypted !=  nullptr && out_octets_encrypted->has_data());
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -1032,14 +1044,15 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| (out_octets_encrypted !=  nullptr && out_octets_encrypted->has_operation());
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "macsec-minute15secyif" <<"[number='" <<number <<"']";
+    path_buffer << "macsec-minute15secyif";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1058,13 +1071,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "in-pkts-untagged")
     {
         if(in_pkts_untagged == nullptr)
         {
-            in_pkts_untagged = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUntagged>();
+            in_pkts_untagged = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged>();
         }
         return in_pkts_untagged;
     }
@@ -1073,7 +1086,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_no_tag == nullptr)
         {
-            in_pkts_no_tag = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoTag>();
+            in_pkts_no_tag = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag>();
         }
         return in_pkts_no_tag;
     }
@@ -1082,7 +1095,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_bad_tag == nullptr)
         {
-            in_pkts_bad_tag = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsBadTag>();
+            in_pkts_bad_tag = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag>();
         }
         return in_pkts_bad_tag;
     }
@@ -1091,7 +1104,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_unknown_sci == nullptr)
         {
-            in_pkts_unknown_sci = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUnknownSci>();
+            in_pkts_unknown_sci = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci>();
         }
         return in_pkts_unknown_sci;
     }
@@ -1100,7 +1113,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_no_sci == nullptr)
         {
-            in_pkts_no_sci = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoSci>();
+            in_pkts_no_sci = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci>();
         }
         return in_pkts_no_sci;
     }
@@ -1109,7 +1122,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_overrun == nullptr)
         {
-            in_pkts_overrun = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsOverrun>();
+            in_pkts_overrun = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun>();
         }
         return in_pkts_overrun;
     }
@@ -1118,7 +1131,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_octets_validated == nullptr)
         {
-            in_octets_validated = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsValidated>();
+            in_octets_validated = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated>();
         }
         return in_octets_validated;
     }
@@ -1127,7 +1140,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_octets_decrypted == nullptr)
         {
-            in_octets_decrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsDecrypted>();
+            in_octets_decrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted>();
         }
         return in_octets_decrypted;
     }
@@ -1136,7 +1149,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out_pkts_untagged == nullptr)
         {
-            out_pkts_untagged = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsUntagged>();
+            out_pkts_untagged = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged>();
         }
         return out_pkts_untagged;
     }
@@ -1145,7 +1158,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out_pkts_too_long == nullptr)
         {
-            out_pkts_too_long = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsTooLong>();
+            out_pkts_too_long = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong>();
         }
         return out_pkts_too_long;
     }
@@ -1154,7 +1167,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out_octets_protected == nullptr)
         {
-            out_octets_protected = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsProtected>();
+            out_octets_protected = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected>();
         }
         return out_octets_protected;
     }
@@ -1163,7 +1176,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out_octets_encrypted == nullptr)
         {
-            out_octets_encrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsEncrypted>();
+            out_octets_encrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted>();
         }
         return out_octets_encrypted;
     }
@@ -1171,7 +1184,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1238,7 +1251,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::Ma
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -1302,7 +1315,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -1346,14 +1359,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "in-pkts-untagged" || name == "in-pkts-no-tag" || name == "in-pkts-bad-tag" || name == "in-pkts-unknown-sci" || name == "in-pkts-no-sci" || name == "in-pkts-overrun" || name == "in-octets-validated" || name == "in-octets-decrypted" || name == "out-pkts-untagged" || name == "out-pkts-too-long" || name == "out-octets-protected" || name == "out-octets-encrypted" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support" || name == "sample-count")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUntagged::InPktsUntagged()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged::InPktsUntagged()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -1361,22 +1374,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-untagged"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-untagged"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUntagged::~InPktsUntagged()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged::~InPktsUntagged()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUntagged::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUntagged::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -1385,14 +1399,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUntagged::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-untagged";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUntagged::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1405,19 +1419,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUntagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUntagged::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUntagged::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -1445,7 +1459,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUntagged::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -1465,14 +1479,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUntagged::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoTag::InPktsNoTag()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag::InPktsNoTag()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -1480,22 +1494,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-no-tag"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-no-tag"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoTag::~InPktsNoTag()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag::~InPktsNoTag()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoTag::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoTag::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -1504,14 +1519,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoTag::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-no-tag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoTag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1524,19 +1539,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoTag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -1564,7 +1579,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoTag::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -1584,14 +1599,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoTag::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsBadTag::InPktsBadTag()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag::InPktsBadTag()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -1599,22 +1614,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-bad-tag"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-bad-tag"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsBadTag::~InPktsBadTag()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag::~InPktsBadTag()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsBadTag::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsBadTag::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -1623,14 +1639,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsBadTag::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-bad-tag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsBadTag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1643,19 +1659,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsBadTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsBadTag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsBadTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -1683,7 +1699,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsBadTag::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -1703,14 +1719,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsBadTag::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUnknownSci::InPktsUnknownSci()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci::InPktsUnknownSci()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -1718,22 +1734,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-unknown-sci"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-unknown-sci"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUnknownSci::~InPktsUnknownSci()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci::~InPktsUnknownSci()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUnknownSci::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUnknownSci::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -1742,14 +1759,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUnknownSci::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-unknown-sci";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUnknownSci::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1762,19 +1779,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUnknownSci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUnknownSci::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUnknownSci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -1802,7 +1819,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUnknownSci::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -1822,14 +1839,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUnknownSci::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoSci::InPktsNoSci()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci::InPktsNoSci()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -1837,22 +1854,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-no-sci"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-no-sci"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoSci::~InPktsNoSci()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci::~InPktsNoSci()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoSci::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoSci::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -1861,14 +1879,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoSci::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-no-sci";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoSci::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1881,19 +1899,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoSci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoSci::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoSci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -1921,7 +1939,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoSci::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -1941,14 +1959,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoSci::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsOverrun::InPktsOverrun()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun::InPktsOverrun()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -1956,22 +1974,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-overrun"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-overrun"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsOverrun::~InPktsOverrun()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun::~InPktsOverrun()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsOverrun::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsOverrun::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -1980,14 +1999,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsOverrun::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-overrun";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsOverrun::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2000,19 +2019,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsOverrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsOverrun::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsOverrun::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2040,7 +2059,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsOverrun::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2060,14 +2079,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsOverrun::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsValidated::InOctetsValidated()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated::InOctetsValidated()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -2075,22 +2094,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-octets-validated"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-octets-validated"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsValidated::~InOctetsValidated()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated::~InOctetsValidated()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsValidated::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsValidated::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2099,14 +2119,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsValidated::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-octets-validated";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsValidated::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2119,19 +2139,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsValidated::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsValidated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2159,7 +2179,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsValidated::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2179,14 +2199,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsValidated::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsDecrypted::InOctetsDecrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted::InOctetsDecrypted()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -2194,22 +2214,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-octets-decrypted"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-octets-decrypted"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsDecrypted::~InOctetsDecrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted::~InOctetsDecrypted()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsDecrypted::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsDecrypted::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2218,14 +2239,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsDecrypted::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-octets-decrypted";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsDecrypted::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2238,19 +2259,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsDecrypted::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsDecrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2278,7 +2299,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsDecrypted::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2298,14 +2319,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsDecrypted::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsUntagged::OutPktsUntagged()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged::OutPktsUntagged()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -2313,22 +2334,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-pkts-untagged"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-pkts-untagged"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsUntagged::~OutPktsUntagged()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged::~OutPktsUntagged()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsUntagged::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsUntagged::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2337,14 +2359,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsUntagged::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-pkts-untagged";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsUntagged::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2357,19 +2379,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsUntagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsUntagged::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsUntagged::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2397,7 +2419,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsUntagged::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2417,14 +2439,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsUntagged::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsTooLong::OutPktsTooLong()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong::OutPktsTooLong()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -2432,22 +2454,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-pkts-too-long"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-pkts-too-long"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsTooLong::~OutPktsTooLong()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong::~OutPktsTooLong()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsTooLong::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsTooLong::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2456,14 +2479,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsTooLong::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-pkts-too-long";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsTooLong::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2476,19 +2499,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsTooLong::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsTooLong::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsTooLong::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2516,7 +2539,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsTooLong::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2536,14 +2559,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsTooLong::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsProtected::OutOctetsProtected()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected::OutOctetsProtected()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -2551,22 +2574,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-octets-protected"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-octets-protected"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsProtected::~OutOctetsProtected()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected::~OutOctetsProtected()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsProtected::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsProtected::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2575,14 +2599,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsProtected::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-octets-protected";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsProtected::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2595,19 +2619,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsProtected::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsProtected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2635,7 +2659,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsProtected::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2655,14 +2679,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsProtected::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsEncrypted::OutOctetsEncrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted::OutOctetsEncrypted()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -2670,22 +2694,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-octets-encrypted"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-octets-encrypted"; yang_parent_name = "macsec-minute15secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsEncrypted::~OutOctetsEncrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted::~OutOctetsEncrypted()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsEncrypted::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsEncrypted::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -2694,14 +2719,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsEncrypted::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-octets-encrypted";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsEncrypted::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2714,19 +2739,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsEncrypted::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsEncrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -2754,7 +2779,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsEncrypted::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -2774,26 +2799,29 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsEncrypted::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrxes()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrxes()
+    :
+    macsec_minute15secyrx(this, {"number"})
 {
 
-    yang_name = "macsec-minute15secyrxes"; yang_parent_name = "macsec-minute15"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-minute15secyrxes"; yang_parent_name = "macsec-minute15"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::~MacsecMinute15Secyrxes()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::~MacsecMinute15secyrxes()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::has_data() const
 {
-    for (std::size_t index=0; index<macsec_minute15secyrx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<macsec_minute15secyrx.len(); index++)
     {
         if(macsec_minute15secyrx[index]->has_data())
             return true;
@@ -2801,9 +2829,9 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return false;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::has_operation() const
 {
-    for (std::size_t index=0; index<macsec_minute15secyrx.size(); index++)
+    for (std::size_t index=0; index<macsec_minute15secyrx.len(); index++)
     {
         if(macsec_minute15secyrx[index]->has_operation())
             return true;
@@ -2811,14 +2839,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "macsec-minute15secyrxes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2827,25 +2855,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-minute15secyrx")
     {
-        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx>();
+        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx>();
         c->parent = this;
-        macsec_minute15secyrx.push_back(c);
+        macsec_minute15secyrx.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : macsec_minute15secyrx)
+    for (auto c : macsec_minute15secyrx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2856,22 +2884,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::Ma
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "macsec-minute15secyrx")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::MacsecMinute15Secyrx()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::MacsecMinute15secyrx()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -2883,18 +2911,18 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"},
     sample_count{YType::uint64, "sample-count"}
-    	,
-    in_pkts_unchecked(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnchecked>())
-	,in_pkts_delayed(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsDelayed>())
-	,in_pkts_late(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsLate>())
-	,in_pkts_ok(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsOk>())
-	,in_pkts_invalid(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsInvalid>())
-	,in_pkts_not_valid(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotValid>())
-	,in_pkts_not_using_sa(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotUsingSa>())
-	,in_pkts_unused_sa(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnusedSa>())
-	,in_pkts_untagged_hit(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUntaggedHit>())
-	,in_octets_validated(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsValidated>())
-	,in_octets_decrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsDecrypted>())
+        ,
+    in_pkts_unchecked(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked>())
+    , in_pkts_delayed(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed>())
+    , in_pkts_late(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate>())
+    , in_pkts_ok(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk>())
+    , in_pkts_invalid(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid>())
+    , in_pkts_not_valid(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid>())
+    , in_pkts_not_using_sa(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa>())
+    , in_pkts_unused_sa(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa>())
+    , in_pkts_untagged_hit(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit>())
+    , in_octets_validated(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated>())
+    , in_octets_decrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted>())
 {
     in_pkts_unchecked->parent = this;
     in_pkts_delayed->parent = this;
@@ -2908,15 +2936,16 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     in_octets_validated->parent = this;
     in_octets_decrypted->parent = this;
 
-    yang_name = "macsec-minute15secyrx"; yang_parent_name = "macsec-minute15secyrxes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-minute15secyrx"; yang_parent_name = "macsec-minute15secyrxes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::~MacsecMinute15Secyrx()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::~MacsecMinute15secyrx()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -2940,7 +2969,7 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| (in_octets_decrypted !=  nullptr && in_octets_decrypted->has_data());
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -2966,14 +2995,15 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| (in_octets_decrypted !=  nullptr && in_octets_decrypted->has_operation());
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "macsec-minute15secyrx" <<"[number='" <<number <<"']";
+    path_buffer << "macsec-minute15secyrx";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2992,13 +3022,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "in-pkts-unchecked")
     {
         if(in_pkts_unchecked == nullptr)
         {
-            in_pkts_unchecked = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnchecked>();
+            in_pkts_unchecked = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked>();
         }
         return in_pkts_unchecked;
     }
@@ -3007,7 +3037,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_delayed == nullptr)
         {
-            in_pkts_delayed = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsDelayed>();
+            in_pkts_delayed = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed>();
         }
         return in_pkts_delayed;
     }
@@ -3016,7 +3046,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_late == nullptr)
         {
-            in_pkts_late = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsLate>();
+            in_pkts_late = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate>();
         }
         return in_pkts_late;
     }
@@ -3025,7 +3055,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_ok == nullptr)
         {
-            in_pkts_ok = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsOk>();
+            in_pkts_ok = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk>();
         }
         return in_pkts_ok;
     }
@@ -3034,7 +3064,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_invalid == nullptr)
         {
-            in_pkts_invalid = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsInvalid>();
+            in_pkts_invalid = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid>();
         }
         return in_pkts_invalid;
     }
@@ -3043,7 +3073,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_not_valid == nullptr)
         {
-            in_pkts_not_valid = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotValid>();
+            in_pkts_not_valid = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid>();
         }
         return in_pkts_not_valid;
     }
@@ -3052,7 +3082,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_not_using_sa == nullptr)
         {
-            in_pkts_not_using_sa = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotUsingSa>();
+            in_pkts_not_using_sa = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa>();
         }
         return in_pkts_not_using_sa;
     }
@@ -3061,7 +3091,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_unused_sa == nullptr)
         {
-            in_pkts_unused_sa = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnusedSa>();
+            in_pkts_unused_sa = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa>();
         }
         return in_pkts_unused_sa;
     }
@@ -3070,7 +3100,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_untagged_hit == nullptr)
         {
-            in_pkts_untagged_hit = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUntaggedHit>();
+            in_pkts_untagged_hit = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit>();
         }
         return in_pkts_untagged_hit;
     }
@@ -3079,7 +3109,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_octets_validated == nullptr)
         {
-            in_octets_validated = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsValidated>();
+            in_octets_validated = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated>();
         }
         return in_octets_validated;
     }
@@ -3088,7 +3118,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_octets_decrypted == nullptr)
         {
-            in_octets_decrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsDecrypted>();
+            in_octets_decrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted>();
         }
         return in_octets_decrypted;
     }
@@ -3096,7 +3126,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3158,7 +3188,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::Ma
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -3222,7 +3252,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -3266,14 +3296,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "in-pkts-unchecked" || name == "in-pkts-delayed" || name == "in-pkts-late" || name == "in-pkts-ok" || name == "in-pkts-invalid" || name == "in-pkts-not-valid" || name == "in-pkts-not-using-sa" || name == "in-pkts-unused-sa" || name == "in-pkts-untagged-hit" || name == "in-octets-validated" || name == "in-octets-decrypted" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support" || name == "sample-count")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnchecked::InPktsUnchecked()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked::InPktsUnchecked()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -3281,22 +3311,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-unchecked"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-unchecked"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnchecked::~InPktsUnchecked()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked::~InPktsUnchecked()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnchecked::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnchecked::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -3305,14 +3336,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnchecked::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-unchecked";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnchecked::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3325,19 +3356,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnchecked::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnchecked::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnchecked::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -3365,7 +3396,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnchecked::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -3385,14 +3416,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnchecked::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsDelayed::InPktsDelayed()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed::InPktsDelayed()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -3400,22 +3431,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-delayed"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-delayed"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsDelayed::~InPktsDelayed()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed::~InPktsDelayed()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsDelayed::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsDelayed::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -3424,14 +3456,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsDelayed::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-delayed";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsDelayed::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3444,19 +3476,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsDelayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsDelayed::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsDelayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -3484,7 +3516,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsDelayed::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -3504,14 +3536,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsDelayed::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsLate::InPktsLate()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate::InPktsLate()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -3519,22 +3551,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-late"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-late"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsLate::~InPktsLate()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate::~InPktsLate()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsLate::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsLate::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -3543,14 +3576,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsLate::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-late";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsLate::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3563,19 +3596,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsLate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsLate::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsLate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -3603,7 +3636,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsLate::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -3623,14 +3656,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsLate::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsOk::InPktsOk()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk::InPktsOk()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -3638,22 +3671,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-ok"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-ok"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsOk::~InPktsOk()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk::~InPktsOk()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsOk::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsOk::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -3662,14 +3696,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsOk::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-ok";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsOk::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3682,19 +3716,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsOk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsOk::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsOk::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -3722,7 +3756,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsOk::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -3742,14 +3776,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsOk::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsInvalid::InPktsInvalid()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid::InPktsInvalid()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -3757,22 +3791,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-invalid"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-invalid"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsInvalid::~InPktsInvalid()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid::~InPktsInvalid()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsInvalid::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsInvalid::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -3781,14 +3816,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsInvalid::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-invalid";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsInvalid::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3801,19 +3836,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsInvalid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsInvalid::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsInvalid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -3841,7 +3876,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsInvalid::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -3861,14 +3896,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsInvalid::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotValid::InPktsNotValid()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid::InPktsNotValid()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -3876,22 +3911,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-not-valid"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-not-valid"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotValid::~InPktsNotValid()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid::~InPktsNotValid()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotValid::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotValid::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -3900,14 +3936,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotValid::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-not-valid";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotValid::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3920,19 +3956,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotValid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotValid::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotValid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -3960,7 +3996,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotValid::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -3980,14 +4016,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotValid::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotUsingSa::InPktsNotUsingSa()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa::InPktsNotUsingSa()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -3995,22 +4031,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-not-using-sa"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-not-using-sa"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotUsingSa::~InPktsNotUsingSa()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa::~InPktsNotUsingSa()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotUsingSa::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotUsingSa::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -4019,14 +4056,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotUsingSa::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-not-using-sa";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotUsingSa::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4039,19 +4076,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotUsingSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotUsingSa::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotUsingSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -4079,7 +4116,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotUsingSa::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -4099,14 +4136,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotUsingSa::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnusedSa::InPktsUnusedSa()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa::InPktsUnusedSa()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -4114,22 +4151,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-unused-sa"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-unused-sa"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnusedSa::~InPktsUnusedSa()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa::~InPktsUnusedSa()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnusedSa::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnusedSa::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -4138,14 +4176,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnusedSa::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-unused-sa";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnusedSa::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4158,19 +4196,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnusedSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnusedSa::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnusedSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -4198,7 +4236,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnusedSa::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -4218,14 +4256,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnusedSa::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUntaggedHit::InPktsUntaggedHit()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit::InPktsUntaggedHit()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -4233,22 +4271,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-untagged-hit"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-untagged-hit"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUntaggedHit::~InPktsUntaggedHit()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit::~InPktsUntaggedHit()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUntaggedHit::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUntaggedHit::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -4257,14 +4296,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUntaggedHit::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-untagged-hit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUntaggedHit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4277,19 +4316,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUntaggedHit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUntaggedHit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUntaggedHit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -4317,7 +4356,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUntaggedHit::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -4337,14 +4376,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUntaggedHit::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsValidated::InOctetsValidated()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated::InOctetsValidated()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -4352,22 +4391,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-octets-validated"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-octets-validated"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsValidated::~InOctetsValidated()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated::~InOctetsValidated()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsValidated::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsValidated::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -4376,14 +4416,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsValidated::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-octets-validated";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsValidated::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4396,19 +4436,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsValidated::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsValidated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -4436,7 +4476,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsValidated::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -4456,14 +4496,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsValidated::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsDecrypted::InOctetsDecrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted::InOctetsDecrypted()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -4471,22 +4511,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-octets-decrypted"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-octets-decrypted"; yang_parent_name = "macsec-minute15secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsDecrypted::~InOctetsDecrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted::~InOctetsDecrypted()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsDecrypted::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsDecrypted::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -4495,14 +4536,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsDecrypted::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-octets-decrypted";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsDecrypted::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4515,19 +4556,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsDecrypted::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsDecrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -4555,7 +4596,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsDecrypted::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -4575,26 +4616,29 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsDecrypted::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytxes()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytxes()
+    :
+    macsec_minute15secytx(this, {"number"})
 {
 
-    yang_name = "macsec-minute15secytxes"; yang_parent_name = "macsec-minute15"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-minute15secytxes"; yang_parent_name = "macsec-minute15"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::~MacsecMinute15Secytxes()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::~MacsecMinute15secytxes()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::has_data() const
 {
-    for (std::size_t index=0; index<macsec_minute15secytx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<macsec_minute15secytx.len(); index++)
     {
         if(macsec_minute15secytx[index]->has_data())
             return true;
@@ -4602,9 +4646,9 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return false;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::has_operation() const
 {
-    for (std::size_t index=0; index<macsec_minute15secytx.size(); index++)
+    for (std::size_t index=0; index<macsec_minute15secytx.len(); index++)
     {
         if(macsec_minute15secytx[index]->has_operation())
             return true;
@@ -4612,14 +4656,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "macsec-minute15secytxes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4628,25 +4672,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-minute15secytx")
     {
-        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx>();
+        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx>();
         c->parent = this;
-        macsec_minute15secytx.push_back(c);
+        macsec_minute15secytx.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : macsec_minute15secytx)
+    for (auto c : macsec_minute15secytx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4657,22 +4701,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::Ma
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "macsec-minute15secytx")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::MacsecMinute15Secytx()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::MacsecMinute15secytx()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -4684,12 +4728,12 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"},
     sample_count{YType::uint64, "sample-count"}
-    	,
-    out_pkts_protected(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsProtected>())
-	,out_pkts_encrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsEncrypted>())
-	,out_octets_protected(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsProtected>())
-	,out_octets_encrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsEncrypted>())
-	,out_pkts_too_long(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsTooLong>())
+        ,
+    out_pkts_protected(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected>())
+    , out_pkts_encrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted>())
+    , out_octets_protected(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected>())
+    , out_octets_encrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted>())
+    , out_pkts_too_long(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong>())
 {
     out_pkts_protected->parent = this;
     out_pkts_encrypted->parent = this;
@@ -4697,15 +4741,16 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     out_octets_encrypted->parent = this;
     out_pkts_too_long->parent = this;
 
-    yang_name = "macsec-minute15secytx"; yang_parent_name = "macsec-minute15secytxes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-minute15secytx"; yang_parent_name = "macsec-minute15secytxes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::~MacsecMinute15Secytx()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::~MacsecMinute15secytx()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -4723,7 +4768,7 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| (out_pkts_too_long !=  nullptr && out_pkts_too_long->has_data());
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -4743,14 +4788,15 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| (out_pkts_too_long !=  nullptr && out_pkts_too_long->has_operation());
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "macsec-minute15secytx" <<"[number='" <<number <<"']";
+    path_buffer << "macsec-minute15secytx";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4769,13 +4815,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "out-pkts-protected")
     {
         if(out_pkts_protected == nullptr)
         {
-            out_pkts_protected = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsProtected>();
+            out_pkts_protected = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected>();
         }
         return out_pkts_protected;
     }
@@ -4784,7 +4830,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out_pkts_encrypted == nullptr)
         {
-            out_pkts_encrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsEncrypted>();
+            out_pkts_encrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted>();
         }
         return out_pkts_encrypted;
     }
@@ -4793,7 +4839,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out_octets_protected == nullptr)
         {
-            out_octets_protected = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsProtected>();
+            out_octets_protected = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected>();
         }
         return out_octets_protected;
     }
@@ -4802,7 +4848,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out_octets_encrypted == nullptr)
         {
-            out_octets_encrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsEncrypted>();
+            out_octets_encrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted>();
         }
         return out_octets_encrypted;
     }
@@ -4811,7 +4857,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out_pkts_too_long == nullptr)
         {
-            out_pkts_too_long = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsTooLong>();
+            out_pkts_too_long = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong>();
         }
         return out_pkts_too_long;
     }
@@ -4819,7 +4865,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -4851,7 +4897,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::Ma
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -4915,7 +4961,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -4959,14 +5005,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "out-pkts-protected" || name == "out-pkts-encrypted" || name == "out-octets-protected" || name == "out-octets-encrypted" || name == "out-pkts-too-long" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support" || name == "sample-count")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsProtected::OutPktsProtected()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected::OutPktsProtected()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -4974,22 +5020,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-pkts-protected"; yang_parent_name = "macsec-minute15secytx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-pkts-protected"; yang_parent_name = "macsec-minute15secytx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsProtected::~OutPktsProtected()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected::~OutPktsProtected()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsProtected::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsProtected::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -4998,14 +5045,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsProtected::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-pkts-protected";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsProtected::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5018,19 +5065,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsProtected::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsProtected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -5058,7 +5105,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsProtected::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -5078,14 +5125,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsProtected::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsEncrypted::OutPktsEncrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted::OutPktsEncrypted()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -5093,22 +5140,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-pkts-encrypted"; yang_parent_name = "macsec-minute15secytx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-pkts-encrypted"; yang_parent_name = "macsec-minute15secytx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsEncrypted::~OutPktsEncrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted::~OutPktsEncrypted()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsEncrypted::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsEncrypted::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -5117,14 +5165,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsEncrypted::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-pkts-encrypted";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsEncrypted::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5137,19 +5185,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsEncrypted::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsEncrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -5177,7 +5225,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsEncrypted::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -5197,14 +5245,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsEncrypted::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsProtected::OutOctetsProtected()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected::OutOctetsProtected()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -5212,22 +5260,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-octets-protected"; yang_parent_name = "macsec-minute15secytx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-octets-protected"; yang_parent_name = "macsec-minute15secytx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsProtected::~OutOctetsProtected()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected::~OutOctetsProtected()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsProtected::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsProtected::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -5236,14 +5285,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsProtected::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-octets-protected";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsProtected::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5256,19 +5305,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsProtected::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsProtected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -5296,7 +5345,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsProtected::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -5316,14 +5365,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsProtected::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsEncrypted::OutOctetsEncrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted::OutOctetsEncrypted()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -5331,22 +5380,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-octets-encrypted"; yang_parent_name = "macsec-minute15secytx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-octets-encrypted"; yang_parent_name = "macsec-minute15secytx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsEncrypted::~OutOctetsEncrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted::~OutOctetsEncrypted()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsEncrypted::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsEncrypted::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -5355,14 +5405,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsEncrypted::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-octets-encrypted";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsEncrypted::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5375,19 +5425,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsEncrypted::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsEncrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -5415,7 +5465,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsEncrypted::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -5435,14 +5485,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsEncrypted::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsTooLong::OutPktsTooLong()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong::OutPktsTooLong()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -5450,22 +5500,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-pkts-too-long"; yang_parent_name = "macsec-minute15secytx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-pkts-too-long"; yang_parent_name = "macsec-minute15secytx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsTooLong::~OutPktsTooLong()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong::~OutPktsTooLong()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsTooLong::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsTooLong::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -5474,14 +5525,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsTooLong::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-pkts-too-long";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsTooLong::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5494,19 +5545,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsTooLong::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsTooLong::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsTooLong::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -5534,7 +5585,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsTooLong::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -5554,7 +5605,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsTooLong::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
@@ -5562,9 +5613,11 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15EtherS()
+    :
+    macsec_minute15_ether(this, {"number"})
 {
 
-    yang_name = "macsec-minute15-ether-s"; yang_parent_name = "macsec-minute15"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-minute15-ether-s"; yang_parent_name = "macsec-minute15"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::~MacsecMinute15EtherS()
@@ -5573,7 +5626,8 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::has_data() const
 {
-    for (std::size_t index=0; index<macsec_minute15_ether.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<macsec_minute15_ether.len(); index++)
     {
         if(macsec_minute15_ether[index]->has_data())
             return true;
@@ -5583,7 +5637,7 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::has_operation() const
 {
-    for (std::size_t index=0; index<macsec_minute15_ether.size(); index++)
+    for (std::size_t index=0; index<macsec_minute15_ether.len(); index++)
     {
         if(macsec_minute15_ether[index]->has_operation())
             return true;
@@ -5613,7 +5667,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether>();
         c->parent = this;
-        macsec_minute15_ether.push_back(c);
+        macsec_minute15_ether.append(c);
         return c;
     }
 
@@ -5625,7 +5679,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::Ma
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : macsec_minute15_ether)
+    for (auto c : macsec_minute15_ether.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5662,82 +5716,82 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     last_clear15_min_time{YType::str, "last-clear15-min-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"}
-    	,
+        ,
     rx_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::RxPkt>())
-	,stat_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::StatPkt>())
-	,octet_stat(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OctetStat>())
-	,oversize_pkt_stat(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OversizePktStat>())
-	,fcs_errors_stat(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::FcsErrorsStat>())
-	,long_frames_stat(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::LongFramesStat>())
-	,jabber_stat(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::JabberStat>())
-	,ether64_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether64Octets>())
-	,ether65127_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether65127Octet>())
-	,ether128255_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether128255Octet>())
-	,ether256511_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether256511Octet>())
-	,ether5121023_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether5121023Octet>())
-	,ether10241518_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether10241518Octet>())
-	,in_ucast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InUcastPkt>())
-	,in_mcast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMcastPkt>())
-	,in_bcast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InBcastPkt>())
-	,out_ucast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutUcastPkt>())
-	,out_bcast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutBcastPkt>())
-	,out_mcast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutMcastPkt>())
-	,tx_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxPkt>())
-	,if_in_errors(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::IfInErrors>())
-	,if_in_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::IfInOctets>())
-	,ether_stat_multicast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatMulticastPkt>())
-	,ether_stat_broadcast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatBroadcastPkt>())
-	,ether_stat_undersized_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatUndersizedPkt>())
-	,out_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutOctets>())
-	,in_pause_frame(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPauseFrame>())
-	,in_good_bytes(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodBytes>())
-	,in8021q_frames(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021QFrames>())
-	,in_pkts1519_max_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1519MaxOctets>())
-	,in_good_pkts(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodPkts>())
-	,in_drop_overrun(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOverrun>())
-	,in_drop_abort(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropAbort>())
-	,in_drop_invalid_vlan(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidVlan>())
-	,in_drop_invalid_dmac(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidDmac>())
-	,in_drop_invalid_encap(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidEncap>())
-	,in_drop_other(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOther>())
-	,in_mib_giant(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibGiant>())
-	,in_mib_jabber(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibJabber>())
-	,in_mibcrc(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibcrc>())
-	,in_error_collisions(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorCollisions>())
-	,in_error_symbol(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorSymbol>())
-	,out_good_bytes(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodBytes>())
-	,out8021q_frames(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021QFrames>())
-	,out_pause_frames(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPauseFrames>())
-	,out_pkts1519_max_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts1519MaxOctets>())
-	,out_good_pkts(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodPkts>())
-	,out_drop_underrun(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropUnderrun>())
-	,out_drop_abort(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropAbort>())
-	,out_drop_other(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropOther>())
-	,out_error_other(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutErrorOther>())
-	,in_error_giant(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorGiant>())
-	,in_error_runt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorRunt>())
-	,in_error_jabbers(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorJabbers>())
-	,in_error_fragments(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorFragments>())
-	,in_error_other(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorOther>())
-	,in_pkt64_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkt64Octet>())
-	,in_pkts65_to127_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts65To127Octets>())
-	,in_pkts128_to255_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts128To255Octets>())
-	,in_pkts256_to511_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts256To511Octets>())
-	,in_pkts512_to1023_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts512To1023Octets>())
-	,in_pkts1024_to1518_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1024To1518Octets>())
-	,outpkt64octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64Octet>())
-	,out_pkts65127_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts65127Octets>())
-	,out_pkts128255_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts128255Octets>())
-	,out_pkts256511_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts256511Octets>())
-	,out_pkts5121023_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts5121023Octets>())
-	,out_pkts10241518_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts10241518Octets>())
-	,rx_util(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::RxUtil>())
-	,tx_util(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxUtil>())
-	,tx_undersized_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxUndersizedPkt>())
-	,tx_oversized_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxOversizedPkt>())
-	,tx_fragments(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxFragments>())
-	,tx_jabber(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxJabber>())
-	,tx_bad_fcs(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxBadFcs>())
+    , stat_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::StatPkt>())
+    , octet_stat(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OctetStat>())
+    , oversize_pkt_stat(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OversizePktStat>())
+    , fcs_errors_stat(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::FcsErrorsStat>())
+    , long_frames_stat(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::LongFramesStat>())
+    , jabber_stat(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::JabberStat>())
+    , ether64_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether64Octets>())
+    , ether65127_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether65127Octet>())
+    , ether128255_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether128255Octet>())
+    , ether256511_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether256511Octet>())
+    , ether5121023_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether5121023Octet>())
+    , ether10241518_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether10241518Octet>())
+    , in_ucast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InUcastPkt>())
+    , in_mcast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMcastPkt>())
+    , in_bcast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InBcastPkt>())
+    , out_ucast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutUcastPkt>())
+    , out_bcast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutBcastPkt>())
+    , out_mcast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutMcastPkt>())
+    , tx_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxPkt>())
+    , if_in_errors(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::IfInErrors>())
+    , if_in_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::IfInOctets>())
+    , ether_stat_multicast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatMulticastPkt>())
+    , ether_stat_broadcast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatBroadcastPkt>())
+    , ether_stat_undersized_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatUndersizedPkt>())
+    , out_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutOctets>())
+    , in_pause_frame(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPauseFrame>())
+    , in_good_bytes(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodBytes>())
+    , in8021q_frames(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames>())
+    , in_pkts1519_max_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1519MaxOctets>())
+    , in_good_pkts(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodPkts>())
+    , in_drop_overrun(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOverrun>())
+    , in_drop_abort(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropAbort>())
+    , in_drop_invalid_vlan(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidVlan>())
+    , in_drop_invalid_dmac(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidDmac>())
+    , in_drop_invalid_encap(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidEncap>())
+    , in_drop_other(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOther>())
+    , in_mib_giant(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibGiant>())
+    , in_mib_jabber(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibJabber>())
+    , in_mibcrc(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibcrc>())
+    , in_error_collisions(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorCollisions>())
+    , in_error_symbol(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorSymbol>())
+    , out_good_bytes(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodBytes>())
+    , out8021q_frames(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames>())
+    , out_pause_frames(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPauseFrames>())
+    , out_pkts1519_max_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts1519MaxOctets>())
+    , out_good_pkts(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodPkts>())
+    , out_drop_underrun(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropUnderrun>())
+    , out_drop_abort(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropAbort>())
+    , out_drop_other(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropOther>())
+    , out_error_other(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutErrorOther>())
+    , in_error_giant(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorGiant>())
+    , in_error_runt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorRunt>())
+    , in_error_jabbers(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorJabbers>())
+    , in_error_fragments(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorFragments>())
+    , in_error_other(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorOther>())
+    , in_pkt64_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkt64Octet>())
+    , in_pkts65_to127_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts65To127Octets>())
+    , in_pkts128_to255_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts128To255Octets>())
+    , in_pkts256_to511_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts256To511Octets>())
+    , in_pkts512_to1023_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts512To1023Octets>())
+    , in_pkts1024_to1518_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1024To1518Octets>())
+    , outpkt64octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet>())
+    , out_pkts65127_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts65127Octets>())
+    , out_pkts128255_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts128255Octets>())
+    , out_pkts256511_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts256511Octets>())
+    , out_pkts5121023_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts5121023Octets>())
+    , out_pkts10241518_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts10241518Octets>())
+    , rx_util(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::RxUtil>())
+    , tx_util(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxUtil>())
+    , tx_undersized_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxUndersizedPkt>())
+    , tx_oversized_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxOversizedPkt>())
+    , tx_fragments(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxFragments>())
+    , tx_jabber(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxJabber>())
+    , tx_bad_fcs(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxBadFcs>())
 {
     rx_pkt->parent = this;
     stat_pkt->parent = this;
@@ -5815,7 +5869,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     tx_jabber->parent = this;
     tx_bad_fcs->parent = this;
 
-    yang_name = "macsec-minute15-ether"; yang_parent_name = "macsec-minute15-ether-s"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-minute15-ether"; yang_parent_name = "macsec-minute15-ether-s"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::~MacsecMinute15Ether()
@@ -5824,6 +5878,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -6002,7 +6057,8 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "macsec-minute15-ether" <<"[number='" <<number <<"']";
+    path_buffer << "macsec-minute15-ether";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -6282,7 +6338,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in8021q_frames == nullptr)
         {
-            in8021q_frames = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021QFrames>();
+            in8021q_frames = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames>();
         }
         return in8021q_frames;
     }
@@ -6417,7 +6473,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out8021q_frames == nullptr)
         {
-            out8021q_frames = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021QFrames>();
+            out8021q_frames = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames>();
         }
         return out8021q_frames;
     }
@@ -6588,7 +6644,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(outpkt64octet == nullptr)
         {
-            outpkt64octet = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64Octet>();
+            outpkt64octet = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet>();
         }
         return outpkt64octet;
     }
@@ -7199,7 +7255,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "rx-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::RxPkt::~RxPkt()
@@ -7208,6 +7264,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::RxPkt::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -7318,7 +7375,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "stat-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stat-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::StatPkt::~StatPkt()
@@ -7327,6 +7384,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::StatPkt::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -7437,7 +7495,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "octet-stat"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "octet-stat"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OctetStat::~OctetStat()
@@ -7446,6 +7504,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OctetStat::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -7556,7 +7615,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "oversize-pkt-stat"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oversize-pkt-stat"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OversizePktStat::~OversizePktStat()
@@ -7565,6 +7624,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OversizePktStat::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -7675,7 +7735,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "fcs-errors-stat"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fcs-errors-stat"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::FcsErrorsStat::~FcsErrorsStat()
@@ -7684,6 +7744,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::FcsErrorsStat::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -7794,7 +7855,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "long-frames-stat"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "long-frames-stat"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::LongFramesStat::~LongFramesStat()
@@ -7803,6 +7864,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::LongFramesStat::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -7913,7 +7975,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "jabber-stat"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "jabber-stat"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::JabberStat::~JabberStat()
@@ -7922,6 +7984,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::JabberStat::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -8032,7 +8095,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "ether64-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ether64-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether64Octets::~Ether64Octets()
@@ -8041,6 +8104,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether64Octets::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -8151,7 +8215,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "ether65127-octet"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ether65127-octet"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether65127Octet::~Ether65127Octet()
@@ -8160,6 +8224,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether65127Octet::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -8270,7 +8335,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "ether128255-octet"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ether128255-octet"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether128255Octet::~Ether128255Octet()
@@ -8279,6 +8344,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether128255Octet::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -8389,7 +8455,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "ether256511-octet"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ether256511-octet"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether256511Octet::~Ether256511Octet()
@@ -8398,6 +8464,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether256511Octet::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -8508,7 +8575,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "ether5121023-octet"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ether5121023-octet"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether5121023Octet::~Ether5121023Octet()
@@ -8517,6 +8584,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether5121023Octet::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -8627,7 +8695,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "ether10241518-octet"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ether10241518-octet"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether10241518Octet::~Ether10241518Octet()
@@ -8636,6 +8704,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether10241518Octet::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -8746,7 +8815,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-ucast-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-ucast-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InUcastPkt::~InUcastPkt()
@@ -8755,6 +8824,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InUcastPkt::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -8865,7 +8935,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-mcast-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-mcast-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMcastPkt::~InMcastPkt()
@@ -8874,6 +8944,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMcastPkt::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -8984,7 +9055,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-bcast-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-bcast-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InBcastPkt::~InBcastPkt()
@@ -8993,6 +9064,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InBcastPkt::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -9103,7 +9175,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-ucast-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-ucast-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutUcastPkt::~OutUcastPkt()
@@ -9112,6 +9184,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutUcastPkt::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -9222,7 +9295,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-bcast-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-bcast-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutBcastPkt::~OutBcastPkt()
@@ -9231,6 +9304,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutBcastPkt::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -9341,7 +9415,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-mcast-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-mcast-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutMcastPkt::~OutMcastPkt()
@@ -9350,6 +9424,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutMcastPkt::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -9460,7 +9535,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "tx-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxPkt::~TxPkt()
@@ -9469,6 +9544,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxPkt::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -9579,7 +9655,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "if-in-errors"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "if-in-errors"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::IfInErrors::~IfInErrors()
@@ -9588,6 +9664,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::IfInErrors::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -9698,7 +9775,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "if-in-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "if-in-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::IfInOctets::~IfInOctets()
@@ -9707,6 +9784,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::IfInOctets::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -9817,7 +9895,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "ether-stat-multicast-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ether-stat-multicast-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatMulticastPkt::~EtherStatMulticastPkt()
@@ -9826,6 +9904,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatMulticastPkt::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -9936,7 +10015,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "ether-stat-broadcast-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ether-stat-broadcast-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatBroadcastPkt::~EtherStatBroadcastPkt()
@@ -9945,6 +10024,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatBroadcastPkt::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -10055,7 +10135,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "ether-stat-undersized-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ether-stat-undersized-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatUndersizedPkt::~EtherStatUndersizedPkt()
@@ -10064,6 +10144,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatUndersizedPkt::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -10174,7 +10255,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutOctets::~OutOctets()
@@ -10183,6 +10264,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutOctets::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -10293,7 +10375,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pause-frame"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pause-frame"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPauseFrame::~InPauseFrame()
@@ -10302,6 +10384,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPauseFrame::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -10412,7 +10495,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-good-bytes"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-good-bytes"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodBytes::~InGoodBytes()
@@ -10421,6 +10504,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodBytes::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -10523,7 +10607,7 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021QFrames::In8021QFrames()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames::In8021qFrames()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -10531,22 +10615,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in8021q-frames"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in8021q-frames"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021QFrames::~In8021QFrames()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames::~In8021qFrames()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021QFrames::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021QFrames::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -10555,14 +10640,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021QFrames::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in8021q-frames";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021QFrames::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10575,19 +10660,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021QFrames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021QFrames::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021QFrames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -10615,7 +10700,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021QFrames::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -10635,7 +10720,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021QFrames::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
@@ -10650,7 +10735,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts1519-max-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts1519-max-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1519MaxOctets::~InPkts1519MaxOctets()
@@ -10659,6 +10744,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1519MaxOctets::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -10769,7 +10855,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-good-pkts"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-good-pkts"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodPkts::~InGoodPkts()
@@ -10778,6 +10864,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodPkts::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -10888,7 +10975,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-drop-overrun"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-drop-overrun"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOverrun::~InDropOverrun()
@@ -10897,6 +10984,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOverrun::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -11007,7 +11095,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-drop-abort"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-drop-abort"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropAbort::~InDropAbort()
@@ -11016,6 +11104,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropAbort::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -11126,7 +11215,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-drop-invalid-vlan"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-drop-invalid-vlan"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidVlan::~InDropInvalidVlan()
@@ -11135,6 +11224,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidVlan::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -11245,7 +11335,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-drop-invalid-dmac"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-drop-invalid-dmac"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidDmac::~InDropInvalidDmac()
@@ -11254,6 +11344,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidDmac::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -11364,7 +11455,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-drop-invalid-encap"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-drop-invalid-encap"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidEncap::~InDropInvalidEncap()
@@ -11373,6 +11464,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidEncap::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -11483,7 +11575,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-drop-other"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-drop-other"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOther::~InDropOther()
@@ -11492,6 +11584,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOther::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -11602,7 +11695,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-mib-giant"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-mib-giant"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibGiant::~InMibGiant()
@@ -11611,6 +11704,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibGiant::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -11721,7 +11815,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-mib-jabber"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-mib-jabber"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibJabber::~InMibJabber()
@@ -11730,6 +11824,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibJabber::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -11840,7 +11935,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-mibcrc"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-mibcrc"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibcrc::~InMibcrc()
@@ -11849,6 +11944,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibcrc::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -11959,7 +12055,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-error-collisions"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-error-collisions"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorCollisions::~InErrorCollisions()
@@ -11968,6 +12064,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorCollisions::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -12078,7 +12175,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-error-symbol"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-error-symbol"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorSymbol::~InErrorSymbol()
@@ -12087,6 +12184,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorSymbol::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -12197,7 +12295,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-good-bytes"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-good-bytes"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodBytes::~OutGoodBytes()
@@ -12206,6 +12304,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodBytes::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -12308,7 +12407,7 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021QFrames::Out8021QFrames()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames::Out8021qFrames()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -12316,22 +12415,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out8021q-frames"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out8021q-frames"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021QFrames::~Out8021QFrames()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames::~Out8021qFrames()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021QFrames::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021QFrames::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -12340,14 +12440,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021QFrames::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out8021q-frames";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021QFrames::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12360,19 +12460,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021QFrames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021QFrames::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021QFrames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -12400,7 +12500,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021QFrames::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -12420,7 +12520,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021QFrames::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
@@ -12435,7 +12535,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-pause-frames"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-pause-frames"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPauseFrames::~OutPauseFrames()
@@ -12444,6 +12544,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPauseFrames::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -12554,7 +12655,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-pkts1519-max-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-pkts1519-max-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts1519MaxOctets::~OutPkts1519MaxOctets()
@@ -12563,6 +12664,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts1519MaxOctets::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -12673,7 +12775,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-good-pkts"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-good-pkts"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodPkts::~OutGoodPkts()
@@ -12682,6 +12784,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodPkts::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -12792,7 +12895,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-drop-underrun"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-drop-underrun"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropUnderrun::~OutDropUnderrun()
@@ -12801,6 +12904,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropUnderrun::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -12911,7 +13015,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-drop-abort"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-drop-abort"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropAbort::~OutDropAbort()
@@ -12920,6 +13024,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropAbort::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -13030,7 +13135,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-drop-other"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-drop-other"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropOther::~OutDropOther()
@@ -13039,6 +13144,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropOther::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -13149,7 +13255,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-error-other"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-error-other"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutErrorOther::~OutErrorOther()
@@ -13158,6 +13264,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutErrorOther::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -13268,7 +13375,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-error-giant"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-error-giant"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorGiant::~InErrorGiant()
@@ -13277,6 +13384,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorGiant::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -13387,7 +13495,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-error-runt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-error-runt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorRunt::~InErrorRunt()
@@ -13396,6 +13504,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorRunt::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -13506,7 +13615,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-error-jabbers"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-error-jabbers"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorJabbers::~InErrorJabbers()
@@ -13515,6 +13624,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorJabbers::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -13625,7 +13735,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-error-fragments"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-error-fragments"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorFragments::~InErrorFragments()
@@ -13634,6 +13744,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorFragments::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -13744,7 +13855,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-error-other"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-error-other"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorOther::~InErrorOther()
@@ -13753,6 +13864,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorOther::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -13863,7 +13975,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkt64-octet"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkt64-octet"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkt64Octet::~InPkt64Octet()
@@ -13872,6 +13984,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkt64Octet::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -13982,7 +14095,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts65-to127-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts65-to127-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts65To127Octets::~InPkts65To127Octets()
@@ -13991,6 +14104,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts65To127Octets::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -14101,7 +14215,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts128-to255-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts128-to255-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts128To255Octets::~InPkts128To255Octets()
@@ -14110,6 +14224,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts128To255Octets::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -14220,7 +14335,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts256-to511-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts256-to511-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts256To511Octets::~InPkts256To511Octets()
@@ -14229,6 +14344,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts256To511Octets::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -14339,7 +14455,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts512-to1023-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts512-to1023-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts512To1023Octets::~InPkts512To1023Octets()
@@ -14348,6 +14464,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts512To1023Octets::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -14458,7 +14575,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts1024-to1518-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts1024-to1518-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1024To1518Octets::~InPkts1024To1518Octets()
@@ -14467,6 +14584,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1024To1518Octets::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -14569,7 +14687,7 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64Octet::Outpkt64Octet()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet::Outpkt64octet()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -14577,22 +14695,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "outpkt64octet"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outpkt64octet"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64Octet::~Outpkt64Octet()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet::~Outpkt64octet()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64Octet::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64Octet::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -14601,14 +14720,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64Octet::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "outpkt64octet";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64Octet::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14621,19 +14740,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64Octet::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64Octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -14661,7 +14780,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64Octet::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -14681,7 +14800,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64Octet::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
@@ -14696,7 +14815,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-pkts65127-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-pkts65127-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts65127Octets::~OutPkts65127Octets()
@@ -14705,6 +14824,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts65127Octets::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -14815,7 +14935,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-pkts128255-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-pkts128255-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts128255Octets::~OutPkts128255Octets()
@@ -14824,6 +14944,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts128255Octets::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -14934,7 +15055,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-pkts256511-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-pkts256511-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts256511Octets::~OutPkts256511Octets()
@@ -14943,6 +15064,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts256511Octets::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -15053,7 +15175,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-pkts5121023-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-pkts5121023-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts5121023Octets::~OutPkts5121023Octets()
@@ -15062,6 +15184,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts5121023Octets::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -15172,7 +15295,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-pkts10241518-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-pkts10241518-octets"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts10241518Octets::~OutPkts10241518Octets()
@@ -15181,6 +15304,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts10241518Octets::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -15291,7 +15415,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "rx-util"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-util"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::RxUtil::~RxUtil()
@@ -15300,6 +15424,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::RxUtil::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -15410,7 +15535,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "tx-util"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-util"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxUtil::~TxUtil()
@@ -15419,6 +15544,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxUtil::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -15529,7 +15655,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "tx-undersized-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-undersized-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxUndersizedPkt::~TxUndersizedPkt()
@@ -15538,6 +15664,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxUndersizedPkt::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -15648,7 +15775,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "tx-oversized-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-oversized-pkt"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxOversizedPkt::~TxOversizedPkt()
@@ -15657,6 +15784,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxOversizedPkt::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -15767,7 +15895,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "tx-fragments"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-fragments"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxFragments::~TxFragments()
@@ -15776,6 +15904,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxFragments::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -15886,7 +16015,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "tx-jabber"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-jabber"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxJabber::~TxJabber()
@@ -15895,6 +16024,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxJabber::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -16005,7 +16135,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "tx-bad-fcs"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-bad-fcs"; yang_parent_name = "macsec-minute15-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxBadFcs::~TxBadFcs()
@@ -16014,6 +16144,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMin
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxBadFcs::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -16118,17 +16249,17 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30()
     :
-    macsec_second30secyifs(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs>())
-	,macsec_second30secyrxes(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes>())
-	,macsec_second30_ether_s(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS>())
-	,macsec_second30secytxes(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secytxes>())
+    macsec_second30secyifs(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs>())
+    , macsec_second30secyrxes(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes>())
+    , macsec_second30_ether_s(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS>())
+    , macsec_second30secytxes(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secytxes>())
 {
     macsec_second30secyifs->parent = this;
     macsec_second30secyrxes->parent = this;
     macsec_second30_ether_s->parent = this;
     macsec_second30secytxes->parent = this;
 
-    yang_name = "macsec-second30"; yang_parent_name = "macsec-current"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-second30"; yang_parent_name = "macsec-current"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::~MacsecSecond30()
@@ -16137,6 +16268,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::has_data() const
 {
+    if (is_presence_container) return true;
     return (macsec_second30secyifs !=  nullptr && macsec_second30secyifs->has_data())
 	|| (macsec_second30secyrxes !=  nullptr && macsec_second30secyrxes->has_data())
 	|| (macsec_second30_ether_s !=  nullptr && macsec_second30_ether_s->has_data())
@@ -16174,7 +16306,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(macsec_second30secyifs == nullptr)
         {
-            macsec_second30secyifs = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs>();
+            macsec_second30secyifs = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs>();
         }
         return macsec_second30secyifs;
     }
@@ -16183,7 +16315,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(macsec_second30secyrxes == nullptr)
         {
-            macsec_second30secyrxes = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes>();
+            macsec_second30secyrxes = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes>();
         }
         return macsec_second30secyrxes;
     }
@@ -16201,7 +16333,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(macsec_second30secytxes == nullptr)
         {
-            macsec_second30secytxes = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secytxes>();
+            macsec_second30secytxes = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secytxes>();
         }
         return macsec_second30secytxes;
     }
@@ -16251,19 +16383,22 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyifs()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyifs()
+    :
+    macsec_second30secyif(this, {"number"})
 {
 
-    yang_name = "macsec-second30secyifs"; yang_parent_name = "macsec-second30"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-second30secyifs"; yang_parent_name = "macsec-second30"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::~MacsecSecond30Secyifs()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::~MacsecSecond30secyifs()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::has_data() const
 {
-    for (std::size_t index=0; index<macsec_second30secyif.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<macsec_second30secyif.len(); index++)
     {
         if(macsec_second30secyif[index]->has_data())
             return true;
@@ -16271,9 +16406,9 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return false;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::has_operation() const
 {
-    for (std::size_t index=0; index<macsec_second30secyif.size(); index++)
+    for (std::size_t index=0; index<macsec_second30secyif.len(); index++)
     {
         if(macsec_second30secyif[index]->has_operation())
             return true;
@@ -16281,14 +16416,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "macsec-second30secyifs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16297,25 +16432,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-second30secyif")
     {
-        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif>();
+        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif>();
         c->parent = this;
-        macsec_second30secyif.push_back(c);
+        macsec_second30secyif.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : macsec_second30secyif)
+    for (auto c : macsec_second30secyif.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16326,22 +16461,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::Ma
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "macsec-second30secyif")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::MacsecSecond30Secyif()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::MacsecSecond30secyif()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -16353,19 +16488,19 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"},
     sample_count{YType::uint64, "sample-count"}
-    	,
-    in_pkts_untagged(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUntagged>())
-	,in_pkts_no_tag(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoTag>())
-	,in_pkts_bad_tag(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsBadTag>())
-	,in_pkts_unknown_sci(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUnknownSci>())
-	,in_pkts_no_sci(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoSci>())
-	,in_pkts_overrun(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsOverrun>())
-	,in_octets_validated(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsValidated>())
-	,in_octets_decrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsDecrypted>())
-	,out_pkts_untagged(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsUntagged>())
-	,out_pkts_too_long(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsTooLong>())
-	,out_octets_protected(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsProtected>())
-	,out_octets_encrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsEncrypted>())
+        ,
+    in_pkts_untagged(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged>())
+    , in_pkts_no_tag(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag>())
+    , in_pkts_bad_tag(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag>())
+    , in_pkts_unknown_sci(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci>())
+    , in_pkts_no_sci(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci>())
+    , in_pkts_overrun(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun>())
+    , in_octets_validated(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated>())
+    , in_octets_decrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted>())
+    , out_pkts_untagged(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged>())
+    , out_pkts_too_long(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong>())
+    , out_octets_protected(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected>())
+    , out_octets_encrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted>())
 {
     in_pkts_untagged->parent = this;
     in_pkts_no_tag->parent = this;
@@ -16380,15 +16515,16 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     out_octets_protected->parent = this;
     out_octets_encrypted->parent = this;
 
-    yang_name = "macsec-second30secyif"; yang_parent_name = "macsec-second30secyifs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-second30secyif"; yang_parent_name = "macsec-second30secyifs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::~MacsecSecond30Secyif()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::~MacsecSecond30secyif()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -16413,7 +16549,7 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| (out_octets_encrypted !=  nullptr && out_octets_encrypted->has_data());
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -16440,14 +16576,15 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| (out_octets_encrypted !=  nullptr && out_octets_encrypted->has_operation());
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "macsec-second30secyif" <<"[number='" <<number <<"']";
+    path_buffer << "macsec-second30secyif";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16466,13 +16603,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "in-pkts-untagged")
     {
         if(in_pkts_untagged == nullptr)
         {
-            in_pkts_untagged = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUntagged>();
+            in_pkts_untagged = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged>();
         }
         return in_pkts_untagged;
     }
@@ -16481,7 +16618,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_no_tag == nullptr)
         {
-            in_pkts_no_tag = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoTag>();
+            in_pkts_no_tag = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag>();
         }
         return in_pkts_no_tag;
     }
@@ -16490,7 +16627,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_bad_tag == nullptr)
         {
-            in_pkts_bad_tag = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsBadTag>();
+            in_pkts_bad_tag = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag>();
         }
         return in_pkts_bad_tag;
     }
@@ -16499,7 +16636,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_unknown_sci == nullptr)
         {
-            in_pkts_unknown_sci = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUnknownSci>();
+            in_pkts_unknown_sci = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci>();
         }
         return in_pkts_unknown_sci;
     }
@@ -16508,7 +16645,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_no_sci == nullptr)
         {
-            in_pkts_no_sci = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoSci>();
+            in_pkts_no_sci = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci>();
         }
         return in_pkts_no_sci;
     }
@@ -16517,7 +16654,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_overrun == nullptr)
         {
-            in_pkts_overrun = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsOverrun>();
+            in_pkts_overrun = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun>();
         }
         return in_pkts_overrun;
     }
@@ -16526,7 +16663,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_octets_validated == nullptr)
         {
-            in_octets_validated = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsValidated>();
+            in_octets_validated = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated>();
         }
         return in_octets_validated;
     }
@@ -16535,7 +16672,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_octets_decrypted == nullptr)
         {
-            in_octets_decrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsDecrypted>();
+            in_octets_decrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted>();
         }
         return in_octets_decrypted;
     }
@@ -16544,7 +16681,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out_pkts_untagged == nullptr)
         {
-            out_pkts_untagged = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsUntagged>();
+            out_pkts_untagged = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged>();
         }
         return out_pkts_untagged;
     }
@@ -16553,7 +16690,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out_pkts_too_long == nullptr)
         {
-            out_pkts_too_long = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsTooLong>();
+            out_pkts_too_long = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong>();
         }
         return out_pkts_too_long;
     }
@@ -16562,7 +16699,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out_octets_protected == nullptr)
         {
-            out_octets_protected = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsProtected>();
+            out_octets_protected = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected>();
         }
         return out_octets_protected;
     }
@@ -16571,7 +16708,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out_octets_encrypted == nullptr)
         {
-            out_octets_encrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsEncrypted>();
+            out_octets_encrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted>();
         }
         return out_octets_encrypted;
     }
@@ -16579,7 +16716,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -16646,7 +16783,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::Ma
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -16710,7 +16847,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -16754,14 +16891,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "in-pkts-untagged" || name == "in-pkts-no-tag" || name == "in-pkts-bad-tag" || name == "in-pkts-unknown-sci" || name == "in-pkts-no-sci" || name == "in-pkts-overrun" || name == "in-octets-validated" || name == "in-octets-decrypted" || name == "out-pkts-untagged" || name == "out-pkts-too-long" || name == "out-octets-protected" || name == "out-octets-encrypted" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support" || name == "sample-count")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUntagged::InPktsUntagged()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged::InPktsUntagged()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -16769,22 +16906,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-untagged"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-untagged"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUntagged::~InPktsUntagged()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged::~InPktsUntagged()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUntagged::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUntagged::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16793,14 +16931,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUntagged::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-untagged";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUntagged::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16813,19 +16951,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUntagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUntagged::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUntagged::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16853,7 +16991,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUntagged::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16873,14 +17011,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUntagged::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoTag::InPktsNoTag()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag::InPktsNoTag()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -16888,22 +17026,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-no-tag"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-no-tag"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoTag::~InPktsNoTag()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag::~InPktsNoTag()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoTag::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoTag::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -16912,14 +17051,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoTag::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-no-tag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoTag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16932,19 +17071,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoTag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -16972,7 +17111,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoTag::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -16992,14 +17131,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoTag::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsBadTag::InPktsBadTag()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag::InPktsBadTag()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -17007,22 +17146,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-bad-tag"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-bad-tag"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsBadTag::~InPktsBadTag()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag::~InPktsBadTag()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsBadTag::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsBadTag::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -17031,14 +17171,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsBadTag::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-bad-tag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsBadTag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17051,19 +17191,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsBadTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsBadTag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsBadTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -17091,7 +17231,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsBadTag::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -17111,14 +17251,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsBadTag::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUnknownSci::InPktsUnknownSci()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci::InPktsUnknownSci()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -17126,22 +17266,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-unknown-sci"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-unknown-sci"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUnknownSci::~InPktsUnknownSci()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci::~InPktsUnknownSci()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUnknownSci::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUnknownSci::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -17150,14 +17291,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUnknownSci::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-unknown-sci";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUnknownSci::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17170,19 +17311,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUnknownSci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUnknownSci::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUnknownSci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -17210,7 +17351,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUnknownSci::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -17230,14 +17371,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUnknownSci::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoSci::InPktsNoSci()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci::InPktsNoSci()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -17245,22 +17386,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-no-sci"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-no-sci"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoSci::~InPktsNoSci()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci::~InPktsNoSci()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoSci::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoSci::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -17269,14 +17411,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoSci::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-no-sci";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoSci::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17289,19 +17431,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoSci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoSci::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoSci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -17329,7 +17471,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoSci::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -17349,14 +17491,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoSci::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsOverrun::InPktsOverrun()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun::InPktsOverrun()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -17364,22 +17506,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-overrun"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-overrun"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsOverrun::~InPktsOverrun()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun::~InPktsOverrun()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsOverrun::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsOverrun::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -17388,14 +17531,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsOverrun::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-overrun";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsOverrun::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17408,19 +17551,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsOverrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsOverrun::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsOverrun::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -17448,7 +17591,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsOverrun::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -17468,14 +17611,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsOverrun::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsValidated::InOctetsValidated()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated::InOctetsValidated()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -17483,22 +17626,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-octets-validated"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-octets-validated"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsValidated::~InOctetsValidated()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated::~InOctetsValidated()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsValidated::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsValidated::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -17507,14 +17651,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsValidated::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-octets-validated";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsValidated::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17527,19 +17671,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsValidated::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsValidated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -17567,7 +17711,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsValidated::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -17587,14 +17731,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsValidated::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsDecrypted::InOctetsDecrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted::InOctetsDecrypted()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -17602,22 +17746,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-octets-decrypted"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-octets-decrypted"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsDecrypted::~InOctetsDecrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted::~InOctetsDecrypted()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsDecrypted::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsDecrypted::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -17626,14 +17771,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsDecrypted::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-octets-decrypted";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsDecrypted::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17646,19 +17791,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsDecrypted::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsDecrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -17686,7 +17831,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsDecrypted::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -17706,14 +17851,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsDecrypted::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsUntagged::OutPktsUntagged()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged::OutPktsUntagged()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -17721,22 +17866,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-pkts-untagged"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-pkts-untagged"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsUntagged::~OutPktsUntagged()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged::~OutPktsUntagged()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsUntagged::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsUntagged::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -17745,14 +17891,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsUntagged::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-pkts-untagged";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsUntagged::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17765,19 +17911,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsUntagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsUntagged::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsUntagged::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -17805,7 +17951,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsUntagged::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -17825,14 +17971,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsUntagged::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsTooLong::OutPktsTooLong()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong::OutPktsTooLong()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -17840,22 +17986,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-pkts-too-long"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-pkts-too-long"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsTooLong::~OutPktsTooLong()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong::~OutPktsTooLong()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsTooLong::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsTooLong::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -17864,14 +18011,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsTooLong::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-pkts-too-long";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsTooLong::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17884,19 +18031,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsTooLong::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsTooLong::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsTooLong::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -17924,7 +18071,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsTooLong::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -17944,14 +18091,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsTooLong::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsProtected::OutOctetsProtected()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected::OutOctetsProtected()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -17959,22 +18106,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-octets-protected"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-octets-protected"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsProtected::~OutOctetsProtected()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected::~OutOctetsProtected()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsProtected::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsProtected::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -17983,14 +18131,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsProtected::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-octets-protected";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsProtected::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18003,19 +18151,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsProtected::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsProtected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -18043,7 +18191,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsProtected::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -18063,14 +18211,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsProtected::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsEncrypted::OutOctetsEncrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted::OutOctetsEncrypted()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -18078,22 +18226,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "out-octets-encrypted"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-octets-encrypted"; yang_parent_name = "macsec-second30secyif"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsEncrypted::~OutOctetsEncrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted::~OutOctetsEncrypted()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsEncrypted::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsEncrypted::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -18102,14 +18251,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsEncrypted::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-octets-encrypted";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsEncrypted::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18122,19 +18271,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsEncrypted::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsEncrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -18162,7 +18311,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsEncrypted::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -18182,26 +18331,29 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsEncrypted::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrxes()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrxes()
+    :
+    macsec_second30secyrx(this, {"number"})
 {
 
-    yang_name = "macsec-second30secyrxes"; yang_parent_name = "macsec-second30"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-second30secyrxes"; yang_parent_name = "macsec-second30"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::~MacsecSecond30Secyrxes()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::~MacsecSecond30secyrxes()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::has_data() const
 {
-    for (std::size_t index=0; index<macsec_second30secyrx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<macsec_second30secyrx.len(); index++)
     {
         if(macsec_second30secyrx[index]->has_data())
             return true;
@@ -18209,9 +18361,9 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return false;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::has_operation() const
 {
-    for (std::size_t index=0; index<macsec_second30secyrx.size(); index++)
+    for (std::size_t index=0; index<macsec_second30secyrx.len(); index++)
     {
         if(macsec_second30secyrx[index]->has_operation())
             return true;
@@ -18219,14 +18371,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     return is_set(yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "macsec-second30secyrxes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18235,25 +18387,25 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-second30secyrx")
     {
-        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx>();
+        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx>();
         c->parent = this;
-        macsec_second30secyrx.push_back(c);
+        macsec_second30secyrx.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : macsec_second30secyrx)
+    for (auto c : macsec_second30secyrx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18264,22 +18416,22 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::Ma
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "macsec-second30secyrx")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::MacsecSecond30Secyrx()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::MacsecSecond30secyrx()
     :
     number{YType::int32, "number"},
     index_{YType::uint32, "index"},
@@ -18291,18 +18443,18 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"},
     sample_count{YType::uint64, "sample-count"}
-    	,
-    in_pkts_unchecked(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnchecked>())
-	,in_pkts_delayed(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsDelayed>())
-	,in_pkts_late(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsLate>())
-	,in_pkts_ok(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsOk>())
-	,in_pkts_invalid(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsInvalid>())
-	,in_pkts_not_valid(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotValid>())
-	,in_pkts_not_using_sa(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotUsingSa>())
-	,in_pkts_unused_sa(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnusedSa>())
-	,in_pkts_untagged_hit(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUntaggedHit>())
-	,in_octets_validated(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsValidated>())
-	,in_octets_decrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsDecrypted>())
+        ,
+    in_pkts_unchecked(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked>())
+    , in_pkts_delayed(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed>())
+    , in_pkts_late(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate>())
+    , in_pkts_ok(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk>())
+    , in_pkts_invalid(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid>())
+    , in_pkts_not_valid(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid>())
+    , in_pkts_not_using_sa(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa>())
+    , in_pkts_unused_sa(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa>())
+    , in_pkts_untagged_hit(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit>())
+    , in_octets_validated(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated>())
+    , in_octets_decrypted(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted>())
 {
     in_pkts_unchecked->parent = this;
     in_pkts_delayed->parent = this;
@@ -18316,15 +18468,16 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     in_octets_validated->parent = this;
     in_octets_decrypted->parent = this;
 
-    yang_name = "macsec-second30secyrx"; yang_parent_name = "macsec-second30secyrxes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-second30secyrx"; yang_parent_name = "macsec-second30secyrxes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::~MacsecSecond30Secyrx()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::~MacsecSecond30secyrx()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -18348,7 +18501,7 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| (in_octets_decrypted !=  nullptr && in_octets_decrypted->has_data());
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -18374,14 +18527,15 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| (in_octets_decrypted !=  nullptr && in_octets_decrypted->has_operation());
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "macsec-second30secyrx" <<"[number='" <<number <<"']";
+    path_buffer << "macsec-second30secyrx";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18400,13 +18554,13 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "in-pkts-unchecked")
     {
         if(in_pkts_unchecked == nullptr)
         {
-            in_pkts_unchecked = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnchecked>();
+            in_pkts_unchecked = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked>();
         }
         return in_pkts_unchecked;
     }
@@ -18415,7 +18569,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_delayed == nullptr)
         {
-            in_pkts_delayed = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsDelayed>();
+            in_pkts_delayed = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed>();
         }
         return in_pkts_delayed;
     }
@@ -18424,7 +18578,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_late == nullptr)
         {
-            in_pkts_late = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsLate>();
+            in_pkts_late = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate>();
         }
         return in_pkts_late;
     }
@@ -18433,7 +18587,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_ok == nullptr)
         {
-            in_pkts_ok = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsOk>();
+            in_pkts_ok = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk>();
         }
         return in_pkts_ok;
     }
@@ -18442,7 +18596,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_invalid == nullptr)
         {
-            in_pkts_invalid = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsInvalid>();
+            in_pkts_invalid = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid>();
         }
         return in_pkts_invalid;
     }
@@ -18451,7 +18605,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_not_valid == nullptr)
         {
-            in_pkts_not_valid = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotValid>();
+            in_pkts_not_valid = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid>();
         }
         return in_pkts_not_valid;
     }
@@ -18460,7 +18614,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_not_using_sa == nullptr)
         {
-            in_pkts_not_using_sa = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotUsingSa>();
+            in_pkts_not_using_sa = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa>();
         }
         return in_pkts_not_using_sa;
     }
@@ -18469,7 +18623,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_unused_sa == nullptr)
         {
-            in_pkts_unused_sa = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnusedSa>();
+            in_pkts_unused_sa = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa>();
         }
         return in_pkts_unused_sa;
     }
@@ -18478,7 +18632,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_pkts_untagged_hit == nullptr)
         {
-            in_pkts_untagged_hit = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUntaggedHit>();
+            in_pkts_untagged_hit = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit>();
         }
         return in_pkts_untagged_hit;
     }
@@ -18487,7 +18641,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_octets_validated == nullptr)
         {
-            in_octets_validated = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsValidated>();
+            in_octets_validated = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated>();
         }
         return in_octets_validated;
     }
@@ -18496,7 +18650,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in_octets_decrypted == nullptr)
         {
-            in_octets_decrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsDecrypted>();
+            in_octets_decrypted = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted>();
         }
         return in_octets_decrypted;
     }
@@ -18504,7 +18658,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -18566,7 +18720,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::Ma
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -18630,7 +18784,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -18674,14 +18828,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "in-pkts-unchecked" || name == "in-pkts-delayed" || name == "in-pkts-late" || name == "in-pkts-ok" || name == "in-pkts-invalid" || name == "in-pkts-not-valid" || name == "in-pkts-not-using-sa" || name == "in-pkts-unused-sa" || name == "in-pkts-untagged-hit" || name == "in-octets-validated" || name == "in-octets-decrypted" || name == "number" || name == "index" || name == "valid" || name == "timestamp" || name == "last-clear-time" || name == "last-clear15-min-time" || name == "last-clear30-sec-time" || name == "last-clear24-hr-time" || name == "sec30-support" || name == "sample-count")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnchecked::InPktsUnchecked()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked::InPktsUnchecked()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -18689,22 +18843,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-unchecked"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-unchecked"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnchecked::~InPktsUnchecked()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked::~InPktsUnchecked()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnchecked::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnchecked::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -18713,14 +18868,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnchecked::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-unchecked";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnchecked::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18733,19 +18888,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnchecked::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnchecked::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnchecked::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -18773,7 +18928,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnchecked::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -18793,14 +18948,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnchecked::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsDelayed::InPktsDelayed()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed::InPktsDelayed()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -18808,22 +18963,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-delayed"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-delayed"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsDelayed::~InPktsDelayed()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed::~InPktsDelayed()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsDelayed::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsDelayed::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -18832,14 +18988,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsDelayed::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-delayed";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsDelayed::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18852,19 +19008,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsDelayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsDelayed::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsDelayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -18892,7 +19048,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsDelayed::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -18912,14 +19068,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsDelayed::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsLate::InPktsLate()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate::InPktsLate()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -18927,22 +19083,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-late"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-late"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsLate::~InPktsLate()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate::~InPktsLate()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsLate::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsLate::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -18951,14 +19108,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsLate::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-late";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsLate::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18971,19 +19128,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsLate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsLate::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsLate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -19011,7 +19168,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsLate::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -19031,14 +19188,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsLate::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsOk::InPktsOk()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk::InPktsOk()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -19046,22 +19203,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-ok"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-ok"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsOk::~InPktsOk()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk::~InPktsOk()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsOk::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsOk::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -19070,14 +19228,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsOk::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-ok";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsOk::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19090,19 +19248,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsOk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsOk::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsOk::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -19130,7 +19288,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsOk::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -19150,14 +19308,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsOk::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsInvalid::InPktsInvalid()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid::InPktsInvalid()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -19165,22 +19323,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-invalid"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-invalid"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsInvalid::~InPktsInvalid()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid::~InPktsInvalid()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsInvalid::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsInvalid::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -19189,14 +19348,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsInvalid::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-invalid";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsInvalid::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19209,19 +19368,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsInvalid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsInvalid::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsInvalid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -19249,7 +19408,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsInvalid::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -19269,14 +19428,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsInvalid::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotValid::InPktsNotValid()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid::InPktsNotValid()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -19284,22 +19443,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-not-valid"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-not-valid"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotValid::~InPktsNotValid()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid::~InPktsNotValid()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotValid::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotValid::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -19308,14 +19468,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotValid::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-not-valid";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotValid::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19328,19 +19488,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotValid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotValid::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotValid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -19368,7 +19528,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotValid::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -19388,14 +19548,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotValid::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotUsingSa::InPktsNotUsingSa()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa::InPktsNotUsingSa()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -19403,22 +19563,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-not-using-sa"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-not-using-sa"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotUsingSa::~InPktsNotUsingSa()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa::~InPktsNotUsingSa()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotUsingSa::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotUsingSa::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -19427,14 +19588,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotUsingSa::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-not-using-sa";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotUsingSa::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19447,19 +19608,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotUsingSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotUsingSa::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotUsingSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -19487,7 +19648,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotUsingSa::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -19507,14 +19668,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotUsingSa::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnusedSa::InPktsUnusedSa()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa::InPktsUnusedSa()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -19522,22 +19683,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-unused-sa"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-unused-sa"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnusedSa::~InPktsUnusedSa()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa::~InPktsUnusedSa()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnusedSa::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnusedSa::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -19546,14 +19708,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnusedSa::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-unused-sa";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnusedSa::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19566,19 +19728,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnusedSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnusedSa::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnusedSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -19606,7 +19768,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnusedSa::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -19626,14 +19788,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnusedSa::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUntaggedHit::InPktsUntaggedHit()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit::InPktsUntaggedHit()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -19641,22 +19803,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-pkts-untagged-hit"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-pkts-untagged-hit"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUntaggedHit::~InPktsUntaggedHit()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit::~InPktsUntaggedHit()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUntaggedHit::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUntaggedHit::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -19665,14 +19828,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUntaggedHit::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-pkts-untagged-hit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUntaggedHit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19685,19 +19848,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUntaggedHit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUntaggedHit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUntaggedHit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -19725,7 +19888,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUntaggedHit::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -19745,14 +19908,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUntaggedHit::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsValidated::InOctetsValidated()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated::InOctetsValidated()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -19760,22 +19923,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-octets-validated"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-octets-validated"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsValidated::~InOctetsValidated()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated::~InOctetsValidated()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsValidated::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsValidated::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -19784,14 +19948,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsValidated::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-octets-validated";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsValidated::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19804,19 +19968,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsValidated::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsValidated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -19844,7 +20008,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsValidated::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -19864,14 +20028,14 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsValidated::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
     return false;
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsDecrypted::InOctetsDecrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted::InOctetsDecrypted()
     :
     data{YType::uint64, "data"},
     threshold{YType::uint64, "threshold"},
@@ -19879,22 +20043,23 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "in-octets-decrypted"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-octets-decrypted"; yang_parent_name = "macsec-second30secyrx"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsDecrypted::~InOctetsDecrypted()
+PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted::~InOctetsDecrypted()
 {
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsDecrypted::has_data() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
 	|| valid.is_set;
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsDecrypted::has_operation() const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data.yfilter)
@@ -19903,14 +20068,14 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 	|| ydk::is_set(valid.yfilter);
 }
 
-std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsDecrypted::get_segment_path() const
+std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-octets-decrypted";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsDecrypted::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19923,19 +20088,19 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsDecrypted::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsDecrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
@@ -19963,7 +20128,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsDecrypted::set_filter(const std::string & value_path, YFilter yfilter)
+void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data")
     {
@@ -19983,7 +20148,7 @@ void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
     }
 }
 
-bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsDecrypted::has_leaf_or_child_of_name(const std::string & name) const
+bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "data" || name == "threshold" || name == "tca-report" || name == "valid")
         return true;
@@ -19991,9 +20156,11 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30EtherS()
+    :
+    macsec_second30_ether(this, {"number"})
 {
 
-    yang_name = "macsec-second30-ether-s"; yang_parent_name = "macsec-second30"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-second30-ether-s"; yang_parent_name = "macsec-second30"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::~MacsecSecond30EtherS()
@@ -20002,7 +20169,8 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::has_data() const
 {
-    for (std::size_t index=0; index<macsec_second30_ether.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<macsec_second30_ether.len(); index++)
     {
         if(macsec_second30_ether[index]->has_data())
             return true;
@@ -20012,7 +20180,7 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::has_operation() const
 {
-    for (std::size_t index=0; index<macsec_second30_ether.size(); index++)
+    for (std::size_t index=0; index<macsec_second30_ether.len(); index++)
     {
         if(macsec_second30_ether[index]->has_operation())
             return true;
@@ -20042,7 +20210,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether>();
         c->parent = this;
-        macsec_second30_ether.push_back(c);
+        macsec_second30_ether.append(c);
         return c;
     }
 
@@ -20054,7 +20222,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::Ma
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : macsec_second30_ether)
+    for (auto c : macsec_second30_ether.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20091,82 +20259,82 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     last_clear15_min_time{YType::str, "last-clear15-min-time"},
     last_clear24_hr_time{YType::str, "last-clear24-hr-time"},
     sec30_support{YType::boolean, "sec30-support"}
-    	,
+        ,
     rx_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::RxPkt>())
-	,stat_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::StatPkt>())
-	,octet_stat(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OctetStat>())
-	,oversize_pkt_stat(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OversizePktStat>())
-	,fcs_errors_stat(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::FcsErrorsStat>())
-	,long_frames_stat(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::LongFramesStat>())
-	,jabber_stat(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::JabberStat>())
-	,ether64_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Ether64Octets>())
-	,ether65127_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Ether65127Octet>())
-	,ether128255_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Ether128255Octet>())
-	,ether256511_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Ether256511Octet>())
-	,ether5121023_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Ether5121023Octet>())
-	,ether10241518_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Ether10241518Octet>())
-	,in_ucast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InUcastPkt>())
-	,in_mcast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InMcastPkt>())
-	,in_bcast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InBcastPkt>())
-	,out_ucast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutUcastPkt>())
-	,out_bcast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutBcastPkt>())
-	,out_mcast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutMcastPkt>())
-	,tx_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::TxPkt>())
-	,if_in_errors(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::IfInErrors>())
-	,if_in_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::IfInOctets>())
-	,ether_stat_multicast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::EtherStatMulticastPkt>())
-	,ether_stat_broadcast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::EtherStatBroadcastPkt>())
-	,ether_stat_undersized_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::EtherStatUndersizedPkt>())
-	,out_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutOctets>())
-	,in_pause_frame(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPauseFrame>())
-	,in_good_bytes(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InGoodBytes>())
-	,in8021q_frames(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::In8021QFrames>())
-	,in_pkts1519_max_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkts1519MaxOctets>())
-	,in_good_pkts(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InGoodPkts>())
-	,in_drop_overrun(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InDropOverrun>())
-	,in_drop_abort(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InDropAbort>())
-	,in_drop_invalid_vlan(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InDropInvalidVlan>())
-	,in_drop_invalid_dmac(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InDropInvalidDmac>())
-	,in_drop_invalid_encap(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InDropInvalidEncap>())
-	,in_drop_other(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InDropOther>())
-	,in_mib_giant(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InMibGiant>())
-	,in_mib_jabber(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InMibJabber>())
-	,in_mibcrc(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InMibcrc>())
-	,in_error_collisions(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InErrorCollisions>())
-	,in_error_symbol(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InErrorSymbol>())
-	,out_good_bytes(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutGoodBytes>())
-	,out8021q_frames(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Out8021QFrames>())
-	,out_pause_frames(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPauseFrames>())
-	,out_pkts1519_max_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPkts1519MaxOctets>())
-	,out_good_pkts(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutGoodPkts>())
-	,out_drop_underrun(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutDropUnderrun>())
-	,out_drop_abort(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutDropAbort>())
-	,out_drop_other(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutDropOther>())
-	,out_error_other(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutErrorOther>())
-	,in_error_giant(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InErrorGiant>())
-	,in_error_runt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InErrorRunt>())
-	,in_error_jabbers(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InErrorJabbers>())
-	,in_error_fragments(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InErrorFragments>())
-	,in_error_other(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InErrorOther>())
-	,in_pkt64_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkt64Octet>())
-	,in_pkts65_to127_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkts65To127Octets>())
-	,in_pkts128_to255_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkts128To255Octets>())
-	,in_pkts256_to511_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkts256To511Octets>())
-	,in_pkts512_to1023_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkts512To1023Octets>())
-	,in_pkts1024_to1518_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkts1024To1518Octets>())
-	,outpkt64octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Outpkt64Octet>())
-	,out_pkts65127_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPkts65127Octets>())
-	,out_pkts128255_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPkts128255Octets>())
-	,out_pkts256511_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPkts256511Octets>())
-	,out_pkts5121023_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPkts5121023Octets>())
-	,out_pkts10241518_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPkts10241518Octets>())
-	,rx_util(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::RxUtil>())
-	,tx_util(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::TxUtil>())
-	,tx_undersized_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::TxUndersizedPkt>())
-	,tx_oversized_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::TxOversizedPkt>())
-	,tx_fragments(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::TxFragments>())
-	,tx_jabber(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::TxJabber>())
-	,tx_bad_fcs(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::TxBadFcs>())
+    , stat_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::StatPkt>())
+    , octet_stat(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OctetStat>())
+    , oversize_pkt_stat(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OversizePktStat>())
+    , fcs_errors_stat(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::FcsErrorsStat>())
+    , long_frames_stat(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::LongFramesStat>())
+    , jabber_stat(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::JabberStat>())
+    , ether64_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Ether64Octets>())
+    , ether65127_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Ether65127Octet>())
+    , ether128255_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Ether128255Octet>())
+    , ether256511_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Ether256511Octet>())
+    , ether5121023_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Ether5121023Octet>())
+    , ether10241518_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Ether10241518Octet>())
+    , in_ucast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InUcastPkt>())
+    , in_mcast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InMcastPkt>())
+    , in_bcast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InBcastPkt>())
+    , out_ucast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutUcastPkt>())
+    , out_bcast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutBcastPkt>())
+    , out_mcast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutMcastPkt>())
+    , tx_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::TxPkt>())
+    , if_in_errors(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::IfInErrors>())
+    , if_in_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::IfInOctets>())
+    , ether_stat_multicast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::EtherStatMulticastPkt>())
+    , ether_stat_broadcast_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::EtherStatBroadcastPkt>())
+    , ether_stat_undersized_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::EtherStatUndersizedPkt>())
+    , out_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutOctets>())
+    , in_pause_frame(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPauseFrame>())
+    , in_good_bytes(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InGoodBytes>())
+    , in8021q_frames(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::In8021qFrames>())
+    , in_pkts1519_max_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkts1519MaxOctets>())
+    , in_good_pkts(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InGoodPkts>())
+    , in_drop_overrun(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InDropOverrun>())
+    , in_drop_abort(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InDropAbort>())
+    , in_drop_invalid_vlan(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InDropInvalidVlan>())
+    , in_drop_invalid_dmac(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InDropInvalidDmac>())
+    , in_drop_invalid_encap(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InDropInvalidEncap>())
+    , in_drop_other(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InDropOther>())
+    , in_mib_giant(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InMibGiant>())
+    , in_mib_jabber(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InMibJabber>())
+    , in_mibcrc(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InMibcrc>())
+    , in_error_collisions(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InErrorCollisions>())
+    , in_error_symbol(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InErrorSymbol>())
+    , out_good_bytes(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutGoodBytes>())
+    , out8021q_frames(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Out8021qFrames>())
+    , out_pause_frames(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPauseFrames>())
+    , out_pkts1519_max_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPkts1519MaxOctets>())
+    , out_good_pkts(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutGoodPkts>())
+    , out_drop_underrun(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutDropUnderrun>())
+    , out_drop_abort(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutDropAbort>())
+    , out_drop_other(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutDropOther>())
+    , out_error_other(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutErrorOther>())
+    , in_error_giant(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InErrorGiant>())
+    , in_error_runt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InErrorRunt>())
+    , in_error_jabbers(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InErrorJabbers>())
+    , in_error_fragments(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InErrorFragments>())
+    , in_error_other(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InErrorOther>())
+    , in_pkt64_octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkt64Octet>())
+    , in_pkts65_to127_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkts65To127Octets>())
+    , in_pkts128_to255_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkts128To255Octets>())
+    , in_pkts256_to511_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkts256To511Octets>())
+    , in_pkts512_to1023_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkts512To1023Octets>())
+    , in_pkts1024_to1518_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkts1024To1518Octets>())
+    , outpkt64octet(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Outpkt64octet>())
+    , out_pkts65127_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPkts65127Octets>())
+    , out_pkts128255_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPkts128255Octets>())
+    , out_pkts256511_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPkts256511Octets>())
+    , out_pkts5121023_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPkts5121023Octets>())
+    , out_pkts10241518_octets(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPkts10241518Octets>())
+    , rx_util(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::RxUtil>())
+    , tx_util(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::TxUtil>())
+    , tx_undersized_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::TxUndersizedPkt>())
+    , tx_oversized_pkt(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::TxOversizedPkt>())
+    , tx_fragments(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::TxFragments>())
+    , tx_jabber(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::TxJabber>())
+    , tx_bad_fcs(std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::TxBadFcs>())
 {
     rx_pkt->parent = this;
     stat_pkt->parent = this;
@@ -20244,7 +20412,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     tx_jabber->parent = this;
     tx_bad_fcs->parent = this;
 
-    yang_name = "macsec-second30-ether"; yang_parent_name = "macsec-second30-ether-s"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "macsec-second30-ether"; yang_parent_name = "macsec-second30-ether-s"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::~MacsecSecond30Ether()
@@ -20253,6 +20421,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| index_.is_set
 	|| valid.is_set
@@ -20431,7 +20600,8 @@ bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Macs
 std::string PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "macsec-second30-ether" <<"[number='" <<number <<"']";
+    path_buffer << "macsec-second30-ether";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -20711,7 +20881,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(in8021q_frames == nullptr)
         {
-            in8021q_frames = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::In8021QFrames>();
+            in8021q_frames = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::In8021qFrames>();
         }
         return in8021q_frames;
     }
@@ -20846,7 +21016,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(out8021q_frames == nullptr)
         {
-            out8021q_frames = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Out8021QFrames>();
+            out8021q_frames = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Out8021qFrames>();
         }
         return out8021q_frames;
     }
@@ -21017,7 +21187,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     {
         if(outpkt64octet == nullptr)
         {
-            outpkt64octet = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Outpkt64Octet>();
+            outpkt64octet = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Outpkt64octet>();
         }
         return outpkt64octet;
     }
@@ -21628,7 +21798,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "rx-pkt"; yang_parent_name = "macsec-second30-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-pkt"; yang_parent_name = "macsec-second30-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::RxPkt::~RxPkt()
@@ -21637,6 +21807,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::RxPkt::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -21747,7 +21918,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "stat-pkt"; yang_parent_name = "macsec-second30-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stat-pkt"; yang_parent_name = "macsec-second30-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::StatPkt::~StatPkt()
@@ -21756,6 +21927,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::StatPkt::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set
@@ -21866,7 +22038,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "octet-stat"; yang_parent_name = "macsec-second30-ether"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "octet-stat"; yang_parent_name = "macsec-second30-ether"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OctetStat::~OctetStat()
@@ -21875,6 +22047,7 @@ PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSec
 
 bool PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OctetStat::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set
 	|| threshold.is_set
 	|| tca_report.is_set

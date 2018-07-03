@@ -33,7 +33,7 @@ class Macsec : public ydk::Entity
 
         class Policy; //type: Macsec::Policy
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_mka_cfg::Macsec::Policy> > policy;
+        ydk::YList policy;
         
 }; // Macsec
 
@@ -69,6 +69,15 @@ class Macsec::Policy : public ydk::Entity
 
 }; // Macsec::Policy
 
+class MacsecMkaConfOffset : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf conf_off_set_0;
+        static const ydk::Enum::YLeaf conf_off_set_30;
+        static const ydk::Enum::YLeaf conf_off_set_50;
+
+};
+
 class MacsecMkaSecurityPolicy : public ydk::Enum
 {
     public:
@@ -91,15 +100,6 @@ class MacsecMkaCipherSuite : public ydk::Enum
         static const ydk::Enum::YLeaf gcm_aes_256;
         static const ydk::Enum::YLeaf gcm_aes_xpn_128;
         static const ydk::Enum::YLeaf gcm_aes_xpn_256;
-
-};
-
-class MacsecMkaConfOffset : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf conf_off_set_0;
-        static const ydk::Enum::YLeaf conf_off_set_30;
-        static const ydk::Enum::YLeaf conf_off_set_50;
 
 };
 

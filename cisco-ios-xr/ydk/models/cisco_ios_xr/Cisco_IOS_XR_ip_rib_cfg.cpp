@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_ip_rib_cfg {
 Rib::Rib()
     :
     max_recursion_depth{YType::uint32, "max-recursion-depth"}
-    	,
+        ,
     af(std::make_shared<Rib::Af>())
 {
     af->parent = this;
 
-    yang_name = "rib"; yang_parent_name = "Cisco-IOS-XR-ip-rib-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "rib"; yang_parent_name = "Cisco-IOS-XR-ip-rib-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Rib::~Rib()
@@ -28,6 +28,7 @@ Rib::~Rib()
 
 bool Rib::has_data() const
 {
+    if (is_presence_container) return true;
     return max_recursion_depth.is_set
 	|| (af !=  nullptr && af->has_data());
 }
@@ -135,12 +136,12 @@ bool Rib::has_leaf_or_child_of_name(const std::string & name) const
 Rib::Af::Af()
     :
     ipv4(std::make_shared<Rib::Af::Ipv4>())
-	,ipv6(std::make_shared<Rib::Af::Ipv6>())
+    , ipv6(std::make_shared<Rib::Af::Ipv6>())
 {
     ipv4->parent = this;
     ipv6->parent = this;
 
-    yang_name = "af"; yang_parent_name = "rib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "af"; yang_parent_name = "rib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rib::Af::~Af()
@@ -149,6 +150,7 @@ Rib::Af::~Af()
 
 bool Rib::Af::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4 !=  nullptr && ipv4->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data());
 }
@@ -241,12 +243,12 @@ bool Rib::Af::has_leaf_or_child_of_name(const std::string & name) const
 Rib::Af::Ipv4::Ipv4()
     :
     next_hop_dampening_disable{YType::empty, "next-hop-dampening-disable"}
-    	,
+        ,
     redistribution_history(std::make_shared<Rib::Af::Ipv4::RedistributionHistory>())
 {
     redistribution_history->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rib::Af::Ipv4::~Ipv4()
@@ -255,6 +257,7 @@ Rib::Af::Ipv4::~Ipv4()
 
 bool Rib::Af::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return next_hop_dampening_disable.is_set
 	|| (redistribution_history !=  nullptr && redistribution_history->has_data());
 }
@@ -345,12 +348,12 @@ Rib::Af::Ipv4::RedistributionHistory::RedistributionHistory()
     :
     bcdl_client{YType::uint32, "bcdl-client"},
     protocol_client{YType::uint32, "protocol-client"}
-    	,
+        ,
     keep(std::make_shared<Rib::Af::Ipv4::RedistributionHistory::Keep>())
 {
     keep->parent = this;
 
-    yang_name = "redistribution-history"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "redistribution-history"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rib::Af::Ipv4::RedistributionHistory::~RedistributionHistory()
@@ -359,6 +362,7 @@ Rib::Af::Ipv4::RedistributionHistory::~RedistributionHistory()
 
 bool Rib::Af::Ipv4::RedistributionHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return bcdl_client.is_set
 	|| protocol_client.is_set
 	|| (keep !=  nullptr && keep->has_data());
@@ -463,7 +467,7 @@ Rib::Af::Ipv4::RedistributionHistory::Keep::Keep()
     bcdl{YType::empty, "bcdl"}
 {
 
-    yang_name = "keep"; yang_parent_name = "redistribution-history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "keep"; yang_parent_name = "redistribution-history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rib::Af::Ipv4::RedistributionHistory::Keep::~Keep()
@@ -472,6 +476,7 @@ Rib::Af::Ipv4::RedistributionHistory::Keep::~Keep()
 
 bool Rib::Af::Ipv4::RedistributionHistory::Keep::has_data() const
 {
+    if (is_presence_container) return true;
     return bcdl.is_set;
 }
 
@@ -545,12 +550,12 @@ bool Rib::Af::Ipv4::RedistributionHistory::Keep::has_leaf_or_child_of_name(const
 Rib::Af::Ipv6::Ipv6()
     :
     next_hop_dampening_disable{YType::empty, "next-hop-dampening-disable"}
-    	,
+        ,
     redistribution_history(std::make_shared<Rib::Af::Ipv6::RedistributionHistory>())
 {
     redistribution_history->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rib::Af::Ipv6::~Ipv6()
@@ -559,6 +564,7 @@ Rib::Af::Ipv6::~Ipv6()
 
 bool Rib::Af::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return next_hop_dampening_disable.is_set
 	|| (redistribution_history !=  nullptr && redistribution_history->has_data());
 }
@@ -649,12 +655,12 @@ Rib::Af::Ipv6::RedistributionHistory::RedistributionHistory()
     :
     bcdl_client{YType::uint32, "bcdl-client"},
     protocol_client{YType::uint32, "protocol-client"}
-    	,
+        ,
     keep(std::make_shared<Rib::Af::Ipv6::RedistributionHistory::Keep>())
 {
     keep->parent = this;
 
-    yang_name = "redistribution-history"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "redistribution-history"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rib::Af::Ipv6::RedistributionHistory::~RedistributionHistory()
@@ -663,6 +669,7 @@ Rib::Af::Ipv6::RedistributionHistory::~RedistributionHistory()
 
 bool Rib::Af::Ipv6::RedistributionHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return bcdl_client.is_set
 	|| protocol_client.is_set
 	|| (keep !=  nullptr && keep->has_data());
@@ -767,7 +774,7 @@ Rib::Af::Ipv6::RedistributionHistory::Keep::Keep()
     bcdl{YType::empty, "bcdl"}
 {
 
-    yang_name = "keep"; yang_parent_name = "redistribution-history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "keep"; yang_parent_name = "redistribution-history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rib::Af::Ipv6::RedistributionHistory::Keep::~Keep()
@@ -776,6 +783,7 @@ Rib::Af::Ipv6::RedistributionHistory::Keep::~Keep()
 
 bool Rib::Af::Ipv6::RedistributionHistory::Keep::has_data() const
 {
+    if (is_presence_container) return true;
     return bcdl.is_set;
 }
 

@@ -32,36 +32,36 @@ class CISCOLICENSEMGMTMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Clmgmtlicenseconfiguration; //type: CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration
-        class Clmgmtlicensedeviceinformation; //type: CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation
-        class Clmgmtlicensenotifobjects; //type: CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects
-        class Clmgmtlicenseactiontable; //type: CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable
-        class Clmgmtlicenseactionresulttable; //type: CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable
-        class Clmgmtlicensestoreinfotable; //type: CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable
-        class Clmgmtlicensedeviceinfotable; //type: CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable
-        class Clmgmtlicenseinfotable; //type: CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable
-        class Clmgmtlicensablefeaturetable; //type: CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable
-        class Clmgmtdevcredexportactiontable; //type: CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable
+        class ClmgmtLicenseConfiguration; //type: CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration
+        class ClmgmtLicenseDeviceInformation; //type: CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation
+        class ClmgmtLicenseNotifObjects; //type: CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects
+        class ClmgmtLicenseActionTable; //type: CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable
+        class ClmgmtLicenseActionResultTable; //type: CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable
+        class ClmgmtLicenseStoreInfoTable; //type: CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable
+        class ClmgmtLicenseDeviceInfoTable; //type: CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable
+        class ClmgmtLicenseInfoTable; //type: CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable
+        class ClmgmtLicensableFeatureTable; //type: CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable
+        class ClmgmtDevCredExportActionTable; //type: CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration> clmgmtlicenseconfiguration;
-        std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation> clmgmtlicensedeviceinformation;
-        std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects> clmgmtlicensenotifobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable> clmgmtlicenseactiontable;
-        std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable> clmgmtlicenseactionresulttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable> clmgmtlicensestoreinfotable;
-        std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable> clmgmtlicensedeviceinfotable;
-        std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable> clmgmtlicenseinfotable;
-        std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable> clmgmtlicensablefeaturetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable> clmgmtdevcredexportactiontable;
+        std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration> clmgmtlicenseconfiguration;
+        std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation> clmgmtlicensedeviceinformation;
+        std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects> clmgmtlicensenotifobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable> clmgmtlicenseactiontable;
+        std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable> clmgmtlicenseactionresulttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable> clmgmtlicensestoreinfotable;
+        std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable> clmgmtlicensedeviceinfotable;
+        std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable> clmgmtlicenseinfotable;
+        std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable> clmgmtlicensablefeaturetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable> clmgmtdevcredexportactiontable;
         
 }; // CISCOLICENSEMGMTMIB
 
 
-class CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration : public ydk::Entity
+class CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration : public ydk::Entity
 {
     public:
-        Clmgmtlicenseconfiguration();
-        ~Clmgmtlicenseconfiguration();
+        ClmgmtLicenseConfiguration();
+        ~ClmgmtLicenseConfiguration();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -76,14 +76,14 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration : public ydk::Entity
 
         ydk::YLeaf clmgmtnextfreelicenseactionindex; //type: uint32
 
-}; // CISCOLICENSEMGMTMIB::Clmgmtlicenseconfiguration
+}; // CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration
 
 
-class CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation : public ydk::Entity
+class CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation : public ydk::Entity
 {
     public:
-        Clmgmtlicensedeviceinformation();
-        ~Clmgmtlicensedeviceinformation();
+        ClmgmtLicenseDeviceInformation();
+        ~ClmgmtLicenseDeviceInformation();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -98,14 +98,14 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation : public ydk::Entity
 
         ydk::YLeaf clmgmtnextfreedevcredexportactionindex; //type: uint32
 
-}; // CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinformation
+}; // CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation
 
 
-class CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects : public ydk::Entity
+class CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects : public ydk::Entity
 {
     public:
-        Clmgmtlicensenotifobjects();
-        ~Clmgmtlicensenotifobjects();
+        ClmgmtLicenseNotifObjects();
+        ~ClmgmtLicenseNotifObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -120,17 +120,17 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects : public ydk::Entity
 
         ydk::YLeaf clmgmtlicenseusagenotifenable; //type: boolean
         ydk::YLeaf clmgmtlicensedeploymentnotifenable; //type: boolean
-        ydk::YLeaf clmgmtlicenseerrornotifenable; //type: Clmgmtlicenseerrornotifenable
-        class Clmgmtlicenseerrornotifenable;
+        ydk::YLeaf clmgmtlicenseerrornotifenable; //type: ClmgmtLicenseErrorNotifEnable
+        class ClmgmtLicenseErrorNotifEnable;
 
-}; // CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects
+}; // CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects
 
 
-class CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable : public ydk::Entity
+class CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable : public ydk::Entity
 {
     public:
-        Clmgmtlicenseactiontable();
-        ~Clmgmtlicenseactiontable();
+        ClmgmtLicenseActionTable();
+        ~ClmgmtLicenseActionTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -143,18 +143,18 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Clmgmtlicenseactionentry; //type: CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry
+        class ClmgmtLicenseActionEntry; //type: CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry> > clmgmtlicenseactionentry;
+        ydk::YList clmgmtlicenseactionentry;
         
-}; // CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable
+}; // CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable
 
 
-class CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry : public ydk::Entity
+class CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry : public ydk::Entity
 {
     public:
-        Clmgmtlicenseactionentry();
-        ~Clmgmtlicenseactionentry();
+        ClmgmtLicenseActionEntry();
+        ~ClmgmtLicenseActionEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -181,7 +181,7 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry : 
         ydk::YLeaf clmgmtlicenserehostticketfile; //type: string
         ydk::YLeaf clmgmtlicensebackupfile; //type: string
         ydk::YLeaf clmgmtlicensestoponfailure; //type: boolean
-        ydk::YLeaf clmgmtlicenseaction; //type: Clmgmtlicenseaction
+        ydk::YLeaf clmgmtlicenseaction; //type: ClmgmtLicenseAction
         ydk::YLeaf clmgmtlicenseactionstate; //type: ClmgmtLicenseActionState
         ydk::YLeaf clmgmtlicensejobqposition; //type: uint32
         ydk::YLeaf clmgmtlicenseactionfailcause; //type: ClmgmtLicenseActionFailCause
@@ -189,16 +189,16 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry : 
         ydk::YLeaf clmgmtlicenseactionrowstatus; //type: RowStatus
         ydk::YLeaf clmgmtlicenseaccepteula; //type: boolean
         ydk::YLeaf clmgmtlicenseeulafile; //type: string
-        class Clmgmtlicenseaction;
+        class ClmgmtLicenseAction;
 
-}; // CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry
+}; // CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry
 
 
-class CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable : public ydk::Entity
+class CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable : public ydk::Entity
 {
     public:
-        Clmgmtlicenseactionresulttable();
-        ~Clmgmtlicenseactionresulttable();
+        ClmgmtLicenseActionResultTable();
+        ~ClmgmtLicenseActionResultTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -211,18 +211,18 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Clmgmtlicenseactionresultentry; //type: CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresultentry
+        class ClmgmtLicenseActionResultEntry; //type: CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresultentry> > clmgmtlicenseactionresultentry;
+        ydk::YList clmgmtlicenseactionresultentry;
         
-}; // CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable
+}; // CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable
 
 
-class CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresultentry : public ydk::Entity
+class CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry : public ydk::Entity
 {
     public:
-        Clmgmtlicenseactionresultentry();
-        ~Clmgmtlicenseactionresultentry();
+        ClmgmtLicenseActionResultEntry();
+        ~ClmgmtLicenseActionResultEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -235,20 +235,20 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionre
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::clmgmtlicenseactionindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::clmgmtlicenseactionindex)
         ydk::YLeaf clmgmtlicenseactionindex;
         ydk::YLeaf clmgmtlicensenumber; //type: uint32
         ydk::YLeaf clmgmtlicenseindivactionstate; //type: ClmgmtLicenseActionState
         ydk::YLeaf clmgmtlicenseindivactionfailcause; //type: ClmgmtLicenseActionFailCause
 
-}; // CISCOLICENSEMGMTMIB::Clmgmtlicenseactionresulttable::Clmgmtlicenseactionresultentry
+}; // CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry
 
 
-class CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable : public ydk::Entity
+class CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable : public ydk::Entity
 {
     public:
-        Clmgmtlicensestoreinfotable();
-        ~Clmgmtlicensestoreinfotable();
+        ClmgmtLicenseStoreInfoTable();
+        ~ClmgmtLicenseStoreInfoTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -261,18 +261,18 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Clmgmtlicensestoreinfoentry; //type: CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry
+        class ClmgmtLicenseStoreInfoEntry; //type: CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry> > clmgmtlicensestoreinfoentry;
+        ydk::YList clmgmtlicensestoreinfoentry;
         
-}; // CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable
+}; // CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable
 
 
-class CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry : public ydk::Entity
+class CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry : public ydk::Entity
 {
     public:
-        Clmgmtlicensestoreinfoentry();
-        ~Clmgmtlicensestoreinfoentry();
+        ClmgmtLicenseStoreInfoEntry();
+        ~ClmgmtLicenseStoreInfoEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -285,21 +285,21 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoen
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf clmgmtlicensestoreindex; //type: uint32
         ydk::YLeaf clmgmtlicensestorename; //type: string
         ydk::YLeaf clmgmtlicensestoretotalsize; //type: uint32
         ydk::YLeaf clmgmtlicensestoresizeremaining; //type: uint32
 
-}; // CISCOLICENSEMGMTMIB::Clmgmtlicensestoreinfotable::Clmgmtlicensestoreinfoentry
+}; // CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry
 
 
-class CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable : public ydk::Entity
+class CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable : public ydk::Entity
 {
     public:
-        Clmgmtlicensedeviceinfotable();
-        ~Clmgmtlicensedeviceinfotable();
+        ClmgmtLicenseDeviceInfoTable();
+        ~ClmgmtLicenseDeviceInfoTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -312,18 +312,18 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Clmgmtlicensedeviceinfoentry; //type: CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoentry
+        class ClmgmtLicenseDeviceInfoEntry; //type: CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoentry> > clmgmtlicensedeviceinfoentry;
+        ydk::YList clmgmtlicensedeviceinfoentry;
         
-}; // CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable
+}; // CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable
 
 
-class CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoentry : public ydk::Entity
+class CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry : public ydk::Entity
 {
     public:
-        Clmgmtlicensedeviceinfoentry();
-        ~Clmgmtlicensedeviceinfoentry();
+        ClmgmtLicenseDeviceInfoEntry();
+        ~ClmgmtLicenseDeviceInfoEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -336,18 +336,18 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfo
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf clmgmtdefaultlicensestore; //type: uint32
 
-}; // CISCOLICENSEMGMTMIB::Clmgmtlicensedeviceinfotable::Clmgmtlicensedeviceinfoentry
+}; // CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry
 
 
-class CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable : public ydk::Entity
+class CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable : public ydk::Entity
 {
     public:
-        Clmgmtlicenseinfotable();
-        ~Clmgmtlicenseinfotable();
+        ClmgmtLicenseInfoTable();
+        ~ClmgmtLicenseInfoTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -360,18 +360,18 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Clmgmtlicenseinfoentry; //type: CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry
+        class ClmgmtLicenseInfoEntry; //type: CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry> > clmgmtlicenseinfoentry;
+        ydk::YList clmgmtlicenseinfoentry;
         
-}; // CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable
+}; // CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable
 
 
-class CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry : public ydk::Entity
+class CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry : public ydk::Entity
 {
     public:
-        Clmgmtlicenseinfoentry();
-        ~Clmgmtlicenseinfoentry();
+        ClmgmtLicenseInfoEntry();
+        ~ClmgmtLicenseInfoEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -384,13 +384,13 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf clmgmtlicensestoreused; //type: uint32
         ydk::YLeaf clmgmtlicenseindex; //type: uint32
         ydk::YLeaf clmgmtlicensefeaturename; //type: string
         ydk::YLeaf clmgmtlicensefeatureversion; //type: string
-        ydk::YLeaf clmgmtlicensetype; //type: Clmgmtlicensetype
+        ydk::YLeaf clmgmtlicensetype; //type: ClmgmtLicenseType
         ydk::YLeaf clmgmtlicensecounted; //type: boolean
         ydk::YLeaf clmgmtlicensevalidityperiod; //type: uint32
         ydk::YLeaf clmgmtlicensevalidityperiodremaining; //type: uint32
@@ -399,21 +399,21 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry : publ
         ydk::YLeaf clmgmtlicenseusagecountremaining; //type: uint32
         ydk::YLeaf clmgmtlicenseeulastatus; //type: boolean
         ydk::YLeaf clmgmtlicensecomments; //type: string
-        ydk::YLeaf clmgmtlicensestatus; //type: Clmgmtlicensestatus
+        ydk::YLeaf clmgmtlicensestatus; //type: ClmgmtLicenseStatus
         ydk::YLeaf clmgmtlicensestartdate; //type: string
         ydk::YLeaf clmgmtlicenseenddate; //type: string
         ydk::YLeaf clmgmtlicenseperiodused; //type: uint32
-        class Clmgmtlicensetype;
-        class Clmgmtlicensestatus;
+        class ClmgmtLicenseType;
+        class ClmgmtLicenseStatus;
 
-}; // CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry
+}; // CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry
 
 
-class CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable : public ydk::Entity
+class CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable : public ydk::Entity
 {
     public:
-        Clmgmtlicensablefeaturetable();
-        ~Clmgmtlicensablefeaturetable();
+        ClmgmtLicensableFeatureTable();
+        ~ClmgmtLicensableFeatureTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -426,18 +426,18 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Clmgmtlicensablefeatureentry; //type: CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeatureentry
+        class ClmgmtLicensableFeatureEntry; //type: CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeatureentry> > clmgmtlicensablefeatureentry;
+        ydk::YList clmgmtlicensablefeatureentry;
         
-}; // CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable
+}; // CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable
 
 
-class CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeatureentry : public ydk::Entity
+class CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry : public ydk::Entity
 {
     public:
-        Clmgmtlicensablefeatureentry();
-        ~Clmgmtlicensablefeatureentry();
+        ClmgmtLicensableFeatureEntry();
+        ~ClmgmtLicensableFeatureEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -450,7 +450,7 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeature
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf clmgmtfeatureindex; //type: uint32
         ydk::YLeaf clmgmtfeaturename; //type: string
@@ -461,14 +461,14 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeature
         ydk::YLeaf clmgmtfeatureenddate; //type: string
         ydk::YLeaf clmgmtfeatureperiodused; //type: uint32
 
-}; // CISCOLICENSEMGMTMIB::Clmgmtlicensablefeaturetable::Clmgmtlicensablefeatureentry
+}; // CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry
 
 
-class CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable : public ydk::Entity
+class CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable : public ydk::Entity
 {
     public:
-        Clmgmtdevcredexportactiontable();
-        ~Clmgmtdevcredexportactiontable();
+        ClmgmtDevCredExportActionTable();
+        ~ClmgmtDevCredExportActionTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -481,18 +481,18 @@ class CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Clmgmtdevcredexportactionentry; //type: CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry
+        class ClmgmtDevCredExportActionEntry; //type: CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_LICENSE_MGMT_MIB::CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry> > clmgmtdevcredexportactionentry;
+        ydk::YList clmgmtdevcredexportactionentry;
         
-}; // CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable
+}; // CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable
 
 
-class CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry : public ydk::Entity
+class CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry : public ydk::Entity
 {
     public:
-        Clmgmtdevcredexportactionentry();
-        ~Clmgmtdevcredexportactionentry();
+        ClmgmtDevCredExportActionEntry();
+        ~ClmgmtDevCredExportActionEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -513,29 +513,15 @@ class CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportac
         ydk::YLeaf clmgmtdevcredserverusername; //type: string
         ydk::YLeaf clmgmtdevcredserverpassword; //type: string
         ydk::YLeaf clmgmtdevcredexportfile; //type: string
-        ydk::YLeaf clmgmtdevcredcommand; //type: Clmgmtdevcredcommand
+        ydk::YLeaf clmgmtdevcredcommand; //type: ClmgmtDevCredCommand
         ydk::YLeaf clmgmtdevcredcommandstate; //type: ClmgmtLicenseActionState
-        ydk::YLeaf clmgmtdevcredcommandfailcause; //type: Clmgmtdevcredcommandfailcause
+        ydk::YLeaf clmgmtdevcredcommandfailcause; //type: ClmgmtDevCredCommandFailCause
         ydk::YLeaf clmgmtdevcredstoragetype; //type: StorageType
         ydk::YLeaf clmgmtdevcredrowstatus; //type: RowStatus
-        class Clmgmtdevcredcommand;
-        class Clmgmtdevcredcommandfailcause;
+        class ClmgmtDevCredCommand;
+        class ClmgmtDevCredCommandFailCause;
 
-}; // CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry
-
-class ClmgmtLicenseTransferProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf tftp;
-        static const ydk::Enum::YLeaf ftp;
-        static const ydk::Enum::YLeaf rcp;
-        static const ydk::Enum::YLeaf http;
-        static const ydk::Enum::YLeaf scp;
-        static const ydk::Enum::YLeaf sftp;
-
-};
+}; // CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry
 
 class ClmgmtLicenseActionState : public ydk::Enum
 {
@@ -577,7 +563,21 @@ class ClmgmtLicenseActionFailCause : public ydk::Enum
 
 };
 
-class CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::Clmgmtlicenseerrornotifenable : public ydk::Enum
+class ClmgmtLicenseTransferProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf tftp;
+        static const ydk::Enum::YLeaf ftp;
+        static const ydk::Enum::YLeaf rcp;
+        static const ydk::Enum::YLeaf http;
+        static const ydk::Enum::YLeaf scp;
+        static const ydk::Enum::YLeaf sftp;
+
+};
+
+class CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::ClmgmtLicenseErrorNotifEnable : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -586,7 +586,7 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicensenotifobjects::Clmgmtlicenseerrornotifena
 
 };
 
-class CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::Clmgmtlicenseaction : public ydk::Enum
+class CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::ClmgmtLicenseAction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf noOp;
@@ -599,7 +599,7 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicenseactiontable::Clmgmtlicenseactionentry::C
 
 };
 
-class CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgmtlicensetype : public ydk::Enum
+class CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf demo;
@@ -615,7 +615,7 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgm
 
 };
 
-class CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgmtlicensestatus : public ydk::Enum
+class CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::ClmgmtLicenseStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf inactive;
@@ -627,7 +627,7 @@ class CISCOLICENSEMGMTMIB::Clmgmtlicenseinfotable::Clmgmtlicenseinfoentry::Clmgm
 
 };
 
-class CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::Clmgmtdevcredcommand : public ydk::Enum
+class CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::ClmgmtDevCredCommand : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf noOp;
@@ -635,7 +635,7 @@ class CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportac
 
 };
 
-class CISCOLICENSEMGMTMIB::Clmgmtdevcredexportactiontable::Clmgmtdevcredexportactionentry::Clmgmtdevcredcommandfailcause : public ydk::Enum
+class CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::ClmgmtDevCredCommandFailCause : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;

@@ -13,13 +13,13 @@ namespace CISCO_IP_TAP_MIB {
 
 CISCOIPTAPMIB::CISCOIPTAPMIB()
     :
-    citapstreamencodepacket(std::make_shared<CISCOIPTAPMIB::Citapstreamencodepacket>())
-	,citapstreamtable(std::make_shared<CISCOIPTAPMIB::Citapstreamtable>())
+    citapstreamencodepacket(std::make_shared<CISCOIPTAPMIB::CitapStreamEncodePacket>())
+    , citapstreamtable(std::make_shared<CISCOIPTAPMIB::CitapStreamTable>())
 {
     citapstreamencodepacket->parent = this;
     citapstreamtable->parent = this;
 
-    yang_name = "CISCO-IP-TAP-MIB"; yang_parent_name = "CISCO-IP-TAP-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-IP-TAP-MIB"; yang_parent_name = "CISCO-IP-TAP-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOIPTAPMIB::~CISCOIPTAPMIB()
@@ -28,6 +28,7 @@ CISCOIPTAPMIB::~CISCOIPTAPMIB()
 
 bool CISCOIPTAPMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (citapstreamencodepacket !=  nullptr && citapstreamencodepacket->has_data())
 	|| (citapstreamtable !=  nullptr && citapstreamtable->has_data());
 }
@@ -61,7 +62,7 @@ std::shared_ptr<Entity> CISCOIPTAPMIB::get_child_by_name(const std::string & chi
     {
         if(citapstreamencodepacket == nullptr)
         {
-            citapstreamencodepacket = std::make_shared<CISCOIPTAPMIB::Citapstreamencodepacket>();
+            citapstreamencodepacket = std::make_shared<CISCOIPTAPMIB::CitapStreamEncodePacket>();
         }
         return citapstreamencodepacket;
     }
@@ -70,7 +71,7 @@ std::shared_ptr<Entity> CISCOIPTAPMIB::get_child_by_name(const std::string & chi
     {
         if(citapstreamtable == nullptr)
         {
-            citapstreamtable = std::make_shared<CISCOIPTAPMIB::Citapstreamtable>();
+            citapstreamtable = std::make_shared<CISCOIPTAPMIB::CitapStreamTable>();
         }
         return citapstreamtable;
     }
@@ -135,44 +136,45 @@ bool CISCOIPTAPMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOIPTAPMIB::Citapstreamencodepacket::Citapstreamencodepacket()
+CISCOIPTAPMIB::CitapStreamEncodePacket::CitapStreamEncodePacket()
     :
     citapstreamcapabilities{YType::bits, "citapStreamCapabilities"}
 {
 
-    yang_name = "citapStreamEncodePacket"; yang_parent_name = "CISCO-IP-TAP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "citapStreamEncodePacket"; yang_parent_name = "CISCO-IP-TAP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIPTAPMIB::Citapstreamencodepacket::~Citapstreamencodepacket()
+CISCOIPTAPMIB::CitapStreamEncodePacket::~CitapStreamEncodePacket()
 {
 }
 
-bool CISCOIPTAPMIB::Citapstreamencodepacket::has_data() const
+bool CISCOIPTAPMIB::CitapStreamEncodePacket::has_data() const
 {
+    if (is_presence_container) return true;
     return citapstreamcapabilities.is_set;
 }
 
-bool CISCOIPTAPMIB::Citapstreamencodepacket::has_operation() const
+bool CISCOIPTAPMIB::CitapStreamEncodePacket::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(citapstreamcapabilities.yfilter);
 }
 
-std::string CISCOIPTAPMIB::Citapstreamencodepacket::get_absolute_path() const
+std::string CISCOIPTAPMIB::CitapStreamEncodePacket::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IP-TAP-MIB:CISCO-IP-TAP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIPTAPMIB::Citapstreamencodepacket::get_segment_path() const
+std::string CISCOIPTAPMIB::CitapStreamEncodePacket::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "citapStreamEncodePacket";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIPTAPMIB::Citapstreamencodepacket::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIPTAPMIB::CitapStreamEncodePacket::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -182,19 +184,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPTAPMIB::Citapstreamencodep
 
 }
 
-std::shared_ptr<Entity> CISCOIPTAPMIB::Citapstreamencodepacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPTAPMIB::CitapStreamEncodePacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPTAPMIB::Citapstreamencodepacket::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPTAPMIB::CitapStreamEncodePacket::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIPTAPMIB::Citapstreamencodepacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPTAPMIB::CitapStreamEncodePacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "citapStreamCapabilities")
     {
@@ -202,7 +204,7 @@ void CISCOIPTAPMIB::Citapstreamencodepacket::set_value(const std::string & value
     }
 }
 
-void CISCOIPTAPMIB::Citapstreamencodepacket::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPTAPMIB::CitapStreamEncodePacket::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "citapStreamCapabilities")
     {
@@ -210,26 +212,29 @@ void CISCOIPTAPMIB::Citapstreamencodepacket::set_filter(const std::string & valu
     }
 }
 
-bool CISCOIPTAPMIB::Citapstreamencodepacket::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPTAPMIB::CitapStreamEncodePacket::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "citapStreamCapabilities")
         return true;
     return false;
 }
 
-CISCOIPTAPMIB::Citapstreamtable::Citapstreamtable()
+CISCOIPTAPMIB::CitapStreamTable::CitapStreamTable()
+    :
+    citapstreamentry(this, {"ctap2mediationcontentid", "ctap2streamindex"})
 {
 
-    yang_name = "citapStreamTable"; yang_parent_name = "CISCO-IP-TAP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "citapStreamTable"; yang_parent_name = "CISCO-IP-TAP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIPTAPMIB::Citapstreamtable::~Citapstreamtable()
+CISCOIPTAPMIB::CitapStreamTable::~CitapStreamTable()
 {
 }
 
-bool CISCOIPTAPMIB::Citapstreamtable::has_data() const
+bool CISCOIPTAPMIB::CitapStreamTable::has_data() const
 {
-    for (std::size_t index=0; index<citapstreamentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<citapstreamentry.len(); index++)
     {
         if(citapstreamentry[index]->has_data())
             return true;
@@ -237,9 +242,9 @@ bool CISCOIPTAPMIB::Citapstreamtable::has_data() const
     return false;
 }
 
-bool CISCOIPTAPMIB::Citapstreamtable::has_operation() const
+bool CISCOIPTAPMIB::CitapStreamTable::has_operation() const
 {
-    for (std::size_t index=0; index<citapstreamentry.size(); index++)
+    for (std::size_t index=0; index<citapstreamentry.len(); index++)
     {
         if(citapstreamentry[index]->has_operation())
             return true;
@@ -247,21 +252,21 @@ bool CISCOIPTAPMIB::Citapstreamtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIPTAPMIB::Citapstreamtable::get_absolute_path() const
+std::string CISCOIPTAPMIB::CitapStreamTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IP-TAP-MIB:CISCO-IP-TAP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIPTAPMIB::Citapstreamtable::get_segment_path() const
+std::string CISCOIPTAPMIB::CitapStreamTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "citapStreamTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIPTAPMIB::Citapstreamtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIPTAPMIB::CitapStreamTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -270,25 +275,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPTAPMIB::Citapstreamtable::
 
 }
 
-std::shared_ptr<Entity> CISCOIPTAPMIB::Citapstreamtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPTAPMIB::CitapStreamTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "citapStreamEntry")
     {
-        auto c = std::make_shared<CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry>();
+        auto c = std::make_shared<CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry>();
         c->parent = this;
-        citapstreamentry.push_back(c);
+        citapstreamentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPTAPMIB::Citapstreamtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPTAPMIB::CitapStreamTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : citapstreamentry)
+    for (auto c : citapstreamentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -299,22 +304,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIPTAPMIB::Citapstreamtable::
     return children;
 }
 
-void CISCOIPTAPMIB::Citapstreamtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPTAPMIB::CitapStreamTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIPTAPMIB::Citapstreamtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPTAPMIB::CitapStreamTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIPTAPMIB::Citapstreamtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPTAPMIB::CitapStreamTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "citapStreamEntry")
         return true;
     return false;
 }
 
-CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::Citapstreamentry()
+CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry::CitapStreamEntry()
     :
     ctap2mediationcontentid{YType::str, "cTap2MediationContentId"},
     ctap2streamindex{YType::str, "cTap2StreamIndex"},
@@ -336,15 +341,16 @@ CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::Citapstreamentry()
     citapstreamstatus{YType::enumeration, "citapStreamStatus"}
 {
 
-    yang_name = "citapStreamEntry"; yang_parent_name = "citapStreamTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "citapStreamEntry"; yang_parent_name = "citapStreamTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::~Citapstreamentry()
+CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry::~CitapStreamEntry()
 {
 }
 
-bool CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::has_data() const
+bool CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ctap2mediationcontentid.is_set
 	|| ctap2streamindex.is_set
 	|| citapstreaminterface.is_set
@@ -365,7 +371,7 @@ bool CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::has_data() const
 	|| citapstreamstatus.is_set;
 }
 
-bool CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::has_operation() const
+bool CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ctap2mediationcontentid.yfilter)
@@ -388,21 +394,23 @@ bool CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::has_operation() const
 	|| ydk::is_set(citapstreamstatus.yfilter);
 }
 
-std::string CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::get_absolute_path() const
+std::string CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IP-TAP-MIB:CISCO-IP-TAP-MIB/citapStreamTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::get_segment_path() const
+std::string CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "citapStreamEntry" <<"[cTap2MediationContentId='" <<ctap2mediationcontentid <<"']" <<"[cTap2StreamIndex='" <<ctap2streamindex <<"']";
+    path_buffer << "citapStreamEntry";
+    ADD_KEY_TOKEN(ctap2mediationcontentid, "cTap2MediationContentId");
+    ADD_KEY_TOKEN(ctap2streamindex, "cTap2StreamIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -429,19 +437,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPTAPMIB::Citapstreamtable::
 
 }
 
-std::shared_ptr<Entity> CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cTap2MediationContentId")
     {
@@ -553,7 +561,7 @@ void CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::set_value(const std::str
     }
 }
 
-void CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cTap2MediationContentId")
     {
@@ -629,7 +637,7 @@ void CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::set_filter(const std::st
     }
 }
 
-bool CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cTap2MediationContentId" || name == "cTap2StreamIndex" || name == "citapStreamInterface" || name == "citapStreamAddrType" || name == "citapStreamDestinationAddress" || name == "citapStreamDestinationLength" || name == "citapStreamSourceAddress" || name == "citapStreamSourceLength" || name == "citapStreamTosByte" || name == "citapStreamTosByteMask" || name == "citapStreamFlowId" || name == "citapStreamProtocol" || name == "citapStreamDestL4PortMin" || name == "citapStreamDestL4PortMax" || name == "citapStreamSourceL4PortMin" || name == "citapStreamSourceL4PortMax" || name == "citapStreamVRF" || name == "citapStreamStatus")
         return true;

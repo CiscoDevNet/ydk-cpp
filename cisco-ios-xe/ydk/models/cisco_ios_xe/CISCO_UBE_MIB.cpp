@@ -13,11 +13,11 @@ namespace CISCO_UBE_MIB {
 
 CISCOUBEMIB::CISCOUBEMIB()
     :
-    ciscoubemibobjects(std::make_shared<CISCOUBEMIB::Ciscoubemibobjects>())
+    ciscoubemibobjects(std::make_shared<CISCOUBEMIB::CiscoUbeMIBObjects>())
 {
     ciscoubemibobjects->parent = this;
 
-    yang_name = "CISCO-UBE-MIB"; yang_parent_name = "CISCO-UBE-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-UBE-MIB"; yang_parent_name = "CISCO-UBE-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOUBEMIB::~CISCOUBEMIB()
@@ -26,6 +26,7 @@ CISCOUBEMIB::~CISCOUBEMIB()
 
 bool CISCOUBEMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (ciscoubemibobjects !=  nullptr && ciscoubemibobjects->has_data());
 }
 
@@ -57,7 +58,7 @@ std::shared_ptr<Entity> CISCOUBEMIB::get_child_by_name(const std::string & child
     {
         if(ciscoubemibobjects == nullptr)
         {
-            ciscoubemibobjects = std::make_shared<CISCOUBEMIB::Ciscoubemibobjects>();
+            ciscoubemibobjects = std::make_shared<CISCOUBEMIB::CiscoUbeMIBObjects>();
         }
         return ciscoubemibobjects;
     }
@@ -117,28 +118,29 @@ bool CISCOUBEMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOUBEMIB::Ciscoubemibobjects::Ciscoubemibobjects()
+CISCOUBEMIB::CiscoUbeMIBObjects::CiscoUbeMIBObjects()
     :
     cubeenabled{YType::boolean, "cubeEnabled"},
     cubeversion{YType::str, "cubeVersion"},
     cubetotalsessionallowed{YType::uint32, "cubeTotalSessionAllowed"}
 {
 
-    yang_name = "ciscoUbeMIBObjects"; yang_parent_name = "CISCO-UBE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciscoUbeMIBObjects"; yang_parent_name = "CISCO-UBE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOUBEMIB::Ciscoubemibobjects::~Ciscoubemibobjects()
+CISCOUBEMIB::CiscoUbeMIBObjects::~CiscoUbeMIBObjects()
 {
 }
 
-bool CISCOUBEMIB::Ciscoubemibobjects::has_data() const
+bool CISCOUBEMIB::CiscoUbeMIBObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return cubeenabled.is_set
 	|| cubeversion.is_set
 	|| cubetotalsessionallowed.is_set;
 }
 
-bool CISCOUBEMIB::Ciscoubemibobjects::has_operation() const
+bool CISCOUBEMIB::CiscoUbeMIBObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cubeenabled.yfilter)
@@ -146,21 +148,21 @@ bool CISCOUBEMIB::Ciscoubemibobjects::has_operation() const
 	|| ydk::is_set(cubetotalsessionallowed.yfilter);
 }
 
-std::string CISCOUBEMIB::Ciscoubemibobjects::get_absolute_path() const
+std::string CISCOUBEMIB::CiscoUbeMIBObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-UBE-MIB:CISCO-UBE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOUBEMIB::Ciscoubemibobjects::get_segment_path() const
+std::string CISCOUBEMIB::CiscoUbeMIBObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciscoUbeMIBObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOUBEMIB::Ciscoubemibobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOUBEMIB::CiscoUbeMIBObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -172,19 +174,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOUBEMIB::Ciscoubemibobjects::
 
 }
 
-std::shared_ptr<Entity> CISCOUBEMIB::Ciscoubemibobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOUBEMIB::CiscoUbeMIBObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOUBEMIB::Ciscoubemibobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOUBEMIB::CiscoUbeMIBObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOUBEMIB::Ciscoubemibobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOUBEMIB::CiscoUbeMIBObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cubeEnabled")
     {
@@ -206,7 +208,7 @@ void CISCOUBEMIB::Ciscoubemibobjects::set_value(const std::string & value_path, 
     }
 }
 
-void CISCOUBEMIB::Ciscoubemibobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOUBEMIB::CiscoUbeMIBObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cubeEnabled")
     {
@@ -222,7 +224,7 @@ void CISCOUBEMIB::Ciscoubemibobjects::set_filter(const std::string & value_path,
     }
 }
 
-bool CISCOUBEMIB::Ciscoubemibobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOUBEMIB::CiscoUbeMIBObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cubeEnabled" || name == "cubeVersion" || name == "cubeTotalSessionAllowed")
         return true;

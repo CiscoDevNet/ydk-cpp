@@ -479,11 +479,11 @@ class Native::Interface::FastEthernet::CwsTunnel::Out : public ydk::Entity
 }; // Native::Interface::FastEthernet::CwsTunnel::Out
 
 
-class Native::Interface::FastEthernet::L2ProtocolTunnel : public ydk::Entity
+class Native::Interface::FastEthernet::L2protocolTunnel : public ydk::Entity
 {
     public:
-        L2ProtocolTunnel();
-        ~L2ProtocolTunnel();
+        L2protocolTunnel();
+        ~L2protocolTunnel();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -498,16 +498,16 @@ class Native::Interface::FastEthernet::L2ProtocolTunnel : public ydk::Entity
         ydk::YLeaf cdp; //type: empty
         ydk::YLeaf stp; //type: empty
         ydk::YLeaf vtp; //type: empty
-        class DropThreshold; //type: Native::Interface::FastEthernet::L2ProtocolTunnel::DropThreshold
-        class ShutdownThreshold; //type: Native::Interface::FastEthernet::L2ProtocolTunnel::ShutdownThreshold
+        class DropThreshold; //type: Native::Interface::FastEthernet::L2protocolTunnel::DropThreshold
+        class ShutdownThreshold; //type: Native::Interface::FastEthernet::L2protocolTunnel::ShutdownThreshold
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::L2ProtocolTunnel::DropThreshold> drop_threshold;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::L2ProtocolTunnel::ShutdownThreshold> shutdown_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::L2protocolTunnel::DropThreshold> drop_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::L2protocolTunnel::ShutdownThreshold> shutdown_threshold;
         
-}; // Native::Interface::FastEthernet::L2ProtocolTunnel
+}; // Native::Interface::FastEthernet::L2protocolTunnel
 
 
-class Native::Interface::FastEthernet::L2ProtocolTunnel::DropThreshold : public ydk::Entity
+class Native::Interface::FastEthernet::L2protocolTunnel::DropThreshold : public ydk::Entity
 {
     public:
         DropThreshold();
@@ -528,10 +528,10 @@ class Native::Interface::FastEthernet::L2ProtocolTunnel::DropThreshold : public 
         ydk::YLeaf stp; //type: uint16
         ydk::YLeaf vtp; //type: uint16
 
-}; // Native::Interface::FastEthernet::L2ProtocolTunnel::DropThreshold
+}; // Native::Interface::FastEthernet::L2protocolTunnel::DropThreshold
 
 
-class Native::Interface::FastEthernet::L2ProtocolTunnel::ShutdownThreshold : public ydk::Entity
+class Native::Interface::FastEthernet::L2protocolTunnel::ShutdownThreshold : public ydk::Entity
 {
     public:
         ShutdownThreshold();
@@ -552,7 +552,7 @@ class Native::Interface::FastEthernet::L2ProtocolTunnel::ShutdownThreshold : pub
         ydk::YLeaf stp; //type: uint16
         ydk::YLeaf vtp; //type: uint16
 
-}; // Native::Interface::FastEthernet::L2ProtocolTunnel::ShutdownThreshold
+}; // Native::Interface::FastEthernet::L2protocolTunnel::ShutdownThreshold
 
 
 class Native::Interface::FastEthernet::Encapsulation : public ydk::Entity
@@ -971,7 +971,7 @@ class Native::Interface::FastEthernet::Isis::Authentication::KeyChain : public y
         ydk::YLeaf name; //type: string
         class KeyChainList; //type: Native::Interface::FastEthernet::Isis::Authentication::KeyChain::KeyChainList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Isis::Authentication::KeyChain::KeyChainList> > key_chain_list;
+        ydk::YList key_chain_list;
         
 }; // Native::Interface::FastEthernet::Isis::Authentication::KeyChain
 
@@ -1060,7 +1060,7 @@ class Native::Interface::FastEthernet::Isis::CsnpInterval : public ydk::Entity
         ydk::YLeaf value_; //type: uint16
         class CsnpIntervalList; //type: Native::Interface::FastEthernet::Isis::CsnpInterval::CsnpIntervalList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Isis::CsnpInterval::CsnpIntervalList> > csnp_interval_list;
+        ydk::YList csnp_interval_list;
         
 }; // Native::Interface::FastEthernet::Isis::CsnpInterval
 
@@ -1151,7 +1151,7 @@ class Native::Interface::FastEthernet::Isis::HelloInterval : public ydk::Entity
         ydk::YLeaf value_; //type: one of uint16, enumeration
         class HelloIntervalList; //type: Native::Interface::FastEthernet::Isis::HelloInterval::HelloIntervalList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Isis::HelloInterval::HelloIntervalList> > hello_interval_list;
+        ydk::YList hello_interval_list;
                 class Value_;
 
 }; // Native::Interface::FastEthernet::Isis::HelloInterval
@@ -1200,7 +1200,7 @@ class Native::Interface::FastEthernet::Isis::HelloMultiplier : public ydk::Entit
         ydk::YLeaf value_; //type: uint16
         class HelloMultiplierList; //type: Native::Interface::FastEthernet::Isis::HelloMultiplier::HelloMultiplierList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Isis::HelloMultiplier::HelloMultiplierList> > hello_multiplier_list;
+        ydk::YList hello_multiplier_list;
         
 }; // Native::Interface::FastEthernet::Isis::HelloMultiplier
 
@@ -1273,7 +1273,7 @@ class Native::Interface::FastEthernet::Isis::Ipv6::Metric : public ydk::Entity
         ydk::YLeaf value_; //type: one of uint32, enumeration
         class MetricList; //type: Native::Interface::FastEthernet::Isis::Ipv6::Metric::MetricList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Isis::Ipv6::Metric::MetricList> > metric_list;
+        ydk::YList metric_list;
                 class Value_;
 
 }; // Native::Interface::FastEthernet::Isis::Ipv6::Metric
@@ -1343,7 +1343,7 @@ class Native::Interface::FastEthernet::Isis::Metric : public ydk::Entity
         ydk::YLeaf value_; //type: one of uint32, enumeration
         class MetricList; //type: Native::Interface::FastEthernet::Isis::Metric::MetricList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Isis::Metric::MetricList> > metric_list;
+        ydk::YList metric_list;
                 class Value_;
 
 }; // Native::Interface::FastEthernet::Isis::Metric
@@ -1392,7 +1392,7 @@ class Native::Interface::FastEthernet::Isis::Password : public ydk::Entity
         ydk::YLeaf password; //type: string
         class PasswordList; //type: Native::Interface::FastEthernet::Isis::Password::PasswordList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Isis::Password::PasswordList> > password_list;
+        ydk::YList password_list;
         
 }; // Native::Interface::FastEthernet::Isis::Password
 
@@ -1439,7 +1439,7 @@ class Native::Interface::FastEthernet::Isis::Priority : public ydk::Entity
         ydk::YLeaf value_; //type: uint8
         class PriorityList; //type: Native::Interface::FastEthernet::Isis::Priority::PriorityList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Isis::Priority::PriorityList> > priority_list;
+        ydk::YList priority_list;
         
 }; // Native::Interface::FastEthernet::Isis::Priority
 
@@ -1933,7 +1933,7 @@ class Native::Interface::FastEthernet::Mpls::Ldp::Discovery : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf transport_address; //type: one of enumeration, string
+        ydk::YLeaf transport_address; //type: one of string, enumeration
 
 }; // Native::Interface::FastEthernet::Mpls::Ldp::Discovery
 
@@ -2258,13 +2258,13 @@ class Native::Interface::FastEthernet::Ip : public ydk::Entity
         class Dhcp; //type: Native::Interface::FastEthernet::Ip::Dhcp
         class SummaryAddress; //type: Native::Interface::FastEthernet::Ip::SummaryAddress
         class Verify; //type: Native::Interface::FastEthernet::Ip::Verify
-        class Flow; //type: Native::Interface::FastEthernet::Ip::Flow
         class Igmp; //type: Native::Interface::FastEthernet::Ip::Igmp
         class Lisp; //type: Native::Interface::FastEthernet::Ip::Lisp
-        class Nat; //type: Native::Interface::FastEthernet::Ip::Nat
-        class Nbar; //type: Native::Interface::FastEthernet::Ip::Nbar
-        class Ospf; //type: Native::Interface::FastEthernet::Ip::Ospf
         class Rsvp; //type: Native::Interface::FastEthernet::Ip::Rsvp
+        class Nbar; //type: Native::Interface::FastEthernet::Ip::Nbar
+        class Flow; //type: Native::Interface::FastEthernet::Ip::Flow
+        class Nat; //type: Native::Interface::FastEthernet::Ip::Nat
+        class Ospf; //type: Native::Interface::FastEthernet::Ip::Ospf
         class Wccp; //type: Native::Interface::FastEthernet::Ip::Wccp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::AccessGroup> access_group;
@@ -2275,7 +2275,7 @@ class Native::Interface::FastEthernet::Ip : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::HelloInterval> hello_interval;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Authentication> authentication;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::HoldTime> hold_time;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::HelperAddress> > helper_address;
+        ydk::YList helper_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Pim> pim;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Policy> policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Rip> rip;
@@ -2287,13 +2287,13 @@ class Native::Interface::FastEthernet::Ip : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Dhcp> dhcp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::SummaryAddress> summary_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Verify> verify;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Flow> flow;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Igmp> igmp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Lisp> lisp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Nat> nat;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Nbar> nbar;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Ospf> ospf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Rsvp> rsvp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Nbar> nbar;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Flow> flow;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Nat> nat;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Ospf> ospf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Wccp> wccp;
         
 }; // Native::Interface::FastEthernet::Ip
@@ -2622,7 +2622,7 @@ class Native::Interface::FastEthernet::Ip::Address : public ydk::Entity
         class Dhcp; //type: Native::Interface::FastEthernet::Ip::Address::Dhcp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Address::Primary> primary;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Address::Secondary> > secondary;
+        ydk::YList secondary;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Address::Dhcp> dhcp; // presence node
         
 }; // Native::Interface::FastEthernet::Ip::Address
@@ -3374,7 +3374,7 @@ class Native::Interface::FastEthernet::Ip::Dhcp::Snooping : public ydk::Entity
         class Vlan; //type: Native::Interface::FastEthernet::Ip::Dhcp::Snooping::Vlan
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Dhcp::Snooping::Limit> limit;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Dhcp::Snooping::Vlan> > vlan;
+        ydk::YList vlan;
         
 }; // Native::Interface::FastEthernet::Ip::Dhcp::Snooping
 
@@ -3532,7 +3532,7 @@ class Native::Interface::FastEthernet::Ip::SummaryAddress : public ydk::Entity
 
         class Eigrp; //type: Native::Interface::FastEthernet::Ip::SummaryAddress::Eigrp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::SummaryAddress::Eigrp> > eigrp;
+        ydk::YList eigrp;
         
 }; // Native::Interface::FastEthernet::Ip::SummaryAddress
 

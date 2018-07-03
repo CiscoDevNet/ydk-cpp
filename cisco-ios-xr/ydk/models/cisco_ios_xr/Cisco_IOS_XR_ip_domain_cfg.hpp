@@ -57,7 +57,7 @@ class IpDomain::Vrfs : public ydk::Entity
 
         class Vrf; //type: IpDomain::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_domain_cfg::IpDomain::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // IpDomain::Vrfs
 
@@ -115,7 +115,7 @@ class IpDomain::Vrfs::Vrf::Ipv6Hosts : public ydk::Entity
 
         class Ipv6Host; //type: IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_domain_cfg::IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host> > ipv6_host;
+        ydk::YList ipv6_host;
         
 }; // IpDomain::Vrfs::Vrf::Ipv6Hosts
 
@@ -160,7 +160,7 @@ class IpDomain::Vrfs::Vrf::Servers : public ydk::Entity
 
         class Server; //type: IpDomain::Vrfs::Vrf::Servers::Server
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_domain_cfg::IpDomain::Vrfs::Vrf::Servers::Server> > server;
+        ydk::YList server;
         
 }; // IpDomain::Vrfs::Vrf::Servers
 
@@ -181,7 +181,7 @@ class IpDomain::Vrfs::Vrf::Servers::Server : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf order; //type: int32
+        ydk::YLeaf order; //type: uint32
         ydk::YLeaf server_address; //type: string
 
 }; // IpDomain::Vrfs::Vrf::Servers::Server
@@ -205,7 +205,7 @@ class IpDomain::Vrfs::Vrf::Lists : public ydk::Entity
 
         class List; //type: IpDomain::Vrfs::Vrf::Lists::List
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_domain_cfg::IpDomain::Vrfs::Vrf::Lists::List> > list;
+        ydk::YList list;
         
 }; // IpDomain::Vrfs::Vrf::Lists
 
@@ -226,7 +226,7 @@ class IpDomain::Vrfs::Vrf::Lists::List : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf order; //type: int32
+        ydk::YLeaf order; //type: uint32
         ydk::YLeaf list_name; //type: string
 
 }; // IpDomain::Vrfs::Vrf::Lists::List
@@ -250,7 +250,7 @@ class IpDomain::Vrfs::Vrf::Ipv4Hosts : public ydk::Entity
 
         class Ipv4Host; //type: IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_domain_cfg::IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host> > ipv4_host;
+        ydk::YList ipv4_host;
         
 }; // IpDomain::Vrfs::Vrf::Ipv4Hosts
 

@@ -33,7 +33,7 @@ class Instmgr : public ydk::Entity
 
         class Trace; //type: Instmgr::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_instmgr::Instmgr::Trace> > trace;
+        ydk::YList trace;
         
 }; // Instmgr
 
@@ -58,7 +58,7 @@ class Instmgr::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Instmgr::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_instmgr::Instmgr::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Instmgr::Trace
 
@@ -82,7 +82,7 @@ class Instmgr::Trace::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Instmgr::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_instmgr::Instmgr::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Instmgr::Trace::Location
 
@@ -106,7 +106,7 @@ class Instmgr::Trace::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Instmgr::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_instmgr::Instmgr::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Instmgr::Trace::Location::AllOptions
 

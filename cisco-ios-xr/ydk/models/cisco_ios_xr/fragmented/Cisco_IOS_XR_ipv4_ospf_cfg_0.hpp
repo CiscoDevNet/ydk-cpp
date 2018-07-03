@@ -59,7 +59,7 @@ class Ospf::Processes : public ydk::Entity
 
         class Process; //type: Ospf::Processes::Process
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process> > process;
+        ydk::YList process;
         
 }; // Ospf::Processes
 
@@ -188,7 +188,7 @@ class Ospf::Processes::Process::Vrfs : public ydk::Entity
 
         class Vrf; //type: Ospf::Processes::Process::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Ospf::Processes::Process::Vrfs
 
@@ -335,7 +335,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::DomainId::SecondaryDomainIds : public
 
         class SecondaryDomainId; //type: Ospf::Processes::Process::Vrfs::Vrf::DomainId::SecondaryDomainIds::SecondaryDomainId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::DomainId::SecondaryDomainIds::SecondaryDomainId> > secondary_domain_id;
+        ydk::YList secondary_domain_id;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::DomainId::SecondaryDomainIds
 
@@ -847,7 +847,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::C
 
         class CandidateInterface; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface> > candidate_interface;
+        ydk::YList candidate_interface;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces
 
@@ -891,7 +891,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::E
 
         class ExcludeInterface; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface> > exclude_interface;
+        ydk::YList exclude_interface;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces
 
@@ -986,7 +986,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix:
 
         class CandidateInterface; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface> > candidate_interface;
+        ydk::YList candidate_interface;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces
 
@@ -1030,7 +1030,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix:
 
         class ExcludeInterface; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface> > exclude_interface;
+        ydk::YList exclude_interface;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces
 
@@ -1168,7 +1168,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::Authentication::Message
 
         class MessageDigestKey; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::Authentication::MessageDigestKeies::MessageDigestKey
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::Authentication::MessageDigestKeies::MessageDigestKey> > message_digest_key;
+        ydk::YList message_digest_key;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::Authentication::MessageDigestKeies
 
@@ -1325,7 +1325,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes : publi
 
         class Redistribute; //type: Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redistribute
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redistribute> > redistribute;
+        ydk::YList redistribute;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes
 
@@ -1353,9 +1353,9 @@ class Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redist
         class Eigrp; //type: Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redistribute::Eigrp
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redistribute::ConnectedOrStaticOrDagrOrSubscriberOrMobileOrRip> connected_or_static_or_dagr_or_subscriber_or_mobile_or_rip; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redistribute::ApplicationOrIsisOrOspf> > application_or_isis_or_ospf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redistribute::Bgp> > bgp;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redistribute::Eigrp> > eigrp;
+        ydk::YList application_or_isis_or_ospf;
+        ydk::YList bgp;
+        ydk::YList eigrp;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redistribute
 
@@ -1643,7 +1643,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Ucmp::ExcludeInterfaces : public ydk:
 
         class ExcludeInterface; //type: Ospf::Processes::Process::Vrfs::Vrf::Ucmp::ExcludeInterfaces::ExcludeInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::Ucmp::ExcludeInterfaces::ExcludeInterface> > exclude_interface;
+        ydk::YList exclude_interface;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::Ucmp::ExcludeInterfaces
 
@@ -1758,7 +1758,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers :
 
         class Tiebreaker; //type: Ospf::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::Tiebreaker
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::Tiebreaker> > tiebreaker;
+        ydk::YList tiebreaker;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers
 
@@ -1807,9 +1807,9 @@ class Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes : public ydk::Entity
         class Netmask; //type: Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::Netmask
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefixData> summary_prefix_data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::PrefixAndNetmask> > prefix_and_netmask;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::Prefix> > prefix;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes::Netmask> > netmask;
+        ydk::YList prefix_and_netmask;
+        ydk::YList prefix;
+        ydk::YList netmask;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes
 
@@ -1924,7 +1924,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::OutgoingRouteUpdates : public ydk::En
 
         class OutgoingRouteUpdate; //type: Ospf::Processes::Process::Vrfs::Vrf::OutgoingRouteUpdates::OutgoingRouteUpdate
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::OutgoingRouteUpdates::OutgoingRouteUpdate> > outgoing_route_update;
+        ydk::YList outgoing_route_update;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::OutgoingRouteUpdates
 
@@ -2021,7 +2021,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Distance::IpDistances : public ydk::E
 
         class IpDistance; //type: Ospf::Processes::Process::Vrfs::Vrf::Distance::IpDistances::IpDistance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::Distance::IpDistances::IpDistance> > ip_distance;
+        ydk::YList ip_distance;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::Distance::IpDistances
 
@@ -2069,8 +2069,8 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses : public ydk::Entity
         class AreaAddress; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress
         class AreaAreaId; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress> > area_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId> > area_area_id;
+        ydk::YList area_address;
+        ydk::YList area_area_id;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses
 
@@ -2096,6 +2096,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress : public y
         ydk::YLeaf default_cost; //type: uint32
         ydk::YLeaf route_policy_out; //type: string
         ydk::YLeaf stub; //type: boolean
+        ydk::YLeaf type7_translate_always; //type: boolean
         ydk::YLeaf mpls_traffic_eng; //type: empty
         ydk::YLeaf external_out; //type: boolean
         ydk::YLeaf summary_in; //type: boolean
@@ -2138,7 +2139,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLi
 
         class VirtualLinkScope; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinkScopes::VirtualLinkScope
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinkScopes::VirtualLinkScope> > virtual_link_scope;
+        ydk::YList virtual_link_scope;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinkScopes
 
@@ -2240,7 +2241,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLi
 
         class MessageDigestKey; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinkScopes::VirtualLinkScope::Authentication::MessageDigestKeies::MessageDigestKey
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinkScopes::VirtualLinkScope::Authentication::MessageDigestKeies::MessageDigestKey> > message_digest_key;
+        ydk::YList message_digest_key;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinkScopes::VirtualLinkScope::Authentication::MessageDigestKeies
 
@@ -2307,7 +2308,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinkS
 
         class ShamLinkScope; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinkScopes::ShamLinkScope
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinkScopes::ShamLinkScope> > sham_link_scope;
+        ydk::YList sham_link_scope;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinkScopes
 
@@ -2412,7 +2413,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinkS
 
         class MessageDigestKey; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinkScopes::ShamLinkScope::Authentication::MessageDigestKeies::MessageDigestKey
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinkScopes::ShamLinkScope::Authentication::MessageDigestKeies::MessageDigestKey> > message_digest_key;
+        ydk::YList message_digest_key;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinkScopes::ShamLinkScope::Authentication::MessageDigestKeies
 
@@ -2628,7 +2629,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope
 
         class MessageDigestKey; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Authentication::MessageDigestKeies::MessageDigestKey
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Authentication::MessageDigestKeies::MessageDigestKey> > message_digest_key;
+        ydk::YList message_digest_key;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Authentication::MessageDigestKeies
 
@@ -2792,7 +2793,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope
 
         class CandidateInterface; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface> > candidate_interface;
+        ydk::YList candidate_interface;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::CandidateInterfaces
 
@@ -2836,7 +2837,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope
 
         class ExcludeInterface; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface> > exclude_interface;
+        ydk::YList exclude_interface;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::ExcludeInterfaces
 
@@ -2933,7 +2934,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope
 
         class Tiebreaker; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker> > tiebreaker;
+        ydk::YList tiebreaker;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::Tiebreakers
 
@@ -2978,7 +2979,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope
 
         class CandidateInterface; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface> > candidate_interface;
+        ydk::YList candidate_interface;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::CandidateInterfaces
 
@@ -3022,7 +3023,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope
 
         class ExcludeInterface; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface> > exclude_interface;
+        ydk::YList exclude_interface;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces
 
@@ -3088,7 +3089,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScope
 
         class NameScope; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope> > name_scope;
+        ydk::YList name_scope;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes
 
@@ -3316,7 +3317,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScope
 
         class MessageDigestKey; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::Authentication::MessageDigestKeies::MessageDigestKey
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::Authentication::MessageDigestKeies::MessageDigestKey> > message_digest_key;
+        ydk::YList message_digest_key;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::Authentication::MessageDigestKeies
 
@@ -3406,7 +3407,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScope
 
         class Neighbor; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::Neighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::Neighbors
 
@@ -3528,7 +3529,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScope
 
         class CandidateInterface; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface> > candidate_interface;
+        ydk::YList candidate_interface;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerLink::CandidateInterfaces
 
@@ -3572,7 +3573,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScope
 
         class ExcludeInterface; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface> > exclude_interface;
+        ydk::YList exclude_interface;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerLink::ExcludeInterfaces
 
@@ -3669,7 +3670,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScope
 
         class Tiebreaker; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker> > tiebreaker;
+        ydk::YList tiebreaker;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::Tiebreakers
 
@@ -3714,7 +3715,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScope
 
         class CandidateInterface; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface> > candidate_interface;
+        ydk::YList candidate_interface;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::CandidateInterfaces
 
@@ -3758,7 +3759,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScope
 
         class ExcludeInterface; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface> > exclude_interface;
+        ydk::YList exclude_interface;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces
 
@@ -3805,86 +3806,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScope
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::CostFallback
 
-class OspfProcFrrRlfaTunnel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf mpls_ldp;
-
-};
-
-class OspfSubAddressFamily : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unicast;
-
-};
-
-class OspfNetwork : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf broadcast;
-        static const ydk::Enum::YLeaf non_broadcast;
-        static const ydk::Enum::YLeaf point_to_point;
-        static const ydk::Enum::YLeaf point_to_multipoint;
-        static const ydk::Enum::YLeaf non_broadcast_point_to_multipoint;
-
-};
-
-class OspfFastRerouteTiebreakersIntf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf downstream;
-        static const ydk::Enum::YLeaf line_card_disjoint;
-        static const ydk::Enum::YLeaf lowest_metric;
-        static const ydk::Enum::YLeaf node_protect;
-        static const ydk::Enum::YLeaf primary_path;
-        static const ydk::Enum::YLeaf secondary_path;
-        static const ydk::Enum::YLeaf srlg_disjoint;
-
-};
-
-class OspfAuthentication : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf plain;
-        static const ydk::Enum::YLeaf md5;
-
-};
-
-class OspfEigrpRoute : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf internal;
-        static const ydk::Enum::YLeaf external;
-
-};
-
-class OspfSid : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf index_;
-        static const ydk::Enum::YLeaf absolute;
-
-};
-
-class OspfLinkStateMetric : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf type1;
-        static const ydk::Enum::YLeaf type2;
-
-};
-
-class OspfKeychainAuth : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf keychain;
-
-};
-
 class OspfFastRerouteTiebreakers : public ydk::Enum
 {
     public:
@@ -3895,51 +3816,7 @@ class OspfFastRerouteTiebreakers : public ydk::Enum
         static const ydk::Enum::YLeaf primary_path;
         static const ydk::Enum::YLeaf secondary_path;
         static const ydk::Enum::YLeaf srlg_disjoint;
-
-};
-
-class OspfUloopAvoidance : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf protected_;
-        static const ydk::Enum::YLeaf all;
-        static const ydk::Enum::YLeaf segment_routing;
-
-};
-
-class OspfShutdown : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf full;
-        static const ydk::Enum::YLeaf hostmode;
-        static const ydk::Enum::YLeaf onreload;
-
-};
-
-class OspfDomainId : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf type0005;
-        static const ydk::Enum::YLeaf type0105;
-        static const ydk::Enum::YLeaf type0205;
-        static const ydk::Enum::YLeaf type8005;
-
-};
-
-class OspfFrrRlfaTunnel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf mpls_ldp;
-
-};
-
-class OspfLogAdj : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf brief;
-        static const ydk::Enum::YLeaf detail;
-        static const ydk::Enum::YLeaf suppress;
+        static const ydk::Enum::YLeaf interface_disjoint;
 
 };
 
@@ -3949,75 +3826,6 @@ class OspfFastReroute : public ydk::Enum
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf per_link;
         static const ydk::Enum::YLeaf per_prefix;
-
-};
-
-class OspfCiscoNsf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf always;
-        static const ydk::Enum::YLeaf require_nsf_neighbors;
-
-};
-
-class OspfProcFastReroute : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf per_link;
-        static const ydk::Enum::YLeaf per_prefix;
-
-};
-
-class OspfRedistLsa : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf summary;
-        static const ydk::Enum::YLeaf external;
-
-};
-
-class OspfDistListProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf all;
-        static const ydk::Enum::YLeaf connected;
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf bgp;
-        static const ydk::Enum::YLeaf ospf;
-        static const ydk::Enum::YLeaf dagr;
-
-};
-
-class BfdEnableMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf strict;
-
-};
-
-class OspfSegmentRoutingForwarding : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf mpls;
-
-};
-
-class OspfIetfNsf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf all;
-
-};
-
-class Nsr : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf true_;
-        static const ydk::Enum::YLeaf false_;
 
 };
 
@@ -4034,6 +3842,48 @@ class OspfTraceBufSize : public ydk::Enum
         static const ydk::Enum::YLeaf size16384;
         static const ydk::Enum::YLeaf size32768;
         static const ydk::Enum::YLeaf size65536;
+
+};
+
+class OspfRedistLsa : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf summary;
+        static const ydk::Enum::YLeaf external;
+
+};
+
+class OspfIetfNsf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
+
+};
+
+class BfdEnableMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf strict;
+
+};
+
+class OspfFastReroutePriority : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf medium;
+        static const ydk::Enum::YLeaf low;
+
+};
+
+class OspfCiscoNsf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf always;
+        static const ydk::Enum::YLeaf require_nsf_neighbors;
 
 };
 
@@ -4055,23 +3905,24 @@ class OspfRedistProtocol : public ydk::Enum
 
 };
 
-class OspfRouteLevel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf type1;
-        static const ydk::Enum::YLeaf type2;
-        static const ydk::Enum::YLeaf type1_and2;
-
-};
-
-class OspfIetfNsfSupport : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf never;
-
-};
-
 class OspfSegmentRouting : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf mpls;
+
+};
+
+class OspfUloopAvoidance : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf protected_;
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf segment_routing;
+
+};
+
+class OspfSegmentRoutingForwarding : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disable;
@@ -4086,13 +3937,165 @@ class OspfAddressFamily : public ydk::Enum
 
 };
 
-class OspfFastReroutePriority : public ydk::Enum
+class OspfProcFastReroute : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf high;
-        static const ydk::Enum::YLeaf medium;
-        static const ydk::Enum::YLeaf low;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf per_link;
+        static const ydk::Enum::YLeaf per_prefix;
+
+};
+
+class OspfProcFrrRlfaTunnel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf mpls_ldp;
+
+};
+
+class OspfIetfNsfSupport : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf never;
+
+};
+
+class OspfLinkStateMetric : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf type1;
+        static const ydk::Enum::YLeaf type2;
+
+};
+
+class OspfAuthentication : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf plain;
+        static const ydk::Enum::YLeaf md5;
+
+};
+
+class OspfLogAdj : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf brief;
+        static const ydk::Enum::YLeaf detail;
+        static const ydk::Enum::YLeaf suppress;
+
+};
+
+class OspfSubAddressFamily : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unicast;
+
+};
+
+class OspfDomainId : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf type0005;
+        static const ydk::Enum::YLeaf type0105;
+        static const ydk::Enum::YLeaf type0205;
+        static const ydk::Enum::YLeaf type8005;
+
+};
+
+class OspfEigrpRoute : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf external;
+
+};
+
+class OspfSid : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf index_;
+        static const ydk::Enum::YLeaf absolute;
+
+};
+
+class Nsr : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf false_;
+
+};
+
+class OspfFastRerouteTiebreakersIntf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf downstream;
+        static const ydk::Enum::YLeaf line_card_disjoint;
+        static const ydk::Enum::YLeaf lowest_metric;
+        static const ydk::Enum::YLeaf node_protect;
+        static const ydk::Enum::YLeaf primary_path;
+        static const ydk::Enum::YLeaf secondary_path;
+        static const ydk::Enum::YLeaf srlg_disjoint;
+        static const ydk::Enum::YLeaf interface_disjoint;
+
+};
+
+class OspfDistListProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf connected;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf ospf;
+        static const ydk::Enum::YLeaf dagr;
+
+};
+
+class OspfRouteLevel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf type1;
+        static const ydk::Enum::YLeaf type2;
+        static const ydk::Enum::YLeaf type1_and2;
+
+};
+
+class OspfNetwork : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf broadcast;
+        static const ydk::Enum::YLeaf non_broadcast;
+        static const ydk::Enum::YLeaf point_to_point;
+        static const ydk::Enum::YLeaf point_to_multipoint;
+        static const ydk::Enum::YLeaf non_broadcast_point_to_multipoint;
+
+};
+
+class OspfFrrRlfaTunnel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf mpls_ldp;
+
+};
+
+class OspfShutdown : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf full;
+        static const ydk::Enum::YLeaf hostmode;
+        static const ydk::Enum::YLeaf onreload;
+
+};
+
+class OspfKeychainAuth : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf keychain;
 
 };
 

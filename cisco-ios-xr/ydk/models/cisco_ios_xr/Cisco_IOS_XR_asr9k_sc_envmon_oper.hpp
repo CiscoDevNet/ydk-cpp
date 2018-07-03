@@ -57,7 +57,7 @@ class EnvironmentalMonitoringCli::RackClis : public ydk::Entity
 
         class RackCli; //type: EnvironmentalMonitoringCli::RackClis::RackCli
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoringCli::RackClis::RackCli> > rack_cli;
+        ydk::YList rack_cli;
         
 }; // EnvironmentalMonitoringCli::RackClis
 
@@ -79,7 +79,7 @@ class EnvironmentalMonitoringCli::RackClis::RackCli : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf rack; //type: int32
+        ydk::YLeaf rack; //type: uint32
         class SlotClis; //type: EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis> slot_clis;
@@ -105,7 +105,7 @@ class EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis : public ydk::Enti
 
         class SlotCli; //type: EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli> > slot_cli;
+        ydk::YList slot_cli;
         
 }; // EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis
 
@@ -152,7 +152,7 @@ class EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleCl
 
         class ModuleCli; //type: EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli> > module_cli;
+        ydk::YList module_cli;
         
 }; // EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis
 
@@ -201,7 +201,7 @@ class EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleCl
 
         class SensorTypeCli; //type: EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli> > sensor_type_cli;
+        ydk::YList sensor_type_cli;
         
 }; // EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis
 
@@ -248,7 +248,7 @@ class EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleCl
 
         class SensorNameCli; //type: EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli> > sensor_name_cli;
+        ydk::YList sensor_name_cli;
         
 }; // EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis
 
@@ -330,7 +330,7 @@ class EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleCl
 
         class ThresholdCli; //type: EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::ThresholdClis::ThresholdCli
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::ThresholdClis::ThresholdCli> > threshold_cli;
+        ydk::YList threshold_cli;
         
 }; // EnvironmentalMonitoringCli::RackClis::RackCli::SlotClis::SlotCli::ModuleClis::ModuleCli::SensorTypeClis::SensorTypeCli::SensorNameClis::SensorNameCli::ThresholdClis
 
@@ -485,7 +485,7 @@ class EnvironmentalMonitoring::Racks : public ydk::Entity
 
         class Rack; //type: EnvironmentalMonitoring::Racks::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack> > rack;
+        ydk::YList rack;
         
 }; // EnvironmentalMonitoring::Racks
 
@@ -507,7 +507,7 @@ class EnvironmentalMonitoring::Racks::Rack : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf rack; //type: int32
+        ydk::YLeaf rack; //type: uint32
         class Slots; //type: EnvironmentalMonitoring::Racks::Rack::Slots
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack::Slots> slots;
@@ -533,7 +533,7 @@ class EnvironmentalMonitoring::Racks::Rack::Slots : public ydk::Entity
 
         class Slot; //type: EnvironmentalMonitoring::Racks::Rack::Slots::Slot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack::Slots::Slot> > slot;
+        ydk::YList slot;
         
 }; // EnvironmentalMonitoring::Racks::Rack::Slots
 
@@ -580,7 +580,7 @@ class EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules : public ydk::E
 
         class Module; //type: EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module> > module;
+        ydk::YList module;
         
 }; // EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules
 
@@ -682,7 +682,7 @@ class EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Sensor
 
         class SensorType; //type: EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType> > sensor_type;
+        ydk::YList sensor_type;
         
 }; // EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes
 
@@ -729,7 +729,7 @@ class EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Sensor
 
         class SensorName; //type: EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName> > sensor_name;
+        ydk::YList sensor_name;
         
 }; // EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames
 
@@ -779,7 +779,7 @@ class EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Sensor
 
         class Threshold; //type: EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_sc_envmon_oper::EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold> > threshold;
+        ydk::YList threshold;
         
 }; // EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds
 

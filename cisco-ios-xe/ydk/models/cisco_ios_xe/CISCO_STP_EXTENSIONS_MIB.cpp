@@ -13,36 +13,36 @@ namespace CISCO_STP_EXTENSIONS_MIB {
 
 CISCOSTPEXTENSIONSMIB::CISCOSTPEXTENSIONSMIB()
     :
-    stpxuplinkfastobjects(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects>())
-	,stpxbackbonefastobjects(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects>())
-	,stpxspanningtreeobjects(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects>())
-	,stpxmistpobjects(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmistpobjects>())
-	,stpxloopguardobjects(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects>())
-	,stpxfaststartobjects(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects>())
-	,stpxbpduskewingobjects(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects>())
-	,stpxmstobjects(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmstobjects>())
-	,stpxrstpobjects(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrstpobjects>())
-	,stpxsmstobjects(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxsmstobjects>())
-	,stpxpvstvlantable(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable>())
-	,stpxinconsistencytable(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable>())
-	,stpxrootguardconfigtable(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable>())
-	,stpxrootinconsistencytable(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable>())
-	,stpxmistpinstancetable(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable>())
-	,stpxloopguardconfigtable(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable>())
-	,stpxloopinconsistencytable(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable>())
-	,stpxfaststartporttable(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable>())
-	,stpxfaststartopermodetable(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable>())
-	,stpxbpduskewingtable(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable>())
-	,stpxmstinstancetable(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable>())
-	,stpxmstinstanceedittable(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable>())
-	,stpxmstporttable(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmstporttable>())
-	,stpxmstportroletable(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmstportroletable>())
-	,stpxrstpporttable(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrstpporttable>())
-	,stpxrstpportroletable(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable>())
-	,stpxrpvstporttable(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable>())
-	,stpxsmstinstancetable(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable>())
-	,stpxsmstinstanceedittable(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable>())
-	,stpxsmstporttable(std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxsmstporttable>())
+    stpxuplinkfastobjects(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects>())
+    , stpxbackbonefastobjects(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects>())
+    , stpxspanningtreeobjects(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects>())
+    , stpxmistpobjects(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMISTPObjects>())
+    , stpxloopguardobjects(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects>())
+    , stpxfaststartobjects(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxFastStartObjects>())
+    , stpxbpduskewingobjects(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects>())
+    , stpxmstobjects(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTObjects>())
+    , stpxrstpobjects(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRSTPObjects>())
+    , stpxsmstobjects(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxSMSTObjects>())
+    , stpxpvstvlantable(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable>())
+    , stpxinconsistencytable(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable>())
+    , stpxrootguardconfigtable(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable>())
+    , stpxrootinconsistencytable(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable>())
+    , stpxmistpinstancetable(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable>())
+    , stpxloopguardconfigtable(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable>())
+    , stpxloopinconsistencytable(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable>())
+    , stpxfaststartporttable(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable>())
+    , stpxfaststartopermodetable(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable>())
+    , stpxbpduskewingtable(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable>())
+    , stpxmstinstancetable(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable>())
+    , stpxmstinstanceedittable(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable>())
+    , stpxmstporttable(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTPortTable>())
+    , stpxmstportroletable(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable>())
+    , stpxrstpporttable(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable>())
+    , stpxrstpportroletable(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable>())
+    , stpxrpvstporttable(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable>())
+    , stpxsmstinstancetable(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable>())
+    , stpxsmstinstanceedittable(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable>())
+    , stpxsmstporttable(std::make_shared<CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable>())
 {
     stpxuplinkfastobjects->parent = this;
     stpxbackbonefastobjects->parent = this;
@@ -75,7 +75,7 @@ CISCOSTPEXTENSIONSMIB::CISCOSTPEXTENSIONSMIB()
     stpxsmstinstanceedittable->parent = this;
     stpxsmstporttable->parent = this;
 
-    yang_name = "CISCO-STP-EXTENSIONS-MIB"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-STP-EXTENSIONS-MIB"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOSTPEXTENSIONSMIB::~CISCOSTPEXTENSIONSMIB()
@@ -84,6 +84,7 @@ CISCOSTPEXTENSIONSMIB::~CISCOSTPEXTENSIONSMIB()
 
 bool CISCOSTPEXTENSIONSMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (stpxuplinkfastobjects !=  nullptr && stpxuplinkfastobjects->has_data())
 	|| (stpxbackbonefastobjects !=  nullptr && stpxbackbonefastobjects->has_data())
 	|| (stpxspanningtreeobjects !=  nullptr && stpxspanningtreeobjects->has_data())
@@ -173,7 +174,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxuplinkfastobjects == nullptr)
         {
-            stpxuplinkfastobjects = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects>();
+            stpxuplinkfastobjects = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects>();
         }
         return stpxuplinkfastobjects;
     }
@@ -182,7 +183,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxbackbonefastobjects == nullptr)
         {
-            stpxbackbonefastobjects = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects>();
+            stpxbackbonefastobjects = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects>();
         }
         return stpxbackbonefastobjects;
     }
@@ -191,7 +192,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxspanningtreeobjects == nullptr)
         {
-            stpxspanningtreeobjects = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects>();
+            stpxspanningtreeobjects = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects>();
         }
         return stpxspanningtreeobjects;
     }
@@ -200,7 +201,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxmistpobjects == nullptr)
         {
-            stpxmistpobjects = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmistpobjects>();
+            stpxmistpobjects = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMISTPObjects>();
         }
         return stpxmistpobjects;
     }
@@ -209,7 +210,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxloopguardobjects == nullptr)
         {
-            stpxloopguardobjects = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects>();
+            stpxloopguardobjects = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects>();
         }
         return stpxloopguardobjects;
     }
@@ -218,7 +219,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxfaststartobjects == nullptr)
         {
-            stpxfaststartobjects = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects>();
+            stpxfaststartobjects = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxFastStartObjects>();
         }
         return stpxfaststartobjects;
     }
@@ -227,7 +228,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxbpduskewingobjects == nullptr)
         {
-            stpxbpduskewingobjects = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects>();
+            stpxbpduskewingobjects = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects>();
         }
         return stpxbpduskewingobjects;
     }
@@ -236,7 +237,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxmstobjects == nullptr)
         {
-            stpxmstobjects = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmstobjects>();
+            stpxmstobjects = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTObjects>();
         }
         return stpxmstobjects;
     }
@@ -245,7 +246,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxrstpobjects == nullptr)
         {
-            stpxrstpobjects = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrstpobjects>();
+            stpxrstpobjects = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRSTPObjects>();
         }
         return stpxrstpobjects;
     }
@@ -254,7 +255,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxsmstobjects == nullptr)
         {
-            stpxsmstobjects = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxsmstobjects>();
+            stpxsmstobjects = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxSMSTObjects>();
         }
         return stpxsmstobjects;
     }
@@ -263,7 +264,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxpvstvlantable == nullptr)
         {
-            stpxpvstvlantable = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable>();
+            stpxpvstvlantable = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable>();
         }
         return stpxpvstvlantable;
     }
@@ -272,7 +273,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxinconsistencytable == nullptr)
         {
-            stpxinconsistencytable = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable>();
+            stpxinconsistencytable = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable>();
         }
         return stpxinconsistencytable;
     }
@@ -281,7 +282,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxrootguardconfigtable == nullptr)
         {
-            stpxrootguardconfigtable = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable>();
+            stpxrootguardconfigtable = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable>();
         }
         return stpxrootguardconfigtable;
     }
@@ -290,7 +291,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxrootinconsistencytable == nullptr)
         {
-            stpxrootinconsistencytable = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable>();
+            stpxrootinconsistencytable = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable>();
         }
         return stpxrootinconsistencytable;
     }
@@ -299,7 +300,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxmistpinstancetable == nullptr)
         {
-            stpxmistpinstancetable = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable>();
+            stpxmistpinstancetable = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable>();
         }
         return stpxmistpinstancetable;
     }
@@ -308,7 +309,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxloopguardconfigtable == nullptr)
         {
-            stpxloopguardconfigtable = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable>();
+            stpxloopguardconfigtable = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable>();
         }
         return stpxloopguardconfigtable;
     }
@@ -317,7 +318,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxloopinconsistencytable == nullptr)
         {
-            stpxloopinconsistencytable = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable>();
+            stpxloopinconsistencytable = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable>();
         }
         return stpxloopinconsistencytable;
     }
@@ -326,7 +327,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxfaststartporttable == nullptr)
         {
-            stpxfaststartporttable = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable>();
+            stpxfaststartporttable = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable>();
         }
         return stpxfaststartporttable;
     }
@@ -335,7 +336,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxfaststartopermodetable == nullptr)
         {
-            stpxfaststartopermodetable = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable>();
+            stpxfaststartopermodetable = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable>();
         }
         return stpxfaststartopermodetable;
     }
@@ -344,7 +345,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxbpduskewingtable == nullptr)
         {
-            stpxbpduskewingtable = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable>();
+            stpxbpduskewingtable = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable>();
         }
         return stpxbpduskewingtable;
     }
@@ -353,7 +354,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxmstinstancetable == nullptr)
         {
-            stpxmstinstancetable = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable>();
+            stpxmstinstancetable = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable>();
         }
         return stpxmstinstancetable;
     }
@@ -362,7 +363,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxmstinstanceedittable == nullptr)
         {
-            stpxmstinstanceedittable = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable>();
+            stpxmstinstanceedittable = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable>();
         }
         return stpxmstinstanceedittable;
     }
@@ -371,7 +372,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxmstporttable == nullptr)
         {
-            stpxmstporttable = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmstporttable>();
+            stpxmstporttable = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTPortTable>();
         }
         return stpxmstporttable;
     }
@@ -380,7 +381,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxmstportroletable == nullptr)
         {
-            stpxmstportroletable = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmstportroletable>();
+            stpxmstportroletable = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable>();
         }
         return stpxmstportroletable;
     }
@@ -389,7 +390,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxrstpporttable == nullptr)
         {
-            stpxrstpporttable = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrstpporttable>();
+            stpxrstpporttable = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable>();
         }
         return stpxrstpporttable;
     }
@@ -398,7 +399,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxrstpportroletable == nullptr)
         {
-            stpxrstpportroletable = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable>();
+            stpxrstpportroletable = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable>();
         }
         return stpxrstpportroletable;
     }
@@ -407,7 +408,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxrpvstporttable == nullptr)
         {
-            stpxrpvstporttable = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable>();
+            stpxrpvstporttable = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable>();
         }
         return stpxrpvstporttable;
     }
@@ -416,7 +417,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxsmstinstancetable == nullptr)
         {
-            stpxsmstinstancetable = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable>();
+            stpxsmstinstancetable = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable>();
         }
         return stpxsmstinstancetable;
     }
@@ -425,7 +426,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxsmstinstanceedittable == nullptr)
         {
-            stpxsmstinstanceedittable = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable>();
+            stpxsmstinstanceedittable = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable>();
         }
         return stpxsmstinstanceedittable;
     }
@@ -434,7 +435,7 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     {
         if(stpxsmstporttable == nullptr)
         {
-            stpxsmstporttable = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxsmstporttable>();
+            stpxsmstporttable = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable>();
         }
         return stpxsmstporttable;
     }
@@ -639,7 +640,7 @@ bool CISCOSTPEXTENSIONSMIB::has_leaf_or_child_of_name(const std::string & name) 
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects::Stpxuplinkfastobjects()
+CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects::StpxUplinkFastObjects()
     :
     stpxuplinkfastenabled{YType::boolean, "stpxUplinkFastEnabled"},
     stpxuplinkfasttransitions{YType::uint32, "stpxUplinkFastTransitions"},
@@ -648,15 +649,16 @@ CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects::Stpxuplinkfastobjects()
     stpxuplinkfastoperenabled{YType::boolean, "stpxUplinkFastOperEnabled"}
 {
 
-    yang_name = "stpxUplinkFastObjects"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxUplinkFastObjects"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects::~Stpxuplinkfastobjects()
+CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects::~StpxUplinkFastObjects()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxuplinkfastenabled.is_set
 	|| stpxuplinkfasttransitions.is_set
 	|| stpxuplinkstationlearninggenrate.is_set
@@ -664,7 +666,7 @@ bool CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects::has_data() const
 	|| stpxuplinkfastoperenabled.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxuplinkfastenabled.yfilter)
@@ -674,21 +676,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects::has_operation() const
 	|| ydk::is_set(stpxuplinkfastoperenabled.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxUplinkFastObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -702,19 +704,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxuplink
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxUplinkFastEnabled")
     {
@@ -748,7 +750,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects::set_value(const std::string &
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxUplinkFastEnabled")
     {
@@ -772,14 +774,14 @@ void CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects::set_filter(const std::string 
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxUplinkFastEnabled" || name == "stpxUplinkFastTransitions" || name == "stpxUplinkStationLearningGenRate" || name == "stpxUplinkStationLearningFrames" || name == "stpxUplinkFastOperEnabled")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects::Stpxbackbonefastobjects()
+CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects::StpxBackboneFastObjects()
     :
     stpxbackbonefastenabled{YType::boolean, "stpxBackboneFastEnabled"},
     stpxbackbonefastininferiorbpdus{YType::uint32, "stpxBackboneFastInInferiorBPDUs"},
@@ -790,15 +792,16 @@ CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects::Stpxbackbonefastobjects()
     stpxbackbonefastoperenabled{YType::boolean, "stpxBackboneFastOperEnabled"}
 {
 
-    yang_name = "stpxBackboneFastObjects"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxBackboneFastObjects"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects::~Stpxbackbonefastobjects()
+CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects::~StpxBackboneFastObjects()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxbackbonefastenabled.is_set
 	|| stpxbackbonefastininferiorbpdus.is_set
 	|| stpxbackbonefastinrlqrequestpdus.is_set
@@ -808,7 +811,7 @@ bool CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects::has_data() const
 	|| stpxbackbonefastoperenabled.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxbackbonefastenabled.yfilter)
@@ -820,21 +823,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects::has_operation() const
 	|| ydk::is_set(stpxbackbonefastoperenabled.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxBackboneFastObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -850,19 +853,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxbackbo
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxBackboneFastEnabled")
     {
@@ -908,7 +911,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects::set_value(const std::string
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxBackboneFastEnabled")
     {
@@ -940,14 +943,14 @@ void CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects::set_filter(const std::strin
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxBackboneFastEnabled" || name == "stpxBackboneFastInInferiorBPDUs" || name == "stpxBackboneFastInRLQRequestPDUs" || name == "stpxBackboneFastInRLQResponsePDUs" || name == "stpxBackboneFastOutRLQRequestPDUs" || name == "stpxBackboneFastOutRLQResponsePDUs" || name == "stpxBackboneFastOperEnabled")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreeobjects()
+CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::StpxSpanningTreeObjects()
     :
     stpxspanningtreetype{YType::enumeration, "stpxSpanningTreeType"},
     stpxspanningtreepathcostmode{YType::enumeration, "stpxSpanningTreePathCostMode"},
@@ -957,15 +960,16 @@ CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreeobjects()
     stpxspanningtreepathcostopermode{YType::enumeration, "stpxSpanningTreePathCostOperMode"}
 {
 
-    yang_name = "stpxSpanningTreeObjects"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxSpanningTreeObjects"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::~Stpxspanningtreeobjects()
+CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::~StpxSpanningTreeObjects()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxspanningtreetype.is_set
 	|| stpxspanningtreepathcostmode.is_set
 	|| stpxextendedsysidadminenabled.is_set
@@ -974,7 +978,7 @@ bool CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::has_data() const
 	|| stpxspanningtreepathcostopermode.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxspanningtreetype.yfilter)
@@ -985,21 +989,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::has_operation() const
 	|| ydk::is_set(stpxspanningtreepathcostopermode.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxSpanningTreeObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1014,19 +1018,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxspanni
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxSpanningTreeType")
     {
@@ -1064,7 +1068,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::set_value(const std::string
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxSpanningTreeType")
     {
@@ -1092,51 +1096,52 @@ void CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::set_filter(const std::strin
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxSpanningTreeType" || name == "stpxSpanningTreePathCostMode" || name == "stpxExtendedSysIDAdminEnabled" || name == "stpxExtendedSysIDOperEnabled" || name == "stpxNotificationEnable" || name == "stpxSpanningTreePathCostOperMode")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmistpobjects::Stpxmistpobjects()
+CISCOSTPEXTENSIONSMIB::StpxMISTPObjects::StpxMISTPObjects()
     :
     stpxmistpinstancenumber{YType::int32, "stpxMISTPInstanceNumber"}
 {
 
-    yang_name = "stpxMISTPObjects"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxMISTPObjects"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmistpobjects::~Stpxmistpobjects()
+CISCOSTPEXTENSIONSMIB::StpxMISTPObjects::~StpxMISTPObjects()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmistpobjects::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxMISTPObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxmistpinstancenumber.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmistpobjects::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxMISTPObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxmistpinstancenumber.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmistpobjects::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMISTPObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmistpobjects::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMISTPObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxMISTPObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmistpobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMISTPObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1146,19 +1151,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmistpo
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmistpobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMISTPObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmistpobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMISTPObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmistpobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxMISTPObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxMISTPInstanceNumber")
     {
@@ -1168,7 +1173,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxmistpobjects::set_value(const std::string & valu
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmistpobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxMISTPObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxMISTPInstanceNumber")
     {
@@ -1176,51 +1181,52 @@ void CISCOSTPEXTENSIONSMIB::Stpxmistpobjects::set_filter(const std::string & val
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmistpobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxMISTPObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxMISTPInstanceNumber")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::Stpxloopguardobjects()
+CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::StpxLoopGuardObjects()
     :
     stpxloopguardglobaldefaultmode{YType::enumeration, "stpxLoopGuardGlobalDefaultMode"}
 {
 
-    yang_name = "stpxLoopGuardObjects"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxLoopGuardObjects"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::~Stpxloopguardobjects()
+CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::~StpxLoopGuardObjects()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxloopguardglobaldefaultmode.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxloopguardglobaldefaultmode.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxLoopGuardObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1230,19 +1236,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxloopgu
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxLoopGuardGlobalDefaultMode")
     {
@@ -1252,7 +1258,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::set_value(const std::string & 
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxLoopGuardGlobalDefaultMode")
     {
@@ -1260,35 +1266,36 @@ void CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::set_filter(const std::string &
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxLoopGuardGlobalDefaultMode")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::Stpxfaststartobjects()
+CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::StpxFastStartObjects()
     :
     stpxfaststartbpduguardenable{YType::boolean, "stpxFastStartBpduGuardEnable"},
     stpxfaststartbpdufilterenable{YType::boolean, "stpxFastStartBpduFilterEnable"},
     stpxfaststartglobaldefaultmode{YType::enumeration, "stpxFastStartGlobalDefaultMode"}
 {
 
-    yang_name = "stpxFastStartObjects"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxFastStartObjects"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::~Stpxfaststartobjects()
+CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::~StpxFastStartObjects()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxfaststartbpduguardenable.is_set
 	|| stpxfaststartbpdufilterenable.is_set
 	|| stpxfaststartglobaldefaultmode.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxfaststartbpduguardenable.yfilter)
@@ -1296,21 +1303,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::has_operation() const
 	|| ydk::is_set(stpxfaststartglobaldefaultmode.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxFastStartObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1322,19 +1329,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxfastst
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxFastStartBpduGuardEnable")
     {
@@ -1356,7 +1363,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::set_value(const std::string & 
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxFastStartBpduGuardEnable")
     {
@@ -1372,51 +1379,52 @@ void CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::set_filter(const std::string &
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxFastStartBpduGuardEnable" || name == "stpxFastStartBpduFilterEnable" || name == "stpxFastStartGlobalDefaultMode")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects::Stpxbpduskewingobjects()
+CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects::StpxBpduSkewingObjects()
     :
     stpxbpduskewingdetectionenable{YType::boolean, "stpxBpduSkewingDetectionEnable"}
 {
 
-    yang_name = "stpxBpduSkewingObjects"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxBpduSkewingObjects"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects::~Stpxbpduskewingobjects()
+CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects::~StpxBpduSkewingObjects()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxbpduskewingdetectionenable.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxbpduskewingdetectionenable.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxBpduSkewingObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1426,19 +1434,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxbpdusk
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxBpduSkewingDetectionEnable")
     {
@@ -1448,7 +1456,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects::set_value(const std::string 
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxBpduSkewingDetectionEnable")
     {
@@ -1456,14 +1464,14 @@ void CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects::set_filter(const std::string
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxBpduSkewingDetectionEnable")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmstobjects::Stpxmstobjects()
+CISCOSTPEXTENSIONSMIB::StpxMSTObjects::StpxMSTObjects()
     :
     stpxmstmaxinstancenumber{YType::int32, "stpxMSTMaxInstanceNumber"},
     stpxmstregionname{YType::str, "stpxMSTRegionName"},
@@ -1475,15 +1483,16 @@ CISCOSTPEXTENSIONSMIB::Stpxmstobjects::Stpxmstobjects()
     stpxmstmaxhopcount{YType::int32, "stpxMSTMaxHopCount"}
 {
 
-    yang_name = "stpxMSTObjects"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxMSTObjects"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmstobjects::~Stpxmstobjects()
+CISCOSTPEXTENSIONSMIB::StpxMSTObjects::~StpxMSTObjects()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstobjects::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxmstmaxinstancenumber.is_set
 	|| stpxmstregionname.is_set
 	|| stpxmstregionrevision.is_set
@@ -1494,7 +1503,7 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmstobjects::has_data() const
 	|| stpxmstmaxhopcount.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstobjects::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxmstmaxinstancenumber.yfilter)
@@ -1507,21 +1516,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmstobjects::has_operation() const
 	|| ydk::is_set(stpxmstmaxhopcount.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmstobjects::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMSTObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmstobjects::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMSTObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxMSTObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmstobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMSTObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1538,19 +1547,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmstobj
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMSTObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmstobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxMSTObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxMSTMaxInstanceNumber")
     {
@@ -1602,7 +1611,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxmstobjects::set_value(const std::string & value_
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmstobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxMSTObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxMSTMaxInstanceNumber")
     {
@@ -1638,51 +1647,52 @@ void CISCOSTPEXTENSIONSMIB::Stpxmstobjects::set_filter(const std::string & value
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxMSTMaxInstanceNumber" || name == "stpxMSTRegionName" || name == "stpxMSTRegionRevision" || name == "stpxMSTRegionEditBufferStatus" || name == "stpxMSTRegionEditBufferOperation" || name == "stpxMSTRegionEditName" || name == "stpxMSTRegionEditRevision" || name == "stpxMSTMaxHopCount")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrstpobjects::Stpxrstpobjects()
+CISCOSTPEXTENSIONSMIB::StpxRSTPObjects::StpxRSTPObjects()
     :
     stpxrstptransmitholdcount{YType::uint32, "stpxRSTPTransmitHoldCount"}
 {
 
-    yang_name = "stpxRSTPObjects"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxRSTPObjects"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrstpobjects::~Stpxrstpobjects()
+CISCOSTPEXTENSIONSMIB::StpxRSTPObjects::~StpxRSTPObjects()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrstpobjects::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxRSTPObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxrstptransmitholdcount.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrstpobjects::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxRSTPObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxrstptransmitholdcount.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrstpobjects::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRSTPObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrstpobjects::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRSTPObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxRSTPObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrstpobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRSTPObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1692,19 +1702,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrstpob
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrstpobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRSTPObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrstpobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRSTPObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrstpobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxRSTPObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxRSTPTransmitHoldCount")
     {
@@ -1714,7 +1724,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxrstpobjects::set_value(const std::string & value
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrstpobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxRSTPObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxRSTPTransmitHoldCount")
     {
@@ -1722,14 +1732,14 @@ void CISCOSTPEXTENSIONSMIB::Stpxrstpobjects::set_filter(const std::string & valu
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrstpobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxRSTPObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxRSTPTransmitHoldCount")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxsmstobjects::Stpxsmstobjects()
+CISCOSTPEXTENSIONSMIB::StpxSMSTObjects::StpxSMSTObjects()
     :
     stpxsmstmaxinstances{YType::uint32, "stpxSMSTMaxInstances"},
     stpxsmstmaxinstanceid{YType::uint32, "stpxSMSTMaxInstanceID"},
@@ -1740,15 +1750,16 @@ CISCOSTPEXTENSIONSMIB::Stpxsmstobjects::Stpxsmstobjects()
     stpxsmstconfigprestandarddigest{YType::str, "stpxSMSTConfigPreStandardDigest"}
 {
 
-    yang_name = "stpxSMSTObjects"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxSMSTObjects"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxsmstobjects::~Stpxsmstobjects()
+CISCOSTPEXTENSIONSMIB::StpxSMSTObjects::~StpxSMSTObjects()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstobjects::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxsmstmaxinstances.is_set
 	|| stpxsmstmaxinstanceid.is_set
 	|| stpxsmstregionrevision.is_set
@@ -1758,7 +1769,7 @@ bool CISCOSTPEXTENSIONSMIB::Stpxsmstobjects::has_data() const
 	|| stpxsmstconfigprestandarddigest.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstobjects::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxsmstmaxinstances.yfilter)
@@ -1770,21 +1781,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxsmstobjects::has_operation() const
 	|| ydk::is_set(stpxsmstconfigprestandarddigest.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxsmstobjects::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxSMSTObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxsmstobjects::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxSMSTObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxSMSTObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxsmstobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxSMSTObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1800,19 +1811,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxsmstob
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxsmstobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxsmstobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxsmstobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxSMSTObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxSMSTMaxInstances")
     {
@@ -1858,7 +1869,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxsmstobjects::set_value(const std::string & value
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxsmstobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxSMSTObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxSMSTMaxInstances")
     {
@@ -1890,26 +1901,29 @@ void CISCOSTPEXTENSIONSMIB::Stpxsmstobjects::set_filter(const std::string & valu
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxSMSTMaxInstances" || name == "stpxSMSTMaxInstanceID" || name == "stpxSMSTRegionRevision" || name == "stpxSMSTRegionEditRevision" || name == "stpxSMSTMaxHopCount" || name == "stpxSMSTConfigDigest" || name == "stpxSMSTConfigPreStandardDigest")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlantable()
+CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanTable()
+    :
+    stpxpvstvlanentry(this, {"stpxpvstvlanindex"})
 {
 
-    yang_name = "stpxPVSTVlanTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxPVSTVlanTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::~Stpxpvstvlantable()
+CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::~StpxPVSTVlanTable()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::has_data() const
 {
-    for (std::size_t index=0; index<stpxpvstvlanentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stpxpvstvlanentry.len(); index++)
     {
         if(stpxpvstvlanentry[index]->has_data())
             return true;
@@ -1917,9 +1931,9 @@ bool CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::has_data() const
     return false;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxpvstvlanentry.size(); index++)
+    for (std::size_t index=0; index<stpxpvstvlanentry.len(); index++)
     {
         if(stpxpvstvlanentry[index]->has_operation())
             return true;
@@ -1927,21 +1941,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxPVSTVlanTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1950,25 +1964,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxpvstvl
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxPVSTVlanEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry>();
+        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry>();
         c->parent = this;
-        stpxpvstvlanentry.push_back(c);
+        stpxpvstvlanentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stpxpvstvlanentry)
+    for (auto c : stpxpvstvlanentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1979,62 +1993,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxpvstvl
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxPVSTVlanEntry")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::Stpxpvstvlanentry()
+CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::StpxPVSTVlanEntry()
     :
     stpxpvstvlanindex{YType::int32, "stpxPVSTVlanIndex"},
     stpxpvstvlanenable{YType::enumeration, "stpxPVSTVlanEnable"}
 {
 
-    yang_name = "stpxPVSTVlanEntry"; yang_parent_name = "stpxPVSTVlanTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxPVSTVlanEntry"; yang_parent_name = "stpxPVSTVlanTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::~Stpxpvstvlanentry()
+CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::~StpxPVSTVlanEntry()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxpvstvlanindex.is_set
 	|| stpxpvstvlanenable.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxpvstvlanindex.yfilter)
 	|| ydk::is_set(stpxpvstvlanenable.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/stpxPVSTVlanTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stpxPVSTVlanEntry" <<"[stpxPVSTVlanIndex='" <<stpxpvstvlanindex <<"']";
+    path_buffer << "stpxPVSTVlanEntry";
+    ADD_KEY_TOKEN(stpxpvstvlanindex, "stpxPVSTVlanIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2045,19 +2061,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxpvstvl
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxPVSTVlanIndex")
     {
@@ -2073,7 +2089,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::set_value(cons
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxPVSTVlanIndex")
     {
@@ -2085,26 +2101,29 @@ void CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::set_filter(con
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxPVSTVlanIndex" || name == "stpxPVSTVlanEnable")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencytable()
+CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyTable()
+    :
+    stpxinconsistencyentry(this, {"stpxvlanindex", "stpxportindex"})
 {
 
-    yang_name = "stpxInconsistencyTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxInconsistencyTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::~Stpxinconsistencytable()
+CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::~StpxInconsistencyTable()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::has_data() const
 {
-    for (std::size_t index=0; index<stpxinconsistencyentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stpxinconsistencyentry.len(); index++)
     {
         if(stpxinconsistencyentry[index]->has_data())
             return true;
@@ -2112,9 +2131,9 @@ bool CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::has_data() const
     return false;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxinconsistencyentry.size(); index++)
+    for (std::size_t index=0; index<stpxinconsistencyentry.len(); index++)
     {
         if(stpxinconsistencyentry[index]->has_operation())
             return true;
@@ -2122,21 +2141,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxInconsistencyTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2145,25 +2164,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxincons
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxInconsistencyEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry>();
+        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry>();
         c->parent = this;
-        stpxinconsistencyentry.push_back(c);
+        stpxinconsistencyentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stpxinconsistencyentry)
+    for (auto c : stpxinconsistencyentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2174,43 +2193,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxincons
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxInconsistencyEntry")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry::Stpxinconsistencyentry()
+CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry::StpxInconsistencyEntry()
     :
     stpxvlanindex{YType::int32, "stpxVlanIndex"},
     stpxportindex{YType::int32, "stpxPortIndex"},
     stpxinconsistentstate{YType::bits, "stpxInconsistentState"}
 {
 
-    yang_name = "stpxInconsistencyEntry"; yang_parent_name = "stpxInconsistencyTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxInconsistencyEntry"; yang_parent_name = "stpxInconsistencyTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry::~Stpxinconsistencyentry()
+CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry::~StpxInconsistencyEntry()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxvlanindex.is_set
 	|| stpxportindex.is_set
 	|| stpxinconsistentstate.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxvlanindex.yfilter)
@@ -2218,21 +2238,23 @@ bool CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry::has_
 	|| ydk::is_set(stpxinconsistentstate.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/stpxInconsistencyTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stpxInconsistencyEntry" <<"[stpxVlanIndex='" <<stpxvlanindex <<"']" <<"[stpxPortIndex='" <<stpxportindex <<"']";
+    path_buffer << "stpxInconsistencyEntry";
+    ADD_KEY_TOKEN(stpxvlanindex, "stpxVlanIndex");
+    ADD_KEY_TOKEN(stpxportindex, "stpxPortIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2244,19 +2266,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxincons
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxVlanIndex")
     {
@@ -2276,7 +2298,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry::set_
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxVlanIndex")
     {
@@ -2292,26 +2314,29 @@ void CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry::set_
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxVlanIndex" || name == "stpxPortIndex" || name == "stpxInconsistentState")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigtable()
+CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigTable()
+    :
+    stpxrootguardconfigentry(this, {"stpxrootguardconfigportindex"})
 {
 
-    yang_name = "stpxRootGuardConfigTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxRootGuardConfigTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::~Stpxrootguardconfigtable()
+CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::~StpxRootGuardConfigTable()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::has_data() const
 {
-    for (std::size_t index=0; index<stpxrootguardconfigentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stpxrootguardconfigentry.len(); index++)
     {
         if(stpxrootguardconfigentry[index]->has_data())
             return true;
@@ -2319,9 +2344,9 @@ bool CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::has_data() const
     return false;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxrootguardconfigentry.size(); index++)
+    for (std::size_t index=0; index<stpxrootguardconfigentry.len(); index++)
     {
         if(stpxrootguardconfigentry[index]->has_operation())
             return true;
@@ -2329,21 +2354,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxRootGuardConfigTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2352,25 +2377,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrootgu
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxRootGuardConfigEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry>();
+        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry>();
         c->parent = this;
-        stpxrootguardconfigentry.push_back(c);
+        stpxrootguardconfigentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stpxrootguardconfigentry)
+    for (auto c : stpxrootguardconfigentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2381,62 +2406,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrootgu
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxRootGuardConfigEntry")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry::Stpxrootguardconfigentry()
+CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry::StpxRootGuardConfigEntry()
     :
     stpxrootguardconfigportindex{YType::int32, "stpxRootGuardConfigPortIndex"},
     stpxrootguardconfigenabled{YType::boolean, "stpxRootGuardConfigEnabled"}
 {
 
-    yang_name = "stpxRootGuardConfigEntry"; yang_parent_name = "stpxRootGuardConfigTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxRootGuardConfigEntry"; yang_parent_name = "stpxRootGuardConfigTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry::~Stpxrootguardconfigentry()
+CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry::~StpxRootGuardConfigEntry()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxrootguardconfigportindex.is_set
 	|| stpxrootguardconfigenabled.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxrootguardconfigportindex.yfilter)
 	|| ydk::is_set(stpxrootguardconfigenabled.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/stpxRootGuardConfigTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stpxRootGuardConfigEntry" <<"[stpxRootGuardConfigPortIndex='" <<stpxrootguardconfigportindex <<"']";
+    path_buffer << "stpxRootGuardConfigEntry";
+    ADD_KEY_TOKEN(stpxrootguardconfigportindex, "stpxRootGuardConfigPortIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2447,19 +2474,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrootgu
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxRootGuardConfigPortIndex")
     {
@@ -2475,7 +2502,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry::
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxRootGuardConfigPortIndex")
     {
@@ -2487,26 +2514,29 @@ void CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry::
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxRootGuardConfigPortIndex" || name == "stpxRootGuardConfigEnabled")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencytable()
+CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyTable()
+    :
+    stpxrootinconsistencyentry(this, {"stpxrootinconsistencyindex", "stpxrootinconsistencyportindex"})
 {
 
-    yang_name = "stpxRootInconsistencyTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxRootInconsistencyTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::~Stpxrootinconsistencytable()
+CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::~StpxRootInconsistencyTable()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::has_data() const
 {
-    for (std::size_t index=0; index<stpxrootinconsistencyentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stpxrootinconsistencyentry.len(); index++)
     {
         if(stpxrootinconsistencyentry[index]->has_data())
             return true;
@@ -2514,9 +2544,9 @@ bool CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::has_data() const
     return false;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxrootinconsistencyentry.size(); index++)
+    for (std::size_t index=0; index<stpxrootinconsistencyentry.len(); index++)
     {
         if(stpxrootinconsistencyentry[index]->has_operation())
             return true;
@@ -2524,21 +2554,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxRootInconsistencyTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2547,25 +2577,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrootin
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxRootInconsistencyEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyentry>();
+        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry>();
         c->parent = this;
-        stpxrootinconsistencyentry.push_back(c);
+        stpxrootinconsistencyentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stpxrootinconsistencyentry)
+    for (auto c : stpxrootinconsistencyentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2576,43 +2606,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrootin
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxRootInconsistencyEntry")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyentry::Stpxrootinconsistencyentry()
+CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry::StpxRootInconsistencyEntry()
     :
     stpxrootinconsistencyindex{YType::int32, "stpxRootInconsistencyIndex"},
     stpxrootinconsistencyportindex{YType::int32, "stpxRootInconsistencyPortIndex"},
     stpxrootinconsistencystate{YType::boolean, "stpxRootInconsistencyState"}
 {
 
-    yang_name = "stpxRootInconsistencyEntry"; yang_parent_name = "stpxRootInconsistencyTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxRootInconsistencyEntry"; yang_parent_name = "stpxRootInconsistencyTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyentry::~Stpxrootinconsistencyentry()
+CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry::~StpxRootInconsistencyEntry()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyentry::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxrootinconsistencyindex.is_set
 	|| stpxrootinconsistencyportindex.is_set
 	|| stpxrootinconsistencystate.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyentry::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxrootinconsistencyindex.yfilter)
@@ -2620,21 +2651,23 @@ bool CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyent
 	|| ydk::is_set(stpxrootinconsistencystate.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyentry::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/stpxRootInconsistencyTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyentry::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stpxRootInconsistencyEntry" <<"[stpxRootInconsistencyIndex='" <<stpxrootinconsistencyindex <<"']" <<"[stpxRootInconsistencyPortIndex='" <<stpxrootinconsistencyportindex <<"']";
+    path_buffer << "stpxRootInconsistencyEntry";
+    ADD_KEY_TOKEN(stpxrootinconsistencyindex, "stpxRootInconsistencyIndex");
+    ADD_KEY_TOKEN(stpxrootinconsistencyportindex, "stpxRootInconsistencyPortIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2646,19 +2679,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrootin
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxRootInconsistencyIndex")
     {
@@ -2680,7 +2713,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyent
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxRootInconsistencyIndex")
     {
@@ -2696,26 +2729,29 @@ void CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyent
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxRootInconsistencyIndex" || name == "stpxRootInconsistencyPortIndex" || name == "stpxRootInconsistencyState")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstancetable()
+CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceTable()
+    :
+    stpxmistpinstanceentry(this, {"stpxmistpinstanceindex"})
 {
 
-    yang_name = "stpxMISTPInstanceTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxMISTPInstanceTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::~Stpxmistpinstancetable()
+CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::~StpxMISTPInstanceTable()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::has_data() const
 {
-    for (std::size_t index=0; index<stpxmistpinstanceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stpxmistpinstanceentry.len(); index++)
     {
         if(stpxmistpinstanceentry[index]->has_data())
             return true;
@@ -2723,9 +2759,9 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::has_data() const
     return false;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxmistpinstanceentry.size(); index++)
+    for (std::size_t index=0; index<stpxmistpinstanceentry.len(); index++)
     {
         if(stpxmistpinstanceentry[index]->has_operation())
             return true;
@@ -2733,21 +2769,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxMISTPInstanceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2756,25 +2792,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmistpi
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxMISTPInstanceEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry>();
+        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry>();
         c->parent = this;
-        stpxmistpinstanceentry.push_back(c);
+        stpxmistpinstanceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stpxmistpinstanceentry)
+    for (auto c : stpxmistpinstanceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2785,22 +2821,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmistpi
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxMISTPInstanceEntry")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry::Stpxmistpinstanceentry()
+CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry::StpxMISTPInstanceEntry()
     :
     stpxmistpinstanceindex{YType::int32, "stpxMISTPInstanceIndex"},
     stpxmistpinstanceenable{YType::boolean, "stpxMISTPInstanceEnable"},
@@ -2810,15 +2846,16 @@ CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry::Stpxmistp
     stpxmistpinstancevlansmapped4k{YType::str, "stpxMISTPInstanceVlansMapped4k"}
 {
 
-    yang_name = "stpxMISTPInstanceEntry"; yang_parent_name = "stpxMISTPInstanceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxMISTPInstanceEntry"; yang_parent_name = "stpxMISTPInstanceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry::~Stpxmistpinstanceentry()
+CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry::~StpxMISTPInstanceEntry()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxmistpinstanceindex.is_set
 	|| stpxmistpinstanceenable.is_set
 	|| stpxmistpinstancevlansmapped.is_set
@@ -2827,7 +2864,7 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry::has_
 	|| stpxmistpinstancevlansmapped4k.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxmistpinstanceindex.yfilter)
@@ -2838,21 +2875,22 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry::has_
 	|| ydk::is_set(stpxmistpinstancevlansmapped4k.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/stpxMISTPInstanceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stpxMISTPInstanceEntry" <<"[stpxMISTPInstanceIndex='" <<stpxmistpinstanceindex <<"']";
+    path_buffer << "stpxMISTPInstanceEntry";
+    ADD_KEY_TOKEN(stpxmistpinstanceindex, "stpxMISTPInstanceIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2867,19 +2905,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmistpi
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxMISTPInstanceIndex")
     {
@@ -2919,7 +2957,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry::set_
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxMISTPInstanceIndex")
     {
@@ -2947,26 +2985,29 @@ void CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry::set_
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxMISTPInstanceIndex" || name == "stpxMISTPInstanceEnable" || name == "stpxMISTPInstanceVlansMapped" || name == "stpxMISTPInstanceVlansMapped2k" || name == "stpxMISTPInstanceVlansMapped3k" || name == "stpxMISTPInstanceVlansMapped4k")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigtable()
+CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigTable()
+    :
+    stpxloopguardconfigentry(this, {"stpxloopguardconfigportindex"})
 {
 
-    yang_name = "stpxLoopGuardConfigTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxLoopGuardConfigTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::~Stpxloopguardconfigtable()
+CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::~StpxLoopGuardConfigTable()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::has_data() const
 {
-    for (std::size_t index=0; index<stpxloopguardconfigentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stpxloopguardconfigentry.len(); index++)
     {
         if(stpxloopguardconfigentry[index]->has_data())
             return true;
@@ -2974,9 +3015,9 @@ bool CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::has_data() const
     return false;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxloopguardconfigentry.size(); index++)
+    for (std::size_t index=0; index<stpxloopguardconfigentry.len(); index++)
     {
         if(stpxloopguardconfigentry[index]->has_operation())
             return true;
@@ -2984,21 +3025,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxLoopGuardConfigTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3007,25 +3048,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxloopgu
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxLoopGuardConfigEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry>();
+        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry>();
         c->parent = this;
-        stpxloopguardconfigentry.push_back(c);
+        stpxloopguardconfigentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stpxloopguardconfigentry)
+    for (auto c : stpxloopguardconfigentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3036,43 +3077,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxloopgu
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxLoopGuardConfigEntry")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::Stpxloopguardconfigentry()
+CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::StpxLoopGuardConfigEntry()
     :
     stpxloopguardconfigportindex{YType::int32, "stpxLoopGuardConfigPortIndex"},
     stpxloopguardconfigenabled{YType::boolean, "stpxLoopGuardConfigEnabled"},
     stpxloopguardconfigmode{YType::enumeration, "stpxLoopGuardConfigMode"}
 {
 
-    yang_name = "stpxLoopGuardConfigEntry"; yang_parent_name = "stpxLoopGuardConfigTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxLoopGuardConfigEntry"; yang_parent_name = "stpxLoopGuardConfigTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::~Stpxloopguardconfigentry()
+CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::~StpxLoopGuardConfigEntry()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxloopguardconfigportindex.is_set
 	|| stpxloopguardconfigenabled.is_set
 	|| stpxloopguardconfigmode.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxloopguardconfigportindex.yfilter)
@@ -3080,21 +3122,22 @@ bool CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::
 	|| ydk::is_set(stpxloopguardconfigmode.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/stpxLoopGuardConfigTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stpxLoopGuardConfigEntry" <<"[stpxLoopGuardConfigPortIndex='" <<stpxloopguardconfigportindex <<"']";
+    path_buffer << "stpxLoopGuardConfigEntry";
+    ADD_KEY_TOKEN(stpxloopguardconfigportindex, "stpxLoopGuardConfigPortIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3106,19 +3149,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxloopgu
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxLoopGuardConfigPortIndex")
     {
@@ -3140,7 +3183,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxLoopGuardConfigPortIndex")
     {
@@ -3156,26 +3199,29 @@ void CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxLoopGuardConfigPortIndex" || name == "stpxLoopGuardConfigEnabled" || name == "stpxLoopGuardConfigMode")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencytable()
+CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyTable()
+    :
+    stpxloopinconsistencyentry(this, {"stpxloopinconsistencyindex", "stpxloopinconsistencyportindex"})
 {
 
-    yang_name = "stpxLoopInconsistencyTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxLoopInconsistencyTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::~Stpxloopinconsistencytable()
+CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::~StpxLoopInconsistencyTable()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::has_data() const
 {
-    for (std::size_t index=0; index<stpxloopinconsistencyentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stpxloopinconsistencyentry.len(); index++)
     {
         if(stpxloopinconsistencyentry[index]->has_data())
             return true;
@@ -3183,9 +3229,9 @@ bool CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::has_data() const
     return false;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxloopinconsistencyentry.size(); index++)
+    for (std::size_t index=0; index<stpxloopinconsistencyentry.len(); index++)
     {
         if(stpxloopinconsistencyentry[index]->has_operation())
             return true;
@@ -3193,21 +3239,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxLoopInconsistencyTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3216,25 +3262,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxloopin
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxLoopInconsistencyEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry>();
+        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry>();
         c->parent = this;
-        stpxloopinconsistencyentry.push_back(c);
+        stpxloopinconsistencyentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stpxloopinconsistencyentry)
+    for (auto c : stpxloopinconsistencyentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3245,43 +3291,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxloopin
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxLoopInconsistencyEntry")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry::Stpxloopinconsistencyentry()
+CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry::StpxLoopInconsistencyEntry()
     :
     stpxloopinconsistencyindex{YType::int32, "stpxLoopInconsistencyIndex"},
     stpxloopinconsistencyportindex{YType::int32, "stpxLoopInconsistencyPortIndex"},
     stpxloopinconsistencystate{YType::boolean, "stpxLoopInconsistencyState"}
 {
 
-    yang_name = "stpxLoopInconsistencyEntry"; yang_parent_name = "stpxLoopInconsistencyTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxLoopInconsistencyEntry"; yang_parent_name = "stpxLoopInconsistencyTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry::~Stpxloopinconsistencyentry()
+CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry::~StpxLoopInconsistencyEntry()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxloopinconsistencyindex.is_set
 	|| stpxloopinconsistencyportindex.is_set
 	|| stpxloopinconsistencystate.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxloopinconsistencyindex.yfilter)
@@ -3289,21 +3336,23 @@ bool CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyent
 	|| ydk::is_set(stpxloopinconsistencystate.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/stpxLoopInconsistencyTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stpxLoopInconsistencyEntry" <<"[stpxLoopInconsistencyIndex='" <<stpxloopinconsistencyindex <<"']" <<"[stpxLoopInconsistencyPortIndex='" <<stpxloopinconsistencyportindex <<"']";
+    path_buffer << "stpxLoopInconsistencyEntry";
+    ADD_KEY_TOKEN(stpxloopinconsistencyindex, "stpxLoopInconsistencyIndex");
+    ADD_KEY_TOKEN(stpxloopinconsistencyportindex, "stpxLoopInconsistencyPortIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3315,19 +3364,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxloopin
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxLoopInconsistencyIndex")
     {
@@ -3349,7 +3398,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyent
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxLoopInconsistencyIndex")
     {
@@ -3365,26 +3414,29 @@ void CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyent
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxLoopInconsistencyIndex" || name == "stpxLoopInconsistencyPortIndex" || name == "stpxLoopInconsistencyState")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartporttable()
+CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortTable()
+    :
+    stpxfaststartportentry(this, {"stpxfaststartportindex"})
 {
 
-    yang_name = "stpxFastStartPortTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxFastStartPortTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::~Stpxfaststartporttable()
+CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::~StpxFastStartPortTable()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::has_data() const
 {
-    for (std::size_t index=0; index<stpxfaststartportentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stpxfaststartportentry.len(); index++)
     {
         if(stpxfaststartportentry[index]->has_data())
             return true;
@@ -3392,9 +3444,9 @@ bool CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::has_data() const
     return false;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxfaststartportentry.size(); index++)
+    for (std::size_t index=0; index<stpxfaststartportentry.len(); index++)
     {
         if(stpxfaststartportentry[index]->has_operation())
             return true;
@@ -3402,21 +3454,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxFastStartPortTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3425,25 +3477,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxfastst
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxFastStartPortEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry>();
+        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry>();
         c->parent = this;
-        stpxfaststartportentry.push_back(c);
+        stpxfaststartportentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stpxfaststartportentry)
+    for (auto c : stpxfaststartportentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3454,22 +3506,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxfastst
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxFastStartPortEntry")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::Stpxfaststartportentry()
+CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::StpxFastStartPortEntry()
     :
     stpxfaststartportindex{YType::int32, "stpxFastStartPortIndex"},
     stpxfaststartportenable{YType::boolean, "stpxFastStartPortEnable"},
@@ -3478,15 +3530,16 @@ CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::Stpxfasts
     stpxfaststartportbpdufiltermode{YType::enumeration, "stpxFastStartPortBpduFilterMode"}
 {
 
-    yang_name = "stpxFastStartPortEntry"; yang_parent_name = "stpxFastStartPortTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxFastStartPortEntry"; yang_parent_name = "stpxFastStartPortTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::~Stpxfaststartportentry()
+CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::~StpxFastStartPortEntry()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxfaststartportindex.is_set
 	|| stpxfaststartportenable.is_set
 	|| stpxfaststartportmode.is_set
@@ -3494,7 +3547,7 @@ bool CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::has_
 	|| stpxfaststartportbpdufiltermode.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxfaststartportindex.yfilter)
@@ -3504,21 +3557,22 @@ bool CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::has_
 	|| ydk::is_set(stpxfaststartportbpdufiltermode.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/stpxFastStartPortTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stpxFastStartPortEntry" <<"[stpxFastStartPortIndex='" <<stpxfaststartportindex <<"']";
+    path_buffer << "stpxFastStartPortEntry";
+    ADD_KEY_TOKEN(stpxfaststartportindex, "stpxFastStartPortIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3532,19 +3586,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxfastst
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxFastStartPortIndex")
     {
@@ -3578,7 +3632,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::set_
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxFastStartPortIndex")
     {
@@ -3602,26 +3656,29 @@ void CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::set_
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxFastStartPortIndex" || name == "stpxFastStartPortEnable" || name == "stpxFastStartPortMode" || name == "stpxFastStartPortBpduGuardMode" || name == "stpxFastStartPortBpduFilterMode")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodetable()
+CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeTable()
+    :
+    stpxfaststartopermodeentry(this, {"stpxfaststartopermodeinstindex", "stpxfaststartopermodeportindex"})
 {
 
-    yang_name = "stpxFastStartOperModeTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxFastStartOperModeTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::~Stpxfaststartopermodetable()
+CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::~StpxFastStartOperModeTable()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::has_data() const
 {
-    for (std::size_t index=0; index<stpxfaststartopermodeentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stpxfaststartopermodeentry.len(); index++)
     {
         if(stpxfaststartopermodeentry[index]->has_data())
             return true;
@@ -3629,9 +3686,9 @@ bool CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::has_data() const
     return false;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxfaststartopermodeentry.size(); index++)
+    for (std::size_t index=0; index<stpxfaststartopermodeentry.len(); index++)
     {
         if(stpxfaststartopermodeentry[index]->has_operation())
             return true;
@@ -3639,21 +3696,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxFastStartOperModeTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3662,25 +3719,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxfastst
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxFastStartOperModeEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry>();
+        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry>();
         c->parent = this;
-        stpxfaststartopermodeentry.push_back(c);
+        stpxfaststartopermodeentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stpxfaststartopermodeentry)
+    for (auto c : stpxfaststartopermodeentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3691,43 +3748,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxfastst
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxFastStartOperModeEntry")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry::Stpxfaststartopermodeentry()
+CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::StpxFastStartOperModeEntry()
     :
     stpxfaststartopermodeinstindex{YType::int32, "stpxFastStartOperModeInstIndex"},
     stpxfaststartopermodeportindex{YType::int32, "stpxFastStartOperModePortIndex"},
     stpxfaststartopermode{YType::enumeration, "stpxFastStartOperMode"}
 {
 
-    yang_name = "stpxFastStartOperModeEntry"; yang_parent_name = "stpxFastStartOperModeTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxFastStartOperModeEntry"; yang_parent_name = "stpxFastStartOperModeTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry::~Stpxfaststartopermodeentry()
+CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::~StpxFastStartOperModeEntry()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxfaststartopermodeinstindex.is_set
 	|| stpxfaststartopermodeportindex.is_set
 	|| stpxfaststartopermode.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxfaststartopermodeinstindex.yfilter)
@@ -3735,21 +3793,23 @@ bool CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeent
 	|| ydk::is_set(stpxfaststartopermode.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/stpxFastStartOperModeTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stpxFastStartOperModeEntry" <<"[stpxFastStartOperModeInstIndex='" <<stpxfaststartopermodeinstindex <<"']" <<"[stpxFastStartOperModePortIndex='" <<stpxfaststartopermodeportindex <<"']";
+    path_buffer << "stpxFastStartOperModeEntry";
+    ADD_KEY_TOKEN(stpxfaststartopermodeinstindex, "stpxFastStartOperModeInstIndex");
+    ADD_KEY_TOKEN(stpxfaststartopermodeportindex, "stpxFastStartOperModePortIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3761,19 +3821,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxfastst
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxFastStartOperModeInstIndex")
     {
@@ -3795,7 +3855,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeent
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxFastStartOperModeInstIndex")
     {
@@ -3811,26 +3871,29 @@ void CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeent
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxFastStartOperModeInstIndex" || name == "stpxFastStartOperModePortIndex" || name == "stpxFastStartOperMode")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingtable()
+CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingTable()
+    :
+    stpxbpduskewingentry(this, {"stpxbpduskewinginstanceindex", "stpxbpduskewingportindex"})
 {
 
-    yang_name = "stpxBpduSkewingTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxBpduSkewingTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::~Stpxbpduskewingtable()
+CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::~StpxBpduSkewingTable()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::has_data() const
 {
-    for (std::size_t index=0; index<stpxbpduskewingentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stpxbpduskewingentry.len(); index++)
     {
         if(stpxbpduskewingentry[index]->has_data())
             return true;
@@ -3838,9 +3901,9 @@ bool CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::has_data() const
     return false;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxbpduskewingentry.size(); index++)
+    for (std::size_t index=0; index<stpxbpduskewingentry.len(); index++)
     {
         if(stpxbpduskewingentry[index]->has_operation())
             return true;
@@ -3848,21 +3911,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxBpduSkewingTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3871,25 +3934,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxbpdusk
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxBpduSkewingEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry>();
+        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry>();
         c->parent = this;
-        stpxbpduskewingentry.push_back(c);
+        stpxbpduskewingentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stpxbpduskewingentry)
+    for (auto c : stpxbpduskewingentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3900,22 +3963,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxbpdusk
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxBpduSkewingEntry")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry::Stpxbpduskewingentry()
+CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry::StpxBpduSkewingEntry()
     :
     stpxbpduskewinginstanceindex{YType::int32, "stpxBpduSkewingInstanceIndex"},
     stpxbpduskewingportindex{YType::int32, "stpxBpduSkewingPortIndex"},
@@ -3924,15 +3987,16 @@ CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry::Stpxbpduskewi
     stpxbpduskewingworstskewtime{YType::uint32, "stpxBpduSkewingWorstSkewTime"}
 {
 
-    yang_name = "stpxBpduSkewingEntry"; yang_parent_name = "stpxBpduSkewingTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxBpduSkewingEntry"; yang_parent_name = "stpxBpduSkewingTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry::~Stpxbpduskewingentry()
+CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry::~StpxBpduSkewingEntry()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxbpduskewinginstanceindex.is_set
 	|| stpxbpduskewingportindex.is_set
 	|| stpxbpduskewinglastskewduration.is_set
@@ -3940,7 +4004,7 @@ bool CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry::has_data
 	|| stpxbpduskewingworstskewtime.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxbpduskewinginstanceindex.yfilter)
@@ -3950,21 +4014,23 @@ bool CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry::has_oper
 	|| ydk::is_set(stpxbpduskewingworstskewtime.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/stpxBpduSkewingTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stpxBpduSkewingEntry" <<"[stpxBpduSkewingInstanceIndex='" <<stpxbpduskewinginstanceindex <<"']" <<"[stpxBpduSkewingPortIndex='" <<stpxbpduskewingportindex <<"']";
+    path_buffer << "stpxBpduSkewingEntry";
+    ADD_KEY_TOKEN(stpxbpduskewinginstanceindex, "stpxBpduSkewingInstanceIndex");
+    ADD_KEY_TOKEN(stpxbpduskewingportindex, "stpxBpduSkewingPortIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3978,19 +4044,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxbpdusk
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxBpduSkewingInstanceIndex")
     {
@@ -4024,7 +4090,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry::set_valu
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxBpduSkewingInstanceIndex")
     {
@@ -4048,26 +4114,29 @@ void CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry::set_filt
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxBpduSkewingInstanceIndex" || name == "stpxBpduSkewingPortIndex" || name == "stpxBpduSkewingLastSkewDuration" || name == "stpxBpduSkewingWorstSkewDuration" || name == "stpxBpduSkewingWorstSkewTime")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstancetable()
+CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceTable()
+    :
+    stpxmstinstanceentry(this, {"stpxmstinstanceindex"})
 {
 
-    yang_name = "stpxMSTInstanceTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxMSTInstanceTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::~Stpxmstinstancetable()
+CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::~StpxMSTInstanceTable()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::has_data() const
 {
-    for (std::size_t index=0; index<stpxmstinstanceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stpxmstinstanceentry.len(); index++)
     {
         if(stpxmstinstanceentry[index]->has_data())
             return true;
@@ -4075,9 +4144,9 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::has_data() const
     return false;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxmstinstanceentry.size(); index++)
+    for (std::size_t index=0; index<stpxmstinstanceentry.len(); index++)
     {
         if(stpxmstinstanceentry[index]->has_operation())
             return true;
@@ -4085,21 +4154,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxMSTInstanceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4108,25 +4177,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmstins
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxMSTInstanceEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry>();
+        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry>();
         c->parent = this;
-        stpxmstinstanceentry.push_back(c);
+        stpxmstinstanceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stpxmstinstanceentry)
+    for (auto c : stpxmstinstanceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4137,22 +4206,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstins
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxMSTInstanceEntry")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry::Stpxmstinstanceentry()
+CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry::StpxMSTInstanceEntry()
     :
     stpxmstinstanceindex{YType::int32, "stpxMSTInstanceIndex"},
     stpxmstinstancevlansmapped{YType::str, "stpxMSTInstanceVlansMapped"},
@@ -4162,15 +4231,16 @@ CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry::Stpxmstinstan
     stpxmstinstanceremaininghopcount{YType::int32, "stpxMSTInstanceRemainingHopCount"}
 {
 
-    yang_name = "stpxMSTInstanceEntry"; yang_parent_name = "stpxMSTInstanceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxMSTInstanceEntry"; yang_parent_name = "stpxMSTInstanceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry::~Stpxmstinstanceentry()
+CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry::~StpxMSTInstanceEntry()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxmstinstanceindex.is_set
 	|| stpxmstinstancevlansmapped.is_set
 	|| stpxmstinstancevlansmapped2k.is_set
@@ -4179,7 +4249,7 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry::has_data
 	|| stpxmstinstanceremaininghopcount.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxmstinstanceindex.yfilter)
@@ -4190,21 +4260,22 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry::has_oper
 	|| ydk::is_set(stpxmstinstanceremaininghopcount.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/stpxMSTInstanceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stpxMSTInstanceEntry" <<"[stpxMSTInstanceIndex='" <<stpxmstinstanceindex <<"']";
+    path_buffer << "stpxMSTInstanceEntry";
+    ADD_KEY_TOKEN(stpxmstinstanceindex, "stpxMSTInstanceIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4219,19 +4290,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmstins
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxMSTInstanceIndex")
     {
@@ -4271,7 +4342,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry::set_valu
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxMSTInstanceIndex")
     {
@@ -4299,26 +4370,29 @@ void CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry::set_filt
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxMSTInstanceIndex" || name == "stpxMSTInstanceVlansMapped" || name == "stpxMSTInstanceVlansMapped2k" || name == "stpxMSTInstanceVlansMapped3k" || name == "stpxMSTInstanceVlansMapped4k" || name == "stpxMSTInstanceRemainingHopCount")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceedittable()
+CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditTable()
+    :
+    stpxmstinstanceeditentry(this, {"stpxmstinstanceeditindex"})
 {
 
-    yang_name = "stpxMSTInstanceEditTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxMSTInstanceEditTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::~Stpxmstinstanceedittable()
+CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::~StpxMSTInstanceEditTable()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::has_data() const
 {
-    for (std::size_t index=0; index<stpxmstinstanceeditentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stpxmstinstanceeditentry.len(); index++)
     {
         if(stpxmstinstanceeditentry[index]->has_data())
             return true;
@@ -4326,9 +4400,9 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::has_data() const
     return false;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxmstinstanceeditentry.size(); index++)
+    for (std::size_t index=0; index<stpxmstinstanceeditentry.len(); index++)
     {
         if(stpxmstinstanceeditentry[index]->has_operation())
             return true;
@@ -4336,21 +4410,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxMSTInstanceEditTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4359,25 +4433,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmstins
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxMSTInstanceEditEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry>();
+        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry>();
         c->parent = this;
-        stpxmstinstanceeditentry.push_back(c);
+        stpxmstinstanceeditentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stpxmstinstanceeditentry)
+    for (auto c : stpxmstinstanceeditentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4388,22 +4462,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstins
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxMSTInstanceEditEntry")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry::Stpxmstinstanceeditentry()
+CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry::StpxMSTInstanceEditEntry()
     :
     stpxmstinstanceeditindex{YType::int32, "stpxMSTInstanceEditIndex"},
     stpxmstinstanceeditvlansmap{YType::str, "stpxMSTInstanceEditVlansMap"},
@@ -4412,15 +4486,16 @@ CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry::Stpxm
     stpxmstinstanceeditvlansmap4k{YType::str, "stpxMSTInstanceEditVlansMap4k"}
 {
 
-    yang_name = "stpxMSTInstanceEditEntry"; yang_parent_name = "stpxMSTInstanceEditTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxMSTInstanceEditEntry"; yang_parent_name = "stpxMSTInstanceEditTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry::~Stpxmstinstanceeditentry()
+CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry::~StpxMSTInstanceEditEntry()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxmstinstanceeditindex.is_set
 	|| stpxmstinstanceeditvlansmap.is_set
 	|| stpxmstinstanceeditvlansmap2k.is_set
@@ -4428,7 +4503,7 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry::
 	|| stpxmstinstanceeditvlansmap4k.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxmstinstanceeditindex.yfilter)
@@ -4438,21 +4513,22 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry::
 	|| ydk::is_set(stpxmstinstanceeditvlansmap4k.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/stpxMSTInstanceEditTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stpxMSTInstanceEditEntry" <<"[stpxMSTInstanceEditIndex='" <<stpxmstinstanceeditindex <<"']";
+    path_buffer << "stpxMSTInstanceEditEntry";
+    ADD_KEY_TOKEN(stpxmstinstanceeditindex, "stpxMSTInstanceEditIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4466,19 +4542,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmstins
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxMSTInstanceEditIndex")
     {
@@ -4512,7 +4588,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry::
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxMSTInstanceEditIndex")
     {
@@ -4536,26 +4612,29 @@ void CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry::
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxMSTInstanceEditIndex" || name == "stpxMSTInstanceEditVlansMap" || name == "stpxMSTInstanceEditVlansMap2k" || name == "stpxMSTInstanceEditVlansMap3k" || name == "stpxMSTInstanceEditVlansMap4k")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstporttable()
+CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortTable()
+    :
+    stpxmstportentry(this, {"stpxmstportindex"})
 {
 
-    yang_name = "stpxMSTPortTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxMSTPortTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmstporttable::~Stpxmstporttable()
+CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::~StpxMSTPortTable()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstporttable::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::has_data() const
 {
-    for (std::size_t index=0; index<stpxmstportentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stpxmstportentry.len(); index++)
     {
         if(stpxmstportentry[index]->has_data())
             return true;
@@ -4563,9 +4642,9 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmstporttable::has_data() const
     return false;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstporttable::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxmstportentry.size(); index++)
+    for (std::size_t index=0; index<stpxmstportentry.len(); index++)
     {
         if(stpxmstportentry[index]->has_operation())
             return true;
@@ -4573,21 +4652,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmstporttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmstporttable::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmstporttable::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxMSTPortTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmstporttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4596,25 +4675,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmstpor
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstporttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxMSTPortEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry>();
+        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry>();
         c->parent = this;
-        stpxmstportentry.push_back(c);
+        stpxmstportentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstporttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stpxmstportentry)
+    for (auto c : stpxmstportentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4625,22 +4704,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstpor
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmstporttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmstporttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstporttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxMSTPortEntry")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::Stpxmstportentry()
+CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::StpxMSTPortEntry()
     :
     stpxmstportindex{YType::int32, "stpxMSTPortIndex"},
     stpxmstportadminlinktype{YType::enumeration, "stpxMSTPortAdminLinkType"},
@@ -4649,15 +4728,16 @@ CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::Stpxmstportentry()
     stpxmstportstatus{YType::bits, "stpxMSTPortStatus"}
 {
 
-    yang_name = "stpxMSTPortEntry"; yang_parent_name = "stpxMSTPortTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxMSTPortEntry"; yang_parent_name = "stpxMSTPortTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::~Stpxmstportentry()
+CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::~StpxMSTPortEntry()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxmstportindex.is_set
 	|| stpxmstportadminlinktype.is_set
 	|| stpxmstportoperlinktype.is_set
@@ -4665,7 +4745,7 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::has_data() const
 	|| stpxmstportstatus.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxmstportindex.yfilter)
@@ -4675,21 +4755,22 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::has_operation() 
 	|| ydk::is_set(stpxmstportstatus.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/stpxMSTPortTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stpxMSTPortEntry" <<"[stpxMSTPortIndex='" <<stpxmstportindex <<"']";
+    path_buffer << "stpxMSTPortEntry";
+    ADD_KEY_TOKEN(stpxmstportindex, "stpxMSTPortIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4703,19 +4784,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmstpor
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxMSTPortIndex")
     {
@@ -4747,7 +4828,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::set_value(const 
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxMSTPortIndex")
     {
@@ -4771,26 +4852,29 @@ void CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::set_filter(const
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxMSTPortIndex" || name == "stpxMSTPortAdminLinkType" || name == "stpxMSTPortOperLinkType" || name == "stpxMSTPortProtocolMigration" || name == "stpxMSTPortStatus")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroletable()
+CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleTable()
+    :
+    stpxmstportroleentry(this, {"stpxmstportroleinstanceindex", "stpxmstportroleportindex"})
 {
 
-    yang_name = "stpxMSTPortRoleTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxMSTPortRoleTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::~Stpxmstportroletable()
+CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::~StpxMSTPortRoleTable()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::has_data() const
 {
-    for (std::size_t index=0; index<stpxmstportroleentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stpxmstportroleentry.len(); index++)
     {
         if(stpxmstportroleentry[index]->has_data())
             return true;
@@ -4798,9 +4882,9 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::has_data() const
     return false;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxmstportroleentry.size(); index++)
+    for (std::size_t index=0; index<stpxmstportroleentry.len(); index++)
     {
         if(stpxmstportroleentry[index]->has_operation())
             return true;
@@ -4808,21 +4892,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxMSTPortRoleTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4831,25 +4915,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmstpor
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxMSTPortRoleEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry>();
+        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry>();
         c->parent = this;
-        stpxmstportroleentry.push_back(c);
+        stpxmstportroleentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stpxmstportroleentry)
+    for (auto c : stpxmstportroleentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4860,43 +4944,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstpor
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxMSTPortRoleEntry")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::Stpxmstportroleentry()
+CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::StpxMSTPortRoleEntry()
     :
     stpxmstportroleinstanceindex{YType::int32, "stpxMSTPortRoleInstanceIndex"},
     stpxmstportroleportindex{YType::int32, "stpxMSTPortRolePortIndex"},
     stpxmstportrolevalue{YType::enumeration, "stpxMSTPortRoleValue"}
 {
 
-    yang_name = "stpxMSTPortRoleEntry"; yang_parent_name = "stpxMSTPortRoleTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxMSTPortRoleEntry"; yang_parent_name = "stpxMSTPortRoleTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::~Stpxmstportroleentry()
+CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::~StpxMSTPortRoleEntry()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxmstportroleinstanceindex.is_set
 	|| stpxmstportroleportindex.is_set
 	|| stpxmstportrolevalue.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxmstportroleinstanceindex.yfilter)
@@ -4904,21 +4989,23 @@ bool CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::has_oper
 	|| ydk::is_set(stpxmstportrolevalue.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/stpxMSTPortRoleTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stpxMSTPortRoleEntry" <<"[stpxMSTPortRoleInstanceIndex='" <<stpxmstportroleinstanceindex <<"']" <<"[stpxMSTPortRolePortIndex='" <<stpxmstportroleportindex <<"']";
+    path_buffer << "stpxMSTPortRoleEntry";
+    ADD_KEY_TOKEN(stpxmstportroleinstanceindex, "stpxMSTPortRoleInstanceIndex");
+    ADD_KEY_TOKEN(stpxmstportroleportindex, "stpxMSTPortRolePortIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4930,19 +5017,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxmstpor
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxMSTPortRoleInstanceIndex")
     {
@@ -4964,7 +5051,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::set_valu
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxMSTPortRoleInstanceIndex")
     {
@@ -4980,26 +5067,29 @@ void CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::set_filt
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxMSTPortRoleInstanceIndex" || name == "stpxMSTPortRolePortIndex" || name == "stpxMSTPortRoleValue")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpporttable()
+CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortTable()
+    :
+    stpxrstpportentry(this, {"stpxrstpportindex"})
 {
 
-    yang_name = "stpxRSTPPortTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxRSTPPortTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::~Stpxrstpporttable()
+CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::~StpxRSTPPortTable()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::has_data() const
 {
-    for (std::size_t index=0; index<stpxrstpportentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stpxrstpportentry.len(); index++)
     {
         if(stpxrstpportentry[index]->has_data())
             return true;
@@ -5007,9 +5097,9 @@ bool CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::has_data() const
     return false;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxrstpportentry.size(); index++)
+    for (std::size_t index=0; index<stpxrstpportentry.len(); index++)
     {
         if(stpxrstpportentry[index]->has_operation())
             return true;
@@ -5017,21 +5107,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxRSTPPortTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5040,25 +5130,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrstppo
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxRSTPPortEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry>();
+        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry>();
         c->parent = this;
-        stpxrstpportentry.push_back(c);
+        stpxrstpportentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stpxrstpportentry)
+    for (auto c : stpxrstpportentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5069,22 +5159,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrstppo
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxRSTPPortEntry")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::Stpxrstpportentry()
+CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::StpxRSTPPortEntry()
     :
     stpxrstpportindex{YType::int32, "stpxRSTPPortIndex"},
     stpxrstpportadminlinktype{YType::enumeration, "stpxRSTPPortAdminLinkType"},
@@ -5092,22 +5182,23 @@ CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::Stpxrstpportentry()
     stpxrstpportprotocolmigration{YType::boolean, "stpxRSTPPortProtocolMigration"}
 {
 
-    yang_name = "stpxRSTPPortEntry"; yang_parent_name = "stpxRSTPPortTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxRSTPPortEntry"; yang_parent_name = "stpxRSTPPortTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::~Stpxrstpportentry()
+CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::~StpxRSTPPortEntry()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxrstpportindex.is_set
 	|| stpxrstpportadminlinktype.is_set
 	|| stpxrstpportoperlinktype.is_set
 	|| stpxrstpportprotocolmigration.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxrstpportindex.yfilter)
@@ -5116,21 +5207,22 @@ bool CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::has_operation(
 	|| ydk::is_set(stpxrstpportprotocolmigration.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/stpxRSTPPortTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stpxRSTPPortEntry" <<"[stpxRSTPPortIndex='" <<stpxrstpportindex <<"']";
+    path_buffer << "stpxRSTPPortEntry";
+    ADD_KEY_TOKEN(stpxrstpportindex, "stpxRSTPPortIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5143,19 +5235,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrstppo
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxRSTPPortIndex")
     {
@@ -5183,7 +5275,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::set_value(cons
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxRSTPPortIndex")
     {
@@ -5203,26 +5295,29 @@ void CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::set_filter(con
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxRSTPPortIndex" || name == "stpxRSTPPortAdminLinkType" || name == "stpxRSTPPortOperLinkType" || name == "stpxRSTPPortProtocolMigration")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroletable()
+CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleTable()
+    :
+    stpxrstpportroleentry(this, {"stpxrstpportroleinstanceindex", "stpxrstpportroleportindex"})
 {
 
-    yang_name = "stpxRSTPPortRoleTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxRSTPPortRoleTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::~Stpxrstpportroletable()
+CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::~StpxRSTPPortRoleTable()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::has_data() const
 {
-    for (std::size_t index=0; index<stpxrstpportroleentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stpxrstpportroleentry.len(); index++)
     {
         if(stpxrstpportroleentry[index]->has_data())
             return true;
@@ -5230,9 +5325,9 @@ bool CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::has_data() const
     return false;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxrstpportroleentry.size(); index++)
+    for (std::size_t index=0; index<stpxrstpportroleentry.len(); index++)
     {
         if(stpxrstpportroleentry[index]->has_operation())
             return true;
@@ -5240,21 +5335,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxRSTPPortRoleTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5263,25 +5358,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrstppo
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxRSTPPortRoleEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry>();
+        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry>();
         c->parent = this;
-        stpxrstpportroleentry.push_back(c);
+        stpxrstpportroleentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stpxrstpportroleentry)
+    for (auto c : stpxrstpportroleentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5292,43 +5387,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrstppo
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxRSTPPortRoleEntry")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::Stpxrstpportroleentry()
+CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::StpxRSTPPortRoleEntry()
     :
     stpxrstpportroleinstanceindex{YType::int32, "stpxRSTPPortRoleInstanceIndex"},
     stpxrstpportroleportindex{YType::int32, "stpxRSTPPortRolePortIndex"},
     stpxrstpportrolevalue{YType::enumeration, "stpxRSTPPortRoleValue"}
 {
 
-    yang_name = "stpxRSTPPortRoleEntry"; yang_parent_name = "stpxRSTPPortRoleTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxRSTPPortRoleEntry"; yang_parent_name = "stpxRSTPPortRoleTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::~Stpxrstpportroleentry()
+CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::~StpxRSTPPortRoleEntry()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxrstpportroleinstanceindex.is_set
 	|| stpxrstpportroleportindex.is_set
 	|| stpxrstpportrolevalue.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxrstpportroleinstanceindex.yfilter)
@@ -5336,21 +5432,23 @@ bool CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::has_op
 	|| ydk::is_set(stpxrstpportrolevalue.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/stpxRSTPPortRoleTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stpxRSTPPortRoleEntry" <<"[stpxRSTPPortRoleInstanceIndex='" <<stpxrstpportroleinstanceindex <<"']" <<"[stpxRSTPPortRolePortIndex='" <<stpxrstpportroleportindex <<"']";
+    path_buffer << "stpxRSTPPortRoleEntry";
+    ADD_KEY_TOKEN(stpxrstpportroleinstanceindex, "stpxRSTPPortRoleInstanceIndex");
+    ADD_KEY_TOKEN(stpxrstpportroleportindex, "stpxRSTPPortRolePortIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5362,19 +5460,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrstppo
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxRSTPPortRoleInstanceIndex")
     {
@@ -5396,7 +5494,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::set_va
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxRSTPPortRoleInstanceIndex")
     {
@@ -5412,26 +5510,29 @@ void CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::set_fi
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxRSTPPortRoleInstanceIndex" || name == "stpxRSTPPortRolePortIndex" || name == "stpxRSTPPortRoleValue")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstporttable()
+CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortTable()
+    :
+    stpxrpvstportentry(this, {"stpxrpvstportvlanindex", "stpxrpvstportindex"})
 {
 
-    yang_name = "stpxRPVSTPortTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxRPVSTPortTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::~Stpxrpvstporttable()
+CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::~StpxRPVSTPortTable()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::has_data() const
 {
-    for (std::size_t index=0; index<stpxrpvstportentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stpxrpvstportentry.len(); index++)
     {
         if(stpxrpvstportentry[index]->has_data())
             return true;
@@ -5439,9 +5540,9 @@ bool CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::has_data() const
     return false;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxrpvstportentry.size(); index++)
+    for (std::size_t index=0; index<stpxrpvstportentry.len(); index++)
     {
         if(stpxrpvstportentry[index]->has_operation())
             return true;
@@ -5449,21 +5550,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxRPVSTPortTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5472,25 +5573,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrpvstp
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxRPVSTPortEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry>();
+        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry>();
         c->parent = this;
-        stpxrpvstportentry.push_back(c);
+        stpxrpvstportentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stpxrpvstportentry)
+    for (auto c : stpxrpvstportentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5501,43 +5602,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrpvstp
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxRPVSTPortEntry")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry::Stpxrpvstportentry()
+CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry::StpxRPVSTPortEntry()
     :
     stpxrpvstportvlanindex{YType::int32, "stpxRPVSTPortVlanIndex"},
     stpxrpvstportindex{YType::int32, "stpxRPVSTPortIndex"},
     stpxrpvstportstatus{YType::bits, "stpxRPVSTPortStatus"}
 {
 
-    yang_name = "stpxRPVSTPortEntry"; yang_parent_name = "stpxRPVSTPortTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxRPVSTPortEntry"; yang_parent_name = "stpxRPVSTPortTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry::~Stpxrpvstportentry()
+CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry::~StpxRPVSTPortEntry()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxrpvstportvlanindex.is_set
 	|| stpxrpvstportindex.is_set
 	|| stpxrpvstportstatus.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxrpvstportvlanindex.yfilter)
@@ -5545,21 +5647,23 @@ bool CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry::has_operatio
 	|| ydk::is_set(stpxrpvstportstatus.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/stpxRPVSTPortTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stpxRPVSTPortEntry" <<"[stpxRPVSTPortVlanIndex='" <<stpxrpvstportvlanindex <<"']" <<"[stpxRPVSTPortIndex='" <<stpxrpvstportindex <<"']";
+    path_buffer << "stpxRPVSTPortEntry";
+    ADD_KEY_TOKEN(stpxrpvstportvlanindex, "stpxRPVSTPortVlanIndex");
+    ADD_KEY_TOKEN(stpxrpvstportindex, "stpxRPVSTPortIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5571,19 +5675,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxrpvstp
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxRPVSTPortVlanIndex")
     {
@@ -5603,7 +5707,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry::set_value(co
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxRPVSTPortVlanIndex")
     {
@@ -5619,26 +5723,29 @@ void CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry::set_filter(c
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxRPVSTPortVlanIndex" || name == "stpxRPVSTPortIndex" || name == "stpxRPVSTPortStatus")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstancetable()
+CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceTable()
+    :
+    stpxsmstinstanceentry(this, {"stpxsmstinstanceindex"})
 {
 
-    yang_name = "stpxSMSTInstanceTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxSMSTInstanceTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::~Stpxsmstinstancetable()
+CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::~StpxSMSTInstanceTable()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::has_data() const
 {
-    for (std::size_t index=0; index<stpxsmstinstanceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stpxsmstinstanceentry.len(); index++)
     {
         if(stpxsmstinstanceentry[index]->has_data())
             return true;
@@ -5646,9 +5753,9 @@ bool CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::has_data() const
     return false;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxsmstinstanceentry.size(); index++)
+    for (std::size_t index=0; index<stpxsmstinstanceentry.len(); index++)
     {
         if(stpxsmstinstanceentry[index]->has_operation())
             return true;
@@ -5656,21 +5763,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxSMSTInstanceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5679,25 +5786,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxsmstin
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxSMSTInstanceEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry>();
+        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry>();
         c->parent = this;
-        stpxsmstinstanceentry.push_back(c);
+        stpxsmstinstanceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stpxsmstinstanceentry)
+    for (auto c : stpxsmstinstanceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5708,22 +5815,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxsmstin
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxSMSTInstanceEntry")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry::Stpxsmstinstanceentry()
+CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry::StpxSMSTInstanceEntry()
     :
     stpxsmstinstanceindex{YType::uint32, "stpxSMSTInstanceIndex"},
     stpxsmstinstancevlansmapped1k2k{YType::str, "stpxSMSTInstanceVlansMapped1k2k"},
@@ -5733,15 +5840,16 @@ CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry::Stpxsmstins
     stpxsmstinstancecistintrootcost{YType::uint32, "stpxSMSTInstanceCISTIntRootCost"}
 {
 
-    yang_name = "stpxSMSTInstanceEntry"; yang_parent_name = "stpxSMSTInstanceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxSMSTInstanceEntry"; yang_parent_name = "stpxSMSTInstanceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry::~Stpxsmstinstanceentry()
+CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry::~StpxSMSTInstanceEntry()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxsmstinstanceindex.is_set
 	|| stpxsmstinstancevlansmapped1k2k.is_set
 	|| stpxsmstinstancevlansmapped3k4k.is_set
@@ -5750,7 +5858,7 @@ bool CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry::has_da
 	|| stpxsmstinstancecistintrootcost.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxsmstinstanceindex.yfilter)
@@ -5761,21 +5869,22 @@ bool CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry::has_op
 	|| ydk::is_set(stpxsmstinstancecistintrootcost.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/stpxSMSTInstanceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stpxSMSTInstanceEntry" <<"[stpxSMSTInstanceIndex='" <<stpxsmstinstanceindex <<"']";
+    path_buffer << "stpxSMSTInstanceEntry";
+    ADD_KEY_TOKEN(stpxsmstinstanceindex, "stpxSMSTInstanceIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5790,19 +5899,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxsmstin
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxSMSTInstanceIndex")
     {
@@ -5842,7 +5951,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry::set_va
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxSMSTInstanceIndex")
     {
@@ -5870,26 +5979,29 @@ void CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry::set_fi
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxSMSTInstanceIndex" || name == "stpxSMSTInstanceVlansMapped1k2k" || name == "stpxSMSTInstanceVlansMapped3k4k" || name == "stpxSMSTInstanceRemainingHopCount" || name == "stpxSMSTInstanceCISTRegionalRoot" || name == "stpxSMSTInstanceCISTIntRootCost")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceedittable()
+CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditTable()
+    :
+    stpxsmstinstanceeditentry(this, {"stpxsmstinstanceeditindex"})
 {
 
-    yang_name = "stpxSMSTInstanceEditTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxSMSTInstanceEditTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::~Stpxsmstinstanceedittable()
+CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::~StpxSMSTInstanceEditTable()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::has_data() const
 {
-    for (std::size_t index=0; index<stpxsmstinstanceeditentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stpxsmstinstanceeditentry.len(); index++)
     {
         if(stpxsmstinstanceeditentry[index]->has_data())
             return true;
@@ -5897,9 +6009,9 @@ bool CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::has_data() const
     return false;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxsmstinstanceeditentry.size(); index++)
+    for (std::size_t index=0; index<stpxsmstinstanceeditentry.len(); index++)
     {
         if(stpxsmstinstanceeditentry[index]->has_operation())
             return true;
@@ -5907,21 +6019,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxSMSTInstanceEditTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5930,25 +6042,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxsmstin
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxSMSTInstanceEditEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry>();
+        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry>();
         c->parent = this;
-        stpxsmstinstanceeditentry.push_back(c);
+        stpxsmstinstanceeditentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stpxsmstinstanceeditentry)
+    for (auto c : stpxsmstinstanceeditentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5959,22 +6071,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxsmstin
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxSMSTInstanceEditEntry")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry::Stpxsmstinstanceeditentry()
+CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry::StpxSMSTInstanceEditEntry()
     :
     stpxsmstinstanceeditindex{YType::uint32, "stpxSMSTInstanceEditIndex"},
     stpxsmstinstanceeditvlansmap1k2k{YType::str, "stpxSMSTInstanceEditVlansMap1k2k"},
@@ -5982,22 +6094,23 @@ CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry::Stp
     stpxsmstinstanceeditrowstatus{YType::enumeration, "stpxSMSTInstanceEditRowStatus"}
 {
 
-    yang_name = "stpxSMSTInstanceEditEntry"; yang_parent_name = "stpxSMSTInstanceEditTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxSMSTInstanceEditEntry"; yang_parent_name = "stpxSMSTInstanceEditTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry::~Stpxsmstinstanceeditentry()
+CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry::~StpxSMSTInstanceEditEntry()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxsmstinstanceeditindex.is_set
 	|| stpxsmstinstanceeditvlansmap1k2k.is_set
 	|| stpxsmstinstanceeditvlansmap3k4k.is_set
 	|| stpxsmstinstanceeditrowstatus.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxsmstinstanceeditindex.yfilter)
@@ -6006,21 +6119,22 @@ bool CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry
 	|| ydk::is_set(stpxsmstinstanceeditrowstatus.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/stpxSMSTInstanceEditTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stpxSMSTInstanceEditEntry" <<"[stpxSMSTInstanceEditIndex='" <<stpxsmstinstanceeditindex <<"']";
+    path_buffer << "stpxSMSTInstanceEditEntry";
+    ADD_KEY_TOKEN(stpxsmstinstanceeditindex, "stpxSMSTInstanceEditIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6033,19 +6147,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxsmstin
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxSMSTInstanceEditIndex")
     {
@@ -6073,7 +6187,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxSMSTInstanceEditIndex")
     {
@@ -6093,26 +6207,29 @@ void CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxSMSTInstanceEditIndex" || name == "stpxSMSTInstanceEditVlansMap1k2k" || name == "stpxSMSTInstanceEditVlansMap3k4k" || name == "stpxSMSTInstanceEditRowStatus")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstporttable()
+CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortTable()
+    :
+    stpxsmstportentry(this, {"stpxsmstportindex"})
 {
 
-    yang_name = "stpxSMSTPortTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxSMSTPortTable"; yang_parent_name = "CISCO-STP-EXTENSIONS-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::~Stpxsmstporttable()
+CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::~StpxSMSTPortTable()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::has_data() const
 {
-    for (std::size_t index=0; index<stpxsmstportentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<stpxsmstportentry.len(); index++)
     {
         if(stpxsmstportentry[index]->has_data())
             return true;
@@ -6120,9 +6237,9 @@ bool CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::has_data() const
     return false;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::has_operation() const
 {
-    for (std::size_t index=0; index<stpxsmstportentry.size(); index++)
+    for (std::size_t index=0; index<stpxsmstportentry.len(); index++)
     {
         if(stpxsmstportentry[index]->has_operation())
             return true;
@@ -6130,21 +6247,21 @@ bool CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "stpxSMSTPortTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6153,25 +6270,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxsmstpo
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxSMSTPortEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry>();
+        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry>();
         c->parent = this;
-        stpxsmstportentry.push_back(c);
+        stpxsmstportentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : stpxsmstportentry)
+    for (auto c : stpxsmstportentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6182,22 +6299,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxsmstpo
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxSMSTPortEntry")
         return true;
     return false;
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::Stpxsmstportentry()
+CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::StpxSMSTPortEntry()
     :
     stpxsmstportindex{YType::int32, "stpxSMSTPortIndex"},
     stpxsmstportstatus{YType::bits, "stpxSMSTPortStatus"},
@@ -6208,15 +6325,16 @@ CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::Stpxsmstportentry()
     stpxsmstportopermstmode{YType::enumeration, "stpxSMSTPortOperMSTMode"}
 {
 
-    yang_name = "stpxSMSTPortEntry"; yang_parent_name = "stpxSMSTPortTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpxSMSTPortEntry"; yang_parent_name = "stpxSMSTPortTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::~Stpxsmstportentry()
+CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::~StpxSMSTPortEntry()
 {
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::has_data() const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return stpxsmstportindex.is_set
 	|| stpxsmstportstatus.is_set
 	|| stpxsmstportadminhellotime.is_set
@@ -6226,7 +6344,7 @@ bool CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::has_data() con
 	|| stpxsmstportopermstmode.is_set;
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::has_operation() const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(stpxsmstportindex.yfilter)
@@ -6238,21 +6356,22 @@ bool CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::has_operation(
 	|| ydk::is_set(stpxsmstportopermstmode.yfilter);
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::get_absolute_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-STP-EXTENSIONS-MIB:CISCO-STP-EXTENSIONS-MIB/stpxSMSTPortTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::get_segment_path() const
+std::string CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stpxSMSTPortEntry" <<"[stpxSMSTPortIndex='" <<stpxsmstportindex <<"']";
+    path_buffer << "stpxSMSTPortEntry";
+    ADD_KEY_TOKEN(stpxsmstportindex, "stpxSMSTPortIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6268,19 +6387,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::Stpxsmstpo
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stpxSMSTPortIndex")
     {
@@ -6324,7 +6443,7 @@ void CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::set_value(cons
     }
 }
 
-void CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "stpxSMSTPortIndex")
     {
@@ -6356,104 +6475,104 @@ void CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::set_filter(con
     }
 }
 
-bool CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "stpxSMSTPortIndex" || name == "stpxSMSTPortStatus" || name == "stpxSMSTPortAdminHelloTime" || name == "stpxSMSTPortConfigedHelloTime" || name == "stpxSMSTPortOperHelloTime" || name == "stpxSMSTPortAdminMSTMode" || name == "stpxSMSTPortOperMSTMode")
         return true;
     return false;
 }
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreetype::pvstPlus {1, "pvstPlus"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreetype::mistp {2, "mistp"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreetype::mistpPvstPlus {3, "mistpPvstPlus"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreetype::mst {4, "mst"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreetype::rapidPvstPlus {5, "rapidPvstPlus"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::StpxSpanningTreeType::pvstPlus {1, "pvstPlus"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::StpxSpanningTreeType::mistp {2, "mistp"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::StpxSpanningTreeType::mistpPvstPlus {3, "mistpPvstPlus"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::StpxSpanningTreeType::mst {4, "mst"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::StpxSpanningTreeType::rapidPvstPlus {5, "rapidPvstPlus"};
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreepathcostmode::short_ {1, "short"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreepathcostmode::long_ {2, "long"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::StpxSpanningTreePathCostMode::short_ {1, "short"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::StpxSpanningTreePathCostMode::long_ {2, "long"};
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreepathcostopermode::short_ {1, "short"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreepathcostopermode::long_ {2, "long"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::StpxSpanningTreePathCostOperMode::short_ {1, "short"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::StpxSpanningTreePathCostOperMode::long_ {2, "long"};
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::Stpxloopguardglobaldefaultmode::enable {1, "enable"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::Stpxloopguardglobaldefaultmode::disable {2, "disable"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::StpxLoopGuardGlobalDefaultMode::enable {1, "enable"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::StpxLoopGuardGlobalDefaultMode::disable {2, "disable"};
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::Stpxfaststartglobaldefaultmode::enable {1, "enable"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::Stpxfaststartglobaldefaultmode::disable {2, "disable"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::StpxFastStartGlobalDefaultMode::enable {1, "enable"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::StpxFastStartGlobalDefaultMode::disable {2, "disable"};
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstobjects::Stpxmstregioneditbufferstatus::released {1, "released"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstobjects::Stpxmstregioneditbufferstatus::acquiredBySnmp {2, "acquiredBySnmp"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstobjects::Stpxmstregioneditbufferstatus::acquiredByNonSnmp {3, "acquiredByNonSnmp"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTObjects::StpxMSTRegionEditBufferStatus::released {1, "released"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTObjects::StpxMSTRegionEditBufferStatus::acquiredBySnmp {2, "acquiredBySnmp"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTObjects::StpxMSTRegionEditBufferStatus::acquiredByNonSnmp {3, "acquiredByNonSnmp"};
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstobjects::Stpxmstregioneditbufferoperation::other {1, "other"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstobjects::Stpxmstregioneditbufferoperation::acquire {2, "acquire"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstobjects::Stpxmstregioneditbufferoperation::releaseWithForce {3, "releaseWithForce"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstobjects::Stpxmstregioneditbufferoperation::commit {4, "commit"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstobjects::Stpxmstregioneditbufferoperation::rollBack {5, "rollBack"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTObjects::StpxMSTRegionEditBufferOperation::other {1, "other"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTObjects::StpxMSTRegionEditBufferOperation::acquire {2, "acquire"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTObjects::StpxMSTRegionEditBufferOperation::releaseWithForce {3, "releaseWithForce"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTObjects::StpxMSTRegionEditBufferOperation::commit {4, "commit"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTObjects::StpxMSTRegionEditBufferOperation::rollBack {5, "rollBack"};
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::Stpxpvstvlanenable::enabled {1, "enabled"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::Stpxpvstvlanenable::disabled {2, "disabled"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::Stpxpvstvlanenable::notApplicable {3, "notApplicable"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::StpxPVSTVlanEnable::enabled {1, "enabled"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::StpxPVSTVlanEnable::disabled {2, "disabled"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::StpxPVSTVlanEnable::notApplicable {3, "notApplicable"};
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::Stpxloopguardconfigmode::enable {1, "enable"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::Stpxloopguardconfigmode::disable {2, "disable"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::Stpxloopguardconfigmode::default_ {3, "default"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::StpxLoopGuardConfigMode::enable {1, "enable"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::StpxLoopGuardConfigMode::disable {2, "disable"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::StpxLoopGuardConfigMode::default_ {3, "default"};
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::Stpxfaststartportmode::enable {1, "enable"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::Stpxfaststartportmode::disable {2, "disable"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::Stpxfaststartportmode::enableForTrunk {3, "enableForTrunk"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::Stpxfaststartportmode::default_ {4, "default"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::Stpxfaststartportmode::network {5, "network"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::StpxFastStartPortMode::enable {1, "enable"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::StpxFastStartPortMode::disable {2, "disable"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::StpxFastStartPortMode::enableForTrunk {3, "enableForTrunk"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::StpxFastStartPortMode::default_ {4, "default"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::StpxFastStartPortMode::network {5, "network"};
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::Stpxfaststartportbpduguardmode::enable {1, "enable"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::Stpxfaststartportbpduguardmode::disable {2, "disable"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::Stpxfaststartportbpduguardmode::default_ {3, "default"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::StpxFastStartPortBpduGuardMode::enable {1, "enable"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::StpxFastStartPortBpduGuardMode::disable {2, "disable"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::StpxFastStartPortBpduGuardMode::default_ {3, "default"};
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::Stpxfaststartportbpdufiltermode::enable {1, "enable"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::Stpxfaststartportbpdufiltermode::disable {2, "disable"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::Stpxfaststartportbpdufiltermode::default_ {3, "default"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::StpxFastStartPortBpduFilterMode::enable {1, "enable"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::StpxFastStartPortBpduFilterMode::disable {2, "disable"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::StpxFastStartPortBpduFilterMode::default_ {3, "default"};
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry::Stpxfaststartopermode::enabled {1, "enabled"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry::Stpxfaststartopermode::disabled {2, "disabled"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::StpxFastStartOperMode::enabled {1, "enabled"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::StpxFastStartOperMode::disabled {2, "disabled"};
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::Stpxmstportadminlinktype::pointToPoint {1, "pointToPoint"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::Stpxmstportadminlinktype::shared {2, "shared"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::Stpxmstportadminlinktype::auto_ {3, "auto"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::StpxMSTPortAdminLinkType::pointToPoint {1, "pointToPoint"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::StpxMSTPortAdminLinkType::shared {2, "shared"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::StpxMSTPortAdminLinkType::auto_ {3, "auto"};
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::Stpxmstportoperlinktype::pointToPoint {1, "pointToPoint"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::Stpxmstportoperlinktype::shared {2, "shared"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::Stpxmstportoperlinktype::other {3, "other"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::StpxMSTPortOperLinkType::pointToPoint {1, "pointToPoint"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::StpxMSTPortOperLinkType::shared {2, "shared"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::StpxMSTPortOperLinkType::other {3, "other"};
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::Stpxmstportrolevalue::disabled {1, "disabled"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::Stpxmstportrolevalue::root {2, "root"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::Stpxmstportrolevalue::designated {3, "designated"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::Stpxmstportrolevalue::alternate {4, "alternate"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::Stpxmstportrolevalue::backUp {5, "backUp"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::Stpxmstportrolevalue::boundary {6, "boundary"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::Stpxmstportrolevalue::master {7, "master"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::StpxMSTPortRoleValue::disabled {1, "disabled"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::StpxMSTPortRoleValue::root {2, "root"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::StpxMSTPortRoleValue::designated {3, "designated"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::StpxMSTPortRoleValue::alternate {4, "alternate"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::StpxMSTPortRoleValue::backUp {5, "backUp"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::StpxMSTPortRoleValue::boundary {6, "boundary"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::StpxMSTPortRoleValue::master {7, "master"};
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::Stpxrstpportadminlinktype::pointToPoint {1, "pointToPoint"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::Stpxrstpportadminlinktype::shared {2, "shared"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::Stpxrstpportadminlinktype::auto_ {3, "auto"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::StpxRSTPPortAdminLinkType::pointToPoint {1, "pointToPoint"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::StpxRSTPPortAdminLinkType::shared {2, "shared"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::StpxRSTPPortAdminLinkType::auto_ {3, "auto"};
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::Stpxrstpportoperlinktype::pointToPoint {1, "pointToPoint"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::Stpxrstpportoperlinktype::shared {2, "shared"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::Stpxrstpportoperlinktype::other {3, "other"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::StpxRSTPPortOperLinkType::pointToPoint {1, "pointToPoint"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::StpxRSTPPortOperLinkType::shared {2, "shared"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::StpxRSTPPortOperLinkType::other {3, "other"};
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::Stpxrstpportrolevalue::disabled {1, "disabled"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::Stpxrstpportrolevalue::root {2, "root"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::Stpxrstpportrolevalue::designated {3, "designated"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::Stpxrstpportrolevalue::alternate {4, "alternate"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::Stpxrstpportrolevalue::backUp {5, "backUp"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::Stpxrstpportrolevalue::boundary {6, "boundary"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::Stpxrstpportrolevalue::master {7, "master"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::StpxRSTPPortRoleValue::disabled {1, "disabled"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::StpxRSTPPortRoleValue::root {2, "root"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::StpxRSTPPortRoleValue::designated {3, "designated"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::StpxRSTPPortRoleValue::alternate {4, "alternate"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::StpxRSTPPortRoleValue::backUp {5, "backUp"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::StpxRSTPPortRoleValue::boundary {6, "boundary"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::StpxRSTPPortRoleValue::master {7, "master"};
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::Stpxsmstportadminmstmode::preStandard {1, "preStandard"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::Stpxsmstportadminmstmode::auto_ {2, "auto"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::StpxSMSTPortAdminMSTMode::preStandard {1, "preStandard"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::StpxSMSTPortAdminMSTMode::auto_ {2, "auto"};
 
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::Stpxsmstportopermstmode::unknown {1, "unknown"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::Stpxsmstportopermstmode::preStandard {2, "preStandard"};
-const Enum::YLeaf CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::Stpxsmstportopermstmode::standard {3, "standard"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::StpxSMSTPortOperMSTMode::unknown {1, "unknown"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::StpxSMSTPortOperMSTMode::preStandard {2, "preStandard"};
+const Enum::YLeaf CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::StpxSMSTPortOperMSTMode::standard {3, "standard"};
 
 
 }

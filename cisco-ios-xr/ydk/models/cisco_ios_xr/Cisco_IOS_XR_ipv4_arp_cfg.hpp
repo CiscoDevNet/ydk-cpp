@@ -86,7 +86,7 @@ class Arpgmp : public ydk::Entity
 
         class Vrf; //type: Arpgmp::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_cfg::Arpgmp::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Arpgmp
 
@@ -134,7 +134,7 @@ class Arpgmp::Vrf::Entries : public ydk::Entity
 
         class Entry; //type: Arpgmp::Vrf::Entries::Entry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_cfg::Arpgmp::Vrf::Entries::Entry> > entry;
+        ydk::YList entry;
         
 }; // Arpgmp::Vrf::Entries
 
@@ -235,7 +235,7 @@ class ArpRedundancy::Redundancy::Groups : public ydk::Entity
 
         class Group; //type: ArpRedundancy::Redundancy::Groups::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_cfg::ArpRedundancy::Redundancy::Groups::Group> > group;
+        ydk::YList group;
         
 }; // ArpRedundancy::Redundancy::Groups
 
@@ -286,7 +286,7 @@ class ArpRedundancy::Redundancy::Groups::Group::Peers : public ydk::Entity
 
         class Peer; //type: ArpRedundancy::Redundancy::Groups::Group::Peers::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_cfg::ArpRedundancy::Redundancy::Groups::Group::Peers::Peer> > peer;
+        ydk::YList peer;
         
 }; // ArpRedundancy::Redundancy::Groups::Group::Peers
 
@@ -354,7 +354,7 @@ class ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces : publ
 
         class Interface; //type: ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_cfg::ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces
 

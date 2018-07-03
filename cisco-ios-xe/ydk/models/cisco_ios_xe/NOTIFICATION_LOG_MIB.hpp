@@ -32,26 +32,26 @@ class NOTIFICATIONLOGMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Nlmconfig; //type: NOTIFICATIONLOGMIB::Nlmconfig
-        class Nlmstats; //type: NOTIFICATIONLOGMIB::Nlmstats
-        class Nlmconfiglogtable; //type: NOTIFICATIONLOGMIB::Nlmconfiglogtable
-        class Nlmlogtable; //type: NOTIFICATIONLOGMIB::Nlmlogtable
-        class Nlmlogvariabletable; //type: NOTIFICATIONLOGMIB::Nlmlogvariabletable
+        class NlmConfig; //type: NOTIFICATIONLOGMIB::NlmConfig
+        class NlmStats; //type: NOTIFICATIONLOGMIB::NlmStats
+        class NlmConfigLogTable; //type: NOTIFICATIONLOGMIB::NlmConfigLogTable
+        class NlmLogTable; //type: NOTIFICATIONLOGMIB::NlmLogTable
+        class NlmLogVariableTable; //type: NOTIFICATIONLOGMIB::NlmLogVariableTable
 
-        std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmconfig> nlmconfig;
-        std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmstats> nlmstats;
-        std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmconfiglogtable> nlmconfiglogtable;
-        std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmlogtable> nlmlogtable;
-        std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmlogvariabletable> nlmlogvariabletable;
+        std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::NlmConfig> nlmconfig;
+        std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::NlmStats> nlmstats;
+        std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::NlmConfigLogTable> nlmconfiglogtable;
+        std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::NlmLogTable> nlmlogtable;
+        std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::NlmLogVariableTable> nlmlogvariabletable;
         
 }; // NOTIFICATIONLOGMIB
 
 
-class NOTIFICATIONLOGMIB::Nlmconfig : public ydk::Entity
+class NOTIFICATIONLOGMIB::NlmConfig : public ydk::Entity
 {
     public:
-        Nlmconfig();
-        ~Nlmconfig();
+        NlmConfig();
+        ~NlmConfig();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -67,14 +67,14 @@ class NOTIFICATIONLOGMIB::Nlmconfig : public ydk::Entity
         ydk::YLeaf nlmconfigglobalentrylimit; //type: uint32
         ydk::YLeaf nlmconfigglobalageout; //type: uint32
 
-}; // NOTIFICATIONLOGMIB::Nlmconfig
+}; // NOTIFICATIONLOGMIB::NlmConfig
 
 
-class NOTIFICATIONLOGMIB::Nlmstats : public ydk::Entity
+class NOTIFICATIONLOGMIB::NlmStats : public ydk::Entity
 {
     public:
-        Nlmstats();
-        ~Nlmstats();
+        NlmStats();
+        ~NlmStats();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -90,14 +90,14 @@ class NOTIFICATIONLOGMIB::Nlmstats : public ydk::Entity
         ydk::YLeaf nlmstatsglobalnotificationslogged; //type: uint32
         ydk::YLeaf nlmstatsglobalnotificationsbumped; //type: uint32
 
-}; // NOTIFICATIONLOGMIB::Nlmstats
+}; // NOTIFICATIONLOGMIB::NlmStats
 
 
-class NOTIFICATIONLOGMIB::Nlmconfiglogtable : public ydk::Entity
+class NOTIFICATIONLOGMIB::NlmConfigLogTable : public ydk::Entity
 {
     public:
-        Nlmconfiglogtable();
-        ~Nlmconfiglogtable();
+        NlmConfigLogTable();
+        ~NlmConfigLogTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -110,18 +110,18 @@ class NOTIFICATIONLOGMIB::Nlmconfiglogtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nlmconfiglogentry; //type: NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry
+        class NlmConfigLogEntry; //type: NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry> > nlmconfiglogentry;
+        ydk::YList nlmconfiglogentry;
         
-}; // NOTIFICATIONLOGMIB::Nlmconfiglogtable
+}; // NOTIFICATIONLOGMIB::NlmConfigLogTable
 
 
-class NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry : public ydk::Entity
+class NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry : public ydk::Entity
 {
     public:
-        Nlmconfiglogentry();
-        ~Nlmconfiglogentry();
+        NlmConfigLogEntry();
+        ~NlmConfigLogEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -137,23 +137,23 @@ class NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry : public ydk::Ent
         ydk::YLeaf nlmlogname; //type: string
         ydk::YLeaf nlmconfiglogfiltername; //type: string
         ydk::YLeaf nlmconfiglogentrylimit; //type: uint32
-        ydk::YLeaf nlmconfiglogadminstatus; //type: Nlmconfiglogadminstatus
-        ydk::YLeaf nlmconfiglogoperstatus; //type: Nlmconfiglogoperstatus
+        ydk::YLeaf nlmconfiglogadminstatus; //type: NlmConfigLogAdminStatus
+        ydk::YLeaf nlmconfiglogoperstatus; //type: NlmConfigLogOperStatus
         ydk::YLeaf nlmconfiglogstoragetype; //type: StorageType
         ydk::YLeaf nlmconfiglogentrystatus; //type: RowStatus
         ydk::YLeaf nlmstatslognotificationslogged; //type: uint32
         ydk::YLeaf nlmstatslognotificationsbumped; //type: uint32
-        class Nlmconfiglogadminstatus;
-        class Nlmconfiglogoperstatus;
+        class NlmConfigLogAdminStatus;
+        class NlmConfigLogOperStatus;
 
-}; // NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry
+}; // NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry
 
 
-class NOTIFICATIONLOGMIB::Nlmlogtable : public ydk::Entity
+class NOTIFICATIONLOGMIB::NlmLogTable : public ydk::Entity
 {
     public:
-        Nlmlogtable();
-        ~Nlmlogtable();
+        NlmLogTable();
+        ~NlmLogTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -166,18 +166,18 @@ class NOTIFICATIONLOGMIB::Nlmlogtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nlmlogentry; //type: NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry
+        class NlmLogEntry; //type: NOTIFICATIONLOGMIB::NlmLogTable::NlmLogEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry> > nlmlogentry;
+        ydk::YList nlmlogentry;
         
-}; // NOTIFICATIONLOGMIB::Nlmlogtable
+}; // NOTIFICATIONLOGMIB::NlmLogTable
 
 
-class NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry : public ydk::Entity
+class NOTIFICATIONLOGMIB::NlmLogTable::NlmLogEntry : public ydk::Entity
 {
     public:
-        Nlmlogentry();
-        ~Nlmlogentry();
+        NlmLogEntry();
+        ~NlmLogEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -190,7 +190,7 @@ class NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::nlmlogname)
+        //type: string (refers to cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::nlmlogname)
         ydk::YLeaf nlmlogname;
         ydk::YLeaf nlmlogindex; //type: uint32
         ydk::YLeaf nlmlogtime; //type: uint32
@@ -202,14 +202,14 @@ class NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry : public ydk::Entity
         ydk::YLeaf nlmlogcontextname; //type: string
         ydk::YLeaf nlmlognotificationid; //type: string
 
-}; // NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry
+}; // NOTIFICATIONLOGMIB::NlmLogTable::NlmLogEntry
 
 
-class NOTIFICATIONLOGMIB::Nlmlogvariabletable : public ydk::Entity
+class NOTIFICATIONLOGMIB::NlmLogVariableTable : public ydk::Entity
 {
     public:
-        Nlmlogvariabletable();
-        ~Nlmlogvariabletable();
+        NlmLogVariableTable();
+        ~NlmLogVariableTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -222,18 +222,18 @@ class NOTIFICATIONLOGMIB::Nlmlogvariabletable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nlmlogvariableentry; //type: NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry
+        class NlmLogVariableEntry; //type: NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry> > nlmlogvariableentry;
+        ydk::YList nlmlogvariableentry;
         
-}; // NOTIFICATIONLOGMIB::Nlmlogvariabletable
+}; // NOTIFICATIONLOGMIB::NlmLogVariableTable
 
 
-class NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry : public ydk::Entity
+class NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry : public ydk::Entity
 {
     public:
-        Nlmlogvariableentry();
-        ~Nlmlogvariableentry();
+        NlmLogVariableEntry();
+        ~NlmLogVariableEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -246,13 +246,13 @@ class NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::nlmlogname)
+        //type: string (refers to cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::nlmlogname)
         ydk::YLeaf nlmlogname;
-        //type: uint32 (refers to cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::nlmlogindex)
+        //type: uint32 (refers to cisco_ios_xe::NOTIFICATION_LOG_MIB::NOTIFICATIONLOGMIB::NlmLogTable::NlmLogEntry::nlmlogindex)
         ydk::YLeaf nlmlogindex;
         ydk::YLeaf nlmlogvariableindex; //type: uint32
         ydk::YLeaf nlmlogvariableid; //type: string
-        ydk::YLeaf nlmlogvariablevaluetype; //type: Nlmlogvariablevaluetype
+        ydk::YLeaf nlmlogvariablevaluetype; //type: NlmLogVariableValueType
         ydk::YLeaf nlmlogvariablecounter32val; //type: uint32
         ydk::YLeaf nlmlogvariableunsigned32val; //type: uint32
         ydk::YLeaf nlmlogvariabletimeticksval; //type: uint32
@@ -262,11 +262,11 @@ class NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry : public ydk:
         ydk::YLeaf nlmlogvariableoidval; //type: string
         ydk::YLeaf nlmlogvariablecounter64val; //type: uint64
         ydk::YLeaf nlmlogvariableopaqueval; //type: binary
-        class Nlmlogvariablevaluetype;
+        class NlmLogVariableValueType;
 
-}; // NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry
+}; // NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry
 
-class NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::Nlmconfiglogadminstatus : public ydk::Enum
+class NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::NlmConfigLogAdminStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;
@@ -274,7 +274,7 @@ class NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::Nlmconfiglogadmi
 
 };
 
-class NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::Nlmconfiglogoperstatus : public ydk::Enum
+class NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::NlmConfigLogOperStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disabled;
@@ -283,7 +283,7 @@ class NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::Nlmconfiglogoper
 
 };
 
-class NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::Nlmlogvariablevaluetype : public ydk::Enum
+class NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::NlmLogVariableValueType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf counter32;

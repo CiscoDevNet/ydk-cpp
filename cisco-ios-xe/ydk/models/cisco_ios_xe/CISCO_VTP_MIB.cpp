@@ -13,20 +13,20 @@ namespace CISCO_VTP_MIB {
 
 CISCOVTPMIB::CISCOVTPMIB()
     :
-    vtpstatus(std::make_shared<CISCOVTPMIB::Vtpstatus>())
-	,internalvlaninfo(std::make_shared<CISCOVTPMIB::Internalvlaninfo>())
-	,vlantrunkports(std::make_shared<CISCOVTPMIB::Vlantrunkports>())
-	,vlanstatistics(std::make_shared<CISCOVTPMIB::Vlanstatistics>())
-	,managementdomaintable(std::make_shared<CISCOVTPMIB::Managementdomaintable>())
-	,vtpvlantable(std::make_shared<CISCOVTPMIB::Vtpvlantable>())
-	,vtpinternalvlantable(std::make_shared<CISCOVTPMIB::Vtpinternalvlantable>())
-	,vtpvlanedittable(std::make_shared<CISCOVTPMIB::Vtpvlanedittable>())
-	,vtpvlanlocalshutdowntable(std::make_shared<CISCOVTPMIB::Vtpvlanlocalshutdowntable>())
-	,vlantrunkporttable(std::make_shared<CISCOVTPMIB::Vlantrunkporttable>())
-	,vtpdiscovertable(std::make_shared<CISCOVTPMIB::Vtpdiscovertable>())
-	,vtpdiscoverresulttable(std::make_shared<CISCOVTPMIB::Vtpdiscoverresulttable>())
-	,vtpdatabasetable(std::make_shared<CISCOVTPMIB::Vtpdatabasetable>())
-	,vtpauthenticationtable(std::make_shared<CISCOVTPMIB::Vtpauthenticationtable>())
+    vtpstatus(std::make_shared<CISCOVTPMIB::VtpStatus>())
+    , internalvlaninfo(std::make_shared<CISCOVTPMIB::InternalVlanInfo>())
+    , vlantrunkports(std::make_shared<CISCOVTPMIB::VlanTrunkPorts>())
+    , vlanstatistics(std::make_shared<CISCOVTPMIB::VlanStatistics>())
+    , managementdomaintable(std::make_shared<CISCOVTPMIB::ManagementDomainTable>())
+    , vtpvlantable(std::make_shared<CISCOVTPMIB::VtpVlanTable>())
+    , vtpinternalvlantable(std::make_shared<CISCOVTPMIB::VtpInternalVlanTable>())
+    , vtpvlanedittable(std::make_shared<CISCOVTPMIB::VtpVlanEditTable>())
+    , vtpvlanlocalshutdowntable(std::make_shared<CISCOVTPMIB::VtpVlanLocalShutdownTable>())
+    , vlantrunkporttable(std::make_shared<CISCOVTPMIB::VlanTrunkPortTable>())
+    , vtpdiscovertable(std::make_shared<CISCOVTPMIB::VtpDiscoverTable>())
+    , vtpdiscoverresulttable(std::make_shared<CISCOVTPMIB::VtpDiscoverResultTable>())
+    , vtpdatabasetable(std::make_shared<CISCOVTPMIB::VtpDatabaseTable>())
+    , vtpauthenticationtable(std::make_shared<CISCOVTPMIB::VtpAuthenticationTable>())
 {
     vtpstatus->parent = this;
     internalvlaninfo->parent = this;
@@ -43,7 +43,7 @@ CISCOVTPMIB::CISCOVTPMIB()
     vtpdatabasetable->parent = this;
     vtpauthenticationtable->parent = this;
 
-    yang_name = "CISCO-VTP-MIB"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-VTP-MIB"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOVTPMIB::~CISCOVTPMIB()
@@ -52,6 +52,7 @@ CISCOVTPMIB::~CISCOVTPMIB()
 
 bool CISCOVTPMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (vtpstatus !=  nullptr && vtpstatus->has_data())
 	|| (internalvlaninfo !=  nullptr && internalvlaninfo->has_data())
 	|| (vlantrunkports !=  nullptr && vlantrunkports->has_data())
@@ -109,7 +110,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::get_child_by_name(const std::string & child
     {
         if(vtpstatus == nullptr)
         {
-            vtpstatus = std::make_shared<CISCOVTPMIB::Vtpstatus>();
+            vtpstatus = std::make_shared<CISCOVTPMIB::VtpStatus>();
         }
         return vtpstatus;
     }
@@ -118,7 +119,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::get_child_by_name(const std::string & child
     {
         if(internalvlaninfo == nullptr)
         {
-            internalvlaninfo = std::make_shared<CISCOVTPMIB::Internalvlaninfo>();
+            internalvlaninfo = std::make_shared<CISCOVTPMIB::InternalVlanInfo>();
         }
         return internalvlaninfo;
     }
@@ -127,7 +128,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::get_child_by_name(const std::string & child
     {
         if(vlantrunkports == nullptr)
         {
-            vlantrunkports = std::make_shared<CISCOVTPMIB::Vlantrunkports>();
+            vlantrunkports = std::make_shared<CISCOVTPMIB::VlanTrunkPorts>();
         }
         return vlantrunkports;
     }
@@ -136,7 +137,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::get_child_by_name(const std::string & child
     {
         if(vlanstatistics == nullptr)
         {
-            vlanstatistics = std::make_shared<CISCOVTPMIB::Vlanstatistics>();
+            vlanstatistics = std::make_shared<CISCOVTPMIB::VlanStatistics>();
         }
         return vlanstatistics;
     }
@@ -145,7 +146,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::get_child_by_name(const std::string & child
     {
         if(managementdomaintable == nullptr)
         {
-            managementdomaintable = std::make_shared<CISCOVTPMIB::Managementdomaintable>();
+            managementdomaintable = std::make_shared<CISCOVTPMIB::ManagementDomainTable>();
         }
         return managementdomaintable;
     }
@@ -154,7 +155,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::get_child_by_name(const std::string & child
     {
         if(vtpvlantable == nullptr)
         {
-            vtpvlantable = std::make_shared<CISCOVTPMIB::Vtpvlantable>();
+            vtpvlantable = std::make_shared<CISCOVTPMIB::VtpVlanTable>();
         }
         return vtpvlantable;
     }
@@ -163,7 +164,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::get_child_by_name(const std::string & child
     {
         if(vtpinternalvlantable == nullptr)
         {
-            vtpinternalvlantable = std::make_shared<CISCOVTPMIB::Vtpinternalvlantable>();
+            vtpinternalvlantable = std::make_shared<CISCOVTPMIB::VtpInternalVlanTable>();
         }
         return vtpinternalvlantable;
     }
@@ -172,7 +173,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::get_child_by_name(const std::string & child
     {
         if(vtpvlanedittable == nullptr)
         {
-            vtpvlanedittable = std::make_shared<CISCOVTPMIB::Vtpvlanedittable>();
+            vtpvlanedittable = std::make_shared<CISCOVTPMIB::VtpVlanEditTable>();
         }
         return vtpvlanedittable;
     }
@@ -181,7 +182,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::get_child_by_name(const std::string & child
     {
         if(vtpvlanlocalshutdowntable == nullptr)
         {
-            vtpvlanlocalshutdowntable = std::make_shared<CISCOVTPMIB::Vtpvlanlocalshutdowntable>();
+            vtpvlanlocalshutdowntable = std::make_shared<CISCOVTPMIB::VtpVlanLocalShutdownTable>();
         }
         return vtpvlanlocalshutdowntable;
     }
@@ -190,7 +191,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::get_child_by_name(const std::string & child
     {
         if(vlantrunkporttable == nullptr)
         {
-            vlantrunkporttable = std::make_shared<CISCOVTPMIB::Vlantrunkporttable>();
+            vlantrunkporttable = std::make_shared<CISCOVTPMIB::VlanTrunkPortTable>();
         }
         return vlantrunkporttable;
     }
@@ -199,7 +200,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::get_child_by_name(const std::string & child
     {
         if(vtpdiscovertable == nullptr)
         {
-            vtpdiscovertable = std::make_shared<CISCOVTPMIB::Vtpdiscovertable>();
+            vtpdiscovertable = std::make_shared<CISCOVTPMIB::VtpDiscoverTable>();
         }
         return vtpdiscovertable;
     }
@@ -208,7 +209,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::get_child_by_name(const std::string & child
     {
         if(vtpdiscoverresulttable == nullptr)
         {
-            vtpdiscoverresulttable = std::make_shared<CISCOVTPMIB::Vtpdiscoverresulttable>();
+            vtpdiscoverresulttable = std::make_shared<CISCOVTPMIB::VtpDiscoverResultTable>();
         }
         return vtpdiscoverresulttable;
     }
@@ -217,7 +218,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::get_child_by_name(const std::string & child
     {
         if(vtpdatabasetable == nullptr)
         {
-            vtpdatabasetable = std::make_shared<CISCOVTPMIB::Vtpdatabasetable>();
+            vtpdatabasetable = std::make_shared<CISCOVTPMIB::VtpDatabaseTable>();
         }
         return vtpdatabasetable;
     }
@@ -226,7 +227,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::get_child_by_name(const std::string & child
     {
         if(vtpauthenticationtable == nullptr)
         {
-            vtpauthenticationtable = std::make_shared<CISCOVTPMIB::Vtpauthenticationtable>();
+            vtpauthenticationtable = std::make_shared<CISCOVTPMIB::VtpAuthenticationTable>();
         }
         return vtpauthenticationtable;
     }
@@ -351,7 +352,7 @@ bool CISCOVTPMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOVTPMIB::Vtpstatus::Vtpstatus()
+CISCOVTPMIB::VtpStatus::VtpStatus()
     :
     vtpversion{YType::enumeration, "vtpVersion"},
     vtpmaxvlanstorage{YType::int32, "vtpMaxVlanStorage"},
@@ -360,15 +361,16 @@ CISCOVTPMIB::Vtpstatus::Vtpstatus()
     vtpvlandeletednotifenabled{YType::boolean, "vtpVlanDeletedNotifEnabled"}
 {
 
-    yang_name = "vtpStatus"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vtpStatus"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vtpstatus::~Vtpstatus()
+CISCOVTPMIB::VtpStatus::~VtpStatus()
 {
 }
 
-bool CISCOVTPMIB::Vtpstatus::has_data() const
+bool CISCOVTPMIB::VtpStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return vtpversion.is_set
 	|| vtpmaxvlanstorage.is_set
 	|| vtpnotificationsenabled.is_set
@@ -376,7 +378,7 @@ bool CISCOVTPMIB::Vtpstatus::has_data() const
 	|| vtpvlandeletednotifenabled.is_set;
 }
 
-bool CISCOVTPMIB::Vtpstatus::has_operation() const
+bool CISCOVTPMIB::VtpStatus::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vtpversion.yfilter)
@@ -386,21 +388,21 @@ bool CISCOVTPMIB::Vtpstatus::has_operation() const
 	|| ydk::is_set(vtpvlandeletednotifenabled.yfilter);
 }
 
-std::string CISCOVTPMIB::Vtpstatus::get_absolute_path() const
+std::string CISCOVTPMIB::VtpStatus::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vtpstatus::get_segment_path() const
+std::string CISCOVTPMIB::VtpStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vtpStatus";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpstatus::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpStatus::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -414,19 +416,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpstatus::get_name_
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vtpstatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VtpStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpstatus::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVTPMIB::Vtpstatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VtpStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vtpVersion")
     {
@@ -460,7 +462,7 @@ void CISCOVTPMIB::Vtpstatus::set_value(const std::string & value_path, const std
     }
 }
 
-void CISCOVTPMIB::Vtpstatus::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VtpStatus::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vtpVersion")
     {
@@ -484,51 +486,52 @@ void CISCOVTPMIB::Vtpstatus::set_filter(const std::string & value_path, YFilter 
     }
 }
 
-bool CISCOVTPMIB::Vtpstatus::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VtpStatus::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vtpVersion" || name == "vtpMaxVlanStorage" || name == "vtpNotificationsEnabled" || name == "vtpVlanCreatedNotifEnabled" || name == "vtpVlanDeletedNotifEnabled")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Internalvlaninfo::Internalvlaninfo()
+CISCOVTPMIB::InternalVlanInfo::InternalVlanInfo()
     :
     vtpinternalvlanallocpolicy{YType::enumeration, "vtpInternalVlanAllocPolicy"}
 {
 
-    yang_name = "internalVlanInfo"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "internalVlanInfo"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Internalvlaninfo::~Internalvlaninfo()
+CISCOVTPMIB::InternalVlanInfo::~InternalVlanInfo()
 {
 }
 
-bool CISCOVTPMIB::Internalvlaninfo::has_data() const
+bool CISCOVTPMIB::InternalVlanInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return vtpinternalvlanallocpolicy.is_set;
 }
 
-bool CISCOVTPMIB::Internalvlaninfo::has_operation() const
+bool CISCOVTPMIB::InternalVlanInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vtpinternalvlanallocpolicy.yfilter);
 }
 
-std::string CISCOVTPMIB::Internalvlaninfo::get_absolute_path() const
+std::string CISCOVTPMIB::InternalVlanInfo::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Internalvlaninfo::get_segment_path() const
+std::string CISCOVTPMIB::InternalVlanInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "internalVlanInfo";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Internalvlaninfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::InternalVlanInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -538,19 +541,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Internalvlaninfo::ge
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Internalvlaninfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::InternalVlanInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Internalvlaninfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::InternalVlanInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVTPMIB::Internalvlaninfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::InternalVlanInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vtpInternalVlanAllocPolicy")
     {
@@ -560,7 +563,7 @@ void CISCOVTPMIB::Internalvlaninfo::set_value(const std::string & value_path, co
     }
 }
 
-void CISCOVTPMIB::Internalvlaninfo::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::InternalVlanInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vtpInternalVlanAllocPolicy")
     {
@@ -568,54 +571,55 @@ void CISCOVTPMIB::Internalvlaninfo::set_filter(const std::string & value_path, Y
     }
 }
 
-bool CISCOVTPMIB::Internalvlaninfo::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::InternalVlanInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vtpInternalVlanAllocPolicy")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Vlantrunkports::Vlantrunkports()
+CISCOVTPMIB::VlanTrunkPorts::VlanTrunkPorts()
     :
     vlantrunkportsetserialno{YType::int32, "vlanTrunkPortSetSerialNo"},
     vlantrunkportsdot1qtag{YType::boolean, "vlanTrunkPortsDot1qTag"}
 {
 
-    yang_name = "vlanTrunkPorts"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlanTrunkPorts"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vlantrunkports::~Vlantrunkports()
+CISCOVTPMIB::VlanTrunkPorts::~VlanTrunkPorts()
 {
 }
 
-bool CISCOVTPMIB::Vlantrunkports::has_data() const
+bool CISCOVTPMIB::VlanTrunkPorts::has_data() const
 {
+    if (is_presence_container) return true;
     return vlantrunkportsetserialno.is_set
 	|| vlantrunkportsdot1qtag.is_set;
 }
 
-bool CISCOVTPMIB::Vlantrunkports::has_operation() const
+bool CISCOVTPMIB::VlanTrunkPorts::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vlantrunkportsetserialno.yfilter)
 	|| ydk::is_set(vlantrunkportsdot1qtag.yfilter);
 }
 
-std::string CISCOVTPMIB::Vlantrunkports::get_absolute_path() const
+std::string CISCOVTPMIB::VlanTrunkPorts::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vlantrunkports::get_segment_path() const
+std::string CISCOVTPMIB::VlanTrunkPorts::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vlanTrunkPorts";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vlantrunkports::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VlanTrunkPorts::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -626,19 +630,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vlantrunkports::get_
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vlantrunkports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VlanTrunkPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vlantrunkports::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VlanTrunkPorts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVTPMIB::Vlantrunkports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VlanTrunkPorts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vlanTrunkPortSetSerialNo")
     {
@@ -654,7 +658,7 @@ void CISCOVTPMIB::Vlantrunkports::set_value(const std::string & value_path, cons
     }
 }
 
-void CISCOVTPMIB::Vlantrunkports::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VlanTrunkPorts::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vlanTrunkPortSetSerialNo")
     {
@@ -666,14 +670,14 @@ void CISCOVTPMIB::Vlantrunkports::set_filter(const std::string & value_path, YFi
     }
 }
 
-bool CISCOVTPMIB::Vlantrunkports::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VlanTrunkPorts::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlanTrunkPortSetSerialNo" || name == "vlanTrunkPortsDot1qTag")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Vlanstatistics::Vlanstatistics()
+CISCOVTPMIB::VlanStatistics::VlanStatistics()
     :
     vlanstatsvlans{YType::uint32, "vlanStatsVlans"},
     vlanstatsextendedvlans{YType::uint32, "vlanStatsExtendedVlans"},
@@ -681,22 +685,23 @@ CISCOVTPMIB::Vlanstatistics::Vlanstatistics()
     vlanstatsfreevlans{YType::uint32, "vlanStatsFreeVlans"}
 {
 
-    yang_name = "vlanStatistics"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlanStatistics"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vlanstatistics::~Vlanstatistics()
+CISCOVTPMIB::VlanStatistics::~VlanStatistics()
 {
 }
 
-bool CISCOVTPMIB::Vlanstatistics::has_data() const
+bool CISCOVTPMIB::VlanStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return vlanstatsvlans.is_set
 	|| vlanstatsextendedvlans.is_set
 	|| vlanstatsinternalvlans.is_set
 	|| vlanstatsfreevlans.is_set;
 }
 
-bool CISCOVTPMIB::Vlanstatistics::has_operation() const
+bool CISCOVTPMIB::VlanStatistics::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vlanstatsvlans.yfilter)
@@ -705,21 +710,21 @@ bool CISCOVTPMIB::Vlanstatistics::has_operation() const
 	|| ydk::is_set(vlanstatsfreevlans.yfilter);
 }
 
-std::string CISCOVTPMIB::Vlanstatistics::get_absolute_path() const
+std::string CISCOVTPMIB::VlanStatistics::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vlanstatistics::get_segment_path() const
+std::string CISCOVTPMIB::VlanStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vlanStatistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vlanstatistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VlanStatistics::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -732,19 +737,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vlanstatistics::get_
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vlanstatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VlanStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vlanstatistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VlanStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVTPMIB::Vlanstatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VlanStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vlanStatsVlans")
     {
@@ -772,7 +777,7 @@ void CISCOVTPMIB::Vlanstatistics::set_value(const std::string & value_path, cons
     }
 }
 
-void CISCOVTPMIB::Vlanstatistics::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VlanStatistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vlanStatsVlans")
     {
@@ -792,26 +797,29 @@ void CISCOVTPMIB::Vlanstatistics::set_filter(const std::string & value_path, YFi
     }
 }
 
-bool CISCOVTPMIB::Vlanstatistics::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VlanStatistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlanStatsVlans" || name == "vlanStatsExtendedVlans" || name == "vlanStatsInternalVlans" || name == "vlanStatsFreeVlans")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Managementdomaintable::Managementdomaintable()
+CISCOVTPMIB::ManagementDomainTable::ManagementDomainTable()
+    :
+    managementdomainentry(this, {"managementdomainindex"})
 {
 
-    yang_name = "managementDomainTable"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "managementDomainTable"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Managementdomaintable::~Managementdomaintable()
+CISCOVTPMIB::ManagementDomainTable::~ManagementDomainTable()
 {
 }
 
-bool CISCOVTPMIB::Managementdomaintable::has_data() const
+bool CISCOVTPMIB::ManagementDomainTable::has_data() const
 {
-    for (std::size_t index=0; index<managementdomainentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<managementdomainentry.len(); index++)
     {
         if(managementdomainentry[index]->has_data())
             return true;
@@ -819,9 +827,9 @@ bool CISCOVTPMIB::Managementdomaintable::has_data() const
     return false;
 }
 
-bool CISCOVTPMIB::Managementdomaintable::has_operation() const
+bool CISCOVTPMIB::ManagementDomainTable::has_operation() const
 {
-    for (std::size_t index=0; index<managementdomainentry.size(); index++)
+    for (std::size_t index=0; index<managementdomainentry.len(); index++)
     {
         if(managementdomainentry[index]->has_operation())
             return true;
@@ -829,21 +837,21 @@ bool CISCOVTPMIB::Managementdomaintable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVTPMIB::Managementdomaintable::get_absolute_path() const
+std::string CISCOVTPMIB::ManagementDomainTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Managementdomaintable::get_segment_path() const
+std::string CISCOVTPMIB::ManagementDomainTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "managementDomainTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Managementdomaintable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::ManagementDomainTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -852,25 +860,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Managementdomaintabl
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Managementdomaintable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::ManagementDomainTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "managementDomainEntry")
     {
-        auto c = std::make_shared<CISCOVTPMIB::Managementdomaintable::Managementdomainentry>();
+        auto c = std::make_shared<CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry>();
         c->parent = this;
-        managementdomainentry.push_back(c);
+        managementdomainentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Managementdomaintable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::ManagementDomainTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : managementdomainentry)
+    for (auto c : managementdomainentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -881,22 +889,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Managementdomaintabl
     return children;
 }
 
-void CISCOVTPMIB::Managementdomaintable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::ManagementDomainTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVTPMIB::Managementdomaintable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::ManagementDomainTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVTPMIB::Managementdomaintable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::ManagementDomainTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "managementDomainEntry")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomainentry()
+CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainEntry()
     :
     managementdomainindex{YType::int32, "managementDomainIndex"},
     managementdomainname{YType::str, "managementDomainName"},
@@ -932,15 +940,16 @@ CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomainentry
     vtpconfigdigesterrors{YType::uint32, "vtpConfigDigestErrors"}
 {
 
-    yang_name = "managementDomainEntry"; yang_parent_name = "managementDomainTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "managementDomainEntry"; yang_parent_name = "managementDomainTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Managementdomaintable::Managementdomainentry::~Managementdomainentry()
+CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::~ManagementDomainEntry()
 {
 }
 
-bool CISCOVTPMIB::Managementdomaintable::Managementdomainentry::has_data() const
+bool CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return managementdomainindex.is_set
 	|| managementdomainname.is_set
 	|| managementdomainlocalmode.is_set
@@ -975,7 +984,7 @@ bool CISCOVTPMIB::Managementdomaintable::Managementdomainentry::has_data() const
 	|| vtpconfigdigesterrors.is_set;
 }
 
-bool CISCOVTPMIB::Managementdomaintable::Managementdomainentry::has_operation() const
+bool CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(managementdomainindex.yfilter)
@@ -1012,21 +1021,22 @@ bool CISCOVTPMIB::Managementdomaintable::Managementdomainentry::has_operation() 
 	|| ydk::is_set(vtpconfigdigesterrors.yfilter);
 }
 
-std::string CISCOVTPMIB::Managementdomaintable::Managementdomainentry::get_absolute_path() const
+std::string CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/managementDomainTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Managementdomaintable::Managementdomainentry::get_segment_path() const
+std::string CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "managementDomainEntry" <<"[managementDomainIndex='" <<managementdomainindex <<"']";
+    path_buffer << "managementDomainEntry";
+    ADD_KEY_TOKEN(managementdomainindex, "managementDomainIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Managementdomaintable::Managementdomainentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1067,19 +1077,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Managementdomaintabl
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Managementdomaintable::Managementdomainentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Managementdomaintable::Managementdomainentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVTPMIB::Managementdomaintable::Managementdomainentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "managementDomainIndex")
     {
@@ -1275,7 +1285,7 @@ void CISCOVTPMIB::Managementdomaintable::Managementdomainentry::set_value(const 
     }
 }
 
-void CISCOVTPMIB::Managementdomaintable::Managementdomainentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "managementDomainIndex")
     {
@@ -1407,26 +1417,29 @@ void CISCOVTPMIB::Managementdomaintable::Managementdomainentry::set_filter(const
     }
 }
 
-bool CISCOVTPMIB::Managementdomaintable::Managementdomainentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "managementDomainIndex" || name == "managementDomainName" || name == "managementDomainLocalMode" || name == "managementDomainConfigRevNumber" || name == "managementDomainLastUpdater" || name == "managementDomainLastChange" || name == "managementDomainRowStatus" || name == "managementDomainTftpServer" || name == "managementDomainTftpPathname" || name == "managementDomainPruningState" || name == "managementDomainVersionInUse" || name == "managementDomainPruningStateOper" || name == "managementDomainAdminSrcIf" || name == "managementDomainSourceOnlyMode" || name == "managementDomainOperSrcIf" || name == "managementDomainConfigFile" || name == "managementDomainLocalUpdaterType" || name == "managementDomainLocalUpdater" || name == "managementDomainDeviceID" || name == "vtpVlanEditOperation" || name == "vtpVlanApplyStatus" || name == "vtpVlanEditBufferOwner" || name == "vtpVlanEditConfigRevNumber" || name == "vtpVlanEditModifiedVlan" || name == "vtpInSummaryAdverts" || name == "vtpInSubsetAdverts" || name == "vtpInAdvertRequests" || name == "vtpOutSummaryAdverts" || name == "vtpOutSubsetAdverts" || name == "vtpOutAdvertRequests" || name == "vtpConfigRevNumberErrors" || name == "vtpConfigDigestErrors")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Vtpvlantable::Vtpvlantable()
+CISCOVTPMIB::VtpVlanTable::VtpVlanTable()
+    :
+    vtpvlanentry(this, {"managementdomainindex", "vtpvlanindex"})
 {
 
-    yang_name = "vtpVlanTable"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vtpVlanTable"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vtpvlantable::~Vtpvlantable()
+CISCOVTPMIB::VtpVlanTable::~VtpVlanTable()
 {
 }
 
-bool CISCOVTPMIB::Vtpvlantable::has_data() const
+bool CISCOVTPMIB::VtpVlanTable::has_data() const
 {
-    for (std::size_t index=0; index<vtpvlanentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vtpvlanentry.len(); index++)
     {
         if(vtpvlanentry[index]->has_data())
             return true;
@@ -1434,9 +1447,9 @@ bool CISCOVTPMIB::Vtpvlantable::has_data() const
     return false;
 }
 
-bool CISCOVTPMIB::Vtpvlantable::has_operation() const
+bool CISCOVTPMIB::VtpVlanTable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpvlanentry.size(); index++)
+    for (std::size_t index=0; index<vtpvlanentry.len(); index++)
     {
         if(vtpvlanentry[index]->has_operation())
             return true;
@@ -1444,21 +1457,21 @@ bool CISCOVTPMIB::Vtpvlantable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVTPMIB::Vtpvlantable::get_absolute_path() const
+std::string CISCOVTPMIB::VtpVlanTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vtpvlantable::get_segment_path() const
+std::string CISCOVTPMIB::VtpVlanTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vtpVlanTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpvlantable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpVlanTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1467,25 +1480,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpvlantable::get_na
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vtpvlantable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VtpVlanTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vtpVlanEntry")
     {
-        auto c = std::make_shared<CISCOVTPMIB::Vtpvlantable::Vtpvlanentry>();
+        auto c = std::make_shared<CISCOVTPMIB::VtpVlanTable::VtpVlanEntry>();
         c->parent = this;
-        vtpvlanentry.push_back(c);
+        vtpvlanentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpvlantable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpVlanTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vtpvlanentry)
+    for (auto c : vtpvlanentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1496,22 +1509,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpvlantable::get_ch
     return children;
 }
 
-void CISCOVTPMIB::Vtpvlantable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VtpVlanTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVTPMIB::Vtpvlantable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VtpVlanTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVTPMIB::Vtpvlantable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VtpVlanTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vtpVlanEntry")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::Vtpvlanentry()
+CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::VtpVlanEntry()
     :
     managementdomainindex{YType::str, "managementDomainIndex"},
     vtpvlanindex{YType::int32, "vtpVlanIndex"},
@@ -1535,15 +1548,16 @@ CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::Vtpvlanentry()
     stpxvlanmistpinstmapinstindex{YType::int32, "CISCO-STP-EXTENSIONS-MIB:stpxVlanMISTPInstMapInstIndex"}
 {
 
-    yang_name = "vtpVlanEntry"; yang_parent_name = "vtpVlanTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vtpVlanEntry"; yang_parent_name = "vtpVlanTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::~Vtpvlanentry()
+CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::~VtpVlanEntry()
 {
 }
 
-bool CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::has_data() const
+bool CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return managementdomainindex.is_set
 	|| vtpvlanindex.is_set
 	|| vtpvlanstate.is_set
@@ -1566,7 +1580,7 @@ bool CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::has_data() const
 	|| stpxvlanmistpinstmapinstindex.is_set;
 }
 
-bool CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::has_operation() const
+bool CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(managementdomainindex.yfilter)
@@ -1591,21 +1605,23 @@ bool CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::has_operation() const
 	|| ydk::is_set(stpxvlanmistpinstmapinstindex.yfilter);
 }
 
-std::string CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::get_absolute_path() const
+std::string CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/vtpVlanTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::get_segment_path() const
+std::string CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vtpVlanEntry" <<"[managementDomainIndex='" <<managementdomainindex <<"']" <<"[vtpVlanIndex='" <<vtpvlanindex <<"']";
+    path_buffer << "vtpVlanEntry";
+    ADD_KEY_TOKEN(managementdomainindex, "managementDomainIndex");
+    ADD_KEY_TOKEN(vtpvlanindex, "vtpVlanIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1634,19 +1650,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpvlantable::Vtpvla
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "managementDomainIndex")
     {
@@ -1768,7 +1784,7 @@ void CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::set_value(const std::string & valu
     }
 }
 
-void CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "managementDomainIndex")
     {
@@ -1852,26 +1868,29 @@ void CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::set_filter(const std::string & val
     }
 }
 
-bool CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "managementDomainIndex" || name == "vtpVlanIndex" || name == "vtpVlanState" || name == "vtpVlanType" || name == "vtpVlanName" || name == "vtpVlanMtu" || name == "vtpVlanDot10Said" || name == "vtpVlanRingNumber" || name == "vtpVlanBridgeNumber" || name == "vtpVlanStpType" || name == "vtpVlanParentVlan" || name == "vtpVlanTranslationalVlan1" || name == "vtpVlanTranslationalVlan2" || name == "vtpVlanBridgeType" || name == "vtpVlanAreHopCount" || name == "vtpVlanSteHopCount" || name == "vtpVlanIsCRFBackup" || name == "vtpVlanTypeExt" || name == "vtpVlanIfIndex" || name == "stpxVlanMISTPInstMapInstIndex")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlantable()
+CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanTable()
+    :
+    vtpinternalvlanentry(this, {"managementdomainindex", "vtpvlanindex"})
 {
 
-    yang_name = "vtpInternalVlanTable"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vtpInternalVlanTable"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vtpinternalvlantable::~Vtpinternalvlantable()
+CISCOVTPMIB::VtpInternalVlanTable::~VtpInternalVlanTable()
 {
 }
 
-bool CISCOVTPMIB::Vtpinternalvlantable::has_data() const
+bool CISCOVTPMIB::VtpInternalVlanTable::has_data() const
 {
-    for (std::size_t index=0; index<vtpinternalvlanentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vtpinternalvlanentry.len(); index++)
     {
         if(vtpinternalvlanentry[index]->has_data())
             return true;
@@ -1879,9 +1898,9 @@ bool CISCOVTPMIB::Vtpinternalvlantable::has_data() const
     return false;
 }
 
-bool CISCOVTPMIB::Vtpinternalvlantable::has_operation() const
+bool CISCOVTPMIB::VtpInternalVlanTable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpinternalvlanentry.size(); index++)
+    for (std::size_t index=0; index<vtpinternalvlanentry.len(); index++)
     {
         if(vtpinternalvlanentry[index]->has_operation())
             return true;
@@ -1889,21 +1908,21 @@ bool CISCOVTPMIB::Vtpinternalvlantable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVTPMIB::Vtpinternalvlantable::get_absolute_path() const
+std::string CISCOVTPMIB::VtpInternalVlanTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vtpinternalvlantable::get_segment_path() const
+std::string CISCOVTPMIB::VtpInternalVlanTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vtpInternalVlanTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpinternalvlantable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpInternalVlanTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1912,25 +1931,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpinternalvlantable
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vtpinternalvlantable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VtpInternalVlanTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vtpInternalVlanEntry")
     {
-        auto c = std::make_shared<CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry>();
+        auto c = std::make_shared<CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry>();
         c->parent = this;
-        vtpinternalvlanentry.push_back(c);
+        vtpinternalvlanentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpinternalvlantable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpInternalVlanTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vtpinternalvlanentry)
+    for (auto c : vtpinternalvlanentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1941,43 +1960,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpinternalvlantable
     return children;
 }
 
-void CISCOVTPMIB::Vtpinternalvlantable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VtpInternalVlanTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVTPMIB::Vtpinternalvlantable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VtpInternalVlanTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVTPMIB::Vtpinternalvlantable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VtpInternalVlanTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vtpInternalVlanEntry")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry::Vtpinternalvlanentry()
+CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry::VtpInternalVlanEntry()
     :
     managementdomainindex{YType::str, "managementDomainIndex"},
     vtpvlanindex{YType::str, "vtpVlanIndex"},
     vtpinternalvlanowner{YType::str, "vtpInternalVlanOwner"}
 {
 
-    yang_name = "vtpInternalVlanEntry"; yang_parent_name = "vtpInternalVlanTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vtpInternalVlanEntry"; yang_parent_name = "vtpInternalVlanTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry::~Vtpinternalvlanentry()
+CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry::~VtpInternalVlanEntry()
 {
 }
 
-bool CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry::has_data() const
+bool CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return managementdomainindex.is_set
 	|| vtpvlanindex.is_set
 	|| vtpinternalvlanowner.is_set;
 }
 
-bool CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry::has_operation() const
+bool CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(managementdomainindex.yfilter)
@@ -1985,21 +2005,23 @@ bool CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry::has_operation() co
 	|| ydk::is_set(vtpinternalvlanowner.yfilter);
 }
 
-std::string CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry::get_absolute_path() const
+std::string CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/vtpInternalVlanTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry::get_segment_path() const
+std::string CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vtpInternalVlanEntry" <<"[managementDomainIndex='" <<managementdomainindex <<"']" <<"[vtpVlanIndex='" <<vtpvlanindex <<"']";
+    path_buffer << "vtpInternalVlanEntry";
+    ADD_KEY_TOKEN(managementdomainindex, "managementDomainIndex");
+    ADD_KEY_TOKEN(vtpvlanindex, "vtpVlanIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2011,19 +2033,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpinternalvlantable
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "managementDomainIndex")
     {
@@ -2045,7 +2067,7 @@ void CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry::set_value(const st
     }
 }
 
-void CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "managementDomainIndex")
     {
@@ -2061,26 +2083,29 @@ void CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry::set_filter(const s
     }
 }
 
-bool CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "managementDomainIndex" || name == "vtpVlanIndex" || name == "vtpInternalVlanOwner")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Vtpvlanedittable::Vtpvlanedittable()
+CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditTable()
+    :
+    vtpvlaneditentry(this, {"managementdomainindex", "vtpvlaneditindex"})
 {
 
-    yang_name = "vtpVlanEditTable"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vtpVlanEditTable"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vtpvlanedittable::~Vtpvlanedittable()
+CISCOVTPMIB::VtpVlanEditTable::~VtpVlanEditTable()
 {
 }
 
-bool CISCOVTPMIB::Vtpvlanedittable::has_data() const
+bool CISCOVTPMIB::VtpVlanEditTable::has_data() const
 {
-    for (std::size_t index=0; index<vtpvlaneditentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vtpvlaneditentry.len(); index++)
     {
         if(vtpvlaneditentry[index]->has_data())
             return true;
@@ -2088,9 +2113,9 @@ bool CISCOVTPMIB::Vtpvlanedittable::has_data() const
     return false;
 }
 
-bool CISCOVTPMIB::Vtpvlanedittable::has_operation() const
+bool CISCOVTPMIB::VtpVlanEditTable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpvlaneditentry.size(); index++)
+    for (std::size_t index=0; index<vtpvlaneditentry.len(); index++)
     {
         if(vtpvlaneditentry[index]->has_operation())
             return true;
@@ -2098,21 +2123,21 @@ bool CISCOVTPMIB::Vtpvlanedittable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVTPMIB::Vtpvlanedittable::get_absolute_path() const
+std::string CISCOVTPMIB::VtpVlanEditTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vtpvlanedittable::get_segment_path() const
+std::string CISCOVTPMIB::VtpVlanEditTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vtpVlanEditTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpvlanedittable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpVlanEditTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2121,25 +2146,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpvlanedittable::ge
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vtpvlanedittable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VtpVlanEditTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vtpVlanEditEntry")
     {
-        auto c = std::make_shared<CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry>();
+        auto c = std::make_shared<CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry>();
         c->parent = this;
-        vtpvlaneditentry.push_back(c);
+        vtpvlaneditentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpvlanedittable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpVlanEditTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vtpvlaneditentry)
+    for (auto c : vtpvlaneditentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2150,22 +2175,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpvlanedittable::ge
     return children;
 }
 
-void CISCOVTPMIB::Vtpvlanedittable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VtpVlanEditTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVTPMIB::Vtpvlanedittable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VtpVlanEditTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVTPMIB::Vtpvlanedittable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VtpVlanEditTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vtpVlanEditEntry")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditentry()
+CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::VtpVlanEditEntry()
     :
     managementdomainindex{YType::str, "managementDomainIndex"},
     vtpvlaneditindex{YType::int32, "vtpVlanEditIndex"},
@@ -2190,15 +2215,16 @@ CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditentry()
     stpxvlanmistpinstmapeditinstindex{YType::int32, "CISCO-STP-EXTENSIONS-MIB:stpxVlanMISTPInstMapEditInstIndex"}
 {
 
-    yang_name = "vtpVlanEditEntry"; yang_parent_name = "vtpVlanEditTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vtpVlanEditEntry"; yang_parent_name = "vtpVlanEditTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::~Vtpvlaneditentry()
+CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::~VtpVlanEditEntry()
 {
 }
 
-bool CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::has_data() const
+bool CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return managementdomainindex.is_set
 	|| vtpvlaneditindex.is_set
 	|| vtpvlaneditstate.is_set
@@ -2222,7 +2248,7 @@ bool CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::has_data() const
 	|| stpxvlanmistpinstmapeditinstindex.is_set;
 }
 
-bool CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::has_operation() const
+bool CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(managementdomainindex.yfilter)
@@ -2248,21 +2274,23 @@ bool CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::has_operation() const
 	|| ydk::is_set(stpxvlanmistpinstmapeditinstindex.yfilter);
 }
 
-std::string CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::get_absolute_path() const
+std::string CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/vtpVlanEditTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::get_segment_path() const
+std::string CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vtpVlanEditEntry" <<"[managementDomainIndex='" <<managementdomainindex <<"']" <<"[vtpVlanEditIndex='" <<vtpvlaneditindex <<"']";
+    path_buffer << "vtpVlanEditEntry";
+    ADD_KEY_TOKEN(managementdomainindex, "managementDomainIndex");
+    ADD_KEY_TOKEN(vtpvlaneditindex, "vtpVlanEditIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2292,19 +2320,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpvlanedittable::Vt
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "managementDomainIndex")
     {
@@ -2430,7 +2458,7 @@ void CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::set_value(const std::strin
     }
 }
 
-void CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "managementDomainIndex")
     {
@@ -2518,26 +2546,29 @@ void CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::set_filter(const std::stri
     }
 }
 
-bool CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "managementDomainIndex" || name == "vtpVlanEditIndex" || name == "vtpVlanEditState" || name == "vtpVlanEditType" || name == "vtpVlanEditName" || name == "vtpVlanEditMtu" || name == "vtpVlanEditDot10Said" || name == "vtpVlanEditRingNumber" || name == "vtpVlanEditBridgeNumber" || name == "vtpVlanEditStpType" || name == "vtpVlanEditParentVlan" || name == "vtpVlanEditRowStatus" || name == "vtpVlanEditTranslationalVlan1" || name == "vtpVlanEditTranslationalVlan2" || name == "vtpVlanEditBridgeType" || name == "vtpVlanEditAreHopCount" || name == "vtpVlanEditSteHopCount" || name == "vtpVlanEditIsCRFBackup" || name == "vtpVlanEditTypeExt" || name == "vtpVlanEditTypeExt2" || name == "stpxVlanMISTPInstMapEditInstIndex")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdowntable()
+CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownTable()
+    :
+    vtpvlanlocalshutdownentry(this, {"managementdomainindex", "vtpvlanindex"})
 {
 
-    yang_name = "vtpVlanLocalShutdownTable"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vtpVlanLocalShutdownTable"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vtpvlanlocalshutdowntable::~Vtpvlanlocalshutdowntable()
+CISCOVTPMIB::VtpVlanLocalShutdownTable::~VtpVlanLocalShutdownTable()
 {
 }
 
-bool CISCOVTPMIB::Vtpvlanlocalshutdowntable::has_data() const
+bool CISCOVTPMIB::VtpVlanLocalShutdownTable::has_data() const
 {
-    for (std::size_t index=0; index<vtpvlanlocalshutdownentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vtpvlanlocalshutdownentry.len(); index++)
     {
         if(vtpvlanlocalshutdownentry[index]->has_data())
             return true;
@@ -2545,9 +2576,9 @@ bool CISCOVTPMIB::Vtpvlanlocalshutdowntable::has_data() const
     return false;
 }
 
-bool CISCOVTPMIB::Vtpvlanlocalshutdowntable::has_operation() const
+bool CISCOVTPMIB::VtpVlanLocalShutdownTable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpvlanlocalshutdownentry.size(); index++)
+    for (std::size_t index=0; index<vtpvlanlocalshutdownentry.len(); index++)
     {
         if(vtpvlanlocalshutdownentry[index]->has_operation())
             return true;
@@ -2555,21 +2586,21 @@ bool CISCOVTPMIB::Vtpvlanlocalshutdowntable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVTPMIB::Vtpvlanlocalshutdowntable::get_absolute_path() const
+std::string CISCOVTPMIB::VtpVlanLocalShutdownTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vtpvlanlocalshutdowntable::get_segment_path() const
+std::string CISCOVTPMIB::VtpVlanLocalShutdownTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vtpVlanLocalShutdownTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpvlanlocalshutdowntable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpVlanLocalShutdownTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2578,25 +2609,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpvlanlocalshutdown
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vtpvlanlocalshutdowntable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VtpVlanLocalShutdownTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vtpVlanLocalShutdownEntry")
     {
-        auto c = std::make_shared<CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry>();
+        auto c = std::make_shared<CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry>();
         c->parent = this;
-        vtpvlanlocalshutdownentry.push_back(c);
+        vtpvlanlocalshutdownentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpvlanlocalshutdowntable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpVlanLocalShutdownTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vtpvlanlocalshutdownentry)
+    for (auto c : vtpvlanlocalshutdownentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2607,43 +2638,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpvlanlocalshutdown
     return children;
 }
 
-void CISCOVTPMIB::Vtpvlanlocalshutdowntable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VtpVlanLocalShutdownTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVTPMIB::Vtpvlanlocalshutdowntable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VtpVlanLocalShutdownTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVTPMIB::Vtpvlanlocalshutdowntable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VtpVlanLocalShutdownTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vtpVlanLocalShutdownEntry")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::Vtpvlanlocalshutdownentry()
+CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::VtpVlanLocalShutdownEntry()
     :
     managementdomainindex{YType::str, "managementDomainIndex"},
     vtpvlanindex{YType::str, "vtpVlanIndex"},
     vtpvlanlocalshutdown{YType::enumeration, "vtpVlanLocalShutdown"}
 {
 
-    yang_name = "vtpVlanLocalShutdownEntry"; yang_parent_name = "vtpVlanLocalShutdownTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vtpVlanLocalShutdownEntry"; yang_parent_name = "vtpVlanLocalShutdownTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::~Vtpvlanlocalshutdownentry()
+CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::~VtpVlanLocalShutdownEntry()
 {
 }
 
-bool CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::has_data() const
+bool CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return managementdomainindex.is_set
 	|| vtpvlanindex.is_set
 	|| vtpvlanlocalshutdown.is_set;
 }
 
-bool CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::has_operation() const
+bool CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(managementdomainindex.yfilter)
@@ -2651,21 +2683,23 @@ bool CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::has_oper
 	|| ydk::is_set(vtpvlanlocalshutdown.yfilter);
 }
 
-std::string CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::get_absolute_path() const
+std::string CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/vtpVlanLocalShutdownTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::get_segment_path() const
+std::string CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vtpVlanLocalShutdownEntry" <<"[managementDomainIndex='" <<managementdomainindex <<"']" <<"[vtpVlanIndex='" <<vtpvlanindex <<"']";
+    path_buffer << "vtpVlanLocalShutdownEntry";
+    ADD_KEY_TOKEN(managementdomainindex, "managementDomainIndex");
+    ADD_KEY_TOKEN(vtpvlanindex, "vtpVlanIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2677,19 +2711,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpvlanlocalshutdown
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "managementDomainIndex")
     {
@@ -2711,7 +2745,7 @@ void CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::set_valu
     }
 }
 
-void CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "managementDomainIndex")
     {
@@ -2727,26 +2761,29 @@ void CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::set_filt
     }
 }
 
-bool CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "managementDomainIndex" || name == "vtpVlanIndex" || name == "vtpVlanLocalShutdown")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Vlantrunkporttable::Vlantrunkporttable()
+CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortTable()
+    :
+    vlantrunkportentry(this, {"vlantrunkportifindex"})
 {
 
-    yang_name = "vlanTrunkPortTable"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlanTrunkPortTable"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vlantrunkporttable::~Vlantrunkporttable()
+CISCOVTPMIB::VlanTrunkPortTable::~VlanTrunkPortTable()
 {
 }
 
-bool CISCOVTPMIB::Vlantrunkporttable::has_data() const
+bool CISCOVTPMIB::VlanTrunkPortTable::has_data() const
 {
-    for (std::size_t index=0; index<vlantrunkportentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlantrunkportentry.len(); index++)
     {
         if(vlantrunkportentry[index]->has_data())
             return true;
@@ -2754,9 +2791,9 @@ bool CISCOVTPMIB::Vlantrunkporttable::has_data() const
     return false;
 }
 
-bool CISCOVTPMIB::Vlantrunkporttable::has_operation() const
+bool CISCOVTPMIB::VlanTrunkPortTable::has_operation() const
 {
-    for (std::size_t index=0; index<vlantrunkportentry.size(); index++)
+    for (std::size_t index=0; index<vlantrunkportentry.len(); index++)
     {
         if(vlantrunkportentry[index]->has_operation())
             return true;
@@ -2764,21 +2801,21 @@ bool CISCOVTPMIB::Vlantrunkporttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVTPMIB::Vlantrunkporttable::get_absolute_path() const
+std::string CISCOVTPMIB::VlanTrunkPortTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vlantrunkporttable::get_segment_path() const
+std::string CISCOVTPMIB::VlanTrunkPortTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vlanTrunkPortTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vlantrunkporttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VlanTrunkPortTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2787,25 +2824,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vlantrunkporttable::
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vlantrunkporttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VlanTrunkPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlanTrunkPortEntry")
     {
-        auto c = std::make_shared<CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry>();
+        auto c = std::make_shared<CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry>();
         c->parent = this;
-        vlantrunkportentry.push_back(c);
+        vlantrunkportentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vlantrunkporttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VlanTrunkPortTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlantrunkportentry)
+    for (auto c : vlantrunkportentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2816,22 +2853,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vlantrunkporttable::
     return children;
 }
 
-void CISCOVTPMIB::Vlantrunkporttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VlanTrunkPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVTPMIB::Vlantrunkporttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VlanTrunkPortTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVTPMIB::Vlantrunkporttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VlanTrunkPortTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlanTrunkPortEntry")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportentry()
+CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortEntry()
     :
     vlantrunkportifindex{YType::int32, "vlanTrunkPortIfIndex"},
     vlantrunkportmanagementdomain{YType::int32, "vlanTrunkPortManagementDomain"},
@@ -2872,15 +2909,16 @@ CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportentry()
     stpxpreferredmstinstancesmap{YType::str, "CISCO-STP-EXTENSIONS-MIB:stpxPreferredMSTInstancesMap"}
 {
 
-    yang_name = "vlanTrunkPortEntry"; yang_parent_name = "vlanTrunkPortTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlanTrunkPortEntry"; yang_parent_name = "vlanTrunkPortTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::~Vlantrunkportentry()
+CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::~VlanTrunkPortEntry()
 {
 }
 
-bool CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::has_data() const
+bool CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return vlantrunkportifindex.is_set
 	|| vlantrunkportmanagementdomain.is_set
 	|| vlantrunkportencapsulationtype.is_set
@@ -2920,7 +2958,7 @@ bool CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::has_data() const
 	|| stpxpreferredmstinstancesmap.is_set;
 }
 
-bool CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::has_operation() const
+bool CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vlantrunkportifindex.yfilter)
@@ -2962,21 +3000,22 @@ bool CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::has_operation() const
 	|| ydk::is_set(stpxpreferredmstinstancesmap.yfilter);
 }
 
-std::string CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::get_absolute_path() const
+std::string CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/vlanTrunkPortTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::get_segment_path() const
+std::string CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vlanTrunkPortEntry" <<"[vlanTrunkPortIfIndex='" <<vlantrunkportifindex <<"']";
+    path_buffer << "vlanTrunkPortEntry";
+    ADD_KEY_TOKEN(vlantrunkportifindex, "vlanTrunkPortIfIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3022,19 +3061,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vlantrunkporttable::
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vlanTrunkPortIfIndex")
     {
@@ -3260,7 +3299,7 @@ void CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::set_value(const std::s
     }
 }
 
-void CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vlanTrunkPortIfIndex")
     {
@@ -3412,26 +3451,29 @@ void CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::set_filter(const std::
     }
 }
 
-bool CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlanTrunkPortIfIndex" || name == "vlanTrunkPortManagementDomain" || name == "vlanTrunkPortEncapsulationType" || name == "vlanTrunkPortVlansEnabled" || name == "vlanTrunkPortNativeVlan" || name == "vlanTrunkPortRowStatus" || name == "vlanTrunkPortInJoins" || name == "vlanTrunkPortOutJoins" || name == "vlanTrunkPortOldAdverts" || name == "vlanTrunkPortVlansPruningEligible" || name == "vlanTrunkPortVlansXmitJoined" || name == "vlanTrunkPortVlansRcvJoined" || name == "vlanTrunkPortDynamicState" || name == "vlanTrunkPortDynamicStatus" || name == "vlanTrunkPortVtpEnabled" || name == "vlanTrunkPortEncapsulationOperType" || name == "vlanTrunkPortVlansEnabled2k" || name == "vlanTrunkPortVlansEnabled3k" || name == "vlanTrunkPortVlansEnabled4k" || name == "vtpVlansPruningEligible2k" || name == "vtpVlansPruningEligible3k" || name == "vtpVlansPruningEligible4k" || name == "vlanTrunkPortVlansXmitJoined2k" || name == "vlanTrunkPortVlansXmitJoined3k" || name == "vlanTrunkPortVlansXmitJoined4k" || name == "vlanTrunkPortVlansRcvJoined2k" || name == "vlanTrunkPortVlansRcvJoined3k" || name == "vlanTrunkPortVlansRcvJoined4k" || name == "vlanTrunkPortDot1qTunnel" || name == "vlanTrunkPortVlansActiveFirst2k" || name == "vlanTrunkPortVlansActiveSecond2k" || name == "stpxPreferredVlansMap" || name == "stpxPreferredVlansMap2k" || name == "stpxPreferredVlansMap3k" || name == "stpxPreferredVlansMap4k" || name == "stpxPreferredMISTPInstancesMap" || name == "stpxPreferredMSTInstancesMap")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Vtpdiscovertable::Vtpdiscovertable()
+CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverTable()
+    :
+    vtpdiscoverentry(this, {"managementdomainindex"})
 {
 
-    yang_name = "vtpDiscoverTable"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vtpDiscoverTable"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vtpdiscovertable::~Vtpdiscovertable()
+CISCOVTPMIB::VtpDiscoverTable::~VtpDiscoverTable()
 {
 }
 
-bool CISCOVTPMIB::Vtpdiscovertable::has_data() const
+bool CISCOVTPMIB::VtpDiscoverTable::has_data() const
 {
-    for (std::size_t index=0; index<vtpdiscoverentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vtpdiscoverentry.len(); index++)
     {
         if(vtpdiscoverentry[index]->has_data())
             return true;
@@ -3439,9 +3481,9 @@ bool CISCOVTPMIB::Vtpdiscovertable::has_data() const
     return false;
 }
 
-bool CISCOVTPMIB::Vtpdiscovertable::has_operation() const
+bool CISCOVTPMIB::VtpDiscoverTable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpdiscoverentry.size(); index++)
+    for (std::size_t index=0; index<vtpdiscoverentry.len(); index++)
     {
         if(vtpdiscoverentry[index]->has_operation())
             return true;
@@ -3449,21 +3491,21 @@ bool CISCOVTPMIB::Vtpdiscovertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVTPMIB::Vtpdiscovertable::get_absolute_path() const
+std::string CISCOVTPMIB::VtpDiscoverTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vtpdiscovertable::get_segment_path() const
+std::string CISCOVTPMIB::VtpDiscoverTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vtpDiscoverTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpdiscovertable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpDiscoverTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3472,25 +3514,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpdiscovertable::ge
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vtpdiscovertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VtpDiscoverTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vtpDiscoverEntry")
     {
-        auto c = std::make_shared<CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry>();
+        auto c = std::make_shared<CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry>();
         c->parent = this;
-        vtpdiscoverentry.push_back(c);
+        vtpdiscoverentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpdiscovertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpDiscoverTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vtpdiscoverentry)
+    for (auto c : vtpdiscoverentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3501,22 +3543,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpdiscovertable::ge
     return children;
 }
 
-void CISCOVTPMIB::Vtpdiscovertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VtpDiscoverTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVTPMIB::Vtpdiscovertable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VtpDiscoverTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVTPMIB::Vtpdiscovertable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VtpDiscoverTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vtpDiscoverEntry")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoverentry()
+CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::VtpDiscoverEntry()
     :
     managementdomainindex{YType::str, "managementDomainIndex"},
     vtpdiscoveraction{YType::enumeration, "vtpDiscoverAction"},
@@ -3524,22 +3566,23 @@ CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoverentry()
     vtplastdiscovertime{YType::uint32, "vtpLastDiscoverTime"}
 {
 
-    yang_name = "vtpDiscoverEntry"; yang_parent_name = "vtpDiscoverTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vtpDiscoverEntry"; yang_parent_name = "vtpDiscoverTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::~Vtpdiscoverentry()
+CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::~VtpDiscoverEntry()
 {
 }
 
-bool CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::has_data() const
+bool CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return managementdomainindex.is_set
 	|| vtpdiscoveraction.is_set
 	|| vtpdiscoverstatus.is_set
 	|| vtplastdiscovertime.is_set;
 }
 
-bool CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::has_operation() const
+bool CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(managementdomainindex.yfilter)
@@ -3548,21 +3591,22 @@ bool CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::has_operation() const
 	|| ydk::is_set(vtplastdiscovertime.yfilter);
 }
 
-std::string CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::get_absolute_path() const
+std::string CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/vtpDiscoverTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::get_segment_path() const
+std::string CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vtpDiscoverEntry" <<"[managementDomainIndex='" <<managementdomainindex <<"']";
+    path_buffer << "vtpDiscoverEntry";
+    ADD_KEY_TOKEN(managementdomainindex, "managementDomainIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3575,19 +3619,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpdiscovertable::Vt
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "managementDomainIndex")
     {
@@ -3615,7 +3659,7 @@ void CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::set_value(const std::strin
     }
 }
 
-void CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "managementDomainIndex")
     {
@@ -3635,26 +3679,29 @@ void CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::set_filter(const std::stri
     }
 }
 
-bool CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "managementDomainIndex" || name == "vtpDiscoverAction" || name == "vtpDiscoverStatus" || name == "vtpLastDiscoverTime")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresulttable()
+CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultTable()
+    :
+    vtpdiscoverresultentry(this, {"managementdomainindex", "vtpdiscoverresultindex"})
 {
 
-    yang_name = "vtpDiscoverResultTable"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vtpDiscoverResultTable"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vtpdiscoverresulttable::~Vtpdiscoverresulttable()
+CISCOVTPMIB::VtpDiscoverResultTable::~VtpDiscoverResultTable()
 {
 }
 
-bool CISCOVTPMIB::Vtpdiscoverresulttable::has_data() const
+bool CISCOVTPMIB::VtpDiscoverResultTable::has_data() const
 {
-    for (std::size_t index=0; index<vtpdiscoverresultentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vtpdiscoverresultentry.len(); index++)
     {
         if(vtpdiscoverresultentry[index]->has_data())
             return true;
@@ -3662,9 +3709,9 @@ bool CISCOVTPMIB::Vtpdiscoverresulttable::has_data() const
     return false;
 }
 
-bool CISCOVTPMIB::Vtpdiscoverresulttable::has_operation() const
+bool CISCOVTPMIB::VtpDiscoverResultTable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpdiscoverresultentry.size(); index++)
+    for (std::size_t index=0; index<vtpdiscoverresultentry.len(); index++)
     {
         if(vtpdiscoverresultentry[index]->has_operation())
             return true;
@@ -3672,21 +3719,21 @@ bool CISCOVTPMIB::Vtpdiscoverresulttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVTPMIB::Vtpdiscoverresulttable::get_absolute_path() const
+std::string CISCOVTPMIB::VtpDiscoverResultTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vtpdiscoverresulttable::get_segment_path() const
+std::string CISCOVTPMIB::VtpDiscoverResultTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vtpDiscoverResultTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpdiscoverresulttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpDiscoverResultTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3695,25 +3742,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpdiscoverresulttab
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vtpdiscoverresulttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VtpDiscoverResultTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vtpDiscoverResultEntry")
     {
-        auto c = std::make_shared<CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry>();
+        auto c = std::make_shared<CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry>();
         c->parent = this;
-        vtpdiscoverresultentry.push_back(c);
+        vtpdiscoverresultentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpdiscoverresulttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpDiscoverResultTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vtpdiscoverresultentry)
+    for (auto c : vtpdiscoverresultentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3724,22 +3771,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpdiscoverresulttab
     return children;
 }
 
-void CISCOVTPMIB::Vtpdiscoverresulttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VtpDiscoverResultTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVTPMIB::Vtpdiscoverresulttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VtpDiscoverResultTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVTPMIB::Vtpdiscoverresulttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VtpDiscoverResultTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vtpDiscoverResultEntry")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry::Vtpdiscoverresultentry()
+CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry::VtpDiscoverResultEntry()
     :
     managementdomainindex{YType::str, "managementDomainIndex"},
     vtpdiscoverresultindex{YType::uint32, "vtpDiscoverResultIndex"},
@@ -3751,15 +3798,16 @@ CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry::Vtpdiscoverresulten
     vtpdiscoverresultsystemname{YType::str, "vtpDiscoverResultSystemName"}
 {
 
-    yang_name = "vtpDiscoverResultEntry"; yang_parent_name = "vtpDiscoverResultTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vtpDiscoverResultEntry"; yang_parent_name = "vtpDiscoverResultTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry::~Vtpdiscoverresultentry()
+CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry::~VtpDiscoverResultEntry()
 {
 }
 
-bool CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry::has_data() const
+bool CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return managementdomainindex.is_set
 	|| vtpdiscoverresultindex.is_set
 	|| vtpdiscoverresultdatabasename.is_set
@@ -3770,7 +3818,7 @@ bool CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry::has_data() con
 	|| vtpdiscoverresultsystemname.is_set;
 }
 
-bool CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry::has_operation() const
+bool CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(managementdomainindex.yfilter)
@@ -3783,21 +3831,23 @@ bool CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry::has_operation(
 	|| ydk::is_set(vtpdiscoverresultsystemname.yfilter);
 }
 
-std::string CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry::get_absolute_path() const
+std::string CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/vtpDiscoverResultTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry::get_segment_path() const
+std::string CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vtpDiscoverResultEntry" <<"[managementDomainIndex='" <<managementdomainindex <<"']" <<"[vtpDiscoverResultIndex='" <<vtpdiscoverresultindex <<"']";
+    path_buffer << "vtpDiscoverResultEntry";
+    ADD_KEY_TOKEN(managementdomainindex, "managementDomainIndex");
+    ADD_KEY_TOKEN(vtpdiscoverresultindex, "vtpDiscoverResultIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3814,19 +3864,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpdiscoverresulttab
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "managementDomainIndex")
     {
@@ -3878,7 +3928,7 @@ void CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry::set_value(cons
     }
 }
 
-void CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "managementDomainIndex")
     {
@@ -3914,26 +3964,29 @@ void CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry::set_filter(con
     }
 }
 
-bool CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "managementDomainIndex" || name == "vtpDiscoverResultIndex" || name == "vtpDiscoverResultDatabaseName" || name == "vtpDiscoverResultConflicting" || name == "vtpDiscoverResultDeviceId" || name == "vtpDiscoverResultPrimaryServer" || name == "vtpDiscoverResultRevNumber" || name == "vtpDiscoverResultSystemName")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Vtpdatabasetable::Vtpdatabasetable()
+CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseTable()
+    :
+    vtpdatabaseentry(this, {"managementdomainindex", "vtpdatabaseindex"})
 {
 
-    yang_name = "vtpDatabaseTable"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vtpDatabaseTable"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vtpdatabasetable::~Vtpdatabasetable()
+CISCOVTPMIB::VtpDatabaseTable::~VtpDatabaseTable()
 {
 }
 
-bool CISCOVTPMIB::Vtpdatabasetable::has_data() const
+bool CISCOVTPMIB::VtpDatabaseTable::has_data() const
 {
-    for (std::size_t index=0; index<vtpdatabaseentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vtpdatabaseentry.len(); index++)
     {
         if(vtpdatabaseentry[index]->has_data())
             return true;
@@ -3941,9 +3994,9 @@ bool CISCOVTPMIB::Vtpdatabasetable::has_data() const
     return false;
 }
 
-bool CISCOVTPMIB::Vtpdatabasetable::has_operation() const
+bool CISCOVTPMIB::VtpDatabaseTable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpdatabaseentry.size(); index++)
+    for (std::size_t index=0; index<vtpdatabaseentry.len(); index++)
     {
         if(vtpdatabaseentry[index]->has_operation())
             return true;
@@ -3951,21 +4004,21 @@ bool CISCOVTPMIB::Vtpdatabasetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVTPMIB::Vtpdatabasetable::get_absolute_path() const
+std::string CISCOVTPMIB::VtpDatabaseTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vtpdatabasetable::get_segment_path() const
+std::string CISCOVTPMIB::VtpDatabaseTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vtpDatabaseTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpdatabasetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpDatabaseTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3974,25 +4027,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpdatabasetable::ge
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vtpdatabasetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VtpDatabaseTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vtpDatabaseEntry")
     {
-        auto c = std::make_shared<CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry>();
+        auto c = std::make_shared<CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry>();
         c->parent = this;
-        vtpdatabaseentry.push_back(c);
+        vtpdatabaseentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpdatabasetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpDatabaseTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vtpdatabaseentry)
+    for (auto c : vtpdatabaseentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4003,22 +4056,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpdatabasetable::ge
     return children;
 }
 
-void CISCOVTPMIB::Vtpdatabasetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VtpDatabaseTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVTPMIB::Vtpdatabasetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VtpDatabaseTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVTPMIB::Vtpdatabasetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VtpDatabaseTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vtpDatabaseEntry")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::Vtpdatabaseentry()
+CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::VtpDatabaseEntry()
     :
     managementdomainindex{YType::str, "managementDomainIndex"},
     vtpdatabaseindex{YType::uint32, "vtpDatabaseIndex"},
@@ -4031,15 +4084,16 @@ CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::Vtpdatabaseentry()
     vtpdatabasetakeoverpassword{YType::str, "vtpDatabaseTakeOverPassword"}
 {
 
-    yang_name = "vtpDatabaseEntry"; yang_parent_name = "vtpDatabaseTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vtpDatabaseEntry"; yang_parent_name = "vtpDatabaseTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::~Vtpdatabaseentry()
+CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::~VtpDatabaseEntry()
 {
 }
 
-bool CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::has_data() const
+bool CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return managementdomainindex.is_set
 	|| vtpdatabaseindex.is_set
 	|| vtpdatabasename.is_set
@@ -4051,7 +4105,7 @@ bool CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::has_data() const
 	|| vtpdatabasetakeoverpassword.is_set;
 }
 
-bool CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::has_operation() const
+bool CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(managementdomainindex.yfilter)
@@ -4065,21 +4119,23 @@ bool CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::has_operation() const
 	|| ydk::is_set(vtpdatabasetakeoverpassword.yfilter);
 }
 
-std::string CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::get_absolute_path() const
+std::string CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/vtpDatabaseTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::get_segment_path() const
+std::string CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vtpDatabaseEntry" <<"[managementDomainIndex='" <<managementdomainindex <<"']" <<"[vtpDatabaseIndex='" <<vtpdatabaseindex <<"']";
+    path_buffer << "vtpDatabaseEntry";
+    ADD_KEY_TOKEN(managementdomainindex, "managementDomainIndex");
+    ADD_KEY_TOKEN(vtpdatabaseindex, "vtpDatabaseIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4097,19 +4153,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpdatabasetable::Vt
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "managementDomainIndex")
     {
@@ -4167,7 +4223,7 @@ void CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::set_value(const std::strin
     }
 }
 
-void CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "managementDomainIndex")
     {
@@ -4207,26 +4263,29 @@ void CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::set_filter(const std::stri
     }
 }
 
-bool CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "managementDomainIndex" || name == "vtpDatabaseIndex" || name == "vtpDatabaseName" || name == "vtpDatabaseLocalMode" || name == "vtpDatabaseRevNumber" || name == "vtpDatabasePrimaryServer" || name == "vtpDatabasePrimaryServerId" || name == "vtpDatabaseTakeOverPrimary" || name == "vtpDatabaseTakeOverPassword")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Vtpauthenticationtable::Vtpauthenticationtable()
+CISCOVTPMIB::VtpAuthenticationTable::VtpAuthenticationTable()
+    :
+    vtpauthentry(this, {"managementdomainindex"})
 {
 
-    yang_name = "vtpAuthenticationTable"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vtpAuthenticationTable"; yang_parent_name = "CISCO-VTP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vtpauthenticationtable::~Vtpauthenticationtable()
+CISCOVTPMIB::VtpAuthenticationTable::~VtpAuthenticationTable()
 {
 }
 
-bool CISCOVTPMIB::Vtpauthenticationtable::has_data() const
+bool CISCOVTPMIB::VtpAuthenticationTable::has_data() const
 {
-    for (std::size_t index=0; index<vtpauthentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vtpauthentry.len(); index++)
     {
         if(vtpauthentry[index]->has_data())
             return true;
@@ -4234,9 +4293,9 @@ bool CISCOVTPMIB::Vtpauthenticationtable::has_data() const
     return false;
 }
 
-bool CISCOVTPMIB::Vtpauthenticationtable::has_operation() const
+bool CISCOVTPMIB::VtpAuthenticationTable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpauthentry.size(); index++)
+    for (std::size_t index=0; index<vtpauthentry.len(); index++)
     {
         if(vtpauthentry[index]->has_operation())
             return true;
@@ -4244,21 +4303,21 @@ bool CISCOVTPMIB::Vtpauthenticationtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVTPMIB::Vtpauthenticationtable::get_absolute_path() const
+std::string CISCOVTPMIB::VtpAuthenticationTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vtpauthenticationtable::get_segment_path() const
+std::string CISCOVTPMIB::VtpAuthenticationTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vtpAuthenticationTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpauthenticationtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpAuthenticationTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4267,25 +4326,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpauthenticationtab
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vtpauthenticationtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VtpAuthenticationTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vtpAuthEntry")
     {
-        auto c = std::make_shared<CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry>();
+        auto c = std::make_shared<CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry>();
         c->parent = this;
-        vtpauthentry.push_back(c);
+        vtpauthentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpauthenticationtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpAuthenticationTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vtpauthentry)
+    for (auto c : vtpauthentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4296,22 +4355,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpauthenticationtab
     return children;
 }
 
-void CISCOVTPMIB::Vtpauthenticationtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VtpAuthenticationTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVTPMIB::Vtpauthenticationtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VtpAuthenticationTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVTPMIB::Vtpauthenticationtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VtpAuthenticationTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vtpAuthEntry")
         return true;
     return false;
 }
 
-CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::Vtpauthentry()
+CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::VtpAuthEntry()
     :
     managementdomainindex{YType::str, "managementDomainIndex"},
     vtpauthpassword{YType::str, "vtpAuthPassword"},
@@ -4319,22 +4378,23 @@ CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::Vtpauthentry()
     vtpauthsecretkey{YType::str, "vtpAuthSecretKey"}
 {
 
-    yang_name = "vtpAuthEntry"; yang_parent_name = "vtpAuthenticationTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vtpAuthEntry"; yang_parent_name = "vtpAuthenticationTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::~Vtpauthentry()
+CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::~VtpAuthEntry()
 {
 }
 
-bool CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::has_data() const
+bool CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return managementdomainindex.is_set
 	|| vtpauthpassword.is_set
 	|| vtpauthpasswordtype.is_set
 	|| vtpauthsecretkey.is_set;
 }
 
-bool CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::has_operation() const
+bool CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(managementdomainindex.yfilter)
@@ -4343,21 +4403,22 @@ bool CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::has_operation() const
 	|| ydk::is_set(vtpauthsecretkey.yfilter);
 }
 
-std::string CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::get_absolute_path() const
+std::string CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VTP-MIB:CISCO-VTP-MIB/vtpAuthenticationTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::get_segment_path() const
+std::string CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vtpAuthEntry" <<"[managementDomainIndex='" <<managementdomainindex <<"']";
+    path_buffer << "vtpAuthEntry";
+    ADD_KEY_TOKEN(managementdomainindex, "managementDomainIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4370,19 +4431,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::Vtpauthenticationtab
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "managementDomainIndex")
     {
@@ -4410,7 +4471,7 @@ void CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::set_value(const std::str
     }
 }
 
-void CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "managementDomainIndex")
     {
@@ -4430,7 +4491,7 @@ void CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::set_filter(const std::st
     }
 }
 
-bool CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "managementDomainIndex" || name == "vtpAuthPassword" || name == "vtpAuthPasswordType" || name == "vtpAuthSecretKey")
         return true;
@@ -4444,115 +4505,115 @@ const Enum::YLeaf VlanType::fddiNet {4, "fddiNet"};
 const Enum::YLeaf VlanType::trNet {5, "trNet"};
 const Enum::YLeaf VlanType::deprecated {6, "deprecated"};
 
-const Enum::YLeaf CISCOVTPMIB::Vtpstatus::Vtpversion::one {1, "one"};
-const Enum::YLeaf CISCOVTPMIB::Vtpstatus::Vtpversion::two {2, "two"};
-const Enum::YLeaf CISCOVTPMIB::Vtpstatus::Vtpversion::none {3, "none"};
-const Enum::YLeaf CISCOVTPMIB::Vtpstatus::Vtpversion::three {4, "three"};
+const Enum::YLeaf CISCOVTPMIB::VtpStatus::VtpVersion::one {1, "one"};
+const Enum::YLeaf CISCOVTPMIB::VtpStatus::VtpVersion::two {2, "two"};
+const Enum::YLeaf CISCOVTPMIB::VtpStatus::VtpVersion::none {3, "none"};
+const Enum::YLeaf CISCOVTPMIB::VtpStatus::VtpVersion::three {4, "three"};
 
-const Enum::YLeaf CISCOVTPMIB::Internalvlaninfo::Vtpinternalvlanallocpolicy::ascending {1, "ascending"};
-const Enum::YLeaf CISCOVTPMIB::Internalvlaninfo::Vtpinternalvlanallocpolicy::descending {2, "descending"};
+const Enum::YLeaf CISCOVTPMIB::InternalVlanInfo::VtpInternalVlanAllocPolicy::ascending {1, "ascending"};
+const Enum::YLeaf CISCOVTPMIB::InternalVlanInfo::VtpInternalVlanAllocPolicy::descending {2, "descending"};
 
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomainlocalmode::client {1, "client"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomainlocalmode::server {2, "server"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomainlocalmode::transparent {3, "transparent"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomainlocalmode::off {4, "off"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainLocalMode::client {1, "client"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainLocalMode::server {2, "server"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainLocalMode::transparent {3, "transparent"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainLocalMode::off {4, "off"};
 
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomainpruningstate::enabled {1, "enabled"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomainpruningstate::disabled {2, "disabled"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainPruningState::enabled {1, "enabled"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainPruningState::disabled {2, "disabled"};
 
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomainversioninuse::version1 {1, "version1"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomainversioninuse::version2 {2, "version2"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomainversioninuse::none {3, "none"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomainversioninuse::version3 {4, "version3"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainVersionInUse::version1 {1, "version1"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainVersionInUse::version2 {2, "version2"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainVersionInUse::none {3, "none"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainVersionInUse::version3 {4, "version3"};
 
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomainpruningstateoper::enabled {1, "enabled"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomainpruningstateoper::disabled {2, "disabled"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainPruningStateOper::enabled {1, "enabled"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainPruningStateOper::disabled {2, "disabled"};
 
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Vtpvlaneditoperation::none {1, "none"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Vtpvlaneditoperation::copy {2, "copy"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Vtpvlaneditoperation::apply {3, "apply"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Vtpvlaneditoperation::release {4, "release"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Vtpvlaneditoperation::restartTimer {5, "restartTimer"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanEditOperation::none {1, "none"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanEditOperation::copy {2, "copy"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanEditOperation::apply {3, "apply"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanEditOperation::release {4, "release"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanEditOperation::restartTimer {5, "restartTimer"};
 
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus::inProgress {1, "inProgress"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus::succeeded {2, "succeeded"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus::configNumberError {3, "configNumberError"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus::inconsistentEdit {4, "inconsistentEdit"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus::tooBig {5, "tooBig"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus::localNVStoreFail {6, "localNVStoreFail"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus::remoteNVStoreFail {7, "remoteNVStoreFail"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus::editBufferEmpty {8, "editBufferEmpty"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus::someOtherError {9, "someOtherError"};
-const Enum::YLeaf CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus::notPrimaryServer {10, "notPrimaryServer"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanApplyStatus::inProgress {1, "inProgress"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanApplyStatus::succeeded {2, "succeeded"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanApplyStatus::configNumberError {3, "configNumberError"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanApplyStatus::inconsistentEdit {4, "inconsistentEdit"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanApplyStatus::tooBig {5, "tooBig"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanApplyStatus::localNVStoreFail {6, "localNVStoreFail"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanApplyStatus::remoteNVStoreFail {7, "remoteNVStoreFail"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanApplyStatus::editBufferEmpty {8, "editBufferEmpty"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanApplyStatus::someOtherError {9, "someOtherError"};
+const Enum::YLeaf CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanApplyStatus::notPrimaryServer {10, "notPrimaryServer"};
 
-const Enum::YLeaf CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::Vtpvlanstate::operational {1, "operational"};
-const Enum::YLeaf CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::Vtpvlanstate::suspended {2, "suspended"};
-const Enum::YLeaf CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::Vtpvlanstate::mtuTooBigForDevice {3, "mtuTooBigForDevice"};
-const Enum::YLeaf CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::Vtpvlanstate::mtuTooBigForTrunk {4, "mtuTooBigForTrunk"};
+const Enum::YLeaf CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::VtpVlanState::operational {1, "operational"};
+const Enum::YLeaf CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::VtpVlanState::suspended {2, "suspended"};
+const Enum::YLeaf CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::VtpVlanState::mtuTooBigForDevice {3, "mtuTooBigForDevice"};
+const Enum::YLeaf CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::VtpVlanState::mtuTooBigForTrunk {4, "mtuTooBigForTrunk"};
 
-const Enum::YLeaf CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::Vtpvlanstptype::ieee {1, "ieee"};
-const Enum::YLeaf CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::Vtpvlanstptype::ibm {2, "ibm"};
-const Enum::YLeaf CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::Vtpvlanstptype::hybrid {3, "hybrid"};
+const Enum::YLeaf CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::VtpVlanStpType::ieee {1, "ieee"};
+const Enum::YLeaf CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::VtpVlanStpType::ibm {2, "ibm"};
+const Enum::YLeaf CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::VtpVlanStpType::hybrid {3, "hybrid"};
 
-const Enum::YLeaf CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::Vtpvlanbridgetype::none {0, "none"};
-const Enum::YLeaf CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::Vtpvlanbridgetype::srt {1, "srt"};
-const Enum::YLeaf CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::Vtpvlanbridgetype::srb {2, "srb"};
+const Enum::YLeaf CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::VtpVlanBridgeType::none {0, "none"};
+const Enum::YLeaf CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::VtpVlanBridgeType::srt {1, "srt"};
+const Enum::YLeaf CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::VtpVlanBridgeType::srb {2, "srb"};
 
-const Enum::YLeaf CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditstate::operational {1, "operational"};
-const Enum::YLeaf CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditstate::suspended {2, "suspended"};
+const Enum::YLeaf CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::VtpVlanEditState::operational {1, "operational"};
+const Enum::YLeaf CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::VtpVlanEditState::suspended {2, "suspended"};
 
-const Enum::YLeaf CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditstptype::ieee {1, "ieee"};
-const Enum::YLeaf CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditstptype::ibm {2, "ibm"};
-const Enum::YLeaf CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditstptype::auto_ {3, "auto"};
+const Enum::YLeaf CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::VtpVlanEditStpType::ieee {1, "ieee"};
+const Enum::YLeaf CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::VtpVlanEditStpType::ibm {2, "ibm"};
+const Enum::YLeaf CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::VtpVlanEditStpType::auto_ {3, "auto"};
 
-const Enum::YLeaf CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditbridgetype::srt {1, "srt"};
-const Enum::YLeaf CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditbridgetype::srb {2, "srb"};
+const Enum::YLeaf CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::VtpVlanEditBridgeType::srt {1, "srt"};
+const Enum::YLeaf CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::VtpVlanEditBridgeType::srb {2, "srb"};
 
-const Enum::YLeaf CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::Vtpvlanlocalshutdown::up {1, "up"};
-const Enum::YLeaf CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::Vtpvlanlocalshutdown::down {2, "down"};
+const Enum::YLeaf CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::VtpVlanLocalShutdown::up {1, "up"};
+const Enum::YLeaf CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::VtpVlanLocalShutdown::down {2, "down"};
 
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationtype::isl {1, "isl"};
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationtype::dot10 {2, "dot10"};
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationtype::lane {3, "lane"};
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationtype::dot1Q {4, "dot1Q"};
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationtype::negotiate {5, "negotiate"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortEncapsulationType::isl {1, "isl"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortEncapsulationType::dot10 {2, "dot10"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortEncapsulationType::lane {3, "lane"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortEncapsulationType::dot1Q {4, "dot1Q"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortEncapsulationType::negotiate {5, "negotiate"};
 
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdynamicstate::on {1, "on"};
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdynamicstate::off {2, "off"};
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdynamicstate::desirable {3, "desirable"};
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdynamicstate::auto_ {4, "auto"};
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdynamicstate::onNoNegotiate {5, "onNoNegotiate"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortDynamicState::on {1, "on"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortDynamicState::off {2, "off"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortDynamicState::desirable {3, "desirable"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortDynamicState::auto_ {4, "auto"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortDynamicState::onNoNegotiate {5, "onNoNegotiate"};
 
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdynamicstatus::trunking {1, "trunking"};
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdynamicstatus::notTrunking {2, "notTrunking"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortDynamicStatus::trunking {1, "trunking"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortDynamicStatus::notTrunking {2, "notTrunking"};
 
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationopertype::isl {1, "isl"};
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationopertype::dot10 {2, "dot10"};
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationopertype::lane {3, "lane"};
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationopertype::dot1Q {4, "dot1Q"};
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationopertype::negotiating {5, "negotiating"};
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationopertype::notApplicable {6, "notApplicable"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortEncapsulationOperType::isl {1, "isl"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortEncapsulationOperType::dot10 {2, "dot10"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortEncapsulationOperType::lane {3, "lane"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortEncapsulationOperType::dot1Q {4, "dot1Q"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortEncapsulationOperType::negotiating {5, "negotiating"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortEncapsulationOperType::notApplicable {6, "notApplicable"};
 
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdot1Qtunnel::trunk {1, "trunk"};
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdot1Qtunnel::access {2, "access"};
-const Enum::YLeaf CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdot1Qtunnel::disabled {3, "disabled"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortDot1qTunnel::trunk {1, "trunk"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortDot1qTunnel::access {2, "access"};
+const Enum::YLeaf CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortDot1qTunnel::disabled {3, "disabled"};
 
-const Enum::YLeaf CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoveraction::discover {1, "discover"};
-const Enum::YLeaf CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoveraction::noOperation {2, "noOperation"};
-const Enum::YLeaf CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoveraction::purgeResult {3, "purgeResult"};
+const Enum::YLeaf CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::VtpDiscoverAction::discover {1, "discover"};
+const Enum::YLeaf CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::VtpDiscoverAction::noOperation {2, "noOperation"};
+const Enum::YLeaf CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::VtpDiscoverAction::purgeResult {3, "purgeResult"};
 
-const Enum::YLeaf CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoverstatus::inProgress {1, "inProgress"};
-const Enum::YLeaf CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoverstatus::succeeded {2, "succeeded"};
-const Enum::YLeaf CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoverstatus::resourceUnavailable {3, "resourceUnavailable"};
-const Enum::YLeaf CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoverstatus::someOtherError {4, "someOtherError"};
+const Enum::YLeaf CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::VtpDiscoverStatus::inProgress {1, "inProgress"};
+const Enum::YLeaf CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::VtpDiscoverStatus::succeeded {2, "succeeded"};
+const Enum::YLeaf CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::VtpDiscoverStatus::resourceUnavailable {3, "resourceUnavailable"};
+const Enum::YLeaf CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::VtpDiscoverStatus::someOtherError {4, "someOtherError"};
 
-const Enum::YLeaf CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::Vtpdatabaselocalmode::client {1, "client"};
-const Enum::YLeaf CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::Vtpdatabaselocalmode::server {2, "server"};
-const Enum::YLeaf CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::Vtpdatabaselocalmode::transparent {3, "transparent"};
-const Enum::YLeaf CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::Vtpdatabaselocalmode::off {4, "off"};
+const Enum::YLeaf CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::VtpDatabaseLocalMode::client {1, "client"};
+const Enum::YLeaf CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::VtpDatabaseLocalMode::server {2, "server"};
+const Enum::YLeaf CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::VtpDatabaseLocalMode::transparent {3, "transparent"};
+const Enum::YLeaf CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::VtpDatabaseLocalMode::off {4, "off"};
 
-const Enum::YLeaf CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::Vtpauthpasswordtype::plaintext {1, "plaintext"};
-const Enum::YLeaf CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::Vtpauthpasswordtype::hidden {2, "hidden"};
+const Enum::YLeaf CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::VtpAuthPasswordType::plaintext {1, "plaintext"};
+const Enum::YLeaf CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::VtpAuthPasswordType::hidden {2, "hidden"};
 
 
 }

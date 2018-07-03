@@ -31,22 +31,22 @@ class POWERETHERNETMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Pethpseporttable; //type: POWERETHERNETMIB::Pethpseporttable
-        class Pethmainpsetable; //type: POWERETHERNETMIB::Pethmainpsetable
-        class Pethnotificationcontroltable; //type: POWERETHERNETMIB::Pethnotificationcontroltable
+        class PethPsePortTable; //type: POWERETHERNETMIB::PethPsePortTable
+        class PethMainPseTable; //type: POWERETHERNETMIB::PethMainPseTable
+        class PethNotificationControlTable; //type: POWERETHERNETMIB::PethNotificationControlTable
 
-        std::shared_ptr<cisco_ios_xe::POWER_ETHERNET_MIB::POWERETHERNETMIB::Pethpseporttable> pethpseporttable;
-        std::shared_ptr<cisco_ios_xe::POWER_ETHERNET_MIB::POWERETHERNETMIB::Pethmainpsetable> pethmainpsetable;
-        std::shared_ptr<cisco_ios_xe::POWER_ETHERNET_MIB::POWERETHERNETMIB::Pethnotificationcontroltable> pethnotificationcontroltable;
+        std::shared_ptr<cisco_ios_xe::POWER_ETHERNET_MIB::POWERETHERNETMIB::PethPsePortTable> pethpseporttable;
+        std::shared_ptr<cisco_ios_xe::POWER_ETHERNET_MIB::POWERETHERNETMIB::PethMainPseTable> pethmainpsetable;
+        std::shared_ptr<cisco_ios_xe::POWER_ETHERNET_MIB::POWERETHERNETMIB::PethNotificationControlTable> pethnotificationcontroltable;
         
 }; // POWERETHERNETMIB
 
 
-class POWERETHERNETMIB::Pethpseporttable : public ydk::Entity
+class POWERETHERNETMIB::PethPsePortTable : public ydk::Entity
 {
     public:
-        Pethpseporttable();
-        ~Pethpseporttable();
+        PethPsePortTable();
+        ~PethPsePortTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -59,18 +59,18 @@ class POWERETHERNETMIB::Pethpseporttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Pethpseportentry; //type: POWERETHERNETMIB::Pethpseporttable::Pethpseportentry
+        class PethPsePortEntry; //type: POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::POWER_ETHERNET_MIB::POWERETHERNETMIB::Pethpseporttable::Pethpseportentry> > pethpseportentry;
+        ydk::YList pethpseportentry;
         
-}; // POWERETHERNETMIB::Pethpseporttable
+}; // POWERETHERNETMIB::PethPsePortTable
 
 
-class POWERETHERNETMIB::Pethpseporttable::Pethpseportentry : public ydk::Entity
+class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry : public ydk::Entity
 {
     public:
-        Pethpseportentry();
-        ~Pethpseportentry();
+        PethPsePortEntry();
+        ~PethPsePortEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -87,21 +87,21 @@ class POWERETHERNETMIB::Pethpseporttable::Pethpseportentry : public ydk::Entity
         ydk::YLeaf pethpseportindex; //type: int32
         ydk::YLeaf pethpseportadminenable; //type: boolean
         ydk::YLeaf pethpseportpowerpairscontrolability; //type: boolean
-        ydk::YLeaf pethpseportpowerpairs; //type: Pethpseportpowerpairs
-        ydk::YLeaf pethpseportdetectionstatus; //type: Pethpseportdetectionstatus
-        ydk::YLeaf pethpseportpowerpriority; //type: Pethpseportpowerpriority
+        ydk::YLeaf pethpseportpowerpairs; //type: PethPsePortPowerPairs
+        ydk::YLeaf pethpseportdetectionstatus; //type: PethPsePortDetectionStatus
+        ydk::YLeaf pethpseportpowerpriority; //type: PethPsePortPowerPriority
         ydk::YLeaf pethpseportmpsabsentcounter; //type: uint32
         ydk::YLeaf pethpseporttype; //type: string
-        ydk::YLeaf pethpseportpowerclassifications; //type: Pethpseportpowerclassifications
+        ydk::YLeaf pethpseportpowerclassifications; //type: PethPsePortPowerClassifications
         ydk::YLeaf pethpseportinvalidsignaturecounter; //type: uint32
         ydk::YLeaf pethpseportpowerdeniedcounter; //type: uint32
         ydk::YLeaf pethpseportoverloadcounter; //type: uint32
         ydk::YLeaf pethpseportshortcounter; //type: uint32
-        ydk::YLeaf cpeextpseportenable; //type: Cpeextpseportenable
-        ydk::YLeaf cpeextpseportdiscovermode; //type: Cpeextpseportdiscovermode
+        ydk::YLeaf cpeextpseportenable; //type: CpeExtPsePortEnable
+        ydk::YLeaf cpeextpseportdiscovermode; //type: CpeExtPsePortDiscoverMode
         ydk::YLeaf cpeextpseportdevicedetected; //type: boolean
         ydk::YLeaf cpeextpseportieeepd; //type: boolean
-        ydk::YLeaf cpeextpseportadditionalstatus; //type: Cpeextpseportadditionalstatus
+        ydk::YLeaf cpeextpseportadditionalstatus; //type: CpeExtPsePortAdditionalStatus
         ydk::YLeaf cpeextpseportpwrmax; //type: uint32
         ydk::YLeaf cpeextpseportpwrallocated; //type: uint32
         ydk::YLeaf cpeextpseportpwravailable; //type: uint32
@@ -109,27 +109,27 @@ class POWERETHERNETMIB::Pethpseporttable::Pethpseportentry : public ydk::Entity
         ydk::YLeaf cpeextpseportmaxpwrdrawn; //type: uint32
         ydk::YLeaf cpeextpseportentphyindex; //type: int32
         ydk::YLeaf cpeextpseportpolicingcapable; //type: boolean
-        ydk::YLeaf cpeextpseportpolicingenable; //type: Cpeextpseportpolicingenable
-        ydk::YLeaf cpeextpseportpolicingaction; //type: Cpeextpseportpolicingaction
+        ydk::YLeaf cpeextpseportpolicingenable; //type: CpeExtPsePortPolicingEnable
+        ydk::YLeaf cpeextpseportpolicingaction; //type: CpeExtPsePortPolicingAction
         ydk::YLeaf cpeextpseportpwrmanalloc; //type: uint32
-        ydk::YLeaf cpeextpseportcapabilities; //type: Cpeextpseportcapabilities
-        class Pethpseportpowerpairs;
-        class Pethpseportdetectionstatus;
-        class Pethpseportpowerpriority;
-        class Pethpseportpowerclassifications;
-        class Cpeextpseportenable;
-        class Cpeextpseportdiscovermode;
-        class Cpeextpseportpolicingenable;
-        class Cpeextpseportpolicingaction;
+        ydk::YLeaf cpeextpseportcapabilities; //type: CpeExtPsePortCapabilities
+        class PethPsePortPowerPairs;
+        class PethPsePortDetectionStatus;
+        class PethPsePortPowerPriority;
+        class PethPsePortPowerClassifications;
+        class CpeExtPsePortEnable;
+        class CpeExtPsePortDiscoverMode;
+        class CpeExtPsePortPolicingEnable;
+        class CpeExtPsePortPolicingAction;
 
-}; // POWERETHERNETMIB::Pethpseporttable::Pethpseportentry
+}; // POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry
 
 
-class POWERETHERNETMIB::Pethmainpsetable : public ydk::Entity
+class POWERETHERNETMIB::PethMainPseTable : public ydk::Entity
 {
     public:
-        Pethmainpsetable();
-        ~Pethmainpsetable();
+        PethMainPseTable();
+        ~PethMainPseTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -142,18 +142,18 @@ class POWERETHERNETMIB::Pethmainpsetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Pethmainpseentry; //type: POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry
+        class PethMainPseEntry; //type: POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::POWER_ETHERNET_MIB::POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry> > pethmainpseentry;
+        ydk::YList pethmainpseentry;
         
-}; // POWERETHERNETMIB::Pethmainpsetable
+}; // POWERETHERNETMIB::PethMainPseTable
 
 
-class POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry : public ydk::Entity
+class POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry : public ydk::Entity
 {
     public:
-        Pethmainpseentry();
-        ~Pethmainpseentry();
+        PethMainPseEntry();
+        ~PethMainPseEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -168,19 +168,19 @@ class POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry : public ydk::Entity
 
         ydk::YLeaf pethmainpsegroupindex; //type: int32
         ydk::YLeaf pethmainpsepower; //type: uint32
-        ydk::YLeaf pethmainpseoperstatus; //type: Pethmainpseoperstatus
+        ydk::YLeaf pethmainpseoperstatus; //type: PethMainPseOperStatus
         ydk::YLeaf pethmainpseconsumptionpower; //type: uint32
         ydk::YLeaf pethmainpseusagethreshold; //type: int32
-        class Pethmainpseoperstatus;
+        class PethMainPseOperStatus;
 
-}; // POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry
+}; // POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry
 
 
-class POWERETHERNETMIB::Pethnotificationcontroltable : public ydk::Entity
+class POWERETHERNETMIB::PethNotificationControlTable : public ydk::Entity
 {
     public:
-        Pethnotificationcontroltable();
-        ~Pethnotificationcontroltable();
+        PethNotificationControlTable();
+        ~PethNotificationControlTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -193,18 +193,18 @@ class POWERETHERNETMIB::Pethnotificationcontroltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Pethnotificationcontrolentry; //type: POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontrolentry
+        class PethNotificationControlEntry; //type: POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::POWER_ETHERNET_MIB::POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontrolentry> > pethnotificationcontrolentry;
+        ydk::YList pethnotificationcontrolentry;
         
-}; // POWERETHERNETMIB::Pethnotificationcontroltable
+}; // POWERETHERNETMIB::PethNotificationControlTable
 
 
-class POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontrolentry : public ydk::Entity
+class POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry : public ydk::Entity
 {
     public:
-        Pethnotificationcontrolentry();
-        ~Pethnotificationcontrolentry();
+        PethNotificationControlEntry();
+        ~PethNotificationControlEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -220,9 +220,9 @@ class POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontrolent
         ydk::YLeaf pethnotificationcontrolgroupindex; //type: int32
         ydk::YLeaf pethnotificationcontrolenable; //type: boolean
 
-}; // POWERETHERNETMIB::Pethnotificationcontroltable::Pethnotificationcontrolentry
+}; // POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry
 
-class POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportpowerpairs : public ydk::Enum
+class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortPowerPairs : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf signal;
@@ -230,7 +230,7 @@ class POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportpowerpair
 
 };
 
-class POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportdetectionstatus : public ydk::Enum
+class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortDetectionStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disabled;
@@ -242,7 +242,7 @@ class POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportdetection
 
 };
 
-class POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportpowerpriority : public ydk::Enum
+class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortPowerPriority : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf critical;
@@ -251,7 +251,7 @@ class POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportpowerprio
 
 };
 
-class POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportpowerclassifications : public ydk::Enum
+class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::PethPsePortPowerClassifications : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf class0;
@@ -262,7 +262,7 @@ class POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Pethpseportpowerclas
 
 };
 
-class POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportenable : public ydk::Enum
+class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortEnable : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf auto_;
@@ -272,7 +272,7 @@ class POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportenable 
 
 };
 
-class POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportdiscovermode : public ydk::Enum
+class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortDiscoverMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -283,7 +283,7 @@ class POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportdiscove
 
 };
 
-class POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportpolicingenable : public ydk::Enum
+class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortPolicingEnable : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf on;
@@ -291,7 +291,7 @@ class POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportpolicin
 
 };
 
-class POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportpolicingaction : public ydk::Enum
+class POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::CpeExtPsePortPolicingAction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf deny;
@@ -299,7 +299,7 @@ class POWERETHERNETMIB::Pethpseporttable::Pethpseportentry::Cpeextpseportpolicin
 
 };
 
-class POWERETHERNETMIB::Pethmainpsetable::Pethmainpseentry::Pethmainpseoperstatus : public ydk::Enum
+class POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::PethMainPseOperStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf on;

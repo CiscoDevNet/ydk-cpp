@@ -57,7 +57,7 @@ class HardwareModuleNp::Nodes : public ydk::Entity
 
         class Node; //type: HardwareModuleNp::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // HardwareModuleNp::Nodes
 
@@ -105,7 +105,7 @@ class HardwareModuleNp::Nodes::Node::Nps : public ydk::Entity
 
         class Np; //type: HardwareModuleNp::Nodes::Node::Nps::Np
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np> > np;
+        ydk::YList np;
         
 }; // HardwareModuleNp::Nodes::Node::Nps
 
@@ -158,7 +158,7 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad : public ydk::Entity
 
         class NpChnLoad; //type: HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad> > np_chn_load;
+        ydk::YList np_chn_load;
         
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad
 
@@ -236,7 +236,7 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo : pu
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2> tcam_lt_ods2;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8> tcam_lt_ods8;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2> > tcam_lt_l2;
+        ydk::YList tcam_lt_l2;
         
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo
 
@@ -682,7 +682,7 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo : public ydk
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2> tcam_lt_ods2;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8> tcam_lt_ods8;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2> > tcam_lt_l2;
+        ydk::YList tcam_lt_l2;
         
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo
 
@@ -1173,7 +1173,7 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::Counters : public ydk::Entity
 
         class NpCounter; //type: HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter> > np_counter;
+        ydk::YList np_counter;
         
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::Counters
 
@@ -1221,7 +1221,7 @@ class HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop : public ydk::Entity
 
         class NpFastDrop; //type: HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_np_oper::HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop> > np_fast_drop;
+        ydk::YList np_fast_drop;
         
 }; // HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop
 

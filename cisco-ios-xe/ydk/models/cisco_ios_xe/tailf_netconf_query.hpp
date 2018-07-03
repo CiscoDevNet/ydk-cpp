@@ -64,7 +64,7 @@ class StartQuery::Input : public ydk::Entity
         ydk::YLeafList sort_by; //type: list of  string
         class Select; //type: StartQuery::Input::Select
 
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_netconf_query::StartQuery::Input::Select> > select;
+        ydk::YList select;
         
 }; // StartQuery::Input
 
@@ -210,7 +210,7 @@ class FetchQueryResult::Output::QueryResult : public ydk::Entity
 
         class Result; //type: FetchQueryResult::Output::QueryResult::Result
 
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_netconf_query::FetchQueryResult::Output::QueryResult::Result> > result;
+        ydk::YList result;
         
 }; // FetchQueryResult::Output::QueryResult
 
@@ -234,7 +234,7 @@ class FetchQueryResult::Output::QueryResult::Result : public ydk::Entity
 
         class Select; //type: FetchQueryResult::Output::QueryResult::Result::Select
 
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_netconf_query::FetchQueryResult::Output::QueryResult::Result::Select> > select;
+        ydk::YList select;
         
 }; // FetchQueryResult::Output::QueryResult::Result
 

@@ -33,7 +33,7 @@ class Stat : public ydk::Entity
 
         class ShipComp; //type: Stat::ShipComp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_ship::Stat::ShipComp> > ship_comp;
+        ydk::YList ship_comp;
         
 }; // Stat
 
@@ -58,7 +58,7 @@ class Stat::ShipComp : public ydk::Entity
         ydk::YLeaf comp_name; //type: string
         class Process; //type: Stat::ShipComp::Process
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_ship::Stat::ShipComp::Process> > process;
+        ydk::YList process;
         
 }; // Stat::ShipComp
 
@@ -82,7 +82,7 @@ class Stat::ShipComp::Process : public ydk::Entity
         ydk::YLeaf process_name; //type: string
         class Client; //type: Stat::ShipComp::Process::Client
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_ship::Stat::ShipComp::Process::Client> > client;
+        ydk::YList client;
         
 }; // Stat::ShipComp::Process
 
@@ -106,7 +106,7 @@ class Stat::ShipComp::Process::Client : public ydk::Entity
         ydk::YLeaf client_name; //type: string
         class Cat; //type: Stat::ShipComp::Process::Client::Cat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_ship::Stat::ShipComp::Process::Client::Cat> > cat;
+        ydk::YList cat;
         
 }; // Stat::ShipComp::Process::Client
 
@@ -130,7 +130,7 @@ class Stat::ShipComp::Process::Client::Cat : public ydk::Entity
         ydk::YLeaf cat_name; //type: CatName
         class Counter32b; //type: Stat::ShipComp::Process::Client::Cat::Counter32b
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_ship::Stat::ShipComp::Process::Client::Cat::Counter32b> > counter_32b;
+        ydk::YList counter_32b;
                 class CatName;
 
 }; // Stat::ShipComp::Process::Client::Cat

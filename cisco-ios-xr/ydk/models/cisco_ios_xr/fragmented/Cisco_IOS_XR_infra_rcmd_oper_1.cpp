@@ -22,7 +22,7 @@ Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEv
     reception_time{YType::str, "reception-time"}
 {
 
-    yang_name = "trigger-lsa"; yang_parent_name = "summary-external-event-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trigger-lsa"; yang_parent_name = "summary-external-event-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TriggerLsa::~TriggerLsa()
@@ -31,6 +31,7 @@ Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEv
 
 bool Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TriggerLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| sequence_number.is_set
 	|| lsa_type.is_set
@@ -169,9 +170,12 @@ Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEv
     ldp_exit{YType::str, "ldp-exit"},
     lsd_enter{YType::str, "lsd-enter"},
     lsd_exit{YType::str, "lsd-exit"}
+        ,
+    lc_ip(this, {})
+    , lc_mpls(this, {})
 {
 
-    yang_name = "time-line"; yang_parent_name = "summary-external-event-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "time-line"; yang_parent_name = "summary-external-event-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::~TimeLine()
@@ -180,12 +184,13 @@ Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEv
 
 bool Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::has_data() const
 {
-    for (std::size_t index=0; index<lc_ip.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lc_ip.len(); index++)
     {
         if(lc_ip[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<lc_mpls.size(); index++)
+    for (std::size_t index=0; index<lc_mpls.len(); index++)
     {
         if(lc_mpls[index]->has_data())
             return true;
@@ -202,12 +207,12 @@ bool Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExter
 
 bool Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::has_operation() const
 {
-    for (std::size_t index=0; index<lc_ip.size(); index++)
+    for (std::size_t index=0; index<lc_ip.len(); index++)
     {
         if(lc_ip[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<lc_mpls.size(); index++)
+    for (std::size_t index=0; index<lc_mpls.len(); index++)
     {
         if(lc_mpls[index]->has_operation())
             return true;
@@ -253,7 +258,7 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventOff
     {
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::LcIp>();
         c->parent = this;
-        lc_ip.push_back(c);
+        lc_ip.append(c);
         return c;
     }
 
@@ -261,7 +266,7 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::SummaryExternalEventOff
     {
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::LcMpls>();
         c->parent = this;
-        lc_mpls.push_back(c);
+        lc_mpls.append(c);
         return c;
     }
 
@@ -273,7 +278,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lc_ip)
+    for (auto c : lc_ip.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -282,7 +287,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : lc_mpls)
+    for (auto c : lc_mpls.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -395,7 +400,7 @@ Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEv
     fib_complete{YType::str, "fib-complete"}
 {
 
-    yang_name = "lc-ip"; yang_parent_name = "time-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lc-ip"; yang_parent_name = "time-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::LcIp::~LcIp()
@@ -404,6 +409,7 @@ Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEv
 
 bool Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::LcIp::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| speed.is_set
 	|| fib_complete.is_set;
@@ -500,7 +506,7 @@ Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEv
     fib_complete{YType::str, "fib-complete"}
 {
 
-    yang_name = "lc-mpls"; yang_parent_name = "time-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lc-mpls"; yang_parent_name = "time-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::LcMpls::~LcMpls()
@@ -509,6 +515,7 @@ Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEv
 
 bool Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::LcMpls::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| speed.is_set
 	|| fib_complete.is_set;
@@ -608,7 +615,7 @@ Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEv
     reception_time{YType::str, "reception-time"}
 {
 
-    yang_name = "lsa-processed"; yang_parent_name = "summary-external-event-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-processed"; yang_parent_name = "summary-external-event-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::LsaProcessed::~LsaProcessed()
@@ -617,6 +624,7 @@ Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEv
 
 bool Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::LsaProcessed::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| sequence_number.is_set
 	|| lsa_type.is_set
@@ -746,9 +754,11 @@ bool Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExter
 }
 
 Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOfflines()
+    :
+    prefix_event_offline(this, {"event_id"})
 {
 
-    yang_name = "prefix-event-offlines"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-event-offlines"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::~PrefixEventOfflines()
@@ -757,7 +767,8 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::~PrefixEventOfflines()
 
 bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::has_data() const
 {
-    for (std::size_t index=0; index<prefix_event_offline.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_event_offline.len(); index++)
     {
         if(prefix_event_offline[index]->has_data())
             return true;
@@ -767,7 +778,7 @@ bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::has_data() const
 
 bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_event_offline.size(); index++)
+    for (std::size_t index=0; index<prefix_event_offline.len(); index++)
     {
         if(prefix_event_offline[index]->has_operation())
             return true;
@@ -797,7 +808,7 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::ge
     {
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline>();
         c->parent = this;
-        prefix_event_offline.push_back(c);
+        prefix_event_offline.append(c);
         return c;
     }
 
@@ -809,7 +820,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefix_event_offline)
+    for (auto c : prefix_event_offline.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -849,14 +860,18 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Prefix
     route_path_change_type{YType::enumeration, "route-path-change-type"},
     cost{YType::uint32, "cost"},
     trigger_time{YType::str, "trigger-time"}
-    	,
+        ,
     ip_convergence_time(std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::IpConvergenceTime>())
-	,mpls_convergence_time(std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::MplsConvergenceTime>())
+    , mpls_convergence_time(std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::MplsConvergenceTime>())
+    , path(this, {})
+    , trigger_lsa(this, {})
+    , time_line(this, {})
+    , lsa_processed(this, {})
 {
     ip_convergence_time->parent = this;
     mpls_convergence_time->parent = this;
 
-    yang_name = "prefix-event-offline"; yang_parent_name = "prefix-event-offlines"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-event-offline"; yang_parent_name = "prefix-event-offlines"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::~PrefixEventOffline()
@@ -865,22 +880,23 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::~Prefi
 
 bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::has_data() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<trigger_lsa.size(); index++)
+    for (std::size_t index=0; index<trigger_lsa.len(); index++)
     {
         if(trigger_lsa[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<time_line.size(); index++)
+    for (std::size_t index=0; index<time_line.len(); index++)
     {
         if(time_line[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<lsa_processed.size(); index++)
+    for (std::size_t index=0; index<lsa_processed.len(); index++)
     {
         if(lsa_processed[index]->has_data())
             return true;
@@ -903,22 +919,22 @@ bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::h
 
 bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::has_operation() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<trigger_lsa.size(); index++)
+    for (std::size_t index=0; index<trigger_lsa.len(); index++)
     {
         if(trigger_lsa[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<time_line.size(); index++)
+    for (std::size_t index=0; index<time_line.len(); index++)
     {
         if(time_line[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<lsa_processed.size(); index++)
+    for (std::size_t index=0; index<lsa_processed.len(); index++)
     {
         if(lsa_processed[index]->has_operation())
             return true;
@@ -943,7 +959,8 @@ bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::h
 std::string Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-event-offline" <<"[event-id='" <<event_id <<"']";
+    path_buffer << "prefix-event-offline";
+    ADD_KEY_TOKEN(event_id, "event-id");
     return path_buffer.str();
 }
 
@@ -992,7 +1009,7 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::Pr
     {
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path>();
         c->parent = this;
-        path.push_back(c);
+        path.append(c);
         return c;
     }
 
@@ -1000,7 +1017,7 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::Pr
     {
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TriggerLsa>();
         c->parent = this;
-        trigger_lsa.push_back(c);
+        trigger_lsa.append(c);
         return c;
     }
 
@@ -1008,7 +1025,7 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::Pr
     {
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine>();
         c->parent = this;
-        time_line.push_back(c);
+        time_line.append(c);
         return c;
     }
 
@@ -1016,7 +1033,7 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::Pr
     {
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::LsaProcessed>();
         c->parent = this;
-        lsa_processed.push_back(c);
+        lsa_processed.append(c);
         return c;
     }
 
@@ -1038,7 +1055,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : path)
+    for (auto c : path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1047,7 +1064,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : trigger_lsa)
+    for (auto c : trigger_lsa.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1056,7 +1073,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : time_line)
+    for (auto c : time_line.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1065,7 +1082,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : lsa_processed)
+    for (auto c : lsa_processed.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1219,7 +1236,7 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::IpConv
     fastest_node_name{YType::str, "fastest-node-name"}
 {
 
-    yang_name = "ip-convergence-time"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-convergence-time"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::IpConvergenceTime::~IpConvergenceTime()
@@ -1228,6 +1245,7 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::IpConv
 
 bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::IpConvergenceTime::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum_time.is_set
 	|| maximum_time.is_set
 	|| slowest_node_name.is_set
@@ -1338,7 +1356,7 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::MplsCo
     fastest_node_name{YType::str, "fastest-node-name"}
 {
 
-    yang_name = "mpls-convergence-time"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-convergence-time"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::MplsConvergenceTime::~MplsConvergenceTime()
@@ -1347,6 +1365,7 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::MplsCo
 
 bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::MplsConvergenceTime::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum_time.is_set
 	|| maximum_time.is_set
 	|| slowest_node_name.is_set
@@ -1455,9 +1474,11 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::
     neighbour_address{YType::str, "neighbour-address"},
     change_type{YType::enumeration, "change-type"},
     path_metric{YType::uint32, "path-metric"}
+        ,
+    lfa_path(this, {})
 {
 
-    yang_name = "path"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::~Path()
@@ -1466,7 +1487,8 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::
 
 bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::has_data() const
 {
-    for (std::size_t index=0; index<lfa_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lfa_path.len(); index++)
     {
         if(lfa_path[index]->has_data())
             return true;
@@ -1479,7 +1501,7 @@ bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::P
 
 bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::has_operation() const
 {
-    for (std::size_t index=0; index<lfa_path.size(); index++)
+    for (std::size_t index=0; index<lfa_path.len(); index++)
     {
         if(lfa_path[index]->has_operation())
             return true;
@@ -1517,7 +1539,7 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::Pr
     {
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::LfaPath>();
         c->parent = this;
-        lfa_path.push_back(c);
+        lfa_path.append(c);
         return c;
     }
 
@@ -1529,7 +1551,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lfa_path)
+    for (auto c : lfa_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1605,7 +1627,7 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::
     remote_node_id{YType::str, "remote-node-id"}
 {
 
-    yang_name = "lfa-path"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lfa-path"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::LfaPath::~LfaPath()
@@ -1614,6 +1636,7 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::
 
 bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::LfaPath::has_data() const
 {
+    if (is_presence_container) return true;
     return lfa_type.is_set
 	|| interface_name.is_set
 	|| neighbour_address.is_set
@@ -1752,7 +1775,7 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Trigge
     reception_time{YType::str, "reception-time"}
 {
 
-    yang_name = "trigger-lsa"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trigger-lsa"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TriggerLsa::~TriggerLsa()
@@ -1761,6 +1784,7 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Trigge
 
 bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TriggerLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| sequence_number.is_set
 	|| lsa_type.is_set
@@ -1899,9 +1923,12 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLi
     ldp_exit{YType::str, "ldp-exit"},
     lsd_enter{YType::str, "lsd-enter"},
     lsd_exit{YType::str, "lsd-exit"}
+        ,
+    lc_ip(this, {})
+    , lc_mpls(this, {})
 {
 
-    yang_name = "time-line"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "time-line"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::~TimeLine()
@@ -1910,12 +1937,13 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLi
 
 bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::has_data() const
 {
-    for (std::size_t index=0; index<lc_ip.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lc_ip.len(); index++)
     {
         if(lc_ip[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<lc_mpls.size(); index++)
+    for (std::size_t index=0; index<lc_mpls.len(); index++)
     {
         if(lc_mpls[index]->has_data())
             return true;
@@ -1932,12 +1960,12 @@ bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::T
 
 bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::has_operation() const
 {
-    for (std::size_t index=0; index<lc_ip.size(); index++)
+    for (std::size_t index=0; index<lc_ip.len(); index++)
     {
         if(lc_ip[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<lc_mpls.size(); index++)
+    for (std::size_t index=0; index<lc_mpls.len(); index++)
     {
         if(lc_mpls[index]->has_operation())
             return true;
@@ -1983,7 +2011,7 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::Pr
     {
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcIp>();
         c->parent = this;
-        lc_ip.push_back(c);
+        lc_ip.append(c);
         return c;
     }
 
@@ -1991,7 +2019,7 @@ std::shared_ptr<Entity> Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::Pr
     {
         auto c = std::make_shared<Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcMpls>();
         c->parent = this;
-        lc_mpls.push_back(c);
+        lc_mpls.append(c);
         return c;
     }
 
@@ -2003,7 +2031,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lc_ip)
+    for (auto c : lc_ip.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2012,7 +2040,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ospf::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : lc_mpls)
+    for (auto c : lc_mpls.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2125,7 +2153,7 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLi
     fib_complete{YType::str, "fib-complete"}
 {
 
-    yang_name = "lc-ip"; yang_parent_name = "time-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lc-ip"; yang_parent_name = "time-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcIp::~LcIp()
@@ -2134,6 +2162,7 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLi
 
 bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcIp::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| speed.is_set
 	|| fib_complete.is_set;
@@ -2230,7 +2259,7 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLi
     fib_complete{YType::str, "fib-complete"}
 {
 
-    yang_name = "lc-mpls"; yang_parent_name = "time-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lc-mpls"; yang_parent_name = "time-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcMpls::~LcMpls()
@@ -2239,6 +2268,7 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLi
 
 bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcMpls::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| speed.is_set
 	|| fib_complete.is_set;
@@ -2338,7 +2368,7 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::LsaPro
     reception_time{YType::str, "reception-time"}
 {
 
-    yang_name = "lsa-processed"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-processed"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::LsaProcessed::~LsaProcessed()
@@ -2347,6 +2377,7 @@ Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::LsaPro
 
 bool Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::LsaProcessed::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| sequence_number.is_set
 	|| lsa_type.is_set
@@ -2495,7 +2526,7 @@ Rcmd::Ospf::Instances::Instance::SummaryExternalEventStatistics::SummaryExternal
     external_low{YType::uint32, "external-low"}
 {
 
-    yang_name = "summary-external-event-statistics"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary-external-event-statistics"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ospf::Instances::Instance::SummaryExternalEventStatistics::~SummaryExternalEventStatistics()
@@ -2504,6 +2535,7 @@ Rcmd::Ospf::Instances::Instance::SummaryExternalEventStatistics::~SummaryExterna
 
 bool Rcmd::Ospf::Instances::Instance::SummaryExternalEventStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return inter_area_routes.is_set
 	|| inter_area_added.is_set
 	|| inter_area_modified.is_set
@@ -2765,12 +2797,12 @@ bool Rcmd::Ospf::Instances::Instance::SummaryExternalEventStatistics::has_leaf_o
 Rcmd::Server::Server()
     :
     normal(std::make_shared<Rcmd::Server::Normal>())
-	,detail(std::make_shared<Rcmd::Server::Detail>())
+    , detail(std::make_shared<Rcmd::Server::Detail>())
 {
     normal->parent = this;
     detail->parent = this;
 
-    yang_name = "server"; yang_parent_name = "rcmd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "server"; yang_parent_name = "rcmd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Server::~Server()
@@ -2779,6 +2811,7 @@ Rcmd::Server::~Server()
 
 bool Rcmd::Server::has_data() const
 {
+    if (is_presence_container) return true;
     return (normal !=  nullptr && normal->has_data())
 	|| (detail !=  nullptr && detail->has_data());
 }
@@ -2896,9 +2929,12 @@ Rcmd::Server::Normal::Normal()
     archive_count{YType::uint32, "archive-count"},
     diagnostics_archive_path{YType::str, "diagnostics-archive-path"},
     diagnostics_archive_node{YType::str, "diagnostics-archive-node"}
+        ,
+    protocol_config(this, {})
+    , server_detail(this, {})
 {
 
-    yang_name = "normal"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "normal"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Server::Normal::~Normal()
@@ -2907,12 +2943,13 @@ Rcmd::Server::Normal::~Normal()
 
 bool Rcmd::Server::Normal::has_data() const
 {
-    for (std::size_t index=0; index<protocol_config.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<protocol_config.len(); index++)
     {
         if(protocol_config[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<server_detail.size(); index++)
+    for (std::size_t index=0; index<server_detail.len(); index++)
     {
         if(server_detail[index]->has_data())
             return true;
@@ -2947,12 +2984,12 @@ bool Rcmd::Server::Normal::has_data() const
 
 bool Rcmd::Server::Normal::has_operation() const
 {
-    for (std::size_t index=0; index<protocol_config.size(); index++)
+    for (std::size_t index=0; index<protocol_config.len(); index++)
     {
         if(protocol_config[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<server_detail.size(); index++)
+    for (std::size_t index=0; index<server_detail.len(); index++)
     {
         if(server_detail[index]->has_operation())
             return true;
@@ -3041,7 +3078,7 @@ std::shared_ptr<Entity> Rcmd::Server::Normal::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<Rcmd::Server::Normal::ProtocolConfig>();
         c->parent = this;
-        protocol_config.push_back(c);
+        protocol_config.append(c);
         return c;
     }
 
@@ -3049,7 +3086,7 @@ std::shared_ptr<Entity> Rcmd::Server::Normal::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<Rcmd::Server::Normal::ServerDetail>();
         c->parent = this;
-        server_detail.push_back(c);
+        server_detail.append(c);
         return c;
     }
 
@@ -3061,7 +3098,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::Normal::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : protocol_config)
+    for (auto c : protocol_config.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3070,7 +3107,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::Normal::get_childre
     }
 
     count = 0;
-    for (auto const & c : server_detail)
+    for (auto c : server_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3359,9 +3396,11 @@ bool Rcmd::Server::Normal::has_leaf_or_child_of_name(const std::string & name) c
 Rcmd::Server::Normal::ProtocolConfig::ProtocolConfig()
     :
     protocol_name{YType::str, "protocol-name"}
+        ,
+    priority(this, {})
 {
 
-    yang_name = "protocol-config"; yang_parent_name = "normal"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protocol-config"; yang_parent_name = "normal"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Server::Normal::ProtocolConfig::~ProtocolConfig()
@@ -3370,7 +3409,8 @@ Rcmd::Server::Normal::ProtocolConfig::~ProtocolConfig()
 
 bool Rcmd::Server::Normal::ProtocolConfig::has_data() const
 {
-    for (std::size_t index=0; index<priority.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<priority.len(); index++)
     {
         if(priority[index]->has_data())
             return true;
@@ -3380,7 +3420,7 @@ bool Rcmd::Server::Normal::ProtocolConfig::has_data() const
 
 bool Rcmd::Server::Normal::ProtocolConfig::has_operation() const
 {
-    for (std::size_t index=0; index<priority.size(); index++)
+    for (std::size_t index=0; index<priority.len(); index++)
     {
         if(priority[index]->has_operation())
             return true;
@@ -3419,7 +3459,7 @@ std::shared_ptr<Entity> Rcmd::Server::Normal::ProtocolConfig::get_child_by_name(
     {
         auto c = std::make_shared<Rcmd::Server::Normal::ProtocolConfig::Priority>();
         c->parent = this;
-        priority.push_back(c);
+        priority.append(c);
         return c;
     }
 
@@ -3431,7 +3471,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::Normal::ProtocolCon
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : priority)
+    for (auto c : priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3474,7 +3514,7 @@ Rcmd::Server::Normal::ProtocolConfig::Priority::Priority()
     disable{YType::enumeration, "disable"}
 {
 
-    yang_name = "priority"; yang_parent_name = "protocol-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "priority"; yang_parent_name = "protocol-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Server::Normal::ProtocolConfig::Priority::~Priority()
@@ -3483,6 +3523,7 @@ Rcmd::Server::Normal::ProtocolConfig::Priority::~Priority()
 
 bool Rcmd::Server::Normal::ProtocolConfig::Priority::has_data() const
 {
+    if (is_presence_container) return true;
     return priority_name.is_set
 	|| threshold.is_set
 	|| disable.is_set;
@@ -3583,9 +3624,11 @@ Rcmd::Server::Normal::ServerDetail::ServerDetail()
     :
     overload_suspend{YType::uint32, "overload-suspend"},
     memory_suspend{YType::uint32, "memory-suspend"}
+        ,
+    trace_information(this, {})
 {
 
-    yang_name = "server-detail"; yang_parent_name = "normal"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "server-detail"; yang_parent_name = "normal"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Server::Normal::ServerDetail::~ServerDetail()
@@ -3594,7 +3637,8 @@ Rcmd::Server::Normal::ServerDetail::~ServerDetail()
 
 bool Rcmd::Server::Normal::ServerDetail::has_data() const
 {
-    for (std::size_t index=0; index<trace_information.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace_information.len(); index++)
     {
         if(trace_information[index]->has_data())
             return true;
@@ -3605,7 +3649,7 @@ bool Rcmd::Server::Normal::ServerDetail::has_data() const
 
 bool Rcmd::Server::Normal::ServerDetail::has_operation() const
 {
-    for (std::size_t index=0; index<trace_information.size(); index++)
+    for (std::size_t index=0; index<trace_information.len(); index++)
     {
         if(trace_information[index]->has_operation())
             return true;
@@ -3646,7 +3690,7 @@ std::shared_ptr<Entity> Rcmd::Server::Normal::ServerDetail::get_child_by_name(co
     {
         auto c = std::make_shared<Rcmd::Server::Normal::ServerDetail::TraceInformation>();
         c->parent = this;
-        trace_information.push_back(c);
+        trace_information.append(c);
         return c;
     }
 
@@ -3658,7 +3702,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::Normal::ServerDetai
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace_information)
+    for (auto c : trace_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3712,7 +3756,7 @@ Rcmd::Server::Normal::ServerDetail::TraceInformation::TraceInformation()
     error_stats{YType::uint32, "error-stats"}
 {
 
-    yang_name = "trace-information"; yang_parent_name = "server-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace-information"; yang_parent_name = "server-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Server::Normal::ServerDetail::TraceInformation::~TraceInformation()
@@ -3721,6 +3765,7 @@ Rcmd::Server::Normal::ServerDetail::TraceInformation::~TraceInformation()
 
 bool Rcmd::Server::Normal::ServerDetail::TraceInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return trace_name.is_set
 	|| total_stats.is_set
 	|| last_run_stats.is_set
@@ -3858,9 +3903,12 @@ Rcmd::Server::Detail::Detail()
     archive_count{YType::uint32, "archive-count"},
     diagnostics_archive_path{YType::str, "diagnostics-archive-path"},
     diagnostics_archive_node{YType::str, "diagnostics-archive-node"}
+        ,
+    protocol_config(this, {})
+    , server_detail(this, {})
 {
 
-    yang_name = "detail"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Server::Detail::~Detail()
@@ -3869,12 +3917,13 @@ Rcmd::Server::Detail::~Detail()
 
 bool Rcmd::Server::Detail::has_data() const
 {
-    for (std::size_t index=0; index<protocol_config.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<protocol_config.len(); index++)
     {
         if(protocol_config[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<server_detail.size(); index++)
+    for (std::size_t index=0; index<server_detail.len(); index++)
     {
         if(server_detail[index]->has_data())
             return true;
@@ -3909,12 +3958,12 @@ bool Rcmd::Server::Detail::has_data() const
 
 bool Rcmd::Server::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<protocol_config.size(); index++)
+    for (std::size_t index=0; index<protocol_config.len(); index++)
     {
         if(protocol_config[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<server_detail.size(); index++)
+    for (std::size_t index=0; index<server_detail.len(); index++)
     {
         if(server_detail[index]->has_operation())
             return true;
@@ -4003,7 +4052,7 @@ std::shared_ptr<Entity> Rcmd::Server::Detail::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<Rcmd::Server::Detail::ProtocolConfig>();
         c->parent = this;
-        protocol_config.push_back(c);
+        protocol_config.append(c);
         return c;
     }
 
@@ -4011,7 +4060,7 @@ std::shared_ptr<Entity> Rcmd::Server::Detail::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<Rcmd::Server::Detail::ServerDetail>();
         c->parent = this;
-        server_detail.push_back(c);
+        server_detail.append(c);
         return c;
     }
 
@@ -4023,7 +4072,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::Detail::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : protocol_config)
+    for (auto c : protocol_config.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4032,7 +4081,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::Detail::get_childre
     }
 
     count = 0;
-    for (auto const & c : server_detail)
+    for (auto c : server_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4321,9 +4370,11 @@ bool Rcmd::Server::Detail::has_leaf_or_child_of_name(const std::string & name) c
 Rcmd::Server::Detail::ProtocolConfig::ProtocolConfig()
     :
     protocol_name{YType::str, "protocol-name"}
+        ,
+    priority(this, {})
 {
 
-    yang_name = "protocol-config"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protocol-config"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Server::Detail::ProtocolConfig::~ProtocolConfig()
@@ -4332,7 +4383,8 @@ Rcmd::Server::Detail::ProtocolConfig::~ProtocolConfig()
 
 bool Rcmd::Server::Detail::ProtocolConfig::has_data() const
 {
-    for (std::size_t index=0; index<priority.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<priority.len(); index++)
     {
         if(priority[index]->has_data())
             return true;
@@ -4342,7 +4394,7 @@ bool Rcmd::Server::Detail::ProtocolConfig::has_data() const
 
 bool Rcmd::Server::Detail::ProtocolConfig::has_operation() const
 {
-    for (std::size_t index=0; index<priority.size(); index++)
+    for (std::size_t index=0; index<priority.len(); index++)
     {
         if(priority[index]->has_operation())
             return true;
@@ -4381,7 +4433,7 @@ std::shared_ptr<Entity> Rcmd::Server::Detail::ProtocolConfig::get_child_by_name(
     {
         auto c = std::make_shared<Rcmd::Server::Detail::ProtocolConfig::Priority>();
         c->parent = this;
-        priority.push_back(c);
+        priority.append(c);
         return c;
     }
 
@@ -4393,7 +4445,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::Detail::ProtocolCon
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : priority)
+    for (auto c : priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4436,7 +4488,7 @@ Rcmd::Server::Detail::ProtocolConfig::Priority::Priority()
     disable{YType::enumeration, "disable"}
 {
 
-    yang_name = "priority"; yang_parent_name = "protocol-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "priority"; yang_parent_name = "protocol-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Server::Detail::ProtocolConfig::Priority::~Priority()
@@ -4445,6 +4497,7 @@ Rcmd::Server::Detail::ProtocolConfig::Priority::~Priority()
 
 bool Rcmd::Server::Detail::ProtocolConfig::Priority::has_data() const
 {
+    if (is_presence_container) return true;
     return priority_name.is_set
 	|| threshold.is_set
 	|| disable.is_set;
@@ -4545,9 +4598,11 @@ Rcmd::Server::Detail::ServerDetail::ServerDetail()
     :
     overload_suspend{YType::uint32, "overload-suspend"},
     memory_suspend{YType::uint32, "memory-suspend"}
+        ,
+    trace_information(this, {})
 {
 
-    yang_name = "server-detail"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "server-detail"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Server::Detail::ServerDetail::~ServerDetail()
@@ -4556,7 +4611,8 @@ Rcmd::Server::Detail::ServerDetail::~ServerDetail()
 
 bool Rcmd::Server::Detail::ServerDetail::has_data() const
 {
-    for (std::size_t index=0; index<trace_information.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace_information.len(); index++)
     {
         if(trace_information[index]->has_data())
             return true;
@@ -4567,7 +4623,7 @@ bool Rcmd::Server::Detail::ServerDetail::has_data() const
 
 bool Rcmd::Server::Detail::ServerDetail::has_operation() const
 {
-    for (std::size_t index=0; index<trace_information.size(); index++)
+    for (std::size_t index=0; index<trace_information.len(); index++)
     {
         if(trace_information[index]->has_operation())
             return true;
@@ -4608,7 +4664,7 @@ std::shared_ptr<Entity> Rcmd::Server::Detail::ServerDetail::get_child_by_name(co
     {
         auto c = std::make_shared<Rcmd::Server::Detail::ServerDetail::TraceInformation>();
         c->parent = this;
-        trace_information.push_back(c);
+        trace_information.append(c);
         return c;
     }
 
@@ -4620,7 +4676,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Server::Detail::ServerDetai
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace_information)
+    for (auto c : trace_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4674,7 +4730,7 @@ Rcmd::Server::Detail::ServerDetail::TraceInformation::TraceInformation()
     error_stats{YType::uint32, "error-stats"}
 {
 
-    yang_name = "trace-information"; yang_parent_name = "server-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace-information"; yang_parent_name = "server-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Server::Detail::ServerDetail::TraceInformation::~TraceInformation()
@@ -4683,6 +4739,7 @@ Rcmd::Server::Detail::ServerDetail::TraceInformation::~TraceInformation()
 
 bool Rcmd::Server::Detail::ServerDetail::TraceInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return trace_name.is_set
 	|| total_stats.is_set
 	|| last_run_stats.is_set
@@ -4793,9 +4850,11 @@ bool Rcmd::Server::Detail::ServerDetail::TraceInformation::has_leaf_or_child_of_
 }
 
 Rcmd::Node::Node()
+    :
+    node_information(this, {})
 {
 
-    yang_name = "node"; yang_parent_name = "rcmd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "rcmd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Node::~Node()
@@ -4804,7 +4863,8 @@ Rcmd::Node::~Node()
 
 bool Rcmd::Node::has_data() const
 {
-    for (std::size_t index=0; index<node_information.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node_information.len(); index++)
     {
         if(node_information[index]->has_data())
             return true;
@@ -4814,7 +4874,7 @@ bool Rcmd::Node::has_data() const
 
 bool Rcmd::Node::has_operation() const
 {
-    for (std::size_t index=0; index<node_information.size(); index++)
+    for (std::size_t index=0; index<node_information.len(); index++)
     {
         if(node_information[index]->has_operation())
             return true;
@@ -4851,7 +4911,7 @@ std::shared_ptr<Entity> Rcmd::Node::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Rcmd::Node::NodeInformation>();
         c->parent = this;
-        node_information.push_back(c);
+        node_information.append(c);
         return c;
     }
 
@@ -4863,7 +4923,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Node::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node_information)
+    for (auto c : node_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4905,7 +4965,7 @@ Rcmd::Node::NodeInformation::NodeInformation()
     redundancy_state{YType::uint32, "redundancy-state"}
 {
 
-    yang_name = "node-information"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node-information"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Node::NodeInformation::~NodeInformation()
@@ -4914,6 +4974,7 @@ Rcmd::Node::NodeInformation::~NodeInformation()
 
 bool Rcmd::Node::NodeInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| node_name.is_set
 	|| rack_id.is_set
@@ -5133,7 +5194,7 @@ Rcmd::Isis::Isis()
 {
     instances->parent = this;
 
-    yang_name = "isis"; yang_parent_name = "rcmd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "isis"; yang_parent_name = "rcmd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Isis::~Isis()
@@ -5142,6 +5203,7 @@ Rcmd::Isis::~Isis()
 
 bool Rcmd::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return (instances !=  nullptr && instances->has_data());
 }
 
@@ -5216,9 +5278,11 @@ bool Rcmd::Isis::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Rcmd::Isis::Instances::Instances()
+    :
+    instance(this, {"instance_name"})
 {
 
-    yang_name = "instances"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instances"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Isis::Instances::~Instances()
@@ -5227,7 +5291,8 @@ Rcmd::Isis::Instances::~Instances()
 
 bool Rcmd::Isis::Instances::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -5237,7 +5302,7 @@ bool Rcmd::Isis::Instances::has_data() const
 
 bool Rcmd::Isis::Instances::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -5274,7 +5339,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -5286,7 +5351,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5315,15 +5380,15 @@ bool Rcmd::Isis::Instances::has_leaf_or_child_of_name(const std::string & name) 
 Rcmd::Isis::Instances::Instance::Instance()
     :
     instance_name{YType::str, "instance-name"}
-    	,
+        ,
     ipfrr_event_summaries(std::make_shared<Rcmd::Isis::Instances::Instance::IpfrrEventSummaries>())
-	,prefix_event_statistics(std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventStatistics>())
-	,spf_run_summaries(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries>())
-	,ipfrr_event_offlines(std::make_shared<Rcmd::Isis::Instances::Instance::IpfrrEventOfflines>())
-	,spf_run_offlines(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines>())
-	,prefix_event_summaries(std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventSummaries>())
-	,prefix_event_offlines(std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventOfflines>())
-	,lsp_regenerateds(std::make_shared<Rcmd::Isis::Instances::Instance::LspRegenerateds>())
+    , prefix_event_statistics(std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventStatistics>())
+    , spf_run_summaries(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries>())
+    , ipfrr_event_offlines(std::make_shared<Rcmd::Isis::Instances::Instance::IpfrrEventOfflines>())
+    , spf_run_offlines(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines>())
+    , prefix_event_summaries(std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventSummaries>())
+    , prefix_event_offlines(std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventOfflines>())
+    , lsp_regenerateds(std::make_shared<Rcmd::Isis::Instances::Instance::LspRegenerateds>())
 {
     ipfrr_event_summaries->parent = this;
     prefix_event_statistics->parent = this;
@@ -5334,7 +5399,7 @@ Rcmd::Isis::Instances::Instance::Instance()
     prefix_event_offlines->parent = this;
     lsp_regenerateds->parent = this;
 
-    yang_name = "instance"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Isis::Instances::Instance::~Instance()
@@ -5343,6 +5408,7 @@ Rcmd::Isis::Instances::Instance::~Instance()
 
 bool Rcmd::Isis::Instances::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| (ipfrr_event_summaries !=  nullptr && ipfrr_event_summaries->has_data())
 	|| (prefix_event_statistics !=  nullptr && prefix_event_statistics->has_data())
@@ -5378,7 +5444,8 @@ std::string Rcmd::Isis::Instances::Instance::get_absolute_path() const
 std::string Rcmd::Isis::Instances::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance" <<"[instance-name='" <<instance_name <<"']";
+    path_buffer << "instance";
+    ADD_KEY_TOKEN(instance_name, "instance-name");
     return path_buffer.str();
 }
 
@@ -5542,9 +5609,11 @@ bool Rcmd::Isis::Instances::Instance::has_leaf_or_child_of_name(const std::strin
 }
 
 Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummaries()
+    :
+    ipfrr_event_summary(this, {"event_id"})
 {
 
-    yang_name = "ipfrr-event-summaries"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipfrr-event-summaries"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::~IpfrrEventSummaries()
@@ -5553,7 +5622,8 @@ Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::~IpfrrEventSummaries()
 
 bool Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::has_data() const
 {
-    for (std::size_t index=0; index<ipfrr_event_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipfrr_event_summary.len(); index++)
     {
         if(ipfrr_event_summary[index]->has_data())
             return true;
@@ -5563,7 +5633,7 @@ bool Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::has_data() const
 
 bool Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<ipfrr_event_summary.size(); index++)
+    for (std::size_t index=0; index<ipfrr_event_summary.len(); index++)
     {
         if(ipfrr_event_summary[index]->has_operation())
             return true;
@@ -5593,7 +5663,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::ge
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary>();
         c->parent = this;
-        ipfrr_event_summary.push_back(c);
+        ipfrr_event_summary.append(c);
         return c;
     }
 
@@ -5605,7 +5675,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipfrr_event_summary)
+    for (auto c : ipfrr_event_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5645,9 +5715,12 @@ Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrEv
     fully_protected_routes{YType::uint32, "fully-protected-routes"},
     partially_protected_routes{YType::uint32, "partially-protected-routes"},
     coverage{YType::str, "coverage"}
+        ,
+    ipfrr_statistic(this, {})
+    , remote_node(this, {})
 {
 
-    yang_name = "ipfrr-event-summary"; yang_parent_name = "ipfrr-event-summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipfrr-event-summary"; yang_parent_name = "ipfrr-event-summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::~IpfrrEventSummary()
@@ -5656,12 +5729,13 @@ Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::~IpfrrE
 
 bool Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::has_data() const
 {
-    for (std::size_t index=0; index<ipfrr_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipfrr_statistic.len(); index++)
     {
         if(ipfrr_statistic[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<remote_node.size(); index++)
+    for (std::size_t index=0; index<remote_node.len(); index++)
     {
         if(remote_node[index]->has_data())
             return true;
@@ -5682,12 +5756,12 @@ bool Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::ha
 
 bool Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::has_operation() const
 {
-    for (std::size_t index=0; index<ipfrr_statistic.size(); index++)
+    for (std::size_t index=0; index<ipfrr_statistic.len(); index++)
     {
         if(ipfrr_statistic[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<remote_node.size(); index++)
+    for (std::size_t index=0; index<remote_node.len(); index++)
     {
         if(remote_node[index]->has_operation())
             return true;
@@ -5710,7 +5784,8 @@ bool Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::ha
 std::string Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipfrr-event-summary" <<"[event-id='" <<event_id <<"']";
+    path_buffer << "ipfrr-event-summary";
+    ADD_KEY_TOKEN(event_id, "event-id");
     return path_buffer.str();
 }
 
@@ -5741,7 +5816,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::Ip
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic>();
         c->parent = this;
-        ipfrr_statistic.push_back(c);
+        ipfrr_statistic.append(c);
         return c;
     }
 
@@ -5749,7 +5824,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::Ip
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode>();
         c->parent = this;
-        remote_node.push_back(c);
+        remote_node.append(c);
         return c;
     }
 
@@ -5761,7 +5836,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipfrr_statistic)
+    for (auto c : ipfrr_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5770,7 +5845,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : remote_node)
+    for (auto c : remote_node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5928,7 +6003,7 @@ Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrSt
     below_threshold{YType::boolean, "below-threshold"}
 {
 
-    yang_name = "ipfrr-statistic"; yang_parent_name = "ipfrr-event-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipfrr-statistic"; yang_parent_name = "ipfrr-event-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic::~IpfrrStatistic()
@@ -5937,6 +6012,7 @@ Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrSt
 
 bool Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return priority.is_set
 	|| total_routes.is_set
 	|| fully_protected_routes.is_set
@@ -6098,9 +6174,11 @@ Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteN
     neighbour_address{YType::str, "neighbour-address"},
     path_count{YType::uint32, "path-count"},
     in_use_time{YType::str, "in-use-time"}
+        ,
+    primary_path(this, {})
 {
 
-    yang_name = "remote-node"; yang_parent_name = "ipfrr-event-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-node"; yang_parent_name = "ipfrr-event-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::~RemoteNode()
@@ -6109,7 +6187,8 @@ Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteN
 
 bool Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::has_data() const
 {
-    for (std::size_t index=0; index<primary_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<primary_path.len(); index++)
     {
         if(primary_path[index]->has_data())
             return true;
@@ -6123,7 +6202,7 @@ bool Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::Re
 
 bool Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::has_operation() const
 {
-    for (std::size_t index=0; index<primary_path.size(); index++)
+    for (std::size_t index=0; index<primary_path.len(); index++)
     {
         if(primary_path[index]->has_operation())
             return true;
@@ -6163,7 +6242,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::Ip
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::PrimaryPath>();
         c->parent = this;
-        primary_path.push_back(c);
+        primary_path.append(c);
         return c;
     }
 
@@ -6175,7 +6254,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : primary_path)
+    for (auto c : primary_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6257,7 +6336,7 @@ Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteN
     neighbour_address{YType::str, "neighbour-address"}
 {
 
-    yang_name = "primary-path"; yang_parent_name = "remote-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "primary-path"; yang_parent_name = "remote-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::PrimaryPath::~PrimaryPath()
@@ -6266,6 +6345,7 @@ Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteN
 
 bool Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::PrimaryPath::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| neighbour_address.is_set;
 }
@@ -6343,9 +6423,11 @@ bool Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::Re
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventStatistics::PrefixEventStatistics()
+    :
+    prefix_event_statistic(this, {"prefix_info"})
 {
 
-    yang_name = "prefix-event-statistics"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-event-statistics"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventStatistics::~PrefixEventStatistics()
@@ -6354,7 +6436,8 @@ Rcmd::Isis::Instances::Instance::PrefixEventStatistics::~PrefixEventStatistics()
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventStatistics::has_data() const
 {
-    for (std::size_t index=0; index<prefix_event_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_event_statistic.len(); index++)
     {
         if(prefix_event_statistic[index]->has_data())
             return true;
@@ -6364,7 +6447,7 @@ bool Rcmd::Isis::Instances::Instance::PrefixEventStatistics::has_data() const
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_event_statistic.size(); index++)
+    for (std::size_t index=0; index<prefix_event_statistic.len(); index++)
     {
         if(prefix_event_statistic[index]->has_operation())
             return true;
@@ -6394,7 +6477,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::PrefixEventStatistics::
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic>();
         c->parent = this;
-        prefix_event_statistic.push_back(c);
+        prefix_event_statistic.append(c);
         return c;
     }
 
@@ -6406,7 +6489,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefix_event_statistic)
+    for (auto c : prefix_event_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6452,7 +6535,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic::Pr
     threshold_exceed_count{YType::uint32, "threshold-exceed-count"}
 {
 
-    yang_name = "prefix-event-statistic"; yang_parent_name = "prefix-event-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-event-statistic"; yang_parent_name = "prefix-event-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic::~PrefixEventStatistic()
@@ -6461,6 +6544,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic::~P
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_info.is_set
 	|| prefix.is_set
 	|| prefix_lenth.is_set
@@ -6503,7 +6587,8 @@ bool Rcmd::Isis::Instances::Instance::PrefixEventStatistics::PrefixEventStatisti
 std::string Rcmd::Isis::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-event-statistic" <<"[prefix-info='" <<prefix_info <<"']";
+    path_buffer << "prefix-event-statistic";
+    ADD_KEY_TOKEN(prefix_info, "prefix-info");
     return path_buffer.str();
 }
 
@@ -6720,9 +6805,11 @@ bool Rcmd::Isis::Instances::Instance::PrefixEventStatistics::PrefixEventStatisti
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummaries()
+    :
+    spf_run_summary(this, {"spf_run_number"})
 {
 
-    yang_name = "spf-run-summaries"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spf-run-summaries"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::~SpfRunSummaries()
@@ -6731,7 +6818,8 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::~SpfRunSummaries()
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::has_data() const
 {
-    for (std::size_t index=0; index<spf_run_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<spf_run_summary.len(); index++)
     {
         if(spf_run_summary[index]->has_data())
             return true;
@@ -6741,7 +6829,7 @@ bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::has_data() const
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<spf_run_summary.size(); index++)
+    for (std::size_t index=0; index<spf_run_summary.len(); index++)
     {
         if(spf_run_summary[index]->has_operation())
             return true;
@@ -6771,7 +6859,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunSummaries::get_ch
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary>();
         c->parent = this;
-        spf_run_summary.push_back(c);
+        spf_run_summary.append(c);
         return c;
     }
 
@@ -6783,7 +6871,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : spf_run_summary)
+    for (auto c : spf_run_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6815,14 +6903,18 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfRunSummary()
     start_time{YType::str, "start-time"},
     wait_time{YType::uint32, "wait-time"},
     reason{YType::str, "reason"}
-    	,
+        ,
     spf_summary(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary>())
-	,node_statistics(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::NodeStatistics>())
+    , node_statistics(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::NodeStatistics>())
+    , trigger_lsp(this, {})
+    , priority(this, {})
+    , lsp_processed(this, {})
+    , lsp_regenerated(this, {})
 {
     spf_summary->parent = this;
     node_statistics->parent = this;
 
-    yang_name = "spf-run-summary"; yang_parent_name = "spf-run-summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spf-run-summary"; yang_parent_name = "spf-run-summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::~SpfRunSummary()
@@ -6831,22 +6923,23 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::~SpfRunSummary(
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::has_data() const
 {
-    for (std::size_t index=0; index<trigger_lsp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trigger_lsp.len(); index++)
     {
         if(trigger_lsp[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<priority.size(); index++)
+    for (std::size_t index=0; index<priority.len(); index++)
     {
         if(priority[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<lsp_processed.size(); index++)
+    for (std::size_t index=0; index<lsp_processed.len(); index++)
     {
         if(lsp_processed[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<lsp_regenerated.size(); index++)
+    for (std::size_t index=0; index<lsp_regenerated.len(); index++)
     {
         if(lsp_regenerated[index]->has_data())
             return true;
@@ -6861,22 +6954,22 @@ bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::has_data()
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::has_operation() const
 {
-    for (std::size_t index=0; index<trigger_lsp.size(); index++)
+    for (std::size_t index=0; index<trigger_lsp.len(); index++)
     {
         if(trigger_lsp[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<priority.size(); index++)
+    for (std::size_t index=0; index<priority.len(); index++)
     {
         if(priority[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<lsp_processed.size(); index++)
+    for (std::size_t index=0; index<lsp_processed.len(); index++)
     {
         if(lsp_processed[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<lsp_regenerated.size(); index++)
+    for (std::size_t index=0; index<lsp_regenerated.len(); index++)
     {
         if(lsp_regenerated[index]->has_operation())
             return true;
@@ -6893,7 +6986,8 @@ bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::has_operat
 std::string Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "spf-run-summary" <<"[spf-run-number='" <<spf_run_number <<"']";
+    path_buffer << "spf-run-summary";
+    ADD_KEY_TOKEN(spf_run_number, "spf-run-number");
     return path_buffer.str();
 }
 
@@ -6934,7 +7028,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRun
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::TriggerLsp>();
         c->parent = this;
-        trigger_lsp.push_back(c);
+        trigger_lsp.append(c);
         return c;
     }
 
@@ -6942,7 +7036,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRun
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority>();
         c->parent = this;
-        priority.push_back(c);
+        priority.append(c);
         return c;
     }
 
@@ -6950,7 +7044,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRun
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspProcessed>();
         c->parent = this;
-        lsp_processed.push_back(c);
+        lsp_processed.append(c);
         return c;
     }
 
@@ -6958,7 +7052,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRun
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspRegenerated>();
         c->parent = this;
-        lsp_regenerated.push_back(c);
+        lsp_regenerated.append(c);
         return c;
     }
 
@@ -6980,7 +7074,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : trigger_lsp)
+    for (auto c : trigger_lsp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6989,7 +7083,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : priority)
+    for (auto c : priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6998,7 +7092,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : lsp_processed)
+    for (auto c : lsp_processed.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7007,7 +7101,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : lsp_regenerated)
+    for (auto c : lsp_regenerated.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7084,9 +7178,11 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::Spf
     trigger_time{YType::str, "trigger-time"},
     duration{YType::str, "duration"},
     total_lsp_changes{YType::uint16, "total-lsp-changes"}
+        ,
+    priority_summary(this, {})
 {
 
-    yang_name = "spf-summary"; yang_parent_name = "spf-run-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spf-summary"; yang_parent_name = "spf-run-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::~SpfSummary()
@@ -7095,7 +7191,8 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::~Sp
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::has_data() const
 {
-    for (std::size_t index=0; index<priority_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<priority_summary.len(); index++)
     {
         if(priority_summary[index]->has_data())
             return true;
@@ -7113,7 +7210,7 @@ bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::has_operation() const
 {
-    for (std::size_t index=0; index<priority_summary.size(); index++)
+    for (std::size_t index=0; index<priority_summary.len(); index++)
     {
         if(priority_summary[index]->has_operation())
             return true;
@@ -7161,7 +7258,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRun
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary>();
         c->parent = this;
-        priority_summary.push_back(c);
+        priority_summary.append(c);
         return c;
     }
 
@@ -7173,7 +7270,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : priority_summary)
+    for (auto c : priority_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7293,16 +7390,17 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::Pri
     :
     level{YType::enumeration, "level"},
     threshold_exceeded{YType::boolean, "threshold-exceeded"}
-    	,
+        ,
     route_statistics(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::RouteStatistics>())
-	,ip_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::IpConvergenceTime>())
-	,mpls_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::MplsConvergenceTime>())
+    , ip_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::IpConvergenceTime>())
+    , mpls_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::MplsConvergenceTime>())
+    , frr_statistic(this, {})
 {
     route_statistics->parent = this;
     ip_convergence_time->parent = this;
     mpls_convergence_time->parent = this;
 
-    yang_name = "priority-summary"; yang_parent_name = "spf-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority-summary"; yang_parent_name = "spf-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::~PrioritySummary()
@@ -7311,7 +7409,8 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::Pri
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::has_data() const
 {
-    for (std::size_t index=0; index<frr_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_statistic.len(); index++)
     {
         if(frr_statistic[index]->has_data())
             return true;
@@ -7325,7 +7424,7 @@ bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::has_operation() const
 {
-    for (std::size_t index=0; index<frr_statistic.size(); index++)
+    for (std::size_t index=0; index<frr_statistic.len(); index++)
     {
         if(frr_statistic[index]->has_operation())
             return true;
@@ -7389,7 +7488,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRun
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::FrrStatistic>();
         c->parent = this;
-        frr_statistic.push_back(c);
+        frr_statistic.append(c);
         return c;
     }
 
@@ -7416,7 +7515,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : frr_statistic)
+    for (auto c : frr_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7472,7 +7571,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::Pri
     touches{YType::uint32, "touches"}
 {
 
-    yang_name = "route-statistics"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-statistics"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::RouteStatistics::~RouteStatistics()
@@ -7481,6 +7580,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::Pri
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::RouteStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return adds.is_set
 	|| deletes.is_set
 	|| modifies.is_set
@@ -7617,7 +7717,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::Pri
     fastest_node_name{YType::str, "fastest-node-name"}
 {
 
-    yang_name = "ip-convergence-time"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-convergence-time"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::IpConvergenceTime::~IpConvergenceTime()
@@ -7626,6 +7726,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::Pri
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::IpConvergenceTime::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum_time.is_set
 	|| maximum_time.is_set
 	|| slowest_node_name.is_set
@@ -7736,7 +7837,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::Pri
     fastest_node_name{YType::str, "fastest-node-name"}
 {
 
-    yang_name = "mpls-convergence-time"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-convergence-time"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::MplsConvergenceTime::~MplsConvergenceTime()
@@ -7745,6 +7846,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::Pri
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::MplsConvergenceTime::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum_time.is_set
 	|| maximum_time.is_set
 	|| slowest_node_name.is_set
@@ -7855,7 +7957,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::Pri
     coverage{YType::str, "coverage"}
 {
 
-    yang_name = "frr-statistic"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-statistic"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::FrrStatistic::~FrrStatistic()
@@ -7864,6 +7966,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::Pri
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::FrrStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return total_routes.is_set
 	|| fully_protected_routes.is_set
 	|| partially_protected_routes.is_set
@@ -7976,7 +8079,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::NodeStatistics:
     touches{YType::uint32, "touches"}
 {
 
-    yang_name = "node-statistics"; yang_parent_name = "spf-run-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-statistics"; yang_parent_name = "spf-run-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::NodeStatistics::~NodeStatistics()
@@ -7985,6 +8088,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::NodeStatistics:
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::NodeStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return adds.is_set
 	|| deletes.is_set
 	|| modifies.is_set
@@ -8121,7 +8225,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::TriggerLsp::Tri
     reception_time{YType::str, "reception-time"}
 {
 
-    yang_name = "trigger-lsp"; yang_parent_name = "spf-run-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trigger-lsp"; yang_parent_name = "spf-run-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::TriggerLsp::~TriggerLsp()
@@ -8130,6 +8234,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::TriggerLsp::~Tr
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::TriggerLsp::has_data() const
 {
+    if (is_presence_container) return true;
     return lsp_id.is_set
 	|| sequence_number.is_set
 	|| change_type.is_set
@@ -8235,10 +8340,13 @@ bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::TriggerLsp
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Priority()
     :
     priority_summary(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary>())
+    , convergence_timeline(this, {})
+    , leaf_networks_added(this, {})
+    , leaf_networks_deleted(this, {})
 {
     priority_summary->parent = this;
 
-    yang_name = "priority"; yang_parent_name = "spf-run-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority"; yang_parent_name = "spf-run-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::~Priority()
@@ -8247,17 +8355,18 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::~Prio
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::has_data() const
 {
-    for (std::size_t index=0; index<convergence_timeline.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<convergence_timeline.len(); index++)
     {
         if(convergence_timeline[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<leaf_networks_added.size(); index++)
+    for (std::size_t index=0; index<leaf_networks_added.len(); index++)
     {
         if(leaf_networks_added[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<leaf_networks_deleted.size(); index++)
+    for (std::size_t index=0; index<leaf_networks_deleted.len(); index++)
     {
         if(leaf_networks_deleted[index]->has_data())
             return true;
@@ -8267,17 +8376,17 @@ bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::has_operation() const
 {
-    for (std::size_t index=0; index<convergence_timeline.size(); index++)
+    for (std::size_t index=0; index<convergence_timeline.len(); index++)
     {
         if(convergence_timeline[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<leaf_networks_added.size(); index++)
+    for (std::size_t index=0; index<leaf_networks_added.len(); index++)
     {
         if(leaf_networks_added[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<leaf_networks_deleted.size(); index++)
+    for (std::size_t index=0; index<leaf_networks_deleted.len(); index++)
     {
         if(leaf_networks_deleted[index]->has_operation())
             return true;
@@ -8317,7 +8426,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRun
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline>();
         c->parent = this;
-        convergence_timeline.push_back(c);
+        convergence_timeline.append(c);
         return c;
     }
 
@@ -8325,7 +8434,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRun
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::LeafNetworksAdded>();
         c->parent = this;
-        leaf_networks_added.push_back(c);
+        leaf_networks_added.append(c);
         return c;
     }
 
@@ -8333,7 +8442,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRun
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::LeafNetworksDeleted>();
         c->parent = this;
-        leaf_networks_deleted.push_back(c);
+        leaf_networks_deleted.append(c);
         return c;
     }
 
@@ -8350,7 +8459,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : convergence_timeline)
+    for (auto c : convergence_timeline.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8359,7 +8468,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : leaf_networks_added)
+    for (auto c : leaf_networks_added.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8368,7 +8477,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : leaf_networks_deleted)
+    for (auto c : leaf_networks_deleted.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8398,16 +8507,17 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Prior
     :
     level{YType::enumeration, "level"},
     threshold_exceeded{YType::boolean, "threshold-exceeded"}
-    	,
+        ,
     route_statistics(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::RouteStatistics>())
-	,ip_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::IpConvergenceTime>())
-	,mpls_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::MplsConvergenceTime>())
+    , ip_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::IpConvergenceTime>())
+    , mpls_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::MplsConvergenceTime>())
+    , frr_statistic(this, {})
 {
     route_statistics->parent = this;
     ip_convergence_time->parent = this;
     mpls_convergence_time->parent = this;
 
-    yang_name = "priority-summary"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority-summary"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::~PrioritySummary()
@@ -8416,7 +8526,8 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Prior
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::has_data() const
 {
-    for (std::size_t index=0; index<frr_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_statistic.len(); index++)
     {
         if(frr_statistic[index]->has_data())
             return true;
@@ -8430,7 +8541,7 @@ bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::has_operation() const
 {
-    for (std::size_t index=0; index<frr_statistic.size(); index++)
+    for (std::size_t index=0; index<frr_statistic.len(); index++)
     {
         if(frr_statistic[index]->has_operation())
             return true;
@@ -8494,7 +8605,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRun
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::FrrStatistic>();
         c->parent = this;
-        frr_statistic.push_back(c);
+        frr_statistic.append(c);
         return c;
     }
 
@@ -8521,7 +8632,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : frr_statistic)
+    for (auto c : frr_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8577,7 +8688,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Prior
     touches{YType::uint32, "touches"}
 {
 
-    yang_name = "route-statistics"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-statistics"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::RouteStatistics::~RouteStatistics()
@@ -8586,6 +8697,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Prior
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::RouteStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return adds.is_set
 	|| deletes.is_set
 	|| modifies.is_set
@@ -8722,7 +8834,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Prior
     fastest_node_name{YType::str, "fastest-node-name"}
 {
 
-    yang_name = "ip-convergence-time"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-convergence-time"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::IpConvergenceTime::~IpConvergenceTime()
@@ -8731,6 +8843,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Prior
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::IpConvergenceTime::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum_time.is_set
 	|| maximum_time.is_set
 	|| slowest_node_name.is_set
@@ -8841,7 +8954,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Prior
     fastest_node_name{YType::str, "fastest-node-name"}
 {
 
-    yang_name = "mpls-convergence-time"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-convergence-time"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::MplsConvergenceTime::~MplsConvergenceTime()
@@ -8850,6 +8963,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Prior
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::MplsConvergenceTime::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum_time.is_set
 	|| maximum_time.is_set
 	|| slowest_node_name.is_set
@@ -8960,7 +9074,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Prior
     coverage{YType::str, "coverage"}
 {
 
-    yang_name = "frr-statistic"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-statistic"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::FrrStatistic::~FrrStatistic()
@@ -8969,6 +9083,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Prior
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::FrrStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return total_routes.is_set
 	|| fully_protected_routes.is_set
 	|| partially_protected_routes.is_set
@@ -9074,13 +9189,15 @@ bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::ConvergenceTimeline()
     :
     route_origin(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RouteOrigin>())
-	,ri_bv4_enter(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RiBv4Enter>())
-	,ri_bv4_exit(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RiBv4Exit>())
-	,ri_bv4_redistribute(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RiBv4Redistribute>())
-	,ldp_enter(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LdpEnter>())
-	,ldp_exit(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LdpExit>())
-	,lsd_enter(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LsdEnter>())
-	,lsd_exit(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LsdExit>())
+    , ri_bv4_enter(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RiBv4Enter>())
+    , ri_bv4_exit(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RiBv4Exit>())
+    , ri_bv4_redistribute(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RiBv4Redistribute>())
+    , ldp_enter(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LdpEnter>())
+    , ldp_exit(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LdpExit>())
+    , lsd_enter(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LsdEnter>())
+    , lsd_exit(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LsdExit>())
+    , lc_ip(this, {})
+    , lc_mpls(this, {})
 {
     route_origin->parent = this;
     ri_bv4_enter->parent = this;
@@ -9091,7 +9208,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
     lsd_enter->parent = this;
     lsd_exit->parent = this;
 
-    yang_name = "convergence-timeline"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "convergence-timeline"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::~ConvergenceTimeline()
@@ -9100,12 +9217,13 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::has_data() const
 {
-    for (std::size_t index=0; index<lc_ip.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lc_ip.len(); index++)
     {
         if(lc_ip[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<lc_mpls.size(); index++)
+    for (std::size_t index=0; index<lc_mpls.len(); index++)
     {
         if(lc_mpls[index]->has_data())
             return true;
@@ -9122,12 +9240,12 @@ bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::has_operation() const
 {
-    for (std::size_t index=0; index<lc_ip.size(); index++)
+    for (std::size_t index=0; index<lc_ip.len(); index++)
     {
         if(lc_ip[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<lc_mpls.size(); index++)
+    for (std::size_t index=0; index<lc_mpls.len(); index++)
     {
         if(lc_mpls[index]->has_operation())
             return true;
@@ -9237,7 +9355,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRun
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcIp>();
         c->parent = this;
-        lc_ip.push_back(c);
+        lc_ip.append(c);
         return c;
     }
 
@@ -9245,7 +9363,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRun
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcMpls>();
         c->parent = this;
-        lc_mpls.push_back(c);
+        lc_mpls.append(c);
         return c;
     }
 
@@ -9297,7 +9415,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : lc_ip)
+    for (auto c : lc_ip.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9306,7 +9424,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : lc_mpls)
+    for (auto c : lc_mpls.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9339,7 +9457,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
     duration{YType::str, "duration"}
 {
 
-    yang_name = "route-origin"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-origin"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RouteOrigin::~RouteOrigin()
@@ -9348,6 +9466,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RouteOrigin::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| end_time.is_set
 	|| duration.is_set;
@@ -9444,7 +9563,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
     duration{YType::str, "duration"}
 {
 
-    yang_name = "ri-bv4-enter"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ri-bv4-enter"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RiBv4Enter::~RiBv4Enter()
@@ -9453,6 +9572,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RiBv4Enter::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| end_time.is_set
 	|| duration.is_set;
@@ -9549,7 +9669,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
     duration{YType::str, "duration"}
 {
 
-    yang_name = "ri-bv4-exit"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ri-bv4-exit"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RiBv4Exit::~RiBv4Exit()
@@ -9558,6 +9678,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RiBv4Exit::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| end_time.is_set
 	|| duration.is_set;
@@ -9654,7 +9775,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
     duration{YType::str, "duration"}
 {
 
-    yang_name = "ri-bv4-redistribute"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ri-bv4-redistribute"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RiBv4Redistribute::~RiBv4Redistribute()
@@ -9663,6 +9784,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::RiBv4Redistribute::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| end_time.is_set
 	|| duration.is_set;
@@ -9759,7 +9881,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
     duration{YType::str, "duration"}
 {
 
-    yang_name = "ldp-enter"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ldp-enter"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LdpEnter::~LdpEnter()
@@ -9768,6 +9890,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LdpEnter::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| end_time.is_set
 	|| duration.is_set;
@@ -9864,7 +9987,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
     duration{YType::str, "duration"}
 {
 
-    yang_name = "ldp-exit"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ldp-exit"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LdpExit::~LdpExit()
@@ -9873,6 +9996,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LdpExit::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| end_time.is_set
 	|| duration.is_set;
@@ -9969,7 +10093,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
     duration{YType::str, "duration"}
 {
 
-    yang_name = "lsd-enter"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsd-enter"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LsdEnter::~LsdEnter()
@@ -9978,6 +10102,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LsdEnter::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| end_time.is_set
 	|| duration.is_set;
@@ -10074,7 +10199,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
     duration{YType::str, "duration"}
 {
 
-    yang_name = "lsd-exit"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsd-exit"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LsdExit::~LsdExit()
@@ -10083,6 +10208,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LsdExit::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| end_time.is_set
 	|| duration.is_set;
@@ -10176,12 +10302,12 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
     :
     node_name{YType::str, "node-name"},
     speed{YType::enumeration, "speed"}
-    	,
+        ,
     fib_complete(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcIp::FibComplete>())
 {
     fib_complete->parent = this;
 
-    yang_name = "lc-ip"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lc-ip"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcIp::~LcIp()
@@ -10190,6 +10316,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcIp::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| speed.is_set
 	|| (fib_complete !=  nullptr && fib_complete->has_data());
@@ -10289,7 +10416,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
     duration{YType::str, "duration"}
 {
 
-    yang_name = "fib-complete"; yang_parent_name = "lc-ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fib-complete"; yang_parent_name = "lc-ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcIp::FibComplete::~FibComplete()
@@ -10298,6 +10425,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcIp::FibComplete::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| end_time.is_set
 	|| duration.is_set;
@@ -10391,12 +10519,12 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
     :
     node_name{YType::str, "node-name"},
     speed{YType::enumeration, "speed"}
-    	,
+        ,
     fib_complete(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcMpls::FibComplete>())
 {
     fib_complete->parent = this;
 
-    yang_name = "lc-mpls"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lc-mpls"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcMpls::~LcMpls()
@@ -10405,6 +10533,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcMpls::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| speed.is_set
 	|| (fib_complete !=  nullptr && fib_complete->has_data());
@@ -10504,7 +10633,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
     duration{YType::str, "duration"}
 {
 
-    yang_name = "fib-complete"; yang_parent_name = "lc-mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fib-complete"; yang_parent_name = "lc-mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcMpls::FibComplete::~FibComplete()
@@ -10513,6 +10642,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::Conve
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcMpls::FibComplete::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| end_time.is_set
 	|| duration.is_set;
@@ -10608,7 +10738,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::LeafN
     net_mask{YType::uint8, "net-mask"}
 {
 
-    yang_name = "leaf-networks-added"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "leaf-networks-added"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::LeafNetworksAdded::~LeafNetworksAdded()
@@ -10617,6 +10747,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::LeafN
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::LeafNetworksAdded::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| net_mask.is_set;
 }
@@ -10699,7 +10830,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::LeafN
     net_mask{YType::uint8, "net-mask"}
 {
 
-    yang_name = "leaf-networks-deleted"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "leaf-networks-deleted"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::LeafNetworksDeleted::~LeafNetworksDeleted()
@@ -10708,6 +10839,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::LeafN
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::LeafNetworksDeleted::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| net_mask.is_set;
 }
@@ -10792,7 +10924,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspProcessed::L
     reception_time{YType::str, "reception-time"}
 {
 
-    yang_name = "lsp-processed"; yang_parent_name = "spf-run-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-processed"; yang_parent_name = "spf-run-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspProcessed::~LspProcessed()
@@ -10801,6 +10933,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspProcessed::~
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspProcessed::has_data() const
 {
+    if (is_presence_container) return true;
     return lsp_id.is_set
 	|| sequence_number.is_set
 	|| change_type.is_set
@@ -10914,7 +11047,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspRegenerated:
     reason{YType::str, "reason"}
 {
 
-    yang_name = "lsp-regenerated"; yang_parent_name = "spf-run-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-regenerated"; yang_parent_name = "spf-run-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspRegenerated::~LspRegenerated()
@@ -10923,6 +11056,7 @@ Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspRegenerated:
 
 bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspRegenerated::has_data() const
 {
+    if (is_presence_container) return true;
     return serial_number_xr.is_set
 	|| lsp_id.is_set
 	|| sequence_number.is_set
@@ -11065,9 +11199,11 @@ bool Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspRegener
 }
 
 Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOfflines()
+    :
+    ipfrr_event_offline(this, {"event_id"})
 {
 
-    yang_name = "ipfrr-event-offlines"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipfrr-event-offlines"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::~IpfrrEventOfflines()
@@ -11076,7 +11212,8 @@ Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::~IpfrrEventOfflines()
 
 bool Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::has_data() const
 {
-    for (std::size_t index=0; index<ipfrr_event_offline.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipfrr_event_offline.len(); index++)
     {
         if(ipfrr_event_offline[index]->has_data())
             return true;
@@ -11086,7 +11223,7 @@ bool Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::has_data() const
 
 bool Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::has_operation() const
 {
-    for (std::size_t index=0; index<ipfrr_event_offline.size(); index++)
+    for (std::size_t index=0; index<ipfrr_event_offline.len(); index++)
     {
         if(ipfrr_event_offline[index]->has_operation())
             return true;
@@ -11116,7 +11253,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::get
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline>();
         c->parent = this;
-        ipfrr_event_offline.push_back(c);
+        ipfrr_event_offline.append(c);
         return c;
     }
 
@@ -11128,7 +11265,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipfrr_event_offline)
+    for (auto c : ipfrr_event_offline.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11168,9 +11305,12 @@ Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrEve
     fully_protected_routes{YType::uint32, "fully-protected-routes"},
     partially_protected_routes{YType::uint32, "partially-protected-routes"},
     coverage{YType::str, "coverage"}
+        ,
+    ipfrr_statistic(this, {})
+    , remote_node(this, {})
 {
 
-    yang_name = "ipfrr-event-offline"; yang_parent_name = "ipfrr-event-offlines"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipfrr-event-offline"; yang_parent_name = "ipfrr-event-offlines"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::~IpfrrEventOffline()
@@ -11179,12 +11319,13 @@ Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::~IpfrrEv
 
 bool Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::has_data() const
 {
-    for (std::size_t index=0; index<ipfrr_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipfrr_statistic.len(); index++)
     {
         if(ipfrr_statistic[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<remote_node.size(); index++)
+    for (std::size_t index=0; index<remote_node.len(); index++)
     {
         if(remote_node[index]->has_data())
             return true;
@@ -11205,12 +11346,12 @@ bool Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::has
 
 bool Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::has_operation() const
 {
-    for (std::size_t index=0; index<ipfrr_statistic.size(); index++)
+    for (std::size_t index=0; index<ipfrr_statistic.len(); index++)
     {
         if(ipfrr_statistic[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<remote_node.size(); index++)
+    for (std::size_t index=0; index<remote_node.len(); index++)
     {
         if(remote_node[index]->has_operation())
             return true;
@@ -11233,7 +11374,8 @@ bool Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::has
 std::string Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipfrr-event-offline" <<"[event-id='" <<event_id <<"']";
+    path_buffer << "ipfrr-event-offline";
+    ADD_KEY_TOKEN(event_id, "event-id");
     return path_buffer.str();
 }
 
@@ -11264,7 +11406,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::Ipf
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic>();
         c->parent = this;
-        ipfrr_statistic.push_back(c);
+        ipfrr_statistic.append(c);
         return c;
     }
 
@@ -11272,7 +11414,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::Ipf
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode>();
         c->parent = this;
-        remote_node.push_back(c);
+        remote_node.append(c);
         return c;
     }
 
@@ -11284,7 +11426,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipfrr_statistic)
+    for (auto c : ipfrr_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11293,7 +11435,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : remote_node)
+    for (auto c : remote_node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11451,7 +11593,7 @@ Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrSta
     below_threshold{YType::boolean, "below-threshold"}
 {
 
-    yang_name = "ipfrr-statistic"; yang_parent_name = "ipfrr-event-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipfrr-statistic"; yang_parent_name = "ipfrr-event-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic::~IpfrrStatistic()
@@ -11460,6 +11602,7 @@ Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrSta
 
 bool Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return priority.is_set
 	|| total_routes.is_set
 	|| fully_protected_routes.is_set
@@ -11621,9 +11764,11 @@ Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNo
     neighbour_address{YType::str, "neighbour-address"},
     path_count{YType::uint32, "path-count"},
     in_use_time{YType::str, "in-use-time"}
+        ,
+    primary_path(this, {})
 {
 
-    yang_name = "remote-node"; yang_parent_name = "ipfrr-event-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-node"; yang_parent_name = "ipfrr-event-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::~RemoteNode()
@@ -11632,7 +11777,8 @@ Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNo
 
 bool Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::has_data() const
 {
-    for (std::size_t index=0; index<primary_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<primary_path.len(); index++)
     {
         if(primary_path[index]->has_data())
             return true;
@@ -11646,7 +11792,7 @@ bool Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::Rem
 
 bool Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::has_operation() const
 {
-    for (std::size_t index=0; index<primary_path.size(); index++)
+    for (std::size_t index=0; index<primary_path.len(); index++)
     {
         if(primary_path[index]->has_operation())
             return true;
@@ -11686,7 +11832,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::Ipf
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::PrimaryPath>();
         c->parent = this;
-        primary_path.push_back(c);
+        primary_path.append(c);
         return c;
     }
 
@@ -11698,7 +11844,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : primary_path)
+    for (auto c : primary_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11780,7 +11926,7 @@ Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNo
     neighbour_address{YType::str, "neighbour-address"}
 {
 
-    yang_name = "primary-path"; yang_parent_name = "remote-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "primary-path"; yang_parent_name = "remote-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::PrimaryPath::~PrimaryPath()
@@ -11789,6 +11935,7 @@ Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNo
 
 bool Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::PrimaryPath::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| neighbour_address.is_set;
 }
@@ -11866,9 +12013,11 @@ bool Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::Rem
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOfflines()
+    :
+    spf_run_offline(this, {"spf_run_number"})
 {
 
-    yang_name = "spf-run-offlines"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spf-run-offlines"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::~SpfRunOfflines()
@@ -11877,7 +12026,8 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::~SpfRunOfflines()
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::has_data() const
 {
-    for (std::size_t index=0; index<spf_run_offline.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<spf_run_offline.len(); index++)
     {
         if(spf_run_offline[index]->has_data())
             return true;
@@ -11887,7 +12037,7 @@ bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::has_data() const
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::has_operation() const
 {
-    for (std::size_t index=0; index<spf_run_offline.size(); index++)
+    for (std::size_t index=0; index<spf_run_offline.len(); index++)
     {
         if(spf_run_offline[index]->has_operation())
             return true;
@@ -11917,7 +12067,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunOfflines::get_chi
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline>();
         c->parent = this;
-        spf_run_offline.push_back(c);
+        spf_run_offline.append(c);
         return c;
     }
 
@@ -11929,7 +12079,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : spf_run_offline)
+    for (auto c : spf_run_offline.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11961,14 +12111,18 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfRunOffline()
     start_time{YType::str, "start-time"},
     wait_time{YType::uint32, "wait-time"},
     reason{YType::str, "reason"}
-    	,
+        ,
     spf_summary(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary>())
-	,node_statistics(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::NodeStatistics>())
+    , node_statistics(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::NodeStatistics>())
+    , trigger_lsp(this, {})
+    , priority(this, {})
+    , lsp_processed(this, {})
+    , lsp_regenerated(this, {})
 {
     spf_summary->parent = this;
     node_statistics->parent = this;
 
-    yang_name = "spf-run-offline"; yang_parent_name = "spf-run-offlines"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spf-run-offline"; yang_parent_name = "spf-run-offlines"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::~SpfRunOffline()
@@ -11977,22 +12131,23 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::~SpfRunOffline()
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::has_data() const
 {
-    for (std::size_t index=0; index<trigger_lsp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trigger_lsp.len(); index++)
     {
         if(trigger_lsp[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<priority.size(); index++)
+    for (std::size_t index=0; index<priority.len(); index++)
     {
         if(priority[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<lsp_processed.size(); index++)
+    for (std::size_t index=0; index<lsp_processed.len(); index++)
     {
         if(lsp_processed[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<lsp_regenerated.size(); index++)
+    for (std::size_t index=0; index<lsp_regenerated.len(); index++)
     {
         if(lsp_regenerated[index]->has_data())
             return true;
@@ -12007,22 +12162,22 @@ bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::has_data() 
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::has_operation() const
 {
-    for (std::size_t index=0; index<trigger_lsp.size(); index++)
+    for (std::size_t index=0; index<trigger_lsp.len(); index++)
     {
         if(trigger_lsp[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<priority.size(); index++)
+    for (std::size_t index=0; index<priority.len(); index++)
     {
         if(priority[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<lsp_processed.size(); index++)
+    for (std::size_t index=0; index<lsp_processed.len(); index++)
     {
         if(lsp_processed[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<lsp_regenerated.size(); index++)
+    for (std::size_t index=0; index<lsp_regenerated.len(); index++)
     {
         if(lsp_regenerated[index]->has_operation())
             return true;
@@ -12039,7 +12194,8 @@ bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::has_operati
 std::string Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "spf-run-offline" <<"[spf-run-number='" <<spf_run_number <<"']";
+    path_buffer << "spf-run-offline";
+    ADD_KEY_TOKEN(spf_run_number, "spf-run-number");
     return path_buffer.str();
 }
 
@@ -12080,7 +12236,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunO
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::TriggerLsp>();
         c->parent = this;
-        trigger_lsp.push_back(c);
+        trigger_lsp.append(c);
         return c;
     }
 
@@ -12088,7 +12244,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunO
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority>();
         c->parent = this;
-        priority.push_back(c);
+        priority.append(c);
         return c;
     }
 
@@ -12096,7 +12252,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunO
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspProcessed>();
         c->parent = this;
-        lsp_processed.push_back(c);
+        lsp_processed.append(c);
         return c;
     }
 
@@ -12104,7 +12260,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunO
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspRegenerated>();
         c->parent = this;
-        lsp_regenerated.push_back(c);
+        lsp_regenerated.append(c);
         return c;
     }
 
@@ -12126,7 +12282,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : trigger_lsp)
+    for (auto c : trigger_lsp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12135,7 +12291,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : priority)
+    for (auto c : priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12144,7 +12300,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : lsp_processed)
+    for (auto c : lsp_processed.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12153,7 +12309,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : lsp_regenerated)
+    for (auto c : lsp_regenerated.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12230,9 +12386,11 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::SpfS
     trigger_time{YType::str, "trigger-time"},
     duration{YType::str, "duration"},
     total_lsp_changes{YType::uint16, "total-lsp-changes"}
+        ,
+    priority_summary(this, {})
 {
 
-    yang_name = "spf-summary"; yang_parent_name = "spf-run-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spf-summary"; yang_parent_name = "spf-run-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::~SpfSummary()
@@ -12241,7 +12399,8 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::~Spf
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::has_data() const
 {
-    for (std::size_t index=0; index<priority_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<priority_summary.len(); index++)
     {
         if(priority_summary[index]->has_data())
             return true;
@@ -12259,7 +12418,7 @@ bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary:
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::has_operation() const
 {
-    for (std::size_t index=0; index<priority_summary.size(); index++)
+    for (std::size_t index=0; index<priority_summary.len(); index++)
     {
         if(priority_summary[index]->has_operation())
             return true;
@@ -12307,7 +12466,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunO
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary>();
         c->parent = this;
-        priority_summary.push_back(c);
+        priority_summary.append(c);
         return c;
     }
 
@@ -12319,7 +12478,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : priority_summary)
+    for (auto c : priority_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12439,16 +12598,17 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::Prio
     :
     level{YType::enumeration, "level"},
     threshold_exceeded{YType::boolean, "threshold-exceeded"}
-    	,
+        ,
     route_statistics(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::RouteStatistics>())
-	,ip_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::IpConvergenceTime>())
-	,mpls_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::MplsConvergenceTime>())
+    , ip_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::IpConvergenceTime>())
+    , mpls_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::MplsConvergenceTime>())
+    , frr_statistic(this, {})
 {
     route_statistics->parent = this;
     ip_convergence_time->parent = this;
     mpls_convergence_time->parent = this;
 
-    yang_name = "priority-summary"; yang_parent_name = "spf-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority-summary"; yang_parent_name = "spf-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::~PrioritySummary()
@@ -12457,7 +12617,8 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::Prio
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::has_data() const
 {
-    for (std::size_t index=0; index<frr_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_statistic.len(); index++)
     {
         if(frr_statistic[index]->has_data())
             return true;
@@ -12471,7 +12632,7 @@ bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary:
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::has_operation() const
 {
-    for (std::size_t index=0; index<frr_statistic.size(); index++)
+    for (std::size_t index=0; index<frr_statistic.len(); index++)
     {
         if(frr_statistic[index]->has_operation())
             return true;
@@ -12535,7 +12696,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunO
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::FrrStatistic>();
         c->parent = this;
-        frr_statistic.push_back(c);
+        frr_statistic.append(c);
         return c;
     }
 
@@ -12562,7 +12723,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : frr_statistic)
+    for (auto c : frr_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12618,7 +12779,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::Prio
     touches{YType::uint32, "touches"}
 {
 
-    yang_name = "route-statistics"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-statistics"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::RouteStatistics::~RouteStatistics()
@@ -12627,6 +12788,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::Prio
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::RouteStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return adds.is_set
 	|| deletes.is_set
 	|| modifies.is_set
@@ -12763,7 +12925,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::Prio
     fastest_node_name{YType::str, "fastest-node-name"}
 {
 
-    yang_name = "ip-convergence-time"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-convergence-time"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::IpConvergenceTime::~IpConvergenceTime()
@@ -12772,6 +12934,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::Prio
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::IpConvergenceTime::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum_time.is_set
 	|| maximum_time.is_set
 	|| slowest_node_name.is_set
@@ -12882,7 +13045,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::Prio
     fastest_node_name{YType::str, "fastest-node-name"}
 {
 
-    yang_name = "mpls-convergence-time"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-convergence-time"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::MplsConvergenceTime::~MplsConvergenceTime()
@@ -12891,6 +13054,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::Prio
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::MplsConvergenceTime::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum_time.is_set
 	|| maximum_time.is_set
 	|| slowest_node_name.is_set
@@ -13001,7 +13165,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::Prio
     coverage{YType::str, "coverage"}
 {
 
-    yang_name = "frr-statistic"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-statistic"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::FrrStatistic::~FrrStatistic()
@@ -13010,6 +13174,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::Prio
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::FrrStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return total_routes.is_set
 	|| fully_protected_routes.is_set
 	|| partially_protected_routes.is_set
@@ -13122,7 +13287,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::NodeStatistics::
     touches{YType::uint32, "touches"}
 {
 
-    yang_name = "node-statistics"; yang_parent_name = "spf-run-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-statistics"; yang_parent_name = "spf-run-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::NodeStatistics::~NodeStatistics()
@@ -13131,6 +13296,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::NodeStatistics::
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::NodeStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return adds.is_set
 	|| deletes.is_set
 	|| modifies.is_set
@@ -13267,7 +13433,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::TriggerLsp::Trig
     reception_time{YType::str, "reception-time"}
 {
 
-    yang_name = "trigger-lsp"; yang_parent_name = "spf-run-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trigger-lsp"; yang_parent_name = "spf-run-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::TriggerLsp::~TriggerLsp()
@@ -13276,6 +13442,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::TriggerLsp::~Tri
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::TriggerLsp::has_data() const
 {
+    if (is_presence_container) return true;
     return lsp_id.is_set
 	|| sequence_number.is_set
 	|| change_type.is_set
@@ -13381,10 +13548,13 @@ bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::TriggerLsp:
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Priority()
     :
     priority_summary(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary>())
+    , convergence_timeline(this, {})
+    , leaf_networks_added(this, {})
+    , leaf_networks_deleted(this, {})
 {
     priority_summary->parent = this;
 
-    yang_name = "priority"; yang_parent_name = "spf-run-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority"; yang_parent_name = "spf-run-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::~Priority()
@@ -13393,17 +13563,18 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::~Prior
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::has_data() const
 {
-    for (std::size_t index=0; index<convergence_timeline.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<convergence_timeline.len(); index++)
     {
         if(convergence_timeline[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<leaf_networks_added.size(); index++)
+    for (std::size_t index=0; index<leaf_networks_added.len(); index++)
     {
         if(leaf_networks_added[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<leaf_networks_deleted.size(); index++)
+    for (std::size_t index=0; index<leaf_networks_deleted.len(); index++)
     {
         if(leaf_networks_deleted[index]->has_data())
             return true;
@@ -13413,17 +13584,17 @@ bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::h
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::has_operation() const
 {
-    for (std::size_t index=0; index<convergence_timeline.size(); index++)
+    for (std::size_t index=0; index<convergence_timeline.len(); index++)
     {
         if(convergence_timeline[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<leaf_networks_added.size(); index++)
+    for (std::size_t index=0; index<leaf_networks_added.len(); index++)
     {
         if(leaf_networks_added[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<leaf_networks_deleted.size(); index++)
+    for (std::size_t index=0; index<leaf_networks_deleted.len(); index++)
     {
         if(leaf_networks_deleted[index]->has_operation())
             return true;
@@ -13463,7 +13634,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunO
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline>();
         c->parent = this;
-        convergence_timeline.push_back(c);
+        convergence_timeline.append(c);
         return c;
     }
 
@@ -13471,7 +13642,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunO
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::LeafNetworksAdded>();
         c->parent = this;
-        leaf_networks_added.push_back(c);
+        leaf_networks_added.append(c);
         return c;
     }
 
@@ -13479,7 +13650,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunO
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::LeafNetworksDeleted>();
         c->parent = this;
-        leaf_networks_deleted.push_back(c);
+        leaf_networks_deleted.append(c);
         return c;
     }
 
@@ -13496,7 +13667,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : convergence_timeline)
+    for (auto c : convergence_timeline.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13505,7 +13676,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : leaf_networks_added)
+    for (auto c : leaf_networks_added.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13514,7 +13685,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : leaf_networks_deleted)
+    for (auto c : leaf_networks_deleted.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13544,16 +13715,17 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Priori
     :
     level{YType::enumeration, "level"},
     threshold_exceeded{YType::boolean, "threshold-exceeded"}
-    	,
+        ,
     route_statistics(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::RouteStatistics>())
-	,ip_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::IpConvergenceTime>())
-	,mpls_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::MplsConvergenceTime>())
+    , ip_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::IpConvergenceTime>())
+    , mpls_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::MplsConvergenceTime>())
+    , frr_statistic(this, {})
 {
     route_statistics->parent = this;
     ip_convergence_time->parent = this;
     mpls_convergence_time->parent = this;
 
-    yang_name = "priority-summary"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority-summary"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::~PrioritySummary()
@@ -13562,7 +13734,8 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Priori
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::has_data() const
 {
-    for (std::size_t index=0; index<frr_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_statistic.len(); index++)
     {
         if(frr_statistic[index]->has_data())
             return true;
@@ -13576,7 +13749,7 @@ bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::P
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::has_operation() const
 {
-    for (std::size_t index=0; index<frr_statistic.size(); index++)
+    for (std::size_t index=0; index<frr_statistic.len(); index++)
     {
         if(frr_statistic[index]->has_operation())
             return true;
@@ -13640,7 +13813,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunO
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::FrrStatistic>();
         c->parent = this;
-        frr_statistic.push_back(c);
+        frr_statistic.append(c);
         return c;
     }
 
@@ -13667,7 +13840,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : frr_statistic)
+    for (auto c : frr_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13723,7 +13896,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Priori
     touches{YType::uint32, "touches"}
 {
 
-    yang_name = "route-statistics"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-statistics"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::RouteStatistics::~RouteStatistics()
@@ -13732,6 +13905,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Priori
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::RouteStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return adds.is_set
 	|| deletes.is_set
 	|| modifies.is_set
@@ -13868,7 +14042,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Priori
     fastest_node_name{YType::str, "fastest-node-name"}
 {
 
-    yang_name = "ip-convergence-time"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-convergence-time"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::IpConvergenceTime::~IpConvergenceTime()
@@ -13877,6 +14051,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Priori
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::IpConvergenceTime::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum_time.is_set
 	|| maximum_time.is_set
 	|| slowest_node_name.is_set
@@ -13987,7 +14162,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Priori
     fastest_node_name{YType::str, "fastest-node-name"}
 {
 
-    yang_name = "mpls-convergence-time"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-convergence-time"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::MplsConvergenceTime::~MplsConvergenceTime()
@@ -13996,6 +14171,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Priori
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::MplsConvergenceTime::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum_time.is_set
 	|| maximum_time.is_set
 	|| slowest_node_name.is_set
@@ -14106,7 +14282,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Priori
     coverage{YType::str, "coverage"}
 {
 
-    yang_name = "frr-statistic"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-statistic"; yang_parent_name = "priority-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::FrrStatistic::~FrrStatistic()
@@ -14115,6 +14291,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Priori
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::FrrStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return total_routes.is_set
 	|| fully_protected_routes.is_set
 	|| partially_protected_routes.is_set
@@ -14220,13 +14397,15 @@ bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::P
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::ConvergenceTimeline()
     :
     route_origin(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RouteOrigin>())
-	,ri_bv4_enter(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RiBv4Enter>())
-	,ri_bv4_exit(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RiBv4Exit>())
-	,ri_bv4_redistribute(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RiBv4Redistribute>())
-	,ldp_enter(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LdpEnter>())
-	,ldp_exit(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LdpExit>())
-	,lsd_enter(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LsdEnter>())
-	,lsd_exit(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LsdExit>())
+    , ri_bv4_enter(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RiBv4Enter>())
+    , ri_bv4_exit(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RiBv4Exit>())
+    , ri_bv4_redistribute(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RiBv4Redistribute>())
+    , ldp_enter(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LdpEnter>())
+    , ldp_exit(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LdpExit>())
+    , lsd_enter(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LsdEnter>())
+    , lsd_exit(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LsdExit>())
+    , lc_ip(this, {})
+    , lc_mpls(this, {})
 {
     route_origin->parent = this;
     ri_bv4_enter->parent = this;
@@ -14237,7 +14416,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
     lsd_enter->parent = this;
     lsd_exit->parent = this;
 
-    yang_name = "convergence-timeline"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "convergence-timeline"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::~ConvergenceTimeline()
@@ -14246,12 +14425,13 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::has_data() const
 {
-    for (std::size_t index=0; index<lc_ip.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lc_ip.len(); index++)
     {
         if(lc_ip[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<lc_mpls.size(); index++)
+    for (std::size_t index=0; index<lc_mpls.len(); index++)
     {
         if(lc_mpls[index]->has_data())
             return true;
@@ -14268,12 +14448,12 @@ bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::C
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::has_operation() const
 {
-    for (std::size_t index=0; index<lc_ip.size(); index++)
+    for (std::size_t index=0; index<lc_ip.len(); index++)
     {
         if(lc_ip[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<lc_mpls.size(); index++)
+    for (std::size_t index=0; index<lc_mpls.len(); index++)
     {
         if(lc_mpls[index]->has_operation())
             return true;
@@ -14383,7 +14563,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunO
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcIp>();
         c->parent = this;
-        lc_ip.push_back(c);
+        lc_ip.append(c);
         return c;
     }
 
@@ -14391,7 +14571,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunO
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcMpls>();
         c->parent = this;
-        lc_mpls.push_back(c);
+        lc_mpls.append(c);
         return c;
     }
 
@@ -14443,7 +14623,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : lc_ip)
+    for (auto c : lc_ip.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14452,7 +14632,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : lc_mpls)
+    for (auto c : lc_mpls.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14485,7 +14665,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
     duration{YType::str, "duration"}
 {
 
-    yang_name = "route-origin"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-origin"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RouteOrigin::~RouteOrigin()
@@ -14494,6 +14674,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RouteOrigin::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| end_time.is_set
 	|| duration.is_set;
@@ -14590,7 +14771,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
     duration{YType::str, "duration"}
 {
 
-    yang_name = "ri-bv4-enter"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ri-bv4-enter"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RiBv4Enter::~RiBv4Enter()
@@ -14599,6 +14780,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RiBv4Enter::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| end_time.is_set
 	|| duration.is_set;
@@ -14695,7 +14877,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
     duration{YType::str, "duration"}
 {
 
-    yang_name = "ri-bv4-exit"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ri-bv4-exit"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RiBv4Exit::~RiBv4Exit()
@@ -14704,6 +14886,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RiBv4Exit::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| end_time.is_set
 	|| duration.is_set;
@@ -14800,7 +14983,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
     duration{YType::str, "duration"}
 {
 
-    yang_name = "ri-bv4-redistribute"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ri-bv4-redistribute"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RiBv4Redistribute::~RiBv4Redistribute()
@@ -14809,6 +14992,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::RiBv4Redistribute::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| end_time.is_set
 	|| duration.is_set;
@@ -14905,7 +15089,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
     duration{YType::str, "duration"}
 {
 
-    yang_name = "ldp-enter"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ldp-enter"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LdpEnter::~LdpEnter()
@@ -14914,6 +15098,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LdpEnter::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| end_time.is_set
 	|| duration.is_set;
@@ -15010,7 +15195,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
     duration{YType::str, "duration"}
 {
 
-    yang_name = "ldp-exit"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ldp-exit"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LdpExit::~LdpExit()
@@ -15019,6 +15204,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LdpExit::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| end_time.is_set
 	|| duration.is_set;
@@ -15115,7 +15301,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
     duration{YType::str, "duration"}
 {
 
-    yang_name = "lsd-enter"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsd-enter"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LsdEnter::~LsdEnter()
@@ -15124,6 +15310,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LsdEnter::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| end_time.is_set
 	|| duration.is_set;
@@ -15220,7 +15407,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
     duration{YType::str, "duration"}
 {
 
-    yang_name = "lsd-exit"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsd-exit"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LsdExit::~LsdExit()
@@ -15229,6 +15416,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LsdExit::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| end_time.is_set
 	|| duration.is_set;
@@ -15322,12 +15510,12 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
     :
     node_name{YType::str, "node-name"},
     speed{YType::enumeration, "speed"}
-    	,
+        ,
     fib_complete(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcIp::FibComplete>())
 {
     fib_complete->parent = this;
 
-    yang_name = "lc-ip"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lc-ip"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcIp::~LcIp()
@@ -15336,6 +15524,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcIp::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| speed.is_set
 	|| (fib_complete !=  nullptr && fib_complete->has_data());
@@ -15435,7 +15624,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
     duration{YType::str, "duration"}
 {
 
-    yang_name = "fib-complete"; yang_parent_name = "lc-ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fib-complete"; yang_parent_name = "lc-ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcIp::FibComplete::~FibComplete()
@@ -15444,6 +15633,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcIp::FibComplete::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| end_time.is_set
 	|| duration.is_set;
@@ -15537,12 +15727,12 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
     :
     node_name{YType::str, "node-name"},
     speed{YType::enumeration, "speed"}
-    	,
+        ,
     fib_complete(std::make_shared<Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcMpls::FibComplete>())
 {
     fib_complete->parent = this;
 
-    yang_name = "lc-mpls"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lc-mpls"; yang_parent_name = "convergence-timeline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcMpls::~LcMpls()
@@ -15551,6 +15741,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcMpls::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| speed.is_set
 	|| (fib_complete !=  nullptr && fib_complete->has_data());
@@ -15650,7 +15841,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
     duration{YType::str, "duration"}
 {
 
-    yang_name = "fib-complete"; yang_parent_name = "lc-mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fib-complete"; yang_parent_name = "lc-mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcMpls::FibComplete::~FibComplete()
@@ -15659,6 +15850,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::Conver
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcMpls::FibComplete::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| end_time.is_set
 	|| duration.is_set;
@@ -15754,7 +15946,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::LeafNe
     net_mask{YType::uint8, "net-mask"}
 {
 
-    yang_name = "leaf-networks-added"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "leaf-networks-added"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::LeafNetworksAdded::~LeafNetworksAdded()
@@ -15763,6 +15955,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::LeafNe
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::LeafNetworksAdded::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| net_mask.is_set;
 }
@@ -15845,7 +16038,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::LeafNe
     net_mask{YType::uint8, "net-mask"}
 {
 
-    yang_name = "leaf-networks-deleted"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "leaf-networks-deleted"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::LeafNetworksDeleted::~LeafNetworksDeleted()
@@ -15854,6 +16047,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::LeafNe
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::LeafNetworksDeleted::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| net_mask.is_set;
 }
@@ -15938,7 +16132,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspProcessed::Ls
     reception_time{YType::str, "reception-time"}
 {
 
-    yang_name = "lsp-processed"; yang_parent_name = "spf-run-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-processed"; yang_parent_name = "spf-run-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspProcessed::~LspProcessed()
@@ -15947,6 +16141,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspProcessed::~L
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspProcessed::has_data() const
 {
+    if (is_presence_container) return true;
     return lsp_id.is_set
 	|| sequence_number.is_set
 	|| change_type.is_set
@@ -16060,7 +16255,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspRegenerated::
     reason{YType::str, "reason"}
 {
 
-    yang_name = "lsp-regenerated"; yang_parent_name = "spf-run-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-regenerated"; yang_parent_name = "spf-run-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspRegenerated::~LspRegenerated()
@@ -16069,6 +16264,7 @@ Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspRegenerated::
 
 bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspRegenerated::has_data() const
 {
+    if (is_presence_container) return true;
     return serial_number_xr.is_set
 	|| lsp_id.is_set
 	|| sequence_number.is_set
@@ -16211,9 +16407,11 @@ bool Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspRegenera
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummaries()
+    :
+    prefix_event_summary(this, {"event_id"})
 {
 
-    yang_name = "prefix-event-summaries"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-event-summaries"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventSummaries::~PrefixEventSummaries()
@@ -16222,7 +16420,8 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::~PrefixEventSummaries()
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::has_data() const
 {
-    for (std::size_t index=0; index<prefix_event_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_event_summary.len(); index++)
     {
         if(prefix_event_summary[index]->has_data())
             return true;
@@ -16232,7 +16431,7 @@ bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::has_data() const
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_event_summary.size(); index++)
+    for (std::size_t index=0; index<prefix_event_summary.len(); index++)
     {
         if(prefix_event_summary[index]->has_operation())
             return true;
@@ -16262,7 +16461,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::PrefixEventSummaries::g
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary>();
         c->parent = this;
-        prefix_event_summary.push_back(c);
+        prefix_event_summary.append(c);
         return c;
     }
 
@@ -16274,7 +16473,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefix_event_summary)
+    for (auto c : prefix_event_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16314,14 +16513,18 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Prefi
     route_path_change_type{YType::enumeration, "route-path-change-type"},
     cost{YType::uint32, "cost"},
     trigger_time{YType::str, "trigger-time"}
-    	,
+        ,
     ip_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::IpConvergenceTime>())
-	,mpls_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::MplsConvergenceTime>())
+    , mpls_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::MplsConvergenceTime>())
+    , path(this, {})
+    , trigger_lsa(this, {})
+    , time_line(this, {})
+    , lsa_processed(this, {})
 {
     ip_convergence_time->parent = this;
     mpls_convergence_time->parent = this;
 
-    yang_name = "prefix-event-summary"; yang_parent_name = "prefix-event-summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-event-summary"; yang_parent_name = "prefix-event-summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::~PrefixEventSummary()
@@ -16330,22 +16533,23 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::~Pref
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::has_data() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<trigger_lsa.size(); index++)
+    for (std::size_t index=0; index<trigger_lsa.len(); index++)
     {
         if(trigger_lsa[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<time_line.size(); index++)
+    for (std::size_t index=0; index<time_line.len(); index++)
     {
         if(time_line[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<lsa_processed.size(); index++)
+    for (std::size_t index=0; index<lsa_processed.len(); index++)
     {
         if(lsa_processed[index]->has_data())
             return true;
@@ -16368,22 +16572,22 @@ bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::has_operation() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<trigger_lsa.size(); index++)
+    for (std::size_t index=0; index<trigger_lsa.len(); index++)
     {
         if(trigger_lsa[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<time_line.size(); index++)
+    for (std::size_t index=0; index<time_line.len(); index++)
     {
         if(time_line[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<lsa_processed.size(); index++)
+    for (std::size_t index=0; index<lsa_processed.len(); index++)
     {
         if(lsa_processed[index]->has_operation())
             return true;
@@ -16408,7 +16612,8 @@ bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::
 std::string Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-event-summary" <<"[event-id='" <<event_id <<"']";
+    path_buffer << "prefix-event-summary";
+    ADD_KEY_TOKEN(event_id, "event-id");
     return path_buffer.str();
 }
 
@@ -16457,7 +16662,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::PrefixEventSummaries::P
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path>();
         c->parent = this;
-        path.push_back(c);
+        path.append(c);
         return c;
     }
 
@@ -16465,7 +16670,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::PrefixEventSummaries::P
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TriggerLsa>();
         c->parent = this;
-        trigger_lsa.push_back(c);
+        trigger_lsa.append(c);
         return c;
     }
 
@@ -16473,7 +16678,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::PrefixEventSummaries::P
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine>();
         c->parent = this;
-        time_line.push_back(c);
+        time_line.append(c);
         return c;
     }
 
@@ -16481,7 +16686,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::PrefixEventSummaries::P
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::LsaProcessed>();
         c->parent = this;
-        lsa_processed.push_back(c);
+        lsa_processed.append(c);
         return c;
     }
 
@@ -16503,7 +16708,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : path)
+    for (auto c : path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16512,7 +16717,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : trigger_lsa)
+    for (auto c : trigger_lsa.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16521,7 +16726,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : time_line)
+    for (auto c : time_line.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16530,7 +16735,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : lsa_processed)
+    for (auto c : lsa_processed.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16684,7 +16889,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::IpCon
     fastest_node_name{YType::str, "fastest-node-name"}
 {
 
-    yang_name = "ip-convergence-time"; yang_parent_name = "prefix-event-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-convergence-time"; yang_parent_name = "prefix-event-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::IpConvergenceTime::~IpConvergenceTime()
@@ -16693,6 +16898,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::IpCon
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::IpConvergenceTime::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum_time.is_set
 	|| maximum_time.is_set
 	|| slowest_node_name.is_set
@@ -16803,7 +17009,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::MplsC
     fastest_node_name{YType::str, "fastest-node-name"}
 {
 
-    yang_name = "mpls-convergence-time"; yang_parent_name = "prefix-event-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-convergence-time"; yang_parent_name = "prefix-event-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::MplsConvergenceTime::~MplsConvergenceTime()
@@ -16812,6 +17018,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::MplsC
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::MplsConvergenceTime::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum_time.is_set
 	|| maximum_time.is_set
 	|| slowest_node_name.is_set
@@ -16920,9 +17127,11 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path:
     neighbour_address{YType::str, "neighbour-address"},
     change_type{YType::enumeration, "change-type"},
     path_metric{YType::uint32, "path-metric"}
+        ,
+    lfa_path(this, {})
 {
 
-    yang_name = "path"; yang_parent_name = "prefix-event-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "prefix-event-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::~Path()
@@ -16931,7 +17140,8 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path:
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::has_data() const
 {
-    for (std::size_t index=0; index<lfa_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lfa_path.len(); index++)
     {
         if(lfa_path[index]->has_data())
             return true;
@@ -16944,7 +17154,7 @@ bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::has_operation() const
 {
-    for (std::size_t index=0; index<lfa_path.size(); index++)
+    for (std::size_t index=0; index<lfa_path.len(); index++)
     {
         if(lfa_path[index]->has_operation())
             return true;
@@ -16982,7 +17192,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::PrefixEventSummaries::P
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath>();
         c->parent = this;
-        lfa_path.push_back(c);
+        lfa_path.append(c);
         return c;
     }
 
@@ -16994,7 +17204,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lfa_path)
+    for (auto c : lfa_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17070,7 +17280,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path:
     remote_node_id{YType::str, "remote-node-id"}
 {
 
-    yang_name = "lfa-path"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lfa-path"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath::~LfaPath()
@@ -17079,6 +17289,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path:
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath::has_data() const
 {
+    if (is_presence_container) return true;
     return lfa_type.is_set
 	|| interface_name.is_set
 	|| neighbour_address.is_set
@@ -17217,7 +17428,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Trigg
     reception_time{YType::str, "reception-time"}
 {
 
-    yang_name = "trigger-lsa"; yang_parent_name = "prefix-event-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trigger-lsa"; yang_parent_name = "prefix-event-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TriggerLsa::~TriggerLsa()
@@ -17226,6 +17437,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Trigg
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TriggerLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| sequence_number.is_set
 	|| lsa_type.is_set
@@ -17364,9 +17576,12 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeL
     ldp_exit{YType::str, "ldp-exit"},
     lsd_enter{YType::str, "lsd-enter"},
     lsd_exit{YType::str, "lsd-exit"}
+        ,
+    lc_ip(this, {})
+    , lc_mpls(this, {})
 {
 
-    yang_name = "time-line"; yang_parent_name = "prefix-event-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "time-line"; yang_parent_name = "prefix-event-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::~TimeLine()
@@ -17375,12 +17590,13 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeL
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::has_data() const
 {
-    for (std::size_t index=0; index<lc_ip.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lc_ip.len(); index++)
     {
         if(lc_ip[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<lc_mpls.size(); index++)
+    for (std::size_t index=0; index<lc_mpls.len(); index++)
     {
         if(lc_mpls[index]->has_data())
             return true;
@@ -17397,12 +17613,12 @@ bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::has_operation() const
 {
-    for (std::size_t index=0; index<lc_ip.size(); index++)
+    for (std::size_t index=0; index<lc_ip.len(); index++)
     {
         if(lc_ip[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<lc_mpls.size(); index++)
+    for (std::size_t index=0; index<lc_mpls.len(); index++)
     {
         if(lc_mpls[index]->has_operation())
             return true;
@@ -17448,7 +17664,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::PrefixEventSummaries::P
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp>();
         c->parent = this;
-        lc_ip.push_back(c);
+        lc_ip.append(c);
         return c;
     }
 
@@ -17456,7 +17672,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::PrefixEventSummaries::P
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls>();
         c->parent = this;
-        lc_mpls.push_back(c);
+        lc_mpls.append(c);
         return c;
     }
 
@@ -17468,7 +17684,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lc_ip)
+    for (auto c : lc_ip.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17477,7 +17693,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : lc_mpls)
+    for (auto c : lc_mpls.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17590,7 +17806,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeL
     fib_complete{YType::str, "fib-complete"}
 {
 
-    yang_name = "lc-ip"; yang_parent_name = "time-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lc-ip"; yang_parent_name = "time-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp::~LcIp()
@@ -17599,6 +17815,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeL
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| speed.is_set
 	|| fib_complete.is_set;
@@ -17695,7 +17912,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeL
     fib_complete{YType::str, "fib-complete"}
 {
 
-    yang_name = "lc-mpls"; yang_parent_name = "time-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lc-mpls"; yang_parent_name = "time-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls::~LcMpls()
@@ -17704,6 +17921,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeL
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| speed.is_set
 	|| fib_complete.is_set;
@@ -17803,7 +18021,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::LsaPr
     reception_time{YType::str, "reception-time"}
 {
 
-    yang_name = "lsa-processed"; yang_parent_name = "prefix-event-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-processed"; yang_parent_name = "prefix-event-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::LsaProcessed::~LsaProcessed()
@@ -17812,6 +18030,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::LsaPr
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::LsaProcessed::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| sequence_number.is_set
 	|| lsa_type.is_set
@@ -17941,9 +18160,11 @@ bool Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOfflines()
+    :
+    prefix_event_offline(this, {"event_id"})
 {
 
-    yang_name = "prefix-event-offlines"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-event-offlines"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventOfflines::~PrefixEventOfflines()
@@ -17952,7 +18173,8 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::~PrefixEventOfflines()
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::has_data() const
 {
-    for (std::size_t index=0; index<prefix_event_offline.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_event_offline.len(); index++)
     {
         if(prefix_event_offline[index]->has_data())
             return true;
@@ -17962,7 +18184,7 @@ bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::has_data() const
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_event_offline.size(); index++)
+    for (std::size_t index=0; index<prefix_event_offline.len(); index++)
     {
         if(prefix_event_offline[index]->has_operation())
             return true;
@@ -17992,7 +18214,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::PrefixEventOfflines::ge
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline>();
         c->parent = this;
-        prefix_event_offline.push_back(c);
+        prefix_event_offline.append(c);
         return c;
     }
 
@@ -18004,7 +18226,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefix_event_offline)
+    for (auto c : prefix_event_offline.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18044,14 +18266,18 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Prefix
     route_path_change_type{YType::enumeration, "route-path-change-type"},
     cost{YType::uint32, "cost"},
     trigger_time{YType::str, "trigger-time"}
-    	,
+        ,
     ip_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::IpConvergenceTime>())
-	,mpls_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::MplsConvergenceTime>())
+    , mpls_convergence_time(std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::MplsConvergenceTime>())
+    , path(this, {})
+    , trigger_lsa(this, {})
+    , time_line(this, {})
+    , lsa_processed(this, {})
 {
     ip_convergence_time->parent = this;
     mpls_convergence_time->parent = this;
 
-    yang_name = "prefix-event-offline"; yang_parent_name = "prefix-event-offlines"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-event-offline"; yang_parent_name = "prefix-event-offlines"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::~PrefixEventOffline()
@@ -18060,22 +18286,23 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::~Prefi
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::has_data() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<trigger_lsa.size(); index++)
+    for (std::size_t index=0; index<trigger_lsa.len(); index++)
     {
         if(trigger_lsa[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<time_line.size(); index++)
+    for (std::size_t index=0; index<time_line.len(); index++)
     {
         if(time_line[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<lsa_processed.size(); index++)
+    for (std::size_t index=0; index<lsa_processed.len(); index++)
     {
         if(lsa_processed[index]->has_data())
             return true;
@@ -18098,22 +18325,22 @@ bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::h
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::has_operation() const
 {
-    for (std::size_t index=0; index<path.size(); index++)
+    for (std::size_t index=0; index<path.len(); index++)
     {
         if(path[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<trigger_lsa.size(); index++)
+    for (std::size_t index=0; index<trigger_lsa.len(); index++)
     {
         if(trigger_lsa[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<time_line.size(); index++)
+    for (std::size_t index=0; index<time_line.len(); index++)
     {
         if(time_line[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<lsa_processed.size(); index++)
+    for (std::size_t index=0; index<lsa_processed.len(); index++)
     {
         if(lsa_processed[index]->has_operation())
             return true;
@@ -18138,7 +18365,8 @@ bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::h
 std::string Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-event-offline" <<"[event-id='" <<event_id <<"']";
+    path_buffer << "prefix-event-offline";
+    ADD_KEY_TOKEN(event_id, "event-id");
     return path_buffer.str();
 }
 
@@ -18187,7 +18415,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::PrefixEventOfflines::Pr
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path>();
         c->parent = this;
-        path.push_back(c);
+        path.append(c);
         return c;
     }
 
@@ -18195,7 +18423,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::PrefixEventOfflines::Pr
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TriggerLsa>();
         c->parent = this;
-        trigger_lsa.push_back(c);
+        trigger_lsa.append(c);
         return c;
     }
 
@@ -18203,7 +18431,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::PrefixEventOfflines::Pr
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine>();
         c->parent = this;
-        time_line.push_back(c);
+        time_line.append(c);
         return c;
     }
 
@@ -18211,7 +18439,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::PrefixEventOfflines::Pr
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::LsaProcessed>();
         c->parent = this;
-        lsa_processed.push_back(c);
+        lsa_processed.append(c);
         return c;
     }
 
@@ -18233,7 +18461,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : path)
+    for (auto c : path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18242,7 +18470,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : trigger_lsa)
+    for (auto c : trigger_lsa.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18251,7 +18479,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : time_line)
+    for (auto c : time_line.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18260,7 +18488,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : lsa_processed)
+    for (auto c : lsa_processed.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18414,7 +18642,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::IpConv
     fastest_node_name{YType::str, "fastest-node-name"}
 {
 
-    yang_name = "ip-convergence-time"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-convergence-time"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::IpConvergenceTime::~IpConvergenceTime()
@@ -18423,6 +18651,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::IpConv
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::IpConvergenceTime::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum_time.is_set
 	|| maximum_time.is_set
 	|| slowest_node_name.is_set
@@ -18533,7 +18762,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::MplsCo
     fastest_node_name{YType::str, "fastest-node-name"}
 {
 
-    yang_name = "mpls-convergence-time"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-convergence-time"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::MplsConvergenceTime::~MplsConvergenceTime()
@@ -18542,6 +18771,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::MplsCo
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::MplsConvergenceTime::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum_time.is_set
 	|| maximum_time.is_set
 	|| slowest_node_name.is_set
@@ -18650,9 +18880,11 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::
     neighbour_address{YType::str, "neighbour-address"},
     change_type{YType::enumeration, "change-type"},
     path_metric{YType::uint32, "path-metric"}
+        ,
+    lfa_path(this, {})
 {
 
-    yang_name = "path"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::~Path()
@@ -18661,7 +18893,8 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::has_data() const
 {
-    for (std::size_t index=0; index<lfa_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lfa_path.len(); index++)
     {
         if(lfa_path[index]->has_data())
             return true;
@@ -18674,7 +18907,7 @@ bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::P
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::has_operation() const
 {
-    for (std::size_t index=0; index<lfa_path.size(); index++)
+    for (std::size_t index=0; index<lfa_path.len(); index++)
     {
         if(lfa_path[index]->has_operation())
             return true;
@@ -18712,7 +18945,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::PrefixEventOfflines::Pr
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::LfaPath>();
         c->parent = this;
-        lfa_path.push_back(c);
+        lfa_path.append(c);
         return c;
     }
 
@@ -18724,7 +18957,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lfa_path)
+    for (auto c : lfa_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18800,7 +19033,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::
     remote_node_id{YType::str, "remote-node-id"}
 {
 
-    yang_name = "lfa-path"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lfa-path"; yang_parent_name = "path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::LfaPath::~LfaPath()
@@ -18809,6 +19042,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::LfaPath::has_data() const
 {
+    if (is_presence_container) return true;
     return lfa_type.is_set
 	|| interface_name.is_set
 	|| neighbour_address.is_set
@@ -18947,7 +19181,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Trigge
     reception_time{YType::str, "reception-time"}
 {
 
-    yang_name = "trigger-lsa"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trigger-lsa"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TriggerLsa::~TriggerLsa()
@@ -18956,6 +19190,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Trigge
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TriggerLsa::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| sequence_number.is_set
 	|| lsa_type.is_set
@@ -19094,9 +19329,12 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLi
     ldp_exit{YType::str, "ldp-exit"},
     lsd_enter{YType::str, "lsd-enter"},
     lsd_exit{YType::str, "lsd-exit"}
+        ,
+    lc_ip(this, {})
+    , lc_mpls(this, {})
 {
 
-    yang_name = "time-line"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "time-line"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::~TimeLine()
@@ -19105,12 +19343,13 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLi
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::has_data() const
 {
-    for (std::size_t index=0; index<lc_ip.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lc_ip.len(); index++)
     {
         if(lc_ip[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<lc_mpls.size(); index++)
+    for (std::size_t index=0; index<lc_mpls.len(); index++)
     {
         if(lc_mpls[index]->has_data())
             return true;
@@ -19127,12 +19366,12 @@ bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::T
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::has_operation() const
 {
-    for (std::size_t index=0; index<lc_ip.size(); index++)
+    for (std::size_t index=0; index<lc_ip.len(); index++)
     {
         if(lc_ip[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<lc_mpls.size(); index++)
+    for (std::size_t index=0; index<lc_mpls.len(); index++)
     {
         if(lc_mpls[index]->has_operation())
             return true;
@@ -19178,7 +19417,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::PrefixEventOfflines::Pr
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcIp>();
         c->parent = this;
-        lc_ip.push_back(c);
+        lc_ip.append(c);
         return c;
     }
 
@@ -19186,7 +19425,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::PrefixEventOfflines::Pr
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcMpls>();
         c->parent = this;
-        lc_mpls.push_back(c);
+        lc_mpls.append(c);
         return c;
     }
 
@@ -19198,7 +19437,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lc_ip)
+    for (auto c : lc_ip.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19207,7 +19446,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     }
 
     count = 0;
-    for (auto const & c : lc_mpls)
+    for (auto c : lc_mpls.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19320,7 +19559,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLi
     fib_complete{YType::str, "fib-complete"}
 {
 
-    yang_name = "lc-ip"; yang_parent_name = "time-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lc-ip"; yang_parent_name = "time-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcIp::~LcIp()
@@ -19329,6 +19568,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLi
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcIp::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| speed.is_set
 	|| fib_complete.is_set;
@@ -19425,7 +19665,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLi
     fib_complete{YType::str, "fib-complete"}
 {
 
-    yang_name = "lc-mpls"; yang_parent_name = "time-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lc-mpls"; yang_parent_name = "time-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcMpls::~LcMpls()
@@ -19434,6 +19674,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLi
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcMpls::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| speed.is_set
 	|| fib_complete.is_set;
@@ -19533,7 +19774,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::LsaPro
     reception_time{YType::str, "reception-time"}
 {
 
-    yang_name = "lsa-processed"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsa-processed"; yang_parent_name = "prefix-event-offline"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::LsaProcessed::~LsaProcessed()
@@ -19542,6 +19783,7 @@ Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::LsaPro
 
 bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::LsaProcessed::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_id.is_set
 	|| sequence_number.is_set
 	|| lsa_type.is_set
@@ -19671,9 +19913,11 @@ bool Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::L
 }
 
 Rcmd::Isis::Instances::Instance::LspRegenerateds::LspRegenerateds()
+    :
+    lsp_regenerated(this, {"serial_number"})
 {
 
-    yang_name = "lsp-regenerateds"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-regenerateds"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::LspRegenerateds::~LspRegenerateds()
@@ -19682,7 +19926,8 @@ Rcmd::Isis::Instances::Instance::LspRegenerateds::~LspRegenerateds()
 
 bool Rcmd::Isis::Instances::Instance::LspRegenerateds::has_data() const
 {
-    for (std::size_t index=0; index<lsp_regenerated.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lsp_regenerated.len(); index++)
     {
         if(lsp_regenerated[index]->has_data())
             return true;
@@ -19692,7 +19937,7 @@ bool Rcmd::Isis::Instances::Instance::LspRegenerateds::has_data() const
 
 bool Rcmd::Isis::Instances::Instance::LspRegenerateds::has_operation() const
 {
-    for (std::size_t index=0; index<lsp_regenerated.size(); index++)
+    for (std::size_t index=0; index<lsp_regenerated.len(); index++)
     {
         if(lsp_regenerated[index]->has_operation())
             return true;
@@ -19722,7 +19967,7 @@ std::shared_ptr<Entity> Rcmd::Isis::Instances::Instance::LspRegenerateds::get_ch
     {
         auto c = std::make_shared<Rcmd::Isis::Instances::Instance::LspRegenerateds::LspRegenerated>();
         c->parent = this;
-        lsp_regenerated.push_back(c);
+        lsp_regenerated.append(c);
         return c;
     }
 
@@ -19734,7 +19979,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Isis::Instances::Instance::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lsp_regenerated)
+    for (auto c : lsp_regenerated.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19772,7 +20017,7 @@ Rcmd::Isis::Instances::Instance::LspRegenerateds::LspRegenerated::LspRegenerated
     reason{YType::str, "reason"}
 {
 
-    yang_name = "lsp-regenerated"; yang_parent_name = "lsp-regenerateds"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-regenerated"; yang_parent_name = "lsp-regenerateds"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Isis::Instances::Instance::LspRegenerateds::LspRegenerated::~LspRegenerated()
@@ -19781,6 +20026,7 @@ Rcmd::Isis::Instances::Instance::LspRegenerateds::LspRegenerated::~LspRegenerate
 
 bool Rcmd::Isis::Instances::Instance::LspRegenerateds::LspRegenerated::has_data() const
 {
+    if (is_presence_container) return true;
     return serial_number.is_set
 	|| serial_number_xr.is_set
 	|| lsp_id.is_set
@@ -19807,7 +20053,8 @@ bool Rcmd::Isis::Instances::Instance::LspRegenerateds::LspRegenerated::has_opera
 std::string Rcmd::Isis::Instances::Instance::LspRegenerateds::LspRegenerated::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lsp-regenerated" <<"[serial-number='" <<serial_number <<"']";
+    path_buffer << "lsp-regenerated";
+    ADD_KEY_TOKEN(serial_number, "serial-number");
     return path_buffer.str();
 }
 
@@ -19936,9 +20183,13 @@ bool Rcmd::Isis::Instances::Instance::LspRegenerateds::LspRegenerated::has_leaf_
 }
 
 Rcmd::Memory::Memory()
+    :
+    memory_info(this, {})
+    , edm_memory_info(this, {})
+    , string_memory_info(this, {})
 {
 
-    yang_name = "memory"; yang_parent_name = "rcmd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "memory"; yang_parent_name = "rcmd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Memory::~Memory()
@@ -19947,17 +20198,18 @@ Rcmd::Memory::~Memory()
 
 bool Rcmd::Memory::has_data() const
 {
-    for (std::size_t index=0; index<memory_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<memory_info.len(); index++)
     {
         if(memory_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<edm_memory_info.size(); index++)
+    for (std::size_t index=0; index<edm_memory_info.len(); index++)
     {
         if(edm_memory_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<string_memory_info.size(); index++)
+    for (std::size_t index=0; index<string_memory_info.len(); index++)
     {
         if(string_memory_info[index]->has_data())
             return true;
@@ -19967,17 +20219,17 @@ bool Rcmd::Memory::has_data() const
 
 bool Rcmd::Memory::has_operation() const
 {
-    for (std::size_t index=0; index<memory_info.size(); index++)
+    for (std::size_t index=0; index<memory_info.len(); index++)
     {
         if(memory_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<edm_memory_info.size(); index++)
+    for (std::size_t index=0; index<edm_memory_info.len(); index++)
     {
         if(edm_memory_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<string_memory_info.size(); index++)
+    for (std::size_t index=0; index<string_memory_info.len(); index++)
     {
         if(string_memory_info[index]->has_operation())
             return true;
@@ -20014,7 +20266,7 @@ std::shared_ptr<Entity> Rcmd::Memory::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Rcmd::Memory::MemoryInfo>();
         c->parent = this;
-        memory_info.push_back(c);
+        memory_info.append(c);
         return c;
     }
 
@@ -20022,7 +20274,7 @@ std::shared_ptr<Entity> Rcmd::Memory::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Rcmd::Memory::EdmMemoryInfo>();
         c->parent = this;
-        edm_memory_info.push_back(c);
+        edm_memory_info.append(c);
         return c;
     }
 
@@ -20030,7 +20282,7 @@ std::shared_ptr<Entity> Rcmd::Memory::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Rcmd::Memory::StringMemoryInfo>();
         c->parent = this;
-        string_memory_info.push_back(c);
+        string_memory_info.append(c);
         return c;
     }
 
@@ -20042,7 +20294,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Memory::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : memory_info)
+    for (auto c : memory_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20051,7 +20303,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Memory::get_children() cons
     }
 
     count = 0;
-    for (auto const & c : edm_memory_info)
+    for (auto c : edm_memory_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20060,7 +20312,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Memory::get_children() cons
     }
 
     count = 0;
-    for (auto const & c : string_memory_info)
+    for (auto c : string_memory_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20097,7 +20349,7 @@ Rcmd::Memory::MemoryInfo::MemoryInfo()
     memory_type{YType::enumeration, "memory-type"}
 {
 
-    yang_name = "memory-info"; yang_parent_name = "memory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "memory-info"; yang_parent_name = "memory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Memory::MemoryInfo::~MemoryInfo()
@@ -20106,6 +20358,7 @@ Rcmd::Memory::MemoryInfo::~MemoryInfo()
 
 bool Rcmd::Memory::MemoryInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return structure_name.is_set
 	|| size.is_set
 	|| current_count.is_set
@@ -20262,7 +20515,7 @@ Rcmd::Memory::EdmMemoryInfo::EdmMemoryInfo()
     failure{YType::uint32, "failure"}
 {
 
-    yang_name = "edm-memory-info"; yang_parent_name = "memory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "edm-memory-info"; yang_parent_name = "memory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Memory::EdmMemoryInfo::~EdmMemoryInfo()
@@ -20271,6 +20524,7 @@ Rcmd::Memory::EdmMemoryInfo::~EdmMemoryInfo()
 
 bool Rcmd::Memory::EdmMemoryInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return size.is_set
 	|| total.is_set
 	|| success.is_set
@@ -20388,7 +20642,7 @@ Rcmd::Memory::StringMemoryInfo::StringMemoryInfo()
     failure{YType::uint32, "failure"}
 {
 
-    yang_name = "string-memory-info"; yang_parent_name = "memory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "string-memory-info"; yang_parent_name = "memory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Memory::StringMemoryInfo::~StringMemoryInfo()
@@ -20397,6 +20651,7 @@ Rcmd::Memory::StringMemoryInfo::~StringMemoryInfo()
 
 bool Rcmd::Memory::StringMemoryInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return size.is_set
 	|| total.is_set
 	|| success.is_set
@@ -20509,14 +20764,14 @@ bool Rcmd::Memory::StringMemoryInfo::has_leaf_or_child_of_name(const std::string
 Rcmd::Ldp::Ldp()
     :
     sessions(std::make_shared<Rcmd::Ldp::Sessions>())
-	,remote_lfa_s(std::make_shared<Rcmd::Ldp::RemoteLfaS>())
-	,remote_lfa_summaries(std::make_shared<Rcmd::Ldp::RemoteLfaSummaries>())
+    , remote_lfa_s(std::make_shared<Rcmd::Ldp::RemoteLfaS>())
+    , remote_lfa_summaries(std::make_shared<Rcmd::Ldp::RemoteLfaSummaries>())
 {
     sessions->parent = this;
     remote_lfa_s->parent = this;
     remote_lfa_summaries->parent = this;
 
-    yang_name = "ldp"; yang_parent_name = "rcmd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ldp"; yang_parent_name = "rcmd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Ldp::~Ldp()
@@ -20525,6 +20780,7 @@ Rcmd::Ldp::~Ldp()
 
 bool Rcmd::Ldp::has_data() const
 {
+    if (is_presence_container) return true;
     return (sessions !=  nullptr && sessions->has_data())
 	|| (remote_lfa_s !=  nullptr && remote_lfa_s->has_data())
 	|| (remote_lfa_summaries !=  nullptr && remote_lfa_summaries->has_data());
@@ -20631,9 +20887,11 @@ bool Rcmd::Ldp::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Rcmd::Ldp::Sessions::Sessions()
+    :
+    session(this, {"event_id"})
 {
 
-    yang_name = "sessions"; yang_parent_name = "ldp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sessions"; yang_parent_name = "ldp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Ldp::Sessions::~Sessions()
@@ -20642,7 +20900,8 @@ Rcmd::Ldp::Sessions::~Sessions()
 
 bool Rcmd::Ldp::Sessions::has_data() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_data())
             return true;
@@ -20652,7 +20911,7 @@ bool Rcmd::Ldp::Sessions::has_data() const
 
 bool Rcmd::Ldp::Sessions::has_operation() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_operation())
             return true;
@@ -20689,7 +20948,7 @@ std::shared_ptr<Entity> Rcmd::Ldp::Sessions::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Rcmd::Ldp::Sessions::Session>();
         c->parent = this;
-        session.push_back(c);
+        session.append(c);
         return c;
     }
 
@@ -20701,7 +20960,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ldp::Sessions::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session)
+    for (auto c : session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20739,7 +20998,7 @@ Rcmd::Ldp::Sessions::Session::Session()
     state{YType::enumeration, "state"}
 {
 
-    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Ldp::Sessions::Session::~Session()
@@ -20748,6 +21007,7 @@ Rcmd::Ldp::Sessions::Session::~Session()
 
 bool Rcmd::Ldp::Sessions::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return event_id.is_set
 	|| event_id_xr.is_set
 	|| event_type.is_set
@@ -20781,7 +21041,8 @@ std::string Rcmd::Ldp::Sessions::Session::get_absolute_path() const
 std::string Rcmd::Ldp::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session" <<"[event-id='" <<event_id <<"']";
+    path_buffer << "session";
+    ADD_KEY_TOKEN(event_id, "event-id");
     return path_buffer.str();
 }
 
@@ -20910,9 +21171,11 @@ bool Rcmd::Ldp::Sessions::Session::has_leaf_or_child_of_name(const std::string &
 }
 
 Rcmd::Ldp::RemoteLfaS::RemoteLfaS()
+    :
+    remote_lfa(this, {"event_id"})
 {
 
-    yang_name = "remote-lfa-s"; yang_parent_name = "ldp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "remote-lfa-s"; yang_parent_name = "ldp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Ldp::RemoteLfaS::~RemoteLfaS()
@@ -20921,7 +21184,8 @@ Rcmd::Ldp::RemoteLfaS::~RemoteLfaS()
 
 bool Rcmd::Ldp::RemoteLfaS::has_data() const
 {
-    for (std::size_t index=0; index<remote_lfa.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<remote_lfa.len(); index++)
     {
         if(remote_lfa[index]->has_data())
             return true;
@@ -20931,7 +21195,7 @@ bool Rcmd::Ldp::RemoteLfaS::has_data() const
 
 bool Rcmd::Ldp::RemoteLfaS::has_operation() const
 {
-    for (std::size_t index=0; index<remote_lfa.size(); index++)
+    for (std::size_t index=0; index<remote_lfa.len(); index++)
     {
         if(remote_lfa[index]->has_operation())
             return true;
@@ -20968,7 +21232,7 @@ std::shared_ptr<Entity> Rcmd::Ldp::RemoteLfaS::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Rcmd::Ldp::RemoteLfaS::RemoteLfa>();
         c->parent = this;
-        remote_lfa.push_back(c);
+        remote_lfa.append(c);
         return c;
     }
 
@@ -20980,7 +21244,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ldp::RemoteLfaS::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : remote_lfa)
+    for (auto c : remote_lfa.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21015,9 +21279,13 @@ Rcmd::Ldp::RemoteLfaS::RemoteLfa::RemoteLfa()
     process_name{YType::str, "process-name"},
     ipfrr_event_id{YType::uint32, "ipfrr-event-id"},
     below_threshold{YType::boolean, "below-threshold"}
+        ,
+    session_statistic(this, {})
+    , remote_node(this, {})
+    , logs(this, {})
 {
 
-    yang_name = "remote-lfa"; yang_parent_name = "remote-lfa-s"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "remote-lfa"; yang_parent_name = "remote-lfa-s"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Ldp::RemoteLfaS::RemoteLfa::~RemoteLfa()
@@ -21026,17 +21294,18 @@ Rcmd::Ldp::RemoteLfaS::RemoteLfa::~RemoteLfa()
 
 bool Rcmd::Ldp::RemoteLfaS::RemoteLfa::has_data() const
 {
-    for (std::size_t index=0; index<session_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session_statistic.len(); index++)
     {
         if(session_statistic[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<remote_node.size(); index++)
+    for (std::size_t index=0; index<remote_node.len(); index++)
     {
         if(remote_node[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<logs.size(); index++)
+    for (std::size_t index=0; index<logs.len(); index++)
     {
         if(logs[index]->has_data())
             return true;
@@ -21052,17 +21321,17 @@ bool Rcmd::Ldp::RemoteLfaS::RemoteLfa::has_data() const
 
 bool Rcmd::Ldp::RemoteLfaS::RemoteLfa::has_operation() const
 {
-    for (std::size_t index=0; index<session_statistic.size(); index++)
+    for (std::size_t index=0; index<session_statistic.len(); index++)
     {
         if(session_statistic[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<remote_node.size(); index++)
+    for (std::size_t index=0; index<remote_node.len(); index++)
     {
         if(remote_node[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<logs.size(); index++)
+    for (std::size_t index=0; index<logs.len(); index++)
     {
         if(logs[index]->has_operation())
             return true;
@@ -21087,7 +21356,8 @@ std::string Rcmd::Ldp::RemoteLfaS::RemoteLfa::get_absolute_path() const
 std::string Rcmd::Ldp::RemoteLfaS::RemoteLfa::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "remote-lfa" <<"[event-id='" <<event_id <<"']";
+    path_buffer << "remote-lfa";
+    ADD_KEY_TOKEN(event_id, "event-id");
     return path_buffer.str();
 }
 
@@ -21113,7 +21383,7 @@ std::shared_ptr<Entity> Rcmd::Ldp::RemoteLfaS::RemoteLfa::get_child_by_name(cons
     {
         auto c = std::make_shared<Rcmd::Ldp::RemoteLfaS::RemoteLfa::SessionStatistic>();
         c->parent = this;
-        session_statistic.push_back(c);
+        session_statistic.append(c);
         return c;
     }
 
@@ -21121,7 +21391,7 @@ std::shared_ptr<Entity> Rcmd::Ldp::RemoteLfaS::RemoteLfa::get_child_by_name(cons
     {
         auto c = std::make_shared<Rcmd::Ldp::RemoteLfaS::RemoteLfa::RemoteNode>();
         c->parent = this;
-        remote_node.push_back(c);
+        remote_node.append(c);
         return c;
     }
 
@@ -21129,7 +21399,7 @@ std::shared_ptr<Entity> Rcmd::Ldp::RemoteLfaS::RemoteLfa::get_child_by_name(cons
     {
         auto c = std::make_shared<Rcmd::Ldp::RemoteLfaS::RemoteLfa::Logs>();
         c->parent = this;
-        logs.push_back(c);
+        logs.append(c);
         return c;
     }
 
@@ -21141,7 +21411,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ldp::RemoteLfaS::RemoteLfa:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session_statistic)
+    for (auto c : session_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21150,7 +21420,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ldp::RemoteLfaS::RemoteLfa:
     }
 
     count = 0;
-    for (auto const & c : remote_node)
+    for (auto c : remote_node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21159,7 +21429,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ldp::RemoteLfaS::RemoteLfa:
     }
 
     count = 0;
-    for (auto const & c : logs)
+    for (auto c : logs.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21266,7 +21536,7 @@ Rcmd::Ldp::RemoteLfaS::RemoteLfa::SessionStatistic::SessionStatistic()
     protected_path_count{YType::uint32, "protected-path-count"}
 {
 
-    yang_name = "session-statistic"; yang_parent_name = "remote-lfa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-statistic"; yang_parent_name = "remote-lfa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ldp::RemoteLfaS::RemoteLfa::SessionStatistic::~SessionStatistic()
@@ -21275,6 +21545,7 @@ Rcmd::Ldp::RemoteLfaS::RemoteLfa::SessionStatistic::~SessionStatistic()
 
 bool Rcmd::Ldp::RemoteLfaS::RemoteLfa::SessionStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return session_state.is_set
 	|| session_count.is_set
 	|| route_count.is_set
@@ -21430,7 +21701,7 @@ Rcmd::Ldp::RemoteLfaS::RemoteLfa::RemoteNode::RemoteNode()
     protected_path_count{YType::uint32, "protected-path-count"}
 {
 
-    yang_name = "remote-node"; yang_parent_name = "remote-lfa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-node"; yang_parent_name = "remote-lfa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ldp::RemoteLfaS::RemoteLfa::RemoteNode::~RemoteNode()
@@ -21439,6 +21710,7 @@ Rcmd::Ldp::RemoteLfaS::RemoteLfa::RemoteNode::~RemoteNode()
 
 bool Rcmd::Ldp::RemoteLfaS::RemoteLfa::RemoteNode::has_data() const
 {
+    if (is_presence_container) return true;
     return remote_node_id.is_set
 	|| lsr_id.is_set
 	|| transport_address.is_set
@@ -21627,7 +21899,7 @@ Rcmd::Ldp::RemoteLfaS::RemoteLfa::Logs::Logs()
     remote_label_count{YType::uint32, "remote-label-count"}
 {
 
-    yang_name = "logs"; yang_parent_name = "remote-lfa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "logs"; yang_parent_name = "remote-lfa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ldp::RemoteLfaS::RemoteLfa::Logs::~Logs()
@@ -21636,6 +21908,7 @@ Rcmd::Ldp::RemoteLfaS::RemoteLfa::Logs::~Logs()
 
 bool Rcmd::Ldp::RemoteLfaS::RemoteLfa::Logs::has_data() const
 {
+    if (is_presence_container) return true;
     return log_time.is_set
 	|| label_coverage_state.is_set
 	|| route_count.is_set
@@ -21739,9 +22012,11 @@ bool Rcmd::Ldp::RemoteLfaS::RemoteLfa::Logs::has_leaf_or_child_of_name(const std
 }
 
 Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummaries()
+    :
+    remote_lfa_summary(this, {"event_id"})
 {
 
-    yang_name = "remote-lfa-summaries"; yang_parent_name = "ldp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "remote-lfa-summaries"; yang_parent_name = "ldp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Ldp::RemoteLfaSummaries::~RemoteLfaSummaries()
@@ -21750,7 +22025,8 @@ Rcmd::Ldp::RemoteLfaSummaries::~RemoteLfaSummaries()
 
 bool Rcmd::Ldp::RemoteLfaSummaries::has_data() const
 {
-    for (std::size_t index=0; index<remote_lfa_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<remote_lfa_summary.len(); index++)
     {
         if(remote_lfa_summary[index]->has_data())
             return true;
@@ -21760,7 +22036,7 @@ bool Rcmd::Ldp::RemoteLfaSummaries::has_data() const
 
 bool Rcmd::Ldp::RemoteLfaSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<remote_lfa_summary.size(); index++)
+    for (std::size_t index=0; index<remote_lfa_summary.len(); index++)
     {
         if(remote_lfa_summary[index]->has_operation())
             return true;
@@ -21797,7 +22073,7 @@ std::shared_ptr<Entity> Rcmd::Ldp::RemoteLfaSummaries::get_child_by_name(const s
     {
         auto c = std::make_shared<Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary>();
         c->parent = this;
-        remote_lfa_summary.push_back(c);
+        remote_lfa_summary.append(c);
         return c;
     }
 
@@ -21809,7 +22085,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ldp::RemoteLfaSummaries::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : remote_lfa_summary)
+    for (auto c : remote_lfa_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21844,9 +22120,13 @@ Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteLfaSummary()
     process_name{YType::str, "process-name"},
     ipfrr_event_id{YType::uint32, "ipfrr-event-id"},
     below_threshold{YType::boolean, "below-threshold"}
+        ,
+    session_statistic(this, {})
+    , remote_node(this, {})
+    , logs(this, {})
 {
 
-    yang_name = "remote-lfa-summary"; yang_parent_name = "remote-lfa-summaries"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "remote-lfa-summary"; yang_parent_name = "remote-lfa-summaries"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::~RemoteLfaSummary()
@@ -21855,17 +22135,18 @@ Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::~RemoteLfaSummary()
 
 bool Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::has_data() const
 {
-    for (std::size_t index=0; index<session_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session_statistic.len(); index++)
     {
         if(session_statistic[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<remote_node.size(); index++)
+    for (std::size_t index=0; index<remote_node.len(); index++)
     {
         if(remote_node[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<logs.size(); index++)
+    for (std::size_t index=0; index<logs.len(); index++)
     {
         if(logs[index]->has_data())
             return true;
@@ -21881,17 +22162,17 @@ bool Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::has_data() const
 
 bool Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::has_operation() const
 {
-    for (std::size_t index=0; index<session_statistic.size(); index++)
+    for (std::size_t index=0; index<session_statistic.len(); index++)
     {
         if(session_statistic[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<remote_node.size(); index++)
+    for (std::size_t index=0; index<remote_node.len(); index++)
     {
         if(remote_node[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<logs.size(); index++)
+    for (std::size_t index=0; index<logs.len(); index++)
     {
         if(logs[index]->has_operation())
             return true;
@@ -21916,7 +22197,8 @@ std::string Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::get_absolute_path()
 std::string Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "remote-lfa-summary" <<"[event-id='" <<event_id <<"']";
+    path_buffer << "remote-lfa-summary";
+    ADD_KEY_TOKEN(event_id, "event-id");
     return path_buffer.str();
 }
 
@@ -21942,7 +22224,7 @@ std::shared_ptr<Entity> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::get_chi
     {
         auto c = std::make_shared<Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::SessionStatistic>();
         c->parent = this;
-        session_statistic.push_back(c);
+        session_statistic.append(c);
         return c;
     }
 
@@ -21950,7 +22232,7 @@ std::shared_ptr<Entity> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::get_chi
     {
         auto c = std::make_shared<Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode>();
         c->parent = this;
-        remote_node.push_back(c);
+        remote_node.append(c);
         return c;
     }
 
@@ -21958,7 +22240,7 @@ std::shared_ptr<Entity> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::get_chi
     {
         auto c = std::make_shared<Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs>();
         c->parent = this;
-        logs.push_back(c);
+        logs.append(c);
         return c;
     }
 
@@ -21970,7 +22252,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ldp::RemoteLfaSummaries::Re
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session_statistic)
+    for (auto c : session_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21979,7 +22261,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ldp::RemoteLfaSummaries::Re
     }
 
     count = 0;
-    for (auto const & c : remote_node)
+    for (auto c : remote_node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21988,7 +22270,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ldp::RemoteLfaSummaries::Re
     }
 
     count = 0;
-    for (auto const & c : logs)
+    for (auto c : logs.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22095,7 +22377,7 @@ Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::SessionStatistic::SessionStatis
     protected_path_count{YType::uint32, "protected-path-count"}
 {
 
-    yang_name = "session-statistic"; yang_parent_name = "remote-lfa-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-statistic"; yang_parent_name = "remote-lfa-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::SessionStatistic::~SessionStatistic()
@@ -22104,6 +22386,7 @@ Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::SessionStatistic::~SessionStati
 
 bool Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::SessionStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return session_state.is_set
 	|| session_count.is_set
 	|| route_count.is_set

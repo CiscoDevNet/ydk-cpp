@@ -59,7 +59,7 @@ class ExplicitPaths::Identifiers : public ydk::Entity
 
         class Identifier; //type: ExplicitPaths::Identifiers::Identifier
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iep_oper::ExplicitPaths::Identifiers::Identifier> > identifier;
+        ydk::YList identifier;
         
 }; // ExplicitPaths::Identifiers
 
@@ -81,11 +81,11 @@ class ExplicitPaths::Identifiers::Identifier : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf identifier_id; //type: int32
+        ydk::YLeaf identifier_id; //type: uint32
         ydk::YLeaf status; //type: IepStatus
         class Address; //type: ExplicitPaths::Identifiers::Identifier::Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iep_oper::ExplicitPaths::Identifiers::Identifier::Address> > address;
+        ydk::YList address;
         
 }; // ExplicitPaths::Identifiers::Identifier
 
@@ -135,7 +135,7 @@ class ExplicitPaths::Names : public ydk::Entity
 
         class Name; //type: ExplicitPaths::Names::Name
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iep_oper::ExplicitPaths::Names::Name> > name;
+        ydk::YList name;
         
 }; // ExplicitPaths::Names
 
@@ -161,7 +161,7 @@ class ExplicitPaths::Names::Name : public ydk::Entity
         ydk::YLeaf status; //type: IepStatus
         class Address; //type: ExplicitPaths::Names::Name::Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iep_oper::ExplicitPaths::Names::Name::Address> > address;
+        ydk::YList address;
         
 }; // ExplicitPaths::Names::Name
 
@@ -191,11 +191,11 @@ class ExplicitPaths::Names::Name::Address : public ydk::Entity
 
 }; // ExplicitPaths::Names::Name::Address
 
-class IepHop : public ydk::Enum
+class IepStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf strict;
-        static const ydk::Enum::YLeaf loose;
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
 
 };
 
@@ -208,11 +208,11 @@ class IepAddress : public ydk::Enum
 
 };
 
-class IepStatus : public ydk::Enum
+class IepHop : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf strict;
+        static const ydk::Enum::YLeaf loose;
 
 };
 

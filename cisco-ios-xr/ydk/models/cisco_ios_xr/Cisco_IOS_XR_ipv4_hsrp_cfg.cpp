@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_ipv4_hsrp_cfg {
 Hsrp::Hsrp()
     :
     interfaces(std::make_shared<Hsrp::Interfaces>())
-	,logging(std::make_shared<Hsrp::Logging>())
+    , logging(std::make_shared<Hsrp::Logging>())
 {
     interfaces->parent = this;
     logging->parent = this;
 
-    yang_name = "hsrp"; yang_parent_name = "Cisco-IOS-XR-ipv4-hsrp-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "hsrp"; yang_parent_name = "Cisco-IOS-XR-ipv4-hsrp-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Hsrp::~Hsrp()
@@ -28,6 +28,7 @@ Hsrp::~Hsrp()
 
 bool Hsrp::has_data() const
 {
+    if (is_presence_container) return true;
     return (interfaces !=  nullptr && interfaces->has_data())
 	|| (logging !=  nullptr && logging->has_data());
 }
@@ -136,9 +137,11 @@ bool Hsrp::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Hsrp::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "hsrp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "hsrp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Hsrp::Interfaces::~Interfaces()
@@ -147,7 +150,8 @@ Hsrp::Interfaces::~Interfaces()
 
 bool Hsrp::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -157,7 +161,7 @@ bool Hsrp::Interfaces::has_data() const
 
 bool Hsrp::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -194,7 +198,7 @@ std::shared_ptr<Entity> Hsrp::Interfaces::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<Hsrp::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -206,7 +210,7 @@ std::map<std::string, std::shared_ptr<Entity>> Hsrp::Interfaces::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -238,17 +242,17 @@ Hsrp::Interfaces::Interface::Interface()
     mac_refresh{YType::uint32, "mac-refresh"},
     use_bia{YType::empty, "use-bia"},
     redirects_disable{YType::empty, "redirects-disable"}
-    	,
+        ,
     ipv6(std::make_shared<Hsrp::Interfaces::Interface::Ipv6>())
-	,bfd(std::make_shared<Hsrp::Interfaces::Interface::Bfd>())
-	,delay(nullptr) // presence node
-	,ipv4(std::make_shared<Hsrp::Interfaces::Interface::Ipv4>())
+    , bfd(std::make_shared<Hsrp::Interfaces::Interface::Bfd>())
+    , delay(nullptr) // presence node
+    , ipv4(std::make_shared<Hsrp::Interfaces::Interface::Ipv4>())
 {
     ipv6->parent = this;
     bfd->parent = this;
     ipv4->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Hsrp::Interfaces::Interface::~Interface()
@@ -257,6 +261,7 @@ Hsrp::Interfaces::Interface::~Interface()
 
 bool Hsrp::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| mac_refresh.is_set
 	|| use_bia.is_set
@@ -290,7 +295,8 @@ std::string Hsrp::Interfaces::Interface::get_absolute_path() const
 std::string Hsrp::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -433,12 +439,12 @@ bool Hsrp::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & 
 Hsrp::Interfaces::Interface::Ipv6::Ipv6()
     :
     version2(std::make_shared<Hsrp::Interfaces::Interface::Ipv6::Version2>())
-	,slave_groups(std::make_shared<Hsrp::Interfaces::Interface::Ipv6::SlaveGroups>())
+    , slave_groups(std::make_shared<Hsrp::Interfaces::Interface::Ipv6::SlaveGroups>())
 {
     version2->parent = this;
     slave_groups->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv6::~Ipv6()
@@ -447,6 +453,7 @@ Hsrp::Interfaces::Interface::Ipv6::~Ipv6()
 
 bool Hsrp::Interfaces::Interface::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (version2 !=  nullptr && version2->has_data())
 	|| (slave_groups !=  nullptr && slave_groups->has_data());
 }
@@ -535,7 +542,7 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::Version2()
 {
     groups->parent = this;
 
-    yang_name = "version2"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "version2"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv6::Version2::~Version2()
@@ -544,6 +551,7 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::~Version2()
 
 bool Hsrp::Interfaces::Interface::Ipv6::Version2::has_data() const
 {
+    if (is_presence_container) return true;
     return (groups !=  nullptr && groups->has_data());
 }
 
@@ -611,9 +619,11 @@ bool Hsrp::Interfaces::Interface::Ipv6::Version2::has_leaf_or_child_of_name(cons
 }
 
 Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Groups()
+    :
+    group(this, {"group_number"})
 {
 
-    yang_name = "groups"; yang_parent_name = "version2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "groups"; yang_parent_name = "version2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::~Groups()
@@ -622,7 +632,8 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::~Groups()
 
 bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
@@ -632,7 +643,7 @@ bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::has_data() const
 
 bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
@@ -662,7 +673,7 @@ std::shared_ptr<Entity> Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::get
     {
         auto c = std::make_shared<Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -674,7 +685,7 @@ std::map<std::string, std::shared_ptr<Entity>> Hsrp::Interfaces::Interface::Ipv6
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -704,16 +715,16 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::Group()
     :
     group_number{YType::uint32, "group-number"},
     priority{YType::uint32, "priority"},
-    preempt{YType::int32, "preempt"},
+    preempt{YType::uint32, "preempt"},
     session_name{YType::str, "session-name"},
     virtual_mac_address{YType::str, "virtual-mac-address"}
-    	,
+        ,
     bfd(std::make_shared<Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::Bfd>())
-	,tracked_interfaces(std::make_shared<Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedInterfaces>())
-	,tracked_objects(std::make_shared<Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedObjects>())
-	,timers(std::make_shared<Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::Timers>())
-	,link_local_ipv6_address(std::make_shared<Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::LinkLocalIpv6Address>())
-	,global_ipv6_addresses(std::make_shared<Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv6Addresses>())
+    , tracked_interfaces(std::make_shared<Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedInterfaces>())
+    , tracked_objects(std::make_shared<Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedObjects>())
+    , timers(std::make_shared<Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::Timers>())
+    , link_local_ipv6_address(std::make_shared<Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::LinkLocalIpv6Address>())
+    , global_ipv6_addresses(std::make_shared<Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv6Addresses>())
 {
     bfd->parent = this;
     tracked_interfaces->parent = this;
@@ -722,7 +733,7 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::Group()
     link_local_ipv6_address->parent = this;
     global_ipv6_addresses->parent = this;
 
-    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::~Group()
@@ -731,6 +742,7 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::~Group()
 
 bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return group_number.is_set
 	|| priority.is_set
 	|| preempt.is_set
@@ -763,7 +775,8 @@ bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::has_operation()
 std::string Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group" <<"[group-number='" <<group_number <<"']";
+    path_buffer << "group";
+    ADD_KEY_TOKEN(group_number, "group-number");
     return path_buffer.str();
 }
 
@@ -948,7 +961,7 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::Bfd::Bfd()
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "bfd"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::Bfd::~Bfd()
@@ -957,6 +970,7 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::Bfd::~Bfd()
 
 bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| interface_name.is_set;
 }
@@ -1034,9 +1048,11 @@ bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::Bfd::has_leaf_o
 }
 
 Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedInterfaces::TrackedInterfaces()
+    :
+    tracked_interface(this, {"interface_name"})
 {
 
-    yang_name = "tracked-interfaces"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tracked-interfaces"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedInterfaces::~TrackedInterfaces()
@@ -1045,7 +1061,8 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedInterfaces::~
 
 bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<tracked_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tracked_interface.len(); index++)
     {
         if(tracked_interface[index]->has_data())
             return true;
@@ -1055,7 +1072,7 @@ bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedInterfac
 
 bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<tracked_interface.size(); index++)
+    for (std::size_t index=0; index<tracked_interface.len(); index++)
     {
         if(tracked_interface[index]->has_operation())
             return true;
@@ -1085,7 +1102,7 @@ std::shared_ptr<Entity> Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Gro
     {
         auto c = std::make_shared<Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedInterfaces::TrackedInterface>();
         c->parent = this;
-        tracked_interface.push_back(c);
+        tracked_interface.append(c);
         return c;
     }
 
@@ -1097,7 +1114,7 @@ std::map<std::string, std::shared_ptr<Entity>> Hsrp::Interfaces::Interface::Ipv6
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tracked_interface)
+    for (auto c : tracked_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1129,7 +1146,7 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedInterfaces::T
     priority_decrement{YType::uint32, "priority-decrement"}
 {
 
-    yang_name = "tracked-interface"; yang_parent_name = "tracked-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tracked-interface"; yang_parent_name = "tracked-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedInterfaces::TrackedInterface::~TrackedInterface()
@@ -1138,6 +1155,7 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedInterfaces::T
 
 bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedInterfaces::TrackedInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| priority_decrement.is_set;
 }
@@ -1152,7 +1170,8 @@ bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedInterfac
 std::string Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedInterfaces::TrackedInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tracked-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "tracked-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -1215,9 +1234,11 @@ bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedInterfac
 }
 
 Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedObjects::TrackedObjects()
+    :
+    tracked_object(this, {"object_name"})
 {
 
-    yang_name = "tracked-objects"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tracked-objects"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedObjects::~TrackedObjects()
@@ -1226,7 +1247,8 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedObjects::~Tra
 
 bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedObjects::has_data() const
 {
-    for (std::size_t index=0; index<tracked_object.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tracked_object.len(); index++)
     {
         if(tracked_object[index]->has_data())
             return true;
@@ -1236,7 +1258,7 @@ bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedObjects:
 
 bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedObjects::has_operation() const
 {
-    for (std::size_t index=0; index<tracked_object.size(); index++)
+    for (std::size_t index=0; index<tracked_object.len(); index++)
     {
         if(tracked_object[index]->has_operation())
             return true;
@@ -1266,7 +1288,7 @@ std::shared_ptr<Entity> Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Gro
     {
         auto c = std::make_shared<Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedObjects::TrackedObject>();
         c->parent = this;
-        tracked_object.push_back(c);
+        tracked_object.append(c);
         return c;
     }
 
@@ -1278,7 +1300,7 @@ std::map<std::string, std::shared_ptr<Entity>> Hsrp::Interfaces::Interface::Ipv6
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tracked_object)
+    for (auto c : tracked_object.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1310,7 +1332,7 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedObjects::Trac
     priority_decrement{YType::uint32, "priority-decrement"}
 {
 
-    yang_name = "tracked-object"; yang_parent_name = "tracked-objects"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tracked-object"; yang_parent_name = "tracked-objects"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedObjects::TrackedObject::~TrackedObject()
@@ -1319,6 +1341,7 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedObjects::Trac
 
 bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedObjects::TrackedObject::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set
 	|| priority_decrement.is_set;
 }
@@ -1333,7 +1356,8 @@ bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedObjects:
 std::string Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::TrackedObjects::TrackedObject::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tracked-object" <<"[object-name='" <<object_name <<"']";
+    path_buffer << "tracked-object";
+    ADD_KEY_TOKEN(object_name, "object-name");
     return path_buffer.str();
 }
 
@@ -1405,7 +1429,7 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::Timers::Timers()
     hold_sec{YType::uint32, "hold-sec"}
 {
 
-    yang_name = "timers"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::Timers::~Timers()
@@ -1414,6 +1438,7 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::Timers::~Timers()
 
 bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return hello_msec_flag.is_set
 	|| hello_msec.is_set
 	|| hello_sec.is_set
@@ -1548,7 +1573,7 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::LinkLocalIpv6Address
     auto_configure{YType::enumeration, "auto-configure"}
 {
 
-    yang_name = "link-local-ipv6-address"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-local-ipv6-address"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::LinkLocalIpv6Address::~LinkLocalIpv6Address()
@@ -1557,6 +1582,7 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::LinkLocalIpv6Address
 
 bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::LinkLocalIpv6Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| auto_configure.is_set;
 }
@@ -1634,9 +1660,11 @@ bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::LinkLocalIpv6Ad
 }
 
 Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv6Addresses::GlobalIpv6Addresses()
+    :
+    global_ipv6_address(this, {"address"})
 {
 
-    yang_name = "global-ipv6-addresses"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-ipv6-addresses"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv6Addresses::~GlobalIpv6Addresses()
@@ -1645,7 +1673,8 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv6Addresses:
 
 bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv6Addresses::has_data() const
 {
-    for (std::size_t index=0; index<global_ipv6_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<global_ipv6_address.len(); index++)
     {
         if(global_ipv6_address[index]->has_data())
             return true;
@@ -1655,7 +1684,7 @@ bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv6Addre
 
 bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv6Addresses::has_operation() const
 {
-    for (std::size_t index=0; index<global_ipv6_address.size(); index++)
+    for (std::size_t index=0; index<global_ipv6_address.len(); index++)
     {
         if(global_ipv6_address[index]->has_operation())
             return true;
@@ -1685,7 +1714,7 @@ std::shared_ptr<Entity> Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Gro
     {
         auto c = std::make_shared<Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv6Addresses::GlobalIpv6Address>();
         c->parent = this;
-        global_ipv6_address.push_back(c);
+        global_ipv6_address.append(c);
         return c;
     }
 
@@ -1697,7 +1726,7 @@ std::map<std::string, std::shared_ptr<Entity>> Hsrp::Interfaces::Interface::Ipv6
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : global_ipv6_address)
+    for (auto c : global_ipv6_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1728,7 +1757,7 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv6Addresses:
     address{YType::str, "address"}
 {
 
-    yang_name = "global-ipv6-address"; yang_parent_name = "global-ipv6-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-ipv6-address"; yang_parent_name = "global-ipv6-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv6Addresses::GlobalIpv6Address::~GlobalIpv6Address()
@@ -1737,6 +1766,7 @@ Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv6Addresses:
 
 bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv6Addresses::GlobalIpv6Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -1749,7 +1779,8 @@ bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv6Addre
 std::string Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv6Addresses::GlobalIpv6Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "global-ipv6-address" <<"[address='" <<address <<"']";
+    path_buffer << "global-ipv6-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -1801,9 +1832,11 @@ bool Hsrp::Interfaces::Interface::Ipv6::Version2::Groups::Group::GlobalIpv6Addre
 }
 
 Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroups()
+    :
+    slave_group(this, {"slave_group_number"})
 {
 
-    yang_name = "slave-groups"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slave-groups"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::~SlaveGroups()
@@ -1812,7 +1845,8 @@ Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::~SlaveGroups()
 
 bool Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::has_data() const
 {
-    for (std::size_t index=0; index<slave_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slave_group.len(); index++)
     {
         if(slave_group[index]->has_data())
             return true;
@@ -1822,7 +1856,7 @@ bool Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::has_data() const
 
 bool Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::has_operation() const
 {
-    for (std::size_t index=0; index<slave_group.size(); index++)
+    for (std::size_t index=0; index<slave_group.len(); index++)
     {
         if(slave_group[index]->has_operation())
             return true;
@@ -1852,7 +1886,7 @@ std::shared_ptr<Entity> Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::get_chil
     {
         auto c = std::make_shared<Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup>();
         c->parent = this;
-        slave_group.push_back(c);
+        slave_group.append(c);
         return c;
     }
 
@@ -1864,7 +1898,7 @@ std::map<std::string, std::shared_ptr<Entity>> Hsrp::Interfaces::Interface::Ipv6
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slave_group)
+    for (auto c : slave_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1895,14 +1929,14 @@ Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::SlaveGroup()
     slave_group_number{YType::uint32, "slave-group-number"},
     follow{YType::str, "follow"},
     virtual_mac_address{YType::str, "virtual-mac-address"}
-    	,
+        ,
     link_local_ipv6_address(std::make_shared<Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::LinkLocalIpv6Address>())
-	,global_ipv6_addresses(std::make_shared<Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv6Addresses>())
+    , global_ipv6_addresses(std::make_shared<Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv6Addresses>())
 {
     link_local_ipv6_address->parent = this;
     global_ipv6_addresses->parent = this;
 
-    yang_name = "slave-group"; yang_parent_name = "slave-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slave-group"; yang_parent_name = "slave-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::~SlaveGroup()
@@ -1911,6 +1945,7 @@ Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::~SlaveGroup()
 
 bool Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return slave_group_number.is_set
 	|| follow.is_set
 	|| virtual_mac_address.is_set
@@ -1931,7 +1966,8 @@ bool Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::has_operation()
 std::string Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slave-group" <<"[slave-group-number='" <<slave_group_number <<"']";
+    path_buffer << "slave-group";
+    ADD_KEY_TOKEN(slave_group_number, "slave-group-number");
     return path_buffer.str();
 }
 
@@ -2038,7 +2074,7 @@ Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::LinkLocalIpv6Address
     auto_configure{YType::enumeration, "auto-configure"}
 {
 
-    yang_name = "link-local-ipv6-address"; yang_parent_name = "slave-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-local-ipv6-address"; yang_parent_name = "slave-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::LinkLocalIpv6Address::~LinkLocalIpv6Address()
@@ -2047,6 +2083,7 @@ Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::LinkLocalIpv6Address
 
 bool Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::LinkLocalIpv6Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| auto_configure.is_set;
 }
@@ -2124,9 +2161,11 @@ bool Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::LinkLocalIpv6Ad
 }
 
 Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv6Addresses::GlobalIpv6Addresses()
+    :
+    global_ipv6_address(this, {"address"})
 {
 
-    yang_name = "global-ipv6-addresses"; yang_parent_name = "slave-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-ipv6-addresses"; yang_parent_name = "slave-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv6Addresses::~GlobalIpv6Addresses()
@@ -2135,7 +2174,8 @@ Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv6Addresses:
 
 bool Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv6Addresses::has_data() const
 {
-    for (std::size_t index=0; index<global_ipv6_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<global_ipv6_address.len(); index++)
     {
         if(global_ipv6_address[index]->has_data())
             return true;
@@ -2145,7 +2185,7 @@ bool Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv6Addre
 
 bool Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv6Addresses::has_operation() const
 {
-    for (std::size_t index=0; index<global_ipv6_address.size(); index++)
+    for (std::size_t index=0; index<global_ipv6_address.len(); index++)
     {
         if(global_ipv6_address[index]->has_operation())
             return true;
@@ -2175,7 +2215,7 @@ std::shared_ptr<Entity> Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGro
     {
         auto c = std::make_shared<Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv6Addresses::GlobalIpv6Address>();
         c->parent = this;
-        global_ipv6_address.push_back(c);
+        global_ipv6_address.append(c);
         return c;
     }
 
@@ -2187,7 +2227,7 @@ std::map<std::string, std::shared_ptr<Entity>> Hsrp::Interfaces::Interface::Ipv6
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : global_ipv6_address)
+    for (auto c : global_ipv6_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2218,7 +2258,7 @@ Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv6Addresses:
     address{YType::str, "address"}
 {
 
-    yang_name = "global-ipv6-address"; yang_parent_name = "global-ipv6-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-ipv6-address"; yang_parent_name = "global-ipv6-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv6Addresses::GlobalIpv6Address::~GlobalIpv6Address()
@@ -2227,6 +2267,7 @@ Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv6Addresses:
 
 bool Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv6Addresses::GlobalIpv6Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -2239,7 +2280,8 @@ bool Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv6Addre
 std::string Hsrp::Interfaces::Interface::Ipv6::SlaveGroups::SlaveGroup::GlobalIpv6Addresses::GlobalIpv6Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "global-ipv6-address" <<"[address='" <<address <<"']";
+    path_buffer << "global-ipv6-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -2296,7 +2338,7 @@ Hsrp::Interfaces::Interface::Bfd::Bfd()
     interval{YType::uint32, "interval"}
 {
 
-    yang_name = "bfd"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Bfd::~Bfd()
@@ -2305,6 +2347,7 @@ Hsrp::Interfaces::Interface::Bfd::~Bfd()
 
 bool Hsrp::Interfaces::Interface::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return detection_multiplier.is_set
 	|| interval.is_set;
 }
@@ -2387,7 +2430,7 @@ Hsrp::Interfaces::Interface::Delay::Delay()
     reload_delay{YType::uint32, "reload-delay"}
 {
 
-    yang_name = "delay"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Hsrp::Interfaces::Interface::Delay::~Delay()
@@ -2396,6 +2439,7 @@ Hsrp::Interfaces::Interface::Delay::~Delay()
 
 bool Hsrp::Interfaces::Interface::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum_delay.is_set
 	|| reload_delay.is_set;
 }
@@ -2475,14 +2519,14 @@ bool Hsrp::Interfaces::Interface::Delay::has_leaf_or_child_of_name(const std::st
 Hsrp::Interfaces::Interface::Ipv4::Ipv4()
     :
     slave_groups(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::SlaveGroups>())
-	,version1(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version1>())
-	,version2(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version2>())
+    , version1(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version1>())
+    , version2(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version2>())
 {
     slave_groups->parent = this;
     version1->parent = this;
     version2->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::~Ipv4()
@@ -2491,6 +2535,7 @@ Hsrp::Interfaces::Interface::Ipv4::~Ipv4()
 
 bool Hsrp::Interfaces::Interface::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return (slave_groups !=  nullptr && slave_groups->has_data())
 	|| (version1 !=  nullptr && version1->has_data())
 	|| (version2 !=  nullptr && version2->has_data());
@@ -2590,9 +2635,11 @@ bool Hsrp::Interfaces::Interface::Ipv4::has_leaf_or_child_of_name(const std::str
 }
 
 Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroups()
+    :
+    slave_group(this, {"slave_group_number"})
 {
 
-    yang_name = "slave-groups"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slave-groups"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::~SlaveGroups()
@@ -2601,7 +2648,8 @@ Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::~SlaveGroups()
 
 bool Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::has_data() const
 {
-    for (std::size_t index=0; index<slave_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slave_group.len(); index++)
     {
         if(slave_group[index]->has_data())
             return true;
@@ -2611,7 +2659,7 @@ bool Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::has_data() const
 
 bool Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::has_operation() const
 {
-    for (std::size_t index=0; index<slave_group.size(); index++)
+    for (std::size_t index=0; index<slave_group.len(); index++)
     {
         if(slave_group[index]->has_operation())
             return true;
@@ -2641,7 +2689,7 @@ std::shared_ptr<Entity> Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::get_chil
     {
         auto c = std::make_shared<Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup>();
         c->parent = this;
-        slave_group.push_back(c);
+        slave_group.append(c);
         return c;
     }
 
@@ -2653,7 +2701,7 @@ std::map<std::string, std::shared_ptr<Entity>> Hsrp::Interfaces::Interface::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slave_group)
+    for (auto c : slave_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2685,12 +2733,12 @@ Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::SlaveGroup()
     follow{YType::str, "follow"},
     virtual_mac_address{YType::str, "virtual-mac-address"},
     primary_ipv4_address{YType::str, "primary-ipv4-address"}
-    	,
+        ,
     secondary_ipv4_addresses(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::SecondaryIpv4Addresses>())
 {
     secondary_ipv4_addresses->parent = this;
 
-    yang_name = "slave-group"; yang_parent_name = "slave-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slave-group"; yang_parent_name = "slave-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::~SlaveGroup()
@@ -2699,6 +2747,7 @@ Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::~SlaveGroup()
 
 bool Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return slave_group_number.is_set
 	|| follow.is_set
 	|| virtual_mac_address.is_set
@@ -2719,7 +2768,8 @@ bool Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::has_operation()
 std::string Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slave-group" <<"[slave-group-number='" <<slave_group_number <<"']";
+    path_buffer << "slave-group";
+    ADD_KEY_TOKEN(slave_group_number, "slave-group-number");
     return path_buffer.str();
 }
 
@@ -2818,9 +2868,11 @@ bool Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::has_leaf_or_chi
 }
 
 Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::SecondaryIpv4Addresses::SecondaryIpv4Addresses()
+    :
+    secondary_ipv4_address(this, {"address"})
 {
 
-    yang_name = "secondary-ipv4-addresses"; yang_parent_name = "slave-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secondary-ipv4-addresses"; yang_parent_name = "slave-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::SecondaryIpv4Addresses::~SecondaryIpv4Addresses()
@@ -2829,7 +2881,8 @@ Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::SecondaryIpv4Address
 
 bool Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::SecondaryIpv4Addresses::has_data() const
 {
-    for (std::size_t index=0; index<secondary_ipv4_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<secondary_ipv4_address.len(); index++)
     {
         if(secondary_ipv4_address[index]->has_data())
             return true;
@@ -2839,7 +2892,7 @@ bool Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::SecondaryIpv4Ad
 
 bool Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::SecondaryIpv4Addresses::has_operation() const
 {
-    for (std::size_t index=0; index<secondary_ipv4_address.size(); index++)
+    for (std::size_t index=0; index<secondary_ipv4_address.len(); index++)
     {
         if(secondary_ipv4_address[index]->has_operation())
             return true;
@@ -2869,7 +2922,7 @@ std::shared_ptr<Entity> Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGro
     {
         auto c = std::make_shared<Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::SecondaryIpv4Addresses::SecondaryIpv4Address>();
         c->parent = this;
-        secondary_ipv4_address.push_back(c);
+        secondary_ipv4_address.append(c);
         return c;
     }
 
@@ -2881,7 +2934,7 @@ std::map<std::string, std::shared_ptr<Entity>> Hsrp::Interfaces::Interface::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : secondary_ipv4_address)
+    for (auto c : secondary_ipv4_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2912,7 +2965,7 @@ Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::SecondaryIpv4Address
     address{YType::str, "address"}
 {
 
-    yang_name = "secondary-ipv4-address"; yang_parent_name = "secondary-ipv4-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secondary-ipv4-address"; yang_parent_name = "secondary-ipv4-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::SecondaryIpv4Addresses::SecondaryIpv4Address::~SecondaryIpv4Address()
@@ -2921,6 +2974,7 @@ Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::SecondaryIpv4Address
 
 bool Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::SecondaryIpv4Addresses::SecondaryIpv4Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -2933,7 +2987,8 @@ bool Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::SecondaryIpv4Ad
 std::string Hsrp::Interfaces::Interface::Ipv4::SlaveGroups::SlaveGroup::SecondaryIpv4Addresses::SecondaryIpv4Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "secondary-ipv4-address" <<"[address='" <<address <<"']";
+    path_buffer << "secondary-ipv4-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -2990,7 +3045,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::Version1()
 {
     groups->parent = this;
 
-    yang_name = "version1"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "version1"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version1::~Version1()
@@ -2999,6 +3054,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::~Version1()
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version1::has_data() const
 {
+    if (is_presence_container) return true;
     return (groups !=  nullptr && groups->has_data());
 }
 
@@ -3066,9 +3122,11 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version1::has_leaf_or_child_of_name(cons
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Groups()
+    :
+    group(this, {"group_number"})
 {
 
-    yang_name = "groups"; yang_parent_name = "version1"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "groups"; yang_parent_name = "version1"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::~Groups()
@@ -3077,7 +3135,8 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::~Groups()
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
@@ -3087,7 +3146,7 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::has_data() const
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
@@ -3117,7 +3176,7 @@ std::shared_ptr<Entity> Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::get
     {
         auto c = std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -3129,7 +3188,7 @@ std::map<std::string, std::shared_ptr<Entity>> Hsrp::Interfaces::Interface::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3161,15 +3220,15 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::Group()
     authentication{YType::str, "authentication"},
     session_name{YType::str, "session-name"},
     priority{YType::uint32, "priority"},
-    preempt{YType::int32, "preempt"},
+    preempt{YType::uint32, "preempt"},
     virtual_mac_address{YType::str, "virtual-mac-address"}
-    	,
+        ,
     tracked_interfaces(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedInterfaces>())
-	,bfd(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::Bfd>())
-	,tracked_objects(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedObjects>())
-	,timers(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::Timers>())
-	,primary_ipv4_address(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::PrimaryIpv4Address>())
-	,secondary_ipv4_addresses(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::SecondaryIpv4Addresses>())
+    , bfd(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::Bfd>())
+    , tracked_objects(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedObjects>())
+    , timers(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::Timers>())
+    , primary_ipv4_address(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::PrimaryIpv4Address>())
+    , secondary_ipv4_addresses(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::SecondaryIpv4Addresses>())
 {
     tracked_interfaces->parent = this;
     bfd->parent = this;
@@ -3178,7 +3237,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::Group()
     primary_ipv4_address->parent = this;
     secondary_ipv4_addresses->parent = this;
 
-    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::~Group()
@@ -3187,6 +3246,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::~Group()
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return group_number.is_set
 	|| authentication.is_set
 	|| session_name.is_set
@@ -3221,7 +3281,8 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::has_operation()
 std::string Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group" <<"[group-number='" <<group_number <<"']";
+    path_buffer << "group";
+    ADD_KEY_TOKEN(group_number, "group-number");
     return path_buffer.str();
 }
 
@@ -3412,9 +3473,11 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::has_leaf_or_chi
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedInterfaces::TrackedInterfaces()
+    :
+    tracked_interface(this, {"interface_name"})
 {
 
-    yang_name = "tracked-interfaces"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tracked-interfaces"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedInterfaces::~TrackedInterfaces()
@@ -3423,7 +3486,8 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedInterfaces::~
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<tracked_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tracked_interface.len(); index++)
     {
         if(tracked_interface[index]->has_data())
             return true;
@@ -3433,7 +3497,7 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedInterfac
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<tracked_interface.size(); index++)
+    for (std::size_t index=0; index<tracked_interface.len(); index++)
     {
         if(tracked_interface[index]->has_operation())
             return true;
@@ -3463,7 +3527,7 @@ std::shared_ptr<Entity> Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Gro
     {
         auto c = std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedInterfaces::TrackedInterface>();
         c->parent = this;
-        tracked_interface.push_back(c);
+        tracked_interface.append(c);
         return c;
     }
 
@@ -3475,7 +3539,7 @@ std::map<std::string, std::shared_ptr<Entity>> Hsrp::Interfaces::Interface::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tracked_interface)
+    for (auto c : tracked_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3507,7 +3571,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedInterfaces::T
     priority_decrement{YType::uint32, "priority-decrement"}
 {
 
-    yang_name = "tracked-interface"; yang_parent_name = "tracked-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tracked-interface"; yang_parent_name = "tracked-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedInterfaces::TrackedInterface::~TrackedInterface()
@@ -3516,6 +3580,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedInterfaces::T
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedInterfaces::TrackedInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| priority_decrement.is_set;
 }
@@ -3530,7 +3595,8 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedInterfac
 std::string Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedInterfaces::TrackedInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tracked-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "tracked-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -3598,7 +3664,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::Bfd::Bfd()
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "bfd"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::Bfd::~Bfd()
@@ -3607,6 +3673,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::Bfd::~Bfd()
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| interface_name.is_set;
 }
@@ -3684,9 +3751,11 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::Bfd::has_leaf_o
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedObjects::TrackedObjects()
+    :
+    tracked_object(this, {"object_name"})
 {
 
-    yang_name = "tracked-objects"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tracked-objects"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedObjects::~TrackedObjects()
@@ -3695,7 +3764,8 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedObjects::~Tra
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedObjects::has_data() const
 {
-    for (std::size_t index=0; index<tracked_object.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tracked_object.len(); index++)
     {
         if(tracked_object[index]->has_data())
             return true;
@@ -3705,7 +3775,7 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedObjects:
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedObjects::has_operation() const
 {
-    for (std::size_t index=0; index<tracked_object.size(); index++)
+    for (std::size_t index=0; index<tracked_object.len(); index++)
     {
         if(tracked_object[index]->has_operation())
             return true;
@@ -3735,7 +3805,7 @@ std::shared_ptr<Entity> Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Gro
     {
         auto c = std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedObjects::TrackedObject>();
         c->parent = this;
-        tracked_object.push_back(c);
+        tracked_object.append(c);
         return c;
     }
 
@@ -3747,7 +3817,7 @@ std::map<std::string, std::shared_ptr<Entity>> Hsrp::Interfaces::Interface::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tracked_object)
+    for (auto c : tracked_object.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3779,7 +3849,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedObjects::Trac
     priority_decrement{YType::uint32, "priority-decrement"}
 {
 
-    yang_name = "tracked-object"; yang_parent_name = "tracked-objects"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tracked-object"; yang_parent_name = "tracked-objects"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedObjects::TrackedObject::~TrackedObject()
@@ -3788,6 +3858,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedObjects::Trac
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedObjects::TrackedObject::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set
 	|| priority_decrement.is_set;
 }
@@ -3802,7 +3873,8 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedObjects:
 std::string Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::TrackedObjects::TrackedObject::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tracked-object" <<"[object-name='" <<object_name <<"']";
+    path_buffer << "tracked-object";
+    ADD_KEY_TOKEN(object_name, "object-name");
     return path_buffer.str();
 }
 
@@ -3874,7 +3946,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::Timers::Timers()
     hold_sec{YType::uint32, "hold-sec"}
 {
 
-    yang_name = "timers"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::Timers::~Timers()
@@ -3883,6 +3955,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::Timers::~Timers()
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return hello_msec_flag.is_set
 	|| hello_msec.is_set
 	|| hello_sec.is_set
@@ -4017,7 +4090,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::PrimaryIpv4Address::
     address{YType::str, "address"}
 {
 
-    yang_name = "primary-ipv4-address"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "primary-ipv4-address"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::PrimaryIpv4Address::~PrimaryIpv4Address()
@@ -4026,6 +4099,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::PrimaryIpv4Address::
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::PrimaryIpv4Address::has_data() const
 {
+    if (is_presence_container) return true;
     return virtual_ip_learn.is_set
 	|| address.is_set;
 }
@@ -4103,9 +4177,11 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::PrimaryIpv4Addr
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::SecondaryIpv4Addresses::SecondaryIpv4Addresses()
+    :
+    secondary_ipv4_address(this, {"address"})
 {
 
-    yang_name = "secondary-ipv4-addresses"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secondary-ipv4-addresses"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::SecondaryIpv4Addresses::~SecondaryIpv4Addresses()
@@ -4114,7 +4190,8 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::SecondaryIpv4Address
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::SecondaryIpv4Addresses::has_data() const
 {
-    for (std::size_t index=0; index<secondary_ipv4_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<secondary_ipv4_address.len(); index++)
     {
         if(secondary_ipv4_address[index]->has_data())
             return true;
@@ -4124,7 +4201,7 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::SecondaryIpv4Ad
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::SecondaryIpv4Addresses::has_operation() const
 {
-    for (std::size_t index=0; index<secondary_ipv4_address.size(); index++)
+    for (std::size_t index=0; index<secondary_ipv4_address.len(); index++)
     {
         if(secondary_ipv4_address[index]->has_operation())
             return true;
@@ -4154,7 +4231,7 @@ std::shared_ptr<Entity> Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Gro
     {
         auto c = std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::SecondaryIpv4Addresses::SecondaryIpv4Address>();
         c->parent = this;
-        secondary_ipv4_address.push_back(c);
+        secondary_ipv4_address.append(c);
         return c;
     }
 
@@ -4166,7 +4243,7 @@ std::map<std::string, std::shared_ptr<Entity>> Hsrp::Interfaces::Interface::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : secondary_ipv4_address)
+    for (auto c : secondary_ipv4_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4197,7 +4274,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::SecondaryIpv4Address
     address{YType::str, "address"}
 {
 
-    yang_name = "secondary-ipv4-address"; yang_parent_name = "secondary-ipv4-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secondary-ipv4-address"; yang_parent_name = "secondary-ipv4-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::SecondaryIpv4Addresses::SecondaryIpv4Address::~SecondaryIpv4Address()
@@ -4206,6 +4283,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::SecondaryIpv4Address
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::SecondaryIpv4Addresses::SecondaryIpv4Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -4218,7 +4296,8 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::SecondaryIpv4Ad
 std::string Hsrp::Interfaces::Interface::Ipv4::Version1::Groups::Group::SecondaryIpv4Addresses::SecondaryIpv4Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "secondary-ipv4-address" <<"[address='" <<address <<"']";
+    path_buffer << "secondary-ipv4-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -4275,7 +4354,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version2::Version2()
 {
     groups->parent = this;
 
-    yang_name = "version2"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "version2"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version2::~Version2()
@@ -4284,6 +4363,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version2::~Version2()
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version2::has_data() const
 {
+    if (is_presence_container) return true;
     return (groups !=  nullptr && groups->has_data());
 }
 
@@ -4351,9 +4431,11 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version2::has_leaf_or_child_of_name(cons
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Groups()
+    :
+    group(this, {"group_number"})
 {
 
-    yang_name = "groups"; yang_parent_name = "version2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "groups"; yang_parent_name = "version2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::~Groups()
@@ -4362,7 +4444,8 @@ Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::~Groups()
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
@@ -4372,7 +4455,7 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::has_data() const
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
@@ -4402,7 +4485,7 @@ std::shared_ptr<Entity> Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::get
     {
         auto c = std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -4414,7 +4497,7 @@ std::map<std::string, std::shared_ptr<Entity>> Hsrp::Interfaces::Interface::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4443,17 +4526,17 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::has_leaf_or_child_of_n
 Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::Group()
     :
     group_number{YType::uint32, "group-number"},
-    preempt{YType::int32, "preempt"},
+    preempt{YType::uint32, "preempt"},
     priority{YType::uint32, "priority"},
     virtual_mac_address{YType::str, "virtual-mac-address"},
     session_name{YType::str, "session-name"}
-    	,
+        ,
     secondary_ipv4_addresses(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::SecondaryIpv4Addresses>())
-	,bfd(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::Bfd>())
-	,primary_ipv4_address(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::PrimaryIpv4Address>())
-	,tracked_objects(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedObjects>())
-	,tracked_interfaces(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedInterfaces>())
-	,timers(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::Timers>())
+    , bfd(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::Bfd>())
+    , primary_ipv4_address(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::PrimaryIpv4Address>())
+    , tracked_objects(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedObjects>())
+    , tracked_interfaces(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedInterfaces>())
+    , timers(std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::Timers>())
 {
     secondary_ipv4_addresses->parent = this;
     bfd->parent = this;
@@ -4462,7 +4545,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::Group()
     tracked_interfaces->parent = this;
     timers->parent = this;
 
-    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::~Group()
@@ -4471,6 +4554,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::~Group()
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return group_number.is_set
 	|| preempt.is_set
 	|| priority.is_set
@@ -4503,7 +4587,8 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::has_operation()
 std::string Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group" <<"[group-number='" <<group_number <<"']";
+    path_buffer << "group";
+    ADD_KEY_TOKEN(group_number, "group-number");
     return path_buffer.str();
 }
 
@@ -4683,9 +4768,11 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::has_leaf_or_chi
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::SecondaryIpv4Addresses::SecondaryIpv4Addresses()
+    :
+    secondary_ipv4_address(this, {"address"})
 {
 
-    yang_name = "secondary-ipv4-addresses"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secondary-ipv4-addresses"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::SecondaryIpv4Addresses::~SecondaryIpv4Addresses()
@@ -4694,7 +4781,8 @@ Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::SecondaryIpv4Address
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::SecondaryIpv4Addresses::has_data() const
 {
-    for (std::size_t index=0; index<secondary_ipv4_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<secondary_ipv4_address.len(); index++)
     {
         if(secondary_ipv4_address[index]->has_data())
             return true;
@@ -4704,7 +4792,7 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::SecondaryIpv4Ad
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::SecondaryIpv4Addresses::has_operation() const
 {
-    for (std::size_t index=0; index<secondary_ipv4_address.size(); index++)
+    for (std::size_t index=0; index<secondary_ipv4_address.len(); index++)
     {
         if(secondary_ipv4_address[index]->has_operation())
             return true;
@@ -4734,7 +4822,7 @@ std::shared_ptr<Entity> Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Gro
     {
         auto c = std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::SecondaryIpv4Addresses::SecondaryIpv4Address>();
         c->parent = this;
-        secondary_ipv4_address.push_back(c);
+        secondary_ipv4_address.append(c);
         return c;
     }
 
@@ -4746,7 +4834,7 @@ std::map<std::string, std::shared_ptr<Entity>> Hsrp::Interfaces::Interface::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : secondary_ipv4_address)
+    for (auto c : secondary_ipv4_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4777,7 +4865,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::SecondaryIpv4Address
     address{YType::str, "address"}
 {
 
-    yang_name = "secondary-ipv4-address"; yang_parent_name = "secondary-ipv4-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secondary-ipv4-address"; yang_parent_name = "secondary-ipv4-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::SecondaryIpv4Addresses::SecondaryIpv4Address::~SecondaryIpv4Address()
@@ -4786,6 +4874,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::SecondaryIpv4Address
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::SecondaryIpv4Addresses::SecondaryIpv4Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -4798,7 +4887,8 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::SecondaryIpv4Ad
 std::string Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::SecondaryIpv4Addresses::SecondaryIpv4Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "secondary-ipv4-address" <<"[address='" <<address <<"']";
+    path_buffer << "secondary-ipv4-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -4855,7 +4945,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::Bfd::Bfd()
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "bfd"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::Bfd::~Bfd()
@@ -4864,6 +4954,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::Bfd::~Bfd()
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| interface_name.is_set;
 }
@@ -4946,7 +5037,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::PrimaryIpv4Address::
     address{YType::str, "address"}
 {
 
-    yang_name = "primary-ipv4-address"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "primary-ipv4-address"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::PrimaryIpv4Address::~PrimaryIpv4Address()
@@ -4955,6 +5046,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::PrimaryIpv4Address::
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::PrimaryIpv4Address::has_data() const
 {
+    if (is_presence_container) return true;
     return virtual_ip_learn.is_set
 	|| address.is_set;
 }
@@ -5032,9 +5124,11 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::PrimaryIpv4Addr
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedObjects::TrackedObjects()
+    :
+    tracked_object(this, {"object_name"})
 {
 
-    yang_name = "tracked-objects"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tracked-objects"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedObjects::~TrackedObjects()
@@ -5043,7 +5137,8 @@ Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedObjects::~Tra
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedObjects::has_data() const
 {
-    for (std::size_t index=0; index<tracked_object.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tracked_object.len(); index++)
     {
         if(tracked_object[index]->has_data())
             return true;
@@ -5053,7 +5148,7 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedObjects:
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedObjects::has_operation() const
 {
-    for (std::size_t index=0; index<tracked_object.size(); index++)
+    for (std::size_t index=0; index<tracked_object.len(); index++)
     {
         if(tracked_object[index]->has_operation())
             return true;
@@ -5083,7 +5178,7 @@ std::shared_ptr<Entity> Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Gro
     {
         auto c = std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedObjects::TrackedObject>();
         c->parent = this;
-        tracked_object.push_back(c);
+        tracked_object.append(c);
         return c;
     }
 
@@ -5095,7 +5190,7 @@ std::map<std::string, std::shared_ptr<Entity>> Hsrp::Interfaces::Interface::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tracked_object)
+    for (auto c : tracked_object.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5127,7 +5222,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedObjects::Trac
     priority_decrement{YType::uint32, "priority-decrement"}
 {
 
-    yang_name = "tracked-object"; yang_parent_name = "tracked-objects"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tracked-object"; yang_parent_name = "tracked-objects"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedObjects::TrackedObject::~TrackedObject()
@@ -5136,6 +5231,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedObjects::Trac
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedObjects::TrackedObject::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set
 	|| priority_decrement.is_set;
 }
@@ -5150,7 +5246,8 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedObjects:
 std::string Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedObjects::TrackedObject::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tracked-object" <<"[object-name='" <<object_name <<"']";
+    path_buffer << "tracked-object";
+    ADD_KEY_TOKEN(object_name, "object-name");
     return path_buffer.str();
 }
 
@@ -5213,9 +5310,11 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedObjects:
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedInterfaces::TrackedInterfaces()
+    :
+    tracked_interface(this, {"interface_name"})
 {
 
-    yang_name = "tracked-interfaces"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tracked-interfaces"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedInterfaces::~TrackedInterfaces()
@@ -5224,7 +5323,8 @@ Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedInterfaces::~
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<tracked_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tracked_interface.len(); index++)
     {
         if(tracked_interface[index]->has_data())
             return true;
@@ -5234,7 +5334,7 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedInterfac
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<tracked_interface.size(); index++)
+    for (std::size_t index=0; index<tracked_interface.len(); index++)
     {
         if(tracked_interface[index]->has_operation())
             return true;
@@ -5264,7 +5364,7 @@ std::shared_ptr<Entity> Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Gro
     {
         auto c = std::make_shared<Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedInterfaces::TrackedInterface>();
         c->parent = this;
-        tracked_interface.push_back(c);
+        tracked_interface.append(c);
         return c;
     }
 
@@ -5276,7 +5376,7 @@ std::map<std::string, std::shared_ptr<Entity>> Hsrp::Interfaces::Interface::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tracked_interface)
+    for (auto c : tracked_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5308,7 +5408,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedInterfaces::T
     priority_decrement{YType::uint32, "priority-decrement"}
 {
 
-    yang_name = "tracked-interface"; yang_parent_name = "tracked-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tracked-interface"; yang_parent_name = "tracked-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedInterfaces::TrackedInterface::~TrackedInterface()
@@ -5317,6 +5417,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedInterfaces::T
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedInterfaces::TrackedInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| priority_decrement.is_set;
 }
@@ -5331,7 +5432,8 @@ bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedInterfac
 std::string Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::TrackedInterfaces::TrackedInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tracked-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "tracked-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -5403,7 +5505,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::Timers::Timers()
     hold_sec{YType::uint32, "hold-sec"}
 {
 
-    yang_name = "timers"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::Timers::~Timers()
@@ -5412,6 +5514,7 @@ Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::Timers::~Timers()
 
 bool Hsrp::Interfaces::Interface::Ipv4::Version2::Groups::Group::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return hello_msec_flag.is_set
 	|| hello_msec.is_set
 	|| hello_sec.is_set
@@ -5545,7 +5648,7 @@ Hsrp::Logging::Logging()
     state_change_disable{YType::empty, "state-change-disable"}
 {
 
-    yang_name = "logging"; yang_parent_name = "hsrp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "logging"; yang_parent_name = "hsrp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Hsrp::Logging::~Logging()
@@ -5554,6 +5657,7 @@ Hsrp::Logging::~Logging()
 
 bool Hsrp::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return state_change_disable.is_set;
 }
 

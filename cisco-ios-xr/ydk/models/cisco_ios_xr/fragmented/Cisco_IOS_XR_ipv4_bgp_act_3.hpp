@@ -2305,11 +2305,11 @@ class ClearBgpInstanceVersionAfiSafiRdIpv4Prefix::Input : public ydk::Entity
 
 }; // ClearBgpInstanceVersionAfiSafiRdIpv4Prefix::Input
 
-class ClearBgpInstanceVersionAfiSafiMp2MpIpv4Prefix : public ydk::Entity
+class ClearBgpInstanceVersionAfiSafiMp2mpIpv4Prefix : public ydk::Entity
 {
     public:
-        ClearBgpInstanceVersionAfiSafiMp2MpIpv4Prefix();
-        ~ClearBgpInstanceVersionAfiSafiMp2MpIpv4Prefix();
+        ClearBgpInstanceVersionAfiSafiMp2mpIpv4Prefix();
+        ~ClearBgpInstanceVersionAfiSafiMp2mpIpv4Prefix();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2326,14 +2326,14 @@ class ClearBgpInstanceVersionAfiSafiMp2MpIpv4Prefix : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpInstanceVersionAfiSafiMp2MpIpv4Prefix::Input
+        class Input; //type: ClearBgpInstanceVersionAfiSafiMp2mpIpv4Prefix::Input
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_act::ClearBgpInstanceVersionAfiSafiMp2MpIpv4Prefix::Input> input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_act::ClearBgpInstanceVersionAfiSafiMp2mpIpv4Prefix::Input> input;
         
-}; // ClearBgpInstanceVersionAfiSafiMp2MpIpv4Prefix
+}; // ClearBgpInstanceVersionAfiSafiMp2mpIpv4Prefix
 
 
-class ClearBgpInstanceVersionAfiSafiMp2MpIpv4Prefix::Input : public ydk::Entity
+class ClearBgpInstanceVersionAfiSafiMp2mpIpv4Prefix::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2355,7 +2355,7 @@ class ClearBgpInstanceVersionAfiSafiMp2MpIpv4Prefix::Input : public ydk::Entity
         ydk::YLeaf mp2mp; //type: string
         ydk::YLeaf ipv4_prefix; //type: string
 
-}; // ClearBgpInstanceVersionAfiSafiMp2MpIpv4Prefix::Input
+}; // ClearBgpInstanceVersionAfiSafiMp2mpIpv4Prefix::Input
 
 class ClearBgpInstanceVersionAfiSafiVrfIpv4Prefix : public ydk::Entity
 {

@@ -33,7 +33,7 @@ class LldpEntries : public ydk::Entity
 
         class LldpEntry; //type: LldpEntries::LldpEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_lldp_oper::LldpEntries::LldpEntry> > lldp_entry;
+        ydk::YList lldp_entry;
         
 }; // LldpEntries
 

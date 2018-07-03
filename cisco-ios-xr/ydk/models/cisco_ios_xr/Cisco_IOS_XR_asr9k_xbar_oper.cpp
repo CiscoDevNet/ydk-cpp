@@ -17,7 +17,7 @@ CrossBarStats::CrossBarStats()
 {
     nodes->parent = this;
 
-    yang_name = "cross-bar-stats"; yang_parent_name = "Cisco-IOS-XR-asr9k-xbar-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "cross-bar-stats"; yang_parent_name = "Cisco-IOS-XR-asr9k-xbar-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CrossBarStats::~CrossBarStats()
@@ -26,6 +26,7 @@ CrossBarStats::~CrossBarStats()
 
 bool CrossBarStats::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool CrossBarStats::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 CrossBarStats::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "cross-bar-stats"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "cross-bar-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CrossBarStats::Nodes::~Nodes()
@@ -129,7 +132,8 @@ CrossBarStats::Nodes::~Nodes()
 
 bool CrossBarStats::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool CrossBarStats::Nodes::has_data() const
 
 bool CrossBarStats::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<CrossBarStats::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,12 +221,12 @@ bool CrossBarStats::Nodes::has_leaf_or_child_of_name(const std::string & name) c
 CrossBarStats::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     cross_bar_table(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable>())
 {
     cross_bar_table->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CrossBarStats::Nodes::Node::~Node()
@@ -231,6 +235,7 @@ CrossBarStats::Nodes::Node::~Node()
 
 bool CrossBarStats::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (cross_bar_table !=  nullptr && cross_bar_table->has_data());
 }
@@ -252,7 +257,8 @@ std::string CrossBarStats::Nodes::Node::get_absolute_path() const
 std::string CrossBarStats::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -320,12 +326,12 @@ bool CrossBarStats::Nodes::Node::has_leaf_or_child_of_name(const std::string & n
 CrossBarStats::Nodes::Node::CrossBarTable::CrossBarTable()
     :
     pkt_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::PktStats>())
-	,sm15_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats>())
+    , sm15_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats>())
 {
     pkt_stats->parent = this;
     sm15_stats->parent = this;
 
-    yang_name = "cross-bar-table"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cross-bar-table"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CrossBarStats::Nodes::Node::CrossBarTable::~CrossBarTable()
@@ -334,6 +340,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::~CrossBarTable()
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (pkt_stats !=  nullptr && pkt_stats->has_data())
 	|| (sm15_stats !=  nullptr && sm15_stats->has_data());
 }
@@ -417,9 +424,11 @@ bool CrossBarStats::Nodes::Node::CrossBarTable::has_leaf_or_child_of_name(const 
 }
 
 CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStats()
+    :
+    pkt_stat(this, {})
 {
 
-    yang_name = "pkt-stats"; yang_parent_name = "cross-bar-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pkt-stats"; yang_parent_name = "cross-bar-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CrossBarStats::Nodes::Node::CrossBarTable::PktStats::~PktStats()
@@ -428,7 +437,8 @@ CrossBarStats::Nodes::Node::CrossBarTable::PktStats::~PktStats()
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::PktStats::has_data() const
 {
-    for (std::size_t index=0; index<pkt_stat.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pkt_stat.len(); index++)
     {
         if(pkt_stat[index]->has_data())
             return true;
@@ -438,7 +448,7 @@ bool CrossBarStats::Nodes::Node::CrossBarTable::PktStats::has_data() const
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::PktStats::has_operation() const
 {
-    for (std::size_t index=0; index<pkt_stat.size(); index++)
+    for (std::size_t index=0; index<pkt_stat.len(); index++)
     {
         if(pkt_stat[index]->has_operation())
             return true;
@@ -468,7 +478,7 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::PktStats::get
     {
         auto c = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat>();
         c->parent = this;
-        pkt_stat.push_back(c);
+        pkt_stat.append(c);
         return c;
     }
 
@@ -480,7 +490,7 @@ std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::Cross
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pkt_stat)
+    for (auto c : pkt_stat.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -557,7 +567,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat::PktStat()
     fpoedb_uncorrectable_ecc_error_count_low{YType::uint64, "fpoedb-uncorrectable-ecc-error-count-low"}
 {
 
-    yang_name = "pkt-stat"; yang_parent_name = "pkt-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pkt-stat"; yang_parent_name = "pkt-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat::~PktStat()
@@ -566,6 +576,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat::~PktStat()
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat::has_data() const
 {
+    if (is_presence_container) return true;
     return asic_id.is_set
 	|| port.is_set
 	|| internal_error_count.is_set
@@ -1228,9 +1239,11 @@ bool CrossBarStats::Nodes::Node::CrossBarTable::PktStats::PktStat::has_leaf_or_c
 }
 
 CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stats()
+    :
+    sm15_stat(this, {})
 {
 
-    yang_name = "sm15-stats"; yang_parent_name = "cross-bar-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sm15-stats"; yang_parent_name = "cross-bar-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::~Sm15Stats()
@@ -1239,7 +1252,8 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::~Sm15Stats()
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::has_data() const
 {
-    for (std::size_t index=0; index<sm15_stat.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sm15_stat.len(); index++)
     {
         if(sm15_stat[index]->has_data())
             return true;
@@ -1249,7 +1263,7 @@ bool CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::has_data() const
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::has_operation() const
 {
-    for (std::size_t index=0; index<sm15_stat.size(); index++)
+    for (std::size_t index=0; index<sm15_stat.len(); index++)
     {
         if(sm15_stat[index]->has_operation())
             return true;
@@ -1279,7 +1293,7 @@ std::shared_ptr<Entity> CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::ge
     {
         auto c = std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat>();
         c->parent = this;
-        sm15_stat.push_back(c);
+        sm15_stat.append(c);
         return c;
     }
 
@@ -1291,7 +1305,7 @@ std::map<std::string, std::shared_ptr<Entity>> CrossBarStats::Nodes::Node::Cross
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sm15_stat)
+    for (auto c : sm15_stat.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1322,20 +1336,20 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Sm15Stat()
     asic_id{YType::str, "asic-id"},
     port{YType::str, "port"},
     internal_err_cnt{YType::uint64, "internal-err-cnt"}
-    	,
+        ,
     ua0_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0Stats>())
-	,ua1_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1Stats>())
-	,ua2_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats>())
-	,ma_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats>())
-	,ca_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats>())
-	,pi_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats>())
-	,pe_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats>())
-	,pi_uc_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats>())
-	,pi_mc_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats>())
-	,pi_cc_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats>())
-	,pe_uc_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats>())
-	,pe_mc_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats>())
-	,pe_cc_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats>())
+    , ua1_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1Stats>())
+    , ua2_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats>())
+    , ma_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats>())
+    , ca_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats>())
+    , pi_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats>())
+    , pe_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats>())
+    , pi_uc_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats>())
+    , pi_mc_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats>())
+    , pi_cc_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats>())
+    , pe_uc_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats>())
+    , pe_mc_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats>())
+    , pe_cc_stats(std::make_shared<CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats>())
 {
     ua0_stats->parent = this;
     ua1_stats->parent = this;
@@ -1351,7 +1365,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Sm15Stat()
     pe_mc_stats->parent = this;
     pe_cc_stats->parent = this;
 
-    yang_name = "sm15-stat"; yang_parent_name = "sm15-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sm15-stat"; yang_parent_name = "sm15-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::~Sm15Stat()
@@ -1360,6 +1374,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::~Sm15Stat()
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::has_data() const
 {
+    if (is_presence_container) return true;
     return asic_id.is_set
 	|| port.is_set
 	|| internal_err_cnt.is_set
@@ -1669,7 +1684,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0Stats::Ua0Sta
     ack_wait_cnt{YType::uint64, "ack-wait-cnt"}
 {
 
-    yang_name = "ua0-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ua0-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0Stats::~Ua0Stats()
@@ -1678,6 +1693,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0Stats::~Ua0St
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua0Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return dest_drop_pkt_cnt.is_set
 	|| src_dest_pkt_cnt.is_set
 	|| dest_src_pkt_cnt.is_set
@@ -1844,7 +1860,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1Stats::Ua1Sta
     ack_wait_cnt{YType::uint64, "ack-wait-cnt"}
 {
 
-    yang_name = "ua1-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ua1-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1Stats::~Ua1Stats()
@@ -1853,6 +1869,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1Stats::~Ua1St
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua1Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return dest_drop_pkt_cnt.is_set
 	|| src_dest_pkt_cnt.is_set
 	|| dest_src_pkt_cnt.is_set
@@ -2019,7 +2036,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats::Ua2Sta
     ack_wait_cnt{YType::uint64, "ack-wait-cnt"}
 {
 
-    yang_name = "ua2-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ua2-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats::~Ua2Stats()
@@ -2028,6 +2045,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats::~Ua2St
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::Ua2Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return dest_drop_pkt_cnt.is_set
 	|| src_dest_pkt_cnt.is_set
 	|| dest_src_pkt_cnt.is_set
@@ -2195,7 +2213,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats::MaStats
     rx_hol_to_cnt{YType::uint64, "rx-hol-to-cnt"}
 {
 
-    yang_name = "ma-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ma-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats::~MaStats()
@@ -2204,6 +2222,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats::~MaStat
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::MaStats::has_data() const
 {
+    if (is_presence_container) return true;
     return dest_drop_pkt_cnt.is_set
 	|| src_dest_pkt_cnt.is_set
 	|| dest_src_pkt_cnt.is_set
@@ -2381,7 +2400,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats::CaStats
     rx_drop_pkt_cnt{YType::uint64, "rx-drop-pkt-cnt"}
 {
 
-    yang_name = "ca-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ca-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats::~CaStats()
@@ -2390,6 +2409,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats::~CaStat
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::CaStats::has_data() const
 {
+    if (is_presence_container) return true;
     return dest_drop_pkt_cnt.is_set
 	|| src_dest_pkt_cnt.is_set
 	|| dest_src_pkt_cnt.is_set
@@ -2526,7 +2546,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats::PiStats
     total_calc_rate{YType::uint64, "total-calc-rate"}
 {
 
-    yang_name = "pi-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pi-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats::~PiStats()
@@ -2535,6 +2555,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats::~PiStat
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiStats::has_data() const
 {
+    if (is_presence_container) return true;
     return total_rate1_cnt.is_set
 	|| total_rate2_cnt.is_set
 	|| total_rate3_cnt.is_set
@@ -2646,7 +2667,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats::PeStats
     mc2uc_preempt_cnt{YType::uint64, "mc2uc-preempt-cnt"}
 {
 
-    yang_name = "pe-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pe-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats::~PeStats()
@@ -2655,6 +2676,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats::~PeStat
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeStats::has_data() const
 {
+    if (is_presence_container) return true;
     return total_rate1_cnt.is_set
 	|| total_rate2_cnt.is_set
 	|| total_rate3_cnt.is_set
@@ -2810,7 +2832,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats::PiUcS
     crc_stomp_pkt_cnt{YType::uint64, "crc-stomp-pkt-cnt"}
 {
 
-    yang_name = "pi-uc-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pi-uc-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats::~PiUcStats()
@@ -2819,6 +2841,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats::~PiUc
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiUcStats::has_data() const
 {
+    if (is_presence_container) return true;
     return pkt_rcv_cnt.is_set
 	|| pkt_seq_err_cnt.is_set
 	|| in_coming_pkt_err_cnt.is_set
@@ -3374,7 +3397,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats::PiMcS
     crc_stomp_pkt_cnt{YType::uint64, "crc-stomp-pkt-cnt"}
 {
 
-    yang_name = "pi-mc-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pi-mc-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats::~PiMcStats()
@@ -3383,6 +3406,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats::~PiMc
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiMcStats::has_data() const
 {
+    if (is_presence_container) return true;
     return pkt_rcv_cnt.is_set
 	|| pkt_seq_err_cnt.is_set
 	|| in_coming_pkt_err_cnt.is_set
@@ -3896,7 +3920,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats::PiCcS
     calc_rate{YType::uint64, "calc-rate"}
 {
 
-    yang_name = "pi-cc-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pi-cc-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats::~PiCcStats()
@@ -3905,6 +3929,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats::~PiCc
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PiCcStats::has_data() const
 {
+    if (is_presence_container) return true;
     return in0_ecc_serr_cnt.is_set
 	|| in0_ecc_derr_cnt.is_set
 	|| in1_ecc_serr_cnt.is_set
@@ -4380,7 +4405,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats::PeUcS
     calc_rate{YType::uint64, "calc-rate"}
 {
 
-    yang_name = "pe-uc-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pe-uc-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats::~PeUcStats()
@@ -4389,6 +4414,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats::~PeUc
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeUcStats::has_data() const
 {
+    if (is_presence_container) return true;
     return in_pkt_uc0_cnt.is_set
 	|| in_pkt_uc1_cnt.is_set
 	|| in_pkt_uc2_cnt.is_set
@@ -4863,7 +4889,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats::PeMcS
     calc_rate{YType::uint64, "calc-rate"}
 {
 
-    yang_name = "pe-mc-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pe-mc-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats::~PeMcStats()
@@ -4872,6 +4898,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats::~PeMc
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeMcStats::has_data() const
 {
+    if (is_presence_container) return true;
     return in_pkt_mc_cnt.is_set
 	|| in_full_line_mc_cnt.is_set
 	|| pkt_trunc_eop_mc_cnt.is_set
@@ -5163,7 +5190,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats::PeCcS
     calc_rate{YType::uint64, "calc-rate"}
 {
 
-    yang_name = "pe-cc-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pe-cc-stats"; yang_parent_name = "sm15-stat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats::~PeCcStats()
@@ -5172,6 +5199,7 @@ CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats::~PeCc
 
 bool CrossBarStats::Nodes::Node::CrossBarTable::Sm15Stats::Sm15Stat::PeCcStats::has_data() const
 {
+    if (is_presence_container) return true;
     return in_pkt_cnt.is_set
 	|| out_path0_pkt_cnt.is_set
 	|| out_path1_pkt_cnt.is_set

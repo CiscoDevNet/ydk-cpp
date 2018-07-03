@@ -33,7 +33,7 @@ class VirtualServices : public ydk::Entity
 
         class VirtualService; //type: VirtualServices::VirtualService
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService> > virtual_service;
+        ydk::YList virtual_service;
         
 }; // VirtualServices
 
@@ -391,7 +391,7 @@ class VirtualServices::VirtualService::NetworkUtils : public ydk::Entity
 
         class NetworkUtil; //type: VirtualServices::VirtualService::NetworkUtils::NetworkUtil
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::NetworkUtils::NetworkUtil> > network_util;
+        ydk::YList network_util;
         
 }; // VirtualServices::VirtualService::NetworkUtils
 
@@ -442,7 +442,7 @@ class VirtualServices::VirtualService::StorageUtils : public ydk::Entity
 
         class StorageUtil; //type: VirtualServices::VirtualService::StorageUtils::StorageUtil
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::StorageUtils::StorageUtil> > storage_util;
+        ydk::YList storage_util;
         
 }; // VirtualServices::VirtualService::StorageUtils
 
@@ -496,7 +496,7 @@ class VirtualServices::VirtualService::Processes : public ydk::Entity
 
         class Process; //type: VirtualServices::VirtualService::Processes::Process
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::Processes::Process> > process;
+        ydk::YList process;
         
 }; // VirtualServices::VirtualService::Processes
 
@@ -544,7 +544,7 @@ class VirtualServices::VirtualService::AttachedDevices : public ydk::Entity
 
         class AttachedDevice; //type: VirtualServices::VirtualService::AttachedDevices::AttachedDevice
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::AttachedDevices::AttachedDevice> > attached_device;
+        ydk::YList attached_device;
         
 }; // VirtualServices::VirtualService::AttachedDevices
 
@@ -590,7 +590,7 @@ class VirtualServices::VirtualService::NetworkInterfaces : public ydk::Entity
 
         class NetworkInterface; //type: VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface> > network_interface;
+        ydk::YList network_interface;
         
 }; // VirtualServices::VirtualService::NetworkInterfaces
 
@@ -636,7 +636,7 @@ class VirtualServices::VirtualService::GuestRoutes : public ydk::Entity
 
         class GuestRoute; //type: VirtualServices::VirtualService::GuestRoutes::GuestRoute
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_virtual_service_oper::VirtualServices::VirtualService::GuestRoutes::GuestRoute> > guest_route;
+        ydk::YList guest_route;
         
 }; // VirtualServices::VirtualService::GuestRoutes
 

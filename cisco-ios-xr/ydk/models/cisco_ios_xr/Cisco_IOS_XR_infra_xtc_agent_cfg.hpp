@@ -18,14 +18,6 @@ class XtcMetricValue : public ydk::Enum
 
 };
 
-class XtcBindingSidexplicitRule : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf fallback_dynamic;
-        static const ydk::Enum::YLeaf enforce_srlb;
-
-};
-
 class XtcPathHop : public ydk::Enum
 {
     public:
@@ -43,35 +35,11 @@ class XtcAffinityRule : public ydk::Enum
 
 };
 
-class XtcPath : public ydk::Enum
+class XtcEndPoint : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf explicit_;
-        static const ydk::Enum::YLeaf dynamic;
-
-};
-
-class XtcMetric : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf igp;
-        static const ydk::Enum::YLeaf te;
-
-};
-
-class XtcSegment : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4_address;
-        static const ydk::Enum::YLeaf mpls_label;
-
-};
-
-class XtcBindingSid : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mpls_label_specified;
-        static const ydk::Enum::YLeaf mpls_label_any;
+        static const ydk::Enum::YLeaf end_point_type_ipv4;
+        static const ydk::Enum::YLeaf end_point_type_ipv6;
 
 };
 
@@ -85,11 +53,60 @@ class XtcDisjointness : public ydk::Enum
 
 };
 
-class XtcEndPoint : public ydk::Enum
+class XtcAutoRouteMetric : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf end_point_type_ipv4;
-        static const ydk::Enum::YLeaf end_point_type_ipv6;
+        static const ydk::Enum::YLeaf relative;
+        static const ydk::Enum::YLeaf constant;
+
+};
+
+class XtcBindingSid : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mpls_label_specified;
+        static const ydk::Enum::YLeaf mpls_label_any;
+
+};
+
+class XtcSegment : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4_address;
+        static const ydk::Enum::YLeaf mpls_label;
+
+};
+
+class XtcBindingSidexplicitRule : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf fallback_dynamic;
+        static const ydk::Enum::YLeaf enforce_srlb;
+
+};
+
+class XtcPath : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf explicit_;
+        static const ydk::Enum::YLeaf dynamic;
+
+};
+
+class XtcMetric : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf igp;
+        static const ydk::Enum::YLeaf te;
+        static const ydk::Enum::YLeaf latency;
+
+};
+
+class XtcAddressFamily : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf af_type_ipv4;
+        static const ydk::Enum::YLeaf xtc_af_type_ipv6;
 
 };
 

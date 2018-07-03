@@ -43,10 +43,10 @@ class Exception : public ydk::Entity
         class ProcessNames; //type: Exception::ProcessNames
         class Choice2; //type: Exception::Choice2
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_cfg::Exception::Choice1> choice1;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_cfg::Exception::Choice3> choice3;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_cfg::Exception::Choice1> choice1; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_cfg::Exception::Choice3> choice3; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_cfg::Exception::ProcessNames> process_names;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_cfg::Exception::Choice2> choice2;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_cfg::Exception::Choice2> choice2; // presence node
         
 }; // Exception
 
@@ -122,7 +122,7 @@ class Exception::ProcessNames : public ydk::Entity
 
         class ProcessName; //type: Exception::ProcessNames::ProcessName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_dumper_cfg::Exception::ProcessNames::ProcessName> > process_name;
+        ydk::YList process_name;
         
 }; // Exception::ProcessNames
 
@@ -205,51 +205,11 @@ class Exception::Choice2 : public ydk::Entity
 
 }; // Exception::Choice2
 
-class Copy : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf copy;
-
-};
-
 class Context : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf default_;
         static const ydk::Enum::YLeaf context;
-
-};
-
-class Sharedmemory : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf shared_memory;
-
-};
-
-class Sparse : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf sparse;
-
-};
-
-class Nocore : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf no_core;
-
-};
-
-class Packetmemory : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf packet_memory;
 
 };
 
@@ -261,11 +221,51 @@ class Skipcpuinfo : public ydk::Enum
 
 };
 
+class Packetmemory : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf packet_memory;
+
+};
+
+class Sparse : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf sparse;
+
+};
+
 class Mainmemory : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf default_;
         static const ydk::Enum::YLeaf main_memory;
+
+};
+
+class Nocore : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf no_core;
+
+};
+
+class Copy : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf copy;
+
+};
+
+class Sharedmemory : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf shared_memory;
 
 };
 

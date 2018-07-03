@@ -17,7 +17,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -26,6 +26,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -45,7 +46,8 @@ std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -102,7 +104,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 {
     peer_class->parent = this;
 
-    yang_name = "ssh-protocol"; yang_parent_name = "all-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ssh-protocol"; yang_parent_name = "all-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::~SshProtocol()
@@ -111,6 +113,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer_class !=  nullptr && peer_class->has_data());
 }
 
@@ -187,14 +190,14 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerClass()
     :
     peer_all{YType::empty, "peer-all"}
-    	,
+        ,
     peer_v4(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4>())
-	,peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6>())
+    , peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6>())
 {
     peer_v4->parent = this;
     peer_v6->parent = this;
 
-    yang_name = "peer-class"; yang_parent_name = "ssh-protocol"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-class"; yang_parent_name = "ssh-protocol"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::~PeerClass()
@@ -203,6 +206,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_all.is_set
 	|| (peer_v4 !=  nullptr && peer_v4->has_data())
 	|| (peer_v6 !=  nullptr && peer_v6->has_data());
@@ -308,12 +312,12 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerV4()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::~PeerV4()
@@ -322,6 +326,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -412,9 +417,11 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::~Peers()
@@ -423,7 +430,8 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -433,7 +441,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -470,7 +478,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Outband::Interf
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -482,7 +490,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -513,7 +521,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::Peer::~Peer()
@@ -522,6 +530,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -541,7 +550,8 @@ std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -593,9 +603,11 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::~PeerPrefixes()
@@ -604,7 +616,8 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -614,7 +627,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -651,7 +664,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Outband::Interf
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -663,7 +676,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -694,7 +707,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -703,6 +716,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -722,7 +736,8 @@ std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -776,12 +791,12 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerV6()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::~PeerV6()
@@ -790,6 +805,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -880,9 +896,11 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::~Peers()
@@ -891,7 +909,8 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -901,7 +920,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -938,7 +957,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Outband::Interf
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -950,7 +969,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -981,7 +1000,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::Peer::~Peer()
@@ -990,6 +1009,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -1009,7 +1029,8 @@ std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -1061,9 +1082,11 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::~PeerPrefixes()
@@ -1072,7 +1095,8 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -1082,7 +1106,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -1119,7 +1143,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Outband::Interf
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -1131,7 +1155,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1162,7 +1186,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -1171,6 +1195,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -1190,7 +1215,8 @@ std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -1247,7 +1273,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 {
     peer_class->parent = this;
 
-    yang_name = "snmp-protocol"; yang_parent_name = "all-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snmp-protocol"; yang_parent_name = "all-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::~SnmpProtocol()
@@ -1256,6 +1282,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer_class !=  nullptr && peer_class->has_data());
 }
 
@@ -1332,14 +1359,14 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerClass()
     :
     peer_all{YType::empty, "peer-all"}
-    	,
+        ,
     peer_v4(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4>())
-	,peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6>())
+    , peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6>())
 {
     peer_v4->parent = this;
     peer_v6->parent = this;
 
-    yang_name = "peer-class"; yang_parent_name = "snmp-protocol"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-class"; yang_parent_name = "snmp-protocol"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::~PeerClass()
@@ -1348,6 +1375,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_all.is_set
 	|| (peer_v4 !=  nullptr && peer_v4->has_data())
 	|| (peer_v6 !=  nullptr && peer_v6->has_data());
@@ -1453,12 +1481,12 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerV4()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::~PeerV4()
@@ -1467,6 +1495,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -1557,9 +1586,11 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::~Peers()
@@ -1568,7 +1599,8 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -1578,7 +1610,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -1615,7 +1647,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Outband::Interf
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -1627,7 +1659,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1658,7 +1690,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::Peer::~Peer()
@@ -1667,6 +1699,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -1686,7 +1719,8 @@ std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -1738,9 +1772,11 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::~PeerPrefixes()
@@ -1749,7 +1785,8 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -1759,7 +1796,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -1796,7 +1833,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Outband::Interf
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -1808,7 +1845,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1839,7 +1876,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -1848,6 +1885,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -1867,7 +1905,8 @@ std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -1921,12 +1960,12 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerV6()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::~PeerV6()
@@ -1935,6 +1974,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -2025,9 +2065,11 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::~Peers()
@@ -2036,7 +2078,8 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -2046,7 +2089,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -2083,7 +2126,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Outband::Interf
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -2095,7 +2138,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2126,7 +2169,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::Peer::~Peer()
@@ -2135,6 +2178,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -2154,7 +2198,8 @@ std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -2206,9 +2251,11 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::~PeerPrefixes()
@@ -2217,7 +2264,8 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -2227,7 +2275,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -2264,7 +2312,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Outband::Interf
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -2276,7 +2324,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2307,7 +2355,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -2316,6 +2364,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -2335,7 +2384,8 @@ std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -2392,7 +2442,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 {
     peer_class->parent = this;
 
-    yang_name = "telnet-protocol"; yang_parent_name = "all-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "telnet-protocol"; yang_parent_name = "all-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::~TelnetProtocol()
@@ -2401,6 +2451,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer_class !=  nullptr && peer_class->has_data());
 }
 
@@ -2477,14 +2528,14 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerClass()
     :
     peer_all{YType::empty, "peer-all"}
-    	,
+        ,
     peer_v4(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4>())
-	,peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6>())
+    , peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6>())
 {
     peer_v4->parent = this;
     peer_v6->parent = this;
 
-    yang_name = "peer-class"; yang_parent_name = "telnet-protocol"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-class"; yang_parent_name = "telnet-protocol"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::~PeerClass()
@@ -2493,6 +2544,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_all.is_set
 	|| (peer_v4 !=  nullptr && peer_v4->has_data())
 	|| (peer_v6 !=  nullptr && peer_v6->has_data());
@@ -2598,12 +2650,12 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerV4()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::~PeerV4()
@@ -2612,6 +2664,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -2702,9 +2755,11 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::~Peers()
@@ -2713,7 +2768,8 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -2723,7 +2779,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -2760,7 +2816,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Outband::Interf
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -2772,7 +2828,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2803,7 +2859,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::Peer::~Peer()
@@ -2812,6 +2868,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -2831,7 +2888,8 @@ std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -2883,9 +2941,11 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::~PeerPrefixes()
@@ -2894,7 +2954,8 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -2904,7 +2965,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -2941,7 +3002,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Outband::Interf
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -2953,7 +3014,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2984,7 +3045,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -2993,6 +3054,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -3012,7 +3074,8 @@ std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -3066,12 +3129,12 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerV6()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::~PeerV6()
@@ -3080,6 +3143,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -3170,9 +3234,11 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::~Peers()
@@ -3181,7 +3247,8 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -3191,7 +3258,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -3228,7 +3295,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Outband::Interf
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -3240,7 +3307,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3271,7 +3338,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::Peer::~Peer()
@@ -3280,6 +3347,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -3299,7 +3367,8 @@ std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -3351,9 +3420,11 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::~PeerPrefixes()
@@ -3362,7 +3433,8 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -3372,7 +3444,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -3409,7 +3481,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Outband::Interf
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -3421,7 +3493,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3452,7 +3524,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -3461,6 +3533,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -3480,7 +3553,8 @@ std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -3537,7 +3611,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 {
     peer_class->parent = this;
 
-    yang_name = "all-protocols"; yang_parent_name = "all-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all-protocols"; yang_parent_name = "all-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::~AllProtocols()
@@ -3546,6 +3620,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer_class !=  nullptr && peer_class->has_data());
 }
 
@@ -3622,14 +3697,14 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerClass()
     :
     peer_all{YType::empty, "peer-all"}
-    	,
+        ,
     peer_v4(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4>())
-	,peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6>())
+    , peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6>())
 {
     peer_v4->parent = this;
     peer_v6->parent = this;
 
-    yang_name = "peer-class"; yang_parent_name = "all-protocols"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-class"; yang_parent_name = "all-protocols"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::~PeerClass()
@@ -3638,6 +3713,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_all.is_set
 	|| (peer_v4 !=  nullptr && peer_v4->has_data())
 	|| (peer_v6 !=  nullptr && peer_v6->has_data());
@@ -3743,12 +3819,12 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerV4()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::~PeerV4()
@@ -3757,6 +3833,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -3847,9 +3924,11 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::~Peers()
@@ -3858,7 +3937,8 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -3868,7 +3948,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -3905,7 +3985,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Outband::Interf
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -3917,7 +3997,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3948,7 +4028,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::Peer::~Peer()
@@ -3957,6 +4037,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -3976,7 +4057,8 @@ std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -4028,9 +4110,11 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::~PeerPrefixes()
@@ -4039,7 +4123,8 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -4049,7 +4134,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -4086,7 +4171,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Outband::Interf
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -4098,7 +4183,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4129,7 +4214,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -4138,6 +4223,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -4157,7 +4243,8 @@ std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -4211,12 +4298,12 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerV6()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::~PeerV6()
@@ -4225,6 +4312,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -4315,9 +4403,11 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::~Peers()
@@ -4326,7 +4416,8 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -4336,7 +4427,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -4373,7 +4464,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Outband::Interf
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -4385,7 +4476,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4416,7 +4507,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::Peer::~Peer()
@@ -4425,6 +4516,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -4444,7 +4536,8 @@ std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -4496,9 +4589,11 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::~PeerPrefixes()
@@ -4507,7 +4602,8 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -4517,7 +4613,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -4554,7 +4650,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Outband::Interf
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -4566,7 +4662,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4597,7 +4693,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -4606,6 +4702,7 @@ ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfa
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -4625,7 +4722,8 @@ std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -4682,7 +4780,7 @@ ControlPlane::ManagementPlaneProtection::Inband::Inband()
 {
     interface_selection->parent = this;
 
-    yang_name = "inband"; yang_parent_name = "management-plane-protection"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inband"; yang_parent_name = "management-plane-protection"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::~Inband()
@@ -4691,6 +4789,7 @@ ControlPlane::ManagementPlaneProtection::Inband::~Inband()
 
 bool ControlPlane::ManagementPlaneProtection::Inband::has_data() const
 {
+    if (is_presence_container) return true;
     return (interface_selection !=  nullptr && interface_selection->has_data());
 }
 
@@ -4767,12 +4866,12 @@ bool ControlPlane::ManagementPlaneProtection::Inband::has_leaf_or_child_of_name(
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::InterfaceSelection()
     :
     interfaces(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces>())
-	,all_interfaces(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces>())
+    , all_interfaces(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces>())
 {
     interfaces->parent = this;
     all_interfaces->parent = this;
 
-    yang_name = "interface-selection"; yang_parent_name = "inband"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-selection"; yang_parent_name = "inband"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::~InterfaceSelection()
@@ -4781,6 +4880,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::~InterfaceS
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::has_data() const
 {
+    if (is_presence_container) return true;
     return (interfaces !=  nullptr && interfaces->has_data())
 	|| (all_interfaces !=  nullptr && all_interfaces->has_data());
 }
@@ -4871,9 +4971,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::has_le
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "interface-selection"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "interface-selection"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::~Interfaces()
@@ -4882,7 +4984,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -4892,7 +4995,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -4929,7 +5032,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -4941,7 +5044,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4970,15 +5073,15 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     http_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol>())
-	,tftp_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol>())
-	,netconf_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol>())
-	,xr_xml(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml>())
-	,ssh_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol>())
-	,snmp_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol>())
-	,telnet_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol>())
-	,all_protocols(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols>())
+    , tftp_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol>())
+    , netconf_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol>())
+    , xr_xml(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml>())
+    , ssh_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol>())
+    , snmp_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol>())
+    , telnet_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol>())
+    , all_protocols(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols>())
 {
     http_protocol->parent = this;
     tftp_protocol->parent = this;
@@ -4989,7 +5092,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     telnet_protocol->parent = this;
     all_protocols->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::~Interface()
@@ -4998,6 +5101,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (http_protocol !=  nullptr && http_protocol->has_data())
 	|| (tftp_protocol !=  nullptr && tftp_protocol->has_data())
@@ -5033,7 +5137,8 @@ std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection:
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -5202,7 +5307,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 {
     peer_class->parent = this;
 
-    yang_name = "http-protocol"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "http-protocol"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::~HttpProtocol()
@@ -5211,6 +5316,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer_class !=  nullptr && peer_class->has_data());
 }
 
@@ -5280,14 +5386,14 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerClass()
     :
     peer_all{YType::empty, "peer-all"}
-    	,
+        ,
     peer_v4(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4>())
-	,peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6>())
+    , peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6>())
 {
     peer_v4->parent = this;
     peer_v6->parent = this;
 
-    yang_name = "peer-class"; yang_parent_name = "http-protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-class"; yang_parent_name = "http-protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::~PeerClass()
@@ -5296,6 +5402,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_all.is_set
 	|| (peer_v4 !=  nullptr && peer_v4->has_data())
 	|| (peer_v6 !=  nullptr && peer_v6->has_data());
@@ -5394,12 +5501,12 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerV4()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::~PeerV4()
@@ -5408,6 +5515,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -5491,9 +5599,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::~Peers()
@@ -5502,7 +5612,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -5512,7 +5623,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -5542,7 +5653,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -5554,7 +5665,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5585,7 +5696,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::Peer::~Peer()
@@ -5594,6 +5705,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -5606,7 +5718,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -5658,9 +5771,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::~PeerPrefixes()
@@ -5669,7 +5784,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -5679,7 +5795,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -5709,7 +5825,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -5721,7 +5837,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5752,7 +5868,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -5761,6 +5877,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -5773,7 +5890,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -5827,12 +5945,12 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerV6()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::~PeerV6()
@@ -5841,6 +5959,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -5924,9 +6043,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::~Peers()
@@ -5935,7 +6056,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -5945,7 +6067,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -5975,7 +6097,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -5987,7 +6109,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6018,7 +6140,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::Peer::~Peer()
@@ -6027,6 +6149,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -6039,7 +6162,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -6091,9 +6215,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::~PeerPrefixes()
@@ -6102,7 +6228,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -6112,7 +6239,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -6142,7 +6269,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -6154,7 +6281,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6185,7 +6312,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -6194,6 +6321,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -6206,7 +6334,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -6263,7 +6392,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 {
     peer_class->parent = this;
 
-    yang_name = "tftp-protocol"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tftp-protocol"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::~TftpProtocol()
@@ -6272,6 +6401,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer_class !=  nullptr && peer_class->has_data());
 }
 
@@ -6341,14 +6471,14 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerClass()
     :
     peer_all{YType::empty, "peer-all"}
-    	,
+        ,
     peer_v4(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4>())
-	,peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6>())
+    , peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6>())
 {
     peer_v4->parent = this;
     peer_v6->parent = this;
 
-    yang_name = "peer-class"; yang_parent_name = "tftp-protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-class"; yang_parent_name = "tftp-protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::~PeerClass()
@@ -6357,6 +6487,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_all.is_set
 	|| (peer_v4 !=  nullptr && peer_v4->has_data())
 	|| (peer_v6 !=  nullptr && peer_v6->has_data());
@@ -6455,12 +6586,12 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerV4()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::~PeerV4()
@@ -6469,6 +6600,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -6552,9 +6684,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::~Peers()
@@ -6563,7 +6697,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -6573,7 +6708,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -6603,7 +6738,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -6615,7 +6750,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6646,7 +6781,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::Peer::~Peer()
@@ -6655,6 +6790,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -6667,7 +6803,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -6719,9 +6856,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::~PeerPrefixes()
@@ -6730,7 +6869,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -6740,7 +6880,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -6770,7 +6910,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -6782,7 +6922,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6813,7 +6953,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -6822,6 +6962,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -6834,7 +6975,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -6888,12 +7030,12 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerV6()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::~PeerV6()
@@ -6902,6 +7044,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -6985,9 +7128,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::~Peers()
@@ -6996,7 +7141,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -7006,7 +7152,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -7036,7 +7182,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -7048,7 +7194,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7079,7 +7225,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::Peer::~Peer()
@@ -7088,6 +7234,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -7100,7 +7247,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -7152,9 +7300,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::~PeerPrefixes()
@@ -7163,7 +7313,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -7173,7 +7324,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -7203,7 +7354,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -7215,7 +7366,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7246,7 +7397,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -7255,6 +7406,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -7267,7 +7419,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -7324,7 +7477,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 {
     peer_class->parent = this;
 
-    yang_name = "netconf-protocol"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "netconf-protocol"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::~NetconfProtocol()
@@ -7333,6 +7486,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer_class !=  nullptr && peer_class->has_data());
 }
 
@@ -7402,14 +7556,14 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerClass()
     :
     peer_all{YType::empty, "peer-all"}
-    	,
+        ,
     peer_v4(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4>())
-	,peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6>())
+    , peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6>())
 {
     peer_v4->parent = this;
     peer_v6->parent = this;
 
-    yang_name = "peer-class"; yang_parent_name = "netconf-protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-class"; yang_parent_name = "netconf-protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::~PeerClass()
@@ -7418,6 +7572,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_all.is_set
 	|| (peer_v4 !=  nullptr && peer_v4->has_data())
 	|| (peer_v6 !=  nullptr && peer_v6->has_data());
@@ -7516,12 +7671,12 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerV4()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::~PeerV4()
@@ -7530,6 +7685,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -7613,9 +7769,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::~Peers()
@@ -7624,7 +7782,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -7634,7 +7793,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -7664,7 +7823,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -7676,7 +7835,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7707,7 +7866,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::~Peer()
@@ -7716,6 +7875,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -7728,7 +7888,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -7780,9 +7941,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::~PeerPrefixes()
@@ -7791,7 +7954,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -7801,7 +7965,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -7831,7 +7995,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -7843,7 +8007,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7874,7 +8038,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -7883,6 +8047,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -7895,7 +8060,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -7949,12 +8115,12 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerV6()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::~PeerV6()
@@ -7963,6 +8129,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -8046,9 +8213,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::~Peers()
@@ -8057,7 +8226,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -8067,7 +8237,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -8097,7 +8267,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -8109,7 +8279,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8140,7 +8310,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::~Peer()
@@ -8149,6 +8319,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -8161,7 +8332,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -8213,9 +8385,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::~PeerPrefixes()
@@ -8224,7 +8398,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -8234,7 +8409,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -8264,7 +8439,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -8276,7 +8451,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8307,7 +8482,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -8316,6 +8491,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -8328,7 +8504,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -8385,7 +8562,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 {
     peer_class->parent = this;
 
-    yang_name = "xr-xml"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "xr-xml"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::~XrXml()
@@ -8394,6 +8571,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer_class !=  nullptr && peer_class->has_data());
 }
 
@@ -8463,14 +8641,14 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerClass()
     :
     peer_all{YType::empty, "peer-all"}
-    	,
+        ,
     peer_v4(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4>())
-	,peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6>())
+    , peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6>())
 {
     peer_v4->parent = this;
     peer_v6->parent = this;
 
-    yang_name = "peer-class"; yang_parent_name = "xr-xml"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-class"; yang_parent_name = "xr-xml"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::~PeerClass()
@@ -8479,6 +8657,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_all.is_set
 	|| (peer_v4 !=  nullptr && peer_v4->has_data())
 	|| (peer_v6 !=  nullptr && peer_v6->has_data());
@@ -8577,12 +8756,12 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerV4()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::~PeerV4()
@@ -8591,6 +8770,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -8674,9 +8854,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::~Peers()
@@ -8685,7 +8867,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -8695,7 +8878,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -8725,7 +8908,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -8737,7 +8920,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8768,7 +8951,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::Peer::~Peer()
@@ -8777,6 +8960,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -8789,7 +8973,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -8841,9 +9026,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::~PeerPrefixes()
@@ -8852,7 +9039,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -8862,7 +9050,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -8892,7 +9080,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -8904,7 +9092,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8935,7 +9123,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -8944,6 +9132,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -8956,7 +9145,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -9010,12 +9200,12 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerV6()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::~PeerV6()
@@ -9024,6 +9214,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -9107,9 +9298,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::~Peers()
@@ -9118,7 +9311,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -9128,7 +9322,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -9158,7 +9352,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -9170,7 +9364,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9201,7 +9395,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::Peer::~Peer()
@@ -9210,6 +9404,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -9222,7 +9417,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -9274,9 +9470,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::~PeerPrefixes()
@@ -9285,7 +9483,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -9295,7 +9494,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -9325,7 +9524,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -9337,7 +9536,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9368,7 +9567,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -9377,6 +9576,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -9389,7 +9589,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -9446,7 +9647,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 {
     peer_class->parent = this;
 
-    yang_name = "ssh-protocol"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ssh-protocol"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::~SshProtocol()
@@ -9455,6 +9656,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer_class !=  nullptr && peer_class->has_data());
 }
 
@@ -9524,14 +9726,14 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerClass()
     :
     peer_all{YType::empty, "peer-all"}
-    	,
+        ,
     peer_v4(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4>())
-	,peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6>())
+    , peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6>())
 {
     peer_v4->parent = this;
     peer_v6->parent = this;
 
-    yang_name = "peer-class"; yang_parent_name = "ssh-protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-class"; yang_parent_name = "ssh-protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::~PeerClass()
@@ -9540,6 +9742,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_all.is_set
 	|| (peer_v4 !=  nullptr && peer_v4->has_data())
 	|| (peer_v6 !=  nullptr && peer_v6->has_data());
@@ -9638,12 +9841,12 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerV4()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::~PeerV4()
@@ -9652,6 +9855,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -9735,9 +9939,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::~Peers()
@@ -9746,7 +9952,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -9756,7 +9963,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -9786,7 +9993,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -9798,7 +10005,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9829,7 +10036,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::Peer::~Peer()
@@ -9838,6 +10045,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -9850,7 +10058,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -9902,9 +10111,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::~PeerPrefixes()
@@ -9913,7 +10124,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -9923,7 +10135,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -9953,7 +10165,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -9965,7 +10177,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9996,7 +10208,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -10005,6 +10217,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -10017,7 +10230,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -10071,12 +10285,12 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerV6()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::~PeerV6()
@@ -10085,6 +10299,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -10168,9 +10383,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::~Peers()
@@ -10179,7 +10396,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -10189,7 +10407,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -10219,7 +10437,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -10231,7 +10449,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10262,7 +10480,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::Peer::~Peer()
@@ -10271,6 +10489,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -10283,7 +10502,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -10335,9 +10555,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::~PeerPrefixes()
@@ -10346,7 +10568,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -10356,7 +10579,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -10386,7 +10609,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -10398,7 +10621,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10429,7 +10652,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -10438,6 +10661,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -10450,7 +10674,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -10507,7 +10732,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 {
     peer_class->parent = this;
 
-    yang_name = "snmp-protocol"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "snmp-protocol"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::~SnmpProtocol()
@@ -10516,6 +10741,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer_class !=  nullptr && peer_class->has_data());
 }
 
@@ -10585,14 +10811,14 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerClass()
     :
     peer_all{YType::empty, "peer-all"}
-    	,
+        ,
     peer_v4(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4>())
-	,peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6>())
+    , peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6>())
 {
     peer_v4->parent = this;
     peer_v6->parent = this;
 
-    yang_name = "peer-class"; yang_parent_name = "snmp-protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-class"; yang_parent_name = "snmp-protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::~PeerClass()
@@ -10601,6 +10827,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_all.is_set
 	|| (peer_v4 !=  nullptr && peer_v4->has_data())
 	|| (peer_v6 !=  nullptr && peer_v6->has_data());
@@ -10699,12 +10926,12 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerV4()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::~PeerV4()
@@ -10713,6 +10940,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -10796,9 +11024,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::~Peers()
@@ -10807,7 +11037,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -10817,7 +11048,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -10847,7 +11078,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -10859,7 +11090,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10890,7 +11121,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::Peer::~Peer()
@@ -10899,6 +11130,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -10911,7 +11143,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -10963,9 +11196,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::~PeerPrefixes()
@@ -10974,7 +11209,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -10984,7 +11220,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -11014,7 +11250,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -11026,7 +11262,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11057,7 +11293,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -11066,6 +11302,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -11078,7 +11315,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -11132,12 +11370,12 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerV6()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::~PeerV6()
@@ -11146,6 +11384,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -11229,9 +11468,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::~Peers()
@@ -11240,7 +11481,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -11250,7 +11492,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -11280,7 +11522,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -11292,7 +11534,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11323,7 +11565,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::Peer::~Peer()
@@ -11332,6 +11574,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -11344,7 +11587,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -11396,9 +11640,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::~PeerPrefixes()
@@ -11407,7 +11653,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -11417,7 +11664,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -11447,7 +11694,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -11459,7 +11706,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11490,7 +11737,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -11499,6 +11746,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -11511,7 +11759,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -11568,7 +11817,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 {
     peer_class->parent = this;
 
-    yang_name = "telnet-protocol"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "telnet-protocol"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::~TelnetProtocol()
@@ -11577,6 +11826,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer_class !=  nullptr && peer_class->has_data());
 }
 
@@ -11646,14 +11896,14 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerClass()
     :
     peer_all{YType::empty, "peer-all"}
-    	,
+        ,
     peer_v4(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4>())
-	,peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6>())
+    , peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6>())
 {
     peer_v4->parent = this;
     peer_v6->parent = this;
 
-    yang_name = "peer-class"; yang_parent_name = "telnet-protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-class"; yang_parent_name = "telnet-protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::~PeerClass()
@@ -11662,6 +11912,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_all.is_set
 	|| (peer_v4 !=  nullptr && peer_v4->has_data())
 	|| (peer_v6 !=  nullptr && peer_v6->has_data());
@@ -11760,12 +12011,12 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerV4()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::~PeerV4()
@@ -11774,6 +12025,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -11857,9 +12109,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::~Peers()
@@ -11868,7 +12122,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -11878,7 +12133,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -11908,7 +12163,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -11920,7 +12175,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11951,7 +12206,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::Peer::~Peer()
@@ -11960,6 +12215,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -11972,7 +12228,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -12024,9 +12281,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::~PeerPrefixes()
@@ -12035,7 +12294,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -12045,7 +12305,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -12075,7 +12335,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -12087,7 +12347,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12118,7 +12378,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -12127,6 +12387,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -12139,7 +12400,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -12193,12 +12455,12 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerV6()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::~PeerV6()
@@ -12207,6 +12469,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -12290,9 +12553,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::~Peers()
@@ -12301,7 +12566,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -12311,7 +12577,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -12341,7 +12607,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -12353,7 +12619,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12384,7 +12650,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::Peer::~Peer()
@@ -12393,6 +12659,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -12405,7 +12672,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -12457,9 +12725,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::~PeerPrefixes()
@@ -12468,7 +12738,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -12478,7 +12749,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -12508,7 +12779,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -12520,7 +12791,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12551,7 +12822,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -12560,6 +12831,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -12572,7 +12844,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -12629,7 +12902,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 {
     peer_class->parent = this;
 
-    yang_name = "all-protocols"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-protocols"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::~AllProtocols()
@@ -12638,6 +12911,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer_class !=  nullptr && peer_class->has_data());
 }
 
@@ -12707,14 +12981,14 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerClass()
     :
     peer_all{YType::empty, "peer-all"}
-    	,
+        ,
     peer_v4(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4>())
-	,peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6>())
+    , peer_v6(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6>())
 {
     peer_v4->parent = this;
     peer_v6->parent = this;
 
-    yang_name = "peer-class"; yang_parent_name = "all-protocols"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-class"; yang_parent_name = "all-protocols"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::~PeerClass()
@@ -12723,6 +12997,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_all.is_set
 	|| (peer_v4 !=  nullptr && peer_v4->has_data())
 	|| (peer_v6 !=  nullptr && peer_v6->has_data());
@@ -12821,12 +13096,12 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerV4()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-v4"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::~PeerV4()
@@ -12835,6 +13110,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -12918,9 +13194,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::~Peers()
@@ -12929,7 +13207,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -12939,7 +13218,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -12969,7 +13248,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -12981,7 +13260,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13012,7 +13291,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::Peer::~Peer()
@@ -13021,6 +13300,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -13033,7 +13313,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -13085,9 +13366,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::~PeerPrefixes()
@@ -13096,7 +13379,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -13106,7 +13390,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -13136,7 +13420,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -13148,7 +13432,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13179,7 +13463,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -13188,6 +13472,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -13200,7 +13485,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -13254,12 +13540,12 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerV6()
     :
     peers(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers>())
-	,peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes>())
+    , peer_prefixes(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes>())
 {
     peers->parent = this;
     peer_prefixes->parent = this;
 
-    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-v6"; yang_parent_name = "peer-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::~PeerV6()
@@ -13268,6 +13554,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::has_data() const
 {
+    if (is_presence_container) return true;
     return (peers !=  nullptr && peers->has_data())
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_data());
 }
@@ -13351,9 +13638,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::Peers()
+    :
+    peer(this, {"address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::~Peers()
@@ -13362,7 +13651,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -13372,7 +13662,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -13402,7 +13692,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -13414,7 +13704,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13445,7 +13735,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address{YType::str, "address"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::Peer::~Peer()
@@ -13454,6 +13744,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -13466,7 +13757,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[address='" <<address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -13518,9 +13810,11 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
+    :
+    peer_prefix(this, {"address_prefix"})
 {
 
-    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefixes"; yang_parent_name = "peer-v6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::~PeerPrefixes()
@@ -13529,7 +13823,8 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::has_data() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_data())
             return true;
@@ -13539,7 +13834,7 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::has_operation() const
 {
-    for (std::size_t index=0; index<peer_prefix.size(); index++)
+    for (std::size_t index=0; index<peer_prefix.len(); index++)
     {
         if(peer_prefix[index]->has_operation())
             return true;
@@ -13569,7 +13864,7 @@ std::shared_ptr<Entity> ControlPlane::ManagementPlaneProtection::Inband::Interfa
     {
         auto c = std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix>();
         c->parent = this;
-        peer_prefix.push_back(c);
+        peer_prefix.append(c);
         return c;
     }
 
@@ -13581,7 +13876,7 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_prefix)
+    for (auto c : peer_prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13612,7 +13907,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
     address_prefix{YType::str, "address-prefix"}
 {
 
-    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-prefix"; yang_parent_name = "peer-prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::~PeerPrefix()
@@ -13621,6 +13916,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces:
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return address_prefix.is_set;
 }
 
@@ -13633,7 +13929,8 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 std::string ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-prefix" <<"[address-prefix='" <<address_prefix <<"']";
+    path_buffer << "peer-prefix";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
     return path_buffer.str();
 }
 
@@ -13687,13 +13984,13 @@ bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::Interf
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllInterfaces()
     :
     http_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol>())
-	,tftp_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol>())
-	,netconf_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol>())
-	,xr_xml(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml>())
-	,ssh_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol>())
-	,snmp_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol>())
-	,telnet_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol>())
-	,all_protocols(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols>())
+    , tftp_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol>())
+    , netconf_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol>())
+    , xr_xml(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml>())
+    , ssh_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol>())
+    , snmp_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol>())
+    , telnet_protocol(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol>())
+    , all_protocols(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols>())
 {
     http_protocol->parent = this;
     tftp_protocol->parent = this;
@@ -13704,7 +14001,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
     telnet_protocol->parent = this;
     all_protocols->parent = this;
 
-    yang_name = "all-interfaces"; yang_parent_name = "interface-selection"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all-interfaces"; yang_parent_name = "interface-selection"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::~AllInterfaces()
@@ -13713,6 +14010,7 @@ ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfac
 
 bool ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::has_data() const
 {
+    if (is_presence_container) return true;
     return (http_protocol !=  nullptr && http_protocol->has_data())
 	|| (tftp_protocol !=  nullptr && tftp_protocol->has_data())
 	|| (netconf_protocol !=  nullptr && netconf_protocol->has_data())

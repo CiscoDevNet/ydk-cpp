@@ -14,9 +14,10 @@ namespace Cisco_IOS_XE_nat_oper {
 NatData::NatData()
     :
     ip_nat_statistics(nullptr) // presence node
+    , ip_nat_translation(this, {"inside_local_addr", "outside_local_addr", "inside_local_port", "outside_local_port", "vrfid", "protocol"})
 {
 
-    yang_name = "nat-data"; yang_parent_name = "Cisco-IOS-XE-nat-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "nat-data"; yang_parent_name = "Cisco-IOS-XE-nat-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 NatData::~NatData()
@@ -25,7 +26,8 @@ NatData::~NatData()
 
 bool NatData::has_data() const
 {
-    for (std::size_t index=0; index<ip_nat_translation.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ip_nat_translation.len(); index++)
     {
         if(ip_nat_translation[index]->has_data())
             return true;
@@ -35,7 +37,7 @@ bool NatData::has_data() const
 
 bool NatData::has_operation() const
 {
-    for (std::size_t index=0; index<ip_nat_translation.size(); index++)
+    for (std::size_t index=0; index<ip_nat_translation.len(); index++)
     {
         if(ip_nat_translation[index]->has_operation())
             return true;
@@ -75,7 +77,7 @@ std::shared_ptr<Entity> NatData::get_child_by_name(const std::string & child_yan
     {
         auto c = std::make_shared<NatData::IpNatTranslation>();
         c->parent = this;
-        ip_nat_translation.push_back(c);
+        ip_nat_translation.append(c);
         return c;
     }
 
@@ -92,7 +94,7 @@ std::map<std::string, std::shared_ptr<Entity>> NatData::get_children() const
     }
 
     count = 0;
-    for (auto const & c : ip_nat_translation)
+    for (auto c : ip_nat_translation.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -169,7 +171,7 @@ NatData::IpNatStatistics::IpNatStatistics()
     mib_addport_binds{YType::uint32, "mib-addport-binds"}
 {
 
-    yang_name = "ip-nat-statistics"; yang_parent_name = "nat-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip-nat-statistics"; yang_parent_name = "nat-data"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 NatData::IpNatStatistics::~IpNatStatistics()
@@ -178,6 +180,7 @@ NatData::IpNatStatistics::~IpNatStatistics()
 
 bool NatData::IpNatStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : statics_sorted.getYLeafs())
     {
         if(leaf.is_set)
@@ -545,7 +548,7 @@ NatData::IpNatTranslation::IpNatTranslation()
     application_type{YType::uint8, "application-type"}
 {
 
-    yang_name = "ip-nat-translation"; yang_parent_name = "nat-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip-nat-translation"; yang_parent_name = "nat-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NatData::IpNatTranslation::~IpNatTranslation()
@@ -554,6 +557,7 @@ NatData::IpNatTranslation::~IpNatTranslation()
 
 bool NatData::IpNatTranslation::has_data() const
 {
+    if (is_presence_container) return true;
     return inside_local_addr.is_set
 	|| outside_local_addr.is_set
 	|| inside_local_port.is_set
@@ -595,7 +599,13 @@ std::string NatData::IpNatTranslation::get_absolute_path() const
 std::string NatData::IpNatTranslation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ip-nat-translation" <<"[inside-local-addr='" <<inside_local_addr <<"']" <<"[outside-local-addr='" <<outside_local_addr <<"']" <<"[inside-local-port='" <<inside_local_port <<"']" <<"[outside-local-port='" <<outside_local_port <<"']" <<"[vrfid='" <<vrfid <<"']" <<"[protocol='" <<protocol <<"']";
+    path_buffer << "ip-nat-translation";
+    ADD_KEY_TOKEN(inside_local_addr, "inside-local-addr");
+    ADD_KEY_TOKEN(outside_local_addr, "outside-local-addr");
+    ADD_KEY_TOKEN(inside_local_port, "inside-local-port");
+    ADD_KEY_TOKEN(outside_local_port, "outside-local-port");
+    ADD_KEY_TOKEN(vrfid, "vrfid");
+    ADD_KEY_TOKEN(protocol, "protocol");
     return path_buffer.str();
 }
 

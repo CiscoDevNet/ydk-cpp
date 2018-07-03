@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_sysadmin_cm {
 NodeInventory::NodeInventory()
     :
     summary(std::make_shared<NodeInventory::Summary>())
-	,detail(std::make_shared<NodeInventory::Detail>())
+    , detail(std::make_shared<NodeInventory::Detail>())
 {
     summary->parent = this;
     detail->parent = this;
 
-    yang_name = "node-inventory"; yang_parent_name = "Cisco-IOS-XR-sysadmin-cm"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "node-inventory"; yang_parent_name = "Cisco-IOS-XR-sysadmin-cm"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 NodeInventory::~NodeInventory()
@@ -28,6 +28,7 @@ NodeInventory::~NodeInventory()
 
 bool NodeInventory::has_data() const
 {
+    if (is_presence_container) return true;
     return (summary !=  nullptr && summary->has_data())
 	|| (detail !=  nullptr && detail->has_data());
 }
@@ -136,9 +137,11 @@ bool NodeInventory::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 NodeInventory::Summary::Summary()
+    :
+    node_locations(this, {"node_location"})
 {
 
-    yang_name = "summary"; yang_parent_name = "node-inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "node-inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NodeInventory::Summary::~Summary()
@@ -147,7 +150,8 @@ NodeInventory::Summary::~Summary()
 
 bool NodeInventory::Summary::has_data() const
 {
-    for (std::size_t index=0; index<node_locations.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node_locations.len(); index++)
     {
         if(node_locations[index]->has_data())
             return true;
@@ -157,7 +161,7 @@ bool NodeInventory::Summary::has_data() const
 
 bool NodeInventory::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<node_locations.size(); index++)
+    for (std::size_t index=0; index<node_locations.len(); index++)
     {
         if(node_locations[index]->has_operation())
             return true;
@@ -194,7 +198,7 @@ std::shared_ptr<Entity> NodeInventory::Summary::get_child_by_name(const std::str
     {
         auto c = std::make_shared<NodeInventory::Summary::NodeLocations>();
         c->parent = this;
-        node_locations.push_back(c);
+        node_locations.append(c);
         return c;
     }
 
@@ -206,7 +210,7 @@ std::map<std::string, std::shared_ptr<Entity>> NodeInventory::Summary::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node_locations)
+    for (auto c : node_locations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -235,9 +239,11 @@ bool NodeInventory::Summary::has_leaf_or_child_of_name(const std::string & name)
 NodeInventory::Summary::NodeLocations::NodeLocations()
     :
     node_location{YType::str, "node_location"}
+        ,
+    nodei(this, {"ip_address"})
 {
 
-    yang_name = "node_locations"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node_locations"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NodeInventory::Summary::NodeLocations::~NodeLocations()
@@ -246,7 +252,8 @@ NodeInventory::Summary::NodeLocations::~NodeLocations()
 
 bool NodeInventory::Summary::NodeLocations::has_data() const
 {
-    for (std::size_t index=0; index<nodei.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nodei.len(); index++)
     {
         if(nodei[index]->has_data())
             return true;
@@ -256,7 +263,7 @@ bool NodeInventory::Summary::NodeLocations::has_data() const
 
 bool NodeInventory::Summary::NodeLocations::has_operation() const
 {
-    for (std::size_t index=0; index<nodei.size(); index++)
+    for (std::size_t index=0; index<nodei.len(); index++)
     {
         if(nodei[index]->has_operation())
             return true;
@@ -275,7 +282,8 @@ std::string NodeInventory::Summary::NodeLocations::get_absolute_path() const
 std::string NodeInventory::Summary::NodeLocations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node_locations" <<"[node_location='" <<node_location <<"']";
+    path_buffer << "node_locations";
+    ADD_KEY_TOKEN(node_location, "node_location");
     return path_buffer.str();
 }
 
@@ -295,7 +303,7 @@ std::shared_ptr<Entity> NodeInventory::Summary::NodeLocations::get_child_by_name
     {
         auto c = std::make_shared<NodeInventory::Summary::NodeLocations::Nodei>();
         c->parent = this;
-        nodei.push_back(c);
+        nodei.append(c);
         return c;
     }
 
@@ -307,7 +315,7 @@ std::map<std::string, std::shared_ptr<Entity>> NodeInventory::Summary::NodeLocat
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nodei)
+    for (auto c : nodei.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -352,7 +360,7 @@ NodeInventory::Summary::NodeLocations::Nodei::Nodei()
     nti{YType::uint32, "nti"}
 {
 
-    yang_name = "nodei"; yang_parent_name = "node_locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nodei"; yang_parent_name = "node_locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NodeInventory::Summary::NodeLocations::Nodei::~Nodei()
@@ -361,6 +369,7 @@ NodeInventory::Summary::NodeLocations::Nodei::~Nodei()
 
 bool NodeInventory::Summary::NodeLocations::Nodei::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_address.is_set
 	|| type.is_set
 	|| mac_address.is_set
@@ -381,7 +390,8 @@ bool NodeInventory::Summary::NodeLocations::Nodei::has_operation() const
 std::string NodeInventory::Summary::NodeLocations::Nodei::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nodei" <<"[ip_address='" <<ip_address <<"']";
+    path_buffer << "nodei";
+    ADD_KEY_TOKEN(ip_address, "ip_address");
     return path_buffer.str();
 }
 
@@ -477,9 +487,11 @@ bool NodeInventory::Summary::NodeLocations::Nodei::has_leaf_or_child_of_name(con
 }
 
 NodeInventory::Detail::Detail()
+    :
+    node_locations(this, {"node_location"})
 {
 
-    yang_name = "detail"; yang_parent_name = "node-inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail"; yang_parent_name = "node-inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NodeInventory::Detail::~Detail()
@@ -488,7 +500,8 @@ NodeInventory::Detail::~Detail()
 
 bool NodeInventory::Detail::has_data() const
 {
-    for (std::size_t index=0; index<node_locations.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node_locations.len(); index++)
     {
         if(node_locations[index]->has_data())
             return true;
@@ -498,7 +511,7 @@ bool NodeInventory::Detail::has_data() const
 
 bool NodeInventory::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<node_locations.size(); index++)
+    for (std::size_t index=0; index<node_locations.len(); index++)
     {
         if(node_locations[index]->has_operation())
             return true;
@@ -535,7 +548,7 @@ std::shared_ptr<Entity> NodeInventory::Detail::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<NodeInventory::Detail::NodeLocations>();
         c->parent = this;
-        node_locations.push_back(c);
+        node_locations.append(c);
         return c;
     }
 
@@ -547,7 +560,7 @@ std::map<std::string, std::shared_ptr<Entity>> NodeInventory::Detail::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node_locations)
+    for (auto c : node_locations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -576,9 +589,11 @@ bool NodeInventory::Detail::has_leaf_or_child_of_name(const std::string & name) 
 NodeInventory::Detail::NodeLocations::NodeLocations()
     :
     node_location{YType::str, "node_location"}
+        ,
+    nodei(this, {"ip_address"})
 {
 
-    yang_name = "node_locations"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node_locations"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NodeInventory::Detail::NodeLocations::~NodeLocations()
@@ -587,7 +602,8 @@ NodeInventory::Detail::NodeLocations::~NodeLocations()
 
 bool NodeInventory::Detail::NodeLocations::has_data() const
 {
-    for (std::size_t index=0; index<nodei.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nodei.len(); index++)
     {
         if(nodei[index]->has_data())
             return true;
@@ -597,7 +613,7 @@ bool NodeInventory::Detail::NodeLocations::has_data() const
 
 bool NodeInventory::Detail::NodeLocations::has_operation() const
 {
-    for (std::size_t index=0; index<nodei.size(); index++)
+    for (std::size_t index=0; index<nodei.len(); index++)
     {
         if(nodei[index]->has_operation())
             return true;
@@ -616,7 +632,8 @@ std::string NodeInventory::Detail::NodeLocations::get_absolute_path() const
 std::string NodeInventory::Detail::NodeLocations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node_locations" <<"[node_location='" <<node_location <<"']";
+    path_buffer << "node_locations";
+    ADD_KEY_TOKEN(node_location, "node_location");
     return path_buffer.str();
 }
 
@@ -636,7 +653,7 @@ std::shared_ptr<Entity> NodeInventory::Detail::NodeLocations::get_child_by_name(
     {
         auto c = std::make_shared<NodeInventory::Detail::NodeLocations::Nodei>();
         c->parent = this;
-        nodei.push_back(c);
+        nodei.append(c);
         return c;
     }
 
@@ -648,7 +665,7 @@ std::map<std::string, std::shared_ptr<Entity>> NodeInventory::Detail::NodeLocati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nodei)
+    for (auto c : nodei.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -696,7 +713,7 @@ NodeInventory::Detail::NodeLocations::Nodei::Nodei()
     sdr{YType::str, "sdr"}
 {
 
-    yang_name = "nodei"; yang_parent_name = "node_locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nodei"; yang_parent_name = "node_locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NodeInventory::Detail::NodeLocations::Nodei::~Nodei()
@@ -705,6 +722,7 @@ NodeInventory::Detail::NodeLocations::Nodei::~Nodei()
 
 bool NodeInventory::Detail::NodeLocations::Nodei::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_address.is_set
 	|| type.is_set
 	|| mac_address.is_set
@@ -731,7 +749,8 @@ bool NodeInventory::Detail::NodeLocations::Nodei::has_operation() const
 std::string NodeInventory::Detail::NodeLocations::Nodei::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nodei" <<"[ip_address='" <<ip_address <<"']";
+    path_buffer << "nodei";
+    ADD_KEY_TOKEN(ip_address, "ip_address");
     return path_buffer.str();
 }
 
@@ -860,9 +879,11 @@ bool NodeInventory::Detail::NodeLocations::Nodei::has_leaf_or_child_of_name(cons
 }
 
 CardInventory::CardInventory()
+    :
+    card_locations(this, {"card_location"})
 {
 
-    yang_name = "card-inventory"; yang_parent_name = "Cisco-IOS-XR-sysadmin-cm"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "card-inventory"; yang_parent_name = "Cisco-IOS-XR-sysadmin-cm"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CardInventory::~CardInventory()
@@ -871,7 +892,8 @@ CardInventory::~CardInventory()
 
 bool CardInventory::has_data() const
 {
-    for (std::size_t index=0; index<card_locations.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<card_locations.len(); index++)
     {
         if(card_locations[index]->has_data())
             return true;
@@ -881,7 +903,7 @@ bool CardInventory::has_data() const
 
 bool CardInventory::has_operation() const
 {
-    for (std::size_t index=0; index<card_locations.size(); index++)
+    for (std::size_t index=0; index<card_locations.len(); index++)
     {
         if(card_locations[index]->has_operation())
             return true;
@@ -911,7 +933,7 @@ std::shared_ptr<Entity> CardInventory::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<CardInventory::CardLocations>();
         c->parent = this;
-        card_locations.push_back(c);
+        card_locations.append(c);
         return c;
     }
 
@@ -923,7 +945,7 @@ std::map<std::string, std::shared_ptr<Entity>> CardInventory::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : card_locations)
+    for (auto c : card_locations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -977,9 +999,11 @@ bool CardInventory::has_leaf_or_child_of_name(const std::string & name) const
 CardInventory::CardLocations::CardLocations()
     :
     card_location{YType::str, "card_location"}
+        ,
+    cardi(this, {"card_serial"})
 {
 
-    yang_name = "card_locations"; yang_parent_name = "card-inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "card_locations"; yang_parent_name = "card-inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CardInventory::CardLocations::~CardLocations()
@@ -988,7 +1012,8 @@ CardInventory::CardLocations::~CardLocations()
 
 bool CardInventory::CardLocations::has_data() const
 {
-    for (std::size_t index=0; index<cardi.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cardi.len(); index++)
     {
         if(cardi[index]->has_data())
             return true;
@@ -998,7 +1023,7 @@ bool CardInventory::CardLocations::has_data() const
 
 bool CardInventory::CardLocations::has_operation() const
 {
-    for (std::size_t index=0; index<cardi.size(); index++)
+    for (std::size_t index=0; index<cardi.len(); index++)
     {
         if(cardi[index]->has_operation())
             return true;
@@ -1017,7 +1042,8 @@ std::string CardInventory::CardLocations::get_absolute_path() const
 std::string CardInventory::CardLocations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "card_locations" <<"[card_location='" <<card_location <<"']";
+    path_buffer << "card_locations";
+    ADD_KEY_TOKEN(card_location, "card_location");
     return path_buffer.str();
 }
 
@@ -1037,7 +1063,7 @@ std::shared_ptr<Entity> CardInventory::CardLocations::get_child_by_name(const st
     {
         auto c = std::make_shared<CardInventory::CardLocations::Cardi>();
         c->parent = this;
-        cardi.push_back(c);
+        cardi.append(c);
         return c;
     }
 
@@ -1049,7 +1075,7 @@ std::map<std::string, std::shared_ptr<Entity>> CardInventory::CardLocations::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cardi)
+    for (auto c : cardi.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1096,7 +1122,7 @@ CardInventory::CardLocations::Cardi::Cardi()
     cti{YType::uint32, "cti"}
 {
 
-    yang_name = "cardi"; yang_parent_name = "card_locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cardi"; yang_parent_name = "card_locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CardInventory::CardLocations::Cardi::~Cardi()
@@ -1105,6 +1131,7 @@ CardInventory::CardLocations::Cardi::~Cardi()
 
 bool CardInventory::CardLocations::Cardi::has_data() const
 {
+    if (is_presence_container) return true;
     return card_serial.is_set
 	|| node_id.is_set
 	|| card_type.is_set
@@ -1129,7 +1156,8 @@ bool CardInventory::CardLocations::Cardi::has_operation() const
 std::string CardInventory::CardLocations::Cardi::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cardi" <<"[card_serial='" <<card_serial <<"']";
+    path_buffer << "cardi";
+    ADD_KEY_TOKEN(card_serial, "card_serial");
     return path_buffer.str();
 }
 
@@ -1247,9 +1275,11 @@ bool CardInventory::CardLocations::Cardi::has_leaf_or_child_of_name(const std::s
 }
 
 RackInventory::RackInventory()
+    :
+    rack_locations(this, {"rack_location"})
 {
 
-    yang_name = "rack-inventory"; yang_parent_name = "Cisco-IOS-XR-sysadmin-cm"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "rack-inventory"; yang_parent_name = "Cisco-IOS-XR-sysadmin-cm"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RackInventory::~RackInventory()
@@ -1258,7 +1288,8 @@ RackInventory::~RackInventory()
 
 bool RackInventory::has_data() const
 {
-    for (std::size_t index=0; index<rack_locations.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack_locations.len(); index++)
     {
         if(rack_locations[index]->has_data())
             return true;
@@ -1268,7 +1299,7 @@ bool RackInventory::has_data() const
 
 bool RackInventory::has_operation() const
 {
-    for (std::size_t index=0; index<rack_locations.size(); index++)
+    for (std::size_t index=0; index<rack_locations.len(); index++)
     {
         if(rack_locations[index]->has_operation())
             return true;
@@ -1298,7 +1329,7 @@ std::shared_ptr<Entity> RackInventory::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<RackInventory::RackLocations>();
         c->parent = this;
-        rack_locations.push_back(c);
+        rack_locations.append(c);
         return c;
     }
 
@@ -1310,7 +1341,7 @@ std::map<std::string, std::shared_ptr<Entity>> RackInventory::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack_locations)
+    for (auto c : rack_locations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1364,9 +1395,11 @@ bool RackInventory::has_leaf_or_child_of_name(const std::string & name) const
 RackInventory::RackLocations::RackLocations()
     :
     rack_location{YType::str, "rack_location"}
+        ,
+    racki(this, {"rack_serial"})
 {
 
-    yang_name = "rack_locations"; yang_parent_name = "rack-inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack_locations"; yang_parent_name = "rack-inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RackInventory::RackLocations::~RackLocations()
@@ -1375,7 +1408,8 @@ RackInventory::RackLocations::~RackLocations()
 
 bool RackInventory::RackLocations::has_data() const
 {
-    for (std::size_t index=0; index<racki.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<racki.len(); index++)
     {
         if(racki[index]->has_data())
             return true;
@@ -1385,7 +1419,7 @@ bool RackInventory::RackLocations::has_data() const
 
 bool RackInventory::RackLocations::has_operation() const
 {
-    for (std::size_t index=0; index<racki.size(); index++)
+    for (std::size_t index=0; index<racki.len(); index++)
     {
         if(racki[index]->has_operation())
             return true;
@@ -1404,7 +1438,8 @@ std::string RackInventory::RackLocations::get_absolute_path() const
 std::string RackInventory::RackLocations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack_locations" <<"[rack_location='" <<rack_location <<"']";
+    path_buffer << "rack_locations";
+    ADD_KEY_TOKEN(rack_location, "rack_location");
     return path_buffer.str();
 }
 
@@ -1424,7 +1459,7 @@ std::shared_ptr<Entity> RackInventory::RackLocations::get_child_by_name(const st
     {
         auto c = std::make_shared<RackInventory::RackLocations::Racki>();
         c->parent = this;
-        racki.push_back(c);
+        racki.append(c);
         return c;
     }
 
@@ -1436,7 +1471,7 @@ std::map<std::string, std::shared_ptr<Entity>> RackInventory::RackLocations::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : racki)
+    for (auto c : racki.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1479,7 +1514,7 @@ RackInventory::RackLocations::Racki::Racki()
     rack_state{YType::int32, "rack_state"}
 {
 
-    yang_name = "racki"; yang_parent_name = "rack_locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "racki"; yang_parent_name = "rack_locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RackInventory::RackLocations::Racki::~Racki()
@@ -1488,6 +1523,7 @@ RackInventory::RackLocations::Racki::~Racki()
 
 bool RackInventory::RackLocations::Racki::has_data() const
 {
+    if (is_presence_container) return true;
     return rack_serial.is_set
 	|| rack_number.is_set
 	|| rack_state.is_set;
@@ -1504,7 +1540,8 @@ bool RackInventory::RackLocations::Racki::has_operation() const
 std::string RackInventory::RackLocations::Racki::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "racki" <<"[rack_serial='" <<rack_serial <<"']";
+    path_buffer << "racki";
+    ADD_KEY_TOKEN(rack_serial, "rack_serial");
     return path_buffer.str();
 }
 
@@ -1578,9 +1615,11 @@ bool RackInventory::RackLocations::Racki::has_leaf_or_child_of_name(const std::s
 }
 
 SystemServiceInventory::SystemServiceInventory()
+    :
+    ssvc_locations(this, {"ssvc_location"})
 {
 
-    yang_name = "system-service-inventory"; yang_parent_name = "Cisco-IOS-XR-sysadmin-cm"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "system-service-inventory"; yang_parent_name = "Cisco-IOS-XR-sysadmin-cm"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SystemServiceInventory::~SystemServiceInventory()
@@ -1589,7 +1628,8 @@ SystemServiceInventory::~SystemServiceInventory()
 
 bool SystemServiceInventory::has_data() const
 {
-    for (std::size_t index=0; index<ssvc_locations.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ssvc_locations.len(); index++)
     {
         if(ssvc_locations[index]->has_data())
             return true;
@@ -1599,7 +1639,7 @@ bool SystemServiceInventory::has_data() const
 
 bool SystemServiceInventory::has_operation() const
 {
-    for (std::size_t index=0; index<ssvc_locations.size(); index++)
+    for (std::size_t index=0; index<ssvc_locations.len(); index++)
     {
         if(ssvc_locations[index]->has_operation())
             return true;
@@ -1629,7 +1669,7 @@ std::shared_ptr<Entity> SystemServiceInventory::get_child_by_name(const std::str
     {
         auto c = std::make_shared<SystemServiceInventory::SsvcLocations>();
         c->parent = this;
-        ssvc_locations.push_back(c);
+        ssvc_locations.append(c);
         return c;
     }
 
@@ -1641,7 +1681,7 @@ std::map<std::string, std::shared_ptr<Entity>> SystemServiceInventory::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ssvc_locations)
+    for (auto c : ssvc_locations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1695,9 +1735,11 @@ bool SystemServiceInventory::has_leaf_or_child_of_name(const std::string & name)
 SystemServiceInventory::SsvcLocations::SsvcLocations()
     :
     ssvc_location{YType::str, "ssvc_location"}
+        ,
+    ssvci(this, {"svc_name"})
 {
 
-    yang_name = "ssvc_locations"; yang_parent_name = "system-service-inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ssvc_locations"; yang_parent_name = "system-service-inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SystemServiceInventory::SsvcLocations::~SsvcLocations()
@@ -1706,7 +1748,8 @@ SystemServiceInventory::SsvcLocations::~SsvcLocations()
 
 bool SystemServiceInventory::SsvcLocations::has_data() const
 {
-    for (std::size_t index=0; index<ssvci.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ssvci.len(); index++)
     {
         if(ssvci[index]->has_data())
             return true;
@@ -1716,7 +1759,7 @@ bool SystemServiceInventory::SsvcLocations::has_data() const
 
 bool SystemServiceInventory::SsvcLocations::has_operation() const
 {
-    for (std::size_t index=0; index<ssvci.size(); index++)
+    for (std::size_t index=0; index<ssvci.len(); index++)
     {
         if(ssvci[index]->has_operation())
             return true;
@@ -1735,7 +1778,8 @@ std::string SystemServiceInventory::SsvcLocations::get_absolute_path() const
 std::string SystemServiceInventory::SsvcLocations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ssvc_locations" <<"[ssvc_location='" <<ssvc_location <<"']";
+    path_buffer << "ssvc_locations";
+    ADD_KEY_TOKEN(ssvc_location, "ssvc_location");
     return path_buffer.str();
 }
 
@@ -1755,7 +1799,7 @@ std::shared_ptr<Entity> SystemServiceInventory::SsvcLocations::get_child_by_name
     {
         auto c = std::make_shared<SystemServiceInventory::SsvcLocations::Ssvci>();
         c->parent = this;
-        ssvci.push_back(c);
+        ssvci.append(c);
         return c;
     }
 
@@ -1767,7 +1811,7 @@ std::map<std::string, std::shared_ptr<Entity>> SystemServiceInventory::SsvcLocat
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ssvci)
+    for (auto c : ssvci.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1813,7 +1857,7 @@ SystemServiceInventory::SsvcLocations::Ssvci::Ssvci()
     svc_load{YType::uint8, "svc_load"}
 {
 
-    yang_name = "ssvci"; yang_parent_name = "ssvc_locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ssvci"; yang_parent_name = "ssvc_locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SystemServiceInventory::SsvcLocations::Ssvci::~Ssvci()
@@ -1822,6 +1866,7 @@ SystemServiceInventory::SsvcLocations::Ssvci::~Ssvci()
 
 bool SystemServiceInventory::SsvcLocations::Ssvci::has_data() const
 {
+    if (is_presence_container) return true;
     return svc_name.is_set
 	|| placement_first.is_set
 	|| nodeid_first.is_set
@@ -1844,7 +1889,8 @@ bool SystemServiceInventory::SsvcLocations::Ssvci::has_operation() const
 std::string SystemServiceInventory::SsvcLocations::Ssvci::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ssvci" <<"[svc_name='" <<svc_name <<"']";
+    path_buffer << "ssvci";
+    ADD_KEY_TOKEN(svc_name, "svc_name");
     return path_buffer.str();
 }
 
@@ -1951,9 +1997,11 @@ bool SystemServiceInventory::SsvcLocations::Ssvci::has_leaf_or_child_of_name(con
 }
 
 RackServiceInventory::RackServiceInventory()
+    :
+    rsvc_locations(this, {"rsvc_location"})
 {
 
-    yang_name = "rack-service-inventory"; yang_parent_name = "Cisco-IOS-XR-sysadmin-cm"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "rack-service-inventory"; yang_parent_name = "Cisco-IOS-XR-sysadmin-cm"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RackServiceInventory::~RackServiceInventory()
@@ -1962,7 +2010,8 @@ RackServiceInventory::~RackServiceInventory()
 
 bool RackServiceInventory::has_data() const
 {
-    for (std::size_t index=0; index<rsvc_locations.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rsvc_locations.len(); index++)
     {
         if(rsvc_locations[index]->has_data())
             return true;
@@ -1972,7 +2021,7 @@ bool RackServiceInventory::has_data() const
 
 bool RackServiceInventory::has_operation() const
 {
-    for (std::size_t index=0; index<rsvc_locations.size(); index++)
+    for (std::size_t index=0; index<rsvc_locations.len(); index++)
     {
         if(rsvc_locations[index]->has_operation())
             return true;
@@ -2002,7 +2051,7 @@ std::shared_ptr<Entity> RackServiceInventory::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<RackServiceInventory::RsvcLocations>();
         c->parent = this;
-        rsvc_locations.push_back(c);
+        rsvc_locations.append(c);
         return c;
     }
 
@@ -2014,7 +2063,7 @@ std::map<std::string, std::shared_ptr<Entity>> RackServiceInventory::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rsvc_locations)
+    for (auto c : rsvc_locations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2068,9 +2117,11 @@ bool RackServiceInventory::has_leaf_or_child_of_name(const std::string & name) c
 RackServiceInventory::RsvcLocations::RsvcLocations()
     :
     rsvc_location{YType::str, "rsvc_location"}
+        ,
+    rsvci(this, {"svc_name"})
 {
 
-    yang_name = "rsvc_locations"; yang_parent_name = "rack-service-inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rsvc_locations"; yang_parent_name = "rack-service-inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RackServiceInventory::RsvcLocations::~RsvcLocations()
@@ -2079,7 +2130,8 @@ RackServiceInventory::RsvcLocations::~RsvcLocations()
 
 bool RackServiceInventory::RsvcLocations::has_data() const
 {
-    for (std::size_t index=0; index<rsvci.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rsvci.len(); index++)
     {
         if(rsvci[index]->has_data())
             return true;
@@ -2089,7 +2141,7 @@ bool RackServiceInventory::RsvcLocations::has_data() const
 
 bool RackServiceInventory::RsvcLocations::has_operation() const
 {
-    for (std::size_t index=0; index<rsvci.size(); index++)
+    for (std::size_t index=0; index<rsvci.len(); index++)
     {
         if(rsvci[index]->has_operation())
             return true;
@@ -2108,7 +2160,8 @@ std::string RackServiceInventory::RsvcLocations::get_absolute_path() const
 std::string RackServiceInventory::RsvcLocations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rsvc_locations" <<"[rsvc_location='" <<rsvc_location <<"']";
+    path_buffer << "rsvc_locations";
+    ADD_KEY_TOKEN(rsvc_location, "rsvc_location");
     return path_buffer.str();
 }
 
@@ -2128,7 +2181,7 @@ std::shared_ptr<Entity> RackServiceInventory::RsvcLocations::get_child_by_name(c
     {
         auto c = std::make_shared<RackServiceInventory::RsvcLocations::Rsvci>();
         c->parent = this;
-        rsvci.push_back(c);
+        rsvci.append(c);
         return c;
     }
 
@@ -2140,7 +2193,7 @@ std::map<std::string, std::shared_ptr<Entity>> RackServiceInventory::RsvcLocatio
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rsvci)
+    for (auto c : rsvci.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2186,7 +2239,7 @@ RackServiceInventory::RsvcLocations::Rsvci::Rsvci()
     svc_load{YType::uint8, "svc_load"}
 {
 
-    yang_name = "rsvci"; yang_parent_name = "rsvc_locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rsvci"; yang_parent_name = "rsvc_locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RackServiceInventory::RsvcLocations::Rsvci::~Rsvci()
@@ -2195,6 +2248,7 @@ RackServiceInventory::RsvcLocations::Rsvci::~Rsvci()
 
 bool RackServiceInventory::RsvcLocations::Rsvci::has_data() const
 {
+    if (is_presence_container) return true;
     return svc_name.is_set
 	|| placement_first.is_set
 	|| nodeid_first.is_set
@@ -2217,7 +2271,8 @@ bool RackServiceInventory::RsvcLocations::Rsvci::has_operation() const
 std::string RackServiceInventory::RsvcLocations::Rsvci::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rsvci" <<"[svc_name='" <<svc_name <<"']";
+    path_buffer << "rsvci";
+    ADD_KEY_TOKEN(svc_name, "svc_name");
     return path_buffer.str();
 }
 
@@ -2324,9 +2379,11 @@ bool RackServiceInventory::RsvcLocations::Rsvci::has_leaf_or_child_of_name(const
 }
 
 SdrInventory::SdrInventory()
+    :
+    sdr_locations(this, {"sdr_location"})
 {
 
-    yang_name = "sdr-inventory"; yang_parent_name = "Cisco-IOS-XR-sysadmin-cm"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "sdr-inventory"; yang_parent_name = "Cisco-IOS-XR-sysadmin-cm"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SdrInventory::~SdrInventory()
@@ -2335,7 +2392,8 @@ SdrInventory::~SdrInventory()
 
 bool SdrInventory::has_data() const
 {
-    for (std::size_t index=0; index<sdr_locations.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sdr_locations.len(); index++)
     {
         if(sdr_locations[index]->has_data())
             return true;
@@ -2345,7 +2403,7 @@ bool SdrInventory::has_data() const
 
 bool SdrInventory::has_operation() const
 {
-    for (std::size_t index=0; index<sdr_locations.size(); index++)
+    for (std::size_t index=0; index<sdr_locations.len(); index++)
     {
         if(sdr_locations[index]->has_operation())
             return true;
@@ -2375,7 +2433,7 @@ std::shared_ptr<Entity> SdrInventory::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<SdrInventory::SdrLocations>();
         c->parent = this;
-        sdr_locations.push_back(c);
+        sdr_locations.append(c);
         return c;
     }
 
@@ -2387,7 +2445,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrInventory::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sdr_locations)
+    for (auto c : sdr_locations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2441,9 +2499,11 @@ bool SdrInventory::has_leaf_or_child_of_name(const std::string & name) const
 SdrInventory::SdrLocations::SdrLocations()
     :
     sdr_location{YType::str, "sdr_location"}
+        ,
+    sdri(this, {"sdr_name"})
 {
 
-    yang_name = "sdr_locations"; yang_parent_name = "sdr-inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdr_locations"; yang_parent_name = "sdr-inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SdrInventory::SdrLocations::~SdrLocations()
@@ -2452,7 +2512,8 @@ SdrInventory::SdrLocations::~SdrLocations()
 
 bool SdrInventory::SdrLocations::has_data() const
 {
-    for (std::size_t index=0; index<sdri.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sdri.len(); index++)
     {
         if(sdri[index]->has_data())
             return true;
@@ -2462,7 +2523,7 @@ bool SdrInventory::SdrLocations::has_data() const
 
 bool SdrInventory::SdrLocations::has_operation() const
 {
-    for (std::size_t index=0; index<sdri.size(); index++)
+    for (std::size_t index=0; index<sdri.len(); index++)
     {
         if(sdri[index]->has_operation())
             return true;
@@ -2481,7 +2542,8 @@ std::string SdrInventory::SdrLocations::get_absolute_path() const
 std::string SdrInventory::SdrLocations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sdr_locations" <<"[sdr_location='" <<sdr_location <<"']";
+    path_buffer << "sdr_locations";
+    ADD_KEY_TOKEN(sdr_location, "sdr_location");
     return path_buffer.str();
 }
 
@@ -2501,7 +2563,7 @@ std::shared_ptr<Entity> SdrInventory::SdrLocations::get_child_by_name(const std:
     {
         auto c = std::make_shared<SdrInventory::SdrLocations::Sdri>();
         c->parent = this;
-        sdri.push_back(c);
+        sdri.append(c);
         return c;
     }
 
@@ -2513,7 +2575,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrInventory::SdrLocations::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sdri)
+    for (auto c : sdri.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2557,7 +2619,7 @@ SdrInventory::SdrLocations::Sdri::Sdri()
     sdr_version{YType::uint64, "sdr_version"}
 {
 
-    yang_name = "sdri"; yang_parent_name = "sdr_locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sdri"; yang_parent_name = "sdr_locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrInventory::SdrLocations::Sdri::~Sdri()
@@ -2566,6 +2628,7 @@ SdrInventory::SdrLocations::Sdri::~Sdri()
 
 bool SdrInventory::SdrLocations::Sdri::has_data() const
 {
+    if (is_presence_container) return true;
     return sdr_name.is_set
 	|| sdr_id.is_set
 	|| sdr_vlan_baseid.is_set
@@ -2584,7 +2647,8 @@ bool SdrInventory::SdrLocations::Sdri::has_operation() const
 std::string SdrInventory::SdrLocations::Sdri::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sdri" <<"[sdr_name='" <<sdr_name <<"']";
+    path_buffer << "sdri";
+    ADD_KEY_TOKEN(sdr_name, "sdr_name");
     return path_buffer.str();
 }
 
@@ -2669,9 +2733,11 @@ bool SdrInventory::SdrLocations::Sdri::has_leaf_or_child_of_name(const std::stri
 }
 
 LeaderStatistics::LeaderStatistics()
+    :
+    ldr_locations(this, {"ldr_location"})
 {
 
-    yang_name = "leader-statistics"; yang_parent_name = "Cisco-IOS-XR-sysadmin-cm"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "leader-statistics"; yang_parent_name = "Cisco-IOS-XR-sysadmin-cm"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 LeaderStatistics::~LeaderStatistics()
@@ -2680,7 +2746,8 @@ LeaderStatistics::~LeaderStatistics()
 
 bool LeaderStatistics::has_data() const
 {
-    for (std::size_t index=0; index<ldr_locations.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ldr_locations.len(); index++)
     {
         if(ldr_locations[index]->has_data())
             return true;
@@ -2690,7 +2757,7 @@ bool LeaderStatistics::has_data() const
 
 bool LeaderStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<ldr_locations.size(); index++)
+    for (std::size_t index=0; index<ldr_locations.len(); index++)
     {
         if(ldr_locations[index]->has_operation())
             return true;
@@ -2720,7 +2787,7 @@ std::shared_ptr<Entity> LeaderStatistics::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<LeaderStatistics::LdrLocations>();
         c->parent = this;
-        ldr_locations.push_back(c);
+        ldr_locations.append(c);
         return c;
     }
 
@@ -2732,7 +2799,7 @@ std::map<std::string, std::shared_ptr<Entity>> LeaderStatistics::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ldr_locations)
+    for (auto c : ldr_locations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2794,7 +2861,7 @@ LeaderStatistics::LdrLocations::LdrLocations()
     l2_dis{YType::str, "l2_dis"}
 {
 
-    yang_name = "ldr_locations"; yang_parent_name = "leader-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ldr_locations"; yang_parent_name = "leader-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 LeaderStatistics::LdrLocations::~LdrLocations()
@@ -2803,6 +2870,7 @@ LeaderStatistics::LdrLocations::~LdrLocations()
 
 bool LeaderStatistics::LdrLocations::has_data() const
 {
+    if (is_presence_container) return true;
     return ldr_location.is_set
 	|| syslead.is_set
 	|| bkup_syslead.is_set
@@ -2834,7 +2902,8 @@ std::string LeaderStatistics::LdrLocations::get_absolute_path() const
 std::string LeaderStatistics::LdrLocations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ldr_locations" <<"[ldr_location='" <<ldr_location <<"']";
+    path_buffer << "ldr_locations";
+    ADD_KEY_TOKEN(ldr_location, "ldr_location");
     return path_buffer.str();
 }
 
@@ -2952,9 +3021,11 @@ bool LeaderStatistics::LdrLocations::has_leaf_or_child_of_name(const std::string
 }
 
 TopologyNeighbors::TopologyNeighbors()
+    :
+    nbr_locations(this, {"nbr_location"})
 {
 
-    yang_name = "topology-neighbors"; yang_parent_name = "Cisco-IOS-XR-sysadmin-cm"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "topology-neighbors"; yang_parent_name = "Cisco-IOS-XR-sysadmin-cm"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 TopologyNeighbors::~TopologyNeighbors()
@@ -2963,7 +3034,8 @@ TopologyNeighbors::~TopologyNeighbors()
 
 bool TopologyNeighbors::has_data() const
 {
-    for (std::size_t index=0; index<nbr_locations.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nbr_locations.len(); index++)
     {
         if(nbr_locations[index]->has_data())
             return true;
@@ -2973,7 +3045,7 @@ bool TopologyNeighbors::has_data() const
 
 bool TopologyNeighbors::has_operation() const
 {
-    for (std::size_t index=0; index<nbr_locations.size(); index++)
+    for (std::size_t index=0; index<nbr_locations.len(); index++)
     {
         if(nbr_locations[index]->has_operation())
             return true;
@@ -3003,7 +3075,7 @@ std::shared_ptr<Entity> TopologyNeighbors::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<TopologyNeighbors::NbrLocations>();
         c->parent = this;
-        nbr_locations.push_back(c);
+        nbr_locations.append(c);
         return c;
     }
 
@@ -3015,7 +3087,7 @@ std::map<std::string, std::shared_ptr<Entity>> TopologyNeighbors::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nbr_locations)
+    for (auto c : nbr_locations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3069,9 +3141,11 @@ bool TopologyNeighbors::has_leaf_or_child_of_name(const std::string & name) cons
 TopologyNeighbors::NbrLocations::NbrLocations()
     :
     nbr_location{YType::str, "nbr_location"}
+        ,
+    nbri(this, {"nbr_system_id", "nbr_area_type"})
 {
 
-    yang_name = "nbr_locations"; yang_parent_name = "topology-neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nbr_locations"; yang_parent_name = "topology-neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TopologyNeighbors::NbrLocations::~NbrLocations()
@@ -3080,7 +3154,8 @@ TopologyNeighbors::NbrLocations::~NbrLocations()
 
 bool TopologyNeighbors::NbrLocations::has_data() const
 {
-    for (std::size_t index=0; index<nbri.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nbri.len(); index++)
     {
         if(nbri[index]->has_data())
             return true;
@@ -3090,7 +3165,7 @@ bool TopologyNeighbors::NbrLocations::has_data() const
 
 bool TopologyNeighbors::NbrLocations::has_operation() const
 {
-    for (std::size_t index=0; index<nbri.size(); index++)
+    for (std::size_t index=0; index<nbri.len(); index++)
     {
         if(nbri[index]->has_operation())
             return true;
@@ -3109,7 +3184,8 @@ std::string TopologyNeighbors::NbrLocations::get_absolute_path() const
 std::string TopologyNeighbors::NbrLocations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nbr_locations" <<"[nbr_location='" <<nbr_location <<"']";
+    path_buffer << "nbr_locations";
+    ADD_KEY_TOKEN(nbr_location, "nbr_location");
     return path_buffer.str();
 }
 
@@ -3129,7 +3205,7 @@ std::shared_ptr<Entity> TopologyNeighbors::NbrLocations::get_child_by_name(const
     {
         auto c = std::make_shared<TopologyNeighbors::NbrLocations::Nbri>();
         c->parent = this;
-        nbri.push_back(c);
+        nbri.append(c);
         return c;
     }
 
@@ -3141,7 +3217,7 @@ std::map<std::string, std::shared_ptr<Entity>> TopologyNeighbors::NbrLocations::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nbri)
+    for (auto c : nbri.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3187,7 +3263,7 @@ TopologyNeighbors::NbrLocations::Nbri::Nbri()
     nbr_uptime{YType::str, "nbr_uptime"}
 {
 
-    yang_name = "nbri"; yang_parent_name = "nbr_locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nbri"; yang_parent_name = "nbr_locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TopologyNeighbors::NbrLocations::Nbri::~Nbri()
@@ -3196,6 +3272,7 @@ TopologyNeighbors::NbrLocations::Nbri::~Nbri()
 
 bool TopologyNeighbors::NbrLocations::Nbri::has_data() const
 {
+    if (is_presence_container) return true;
     return nbr_system_id.is_set
 	|| nbr_area_type.is_set
 	|| nbr_interface.is_set
@@ -3218,7 +3295,9 @@ bool TopologyNeighbors::NbrLocations::Nbri::has_operation() const
 std::string TopologyNeighbors::NbrLocations::Nbri::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nbri" <<"[nbr_system_id='" <<nbr_system_id <<"']" <<"[nbr_area_type='" <<nbr_area_type <<"']";
+    path_buffer << "nbri";
+    ADD_KEY_TOKEN(nbr_system_id, "nbr_system_id");
+    ADD_KEY_TOKEN(nbr_area_type, "nbr_area_type");
     return path_buffer.str();
 }
 
@@ -3327,7 +3406,7 @@ bool TopologyNeighbors::NbrLocations::Nbri::has_leaf_or_child_of_name(const std:
 Placement::Placement()
 {
 
-    yang_name = "placement"; yang_parent_name = "Cisco-IOS-XR-sysadmin-cm"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "placement"; yang_parent_name = "Cisco-IOS-XR-sysadmin-cm"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Placement::~Placement()
@@ -3336,6 +3415,7 @@ Placement::~Placement()
 
 bool Placement::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 

@@ -117,7 +117,7 @@ class RsvpStandby::InterfaceNeighborBriefs : public ydk::Entity
 
         class InterfaceNeighborBrief; //type: RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief> > interface_neighbor_brief;
+        ydk::YList interface_neighbor_brief;
         
 }; // RsvpStandby::InterfaceNeighborBriefs
 
@@ -143,7 +143,7 @@ class RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief : public ydk:
         ydk::YLeaf node_address; //type: string
         class InterfaceNeighborListCompact; //type: RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief::InterfaceNeighborListCompact
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief::InterfaceNeighborListCompact> > interface_neighbor_list_compact;
+        ydk::YList interface_neighbor_list_compact;
         
 }; // RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief
 
@@ -189,7 +189,7 @@ class RsvpStandby::ControllerSummaries : public ydk::Entity
 
         class ControllerSummary; //type: RsvpStandby::ControllerSummaries::ControllerSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::ControllerSummaries::ControllerSummary> > controller_summary;
+        ydk::YList controller_summary;
         
 }; // RsvpStandby::ControllerSummaries
 
@@ -323,7 +323,7 @@ class RsvpStandby::AuthenticationBriefs : public ydk::Entity
 
         class AuthenticationBrief; //type: RsvpStandby::AuthenticationBriefs::AuthenticationBrief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::AuthenticationBriefs::AuthenticationBrief> > authentication_brief;
+        ydk::YList authentication_brief;
         
 }; // RsvpStandby::AuthenticationBriefs
 
@@ -380,7 +380,7 @@ class RsvpStandby::SessionBriefs : public ydk::Entity
 
         class SessionBrief; //type: RsvpStandby::SessionBriefs::SessionBrief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::SessionBriefs::SessionBrief> > session_brief;
+        ydk::YList session_brief;
         
 }; // RsvpStandby::SessionBriefs
 
@@ -403,11 +403,11 @@ class RsvpStandby::SessionBriefs::SessionBrief : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf destination_address; //type: string
-        ydk::YLeaf destination_port; //type: int32
-        ydk::YLeaf protocol; //type: int32
+        ydk::YLeaf destination_port; //type: uint32
+        ydk::YLeaf protocol; //type: uint32
         ydk::YLeaf extended_tunnel_id; //type: string
         ydk::YLeaf session_type; //type: RsvpSession
-        ydk::YLeaf p2mp_id; //type: int32
+        ydk::YLeaf p2mp_id; //type: uint32
         ydk::YLeaf vrf_name; //type: string
         ydk::YLeaf ps_bs; //type: uint32
         ydk::YLeaf rs_bs; //type: uint32
@@ -465,12 +465,12 @@ class RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession : public yd
         class Ipv4; //type: RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4
         class Ipv4LspSession; //type: RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession
         class Ipv4UniSession; //type: RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession
-        class Ipv4P2MpLspSession; //type: RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession
+        class Ipv4P2mpLspSession; //type: RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2mpLspSession
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4> ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession> ipv4_lsp_session;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession> ipv4_uni_session;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession> ipv4_p2mp_lsp_session;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2mpLspSession> ipv4_p2mp_lsp_session;
         
 }; // RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession
 
@@ -547,11 +547,11 @@ class RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSes
 }; // RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession
 
 
-class RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession : public ydk::Entity
+class RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2mpLspSession : public ydk::Entity
 {
     public:
-        Ipv4P2MpLspSession();
-        ~Ipv4P2MpLspSession();
+        Ipv4P2mpLspSession();
+        ~Ipv4P2mpLspSession();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -568,7 +568,7 @@ class RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLs
         ydk::YLeaf tunnel_id; //type: uint16
         ydk::YLeaf extended_tunnel_id; //type: string
 
-}; // RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession
+}; // RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2mpLspSession
 
 
 class RsvpStandby::PsbDetaileds : public ydk::Entity
@@ -590,7 +590,7 @@ class RsvpStandby::PsbDetaileds : public ydk::Entity
 
         class PsbDetailed; //type: RsvpStandby::PsbDetaileds::PsbDetailed
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed> > psb_detailed;
+        ydk::YList psb_detailed;
         
 }; // RsvpStandby::PsbDetaileds
 
@@ -613,22 +613,22 @@ class RsvpStandby::PsbDetaileds::PsbDetailed : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf destination_address; //type: string
-        ydk::YLeaf destination_port; //type: int32
-        ydk::YLeaf protocol; //type: int32
+        ydk::YLeaf destination_port; //type: uint32
+        ydk::YLeaf protocol; //type: uint32
         ydk::YLeaf extended_tunnel_id; //type: string
         ydk::YLeaf session_type; //type: RsvpSession
-        ydk::YLeaf p2mp_id; //type: int32
+        ydk::YLeaf p2mp_id; //type: uint32
         ydk::YLeaf source_address; //type: string
-        ydk::YLeaf source_port; //type: int32
+        ydk::YLeaf source_port; //type: uint32
         ydk::YLeaf sub_group_origin; //type: string
-        ydk::YLeaf sub_group_id; //type: int32
+        ydk::YLeaf sub_group_id; //type: uint32
         ydk::YLeaf vrf_name; //type: string
         ydk::YLeaf input_interface; //type: string
         ydk::YLeaf backup_tunnel_name; //type: string
         ydk::YLeaf is_in_ero_valid; //type: boolean
         ydk::YLeaf is_out_ero_valid; //type: boolean
         class Session; //type: RsvpStandby::PsbDetaileds::PsbDetailed::Session
-        class S2LSubLsp; //type: RsvpStandby::PsbDetaileds::PsbDetailed::S2LSubLsp
+        class S2lSubLsp; //type: RsvpStandby::PsbDetaileds::PsbDetailed::S2lSubLsp
         class Template; //type: RsvpStandby::PsbDetaileds::PsbDetailed::Template
         class SessionAttribute; //type: RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute
         class TrafficSpec; //type: RsvpStandby::PsbDetaileds::PsbDetailed::TrafficSpec
@@ -647,7 +647,7 @@ class RsvpStandby::PsbDetaileds::PsbDetailed : public ydk::Entity
         class OutEro; //type: RsvpStandby::PsbDetaileds::PsbDetailed::OutEro
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::Session> session;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::S2LSubLsp> s2l_sub_lsp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::S2lSubLsp> s2l_sub_lsp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::Template> template_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute> session_attribute;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::TrafficSpec> traffic_spec;
@@ -661,9 +661,9 @@ class RsvpStandby::PsbDetaileds::PsbDetailed : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::PolicyQueryFlags> policy_query_flags;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo> label_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::ClassType> class_type;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::Pfc> > pfc;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::InEro> > in_ero;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::OutEro> > out_ero;
+        ydk::YList pfc;
+        ydk::YList in_ero;
+        ydk::YList out_ero;
         
 }; // RsvpStandby::PsbDetaileds::PsbDetailed
 
@@ -713,12 +713,12 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession : public ydk:
         class Ipv4; //type: RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4
         class Ipv4LspSession; //type: RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4LspSession
         class Ipv4UniSession; //type: RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4UniSession
-        class Ipv4P2MpLspSession; //type: RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4P2MpLspSession
+        class Ipv4P2mpLspSession; //type: RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4P2mpLspSession
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4> ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4LspSession> ipv4_lsp_session;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4UniSession> ipv4_uni_session;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4P2MpLspSession> ipv4_p2mp_lsp_session;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4P2mpLspSession> ipv4_p2mp_lsp_session;
         
 }; // RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession
 
@@ -795,11 +795,11 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4UniSessi
 }; // RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4UniSession
 
 
-class RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4P2MpLspSession : public ydk::Entity
+class RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4P2mpLspSession : public ydk::Entity
 {
     public:
-        Ipv4P2MpLspSession();
-        ~Ipv4P2MpLspSession();
+        Ipv4P2mpLspSession();
+        ~Ipv4P2mpLspSession();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -816,14 +816,14 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4P2MpLspS
         ydk::YLeaf tunnel_id; //type: uint16
         ydk::YLeaf extended_tunnel_id; //type: string
 
-}; // RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4P2MpLspSession
+}; // RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4P2mpLspSession
 
 
-class RsvpStandby::PsbDetaileds::PsbDetailed::S2LSubLsp : public ydk::Entity
+class RsvpStandby::PsbDetaileds::PsbDetailed::S2lSubLsp : public ydk::Entity
 {
     public:
-        S2LSubLsp();
-        ~S2LSubLsp();
+        S2lSubLsp();
+        ~S2lSubLsp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -838,7 +838,7 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::S2LSubLsp : public ydk::Entity
 
         ydk::YLeaf s2l_destination_address; //type: string
 
-}; // RsvpStandby::PsbDetaileds::PsbDetailed::S2LSubLsp
+}; // RsvpStandby::PsbDetaileds::PsbDetailed::S2lSubLsp
 
 
 class RsvpStandby::PsbDetaileds::PsbDetailed::Template : public ydk::Entity
@@ -884,10 +884,10 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter : public ydk:
 
         ydk::YLeaf filter_type; //type: RsvpMgmtFilter
         class UdpIpv4Session; //type: RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session
-        class P2MpIpv4Session; //type: RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session
+        class P2mpIpv4Session; //type: RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2mpIpv4Session
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session> udp_ipv4_session;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session> p2mp_ipv4_session;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2mpIpv4Session> p2mp_ipv4_session;
         
 }; // RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter
 
@@ -915,11 +915,11 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Sessi
 }; // RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session
 
 
-class RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session : public ydk::Entity
+class RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2mpIpv4Session : public ydk::Entity
 {
     public:
-        P2MpIpv4Session();
-        ~P2MpIpv4Session();
+        P2mpIpv4Session();
+        ~P2mpIpv4Session();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -937,7 +937,7 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Sess
         ydk::YLeaf p2mp_sub_group_origin; //type: string
         ydk::YLeaf sub_group_id; //type: uint16
 
-}; // RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2MpIpv4Session
+}; // RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2mpIpv4Session
 
 
 class RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute : public ydk::Entity
@@ -1036,20 +1036,20 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec : public ydk::E
         std::string get_absolute_path() const override;
 
         ydk::YLeaf tspec_type; //type: RsvpMgmtTspec
-        class G709OtnTspec; //type: RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::G709OtnTspec
+        class G709otnTspec; //type: RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::G709otnTspec
         class IntsrvTspec; //type: RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::IntsrvTspec
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::G709OtnTspec> g709otn_tspec;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::G709otnTspec> g709otn_tspec;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::IntsrvTspec> intsrv_tspec;
         
 }; // RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec
 
 
-class RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::G709OtnTspec : public ydk::Entity
+class RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::G709otnTspec : public ydk::Entity
 {
     public:
-        G709OtnTspec();
-        ~G709OtnTspec();
+        G709otnTspec();
+        ~G709otnTspec();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1067,7 +1067,7 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::G709OtnTspec :
         ydk::YLeaf traffic_multiplier; //type: uint16
         ydk::YLeaf traffic_bit_rate; //type: uint64
 
-}; // RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::G709OtnTspec
+}; // RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::G709otnTspec
 
 
 class RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::IntsrvTspec : public ydk::Entity
@@ -1356,9 +1356,33 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamL
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeafList value_; //type: list of  uint32
+        class Value; //type: RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::Value
 
+        ydk::YList value_;
+        
 }; // RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel
+
+
+class RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::Value : public ydk::Entity
+{
+    public:
+        Value();
+        ~Value();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::Value
 
 
 class RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel : public ydk::Entity
@@ -1403,9 +1427,33 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstre
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeafList value_; //type: list of  uint32
+        class Value; //type: RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::Value
 
+        ydk::YList value_;
+        
 }; // RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel
+
+
+class RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::Value : public ydk::Entity
+{
+    public:
+        Value();
+        ~Value();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::Value
 
 
 class RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel : public ydk::Entity
@@ -1450,9 +1498,33 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeafList value_; //type: list of  uint32
+        class Value; //type: RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::Value
 
+        ydk::YList value_;
+        
 }; // RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel
+
+
+class RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::Value : public ydk::Entity
+{
+    public:
+        Value();
+        ~Value();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::Value
 
 
 class RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel : public ydk::Entity
@@ -1497,9 +1569,33 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstream
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeafList value_; //type: list of  uint32
+        class Value; //type: RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::Value
 
+        ydk::YList value_;
+        
 }; // RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel
+
+
+class RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::Value : public ydk::Entity
+{
+    public:
+        Value();
+        ~Value();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::Value
 
 
 class RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel : public ydk::Entity
@@ -1544,9 +1640,33 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLab
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeafList value_; //type: list of  uint32
+        class Value; //type: RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::Value
 
+        ydk::YList value_;
+        
 }; // RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel
+
+
+class RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::Value : public ydk::Entity
+{
+    public:
+        Value();
+        ~Value();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::Value
 
 
 class RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel : public ydk::Entity
@@ -1591,9 +1711,33 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::G
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeafList value_; //type: list of  uint32
+        class Value; //type: RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::Value
 
+        ydk::YList value_;
+        
 }; // RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel
+
+
+class RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::Value : public ydk::Entity
+{
+    public:
+        Value();
+        ~Value();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::Value
 
 
 class RsvpStandby::PsbDetaileds::PsbDetailed::ClassType : public ydk::Entity
@@ -1713,20 +1857,20 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::InEro : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf ero_type; //type: RsvpMgmtEroSubobj
-        class Ipv4EroSubObject; //type: RsvpStandby::PsbDetaileds::PsbDetailed::InEro::Ipv4EroSubObject
+        class Ipv4eroSubObject; //type: RsvpStandby::PsbDetaileds::PsbDetailed::InEro::Ipv4eroSubObject
         class UnnumberedEroSubObject; //type: RsvpStandby::PsbDetaileds::PsbDetailed::InEro::UnnumberedEroSubObject
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::InEro::Ipv4EroSubObject> ipv4ero_sub_object;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::InEro::Ipv4eroSubObject> ipv4ero_sub_object;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::InEro::UnnumberedEroSubObject> unnumbered_ero_sub_object;
         
 }; // RsvpStandby::PsbDetaileds::PsbDetailed::InEro
 
 
-class RsvpStandby::PsbDetaileds::PsbDetailed::InEro::Ipv4EroSubObject : public ydk::Entity
+class RsvpStandby::PsbDetaileds::PsbDetailed::InEro::Ipv4eroSubObject : public ydk::Entity
 {
     public:
-        Ipv4EroSubObject();
-        ~Ipv4EroSubObject();
+        Ipv4eroSubObject();
+        ~Ipv4eroSubObject();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1743,7 +1887,7 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::InEro::Ipv4EroSubObject : public y
         ydk::YLeaf ero_address; //type: string
         ydk::YLeaf prefix_length; //type: uint8
 
-}; // RsvpStandby::PsbDetaileds::PsbDetailed::InEro::Ipv4EroSubObject
+}; // RsvpStandby::PsbDetaileds::PsbDetailed::InEro::Ipv4eroSubObject
 
 
 class RsvpStandby::PsbDetaileds::PsbDetailed::InEro::UnnumberedEroSubObject : public ydk::Entity
@@ -1789,20 +1933,20 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::OutEro : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf ero_type; //type: RsvpMgmtEroSubobj
-        class Ipv4EroSubObject; //type: RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::Ipv4EroSubObject
+        class Ipv4eroSubObject; //type: RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::Ipv4eroSubObject
         class UnnumberedEroSubObject; //type: RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::UnnumberedEroSubObject
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::Ipv4EroSubObject> ipv4ero_sub_object;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::Ipv4eroSubObject> ipv4ero_sub_object;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::UnnumberedEroSubObject> unnumbered_ero_sub_object;
         
 }; // RsvpStandby::PsbDetaileds::PsbDetailed::OutEro
 
 
-class RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::Ipv4EroSubObject : public ydk::Entity
+class RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::Ipv4eroSubObject : public ydk::Entity
 {
     public:
-        Ipv4EroSubObject();
-        ~Ipv4EroSubObject();
+        Ipv4eroSubObject();
+        ~Ipv4eroSubObject();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1819,7 +1963,7 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::Ipv4EroSubObject : public 
         ydk::YLeaf ero_address; //type: string
         ydk::YLeaf prefix_length; //type: uint8
 
-}; // RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::Ipv4EroSubObject
+}; // RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::Ipv4eroSubObject
 
 
 class RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::UnnumberedEroSubObject : public ydk::Entity
@@ -1866,7 +2010,7 @@ class RsvpStandby::ControllerDetaileds : public ydk::Entity
 
         class ControllerDetailed; //type: RsvpStandby::ControllerDetaileds::ControllerDetailed
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::ControllerDetaileds::ControllerDetailed> > controller_detailed;
+        ydk::YList controller_detailed;
         
 }; // RsvpStandby::ControllerDetaileds
 
@@ -1918,7 +2062,7 @@ class RsvpStandby::ControllerDetaileds::ControllerDetailed : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::ControllerDetaileds::ControllerDetailed::BandwidthInformation> bandwidth_information;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::ControllerDetaileds::ControllerDetailed::Flags> flags;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray> > neighbor_array;
+        ydk::YList neighbor_array;
         
 }; // RsvpStandby::ControllerDetaileds::ControllerDetailed
 
@@ -2059,7 +2203,7 @@ class RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray : publ
         class NeighborMessageId; //type: RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::NeighborMessageId
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::ExpiryTime> expiry_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::NeighborMessageId> > neighbor_message_id;
+        ydk::YList neighbor_message_id;
         
 }; // RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray
 
@@ -2202,7 +2346,7 @@ class RsvpStandby::RsbDetaileds : public ydk::Entity
 
         class RsbDetailed; //type: RsvpStandby::RsbDetaileds::RsbDetailed
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbDetaileds::RsbDetailed> > rsb_detailed;
+        ydk::YList rsb_detailed;
         
 }; // RsvpStandby::RsbDetaileds
 
@@ -2225,22 +2369,22 @@ class RsvpStandby::RsbDetaileds::RsbDetailed : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf destination_address; //type: string
-        ydk::YLeaf destination_port; //type: int32
-        ydk::YLeaf protocol; //type: int32
+        ydk::YLeaf destination_port; //type: uint32
+        ydk::YLeaf protocol; //type: uint32
         ydk::YLeaf extended_tunnel_id; //type: string
         ydk::YLeaf session_type; //type: RsvpSession
-        ydk::YLeaf p2mp_id; //type: int32
+        ydk::YLeaf p2mp_id; //type: uint32
         ydk::YLeaf source_address; //type: string
-        ydk::YLeaf source_port; //type: int32
+        ydk::YLeaf source_port; //type: uint32
         ydk::YLeaf sub_group_origin; //type: string
-        ydk::YLeaf sub_group_id; //type: int32
+        ydk::YLeaf sub_group_id; //type: uint32
         ydk::YLeaf vrf_name; //type: string
         ydk::YLeaf input_adjusted_interface; //type: string
         ydk::YLeaf input_physical_interface; //type: string
         class FlowSpec; //type: RsvpStandby::RsbDetaileds::RsbDetailed::FlowSpec
         class GenericFlowSpec; //type: RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec
         class Session; //type: RsvpStandby::RsbDetaileds::RsbDetailed::Session
-        class S2LSubLsp; //type: RsvpStandby::RsbDetaileds::RsbDetailed::S2LSubLsp
+        class S2lSubLsp; //type: RsvpStandby::RsbDetaileds::RsbDetailed::S2lSubLsp
         class Style; //type: RsvpStandby::RsbDetaileds::RsbDetailed::Style
         class Filter; //type: RsvpStandby::RsbDetaileds::RsbDetailed::Filter
         class RsbFlags; //type: RsvpStandby::RsbDetaileds::RsbDetailed::RsbFlags
@@ -2255,7 +2399,7 @@ class RsvpStandby::RsbDetaileds::RsbDetailed : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbDetaileds::RsbDetailed::FlowSpec> flow_spec;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec> generic_flow_spec;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbDetaileds::RsbDetailed::Session> session;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbDetaileds::RsbDetailed::S2LSubLsp> s2l_sub_lsp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbDetaileds::RsbDetailed::S2lSubLsp> s2l_sub_lsp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbDetaileds::RsbDetailed::Style> style;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbDetaileds::RsbDetailed::Filter> filter;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbDetaileds::RsbDetailed::RsbFlags> rsb_flags;
@@ -2317,18 +2461,18 @@ class RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec : public ydk::Enti
         std::string get_absolute_path() const override;
 
         ydk::YLeaf flow_spec_type; //type: RsvpMgmtFlowSpec
-        class G709OtnFlowSpec; //type: RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709OtnFlowSpec
+        class G709otnFlowSpec; //type: RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709otnFlowSpec
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709OtnFlowSpec> g709otn_flow_spec;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709otnFlowSpec> g709otn_flow_spec;
         
 }; // RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec
 
 
-class RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709OtnFlowSpec : public ydk::Entity
+class RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709otnFlowSpec : public ydk::Entity
 {
     public:
-        G709OtnFlowSpec();
-        ~G709OtnFlowSpec();
+        G709otnFlowSpec();
+        ~G709otnFlowSpec();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2346,7 +2490,7 @@ class RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709OtnFlowSpec :
         ydk::YLeaf flow_multiplier; //type: uint16
         ydk::YLeaf flow_bit_rate; //type: uint64
 
-}; // RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709OtnFlowSpec
+}; // RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709otnFlowSpec
 
 
 class RsvpStandby::RsbDetaileds::RsbDetailed::Session : public ydk::Entity
@@ -2394,12 +2538,12 @@ class RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession : public ydk:
         class Ipv4; //type: RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4
         class Ipv4LspSession; //type: RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4LspSession
         class Ipv4UniSession; //type: RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4UniSession
-        class Ipv4P2MpLspSession; //type: RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4P2MpLspSession
+        class Ipv4P2mpLspSession; //type: RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4P2mpLspSession
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4> ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4LspSession> ipv4_lsp_session;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4UniSession> ipv4_uni_session;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4P2MpLspSession> ipv4_p2mp_lsp_session;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4P2mpLspSession> ipv4_p2mp_lsp_session;
         
 }; // RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession
 
@@ -2476,11 +2620,11 @@ class RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4UniSessi
 }; // RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4UniSession
 
 
-class RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4P2MpLspSession : public ydk::Entity
+class RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4P2mpLspSession : public ydk::Entity
 {
     public:
-        Ipv4P2MpLspSession();
-        ~Ipv4P2MpLspSession();
+        Ipv4P2mpLspSession();
+        ~Ipv4P2mpLspSession();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2497,14 +2641,14 @@ class RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4P2MpLspS
         ydk::YLeaf tunnel_id; //type: uint16
         ydk::YLeaf extended_tunnel_id; //type: string
 
-}; // RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4P2MpLspSession
+}; // RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4P2mpLspSession
 
 
-class RsvpStandby::RsbDetaileds::RsbDetailed::S2LSubLsp : public ydk::Entity
+class RsvpStandby::RsbDetaileds::RsbDetailed::S2lSubLsp : public ydk::Entity
 {
     public:
-        S2LSubLsp();
-        ~S2LSubLsp();
+        S2lSubLsp();
+        ~S2lSubLsp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2519,7 +2663,7 @@ class RsvpStandby::RsbDetaileds::RsbDetailed::S2LSubLsp : public ydk::Entity
 
         ydk::YLeaf s2l_destination_address; //type: string
 
-}; // RsvpStandby::RsbDetaileds::RsbDetailed::S2LSubLsp
+}; // RsvpStandby::RsbDetaileds::RsbDetailed::S2lSubLsp
 
 
 class RsvpStandby::RsbDetaileds::RsbDetailed::Style : public ydk::Entity
@@ -2587,10 +2731,10 @@ class RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter : public ydk::E
 
         ydk::YLeaf filter_type; //type: RsvpMgmtFilter
         class UdpIpv4Session; //type: RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::UdpIpv4Session
-        class P2MpIpv4Session; //type: RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::P2MpIpv4Session
+        class P2mpIpv4Session; //type: RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::P2mpIpv4Session
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::UdpIpv4Session> udp_ipv4_session;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::P2MpIpv4Session> p2mp_ipv4_session;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::P2mpIpv4Session> p2mp_ipv4_session;
         
 }; // RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter
 
@@ -2618,11 +2762,11 @@ class RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::UdpIpv4Session
 }; // RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::UdpIpv4Session
 
 
-class RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::P2MpIpv4Session : public ydk::Entity
+class RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::P2mpIpv4Session : public ydk::Entity
 {
     public:
-        P2MpIpv4Session();
-        ~P2MpIpv4Session();
+        P2mpIpv4Session();
+        ~P2mpIpv4Session();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2640,7 +2784,7 @@ class RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::P2MpIpv4Sessio
         ydk::YLeaf p2mp_sub_group_origin; //type: string
         ydk::YLeaf sub_group_id; //type: uint16
 
-}; // RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::P2MpIpv4Session
+}; // RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::P2mpIpv4Session
 
 
 class RsvpStandby::RsbDetaileds::RsbDetailed::RsbFlags : public ydk::Entity
@@ -2902,9 +3046,33 @@ class RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamL
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeafList value_; //type: list of  uint32
+        class Value; //type: RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::Value
 
+        ydk::YList value_;
+        
 }; // RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel
+
+
+class RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::Value : public ydk::Entity
+{
+    public:
+        Value();
+        ~Value();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::Value
 
 
 class RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel : public ydk::Entity
@@ -2949,9 +3117,33 @@ class RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstre
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeafList value_; //type: list of  uint32
+        class Value; //type: RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::Value
 
+        ydk::YList value_;
+        
 }; // RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel
+
+
+class RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::Value : public ydk::Entity
+{
+    public:
+        Value();
+        ~Value();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::Value
 
 
 class RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel : public ydk::Entity
@@ -2996,9 +3188,33 @@ class RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeafList value_; //type: list of  uint32
+        class Value; //type: RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::Value
 
+        ydk::YList value_;
+        
 }; // RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel
+
+
+class RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::Value : public ydk::Entity
+{
+    public:
+        Value();
+        ~Value();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::Value
 
 
 class RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel : public ydk::Entity
@@ -3043,9 +3259,33 @@ class RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstream
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeafList value_; //type: list of  uint32
+        class Value; //type: RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::Value
 
+        ydk::YList value_;
+        
 }; // RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel
+
+
+class RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::Value : public ydk::Entity
+{
+    public:
+        Value();
+        ~Value();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::Value
 
 
 class RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel : public ydk::Entity
@@ -3090,9 +3330,33 @@ class RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLab
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeafList value_; //type: list of  uint32
+        class Value; //type: RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::Value
 
+        ydk::YList value_;
+        
 }; // RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel
+
+
+class RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::Value : public ydk::Entity
+{
+    public:
+        Value();
+        ~Value();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::Value
 
 
 class RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel : public ydk::Entity
@@ -3137,9 +3401,33 @@ class RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::G
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeafList value_; //type: list of  uint32
+        class Value; //type: RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::Value
 
+        ydk::YList value_;
+        
 }; // RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel
+
+
+class RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::Value : public ydk::Entity
+{
+    public:
+        Value();
+        ~Value();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::Value
 
 
 class RsvpStandby::InterfaceSummaries : public ydk::Entity
@@ -3161,7 +3449,7 @@ class RsvpStandby::InterfaceSummaries : public ydk::Entity
 
         class InterfaceSummary; //type: RsvpStandby::InterfaceSummaries::InterfaceSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::InterfaceSummaries::InterfaceSummary> > interface_summary;
+        ydk::YList interface_summary;
         
 }; // RsvpStandby::InterfaceSummaries
 
@@ -3295,7 +3583,7 @@ class RsvpStandby::HelloInstanceBriefs : public ydk::Entity
 
         class HelloInstanceBrief; //type: RsvpStandby::HelloInstanceBriefs::HelloInstanceBrief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::HelloInstanceBriefs::HelloInstanceBrief> > hello_instance_brief;
+        ydk::YList hello_instance_brief;
         
 }; // RsvpStandby::HelloInstanceBriefs
 
@@ -3348,7 +3636,7 @@ class RsvpStandby::AuthenticationDetails : public ydk::Entity
 
         class AuthenticationDetail; //type: RsvpStandby::AuthenticationDetails::AuthenticationDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::AuthenticationDetails::AuthenticationDetail> > authentication_detail;
+        ydk::YList authentication_detail;
         
 }; // RsvpStandby::AuthenticationDetails
 
@@ -3509,10 +3797,11 @@ class RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::R
         ydk::YLeaf sequence; //type: uint64
         ydk::YLeaf sequence_window_size; //type: uint32
         ydk::YLeaf sequence_window_count; //type: uint32
-        ydk::YLeafList sequence_window; //type: list of  uint64
         class Counters; //type: RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::Counters
+        class SequenceWindow; //type: RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::SequenceWindow
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::Counters> counters;
+        ydk::YList sequence_window;
         
 }; // RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo
 
@@ -3553,6 +3842,27 @@ class RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::R
 }; // RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::Counters
 
 
+class RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::SequenceWindow : public ydk::Entity
+{
+    public:
+        SequenceWindow();
+        ~SequenceWindow();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint64
+
+}; // RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::SequenceWindow
+
+
 class RsvpStandby::RsbBriefs : public ydk::Entity
 {
     public:
@@ -3572,7 +3882,7 @@ class RsvpStandby::RsbBriefs : public ydk::Entity
 
         class RsbBrief; //type: RsvpStandby::RsbBriefs::RsbBrief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbBriefs::RsbBrief> > rsb_brief;
+        ydk::YList rsb_brief;
         
 }; // RsvpStandby::RsbBriefs
 
@@ -3595,26 +3905,26 @@ class RsvpStandby::RsbBriefs::RsbBrief : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf destination_address; //type: string
-        ydk::YLeaf destination_port; //type: int32
-        ydk::YLeaf protocol; //type: int32
+        ydk::YLeaf destination_port; //type: uint32
+        ydk::YLeaf protocol; //type: uint32
         ydk::YLeaf extended_tunnel_id; //type: string
         ydk::YLeaf session_type; //type: RsvpSession
-        ydk::YLeaf p2mp_id; //type: int32
+        ydk::YLeaf p2mp_id; //type: uint32
         ydk::YLeaf source_address; //type: string
-        ydk::YLeaf source_port; //type: int32
+        ydk::YLeaf source_port; //type: uint32
         ydk::YLeaf sub_group_origin; //type: string
-        ydk::YLeaf sub_group_id; //type: int32
+        ydk::YLeaf sub_group_id; //type: uint32
         ydk::YLeaf vrf_name; //type: string
         ydk::YLeaf input_interface; //type: string
         class Session; //type: RsvpStandby::RsbBriefs::RsbBrief::Session
-        class S2LSubLsp; //type: RsvpStandby::RsbBriefs::RsbBrief::S2LSubLsp
+        class S2lSubLsp; //type: RsvpStandby::RsbBriefs::RsbBrief::S2lSubLsp
         class FlowSpec; //type: RsvpStandby::RsbBriefs::RsbBrief::FlowSpec
         class GenericFlowSpec; //type: RsvpStandby::RsbBriefs::RsbBrief::GenericFlowSpec
         class Style; //type: RsvpStandby::RsbBriefs::RsbBrief::Style
         class Filter; //type: RsvpStandby::RsbBriefs::RsbBrief::Filter
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbBriefs::RsbBrief::Session> session;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbBriefs::RsbBrief::S2LSubLsp> s2l_sub_lsp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbBriefs::RsbBrief::S2lSubLsp> s2l_sub_lsp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbBriefs::RsbBrief::FlowSpec> flow_spec;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbBriefs::RsbBrief::GenericFlowSpec> generic_flow_spec;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbBriefs::RsbBrief::Style> style;
@@ -3668,12 +3978,12 @@ class RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession : public ydk::Entit
         class Ipv4; //type: RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4
         class Ipv4LspSession; //type: RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4LspSession
         class Ipv4UniSession; //type: RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4UniSession
-        class Ipv4P2MpLspSession; //type: RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4P2MpLspSession
+        class Ipv4P2mpLspSession; //type: RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4P2mpLspSession
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4> ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4LspSession> ipv4_lsp_session;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4UniSession> ipv4_uni_session;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4P2MpLspSession> ipv4_p2mp_lsp_session;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4P2mpLspSession> ipv4_p2mp_lsp_session;
         
 }; // RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession
 
@@ -3701,383 +4011,6 @@ class RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4 : public ydk:
 
 }; // RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4
 
-
-class RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4LspSession : public ydk::Entity
-{
-    public:
-        Ipv4LspSession();
-        ~Ipv4LspSession();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf destination_address; //type: string
-        ydk::YLeaf tunnel_id; //type: uint16
-        ydk::YLeaf extended_tunnel_id; //type: string
-
-}; // RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4LspSession
-
-
-class RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4UniSession : public ydk::Entity
-{
-    public:
-        Ipv4UniSession();
-        ~Ipv4UniSession();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf destination_address; //type: string
-        ydk::YLeaf tunnel_id; //type: uint16
-        ydk::YLeaf extended_address; //type: string
-
-}; // RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4UniSession
-
-
-class RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4P2MpLspSession : public ydk::Entity
-{
-    public:
-        Ipv4P2MpLspSession();
-        ~Ipv4P2MpLspSession();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf p2mp_id; //type: uint32
-        ydk::YLeaf tunnel_id; //type: uint16
-        ydk::YLeaf extended_tunnel_id; //type: string
-
-}; // RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4P2MpLspSession
-
-
-class RsvpStandby::RsbBriefs::RsbBrief::S2LSubLsp : public ydk::Entity
-{
-    public:
-        S2LSubLsp();
-        ~S2LSubLsp();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf s2l_destination_address; //type: string
-
-}; // RsvpStandby::RsbBriefs::RsbBrief::S2LSubLsp
-
-
-class RsvpStandby::RsbBriefs::RsbBrief::FlowSpec : public ydk::Entity
-{
-    public:
-        FlowSpec();
-        ~FlowSpec();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf flow_average_rate; //type: uint64
-        ydk::YLeaf flow_max_burst; //type: uint64
-        ydk::YLeaf flow_peak_rate; //type: uint64
-        ydk::YLeaf flow_min_unit; //type: uint32
-        ydk::YLeaf flow_max_unit; //type: uint32
-        ydk::YLeaf flow_requested_rate; //type: uint64
-        ydk::YLeaf flow_slack; //type: uint32
-        ydk::YLeaf flow_qos; //type: RsvpMgmtQosServiceEnum
-
-}; // RsvpStandby::RsbBriefs::RsbBrief::FlowSpec
-
-
-class RsvpStandby::RsbBriefs::RsbBrief::GenericFlowSpec : public ydk::Entity
-{
-    public:
-        GenericFlowSpec();
-        ~GenericFlowSpec();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf flow_spec_type; //type: RsvpMgmtFlowSpec
-        class G709OtnFlowSpec; //type: RsvpStandby::RsbBriefs::RsbBrief::GenericFlowSpec::G709OtnFlowSpec
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbBriefs::RsbBrief::GenericFlowSpec::G709OtnFlowSpec> g709otn_flow_spec;
-        
-}; // RsvpStandby::RsbBriefs::RsbBrief::GenericFlowSpec
-
-
-class RsvpStandby::RsbBriefs::RsbBrief::GenericFlowSpec::G709OtnFlowSpec : public ydk::Entity
-{
-    public:
-        G709OtnFlowSpec();
-        ~G709OtnFlowSpec();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf flow_signal_type; //type: uint8
-        ydk::YLeaf flow_nvc; //type: uint16
-        ydk::YLeaf flow_multiplier; //type: uint16
-        ydk::YLeaf flow_bit_rate; //type: uint64
-
-}; // RsvpStandby::RsbBriefs::RsbBrief::GenericFlowSpec::G709OtnFlowSpec
-
-
-class RsvpStandby::RsbBriefs::RsbBrief::Style : public ydk::Entity
-{
-    public:
-        Style();
-        ~Style();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf reservation_type; //type: RsvpMgmtReservationTypeEnum
-
-}; // RsvpStandby::RsbBriefs::RsbBrief::Style
-
-
-class RsvpStandby::RsbBriefs::RsbBrief::Filter : public ydk::Entity
-{
-    public:
-        Filter();
-        ~Filter();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class RsvpFilter; //type: RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter> rsvp_filter;
-        
-}; // RsvpStandby::RsbBriefs::RsbBrief::Filter
-
-
-class RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter : public ydk::Entity
-{
-    public:
-        RsvpFilter();
-        ~RsvpFilter();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf filter_type; //type: RsvpMgmtFilter
-        class UdpIpv4Session; //type: RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter::UdpIpv4Session
-        class P2MpIpv4Session; //type: RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter::P2MpIpv4Session
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter::UdpIpv4Session> udp_ipv4_session;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter::P2MpIpv4Session> p2mp_ipv4_session;
-        
-}; // RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter
-
-
-class RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter::UdpIpv4Session : public ydk::Entity
-{
-    public:
-        UdpIpv4Session();
-        ~UdpIpv4Session();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf source_address; //type: string
-        ydk::YLeaf source_port; //type: uint16
-
-}; // RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter::UdpIpv4Session
-
-
-class RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter::P2MpIpv4Session : public ydk::Entity
-{
-    public:
-        P2MpIpv4Session();
-        ~P2MpIpv4Session();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf source_address; //type: string
-        ydk::YLeaf source_port; //type: uint16
-        ydk::YLeaf p2mp_sub_group_origin; //type: string
-        ydk::YLeaf sub_group_id; //type: uint16
-
-}; // RsvpStandby::RsbBriefs::RsbBrief::Filter::RsvpFilter::P2MpIpv4Session
-
-
-class RsvpStandby::OpenConfig : public ydk::Entity
-{
-    public:
-        OpenConfig();
-        ~OpenConfig();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class GlobalCounters; //type: RsvpStandby::OpenConfig::GlobalCounters
-        class InterfaceCounters; //type: RsvpStandby::OpenConfig::InterfaceCounters
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::OpenConfig::GlobalCounters> global_counters;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::RsvpStandby::OpenConfig::InterfaceCounters> interface_counters;
-        
-}; // RsvpStandby::OpenConfig
-
-class RsvpMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf send;
-        static const ydk::Enum::YLeaf receive;
-
-};
-
-class RsvpSession : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf p2p_lsp_ipv4;
-        static const ydk::Enum::YLeaf ouni_ipv4;
-        static const ydk::Enum::YLeaf p2mp_lsp_ipv4;
-
-};
-
-class IgpteLibBwModel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rdm;
-        static const ydk::Enum::YLeaf mam;
-        static const ydk::Enum::YLeaf not_set;
-
-};
-
-class RsvpMgmtRestartState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf done;
-        static const ydk::Enum::YLeaf recovery;
-        static const ydk::Enum::YLeaf abort;
-
-};
-
-class RsvpMgmtHelloDownReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_applicable;
-        static const ydk::Enum::YLeaf wrong_destination_instance;
-        static const ydk::Enum::YLeaf wrong_source_instance;
-        static const ydk::Enum::YLeaf hello_missed;
-        static const ydk::Enum::YLeaf interface_down;
-        static const ydk::Enum::YLeaf neighbor_disabled_hello;
-        static const ydk::Enum::YLeaf control_channel_down;
-
-};
-
-class RsvpMgmtHelloInstanceOwner : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mpls_graceful_restart;
-        static const ydk::Enum::YLeaf mpls_ouni;
-
-};
-
 class RsvpMgmtAssociation : public ydk::Enum
 {
     public:
@@ -4089,13 +4022,38 @@ class RsvpMgmtAssociation : public ydk::Enum
 
 };
 
-class RsvpMgmtRroSubobj : public ydk::Enum
+class RsvpMgmtEroSubobj : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ipv4rro_type;
-        static const ydk::Enum::YLeaf label_rro_type;
-        static const ydk::Enum::YLeaf unnumbered_rro_type;
-        static const ydk::Enum::YLeaf srlg_rro_type;
+        static const ydk::Enum::YLeaf rsvp_mgmt_ero_type_ipv4;
+        static const ydk::Enum::YLeaf rsvp_mgmt_ero_type_un_num;
+
+};
+
+class RsvpMgmtQosServiceEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rsvp_mgmt_qos_unknown;
+        static const ydk::Enum::YLeaf rsvp_mgmt_qos_guaranteed;
+        static const ydk::Enum::YLeaf rsvp_mgmt_qos_controlled_load;
+        static const ydk::Enum::YLeaf rsvp_mgmt_qos_qualitative;
+
+};
+
+class RsvpMgmtHelloInstance : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf passive;
+
+};
+
+class IgpteLibBwModel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rdm;
+        static const ydk::Enum::YLeaf mam;
+        static const ydk::Enum::YLeaf not_set;
 
 };
 
@@ -4118,19 +4076,53 @@ class RsvpProcNsrNotReadyReason : public ydk::Enum
 
 };
 
-class RsvpSyncStatus : public ydk::Enum
+class RsvpMgmtDsteModes : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf not_ready;
-        static const ydk::Enum::YLeaf ready;
+        static const ydk::Enum::YLeaf pre_standard;
+        static const ydk::Enum::YLeaf standard;
 
 };
 
-class RsvpMgmtGrApp : public ydk::Enum
+class RsvpMgmtRestartState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ouni;
-        static const ydk::Enum::YLeaf gmpls;
+        static const ydk::Enum::YLeaf done;
+        static const ydk::Enum::YLeaf recovery;
+        static const ydk::Enum::YLeaf abort;
+
+};
+
+class RsvpMgmtReservationTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rsvp_mgmt_ff_option;
+        static const ydk::Enum::YLeaf rsvp_mgmt_wf_option;
+        static const ydk::Enum::YLeaf rsvp_mgmt_se_option;
+
+};
+
+class RsvpMgmtTspec : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf g709otn;
+        static const ydk::Enum::YLeaf intsrv;
+
+};
+
+class RsvpMgmtAuthDirection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rsvp_mgmt_auth_direction_send;
+        static const ydk::Enum::YLeaf rsvp_mgmt_auth_direction_recv;
+
+};
+
+class RsvpMgmtFilter : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rsvp_mgmt_filter_type_ipv4;
+        static const ydk::Enum::YLeaf rsvp_mgmt_filter_type_p2mp_lsp_ipv4;
 
 };
 
@@ -4148,22 +4140,13 @@ class RsvpProcRole : public ydk::Enum
 
 };
 
-class RsvpMgmtAuthChallengeStatus : public ydk::Enum
+class RsvpSession : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_not_cfg;
-        static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_completed;
-        static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_in_progress;
-        static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_failure;
-        static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_not_supported;
-
-};
-
-class RsvpMgmtHelloInstance : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf passive;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf p2p_lsp_ipv4;
+        static const ydk::Enum::YLeaf ouni_ipv4;
+        static const ydk::Enum::YLeaf p2mp_lsp_ipv4;
 
 };
 
@@ -4176,15 +4159,6 @@ class RsvpMgmtHelloState : public ydk::Enum
 
 };
 
-class RsvpMgmtReservationTypeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rsvp_mgmt_ff_option;
-        static const ydk::Enum::YLeaf rsvp_mgmt_wf_option;
-        static const ydk::Enum::YLeaf rsvp_mgmt_se_option;
-
-};
-
 class RsvpMgmtFlowSpec : public ydk::Enum
 {
     public:
@@ -4192,62 +4166,21 @@ class RsvpMgmtFlowSpec : public ydk::Enum
 
 };
 
-class RsvpMgmtQosServiceEnum : public ydk::Enum
+class RsvpMgmtHelloInstanceOwner : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf rsvp_mgmt_qos_unknown;
-        static const ydk::Enum::YLeaf rsvp_mgmt_qos_guaranteed;
-        static const ydk::Enum::YLeaf rsvp_mgmt_qos_controlled_load;
-        static const ydk::Enum::YLeaf rsvp_mgmt_qos_qualitative;
+        static const ydk::Enum::YLeaf mpls_graceful_restart;
+        static const ydk::Enum::YLeaf mpls_ouni;
 
 };
 
-class RsvpTimerState : public ydk::Enum
+class RsvpMgmtRroSubobj : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf rsvp_timer_running_and_sleeping;
-        static const ydk::Enum::YLeaf rsvp_timer_running;
-        static const ydk::Enum::YLeaf rsvp_timer_not_running;
-
-};
-
-class RsvpMgmtEroSubobjStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rsvp_mgmt_ero_status_not_available;
-        static const ydk::Enum::YLeaf rsvp_mgmt_ero_status_available;
-        static const ydk::Enum::YLeaf rsvp_mgmt_ero_status_bw_not_available;
-
-};
-
-class RsvpMgmtEroSubobj : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rsvp_mgmt_ero_type_ipv4;
-        static const ydk::Enum::YLeaf rsvp_mgmt_ero_type_un_num;
-
-};
-
-class RsvpMgmtGenericLabel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rsvp_mgmt_label_type_gmpls;
-
-};
-
-class RsvpMgmtTspec : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf g709otn;
-        static const ydk::Enum::YLeaf intsrv;
-
-};
-
-class RsvpMgmtFilter : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rsvp_mgmt_filter_type_ipv4;
-        static const ydk::Enum::YLeaf rsvp_mgmt_filter_type_p2mp_lsp_ipv4;
+        static const ydk::Enum::YLeaf ipv4rro_type;
+        static const ydk::Enum::YLeaf label_rro_type;
+        static const ydk::Enum::YLeaf unnumbered_rro_type;
+        static const ydk::Enum::YLeaf srlg_rro_type;
 
 };
 
@@ -4261,6 +4194,45 @@ class RsvpMgmtSession : public ydk::Enum
 
 };
 
+class RsvpMgmtHelloDownReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_applicable;
+        static const ydk::Enum::YLeaf wrong_destination_instance;
+        static const ydk::Enum::YLeaf wrong_source_instance;
+        static const ydk::Enum::YLeaf hello_missed;
+        static const ydk::Enum::YLeaf interface_down;
+        static const ydk::Enum::YLeaf neighbor_disabled_hello;
+        static const ydk::Enum::YLeaf control_channel_down;
+
+};
+
+class RsvpMgmtGenericLabel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rsvp_mgmt_label_type_gmpls;
+
+};
+
+class RsvpMgmtGrApp : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ouni;
+        static const ydk::Enum::YLeaf gmpls;
+
+};
+
+class RsvpMgmtAuthChallengeStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_not_cfg;
+        static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_completed;
+        static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_in_progress;
+        static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_failure;
+        static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_not_supported;
+
+};
+
 class RsvpMgmtAuthKi : public ydk::Enum
 {
     public:
@@ -4271,19 +4243,37 @@ class RsvpMgmtAuthKi : public ydk::Enum
 
 };
 
-class RsvpMgmtAuthDirection : public ydk::Enum
+class RsvpTimerState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf rsvp_mgmt_auth_direction_send;
-        static const ydk::Enum::YLeaf rsvp_mgmt_auth_direction_recv;
+        static const ydk::Enum::YLeaf rsvp_timer_running_and_sleeping;
+        static const ydk::Enum::YLeaf rsvp_timer_running;
+        static const ydk::Enum::YLeaf rsvp_timer_not_running;
 
 };
 
-class RsvpMgmtDsteModes : public ydk::Enum
+class RsvpSyncStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf pre_standard;
-        static const ydk::Enum::YLeaf standard;
+        static const ydk::Enum::YLeaf not_ready;
+        static const ydk::Enum::YLeaf ready;
+
+};
+
+class RsvpMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf send;
+        static const ydk::Enum::YLeaf receive;
+
+};
+
+class RsvpMgmtEroSubobjStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rsvp_mgmt_ero_status_not_available;
+        static const ydk::Enum::YLeaf rsvp_mgmt_ero_status_available;
+        static const ydk::Enum::YLeaf rsvp_mgmt_ero_status_bw_not_available;
 
 };
 

@@ -14,10 +14,11 @@ namespace Cisco_IOS_XE_platform_software_oper {
 CiscoPlatformSoftware::CiscoPlatformSoftware()
     :
     control_processes(std::make_shared<CiscoPlatformSoftware::ControlProcesses>())
+    , q_filesystem(this, {"fru", "slotnum", "baynum", "chassisnum"})
 {
     control_processes->parent = this;
 
-    yang_name = "cisco-platform-software"; yang_parent_name = "Cisco-IOS-XE-platform-software-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "cisco-platform-software"; yang_parent_name = "Cisco-IOS-XE-platform-software-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CiscoPlatformSoftware::~CiscoPlatformSoftware()
@@ -26,7 +27,8 @@ CiscoPlatformSoftware::~CiscoPlatformSoftware()
 
 bool CiscoPlatformSoftware::has_data() const
 {
-    for (std::size_t index=0; index<q_filesystem.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<q_filesystem.len(); index++)
     {
         if(q_filesystem[index]->has_data())
             return true;
@@ -36,7 +38,7 @@ bool CiscoPlatformSoftware::has_data() const
 
 bool CiscoPlatformSoftware::has_operation() const
 {
-    for (std::size_t index=0; index<q_filesystem.size(); index++)
+    for (std::size_t index=0; index<q_filesystem.len(); index++)
     {
         if(q_filesystem[index]->has_operation())
             return true;
@@ -76,7 +78,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<CiscoPlatformSoftware::QFilesystem>();
         c->parent = this;
-        q_filesystem.push_back(c);
+        q_filesystem.append(c);
         return c;
     }
 
@@ -93,7 +95,7 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::get_childr
     }
 
     count = 0;
-    for (auto const & c : q_filesystem)
+    for (auto c : q_filesystem.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -145,9 +147,11 @@ bool CiscoPlatformSoftware::has_leaf_or_child_of_name(const std::string & name) 
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcesses()
+    :
+    control_process(this, {"fru", "slotnum", "baynum", "chassisnum"})
 {
 
-    yang_name = "control-processes"; yang_parent_name = "cisco-platform-software"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "control-processes"; yang_parent_name = "cisco-platform-software"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CiscoPlatformSoftware::ControlProcesses::~ControlProcesses()
@@ -156,7 +160,8 @@ CiscoPlatformSoftware::ControlProcesses::~ControlProcesses()
 
 bool CiscoPlatformSoftware::ControlProcesses::has_data() const
 {
-    for (std::size_t index=0; index<control_process.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<control_process.len(); index++)
     {
         if(control_process[index]->has_data())
             return true;
@@ -166,7 +171,7 @@ bool CiscoPlatformSoftware::ControlProcesses::has_data() const
 
 bool CiscoPlatformSoftware::ControlProcesses::has_operation() const
 {
-    for (std::size_t index=0; index<control_process.size(); index++)
+    for (std::size_t index=0; index<control_process.len(); index++)
     {
         if(control_process[index]->has_operation())
             return true;
@@ -203,7 +208,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::get_child_by_na
     {
         auto c = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess>();
         c->parent = this;
-        control_process.push_back(c);
+        control_process.append(c);
         return c;
     }
 
@@ -215,7 +220,7 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlPro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : control_process)
+    for (auto c : control_process.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -249,18 +254,18 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::ControlProcess()
     chassisnum{YType::int16, "chassisnum"},
     control_process_status{YType::str, "control-process-status"},
     updated{YType::uint64, "updated"}
-    	,
+        ,
     load_average_stats(std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats>())
-	,load_avg_minutes(std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes>())
-	,memory_stats(std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats>())
-	,per_core_stats(std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats>())
+    , load_avg_minutes(std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes>())
+    , memory_stats(std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats>())
+    , per_core_stats(std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats>())
 {
     load_average_stats->parent = this;
     load_avg_minutes->parent = this;
     memory_stats->parent = this;
     per_core_stats->parent = this;
 
-    yang_name = "control-process"; yang_parent_name = "control-processes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "control-process"; yang_parent_name = "control-processes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::~ControlProcess()
@@ -269,6 +274,7 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::~ControlProcess()
 
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::has_data() const
 {
+    if (is_presence_container) return true;
     return fru.is_set
 	|| slotnum.is_set
 	|| baynum.is_set
@@ -306,7 +312,11 @@ std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::get_absolut
 std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "control-process" <<"[fru='" <<fru <<"']" <<"[slotnum='" <<slotnum <<"']" <<"[baynum='" <<baynum <<"']" <<"[chassisnum='" <<chassisnum <<"']";
+    path_buffer << "control-process";
+    ADD_KEY_TOKEN(fru, "fru");
+    ADD_KEY_TOKEN(slotnum, "slotnum");
+    ADD_KEY_TOKEN(baynum, "baynum");
+    ADD_KEY_TOKEN(chassisnum, "chassisnum");
     return path_buffer.str();
 }
 
@@ -473,7 +483,7 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::LoadA
     load_average_status{YType::str, "load-average-status"}
 {
 
-    yang_name = "load-average-stats"; yang_parent_name = "control-process"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load-average-stats"; yang_parent_name = "control-process"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::~LoadAverageStats()
@@ -482,6 +492,7 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::~Load
 
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::has_data() const
 {
+    if (is_presence_container) return true;
     return load_average_status.is_set;
 }
 
@@ -546,9 +557,11 @@ bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinutes()
+    :
+    load_avg_minute(this, {"number"})
 {
 
-    yang_name = "load-avg-minutes"; yang_parent_name = "control-process"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load-avg-minutes"; yang_parent_name = "control-process"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::~LoadAvgMinutes()
@@ -557,7 +570,8 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::~LoadAv
 
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::has_data() const
 {
-    for (std::size_t index=0; index<load_avg_minute.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<load_avg_minute.len(); index++)
     {
         if(load_avg_minute[index]->has_data())
             return true;
@@ -567,7 +581,7 @@ bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::ha
 
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::has_operation() const
 {
-    for (std::size_t index=0; index<load_avg_minute.size(); index++)
+    for (std::size_t index=0; index<load_avg_minute.len(); index++)
     {
         if(load_avg_minute[index]->has_operation())
             return true;
@@ -597,7 +611,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess:
     {
         auto c = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute>();
         c->parent = this;
-        load_avg_minute.push_back(c);
+        load_avg_minute.append(c);
         return c;
     }
 
@@ -609,7 +623,7 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlPro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : load_avg_minute)
+    for (auto c : load_avg_minute.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -639,12 +653,12 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvg
     :
     number{YType::uint64, "number"},
     average{YType::str, "average"}
-    	,
+        ,
     status(std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status>())
 {
     status->parent = this;
 
-    yang_name = "load-avg-minute"; yang_parent_name = "load-avg-minutes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load-avg-minute"; yang_parent_name = "load-avg-minutes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::~LoadAvgMinute()
@@ -653,6 +667,7 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvg
 
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| average.is_set
 	|| (status !=  nullptr && status->has_data());
@@ -669,7 +684,8 @@ bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::Lo
 std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "load-avg-minute" <<"[number='" <<number <<"']";
+    path_buffer << "load-avg-minute";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -752,7 +768,7 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvg
     threshold_value{YType::str, "threshold-value"}
 {
 
-    yang_name = "status"; yang_parent_name = "load-avg-minute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "status"; yang_parent_name = "load-avg-minute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::~Status()
@@ -761,6 +777,7 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvg
 
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::has_data() const
 {
+    if (is_presence_container) return true;
     return condition.is_set
 	|| threshold_status.is_set
 	|| threshold_value.is_set;
@@ -862,12 +879,12 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::MemoryStat
     available_percent{YType::uint64, "available-percent"},
     committed_number{YType::uint64, "committed-number"},
     committed_percent{YType::uint8, "committed-percent"}
-    	,
+        ,
     status(std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status>())
 {
     status->parent = this;
 
-    yang_name = "memory-stats"; yang_parent_name = "control-process"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "memory-stats"; yang_parent_name = "control-process"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::~MemoryStats()
@@ -876,6 +893,7 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::~MemorySta
 
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::has_data() const
 {
+    if (is_presence_container) return true;
     return memory_status.is_set
 	|| total.is_set
 	|| used_number.is_set
@@ -1078,7 +1096,7 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::St
     critical_threshold_percent{YType::uint32, "critical-threshold-percent"}
 {
 
-    yang_name = "status"; yang_parent_name = "memory-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "status"; yang_parent_name = "memory-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::~Status()
@@ -1087,6 +1105,7 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::~S
 
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::has_data() const
 {
+    if (is_presence_container) return true;
     return warning_threshold_percent.is_set
 	|| critical_threshold_percent.is_set;
 }
@@ -1164,9 +1183,11 @@ bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Statu
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStats()
+    :
+    per_core_stat(this, {"name"})
 {
 
-    yang_name = "per-core-stats"; yang_parent_name = "control-process"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "per-core-stats"; yang_parent_name = "control-process"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::~PerCoreStats()
@@ -1175,7 +1196,8 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::~PerCoreS
 
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::has_data() const
 {
-    for (std::size_t index=0; index<per_core_stat.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<per_core_stat.len(); index++)
     {
         if(per_core_stat[index]->has_data())
             return true;
@@ -1185,7 +1207,7 @@ bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::has_
 
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::has_operation() const
 {
-    for (std::size_t index=0; index<per_core_stat.size(); index++)
+    for (std::size_t index=0; index<per_core_stat.len(); index++)
     {
         if(per_core_stat[index]->has_operation())
             return true;
@@ -1215,7 +1237,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess:
     {
         auto c = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat>();
         c->parent = this;
-        per_core_stat.push_back(c);
+        per_core_stat.append(c);
         return c;
     }
 
@@ -1227,7 +1249,7 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlPro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : per_core_stat)
+    for (auto c : per_core_stat.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1265,7 +1287,7 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreSt
     io_wait{YType::str, "io-wait"}
 {
 
-    yang_name = "per-core-stat"; yang_parent_name = "per-core-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "per-core-stat"; yang_parent_name = "per-core-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::~PerCoreStat()
@@ -1274,6 +1296,7 @@ CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreSt
 
 bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| user.is_set
 	|| system.is_set
@@ -1300,7 +1323,8 @@ bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerC
 std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "per-core-stat" <<"[name='" <<name <<"']";
+    path_buffer << "per-core-stat";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1434,9 +1458,12 @@ CiscoPlatformSoftware::QFilesystem::QFilesystem()
     slotnum{YType::int16, "slotnum"},
     baynum{YType::int16, "baynum"},
     chassisnum{YType::int16, "chassisnum"}
+        ,
+    partitions(this, {"name"})
+    , core_files(this, {"filename"})
 {
 
-    yang_name = "q-filesystem"; yang_parent_name = "cisco-platform-software"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "q-filesystem"; yang_parent_name = "cisco-platform-software"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CiscoPlatformSoftware::QFilesystem::~QFilesystem()
@@ -1445,12 +1472,13 @@ CiscoPlatformSoftware::QFilesystem::~QFilesystem()
 
 bool CiscoPlatformSoftware::QFilesystem::has_data() const
 {
-    for (std::size_t index=0; index<partitions.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<partitions.len(); index++)
     {
         if(partitions[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<core_files.size(); index++)
+    for (std::size_t index=0; index<core_files.len(); index++)
     {
         if(core_files[index]->has_data())
             return true;
@@ -1463,12 +1491,12 @@ bool CiscoPlatformSoftware::QFilesystem::has_data() const
 
 bool CiscoPlatformSoftware::QFilesystem::has_operation() const
 {
-    for (std::size_t index=0; index<partitions.size(); index++)
+    for (std::size_t index=0; index<partitions.len(); index++)
     {
         if(partitions[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<core_files.size(); index++)
+    for (std::size_t index=0; index<core_files.len(); index++)
     {
         if(core_files[index]->has_operation())
             return true;
@@ -1490,7 +1518,11 @@ std::string CiscoPlatformSoftware::QFilesystem::get_absolute_path() const
 std::string CiscoPlatformSoftware::QFilesystem::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "q-filesystem" <<"[fru='" <<fru <<"']" <<"[slotnum='" <<slotnum <<"']" <<"[baynum='" <<baynum <<"']" <<"[chassisnum='" <<chassisnum <<"']";
+    path_buffer << "q-filesystem";
+    ADD_KEY_TOKEN(fru, "fru");
+    ADD_KEY_TOKEN(slotnum, "slotnum");
+    ADD_KEY_TOKEN(baynum, "baynum");
+    ADD_KEY_TOKEN(chassisnum, "chassisnum");
     return path_buffer.str();
 }
 
@@ -1513,7 +1545,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::QFilesystem::get_child_by_name(co
     {
         auto c = std::make_shared<CiscoPlatformSoftware::QFilesystem::Partitions>();
         c->parent = this;
-        partitions.push_back(c);
+        partitions.append(c);
         return c;
     }
 
@@ -1521,7 +1553,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::QFilesystem::get_child_by_name(co
     {
         auto c = std::make_shared<CiscoPlatformSoftware::QFilesystem::CoreFiles>();
         c->parent = this;
-        core_files.push_back(c);
+        core_files.append(c);
         return c;
     }
 
@@ -1533,7 +1565,7 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::QFilesyste
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : partitions)
+    for (auto c : partitions.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1542,7 +1574,7 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::QFilesyste
     }
 
     count = 0;
-    for (auto const & c : core_files)
+    for (auto c : core_files.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1615,7 +1647,7 @@ CiscoPlatformSoftware::QFilesystem::Partitions::Partitions()
     used_size{YType::uint64, "used-size"}
 {
 
-    yang_name = "partitions"; yang_parent_name = "q-filesystem"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "partitions"; yang_parent_name = "q-filesystem"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CiscoPlatformSoftware::QFilesystem::Partitions::~Partitions()
@@ -1624,6 +1656,7 @@ CiscoPlatformSoftware::QFilesystem::Partitions::~Partitions()
 
 bool CiscoPlatformSoftware::QFilesystem::Partitions::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| total_size.is_set
 	|| used_size.is_set;
@@ -1640,7 +1673,8 @@ bool CiscoPlatformSoftware::QFilesystem::Partitions::has_operation() const
 std::string CiscoPlatformSoftware::QFilesystem::Partitions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "partitions" <<"[name='" <<name <<"']";
+    path_buffer << "partitions";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1719,7 +1753,7 @@ CiscoPlatformSoftware::QFilesystem::CoreFiles::CoreFiles()
     time{YType::str, "time"}
 {
 
-    yang_name = "core-files"; yang_parent_name = "q-filesystem"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "core-files"; yang_parent_name = "q-filesystem"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 CiscoPlatformSoftware::QFilesystem::CoreFiles::~CoreFiles()
@@ -1728,6 +1762,7 @@ CiscoPlatformSoftware::QFilesystem::CoreFiles::~CoreFiles()
 
 bool CiscoPlatformSoftware::QFilesystem::CoreFiles::has_data() const
 {
+    if (is_presence_container) return true;
     return filename.is_set
 	|| time.is_set;
 }
@@ -1742,7 +1777,8 @@ bool CiscoPlatformSoftware::QFilesystem::CoreFiles::has_operation() const
 std::string CiscoPlatformSoftware::QFilesystem::CoreFiles::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "core-files" <<"[filename='" <<filename <<"']";
+    path_buffer << "core-files";
+    ADD_KEY_TOKEN(filename, "filename");
     return path_buffer.str();
 }
 

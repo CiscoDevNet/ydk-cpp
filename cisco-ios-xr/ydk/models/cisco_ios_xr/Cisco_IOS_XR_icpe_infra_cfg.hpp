@@ -84,7 +84,7 @@ class NvSatellites : public ydk::Entity
 
         class NvSatellite; //type: NvSatellites::NvSatellite
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_cfg::NvSatellites::NvSatellite> > nv_satellite;
+        ydk::YList nv_satellite;
         
 }; // NvSatellites
 
@@ -172,7 +172,7 @@ class NvSatellites::NvSatellite::CandidateFabricPorts : public ydk::Entity
 
         class CandidateFabricPort; //type: NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_cfg::NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort> > candidate_fabric_port;
+        ydk::YList candidate_fabric_port;
         
 }; // NvSatellites::NvSatellite::CandidateFabricPorts
 

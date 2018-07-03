@@ -13,18 +13,18 @@ namespace CISCO_ATM_PVCTRAP_EXTN_MIB {
 
 CISCOATMPVCTRAPEXTNMIB::CISCOATMPVCTRAPEXTNMIB()
     :
-    catmcurstatchangepvcltable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable>())
-	,catmstatuschangepvclrangetable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable>())
-	,catmsegccstatuschpvclrangetable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable>())
-	,catmendccstatuschpvclrangetable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable>())
-	,catmaisrdistatuschpvclrangetable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable>())
-	,catmdownpvclrangetable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable>())
-	,catmcurstatusuppvcltable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable>())
-	,catmstatusuppvclrangetable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable>())
-	,catmsegccstatusuppvclrangetable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable>())
-	,catmendccstatusuppvclrangetable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable>())
-	,catmaisrdistatusuppvclrangetable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable>())
-	,catmuppvclrangetable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable>())
+    catmcurstatchangepvcltable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable>())
+    , catmstatuschangepvclrangetable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable>())
+    , catmsegccstatuschpvclrangetable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable>())
+    , catmendccstatuschpvclrangetable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable>())
+    , catmaisrdistatuschpvclrangetable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable>())
+    , catmdownpvclrangetable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable>())
+    , catmcurstatusuppvcltable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable>())
+    , catmstatusuppvclrangetable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable>())
+    , catmsegccstatusuppvclrangetable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable>())
+    , catmendccstatusuppvclrangetable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable>())
+    , catmaisrdistatusuppvclrangetable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable>())
+    , catmuppvclrangetable(std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable>())
 {
     catmcurstatchangepvcltable->parent = this;
     catmstatuschangepvclrangetable->parent = this;
@@ -39,7 +39,7 @@ CISCOATMPVCTRAPEXTNMIB::CISCOATMPVCTRAPEXTNMIB()
     catmaisrdistatusuppvclrangetable->parent = this;
     catmuppvclrangetable->parent = this;
 
-    yang_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOATMPVCTRAPEXTNMIB::~CISCOATMPVCTRAPEXTNMIB()
@@ -48,6 +48,7 @@ CISCOATMPVCTRAPEXTNMIB::~CISCOATMPVCTRAPEXTNMIB()
 
 bool CISCOATMPVCTRAPEXTNMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (catmcurstatchangepvcltable !=  nullptr && catmcurstatchangepvcltable->has_data())
 	|| (catmstatuschangepvclrangetable !=  nullptr && catmstatuschangepvclrangetable->has_data())
 	|| (catmsegccstatuschpvclrangetable !=  nullptr && catmsegccstatuschpvclrangetable->has_data())
@@ -101,7 +102,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::get_child_by_name(const std::str
     {
         if(catmcurstatchangepvcltable == nullptr)
         {
-            catmcurstatchangepvcltable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable>();
+            catmcurstatchangepvcltable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable>();
         }
         return catmcurstatchangepvcltable;
     }
@@ -110,7 +111,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::get_child_by_name(const std::str
     {
         if(catmstatuschangepvclrangetable == nullptr)
         {
-            catmstatuschangepvclrangetable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable>();
+            catmstatuschangepvclrangetable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable>();
         }
         return catmstatuschangepvclrangetable;
     }
@@ -119,7 +120,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::get_child_by_name(const std::str
     {
         if(catmsegccstatuschpvclrangetable == nullptr)
         {
-            catmsegccstatuschpvclrangetable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable>();
+            catmsegccstatuschpvclrangetable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable>();
         }
         return catmsegccstatuschpvclrangetable;
     }
@@ -128,7 +129,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::get_child_by_name(const std::str
     {
         if(catmendccstatuschpvclrangetable == nullptr)
         {
-            catmendccstatuschpvclrangetable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable>();
+            catmendccstatuschpvclrangetable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable>();
         }
         return catmendccstatuschpvclrangetable;
     }
@@ -137,7 +138,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::get_child_by_name(const std::str
     {
         if(catmaisrdistatuschpvclrangetable == nullptr)
         {
-            catmaisrdistatuschpvclrangetable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable>();
+            catmaisrdistatuschpvclrangetable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable>();
         }
         return catmaisrdistatuschpvclrangetable;
     }
@@ -146,7 +147,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::get_child_by_name(const std::str
     {
         if(catmdownpvclrangetable == nullptr)
         {
-            catmdownpvclrangetable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable>();
+            catmdownpvclrangetable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable>();
         }
         return catmdownpvclrangetable;
     }
@@ -155,7 +156,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::get_child_by_name(const std::str
     {
         if(catmcurstatusuppvcltable == nullptr)
         {
-            catmcurstatusuppvcltable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable>();
+            catmcurstatusuppvcltable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable>();
         }
         return catmcurstatusuppvcltable;
     }
@@ -164,7 +165,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::get_child_by_name(const std::str
     {
         if(catmstatusuppvclrangetable == nullptr)
         {
-            catmstatusuppvclrangetable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable>();
+            catmstatusuppvclrangetable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable>();
         }
         return catmstatusuppvclrangetable;
     }
@@ -173,7 +174,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::get_child_by_name(const std::str
     {
         if(catmsegccstatusuppvclrangetable == nullptr)
         {
-            catmsegccstatusuppvclrangetable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable>();
+            catmsegccstatusuppvclrangetable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable>();
         }
         return catmsegccstatusuppvclrangetable;
     }
@@ -182,7 +183,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::get_child_by_name(const std::str
     {
         if(catmendccstatusuppvclrangetable == nullptr)
         {
-            catmendccstatusuppvclrangetable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable>();
+            catmendccstatusuppvclrangetable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable>();
         }
         return catmendccstatusuppvclrangetable;
     }
@@ -191,7 +192,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::get_child_by_name(const std::str
     {
         if(catmaisrdistatusuppvclrangetable == nullptr)
         {
-            catmaisrdistatusuppvclrangetable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable>();
+            catmaisrdistatusuppvclrangetable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable>();
         }
         return catmaisrdistatusuppvclrangetable;
     }
@@ -200,7 +201,7 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::get_child_by_name(const std::str
     {
         if(catmuppvclrangetable == nullptr)
         {
-            catmuppvclrangetable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable>();
+            catmuppvclrangetable = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable>();
         }
         return catmuppvclrangetable;
     }
@@ -315,19 +316,22 @@ bool CISCOATMPVCTRAPEXTNMIB::has_leaf_or_child_of_name(const std::string & name)
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvcltable()
+CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclTable()
+    :
+    catmcurstatchangepvclentry(this, {"ifindex", "atmvclvpi", "atmvclvci"})
 {
 
-    yang_name = "catmCurStatChangePVclTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmCurStatChangePVclTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::~Catmcurstatchangepvcltable()
+CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::~CatmCurStatChangePVclTable()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::has_data() const
 {
-    for (std::size_t index=0; index<catmcurstatchangepvclentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<catmcurstatchangepvclentry.len(); index++)
     {
         if(catmcurstatchangepvclentry[index]->has_data())
             return true;
@@ -335,9 +339,9 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::has_data() const
     return false;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::has_operation() const
 {
-    for (std::size_t index=0; index<catmcurstatchangepvclentry.size(); index++)
+    for (std::size_t index=0; index<catmcurstatchangepvclentry.len(); index++)
     {
         if(catmcurstatchangepvclentry[index]->has_operation())
             return true;
@@ -345,21 +349,21 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "catmCurStatChangePVclTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -368,25 +372,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmcurst
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmCurStatChangePVclEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry>();
+        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclEntry>();
         c->parent = this;
-        catmcurstatchangepvclentry.push_back(c);
+        catmcurstatchangepvclentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : catmcurstatchangepvclentry)
+    for (auto c : catmcurstatchangepvclentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -397,22 +401,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmcurst
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "catmCurStatChangePVclEntry")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry::Catmcurstatchangepvclentry()
+CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclEntry::CatmCurStatChangePVclEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::str, "atmVclVpi"},
@@ -434,15 +438,16 @@ CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry::
     catmpvclfailurereason{YType::enumeration, "catmPVclFailureReason"}
 {
 
-    yang_name = "catmCurStatChangePVclEntry"; yang_parent_name = "catmCurStatChangePVclTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmCurStatChangePVclEntry"; yang_parent_name = "catmCurStatChangePVclTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry::~Catmcurstatchangepvclentry()
+CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclEntry::~CatmCurStatChangePVclEntry()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atmvclvpi.is_set
 	|| atmvclvci.is_set
@@ -463,7 +468,7 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclen
 	|| catmpvclfailurereason.is_set;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -486,21 +491,24 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclen
 	|| ydk::is_set(catmpvclfailurereason.yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/catmCurStatChangePVclTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "catmCurStatChangePVclEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVclVpi='" <<atmvclvpi <<"']" <<"[atmVclVci='" <<atmvclvci <<"']";
+    path_buffer << "catmCurStatChangePVclEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(atmvclvpi, "atmVclVpi");
+    ADD_KEY_TOKEN(atmvclvci, "atmVclVci");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -527,19 +535,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmcurst
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -651,7 +659,7 @@ void CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclen
     }
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -727,26 +735,29 @@ void CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclen
     }
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmcurstatchangepvcltable::Catmcurstatchangepvclentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVclVpi" || name == "atmVclVci" || name == "catmPVclStatusTransition" || name == "catmPVclStatusChangeStart" || name == "catmPVclStatusChangeEnd" || name == "catmPVclSegCCStatusTransition" || name == "catmPVclSegCCStatusChangeStart" || name == "catmPVclSegCCStatusChangeEnd" || name == "catmPVclEndCCStatusTransition" || name == "catmPVclEndCCStatusChangeStart" || name == "catmPVclEndCCStatusChangeEnd" || name == "catmPVclAISRDIStatusTransition" || name == "catmPVclAISRDIStatusChangeStart" || name == "catmPVclAISRDIStatusChangeEnd" || name == "catmPVclCurFailTime" || name == "catmPVclPrevRecoverTime" || name == "catmPVclFailureReason")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangetable()
+CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeTable()
+    :
+    catmstatuschangepvclrangeentry(this, {"ifindex", "atmvclvpi", "catmstatuschangepvclrangeindex"})
 {
 
-    yang_name = "catmStatusChangePVclRangeTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmStatusChangePVclRangeTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::~Catmstatuschangepvclrangetable()
+CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::~CatmStatusChangePVclRangeTable()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::has_data() const
 {
-    for (std::size_t index=0; index<catmstatuschangepvclrangeentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<catmstatuschangepvclrangeentry.len(); index++)
     {
         if(catmstatuschangepvclrangeentry[index]->has_data())
             return true;
@@ -754,9 +765,9 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::has_data() const
     return false;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::has_operation() const
 {
-    for (std::size_t index=0; index<catmstatuschangepvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmstatuschangepvclrangeentry.len(); index++)
     {
         if(catmstatuschangepvclrangeentry[index]->has_operation())
             return true;
@@ -764,21 +775,21 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::has_operation() con
     return is_set(yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "catmStatusChangePVclRangeTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -787,25 +798,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmstatu
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmStatusChangePVclRangeEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry>();
+        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeEntry>();
         c->parent = this;
-        catmstatuschangepvclrangeentry.push_back(c);
+        catmstatuschangepvclrangeentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : catmstatuschangepvclrangeentry)
+    for (auto c : catmstatuschangepvclrangeentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -816,22 +827,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmstatu
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "catmStatusChangePVclRangeEntry")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::Catmstatuschangepvclrangeentry()
+CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeEntry::CatmStatusChangePVclRangeEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::str, "atmVclVpi"},
@@ -842,15 +853,16 @@ CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrang
     catmpvclrangestatuschangeend{YType::uint32, "catmPVclRangeStatusChangeEnd"}
 {
 
-    yang_name = "catmStatusChangePVclRangeEntry"; yang_parent_name = "catmStatusChangePVclRangeTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmStatusChangePVclRangeEntry"; yang_parent_name = "catmStatusChangePVclRangeTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::~Catmstatuschangepvclrangeentry()
+CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeEntry::~CatmStatusChangePVclRangeEntry()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atmvclvpi.is_set
 	|| catmstatuschangepvclrangeindex.is_set
@@ -860,7 +872,7 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvc
 	|| catmpvclrangestatuschangeend.is_set;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -872,21 +884,24 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvc
 	|| ydk::is_set(catmpvclrangestatuschangeend.yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/catmStatusChangePVclRangeTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "catmStatusChangePVclRangeEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVclVpi='" <<atmvclvpi <<"']" <<"[catmStatusChangePVclRangeIndex='" <<catmstatuschangepvclrangeindex <<"']";
+    path_buffer << "catmStatusChangePVclRangeEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(atmvclvpi, "atmVclVpi");
+    ADD_KEY_TOKEN(catmstatuschangepvclrangeindex, "catmStatusChangePVclRangeIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -902,19 +917,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmstatu
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -960,7 +975,7 @@ void CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvc
     }
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -992,26 +1007,29 @@ void CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvc
     }
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmstatuschangepvclrangetable::Catmstatuschangepvclrangeentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVclVpi" || name == "catmStatusChangePVclRangeIndex" || name == "catmPVclLowerRangeValue" || name == "catmPVclHigherRangeValue" || name == "catmPVclRangeStatusChangeStart" || name == "catmPVclRangeStatusChangeEnd")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangetable()
+CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeTable()
+    :
+    catmsegccstatuschpvclrangeentry(this, {"ifindex", "atmvclvpi", "catmstatuschangepvclrangeindex"})
 {
 
-    yang_name = "catmSegCCStatusChPVclRangeTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmSegCCStatusChPVclRangeTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::~Catmsegccstatuschpvclrangetable()
+CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::~CatmSegCCStatusChPVclRangeTable()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::has_data() const
 {
-    for (std::size_t index=0; index<catmsegccstatuschpvclrangeentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<catmsegccstatuschpvclrangeentry.len(); index++)
     {
         if(catmsegccstatuschpvclrangeentry[index]->has_data())
             return true;
@@ -1019,9 +1037,9 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::has_data() const
     return false;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::has_operation() const
 {
-    for (std::size_t index=0; index<catmsegccstatuschpvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmsegccstatuschpvclrangeentry.len(); index++)
     {
         if(catmsegccstatuschpvclrangeentry[index]->has_operation())
             return true;
@@ -1029,21 +1047,21 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::has_operation() co
     return is_set(yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "catmSegCCStatusChPVclRangeTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1052,25 +1070,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmsegcc
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmSegCCStatusChPVclRangeEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry>();
+        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeEntry>();
         c->parent = this;
-        catmsegccstatuschpvclrangeentry.push_back(c);
+        catmsegccstatuschpvclrangeentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : catmsegccstatuschpvclrangeentry)
+    for (auto c : catmsegccstatuschpvclrangeentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1081,22 +1099,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmsegcc
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "catmSegCCStatusChPVclRangeEntry")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry::Catmsegccstatuschpvclrangeentry()
+CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeEntry::CatmSegCCStatusChPVclRangeEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::str, "atmVclVpi"},
@@ -1107,15 +1125,16 @@ CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclra
     catmpvclsegccrangestatuschend{YType::uint32, "catmPVclSegCCRangeStatusChEnd"}
 {
 
-    yang_name = "catmSegCCStatusChPVclRangeEntry"; yang_parent_name = "catmSegCCStatusChPVclRangeTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmSegCCStatusChPVclRangeEntry"; yang_parent_name = "catmSegCCStatusChPVclRangeTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry::~Catmsegccstatuschpvclrangeentry()
+CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeEntry::~CatmSegCCStatusChPVclRangeEntry()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atmvclvpi.is_set
 	|| catmstatuschangepvclrangeindex.is_set
@@ -1125,7 +1144,7 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschp
 	|| catmpvclsegccrangestatuschend.is_set;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1137,21 +1156,24 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschp
 	|| ydk::is_set(catmpvclsegccrangestatuschend.yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/catmSegCCStatusChPVclRangeTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "catmSegCCStatusChPVclRangeEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVclVpi='" <<atmvclvpi <<"']" <<"[catmStatusChangePVclRangeIndex='" <<catmstatuschangepvclrangeindex <<"']";
+    path_buffer << "catmSegCCStatusChPVclRangeEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(atmvclvpi, "atmVclVpi");
+    ADD_KEY_TOKEN(catmstatuschangepvclrangeindex, "catmStatusChangePVclRangeIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1167,19 +1189,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmsegcc
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1225,7 +1247,7 @@ void CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschp
     }
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1257,26 +1279,29 @@ void CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschp
     }
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmsegccstatuschpvclrangetable::Catmsegccstatuschpvclrangeentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVclVpi" || name == "catmStatusChangePVclRangeIndex" || name == "catmPVclSegCCLowerRangeValue" || name == "catmPVclSegCCHigherRangeValue" || name == "catmPVclSegCCRangeStatusChStart" || name == "catmPVclSegCCRangeStatusChEnd")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangetable()
+CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeTable()
+    :
+    catmendccstatuschpvclrangeentry(this, {"ifindex", "atmvclvpi", "catmstatuschangepvclrangeindex"})
 {
 
-    yang_name = "catmEndCCStatusChPVclRangeTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmEndCCStatusChPVclRangeTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::~Catmendccstatuschpvclrangetable()
+CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::~CatmEndCCStatusChPVclRangeTable()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::has_data() const
 {
-    for (std::size_t index=0; index<catmendccstatuschpvclrangeentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<catmendccstatuschpvclrangeentry.len(); index++)
     {
         if(catmendccstatuschpvclrangeentry[index]->has_data())
             return true;
@@ -1284,9 +1309,9 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::has_data() const
     return false;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::has_operation() const
 {
-    for (std::size_t index=0; index<catmendccstatuschpvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmendccstatuschpvclrangeentry.len(); index++)
     {
         if(catmendccstatuschpvclrangeentry[index]->has_operation())
             return true;
@@ -1294,21 +1319,21 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::has_operation() co
     return is_set(yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "catmEndCCStatusChPVclRangeTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1317,25 +1342,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmendcc
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmEndCCStatusChPVclRangeEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry>();
+        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeEntry>();
         c->parent = this;
-        catmendccstatuschpvclrangeentry.push_back(c);
+        catmendccstatuschpvclrangeentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : catmendccstatuschpvclrangeentry)
+    for (auto c : catmendccstatuschpvclrangeentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1346,22 +1371,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmendcc
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "catmEndCCStatusChPVclRangeEntry")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry::Catmendccstatuschpvclrangeentry()
+CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeEntry::CatmEndCCStatusChPVclRangeEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::str, "atmVclVpi"},
@@ -1372,15 +1397,16 @@ CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclra
     catmpvclendccrangestatuschend{YType::uint32, "catmPVclEndCCRangeStatusChEnd"}
 {
 
-    yang_name = "catmEndCCStatusChPVclRangeEntry"; yang_parent_name = "catmEndCCStatusChPVclRangeTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmEndCCStatusChPVclRangeEntry"; yang_parent_name = "catmEndCCStatusChPVclRangeTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry::~Catmendccstatuschpvclrangeentry()
+CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeEntry::~CatmEndCCStatusChPVclRangeEntry()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atmvclvpi.is_set
 	|| catmstatuschangepvclrangeindex.is_set
@@ -1390,7 +1416,7 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschp
 	|| catmpvclendccrangestatuschend.is_set;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1402,21 +1428,24 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschp
 	|| ydk::is_set(catmpvclendccrangestatuschend.yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/catmEndCCStatusChPVclRangeTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "catmEndCCStatusChPVclRangeEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVclVpi='" <<atmvclvpi <<"']" <<"[catmStatusChangePVclRangeIndex='" <<catmstatuschangepvclrangeindex <<"']";
+    path_buffer << "catmEndCCStatusChPVclRangeEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(atmvclvpi, "atmVclVpi");
+    ADD_KEY_TOKEN(catmstatuschangepvclrangeindex, "catmStatusChangePVclRangeIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1432,19 +1461,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmendcc
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1490,7 +1519,7 @@ void CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschp
     }
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1522,26 +1551,29 @@ void CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschp
     }
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmendccstatuschpvclrangetable::Catmendccstatuschpvclrangeentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVclVpi" || name == "catmStatusChangePVclRangeIndex" || name == "catmPVclEndCCLowerRangeValue" || name == "catmPVclEndCCHigherRangeValue" || name == "catmPVclEndCCRangeStatusChStart" || name == "catmPVclEndCCRangeStatusChEnd")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangetable()
+CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeTable()
+    :
+    catmaisrdistatuschpvclrangeentry(this, {"ifindex", "atmvclvpi", "catmstatuschangepvclrangeindex"})
 {
 
-    yang_name = "catmAISRDIStatusChPVclRangeTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmAISRDIStatusChPVclRangeTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::~Catmaisrdistatuschpvclrangetable()
+CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::~CatmAISRDIStatusChPVclRangeTable()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::has_data() const
 {
-    for (std::size_t index=0; index<catmaisrdistatuschpvclrangeentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<catmaisrdistatuschpvclrangeentry.len(); index++)
     {
         if(catmaisrdistatuschpvclrangeentry[index]->has_data())
             return true;
@@ -1549,9 +1581,9 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::has_data() const
     return false;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::has_operation() const
 {
-    for (std::size_t index=0; index<catmaisrdistatuschpvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmaisrdistatuschpvclrangeentry.len(); index++)
     {
         if(catmaisrdistatuschpvclrangeentry[index]->has_operation())
             return true;
@@ -1559,21 +1591,21 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::has_operation() c
     return is_set(yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "catmAISRDIStatusChPVclRangeTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1582,25 +1614,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmaisrd
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmAISRDIStatusChPVclRangeEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry>();
+        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeEntry>();
         c->parent = this;
-        catmaisrdistatuschpvclrangeentry.push_back(c);
+        catmaisrdistatuschpvclrangeentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : catmaisrdistatuschpvclrangeentry)
+    for (auto c : catmaisrdistatuschpvclrangeentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1611,22 +1643,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmaisrd
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "catmAISRDIStatusChPVclRangeEntry")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry::Catmaisrdistatuschpvclrangeentry()
+CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeEntry::CatmAISRDIStatusChPVclRangeEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::str, "atmVclVpi"},
@@ -1637,15 +1669,16 @@ CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvcl
     catmpvclaisrdirangestatuschend{YType::uint32, "catmPVclAISRDIRangeStatusChEnd"}
 {
 
-    yang_name = "catmAISRDIStatusChPVclRangeEntry"; yang_parent_name = "catmAISRDIStatusChPVclRangeTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmAISRDIStatusChPVclRangeEntry"; yang_parent_name = "catmAISRDIStatusChPVclRangeTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry::~Catmaisrdistatuschpvclrangeentry()
+CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeEntry::~CatmAISRDIStatusChPVclRangeEntry()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atmvclvpi.is_set
 	|| catmstatuschangepvclrangeindex.is_set
@@ -1655,7 +1688,7 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatusc
 	|| catmpvclaisrdirangestatuschend.is_set;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1667,21 +1700,24 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatusc
 	|| ydk::is_set(catmpvclaisrdirangestatuschend.yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/catmAISRDIStatusChPVclRangeTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "catmAISRDIStatusChPVclRangeEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVclVpi='" <<atmvclvpi <<"']" <<"[catmStatusChangePVclRangeIndex='" <<catmstatuschangepvclrangeindex <<"']";
+    path_buffer << "catmAISRDIStatusChPVclRangeEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(atmvclvpi, "atmVclVpi");
+    ADD_KEY_TOKEN(catmstatuschangepvclrangeindex, "catmStatusChangePVclRangeIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1697,19 +1733,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmaisrd
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1755,7 +1791,7 @@ void CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatusc
     }
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1787,26 +1823,29 @@ void CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatusc
     }
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatuschpvclrangetable::Catmaisrdistatuschpvclrangeentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVclVpi" || name == "catmStatusChangePVclRangeIndex" || name == "catmPVclAISRDILowerRangeValue" || name == "catmPVclAISRDIHigherRangeValue" || name == "catmPVclAISRDIRangeStatusChStart" || name == "catmPVclAISRDIRangeStatusChEnd")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangetable()
+CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeTable()
+    :
+    catmdownpvclrangeentry(this, {"ifindex", "atmvclvpi", "catmstatuschangepvclrangeindex"})
 {
 
-    yang_name = "catmDownPVclRangeTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmDownPVclRangeTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::~Catmdownpvclrangetable()
+CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::~CatmDownPVclRangeTable()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::has_data() const
 {
-    for (std::size_t index=0; index<catmdownpvclrangeentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<catmdownpvclrangeentry.len(); index++)
     {
         if(catmdownpvclrangeentry[index]->has_data())
             return true;
@@ -1814,9 +1853,9 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::has_data() const
     return false;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::has_operation() const
 {
-    for (std::size_t index=0; index<catmdownpvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmdownpvclrangeentry.len(); index++)
     {
         if(catmdownpvclrangeentry[index]->has_operation())
             return true;
@@ -1824,21 +1863,21 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "catmDownPVclRangeTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1847,25 +1886,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmdownp
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmDownPVclRangeEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry>();
+        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeEntry>();
         c->parent = this;
-        catmdownpvclrangeentry.push_back(c);
+        catmdownpvclrangeentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : catmdownpvclrangeentry)
+    for (auto c : catmdownpvclrangeentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1876,22 +1915,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmdownp
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "catmDownPVclRangeEntry")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry::Catmdownpvclrangeentry()
+CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeEntry::CatmDownPVclRangeEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::str, "atmVclVpi"},
@@ -1905,15 +1944,16 @@ CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry::Catmdown
     catmpvclrangefailurereason{YType::enumeration, "catmPVclRangeFailureReason"}
 {
 
-    yang_name = "catmDownPVclRangeEntry"; yang_parent_name = "catmDownPVclRangeTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmDownPVclRangeEntry"; yang_parent_name = "catmDownPVclRangeTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry::~Catmdownpvclrangeentry()
+CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeEntry::~CatmDownPVclRangeEntry()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atmvclvpi.is_set
 	|| catmstatuschangepvclrangeindex.is_set
@@ -1926,7 +1966,7 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry::has
 	|| catmpvclrangefailurereason.is_set;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1941,21 +1981,24 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry::has
 	|| ydk::is_set(catmpvclrangefailurereason.yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/catmDownPVclRangeTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "catmDownPVclRangeEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVclVpi='" <<atmvclvpi <<"']" <<"[catmStatusChangePVclRangeIndex='" <<catmstatuschangepvclrangeindex <<"']";
+    path_buffer << "catmDownPVclRangeEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(atmvclvpi, "atmVclVpi");
+    ADD_KEY_TOKEN(catmstatuschangepvclrangeindex, "catmStatusChangePVclRangeIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1974,19 +2017,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmdownp
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -2050,7 +2093,7 @@ void CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry::set
     }
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -2094,26 +2137,29 @@ void CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry::set
     }
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmdownpvclrangetable::Catmdownpvclrangeentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVclVpi" || name == "catmStatusChangePVclRangeIndex" || name == "catmDownPVclLowerRangeValue" || name == "catmDownPVclHigherRangeValue" || name == "catmDownPVclRangeStart" || name == "catmDownPVclRangeEnd" || name == "catmPrevUpPVclRangeStart" || name == "catmPrevUpPVclRangeEnd" || name == "catmPVclRangeFailureReason")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvcltable()
+CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclTable()
+    :
+    catmcurstatusuppvclentry(this, {"ifindex", "atmvclvpi", "atmvclvci"})
 {
 
-    yang_name = "catmCurStatusUpPVclTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmCurStatusUpPVclTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::~Catmcurstatusuppvcltable()
+CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::~CatmCurStatusUpPVclTable()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::has_data() const
 {
-    for (std::size_t index=0; index<catmcurstatusuppvclentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<catmcurstatusuppvclentry.len(); index++)
     {
         if(catmcurstatusuppvclentry[index]->has_data())
             return true;
@@ -2121,9 +2167,9 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::has_data() const
     return false;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::has_operation() const
 {
-    for (std::size_t index=0; index<catmcurstatusuppvclentry.size(); index++)
+    for (std::size_t index=0; index<catmcurstatusuppvclentry.len(); index++)
     {
         if(catmcurstatusuppvclentry[index]->has_operation())
             return true;
@@ -2131,21 +2177,21 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "catmCurStatusUpPVclTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2154,25 +2200,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmcurst
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmCurStatusUpPVclEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry>();
+        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclEntry>();
         c->parent = this;
-        catmcurstatusuppvclentry.push_back(c);
+        catmcurstatusuppvclentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : catmcurstatusuppvclentry)
+    for (auto c : catmcurstatusuppvclentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2183,22 +2229,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmcurst
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "catmCurStatusUpPVclEntry")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry::Catmcurstatusuppvclentry()
+CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclEntry::CatmCurStatusUpPVclEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::str, "atmVclVpi"},
@@ -2220,15 +2266,16 @@ CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry::Catm
     catmpvclrecoveryreason{YType::enumeration, "catmPVclRecoveryReason"}
 {
 
-    yang_name = "catmCurStatusUpPVclEntry"; yang_parent_name = "catmCurStatusUpPVclTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmCurStatusUpPVclEntry"; yang_parent_name = "catmCurStatusUpPVclTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry::~Catmcurstatusuppvclentry()
+CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclEntry::~CatmCurStatusUpPVclEntry()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atmvclvpi.is_set
 	|| atmvclvci.is_set
@@ -2249,7 +2296,7 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry:
 	|| catmpvclrecoveryreason.is_set;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -2272,21 +2319,24 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry:
 	|| ydk::is_set(catmpvclrecoveryreason.yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/catmCurStatusUpPVclTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "catmCurStatusUpPVclEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVclVpi='" <<atmvclvpi <<"']" <<"[atmVclVci='" <<atmvclvci <<"']";
+    path_buffer << "catmCurStatusUpPVclEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(atmvclvpi, "atmVclVpi");
+    ADD_KEY_TOKEN(atmvclvci, "atmVclVci");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2313,19 +2363,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmcurst
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -2437,7 +2487,7 @@ void CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry:
     }
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -2513,26 +2563,29 @@ void CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry:
     }
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmcurstatusuppvcltable::Catmcurstatusuppvclentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVclVpi" || name == "atmVclVci" || name == "catmPVclStatusUpTransition" || name == "catmPVclStatusUpStart" || name == "catmPVclStatusUpEnd" || name == "catmPVclSegCCStatusUpTransition" || name == "catmPVclSegCCStatusUpStart" || name == "catmPVclSegCCStatusUpEnd" || name == "catmPVclEndCCStatusUpTransition" || name == "catmPVclEndCCStatusUpStart" || name == "catmPVclEndCCStatusUpEnd" || name == "catmPVclAISRDIStatusUpTransition" || name == "catmPVclAISRDIStatusUpStart" || name == "catmPVclAISRDIStatusUpEnd" || name == "catmPVclCurRecoverTime" || name == "catmPVclPrevFailTime" || name == "catmPVclRecoveryReason")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangetable()
+CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeTable()
+    :
+    catmstatusuppvclrangeentry(this, {"ifindex", "atmvclvpi", "catmstatuschangepvclrangeindex"})
 {
 
-    yang_name = "catmStatusUpPVclRangeTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmStatusUpPVclRangeTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::~Catmstatusuppvclrangetable()
+CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::~CatmStatusUpPVclRangeTable()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::has_data() const
 {
-    for (std::size_t index=0; index<catmstatusuppvclrangeentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<catmstatusuppvclrangeentry.len(); index++)
     {
         if(catmstatusuppvclrangeentry[index]->has_data())
             return true;
@@ -2540,9 +2593,9 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::has_data() const
     return false;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::has_operation() const
 {
-    for (std::size_t index=0; index<catmstatusuppvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmstatusuppvclrangeentry.len(); index++)
     {
         if(catmstatusuppvclrangeentry[index]->has_operation())
             return true;
@@ -2550,21 +2603,21 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "catmStatusUpPVclRangeTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2573,25 +2626,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmstatu
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmStatusUpPVclRangeEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry>();
+        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeEntry>();
         c->parent = this;
-        catmstatusuppvclrangeentry.push_back(c);
+        catmstatusuppvclrangeentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : catmstatusuppvclrangeentry)
+    for (auto c : catmstatusuppvclrangeentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2602,22 +2655,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmstatu
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "catmStatusUpPVclRangeEntry")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry::Catmstatusuppvclrangeentry()
+CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeEntry::CatmStatusUpPVclRangeEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::str, "atmVclVpi"},
@@ -2628,15 +2681,16 @@ CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry::
     catmpvclrangestatusupend{YType::uint32, "catmPVclRangeStatusUpEnd"}
 {
 
-    yang_name = "catmStatusUpPVclRangeEntry"; yang_parent_name = "catmStatusUpPVclRangeTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmStatusUpPVclRangeEntry"; yang_parent_name = "catmStatusUpPVclRangeTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry::~Catmstatusuppvclrangeentry()
+CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeEntry::~CatmStatusUpPVclRangeEntry()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atmvclvpi.is_set
 	|| catmstatuschangepvclrangeindex.is_set
@@ -2646,7 +2700,7 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeen
 	|| catmpvclrangestatusupend.is_set;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -2658,21 +2712,24 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeen
 	|| ydk::is_set(catmpvclrangestatusupend.yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/catmStatusUpPVclRangeTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "catmStatusUpPVclRangeEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVclVpi='" <<atmvclvpi <<"']" <<"[catmStatusChangePVclRangeIndex='" <<catmstatuschangepvclrangeindex <<"']";
+    path_buffer << "catmStatusUpPVclRangeEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(atmvclvpi, "atmVclVpi");
+    ADD_KEY_TOKEN(catmstatuschangepvclrangeindex, "catmStatusChangePVclRangeIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2688,19 +2745,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmstatu
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -2746,7 +2803,7 @@ void CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeen
     }
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -2778,26 +2835,29 @@ void CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeen
     }
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmstatusuppvclrangetable::Catmstatusuppvclrangeentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVclVpi" || name == "catmStatusChangePVclRangeIndex" || name == "catmPVclUpLowerRangeValue" || name == "catmPVclUpHigherRangeValue" || name == "catmPVclRangeStatusUpStart" || name == "catmPVclRangeStatusUpEnd")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangetable()
+CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeTable()
+    :
+    catmsegccstatusuppvclrangeentry(this, {"ifindex", "atmvclvpi", "catmstatuschangepvclrangeindex"})
 {
 
-    yang_name = "catmSegCCStatusUpPVclRangeTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmSegCCStatusUpPVclRangeTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::~Catmsegccstatusuppvclrangetable()
+CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::~CatmSegCCStatusUpPVclRangeTable()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::has_data() const
 {
-    for (std::size_t index=0; index<catmsegccstatusuppvclrangeentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<catmsegccstatusuppvclrangeentry.len(); index++)
     {
         if(catmsegccstatusuppvclrangeentry[index]->has_data())
             return true;
@@ -2805,9 +2865,9 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::has_data() const
     return false;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::has_operation() const
 {
-    for (std::size_t index=0; index<catmsegccstatusuppvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmsegccstatusuppvclrangeentry.len(); index++)
     {
         if(catmsegccstatusuppvclrangeentry[index]->has_operation())
             return true;
@@ -2815,21 +2875,21 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::has_operation() co
     return is_set(yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "catmSegCCStatusUpPVclRangeTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2838,25 +2898,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmsegcc
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmSegCCStatusUpPVclRangeEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangeentry>();
+        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeEntry>();
         c->parent = this;
-        catmsegccstatusuppvclrangeentry.push_back(c);
+        catmsegccstatusuppvclrangeentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : catmsegccstatusuppvclrangeentry)
+    for (auto c : catmsegccstatusuppvclrangeentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2867,22 +2927,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmsegcc
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "catmSegCCStatusUpPVclRangeEntry")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangeentry::Catmsegccstatusuppvclrangeentry()
+CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeEntry::CatmSegCCStatusUpPVclRangeEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::str, "atmVclVpi"},
@@ -2893,15 +2953,16 @@ CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclra
     catmpvclsegccrangestatusupend{YType::uint32, "catmPVclSegCCRangeStatusUpEnd"}
 {
 
-    yang_name = "catmSegCCStatusUpPVclRangeEntry"; yang_parent_name = "catmSegCCStatusUpPVclRangeTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmSegCCStatusUpPVclRangeEntry"; yang_parent_name = "catmSegCCStatusUpPVclRangeTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangeentry::~Catmsegccstatusuppvclrangeentry()
+CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeEntry::~CatmSegCCStatusUpPVclRangeEntry()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangeentry::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atmvclvpi.is_set
 	|| catmstatuschangepvclrangeindex.is_set
@@ -2911,7 +2972,7 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusupp
 	|| catmpvclsegccrangestatusupend.is_set;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangeentry::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -2923,21 +2984,24 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusupp
 	|| ydk::is_set(catmpvclsegccrangestatusupend.yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangeentry::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/catmSegCCStatusUpPVclRangeTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangeentry::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "catmSegCCStatusUpPVclRangeEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVclVpi='" <<atmvclvpi <<"']" <<"[catmStatusChangePVclRangeIndex='" <<catmstatuschangepvclrangeindex <<"']";
+    path_buffer << "catmSegCCStatusUpPVclRangeEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(atmvclvpi, "atmVclVpi");
+    ADD_KEY_TOKEN(catmstatuschangepvclrangeindex, "catmStatusChangePVclRangeIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangeentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2953,19 +3017,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmsegcc
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangeentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangeentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -3011,7 +3075,7 @@ void CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusupp
     }
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangeentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -3043,26 +3107,29 @@ void CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusupp
     }
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmsegccstatusuppvclrangetable::Catmsegccstatusuppvclrangeentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVclVpi" || name == "catmStatusChangePVclRangeIndex" || name == "catmPVclSegCCUpLowerRangeValue" || name == "catmPVclSegCCUpHigherRangeValue" || name == "catmPVclSegCCRangeStatusUpStart" || name == "catmPVclSegCCRangeStatusUpEnd")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangetable()
+CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeTable()
+    :
+    catmendccstatusuppvclrangeentry(this, {"ifindex", "atmvclvpi", "catmstatuschangepvclrangeindex"})
 {
 
-    yang_name = "catmEndCCStatusUpPVclRangeTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmEndCCStatusUpPVclRangeTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::~Catmendccstatusuppvclrangetable()
+CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::~CatmEndCCStatusUpPVclRangeTable()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::has_data() const
 {
-    for (std::size_t index=0; index<catmendccstatusuppvclrangeentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<catmendccstatusuppvclrangeentry.len(); index++)
     {
         if(catmendccstatusuppvclrangeentry[index]->has_data())
             return true;
@@ -3070,9 +3137,9 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::has_data() const
     return false;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::has_operation() const
 {
-    for (std::size_t index=0; index<catmendccstatusuppvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmendccstatusuppvclrangeentry.len(); index++)
     {
         if(catmendccstatusuppvclrangeentry[index]->has_operation())
             return true;
@@ -3080,21 +3147,21 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::has_operation() co
     return is_set(yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "catmEndCCStatusUpPVclRangeTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3103,25 +3170,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmendcc
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmEndCCStatusUpPVclRangeEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry>();
+        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeEntry>();
         c->parent = this;
-        catmendccstatusuppvclrangeentry.push_back(c);
+        catmendccstatusuppvclrangeentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : catmendccstatusuppvclrangeentry)
+    for (auto c : catmendccstatusuppvclrangeentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3132,22 +3199,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmendcc
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "catmEndCCStatusUpPVclRangeEntry")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry::Catmendccstatusuppvclrangeentry()
+CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeEntry::CatmEndCCStatusUpPVclRangeEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::str, "atmVclVpi"},
@@ -3158,15 +3225,16 @@ CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclra
     catmpvclendccrangestatusupend{YType::uint32, "catmPVclEndCCRangeStatusUpEnd"}
 {
 
-    yang_name = "catmEndCCStatusUpPVclRangeEntry"; yang_parent_name = "catmEndCCStatusUpPVclRangeTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmEndCCStatusUpPVclRangeEntry"; yang_parent_name = "catmEndCCStatusUpPVclRangeTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry::~Catmendccstatusuppvclrangeentry()
+CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeEntry::~CatmEndCCStatusUpPVclRangeEntry()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atmvclvpi.is_set
 	|| catmstatuschangepvclrangeindex.is_set
@@ -3176,7 +3244,7 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusupp
 	|| catmpvclendccrangestatusupend.is_set;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -3188,21 +3256,24 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusupp
 	|| ydk::is_set(catmpvclendccrangestatusupend.yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/catmEndCCStatusUpPVclRangeTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "catmEndCCStatusUpPVclRangeEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVclVpi='" <<atmvclvpi <<"']" <<"[catmStatusChangePVclRangeIndex='" <<catmstatuschangepvclrangeindex <<"']";
+    path_buffer << "catmEndCCStatusUpPVclRangeEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(atmvclvpi, "atmVclVpi");
+    ADD_KEY_TOKEN(catmstatuschangepvclrangeindex, "catmStatusChangePVclRangeIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3218,19 +3289,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmendcc
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -3276,7 +3347,7 @@ void CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusupp
     }
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -3308,26 +3379,29 @@ void CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusupp
     }
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmendccstatusuppvclrangetable::Catmendccstatusuppvclrangeentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVclVpi" || name == "catmStatusChangePVclRangeIndex" || name == "catmPVclEndCCUpLowerRangeValue" || name == "catmPVclEndCCUpHigherRangeValue" || name == "catmPVclEndCCRangeStatusUpStart" || name == "catmPVclEndCCRangeStatusUpEnd")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangetable()
+CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeTable()
+    :
+    catmaisrdistatusuppvclrangeentry(this, {"ifindex", "atmvclvpi", "catmstatuschangepvclrangeindex"})
 {
 
-    yang_name = "catmAISRDIStatusUpPVclRangeTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmAISRDIStatusUpPVclRangeTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::~Catmaisrdistatusuppvclrangetable()
+CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::~CatmAISRDIStatusUpPVclRangeTable()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::has_data() const
 {
-    for (std::size_t index=0; index<catmaisrdistatusuppvclrangeentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<catmaisrdistatusuppvclrangeentry.len(); index++)
     {
         if(catmaisrdistatusuppvclrangeentry[index]->has_data())
             return true;
@@ -3335,9 +3409,9 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::has_data() const
     return false;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::has_operation() const
 {
-    for (std::size_t index=0; index<catmaisrdistatusuppvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmaisrdistatusuppvclrangeentry.len(); index++)
     {
         if(catmaisrdistatusuppvclrangeentry[index]->has_operation())
             return true;
@@ -3345,21 +3419,21 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::has_operation() c
     return is_set(yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "catmAISRDIStatusUpPVclRangeTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3368,25 +3442,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmaisrd
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmAISRDIStatusUpPVclRangeEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry>();
+        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeEntry>();
         c->parent = this;
-        catmaisrdistatusuppvclrangeentry.push_back(c);
+        catmaisrdistatusuppvclrangeentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : catmaisrdistatusuppvclrangeentry)
+    for (auto c : catmaisrdistatusuppvclrangeentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3397,22 +3471,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmaisrd
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "catmAISRDIStatusUpPVclRangeEntry")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry::Catmaisrdistatusuppvclrangeentry()
+CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeEntry::CatmAISRDIStatusUpPVclRangeEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::str, "atmVclVpi"},
@@ -3423,15 +3497,16 @@ CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvcl
     catmpvclaisrdirangestatusupend{YType::uint32, "catmPVclAISRDIRangeStatusUpEnd"}
 {
 
-    yang_name = "catmAISRDIStatusUpPVclRangeEntry"; yang_parent_name = "catmAISRDIStatusUpPVclRangeTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmAISRDIStatusUpPVclRangeEntry"; yang_parent_name = "catmAISRDIStatusUpPVclRangeTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry::~Catmaisrdistatusuppvclrangeentry()
+CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeEntry::~CatmAISRDIStatusUpPVclRangeEntry()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atmvclvpi.is_set
 	|| catmstatuschangepvclrangeindex.is_set
@@ -3441,7 +3516,7 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusu
 	|| catmpvclaisrdirangestatusupend.is_set;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -3453,21 +3528,24 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusu
 	|| ydk::is_set(catmpvclaisrdirangestatusupend.yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/catmAISRDIStatusUpPVclRangeTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "catmAISRDIStatusUpPVclRangeEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVclVpi='" <<atmvclvpi <<"']" <<"[catmStatusChangePVclRangeIndex='" <<catmstatuschangepvclrangeindex <<"']";
+    path_buffer << "catmAISRDIStatusUpPVclRangeEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(atmvclvpi, "atmVclVpi");
+    ADD_KEY_TOKEN(catmstatuschangepvclrangeindex, "catmStatusChangePVclRangeIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3483,19 +3561,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmaisrd
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -3541,7 +3619,7 @@ void CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusu
     }
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -3573,26 +3651,29 @@ void CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusu
     }
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmaisrdistatusuppvclrangetable::Catmaisrdistatusuppvclrangeentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVclVpi" || name == "catmStatusChangePVclRangeIndex" || name == "catmPVclAISRDIUpLowerRangeValue" || name == "catmPVclAISRDIUpHigherRangeValue" || name == "catmPVclAISRDIRangeStatusUpStart" || name == "catmPVclAISRDIRangeStatusUpEnd")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangetable()
+CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeTable()
+    :
+    catmuppvclrangeentry(this, {"ifindex", "atmvclvpi", "catmstatuschangepvclrangeindex"})
 {
 
-    yang_name = "catmUpPVclRangeTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmUpPVclRangeTable"; yang_parent_name = "CISCO-ATM-PVCTRAP-EXTN-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::~Catmuppvclrangetable()
+CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::~CatmUpPVclRangeTable()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::has_data() const
 {
-    for (std::size_t index=0; index<catmuppvclrangeentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<catmuppvclrangeentry.len(); index++)
     {
         if(catmuppvclrangeentry[index]->has_data())
             return true;
@@ -3600,9 +3681,9 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::has_data() const
     return false;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::has_operation() const
 {
-    for (std::size_t index=0; index<catmuppvclrangeentry.size(); index++)
+    for (std::size_t index=0; index<catmuppvclrangeentry.len(); index++)
     {
         if(catmuppvclrangeentry[index]->has_operation())
             return true;
@@ -3610,21 +3691,21 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "catmUpPVclRangeTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3633,25 +3714,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmuppvc
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmUpPVclRangeEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangeentry>();
+        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeEntry>();
         c->parent = this;
-        catmuppvclrangeentry.push_back(c);
+        catmuppvclrangeentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : catmuppvclrangeentry)
+    for (auto c : catmuppvclrangeentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3662,22 +3743,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmuppvc
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "catmUpPVclRangeEntry")
         return true;
     return false;
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangeentry::Catmuppvclrangeentry()
+CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeEntry::CatmUpPVclRangeEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::str, "atmVclVpi"},
@@ -3691,15 +3772,16 @@ CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangeentry::Catmuppvclra
     catmpvclrangerecoveryreason{YType::enumeration, "catmPVclRangeRecoveryReason"}
 {
 
-    yang_name = "catmUpPVclRangeEntry"; yang_parent_name = "catmUpPVclRangeTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catmUpPVclRangeEntry"; yang_parent_name = "catmUpPVclRangeTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangeentry::~Catmuppvclrangeentry()
+CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeEntry::~CatmUpPVclRangeEntry()
 {
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangeentry::has_data() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atmvclvpi.is_set
 	|| catmstatuschangepvclrangeindex.is_set
@@ -3712,7 +3794,7 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangeentry::has_dat
 	|| catmpvclrangerecoveryreason.is_set;
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangeentry::has_operation() const
+bool CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -3727,21 +3809,24 @@ bool CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangeentry::has_ope
 	|| ydk::is_set(catmpvclrangerecoveryreason.yfilter);
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangeentry::get_absolute_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ATM-PVCTRAP-EXTN-MIB:CISCO-ATM-PVCTRAP-EXTN-MIB/catmUpPVclRangeTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangeentry::get_segment_path() const
+std::string CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "catmUpPVclRangeEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVclVpi='" <<atmvclvpi <<"']" <<"[catmStatusChangePVclRangeIndex='" <<catmstatuschangepvclrangeindex <<"']";
+    path_buffer << "catmUpPVclRangeEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(atmvclvpi, "atmVclVpi");
+    ADD_KEY_TOKEN(catmstatuschangepvclrangeindex, "catmStatusChangePVclRangeIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangeentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3760,19 +3845,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::Catmuppvc
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangeentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangeentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -3836,7 +3921,7 @@ void CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangeentry::set_val
     }
 }
 
-void CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangeentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -3880,7 +3965,7 @@ void CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangeentry::set_fil
     }
 }
 
-bool CISCOATMPVCTRAPEXTNMIB::Catmuppvclrangetable::Catmuppvclrangeentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVclVpi" || name == "catmStatusChangePVclRangeIndex" || name == "catmUpPVclLowerRangeValue" || name == "catmUpPVclHigherRangeValue" || name == "catmUpPVclRangeStart" || name == "catmUpPVclRangeEnd" || name == "catmPrevDownPVclRangeStart" || name == "catmPrevDownPVclRangeEnd" || name == "catmPVclRangeRecoveryReason")
         return true;

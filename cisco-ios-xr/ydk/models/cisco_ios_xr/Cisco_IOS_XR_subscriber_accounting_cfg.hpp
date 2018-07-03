@@ -57,7 +57,7 @@ class SubscriberAccounting::PrepaidConfigurations : public ydk::Entity
 
         class PrepaidConfiguration; //type: SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_cfg::SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration> > prepaid_configuration;
+        ydk::YList prepaid_configuration;
         
 }; // SubscriberAccounting::PrepaidConfigurations
 

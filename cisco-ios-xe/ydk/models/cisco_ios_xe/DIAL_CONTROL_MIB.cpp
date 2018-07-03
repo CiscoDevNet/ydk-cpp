@@ -13,11 +13,11 @@ namespace DIAL_CONTROL_MIB {
 
 DIALCONTROLMIB::DIALCONTROLMIB()
     :
-    dialctlconfiguration(std::make_shared<DIALCONTROLMIB::Dialctlconfiguration>())
-	,callhistory(std::make_shared<DIALCONTROLMIB::Callhistory>())
-	,dialctlpeercfgtable(std::make_shared<DIALCONTROLMIB::Dialctlpeercfgtable>())
-	,callactivetable(std::make_shared<DIALCONTROLMIB::Callactivetable>())
-	,callhistorytable(std::make_shared<DIALCONTROLMIB::Callhistorytable>())
+    dialctlconfiguration(std::make_shared<DIALCONTROLMIB::DialCtlConfiguration>())
+    , callhistory(std::make_shared<DIALCONTROLMIB::CallHistory>())
+    , dialctlpeercfgtable(std::make_shared<DIALCONTROLMIB::DialCtlPeerCfgTable>())
+    , callactivetable(std::make_shared<DIALCONTROLMIB::CallActiveTable>())
+    , callhistorytable(std::make_shared<DIALCONTROLMIB::CallHistoryTable>())
 {
     dialctlconfiguration->parent = this;
     callhistory->parent = this;
@@ -25,7 +25,7 @@ DIALCONTROLMIB::DIALCONTROLMIB()
     callactivetable->parent = this;
     callhistorytable->parent = this;
 
-    yang_name = "DIAL-CONTROL-MIB"; yang_parent_name = "DIAL-CONTROL-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "DIAL-CONTROL-MIB"; yang_parent_name = "DIAL-CONTROL-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 DIALCONTROLMIB::~DIALCONTROLMIB()
@@ -34,6 +34,7 @@ DIALCONTROLMIB::~DIALCONTROLMIB()
 
 bool DIALCONTROLMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (dialctlconfiguration !=  nullptr && dialctlconfiguration->has_data())
 	|| (callhistory !=  nullptr && callhistory->has_data())
 	|| (dialctlpeercfgtable !=  nullptr && dialctlpeercfgtable->has_data())
@@ -73,7 +74,7 @@ std::shared_ptr<Entity> DIALCONTROLMIB::get_child_by_name(const std::string & ch
     {
         if(dialctlconfiguration == nullptr)
         {
-            dialctlconfiguration = std::make_shared<DIALCONTROLMIB::Dialctlconfiguration>();
+            dialctlconfiguration = std::make_shared<DIALCONTROLMIB::DialCtlConfiguration>();
         }
         return dialctlconfiguration;
     }
@@ -82,7 +83,7 @@ std::shared_ptr<Entity> DIALCONTROLMIB::get_child_by_name(const std::string & ch
     {
         if(callhistory == nullptr)
         {
-            callhistory = std::make_shared<DIALCONTROLMIB::Callhistory>();
+            callhistory = std::make_shared<DIALCONTROLMIB::CallHistory>();
         }
         return callhistory;
     }
@@ -91,7 +92,7 @@ std::shared_ptr<Entity> DIALCONTROLMIB::get_child_by_name(const std::string & ch
     {
         if(dialctlpeercfgtable == nullptr)
         {
-            dialctlpeercfgtable = std::make_shared<DIALCONTROLMIB::Dialctlpeercfgtable>();
+            dialctlpeercfgtable = std::make_shared<DIALCONTROLMIB::DialCtlPeerCfgTable>();
         }
         return dialctlpeercfgtable;
     }
@@ -100,7 +101,7 @@ std::shared_ptr<Entity> DIALCONTROLMIB::get_child_by_name(const std::string & ch
     {
         if(callactivetable == nullptr)
         {
-            callactivetable = std::make_shared<DIALCONTROLMIB::Callactivetable>();
+            callactivetable = std::make_shared<DIALCONTROLMIB::CallActiveTable>();
         }
         return callactivetable;
     }
@@ -109,7 +110,7 @@ std::shared_ptr<Entity> DIALCONTROLMIB::get_child_by_name(const std::string & ch
     {
         if(callhistorytable == nullptr)
         {
-            callhistorytable = std::make_shared<DIALCONTROLMIB::Callhistorytable>();
+            callhistorytable = std::make_shared<DIALCONTROLMIB::CallHistoryTable>();
         }
         return callhistorytable;
     }
@@ -189,47 +190,48 @@ bool DIALCONTROLMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-DIALCONTROLMIB::Dialctlconfiguration::Dialctlconfiguration()
+DIALCONTROLMIB::DialCtlConfiguration::DialCtlConfiguration()
     :
     dialctlacceptmode{YType::enumeration, "dialCtlAcceptMode"},
     dialctltrapenable{YType::enumeration, "dialCtlTrapEnable"}
 {
 
-    yang_name = "dialCtlConfiguration"; yang_parent_name = "DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dialCtlConfiguration"; yang_parent_name = "DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIALCONTROLMIB::Dialctlconfiguration::~Dialctlconfiguration()
+DIALCONTROLMIB::DialCtlConfiguration::~DialCtlConfiguration()
 {
 }
 
-bool DIALCONTROLMIB::Dialctlconfiguration::has_data() const
+bool DIALCONTROLMIB::DialCtlConfiguration::has_data() const
 {
+    if (is_presence_container) return true;
     return dialctlacceptmode.is_set
 	|| dialctltrapenable.is_set;
 }
 
-bool DIALCONTROLMIB::Dialctlconfiguration::has_operation() const
+bool DIALCONTROLMIB::DialCtlConfiguration::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dialctlacceptmode.yfilter)
 	|| ydk::is_set(dialctltrapenable.yfilter);
 }
 
-std::string DIALCONTROLMIB::Dialctlconfiguration::get_absolute_path() const
+std::string DIALCONTROLMIB::DialCtlConfiguration::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIAL-CONTROL-MIB:DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIALCONTROLMIB::Dialctlconfiguration::get_segment_path() const
+std::string DIALCONTROLMIB::DialCtlConfiguration::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dialCtlConfiguration";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::Dialctlconfiguration::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::DialCtlConfiguration::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -240,19 +242,19 @@ std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::Dialctlconfigurat
 
 }
 
-std::shared_ptr<Entity> DIALCONTROLMIB::Dialctlconfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIALCONTROLMIB::DialCtlConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::Dialctlconfiguration::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::DialCtlConfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIALCONTROLMIB::Dialctlconfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIALCONTROLMIB::DialCtlConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dialCtlAcceptMode")
     {
@@ -268,7 +270,7 @@ void DIALCONTROLMIB::Dialctlconfiguration::set_value(const std::string & value_p
     }
 }
 
-void DIALCONTROLMIB::Dialctlconfiguration::set_filter(const std::string & value_path, YFilter yfilter)
+void DIALCONTROLMIB::DialCtlConfiguration::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dialCtlAcceptMode")
     {
@@ -280,54 +282,55 @@ void DIALCONTROLMIB::Dialctlconfiguration::set_filter(const std::string & value_
     }
 }
 
-bool DIALCONTROLMIB::Dialctlconfiguration::has_leaf_or_child_of_name(const std::string & name) const
+bool DIALCONTROLMIB::DialCtlConfiguration::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dialCtlAcceptMode" || name == "dialCtlTrapEnable")
         return true;
     return false;
 }
 
-DIALCONTROLMIB::Callhistory::Callhistory()
+DIALCONTROLMIB::CallHistory::CallHistory()
     :
     callhistorytablemaxlength{YType::int32, "callHistoryTableMaxLength"},
     callhistoryretaintimer{YType::int32, "callHistoryRetainTimer"}
 {
 
-    yang_name = "callHistory"; yang_parent_name = "DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "callHistory"; yang_parent_name = "DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIALCONTROLMIB::Callhistory::~Callhistory()
+DIALCONTROLMIB::CallHistory::~CallHistory()
 {
 }
 
-bool DIALCONTROLMIB::Callhistory::has_data() const
+bool DIALCONTROLMIB::CallHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return callhistorytablemaxlength.is_set
 	|| callhistoryretaintimer.is_set;
 }
 
-bool DIALCONTROLMIB::Callhistory::has_operation() const
+bool DIALCONTROLMIB::CallHistory::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(callhistorytablemaxlength.yfilter)
 	|| ydk::is_set(callhistoryretaintimer.yfilter);
 }
 
-std::string DIALCONTROLMIB::Callhistory::get_absolute_path() const
+std::string DIALCONTROLMIB::CallHistory::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIAL-CONTROL-MIB:DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIALCONTROLMIB::Callhistory::get_segment_path() const
+std::string DIALCONTROLMIB::CallHistory::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "callHistory";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::Callhistory::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::CallHistory::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -338,19 +341,19 @@ std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::Callhistory::get_
 
 }
 
-std::shared_ptr<Entity> DIALCONTROLMIB::Callhistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIALCONTROLMIB::CallHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::Callhistory::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::CallHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIALCONTROLMIB::Callhistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIALCONTROLMIB::CallHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "callHistoryTableMaxLength")
     {
@@ -366,7 +369,7 @@ void DIALCONTROLMIB::Callhistory::set_value(const std::string & value_path, cons
     }
 }
 
-void DIALCONTROLMIB::Callhistory::set_filter(const std::string & value_path, YFilter yfilter)
+void DIALCONTROLMIB::CallHistory::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "callHistoryTableMaxLength")
     {
@@ -378,26 +381,29 @@ void DIALCONTROLMIB::Callhistory::set_filter(const std::string & value_path, YFi
     }
 }
 
-bool DIALCONTROLMIB::Callhistory::has_leaf_or_child_of_name(const std::string & name) const
+bool DIALCONTROLMIB::CallHistory::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "callHistoryTableMaxLength" || name == "callHistoryRetainTimer")
         return true;
     return false;
 }
 
-DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgtable()
+DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgTable()
+    :
+    dialctlpeercfgentry(this, {"dialctlpeercfgid", "ifindex"})
 {
 
-    yang_name = "dialCtlPeerCfgTable"; yang_parent_name = "DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dialCtlPeerCfgTable"; yang_parent_name = "DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIALCONTROLMIB::Dialctlpeercfgtable::~Dialctlpeercfgtable()
+DIALCONTROLMIB::DialCtlPeerCfgTable::~DialCtlPeerCfgTable()
 {
 }
 
-bool DIALCONTROLMIB::Dialctlpeercfgtable::has_data() const
+bool DIALCONTROLMIB::DialCtlPeerCfgTable::has_data() const
 {
-    for (std::size_t index=0; index<dialctlpeercfgentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dialctlpeercfgentry.len(); index++)
     {
         if(dialctlpeercfgentry[index]->has_data())
             return true;
@@ -405,9 +411,9 @@ bool DIALCONTROLMIB::Dialctlpeercfgtable::has_data() const
     return false;
 }
 
-bool DIALCONTROLMIB::Dialctlpeercfgtable::has_operation() const
+bool DIALCONTROLMIB::DialCtlPeerCfgTable::has_operation() const
 {
-    for (std::size_t index=0; index<dialctlpeercfgentry.size(); index++)
+    for (std::size_t index=0; index<dialctlpeercfgentry.len(); index++)
     {
         if(dialctlpeercfgentry[index]->has_operation())
             return true;
@@ -415,21 +421,21 @@ bool DIALCONTROLMIB::Dialctlpeercfgtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DIALCONTROLMIB::Dialctlpeercfgtable::get_absolute_path() const
+std::string DIALCONTROLMIB::DialCtlPeerCfgTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIAL-CONTROL-MIB:DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIALCONTROLMIB::Dialctlpeercfgtable::get_segment_path() const
+std::string DIALCONTROLMIB::DialCtlPeerCfgTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dialCtlPeerCfgTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::Dialctlpeercfgtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::DialCtlPeerCfgTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -438,25 +444,25 @@ std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::Dialctlpeercfgtab
 
 }
 
-std::shared_ptr<Entity> DIALCONTROLMIB::Dialctlpeercfgtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIALCONTROLMIB::DialCtlPeerCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dialCtlPeerCfgEntry")
     {
-        auto c = std::make_shared<DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry>();
+        auto c = std::make_shared<DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry>();
         c->parent = this;
-        dialctlpeercfgentry.push_back(c);
+        dialctlpeercfgentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::Dialctlpeercfgtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::DialCtlPeerCfgTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dialctlpeercfgentry)
+    for (auto c : dialctlpeercfgentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -467,22 +473,22 @@ std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::Dialctlpeercfgtab
     return children;
 }
 
-void DIALCONTROLMIB::Dialctlpeercfgtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIALCONTROLMIB::DialCtlPeerCfgTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DIALCONTROLMIB::Dialctlpeercfgtable::set_filter(const std::string & value_path, YFilter yfilter)
+void DIALCONTROLMIB::DialCtlPeerCfgTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DIALCONTROLMIB::Dialctlpeercfgtable::has_leaf_or_child_of_name(const std::string & name) const
+bool DIALCONTROLMIB::DialCtlPeerCfgTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dialCtlPeerCfgEntry")
         return true;
     return false;
 }
 
-DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfgentry()
+DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgEntry()
     :
     dialctlpeercfgid{YType::int32, "dialCtlPeerCfgId"},
     ifindex{YType::str, "ifIndex"},
@@ -515,15 +521,16 @@ DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfgentry()
     dialctlpeerstatslastsetuptime{YType::uint32, "dialCtlPeerStatsLastSetupTime"}
 {
 
-    yang_name = "dialCtlPeerCfgEntry"; yang_parent_name = "dialCtlPeerCfgTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dialCtlPeerCfgEntry"; yang_parent_name = "dialCtlPeerCfgTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::~Dialctlpeercfgentry()
+DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::~DialCtlPeerCfgEntry()
 {
 }
 
-bool DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::has_data() const
+bool DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dialctlpeercfgid.is_set
 	|| ifindex.is_set
 	|| dialctlpeercfgiftype.is_set
@@ -555,7 +562,7 @@ bool DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::has_data() const
 	|| dialctlpeerstatslastsetuptime.is_set;
 }
 
-bool DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::has_operation() const
+bool DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dialctlpeercfgid.yfilter)
@@ -589,21 +596,23 @@ bool DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::has_operation() c
 	|| ydk::is_set(dialctlpeerstatslastsetuptime.yfilter);
 }
 
-std::string DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::get_absolute_path() const
+std::string DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIAL-CONTROL-MIB:DIAL-CONTROL-MIB/dialCtlPeerCfgTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::get_segment_path() const
+std::string DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dialCtlPeerCfgEntry" <<"[dialCtlPeerCfgId='" <<dialctlpeercfgid <<"']" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "dialCtlPeerCfgEntry";
+    ADD_KEY_TOKEN(dialctlpeercfgid, "dialCtlPeerCfgId");
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -641,19 +650,19 @@ std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::Dialctlpeercfgtab
 
 }
 
-std::shared_ptr<Entity> DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dialCtlPeerCfgId")
     {
@@ -831,7 +840,7 @@ void DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::set_value(const s
     }
 }
 
-void DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dialCtlPeerCfgId")
     {
@@ -951,26 +960,29 @@ void DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::set_filter(const 
     }
 }
 
-bool DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dialCtlPeerCfgId" || name == "ifIndex" || name == "dialCtlPeerCfgIfType" || name == "dialCtlPeerCfgLowerIf" || name == "dialCtlPeerCfgOriginateAddress" || name == "dialCtlPeerCfgAnswerAddress" || name == "dialCtlPeerCfgSubAddress" || name == "dialCtlPeerCfgClosedUserGroup" || name == "dialCtlPeerCfgSpeed" || name == "dialCtlPeerCfgInfoType" || name == "dialCtlPeerCfgPermission" || name == "dialCtlPeerCfgInactivityTimer" || name == "dialCtlPeerCfgMinDuration" || name == "dialCtlPeerCfgMaxDuration" || name == "dialCtlPeerCfgCarrierDelay" || name == "dialCtlPeerCfgCallRetries" || name == "dialCtlPeerCfgRetryDelay" || name == "dialCtlPeerCfgFailureDelay" || name == "dialCtlPeerCfgTrapEnable" || name == "dialCtlPeerCfgStatus" || name == "dialCtlPeerStatsConnectTime" || name == "dialCtlPeerStatsChargedUnits" || name == "dialCtlPeerStatsSuccessCalls" || name == "dialCtlPeerStatsFailCalls" || name == "dialCtlPeerStatsAcceptCalls" || name == "dialCtlPeerStatsRefuseCalls" || name == "dialCtlPeerStatsLastDisconnectCause" || name == "dialCtlPeerStatsLastDisconnectText" || name == "dialCtlPeerStatsLastSetupTime")
         return true;
     return false;
 }
 
-DIALCONTROLMIB::Callactivetable::Callactivetable()
+DIALCONTROLMIB::CallActiveTable::CallActiveTable()
+    :
+    callactiveentry(this, {"callactivesetuptime", "callactiveindex"})
 {
 
-    yang_name = "callActiveTable"; yang_parent_name = "DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "callActiveTable"; yang_parent_name = "DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIALCONTROLMIB::Callactivetable::~Callactivetable()
+DIALCONTROLMIB::CallActiveTable::~CallActiveTable()
 {
 }
 
-bool DIALCONTROLMIB::Callactivetable::has_data() const
+bool DIALCONTROLMIB::CallActiveTable::has_data() const
 {
-    for (std::size_t index=0; index<callactiveentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<callactiveentry.len(); index++)
     {
         if(callactiveentry[index]->has_data())
             return true;
@@ -978,9 +990,9 @@ bool DIALCONTROLMIB::Callactivetable::has_data() const
     return false;
 }
 
-bool DIALCONTROLMIB::Callactivetable::has_operation() const
+bool DIALCONTROLMIB::CallActiveTable::has_operation() const
 {
-    for (std::size_t index=0; index<callactiveentry.size(); index++)
+    for (std::size_t index=0; index<callactiveentry.len(); index++)
     {
         if(callactiveentry[index]->has_operation())
             return true;
@@ -988,21 +1000,21 @@ bool DIALCONTROLMIB::Callactivetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DIALCONTROLMIB::Callactivetable::get_absolute_path() const
+std::string DIALCONTROLMIB::CallActiveTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIAL-CONTROL-MIB:DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIALCONTROLMIB::Callactivetable::get_segment_path() const
+std::string DIALCONTROLMIB::CallActiveTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "callActiveTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::Callactivetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::CallActiveTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1011,25 +1023,25 @@ std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::Callactivetable::
 
 }
 
-std::shared_ptr<Entity> DIALCONTROLMIB::Callactivetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIALCONTROLMIB::CallActiveTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "callActiveEntry")
     {
-        auto c = std::make_shared<DIALCONTROLMIB::Callactivetable::Callactiveentry>();
+        auto c = std::make_shared<DIALCONTROLMIB::CallActiveTable::CallActiveEntry>();
         c->parent = this;
-        callactiveentry.push_back(c);
+        callactiveentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::Callactivetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::CallActiveTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : callactiveentry)
+    for (auto c : callactiveentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1040,22 +1052,22 @@ std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::Callactivetable::
     return children;
 }
 
-void DIALCONTROLMIB::Callactivetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIALCONTROLMIB::CallActiveTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DIALCONTROLMIB::Callactivetable::set_filter(const std::string & value_path, YFilter yfilter)
+void DIALCONTROLMIB::CallActiveTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DIALCONTROLMIB::Callactivetable::has_leaf_or_child_of_name(const std::string & name) const
+bool DIALCONTROLMIB::CallActiveTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "callActiveEntry")
         return true;
     return false;
 }
 
-DIALCONTROLMIB::Callactivetable::Callactiveentry::Callactiveentry()
+DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveEntry()
     :
     callactivesetuptime{YType::uint32, "callActiveSetupTime"},
     callactiveindex{YType::int32, "callActiveIndex"},
@@ -1075,15 +1087,16 @@ DIALCONTROLMIB::Callactivetable::Callactiveentry::Callactiveentry()
     callactivereceivebytes{YType::uint32, "callActiveReceiveBytes"}
 {
 
-    yang_name = "callActiveEntry"; yang_parent_name = "callActiveTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "callActiveEntry"; yang_parent_name = "callActiveTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIALCONTROLMIB::Callactivetable::Callactiveentry::~Callactiveentry()
+DIALCONTROLMIB::CallActiveTable::CallActiveEntry::~CallActiveEntry()
 {
 }
 
-bool DIALCONTROLMIB::Callactivetable::Callactiveentry::has_data() const
+bool DIALCONTROLMIB::CallActiveTable::CallActiveEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return callactivesetuptime.is_set
 	|| callactiveindex.is_set
 	|| callactivepeeraddress.is_set
@@ -1102,7 +1115,7 @@ bool DIALCONTROLMIB::Callactivetable::Callactiveentry::has_data() const
 	|| callactivereceivebytes.is_set;
 }
 
-bool DIALCONTROLMIB::Callactivetable::Callactiveentry::has_operation() const
+bool DIALCONTROLMIB::CallActiveTable::CallActiveEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(callactivesetuptime.yfilter)
@@ -1123,21 +1136,23 @@ bool DIALCONTROLMIB::Callactivetable::Callactiveentry::has_operation() const
 	|| ydk::is_set(callactivereceivebytes.yfilter);
 }
 
-std::string DIALCONTROLMIB::Callactivetable::Callactiveentry::get_absolute_path() const
+std::string DIALCONTROLMIB::CallActiveTable::CallActiveEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIAL-CONTROL-MIB:DIAL-CONTROL-MIB/callActiveTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIALCONTROLMIB::Callactivetable::Callactiveentry::get_segment_path() const
+std::string DIALCONTROLMIB::CallActiveTable::CallActiveEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "callActiveEntry" <<"[callActiveSetupTime='" <<callactivesetuptime <<"']" <<"[callActiveIndex='" <<callactiveindex <<"']";
+    path_buffer << "callActiveEntry";
+    ADD_KEY_TOKEN(callactivesetuptime, "callActiveSetupTime");
+    ADD_KEY_TOKEN(callactiveindex, "callActiveIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::Callactivetable::Callactiveentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::CallActiveTable::CallActiveEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1162,19 +1177,19 @@ std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::Callactivetable::
 
 }
 
-std::shared_ptr<Entity> DIALCONTROLMIB::Callactivetable::Callactiveentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIALCONTROLMIB::CallActiveTable::CallActiveEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::Callactivetable::Callactiveentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::CallActiveTable::CallActiveEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIALCONTROLMIB::Callactivetable::Callactiveentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIALCONTROLMIB::CallActiveTable::CallActiveEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "callActiveSetupTime")
     {
@@ -1274,7 +1289,7 @@ void DIALCONTROLMIB::Callactivetable::Callactiveentry::set_value(const std::stri
     }
 }
 
-void DIALCONTROLMIB::Callactivetable::Callactiveentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DIALCONTROLMIB::CallActiveTable::CallActiveEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "callActiveSetupTime")
     {
@@ -1342,26 +1357,29 @@ void DIALCONTROLMIB::Callactivetable::Callactiveentry::set_filter(const std::str
     }
 }
 
-bool DIALCONTROLMIB::Callactivetable::Callactiveentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DIALCONTROLMIB::CallActiveTable::CallActiveEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "callActiveSetupTime" || name == "callActiveIndex" || name == "callActivePeerAddress" || name == "callActivePeerSubAddress" || name == "callActivePeerId" || name == "callActivePeerIfIndex" || name == "callActiveLogicalIfIndex" || name == "callActiveConnectTime" || name == "callActiveCallState" || name == "callActiveCallOrigin" || name == "callActiveChargedUnits" || name == "callActiveInfoType" || name == "callActiveTransmitPackets" || name == "callActiveTransmitBytes" || name == "callActiveReceivePackets" || name == "callActiveReceiveBytes")
         return true;
     return false;
 }
 
-DIALCONTROLMIB::Callhistorytable::Callhistorytable()
+DIALCONTROLMIB::CallHistoryTable::CallHistoryTable()
+    :
+    callhistoryentry(this, {"callactivesetuptime", "callactiveindex"})
 {
 
-    yang_name = "callHistoryTable"; yang_parent_name = "DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "callHistoryTable"; yang_parent_name = "DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIALCONTROLMIB::Callhistorytable::~Callhistorytable()
+DIALCONTROLMIB::CallHistoryTable::~CallHistoryTable()
 {
 }
 
-bool DIALCONTROLMIB::Callhistorytable::has_data() const
+bool DIALCONTROLMIB::CallHistoryTable::has_data() const
 {
-    for (std::size_t index=0; index<callhistoryentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<callhistoryentry.len(); index++)
     {
         if(callhistoryentry[index]->has_data())
             return true;
@@ -1369,9 +1387,9 @@ bool DIALCONTROLMIB::Callhistorytable::has_data() const
     return false;
 }
 
-bool DIALCONTROLMIB::Callhistorytable::has_operation() const
+bool DIALCONTROLMIB::CallHistoryTable::has_operation() const
 {
-    for (std::size_t index=0; index<callhistoryentry.size(); index++)
+    for (std::size_t index=0; index<callhistoryentry.len(); index++)
     {
         if(callhistoryentry[index]->has_operation())
             return true;
@@ -1379,21 +1397,21 @@ bool DIALCONTROLMIB::Callhistorytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DIALCONTROLMIB::Callhistorytable::get_absolute_path() const
+std::string DIALCONTROLMIB::CallHistoryTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIAL-CONTROL-MIB:DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIALCONTROLMIB::Callhistorytable::get_segment_path() const
+std::string DIALCONTROLMIB::CallHistoryTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "callHistoryTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::Callhistorytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::CallHistoryTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1402,25 +1420,25 @@ std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::Callhistorytable:
 
 }
 
-std::shared_ptr<Entity> DIALCONTROLMIB::Callhistorytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIALCONTROLMIB::CallHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "callHistoryEntry")
     {
-        auto c = std::make_shared<DIALCONTROLMIB::Callhistorytable::Callhistoryentry>();
+        auto c = std::make_shared<DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry>();
         c->parent = this;
-        callhistoryentry.push_back(c);
+        callhistoryentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::Callhistorytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::CallHistoryTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : callhistoryentry)
+    for (auto c : callhistoryentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1431,22 +1449,22 @@ std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::Callhistorytable:
     return children;
 }
 
-void DIALCONTROLMIB::Callhistorytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIALCONTROLMIB::CallHistoryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DIALCONTROLMIB::Callhistorytable::set_filter(const std::string & value_path, YFilter yfilter)
+void DIALCONTROLMIB::CallHistoryTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DIALCONTROLMIB::Callhistorytable::has_leaf_or_child_of_name(const std::string & name) const
+bool DIALCONTROLMIB::CallHistoryTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "callHistoryEntry")
         return true;
     return false;
 }
 
-DIALCONTROLMIB::Callhistorytable::Callhistoryentry::Callhistoryentry()
+DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::CallHistoryEntry()
     :
     callactivesetuptime{YType::str, "callActiveSetupTime"},
     callactiveindex{YType::str, "callActiveIndex"},
@@ -1468,15 +1486,16 @@ DIALCONTROLMIB::Callhistorytable::Callhistoryentry::Callhistoryentry()
     callhistoryreceivebytes{YType::uint32, "callHistoryReceiveBytes"}
 {
 
-    yang_name = "callHistoryEntry"; yang_parent_name = "callHistoryTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "callHistoryEntry"; yang_parent_name = "callHistoryTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DIALCONTROLMIB::Callhistorytable::Callhistoryentry::~Callhistoryentry()
+DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::~CallHistoryEntry()
 {
 }
 
-bool DIALCONTROLMIB::Callhistorytable::Callhistoryentry::has_data() const
+bool DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return callactivesetuptime.is_set
 	|| callactiveindex.is_set
 	|| callhistorypeeraddress.is_set
@@ -1497,7 +1516,7 @@ bool DIALCONTROLMIB::Callhistorytable::Callhistoryentry::has_data() const
 	|| callhistoryreceivebytes.is_set;
 }
 
-bool DIALCONTROLMIB::Callhistorytable::Callhistoryentry::has_operation() const
+bool DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(callactivesetuptime.yfilter)
@@ -1520,21 +1539,23 @@ bool DIALCONTROLMIB::Callhistorytable::Callhistoryentry::has_operation() const
 	|| ydk::is_set(callhistoryreceivebytes.yfilter);
 }
 
-std::string DIALCONTROLMIB::Callhistorytable::Callhistoryentry::get_absolute_path() const
+std::string DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DIAL-CONTROL-MIB:DIAL-CONTROL-MIB/callHistoryTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DIALCONTROLMIB::Callhistorytable::Callhistoryentry::get_segment_path() const
+std::string DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "callHistoryEntry" <<"[callActiveSetupTime='" <<callactivesetuptime <<"']" <<"[callActiveIndex='" <<callactiveindex <<"']";
+    path_buffer << "callHistoryEntry";
+    ADD_KEY_TOKEN(callactivesetuptime, "callActiveSetupTime");
+    ADD_KEY_TOKEN(callactiveindex, "callActiveIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::Callhistorytable::Callhistoryentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1561,19 +1582,19 @@ std::vector<std::pair<std::string, LeafData> > DIALCONTROLMIB::Callhistorytable:
 
 }
 
-std::shared_ptr<Entity> DIALCONTROLMIB::Callhistorytable::Callhistoryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::Callhistorytable::Callhistoryentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DIALCONTROLMIB::Callhistorytable::Callhistoryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "callActiveSetupTime")
     {
@@ -1685,7 +1706,7 @@ void DIALCONTROLMIB::Callhistorytable::Callhistoryentry::set_value(const std::st
     }
 }
 
-void DIALCONTROLMIB::Callhistorytable::Callhistoryentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "callActiveSetupTime")
     {
@@ -1761,74 +1782,74 @@ void DIALCONTROLMIB::Callhistorytable::Callhistoryentry::set_filter(const std::s
     }
 }
 
-bool DIALCONTROLMIB::Callhistorytable::Callhistoryentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "callActiveSetupTime" || name == "callActiveIndex" || name == "callHistoryPeerAddress" || name == "callHistoryPeerSubAddress" || name == "callHistoryPeerId" || name == "callHistoryPeerIfIndex" || name == "callHistoryLogicalIfIndex" || name == "callHistoryDisconnectCause" || name == "callHistoryDisconnectText" || name == "callHistoryConnectTime" || name == "callHistoryDisconnectTime" || name == "callHistoryCallOrigin" || name == "callHistoryChargedUnits" || name == "callHistoryInfoType" || name == "callHistoryTransmitPackets" || name == "callHistoryTransmitBytes" || name == "callHistoryReceivePackets" || name == "callHistoryReceiveBytes")
         return true;
     return false;
 }
 
-const Enum::YLeaf DIALCONTROLMIB::Dialctlconfiguration::Dialctlacceptmode::acceptNone {1, "acceptNone"};
-const Enum::YLeaf DIALCONTROLMIB::Dialctlconfiguration::Dialctlacceptmode::acceptAll {2, "acceptAll"};
-const Enum::YLeaf DIALCONTROLMIB::Dialctlconfiguration::Dialctlacceptmode::acceptKnown {3, "acceptKnown"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlConfiguration::DialCtlAcceptMode::acceptNone {1, "acceptNone"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlConfiguration::DialCtlAcceptMode::acceptAll {2, "acceptAll"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlConfiguration::DialCtlAcceptMode::acceptKnown {3, "acceptKnown"};
 
-const Enum::YLeaf DIALCONTROLMIB::Dialctlconfiguration::Dialctltrapenable::enabled {1, "enabled"};
-const Enum::YLeaf DIALCONTROLMIB::Dialctlconfiguration::Dialctltrapenable::disabled {2, "disabled"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlConfiguration::DialCtlTrapEnable::enabled {1, "enabled"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlConfiguration::DialCtlTrapEnable::disabled {2, "disabled"};
 
-const Enum::YLeaf DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfginfotype::other {1, "other"};
-const Enum::YLeaf DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfginfotype::speech {2, "speech"};
-const Enum::YLeaf DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfginfotype::unrestrictedDigital {3, "unrestrictedDigital"};
-const Enum::YLeaf DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfginfotype::unrestrictedDigital56 {4, "unrestrictedDigital56"};
-const Enum::YLeaf DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfginfotype::restrictedDigital {5, "restrictedDigital"};
-const Enum::YLeaf DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfginfotype::audio31 {6, "audio31"};
-const Enum::YLeaf DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfginfotype::audio7 {7, "audio7"};
-const Enum::YLeaf DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfginfotype::video {8, "video"};
-const Enum::YLeaf DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfginfotype::packetSwitched {9, "packetSwitched"};
-const Enum::YLeaf DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfginfotype::fax {10, "fax"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgInfoType::other {1, "other"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgInfoType::speech {2, "speech"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgInfoType::unrestrictedDigital {3, "unrestrictedDigital"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgInfoType::unrestrictedDigital56 {4, "unrestrictedDigital56"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgInfoType::restrictedDigital {5, "restrictedDigital"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgInfoType::audio31 {6, "audio31"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgInfoType::audio7 {7, "audio7"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgInfoType::video {8, "video"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgInfoType::packetSwitched {9, "packetSwitched"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgInfoType::fax {10, "fax"};
 
-const Enum::YLeaf DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfgpermission::originate {1, "originate"};
-const Enum::YLeaf DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfgpermission::answer {2, "answer"};
-const Enum::YLeaf DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfgpermission::both {3, "both"};
-const Enum::YLeaf DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfgpermission::callback {4, "callback"};
-const Enum::YLeaf DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfgpermission::none {5, "none"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgPermission::originate {1, "originate"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgPermission::answer {2, "answer"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgPermission::both {3, "both"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgPermission::callback {4, "callback"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgPermission::none {5, "none"};
 
-const Enum::YLeaf DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfgtrapenable::enabled {1, "enabled"};
-const Enum::YLeaf DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfgtrapenable::disabled {2, "disabled"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgTrapEnable::enabled {1, "enabled"};
+const Enum::YLeaf DIALCONTROLMIB::DialCtlPeerCfgTable::DialCtlPeerCfgEntry::DialCtlPeerCfgTrapEnable::disabled {2, "disabled"};
 
-const Enum::YLeaf DIALCONTROLMIB::Callactivetable::Callactiveentry::Callactivecallstate::unknown {1, "unknown"};
-const Enum::YLeaf DIALCONTROLMIB::Callactivetable::Callactiveentry::Callactivecallstate::connecting {2, "connecting"};
-const Enum::YLeaf DIALCONTROLMIB::Callactivetable::Callactiveentry::Callactivecallstate::connected {3, "connected"};
-const Enum::YLeaf DIALCONTROLMIB::Callactivetable::Callactiveentry::Callactivecallstate::active {4, "active"};
+const Enum::YLeaf DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveCallState::unknown {1, "unknown"};
+const Enum::YLeaf DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveCallState::connecting {2, "connecting"};
+const Enum::YLeaf DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveCallState::connected {3, "connected"};
+const Enum::YLeaf DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveCallState::active {4, "active"};
 
-const Enum::YLeaf DIALCONTROLMIB::Callactivetable::Callactiveentry::Callactivecallorigin::originate {1, "originate"};
-const Enum::YLeaf DIALCONTROLMIB::Callactivetable::Callactiveentry::Callactivecallorigin::answer {2, "answer"};
-const Enum::YLeaf DIALCONTROLMIB::Callactivetable::Callactiveentry::Callactivecallorigin::callback {3, "callback"};
+const Enum::YLeaf DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveCallOrigin::originate {1, "originate"};
+const Enum::YLeaf DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveCallOrigin::answer {2, "answer"};
+const Enum::YLeaf DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveCallOrigin::callback {3, "callback"};
 
-const Enum::YLeaf DIALCONTROLMIB::Callactivetable::Callactiveentry::Callactiveinfotype::other {1, "other"};
-const Enum::YLeaf DIALCONTROLMIB::Callactivetable::Callactiveentry::Callactiveinfotype::speech {2, "speech"};
-const Enum::YLeaf DIALCONTROLMIB::Callactivetable::Callactiveentry::Callactiveinfotype::unrestrictedDigital {3, "unrestrictedDigital"};
-const Enum::YLeaf DIALCONTROLMIB::Callactivetable::Callactiveentry::Callactiveinfotype::unrestrictedDigital56 {4, "unrestrictedDigital56"};
-const Enum::YLeaf DIALCONTROLMIB::Callactivetable::Callactiveentry::Callactiveinfotype::restrictedDigital {5, "restrictedDigital"};
-const Enum::YLeaf DIALCONTROLMIB::Callactivetable::Callactiveentry::Callactiveinfotype::audio31 {6, "audio31"};
-const Enum::YLeaf DIALCONTROLMIB::Callactivetable::Callactiveentry::Callactiveinfotype::audio7 {7, "audio7"};
-const Enum::YLeaf DIALCONTROLMIB::Callactivetable::Callactiveentry::Callactiveinfotype::video {8, "video"};
-const Enum::YLeaf DIALCONTROLMIB::Callactivetable::Callactiveentry::Callactiveinfotype::packetSwitched {9, "packetSwitched"};
-const Enum::YLeaf DIALCONTROLMIB::Callactivetable::Callactiveentry::Callactiveinfotype::fax {10, "fax"};
+const Enum::YLeaf DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveInfoType::other {1, "other"};
+const Enum::YLeaf DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveInfoType::speech {2, "speech"};
+const Enum::YLeaf DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveInfoType::unrestrictedDigital {3, "unrestrictedDigital"};
+const Enum::YLeaf DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveInfoType::unrestrictedDigital56 {4, "unrestrictedDigital56"};
+const Enum::YLeaf DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveInfoType::restrictedDigital {5, "restrictedDigital"};
+const Enum::YLeaf DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveInfoType::audio31 {6, "audio31"};
+const Enum::YLeaf DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveInfoType::audio7 {7, "audio7"};
+const Enum::YLeaf DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveInfoType::video {8, "video"};
+const Enum::YLeaf DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveInfoType::packetSwitched {9, "packetSwitched"};
+const Enum::YLeaf DIALCONTROLMIB::CallActiveTable::CallActiveEntry::CallActiveInfoType::fax {10, "fax"};
 
-const Enum::YLeaf DIALCONTROLMIB::Callhistorytable::Callhistoryentry::Callhistorycallorigin::originate {1, "originate"};
-const Enum::YLeaf DIALCONTROLMIB::Callhistorytable::Callhistoryentry::Callhistorycallorigin::answer {2, "answer"};
-const Enum::YLeaf DIALCONTROLMIB::Callhistorytable::Callhistoryentry::Callhistorycallorigin::callback {3, "callback"};
+const Enum::YLeaf DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::CallHistoryCallOrigin::originate {1, "originate"};
+const Enum::YLeaf DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::CallHistoryCallOrigin::answer {2, "answer"};
+const Enum::YLeaf DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::CallHistoryCallOrigin::callback {3, "callback"};
 
-const Enum::YLeaf DIALCONTROLMIB::Callhistorytable::Callhistoryentry::Callhistoryinfotype::other {1, "other"};
-const Enum::YLeaf DIALCONTROLMIB::Callhistorytable::Callhistoryentry::Callhistoryinfotype::speech {2, "speech"};
-const Enum::YLeaf DIALCONTROLMIB::Callhistorytable::Callhistoryentry::Callhistoryinfotype::unrestrictedDigital {3, "unrestrictedDigital"};
-const Enum::YLeaf DIALCONTROLMIB::Callhistorytable::Callhistoryentry::Callhistoryinfotype::unrestrictedDigital56 {4, "unrestrictedDigital56"};
-const Enum::YLeaf DIALCONTROLMIB::Callhistorytable::Callhistoryentry::Callhistoryinfotype::restrictedDigital {5, "restrictedDigital"};
-const Enum::YLeaf DIALCONTROLMIB::Callhistorytable::Callhistoryentry::Callhistoryinfotype::audio31 {6, "audio31"};
-const Enum::YLeaf DIALCONTROLMIB::Callhistorytable::Callhistoryentry::Callhistoryinfotype::audio7 {7, "audio7"};
-const Enum::YLeaf DIALCONTROLMIB::Callhistorytable::Callhistoryentry::Callhistoryinfotype::video {8, "video"};
-const Enum::YLeaf DIALCONTROLMIB::Callhistorytable::Callhistoryentry::Callhistoryinfotype::packetSwitched {9, "packetSwitched"};
-const Enum::YLeaf DIALCONTROLMIB::Callhistorytable::Callhistoryentry::Callhistoryinfotype::fax {10, "fax"};
+const Enum::YLeaf DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::CallHistoryInfoType::other {1, "other"};
+const Enum::YLeaf DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::CallHistoryInfoType::speech {2, "speech"};
+const Enum::YLeaf DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::CallHistoryInfoType::unrestrictedDigital {3, "unrestrictedDigital"};
+const Enum::YLeaf DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::CallHistoryInfoType::unrestrictedDigital56 {4, "unrestrictedDigital56"};
+const Enum::YLeaf DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::CallHistoryInfoType::restrictedDigital {5, "restrictedDigital"};
+const Enum::YLeaf DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::CallHistoryInfoType::audio31 {6, "audio31"};
+const Enum::YLeaf DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::CallHistoryInfoType::audio7 {7, "audio7"};
+const Enum::YLeaf DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::CallHistoryInfoType::video {8, "video"};
+const Enum::YLeaf DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::CallHistoryInfoType::packetSwitched {9, "packetSwitched"};
+const Enum::YLeaf DIALCONTROLMIB::CallHistoryTable::CallHistoryEntry::CallHistoryInfoType::fax {10, "fax"};
 
 
 }
