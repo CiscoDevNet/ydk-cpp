@@ -849,7 +849,7 @@ class Snmp::Notification : public ydk::Entity
         class Isakmp; //type: Snmp::Notification::Isakmp
         class Syslog; //type: Snmp::Notification::Syslog
         class EntityRedundancy; //type: Snmp::Notification::EntityRedundancy
-        class Entity; //type: Snmp::Notification::Entity
+        class Entity_; //type: Snmp::Notification::Entity
         class Rsvp; //type: Snmp::Notification::Rsvp
         class ConfigMan; //type: Snmp::Notification::ConfigMan
         class SubscriberMib; //type: Snmp::Notification::SubscriberMib
@@ -894,7 +894,7 @@ class Snmp::Notification : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Isakmp> isakmp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Syslog> syslog;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::EntityRedundancy> entity_redundancy;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Entity> entity_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Entity_> entity_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Rsvp> rsvp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::ConfigMan> config_man;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::SubscriberMib> subscriber_mib;
@@ -1974,11 +1974,11 @@ class Snmp::Notification::EntityRedundancy : public ydk::Entity
 }; // Snmp::Notification::EntityRedundancy
 
 
-class Snmp::Notification::Entity : public ydk::Entity
+class Snmp::Notification::Entity_ : public ydk::Entity
 {
     public:
-        Entity();
-        ~Entity();
+        Entity_();
+        ~Entity_();
 
         bool has_data() const override;
         bool has_operation() const override;

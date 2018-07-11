@@ -3792,7 +3792,7 @@ Snmp::Notification::Notification()
     , isakmp(std::make_shared<Snmp::Notification::Isakmp>())
     , syslog(std::make_shared<Snmp::Notification::Syslog>())
     , entity_redundancy(std::make_shared<Snmp::Notification::EntityRedundancy>())
-    , entity_(std::make_shared<Snmp::Notification::Entity>())
+    , entity_(std::make_shared<Snmp::Notification::Entity_>())
     , rsvp(std::make_shared<Snmp::Notification::Rsvp>())
     , config_man(std::make_shared<Snmp::Notification::ConfigMan>())
     , subscriber_mib(std::make_shared<Snmp::Notification::SubscriberMib>())
@@ -4299,7 +4299,7 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
     {
         if(entity_ == nullptr)
         {
-            entity_ = std::make_shared<Snmp::Notification::Entity>();
+            entity_ = std::make_shared<Snmp::Notification::Entity_>();
         }
         return entity_;
     }
@@ -9612,7 +9612,7 @@ bool Snmp::Notification::EntityRedundancy::has_leaf_or_child_of_name(const std::
     return false;
 }
 
-Snmp::Notification::Entity::Entity()
+Snmp::Notification::Entity_::Entity_()
     :
     enable{YType::empty, "enable"}
 {
@@ -9620,37 +9620,37 @@ Snmp::Notification::Entity::Entity()
     yang_name = "entity"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Snmp::Notification::Entity::~Entity()
+Snmp::Notification::Entity_::~Entity_()
 {
 }
 
-bool Snmp::Notification::Entity::has_data() const
+bool Snmp::Notification::Entity_::has_data() const
 {
     if (is_presence_container) return true;
     return enable.is_set;
 }
 
-bool Snmp::Notification::Entity::has_operation() const
+bool Snmp::Notification::Entity_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter);
 }
 
-std::string Snmp::Notification::Entity::get_absolute_path() const
+std::string Snmp::Notification::Entity_::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Snmp::Notification::Entity::get_segment_path() const
+std::string Snmp::Notification::Entity_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-entitymib-cfg:entity";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Entity::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Entity_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9660,19 +9660,19 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Entity::get_n
 
 }
 
-std::shared_ptr<Entity> Snmp::Notification::Entity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Notification::Entity_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Entity::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Entity_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Snmp::Notification::Entity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Notification::Entity_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
@@ -9682,7 +9682,7 @@ void Snmp::Notification::Entity::set_value(const std::string & value_path, const
     }
 }
 
-void Snmp::Notification::Entity::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Notification::Entity_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "enable")
     {
@@ -9690,7 +9690,7 @@ void Snmp::Notification::Entity::set_filter(const std::string & value_path, YFil
     }
 }
 
-bool Snmp::Notification::Entity::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Notification::Entity_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enable")
         return true;

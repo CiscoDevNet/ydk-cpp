@@ -12681,14 +12681,14 @@ std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch::Test::Te
 std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
+    char count_=0;
+    count_ = 0;
     for (auto c : count.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
         else
-            children[c->get_segment_path()+count++] = c;
+            children[c->get_segment_path()+count_++] = c;
     }
 
     return children;
@@ -13019,14 +13019,14 @@ std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch::Test::Al
 std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
+    char count_=0;
+    count_ = 0;
     for (auto c : count.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
         else
-            children[c->get_segment_path()+count++] = c;
+            children[c->get_segment_path()+count_++] = c;
     }
 
     return children;

@@ -18975,7 +18975,7 @@ System::SatmItems::FabpItems::FabPList::RemotefcotItems::RemotefcotItems()
     state{YType::enumeration, "state"},
     flags{YType::enumeration, "flags"},
     type{YType::enumeration, "type"},
-    typename{YType::str, "typeName"},
+    typename_{YType::str, "typeName"},
     eid{YType::str, "eid"},
     xcvrid{YType::uint8, "xcvrId"},
     xcvrextid{YType::uint8, "xcvrExtId"},
@@ -19033,7 +19033,7 @@ bool System::SatmItems::FabpItems::FabPList::RemotefcotItems::has_data() const
 	|| state.is_set
 	|| flags.is_set
 	|| type.is_set
-	|| typename.is_set
+	|| typename_.is_set
 	|| eid.is_set
 	|| xcvrid.is_set
 	|| xcvrextid.is_set
@@ -19084,7 +19084,7 @@ bool System::SatmItems::FabpItems::FabPList::RemotefcotItems::has_operation() co
 	|| ydk::is_set(state.yfilter)
 	|| ydk::is_set(flags.yfilter)
 	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(typename.yfilter)
+	|| ydk::is_set(typename_.yfilter)
 	|| ydk::is_set(eid.yfilter)
 	|| ydk::is_set(xcvrid.yfilter)
 	|| ydk::is_set(xcvrextid.yfilter)
@@ -19143,7 +19143,7 @@ std::vector<std::pair<std::string, LeafData> > System::SatmItems::FabpItems::Fab
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (typename.is_set || is_set(typename.yfilter)) leaf_name_data.push_back(typename.get_name_leafdata());
+    if (typename_.is_set || is_set(typename_.yfilter)) leaf_name_data.push_back(typename_.get_name_leafdata());
     if (eid.is_set || is_set(eid.yfilter)) leaf_name_data.push_back(eid.get_name_leafdata());
     if (xcvrid.is_set || is_set(xcvrid.yfilter)) leaf_name_data.push_back(xcvrid.get_name_leafdata());
     if (xcvrextid.is_set || is_set(xcvrextid.yfilter)) leaf_name_data.push_back(xcvrextid.get_name_leafdata());
@@ -19250,9 +19250,9 @@ void System::SatmItems::FabpItems::FabPList::RemotefcotItems::set_value(const st
     }
     if(value_path == "typeName")
     {
-        typename = value;
-        typename.value_namespace = name_space;
-        typename.value_namespace_prefix = name_space_prefix;
+        typename_ = value;
+        typename_.value_namespace = name_space;
+        typename_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "eid")
     {
@@ -19514,7 +19514,7 @@ void System::SatmItems::FabpItems::FabPList::RemotefcotItems::set_filter(const s
     }
     if(value_path == "typeName")
     {
-        typename.yfilter = yfilter;
+        typename_.yfilter = yfilter;
     }
     if(value_path == "eid")
     {
@@ -19683,7 +19683,7 @@ System::SatmItems::FabpItems::FabPList::Remotefcotx2Items::Remotefcotx2Items()
     state{YType::enumeration, "state"},
     flags{YType::enumeration, "flags"},
     type{YType::enumeration, "type"},
-    typename{YType::str, "typeName"},
+    typename_{YType::str, "typeName"},
     eid{YType::str, "eid"},
     xcvrtype{YType::uint8, "xcvrType"},
     connecttype{YType::uint8, "connectType"},
@@ -19747,7 +19747,7 @@ bool System::SatmItems::FabpItems::FabPList::Remotefcotx2Items::has_data() const
 	|| state.is_set
 	|| flags.is_set
 	|| type.is_set
-	|| typename.is_set
+	|| typename_.is_set
 	|| eid.is_set
 	|| xcvrtype.is_set
 	|| connecttype.is_set
@@ -19804,7 +19804,7 @@ bool System::SatmItems::FabpItems::FabPList::Remotefcotx2Items::has_operation() 
 	|| ydk::is_set(state.yfilter)
 	|| ydk::is_set(flags.yfilter)
 	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(typename.yfilter)
+	|| ydk::is_set(typename_.yfilter)
 	|| ydk::is_set(eid.yfilter)
 	|| ydk::is_set(xcvrtype.yfilter)
 	|| ydk::is_set(connecttype.yfilter)
@@ -19869,7 +19869,7 @@ std::vector<std::pair<std::string, LeafData> > System::SatmItems::FabpItems::Fab
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (typename.is_set || is_set(typename.yfilter)) leaf_name_data.push_back(typename.get_name_leafdata());
+    if (typename_.is_set || is_set(typename_.yfilter)) leaf_name_data.push_back(typename_.get_name_leafdata());
     if (eid.is_set || is_set(eid.yfilter)) leaf_name_data.push_back(eid.get_name_leafdata());
     if (xcvrtype.is_set || is_set(xcvrtype.yfilter)) leaf_name_data.push_back(xcvrtype.get_name_leafdata());
     if (connecttype.is_set || is_set(connecttype.yfilter)) leaf_name_data.push_back(connecttype.get_name_leafdata());
@@ -19982,9 +19982,9 @@ void System::SatmItems::FabpItems::FabPList::Remotefcotx2Items::set_value(const 
     }
     if(value_path == "typeName")
     {
-        typename = value;
-        typename.value_namespace = name_space;
-        typename.value_namespace_prefix = name_space_prefix;
+        typename_ = value;
+        typename_.value_namespace = name_space;
+        typename_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "eid")
     {
@@ -20282,7 +20282,7 @@ void System::SatmItems::FabpItems::FabPList::Remotefcotx2Items::set_filter(const
     }
     if(value_path == "typeName")
     {
-        typename.yfilter = yfilter;
+        typename_.yfilter = yfilter;
     }
     if(value_path == "eid")
     {

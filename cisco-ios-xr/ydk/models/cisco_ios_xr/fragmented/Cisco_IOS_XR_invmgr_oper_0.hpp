@@ -57,18 +57,18 @@ class Inventory::Entities : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Entity; //type: Inventory::Entities::Entity
+        class Entity_; //type: Inventory::Entities::Entity
 
         ydk::YList entity_;
         
 }; // Inventory::Entities
 
 
-class Inventory::Entities::Entity : public ydk::Entity
+class Inventory::Entities::Entity_ : public ydk::Entity
 {
     public:
-        Entity();
-        ~Entity();
+        Entity_();
+        ~Entity_();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -82,16 +82,16 @@ class Inventory::Entities::Entity : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        class Attributes; //type: Inventory::Entities::Entity::Attributes
-        class Subentities; //type: Inventory::Entities::Entity::Subentities
+        class Attributes; //type: Inventory::Entities::Entity_::Attributes
+        class Subentities; //type: Inventory::Entities::Entity_::Subentities
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes> attributes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Subentities> subentities;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity_::Attributes> attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity_::Subentities> subentities;
         
 }; // Inventory::Entities::Entity
 
 
-class Inventory::Entities::Entity::Attributes : public ydk::Entity
+class Inventory::Entities::Entity_::Attributes : public ydk::Entity
 {
     public:
         Attributes();
@@ -107,16 +107,16 @@ class Inventory::Entities::Entity::Attributes : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class InvBasicBag; //type: Inventory::Entities::Entity::Attributes::InvBasicBag
-        class InvAssetBag; //type: Inventory::Entities::Entity::Attributes::InvAssetBag
+        class InvBasicBag; //type: Inventory::Entities::Entity_::Attributes::InvBasicBag
+        class InvAssetBag; //type: Inventory::Entities::Entity_::Attributes::InvAssetBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::InvBasicBag> inv_basic_bag;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::InvAssetBag> inv_asset_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity_::Attributes::InvBasicBag> inv_basic_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity_::Attributes::InvAssetBag> inv_asset_bag;
         
-}; // Inventory::Entities::Entity::Attributes
+}; // Inventory::Entities::Entity_::Attributes
 
 
-class Inventory::Entities::Entity::Attributes::InvBasicBag : public ydk::Entity
+class Inventory::Entities::Entity_::Attributes::InvBasicBag : public ydk::Entity
 {
     public:
         InvBasicBag();
@@ -159,10 +159,10 @@ class Inventory::Entities::Entity::Attributes::InvBasicBag : public ydk::Entity
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
 
-}; // Inventory::Entities::Entity::Attributes::InvBasicBag
+}; // Inventory::Entities::Entity_::Attributes::InvBasicBag
 
 
-class Inventory::Entities::Entity::Attributes::InvAssetBag : public ydk::Entity
+class Inventory::Entities::Entity_::Attributes::InvAssetBag : public ydk::Entity
 {
     public:
         InvAssetBag();
@@ -186,10 +186,10 @@ class Inventory::Entities::Entity::Attributes::InvAssetBag : public ydk::Entity
         ydk::YLeaf manufacturer_common_language_equipment_identifier; //type: string
         ydk::YLeaf original_equipment_manufacturer_string; //type: string
 
-}; // Inventory::Entities::Entity::Attributes::InvAssetBag
+}; // Inventory::Entities::Entity_::Attributes::InvAssetBag
 
 
-class Inventory::Entities::Entity::Subentities : public ydk::Entity
+class Inventory::Entities::Entity_::Subentities : public ydk::Entity
 {
     public:
         Subentities();
@@ -205,14 +205,14 @@ class Inventory::Entities::Entity::Subentities : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Subentity; //type: Inventory::Entities::Entity::Subentities::Subentity
+        class Subentity; //type: Inventory::Entities::Entity_::Subentities::Subentity
 
         ydk::YList subentity;
         
-}; // Inventory::Entities::Entity::Subentities
+}; // Inventory::Entities::Entity_::Subentities
 
 
-class Inventory::Entities::Entity::Subentities::Subentity : public ydk::Entity
+class Inventory::Entities::Entity_::Subentities::Subentity : public ydk::Entity
 {
     public:
         Subentity();
@@ -231,7 +231,7 @@ class Inventory::Entities::Entity::Subentities::Subentity : public ydk::Entity
         ydk::YLeaf name; //type: string
         ydk::YLeaf name_xr; //type: string
 
-}; // Inventory::Entities::Entity::Subentities::Subentity
+}; // Inventory::Entities::Entity_::Subentities::Subentity
 
 
 class Inventory::Racks : public ydk::Entity
@@ -276,7 +276,7 @@ class Inventory::Racks::Rack : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        class Entity; //type: Inventory::Racks::Rack::Entity
+        class Entity_; //type: Inventory::Racks::Rack::Entity
         class Powershelf; //type: Inventory::Racks::Rack::Powershelf
         class Fantray; //type: Inventory::Racks::Rack::Fantray
         class Attributes; //type: Inventory::Racks::Rack::Attributes
@@ -289,11 +289,11 @@ class Inventory::Racks::Rack : public ydk::Entity
 }; // Inventory::Racks::Rack
 
 
-class Inventory::Racks::Rack::Entity : public ydk::Entity
+class Inventory::Racks::Rack::Entity_ : public ydk::Entity
 {
     public:
-        Entity();
-        ~Entity();
+        Entity_();
+        ~Entity_();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -305,14 +305,14 @@ class Inventory::Racks::Rack::Entity : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Slot; //type: Inventory::Racks::Rack::Entity::Slot
+        class Slot; //type: Inventory::Racks::Rack::Entity_::Slot
 
         ydk::YList slot;
         
 }; // Inventory::Racks::Rack::Entity
 
 
-class Inventory::Racks::Rack::Entity::Slot : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot : public ydk::Entity
 {
     public:
         Slot();
@@ -329,16 +329,16 @@ class Inventory::Racks::Rack::Entity::Slot : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        class Tsi1s; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s
-        class Attributes; //type: Inventory::Racks::Rack::Entity::Slot::Attributes
+        class Tsi1s; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s
+        class Attributes; //type: Inventory::Racks::Rack::Entity_::Slot::Attributes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s> tsi1s;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Attributes> attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s> tsi1s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Attributes> attributes;
         
-}; // Inventory::Racks::Rack::Entity::Slot
+}; // Inventory::Racks::Rack::Entity_::Slot
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s : public ydk::Entity
 {
     public:
         Tsi1s();
@@ -354,14 +354,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Tsi1; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1
+        class Tsi1; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1
 
         ydk::YList tsi1;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1 : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1 : public ydk::Entity
 {
     public:
         Tsi1();
@@ -378,16 +378,16 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1 : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        class Tsi2s; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s
-        class Attributes; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Attributes
+        class Tsi2s; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s
+        class Attributes; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Attributes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s> tsi2s;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Attributes> attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s> tsi2s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Attributes> attributes;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s : public ydk::Entity
 {
     public:
         Tsi2s();
@@ -403,14 +403,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Tsi2; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2
+        class Tsi2; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2
 
         ydk::YList tsi2;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2 : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2 : public ydk::Entity
 {
     public:
         Tsi2();
@@ -427,16 +427,16 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2 : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        class Tsi3s; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s
-        class Attributes; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes
+        class Tsi3s; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s
+        class Attributes; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s> tsi3s;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes> attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s> tsi3s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes> attributes;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s : public ydk::Entity
 {
     public:
         Tsi3s();
@@ -452,14 +452,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Tsi3; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3
+        class Tsi3; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3
 
         ydk::YList tsi3;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3 : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3 : public ydk::Entity
 {
     public:
         Tsi3();
@@ -476,16 +476,16 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        class Tsi4s; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s
-        class Attributes; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes
+        class Tsi4s; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s
+        class Attributes; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s> tsi4s;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes> attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s> tsi4s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes> attributes;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s : public ydk::Entity
 {
     public:
         Tsi4s();
@@ -501,14 +501,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Tsi4; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4
+        class Tsi4; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4
 
         ydk::YList tsi4;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4 : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4 : public ydk::Entity
 {
     public:
         Tsi4();
@@ -525,16 +525,16 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        class Tsi5s; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s
-        class Attributes; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes
+        class Tsi5s; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s
+        class Attributes; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s> tsi5s;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes> attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s> tsi5s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes> attributes;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s : public ydk::Entity
 {
     public:
         Tsi5s();
@@ -550,14 +550,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Tsi5; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5
+        class Tsi5; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5
 
         ydk::YList tsi5;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5 : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5 : public ydk::Entity
 {
     public:
         Tsi5();
@@ -574,16 +574,16 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        class Tsi6s; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s
-        class Attributes; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Attributes
+        class Tsi6s; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s
+        class Attributes; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Attributes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s> tsi6s;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Attributes> attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s> tsi6s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Attributes> attributes;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s : public ydk::Entity
 {
     public:
         Tsi6s();
@@ -599,14 +599,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Tsi6; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6
+        class Tsi6; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6
 
         ydk::YList tsi6;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6 : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6 : public ydk::Entity
 {
     public:
         Tsi6();
@@ -623,16 +623,16 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        class Tsi7s; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s
-        class Attributes; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Attributes
+        class Tsi7s; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s
+        class Attributes; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Attributes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s> tsi7s;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Attributes> attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s> tsi7s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Attributes> attributes;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s : public ydk::Entity
 {
     public:
         Tsi7s();
@@ -648,14 +648,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Tsi7; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7
+        class Tsi7; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7
 
         ydk::YList tsi7;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7 : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7 : public ydk::Entity
 {
     public:
         Tsi7();
@@ -672,16 +672,16 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        class Tsi8s; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s
-        class Attributes; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes
+        class Tsi8s; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s
+        class Attributes; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s> tsi8s;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes> attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s> tsi8s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes> attributes;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s : public ydk::Entity
 {
     public:
         Tsi8s();
@@ -697,14 +697,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Tsi8; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8
+        class Tsi8; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8
 
         ydk::YList tsi8;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8 : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8 : public ydk::Entity
 {
     public:
         Tsi8();
@@ -721,16 +721,16 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        class Tsi9s; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s
-        class Attributes; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes
+        class Tsi9s; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s
+        class Attributes; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s> tsi9s;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes> attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s> tsi9s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes> attributes;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s : public ydk::Entity
 {
     public:
         Tsi9s();
@@ -746,14 +746,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Tsi9; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9
+        class Tsi9; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9
 
         ydk::YList tsi9;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9 : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9 : public ydk::Entity
 {
     public:
         Tsi9();
@@ -770,16 +770,16 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        class Tsi10s; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s
-        class Attributes; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes
+        class Tsi10s; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s
+        class Attributes; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s> tsi10s;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes> attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s> tsi10s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes> attributes;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s : public ydk::Entity
 {
     public:
         Tsi10s();
@@ -795,14 +795,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Tsi10; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10
+        class Tsi10; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10
 
         ydk::YList tsi10;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10 : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10 : public ydk::Entity
 {
     public:
         Tsi10();
@@ -819,16 +819,16 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        class Tsi11s; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s
-        class Attributes; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes
+        class Tsi11s; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s
+        class Attributes; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s> tsi11s;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes> attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s> tsi11s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes> attributes;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s : public ydk::Entity
 {
     public:
         Tsi11s();
@@ -844,14 +844,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Tsi11; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11
+        class Tsi11; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11
 
         ydk::YList tsi11;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11 : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11 : public ydk::Entity
 {
     public:
         Tsi11();
@@ -868,14 +868,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        class Attributes; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes
+        class Attributes; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes> attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes> attributes;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes : public ydk::Entity
 {
     public:
         Attributes();
@@ -895,28 +895,28 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf vm_node_id; //type: uint32
         ydk::YLeaf vm_done; //type: uint32
         ydk::YLeaf node_id; //type: uint32
-        class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvBasicBag
-        class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfo
-        class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::PwgInfo
-        class EnvSensorInfoXml; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml
-        class InvAssetBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvAssetBag
-        class Threshold; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold
-        class FruInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo
-        class InvEepromInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo
+        class InvBasicBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvBasicBag
+        class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfo
+        class PwgInfo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::PwgInfo
+        class EnvSensorInfoXml; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml
+        class InvAssetBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvAssetBag
+        class Threshold; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold
+        class FruInfo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo
+        class InvEepromInfo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvBasicBag> inv_basic_bag;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfo> env_sensor_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::PwgInfo> pwg_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml> env_sensor_info_xml;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvAssetBag> inv_asset_bag;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold> threshold;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo> fru_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo> inv_eeprom_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvBasicBag> inv_basic_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfo> env_sensor_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::PwgInfo> pwg_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml> env_sensor_info_xml;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvAssetBag> inv_asset_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo> fru_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo> inv_eeprom_info;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvBasicBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvBasicBag : public ydk::Entity
 {
     public:
         InvBasicBag();
@@ -959,10 +959,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvBasicBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvBasicBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfo : public ydk::Entity
 {
     public:
         EnvSensorInfo();
@@ -991,10 +991,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf age_time_stamp; //type: uint32
         ydk::YLeaf update_rate; //type: uint32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::PwgInfo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::PwgInfo : public ydk::Entity
 {
     public:
         PwgInfo();
@@ -1015,10 +1015,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf power_group_available_current; //type: int32
         ydk::YLeaf power_group_drawn_current; //type: int32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::PwgInfo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::PwgInfo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml : public ydk::Entity
 {
     public:
         EnvSensorInfoXml();
@@ -1040,14 +1040,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf data_type; //type: SensorData
         ydk::YLeaf status; //type: SensorStatus
         ydk::YLeaf update_rate; //type: uint32
-        class Threshold; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml::Threshold
+        class Threshold; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml::Threshold
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml::Threshold> threshold;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml::Threshold : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -1063,14 +1063,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThresholdArray; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
+        class ThresholdArray; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
 
         ydk::YList threshold_array;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml::Threshold
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml::Threshold
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray : public ydk::Entity
 {
     public:
         ThresholdArray();
@@ -1091,10 +1091,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_value; //type: int32
         ydk::YLeaf threshold_name; //type: string
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvAssetBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvAssetBag : public ydk::Entity
 {
     public:
         InvAssetBag();
@@ -1118,10 +1118,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf manufacturer_common_language_equipment_identifier; //type: string
         ydk::YLeaf original_equipment_manufacturer_string; //type: string
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvAssetBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvAssetBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -1137,24 +1137,24 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MajorLo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorLo
-        class CriticalHi; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalHi
-        class MinorHi; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorHi
-        class MajorHi; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorHi
-        class CriticalLo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalLo
-        class MinorLo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorLo
+        class MajorLo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorLo
+        class CriticalHi; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalHi
+        class MinorHi; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorHi
+        class MajorHi; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorHi
+        class CriticalLo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalLo
+        class MinorLo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorLo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorLo> major_lo;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalHi> critical_hi;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorHi> minor_hi;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorHi> major_hi;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalLo> critical_lo;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorLo> minor_lo;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorLo> major_lo;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalHi> critical_hi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorHi> minor_hi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorHi> major_hi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalLo> critical_lo;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorLo> minor_lo;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorLo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorLo : public ydk::Entity
 {
     public:
         MajorLo();
@@ -1170,14 +1170,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorLo::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorLo::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorLo::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorLo::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorLo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorLo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorLo::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorLo::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -1199,10 +1199,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorLo::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorLo::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalHi : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalHi : public ydk::Entity
 {
     public:
         CriticalHi();
@@ -1218,14 +1218,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalHi::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalHi::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalHi::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalHi::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalHi
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalHi
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalHi::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalHi::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -1247,10 +1247,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalHi::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalHi::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorHi : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorHi : public ydk::Entity
 {
     public:
         MinorHi();
@@ -1266,14 +1266,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorHi::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorHi::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorHi::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorHi::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorHi
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorHi
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorHi::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorHi::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -1295,10 +1295,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorHi::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorHi::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorHi : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorHi : public ydk::Entity
 {
     public:
         MajorHi();
@@ -1314,14 +1314,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorHi::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorHi::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorHi::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorHi::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorHi
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorHi
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorHi::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorHi::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -1343,10 +1343,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorHi::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MajorHi::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalLo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalLo : public ydk::Entity
 {
     public:
         CriticalLo();
@@ -1362,14 +1362,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalLo::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalLo::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalLo::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalLo::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalLo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalLo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalLo::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalLo::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -1391,10 +1391,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalLo::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::CriticalLo::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorLo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorLo : public ydk::Entity
 {
     public:
         MinorLo();
@@ -1410,14 +1410,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorLo::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorLo::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorLo::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorLo::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorLo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorLo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorLo::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorLo::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -1439,10 +1439,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorLo::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::Threshold::MinorLo::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo : public ydk::Entity
 {
     public:
         FruInfo();
@@ -1465,16 +1465,16 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf card_reset_reason; //type: CardResetReason
         ydk::YLeaf power_current_measurement; //type: int32
         ydk::YLeaf power_operational_state; //type: int32
-        class LastOperationalStateChange; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo::LastOperationalStateChange
-        class CardUpTime; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo::CardUpTime
+        class LastOperationalStateChange; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo::LastOperationalStateChange
+        class CardUpTime; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo::CardUpTime
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo::CardUpTime> card_up_time;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo::CardUpTime> card_up_time;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo::LastOperationalStateChange : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo::LastOperationalStateChange : public ydk::Entity
 {
     public:
         LastOperationalStateChange();
@@ -1493,10 +1493,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf time_in_seconds; //type: int32
         ydk::YLeaf time_in_nano_seconds; //type: int32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo::LastOperationalStateChange
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo::LastOperationalStateChange
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo::CardUpTime : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo::CardUpTime : public ydk::Entity
 {
     public:
         CardUpTime();
@@ -1515,10 +1515,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf time_in_seconds; //type: int32
         ydk::YLeaf time_in_nano_seconds; //type: int32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo::CardUpTime
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::FruInfo::CardUpTime
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo : public ydk::Entity
 {
     public:
         InvEepromInfo();
@@ -1539,14 +1539,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf opaque_data_size; //type: uint32
         ydk::YLeaf has_eeprom; //type: uint32
         ydk::YLeaf description; //type: string
-        class Eeprom; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo::Eeprom
+        class Eeprom; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo::Eeprom
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo::Eeprom> eeprom;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo::Eeprom> eeprom;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo::Eeprom : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo::Eeprom : public ydk::Entity
 {
     public:
         Eeprom();
@@ -1618,14 +1618,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf engineer_use; //type: string
         ydk::YLeaf snmpoid; //type: string
         ydk::YLeaf rma_code; //type: string
-        class Rma; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo::Eeprom::Rma
+        class Rma; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo::Eeprom::Rma
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo::Eeprom::Rma> rma;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo::Eeprom::Rma> rma;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo::Eeprom
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo::Eeprom
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo::Eeprom::Rma : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo::Eeprom::Rma : public ydk::Entity
 {
     public:
         Rma();
@@ -1645,10 +1645,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf rma_number; //type: string
         ydk::YLeaf rma_history; //type: string
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo::Eeprom::Rma
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo::Eeprom::Rma
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes : public ydk::Entity
 {
     public:
         Attributes();
@@ -1668,28 +1668,28 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf vm_node_id; //type: uint32
         ydk::YLeaf vm_done; //type: uint32
         ydk::YLeaf node_id; //type: uint32
-        class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvBasicBag
-        class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfo
-        class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::PwgInfo
-        class EnvSensorInfoXml; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml
-        class InvAssetBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvAssetBag
-        class Threshold; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold
-        class FruInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo
-        class InvEepromInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo
+        class InvBasicBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvBasicBag
+        class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfo
+        class PwgInfo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::PwgInfo
+        class EnvSensorInfoXml; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml
+        class InvAssetBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvAssetBag
+        class Threshold; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold
+        class FruInfo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo
+        class InvEepromInfo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvBasicBag> inv_basic_bag;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfo> env_sensor_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::PwgInfo> pwg_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml> env_sensor_info_xml;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvAssetBag> inv_asset_bag;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold> threshold;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo> fru_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo> inv_eeprom_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvBasicBag> inv_basic_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfo> env_sensor_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::PwgInfo> pwg_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml> env_sensor_info_xml;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvAssetBag> inv_asset_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo> fru_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo> inv_eeprom_info;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvBasicBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvBasicBag : public ydk::Entity
 {
     public:
         InvBasicBag();
@@ -1732,10 +1732,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvBasicBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvBasicBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfo : public ydk::Entity
 {
     public:
         EnvSensorInfo();
@@ -1764,10 +1764,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf age_time_stamp; //type: uint32
         ydk::YLeaf update_rate; //type: uint32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::PwgInfo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::PwgInfo : public ydk::Entity
 {
     public:
         PwgInfo();
@@ -1788,10 +1788,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf power_group_available_current; //type: int32
         ydk::YLeaf power_group_drawn_current; //type: int32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::PwgInfo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::PwgInfo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml : public ydk::Entity
 {
     public:
         EnvSensorInfoXml();
@@ -1813,14 +1813,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf data_type; //type: SensorData
         ydk::YLeaf status; //type: SensorStatus
         ydk::YLeaf update_rate; //type: uint32
-        class Threshold; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml::Threshold
+        class Threshold; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml::Threshold
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml::Threshold> threshold;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml::Threshold : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -1836,14 +1836,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThresholdArray; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
+        class ThresholdArray; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
 
         ydk::YList threshold_array;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml::Threshold
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml::Threshold
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray : public ydk::Entity
 {
     public:
         ThresholdArray();
@@ -1864,10 +1864,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_value; //type: int32
         ydk::YLeaf threshold_name; //type: string
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvAssetBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvAssetBag : public ydk::Entity
 {
     public:
         InvAssetBag();
@@ -1891,10 +1891,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf manufacturer_common_language_equipment_identifier; //type: string
         ydk::YLeaf original_equipment_manufacturer_string; //type: string
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvAssetBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvAssetBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -1910,24 +1910,24 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MajorLo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorLo
-        class CriticalHi; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalHi
-        class MinorHi; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorHi
-        class MajorHi; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorHi
-        class CriticalLo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalLo
-        class MinorLo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorLo
+        class MajorLo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorLo
+        class CriticalHi; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalHi
+        class MinorHi; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorHi
+        class MajorHi; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorHi
+        class CriticalLo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalLo
+        class MinorLo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorLo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorLo> major_lo;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalHi> critical_hi;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorHi> minor_hi;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorHi> major_hi;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalLo> critical_lo;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorLo> minor_lo;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorLo> major_lo;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalHi> critical_hi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorHi> minor_hi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorHi> major_hi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalLo> critical_lo;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorLo> minor_lo;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorLo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorLo : public ydk::Entity
 {
     public:
         MajorLo();
@@ -1943,14 +1943,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorLo::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorLo::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorLo::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorLo::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorLo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorLo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorLo::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorLo::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -1972,10 +1972,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorLo::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorLo::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalHi : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalHi : public ydk::Entity
 {
     public:
         CriticalHi();
@@ -1991,14 +1991,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalHi::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalHi::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalHi::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalHi::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalHi
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalHi
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalHi::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalHi::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -2020,10 +2020,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalHi::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalHi::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorHi : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorHi : public ydk::Entity
 {
     public:
         MinorHi();
@@ -2039,14 +2039,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorHi::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorHi::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorHi::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorHi::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorHi
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorHi
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorHi::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorHi::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -2068,10 +2068,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorHi::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorHi::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorHi : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorHi : public ydk::Entity
 {
     public:
         MajorHi();
@@ -2087,14 +2087,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorHi::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorHi::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorHi::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorHi::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorHi
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorHi
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorHi::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorHi::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -2116,10 +2116,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorHi::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MajorHi::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalLo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalLo : public ydk::Entity
 {
     public:
         CriticalLo();
@@ -2135,14 +2135,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalLo::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalLo::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalLo::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalLo::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalLo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalLo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalLo::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalLo::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -2164,10 +2164,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalLo::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::CriticalLo::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorLo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorLo : public ydk::Entity
 {
     public:
         MinorLo();
@@ -2183,14 +2183,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorLo::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorLo::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorLo::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorLo::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorLo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorLo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorLo::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorLo::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -2212,10 +2212,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorLo::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::Threshold::MinorLo::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo : public ydk::Entity
 {
     public:
         FruInfo();
@@ -2238,16 +2238,16 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf card_reset_reason; //type: CardResetReason
         ydk::YLeaf power_current_measurement; //type: int32
         ydk::YLeaf power_operational_state; //type: int32
-        class LastOperationalStateChange; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo::LastOperationalStateChange
-        class CardUpTime; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo::CardUpTime
+        class LastOperationalStateChange; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo::LastOperationalStateChange
+        class CardUpTime; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo::CardUpTime
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo::CardUpTime> card_up_time;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo::CardUpTime> card_up_time;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo::LastOperationalStateChange : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo::LastOperationalStateChange : public ydk::Entity
 {
     public:
         LastOperationalStateChange();
@@ -2266,10 +2266,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf time_in_seconds; //type: int32
         ydk::YLeaf time_in_nano_seconds; //type: int32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo::LastOperationalStateChange
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo::LastOperationalStateChange
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo::CardUpTime : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo::CardUpTime : public ydk::Entity
 {
     public:
         CardUpTime();
@@ -2288,10 +2288,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf time_in_seconds; //type: int32
         ydk::YLeaf time_in_nano_seconds; //type: int32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo::CardUpTime
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::FruInfo::CardUpTime
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo : public ydk::Entity
 {
     public:
         InvEepromInfo();
@@ -2312,14 +2312,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf opaque_data_size; //type: uint32
         ydk::YLeaf has_eeprom; //type: uint32
         ydk::YLeaf description; //type: string
-        class Eeprom; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo::Eeprom
+        class Eeprom; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo::Eeprom
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo::Eeprom> eeprom;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo::Eeprom> eeprom;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo::Eeprom : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo::Eeprom : public ydk::Entity
 {
     public:
         Eeprom();
@@ -2391,14 +2391,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf engineer_use; //type: string
         ydk::YLeaf snmpoid; //type: string
         ydk::YLeaf rma_code; //type: string
-        class Rma; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo::Eeprom::Rma
+        class Rma; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo::Eeprom::Rma
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo::Eeprom::Rma> rma;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo::Eeprom::Rma> rma;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo::Eeprom
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo::Eeprom
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo::Eeprom::Rma : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo::Eeprom::Rma : public ydk::Entity
 {
     public:
         Rma();
@@ -2418,10 +2418,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf rma_number; //type: string
         ydk::YLeaf rma_history; //type: string
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo::Eeprom::Rma
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo::Eeprom::Rma
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes : public ydk::Entity
 {
     public:
         Attributes();
@@ -2441,28 +2441,28 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf vm_node_id; //type: uint32
         ydk::YLeaf vm_done; //type: uint32
         ydk::YLeaf node_id; //type: uint32
-        class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvBasicBag
-        class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfo
-        class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::PwgInfo
-        class EnvSensorInfoXml; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml
-        class InvAssetBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvAssetBag
-        class Threshold; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold
-        class FruInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo
-        class InvEepromInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo
+        class InvBasicBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvBasicBag
+        class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfo
+        class PwgInfo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::PwgInfo
+        class EnvSensorInfoXml; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml
+        class InvAssetBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvAssetBag
+        class Threshold; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold
+        class FruInfo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo
+        class InvEepromInfo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvBasicBag> inv_basic_bag;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfo> env_sensor_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::PwgInfo> pwg_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml> env_sensor_info_xml;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvAssetBag> inv_asset_bag;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold> threshold;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo> fru_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo> inv_eeprom_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvBasicBag> inv_basic_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfo> env_sensor_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::PwgInfo> pwg_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml> env_sensor_info_xml;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvAssetBag> inv_asset_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo> fru_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo> inv_eeprom_info;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvBasicBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvBasicBag : public ydk::Entity
 {
     public:
         InvBasicBag();
@@ -2505,10 +2505,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvBasicBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvBasicBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfo : public ydk::Entity
 {
     public:
         EnvSensorInfo();
@@ -2537,10 +2537,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf age_time_stamp; //type: uint32
         ydk::YLeaf update_rate; //type: uint32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::PwgInfo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::PwgInfo : public ydk::Entity
 {
     public:
         PwgInfo();
@@ -2561,10 +2561,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf power_group_available_current; //type: int32
         ydk::YLeaf power_group_drawn_current; //type: int32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::PwgInfo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::PwgInfo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml : public ydk::Entity
 {
     public:
         EnvSensorInfoXml();
@@ -2586,14 +2586,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf data_type; //type: SensorData
         ydk::YLeaf status; //type: SensorStatus
         ydk::YLeaf update_rate; //type: uint32
-        class Threshold; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml::Threshold
+        class Threshold; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml::Threshold
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml::Threshold> threshold;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml::Threshold : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -2609,14 +2609,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThresholdArray; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
+        class ThresholdArray; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
 
         ydk::YList threshold_array;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml::Threshold
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml::Threshold
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray : public ydk::Entity
 {
     public:
         ThresholdArray();
@@ -2637,10 +2637,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_value; //type: int32
         ydk::YLeaf threshold_name; //type: string
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvAssetBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvAssetBag : public ydk::Entity
 {
     public:
         InvAssetBag();
@@ -2664,10 +2664,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf manufacturer_common_language_equipment_identifier; //type: string
         ydk::YLeaf original_equipment_manufacturer_string; //type: string
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvAssetBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvAssetBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -2683,24 +2683,24 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MajorLo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorLo
-        class CriticalHi; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalHi
-        class MinorHi; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorHi
-        class MajorHi; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorHi
-        class CriticalLo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalLo
-        class MinorLo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorLo
+        class MajorLo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorLo
+        class CriticalHi; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalHi
+        class MinorHi; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorHi
+        class MajorHi; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorHi
+        class CriticalLo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalLo
+        class MinorLo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorLo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorLo> major_lo;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalHi> critical_hi;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorHi> minor_hi;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorHi> major_hi;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalLo> critical_lo;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorLo> minor_lo;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorLo> major_lo;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalHi> critical_hi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorHi> minor_hi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorHi> major_hi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalLo> critical_lo;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorLo> minor_lo;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorLo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorLo : public ydk::Entity
 {
     public:
         MajorLo();
@@ -2716,14 +2716,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorLo::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorLo::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorLo::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorLo::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorLo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorLo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorLo::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorLo::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -2745,10 +2745,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorLo::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorLo::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalHi : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalHi : public ydk::Entity
 {
     public:
         CriticalHi();
@@ -2764,14 +2764,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalHi::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalHi::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalHi::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalHi::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalHi
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalHi
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalHi::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalHi::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -2793,10 +2793,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalHi::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalHi::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorHi : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorHi : public ydk::Entity
 {
     public:
         MinorHi();
@@ -2812,14 +2812,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorHi::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorHi::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorHi::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorHi::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorHi
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorHi
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorHi::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorHi::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -2841,10 +2841,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorHi::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorHi::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorHi : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorHi : public ydk::Entity
 {
     public:
         MajorHi();
@@ -2860,14 +2860,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorHi::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorHi::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorHi::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorHi::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorHi
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorHi
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorHi::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorHi::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -2889,10 +2889,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorHi::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MajorHi::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalLo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalLo : public ydk::Entity
 {
     public:
         CriticalLo();
@@ -2908,14 +2908,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalLo::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalLo::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalLo::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalLo::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalLo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalLo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalLo::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalLo::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -2937,10 +2937,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalLo::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::CriticalLo::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorLo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorLo : public ydk::Entity
 {
     public:
         MinorLo();
@@ -2956,14 +2956,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorLo::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorLo::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorLo::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorLo::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorLo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorLo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorLo::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorLo::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -2985,10 +2985,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorLo::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::Threshold::MinorLo::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo : public ydk::Entity
 {
     public:
         FruInfo();
@@ -3011,16 +3011,16 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf card_reset_reason; //type: CardResetReason
         ydk::YLeaf power_current_measurement; //type: int32
         ydk::YLeaf power_operational_state; //type: int32
-        class LastOperationalStateChange; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo::LastOperationalStateChange
-        class CardUpTime; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo::CardUpTime
+        class LastOperationalStateChange; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo::LastOperationalStateChange
+        class CardUpTime; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo::CardUpTime
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo::CardUpTime> card_up_time;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo::CardUpTime> card_up_time;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo::LastOperationalStateChange : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo::LastOperationalStateChange : public ydk::Entity
 {
     public:
         LastOperationalStateChange();
@@ -3039,10 +3039,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf time_in_seconds; //type: int32
         ydk::YLeaf time_in_nano_seconds; //type: int32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo::LastOperationalStateChange
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo::LastOperationalStateChange
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo::CardUpTime : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo::CardUpTime : public ydk::Entity
 {
     public:
         CardUpTime();
@@ -3061,10 +3061,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf time_in_seconds; //type: int32
         ydk::YLeaf time_in_nano_seconds; //type: int32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo::CardUpTime
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::FruInfo::CardUpTime
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo : public ydk::Entity
 {
     public:
         InvEepromInfo();
@@ -3085,14 +3085,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf opaque_data_size; //type: uint32
         ydk::YLeaf has_eeprom; //type: uint32
         ydk::YLeaf description; //type: string
-        class Eeprom; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo::Eeprom
+        class Eeprom; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo::Eeprom
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo::Eeprom> eeprom;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo::Eeprom> eeprom;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo::Eeprom : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo::Eeprom : public ydk::Entity
 {
     public:
         Eeprom();
@@ -3164,14 +3164,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf engineer_use; //type: string
         ydk::YLeaf snmpoid; //type: string
         ydk::YLeaf rma_code; //type: string
-        class Rma; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo::Eeprom::Rma
+        class Rma; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo::Eeprom::Rma
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo::Eeprom::Rma> rma;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo::Eeprom::Rma> rma;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo::Eeprom
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo::Eeprom
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo::Eeprom::Rma : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo::Eeprom::Rma : public ydk::Entity
 {
     public:
         Rma();
@@ -3191,10 +3191,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf rma_number; //type: string
         ydk::YLeaf rma_history; //type: string
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo::Eeprom::Rma
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo::Eeprom::Rma
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes : public ydk::Entity
 {
     public:
         Attributes();
@@ -3214,28 +3214,28 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf vm_node_id; //type: uint32
         ydk::YLeaf vm_done; //type: uint32
         ydk::YLeaf node_id; //type: uint32
-        class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvBasicBag
-        class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfo
-        class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::PwgInfo
-        class EnvSensorInfoXml; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml
-        class InvAssetBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvAssetBag
-        class Threshold; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold
-        class FruInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo
-        class InvEepromInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo
+        class InvBasicBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvBasicBag
+        class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfo
+        class PwgInfo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::PwgInfo
+        class EnvSensorInfoXml; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml
+        class InvAssetBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvAssetBag
+        class Threshold; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold
+        class FruInfo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo
+        class InvEepromInfo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvBasicBag> inv_basic_bag;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfo> env_sensor_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::PwgInfo> pwg_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml> env_sensor_info_xml;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvAssetBag> inv_asset_bag;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold> threshold;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo> fru_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo> inv_eeprom_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvBasicBag> inv_basic_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfo> env_sensor_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::PwgInfo> pwg_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml> env_sensor_info_xml;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvAssetBag> inv_asset_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo> fru_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo> inv_eeprom_info;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvBasicBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvBasicBag : public ydk::Entity
 {
     public:
         InvBasicBag();
@@ -3278,10 +3278,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvBasicBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvBasicBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfo : public ydk::Entity
 {
     public:
         EnvSensorInfo();
@@ -3310,10 +3310,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf age_time_stamp; //type: uint32
         ydk::YLeaf update_rate; //type: uint32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::PwgInfo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::PwgInfo : public ydk::Entity
 {
     public:
         PwgInfo();
@@ -3334,10 +3334,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf power_group_available_current; //type: int32
         ydk::YLeaf power_group_drawn_current; //type: int32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::PwgInfo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::PwgInfo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml : public ydk::Entity
 {
     public:
         EnvSensorInfoXml();
@@ -3359,14 +3359,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf data_type; //type: SensorData
         ydk::YLeaf status; //type: SensorStatus
         ydk::YLeaf update_rate; //type: uint32
-        class Threshold; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml::Threshold
+        class Threshold; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml::Threshold
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml::Threshold> threshold;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml::Threshold : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -3382,14 +3382,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThresholdArray; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
+        class ThresholdArray; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
 
         ydk::YList threshold_array;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml::Threshold
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml::Threshold
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray : public ydk::Entity
 {
     public:
         ThresholdArray();
@@ -3410,10 +3410,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_value; //type: int32
         ydk::YLeaf threshold_name; //type: string
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvAssetBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvAssetBag : public ydk::Entity
 {
     public:
         InvAssetBag();
@@ -3437,10 +3437,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf manufacturer_common_language_equipment_identifier; //type: string
         ydk::YLeaf original_equipment_manufacturer_string; //type: string
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvAssetBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvAssetBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -3456,24 +3456,24 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MajorLo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo
-        class CriticalHi; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi
-        class MinorHi; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi
-        class MajorHi; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi
-        class CriticalLo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo
-        class MinorLo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo
+        class MajorLo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo
+        class CriticalHi; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi
+        class MinorHi; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi
+        class MajorHi; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi
+        class CriticalLo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo
+        class MinorLo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo> major_lo;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi> critical_hi;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi> minor_hi;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi> major_hi;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo> critical_lo;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo> minor_lo;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo> major_lo;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi> critical_hi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi> minor_hi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi> major_hi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo> critical_lo;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo> minor_lo;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo : public ydk::Entity
 {
     public:
         MajorLo();
@@ -3489,14 +3489,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -3518,10 +3518,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi : public ydk::Entity
 {
     public:
         CriticalHi();
@@ -3537,14 +3537,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -3566,10 +3566,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi : public ydk::Entity
 {
     public:
         MinorHi();
@@ -3585,14 +3585,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -3614,10 +3614,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi : public ydk::Entity
 {
     public:
         MajorHi();
@@ -3633,14 +3633,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -3662,10 +3662,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo : public ydk::Entity
 {
     public:
         CriticalLo();
@@ -3681,14 +3681,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -3710,10 +3710,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo : public ydk::Entity
 {
     public:
         MinorLo();
@@ -3729,14 +3729,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo::ThreshBag
+        class ThreshBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo::ThreshBag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo::ThreshBag> thresh_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo::ThreshBag> thresh_bag;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo::ThreshBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -3758,10 +3758,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_evaluation; //type: boolean
         ydk::YLeaf threshold_notification_enabled; //type: boolean
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo::ThreshBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo::ThreshBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo : public ydk::Entity
 {
     public:
         FruInfo();
@@ -3784,16 +3784,16 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf card_reset_reason; //type: CardResetReason
         ydk::YLeaf power_current_measurement; //type: int32
         ydk::YLeaf power_operational_state; //type: int32
-        class LastOperationalStateChange; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::LastOperationalStateChange
-        class CardUpTime; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::CardUpTime
+        class LastOperationalStateChange; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::LastOperationalStateChange
+        class CardUpTime; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::CardUpTime
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::CardUpTime> card_up_time;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::CardUpTime> card_up_time;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::LastOperationalStateChange : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::LastOperationalStateChange : public ydk::Entity
 {
     public:
         LastOperationalStateChange();
@@ -3812,10 +3812,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf time_in_seconds; //type: int32
         ydk::YLeaf time_in_nano_seconds; //type: int32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::LastOperationalStateChange
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::LastOperationalStateChange
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::CardUpTime : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::CardUpTime : public ydk::Entity
 {
     public:
         CardUpTime();
@@ -3834,10 +3834,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf time_in_seconds; //type: int32
         ydk::YLeaf time_in_nano_seconds; //type: int32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::CardUpTime
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::CardUpTime
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo : public ydk::Entity
 {
     public:
         InvEepromInfo();
@@ -3858,14 +3858,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf opaque_data_size; //type: uint32
         ydk::YLeaf has_eeprom; //type: uint32
         ydk::YLeaf description; //type: string
-        class Eeprom; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom
+        class Eeprom; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom> eeprom;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom> eeprom;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom : public ydk::Entity
 {
     public:
         Eeprom();
@@ -3937,14 +3937,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf engineer_use; //type: string
         ydk::YLeaf snmpoid; //type: string
         ydk::YLeaf rma_code; //type: string
-        class Rma; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom::Rma
+        class Rma; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom::Rma
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom::Rma> rma;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom::Rma> rma;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom::Rma : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom::Rma : public ydk::Entity
 {
     public:
         Rma();
@@ -3964,10 +3964,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf rma_number; //type: string
         ydk::YLeaf rma_history; //type: string
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom::Rma
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom::Rma
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes : public ydk::Entity
 {
     public:
         Attributes();
@@ -3987,28 +3987,28 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf vm_node_id; //type: uint32
         ydk::YLeaf vm_done; //type: uint32
         ydk::YLeaf node_id; //type: uint32
-        class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvBasicBag
-        class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfo
-        class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::PwgInfo
-        class EnvSensorInfoXml; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml
-        class InvAssetBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvAssetBag
-        class Threshold; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::Threshold
-        class FruInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::FruInfo
-        class InvEepromInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvEepromInfo
+        class InvBasicBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvBasicBag
+        class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfo
+        class PwgInfo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::PwgInfo
+        class EnvSensorInfoXml; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml
+        class InvAssetBag; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvAssetBag
+        class Threshold; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::Threshold
+        class FruInfo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::FruInfo
+        class InvEepromInfo; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvEepromInfo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvBasicBag> inv_basic_bag;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfo> env_sensor_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::PwgInfo> pwg_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml> env_sensor_info_xml;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvAssetBag> inv_asset_bag;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::Threshold> threshold;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::FruInfo> fru_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvEepromInfo> inv_eeprom_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvBasicBag> inv_basic_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfo> env_sensor_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::PwgInfo> pwg_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml> env_sensor_info_xml;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvAssetBag> inv_asset_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::FruInfo> fru_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvEepromInfo> inv_eeprom_info;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvBasicBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvBasicBag : public ydk::Entity
 {
     public:
         InvBasicBag();
@@ -4051,10 +4051,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvBasicBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvBasicBag
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfo : public ydk::Entity
 {
     public:
         EnvSensorInfo();
@@ -4083,10 +4083,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf age_time_stamp; //type: uint32
         ydk::YLeaf update_rate; //type: uint32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::PwgInfo : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::PwgInfo : public ydk::Entity
 {
     public:
         PwgInfo();
@@ -4107,10 +4107,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf power_group_available_current; //type: int32
         ydk::YLeaf power_group_drawn_current; //type: int32
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::PwgInfo
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::PwgInfo
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml : public ydk::Entity
 {
     public:
         EnvSensorInfoXml();
@@ -4132,14 +4132,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf data_type; //type: SensorData
         ydk::YLeaf status; //type: SensorStatus
         ydk::YLeaf update_rate; //type: uint32
-        class Threshold; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold
+        class Threshold; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold> threshold;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -4155,14 +4155,14 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThresholdArray; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
+        class ThresholdArray; //type: Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
 
         ydk::YList threshold_array;
         
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray : public ydk::Entity
 {
     public:
         ThresholdArray();
@@ -4183,10 +4183,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf threshold_value; //type: int32
         ydk::YLeaf threshold_name; //type: string
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
 
 
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvAssetBag : public ydk::Entity
+class Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvAssetBag : public ydk::Entity
 {
     public:
         InvAssetBag();
@@ -4210,7 +4210,7 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf manufacturer_common_language_equipment_identifier; //type: string
         ydk::YLeaf original_equipment_manufacturer_string; //type: string
 
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvAssetBag
+}; // Inventory::Racks::Rack::Entity_::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvAssetBag
 
 class CardResetReason : public ydk::Enum
 {

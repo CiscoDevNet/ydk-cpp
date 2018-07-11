@@ -579,14 +579,14 @@ std::shared_ptr<Entity> AsicErrorStats::Racks::Rack::Nodes::Node::Counts::get_ch
 std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Racks::Rack::Nodes::Node::Counts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
+    char count_=0;
+    count_ = 0;
     for (auto c : count.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
         else
-            children[c->get_segment_path()+count++] = c;
+            children[c->get_segment_path()+count_++] = c;
     }
 
     return children;

@@ -2285,7 +2285,7 @@ bool Native::Event::Manager::Applet::Event_::Env::has_leaf_or_child_of_name(cons
 Native::Event::Manager::Applet::Event_::Env::Severity::Severity()
     :
     major_(nullptr) // presence node
-    , minor(nullptr) // presence node
+    , minor_(nullptr) // presence node
 {
 
     yang_name = "severity"; yang_parent_name = "env"; is_top_level_class = false; has_list_ancestor = true; 
@@ -2299,14 +2299,14 @@ bool Native::Event::Manager::Applet::Event_::Env::Severity::has_data() const
 {
     if (is_presence_container) return true;
     return (major_ !=  nullptr && major_->has_data())
-	|| (minor !=  nullptr && minor->has_data());
+	|| (minor_ !=  nullptr && minor_->has_data());
 }
 
 bool Native::Event::Manager::Applet::Event_::Env::Severity::has_operation() const
 {
     return is_set(yfilter)
 	|| (major_ !=  nullptr && major_->has_operation())
-	|| (minor !=  nullptr && minor->has_operation());
+	|| (minor_ !=  nullptr && minor_->has_operation());
 }
 
 std::string Native::Event::Manager::Applet::Event_::Env::Severity::get_segment_path() const
@@ -2338,11 +2338,11 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Event_::Env::Severity::g
 
     if(child_yang_name == "minor")
     {
-        if(minor == nullptr)
+        if(minor_ == nullptr)
         {
-            minor = std::make_shared<Native::Event::Manager::Applet::Event_::Env::Severity::Minor>();
+            minor_ = std::make_shared<Native::Event::Manager::Applet::Event_::Env::Severity::Minor>();
         }
-        return minor;
+        return minor_;
     }
 
     return nullptr;
@@ -2357,9 +2357,9 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::E
         children["major"] = major_;
     }
 
-    if(minor != nullptr)
+    if(minor_ != nullptr)
     {
-        children["minor"] = minor;
+        children["minor"] = minor_;
     }
 
     return children;

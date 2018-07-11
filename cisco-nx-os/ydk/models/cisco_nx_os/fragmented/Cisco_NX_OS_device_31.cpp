@@ -16231,7 +16231,7 @@ System::IntfItems::PhysItems::PhysIfList::PhysItems_::FcotItems::FcotItems()
     state{YType::enumeration, "state"},
     flags{YType::enumeration, "flags"},
     type{YType::enumeration, "type"},
-    typename{YType::str, "typeName"},
+    typename_{YType::str, "typeName"},
     eid{YType::str, "eid"},
     xcvrid{YType::uint8, "xcvrId"},
     xcvrextid{YType::uint8, "xcvrExtId"},
@@ -16292,7 +16292,7 @@ bool System::IntfItems::PhysItems::PhysIfList::PhysItems_::FcotItems::has_data()
 	|| state.is_set
 	|| flags.is_set
 	|| type.is_set
-	|| typename.is_set
+	|| typename_.is_set
 	|| eid.is_set
 	|| xcvrid.is_set
 	|| xcvrextid.is_set
@@ -16344,7 +16344,7 @@ bool System::IntfItems::PhysItems::PhysIfList::PhysItems_::FcotItems::has_operat
 	|| ydk::is_set(state.yfilter)
 	|| ydk::is_set(flags.yfilter)
 	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(typename.yfilter)
+	|| ydk::is_set(typename_.yfilter)
 	|| ydk::is_set(eid.yfilter)
 	|| ydk::is_set(xcvrid.yfilter)
 	|| ydk::is_set(xcvrextid.yfilter)
@@ -16404,7 +16404,7 @@ std::vector<std::pair<std::string, LeafData> > System::IntfItems::PhysItems::Phy
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (typename.is_set || is_set(typename.yfilter)) leaf_name_data.push_back(typename.get_name_leafdata());
+    if (typename_.is_set || is_set(typename_.yfilter)) leaf_name_data.push_back(typename_.get_name_leafdata());
     if (eid.is_set || is_set(eid.yfilter)) leaf_name_data.push_back(eid.get_name_leafdata());
     if (xcvrid.is_set || is_set(xcvrid.yfilter)) leaf_name_data.push_back(xcvrid.get_name_leafdata());
     if (xcvrextid.is_set || is_set(xcvrextid.yfilter)) leaf_name_data.push_back(xcvrextid.get_name_leafdata());
@@ -16525,9 +16525,9 @@ void System::IntfItems::PhysItems::PhysIfList::PhysItems_::FcotItems::set_value(
     }
     if(value_path == "typeName")
     {
-        typename = value;
-        typename.value_namespace = name_space;
-        typename.value_namespace_prefix = name_space_prefix;
+        typename_ = value;
+        typename_.value_namespace = name_space;
+        typename_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "eid")
     {
@@ -16789,7 +16789,7 @@ void System::IntfItems::PhysItems::PhysIfList::PhysItems_::FcotItems::set_filter
     }
     if(value_path == "typeName")
     {
-        typename.yfilter = yfilter;
+        typename_.yfilter = yfilter;
     }
     if(value_path == "eid")
     {
@@ -17257,7 +17257,7 @@ System::IntfItems::PhysItems::PhysIfList::PhysItems_::Fcotx2Items::Fcotx2Items()
     state{YType::enumeration, "state"},
     flags{YType::enumeration, "flags"},
     type{YType::enumeration, "type"},
-    typename{YType::str, "typeName"},
+    typename_{YType::str, "typeName"},
     eid{YType::str, "eid"},
     xcvrtype{YType::uint8, "xcvrType"},
     connecttype{YType::uint8, "connectType"},
@@ -17321,7 +17321,7 @@ bool System::IntfItems::PhysItems::PhysIfList::PhysItems_::Fcotx2Items::has_data
 	|| state.is_set
 	|| flags.is_set
 	|| type.is_set
-	|| typename.is_set
+	|| typename_.is_set
 	|| eid.is_set
 	|| xcvrtype.is_set
 	|| connecttype.is_set
@@ -17378,7 +17378,7 @@ bool System::IntfItems::PhysItems::PhysIfList::PhysItems_::Fcotx2Items::has_oper
 	|| ydk::is_set(state.yfilter)
 	|| ydk::is_set(flags.yfilter)
 	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(typename.yfilter)
+	|| ydk::is_set(typename_.yfilter)
 	|| ydk::is_set(eid.yfilter)
 	|| ydk::is_set(xcvrtype.yfilter)
 	|| ydk::is_set(connecttype.yfilter)
@@ -17443,7 +17443,7 @@ std::vector<std::pair<std::string, LeafData> > System::IntfItems::PhysItems::Phy
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (typename.is_set || is_set(typename.yfilter)) leaf_name_data.push_back(typename.get_name_leafdata());
+    if (typename_.is_set || is_set(typename_.yfilter)) leaf_name_data.push_back(typename_.get_name_leafdata());
     if (eid.is_set || is_set(eid.yfilter)) leaf_name_data.push_back(eid.get_name_leafdata());
     if (xcvrtype.is_set || is_set(xcvrtype.yfilter)) leaf_name_data.push_back(xcvrtype.get_name_leafdata());
     if (connecttype.is_set || is_set(connecttype.yfilter)) leaf_name_data.push_back(connecttype.get_name_leafdata());
@@ -17556,9 +17556,9 @@ void System::IntfItems::PhysItems::PhysIfList::PhysItems_::Fcotx2Items::set_valu
     }
     if(value_path == "typeName")
     {
-        typename = value;
-        typename.value_namespace = name_space;
-        typename.value_namespace_prefix = name_space_prefix;
+        typename_ = value;
+        typename_.value_namespace = name_space;
+        typename_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "eid")
     {
@@ -17856,7 +17856,7 @@ void System::IntfItems::PhysItems::PhysIfList::PhysItems_::Fcotx2Items::set_filt
     }
     if(value_path == "typeName")
     {
-        typename.yfilter = yfilter;
+        typename_.yfilter = yfilter;
     }
     if(value_path == "eid")
     {

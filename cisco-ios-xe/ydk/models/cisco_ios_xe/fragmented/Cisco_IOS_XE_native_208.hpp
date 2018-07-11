@@ -516,7 +516,7 @@ class Native::Event::Manager::Applet::Event_::Env::Severity : public ydk::Entity
         class Minor; //type: Native::Event::Manager::Applet::Event_::Env::Severity::Minor
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Event::Manager::Applet::Event_::Env::Severity::Major> major_; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Event::Manager::Applet::Event_::Env::Severity::Minor> minor; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Event::Manager::Applet::Event_::Env::Severity::Minor> minor_; // presence node
         
 }; // Native::Event::Manager::Applet::Event_::Env::Severity
 
