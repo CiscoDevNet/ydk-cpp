@@ -19,7 +19,7 @@ set(samples bgp_create
                 bgp_xr_read
                 bgp_xr_opendaylight
                 bgp_restconf
-                xe_native_read # uncomment this line if you want to build this XE native sample which takes a while
+#xe_native_read # uncomment this line if you want to build this XE native sample which takes a while
                 )
 
 # set default build type if not specified by user
@@ -30,7 +30,7 @@ set(CMAKE_CXX_FLAGS_DEBUG   "-g -O0 -fprofile-arcs")
 # Find dependent libraries
 find_library(ydk_openconfig_location ydk_openconfig)
 find_library(ydk_cisco_ios_xr_location ydk_cisco_ios_xr)
-find_library(ydk_cisco_ios_xe_location ydk_cisco_ios_xe)
+#find_library(ydk_cisco_ios_xe_location ydk_cisco_ios_xe)
 find_library(ydk_location ydk)
 find_library(xml2_location xml2)
 find_library(curl_location curl)
@@ -52,10 +52,10 @@ foreach(sample IN LISTS samples)
     add_executable(${sample} ${sample}.cpp args_parser.cpp)
 
     target_link_libraries(${sample}
-            ${ydk_location} 
             ${ydk_openconfig_location}
             ${ydk_cisco_ios_xr_location}
-            ${ydk_cisco_ios_xe_location}
+            ${ydk_location} 
+#           ${ydk_cisco_ios_xe_location}
             ${xml2_location}
             ${curl_location}
             ${ssh_location}

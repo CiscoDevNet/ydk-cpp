@@ -60,8 +60,8 @@ int main(int argc, char* argv[])
     mtulist->mtu = 1500;
     mtulist->parent = intf.get();
 
-    intf->mtus->mtu.push_back(mtulist);
-    interface.interface_configuration.push_back(intf);
+    intf->mtus->mtu.append(mtulist);
+    interface.interface_configuration.append(intf);
 
     bool reply = crud.create(provider, interface);
 

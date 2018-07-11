@@ -64,37 +64,37 @@ int main(int argc, char* argv[])
     cout << "=================================================="<<endl;
     cout << "ISIS configuration: " << endl<<endl;
 
-    for(size_t i=0; i < isis_read_ptr->instances->instance.size(); i++)
+    for(size_t i=0; i < isis_read_ptr->instances->instance.len(); i++)
     {
         auto instance = dynamic_cast<Isis::Instances::Instance*>(isis_read_ptr->instances->instance[i].get());
         cout << "Instance: " << instance->instance_name << endl;
         cout << "Running: " << ((instance->running.is_set)?"Yes":"No") << endl;
         cout << "IS type: " << instance->is_type << endl;
 
-        for(size_t j=0; j < instance->nets->net.size(); j++)
+        /*for(size_t j=0; j < instance->nets->net.len(); j++)
         {
             cout << "Net name: " << instance->nets->net[j]->net_name << endl;
         }
 
-        for(size_t j=0; j < instance->afs->af.size(); j++)
+        for(size_t j=0; j < instance->afs->af.len(); j++)
         {
             cout << "AF name: " << instance->afs->af[j]->af_name << endl;
             cout << "SAF name: " << instance->afs->af[j]->saf_name << endl;
         }
 
-        for(size_t j=0; j < instance->interfaces->interface.size(); j++)
+        for(size_t j=0; j < instance->interfaces->interface.len(); j++)
         {
             cout<<endl << "Interface name: " << instance->interfaces->interface[j]->interface_name << endl;
             cout << "Interface running: " << ((instance->interfaces->interface[j]->running.is_set)?"Yes":"No") << endl;
             cout<< "Interface state: " << instance->interfaces->interface[j]->state << endl;
             cout<< "Interface point-to-point: " << ((instance->interfaces->interface[j]->point_to_point.is_set)?"Yes":"No") << endl;
 
-            for(size_t k=0; k < instance->interfaces->interface[j]->interface_afs->interface_af.size(); k++)
+            for(size_t k=0; k < instance->interfaces->interface[j]->interface_afs->interface_af.len(); k++)
             {
                 cout<< "Interface AF name: " << instance->interfaces->interface[j]->interface_afs->interface_af[k]->af_name << endl;
                 cout<< "Interface SAF name: " << instance->interfaces->interface[j]->interface_afs->interface_af[k]->saf_name << endl;
             }
-        }
+        }*/
     }
 
     cout << "=================================================="<<endl<<endl;

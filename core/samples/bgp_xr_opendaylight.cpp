@@ -50,7 +50,7 @@ static void config_bgp(Bgp *bgp)
     global_af->af_name = BgpAddressFamily::ipv4_unicast;
     global_af->enable = Empty();
     global_af->parent = four_byte_as->default_vrf->global->global_afs.get();
-    four_byte_as->default_vrf->global->global_afs->global_af.push_back(move(global_af));
+    four_byte_as->default_vrf->global->global_afs->global_af.append(move(global_af));
 
     // configure IBGP neighbor group
     auto neighbor_group = make_unique<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup>();
@@ -66,22 +66,22 @@ static void config_bgp(Bgp *bgp)
     neighbor_group_af->activate = Empty();
     neighbor_group_af->parent = neighbor_group->neighbor_group_afs.get();
     neighbor_group->parent = four_byte_as->default_vrf->bgp_entity->neighbor_groups.get();
-    neighbor_group->neighbor_group_afs->neighbor_group_af.push_back(move(neighbor_group_af));
-    four_byte_as->default_vrf->bgp_entity->neighbor_groups->neighbor_group.push_back(move(neighbor_group));
+    neighbor_group->neighbor_group_afs->neighbor_group_af.append(move(neighbor_group_af));
+    four_byte_as->default_vrf->bgp_entity->neighbor_groups->neighbor_group.append(move(neighbor_group));
 
     // configure IBGP neighbor
     auto neighbor = make_unique<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor>();
     neighbor->neighbor_address = "172.16.255.2";
     neighbor->neighbor_group_add_member = "IBGP";
     neighbor->parent = four_byte_as->default_vrf->bgp_entity->neighbors.get();
-    four_byte_as->default_vrf->bgp_entity->neighbors->neighbor.push_back(move(neighbor));
+    four_byte_as->default_vrf->bgp_entity->neighbors->neighbor.append(move(neighbor));
 
     four_byte_as->parent = instance_as.get();
     instance_as->parent = instance.get();
     instance->parent = bgp;
-    instance_as->four_byte_as.push_back(move(four_byte_as));
-    instance->instance_as.push_back(move(instance_as));
-    bgp->instance.push_back(move(instance));
+    instance_as->four_byte_as.append(move(four_byte_as));
+    instance->instance_as.append(move(instance_as));
+    bgp->instance.append(move(instance));
 }
 
 static void set_logging(bool verbose)
@@ -115,7 +115,7 @@ int main(int argc, char* argv[])
 
         if(reply) cout << "Create yfilter success" << endl << endl; else cout << "Operation failed" << endl << endl;
     }
-    catch(YCPPError & e)
+    catch(YError & e)
     {
         cerr << "Error details: "<<e.what()<<endl;
     }

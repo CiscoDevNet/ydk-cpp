@@ -41,7 +41,7 @@ void config_isis(Isis* isis)
     auto net = make_unique<Isis::Instances::Instance::Nets::Net>();
     net->net_name = "49.0000.1720.1625.5001.00";
     net->parent = instance->nets.get();
-    instance->nets->net.push_back(move(net));
+    instance->nets->net.append(move(net));
 
     // global address family
     auto af = make_unique<Isis::Instances::Instance::Afs::Af>();
@@ -52,11 +52,9 @@ void config_isis(Isis* isis)
     auto metric_style = make_unique<Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle>();
     metric_style->style = IsisMetricStyle::new_metric_style;
     metric_style->level = IsisInternalLevel::not_set;
-    metric_style->transition_state = IsisMetricStyleTransition::disabled;
-    metric_style->parent = af->af_data->metric_styles.get();
-    af->af_data->metric_styles->metric_style.push_back(move(metric_style));
+    af->af_data->metric_styles->metric_style.append(move(metric_style));
     af->parent = instance->afs.get();
-    instance->afs->af.push_back(move(af));
+    instance->afs->af.append(move(af));
 
     // loopback interface
     auto interface = make_unique<Isis::Instances::Instance::Interfaces::Interface>();
@@ -69,9 +67,9 @@ void config_isis(Isis* isis)
     interface_af->saf_name = IsisSubAddressFamily::unicast;
     interface_af->interface_af_data->running = Empty();
     interface_af->parent = interface->interface_afs.get();
-    interface->interface_afs->interface_af.push_back(move(interface_af));
+    interface->interface_afs->interface_af.append(move(interface_af));
     interface->parent = instance->interfaces.get();
-    instance->interfaces->interface.push_back(move(interface));
+    instance->interfaces->interface.append(move(interface));
 
     // gi0/0/0/0 interface
     interface = make_unique<Isis::Instances::Instance::Interfaces::Interface>();
@@ -84,12 +82,12 @@ void config_isis(Isis* isis)
     interface_af->saf_name = IsisSubAddressFamily::unicast;
     interface_af->interface_af_data->running = Empty();
     interface_af->parent = interface->interface_afs.get();
-    interface->interface_afs->interface_af.push_back(move(interface_af));
+    interface->interface_afs->interface_af.append(move(interface_af));
     interface->parent = instance->interfaces.get();
-    instance->interfaces->interface.push_back(move(interface));
+    instance->interfaces->interface.append(move(interface));
 
     instance->parent = isis->instances.get();
-    isis->instances->instance.push_back(move(instance));
+    isis->instances->instance.append(move(instance));
 }
 
 int main(int argc, char* argv[])

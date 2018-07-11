@@ -82,7 +82,7 @@ int main(int argc, char* argv[])
         bool reply = crud.create(provider, *bgp);
         if(reply) cout << "Write yfilter success" << endl; else cout << "Operation failed" << endl << endl;
     }
-    catch(YCPPError & e)
+    catch(YError & e)
     {
         cerr << "Error details: " << e << endl;
     }
