@@ -27,7 +27,6 @@ RsvpStandby::RsvpStandby()
     , hello_instance_briefs(std::make_shared<RsvpStandby::HelloInstanceBriefs>())
     , authentication_details(std::make_shared<RsvpStandby::AuthenticationDetails>())
     , rsb_briefs(std::make_shared<RsvpStandby::RsbBriefs>())
-    , open_config(std::make_shared<RsvpStandby::OpenConfig>())
     , counters(std::make_shared<RsvpStandby::Counters>())
     , interface_detaileds(std::make_shared<RsvpStandby::InterfaceDetaileds>())
     , controller_briefs(std::make_shared<RsvpStandby::ControllerBriefs>())
@@ -59,7 +58,6 @@ RsvpStandby::RsvpStandby()
     hello_instance_briefs->parent = this;
     authentication_details->parent = this;
     rsb_briefs->parent = this;
-    open_config->parent = this;
     counters->parent = this;
     interface_detaileds->parent = this;
     controller_briefs->parent = this;
@@ -101,7 +99,6 @@ bool RsvpStandby::has_data() const
 	|| (hello_instance_briefs !=  nullptr && hello_instance_briefs->has_data())
 	|| (authentication_details !=  nullptr && authentication_details->has_data())
 	|| (rsb_briefs !=  nullptr && rsb_briefs->has_data())
-	|| (open_config !=  nullptr && open_config->has_data())
 	|| (counters !=  nullptr && counters->has_data())
 	|| (interface_detaileds !=  nullptr && interface_detaileds->has_data())
 	|| (controller_briefs !=  nullptr && controller_briefs->has_data())
@@ -137,7 +134,6 @@ bool RsvpStandby::has_operation() const
 	|| (hello_instance_briefs !=  nullptr && hello_instance_briefs->has_operation())
 	|| (authentication_details !=  nullptr && authentication_details->has_operation())
 	|| (rsb_briefs !=  nullptr && rsb_briefs->has_operation())
-	|| (open_config !=  nullptr && open_config->has_operation())
 	|| (counters !=  nullptr && counters->has_operation())
 	|| (interface_detaileds !=  nullptr && interface_detaileds->has_operation())
 	|| (controller_briefs !=  nullptr && controller_briefs->has_operation())
@@ -282,15 +278,6 @@ std::shared_ptr<Entity> RsvpStandby::get_child_by_name(const std::string & child
             rsb_briefs = std::make_shared<RsvpStandby::RsbBriefs>();
         }
         return rsb_briefs;
-    }
-
-    if(child_yang_name == "open-config")
-    {
-        if(open_config == nullptr)
-        {
-            open_config = std::make_shared<RsvpStandby::OpenConfig>();
-        }
-        return open_config;
     }
 
     if(child_yang_name == "counters")
@@ -522,11 +509,6 @@ std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::get_children() const
         children["rsb-briefs"] = rsb_briefs;
     }
 
-    if(open_config != nullptr)
-    {
-        children["open-config"] = open_config;
-    }
-
     if(counters != nullptr)
     {
         children["counters"] = counters;
@@ -655,7 +637,7 @@ std::map<std::pair<std::string, std::string>, std::string> RsvpStandby::get_name
 
 bool RsvpStandby::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface-neighbor-briefs" || name == "controller-summaries" || name == "authentication-briefs" || name == "session-briefs" || name == "psb-detaileds" || name == "controller-detaileds" || name == "frr-summary" || name == "rsb-detaileds" || name == "interface-summaries" || name == "hello-instance-briefs" || name == "authentication-details" || name == "rsb-briefs" || name == "open-config" || name == "counters" || name == "interface-detaileds" || name == "controller-briefs" || name == "graceful-restart" || name == "hello-interface-instance-briefs" || name == "hello-interface-instance-details" || name == "interface-neighbor-details" || name == "nsr" || name == "summary" || name == "frrs" || name == "request-briefs" || name == "request-details" || name == "interface-briefs" || name == "session-detaileds" || name == "hello-instance-details" || name == "global-neighbor-details" || name == "psb-briefs" || name == "global-neighbor-briefs")
+    if(name == "interface-neighbor-briefs" || name == "controller-summaries" || name == "authentication-briefs" || name == "session-briefs" || name == "psb-detaileds" || name == "controller-detaileds" || name == "frr-summary" || name == "rsb-detaileds" || name == "interface-summaries" || name == "hello-instance-briefs" || name == "authentication-details" || name == "rsb-briefs" || name == "counters" || name == "interface-detaileds" || name == "controller-briefs" || name == "graceful-restart" || name == "hello-interface-instance-briefs" || name == "hello-interface-instance-details" || name == "interface-neighbor-details" || name == "nsr" || name == "summary" || name == "frrs" || name == "request-briefs" || name == "request-details" || name == "interface-briefs" || name == "session-detaileds" || name == "hello-instance-details" || name == "global-neighbor-details" || name == "psb-briefs" || name == "global-neighbor-briefs")
         return true;
     return false;
 }

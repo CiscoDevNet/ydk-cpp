@@ -2370,6 +2370,7 @@ class Subscriber::Manager::Nodes::Node::Statistics::Srg : public ydk::Entity
         ydk::YLeaf total_dont_send_to_txlist; //type: uint32
         ydk::YLeaf total_srg_not_master; //type: uint32
         ydk::YLeaf total_master_eoms_pending; //type: uint32
+        ydk::YLeaf total_master_eoms_pending_cleared; //type: uint32
         ydk::YLeaf last_pause_period; //type: uint64
         ydk::YLeaf total_pause_time; //type: uint64
         ydk::YLeaf last_pause_time; //type: uint64

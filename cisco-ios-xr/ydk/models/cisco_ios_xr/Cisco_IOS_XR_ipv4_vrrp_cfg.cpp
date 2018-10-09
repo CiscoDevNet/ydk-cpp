@@ -13,6 +13,8 @@ namespace Cisco_IOS_XR_ipv4_vrrp_cfg {
 
 Vrrp::Vrrp()
     :
+    enable{YType::empty, "enable"}
+        ,
     logging(std::make_shared<Vrrp::Logging>())
     , interfaces(std::make_shared<Vrrp::Interfaces>())
 {
@@ -29,13 +31,15 @@ Vrrp::~Vrrp()
 bool Vrrp::has_data() const
 {
     if (is_presence_container) return true;
-    return (logging !=  nullptr && logging->has_data())
+    return enable.is_set
+	|| (logging !=  nullptr && logging->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data());
 }
 
 bool Vrrp::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (logging !=  nullptr && logging->has_operation())
 	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
@@ -51,6 +55,7 @@ std::vector<std::pair<std::string, LeafData> > Vrrp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -98,10 +103,20 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::get_children() const
 
 void Vrrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Vrrp::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
 }
 
 std::shared_ptr<Entity> Vrrp::clone_ptr() const
@@ -131,7 +146,7 @@ std::map<std::pair<std::string, std::string>, std::string> Vrrp::get_namespace_i
 
 bool Vrrp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "logging" || name == "interfaces")
+    if(name == "logging" || name == "interfaces" || name == "enable")
         return true;
     return false;
 }
@@ -1368,10 +1383,9 @@ bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter:
 
 Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Timer::Timer()
     :
-    in_msec{YType::boolean, "in-msec"},
     advertisement_time_in_msec{YType::uint32, "advertisement-time-in-msec"},
     advertisement_time_in_sec{YType::uint32, "advertisement-time-in-sec"},
-    forced{YType::boolean, "forced"}
+    forced{YType::empty, "forced"}
 {
 
     yang_name = "timer"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true; 
@@ -1384,8 +1398,7 @@ Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Time
 bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Timer::has_data() const
 {
     if (is_presence_container) return true;
-    return in_msec.is_set
-	|| advertisement_time_in_msec.is_set
+    return advertisement_time_in_msec.is_set
 	|| advertisement_time_in_sec.is_set
 	|| forced.is_set;
 }
@@ -1393,7 +1406,6 @@ bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter:
 bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Timer::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(in_msec.yfilter)
 	|| ydk::is_set(advertisement_time_in_msec.yfilter)
 	|| ydk::is_set(advertisement_time_in_sec.yfilter)
 	|| ydk::is_set(forced.yfilter);
@@ -1410,7 +1422,6 @@ std::vector<std::pair<std::string, LeafData> > Vrrp::Interfaces::Interface::Ipv6
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (in_msec.is_set || is_set(in_msec.yfilter)) leaf_name_data.push_back(in_msec.get_name_leafdata());
     if (advertisement_time_in_msec.is_set || is_set(advertisement_time_in_msec.yfilter)) leaf_name_data.push_back(advertisement_time_in_msec.get_name_leafdata());
     if (advertisement_time_in_sec.is_set || is_set(advertisement_time_in_sec.yfilter)) leaf_name_data.push_back(advertisement_time_in_sec.get_name_leafdata());
     if (forced.is_set || is_set(forced.yfilter)) leaf_name_data.push_back(forced.get_name_leafdata());
@@ -1433,12 +1444,6 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6
 
 void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Timer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "in-msec")
-    {
-        in_msec = value;
-        in_msec.value_namespace = name_space;
-        in_msec.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "advertisement-time-in-msec")
     {
         advertisement_time_in_msec = value;
@@ -1461,10 +1466,6 @@ void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter:
 
 void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Timer::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "in-msec")
-    {
-        in_msec.yfilter = yfilter;
-    }
     if(value_path == "advertisement-time-in-msec")
     {
         advertisement_time_in_msec.yfilter = yfilter;
@@ -1481,7 +1482,7 @@ void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Timer::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "in-msec" || name == "advertisement-time-in-msec" || name == "advertisement-time-in-sec" || name == "forced")
+    if(name == "advertisement-time-in-msec" || name == "advertisement-time-in-sec" || name == "forced")
         return true;
     return false;
 }
@@ -2888,10 +2889,9 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter:
 
 Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Timer::Timer()
     :
-    in_msec{YType::boolean, "in-msec"},
     advertisement_time_in_msec{YType::uint32, "advertisement-time-in-msec"},
     advertisement_time_in_sec{YType::uint32, "advertisement-time-in-sec"},
-    forced{YType::boolean, "forced"}
+    forced{YType::empty, "forced"}
 {
 
     yang_name = "timer"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true; 
@@ -2904,8 +2904,7 @@ Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Time
 bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Timer::has_data() const
 {
     if (is_presence_container) return true;
-    return in_msec.is_set
-	|| advertisement_time_in_msec.is_set
+    return advertisement_time_in_msec.is_set
 	|| advertisement_time_in_sec.is_set
 	|| forced.is_set;
 }
@@ -2913,7 +2912,6 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter:
 bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Timer::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(in_msec.yfilter)
 	|| ydk::is_set(advertisement_time_in_msec.yfilter)
 	|| ydk::is_set(advertisement_time_in_sec.yfilter)
 	|| ydk::is_set(forced.yfilter);
@@ -2930,7 +2928,6 @@ std::vector<std::pair<std::string, LeafData> > Vrrp::Interfaces::Interface::Ipv4
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (in_msec.is_set || is_set(in_msec.yfilter)) leaf_name_data.push_back(in_msec.get_name_leafdata());
     if (advertisement_time_in_msec.is_set || is_set(advertisement_time_in_msec.yfilter)) leaf_name_data.push_back(advertisement_time_in_msec.get_name_leafdata());
     if (advertisement_time_in_sec.is_set || is_set(advertisement_time_in_sec.yfilter)) leaf_name_data.push_back(advertisement_time_in_sec.get_name_leafdata());
     if (forced.is_set || is_set(forced.yfilter)) leaf_name_data.push_back(forced.get_name_leafdata());
@@ -2953,12 +2950,6 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
 
 void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Timer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "in-msec")
-    {
-        in_msec = value;
-        in_msec.value_namespace = name_space;
-        in_msec.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "advertisement-time-in-msec")
     {
         advertisement_time_in_msec = value;
@@ -2981,10 +2972,6 @@ void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter:
 
 void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Timer::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "in-msec")
-    {
-        in_msec.yfilter = yfilter;
-    }
     if(value_path == "advertisement-time-in-msec")
     {
         advertisement_time_in_msec.yfilter = yfilter;
@@ -3001,7 +2988,7 @@ void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Timer::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "in-msec" || name == "advertisement-time-in-msec" || name == "advertisement-time-in-sec" || name == "forced")
+    if(name == "advertisement-time-in-msec" || name == "advertisement-time-in-sec" || name == "forced")
         return true;
     return false;
 }
@@ -4382,10 +4369,9 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter:
 
 Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Timer::Timer()
     :
-    in_msec{YType::boolean, "in-msec"},
     advertisement_time_in_msec{YType::uint32, "advertisement-time-in-msec"},
     advertisement_time_in_sec{YType::uint32, "advertisement-time-in-sec"},
-    forced{YType::boolean, "forced"}
+    forced{YType::empty, "forced"}
 {
 
     yang_name = "timer"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true; 
@@ -4398,8 +4384,7 @@ Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Time
 bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Timer::has_data() const
 {
     if (is_presence_container) return true;
-    return in_msec.is_set
-	|| advertisement_time_in_msec.is_set
+    return advertisement_time_in_msec.is_set
 	|| advertisement_time_in_sec.is_set
 	|| forced.is_set;
 }
@@ -4407,7 +4392,6 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter:
 bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Timer::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(in_msec.yfilter)
 	|| ydk::is_set(advertisement_time_in_msec.yfilter)
 	|| ydk::is_set(advertisement_time_in_sec.yfilter)
 	|| ydk::is_set(forced.yfilter);
@@ -4424,7 +4408,6 @@ std::vector<std::pair<std::string, LeafData> > Vrrp::Interfaces::Interface::Ipv4
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (in_msec.is_set || is_set(in_msec.yfilter)) leaf_name_data.push_back(in_msec.get_name_leafdata());
     if (advertisement_time_in_msec.is_set || is_set(advertisement_time_in_msec.yfilter)) leaf_name_data.push_back(advertisement_time_in_msec.get_name_leafdata());
     if (advertisement_time_in_sec.is_set || is_set(advertisement_time_in_sec.yfilter)) leaf_name_data.push_back(advertisement_time_in_sec.get_name_leafdata());
     if (forced.is_set || is_set(forced.yfilter)) leaf_name_data.push_back(forced.get_name_leafdata());
@@ -4447,12 +4430,6 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
 
 void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Timer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "in-msec")
-    {
-        in_msec = value;
-        in_msec.value_namespace = name_space;
-        in_msec.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "advertisement-time-in-msec")
     {
         advertisement_time_in_msec = value;
@@ -4475,10 +4452,6 @@ void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter:
 
 void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Timer::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "in-msec")
-    {
-        in_msec.yfilter = yfilter;
-    }
     if(value_path == "advertisement-time-in-msec")
     {
         advertisement_time_in_msec.yfilter = yfilter;
@@ -4495,7 +4468,7 @@ void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Timer::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "in-msec" || name == "advertisement-time-in-msec" || name == "advertisement-time-in-sec" || name == "forced")
+    if(name == "advertisement-time-in-msec" || name == "advertisement-time-in-sec" || name == "forced")
         return true;
     return false;
 }

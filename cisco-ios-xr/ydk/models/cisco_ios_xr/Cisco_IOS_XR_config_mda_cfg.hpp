@@ -57,34 +57,26 @@ class ActiveNodes::ActiveNode : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf node_name; //type: string
-        class CiscoIOSXRWdCfgWatchdogNodeThreshold; //type: ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold
-        class SsrpGroup; //type: ActiveNodes::ActiveNode::SsrpGroup
-        class LptsLocal; //type: ActiveNodes::ActiveNode::LptsLocal
+        class WatchdogNodeThreshold; //type: ActiveNodes::ActiveNode::WatchdogNodeThreshold
         class Ltrace; //type: ActiveNodes::ActiveNode::Ltrace
         class ClockInterface; //type: ActiveNodes::ActiveNode::ClockInterface
-        class FiaBufferProfileCfg; //type: ActiveNodes::ActiveNode::FiaBufferProfileCfg
-        class FiaVqiShaperCfg; //type: ActiveNodes::ActiveNode::FiaVqiShaperCfg
-        class PortQueueRemaps; //type: ActiveNodes::ActiveNode::PortQueueRemaps
-        class CiscoIOSXRWatchdCfgWatchdogNodeThreshold; //type: ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold
+        class SsrpGroup; //type: ActiveNodes::ActiveNode::SsrpGroup
+        class LptsLocal; //type: ActiveNodes::ActiveNode::LptsLocal
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold> cisco_ios_xr_wd_cfg_watchdog_node_threshold;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::SsrpGroup> ssrp_group;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::LptsLocal> lpts_local;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::WatchdogNodeThreshold> watchdog_node_threshold;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::Ltrace> ltrace;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::ClockInterface> clock_interface;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::FiaBufferProfileCfg> fia_buffer_profile_cfg;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::FiaVqiShaperCfg> fia_vqi_shaper_cfg;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::PortQueueRemaps> port_queue_remaps;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold> cisco_ios_xr_watchd_cfg_watchdog_node_threshold_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::SsrpGroup> ssrp_group;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::LptsLocal> lpts_local;
         
 }; // ActiveNodes::ActiveNode
 
 
-class ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold : public ydk::Entity
+class ActiveNodes::ActiveNode::WatchdogNodeThreshold : public ydk::Entity
 {
     public:
-        CiscoIOSXRWdCfgWatchdogNodeThreshold();
-        ~CiscoIOSXRWdCfgWatchdogNodeThreshold();
+        WatchdogNodeThreshold();
+        ~WatchdogNodeThreshold();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -96,14 +88,39 @@ class ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MemoryThreshold; //type: ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::MemoryThreshold
+        class DiskThreshold; //type: ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold
+        class MemoryThreshold; //type: ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::MemoryThreshold> memory_threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold> disk_threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold> memory_threshold;
         
-}; // ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold
+}; // ActiveNodes::ActiveNode::WatchdogNodeThreshold
 
 
-class ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::MemoryThreshold : public ydk::Entity
+class ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold : public ydk::Entity
+{
+    public:
+        DiskThreshold();
+        ~DiskThreshold();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf minor; //type: uint32
+        ydk::YLeaf severe; //type: uint32
+        ydk::YLeaf critical; //type: uint32
+
+}; // ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold
+
+
+class ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold : public ydk::Entity
 {
     public:
         MemoryThreshold();
@@ -123,7 +140,298 @@ class ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::MemoryThres
         ydk::YLeaf severe; //type: uint32
         ydk::YLeaf critical; //type: uint32
 
-}; // ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::MemoryThreshold
+}; // ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold
+
+
+class ActiveNodes::ActiveNode::Ltrace : public ydk::Entity
+{
+    public:
+        Ltrace();
+        ~Ltrace();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AllocationParams; //type: ActiveNodes::ActiveNode::Ltrace::AllocationParams
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::Ltrace::AllocationParams> allocation_params;
+        
+}; // ActiveNodes::ActiveNode::Ltrace
+
+
+class ActiveNodes::ActiveNode::Ltrace::AllocationParams : public ydk::Entity
+{
+    public:
+        AllocationParams();
+        ~AllocationParams();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mode; //type: InfraLtraceMode
+        ydk::YLeaf scale_factor; //type: InfraLtraceScale
+
+}; // ActiveNodes::ActiveNode::Ltrace::AllocationParams
+
+
+class ActiveNodes::ActiveNode::ClockInterface : public ydk::Entity
+{
+    public:
+        ClockInterface();
+        ~ClockInterface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Clocks; //type: ActiveNodes::ActiveNode::ClockInterface::Clocks
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::ClockInterface::Clocks> clocks;
+        
+}; // ActiveNodes::ActiveNode::ClockInterface
+
+
+class ActiveNodes::ActiveNode::ClockInterface::Clocks : public ydk::Entity
+{
+    public:
+        Clocks();
+        ~Clocks();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Clock; //type: ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock
+
+        ydk::YList clock_;
+        
+}; // ActiveNodes::ActiveNode::ClockInterface::Clocks
+
+
+class ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock : public ydk::Entity
+{
+    public:
+        Clock();
+        ~Clock();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf clock_type; //type: FsyncClock
+        ydk::YLeaf port; //type: uint32
+        class FrequencySynchronization; //type: ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization
+        class SyncController; //type: ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization> frequency_synchronization;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController> sync_controller;
+        
+}; // ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock
+
+
+class ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization : public ydk::Entity
+{
+    public:
+        FrequencySynchronization();
+        ~FrequencySynchronization();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf wait_to_restore_time; //type: uint32
+        ydk::YLeaf priority; //type: uint32
+        ydk::YLeaf selection_input; //type: empty
+        ydk::YLeaf time_of_day_priority; //type: uint32
+        ydk::YLeaf ssm_disable; //type: empty
+        class OutputQualityLevel; //type: ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel
+        class InputQualityLevel; //type: ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel> output_quality_level;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel> input_quality_level;
+        
+}; // ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization
+
+
+class ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel : public ydk::Entity
+{
+    public:
+        OutputQualityLevel();
+        ~OutputQualityLevel();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf quality_level_option; //type: FsyncQlOption
+        ydk::YLeaf exact_quality_level_value; //type: FsyncQlValue
+        ydk::YLeaf min_quality_level_value; //type: FsyncQlValue
+        ydk::YLeaf max_quality_level_value; //type: FsyncQlValue
+
+}; // ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel
+
+
+class ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel : public ydk::Entity
+{
+    public:
+        InputQualityLevel();
+        ~InputQualityLevel();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf quality_level_option; //type: FsyncQlOption
+        ydk::YLeaf exact_quality_level_value; //type: FsyncQlValue
+        ydk::YLeaf min_quality_level_value; //type: FsyncQlValue
+        ydk::YLeaf max_quality_level_value; //type: FsyncQlValue
+
+}; // ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel
+
+
+class ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController : public ydk::Entity
+{
+    public:
+        SyncController();
+        ~SyncController();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class TransportMode; //type: ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode> transport_mode;
+        
+}; // ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController
+
+
+class ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode : public ydk::Entity
+{
+    public:
+        TransportMode();
+        ~TransportMode();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class FrequencyMode; //type: ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode> frequency_mode;
+        
+}; // ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode
+
+
+class ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode : public ydk::Entity
+{
+    public:
+        FrequencyMode();
+        ~FrequencyMode();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf shutdown; //type: empty
+        class PortMode; //type: ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode> port_mode; // presence node
+        
+}; // ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode
+
+
+class ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode : public ydk::Entity
+{
+    public:
+        PortMode();
+        ~PortMode();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf option1; //type: uint32
+        ydk::YLeaf option2; //type: uint32
+        ydk::YLeaf option3; //type: uint32
+        ydk::YLeaf option4; //type: uint32
+        ydk::YLeaf option5; //type: uint32
+
+}; // ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode
 
 
 class ActiveNodes::ActiveNode::SsrpGroup : public ydk::Entity
@@ -474,358 +782,6 @@ class ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedence
 
 }; // ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences
 
-
-class ActiveNodes::ActiveNode::Ltrace : public ydk::Entity
-{
-    public:
-        Ltrace();
-        ~Ltrace();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class AllocationParams; //type: ActiveNodes::ActiveNode::Ltrace::AllocationParams
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::Ltrace::AllocationParams> allocation_params;
-        
-}; // ActiveNodes::ActiveNode::Ltrace
-
-
-class ActiveNodes::ActiveNode::Ltrace::AllocationParams : public ydk::Entity
-{
-    public:
-        AllocationParams();
-        ~AllocationParams();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf mode; //type: InfraLtraceMode
-        ydk::YLeaf scale_factor; //type: InfraLtraceScale
-
-}; // ActiveNodes::ActiveNode::Ltrace::AllocationParams
-
-
-class ActiveNodes::ActiveNode::ClockInterface : public ydk::Entity
-{
-    public:
-        ClockInterface();
-        ~ClockInterface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Clocks; //type: ActiveNodes::ActiveNode::ClockInterface::Clocks
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::ClockInterface::Clocks> clocks;
-        
-}; // ActiveNodes::ActiveNode::ClockInterface
-
-
-class ActiveNodes::ActiveNode::ClockInterface::Clocks : public ydk::Entity
-{
-    public:
-        Clocks();
-        ~Clocks();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Clock; //type: ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock
-
-        ydk::YList clock_;
-        
-}; // ActiveNodes::ActiveNode::ClockInterface::Clocks
-
-
-class ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock : public ydk::Entity
-{
-    public:
-        Clock();
-        ~Clock();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf clock_type; //type: FsyncClock
-        ydk::YLeaf port; //type: uint32
-        class FrequencySynchronization; //type: ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization> frequency_synchronization;
-        
-}; // ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock
-
-
-class ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization : public ydk::Entity
-{
-    public:
-        FrequencySynchronization();
-        ~FrequencySynchronization();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf wait_to_restore_time; //type: uint32
-        ydk::YLeaf priority; //type: uint32
-        ydk::YLeaf selection_input; //type: empty
-        ydk::YLeaf time_of_day_priority; //type: uint32
-        ydk::YLeaf ssm_disable; //type: empty
-        class OutputQualityLevel; //type: ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel
-        class InputQualityLevel; //type: ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel> output_quality_level;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel> input_quality_level;
-        
-}; // ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization
-
-
-class ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel : public ydk::Entity
-{
-    public:
-        OutputQualityLevel();
-        ~OutputQualityLevel();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf quality_level_option; //type: FsyncQlOption
-        ydk::YLeaf exact_quality_level_value; //type: FsyncQlValue
-        ydk::YLeaf min_quality_level_value; //type: FsyncQlValue
-        ydk::YLeaf max_quality_level_value; //type: FsyncQlValue
-
-}; // ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel
-
-
-class ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel : public ydk::Entity
-{
-    public:
-        InputQualityLevel();
-        ~InputQualityLevel();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf quality_level_option; //type: FsyncQlOption
-        ydk::YLeaf exact_quality_level_value; //type: FsyncQlValue
-        ydk::YLeaf min_quality_level_value; //type: FsyncQlValue
-        ydk::YLeaf max_quality_level_value; //type: FsyncQlValue
-
-}; // ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel
-
-
-class ActiveNodes::ActiveNode::FiaBufferProfileCfg : public ydk::Entity
-{
-    public:
-        FiaBufferProfileCfg();
-        ~FiaBufferProfileCfg();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf xl; //type: boolean
-
-}; // ActiveNodes::ActiveNode::FiaBufferProfileCfg
-
-
-class ActiveNodes::ActiveNode::FiaVqiShaperCfg : public ydk::Entity
-{
-    public:
-        FiaVqiShaperCfg();
-        ~FiaVqiShaperCfg();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf enhance; //type: boolean
-
-}; // ActiveNodes::ActiveNode::FiaVqiShaperCfg
-
-
-class ActiveNodes::ActiveNode::PortQueueRemaps : public ydk::Entity
-{
-    public:
-        PortQueueRemaps();
-        ~PortQueueRemaps();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class PortQueueRemap; //type: ActiveNodes::ActiveNode::PortQueueRemaps::PortQueueRemap
-
-        ydk::YList port_queue_remap;
-        
-}; // ActiveNodes::ActiveNode::PortQueueRemaps
-
-
-class ActiveNodes::ActiveNode::PortQueueRemaps::PortQueueRemap : public ydk::Entity
-{
-    public:
-        PortQueueRemap();
-        ~PortQueueRemap();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf port; //type: uint32
-        ydk::YLeaf fabric_queue; //type: uint32
-
-}; // ActiveNodes::ActiveNode::PortQueueRemaps::PortQueueRemap
-
-
-class ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold : public ydk::Entity
-{
-    public:
-        CiscoIOSXRWatchdCfgWatchdogNodeThreshold();
-        ~CiscoIOSXRWatchdCfgWatchdogNodeThreshold();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class DiskThreshold; //type: ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold
-        class MemoryThreshold; //type: ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::MemoryThreshold
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold> disk_threshold;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::MemoryThreshold> memory_threshold;
-        
-}; // ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold
-
-
-class ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold : public ydk::Entity
-{
-    public:
-        DiskThreshold();
-        ~DiskThreshold();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf minor; //type: uint32
-        ydk::YLeaf severe; //type: uint32
-        ydk::YLeaf critical; //type: uint32
-
-}; // ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold
-
-
-class ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::MemoryThreshold : public ydk::Entity
-{
-    public:
-        MemoryThreshold();
-        ~MemoryThreshold();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf minor; //type: uint32
-        ydk::YLeaf severe; //type: uint32
-        ydk::YLeaf critical; //type: uint32
-
-}; // ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::MemoryThreshold
-
 class PreconfiguredNodes : public ydk::Entity
 {
     public:
@@ -872,32 +828,24 @@ class PreconfiguredNodes::PreconfiguredNode : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf node_name; //type: string
-        class CiscoIOSXRWdCfgWatchdogNodeThreshold; //type: PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshold
-        class LptsLocal; //type: PreconfiguredNodes::PreconfiguredNode::LptsLocal
+        class WatchdogNodeThreshold; //type: PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold
         class Ltrace; //type: PreconfiguredNodes::PreconfiguredNode::Ltrace
         class ClockInterface; //type: PreconfiguredNodes::PreconfiguredNode::ClockInterface
-        class FiaBufferProfileCfg; //type: PreconfiguredNodes::PreconfiguredNode::FiaBufferProfileCfg
-        class FiaVqiShaperCfg; //type: PreconfiguredNodes::PreconfiguredNode::FiaVqiShaperCfg
-        class PortQueueRemaps; //type: PreconfiguredNodes::PreconfiguredNode::PortQueueRemaps
-        class CiscoIOSXRWatchdCfgWatchdogNodeThreshold; //type: PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold
+        class LptsLocal; //type: PreconfiguredNodes::PreconfiguredNode::LptsLocal
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshold> cisco_ios_xr_wd_cfg_watchdog_node_threshold;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::LptsLocal> lpts_local;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold> watchdog_node_threshold;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::Ltrace> ltrace;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::ClockInterface> clock_interface;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::FiaBufferProfileCfg> fia_buffer_profile_cfg;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::FiaVqiShaperCfg> fia_vqi_shaper_cfg;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::PortQueueRemaps> port_queue_remaps;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold> cisco_ios_xr_watchd_cfg_watchdog_node_threshold_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::LptsLocal> lpts_local;
         
 }; // PreconfiguredNodes::PreconfiguredNode
 
 
-class PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshold : public ydk::Entity
+class PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold : public ydk::Entity
 {
     public:
-        CiscoIOSXRWdCfgWatchdogNodeThreshold();
-        ~CiscoIOSXRWdCfgWatchdogNodeThreshold();
+        WatchdogNodeThreshold();
+        ~WatchdogNodeThreshold();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -909,14 +857,39 @@ class PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshol
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MemoryThreshold; //type: PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::MemoryThreshold
+        class DiskThreshold; //type: PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold
+        class MemoryThreshold; //type: PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::MemoryThreshold> memory_threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold> disk_threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold> memory_threshold;
         
-}; // PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshold
+}; // PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold
 
 
-class PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::MemoryThreshold : public ydk::Entity
+class PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold : public ydk::Entity
+{
+    public:
+        DiskThreshold();
+        ~DiskThreshold();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf minor; //type: uint32
+        ydk::YLeaf severe; //type: uint32
+        ydk::YLeaf critical; //type: uint32
+
+}; // PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold
+
+
+class PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold : public ydk::Entity
 {
     public:
         MemoryThreshold();
@@ -936,7 +909,298 @@ class PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshol
         ydk::YLeaf severe; //type: uint32
         ydk::YLeaf critical; //type: uint32
 
-}; // PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::MemoryThreshold
+}; // PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold
+
+
+class PreconfiguredNodes::PreconfiguredNode::Ltrace : public ydk::Entity
+{
+    public:
+        Ltrace();
+        ~Ltrace();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AllocationParams; //type: PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams> allocation_params;
+        
+}; // PreconfiguredNodes::PreconfiguredNode::Ltrace
+
+
+class PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams : public ydk::Entity
+{
+    public:
+        AllocationParams();
+        ~AllocationParams();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mode; //type: InfraLtraceMode
+        ydk::YLeaf scale_factor; //type: InfraLtraceScale
+
+}; // PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams
+
+
+class PreconfiguredNodes::PreconfiguredNode::ClockInterface : public ydk::Entity
+{
+    public:
+        ClockInterface();
+        ~ClockInterface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Clocks; //type: PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks> clocks;
+        
+}; // PreconfiguredNodes::PreconfiguredNode::ClockInterface
+
+
+class PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks : public ydk::Entity
+{
+    public:
+        Clocks();
+        ~Clocks();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Clock; //type: PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock
+
+        ydk::YList clock_;
+        
+}; // PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks
+
+
+class PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock : public ydk::Entity
+{
+    public:
+        Clock();
+        ~Clock();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf clock_type; //type: FsyncClock
+        ydk::YLeaf port; //type: uint32
+        class FrequencySynchronization; //type: PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization
+        class SyncController; //type: PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization> frequency_synchronization;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController> sync_controller;
+        
+}; // PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock
+
+
+class PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization : public ydk::Entity
+{
+    public:
+        FrequencySynchronization();
+        ~FrequencySynchronization();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf wait_to_restore_time; //type: uint32
+        ydk::YLeaf priority; //type: uint32
+        ydk::YLeaf selection_input; //type: empty
+        ydk::YLeaf time_of_day_priority; //type: uint32
+        ydk::YLeaf ssm_disable; //type: empty
+        class OutputQualityLevel; //type: PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel
+        class InputQualityLevel; //type: PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel> output_quality_level;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel> input_quality_level;
+        
+}; // PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization
+
+
+class PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel : public ydk::Entity
+{
+    public:
+        OutputQualityLevel();
+        ~OutputQualityLevel();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf quality_level_option; //type: FsyncQlOption
+        ydk::YLeaf exact_quality_level_value; //type: FsyncQlValue
+        ydk::YLeaf min_quality_level_value; //type: FsyncQlValue
+        ydk::YLeaf max_quality_level_value; //type: FsyncQlValue
+
+}; // PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel
+
+
+class PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel : public ydk::Entity
+{
+    public:
+        InputQualityLevel();
+        ~InputQualityLevel();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf quality_level_option; //type: FsyncQlOption
+        ydk::YLeaf exact_quality_level_value; //type: FsyncQlValue
+        ydk::YLeaf min_quality_level_value; //type: FsyncQlValue
+        ydk::YLeaf max_quality_level_value; //type: FsyncQlValue
+
+}; // PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel
+
+
+class PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController : public ydk::Entity
+{
+    public:
+        SyncController();
+        ~SyncController();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class TransportMode; //type: PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode> transport_mode;
+        
+}; // PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController
+
+
+class PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode : public ydk::Entity
+{
+    public:
+        TransportMode();
+        ~TransportMode();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class FrequencyMode; //type: PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode> frequency_mode;
+        
+}; // PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode
+
+
+class PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode : public ydk::Entity
+{
+    public:
+        FrequencyMode();
+        ~FrequencyMode();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf shutdown; //type: empty
+        class PortMode; //type: PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode> port_mode; // presence node
+        
+}; // PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode
+
+
+class PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode : public ydk::Entity
+{
+    public:
+        PortMode();
+        ~PortMode();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf option1; //type: uint32
+        ydk::YLeaf option2; //type: uint32
+        ydk::YLeaf option3; //type: uint32
+        ydk::YLeaf option4; //type: uint32
+        ydk::YLeaf option5; //type: uint32
+
+}; // PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode
 
 
 class PreconfiguredNodes::PreconfiguredNode::LptsLocal : public ydk::Entity
@@ -1218,358 +1482,6 @@ class PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Fl
         ydk::YLeafList precedence; //type: list of  one of uint32, enumeration
 
 }; // PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences
-
-
-class PreconfiguredNodes::PreconfiguredNode::Ltrace : public ydk::Entity
-{
-    public:
-        Ltrace();
-        ~Ltrace();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class AllocationParams; //type: PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams> allocation_params;
-        
-}; // PreconfiguredNodes::PreconfiguredNode::Ltrace
-
-
-class PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams : public ydk::Entity
-{
-    public:
-        AllocationParams();
-        ~AllocationParams();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf mode; //type: InfraLtraceMode
-        ydk::YLeaf scale_factor; //type: InfraLtraceScale
-
-}; // PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams
-
-
-class PreconfiguredNodes::PreconfiguredNode::ClockInterface : public ydk::Entity
-{
-    public:
-        ClockInterface();
-        ~ClockInterface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Clocks; //type: PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks> clocks;
-        
-}; // PreconfiguredNodes::PreconfiguredNode::ClockInterface
-
-
-class PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks : public ydk::Entity
-{
-    public:
-        Clocks();
-        ~Clocks();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Clock; //type: PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock
-
-        ydk::YList clock_;
-        
-}; // PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks
-
-
-class PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock : public ydk::Entity
-{
-    public:
-        Clock();
-        ~Clock();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf clock_type; //type: FsyncClock
-        ydk::YLeaf port; //type: uint32
-        class FrequencySynchronization; //type: PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization> frequency_synchronization;
-        
-}; // PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock
-
-
-class PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization : public ydk::Entity
-{
-    public:
-        FrequencySynchronization();
-        ~FrequencySynchronization();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf wait_to_restore_time; //type: uint32
-        ydk::YLeaf priority; //type: uint32
-        ydk::YLeaf selection_input; //type: empty
-        ydk::YLeaf time_of_day_priority; //type: uint32
-        ydk::YLeaf ssm_disable; //type: empty
-        class OutputQualityLevel; //type: PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel
-        class InputQualityLevel; //type: PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel> output_quality_level;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel> input_quality_level;
-        
-}; // PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization
-
-
-class PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel : public ydk::Entity
-{
-    public:
-        OutputQualityLevel();
-        ~OutputQualityLevel();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf quality_level_option; //type: FsyncQlOption
-        ydk::YLeaf exact_quality_level_value; //type: FsyncQlValue
-        ydk::YLeaf min_quality_level_value; //type: FsyncQlValue
-        ydk::YLeaf max_quality_level_value; //type: FsyncQlValue
-
-}; // PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel
-
-
-class PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel : public ydk::Entity
-{
-    public:
-        InputQualityLevel();
-        ~InputQualityLevel();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf quality_level_option; //type: FsyncQlOption
-        ydk::YLeaf exact_quality_level_value; //type: FsyncQlValue
-        ydk::YLeaf min_quality_level_value; //type: FsyncQlValue
-        ydk::YLeaf max_quality_level_value; //type: FsyncQlValue
-
-}; // PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel
-
-
-class PreconfiguredNodes::PreconfiguredNode::FiaBufferProfileCfg : public ydk::Entity
-{
-    public:
-        FiaBufferProfileCfg();
-        ~FiaBufferProfileCfg();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf xl; //type: boolean
-
-}; // PreconfiguredNodes::PreconfiguredNode::FiaBufferProfileCfg
-
-
-class PreconfiguredNodes::PreconfiguredNode::FiaVqiShaperCfg : public ydk::Entity
-{
-    public:
-        FiaVqiShaperCfg();
-        ~FiaVqiShaperCfg();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf enhance; //type: boolean
-
-}; // PreconfiguredNodes::PreconfiguredNode::FiaVqiShaperCfg
-
-
-class PreconfiguredNodes::PreconfiguredNode::PortQueueRemaps : public ydk::Entity
-{
-    public:
-        PortQueueRemaps();
-        ~PortQueueRemaps();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class PortQueueRemap; //type: PreconfiguredNodes::PreconfiguredNode::PortQueueRemaps::PortQueueRemap
-
-        ydk::YList port_queue_remap;
-        
-}; // PreconfiguredNodes::PreconfiguredNode::PortQueueRemaps
-
-
-class PreconfiguredNodes::PreconfiguredNode::PortQueueRemaps::PortQueueRemap : public ydk::Entity
-{
-    public:
-        PortQueueRemap();
-        ~PortQueueRemap();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf port; //type: uint32
-        ydk::YLeaf fabric_queue; //type: uint32
-
-}; // PreconfiguredNodes::PreconfiguredNode::PortQueueRemaps::PortQueueRemap
-
-
-class PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold : public ydk::Entity
-{
-    public:
-        CiscoIOSXRWatchdCfgWatchdogNodeThreshold();
-        ~CiscoIOSXRWatchdCfgWatchdogNodeThreshold();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class DiskThreshold; //type: PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold
-        class MemoryThreshold; //type: PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::MemoryThreshold
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold> disk_threshold;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_config_mda_cfg::PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::MemoryThreshold> memory_threshold;
-        
-}; // PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold
-
-
-class PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold : public ydk::Entity
-{
-    public:
-        DiskThreshold();
-        ~DiskThreshold();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf minor; //type: uint32
-        ydk::YLeaf severe; //type: uint32
-        ydk::YLeaf critical; //type: uint32
-
-}; // PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::DiskThreshold
-
-
-class PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::MemoryThreshold : public ydk::Entity
-{
-    public:
-        MemoryThreshold();
-        ~MemoryThreshold();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf minor; //type: uint32
-        ydk::YLeaf severe; //type: uint32
-        ydk::YLeaf critical; //type: uint32
-
-}; // PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::MemoryThreshold
 
 
 }

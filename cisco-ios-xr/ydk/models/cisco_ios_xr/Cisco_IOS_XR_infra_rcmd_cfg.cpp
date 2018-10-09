@@ -21,14 +21,12 @@ RouterConvergence::RouterConvergence()
     monitoring_interval{YType::uint32, "monitoring-interval"}
         ,
     protocols(std::make_shared<RouterConvergence::Protocols>())
-    , storage_location(std::make_shared<RouterConvergence::StorageLocation>())
-    , mpls_ldp(std::make_shared<RouterConvergence::MplsLdp>())
+    , storage_location(nullptr) // presence node
+    , mpls_ldp(nullptr) // presence node
     , collect_diagnostics(std::make_shared<RouterConvergence::CollectDiagnostics>())
     , nodes(std::make_shared<RouterConvergence::Nodes>())
 {
     protocols->parent = this;
-    storage_location->parent = this;
-    mpls_ldp->parent = this;
     collect_diagnostics->parent = this;
     nodes->parent = this;
 
@@ -744,7 +742,7 @@ RouterConvergence::StorageLocation::StorageLocation()
     reports{YType::str, "reports"}
 {
 
-    yang_name = "storage-location"; yang_parent_name = "router-convergence"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "storage-location"; yang_parent_name = "router-convergence"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 RouterConvergence::StorageLocation::~StorageLocation()
@@ -865,11 +863,10 @@ bool RouterConvergence::StorageLocation::has_leaf_or_child_of_name(const std::st
 
 RouterConvergence::MplsLdp::MplsLdp()
     :
-    remote_lfa(std::make_shared<RouterConvergence::MplsLdp::RemoteLfa>())
+    remote_lfa(nullptr) // presence node
 {
-    remote_lfa->parent = this;
 
-    yang_name = "mpls-ldp"; yang_parent_name = "router-convergence"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "mpls-ldp"; yang_parent_name = "router-convergence"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 RouterConvergence::MplsLdp::~MplsLdp()
@@ -957,7 +954,7 @@ RouterConvergence::MplsLdp::RemoteLfa::RemoteLfa()
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "remote-lfa"; yang_parent_name = "mpls-ldp"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "remote-lfa"; yang_parent_name = "mpls-ldp"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 RouterConvergence::MplsLdp::RemoteLfa::~RemoteLfa()

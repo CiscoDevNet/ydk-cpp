@@ -254,7 +254,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::S
         ydk::YLeaf sham_link_youngest_md_key; //type: boolean
         ydk::YLeaf sham_link_youngest_md_key_id; //type: uint16
         ydk::YLeaf sham_link_old_md_key_count; //type: uint32
+        ydk::YLeaf keychain_name; //type: string
+        ydk::YLeaf sham_link_keychain_key_conf; //type: boolean
         ydk::YLeaf sham_link_keychain_id; //type: uint64
+        ydk::YLeaf sham_link_keychain_alg; //type: OspfCrytographicAlgo
         ydk::YLeaf sham_link_nsf_enabled; //type: boolean
         ydk::YLeaf sham_link_nsf; //type: boolean
         ydk::YLeaf sham_link_last_nsf; //type: uint32
@@ -6319,6 +6322,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes::Backu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -6630,6 +6634,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactRout
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -6879,6 +6884,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactBack
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -7266,6 +7272,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::ConnectedRoutes::Co
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -7515,6 +7522,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::LocalRoutes::LocalR
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -7823,6 +7831,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteAr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -8134,6 +8143,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteAr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -8383,6 +8393,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteAr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -8694,6 +8705,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteAr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -8943,6 +8955,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteAr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -9268,6 +9281,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteAr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -9517,6 +9531,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteTable::Route::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -9793,6 +9808,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::ExternalRoutes::Ext
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -10028,7 +10044,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::VirtualLinks::V
         ydk::YLeaf virtual_link_youngest_md_key; //type: boolean
         ydk::YLeaf virtual_link_youngest_md_key_id; //type: uint16
         ydk::YLeaf virtual_link_old_md_key_count; //type: uint32
+        ydk::YLeaf keychain_name; //type: string
+        ydk::YLeaf virtual_link_keychain_key_conf; //type: boolean
         ydk::YLeaf virtual_link_keychain_id; //type: uint64
+        ydk::YLeaf virtual_link_keychain_alg; //type: OspfCrytographicAlgo
         ydk::YLeaf virtual_link_nsf_enabled; //type: boolean
         ydk::YLeaf virtual_link_nsf; //type: boolean
         ydk::YLeaf virtual_link_last_nsf; //type: uint32
@@ -10414,7 +10433,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Int
         ydk::YLeaf youngest_md_key; //type: boolean
         ydk::YLeaf old_md5_key_neighbor_count; //type: uint32
         ydk::YLeaf youngest_md_key_id; //type: uint16
+        ydk::YLeaf keychain_name; //type: string
+        ydk::YLeaf keychain_key_conf; //type: boolean
         ydk::YLeaf keychain_id; //type: uint64
+        ydk::YLeaf keychain_alg; //type: OspfCrytographicAlgo
         class MdKeys; //type: Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation::Interfaces::Interface::ActiveInterface::MdKeys
 
         ydk::YList md_keys;
@@ -11081,6 +11103,9 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary : 
         ydk::YLeaf srgb_end; //type: uint32
         ydk::YLeaf srgb_status; //type: OspfSrgbStatus
         ydk::YLeaf sr_strict_spf_cap; //type: boolean
+        ydk::YLeaf srlb_start; //type: uint32
+        ydk::YLeaf srlb_end; //type: uint32
+        ydk::YLeaf srlb_status; //type: OspfSrlbStatus
         class DomainId; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::DomainId
         class MaximumMetric; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::MaximumMetric
         class Redistribution; //type: Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation::ProcessSummary::Redistribution
@@ -12299,7 +12324,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::A
         ydk::YLeaf youngest_md_key; //type: boolean
         ydk::YLeaf old_md5_key_neighbor_count; //type: uint32
         ydk::YLeaf youngest_md_key_id; //type: uint16
+        ydk::YLeaf keychain_name; //type: string
+        ydk::YLeaf keychain_key_conf; //type: boolean
         ydk::YLeaf keychain_id; //type: uint64
+        ydk::YLeaf keychain_alg; //type: OspfCrytographicAlgo
         class MdKeys; //type: Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Interfaces::Interface::ActiveInterface::MdKeys
 
         ydk::YList md_keys;
@@ -13250,6 +13278,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
         class SrAlgoTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv
         class SrRangeTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv
         class NodeMsdtlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::NodeMsdtlv
+        class Srlbtlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::UnknownTlv> unknown_tlv;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::RtrCapTlv> rtr_cap_tlv;
@@ -13257,6 +13286,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv> sr_algo_tlv;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv> sr_range_tlv;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::NodeMsdtlv> node_msdtlv;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv> srlbtlv;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv
 
@@ -13598,6 +13628,53 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea
         ydk::YLeaf msd_value; //type: uint8
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::NodeMsdtlv::NodeMsdSubTypes
+
+
+class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv : public ydk::Entity
+{
+    public:
+        Srlbtlv();
+        ~Srlbtlv();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf srlbtlv_length; //type: uint16
+        ydk::YLeaf srlb_range_size; //type: uint32
+        class Sidtlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv> sidtlv;
+        
+}; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv
+
+
+class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv : public ydk::Entity
+{
+    public:
+        Sidtlv();
+        ~Sidtlv();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sr_sid_length; //type: uint16
+        ydk::YLeaf sr_sid_value; //type: uint32
+
+}; // Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv
 
 
 class Ospf::Processes::Process::Vrfs::Vrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType : public ydk::Entity
@@ -14656,6 +14733,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
         class SrAlgoTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv
         class SrRangeTlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv
         class NodeMsdtlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::NodeMsdtlv
+        class Srlbtlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::UnknownTlv> unknown_tlv;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::RtrCapTlv> rtr_cap_tlv;
@@ -14663,6 +14741,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv> sr_algo_tlv;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv> sr_range_tlv;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::NodeMsdtlv> node_msdtlv;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv> srlbtlv;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv
 
@@ -15004,6 +15083,53 @@ class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData:
         ydk::YLeaf msd_value; //type: uint8
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::NodeMsdtlv::NodeMsdSubTypes
+
+
+class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv : public ydk::Entity
+{
+    public:
+        Srlbtlv();
+        ~Srlbtlv();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf srlbtlv_length; //type: uint16
+        ydk::YLeaf srlb_range_size; //type: uint32
+        class Sidtlv; //type: Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv> sidtlv;
+        
+}; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv
+
+
+class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv : public ydk::Entity
+{
+    public:
+        Sidtlv();
+        ~Sidtlv();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sr_sid_length; //type: uint16
+        ydk::YLeaf sr_sid_value; //type: uint32
+
+}; // Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv
 
 
 class Ospf::Processes::Process::Vrfs::Vrf::Database::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType : public ydk::Entity
@@ -21792,6 +21918,7 @@ class Ospf::Processes::Process::DefaultVrf::RouteInformation::BackupRoutes::Back
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -22103,6 +22230,7 @@ class Ospf::Processes::Process::DefaultVrf::RouteInformation::MulticastIntactRou
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -22352,6 +22480,7 @@ class Ospf::Processes::Process::DefaultVrf::RouteInformation::MulticastIntactBac
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -22739,6 +22868,7 @@ class Ospf::Processes::Process::DefaultVrf::RouteInformation::ConnectedRoutes::C
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -22988,6 +23118,7 @@ class Ospf::Processes::Process::DefaultVrf::RouteInformation::LocalRoutes::Local
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -23296,6 +23427,7 @@ class Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteA
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -23607,6 +23739,7 @@ class Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteA
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -23856,6 +23989,7 @@ class Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteA
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -24167,6 +24301,7 @@ class Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteA
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -24416,6 +24551,7 @@ class Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteA
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -24741,6 +24877,7 @@ class Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteAreas::RouteA
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -24990,6 +25127,7 @@ class Ospf::Processes::Process::DefaultVrf::RouteInformation::RouteTable::Route:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -25266,6 +25404,7 @@ class Ospf::Processes::Process::DefaultVrf::RouteInformation::ExternalRoutes::Ex
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -25501,7 +25640,10 @@ class Ospf::Processes::Process::DefaultVrf::InterfaceInformation::VirtualLinks::
         ydk::YLeaf virtual_link_youngest_md_key; //type: boolean
         ydk::YLeaf virtual_link_youngest_md_key_id; //type: uint16
         ydk::YLeaf virtual_link_old_md_key_count; //type: uint32
+        ydk::YLeaf keychain_name; //type: string
+        ydk::YLeaf virtual_link_keychain_key_conf; //type: boolean
         ydk::YLeaf virtual_link_keychain_id; //type: uint64
+        ydk::YLeaf virtual_link_keychain_alg; //type: OspfCrytographicAlgo
         ydk::YLeaf virtual_link_nsf_enabled; //type: boolean
         ydk::YLeaf virtual_link_nsf; //type: boolean
         ydk::YLeaf virtual_link_last_nsf; //type: uint32
@@ -25887,7 +26029,10 @@ class Ospf::Processes::Process::DefaultVrf::InterfaceInformation::Interfaces::In
         ydk::YLeaf youngest_md_key; //type: boolean
         ydk::YLeaf old_md5_key_neighbor_count; //type: uint32
         ydk::YLeaf youngest_md_key_id; //type: uint16
+        ydk::YLeaf keychain_name; //type: string
+        ydk::YLeaf keychain_key_conf; //type: boolean
         ydk::YLeaf keychain_id; //type: uint64
+        ydk::YLeaf keychain_alg; //type: OspfCrytographicAlgo
         class MdKeys; //type: Ospf::Processes::Process::DefaultVrf::InterfaceInformation::Interfaces::Interface::ActiveInterface::MdKeys
 
         ydk::YList md_keys;
@@ -26554,6 +26699,9 @@ class Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProcessSummary :
         ydk::YLeaf srgb_end; //type: uint32
         ydk::YLeaf srgb_status; //type: OspfSrgbStatus
         ydk::YLeaf sr_strict_spf_cap; //type: boolean
+        ydk::YLeaf srlb_start; //type: uint32
+        ydk::YLeaf srlb_end; //type: uint32
+        ydk::YLeaf srlb_status; //type: OspfSrlbStatus
         class DomainId; //type: Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProcessSummary::DomainId
         class MaximumMetric; //type: Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProcessSummary::MaximumMetric
         class Redistribution; //type: Ospf::Processes::Process::DefaultVrf::ProcessInformation::ProcessSummary::Redistribution
@@ -27772,7 +27920,10 @@ class Ospf::Processes::Process::DefaultVrf::Areas::Area::Interfaces::Interface::
         ydk::YLeaf youngest_md_key; //type: boolean
         ydk::YLeaf old_md5_key_neighbor_count; //type: uint32
         ydk::YLeaf youngest_md_key_id; //type: uint16
+        ydk::YLeaf keychain_name; //type: string
+        ydk::YLeaf keychain_key_conf; //type: boolean
         ydk::YLeaf keychain_id; //type: uint64
+        ydk::YLeaf keychain_alg; //type: OspfCrytographicAlgo
         class MdKeys; //type: Ospf::Processes::Process::DefaultVrf::Areas::Area::Interfaces::Interface::ActiveInterface::MdKeys
 
         ydk::YList md_keys;
@@ -28723,6 +28874,7 @@ class Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseAre
         class SrAlgoTlv; //type: Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv
         class SrRangeTlv; //type: Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv
         class NodeMsdtlv; //type: Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::NodeMsdtlv
+        class Srlbtlv; //type: Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::UnknownTlv> unknown_tlv;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::RtrCapTlv> rtr_cap_tlv;
@@ -28730,6 +28882,7 @@ class Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseAre
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv> sr_algo_tlv;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv> sr_range_tlv;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::NodeMsdtlv> node_msdtlv;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv> srlbtlv;
         
 }; // Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv
 
@@ -29071,6 +29224,53 @@ class Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseAre
         ydk::YLeaf msd_value; //type: uint8
 
 }; // Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::NodeMsdtlv::NodeMsdSubTypes
+
+
+class Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv : public ydk::Entity
+{
+    public:
+        Srlbtlv();
+        ~Srlbtlv();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf srlbtlv_length; //type: uint16
+        ydk::YLeaf srlb_range_size; //type: uint32
+        class Sidtlv; //type: Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv> sidtlv;
+        
+}; // Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv
+
+
+class Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv : public ydk::Entity
+{
+    public:
+        Sidtlv();
+        ~Sidtlv();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sr_sid_length; //type: uint16
+        ydk::YLeaf sr_sid_value; //type: uint32
+
+}; // Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv
 
 
 class Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType : public ydk::Entity
@@ -30129,6 +30329,7 @@ class Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData
         class SrAlgoTlv; //type: Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv
         class SrRangeTlv; //type: Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv
         class NodeMsdtlv; //type: Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::NodeMsdtlv
+        class Srlbtlv; //type: Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::UnknownTlv> unknown_tlv;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::RtrCapTlv> rtr_cap_tlv;
@@ -30136,6 +30337,7 @@ class Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv> sr_algo_tlv;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv> sr_range_tlv;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::NodeMsdtlv> node_msdtlv;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv> srlbtlv;
         
 }; // Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv
 
@@ -30477,6 +30679,53 @@ class Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData
         ydk::YLeaf msd_value; //type: uint8
 
 }; // Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::NodeMsdtlv::NodeMsdSubTypes
+
+
+class Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv : public ydk::Entity
+{
+    public:
+        Srlbtlv();
+        ~Srlbtlv();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf srlbtlv_length; //type: uint16
+        ydk::YLeaf srlb_range_size; //type: uint32
+        class Sidtlv; //type: Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv> sidtlv;
+        
+}; // Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv
+
+
+class Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv : public ydk::Entity
+{
+    public:
+        Sidtlv();
+        ~Sidtlv();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sr_sid_length; //type: uint16
+        ydk::YLeaf sr_sid_value; //type: uint32
+
+}; // Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv
 
 
 class Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueEpLsaType : public ydk::Entity
@@ -31036,6 +31285,7 @@ class IpfrrTbrkr : public ydk::Enum
         static const ydk::Enum::YLeaf primary_path;
         static const ydk::Enum::YLeaf secondary_path;
         static const ydk::Enum::YLeaf srlg_disjoint;
+        static const ydk::Enum::YLeaf interface_disjoint;
         static const ydk::Enum::YLeaf tunnel;
         static const ydk::Enum::YLeaf post_convergence;
 
@@ -31161,6 +31411,15 @@ class OspfSrEndpResFailReason : public ydk::Enum
 
 };
 
+class OspfSrlbStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf not_allocated;
+        static const ydk::Enum::YLeaf allocated;
+
+};
+
 class SrDp : public ydk::Enum
 {
     public:
@@ -31183,14 +31442,20 @@ class Interface : public ydk::Enum
 
 };
 
-class InterfaceState : public ydk::Enum
+class OspfInternalLsaTypes : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mgmt_ifs_unknown;
-        static const ydk::Enum::YLeaf mgmt_ifs_admin_down;
-        static const ydk::Enum::YLeaf mgmt_ifs_down;
-        static const ydk::Enum::YLeaf mgmt_ifs_up;
-        static const ydk::Enum::YLeaf mgmt_ifs_shutdown;
+        static const ydk::Enum::YLeaf mgmt_rtr_type;
+        static const ydk::Enum::YLeaf mgmt_ntwk_type;
+        static const ydk::Enum::YLeaf mgmt_sum_type;
+        static const ydk::Enum::YLeaf mgmt_ext_type;
+        static const ydk::Enum::YLeaf mgmt_opq_type;
+        static const ydk::Enum::YLeaf mgmt_opq_link_type;
+        static const ydk::Enum::YLeaf mgmt_opq_rrr_type;
+        static const ydk::Enum::YLeaf mgmt_opq_gr_type;
+        static const ydk::Enum::YLeaf mgmt_opq_ri_type;
+        static const ydk::Enum::YLeaf mgmt_opq_epl_type;
+        static const ydk::Enum::YLeaf mgmt_opq_ell_type;
 
 };
 
@@ -31277,6 +31542,7 @@ class OspfShOpqRiTlvTypes : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_sr_algo;
         static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_sr_range;
         static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_node_msd;
+        static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_srlb;
 
 };
 
@@ -31367,20 +31633,14 @@ class NeighborState : public ydk::Enum
 
 };
 
-class OspfInternalLsaTypes : public ydk::Enum
+class InterfaceState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mgmt_rtr_type;
-        static const ydk::Enum::YLeaf mgmt_ntwk_type;
-        static const ydk::Enum::YLeaf mgmt_sum_type;
-        static const ydk::Enum::YLeaf mgmt_ext_type;
-        static const ydk::Enum::YLeaf mgmt_opq_type;
-        static const ydk::Enum::YLeaf mgmt_opq_link_type;
-        static const ydk::Enum::YLeaf mgmt_opq_rrr_type;
-        static const ydk::Enum::YLeaf mgmt_opq_gr_type;
-        static const ydk::Enum::YLeaf mgmt_opq_ri_type;
-        static const ydk::Enum::YLeaf mgmt_opq_epl_type;
-        static const ydk::Enum::YLeaf mgmt_opq_ell_type;
+        static const ydk::Enum::YLeaf mgmt_ifs_unknown;
+        static const ydk::Enum::YLeaf mgmt_ifs_admin_down;
+        static const ydk::Enum::YLeaf mgmt_ifs_down;
+        static const ydk::Enum::YLeaf mgmt_ifs_up;
+        static const ydk::Enum::YLeaf mgmt_ifs_shutdown;
 
 };
 
@@ -31467,6 +31727,24 @@ class DrBdrState : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_dbdr_dr;
         static const ydk::Enum::YLeaf mgmt_dbdr_bdr;
         static const ydk::Enum::YLeaf mgmt_dbdr_dr_other;
+
+};
+
+class OspfCrytographicAlgo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_not_configured;
+        static const ydk::Enum::YLeaf mgmt_aes_128_cmac_96;
+        static const ydk::Enum::YLeaf mgmt_hmac_sha1_12;
+        static const ydk::Enum::YLeaf mgmt_md5_16;
+        static const ydk::Enum::YLeaf mgmt_sha1_20;
+        static const ydk::Enum::YLeaf mgmt_hmac_md5_16;
+        static const ydk::Enum::YLeaf mgmt_hmac_sha1_20;
+        static const ydk::Enum::YLeaf mgmt_aes_128_cmac;
+        static const ydk::Enum::YLeaf mgmt_aes_256_cmac;
+        static const ydk::Enum::YLeaf mgmt_hmac_sha1_96;
+        static const ydk::Enum::YLeaf mgmt_hmac_sha_256;
+        static const ydk::Enum::YLeaf mgmt_hmac_sha1;
 
 };
 

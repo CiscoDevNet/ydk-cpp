@@ -149,12 +149,16 @@ Interfaces::Interface::Interface()
     input_security_acl{YType::str, "input-security-acl"},
     output_security_acl{YType::str, "output-security-acl"},
     bia_address{YType::str, "bia-address"},
+    ipv6_addrs{YType::str, "ipv6-addrs"},
+    ipv4_tcp_adjust_mss{YType::uint16, "ipv4-tcp-adjust-mss"},
+    ipv6_tcp_adjust_mss{YType::uint16, "ipv6-tcp-adjust-mss"},
     intf_class_unspecified{YType::boolean, "intf-class-unspecified"}
         ,
     statistics(std::make_shared<Interfaces::Interface::Statistics>())
     , diffserv_info(this, {"direction", "policy_name"})
     , v4_protocol_stats(std::make_shared<Interfaces::Interface::V4ProtocolStats>())
     , v6_protocol_stats(std::make_shared<Interfaces::Interface::V6ProtocolStats>())
+    , lag_aggregate_state(this, {"aggregate_id"})
     , ether_state(std::make_shared<Interfaces::Interface::EtherState>())
     , ether_stats(std::make_shared<Interfaces::Interface::EtherStats>())
     , serial_state(std::make_shared<Interfaces::Interface::SerialState>())
@@ -183,12 +187,22 @@ bool Interfaces::Interface::has_data() const
         if(diffserv_info[index]->has_data())
             return true;
     }
+    for (std::size_t index=0; index<lag_aggregate_state.len(); index++)
+    {
+        if(lag_aggregate_state[index]->has_data())
+            return true;
+    }
     for (auto const & leaf : higher_layer_if.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
     for (auto const & leaf : lower_layer_if.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : ipv6_addrs.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -209,6 +223,8 @@ bool Interfaces::Interface::has_data() const
 	|| input_security_acl.is_set
 	|| output_security_acl.is_set
 	|| bia_address.is_set
+	|| ipv4_tcp_adjust_mss.is_set
+	|| ipv6_tcp_adjust_mss.is_set
 	|| intf_class_unspecified.is_set
 	|| (statistics !=  nullptr && statistics->has_data())
 	|| (v4_protocol_stats !=  nullptr && v4_protocol_stats->has_data())
@@ -226,12 +242,22 @@ bool Interfaces::Interface::has_operation() const
         if(diffserv_info[index]->has_operation())
             return true;
     }
+    for (std::size_t index=0; index<lag_aggregate_state.len(); index++)
+    {
+        if(lag_aggregate_state[index]->has_operation())
+            return true;
+    }
     for (auto const & leaf : higher_layer_if.getYLeafs())
     {
         if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : lower_layer_if.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : ipv6_addrs.getYLeafs())
     {
         if(is_set(leaf.yfilter))
             return true;
@@ -255,6 +281,9 @@ bool Interfaces::Interface::has_operation() const
 	|| ydk::is_set(input_security_acl.yfilter)
 	|| ydk::is_set(output_security_acl.yfilter)
 	|| ydk::is_set(bia_address.yfilter)
+	|| ydk::is_set(ipv6_addrs.yfilter)
+	|| ydk::is_set(ipv4_tcp_adjust_mss.yfilter)
+	|| ydk::is_set(ipv6_tcp_adjust_mss.yfilter)
 	|| ydk::is_set(intf_class_unspecified.yfilter)
 	|| (statistics !=  nullptr && statistics->has_operation())
 	|| (v4_protocol_stats !=  nullptr && v4_protocol_stats->has_operation())
@@ -300,12 +329,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::get_name_l
     if (input_security_acl.is_set || is_set(input_security_acl.yfilter)) leaf_name_data.push_back(input_security_acl.get_name_leafdata());
     if (output_security_acl.is_set || is_set(output_security_acl.yfilter)) leaf_name_data.push_back(output_security_acl.get_name_leafdata());
     if (bia_address.is_set || is_set(bia_address.yfilter)) leaf_name_data.push_back(bia_address.get_name_leafdata());
+    if (ipv4_tcp_adjust_mss.is_set || is_set(ipv4_tcp_adjust_mss.yfilter)) leaf_name_data.push_back(ipv4_tcp_adjust_mss.get_name_leafdata());
+    if (ipv6_tcp_adjust_mss.is_set || is_set(ipv6_tcp_adjust_mss.yfilter)) leaf_name_data.push_back(ipv6_tcp_adjust_mss.get_name_leafdata());
     if (intf_class_unspecified.is_set || is_set(intf_class_unspecified.yfilter)) leaf_name_data.push_back(intf_class_unspecified.get_name_leafdata());
 
     auto higher_layer_if_name_datas = higher_layer_if.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), higher_layer_if_name_datas.begin(), higher_layer_if_name_datas.end());
     auto lower_layer_if_name_datas = lower_layer_if.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), lower_layer_if_name_datas.begin(), lower_layer_if_name_datas.end());
+    auto ipv6_addrs_name_datas = ipv6_addrs.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), ipv6_addrs_name_datas.begin(), ipv6_addrs_name_datas.end());
     return leaf_name_data;
 
 }
@@ -345,6 +378,14 @@ std::shared_ptr<Entity> Interfaces::Interface::get_child_by_name(const std::stri
             v6_protocol_stats = std::make_shared<Interfaces::Interface::V6ProtocolStats>();
         }
         return v6_protocol_stats;
+    }
+
+    if(child_yang_name == "lag-aggregate-state")
+    {
+        auto c = std::make_shared<Interfaces::Interface::LagAggregateState>();
+        c->parent = this;
+        lag_aggregate_state.append(c);
+        return c;
     }
 
     if(child_yang_name == "ether-state")
@@ -412,6 +453,15 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::get_childr
     if(v6_protocol_stats != nullptr)
     {
         children["v6-protocol-stats"] = v6_protocol_stats;
+    }
+
+    count = 0;
+    for (auto c : lag_aggregate_state.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(ether_state != nullptr)
@@ -543,6 +593,22 @@ void Interfaces::Interface::set_value(const std::string & value_path, const std:
         bia_address.value_namespace = name_space;
         bia_address.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "ipv6-addrs")
+    {
+        ipv6_addrs.append(value);
+    }
+    if(value_path == "ipv4-tcp-adjust-mss")
+    {
+        ipv4_tcp_adjust_mss = value;
+        ipv4_tcp_adjust_mss.value_namespace = name_space;
+        ipv4_tcp_adjust_mss.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-tcp-adjust-mss")
+    {
+        ipv6_tcp_adjust_mss = value;
+        ipv6_tcp_adjust_mss.value_namespace = name_space;
+        ipv6_tcp_adjust_mss.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "intf-class-unspecified")
     {
         intf_class_unspecified = value;
@@ -625,6 +691,18 @@ void Interfaces::Interface::set_filter(const std::string & value_path, YFilter y
     {
         bia_address.yfilter = yfilter;
     }
+    if(value_path == "ipv6-addrs")
+    {
+        ipv6_addrs.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-tcp-adjust-mss")
+    {
+        ipv4_tcp_adjust_mss.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-tcp-adjust-mss")
+    {
+        ipv6_tcp_adjust_mss.yfilter = yfilter;
+    }
     if(value_path == "intf-class-unspecified")
     {
         intf_class_unspecified.yfilter = yfilter;
@@ -633,7 +711,7 @@ void Interfaces::Interface::set_filter(const std::string & value_path, YFilter y
 
 bool Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "statistics" || name == "diffserv-info" || name == "v4-protocol-stats" || name == "v6-protocol-stats" || name == "ether-state" || name == "ether-stats" || name == "serial-state" || name == "serial-stats" || name == "name" || name == "interface-type" || name == "admin-status" || name == "oper-status" || name == "last-change" || name == "if-index" || name == "phys-address" || name == "higher-layer-if" || name == "lower-layer-if" || name == "speed" || name == "vrf" || name == "ipv4" || name == "ipv4-subnet-mask" || name == "description" || name == "mtu" || name == "input-security-acl" || name == "output-security-acl" || name == "bia-address" || name == "intf-class-unspecified")
+    if(name == "statistics" || name == "diffserv-info" || name == "v4-protocol-stats" || name == "v6-protocol-stats" || name == "lag-aggregate-state" || name == "ether-state" || name == "ether-stats" || name == "serial-state" || name == "serial-stats" || name == "name" || name == "interface-type" || name == "admin-status" || name == "oper-status" || name == "last-change" || name == "if-index" || name == "phys-address" || name == "higher-layer-if" || name == "lower-layer-if" || name == "speed" || name == "vrf" || name == "ipv4" || name == "ipv4-subnet-mask" || name == "description" || name == "mtu" || name == "input-security-acl" || name == "output-security-acl" || name == "bia-address" || name == "ipv6-addrs" || name == "ipv4-tcp-adjust-mss" || name == "ipv6-tcp-adjust-mss" || name == "intf-class-unspecified")
         return true;
     return false;
 }
@@ -643,7 +721,7 @@ Interfaces::Interface::Statistics::Statistics()
     discontinuity_time{YType::str, "discontinuity-time"},
     in_octets{YType::uint64, "in-octets"},
     in_unicast_pkts{YType::uint64, "in-unicast-pkts"},
-    new_name{YType::uint64, "new-name"},
+    in_broadcast_pkts{YType::uint64, "in-broadcast-pkts"},
     in_multicast_pkts{YType::uint64, "in-multicast-pkts"},
     in_discards{YType::uint32, "in-discards"},
     in_errors{YType::uint32, "in-errors"},
@@ -675,7 +753,7 @@ bool Interfaces::Interface::Statistics::has_data() const
     return discontinuity_time.is_set
 	|| in_octets.is_set
 	|| in_unicast_pkts.is_set
-	|| new_name.is_set
+	|| in_broadcast_pkts.is_set
 	|| in_multicast_pkts.is_set
 	|| in_discards.is_set
 	|| in_errors.is_set
@@ -700,7 +778,7 @@ bool Interfaces::Interface::Statistics::has_operation() const
 	|| ydk::is_set(discontinuity_time.yfilter)
 	|| ydk::is_set(in_octets.yfilter)
 	|| ydk::is_set(in_unicast_pkts.yfilter)
-	|| ydk::is_set(new_name.yfilter)
+	|| ydk::is_set(in_broadcast_pkts.yfilter)
 	|| ydk::is_set(in_multicast_pkts.yfilter)
 	|| ydk::is_set(in_discards.yfilter)
 	|| ydk::is_set(in_errors.yfilter)
@@ -733,7 +811,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Statistics
     if (discontinuity_time.is_set || is_set(discontinuity_time.yfilter)) leaf_name_data.push_back(discontinuity_time.get_name_leafdata());
     if (in_octets.is_set || is_set(in_octets.yfilter)) leaf_name_data.push_back(in_octets.get_name_leafdata());
     if (in_unicast_pkts.is_set || is_set(in_unicast_pkts.yfilter)) leaf_name_data.push_back(in_unicast_pkts.get_name_leafdata());
-    if (new_name.is_set || is_set(new_name.yfilter)) leaf_name_data.push_back(new_name.get_name_leafdata());
+    if (in_broadcast_pkts.is_set || is_set(in_broadcast_pkts.yfilter)) leaf_name_data.push_back(in_broadcast_pkts.get_name_leafdata());
     if (in_multicast_pkts.is_set || is_set(in_multicast_pkts.yfilter)) leaf_name_data.push_back(in_multicast_pkts.get_name_leafdata());
     if (in_discards.is_set || is_set(in_discards.yfilter)) leaf_name_data.push_back(in_discards.get_name_leafdata());
     if (in_errors.is_set || is_set(in_errors.yfilter)) leaf_name_data.push_back(in_errors.get_name_leafdata());
@@ -787,11 +865,11 @@ void Interfaces::Interface::Statistics::set_value(const std::string & value_path
         in_unicast_pkts.value_namespace = name_space;
         in_unicast_pkts.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "new-name")
+    if(value_path == "in-broadcast-pkts")
     {
-        new_name = value;
-        new_name.value_namespace = name_space;
-        new_name.value_namespace_prefix = name_space_prefix;
+        in_broadcast_pkts = value;
+        in_broadcast_pkts.value_namespace = name_space;
+        in_broadcast_pkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-multicast-pkts")
     {
@@ -905,9 +983,9 @@ void Interfaces::Interface::Statistics::set_filter(const std::string & value_pat
     {
         in_unicast_pkts.yfilter = yfilter;
     }
-    if(value_path == "new-name")
+    if(value_path == "in-broadcast-pkts")
     {
-        new_name.yfilter = yfilter;
+        in_broadcast_pkts.yfilter = yfilter;
     }
     if(value_path == "in-multicast-pkts")
     {
@@ -977,7 +1055,7 @@ void Interfaces::Interface::Statistics::set_filter(const std::string & value_pat
 
 bool Interfaces::Interface::Statistics::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "discontinuity-time" || name == "in-octets" || name == "in-unicast-pkts" || name == "new-name" || name == "in-multicast-pkts" || name == "in-discards" || name == "in-errors" || name == "in-unknown-protos" || name == "out-octets" || name == "out-unicast-pkts" || name == "out-broadcast-pkts" || name == "out-multicast-pkts" || name == "out-discards" || name == "out-errors" || name == "rx-pps" || name == "rx-kbps" || name == "tx-pps" || name == "tx-kbps" || name == "num-flaps" || name == "in-crc-errors")
+    if(name == "discontinuity-time" || name == "in-octets" || name == "in-unicast-pkts" || name == "in-broadcast-pkts" || name == "in-multicast-pkts" || name == "in-discards" || name == "in-errors" || name == "in-unknown-protos" || name == "out-octets" || name == "out-unicast-pkts" || name == "out-broadcast-pkts" || name == "out-multicast-pkts" || name == "out-discards" || name == "out-errors" || name == "rx-pps" || name == "rx-kbps" || name == "tx-pps" || name == "tx-kbps" || name == "num-flaps" || name == "in-crc-errors")
         return true;
     return false;
 }
@@ -8735,6 +8813,149 @@ bool Interfaces::Interface::V6ProtocolStats::has_leaf_or_child_of_name(const std
     return false;
 }
 
+Interfaces::Interface::LagAggregateState::LagAggregateState()
+    :
+    aggregate_id{YType::str, "aggregate-id"},
+    lag_type{YType::enumeration, "lag-type"},
+    min_links{YType::uint16, "min-links"},
+    lag_speed{YType::uint32, "lag-speed"},
+    members{YType::str, "members"}
+{
+
+    yang_name = "lag-aggregate-state"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Interfaces::Interface::LagAggregateState::~LagAggregateState()
+{
+}
+
+bool Interfaces::Interface::LagAggregateState::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : members.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return aggregate_id.is_set
+	|| lag_type.is_set
+	|| min_links.is_set
+	|| lag_speed.is_set;
+}
+
+bool Interfaces::Interface::LagAggregateState::has_operation() const
+{
+    for (auto const & leaf : members.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(aggregate_id.yfilter)
+	|| ydk::is_set(lag_type.yfilter)
+	|| ydk::is_set(min_links.yfilter)
+	|| ydk::is_set(lag_speed.yfilter)
+	|| ydk::is_set(members.yfilter);
+}
+
+std::string Interfaces::Interface::LagAggregateState::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lag-aggregate-state";
+    ADD_KEY_TOKEN(aggregate_id, "aggregate-id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::LagAggregateState::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (aggregate_id.is_set || is_set(aggregate_id.yfilter)) leaf_name_data.push_back(aggregate_id.get_name_leafdata());
+    if (lag_type.is_set || is_set(lag_type.yfilter)) leaf_name_data.push_back(lag_type.get_name_leafdata());
+    if (min_links.is_set || is_set(min_links.yfilter)) leaf_name_data.push_back(min_links.get_name_leafdata());
+    if (lag_speed.is_set || is_set(lag_speed.yfilter)) leaf_name_data.push_back(lag_speed.get_name_leafdata());
+
+    auto members_name_datas = members.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), members_name_datas.begin(), members_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Interfaces::Interface::LagAggregateState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::LagAggregateState::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Interfaces::Interface::LagAggregateState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "aggregate-id")
+    {
+        aggregate_id = value;
+        aggregate_id.value_namespace = name_space;
+        aggregate_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lag-type")
+    {
+        lag_type = value;
+        lag_type.value_namespace = name_space;
+        lag_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "min-links")
+    {
+        min_links = value;
+        min_links.value_namespace = name_space;
+        min_links.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lag-speed")
+    {
+        lag_speed = value;
+        lag_speed.value_namespace = name_space;
+        lag_speed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "members")
+    {
+        members.append(value);
+    }
+}
+
+void Interfaces::Interface::LagAggregateState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aggregate-id")
+    {
+        aggregate_id.yfilter = yfilter;
+    }
+    if(value_path == "lag-type")
+    {
+        lag_type.yfilter = yfilter;
+    }
+    if(value_path == "min-links")
+    {
+        min_links.yfilter = yfilter;
+    }
+    if(value_path == "lag-speed")
+    {
+        lag_speed.yfilter = yfilter;
+    }
+    if(value_path == "members")
+    {
+        members.yfilter = yfilter;
+    }
+}
+
+bool Interfaces::Interface::LagAggregateState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aggregate-id" || name == "lag-type" || name == "min-links" || name == "lag-speed" || name == "members")
+        return true;
+    return false;
+}
+
 Interfaces::Interface::EtherState::EtherState()
     :
     negotiated_duplex_mode{YType::enumeration, "negotiated-duplex-mode"},
@@ -9269,6 +9490,16 @@ const Enum::YLeaf EtherDuplex::half_duplex {1, "half-duplex"};
 const Enum::YLeaf EtherDuplex::auto_duplex {2, "auto-duplex"};
 const Enum::YLeaf EtherDuplex::unknown_duplex {3, "unknown-duplex"};
 
+const Enum::YLeaf SerialCrc::serial_crc32 {0, "serial-crc32"};
+const Enum::YLeaf SerialCrc::serial_crc16 {1, "serial-crc16"};
+
+const Enum::YLeaf ThreshUnit::thresh_units_default {0, "thresh-units-default"};
+const Enum::YLeaf ThreshUnit::thresh_units_bytes {1, "thresh-units-bytes"};
+const Enum::YLeaf ThreshUnit::thresh_units_sec {2, "thresh-units-sec"};
+const Enum::YLeaf ThreshUnit::thresh_units_packets {3, "thresh-units-packets"};
+const Enum::YLeaf ThreshUnit::thresh_units_cells {4, "thresh-units-cells"};
+const Enum::YLeaf ThreshUnit::thresh_units_percent {5, "thresh-units-percent"};
+
 const Enum::YLeaf T1e1LoopbackMode::t1e1_no_loopback {0, "t1e1-no-loopback"};
 const Enum::YLeaf T1e1LoopbackMode::t1e1_cli_local_loopback {1, "t1e1-cli-local-loopback"};
 const Enum::YLeaf T1e1LoopbackMode::t1e1_line_cli_local_loopback {2, "t1e1-line-cli-local-loopback"};
@@ -9286,22 +9517,10 @@ const Enum::YLeaf T1e1LoopbackMode::t1e1_payload_ansi_fdl_local_loopback {13, "t
 const Enum::YLeaf T1e1LoopbackMode::t1e1_payload_att_fdl_local_loopback {14, "t1e1-payload-att-fdl-local-loopback"};
 const Enum::YLeaf T1e1LoopbackMode::t1e1_line_iboc_local_loopback {15, "t1e1-line-iboc-local-loopback"};
 
-const Enum::YLeaf ThreshUnit::thresh_units_default {0, "thresh-units-default"};
-const Enum::YLeaf ThreshUnit::thresh_units_bytes {1, "thresh-units-bytes"};
-const Enum::YLeaf ThreshUnit::thresh_units_sec {2, "thresh-units-sec"};
-const Enum::YLeaf ThreshUnit::thresh_units_packets {3, "thresh-units-packets"};
-const Enum::YLeaf ThreshUnit::thresh_units_cells {4, "thresh-units-cells"};
-const Enum::YLeaf ThreshUnit::thresh_units_percent {5, "thresh-units-percent"};
-
-const Enum::YLeaf EtherSpeed::speed_10mb {0, "speed-10mb"};
-const Enum::YLeaf EtherSpeed::speed_100mb {1, "speed-100mb"};
-const Enum::YLeaf EtherSpeed::speed_1gb {2, "speed-1gb"};
-const Enum::YLeaf EtherSpeed::speed_10bg {3, "speed-10bg"};
-const Enum::YLeaf EtherSpeed::speed_25gb {4, "speed-25gb"};
-const Enum::YLeaf EtherSpeed::speed_40gb {5, "speed-40gb"};
-const Enum::YLeaf EtherSpeed::speed_50gb {6, "speed-50gb"};
-const Enum::YLeaf EtherSpeed::speed_100bg {7, "speed-100bg"};
-const Enum::YLeaf EtherSpeed::speed_unknown {8, "speed-unknown"};
+const Enum::YLeaf IntfState::if_state_unknown {0, "if-state-unknown"};
+const Enum::YLeaf IntfState::if_state_up {1, "if-state-up"};
+const Enum::YLeaf IntfState::if_state_down {2, "if-state-down"};
+const Enum::YLeaf IntfState::if_state_test {3, "if-state-test"};
 
 const Enum::YLeaf OperState::if_oper_state_invalid {0, "if-oper-state-invalid"};
 const Enum::YLeaf OperState::if_oper_state_ready {1, "if-oper-state-ready"};
@@ -9312,8 +9531,10 @@ const Enum::YLeaf OperState::if_oper_state_dormant {5, "if-oper-state-dormant"};
 const Enum::YLeaf OperState::if_oper_state_not_present {6, "if-oper-state-not-present"};
 const Enum::YLeaf OperState::if_oper_state_lower_layer_down {7, "if-oper-state-lower-layer-down"};
 
-const Enum::YLeaf SerialCrc::serial_crc32 {0, "serial-crc32"};
-const Enum::YLeaf SerialCrc::serial_crc16 {1, "serial-crc16"};
+const Enum::YLeaf AggregationType::lag_off {0, "lag-off"};
+const Enum::YLeaf AggregationType::lag_auto {1, "lag-auto"};
+const Enum::YLeaf AggregationType::lag_active {2, "lag-active"};
+const Enum::YLeaf AggregationType::lag_passive {3, "lag-passive"};
 
 const Enum::YLeaf SubrateSpeed::dsx1_subrate_56kbps {0, "dsx1-subrate-56kbps"};
 const Enum::YLeaf SubrateSpeed::dsx1_subrate_64kbps {1, "dsx1-subrate-64kbps"};
@@ -9600,10 +9821,15 @@ const Enum::YLeaf IetfIntfType::iana_iftype_fastdsl {282, "iana-iftype-fastdsl"}
 const Enum::YLeaf QosDirection::qos_inbound {0, "qos-inbound"};
 const Enum::YLeaf QosDirection::qos_outbound {1, "qos-outbound"};
 
-const Enum::YLeaf IntfState::if_state_unknown {0, "if-state-unknown"};
-const Enum::YLeaf IntfState::if_state_up {1, "if-state-up"};
-const Enum::YLeaf IntfState::if_state_down {2, "if-state-down"};
-const Enum::YLeaf IntfState::if_state_test {3, "if-state-test"};
+const Enum::YLeaf EtherSpeed::speed_10mb {0, "speed-10mb"};
+const Enum::YLeaf EtherSpeed::speed_100mb {1, "speed-100mb"};
+const Enum::YLeaf EtherSpeed::speed_1gb {2, "speed-1gb"};
+const Enum::YLeaf EtherSpeed::speed_10gb {3, "speed-10gb"};
+const Enum::YLeaf EtherSpeed::speed_25gb {4, "speed-25gb"};
+const Enum::YLeaf EtherSpeed::speed_40gb {5, "speed-40gb"};
+const Enum::YLeaf EtherSpeed::speed_50gb {6, "speed-50gb"};
+const Enum::YLeaf EtherSpeed::speed_100gb {7, "speed-100gb"};
+const Enum::YLeaf EtherSpeed::speed_unknown {8, "speed-unknown"};
 
 
 }

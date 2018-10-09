@@ -81,12 +81,12 @@ class Diag::Racks::Rack : public ydk::Entity
 
         ydk::YLeaf rack_name; //type: string
         class PowerShelfs; //type: Diag::Racks::Rack::PowerShelfs
-        class FanTraies; //type: Diag::Racks::Rack::FanTraies
+        class FanTrays; //type: Diag::Racks::Rack::FanTrays
         class Slots; //type: Diag::Racks::Rack::Slots
         class Chassis; //type: Diag::Racks::Rack::Chassis
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::PowerShelfs> power_shelfs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::FanTraies> fan_traies;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::FanTrays> fan_trays;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::Slots> slots;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::Chassis> chassis;
         
@@ -259,6 +259,7 @@ class Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::In
         ydk::YLeaf engineer_use; //type: string
         ydk::YLeaf snmpoid; //type: string
         ydk::YLeaf rma_code; //type: string
+        ydk::YLeaf eci_alpha_number; //type: string
         class Rma; //type: Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma> rma;
@@ -289,11 +290,11 @@ class Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::In
 }; // Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma
 
 
-class Diag::Racks::Rack::FanTraies : public ydk::Entity
+class Diag::Racks::Rack::FanTrays : public ydk::Entity
 {
     public:
-        FanTraies();
-        ~FanTraies();
+        FanTrays();
+        ~FanTrays();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -305,14 +306,14 @@ class Diag::Racks::Rack::FanTraies : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class FanTray; //type: Diag::Racks::Rack::FanTraies::FanTray
+        class FanTray; //type: Diag::Racks::Rack::FanTrays::FanTray
 
         ydk::YList fan_tray;
         
-}; // Diag::Racks::Rack::FanTraies
+}; // Diag::Racks::Rack::FanTrays
 
 
-class Diag::Racks::Rack::FanTraies::FanTray : public ydk::Entity
+class Diag::Racks::Rack::FanTrays::FanTray : public ydk::Entity
 {
     public:
         FanTray();
@@ -329,14 +330,14 @@ class Diag::Racks::Rack::FanTraies::FanTray : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf fan_tray_name; //type: string
-        class Fanses; //type: Diag::Racks::Rack::FanTraies::FanTray::Fanses
+        class Fanses; //type: Diag::Racks::Rack::FanTrays::FanTray::Fanses
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::FanTraies::FanTray::Fanses> fanses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::FanTrays::FanTray::Fanses> fanses;
         
-}; // Diag::Racks::Rack::FanTraies::FanTray
+}; // Diag::Racks::Rack::FanTrays::FanTray
 
 
-class Diag::Racks::Rack::FanTraies::FanTray::Fanses : public ydk::Entity
+class Diag::Racks::Rack::FanTrays::FanTray::Fanses : public ydk::Entity
 {
     public:
         Fanses();
@@ -352,14 +353,14 @@ class Diag::Racks::Rack::FanTraies::FanTray::Fanses : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Fans; //type: Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans
+        class Fans; //type: Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans
 
         ydk::YList fans;
         
-}; // Diag::Racks::Rack::FanTraies::FanTray::Fanses
+}; // Diag::Racks::Rack::FanTrays::FanTray::Fanses
 
 
-class Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans : public ydk::Entity
+class Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans : public ydk::Entity
 {
     public:
         Fans();
@@ -376,14 +377,14 @@ class Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf fans_name; //type: string
-        class Information; //type: Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information
+        class Information; //type: Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information> information;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information> information;
         
-}; // Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans
+}; // Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans
 
 
-class Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information : public ydk::Entity
+class Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information : public ydk::Entity
 {
     public:
         Information();
@@ -455,14 +456,15 @@ class Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information : public 
         ydk::YLeaf engineer_use; //type: string
         ydk::YLeaf snmpoid; //type: string
         ydk::YLeaf rma_code; //type: string
-        class Rma; //type: Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma
+        ydk::YLeaf eci_alpha_number; //type: string
+        class Rma; //type: Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma> rma;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma> rma;
         
-}; // Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information
+}; // Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information
 
 
-class Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma : public ydk::Entity
+class Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma : public ydk::Entity
 {
     public:
         Rma();
@@ -482,7 +484,7 @@ class Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma : pu
         ydk::YLeaf rma_number; //type: string
         ydk::YLeaf rma_history; //type: string
 
-}; // Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma
+}; // Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma
 
 
 class Diag::Racks::Rack::Slots : public ydk::Entity
@@ -675,6 +677,7 @@ class Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance 
         ydk::YLeaf engineer_use; //type: string
         ydk::YLeaf snmpoid; //type: string
         ydk::YLeaf rma_code; //type: string
+        ydk::YLeaf eci_alpha_number; //type: string
         class Rma; //type: Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma> rma;
@@ -777,6 +780,7 @@ class Diag::Racks::Rack::Chassis : public ydk::Entity
         ydk::YLeaf engineer_use; //type: string
         ydk::YLeaf snmpoid; //type: string
         ydk::YLeaf rma_code; //type: string
+        ydk::YLeaf eci_alpha_number; //type: string
         class Rma; //type: Diag::Racks::Rack::Chassis::Rma
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::Chassis::Rma> rma;

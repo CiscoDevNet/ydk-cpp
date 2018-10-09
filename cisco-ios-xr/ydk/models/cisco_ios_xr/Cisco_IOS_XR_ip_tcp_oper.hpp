@@ -83,11 +83,13 @@ class TcpConnection::Nodes::Node : public ydk::Entity
         class Statistics; //type: TcpConnection::Nodes::Node::Statistics
         class ExtendedInformation; //type: TcpConnection::Nodes::Node::ExtendedInformation
         class DetailInformations; //type: TcpConnection::Nodes::Node::DetailInformations
+        class Keychains; //type: TcpConnection::Nodes::Node::Keychains
         class BriefInformations; //type: TcpConnection::Nodes::Node::BriefInformations
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics> statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::ExtendedInformation> extended_information;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations> detail_informations;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Keychains> keychains;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::BriefInformations> brief_informations;
         
 }; // TcpConnection::Nodes::Node
@@ -1591,6 +1593,229 @@ class TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSac
         ydk::YLeaf retransmitted; //type: uint32
 
 }; // TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole
+
+
+class TcpConnection::Nodes::Node::Keychains : public ydk::Entity
+{
+    public:
+        Keychains();
+        ~Keychains();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Keychain; //type: TcpConnection::Nodes::Node::Keychains::Keychain
+
+        ydk::YList keychain;
+        
+}; // TcpConnection::Nodes::Node::Keychains
+
+
+class TcpConnection::Nodes::Node::Keychains::Keychain : public ydk::Entity
+{
+    public:
+        Keychain();
+        ~Keychain();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf keychain_name; //type: string
+        ydk::YLeaf chain_name; //type: string
+        ydk::YLeaf is_configured; //type: boolean
+        ydk::YLeaf desired_key_available; //type: boolean
+        ydk::YLeaf desired_key_id; //type: uint64
+        class Keys; //type: TcpConnection::Nodes::Node::Keychains::Keychain::Keys
+        class ActiveKey; //type: TcpConnection::Nodes::Node::Keychains::Keychain::ActiveKey
+        class SendId; //type: TcpConnection::Nodes::Node::Keychains::Keychain::SendId
+        class ReceiveId; //type: TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId
+
+        ydk::YList keys;
+        ydk::YList active_key;
+        ydk::YList send_id;
+        ydk::YList receive_id;
+        
+}; // TcpConnection::Nodes::Node::Keychains::Keychain
+
+
+class TcpConnection::Nodes::Node::Keychains::Keychain::Keys : public ydk::Entity
+{
+    public:
+        Keys();
+        ~Keys();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf key_id; //type: uint64
+        ydk::YLeaf is_active; //type: boolean
+        ydk::YLeaf is_expired; //type: boolean
+        ydk::YLeaf is_valid; //type: boolean
+        ydk::YLeaf reason; //type: TcpKeyInvalidReason
+        ydk::YLeaf send_id; //type: uint8
+        ydk::YLeaf recv_id; //type: uint8
+        ydk::YLeaf crypt_algo; //type: TcpMacAlgo
+        ydk::YLeaf is_configured; //type: boolean
+        ydk::YLeaf overlapping_key_available; //type: boolean
+        ydk::YLeaf overlapping_key; //type: uint64
+        class InvalidatedKey; //type: TcpConnection::Nodes::Node::Keychains::Keychain::Keys::InvalidatedKey
+
+        ydk::YList invalidated_key;
+        
+}; // TcpConnection::Nodes::Node::Keychains::Keychain::Keys
+
+
+class TcpConnection::Nodes::Node::Keychains::Keychain::Keys::InvalidatedKey : public ydk::Entity
+{
+    public:
+        InvalidatedKey();
+        ~InvalidatedKey();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf key_id; //type: uint64
+
+}; // TcpConnection::Nodes::Node::Keychains::Keychain::Keys::InvalidatedKey
+
+
+class TcpConnection::Nodes::Node::Keychains::Keychain::ActiveKey : public ydk::Entity
+{
+    public:
+        ActiveKey();
+        ~ActiveKey();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf key_id; //type: uint64
+
+}; // TcpConnection::Nodes::Node::Keychains::Keychain::ActiveKey
+
+
+class TcpConnection::Nodes::Node::Keychains::Keychain::SendId : public ydk::Entity
+{
+    public:
+        SendId();
+        ~SendId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: uint8
+        class Keys; //type: TcpConnection::Nodes::Node::Keychains::Keychain::SendId::Keys
+
+        ydk::YList keys;
+        
+}; // TcpConnection::Nodes::Node::Keychains::Keychain::SendId
+
+
+class TcpConnection::Nodes::Node::Keychains::Keychain::SendId::Keys : public ydk::Entity
+{
+    public:
+        Keys();
+        ~Keys();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf key_id; //type: uint64
+
+}; // TcpConnection::Nodes::Node::Keychains::Keychain::SendId::Keys
+
+
+class TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId : public ydk::Entity
+{
+    public:
+        ReceiveId();
+        ~ReceiveId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf id; //type: uint8
+        class Keys; //type: TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId::Keys
+
+        ydk::YList keys;
+        
+}; // TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId
+
+
+class TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId::Keys : public ydk::Entity
+{
+    public:
+        Keys();
+        ~Keys();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf key_id; //type: uint64
+
+}; // TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId::Keys
 
 
 class TcpConnection::Nodes::Node::BriefInformations : public ydk::Entity
@@ -3298,6 +3523,17 @@ class MessageTypeIcmp_ : public ydk::Enum
 
 };
 
+class TcpKeyInvalidReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf incomplete;
+        static const ydk::Enum::YLeaf lifetime_not_same;
+        static const ydk::Enum::YLeaf send_id_invalid;
+        static const ydk::Enum::YLeaf recv_id_invalid;
+
+};
+
 class AddrFamily : public ydk::Enum
 {
     public:
@@ -3312,6 +3548,23 @@ class NsrStatus : public ydk::Enum
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf na;
+
+};
+
+class TcpMacAlgo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_configured;
+        static const ydk::Enum::YLeaf aes_128_cmac_96;
+        static const ydk::Enum::YLeaf hmac_sha1_12;
+        static const ydk::Enum::YLeaf md5_16;
+        static const ydk::Enum::YLeaf sha1_20;
+        static const ydk::Enum::YLeaf hmac_md5_16;
+        static const ydk::Enum::YLeaf hmac_sha1_20;
+        static const ydk::Enum::YLeaf aes_128_cmac;
+        static const ydk::Enum::YLeaf aes_256_cmac;
+        static const ydk::Enum::YLeaf hmac_sha1_96;
+        static const ydk::Enum::YLeaf hmac_sha_256;
 
 };
 

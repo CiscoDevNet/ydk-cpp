@@ -59,7 +59,6 @@ class MplsTe : public ydk::Entity
         class PathProtection; //type: MplsTe::PathProtection
         class FibNextHopLabelRoutes; //type: MplsTe::FibNextHopLabelRoutes
         class P2mp; //type: MplsTe::P2mp
-        class OpenConfig; //type: MplsTe::OpenConfig
         class LspOutOfResources; //type: MplsTe::LspOutOfResources
         class Bfd; //type: MplsTe::Bfd
         class Nsr; //type: MplsTe::Nsr
@@ -95,7 +94,6 @@ class MplsTe : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::PathProtection> path_protection;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::FibNextHopLabelRoutes> fib_next_hop_label_routes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2mp> p2mp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::OpenConfig> open_config;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::LspOutOfResources> lsp_out_of_resources;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::Bfd> bfd;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::Nsr> nsr;
@@ -1580,6 +1578,8 @@ class MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l : public ydk::Enti
         class FlexInfo; //type: MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::FlexInfo
         class LspWrapInfo; //type: MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::LspWrapInfo
         class DiversityInfo; //type: MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::DiversityInfo
+        class AccumulatedPathMetrics; //type: MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedPathMetrics
+        class AccumulatedReversePathMetrics; //type: MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedReversePathMetrics
         class S2lReverseLspSubObj; //type: MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::S2lReverseLspSubObj
         class SharedRiskLinkGroup; //type: MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::SharedRiskLinkGroup
         class OutEro; //type: MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::OutEro
@@ -1615,6 +1615,8 @@ class MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l : public ydk::Enti
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::FlexInfo> flex_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::LspWrapInfo> lsp_wrap_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::DiversityInfo> diversity_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedPathMetrics> accumulated_path_metrics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedReversePathMetrics> accumulated_reverse_path_metrics;
         ydk::YList s2l_reverse_lsp_sub_obj;
         ydk::YList shared_risk_link_group;
         ydk::YList out_ero;
@@ -4279,6 +4281,7 @@ class MteReoptTrigger : public ydk::Enum
         static const ydk::Enum::YLeaf bfd_session_config_change_trigger;
         static const ydk::Enum::YLeaf higher_priority_po_change_trigger;
         static const ydk::Enum::YLeaf sr_area_spf_support_change_trigger;
+        static const ydk::Enum::YLeaf path_protection_non_revertive_config_change;
         static const ydk::Enum::YLeaf trigger_not_used;
 
 };
@@ -4425,18 +4428,6 @@ class TeAutobwAppRej : public ydk::Enum
 
 };
 
-class PceState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf tcp_close;
-        static const ydk::Enum::YLeaf tcp_listen;
-        static const ydk::Enum::YLeaf tcp_connect;
-        static const ydk::Enum::YLeaf pcep_closed;
-        static const ydk::Enum::YLeaf pcep_opening;
-        static const ydk::Enum::YLeaf pcep_open;
-
-};
-
 class TeSyncNotReadyReason : public ydk::Enum
 {
     public:
@@ -4495,6 +4486,8 @@ class TePpDiversity : public ydk::Enum
         static const ydk::Enum::YLeaf node;
         static const ydk::Enum::YLeaf node_link;
         static const ydk::Enum::YLeaf srlg;
+        static const ydk::Enum::YLeaf node_srlg;
+        static const ydk::Enum::YLeaf node_link_srlg;
         static const ydk::Enum::YLeaf diversity_user;
         static const ydk::Enum::YLeaf diversity_reverse_ero;
 
@@ -4517,12 +4510,33 @@ class MplsTeBackupUsage : public ydk::Enum
 
 };
 
-class MplsTeLoadshare : public ydk::Enum
+class FloodingTrigger : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf loadshare_equal;
-        static const ydk::Enum::YLeaf loadshare_bandwidth_based;
-        static const ydk::Enum::YLeaf loadshare_configured;
+        static const ydk::Enum::YLeaf flooding_reason_unknown;
+        static const ydk::Enum::YLeaf link_up;
+        static const ydk::Enum::YLeaf link_down;
+        static const ydk::Enum::YLeaf threshold_up;
+        static const ydk::Enum::YLeaf threshold_down;
+        static const ydk::Enum::YLeaf threshold_up_pool1;
+        static const ydk::Enum::YLeaf threshold_down_pool1;
+        static const ydk::Enum::YLeaf timer_expired;
+        static const ydk::Enum::YLeaf bandwidth_change;
+        static const ydk::Enum::YLeaf user;
+        static const ydk::Enum::YLeaf rsvp_timeout;
+        static const ydk::Enum::YLeaf rsvp_reconnect;
+        static const ydk::Enum::YLeaf te_exited;
+        static const ydk::Enum::YLeaf srlg_change;
+        static const ydk::Enum::YLeaf hw_oor_green;
+        static const ydk::Enum::YLeaf hw_oor_yellow;
+        static const ydk::Enum::YLeaf hw_oor_red;
+        static const ydk::Enum::YLeaf hw_oor_recovery_duration_expired;
+        static const ydk::Enum::YLeaf lsp_oor_green;
+        static const ydk::Enum::YLeaf lsp_oor_yellow;
+        static const ydk::Enum::YLeaf lsp_oor_red;
+        static const ydk::Enum::YLeaf lsp_oor_recovery_duration_expired;
+        static const ydk::Enum::YLeaf max_res_bandwidth_threshold_up;
+        static const ydk::Enum::YLeaf max_res_bandwidth_threshold_down;
 
 };
 
@@ -4533,16 +4547,6 @@ class MplsTeTunnelState : public ydk::Enum
         static const ydk::Enum::YLeaf state_up;
         static const ydk::Enum::YLeaf state_down_policy;
         static const ydk::Enum::YLeaf state_lockout;
-
-};
-
-class MplsTeLspRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mpls_te_lsp_role_unknown;
-        static const ydk::Enum::YLeaf mpls_te_lsp_role_head;
-        static const ydk::Enum::YLeaf mpls_te_lsp_role_transit;
-        static const ydk::Enum::YLeaf mpls_te_lsp_role_tail;
 
 };
 
@@ -4600,15 +4604,6 @@ class TeXroSubobj : public ydk::Enum
 
 };
 
-class MplsProtection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mpls_protection_type_unprotected;
-        static const ydk::Enum::YLeaf mpls_protection_type_link;
-        static const ydk::Enum::YLeaf mpls_protection_type_link_node;
-
-};
-
 class TePathInvalAction : public ydk::Enum
 {
     public:
@@ -4652,6 +4647,7 @@ class MplsMteTunnelFailReason : public ydk::Enum
         static const ydk::Enum::YLeaf mtunnel_fail_reason_termination_bandwidth_mismatch;
         static const ydk::Enum::YLeaf mtunnel_fail_reason_termination_has_protection;
         static const ydk::Enum::YLeaf mtunnel_fail_reason_termination_has_invalid_src_dest_ifindex;
+        static const ydk::Enum::YLeaf mtunnel_fail_reason_termination_has_invalid_payload_type;
 
 };
 
@@ -4742,33 +4738,12 @@ class MplsTpTunnelSwitchoverTrig : public ydk::Enum
 
 };
 
-class FloodingTrigger : public ydk::Enum
+class MplsTeLoadshare : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf flooding_reason_unknown;
-        static const ydk::Enum::YLeaf link_up;
-        static const ydk::Enum::YLeaf link_down;
-        static const ydk::Enum::YLeaf threshold_up;
-        static const ydk::Enum::YLeaf threshold_down;
-        static const ydk::Enum::YLeaf threshold_up_pool1;
-        static const ydk::Enum::YLeaf threshold_down_pool1;
-        static const ydk::Enum::YLeaf timer_expired;
-        static const ydk::Enum::YLeaf bandwidth_change;
-        static const ydk::Enum::YLeaf user;
-        static const ydk::Enum::YLeaf rsvp_timeout;
-        static const ydk::Enum::YLeaf rsvp_reconnect;
-        static const ydk::Enum::YLeaf te_exited;
-        static const ydk::Enum::YLeaf srlg_change;
-        static const ydk::Enum::YLeaf hw_oor_green;
-        static const ydk::Enum::YLeaf hw_oor_yellow;
-        static const ydk::Enum::YLeaf hw_oor_red;
-        static const ydk::Enum::YLeaf hw_oor_recovery_duration_expired;
-        static const ydk::Enum::YLeaf lsp_oor_green;
-        static const ydk::Enum::YLeaf lsp_oor_yellow;
-        static const ydk::Enum::YLeaf lsp_oor_red;
-        static const ydk::Enum::YLeaf lsp_oor_recovery_duration_expired;
-        static const ydk::Enum::YLeaf max_res_bandwidth_threshold_up;
-        static const ydk::Enum::YLeaf max_res_bandwidth_threshold_down;
+        static const ydk::Enum::YLeaf loadshare_equal;
+        static const ydk::Enum::YLeaf loadshare_bandwidth_based;
+        static const ydk::Enum::YLeaf loadshare_configured;
 
 };
 
@@ -4778,6 +4753,15 @@ class MplsTpTunnelActiveLsp : public ydk::Enum
         static const ydk::Enum::YLeaf working;
         static const ydk::Enum::YLeaf protect;
         static const ydk::Enum::YLeaf none;
+
+};
+
+class TePnrRevertOptions : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf pnr_optionnot_set;
+        static const ydk::Enum::YLeaf pnr_option_revertive;
+        static const ydk::Enum::YLeaf pnr_option_non_revertive;
 
 };
 
@@ -4829,15 +4813,6 @@ class TeVifBfd : public ydk::Enum
 
 };
 
-class OcMplsTeTunnel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf p2p;
-        static const ydk::Enum::YLeaf p2mp;
-
-};
-
 class MplsTpTunnelState : public ydk::Enum
 {
     public:
@@ -4845,15 +4820,6 @@ class MplsTpTunnelState : public ydk::Enum
         static const ydk::Enum::YLeaf admin_up;
         static const ydk::Enum::YLeaf oper_up;
         static const ydk::Enum::YLeaf oper_down;
-
-};
-
-class TeHopLimitIgnore : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ignore_unknown;
-        static const ydk::Enum::YLeaf ignore_explicit;
-        static const ydk::Enum::YLeaf ignore_pce;
 
 };
 
@@ -4899,6 +4865,63 @@ class GmplsUniMgmtDwdmCs : public ydk::Enum
 
 };
 
+class TeSrSid : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf srsid_not_set;
+        static const ydk::Enum::YLeaf srsid_node;
+        static const ydk::Enum::YLeaf srsid_adj;
+        static const ydk::Enum::YLeaf srsid_unknown;
+
+};
+
+class TeS2lSrPathSelection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf te_s2l_sr_path_selection_any;
+        static const ydk::Enum::YLeaf te_s2l_sr_path_selection_adj_unprotected;
+        static const ydk::Enum::YLeaf te_s2l_sr_path_selection_adj_protected;
+
+};
+
+class ResourceProvider : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf resource_provider_none;
+        static const ydk::Enum::YLeaf packet_switch_capable;
+        static const ydk::Enum::YLeaf time_division_multiplex;
+        static const ydk::Enum::YLeaf lambda_switch_capable;
+        static const ydk::Enum::YLeaf fiber_switch_capable;
+        static const ydk::Enum::YLeaf g709odu_capable;
+
+};
+
+class AutoBackupProtection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf protection_none;
+        static const ydk::Enum::YLeaf protection_next_hop;
+        static const ydk::Enum::YLeaf protection_next_next_hop;
+
+};
+
+class MplsTeFrrState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf frr_inactive;
+        static const ydk::Enum::YLeaf frr_active;
+        static const ydk::Enum::YLeaf frr_ready;
+
+};
+
+class MplsTeBfdSessionDownAction1 : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf reopt;
+        static const ydk::Enum::YLeaf re_setup;
+
+};
+
 class MplsTeP2mpTimer : public ydk::Enum
 {
     public:
@@ -4935,84 +4958,15 @@ class MplsTeP2mpTimer : public ydk::Enum
 
 };
 
-class TeSrSid : public ydk::Enum
+class PceState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf srsid_not_set;
-        static const ydk::Enum::YLeaf srsid_node;
-        static const ydk::Enum::YLeaf srsid_adj;
-        static const ydk::Enum::YLeaf srsid_unknown;
-
-};
-
-class TeS2lSrPathSelection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf te_s2l_sr_path_selection_any;
-        static const ydk::Enum::YLeaf te_s2l_sr_path_selection_adj_unprotected;
-        static const ydk::Enum::YLeaf te_s2l_sr_path_selection_adj_protected;
-
-};
-
-class ResourceProvider : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf resource_provider_none;
-        static const ydk::Enum::YLeaf packet_switch_capable;
-        static const ydk::Enum::YLeaf time_division_multiplex;
-        static const ydk::Enum::YLeaf lambda_switch_capable;
-        static const ydk::Enum::YLeaf fiber_switch_capable;
-        static const ydk::Enum::YLeaf g709odu_capable;
-
-};
-
-class TpMidLspStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf down;
-
-};
-
-class AutoBackupProtection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf protection_none;
-        static const ydk::Enum::YLeaf protection_next_hop;
-        static const ydk::Enum::YLeaf protection_next_next_hop;
-
-};
-
-class MplsTeFrrState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf frr_inactive;
-        static const ydk::Enum::YLeaf frr_active;
-        static const ydk::Enum::YLeaf frr_ready;
-
-};
-
-class MplsTeBfdSessionDownAction1 : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf reopt;
-        static const ydk::Enum::YLeaf re_setup;
-
-};
-
-class LspOperStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mpls_te_lsp_oper_up;
-        static const ydk::Enum::YLeaf mpls_te_lsp_oper_down;
-
-};
-
-class MplsTeProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mpls_te_signaling_type_unknown;
-        static const ydk::Enum::YLeaf mpls_te_signaling_type_rsvp;
+        static const ydk::Enum::YLeaf tcp_close;
+        static const ydk::Enum::YLeaf tcp_listen;
+        static const ydk::Enum::YLeaf tcp_connect;
+        static const ydk::Enum::YLeaf pcep_closed;
+        static const ydk::Enum::YLeaf pcep_opening;
+        static const ydk::Enum::YLeaf pcep_open;
 
 };
 
@@ -5091,14 +5045,6 @@ class TeProtect : public ydk::Enum
         static const ydk::Enum::YLeaf protect_type1_plus1_unidir_aps;
         static const ydk::Enum::YLeaf protect_type1_plus1_bidir_aps;
         static const ydk::Enum::YLeaf protect_type_not_set;
-
-};
-
-class LspAdminStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mpls_te_lsp_admin_up;
-        static const ydk::Enum::YLeaf mpls_te_lsp_admin_shutdown;
 
 };
 
@@ -5190,12 +5136,12 @@ class TeMgmtGenericTspec : public ydk::Enum
 
 };
 
-class TePnrRevertOptions : public ydk::Enum
+class LspOorState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf pnr_optionnot_set;
-        static const ydk::Enum::YLeaf pnr_option_revertive;
-        static const ydk::Enum::YLeaf pnr_option_non_revertive;
+        static const ydk::Enum::YLeaf lsp_oor_green;
+        static const ydk::Enum::YLeaf lsp_oor_yellow;
+        static const ydk::Enum::YLeaf lsp_oor_red;
 
 };
 
@@ -5325,6 +5271,7 @@ class TeP2mpS2lDeletionSubcause : public ydk::Enum
         static const ydk::Enum::YLeaf aff_fail_delayed_tear_timeout_failed;
         static const ydk::Enum::YLeaf cost_limit_verify_failed;
         static const ydk::Enum::YLeaf delay_limit_verify_failed;
+        static const ydk::Enum::YLeaf lockout_metric_verify_failed;
         static const ydk::Enum::YLeaf path_setup_timeout;
         static const ydk::Enum::YLeaf vif_destroyed;
         static const ydk::Enum::YLeaf vif_shut;
@@ -5471,6 +5418,9 @@ class TeP2mpS2lDeletionSubcause : public ydk::Enum
         static const ydk::Enum::YLeaf lsp_wrap_label_error;
         static const ydk::Enum::YLeaf lsp_wrap_rewrite_error;
         static const ydk::Enum::YLeaf transit_lsp_out_of_resources;
+        static const ydk::Enum::YLeaf path_protection_configuration_change;
+        static const ydk::Enum::YLeaf better_standby_path;
+        static const ydk::Enum::YLeaf path_protection_non_revertive_config_changed;
         static const ydk::Enum::YLeaf fsm_sc_must_be_last;
 
 };
@@ -5519,6 +5469,7 @@ class MplsTePathSelectionMetric : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf igp;
         static const ydk::Enum::YLeaf te;
+        static const ydk::Enum::YLeaf delay;
 
 };
 
@@ -5695,16 +5646,6 @@ class TeS2lOutputRwExplicitNull : public ydk::Enum
 
 };
 
-class OcMplsTeAaMetric : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf oc_mpls_te_aa_metric_type_relative;
-        static const ydk::Enum::YLeaf oc_mpls_te_aa_metric_type_absolute;
-        static const ydk::Enum::YLeaf oc_mpls_te_aa_metric_type_constant;
-        static const ydk::Enum::YLeaf oc_mpls_te_aa_metric_type_inherited;
-
-};
-
 class RsvpMgmtEroSubobjStatus : public ydk::Enum
 {
     public:
@@ -5714,12 +5655,12 @@ class RsvpMgmtEroSubobjStatus : public ydk::Enum
 
 };
 
-class LspOorState : public ydk::Enum
+class TeHopLimitIgnore : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf lsp_oor_green;
-        static const ydk::Enum::YLeaf lsp_oor_yellow;
-        static const ydk::Enum::YLeaf lsp_oor_red;
+        static const ydk::Enum::YLeaf ignore_unknown;
+        static const ydk::Enum::YLeaf ignore_explicit;
+        static const ydk::Enum::YLeaf ignore_pce;
 
 };
 
@@ -5768,6 +5709,7 @@ class MplsTeReoptDecisionReason : public ydk::Enum
         static const ydk::Enum::YLeaf lsp_drop_mode;
         static const ydk::Enum::YLeaf strict_spf;
         static const ydk::Enum::YLeaf delay_limit;
+        static const ydk::Enum::YLeaf lockout_metric;
         static const ydk::Enum::YLeaf intra_area;
         static const ydk::Enum::YLeaf not_used;
 
@@ -5926,12 +5868,11 @@ class RsvpMgmtRroSubobj : public ydk::Enum
 
 };
 
-class MplsTeLspWrapState : public ydk::Enum
+class TpMidLspStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf lsp_wrap_not_ready;
-        static const ydk::Enum::YLeaf lsp_wrap_active;
-        static const ydk::Enum::YLeaf lsp_wrap_ready;
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
 
 };
 
@@ -6047,12 +5988,12 @@ class MplsTeTermination : public ydk::Enum
 
 };
 
-class OcMplsTeLsp : public ydk::Enum
+class MplsTeLspWrapState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf oc_mpls_te_lsp_type_not_set;
-        static const ydk::Enum::YLeaf oc_mpls_te_lsp_type_p2p;
-        static const ydk::Enum::YLeaf oc_mpls_te_lsp_type_p2mp;
+        static const ydk::Enum::YLeaf lsp_wrap_not_ready;
+        static const ydk::Enum::YLeaf lsp_wrap_active;
+        static const ydk::Enum::YLeaf lsp_wrap_ready;
 
 };
 

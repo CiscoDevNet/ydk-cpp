@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0)
 cmake_policy(SET CMP0048 NEW)
-project(ydk_cisco_nx_os VERSION 0.7.4 LANGUAGES C CXX)
+project(ydk_cisco_nx_os VERSION 9.2.1 LANGUAGES C CXX)
 
 # CPack Dynamic Settings
 set (CPACK_PACKAGE_NAME "libydk-cisco-nx-os")
@@ -97,7 +97,7 @@ include(CPack)
 # include custom Modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMakeModules/")
 
-set(YDK_YANG_ARCHIVE cisco_nx_os\@0.7.4)
+set(YDK_YANG_ARCHIVE cisco_nx_os\@9.2.1)
 
 if(NOT LIB_INSTALL_DIR)
     set(LIB_INSTALL_DIR lib)
@@ -108,7 +108,7 @@ if(NOT INCLUDE_INSTALL_DIR)
 endif()
 
 if(NOT YANG_INSTALL_DIR)
-    set(YANG_INSTALL_DIR share/cisco_nx_os\@0.7.4)
+    set(YANG_INSTALL_DIR share/cisco_nx_os\@9.2.1)
 endif()
 
 # set default build type if not specified by user
@@ -126,13 +126,13 @@ set(CMAKE_CXX_FLAGS_RELEASE "-Os -DNDEBUG")
 set(CMAKE_CXX_FLAGS_DEBUG   "-g -O0")
 
 
-set(libydk_cisco_nx_os_src ydk/models/cisco_nx_os/generated_entity_lookup.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_0.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_1.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_2.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_3.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_4.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_5.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_6.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_7.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_8.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_9.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_10.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_11.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_12.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_13.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_14.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_15.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_16.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_17.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_18.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_19.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_20.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_21.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_22.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_23.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_24.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_25.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_26.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_27.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_28.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_29.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_30.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_31.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_32.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_33.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_34.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_35.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_36.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_37.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_38.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_39.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_40.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_41.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_42.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_43.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_44.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_45.cpp)
+set(libydk_cisco_nx_os_src ydk/models/cisco_nx_os/generated_entity_lookup.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_0.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_1.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_2.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_3.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_4.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_5.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_6.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_7.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_8.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_9.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_10.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_11.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_12.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_13.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_14.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_15.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_16.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_17.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_18.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_19.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_20.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_21.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_22.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_23.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_24.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_25.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_26.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_27.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_28.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_29.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_30.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_31.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_32.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_33.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_34.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_35.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_36.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_37.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_38.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_39.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_40.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_41.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_42.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_43.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_44.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_45.cpp ydk/models/cisco_nx_os/fragmented/Cisco_NX_OS_device_46.cpp)
 
 set(libydk_cisco_nx_os_headers ydk/models/cisco_nx_os/bundle_info.hpp ydk/models/cisco_nx_os/Cisco_NX_OS_device.hpp)
 
-set(libydk_cisco_nx_os_yang ydk@2016-02-26.yang Cisco-NX-OS-device.yang)
+set(libydk_cisco_nx_os_yang Cisco-NX-OS-device.yang ydk@2016-02-26.yang ietf-diffserv-policy.yang ietf-event-notifications.yang ietf-netconf-acm.yang ietf-ipv6-unicast-routing.yang ietf-inet-types.yang iana-if-type.yang ietf-netconf.yang iana-crypt-hash.yang ietf-interfaces-ext.yang ietf-yang-push.yang ietf-routing.yang ietf-yang-types.yang ietf-ipv4-unicast-routing.yang ietf-diffserv-action.yang ietf-key-chain.yang ietf-ip.yang ietf-yang-smiv2.yang ietf-netconf-notifications.yang ietf-syslog-types.yang ietf-ospf.yang ietf-restconf-monitoring.yang ietf-diffserv-classifier.yang policy-types.yang ietf-interfaces.yang ietf-diffserv-target.yang ietf-netconf-with-defaults.yang ietf-yang-library.yang ietf-netconf-monitoring.yang)
 
-set (libydk_yang_dir ${CMAKE_CURRENT_BINARY_DIR}/cisco_nx_os\@0.7.4)
+set (libydk_yang_dir ${CMAKE_CURRENT_BINARY_DIR}/cisco_nx_os\@9.2.1)
 
 list(APPEND libydk_YANG_FILES "")
 foreach(yang_file IN LISTS libydk_cisco_nx_os_yang)

@@ -5,7 +5,6 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_mpls_te_oper_1.hpp"
-#include "Cisco_IOS_XR_mpls_te_oper_2.hpp"
 
 using namespace ydk;
 
@@ -14887,6 +14886,218 @@ bool MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::DiversityInfo::has
     return false;
 }
 
+MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedPathMetrics::AccumulatedPathMetrics()
+    :
+    te_metric{YType::uint64, "te-metric"},
+    igp_metric{YType::uint64, "igp-metric"},
+    delay_metric{YType::uint64, "delay-metric"}
+{
+
+    yang_name = "accumulated-path-metrics"; yang_parent_name = "s2l"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedPathMetrics::~AccumulatedPathMetrics()
+{
+}
+
+bool MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedPathMetrics::has_data() const
+{
+    if (is_presence_container) return true;
+    return te_metric.is_set
+	|| igp_metric.is_set
+	|| delay_metric.is_set;
+}
+
+bool MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedPathMetrics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(te_metric.yfilter)
+	|| ydk::is_set(igp_metric.yfilter)
+	|| ydk::is_set(delay_metric.yfilter);
+}
+
+std::string MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedPathMetrics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "accumulated-path-metrics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedPathMetrics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (te_metric.is_set || is_set(te_metric.yfilter)) leaf_name_data.push_back(te_metric.get_name_leafdata());
+    if (igp_metric.is_set || is_set(igp_metric.yfilter)) leaf_name_data.push_back(igp_metric.get_name_leafdata());
+    if (delay_metric.is_set || is_set(delay_metric.yfilter)) leaf_name_data.push_back(delay_metric.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedPathMetrics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedPathMetrics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedPathMetrics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "te-metric")
+    {
+        te_metric = value;
+        te_metric.value_namespace = name_space;
+        te_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igp-metric")
+    {
+        igp_metric = value;
+        igp_metric.value_namespace = name_space;
+        igp_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "delay-metric")
+    {
+        delay_metric = value;
+        delay_metric.value_namespace = name_space;
+        delay_metric.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedPathMetrics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "te-metric")
+    {
+        te_metric.yfilter = yfilter;
+    }
+    if(value_path == "igp-metric")
+    {
+        igp_metric.yfilter = yfilter;
+    }
+    if(value_path == "delay-metric")
+    {
+        delay_metric.yfilter = yfilter;
+    }
+}
+
+bool MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedPathMetrics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "te-metric" || name == "igp-metric" || name == "delay-metric")
+        return true;
+    return false;
+}
+
+MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedReversePathMetrics::AccumulatedReversePathMetrics()
+    :
+    te_metric{YType::uint64, "te-metric"},
+    igp_metric{YType::uint64, "igp-metric"},
+    delay_metric{YType::uint64, "delay-metric"}
+{
+
+    yang_name = "accumulated-reverse-path-metrics"; yang_parent_name = "s2l"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedReversePathMetrics::~AccumulatedReversePathMetrics()
+{
+}
+
+bool MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedReversePathMetrics::has_data() const
+{
+    if (is_presence_container) return true;
+    return te_metric.is_set
+	|| igp_metric.is_set
+	|| delay_metric.is_set;
+}
+
+bool MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedReversePathMetrics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(te_metric.yfilter)
+	|| ydk::is_set(igp_metric.yfilter)
+	|| ydk::is_set(delay_metric.yfilter);
+}
+
+std::string MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedReversePathMetrics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "accumulated-reverse-path-metrics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedReversePathMetrics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (te_metric.is_set || is_set(te_metric.yfilter)) leaf_name_data.push_back(te_metric.get_name_leafdata());
+    if (igp_metric.is_set || is_set(igp_metric.yfilter)) leaf_name_data.push_back(igp_metric.get_name_leafdata());
+    if (delay_metric.is_set || is_set(delay_metric.yfilter)) leaf_name_data.push_back(delay_metric.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedReversePathMetrics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedReversePathMetrics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedReversePathMetrics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "te-metric")
+    {
+        te_metric = value;
+        te_metric.value_namespace = name_space;
+        te_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igp-metric")
+    {
+        igp_metric = value;
+        igp_metric.value_namespace = name_space;
+        igp_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "delay-metric")
+    {
+        delay_metric = value;
+        delay_metric.value_namespace = name_space;
+        delay_metric.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedReversePathMetrics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "te-metric")
+    {
+        te_metric.yfilter = yfilter;
+    }
+    if(value_path == "igp-metric")
+    {
+        igp_metric.yfilter = yfilter;
+    }
+    if(value_path == "delay-metric")
+    {
+        delay_metric.yfilter = yfilter;
+    }
+}
+
+bool MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::AccumulatedReversePathMetrics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "te-metric" || name == "igp-metric" || name == "delay-metric")
+        return true;
+    return false;
+}
+
 MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::S2lReverseLspSubObj::S2lReverseLspSubObj()
     :
     entry{YType::uint8, "entry"}
@@ -18120,227 +18331,6 @@ void MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::PathAffinityArray:
 bool MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::PathAffinityArray::HopExtendedAffinity::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entry")
-        return true;
-    return false;
-}
-
-MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::ReverseEroIn()
-    :
-    ero_type{YType::enumeration, "ero-type"}
-        ,
-    ipv4ero_sub_object(std::make_shared<MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::Ipv4eroSubObject>())
-    , unnumbered_ero_sub_object(std::make_shared<MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::UnnumberedEroSubObject>())
-{
-    ipv4ero_sub_object->parent = this;
-    unnumbered_ero_sub_object->parent = this;
-
-    yang_name = "reverse-ero-in"; yang_parent_name = "s2l"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::~ReverseEroIn()
-{
-}
-
-bool MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::has_data() const
-{
-    if (is_presence_container) return true;
-    return ero_type.is_set
-	|| (ipv4ero_sub_object !=  nullptr && ipv4ero_sub_object->has_data())
-	|| (unnumbered_ero_sub_object !=  nullptr && unnumbered_ero_sub_object->has_data());
-}
-
-bool MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ero_type.yfilter)
-	|| (ipv4ero_sub_object !=  nullptr && ipv4ero_sub_object->has_operation())
-	|| (unnumbered_ero_sub_object !=  nullptr && unnumbered_ero_sub_object->has_operation());
-}
-
-std::string MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "reverse-ero-in";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ero_type.is_set || is_set(ero_type.yfilter)) leaf_name_data.push_back(ero_type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ipv4ero-sub-object")
-    {
-        if(ipv4ero_sub_object == nullptr)
-        {
-            ipv4ero_sub_object = std::make_shared<MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::Ipv4eroSubObject>();
-        }
-        return ipv4ero_sub_object;
-    }
-
-    if(child_yang_name == "unnumbered-ero-sub-object")
-    {
-        if(unnumbered_ero_sub_object == nullptr)
-        {
-            unnumbered_ero_sub_object = std::make_shared<MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::UnnumberedEroSubObject>();
-        }
-        return unnumbered_ero_sub_object;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(ipv4ero_sub_object != nullptr)
-    {
-        children["ipv4ero-sub-object"] = ipv4ero_sub_object;
-    }
-
-    if(unnumbered_ero_sub_object != nullptr)
-    {
-        children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
-    }
-
-    return children;
-}
-
-void MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ero-type")
-    {
-        ero_type = value;
-        ero_type.value_namespace = name_space;
-        ero_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ero-type")
-    {
-        ero_type.yfilter = yfilter;
-    }
-}
-
-bool MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv4ero-sub-object" || name == "unnumbered-ero-sub-object" || name == "ero-type")
-        return true;
-    return false;
-}
-
-MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::Ipv4eroSubObject::Ipv4eroSubObject()
-    :
-    is_strict_route{YType::boolean, "is-strict-route"},
-    ero_address{YType::str, "ero-address"},
-    prefix_length{YType::uint8, "prefix-length"}
-{
-
-    yang_name = "ipv4ero-sub-object"; yang_parent_name = "reverse-ero-in"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::Ipv4eroSubObject::~Ipv4eroSubObject()
-{
-}
-
-bool MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::Ipv4eroSubObject::has_data() const
-{
-    if (is_presence_container) return true;
-    return is_strict_route.is_set
-	|| ero_address.is_set
-	|| prefix_length.is_set;
-}
-
-bool MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::Ipv4eroSubObject::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(is_strict_route.yfilter)
-	|| ydk::is_set(ero_address.yfilter)
-	|| ydk::is_set(prefix_length.yfilter);
-}
-
-std::string MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::Ipv4eroSubObject::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4ero-sub-object";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::Ipv4eroSubObject::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (is_strict_route.is_set || is_set(is_strict_route.yfilter)) leaf_name_data.push_back(is_strict_route.get_name_leafdata());
-    if (ero_address.is_set || is_set(ero_address.yfilter)) leaf_name_data.push_back(ero_address.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::Ipv4eroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::Ipv4eroSubObject::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::Ipv4eroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "is-strict-route")
-    {
-        is_strict_route = value;
-        is_strict_route.value_namespace = name_space;
-        is_strict_route.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ero-address")
-    {
-        ero_address = value;
-        ero_address.value_namespace = name_space;
-        ero_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length = value;
-        prefix_length.value_namespace = name_space;
-        prefix_length.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::Ipv4eroSubObject::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "is-strict-route")
-    {
-        is_strict_route.yfilter = yfilter;
-    }
-    if(value_path == "ero-address")
-    {
-        ero_address.yfilter = yfilter;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length.yfilter = yfilter;
-    }
-}
-
-bool MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ReverseEroIn::Ipv4eroSubObject::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "is-strict-route" || name == "ero-address" || name == "prefix-length")
         return true;
     return false;
 }

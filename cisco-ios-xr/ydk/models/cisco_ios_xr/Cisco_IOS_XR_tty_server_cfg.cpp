@@ -1646,7 +1646,7 @@ Tty::TtyLines::TtyLine::Connection::TransportInput::TransportInput()
     select{YType::enumeration, "select"},
     protocol1{YType::enumeration, "protocol1"},
     protocol2{YType::enumeration, "protocol2"},
-    none{YType::int32, "none"}
+    none{YType::uint32, "none"}
 {
 
     yang_name = "transport-input"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true; 
@@ -1766,7 +1766,7 @@ Tty::TtyLines::TtyLine::Connection::TransportOutput::TransportOutput()
     select{YType::enumeration, "select"},
     protocol1{YType::enumeration, "protocol1"},
     protocol2{YType::enumeration, "protocol2"},
-    none{YType::int32, "none"}
+    none{YType::uint32, "none"}
 {
 
     yang_name = "transport-output"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;

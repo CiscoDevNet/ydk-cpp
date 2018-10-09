@@ -16,10 +16,12 @@ TelemetryModelDriven::TelemetryModelDriven()
     destinations(std::make_shared<TelemetryModelDriven::Destinations>())
     , subscriptions(std::make_shared<TelemetryModelDriven::Subscriptions>())
     , sensor_groups(std::make_shared<TelemetryModelDriven::SensorGroups>())
+    , summary(std::make_shared<TelemetryModelDriven::Summary>())
 {
     destinations->parent = this;
     subscriptions->parent = this;
     sensor_groups->parent = this;
+    summary->parent = this;
 
     yang_name = "telemetry-model-driven"; yang_parent_name = "Cisco-IOS-XR-telemetry-model-driven-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
@@ -33,7 +35,8 @@ bool TelemetryModelDriven::has_data() const
     if (is_presence_container) return true;
     return (destinations !=  nullptr && destinations->has_data())
 	|| (subscriptions !=  nullptr && subscriptions->has_data())
-	|| (sensor_groups !=  nullptr && sensor_groups->has_data());
+	|| (sensor_groups !=  nullptr && sensor_groups->has_data())
+	|| (summary !=  nullptr && summary->has_data());
 }
 
 bool TelemetryModelDriven::has_operation() const
@@ -41,7 +44,8 @@ bool TelemetryModelDriven::has_operation() const
     return is_set(yfilter)
 	|| (destinations !=  nullptr && destinations->has_operation())
 	|| (subscriptions !=  nullptr && subscriptions->has_operation())
-	|| (sensor_groups !=  nullptr && sensor_groups->has_operation());
+	|| (sensor_groups !=  nullptr && sensor_groups->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string TelemetryModelDriven::get_segment_path() const
@@ -89,6 +93,15 @@ std::shared_ptr<Entity> TelemetryModelDriven::get_child_by_name(const std::strin
         return sensor_groups;
     }
 
+    if(child_yang_name == "summary")
+    {
+        if(summary == nullptr)
+        {
+            summary = std::make_shared<TelemetryModelDriven::Summary>();
+        }
+        return summary;
+    }
+
     return nullptr;
 }
 
@@ -109,6 +122,11 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::get_childre
     if(sensor_groups != nullptr)
     {
         children["sensor-groups"] = sensor_groups;
+    }
+
+    if(summary != nullptr)
+    {
+        children["summary"] = summary;
     }
 
     return children;
@@ -149,7 +167,7 @@ std::map<std::pair<std::string, std::string>, std::string> TelemetryModelDriven:
 
 bool TelemetryModelDriven::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "destinations" || name == "subscriptions" || name == "sensor-groups")
+    if(name == "destinations" || name == "subscriptions" || name == "sensor-groups" || name == "summary")
         return true;
     return false;
 }
@@ -945,7 +963,8 @@ TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::
     total_on_data_instances{YType::uint32, "total-on-data-instances"},
     total_not_ready{YType::uint32, "total-not-ready"},
     total_send_errors{YType::uint32, "total-send-errors"},
-    total_send_drops{YType::uint32, "total-send-drops"}
+    total_send_drops{YType::uint32, "total-send-drops"},
+    strict_timer{YType::boolean, "strict-timer"}
         ,
     collection_path(this, {})
     , internal_collection_group(this, {})
@@ -986,7 +1005,8 @@ bool TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGr
 	|| total_on_data_instances.is_set
 	|| total_not_ready.is_set
 	|| total_send_errors.is_set
-	|| total_send_drops.is_set;
+	|| total_send_drops.is_set
+	|| strict_timer.is_set;
 }
 
 bool TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::has_operation() const
@@ -1017,7 +1037,8 @@ bool TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGr
 	|| ydk::is_set(total_on_data_instances.yfilter)
 	|| ydk::is_set(total_not_ready.yfilter)
 	|| ydk::is_set(total_send_errors.yfilter)
-	|| ydk::is_set(total_send_drops.yfilter);
+	|| ydk::is_set(total_send_drops.yfilter)
+	|| ydk::is_set(strict_timer.yfilter);
 }
 
 std::string TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::get_segment_path() const
@@ -1047,6 +1068,7 @@ std::vector<std::pair<std::string, LeafData> > TelemetryModelDriven::Destination
     if (total_not_ready.is_set || is_set(total_not_ready.yfilter)) leaf_name_data.push_back(total_not_ready.get_name_leafdata());
     if (total_send_errors.is_set || is_set(total_send_errors.yfilter)) leaf_name_data.push_back(total_send_errors.get_name_leafdata());
     if (total_send_drops.is_set || is_set(total_send_drops.yfilter)) leaf_name_data.push_back(total_send_drops.get_name_leafdata());
+    if (strict_timer.is_set || is_set(strict_timer.yfilter)) leaf_name_data.push_back(strict_timer.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1196,6 +1218,12 @@ void TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGr
         total_send_drops.value_namespace = name_space;
         total_send_drops.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "strict-timer")
+    {
+        strict_timer = value;
+        strict_timer.value_namespace = name_space;
+        strict_timer.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1264,11 +1292,15 @@ void TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGr
     {
         total_send_drops.yfilter = yfilter;
     }
+    if(value_path == "strict-timer")
+    {
+        strict_timer.yfilter = yfilter;
+    }
 }
 
 bool TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "collection-path" || name == "internal-collection-group" || name == "id" || name == "cadence" || name == "total-collections" || name == "encoding" || name == "last-collection-start-time" || name == "last-collection-end-time" || name == "max-collection-time" || name == "min-collection-time" || name == "min-total-time" || name == "max-total-time" || name == "avg-total-time" || name == "total-other-errors" || name == "total-on-data-instances" || name == "total-not-ready" || name == "total-send-errors" || name == "total-send-drops")
+    if(name == "collection-path" || name == "internal-collection-group" || name == "id" || name == "cadence" || name == "total-collections" || name == "encoding" || name == "last-collection-start-time" || name == "last-collection-end-time" || name == "max-collection-time" || name == "min-collection-time" || name == "min-total-time" || name == "max-total-time" || name == "avg-total-time" || name == "total-other-errors" || name == "total-on-data-instances" || name == "total-not-ready" || name == "total-send-errors" || name == "total-send-drops" || name == "strict-timer")
         return true;
     return false;
 }
@@ -3280,7 +3312,8 @@ TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::CollectionGr
     total_on_data_instances{YType::uint32, "total-on-data-instances"},
     total_not_ready{YType::uint32, "total-not-ready"},
     total_send_errors{YType::uint32, "total-send-errors"},
-    total_send_drops{YType::uint32, "total-send-drops"}
+    total_send_drops{YType::uint32, "total-send-drops"},
+    strict_timer{YType::boolean, "strict-timer"}
         ,
     collection_path(this, {})
     , internal_collection_group(this, {})
@@ -3321,7 +3354,8 @@ bool TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::has_dat
 	|| total_on_data_instances.is_set
 	|| total_not_ready.is_set
 	|| total_send_errors.is_set
-	|| total_send_drops.is_set;
+	|| total_send_drops.is_set
+	|| strict_timer.is_set;
 }
 
 bool TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::has_operation() const
@@ -3352,7 +3386,8 @@ bool TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::has_ope
 	|| ydk::is_set(total_on_data_instances.yfilter)
 	|| ydk::is_set(total_not_ready.yfilter)
 	|| ydk::is_set(total_send_errors.yfilter)
-	|| ydk::is_set(total_send_drops.yfilter);
+	|| ydk::is_set(total_send_drops.yfilter)
+	|| ydk::is_set(strict_timer.yfilter);
 }
 
 std::string TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::get_segment_path() const
@@ -3382,6 +3417,7 @@ std::vector<std::pair<std::string, LeafData> > TelemetryModelDriven::Subscriptio
     if (total_not_ready.is_set || is_set(total_not_ready.yfilter)) leaf_name_data.push_back(total_not_ready.get_name_leafdata());
     if (total_send_errors.is_set || is_set(total_send_errors.yfilter)) leaf_name_data.push_back(total_send_errors.get_name_leafdata());
     if (total_send_drops.is_set || is_set(total_send_drops.yfilter)) leaf_name_data.push_back(total_send_drops.get_name_leafdata());
+    if (strict_timer.is_set || is_set(strict_timer.yfilter)) leaf_name_data.push_back(strict_timer.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3531,6 +3567,12 @@ void TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::set_val
         total_send_drops.value_namespace = name_space;
         total_send_drops.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "strict-timer")
+    {
+        strict_timer = value;
+        strict_timer.value_namespace = name_space;
+        strict_timer.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3599,11 +3641,15 @@ void TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::set_fil
     {
         total_send_drops.yfilter = yfilter;
     }
+    if(value_path == "strict-timer")
+    {
+        strict_timer.yfilter = yfilter;
+    }
 }
 
 bool TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "collection-path" || name == "internal-collection-group" || name == "id" || name == "cadence" || name == "total-collections" || name == "encoding" || name == "last-collection-start-time" || name == "last-collection-end-time" || name == "max-collection-time" || name == "min-collection-time" || name == "min-total-time" || name == "max-total-time" || name == "avg-total-time" || name == "total-other-errors" || name == "total-on-data-instances" || name == "total-not-ready" || name == "total-send-errors" || name == "total-send-drops")
+    if(name == "collection-path" || name == "internal-collection-group" || name == "id" || name == "cadence" || name == "total-collections" || name == "encoding" || name == "last-collection-start-time" || name == "last-collection-end-time" || name == "max-collection-time" || name == "min-collection-time" || name == "min-total-time" || name == "max-total-time" || name == "avg-total-time" || name == "total-other-errors" || name == "total-on-data-instances" || name == "total-not-ready" || name == "total-send-errors" || name == "total-send-drops" || name == "strict-timer")
         return true;
     return false;
 }
@@ -4501,6 +4547,357 @@ void TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath::set_filter(con
 bool TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "path" || name == "state" || name == "status-str")
+        return true;
+    return false;
+}
+
+TelemetryModelDriven::Summary::Summary()
+    :
+    num_of_subscriptions{YType::uint32, "num-of-subscriptions"},
+    num_of_active_subscriptions{YType::uint32, "num-of-active-subscriptions"},
+    num_of_paused_subscriptions{YType::uint32, "num-of-paused-subscriptions"},
+    num_of_destination_groups{YType::uint32, "num-of-destination-groups"},
+    num_of_destinations{YType::uint32, "num-of-destinations"},
+    num_of_tcp_dialouts{YType::uint32, "num-of-tcp-dialouts"},
+    num_of_udp_dialouts{YType::uint32, "num-of-udp-dialouts"},
+    num_of_grpc_tls_dialouts{YType::uint32, "num-of-grpc-tls-dialouts"},
+    num_of_grpc_non_tls_dialouts{YType::uint32, "num-of-grpc-non-tls-dialouts"},
+    num_of_dialins{YType::uint32, "num-of-dialins"},
+    num_of_active_destinations{YType::uint32, "num-of-active-destinations"},
+    num_of_connected_sessions{YType::uint32, "num-of-connected-sessions"},
+    num_of_connecting_sessions{YType::uint32, "num-of-connecting-sessions"},
+    num_of_sensor_groups{YType::uint32, "num-of-sensor-groups"},
+    num_of_unique_sensor_paths{YType::uint32, "num-of-unique-sensor-paths"},
+    num_of_sensor_paths{YType::uint32, "num-of-sensor-paths"},
+    num_of_not_resolved_sensor_paths{YType::uint32, "num-of-not-resolved-sensor-paths"},
+    num_of_active_sensor_paths{YType::uint32, "num-of-active-sensor-paths"},
+    max_sensor_paths{YType::uint32, "max-sensor-paths"},
+    max_containers_per_path{YType::uint32, "max-containers-per-path"}
+{
+
+    yang_name = "summary"; yang_parent_name = "telemetry-model-driven"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+TelemetryModelDriven::Summary::~Summary()
+{
+}
+
+bool TelemetryModelDriven::Summary::has_data() const
+{
+    if (is_presence_container) return true;
+    return num_of_subscriptions.is_set
+	|| num_of_active_subscriptions.is_set
+	|| num_of_paused_subscriptions.is_set
+	|| num_of_destination_groups.is_set
+	|| num_of_destinations.is_set
+	|| num_of_tcp_dialouts.is_set
+	|| num_of_udp_dialouts.is_set
+	|| num_of_grpc_tls_dialouts.is_set
+	|| num_of_grpc_non_tls_dialouts.is_set
+	|| num_of_dialins.is_set
+	|| num_of_active_destinations.is_set
+	|| num_of_connected_sessions.is_set
+	|| num_of_connecting_sessions.is_set
+	|| num_of_sensor_groups.is_set
+	|| num_of_unique_sensor_paths.is_set
+	|| num_of_sensor_paths.is_set
+	|| num_of_not_resolved_sensor_paths.is_set
+	|| num_of_active_sensor_paths.is_set
+	|| max_sensor_paths.is_set
+	|| max_containers_per_path.is_set;
+}
+
+bool TelemetryModelDriven::Summary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(num_of_subscriptions.yfilter)
+	|| ydk::is_set(num_of_active_subscriptions.yfilter)
+	|| ydk::is_set(num_of_paused_subscriptions.yfilter)
+	|| ydk::is_set(num_of_destination_groups.yfilter)
+	|| ydk::is_set(num_of_destinations.yfilter)
+	|| ydk::is_set(num_of_tcp_dialouts.yfilter)
+	|| ydk::is_set(num_of_udp_dialouts.yfilter)
+	|| ydk::is_set(num_of_grpc_tls_dialouts.yfilter)
+	|| ydk::is_set(num_of_grpc_non_tls_dialouts.yfilter)
+	|| ydk::is_set(num_of_dialins.yfilter)
+	|| ydk::is_set(num_of_active_destinations.yfilter)
+	|| ydk::is_set(num_of_connected_sessions.yfilter)
+	|| ydk::is_set(num_of_connecting_sessions.yfilter)
+	|| ydk::is_set(num_of_sensor_groups.yfilter)
+	|| ydk::is_set(num_of_unique_sensor_paths.yfilter)
+	|| ydk::is_set(num_of_sensor_paths.yfilter)
+	|| ydk::is_set(num_of_not_resolved_sensor_paths.yfilter)
+	|| ydk::is_set(num_of_active_sensor_paths.yfilter)
+	|| ydk::is_set(max_sensor_paths.yfilter)
+	|| ydk::is_set(max_containers_per_path.yfilter);
+}
+
+std::string TelemetryModelDriven::Summary::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-telemetry-model-driven-oper:telemetry-model-driven/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string TelemetryModelDriven::Summary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > TelemetryModelDriven::Summary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (num_of_subscriptions.is_set || is_set(num_of_subscriptions.yfilter)) leaf_name_data.push_back(num_of_subscriptions.get_name_leafdata());
+    if (num_of_active_subscriptions.is_set || is_set(num_of_active_subscriptions.yfilter)) leaf_name_data.push_back(num_of_active_subscriptions.get_name_leafdata());
+    if (num_of_paused_subscriptions.is_set || is_set(num_of_paused_subscriptions.yfilter)) leaf_name_data.push_back(num_of_paused_subscriptions.get_name_leafdata());
+    if (num_of_destination_groups.is_set || is_set(num_of_destination_groups.yfilter)) leaf_name_data.push_back(num_of_destination_groups.get_name_leafdata());
+    if (num_of_destinations.is_set || is_set(num_of_destinations.yfilter)) leaf_name_data.push_back(num_of_destinations.get_name_leafdata());
+    if (num_of_tcp_dialouts.is_set || is_set(num_of_tcp_dialouts.yfilter)) leaf_name_data.push_back(num_of_tcp_dialouts.get_name_leafdata());
+    if (num_of_udp_dialouts.is_set || is_set(num_of_udp_dialouts.yfilter)) leaf_name_data.push_back(num_of_udp_dialouts.get_name_leafdata());
+    if (num_of_grpc_tls_dialouts.is_set || is_set(num_of_grpc_tls_dialouts.yfilter)) leaf_name_data.push_back(num_of_grpc_tls_dialouts.get_name_leafdata());
+    if (num_of_grpc_non_tls_dialouts.is_set || is_set(num_of_grpc_non_tls_dialouts.yfilter)) leaf_name_data.push_back(num_of_grpc_non_tls_dialouts.get_name_leafdata());
+    if (num_of_dialins.is_set || is_set(num_of_dialins.yfilter)) leaf_name_data.push_back(num_of_dialins.get_name_leafdata());
+    if (num_of_active_destinations.is_set || is_set(num_of_active_destinations.yfilter)) leaf_name_data.push_back(num_of_active_destinations.get_name_leafdata());
+    if (num_of_connected_sessions.is_set || is_set(num_of_connected_sessions.yfilter)) leaf_name_data.push_back(num_of_connected_sessions.get_name_leafdata());
+    if (num_of_connecting_sessions.is_set || is_set(num_of_connecting_sessions.yfilter)) leaf_name_data.push_back(num_of_connecting_sessions.get_name_leafdata());
+    if (num_of_sensor_groups.is_set || is_set(num_of_sensor_groups.yfilter)) leaf_name_data.push_back(num_of_sensor_groups.get_name_leafdata());
+    if (num_of_unique_sensor_paths.is_set || is_set(num_of_unique_sensor_paths.yfilter)) leaf_name_data.push_back(num_of_unique_sensor_paths.get_name_leafdata());
+    if (num_of_sensor_paths.is_set || is_set(num_of_sensor_paths.yfilter)) leaf_name_data.push_back(num_of_sensor_paths.get_name_leafdata());
+    if (num_of_not_resolved_sensor_paths.is_set || is_set(num_of_not_resolved_sensor_paths.yfilter)) leaf_name_data.push_back(num_of_not_resolved_sensor_paths.get_name_leafdata());
+    if (num_of_active_sensor_paths.is_set || is_set(num_of_active_sensor_paths.yfilter)) leaf_name_data.push_back(num_of_active_sensor_paths.get_name_leafdata());
+    if (max_sensor_paths.is_set || is_set(max_sensor_paths.yfilter)) leaf_name_data.push_back(max_sensor_paths.get_name_leafdata());
+    if (max_containers_per_path.is_set || is_set(max_containers_per_path.yfilter)) leaf_name_data.push_back(max_containers_per_path.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> TelemetryModelDriven::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Summary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void TelemetryModelDriven::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "num-of-subscriptions")
+    {
+        num_of_subscriptions = value;
+        num_of_subscriptions.value_namespace = name_space;
+        num_of_subscriptions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-active-subscriptions")
+    {
+        num_of_active_subscriptions = value;
+        num_of_active_subscriptions.value_namespace = name_space;
+        num_of_active_subscriptions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-paused-subscriptions")
+    {
+        num_of_paused_subscriptions = value;
+        num_of_paused_subscriptions.value_namespace = name_space;
+        num_of_paused_subscriptions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-destination-groups")
+    {
+        num_of_destination_groups = value;
+        num_of_destination_groups.value_namespace = name_space;
+        num_of_destination_groups.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-destinations")
+    {
+        num_of_destinations = value;
+        num_of_destinations.value_namespace = name_space;
+        num_of_destinations.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-tcp-dialouts")
+    {
+        num_of_tcp_dialouts = value;
+        num_of_tcp_dialouts.value_namespace = name_space;
+        num_of_tcp_dialouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-udp-dialouts")
+    {
+        num_of_udp_dialouts = value;
+        num_of_udp_dialouts.value_namespace = name_space;
+        num_of_udp_dialouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-grpc-tls-dialouts")
+    {
+        num_of_grpc_tls_dialouts = value;
+        num_of_grpc_tls_dialouts.value_namespace = name_space;
+        num_of_grpc_tls_dialouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-grpc-non-tls-dialouts")
+    {
+        num_of_grpc_non_tls_dialouts = value;
+        num_of_grpc_non_tls_dialouts.value_namespace = name_space;
+        num_of_grpc_non_tls_dialouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-dialins")
+    {
+        num_of_dialins = value;
+        num_of_dialins.value_namespace = name_space;
+        num_of_dialins.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-active-destinations")
+    {
+        num_of_active_destinations = value;
+        num_of_active_destinations.value_namespace = name_space;
+        num_of_active_destinations.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-connected-sessions")
+    {
+        num_of_connected_sessions = value;
+        num_of_connected_sessions.value_namespace = name_space;
+        num_of_connected_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-connecting-sessions")
+    {
+        num_of_connecting_sessions = value;
+        num_of_connecting_sessions.value_namespace = name_space;
+        num_of_connecting_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-sensor-groups")
+    {
+        num_of_sensor_groups = value;
+        num_of_sensor_groups.value_namespace = name_space;
+        num_of_sensor_groups.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-unique-sensor-paths")
+    {
+        num_of_unique_sensor_paths = value;
+        num_of_unique_sensor_paths.value_namespace = name_space;
+        num_of_unique_sensor_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-sensor-paths")
+    {
+        num_of_sensor_paths = value;
+        num_of_sensor_paths.value_namespace = name_space;
+        num_of_sensor_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-not-resolved-sensor-paths")
+    {
+        num_of_not_resolved_sensor_paths = value;
+        num_of_not_resolved_sensor_paths.value_namespace = name_space;
+        num_of_not_resolved_sensor_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-active-sensor-paths")
+    {
+        num_of_active_sensor_paths = value;
+        num_of_active_sensor_paths.value_namespace = name_space;
+        num_of_active_sensor_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-sensor-paths")
+    {
+        max_sensor_paths = value;
+        max_sensor_paths.value_namespace = name_space;
+        max_sensor_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-containers-per-path")
+    {
+        max_containers_per_path = value;
+        max_containers_per_path.value_namespace = name_space;
+        max_containers_per_path.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TelemetryModelDriven::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-of-subscriptions")
+    {
+        num_of_subscriptions.yfilter = yfilter;
+    }
+    if(value_path == "num-of-active-subscriptions")
+    {
+        num_of_active_subscriptions.yfilter = yfilter;
+    }
+    if(value_path == "num-of-paused-subscriptions")
+    {
+        num_of_paused_subscriptions.yfilter = yfilter;
+    }
+    if(value_path == "num-of-destination-groups")
+    {
+        num_of_destination_groups.yfilter = yfilter;
+    }
+    if(value_path == "num-of-destinations")
+    {
+        num_of_destinations.yfilter = yfilter;
+    }
+    if(value_path == "num-of-tcp-dialouts")
+    {
+        num_of_tcp_dialouts.yfilter = yfilter;
+    }
+    if(value_path == "num-of-udp-dialouts")
+    {
+        num_of_udp_dialouts.yfilter = yfilter;
+    }
+    if(value_path == "num-of-grpc-tls-dialouts")
+    {
+        num_of_grpc_tls_dialouts.yfilter = yfilter;
+    }
+    if(value_path == "num-of-grpc-non-tls-dialouts")
+    {
+        num_of_grpc_non_tls_dialouts.yfilter = yfilter;
+    }
+    if(value_path == "num-of-dialins")
+    {
+        num_of_dialins.yfilter = yfilter;
+    }
+    if(value_path == "num-of-active-destinations")
+    {
+        num_of_active_destinations.yfilter = yfilter;
+    }
+    if(value_path == "num-of-connected-sessions")
+    {
+        num_of_connected_sessions.yfilter = yfilter;
+    }
+    if(value_path == "num-of-connecting-sessions")
+    {
+        num_of_connecting_sessions.yfilter = yfilter;
+    }
+    if(value_path == "num-of-sensor-groups")
+    {
+        num_of_sensor_groups.yfilter = yfilter;
+    }
+    if(value_path == "num-of-unique-sensor-paths")
+    {
+        num_of_unique_sensor_paths.yfilter = yfilter;
+    }
+    if(value_path == "num-of-sensor-paths")
+    {
+        num_of_sensor_paths.yfilter = yfilter;
+    }
+    if(value_path == "num-of-not-resolved-sensor-paths")
+    {
+        num_of_not_resolved_sensor_paths.yfilter = yfilter;
+    }
+    if(value_path == "num-of-active-sensor-paths")
+    {
+        num_of_active_sensor_paths.yfilter = yfilter;
+    }
+    if(value_path == "max-sensor-paths")
+    {
+        max_sensor_paths.yfilter = yfilter;
+    }
+    if(value_path == "max-containers-per-path")
+    {
+        max_containers_per_path.yfilter = yfilter;
+    }
+}
+
+bool TelemetryModelDriven::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-of-subscriptions" || name == "num-of-active-subscriptions" || name == "num-of-paused-subscriptions" || name == "num-of-destination-groups" || name == "num-of-destinations" || name == "num-of-tcp-dialouts" || name == "num-of-udp-dialouts" || name == "num-of-grpc-tls-dialouts" || name == "num-of-grpc-non-tls-dialouts" || name == "num-of-dialins" || name == "num-of-active-destinations" || name == "num-of-connected-sessions" || name == "num-of-connecting-sessions" || name == "num-of-sensor-groups" || name == "num-of-unique-sensor-paths" || name == "num-of-sensor-paths" || name == "num-of-not-resolved-sensor-paths" || name == "num-of-active-sensor-paths" || name == "max-sensor-paths" || name == "max-containers-per-path")
         return true;
     return false;
 }

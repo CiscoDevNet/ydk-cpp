@@ -13,7 +13,10 @@ namespace Cisco_IOS_XE_aaa_oper {
 
 AaaData::AaaData()
     :
-    aaa_users(this, {"username"})
+    aaa_radius_stats(this, {"group_name", "radius_server_ip", "auth_port", "acct_port"})
+    , aaa_tacacs_stats(this, {"group_name", "tacacs_server_address", "port"})
+    , aaa_ldap_counters(this, {"ldap_server_address", "ldap_server_port"})
+    , aaa_users(this, {"username"})
 {
 
     yang_name = "aaa-data"; yang_parent_name = "Cisco-IOS-XE-aaa-oper"; is_top_level_class = true; has_list_ancestor = false; 
@@ -26,6 +29,21 @@ AaaData::~AaaData()
 bool AaaData::has_data() const
 {
     if (is_presence_container) return true;
+    for (std::size_t index=0; index<aaa_radius_stats.len(); index++)
+    {
+        if(aaa_radius_stats[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<aaa_tacacs_stats.len(); index++)
+    {
+        if(aaa_tacacs_stats[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<aaa_ldap_counters.len(); index++)
+    {
+        if(aaa_ldap_counters[index]->has_data())
+            return true;
+    }
     for (std::size_t index=0; index<aaa_users.len(); index++)
     {
         if(aaa_users[index]->has_data())
@@ -36,6 +54,21 @@ bool AaaData::has_data() const
 
 bool AaaData::has_operation() const
 {
+    for (std::size_t index=0; index<aaa_radius_stats.len(); index++)
+    {
+        if(aaa_radius_stats[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<aaa_tacacs_stats.len(); index++)
+    {
+        if(aaa_tacacs_stats[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<aaa_ldap_counters.len(); index++)
+    {
+        if(aaa_ldap_counters[index]->has_operation())
+            return true;
+    }
     for (std::size_t index=0; index<aaa_users.len(); index++)
     {
         if(aaa_users[index]->has_operation())
@@ -62,6 +95,30 @@ std::vector<std::pair<std::string, LeafData> > AaaData::get_name_leaf_data() con
 
 std::shared_ptr<Entity> AaaData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "aaa-radius-stats")
+    {
+        auto c = std::make_shared<AaaData::AaaRadiusStats>();
+        c->parent = this;
+        aaa_radius_stats.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "aaa-tacacs-stats")
+    {
+        auto c = std::make_shared<AaaData::AaaTacacsStats>();
+        c->parent = this;
+        aaa_tacacs_stats.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "aaa-ldap-counters")
+    {
+        auto c = std::make_shared<AaaData::AaaLdapCounters>();
+        c->parent = this;
+        aaa_ldap_counters.append(c);
+        return c;
+    }
+
     if(child_yang_name == "aaa-users")
     {
         auto c = std::make_shared<AaaData::AaaUsers>();
@@ -77,6 +134,33 @@ std::map<std::string, std::shared_ptr<Entity>> AaaData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto c : aaa_radius_stats.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : aaa_tacacs_stats.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : aaa_ldap_counters.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     count = 0;
     for (auto c : aaa_users.entities())
     {
@@ -124,7 +208,915 @@ std::map<std::pair<std::string, std::string>, std::string> AaaData::get_namespac
 
 bool AaaData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "aaa-users")
+    if(name == "aaa-radius-stats" || name == "aaa-tacacs-stats" || name == "aaa-ldap-counters" || name == "aaa-users")
+        return true;
+    return false;
+}
+
+AaaData::AaaRadiusStats::AaaRadiusStats()
+    :
+    group_name{YType::str, "group-name"},
+    radius_server_ip{YType::str, "radius-server-ip"},
+    auth_port{YType::uint16, "auth-port"},
+    acct_port{YType::uint16, "acct-port"},
+    authen_retried_access_requests{YType::uint32, "authen-retried-access-requests"},
+    authen_access_accepts{YType::uint32, "authen-access-accepts"},
+    authen_access_rejects{YType::uint32, "authen-access-rejects"},
+    authen_timeout_access_requests{YType::uint32, "authen-timeout-access-requests"},
+    author_retried_access_requests{YType::uint32, "author-retried-access-requests"},
+    author_access_accepts{YType::uint32, "author-access-accepts"},
+    author_access_rejects{YType::uint32, "author-access-rejects"},
+    author_timeout_access_requests{YType::uint32, "author-timeout-access-requests"},
+    connection_opens{YType::uint32, "connection-opens"},
+    connection_closes{YType::uint32, "connection-closes"},
+    connection_aborts{YType::uint32, "connection-aborts"},
+    connection_failures{YType::uint32, "connection-failures"},
+    connection_timeouts{YType::uint32, "connection-timeouts"},
+    authen_messages_sent{YType::uint32, "authen-messages-sent"},
+    author_messages_sent{YType::uint32, "author-messages-sent"},
+    acct_messages_sent{YType::uint32, "acct-messages-sent"},
+    authen_messages_received{YType::uint32, "authen-messages-received"},
+    author_messages_received{YType::uint32, "author-messages-received"},
+    authen_errors_received{YType::uint32, "authen-errors-received"},
+    author_errors_received{YType::uint32, "author-errors-received"},
+    acct_errors_received{YType::uint32, "acct-errors-received"},
+    stats_time{YType::str, "stats-time"}
+{
+
+    yang_name = "aaa-radius-stats"; yang_parent_name = "aaa-data"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+AaaData::AaaRadiusStats::~AaaRadiusStats()
+{
+}
+
+bool AaaData::AaaRadiusStats::has_data() const
+{
+    if (is_presence_container) return true;
+    return group_name.is_set
+	|| radius_server_ip.is_set
+	|| auth_port.is_set
+	|| acct_port.is_set
+	|| authen_retried_access_requests.is_set
+	|| authen_access_accepts.is_set
+	|| authen_access_rejects.is_set
+	|| authen_timeout_access_requests.is_set
+	|| author_retried_access_requests.is_set
+	|| author_access_accepts.is_set
+	|| author_access_rejects.is_set
+	|| author_timeout_access_requests.is_set
+	|| connection_opens.is_set
+	|| connection_closes.is_set
+	|| connection_aborts.is_set
+	|| connection_failures.is_set
+	|| connection_timeouts.is_set
+	|| authen_messages_sent.is_set
+	|| author_messages_sent.is_set
+	|| acct_messages_sent.is_set
+	|| authen_messages_received.is_set
+	|| author_messages_received.is_set
+	|| authen_errors_received.is_set
+	|| author_errors_received.is_set
+	|| acct_errors_received.is_set
+	|| stats_time.is_set;
+}
+
+bool AaaData::AaaRadiusStats::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(radius_server_ip.yfilter)
+	|| ydk::is_set(auth_port.yfilter)
+	|| ydk::is_set(acct_port.yfilter)
+	|| ydk::is_set(authen_retried_access_requests.yfilter)
+	|| ydk::is_set(authen_access_accepts.yfilter)
+	|| ydk::is_set(authen_access_rejects.yfilter)
+	|| ydk::is_set(authen_timeout_access_requests.yfilter)
+	|| ydk::is_set(author_retried_access_requests.yfilter)
+	|| ydk::is_set(author_access_accepts.yfilter)
+	|| ydk::is_set(author_access_rejects.yfilter)
+	|| ydk::is_set(author_timeout_access_requests.yfilter)
+	|| ydk::is_set(connection_opens.yfilter)
+	|| ydk::is_set(connection_closes.yfilter)
+	|| ydk::is_set(connection_aborts.yfilter)
+	|| ydk::is_set(connection_failures.yfilter)
+	|| ydk::is_set(connection_timeouts.yfilter)
+	|| ydk::is_set(authen_messages_sent.yfilter)
+	|| ydk::is_set(author_messages_sent.yfilter)
+	|| ydk::is_set(acct_messages_sent.yfilter)
+	|| ydk::is_set(authen_messages_received.yfilter)
+	|| ydk::is_set(author_messages_received.yfilter)
+	|| ydk::is_set(authen_errors_received.yfilter)
+	|| ydk::is_set(author_errors_received.yfilter)
+	|| ydk::is_set(acct_errors_received.yfilter)
+	|| ydk::is_set(stats_time.yfilter);
+}
+
+std::string AaaData::AaaRadiusStats::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-aaa-oper:aaa-data/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string AaaData::AaaRadiusStats::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "aaa-radius-stats";
+    ADD_KEY_TOKEN(group_name, "group-name");
+    ADD_KEY_TOKEN(radius_server_ip, "radius-server-ip");
+    ADD_KEY_TOKEN(auth_port, "auth-port");
+    ADD_KEY_TOKEN(acct_port, "acct-port");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AaaData::AaaRadiusStats::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (radius_server_ip.is_set || is_set(radius_server_ip.yfilter)) leaf_name_data.push_back(radius_server_ip.get_name_leafdata());
+    if (auth_port.is_set || is_set(auth_port.yfilter)) leaf_name_data.push_back(auth_port.get_name_leafdata());
+    if (acct_port.is_set || is_set(acct_port.yfilter)) leaf_name_data.push_back(acct_port.get_name_leafdata());
+    if (authen_retried_access_requests.is_set || is_set(authen_retried_access_requests.yfilter)) leaf_name_data.push_back(authen_retried_access_requests.get_name_leafdata());
+    if (authen_access_accepts.is_set || is_set(authen_access_accepts.yfilter)) leaf_name_data.push_back(authen_access_accepts.get_name_leafdata());
+    if (authen_access_rejects.is_set || is_set(authen_access_rejects.yfilter)) leaf_name_data.push_back(authen_access_rejects.get_name_leafdata());
+    if (authen_timeout_access_requests.is_set || is_set(authen_timeout_access_requests.yfilter)) leaf_name_data.push_back(authen_timeout_access_requests.get_name_leafdata());
+    if (author_retried_access_requests.is_set || is_set(author_retried_access_requests.yfilter)) leaf_name_data.push_back(author_retried_access_requests.get_name_leafdata());
+    if (author_access_accepts.is_set || is_set(author_access_accepts.yfilter)) leaf_name_data.push_back(author_access_accepts.get_name_leafdata());
+    if (author_access_rejects.is_set || is_set(author_access_rejects.yfilter)) leaf_name_data.push_back(author_access_rejects.get_name_leafdata());
+    if (author_timeout_access_requests.is_set || is_set(author_timeout_access_requests.yfilter)) leaf_name_data.push_back(author_timeout_access_requests.get_name_leafdata());
+    if (connection_opens.is_set || is_set(connection_opens.yfilter)) leaf_name_data.push_back(connection_opens.get_name_leafdata());
+    if (connection_closes.is_set || is_set(connection_closes.yfilter)) leaf_name_data.push_back(connection_closes.get_name_leafdata());
+    if (connection_aborts.is_set || is_set(connection_aborts.yfilter)) leaf_name_data.push_back(connection_aborts.get_name_leafdata());
+    if (connection_failures.is_set || is_set(connection_failures.yfilter)) leaf_name_data.push_back(connection_failures.get_name_leafdata());
+    if (connection_timeouts.is_set || is_set(connection_timeouts.yfilter)) leaf_name_data.push_back(connection_timeouts.get_name_leafdata());
+    if (authen_messages_sent.is_set || is_set(authen_messages_sent.yfilter)) leaf_name_data.push_back(authen_messages_sent.get_name_leafdata());
+    if (author_messages_sent.is_set || is_set(author_messages_sent.yfilter)) leaf_name_data.push_back(author_messages_sent.get_name_leafdata());
+    if (acct_messages_sent.is_set || is_set(acct_messages_sent.yfilter)) leaf_name_data.push_back(acct_messages_sent.get_name_leafdata());
+    if (authen_messages_received.is_set || is_set(authen_messages_received.yfilter)) leaf_name_data.push_back(authen_messages_received.get_name_leafdata());
+    if (author_messages_received.is_set || is_set(author_messages_received.yfilter)) leaf_name_data.push_back(author_messages_received.get_name_leafdata());
+    if (authen_errors_received.is_set || is_set(authen_errors_received.yfilter)) leaf_name_data.push_back(authen_errors_received.get_name_leafdata());
+    if (author_errors_received.is_set || is_set(author_errors_received.yfilter)) leaf_name_data.push_back(author_errors_received.get_name_leafdata());
+    if (acct_errors_received.is_set || is_set(acct_errors_received.yfilter)) leaf_name_data.push_back(acct_errors_received.get_name_leafdata());
+    if (stats_time.is_set || is_set(stats_time.yfilter)) leaf_name_data.push_back(stats_time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AaaData::AaaRadiusStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AaaData::AaaRadiusStats::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void AaaData::AaaRadiusStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "group-name")
+    {
+        group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "radius-server-ip")
+    {
+        radius_server_ip = value;
+        radius_server_ip.value_namespace = name_space;
+        radius_server_ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "auth-port")
+    {
+        auth_port = value;
+        auth_port.value_namespace = name_space;
+        auth_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "acct-port")
+    {
+        acct_port = value;
+        acct_port.value_namespace = name_space;
+        acct_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authen-retried-access-requests")
+    {
+        authen_retried_access_requests = value;
+        authen_retried_access_requests.value_namespace = name_space;
+        authen_retried_access_requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authen-access-accepts")
+    {
+        authen_access_accepts = value;
+        authen_access_accepts.value_namespace = name_space;
+        authen_access_accepts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authen-access-rejects")
+    {
+        authen_access_rejects = value;
+        authen_access_rejects.value_namespace = name_space;
+        authen_access_rejects.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authen-timeout-access-requests")
+    {
+        authen_timeout_access_requests = value;
+        authen_timeout_access_requests.value_namespace = name_space;
+        authen_timeout_access_requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "author-retried-access-requests")
+    {
+        author_retried_access_requests = value;
+        author_retried_access_requests.value_namespace = name_space;
+        author_retried_access_requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "author-access-accepts")
+    {
+        author_access_accepts = value;
+        author_access_accepts.value_namespace = name_space;
+        author_access_accepts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "author-access-rejects")
+    {
+        author_access_rejects = value;
+        author_access_rejects.value_namespace = name_space;
+        author_access_rejects.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "author-timeout-access-requests")
+    {
+        author_timeout_access_requests = value;
+        author_timeout_access_requests.value_namespace = name_space;
+        author_timeout_access_requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connection-opens")
+    {
+        connection_opens = value;
+        connection_opens.value_namespace = name_space;
+        connection_opens.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connection-closes")
+    {
+        connection_closes = value;
+        connection_closes.value_namespace = name_space;
+        connection_closes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connection-aborts")
+    {
+        connection_aborts = value;
+        connection_aborts.value_namespace = name_space;
+        connection_aborts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connection-failures")
+    {
+        connection_failures = value;
+        connection_failures.value_namespace = name_space;
+        connection_failures.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connection-timeouts")
+    {
+        connection_timeouts = value;
+        connection_timeouts.value_namespace = name_space;
+        connection_timeouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authen-messages-sent")
+    {
+        authen_messages_sent = value;
+        authen_messages_sent.value_namespace = name_space;
+        authen_messages_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "author-messages-sent")
+    {
+        author_messages_sent = value;
+        author_messages_sent.value_namespace = name_space;
+        author_messages_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "acct-messages-sent")
+    {
+        acct_messages_sent = value;
+        acct_messages_sent.value_namespace = name_space;
+        acct_messages_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authen-messages-received")
+    {
+        authen_messages_received = value;
+        authen_messages_received.value_namespace = name_space;
+        authen_messages_received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "author-messages-received")
+    {
+        author_messages_received = value;
+        author_messages_received.value_namespace = name_space;
+        author_messages_received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authen-errors-received")
+    {
+        authen_errors_received = value;
+        authen_errors_received.value_namespace = name_space;
+        authen_errors_received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "author-errors-received")
+    {
+        author_errors_received = value;
+        author_errors_received.value_namespace = name_space;
+        author_errors_received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "acct-errors-received")
+    {
+        acct_errors_received = value;
+        acct_errors_received.value_namespace = name_space;
+        acct_errors_received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stats-time")
+    {
+        stats_time = value;
+        stats_time.value_namespace = name_space;
+        stats_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AaaData::AaaRadiusStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "radius-server-ip")
+    {
+        radius_server_ip.yfilter = yfilter;
+    }
+    if(value_path == "auth-port")
+    {
+        auth_port.yfilter = yfilter;
+    }
+    if(value_path == "acct-port")
+    {
+        acct_port.yfilter = yfilter;
+    }
+    if(value_path == "authen-retried-access-requests")
+    {
+        authen_retried_access_requests.yfilter = yfilter;
+    }
+    if(value_path == "authen-access-accepts")
+    {
+        authen_access_accepts.yfilter = yfilter;
+    }
+    if(value_path == "authen-access-rejects")
+    {
+        authen_access_rejects.yfilter = yfilter;
+    }
+    if(value_path == "authen-timeout-access-requests")
+    {
+        authen_timeout_access_requests.yfilter = yfilter;
+    }
+    if(value_path == "author-retried-access-requests")
+    {
+        author_retried_access_requests.yfilter = yfilter;
+    }
+    if(value_path == "author-access-accepts")
+    {
+        author_access_accepts.yfilter = yfilter;
+    }
+    if(value_path == "author-access-rejects")
+    {
+        author_access_rejects.yfilter = yfilter;
+    }
+    if(value_path == "author-timeout-access-requests")
+    {
+        author_timeout_access_requests.yfilter = yfilter;
+    }
+    if(value_path == "connection-opens")
+    {
+        connection_opens.yfilter = yfilter;
+    }
+    if(value_path == "connection-closes")
+    {
+        connection_closes.yfilter = yfilter;
+    }
+    if(value_path == "connection-aborts")
+    {
+        connection_aborts.yfilter = yfilter;
+    }
+    if(value_path == "connection-failures")
+    {
+        connection_failures.yfilter = yfilter;
+    }
+    if(value_path == "connection-timeouts")
+    {
+        connection_timeouts.yfilter = yfilter;
+    }
+    if(value_path == "authen-messages-sent")
+    {
+        authen_messages_sent.yfilter = yfilter;
+    }
+    if(value_path == "author-messages-sent")
+    {
+        author_messages_sent.yfilter = yfilter;
+    }
+    if(value_path == "acct-messages-sent")
+    {
+        acct_messages_sent.yfilter = yfilter;
+    }
+    if(value_path == "authen-messages-received")
+    {
+        authen_messages_received.yfilter = yfilter;
+    }
+    if(value_path == "author-messages-received")
+    {
+        author_messages_received.yfilter = yfilter;
+    }
+    if(value_path == "authen-errors-received")
+    {
+        authen_errors_received.yfilter = yfilter;
+    }
+    if(value_path == "author-errors-received")
+    {
+        author_errors_received.yfilter = yfilter;
+    }
+    if(value_path == "acct-errors-received")
+    {
+        acct_errors_received.yfilter = yfilter;
+    }
+    if(value_path == "stats-time")
+    {
+        stats_time.yfilter = yfilter;
+    }
+}
+
+bool AaaData::AaaRadiusStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-name" || name == "radius-server-ip" || name == "auth-port" || name == "acct-port" || name == "authen-retried-access-requests" || name == "authen-access-accepts" || name == "authen-access-rejects" || name == "authen-timeout-access-requests" || name == "author-retried-access-requests" || name == "author-access-accepts" || name == "author-access-rejects" || name == "author-timeout-access-requests" || name == "connection-opens" || name == "connection-closes" || name == "connection-aborts" || name == "connection-failures" || name == "connection-timeouts" || name == "authen-messages-sent" || name == "author-messages-sent" || name == "acct-messages-sent" || name == "authen-messages-received" || name == "author-messages-received" || name == "authen-errors-received" || name == "author-errors-received" || name == "acct-errors-received" || name == "stats-time")
+        return true;
+    return false;
+}
+
+AaaData::AaaTacacsStats::AaaTacacsStats()
+    :
+    group_name{YType::str, "group-name"},
+    tacacs_server_address{YType::str, "tacacs-server-address"},
+    port{YType::uint16, "port"},
+    connection_opens{YType::uint32, "connection-opens"},
+    connection_closes{YType::uint32, "connection-closes"},
+    connection_aborts{YType::uint32, "connection-aborts"},
+    connection_failures{YType::uint32, "connection-failures"},
+    connection_timeouts{YType::uint32, "connection-timeouts"},
+    messages_sent{YType::uint32, "messages-sent"},
+    messages_received{YType::uint32, "messages-received"},
+    errors_received{YType::uint32, "errors-received"},
+    stats_start_time{YType::str, "stats-start-time"}
+{
+
+    yang_name = "aaa-tacacs-stats"; yang_parent_name = "aaa-data"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+AaaData::AaaTacacsStats::~AaaTacacsStats()
+{
+}
+
+bool AaaData::AaaTacacsStats::has_data() const
+{
+    if (is_presence_container) return true;
+    return group_name.is_set
+	|| tacacs_server_address.is_set
+	|| port.is_set
+	|| connection_opens.is_set
+	|| connection_closes.is_set
+	|| connection_aborts.is_set
+	|| connection_failures.is_set
+	|| connection_timeouts.is_set
+	|| messages_sent.is_set
+	|| messages_received.is_set
+	|| errors_received.is_set
+	|| stats_start_time.is_set;
+}
+
+bool AaaData::AaaTacacsStats::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(tacacs_server_address.yfilter)
+	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(connection_opens.yfilter)
+	|| ydk::is_set(connection_closes.yfilter)
+	|| ydk::is_set(connection_aborts.yfilter)
+	|| ydk::is_set(connection_failures.yfilter)
+	|| ydk::is_set(connection_timeouts.yfilter)
+	|| ydk::is_set(messages_sent.yfilter)
+	|| ydk::is_set(messages_received.yfilter)
+	|| ydk::is_set(errors_received.yfilter)
+	|| ydk::is_set(stats_start_time.yfilter);
+}
+
+std::string AaaData::AaaTacacsStats::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-aaa-oper:aaa-data/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string AaaData::AaaTacacsStats::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "aaa-tacacs-stats";
+    ADD_KEY_TOKEN(group_name, "group-name");
+    ADD_KEY_TOKEN(tacacs_server_address, "tacacs-server-address");
+    ADD_KEY_TOKEN(port, "port");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AaaData::AaaTacacsStats::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (tacacs_server_address.is_set || is_set(tacacs_server_address.yfilter)) leaf_name_data.push_back(tacacs_server_address.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (connection_opens.is_set || is_set(connection_opens.yfilter)) leaf_name_data.push_back(connection_opens.get_name_leafdata());
+    if (connection_closes.is_set || is_set(connection_closes.yfilter)) leaf_name_data.push_back(connection_closes.get_name_leafdata());
+    if (connection_aborts.is_set || is_set(connection_aborts.yfilter)) leaf_name_data.push_back(connection_aborts.get_name_leafdata());
+    if (connection_failures.is_set || is_set(connection_failures.yfilter)) leaf_name_data.push_back(connection_failures.get_name_leafdata());
+    if (connection_timeouts.is_set || is_set(connection_timeouts.yfilter)) leaf_name_data.push_back(connection_timeouts.get_name_leafdata());
+    if (messages_sent.is_set || is_set(messages_sent.yfilter)) leaf_name_data.push_back(messages_sent.get_name_leafdata());
+    if (messages_received.is_set || is_set(messages_received.yfilter)) leaf_name_data.push_back(messages_received.get_name_leafdata());
+    if (errors_received.is_set || is_set(errors_received.yfilter)) leaf_name_data.push_back(errors_received.get_name_leafdata());
+    if (stats_start_time.is_set || is_set(stats_start_time.yfilter)) leaf_name_data.push_back(stats_start_time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AaaData::AaaTacacsStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AaaData::AaaTacacsStats::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void AaaData::AaaTacacsStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "group-name")
+    {
+        group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tacacs-server-address")
+    {
+        tacacs_server_address = value;
+        tacacs_server_address.value_namespace = name_space;
+        tacacs_server_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connection-opens")
+    {
+        connection_opens = value;
+        connection_opens.value_namespace = name_space;
+        connection_opens.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connection-closes")
+    {
+        connection_closes = value;
+        connection_closes.value_namespace = name_space;
+        connection_closes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connection-aborts")
+    {
+        connection_aborts = value;
+        connection_aborts.value_namespace = name_space;
+        connection_aborts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connection-failures")
+    {
+        connection_failures = value;
+        connection_failures.value_namespace = name_space;
+        connection_failures.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connection-timeouts")
+    {
+        connection_timeouts = value;
+        connection_timeouts.value_namespace = name_space;
+        connection_timeouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "messages-sent")
+    {
+        messages_sent = value;
+        messages_sent.value_namespace = name_space;
+        messages_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "messages-received")
+    {
+        messages_received = value;
+        messages_received.value_namespace = name_space;
+        messages_received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "errors-received")
+    {
+        errors_received = value;
+        errors_received.value_namespace = name_space;
+        errors_received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stats-start-time")
+    {
+        stats_start_time = value;
+        stats_start_time.value_namespace = name_space;
+        stats_start_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AaaData::AaaTacacsStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "tacacs-server-address")
+    {
+        tacacs_server_address.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+    if(value_path == "connection-opens")
+    {
+        connection_opens.yfilter = yfilter;
+    }
+    if(value_path == "connection-closes")
+    {
+        connection_closes.yfilter = yfilter;
+    }
+    if(value_path == "connection-aborts")
+    {
+        connection_aborts.yfilter = yfilter;
+    }
+    if(value_path == "connection-failures")
+    {
+        connection_failures.yfilter = yfilter;
+    }
+    if(value_path == "connection-timeouts")
+    {
+        connection_timeouts.yfilter = yfilter;
+    }
+    if(value_path == "messages-sent")
+    {
+        messages_sent.yfilter = yfilter;
+    }
+    if(value_path == "messages-received")
+    {
+        messages_received.yfilter = yfilter;
+    }
+    if(value_path == "errors-received")
+    {
+        errors_received.yfilter = yfilter;
+    }
+    if(value_path == "stats-start-time")
+    {
+        stats_start_time.yfilter = yfilter;
+    }
+}
+
+bool AaaData::AaaTacacsStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-name" || name == "tacacs-server-address" || name == "port" || name == "connection-opens" || name == "connection-closes" || name == "connection-aborts" || name == "connection-failures" || name == "connection-timeouts" || name == "messages-sent" || name == "messages-received" || name == "errors-received" || name == "stats-start-time")
+        return true;
+    return false;
+}
+
+AaaData::AaaLdapCounters::AaaLdapCounters()
+    :
+    ldap_server_address{YType::str, "ldap-server-address"},
+    ldap_server_port{YType::uint16, "ldap-server-port"},
+    connection_opens{YType::uint32, "connection-opens"},
+    messages_sent{YType::uint32, "messages-sent"},
+    messages_received{YType::uint32, "messages-received"},
+    errors_received{YType::uint32, "errors-received"},
+    connection_closes{YType::uint32, "connection-closes"},
+    connection_aborts{YType::uint32, "connection-aborts"},
+    connection_failures{YType::uint32, "connection-failures"},
+    connection_timeouts{YType::uint32, "connection-timeouts"},
+    counters_start_time{YType::str, "counters-start-time"}
+{
+
+    yang_name = "aaa-ldap-counters"; yang_parent_name = "aaa-data"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+AaaData::AaaLdapCounters::~AaaLdapCounters()
+{
+}
+
+bool AaaData::AaaLdapCounters::has_data() const
+{
+    if (is_presence_container) return true;
+    return ldap_server_address.is_set
+	|| ldap_server_port.is_set
+	|| connection_opens.is_set
+	|| messages_sent.is_set
+	|| messages_received.is_set
+	|| errors_received.is_set
+	|| connection_closes.is_set
+	|| connection_aborts.is_set
+	|| connection_failures.is_set
+	|| connection_timeouts.is_set
+	|| counters_start_time.is_set;
+}
+
+bool AaaData::AaaLdapCounters::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ldap_server_address.yfilter)
+	|| ydk::is_set(ldap_server_port.yfilter)
+	|| ydk::is_set(connection_opens.yfilter)
+	|| ydk::is_set(messages_sent.yfilter)
+	|| ydk::is_set(messages_received.yfilter)
+	|| ydk::is_set(errors_received.yfilter)
+	|| ydk::is_set(connection_closes.yfilter)
+	|| ydk::is_set(connection_aborts.yfilter)
+	|| ydk::is_set(connection_failures.yfilter)
+	|| ydk::is_set(connection_timeouts.yfilter)
+	|| ydk::is_set(counters_start_time.yfilter);
+}
+
+std::string AaaData::AaaLdapCounters::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-aaa-oper:aaa-data/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string AaaData::AaaLdapCounters::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "aaa-ldap-counters";
+    ADD_KEY_TOKEN(ldap_server_address, "ldap-server-address");
+    ADD_KEY_TOKEN(ldap_server_port, "ldap-server-port");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > AaaData::AaaLdapCounters::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ldap_server_address.is_set || is_set(ldap_server_address.yfilter)) leaf_name_data.push_back(ldap_server_address.get_name_leafdata());
+    if (ldap_server_port.is_set || is_set(ldap_server_port.yfilter)) leaf_name_data.push_back(ldap_server_port.get_name_leafdata());
+    if (connection_opens.is_set || is_set(connection_opens.yfilter)) leaf_name_data.push_back(connection_opens.get_name_leafdata());
+    if (messages_sent.is_set || is_set(messages_sent.yfilter)) leaf_name_data.push_back(messages_sent.get_name_leafdata());
+    if (messages_received.is_set || is_set(messages_received.yfilter)) leaf_name_data.push_back(messages_received.get_name_leafdata());
+    if (errors_received.is_set || is_set(errors_received.yfilter)) leaf_name_data.push_back(errors_received.get_name_leafdata());
+    if (connection_closes.is_set || is_set(connection_closes.yfilter)) leaf_name_data.push_back(connection_closes.get_name_leafdata());
+    if (connection_aborts.is_set || is_set(connection_aborts.yfilter)) leaf_name_data.push_back(connection_aborts.get_name_leafdata());
+    if (connection_failures.is_set || is_set(connection_failures.yfilter)) leaf_name_data.push_back(connection_failures.get_name_leafdata());
+    if (connection_timeouts.is_set || is_set(connection_timeouts.yfilter)) leaf_name_data.push_back(connection_timeouts.get_name_leafdata());
+    if (counters_start_time.is_set || is_set(counters_start_time.yfilter)) leaf_name_data.push_back(counters_start_time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> AaaData::AaaLdapCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> AaaData::AaaLdapCounters::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void AaaData::AaaLdapCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ldap-server-address")
+    {
+        ldap_server_address = value;
+        ldap_server_address.value_namespace = name_space;
+        ldap_server_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ldap-server-port")
+    {
+        ldap_server_port = value;
+        ldap_server_port.value_namespace = name_space;
+        ldap_server_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connection-opens")
+    {
+        connection_opens = value;
+        connection_opens.value_namespace = name_space;
+        connection_opens.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "messages-sent")
+    {
+        messages_sent = value;
+        messages_sent.value_namespace = name_space;
+        messages_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "messages-received")
+    {
+        messages_received = value;
+        messages_received.value_namespace = name_space;
+        messages_received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "errors-received")
+    {
+        errors_received = value;
+        errors_received.value_namespace = name_space;
+        errors_received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connection-closes")
+    {
+        connection_closes = value;
+        connection_closes.value_namespace = name_space;
+        connection_closes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connection-aborts")
+    {
+        connection_aborts = value;
+        connection_aborts.value_namespace = name_space;
+        connection_aborts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connection-failures")
+    {
+        connection_failures = value;
+        connection_failures.value_namespace = name_space;
+        connection_failures.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connection-timeouts")
+    {
+        connection_timeouts = value;
+        connection_timeouts.value_namespace = name_space;
+        connection_timeouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "counters-start-time")
+    {
+        counters_start_time = value;
+        counters_start_time.value_namespace = name_space;
+        counters_start_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void AaaData::AaaLdapCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ldap-server-address")
+    {
+        ldap_server_address.yfilter = yfilter;
+    }
+    if(value_path == "ldap-server-port")
+    {
+        ldap_server_port.yfilter = yfilter;
+    }
+    if(value_path == "connection-opens")
+    {
+        connection_opens.yfilter = yfilter;
+    }
+    if(value_path == "messages-sent")
+    {
+        messages_sent.yfilter = yfilter;
+    }
+    if(value_path == "messages-received")
+    {
+        messages_received.yfilter = yfilter;
+    }
+    if(value_path == "errors-received")
+    {
+        errors_received.yfilter = yfilter;
+    }
+    if(value_path == "connection-closes")
+    {
+        connection_closes.yfilter = yfilter;
+    }
+    if(value_path == "connection-aborts")
+    {
+        connection_aborts.yfilter = yfilter;
+    }
+    if(value_path == "connection-failures")
+    {
+        connection_failures.yfilter = yfilter;
+    }
+    if(value_path == "connection-timeouts")
+    {
+        connection_timeouts.yfilter = yfilter;
+    }
+    if(value_path == "counters-start-time")
+    {
+        counters_start_time.yfilter = yfilter;
+    }
+}
+
+bool AaaData::AaaLdapCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ldap-server-address" || name == "ldap-server-port" || name == "connection-opens" || name == "messages-sent" || name == "messages-received" || name == "errors-received" || name == "connection-closes" || name == "connection-aborts" || name == "connection-failures" || name == "connection-timeouts" || name == "counters-start-time")
         return true;
     return false;
 }

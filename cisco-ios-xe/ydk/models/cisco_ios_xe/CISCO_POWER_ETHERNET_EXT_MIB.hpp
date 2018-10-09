@@ -247,6 +247,11 @@ class CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry :
         ydk::YLeaf cpeextpseportlldppdpwrreq; //type: uint32
         ydk::YLeaf cpeextpseportlldppwralloc; //type: uint32
         ydk::YLeaf cpeextpseportlldppdpwralloc; //type: uint32
+        ydk::YLeaf cpeextpseportlldppwrclass; //type: CpeExtLldpPwrClassOrZero
+        ydk::YLeaf cpeextpseportlldppdpwrclass; //type: CpeExtLldpPwrClassOrZero
+        ydk::YLeaf cpeextpseportlldppdpwrsupport; //type: CpeExtPsePortLldpPdPwrSupport
+        ydk::YLeaf cpeextpseportlldppdpwrpairsorzero; //type: CpeExtPsePortLldpPdPwrPairsOrZero
+        class CpeExtPsePortLldpPdPwrPairsOrZero;
 
 }; // CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry
 
@@ -272,6 +277,18 @@ class CpeExtLldpPwrSrc : public ydk::Enum
 
 };
 
+class CpeExtLldpPwrClassOrZero : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf class0;
+        static const ydk::Enum::YLeaf class1;
+        static const ydk::Enum::YLeaf class2;
+        static const ydk::Enum::YLeaf class3;
+        static const ydk::Enum::YLeaf class4;
+
+};
+
 class CpeExtPwrPriority : public ydk::Enum
 {
     public:
@@ -291,6 +308,15 @@ class CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::CpeExtPd
         static const ydk::Enum::YLeaf class2;
         static const ydk::Enum::YLeaf class3;
         static const ydk::Enum::YLeaf class4;
+
+};
+
+class CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::CpeExtPsePortLldpPdPwrPairsOrZero : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf signal;
+        static const ydk::Enum::YLeaf spare;
 
 };
 

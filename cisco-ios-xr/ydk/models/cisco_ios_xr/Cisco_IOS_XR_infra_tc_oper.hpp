@@ -451,6 +451,7 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefi
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf prefix; //type: string
         ydk::YLeaf label_xr; //type: uint32
+        ydk::YLeaf ldp_label; //type: uint32
         ydk::YLeaf is_active; //type: boolean
         class BaseCounterStatistics; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics
         class TrafficMatrixCounterStatistics; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics
@@ -780,6 +781,7 @@ class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix : public ydk::Entity
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf prefix; //type: string
         ydk::YLeaf label_xr; //type: uint32
+        ydk::YLeaf ldp_label; //type: uint32
         ydk::YLeaf is_active; //type: boolean
         class BaseCounterStatistics; //type: TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics
         class TrafficMatrixCounterStatistics; //type: TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics

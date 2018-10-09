@@ -3105,7 +3105,6 @@ bool Ipv4AclAndPrefixList::LogUpdate::has_leaf_or_child_of_name(const std::strin
     return false;
 }
 
-const Enum::YLeaf NextHopType::none_next_hop {0, "none-next-hop"};
 const Enum::YLeaf NextHopType::regular_next_hop {1, "regular-next-hop"};
 const Enum::YLeaf NextHopType::default_next_hop {2, "default-next-hop"};
 

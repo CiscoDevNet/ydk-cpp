@@ -927,9 +927,9 @@ Syslog::Syslog()
     , archive(std::make_shared<Syslog::Archive>())
     , ipv6(std::make_shared<Syslog::Ipv6>())
     , source_interface_table(std::make_shared<Syslog::SourceInterfaceTable>())
-    , alarm_logger(std::make_shared<Syslog::AlarmLogger>())
     , correlator(std::make_shared<Syslog::Correlator>())
     , suppression(std::make_shared<Syslog::Suppression>())
+    , alarm_logger(std::make_shared<Syslog::AlarmLogger>())
 {
     monitor_logging->parent = this;
     history_logging->parent = this;
@@ -943,9 +943,9 @@ Syslog::Syslog()
     archive->parent = this;
     ipv6->parent = this;
     source_interface_table->parent = this;
-    alarm_logger->parent = this;
     correlator->parent = this;
     suppression->parent = this;
+    alarm_logger->parent = this;
 
     yang_name = "syslog"; yang_parent_name = "Cisco-IOS-XR-infra-syslog-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
@@ -973,9 +973,9 @@ bool Syslog::has_data() const
 	|| (archive !=  nullptr && archive->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data())
 	|| (source_interface_table !=  nullptr && source_interface_table->has_data())
-	|| (alarm_logger !=  nullptr && alarm_logger->has_data())
 	|| (correlator !=  nullptr && correlator->has_data())
-	|| (suppression !=  nullptr && suppression->has_data());
+	|| (suppression !=  nullptr && suppression->has_data())
+	|| (alarm_logger !=  nullptr && alarm_logger->has_data());
 }
 
 bool Syslog::has_operation() const
@@ -997,9 +997,9 @@ bool Syslog::has_operation() const
 	|| (archive !=  nullptr && archive->has_operation())
 	|| (ipv6 !=  nullptr && ipv6->has_operation())
 	|| (source_interface_table !=  nullptr && source_interface_table->has_operation())
-	|| (alarm_logger !=  nullptr && alarm_logger->has_operation())
 	|| (correlator !=  nullptr && correlator->has_operation())
-	|| (suppression !=  nullptr && suppression->has_operation());
+	|| (suppression !=  nullptr && suppression->has_operation())
+	|| (alarm_logger !=  nullptr && alarm_logger->has_operation());
 }
 
 std::string Syslog::get_segment_path() const
@@ -1132,15 +1132,6 @@ std::shared_ptr<Entity> Syslog::get_child_by_name(const std::string & child_yang
         return source_interface_table;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-infra-alarm-logger-cfg:alarm-logger")
-    {
-        if(alarm_logger == nullptr)
-        {
-            alarm_logger = std::make_shared<Syslog::AlarmLogger>();
-        }
-        return alarm_logger;
-    }
-
     if(child_yang_name == "Cisco-IOS-XR-infra-correlator-cfg:correlator")
     {
         if(correlator == nullptr)
@@ -1157,6 +1148,15 @@ std::shared_ptr<Entity> Syslog::get_child_by_name(const std::string & child_yang
             suppression = std::make_shared<Syslog::Suppression>();
         }
         return suppression;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-infra-alarm-logger-cfg:alarm-logger")
+    {
+        if(alarm_logger == nullptr)
+        {
+            alarm_logger = std::make_shared<Syslog::AlarmLogger>();
+        }
+        return alarm_logger;
     }
 
     return nullptr;
@@ -1226,11 +1226,6 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::get_children() const
         children["source-interface-table"] = source_interface_table;
     }
 
-    if(alarm_logger != nullptr)
-    {
-        children["Cisco-IOS-XR-infra-alarm-logger-cfg:alarm-logger"] = alarm_logger;
-    }
-
     if(correlator != nullptr)
     {
         children["Cisco-IOS-XR-infra-correlator-cfg:correlator"] = correlator;
@@ -1239,6 +1234,11 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::get_children() const
     if(suppression != nullptr)
     {
         children["Cisco-IOS-XR-infra-correlator-cfg:suppression"] = suppression;
+    }
+
+    if(alarm_logger != nullptr)
+    {
+        children["Cisco-IOS-XR-infra-alarm-logger-cfg:alarm-logger"] = alarm_logger;
     }
 
     return children;
@@ -1319,7 +1319,7 @@ std::map<std::pair<std::string, std::string>, std::string> Syslog::get_namespace
 
 bool Syslog::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "monitor-logging" || name == "history-logging" || name == "logging-facilities" || name == "trap-logging" || name == "buffered-logging" || name == "host-server" || name == "console-logging" || name == "files" || name == "ipv4" || name == "archive" || name == "ipv6" || name == "source-interface-table" || name == "alarm-logger" || name == "correlator" || name == "suppression" || name == "host-name-prefix" || name == "local-log-file-size" || name == "enable-console-logging" || name == "suppress-duplicates")
+    if(name == "monitor-logging" || name == "history-logging" || name == "logging-facilities" || name == "trap-logging" || name == "buffered-logging" || name == "host-server" || name == "console-logging" || name == "files" || name == "ipv4" || name == "archive" || name == "ipv6" || name == "source-interface-table" || name == "correlator" || name == "suppression" || name == "alarm-logger" || name == "host-name-prefix" || name == "local-log-file-size" || name == "enable-console-logging" || name == "suppress-duplicates")
         return true;
     return false;
 }
@@ -6166,366 +6166,6 @@ bool Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::
     return false;
 }
 
-Syslog::AlarmLogger::AlarmLogger()
-    :
-    pre_config_suppression{YType::empty, "pre-config-suppression"},
-    severity_level{YType::enumeration, "severity-level"},
-    pre_config_suppression_timeout{YType::uint32, "pre-config-suppression-timeout"},
-    buffer_size{YType::uint32, "buffer-size"},
-    source_location{YType::empty, "source-location"},
-    threshold{YType::uint32, "threshold"}
-        ,
-    alarm_filter_strings(std::make_shared<Syslog::AlarmLogger::AlarmFilterStrings>())
-{
-    alarm_filter_strings->parent = this;
-
-    yang_name = "alarm-logger"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Syslog::AlarmLogger::~AlarmLogger()
-{
-}
-
-bool Syslog::AlarmLogger::has_data() const
-{
-    if (is_presence_container) return true;
-    return pre_config_suppression.is_set
-	|| severity_level.is_set
-	|| pre_config_suppression_timeout.is_set
-	|| buffer_size.is_set
-	|| source_location.is_set
-	|| threshold.is_set
-	|| (alarm_filter_strings !=  nullptr && alarm_filter_strings->has_data());
-}
-
-bool Syslog::AlarmLogger::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(pre_config_suppression.yfilter)
-	|| ydk::is_set(severity_level.yfilter)
-	|| ydk::is_set(pre_config_suppression_timeout.yfilter)
-	|| ydk::is_set(buffer_size.yfilter)
-	|| ydk::is_set(source_location.yfilter)
-	|| ydk::is_set(threshold.yfilter)
-	|| (alarm_filter_strings !=  nullptr && alarm_filter_strings->has_operation());
-}
-
-std::string Syslog::AlarmLogger::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-syslog-cfg:syslog/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Syslog::AlarmLogger::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-alarm-logger-cfg:alarm-logger";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Syslog::AlarmLogger::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (pre_config_suppression.is_set || is_set(pre_config_suppression.yfilter)) leaf_name_data.push_back(pre_config_suppression.get_name_leafdata());
-    if (severity_level.is_set || is_set(severity_level.yfilter)) leaf_name_data.push_back(severity_level.get_name_leafdata());
-    if (pre_config_suppression_timeout.is_set || is_set(pre_config_suppression_timeout.yfilter)) leaf_name_data.push_back(pre_config_suppression_timeout.get_name_leafdata());
-    if (buffer_size.is_set || is_set(buffer_size.yfilter)) leaf_name_data.push_back(buffer_size.get_name_leafdata());
-    if (source_location.is_set || is_set(source_location.yfilter)) leaf_name_data.push_back(source_location.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Syslog::AlarmLogger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "alarm-filter-strings")
-    {
-        if(alarm_filter_strings == nullptr)
-        {
-            alarm_filter_strings = std::make_shared<Syslog::AlarmLogger::AlarmFilterStrings>();
-        }
-        return alarm_filter_strings;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Syslog::AlarmLogger::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(alarm_filter_strings != nullptr)
-    {
-        children["alarm-filter-strings"] = alarm_filter_strings;
-    }
-
-    return children;
-}
-
-void Syslog::AlarmLogger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "pre-config-suppression")
-    {
-        pre_config_suppression = value;
-        pre_config_suppression.value_namespace = name_space;
-        pre_config_suppression.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "severity-level")
-    {
-        severity_level = value;
-        severity_level.value_namespace = name_space;
-        severity_level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pre-config-suppression-timeout")
-    {
-        pre_config_suppression_timeout = value;
-        pre_config_suppression_timeout.value_namespace = name_space;
-        pre_config_suppression_timeout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "buffer-size")
-    {
-        buffer_size = value;
-        buffer_size.value_namespace = name_space;
-        buffer_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "source-location")
-    {
-        source_location = value;
-        source_location.value_namespace = name_space;
-        source_location.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Syslog::AlarmLogger::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "pre-config-suppression")
-    {
-        pre_config_suppression.yfilter = yfilter;
-    }
-    if(value_path == "severity-level")
-    {
-        severity_level.yfilter = yfilter;
-    }
-    if(value_path == "pre-config-suppression-timeout")
-    {
-        pre_config_suppression_timeout.yfilter = yfilter;
-    }
-    if(value_path == "buffer-size")
-    {
-        buffer_size.yfilter = yfilter;
-    }
-    if(value_path == "source-location")
-    {
-        source_location.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-}
-
-bool Syslog::AlarmLogger::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "alarm-filter-strings" || name == "pre-config-suppression" || name == "severity-level" || name == "pre-config-suppression-timeout" || name == "buffer-size" || name == "source-location" || name == "threshold")
-        return true;
-    return false;
-}
-
-Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterStrings()
-    :
-    alarm_filter_string(this, {"filter_string"})
-{
-
-    yang_name = "alarm-filter-strings"; yang_parent_name = "alarm-logger"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Syslog::AlarmLogger::AlarmFilterStrings::~AlarmFilterStrings()
-{
-}
-
-bool Syslog::AlarmLogger::AlarmFilterStrings::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<alarm_filter_string.len(); index++)
-    {
-        if(alarm_filter_string[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Syslog::AlarmLogger::AlarmFilterStrings::has_operation() const
-{
-    for (std::size_t index=0; index<alarm_filter_string.len(); index++)
-    {
-        if(alarm_filter_string[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Syslog::AlarmLogger::AlarmFilterStrings::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-syslog-cfg:syslog/Cisco-IOS-XR-infra-alarm-logger-cfg:alarm-logger/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Syslog::AlarmLogger::AlarmFilterStrings::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "alarm-filter-strings";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Syslog::AlarmLogger::AlarmFilterStrings::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Syslog::AlarmLogger::AlarmFilterStrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "alarm-filter-string")
-    {
-        auto c = std::make_shared<Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString>();
-        c->parent = this;
-        alarm_filter_string.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Syslog::AlarmLogger::AlarmFilterStrings::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : alarm_filter_string.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Syslog::AlarmLogger::AlarmFilterStrings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Syslog::AlarmLogger::AlarmFilterStrings::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Syslog::AlarmLogger::AlarmFilterStrings::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "alarm-filter-string")
-        return true;
-    return false;
-}
-
-Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::AlarmFilterString()
-    :
-    filter_string{YType::str, "filter-string"}
-{
-
-    yang_name = "alarm-filter-string"; yang_parent_name = "alarm-filter-strings"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::~AlarmFilterString()
-{
-}
-
-bool Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::has_data() const
-{
-    if (is_presence_container) return true;
-    return filter_string.is_set;
-}
-
-bool Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(filter_string.yfilter);
-}
-
-std::string Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-syslog-cfg:syslog/Cisco-IOS-XR-infra-alarm-logger-cfg:alarm-logger/alarm-filter-strings/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "alarm-filter-string";
-    ADD_KEY_TOKEN(filter_string, "filter-string");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (filter_string.is_set || is_set(filter_string.yfilter)) leaf_name_data.push_back(filter_string.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "filter-string")
-    {
-        filter_string = value;
-        filter_string.value_namespace = name_space;
-        filter_string.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "filter-string")
-    {
-        filter_string.yfilter = yfilter;
-    }
-}
-
-bool Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "filter-string")
-        return true;
-    return false;
-}
-
 Syslog::Correlator::Correlator()
     :
     buffer_size{YType::uint32, "buffer-size"}
@@ -10748,6 +10388,366 @@ void Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::set_filter(const
 bool Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "category" || name == "group" || name == "code")
+        return true;
+    return false;
+}
+
+Syslog::AlarmLogger::AlarmLogger()
+    :
+    pre_config_suppression{YType::empty, "pre-config-suppression"},
+    severity_level{YType::enumeration, "severity-level"},
+    pre_config_suppression_timeout{YType::uint32, "pre-config-suppression-timeout"},
+    buffer_size{YType::uint32, "buffer-size"},
+    source_location{YType::empty, "source-location"},
+    threshold{YType::uint32, "threshold"}
+        ,
+    alarm_filter_strings(std::make_shared<Syslog::AlarmLogger::AlarmFilterStrings>())
+{
+    alarm_filter_strings->parent = this;
+
+    yang_name = "alarm-logger"; yang_parent_name = "syslog"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Syslog::AlarmLogger::~AlarmLogger()
+{
+}
+
+bool Syslog::AlarmLogger::has_data() const
+{
+    if (is_presence_container) return true;
+    return pre_config_suppression.is_set
+	|| severity_level.is_set
+	|| pre_config_suppression_timeout.is_set
+	|| buffer_size.is_set
+	|| source_location.is_set
+	|| threshold.is_set
+	|| (alarm_filter_strings !=  nullptr && alarm_filter_strings->has_data());
+}
+
+bool Syslog::AlarmLogger::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(pre_config_suppression.yfilter)
+	|| ydk::is_set(severity_level.yfilter)
+	|| ydk::is_set(pre_config_suppression_timeout.yfilter)
+	|| ydk::is_set(buffer_size.yfilter)
+	|| ydk::is_set(source_location.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| (alarm_filter_strings !=  nullptr && alarm_filter_strings->has_operation());
+}
+
+std::string Syslog::AlarmLogger::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-cfg:syslog/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Syslog::AlarmLogger::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-alarm-logger-cfg:alarm-logger";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Syslog::AlarmLogger::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (pre_config_suppression.is_set || is_set(pre_config_suppression.yfilter)) leaf_name_data.push_back(pre_config_suppression.get_name_leafdata());
+    if (severity_level.is_set || is_set(severity_level.yfilter)) leaf_name_data.push_back(severity_level.get_name_leafdata());
+    if (pre_config_suppression_timeout.is_set || is_set(pre_config_suppression_timeout.yfilter)) leaf_name_data.push_back(pre_config_suppression_timeout.get_name_leafdata());
+    if (buffer_size.is_set || is_set(buffer_size.yfilter)) leaf_name_data.push_back(buffer_size.get_name_leafdata());
+    if (source_location.is_set || is_set(source_location.yfilter)) leaf_name_data.push_back(source_location.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Syslog::AlarmLogger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "alarm-filter-strings")
+    {
+        if(alarm_filter_strings == nullptr)
+        {
+            alarm_filter_strings = std::make_shared<Syslog::AlarmLogger::AlarmFilterStrings>();
+        }
+        return alarm_filter_strings;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Syslog::AlarmLogger::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(alarm_filter_strings != nullptr)
+    {
+        children["alarm-filter-strings"] = alarm_filter_strings;
+    }
+
+    return children;
+}
+
+void Syslog::AlarmLogger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "pre-config-suppression")
+    {
+        pre_config_suppression = value;
+        pre_config_suppression.value_namespace = name_space;
+        pre_config_suppression.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severity-level")
+    {
+        severity_level = value;
+        severity_level.value_namespace = name_space;
+        severity_level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pre-config-suppression-timeout")
+    {
+        pre_config_suppression_timeout = value;
+        pre_config_suppression_timeout.value_namespace = name_space;
+        pre_config_suppression_timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "buffer-size")
+    {
+        buffer_size = value;
+        buffer_size.value_namespace = name_space;
+        buffer_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-location")
+    {
+        source_location = value;
+        source_location.value_namespace = name_space;
+        source_location.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Syslog::AlarmLogger::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pre-config-suppression")
+    {
+        pre_config_suppression.yfilter = yfilter;
+    }
+    if(value_path == "severity-level")
+    {
+        severity_level.yfilter = yfilter;
+    }
+    if(value_path == "pre-config-suppression-timeout")
+    {
+        pre_config_suppression_timeout.yfilter = yfilter;
+    }
+    if(value_path == "buffer-size")
+    {
+        buffer_size.yfilter = yfilter;
+    }
+    if(value_path == "source-location")
+    {
+        source_location.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Syslog::AlarmLogger::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "alarm-filter-strings" || name == "pre-config-suppression" || name == "severity-level" || name == "pre-config-suppression-timeout" || name == "buffer-size" || name == "source-location" || name == "threshold")
+        return true;
+    return false;
+}
+
+Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterStrings()
+    :
+    alarm_filter_string(this, {"filter_string"})
+{
+
+    yang_name = "alarm-filter-strings"; yang_parent_name = "alarm-logger"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Syslog::AlarmLogger::AlarmFilterStrings::~AlarmFilterStrings()
+{
+}
+
+bool Syslog::AlarmLogger::AlarmFilterStrings::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alarm_filter_string.len(); index++)
+    {
+        if(alarm_filter_string[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Syslog::AlarmLogger::AlarmFilterStrings::has_operation() const
+{
+    for (std::size_t index=0; index<alarm_filter_string.len(); index++)
+    {
+        if(alarm_filter_string[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Syslog::AlarmLogger::AlarmFilterStrings::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-cfg:syslog/Cisco-IOS-XR-infra-alarm-logger-cfg:alarm-logger/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Syslog::AlarmLogger::AlarmFilterStrings::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "alarm-filter-strings";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Syslog::AlarmLogger::AlarmFilterStrings::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Syslog::AlarmLogger::AlarmFilterStrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "alarm-filter-string")
+    {
+        auto c = std::make_shared<Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString>();
+        c->parent = this;
+        alarm_filter_string.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Syslog::AlarmLogger::AlarmFilterStrings::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : alarm_filter_string.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Syslog::AlarmLogger::AlarmFilterStrings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Syslog::AlarmLogger::AlarmFilterStrings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Syslog::AlarmLogger::AlarmFilterStrings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "alarm-filter-string")
+        return true;
+    return false;
+}
+
+Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::AlarmFilterString()
+    :
+    filter_string{YType::str, "filter-string"}
+{
+
+    yang_name = "alarm-filter-string"; yang_parent_name = "alarm-filter-strings"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::~AlarmFilterString()
+{
+}
+
+bool Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::has_data() const
+{
+    if (is_presence_container) return true;
+    return filter_string.is_set;
+}
+
+bool Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(filter_string.yfilter);
+}
+
+std::string Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-syslog-cfg:syslog/Cisco-IOS-XR-infra-alarm-logger-cfg:alarm-logger/alarm-filter-strings/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "alarm-filter-string";
+    ADD_KEY_TOKEN(filter_string, "filter-string");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (filter_string.is_set || is_set(filter_string.yfilter)) leaf_name_data.push_back(filter_string.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "filter-string")
+    {
+        filter_string = value;
+        filter_string.value_namespace = name_space;
+        filter_string.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "filter-string")
+    {
+        filter_string.yfilter = yfilter;
+    }
+}
+
+bool Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "filter-string")
         return true;
     return false;
 }

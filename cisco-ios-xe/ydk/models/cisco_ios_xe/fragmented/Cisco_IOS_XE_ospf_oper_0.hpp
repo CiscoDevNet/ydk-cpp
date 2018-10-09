@@ -32,8 +32,10 @@ class OspfOperData : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class OspfState; //type: OspfOperData::OspfState
+        class Ospfv2Instance; //type: OspfOperData::Ospfv2Instance
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ospf_oper::OspfOperData::OspfState> ospf_state; // presence node
+        ydk::YList ospfv2_instance;
         
 }; // OspfOperData
 
@@ -82,6 +84,7 @@ class OspfOperData::OspfState::OspfInstance : public ydk::Entity
 
         ydk::YLeaf af; //type: AddressFamily
         ydk::YLeaf router_id; //type: uint32
+        ydk::YLeaf process_id; //type: uint16
         class OspfArea; //type: OspfOperData::OspfState::OspfInstance::OspfArea
         class LinkScopeLsas; //type: OspfOperData::OspfState::OspfInstance::LinkScopeLsas
         class MultiTopology; //type: OspfOperData::OspfState::OspfInstance::MultiTopology
@@ -3887,10 +3890,33 @@ class NbrStateType : public ydk::Enum
 
 };
 
-class OspfOperationMode : public ydk::Enum
+class Ospfv2IntfState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ospf_ships_in_the_night;
+        static const ydk::Enum::YLeaf ospfv2_interface_state_down;
+        static const ydk::Enum::YLeaf ospfv2_interface_state_loopback;
+        static const ydk::Enum::YLeaf ospfv2_interface_state_waiting;
+        static const ydk::Enum::YLeaf ospfv2_interface_state_point_to_mpoint;
+        static const ydk::Enum::YLeaf ospfv2_interface_state_point_to_point;
+        static const ydk::Enum::YLeaf ospfv2_interface_state_dr;
+        static const ydk::Enum::YLeaf ospfv2_interface_state_backup;
+        static const ydk::Enum::YLeaf ospfv2_interface_state_other;
+
+};
+
+class Ospfv2LsaType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ospfv2_lsa_type_unsupported_lsa_type;
+        static const ydk::Enum::YLeaf ospfv2_lsa_type_router;
+        static const ydk::Enum::YLeaf ospfv2_lsa_type_network;
+        static const ydk::Enum::YLeaf ospfv2_lsa_type_summary_net;
+        static const ydk::Enum::YLeaf ospfv2_lsa_type_summary_router;
+        static const ydk::Enum::YLeaf ospfv2_lsa_type_as_external;
+        static const ydk::Enum::YLeaf ospfv2_lsa_type_nssa;
+        static const ydk::Enum::YLeaf ospfv2_lsa_type_link_scope_opaque;
+        static const ydk::Enum::YLeaf ospfv2_lsa_type_area_scope_opaque;
+        static const ydk::Enum::YLeaf ospfv2_lsa_type_as_scope_opaque;
 
 };
 
@@ -3904,6 +3930,14 @@ class OspfNetworkType : public ydk::Enum
 
 };
 
+class Ospfv2CryptoAlgorithm : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ospfv2_crypto_cleartest;
+        static const ydk::Enum::YLeaf ospfv2_crypto_md5;
+
+};
+
 class OspfAuthType : public ydk::Enum
 {
     public:
@@ -3914,11 +3948,35 @@ class OspfAuthType : public ydk::Enum
 
 };
 
+class OspfExternalMetricType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ospf_ext_metric_type_1;
+        static const ydk::Enum::YLeaf ospf_ext_metric_type_2;
+
+};
+
+class OspfOperationMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ospf_ships_in_the_night;
+
+};
+
 class AddressFamily : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf address_family_ipv4;
         static const ydk::Enum::YLeaf address_family_ipv6;
+
+};
+
+class Ospfv2AuthTypeSelection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ospfv2_auth_none;
+        static const ydk::Enum::YLeaf ospfv2_auth_trailer_key;
+        static const ydk::Enum::YLeaf ospfv2_auth_trailer_key_chain;
 
 };
 

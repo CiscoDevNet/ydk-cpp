@@ -6,4030 +6,12 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_l2vpn_oper_4.hpp"
 #include "Cisco_IOS_XR_l2vpn_oper_6.hpp"
-#include "Cisco_IOS_XR_l2vpn_oper_11.hpp"
-#include "Cisco_IOS_XR_l2vpn_oper_12.hpp"
-#include "Cisco_IOS_XR_l2vpn_oper_8.hpp"
-#include "Cisco_IOS_XR_l2vpn_oper_7.hpp"
 #include "Cisco_IOS_XR_l2vpn_oper_5.hpp"
-#include "Cisco_IOS_XR_l2vpn_oper_21.hpp"
 
 using namespace ydk;
 
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_l2vpn_oper {
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStats()
-    :
-    forward_stat(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat>())
-{
-    forward_stat->parent = this;
-
-    yang_name = "forward-stats"; yang_parent_name = "l2fib-mmrp"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::~ForwardStats()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::has_data() const
-{
-    if (is_presence_container) return true;
-    return (forward_stat !=  nullptr && forward_stat->has_data());
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::has_operation() const
-{
-    return is_set(yfilter)
-	|| (forward_stat !=  nullptr && forward_stat->has_operation());
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "forward-stats";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "forward-stat")
-    {
-        if(forward_stat == nullptr)
-        {
-            forward_stat = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat>();
-        }
-        return forward_stat;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(forward_stat != nullptr)
-    {
-        children["forward-stat"] = forward_stat;
-    }
-
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "forward-stat")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::ForwardStat()
-    :
-    data_type{YType::enumeration, "data-type"}
-        ,
-    mulicast(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast>())
-{
-    mulicast->parent = this;
-
-    yang_name = "forward-stat"; yang_parent_name = "forward-stats"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::~ForwardStat()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::has_data() const
-{
-    if (is_presence_container) return true;
-    return data_type.is_set
-	|| (mulicast !=  nullptr && mulicast->has_data());
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(data_type.yfilter)
-	|| (mulicast !=  nullptr && mulicast->has_operation());
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "forward-stat";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mulicast")
-    {
-        if(mulicast == nullptr)
-        {
-            mulicast = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast>();
-        }
-        return mulicast;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(mulicast != nullptr)
-    {
-        children["mulicast"] = mulicast;
-    }
-
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "data-type")
-    {
-        data_type = value;
-        data_type.value_namespace = name_space;
-        data_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "data-type")
-    {
-        data_type.yfilter = yfilter;
-    }
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mulicast" || name == "data-type")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Mulicast()
-    :
-    multicast_forward_stat(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat>())
-    , received_stat(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::ReceivedStat>())
-    , punt(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Punt>())
-    , drop(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Drop>())
-    , multicast_core_forward_stat(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat>())
-    , core_received_stat(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat>())
-{
-    multicast_forward_stat->parent = this;
-    received_stat->parent = this;
-    punt->parent = this;
-    drop->parent = this;
-    multicast_core_forward_stat->parent = this;
-    core_received_stat->parent = this;
-
-    yang_name = "mulicast"; yang_parent_name = "forward-stat"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::~Mulicast()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::has_data() const
-{
-    if (is_presence_container) return true;
-    return (multicast_forward_stat !=  nullptr && multicast_forward_stat->has_data())
-	|| (received_stat !=  nullptr && received_stat->has_data())
-	|| (punt !=  nullptr && punt->has_data())
-	|| (drop !=  nullptr && drop->has_data())
-	|| (multicast_core_forward_stat !=  nullptr && multicast_core_forward_stat->has_data())
-	|| (core_received_stat !=  nullptr && core_received_stat->has_data());
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::has_operation() const
-{
-    return is_set(yfilter)
-	|| (multicast_forward_stat !=  nullptr && multicast_forward_stat->has_operation())
-	|| (received_stat !=  nullptr && received_stat->has_operation())
-	|| (punt !=  nullptr && punt->has_operation())
-	|| (drop !=  nullptr && drop->has_operation())
-	|| (multicast_core_forward_stat !=  nullptr && multicast_core_forward_stat->has_operation())
-	|| (core_received_stat !=  nullptr && core_received_stat->has_operation());
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mulicast";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "multicast-forward-stat")
-    {
-        if(multicast_forward_stat == nullptr)
-        {
-            multicast_forward_stat = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat>();
-        }
-        return multicast_forward_stat;
-    }
-
-    if(child_yang_name == "received-stat")
-    {
-        if(received_stat == nullptr)
-        {
-            received_stat = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::ReceivedStat>();
-        }
-        return received_stat;
-    }
-
-    if(child_yang_name == "punt")
-    {
-        if(punt == nullptr)
-        {
-            punt = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Punt>();
-        }
-        return punt;
-    }
-
-    if(child_yang_name == "drop")
-    {
-        if(drop == nullptr)
-        {
-            drop = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Drop>();
-        }
-        return drop;
-    }
-
-    if(child_yang_name == "multicast-core-forward-stat")
-    {
-        if(multicast_core_forward_stat == nullptr)
-        {
-            multicast_core_forward_stat = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat>();
-        }
-        return multicast_core_forward_stat;
-    }
-
-    if(child_yang_name == "core-received-stat")
-    {
-        if(core_received_stat == nullptr)
-        {
-            core_received_stat = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat>();
-        }
-        return core_received_stat;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(multicast_forward_stat != nullptr)
-    {
-        children["multicast-forward-stat"] = multicast_forward_stat;
-    }
-
-    if(received_stat != nullptr)
-    {
-        children["received-stat"] = received_stat;
-    }
-
-    if(punt != nullptr)
-    {
-        children["punt"] = punt;
-    }
-
-    if(drop != nullptr)
-    {
-        children["drop"] = drop;
-    }
-
-    if(multicast_core_forward_stat != nullptr)
-    {
-        children["multicast-core-forward-stat"] = multicast_core_forward_stat;
-    }
-
-    if(core_received_stat != nullptr)
-    {
-        children["core-received-stat"] = core_received_stat;
-    }
-
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "multicast-forward-stat" || name == "received-stat" || name == "punt" || name == "drop" || name == "multicast-core-forward-stat" || name == "core-received-stat")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::MulticastForwardStat()
-    :
-    packets{YType::uint64, "packets"},
-    bytes{YType::uint64, "bytes"}
-{
-
-    yang_name = "multicast-forward-stat"; yang_parent_name = "mulicast"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::~MulticastForwardStat()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::has_data() const
-{
-    if (is_presence_container) return true;
-    return packets.is_set
-	|| bytes.is_set;
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(packets.yfilter)
-	|| ydk::is_set(bytes.yfilter);
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "multicast-forward-stat";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "packets" || name == "bytes")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::ReceivedStat::ReceivedStat()
-    :
-    packets{YType::uint64, "packets"},
-    bytes{YType::uint64, "bytes"}
-{
-
-    yang_name = "received-stat"; yang_parent_name = "mulicast"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::ReceivedStat::~ReceivedStat()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::ReceivedStat::has_data() const
-{
-    if (is_presence_container) return true;
-    return packets.is_set
-	|| bytes.is_set;
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::ReceivedStat::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(packets.yfilter)
-	|| ydk::is_set(bytes.yfilter);
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::ReceivedStat::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "received-stat";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::ReceivedStat::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::ReceivedStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::ReceivedStat::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::ReceivedStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::ReceivedStat::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::ReceivedStat::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "packets" || name == "bytes")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Punt::Punt()
-    :
-    packets{YType::uint64, "packets"},
-    bytes{YType::uint64, "bytes"}
-{
-
-    yang_name = "punt"; yang_parent_name = "mulicast"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Punt::~Punt()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Punt::has_data() const
-{
-    if (is_presence_container) return true;
-    return packets.is_set
-	|| bytes.is_set;
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Punt::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(packets.yfilter)
-	|| ydk::is_set(bytes.yfilter);
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Punt::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "punt";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Punt::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Punt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Punt::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Punt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Punt::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Punt::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "packets" || name == "bytes")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Drop::Drop()
-    :
-    packets{YType::uint64, "packets"},
-    bytes{YType::uint64, "bytes"}
-{
-
-    yang_name = "drop"; yang_parent_name = "mulicast"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Drop::~Drop()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Drop::has_data() const
-{
-    if (is_presence_container) return true;
-    return packets.is_set
-	|| bytes.is_set;
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Drop::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(packets.yfilter)
-	|| ydk::is_set(bytes.yfilter);
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Drop::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "drop";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Drop::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Drop::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Drop::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::Drop::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "packets" || name == "bytes")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::MulticastCoreForwardStat()
-    :
-    packets{YType::uint64, "packets"},
-    bytes{YType::uint64, "bytes"}
-{
-
-    yang_name = "multicast-core-forward-stat"; yang_parent_name = "mulicast"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::~MulticastCoreForwardStat()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::has_data() const
-{
-    if (is_presence_container) return true;
-    return packets.is_set
-	|| bytes.is_set;
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(packets.yfilter)
-	|| ydk::is_set(bytes.yfilter);
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "multicast-core-forward-stat";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "packets" || name == "bytes")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::CoreReceivedStat()
-    :
-    packets{YType::uint64, "packets"},
-    bytes{YType::uint64, "bytes"}
-{
-
-    yang_name = "core-received-stat"; yang_parent_name = "mulicast"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::~CoreReceivedStat()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::has_data() const
-{
-    if (is_presence_container) return true;
-    return packets.is_set
-	|| bytes.is_set;
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(packets.yfilter)
-	|| ydk::is_set(bytes.yfilter);
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "core-received-stat";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
-    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "packets")
-    {
-        packets = value;
-        packets.value_namespace = name_space;
-        packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bytes")
-    {
-        bytes = value;
-        bytes.value_namespace = name_space;
-        bytes.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "packets")
-    {
-        packets.yfilter = yfilter;
-    }
-    if(value_path == "bytes")
-    {
-        bytes.yfilter = yfilter;
-    }
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "packets" || name == "bytes")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::IrbInfo()
-    :
-    mxid_ac_interface_handle{YType::str, "mxid-ac-interface-handle"},
-    mxid_pw_id{YType::uint32, "mxid-pw-id"},
-    mxid_next_hop_address{YType::str, "mxid-next-hop-address"},
-    irb_plat_data_len{YType::uint16, "irb-plat-data-len"}
-        ,
-    irb_plat_data(this, {})
-{
-
-    yang_name = "irb-info"; yang_parent_name = "l2fib-mmrp"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::~IrbInfo()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<irb_plat_data.len(); index++)
-    {
-        if(irb_plat_data[index]->has_data())
-            return true;
-    }
-    return mxid_ac_interface_handle.is_set
-	|| mxid_pw_id.is_set
-	|| mxid_next_hop_address.is_set
-	|| irb_plat_data_len.is_set;
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::has_operation() const
-{
-    for (std::size_t index=0; index<irb_plat_data.len(); index++)
-    {
-        if(irb_plat_data[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(mxid_ac_interface_handle.yfilter)
-	|| ydk::is_set(mxid_pw_id.yfilter)
-	|| ydk::is_set(mxid_next_hop_address.yfilter)
-	|| ydk::is_set(irb_plat_data_len.yfilter);
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "irb-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (mxid_ac_interface_handle.is_set || is_set(mxid_ac_interface_handle.yfilter)) leaf_name_data.push_back(mxid_ac_interface_handle.get_name_leafdata());
-    if (mxid_pw_id.is_set || is_set(mxid_pw_id.yfilter)) leaf_name_data.push_back(mxid_pw_id.get_name_leafdata());
-    if (mxid_next_hop_address.is_set || is_set(mxid_next_hop_address.yfilter)) leaf_name_data.push_back(mxid_next_hop_address.get_name_leafdata());
-    if (irb_plat_data_len.is_set || is_set(irb_plat_data_len.yfilter)) leaf_name_data.push_back(irb_plat_data_len.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "irb-plat-data")
-    {
-        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::IrbPlatData>();
-        c->parent = this;
-        irb_plat_data.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : irb_plat_data.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "mxid-ac-interface-handle")
-    {
-        mxid_ac_interface_handle = value;
-        mxid_ac_interface_handle.value_namespace = name_space;
-        mxid_ac_interface_handle.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mxid-pw-id")
-    {
-        mxid_pw_id = value;
-        mxid_pw_id.value_namespace = name_space;
-        mxid_pw_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mxid-next-hop-address")
-    {
-        mxid_next_hop_address = value;
-        mxid_next_hop_address.value_namespace = name_space;
-        mxid_next_hop_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "irb-plat-data-len")
-    {
-        irb_plat_data_len = value;
-        irb_plat_data_len.value_namespace = name_space;
-        irb_plat_data_len.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "mxid-ac-interface-handle")
-    {
-        mxid_ac_interface_handle.yfilter = yfilter;
-    }
-    if(value_path == "mxid-pw-id")
-    {
-        mxid_pw_id.yfilter = yfilter;
-    }
-    if(value_path == "mxid-next-hop-address")
-    {
-        mxid_next_hop_address.yfilter = yfilter;
-    }
-    if(value_path == "irb-plat-data-len")
-    {
-        irb_plat_data_len.yfilter = yfilter;
-    }
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "irb-plat-data" || name == "mxid-ac-interface-handle" || name == "mxid-pw-id" || name == "mxid-next-hop-address" || name == "irb-plat-data-len")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::IrbPlatData::IrbPlatData()
-    :
-    entry{YType::uint32, "entry"}
-{
-
-    yang_name = "irb-plat-data"; yang_parent_name = "irb-info"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::IrbPlatData::~IrbPlatData()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::IrbPlatData::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::IrbPlatData::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::IrbPlatData::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "irb-plat-data";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::IrbPlatData::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::IrbPlatData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::IrbPlatData::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::IrbPlatData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::IrbPlatData::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo::IrbPlatData::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6macs()
-    :
-    l2fib_evpn_ip6mac(this, {})
-{
-
-    yang_name = "l2fib-evpn-ip6macs"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::~L2fibEvpnIp6macs()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<l2fib_evpn_ip6mac.len(); index++)
-    {
-        if(l2fib_evpn_ip6mac[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::has_operation() const
-{
-    for (std::size_t index=0; index<l2fib_evpn_ip6mac.len(); index++)
-    {
-        if(l2fib_evpn_ip6mac[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "l2fib-evpn-ip6macs";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "l2fib-evpn-ip6mac")
-    {
-        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac>();
-        c->parent = this;
-        l2fib_evpn_ip6mac.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : l2fib_evpn_ip6mac.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "l2fib-evpn-ip6mac")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::L2fibEvpnIp6mac()
-    :
-    bdid{YType::uint32, "bdid"},
-    ip_address{YType::str, "ip-address"},
-    is_local{YType::boolean, "is-local"},
-    mac_address{YType::str, "mac-address"},
-    bdid_xr{YType::uint32, "bdid-xr"},
-    mac_address_xr{YType::str, "mac-address-xr"},
-    arp_nd_sync_pending{YType::boolean, "arp-nd-sync-pending"},
-    arp_nd_probe_pending{YType::boolean, "arp-nd-probe-pending"},
-    arp_nd_delete_pending{YType::boolean, "arp-nd-delete-pending"},
-    is_local_xr{YType::boolean, "is-local-xr"}
-        ,
-    ip_address_xr(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::IpAddressXr>())
-{
-    ip_address_xr->parent = this;
-
-    yang_name = "l2fib-evpn-ip6mac"; yang_parent_name = "l2fib-evpn-ip6macs"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::~L2fibEvpnIp6mac()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::has_data() const
-{
-    if (is_presence_container) return true;
-    return bdid.is_set
-	|| ip_address.is_set
-	|| is_local.is_set
-	|| mac_address.is_set
-	|| bdid_xr.is_set
-	|| mac_address_xr.is_set
-	|| arp_nd_sync_pending.is_set
-	|| arp_nd_probe_pending.is_set
-	|| arp_nd_delete_pending.is_set
-	|| is_local_xr.is_set
-	|| (ip_address_xr !=  nullptr && ip_address_xr->has_data());
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bdid.yfilter)
-	|| ydk::is_set(ip_address.yfilter)
-	|| ydk::is_set(is_local.yfilter)
-	|| ydk::is_set(mac_address.yfilter)
-	|| ydk::is_set(bdid_xr.yfilter)
-	|| ydk::is_set(mac_address_xr.yfilter)
-	|| ydk::is_set(arp_nd_sync_pending.yfilter)
-	|| ydk::is_set(arp_nd_probe_pending.yfilter)
-	|| ydk::is_set(arp_nd_delete_pending.yfilter)
-	|| ydk::is_set(is_local_xr.yfilter)
-	|| (ip_address_xr !=  nullptr && ip_address_xr->has_operation());
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "l2fib-evpn-ip6mac";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bdid.is_set || is_set(bdid.yfilter)) leaf_name_data.push_back(bdid.get_name_leafdata());
-    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
-    if (is_local.is_set || is_set(is_local.yfilter)) leaf_name_data.push_back(is_local.get_name_leafdata());
-    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
-    if (bdid_xr.is_set || is_set(bdid_xr.yfilter)) leaf_name_data.push_back(bdid_xr.get_name_leafdata());
-    if (mac_address_xr.is_set || is_set(mac_address_xr.yfilter)) leaf_name_data.push_back(mac_address_xr.get_name_leafdata());
-    if (arp_nd_sync_pending.is_set || is_set(arp_nd_sync_pending.yfilter)) leaf_name_data.push_back(arp_nd_sync_pending.get_name_leafdata());
-    if (arp_nd_probe_pending.is_set || is_set(arp_nd_probe_pending.yfilter)) leaf_name_data.push_back(arp_nd_probe_pending.get_name_leafdata());
-    if (arp_nd_delete_pending.is_set || is_set(arp_nd_delete_pending.yfilter)) leaf_name_data.push_back(arp_nd_delete_pending.get_name_leafdata());
-    if (is_local_xr.is_set || is_set(is_local_xr.yfilter)) leaf_name_data.push_back(is_local_xr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ip-address-xr")
-    {
-        if(ip_address_xr == nullptr)
-        {
-            ip_address_xr = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::IpAddressXr>();
-        }
-        return ip_address_xr;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(ip_address_xr != nullptr)
-    {
-        children["ip-address-xr"] = ip_address_xr;
-    }
-
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bdid")
-    {
-        bdid = value;
-        bdid.value_namespace = name_space;
-        bdid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ip-address")
-    {
-        ip_address = value;
-        ip_address.value_namespace = name_space;
-        ip_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-local")
-    {
-        is_local = value;
-        is_local.value_namespace = name_space;
-        is_local.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mac-address")
-    {
-        mac_address = value;
-        mac_address.value_namespace = name_space;
-        mac_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bdid-xr")
-    {
-        bdid_xr = value;
-        bdid_xr.value_namespace = name_space;
-        bdid_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mac-address-xr")
-    {
-        mac_address_xr = value;
-        mac_address_xr.value_namespace = name_space;
-        mac_address_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "arp-nd-sync-pending")
-    {
-        arp_nd_sync_pending = value;
-        arp_nd_sync_pending.value_namespace = name_space;
-        arp_nd_sync_pending.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "arp-nd-probe-pending")
-    {
-        arp_nd_probe_pending = value;
-        arp_nd_probe_pending.value_namespace = name_space;
-        arp_nd_probe_pending.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "arp-nd-delete-pending")
-    {
-        arp_nd_delete_pending = value;
-        arp_nd_delete_pending.value_namespace = name_space;
-        arp_nd_delete_pending.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-local-xr")
-    {
-        is_local_xr = value;
-        is_local_xr.value_namespace = name_space;
-        is_local_xr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bdid")
-    {
-        bdid.yfilter = yfilter;
-    }
-    if(value_path == "ip-address")
-    {
-        ip_address.yfilter = yfilter;
-    }
-    if(value_path == "is-local")
-    {
-        is_local.yfilter = yfilter;
-    }
-    if(value_path == "mac-address")
-    {
-        mac_address.yfilter = yfilter;
-    }
-    if(value_path == "bdid-xr")
-    {
-        bdid_xr.yfilter = yfilter;
-    }
-    if(value_path == "mac-address-xr")
-    {
-        mac_address_xr.yfilter = yfilter;
-    }
-    if(value_path == "arp-nd-sync-pending")
-    {
-        arp_nd_sync_pending.yfilter = yfilter;
-    }
-    if(value_path == "arp-nd-probe-pending")
-    {
-        arp_nd_probe_pending.yfilter = yfilter;
-    }
-    if(value_path == "arp-nd-delete-pending")
-    {
-        arp_nd_delete_pending.yfilter = yfilter;
-    }
-    if(value_path == "is-local-xr")
-    {
-        is_local_xr.yfilter = yfilter;
-    }
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip-address-xr" || name == "bdid" || name == "ip-address" || name == "is-local" || name == "mac-address" || name == "bdid-xr" || name == "mac-address-xr" || name == "arp-nd-sync-pending" || name == "arp-nd-probe-pending" || name == "arp-nd-delete-pending" || name == "is-local-xr")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::IpAddressXr::IpAddressXr()
-    :
-    addr_type{YType::enumeration, "addr-type"},
-    ip{YType::str, "ip"}
-{
-
-    yang_name = "ip-address-xr"; yang_parent_name = "l2fib-evpn-ip6mac"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::IpAddressXr::~IpAddressXr()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::IpAddressXr::has_data() const
-{
-    if (is_presence_container) return true;
-    return addr_type.is_set
-	|| ip.is_set;
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::IpAddressXr::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(addr_type.yfilter)
-	|| ydk::is_set(ip.yfilter);
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::IpAddressXr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip-address-xr";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::IpAddressXr::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (addr_type.is_set || is_set(addr_type.yfilter)) leaf_name_data.push_back(addr_type.get_name_leafdata());
-    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::IpAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::IpAddressXr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::IpAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "addr-type")
-    {
-        addr_type = value;
-        addr_type.value_namespace = name_space;
-        addr_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ip")
-    {
-        ip = value;
-        ip.value_namespace = name_space;
-        ip.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::IpAddressXr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "addr-type")
-    {
-        addr_type.yfilter = yfilter;
-    }
-    if(value_path == "ip")
-    {
-        ip.yfilter = yfilter;
-    }
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs::L2fibEvpnIp6mac::IpAddressXr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "addr-type" || name == "ip")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummaries()
-    :
-    l2fib_dhcp_binding_summary(this, {"xcid"})
-{
-
-    yang_name = "l2fib-dhcp-binding-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::~L2fibDhcpBindingSummaries()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<l2fib_dhcp_binding_summary.len(); index++)
-    {
-        if(l2fib_dhcp_binding_summary[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::has_operation() const
-{
-    for (std::size_t index=0; index<l2fib_dhcp_binding_summary.len(); index++)
-    {
-        if(l2fib_dhcp_binding_summary[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "l2fib-dhcp-binding-summaries";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "l2fib-dhcp-binding-summary")
-    {
-        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary>();
-        c->parent = this;
-        l2fib_dhcp_binding_summary.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : l2fib_dhcp_binding_summary.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "l2fib-dhcp-binding-summary")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::L2fibDhcpBindingSummary()
-    :
-    xcid{YType::str, "xcid"},
-    bindings{YType::uint32, "bindings"}
-        ,
-    port(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port>())
-{
-    port->parent = this;
-
-    yang_name = "l2fib-dhcp-binding-summary"; yang_parent_name = "l2fib-dhcp-binding-summaries"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::~L2fibDhcpBindingSummary()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::has_data() const
-{
-    if (is_presence_container) return true;
-    return xcid.is_set
-	|| bindings.is_set
-	|| (port !=  nullptr && port->has_data());
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(xcid.yfilter)
-	|| ydk::is_set(bindings.yfilter)
-	|| (port !=  nullptr && port->has_operation());
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "l2fib-dhcp-binding-summary";
-    ADD_KEY_TOKEN(xcid, "xcid");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
-    if (bindings.is_set || is_set(bindings.yfilter)) leaf_name_data.push_back(bindings.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "port")
-    {
-        if(port == nullptr)
-        {
-            port = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port>();
-        }
-        return port;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(port != nullptr)
-    {
-        children["port"] = port;
-    }
-
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "xcid")
-    {
-        xcid = value;
-        xcid.value_namespace = name_space;
-        xcid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bindings")
-    {
-        bindings = value;
-        bindings.value_namespace = name_space;
-        bindings.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "xcid")
-    {
-        xcid.yfilter = yfilter;
-    }
-    if(value_path == "bindings")
-    {
-        bindings.yfilter = yfilter;
-    }
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "port" || name == "xcid" || name == "bindings")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Port()
-    :
-    data_type{YType::enumeration, "data-type"}
-        ,
-    ac(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Ac>())
-    , pw(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Pw>())
-{
-    ac->parent = this;
-    pw->parent = this;
-
-    yang_name = "port"; yang_parent_name = "l2fib-dhcp-binding-summary"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::~Port()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::has_data() const
-{
-    if (is_presence_container) return true;
-    return data_type.is_set
-	|| (ac !=  nullptr && ac->has_data())
-	|| (pw !=  nullptr && pw->has_data());
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(data_type.yfilter)
-	|| (ac !=  nullptr && ac->has_operation())
-	|| (pw !=  nullptr && pw->has_operation());
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "port";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ac")
-    {
-        if(ac == nullptr)
-        {
-            ac = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Ac>();
-        }
-        return ac;
-    }
-
-    if(child_yang_name == "pw")
-    {
-        if(pw == nullptr)
-        {
-            pw = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Pw>();
-        }
-        return pw;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(ac != nullptr)
-    {
-        children["ac"] = ac;
-    }
-
-    if(pw != nullptr)
-    {
-        children["pw"] = pw;
-    }
-
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "data-type")
-    {
-        data_type = value;
-        data_type.value_namespace = name_space;
-        data_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "data-type")
-    {
-        data_type.yfilter = yfilter;
-    }
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ac" || name == "pw" || name == "data-type")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Ac::Ac()
-    :
-    interface_handle{YType::str, "interface-handle"}
-{
-
-    yang_name = "ac"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Ac::~Ac()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Ac::has_data() const
-{
-    if (is_presence_container) return true;
-    return interface_handle.is_set;
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Ac::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_handle.yfilter);
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Ac::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ac";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Ac::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Ac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Ac::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Ac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-handle")
-    {
-        interface_handle = value;
-        interface_handle.value_namespace = name_space;
-        interface_handle.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Ac::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-handle")
-    {
-        interface_handle.yfilter = yfilter;
-    }
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Ac::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-handle")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Pw::Pw()
-    :
-    pw_id{YType::uint64, "pw-id"},
-    next_hop_address{YType::str, "next-hop-address"},
-    pseudo_wire_id_type{YType::enumeration, "pseudo-wire-id-type"}
-{
-
-    yang_name = "pw"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Pw::~Pw()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Pw::has_data() const
-{
-    if (is_presence_container) return true;
-    return pw_id.is_set
-	|| next_hop_address.is_set
-	|| pseudo_wire_id_type.is_set;
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Pw::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(pw_id.yfilter)
-	|| ydk::is_set(next_hop_address.yfilter)
-	|| ydk::is_set(pseudo_wire_id_type.yfilter);
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Pw::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pw";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Pw::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (pw_id.is_set || is_set(pw_id.yfilter)) leaf_name_data.push_back(pw_id.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (pseudo_wire_id_type.is_set || is_set(pseudo_wire_id_type.yfilter)) leaf_name_data.push_back(pseudo_wire_id_type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Pw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Pw::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Pw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "pw-id")
-    {
-        pw_id = value;
-        pw_id.value_namespace = name_space;
-        pw_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "next-hop-address")
-    {
-        next_hop_address = value;
-        next_hop_address.value_namespace = name_space;
-        next_hop_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pseudo-wire-id-type")
-    {
-        pseudo_wire_id_type = value;
-        pseudo_wire_id_type.value_namespace = name_space;
-        pseudo_wire_id_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Pw::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "pw-id")
-    {
-        pw_id.yfilter = yfilter;
-    }
-    if(value_path == "next-hop-address")
-    {
-        next_hop_address.yfilter = yfilter;
-    }
-    if(value_path == "pseudo-wire-id-type")
-    {
-        pseudo_wire_id_type.yfilter = yfilter;
-    }
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries::L2fibDhcpBindingSummary::Port::Pw::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "pw-id" || name == "next-hop-address" || name == "pseudo-wire-id-type")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCasts()
-    :
-    l2fib_evpn_incl_m_cast(this, {"bd_name"})
-{
-
-    yang_name = "l2fib-evpn-incl-m-casts"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::~L2fibEvpnInclMCasts()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<l2fib_evpn_incl_m_cast.len(); index++)
-    {
-        if(l2fib_evpn_incl_m_cast[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::has_operation() const
-{
-    for (std::size_t index=0; index<l2fib_evpn_incl_m_cast.len(); index++)
-    {
-        if(l2fib_evpn_incl_m_cast[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "l2fib-evpn-incl-m-casts";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "l2fib-evpn-incl-m-cast")
-    {
-        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast>();
-        c->parent = this;
-        l2fib_evpn_incl_m_cast.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : l2fib_evpn_incl_m_cast.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "l2fib-evpn-incl-m-cast")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCast()
-    :
-    bd_name{YType::str, "bd-name"}
-        ,
-    mcast_replication_list(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::McastReplicationList>())
-    , l2fib_evpn_incl_m_cast_oles(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles>())
-{
-    mcast_replication_list->parent = this;
-    l2fib_evpn_incl_m_cast_oles->parent = this;
-
-    yang_name = "l2fib-evpn-incl-m-cast"; yang_parent_name = "l2fib-evpn-incl-m-casts"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::~L2fibEvpnInclMCast()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::has_data() const
-{
-    if (is_presence_container) return true;
-    return bd_name.is_set
-	|| (mcast_replication_list !=  nullptr && mcast_replication_list->has_data())
-	|| (l2fib_evpn_incl_m_cast_oles !=  nullptr && l2fib_evpn_incl_m_cast_oles->has_data());
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bd_name.yfilter)
-	|| (mcast_replication_list !=  nullptr && mcast_replication_list->has_operation())
-	|| (l2fib_evpn_incl_m_cast_oles !=  nullptr && l2fib_evpn_incl_m_cast_oles->has_operation());
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "l2fib-evpn-incl-m-cast";
-    ADD_KEY_TOKEN(bd_name, "bd-name");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bd_name.is_set || is_set(bd_name.yfilter)) leaf_name_data.push_back(bd_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mcast-replication-list")
-    {
-        if(mcast_replication_list == nullptr)
-        {
-            mcast_replication_list = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::McastReplicationList>();
-        }
-        return mcast_replication_list;
-    }
-
-    if(child_yang_name == "l2fib-evpn-incl-m-cast-oles")
-    {
-        if(l2fib_evpn_incl_m_cast_oles == nullptr)
-        {
-            l2fib_evpn_incl_m_cast_oles = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles>();
-        }
-        return l2fib_evpn_incl_m_cast_oles;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(mcast_replication_list != nullptr)
-    {
-        children["mcast-replication-list"] = mcast_replication_list;
-    }
-
-    if(l2fib_evpn_incl_m_cast_oles != nullptr)
-    {
-        children["l2fib-evpn-incl-m-cast-oles"] = l2fib_evpn_incl_m_cast_oles;
-    }
-
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bd-name")
-    {
-        bd_name = value;
-        bd_name.value_namespace = name_space;
-        bd_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bd-name")
-    {
-        bd_name.yfilter = yfilter;
-    }
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mcast-replication-list" || name == "l2fib-evpn-incl-m-cast-oles" || name == "bd-name")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::McastReplicationList::McastReplicationList()
-    :
-    bridge_domain_name{YType::str, "bridge-domain-name"},
-    bridge_domain_id{YType::uint32, "bridge-domain-id"},
-    xcid{YType::uint32, "xcid"},
-    is_bound{YType::boolean, "is-bound"}
-{
-
-    yang_name = "mcast-replication-list"; yang_parent_name = "l2fib-evpn-incl-m-cast"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::McastReplicationList::~McastReplicationList()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::McastReplicationList::has_data() const
-{
-    if (is_presence_container) return true;
-    return bridge_domain_name.is_set
-	|| bridge_domain_id.is_set
-	|| xcid.is_set
-	|| is_bound.is_set;
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::McastReplicationList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bridge_domain_name.yfilter)
-	|| ydk::is_set(bridge_domain_id.yfilter)
-	|| ydk::is_set(xcid.yfilter)
-	|| ydk::is_set(is_bound.yfilter);
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::McastReplicationList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mcast-replication-list";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::McastReplicationList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bridge_domain_name.is_set || is_set(bridge_domain_name.yfilter)) leaf_name_data.push_back(bridge_domain_name.get_name_leafdata());
-    if (bridge_domain_id.is_set || is_set(bridge_domain_id.yfilter)) leaf_name_data.push_back(bridge_domain_id.get_name_leafdata());
-    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
-    if (is_bound.is_set || is_set(is_bound.yfilter)) leaf_name_data.push_back(is_bound.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::McastReplicationList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::McastReplicationList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::McastReplicationList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bridge-domain-name")
-    {
-        bridge_domain_name = value;
-        bridge_domain_name.value_namespace = name_space;
-        bridge_domain_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bridge-domain-id")
-    {
-        bridge_domain_id = value;
-        bridge_domain_id.value_namespace = name_space;
-        bridge_domain_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "xcid")
-    {
-        xcid = value;
-        xcid.value_namespace = name_space;
-        xcid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-bound")
-    {
-        is_bound = value;
-        is_bound.value_namespace = name_space;
-        is_bound.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::McastReplicationList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bridge-domain-name")
-    {
-        bridge_domain_name.yfilter = yfilter;
-    }
-    if(value_path == "bridge-domain-id")
-    {
-        bridge_domain_id.yfilter = yfilter;
-    }
-    if(value_path == "xcid")
-    {
-        xcid.yfilter = yfilter;
-    }
-    if(value_path == "is-bound")
-    {
-        is_bound.yfilter = yfilter;
-    }
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::McastReplicationList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bridge-domain-name" || name == "bridge-domain-id" || name == "xcid" || name == "is-bound")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOles()
-    :
-    l2fib_evpn_incl_m_cast_ole(this, {"next_hop_address"})
-{
-
-    yang_name = "l2fib-evpn-incl-m-cast-oles"; yang_parent_name = "l2fib-evpn-incl-m-cast"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::~L2fibEvpnInclMCastOles()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<l2fib_evpn_incl_m_cast_ole.len(); index++)
-    {
-        if(l2fib_evpn_incl_m_cast_ole[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::has_operation() const
-{
-    for (std::size_t index=0; index<l2fib_evpn_incl_m_cast_ole.len(); index++)
-    {
-        if(l2fib_evpn_incl_m_cast_ole[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "l2fib-evpn-incl-m-cast-oles";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "l2fib-evpn-incl-m-cast-ole")
-    {
-        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle>();
-        c->parent = this;
-        l2fib_evpn_incl_m_cast_ole.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : l2fib_evpn_incl_m_cast_ole.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "l2fib-evpn-incl-m-cast-ole")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::L2fibEvpnInclMCastOle()
-    :
-    next_hop_address{YType::str, "next-hop-address"},
-    is_bound{YType::boolean, "is-bound"},
-    next_hop_valid{YType::boolean, "next-hop-valid"}
-        ,
-    mcast_ole(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle>())
-    , next_hop(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop>())
-{
-    mcast_ole->parent = this;
-    next_hop->parent = this;
-
-    yang_name = "l2fib-evpn-incl-m-cast-ole"; yang_parent_name = "l2fib-evpn-incl-m-cast-oles"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::~L2fibEvpnInclMCastOle()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::has_data() const
-{
-    if (is_presence_container) return true;
-    return next_hop_address.is_set
-	|| is_bound.is_set
-	|| next_hop_valid.is_set
-	|| (mcast_ole !=  nullptr && mcast_ole->has_data())
-	|| (next_hop !=  nullptr && next_hop->has_data());
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(next_hop_address.yfilter)
-	|| ydk::is_set(is_bound.yfilter)
-	|| ydk::is_set(next_hop_valid.yfilter)
-	|| (mcast_ole !=  nullptr && mcast_ole->has_operation())
-	|| (next_hop !=  nullptr && next_hop->has_operation());
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "l2fib-evpn-incl-m-cast-ole";
-    ADD_KEY_TOKEN(next_hop_address, "next-hop-address");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (is_bound.is_set || is_set(is_bound.yfilter)) leaf_name_data.push_back(is_bound.get_name_leafdata());
-    if (next_hop_valid.is_set || is_set(next_hop_valid.yfilter)) leaf_name_data.push_back(next_hop_valid.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mcast-ole")
-    {
-        if(mcast_ole == nullptr)
-        {
-            mcast_ole = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle>();
-        }
-        return mcast_ole;
-    }
-
-    if(child_yang_name == "next-hop")
-    {
-        if(next_hop == nullptr)
-        {
-            next_hop = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop>();
-        }
-        return next_hop;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(mcast_ole != nullptr)
-    {
-        children["mcast-ole"] = mcast_ole;
-    }
-
-    if(next_hop != nullptr)
-    {
-        children["next-hop"] = next_hop;
-    }
-
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "next-hop-address")
-    {
-        next_hop_address = value;
-        next_hop_address.value_namespace = name_space;
-        next_hop_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-bound")
-    {
-        is_bound = value;
-        is_bound.value_namespace = name_space;
-        is_bound.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "next-hop-valid")
-    {
-        next_hop_valid = value;
-        next_hop_valid.value_namespace = name_space;
-        next_hop_valid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "next-hop-address")
-    {
-        next_hop_address.yfilter = yfilter;
-    }
-    if(value_path == "is-bound")
-    {
-        is_bound.yfilter = yfilter;
-    }
-    if(value_path == "next-hop-valid")
-    {
-        next_hop_valid.yfilter = yfilter;
-    }
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mcast-ole" || name == "next-hop" || name == "next-hop-address" || name == "is-bound" || name == "next-hop-valid")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::McastOle()
-    :
-    next_hop_ipv6_addr{YType::str, "next-hop-ipv6-addr"},
-    mcast_label{YType::uint32, "mcast-label"}
-{
-
-    yang_name = "mcast-ole"; yang_parent_name = "l2fib-evpn-incl-m-cast-ole"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::~McastOle()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::has_data() const
-{
-    if (is_presence_container) return true;
-    return next_hop_ipv6_addr.is_set
-	|| mcast_label.is_set;
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(next_hop_ipv6_addr.yfilter)
-	|| ydk::is_set(mcast_label.yfilter);
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mcast-ole";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (next_hop_ipv6_addr.is_set || is_set(next_hop_ipv6_addr.yfilter)) leaf_name_data.push_back(next_hop_ipv6_addr.get_name_leafdata());
-    if (mcast_label.is_set || is_set(mcast_label.yfilter)) leaf_name_data.push_back(mcast_label.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "next-hop-ipv6-addr")
-    {
-        next_hop_ipv6_addr = value;
-        next_hop_ipv6_addr.value_namespace = name_space;
-        next_hop_ipv6_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mcast-label")
-    {
-        mcast_label = value;
-        mcast_label.value_namespace = name_space;
-        mcast_label.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "next-hop-ipv6-addr")
-    {
-        next_hop_ipv6_addr.yfilter = yfilter;
-    }
-    if(value_path == "mcast-label")
-    {
-        mcast_label.yfilter = yfilter;
-    }
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "next-hop-ipv6-addr" || name == "mcast-label")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::NextHop()
-    :
-    next_hop_address{YType::str, "next-hop-address"},
-    next_hop_address_v6{YType::str, "next-hop-address-v6"},
-    next_hop_internal_label{YType::uint32, "next-hop-internal-label"},
-    ecd_plaformt_data_valid{YType::boolean, "ecd-plaformt-data-valid"},
-    ecd_platform_data_length{YType::uint32, "ecd-platform-data-length"},
-    children_count{YType::uint32, "children-count"}
-        ,
-    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base>())
-{
-    base->parent = this;
-
-    yang_name = "next-hop"; yang_parent_name = "l2fib-evpn-incl-m-cast-ole"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::~NextHop()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::has_data() const
-{
-    if (is_presence_container) return true;
-    return next_hop_address.is_set
-	|| next_hop_address_v6.is_set
-	|| next_hop_internal_label.is_set
-	|| ecd_plaformt_data_valid.is_set
-	|| ecd_platform_data_length.is_set
-	|| children_count.is_set
-	|| (base !=  nullptr && base->has_data());
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(next_hop_address.yfilter)
-	|| ydk::is_set(next_hop_address_v6.yfilter)
-	|| ydk::is_set(next_hop_internal_label.yfilter)
-	|| ydk::is_set(ecd_plaformt_data_valid.yfilter)
-	|| ydk::is_set(ecd_platform_data_length.yfilter)
-	|| ydk::is_set(children_count.yfilter)
-	|| (base !=  nullptr && base->has_operation());
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "next-hop";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (next_hop_address_v6.is_set || is_set(next_hop_address_v6.yfilter)) leaf_name_data.push_back(next_hop_address_v6.get_name_leafdata());
-    if (next_hop_internal_label.is_set || is_set(next_hop_internal_label.yfilter)) leaf_name_data.push_back(next_hop_internal_label.get_name_leafdata());
-    if (ecd_plaformt_data_valid.is_set || is_set(ecd_plaformt_data_valid.yfilter)) leaf_name_data.push_back(ecd_plaformt_data_valid.get_name_leafdata());
-    if (ecd_platform_data_length.is_set || is_set(ecd_platform_data_length.yfilter)) leaf_name_data.push_back(ecd_platform_data_length.get_name_leafdata());
-    if (children_count.is_set || is_set(children_count.yfilter)) leaf_name_data.push_back(children_count.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "base")
-    {
-        if(base == nullptr)
-        {
-            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base>();
-        }
-        return base;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(base != nullptr)
-    {
-        children["base"] = base;
-    }
-
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "next-hop-address")
-    {
-        next_hop_address = value;
-        next_hop_address.value_namespace = name_space;
-        next_hop_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "next-hop-address-v6")
-    {
-        next_hop_address_v6 = value;
-        next_hop_address_v6.value_namespace = name_space;
-        next_hop_address_v6.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "next-hop-internal-label")
-    {
-        next_hop_internal_label = value;
-        next_hop_internal_label.value_namespace = name_space;
-        next_hop_internal_label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ecd-plaformt-data-valid")
-    {
-        ecd_plaformt_data_valid = value;
-        ecd_plaformt_data_valid.value_namespace = name_space;
-        ecd_plaformt_data_valid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ecd-platform-data-length")
-    {
-        ecd_platform_data_length = value;
-        ecd_platform_data_length.value_namespace = name_space;
-        ecd_platform_data_length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "children-count")
-    {
-        children_count = value;
-        children_count.value_namespace = name_space;
-        children_count.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "next-hop-address")
-    {
-        next_hop_address.yfilter = yfilter;
-    }
-    if(value_path == "next-hop-address-v6")
-    {
-        next_hop_address_v6.yfilter = yfilter;
-    }
-    if(value_path == "next-hop-internal-label")
-    {
-        next_hop_internal_label.yfilter = yfilter;
-    }
-    if(value_path == "ecd-plaformt-data-valid")
-    {
-        ecd_plaformt_data_valid.yfilter = yfilter;
-    }
-    if(value_path == "ecd-platform-data-length")
-    {
-        ecd_platform_data_length.yfilter = yfilter;
-    }
-    if(value_path == "children-count")
-    {
-        children_count.yfilter = yfilter;
-    }
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "base" || name == "next-hop-address" || name == "next-hop-address-v6" || name == "next-hop-internal-label" || name == "ecd-plaformt-data-valid" || name == "ecd-platform-data-length" || name == "children-count")
-        return true;
-    return false;
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::Base()
-{
-
-    yang_name = "base"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::~Base()
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::has_data() const
-{
-    if (is_presence_container) return true;
-    return false;
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::has_operation() const
-{
-    return is_set(yfilter);
-}
-
-std::string L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "base";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts::L2fibEvpnInclMCast::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::has_leaf_or_child_of_name(const std::string & name) const
-{
-    return false;
-}
-
-L2vpnv2::L2vpnv2()
-    :
-    standby(std::make_shared<L2vpnv2::Standby>())
-    , active(std::make_shared<L2vpnv2::Active>())
-    , nodes(std::make_shared<L2vpnv2::Nodes>())
-{
-    standby->parent = this;
-    active->parent = this;
-    nodes->parent = this;
-
-    yang_name = "l2vpnv2"; yang_parent_name = "Cisco-IOS-XR-l2vpn-oper"; is_top_level_class = true; has_list_ancestor = false; 
-}
-
-L2vpnv2::~L2vpnv2()
-{
-}
-
-bool L2vpnv2::has_data() const
-{
-    if (is_presence_container) return true;
-    return (standby !=  nullptr && standby->has_data())
-	|| (active !=  nullptr && active->has_data())
-	|| (nodes !=  nullptr && nodes->has_data());
-}
-
-bool L2vpnv2::has_operation() const
-{
-    return is_set(yfilter)
-	|| (standby !=  nullptr && standby->has_operation())
-	|| (active !=  nullptr && active->has_operation())
-	|| (nodes !=  nullptr && nodes->has_operation());
-}
-
-std::string L2vpnv2::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnv2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "standby")
-    {
-        if(standby == nullptr)
-        {
-            standby = std::make_shared<L2vpnv2::Standby>();
-        }
-        return standby;
-    }
-
-    if(child_yang_name == "active")
-    {
-        if(active == nullptr)
-        {
-            active = std::make_shared<L2vpnv2::Active>();
-        }
-        return active;
-    }
-
-    if(child_yang_name == "nodes")
-    {
-        if(nodes == nullptr)
-        {
-            nodes = std::make_shared<L2vpnv2::Nodes>();
-        }
-        return nodes;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(standby != nullptr)
-    {
-        children["standby"] = standby;
-    }
-
-    if(active != nullptr)
-    {
-        children["active"] = active;
-    }
-
-    if(nodes != nullptr)
-    {
-        children["nodes"] = nodes;
-    }
-
-    return children;
-}
-
-void L2vpnv2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void L2vpnv2::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-std::shared_ptr<Entity> L2vpnv2::clone_ptr() const
-{
-    return std::make_shared<L2vpnv2>();
-}
-
-std::string L2vpnv2::get_bundle_yang_models_location() const
-{
-    return ydk_cisco_ios_xr_models_path;
-}
-
-std::string L2vpnv2::get_bundle_name() const
-{
-    return "cisco_ios_xr";
-}
-
-augment_capabilities_function L2vpnv2::get_augment_capabilities_function() const
-{
-    return cisco_ios_xr_augment_lookup_tables;
-}
-
-std::map<std::pair<std::string, std::string>, std::string> L2vpnv2::get_namespace_identity_lookup() const
-{
-    return cisco_ios_xr_namespace_identity_lookup;
-}
-
-bool L2vpnv2::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "standby" || name == "active" || name == "nodes")
-        return true;
-    return false;
-}
-
-L2vpnv2::Standby::Standby()
-    :
-    discoveries(std::make_shared<L2vpnv2::Standby::Discoveries>())
-    , flexible_xconnect_service_summary(std::make_shared<L2vpnv2::Standby::FlexibleXconnectServiceSummary>())
-    , main_interfaces(std::make_shared<L2vpnv2::Standby::MainInterfaces>())
-    , iccp_sm(std::make_shared<L2vpnv2::Standby::IccpSm>())
-    , bridge_summary(std::make_shared<L2vpnv2::Standby::BridgeSummary>())
-    , nsr(std::make_shared<L2vpnv2::Standby::Nsr>())
-    , preferred_paths(std::make_shared<L2vpnv2::Standby::PreferredPaths>())
-    , global_settings(std::make_shared<L2vpnv2::Standby::GlobalSettings>())
-    , pwr(std::make_shared<L2vpnv2::Standby::Pwr>())
-    , xconnect_mp2mp_ce2ces(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces>())
-    , xconnects(std::make_shared<L2vpnv2::Standby::Xconnects>())
-    , xconnect_groups(std::make_shared<L2vpnv2::Standby::XconnectGroups>())
-    , xconnect_mp2mps(std::make_shared<L2vpnv2::Standby::XconnectMp2mps>())
-    , indexes(std::make_shared<L2vpnv2::Standby::Indexes>())
-    , xconnect_summary(std::make_shared<L2vpnv2::Standby::XconnectSummary>())
-    , proc_fsm(std::make_shared<L2vpnv2::Standby::ProcFsm>())
-    , mstp_ports(std::make_shared<L2vpnv2::Standby::MstpPorts>())
-    , generic_interface_list_details(std::make_shared<L2vpnv2::Standby::GenericInterfaceListDetails>())
-    , l2vpn_resource_state(std::make_shared<L2vpnv2::Standby::L2vpnResourceState>())
-    , bridge_domains(std::make_shared<L2vpnv2::Standby::BridgeDomains>())
-    , discovery_summary(std::make_shared<L2vpnv2::Standby::DiscoverySummary>())
-    , g8032(std::make_shared<L2vpnv2::Standby::G8032>())
-    , pseudowire_classes(std::make_shared<L2vpnv2::Standby::PseudowireClasses>())
-    , l2vpn_collaborators(std::make_shared<L2vpnv2::Standby::L2vpnCollaborators>())
-    , mvrp(std::make_shared<L2vpnv2::Standby::Mvrp>())
-    , generic_interface_lists(std::make_shared<L2vpnv2::Standby::GenericInterfaceLists>())
-    , mstp_vlans(std::make_shared<L2vpnv2::Standby::MstpVlans>())
-    , l2vpn_pbb_bsa(std::make_shared<L2vpnv2::Standby::L2vpnPbbBsa>())
-    , flexible_xconnect_services(std::make_shared<L2vpnv2::Standby::FlexibleXconnectServices>())
-    , xconnect_brief(std::make_shared<L2vpnv2::Standby::XconnectBrief>())
-{
-    discoveries->parent = this;
-    flexible_xconnect_service_summary->parent = this;
-    main_interfaces->parent = this;
-    iccp_sm->parent = this;
-    bridge_summary->parent = this;
-    nsr->parent = this;
-    preferred_paths->parent = this;
-    global_settings->parent = this;
-    pwr->parent = this;
-    xconnect_mp2mp_ce2ces->parent = this;
-    xconnects->parent = this;
-    xconnect_groups->parent = this;
-    xconnect_mp2mps->parent = this;
-    indexes->parent = this;
-    xconnect_summary->parent = this;
-    proc_fsm->parent = this;
-    mstp_ports->parent = this;
-    generic_interface_list_details->parent = this;
-    l2vpn_resource_state->parent = this;
-    bridge_domains->parent = this;
-    discovery_summary->parent = this;
-    g8032->parent = this;
-    pseudowire_classes->parent = this;
-    l2vpn_collaborators->parent = this;
-    mvrp->parent = this;
-    generic_interface_lists->parent = this;
-    mstp_vlans->parent = this;
-    l2vpn_pbb_bsa->parent = this;
-    flexible_xconnect_services->parent = this;
-    xconnect_brief->parent = this;
-
-    yang_name = "standby"; yang_parent_name = "l2vpnv2"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-L2vpnv2::Standby::~Standby()
-{
-}
-
-bool L2vpnv2::Standby::has_data() const
-{
-    if (is_presence_container) return true;
-    return (discoveries !=  nullptr && discoveries->has_data())
-	|| (flexible_xconnect_service_summary !=  nullptr && flexible_xconnect_service_summary->has_data())
-	|| (main_interfaces !=  nullptr && main_interfaces->has_data())
-	|| (iccp_sm !=  nullptr && iccp_sm->has_data())
-	|| (bridge_summary !=  nullptr && bridge_summary->has_data())
-	|| (nsr !=  nullptr && nsr->has_data())
-	|| (preferred_paths !=  nullptr && preferred_paths->has_data())
-	|| (global_settings !=  nullptr && global_settings->has_data())
-	|| (pwr !=  nullptr && pwr->has_data())
-	|| (xconnect_mp2mp_ce2ces !=  nullptr && xconnect_mp2mp_ce2ces->has_data())
-	|| (xconnects !=  nullptr && xconnects->has_data())
-	|| (xconnect_groups !=  nullptr && xconnect_groups->has_data())
-	|| (xconnect_mp2mps !=  nullptr && xconnect_mp2mps->has_data())
-	|| (indexes !=  nullptr && indexes->has_data())
-	|| (xconnect_summary !=  nullptr && xconnect_summary->has_data())
-	|| (proc_fsm !=  nullptr && proc_fsm->has_data())
-	|| (mstp_ports !=  nullptr && mstp_ports->has_data())
-	|| (generic_interface_list_details !=  nullptr && generic_interface_list_details->has_data())
-	|| (l2vpn_resource_state !=  nullptr && l2vpn_resource_state->has_data())
-	|| (bridge_domains !=  nullptr && bridge_domains->has_data())
-	|| (discovery_summary !=  nullptr && discovery_summary->has_data())
-	|| (g8032 !=  nullptr && g8032->has_data())
-	|| (pseudowire_classes !=  nullptr && pseudowire_classes->has_data())
-	|| (l2vpn_collaborators !=  nullptr && l2vpn_collaborators->has_data())
-	|| (mvrp !=  nullptr && mvrp->has_data())
-	|| (generic_interface_lists !=  nullptr && generic_interface_lists->has_data())
-	|| (mstp_vlans !=  nullptr && mstp_vlans->has_data())
-	|| (l2vpn_pbb_bsa !=  nullptr && l2vpn_pbb_bsa->has_data())
-	|| (flexible_xconnect_services !=  nullptr && flexible_xconnect_services->has_data())
-	|| (xconnect_brief !=  nullptr && xconnect_brief->has_data());
-}
-
-bool L2vpnv2::Standby::has_operation() const
-{
-    return is_set(yfilter)
-	|| (discoveries !=  nullptr && discoveries->has_operation())
-	|| (flexible_xconnect_service_summary !=  nullptr && flexible_xconnect_service_summary->has_operation())
-	|| (main_interfaces !=  nullptr && main_interfaces->has_operation())
-	|| (iccp_sm !=  nullptr && iccp_sm->has_operation())
-	|| (bridge_summary !=  nullptr && bridge_summary->has_operation())
-	|| (nsr !=  nullptr && nsr->has_operation())
-	|| (preferred_paths !=  nullptr && preferred_paths->has_operation())
-	|| (global_settings !=  nullptr && global_settings->has_operation())
-	|| (pwr !=  nullptr && pwr->has_operation())
-	|| (xconnect_mp2mp_ce2ces !=  nullptr && xconnect_mp2mp_ce2ces->has_operation())
-	|| (xconnects !=  nullptr && xconnects->has_operation())
-	|| (xconnect_groups !=  nullptr && xconnect_groups->has_operation())
-	|| (xconnect_mp2mps !=  nullptr && xconnect_mp2mps->has_operation())
-	|| (indexes !=  nullptr && indexes->has_operation())
-	|| (xconnect_summary !=  nullptr && xconnect_summary->has_operation())
-	|| (proc_fsm !=  nullptr && proc_fsm->has_operation())
-	|| (mstp_ports !=  nullptr && mstp_ports->has_operation())
-	|| (generic_interface_list_details !=  nullptr && generic_interface_list_details->has_operation())
-	|| (l2vpn_resource_state !=  nullptr && l2vpn_resource_state->has_operation())
-	|| (bridge_domains !=  nullptr && bridge_domains->has_operation())
-	|| (discovery_summary !=  nullptr && discovery_summary->has_operation())
-	|| (g8032 !=  nullptr && g8032->has_operation())
-	|| (pseudowire_classes !=  nullptr && pseudowire_classes->has_operation())
-	|| (l2vpn_collaborators !=  nullptr && l2vpn_collaborators->has_operation())
-	|| (mvrp !=  nullptr && mvrp->has_operation())
-	|| (generic_interface_lists !=  nullptr && generic_interface_lists->has_operation())
-	|| (mstp_vlans !=  nullptr && mstp_vlans->has_operation())
-	|| (l2vpn_pbb_bsa !=  nullptr && l2vpn_pbb_bsa->has_operation())
-	|| (flexible_xconnect_services !=  nullptr && flexible_xconnect_services->has_operation())
-	|| (xconnect_brief !=  nullptr && xconnect_brief->has_operation());
-}
-
-std::string L2vpnv2::Standby::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string L2vpnv2::Standby::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "standby";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnv2::Standby::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "discoveries")
-    {
-        if(discoveries == nullptr)
-        {
-            discoveries = std::make_shared<L2vpnv2::Standby::Discoveries>();
-        }
-        return discoveries;
-    }
-
-    if(child_yang_name == "flexible-xconnect-service-summary")
-    {
-        if(flexible_xconnect_service_summary == nullptr)
-        {
-            flexible_xconnect_service_summary = std::make_shared<L2vpnv2::Standby::FlexibleXconnectServiceSummary>();
-        }
-        return flexible_xconnect_service_summary;
-    }
-
-    if(child_yang_name == "main-interfaces")
-    {
-        if(main_interfaces == nullptr)
-        {
-            main_interfaces = std::make_shared<L2vpnv2::Standby::MainInterfaces>();
-        }
-        return main_interfaces;
-    }
-
-    if(child_yang_name == "iccp-sm")
-    {
-        if(iccp_sm == nullptr)
-        {
-            iccp_sm = std::make_shared<L2vpnv2::Standby::IccpSm>();
-        }
-        return iccp_sm;
-    }
-
-    if(child_yang_name == "bridge-summary")
-    {
-        if(bridge_summary == nullptr)
-        {
-            bridge_summary = std::make_shared<L2vpnv2::Standby::BridgeSummary>();
-        }
-        return bridge_summary;
-    }
-
-    if(child_yang_name == "nsr")
-    {
-        if(nsr == nullptr)
-        {
-            nsr = std::make_shared<L2vpnv2::Standby::Nsr>();
-        }
-        return nsr;
-    }
-
-    if(child_yang_name == "preferred-paths")
-    {
-        if(preferred_paths == nullptr)
-        {
-            preferred_paths = std::make_shared<L2vpnv2::Standby::PreferredPaths>();
-        }
-        return preferred_paths;
-    }
-
-    if(child_yang_name == "global-settings")
-    {
-        if(global_settings == nullptr)
-        {
-            global_settings = std::make_shared<L2vpnv2::Standby::GlobalSettings>();
-        }
-        return global_settings;
-    }
-
-    if(child_yang_name == "pwr")
-    {
-        if(pwr == nullptr)
-        {
-            pwr = std::make_shared<L2vpnv2::Standby::Pwr>();
-        }
-        return pwr;
-    }
-
-    if(child_yang_name == "xconnect-mp2mp-ce2ces")
-    {
-        if(xconnect_mp2mp_ce2ces == nullptr)
-        {
-            xconnect_mp2mp_ce2ces = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces>();
-        }
-        return xconnect_mp2mp_ce2ces;
-    }
-
-    if(child_yang_name == "xconnects")
-    {
-        if(xconnects == nullptr)
-        {
-            xconnects = std::make_shared<L2vpnv2::Standby::Xconnects>();
-        }
-        return xconnects;
-    }
-
-    if(child_yang_name == "xconnect-groups")
-    {
-        if(xconnect_groups == nullptr)
-        {
-            xconnect_groups = std::make_shared<L2vpnv2::Standby::XconnectGroups>();
-        }
-        return xconnect_groups;
-    }
-
-    if(child_yang_name == "xconnect-mp2mps")
-    {
-        if(xconnect_mp2mps == nullptr)
-        {
-            xconnect_mp2mps = std::make_shared<L2vpnv2::Standby::XconnectMp2mps>();
-        }
-        return xconnect_mp2mps;
-    }
-
-    if(child_yang_name == "indexes")
-    {
-        if(indexes == nullptr)
-        {
-            indexes = std::make_shared<L2vpnv2::Standby::Indexes>();
-        }
-        return indexes;
-    }
-
-    if(child_yang_name == "xconnect-summary")
-    {
-        if(xconnect_summary == nullptr)
-        {
-            xconnect_summary = std::make_shared<L2vpnv2::Standby::XconnectSummary>();
-        }
-        return xconnect_summary;
-    }
-
-    if(child_yang_name == "proc-fsm")
-    {
-        if(proc_fsm == nullptr)
-        {
-            proc_fsm = std::make_shared<L2vpnv2::Standby::ProcFsm>();
-        }
-        return proc_fsm;
-    }
-
-    if(child_yang_name == "mstp-ports")
-    {
-        if(mstp_ports == nullptr)
-        {
-            mstp_ports = std::make_shared<L2vpnv2::Standby::MstpPorts>();
-        }
-        return mstp_ports;
-    }
-
-    if(child_yang_name == "generic-interface-list-details")
-    {
-        if(generic_interface_list_details == nullptr)
-        {
-            generic_interface_list_details = std::make_shared<L2vpnv2::Standby::GenericInterfaceListDetails>();
-        }
-        return generic_interface_list_details;
-    }
-
-    if(child_yang_name == "l2vpn-resource-state")
-    {
-        if(l2vpn_resource_state == nullptr)
-        {
-            l2vpn_resource_state = std::make_shared<L2vpnv2::Standby::L2vpnResourceState>();
-        }
-        return l2vpn_resource_state;
-    }
-
-    if(child_yang_name == "bridge-domains")
-    {
-        if(bridge_domains == nullptr)
-        {
-            bridge_domains = std::make_shared<L2vpnv2::Standby::BridgeDomains>();
-        }
-        return bridge_domains;
-    }
-
-    if(child_yang_name == "discovery-summary")
-    {
-        if(discovery_summary == nullptr)
-        {
-            discovery_summary = std::make_shared<L2vpnv2::Standby::DiscoverySummary>();
-        }
-        return discovery_summary;
-    }
-
-    if(child_yang_name == "g8032")
-    {
-        if(g8032 == nullptr)
-        {
-            g8032 = std::make_shared<L2vpnv2::Standby::G8032>();
-        }
-        return g8032;
-    }
-
-    if(child_yang_name == "pseudowire-classes")
-    {
-        if(pseudowire_classes == nullptr)
-        {
-            pseudowire_classes = std::make_shared<L2vpnv2::Standby::PseudowireClasses>();
-        }
-        return pseudowire_classes;
-    }
-
-    if(child_yang_name == "l2vpn-collaborators")
-    {
-        if(l2vpn_collaborators == nullptr)
-        {
-            l2vpn_collaborators = std::make_shared<L2vpnv2::Standby::L2vpnCollaborators>();
-        }
-        return l2vpn_collaborators;
-    }
-
-    if(child_yang_name == "mvrp")
-    {
-        if(mvrp == nullptr)
-        {
-            mvrp = std::make_shared<L2vpnv2::Standby::Mvrp>();
-        }
-        return mvrp;
-    }
-
-    if(child_yang_name == "generic-interface-lists")
-    {
-        if(generic_interface_lists == nullptr)
-        {
-            generic_interface_lists = std::make_shared<L2vpnv2::Standby::GenericInterfaceLists>();
-        }
-        return generic_interface_lists;
-    }
-
-    if(child_yang_name == "mstp-vlans")
-    {
-        if(mstp_vlans == nullptr)
-        {
-            mstp_vlans = std::make_shared<L2vpnv2::Standby::MstpVlans>();
-        }
-        return mstp_vlans;
-    }
-
-    if(child_yang_name == "l2vpn-pbb-bsa")
-    {
-        if(l2vpn_pbb_bsa == nullptr)
-        {
-            l2vpn_pbb_bsa = std::make_shared<L2vpnv2::Standby::L2vpnPbbBsa>();
-        }
-        return l2vpn_pbb_bsa;
-    }
-
-    if(child_yang_name == "flexible-xconnect-services")
-    {
-        if(flexible_xconnect_services == nullptr)
-        {
-            flexible_xconnect_services = std::make_shared<L2vpnv2::Standby::FlexibleXconnectServices>();
-        }
-        return flexible_xconnect_services;
-    }
-
-    if(child_yang_name == "xconnect-brief")
-    {
-        if(xconnect_brief == nullptr)
-        {
-            xconnect_brief = std::make_shared<L2vpnv2::Standby::XconnectBrief>();
-        }
-        return xconnect_brief;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(discoveries != nullptr)
-    {
-        children["discoveries"] = discoveries;
-    }
-
-    if(flexible_xconnect_service_summary != nullptr)
-    {
-        children["flexible-xconnect-service-summary"] = flexible_xconnect_service_summary;
-    }
-
-    if(main_interfaces != nullptr)
-    {
-        children["main-interfaces"] = main_interfaces;
-    }
-
-    if(iccp_sm != nullptr)
-    {
-        children["iccp-sm"] = iccp_sm;
-    }
-
-    if(bridge_summary != nullptr)
-    {
-        children["bridge-summary"] = bridge_summary;
-    }
-
-    if(nsr != nullptr)
-    {
-        children["nsr"] = nsr;
-    }
-
-    if(preferred_paths != nullptr)
-    {
-        children["preferred-paths"] = preferred_paths;
-    }
-
-    if(global_settings != nullptr)
-    {
-        children["global-settings"] = global_settings;
-    }
-
-    if(pwr != nullptr)
-    {
-        children["pwr"] = pwr;
-    }
-
-    if(xconnect_mp2mp_ce2ces != nullptr)
-    {
-        children["xconnect-mp2mp-ce2ces"] = xconnect_mp2mp_ce2ces;
-    }
-
-    if(xconnects != nullptr)
-    {
-        children["xconnects"] = xconnects;
-    }
-
-    if(xconnect_groups != nullptr)
-    {
-        children["xconnect-groups"] = xconnect_groups;
-    }
-
-    if(xconnect_mp2mps != nullptr)
-    {
-        children["xconnect-mp2mps"] = xconnect_mp2mps;
-    }
-
-    if(indexes != nullptr)
-    {
-        children["indexes"] = indexes;
-    }
-
-    if(xconnect_summary != nullptr)
-    {
-        children["xconnect-summary"] = xconnect_summary;
-    }
-
-    if(proc_fsm != nullptr)
-    {
-        children["proc-fsm"] = proc_fsm;
-    }
-
-    if(mstp_ports != nullptr)
-    {
-        children["mstp-ports"] = mstp_ports;
-    }
-
-    if(generic_interface_list_details != nullptr)
-    {
-        children["generic-interface-list-details"] = generic_interface_list_details;
-    }
-
-    if(l2vpn_resource_state != nullptr)
-    {
-        children["l2vpn-resource-state"] = l2vpn_resource_state;
-    }
-
-    if(bridge_domains != nullptr)
-    {
-        children["bridge-domains"] = bridge_domains;
-    }
-
-    if(discovery_summary != nullptr)
-    {
-        children["discovery-summary"] = discovery_summary;
-    }
-
-    if(g8032 != nullptr)
-    {
-        children["g8032"] = g8032;
-    }
-
-    if(pseudowire_classes != nullptr)
-    {
-        children["pseudowire-classes"] = pseudowire_classes;
-    }
-
-    if(l2vpn_collaborators != nullptr)
-    {
-        children["l2vpn-collaborators"] = l2vpn_collaborators;
-    }
-
-    if(mvrp != nullptr)
-    {
-        children["mvrp"] = mvrp;
-    }
-
-    if(generic_interface_lists != nullptr)
-    {
-        children["generic-interface-lists"] = generic_interface_lists;
-    }
-
-    if(mstp_vlans != nullptr)
-    {
-        children["mstp-vlans"] = mstp_vlans;
-    }
-
-    if(l2vpn_pbb_bsa != nullptr)
-    {
-        children["l2vpn-pbb-bsa"] = l2vpn_pbb_bsa;
-    }
-
-    if(flexible_xconnect_services != nullptr)
-    {
-        children["flexible-xconnect-services"] = flexible_xconnect_services;
-    }
-
-    if(xconnect_brief != nullptr)
-    {
-        children["xconnect-brief"] = xconnect_brief;
-    }
-
-    return children;
-}
-
-void L2vpnv2::Standby::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void L2vpnv2::Standby::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool L2vpnv2::Standby::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "discoveries" || name == "flexible-xconnect-service-summary" || name == "main-interfaces" || name == "iccp-sm" || name == "bridge-summary" || name == "nsr" || name == "preferred-paths" || name == "global-settings" || name == "pwr" || name == "xconnect-mp2mp-ce2ces" || name == "xconnects" || name == "xconnect-groups" || name == "xconnect-mp2mps" || name == "indexes" || name == "xconnect-summary" || name == "proc-fsm" || name == "mstp-ports" || name == "generic-interface-list-details" || name == "l2vpn-resource-state" || name == "bridge-domains" || name == "discovery-summary" || name == "g8032" || name == "pseudowire-classes" || name == "l2vpn-collaborators" || name == "mvrp" || name == "generic-interface-lists" || name == "mstp-vlans" || name == "l2vpn-pbb-bsa" || name == "flexible-xconnect-services" || name == "xconnect-brief")
-        return true;
-    return false;
-}
-
-L2vpnv2::Standby::Discoveries::Discoveries()
-    :
-    discovery(this, {})
-{
-
-    yang_name = "discoveries"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-L2vpnv2::Standby::Discoveries::~Discoveries()
-{
-}
-
-bool L2vpnv2::Standby::Discoveries::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<discovery.len(); index++)
-    {
-        if(discovery[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool L2vpnv2::Standby::Discoveries::has_operation() const
-{
-    for (std::size_t index=0; index<discovery.len(); index++)
-    {
-        if(discovery[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string L2vpnv2::Standby::Discoveries::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string L2vpnv2::Standby::Discoveries::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "discoveries";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Discoveries::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnv2::Standby::Discoveries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "discovery")
-    {
-        auto c = std::make_shared<L2vpnv2::Standby::Discoveries::Discovery>();
-        c->parent = this;
-        discovery.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Discoveries::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : discovery.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void L2vpnv2::Standby::Discoveries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void L2vpnv2::Standby::Discoveries::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool L2vpnv2::Standby::Discoveries::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "discovery")
-        return true;
-    return false;
-}
-
-L2vpnv2::Standby::Discoveries::Discovery::Discovery()
-    :
-    service_name{YType::enumeration, "service-name"},
-    group_name{YType::str, "group-name"},
-    vpn_name{YType::str, "vpn-name"},
-    mtu_mismatch_ignore{YType::boolean, "mtu-mismatch-ignore"},
-    number_vpn{YType::uint32, "number-vpn"},
-    vpn_id{YType::uint32, "vpn-id"},
-    service_name_xr{YType::str, "service-name-xr"},
-    group_name_xr{YType::str, "group-name-xr"},
-    vpn_name_xr{YType::str, "vpn-name-xr"},
-    is_service_connected{YType::boolean, "is-service-connected"}
-        ,
-    signalling_info(std::make_shared<L2vpnv2::Standby::Discoveries::Discovery::SignallingInfo>())
-{
-    signalling_info->parent = this;
-
-    yang_name = "discovery"; yang_parent_name = "discoveries"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-L2vpnv2::Standby::Discoveries::Discovery::~Discovery()
-{
-}
-
-bool L2vpnv2::Standby::Discoveries::Discovery::has_data() const
-{
-    if (is_presence_container) return true;
-    return service_name.is_set
-	|| group_name.is_set
-	|| vpn_name.is_set
-	|| mtu_mismatch_ignore.is_set
-	|| number_vpn.is_set
-	|| vpn_id.is_set
-	|| service_name_xr.is_set
-	|| group_name_xr.is_set
-	|| vpn_name_xr.is_set
-	|| is_service_connected.is_set
-	|| (signalling_info !=  nullptr && signalling_info->has_data());
-}
-
-bool L2vpnv2::Standby::Discoveries::Discovery::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(service_name.yfilter)
-	|| ydk::is_set(group_name.yfilter)
-	|| ydk::is_set(vpn_name.yfilter)
-	|| ydk::is_set(mtu_mismatch_ignore.yfilter)
-	|| ydk::is_set(number_vpn.yfilter)
-	|| ydk::is_set(vpn_id.yfilter)
-	|| ydk::is_set(service_name_xr.yfilter)
-	|| ydk::is_set(group_name_xr.yfilter)
-	|| ydk::is_set(vpn_name_xr.yfilter)
-	|| ydk::is_set(is_service_connected.yfilter)
-	|| (signalling_info !=  nullptr && signalling_info->has_operation());
-}
-
-std::string L2vpnv2::Standby::Discoveries::Discovery::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/discoveries/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string L2vpnv2::Standby::Discoveries::Discovery::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "discovery";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Discoveries::Discovery::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (service_name.is_set || is_set(service_name.yfilter)) leaf_name_data.push_back(service_name.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (vpn_name.is_set || is_set(vpn_name.yfilter)) leaf_name_data.push_back(vpn_name.get_name_leafdata());
-    if (mtu_mismatch_ignore.is_set || is_set(mtu_mismatch_ignore.yfilter)) leaf_name_data.push_back(mtu_mismatch_ignore.get_name_leafdata());
-    if (number_vpn.is_set || is_set(number_vpn.yfilter)) leaf_name_data.push_back(number_vpn.get_name_leafdata());
-    if (vpn_id.is_set || is_set(vpn_id.yfilter)) leaf_name_data.push_back(vpn_id.get_name_leafdata());
-    if (service_name_xr.is_set || is_set(service_name_xr.yfilter)) leaf_name_data.push_back(service_name_xr.get_name_leafdata());
-    if (group_name_xr.is_set || is_set(group_name_xr.yfilter)) leaf_name_data.push_back(group_name_xr.get_name_leafdata());
-    if (vpn_name_xr.is_set || is_set(vpn_name_xr.yfilter)) leaf_name_data.push_back(vpn_name_xr.get_name_leafdata());
-    if (is_service_connected.is_set || is_set(is_service_connected.yfilter)) leaf_name_data.push_back(is_service_connected.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnv2::Standby::Discoveries::Discovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "signalling-info")
-    {
-        if(signalling_info == nullptr)
-        {
-            signalling_info = std::make_shared<L2vpnv2::Standby::Discoveries::Discovery::SignallingInfo>();
-        }
-        return signalling_info;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Discoveries::Discovery::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(signalling_info != nullptr)
-    {
-        children["signalling-info"] = signalling_info;
-    }
-
-    return children;
-}
-
-void L2vpnv2::Standby::Discoveries::Discovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "service-name")
-    {
-        service_name = value;
-        service_name.value_namespace = name_space;
-        service_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "group-name")
-    {
-        group_name = value;
-        group_name.value_namespace = name_space;
-        group_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vpn-name")
-    {
-        vpn_name = value;
-        vpn_name.value_namespace = name_space;
-        vpn_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mtu-mismatch-ignore")
-    {
-        mtu_mismatch_ignore = value;
-        mtu_mismatch_ignore.value_namespace = name_space;
-        mtu_mismatch_ignore.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "number-vpn")
-    {
-        number_vpn = value;
-        number_vpn.value_namespace = name_space;
-        number_vpn.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vpn-id")
-    {
-        vpn_id = value;
-        vpn_id.value_namespace = name_space;
-        vpn_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "service-name-xr")
-    {
-        service_name_xr = value;
-        service_name_xr.value_namespace = name_space;
-        service_name_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "group-name-xr")
-    {
-        group_name_xr = value;
-        group_name_xr.value_namespace = name_space;
-        group_name_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vpn-name-xr")
-    {
-        vpn_name_xr = value;
-        vpn_name_xr.value_namespace = name_space;
-        vpn_name_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-service-connected")
-    {
-        is_service_connected = value;
-        is_service_connected.value_namespace = name_space;
-        is_service_connected.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnv2::Standby::Discoveries::Discovery::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "service-name")
-    {
-        service_name.yfilter = yfilter;
-    }
-    if(value_path == "group-name")
-    {
-        group_name.yfilter = yfilter;
-    }
-    if(value_path == "vpn-name")
-    {
-        vpn_name.yfilter = yfilter;
-    }
-    if(value_path == "mtu-mismatch-ignore")
-    {
-        mtu_mismatch_ignore.yfilter = yfilter;
-    }
-    if(value_path == "number-vpn")
-    {
-        number_vpn.yfilter = yfilter;
-    }
-    if(value_path == "vpn-id")
-    {
-        vpn_id.yfilter = yfilter;
-    }
-    if(value_path == "service-name-xr")
-    {
-        service_name_xr.yfilter = yfilter;
-    }
-    if(value_path == "group-name-xr")
-    {
-        group_name_xr.yfilter = yfilter;
-    }
-    if(value_path == "vpn-name-xr")
-    {
-        vpn_name_xr.yfilter = yfilter;
-    }
-    if(value_path == "is-service-connected")
-    {
-        is_service_connected.yfilter = yfilter;
-    }
-}
-
-bool L2vpnv2::Standby::Discoveries::Discovery::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "signalling-info" || name == "service-name" || name == "group-name" || name == "vpn-name" || name == "mtu-mismatch-ignore" || name == "number-vpn" || name == "vpn-id" || name == "service-name-xr" || name == "group-name-xr" || name == "vpn-name-xr" || name == "is-service-connected")
-        return true;
-    return false;
-}
 
 L2vpnv2::Standby::Discoveries::Discovery::SignallingInfo::SignallingInfo()
     :
@@ -8631,6 +4613,7 @@ bool L2vpnv2::Standby::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort::Remot
 L2vpnv2::Standby::BridgeSummary::BridgeSummary()
     :
     number_groups{YType::uint32, "number-groups"},
+    number_vlan_switches{YType::uint32, "number-vlan-switches"},
     number_bridge_domains{YType::uint32, "number-bridge-domains"},
     number_bridge_domains_up{YType::uint32, "number-bridge-domains-up"},
     number_bridge_domains_shut{YType::uint32, "number-bridge-domains-shut"},
@@ -8668,6 +4651,7 @@ bool L2vpnv2::Standby::BridgeSummary::has_data() const
 {
     if (is_presence_container) return true;
     return number_groups.is_set
+	|| number_vlan_switches.is_set
 	|| number_bridge_domains.is_set
 	|| number_bridge_domains_up.is_set
 	|| number_bridge_domains_shut.is_set
@@ -8698,6 +4682,7 @@ bool L2vpnv2::Standby::BridgeSummary::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number_groups.yfilter)
+	|| ydk::is_set(number_vlan_switches.yfilter)
 	|| ydk::is_set(number_bridge_domains.yfilter)
 	|| ydk::is_set(number_bridge_domains_up.yfilter)
 	|| ydk::is_set(number_bridge_domains_shut.yfilter)
@@ -8743,6 +4728,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::BridgeSummary::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (number_groups.is_set || is_set(number_groups.yfilter)) leaf_name_data.push_back(number_groups.get_name_leafdata());
+    if (number_vlan_switches.is_set || is_set(number_vlan_switches.yfilter)) leaf_name_data.push_back(number_vlan_switches.get_name_leafdata());
     if (number_bridge_domains.is_set || is_set(number_bridge_domains.yfilter)) leaf_name_data.push_back(number_bridge_domains.get_name_leafdata());
     if (number_bridge_domains_up.is_set || is_set(number_bridge_domains_up.yfilter)) leaf_name_data.push_back(number_bridge_domains_up.get_name_leafdata());
     if (number_bridge_domains_shut.is_set || is_set(number_bridge_domains_shut.yfilter)) leaf_name_data.push_back(number_bridge_domains_shut.get_name_leafdata());
@@ -8791,6 +4777,12 @@ void L2vpnv2::Standby::BridgeSummary::set_value(const std::string & value_path, 
         number_groups = value;
         number_groups.value_namespace = name_space;
         number_groups.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "number-vlan-switches")
+    {
+        number_vlan_switches = value;
+        number_vlan_switches.value_namespace = name_space;
+        number_vlan_switches.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-bridge-domains")
     {
@@ -8944,6 +4936,10 @@ void L2vpnv2::Standby::BridgeSummary::set_filter(const std::string & value_path,
     {
         number_groups.yfilter = yfilter;
     }
+    if(value_path == "number-vlan-switches")
+    {
+        number_vlan_switches.yfilter = yfilter;
+    }
     if(value_path == "number-bridge-domains")
     {
         number_bridge_domains.yfilter = yfilter;
@@ -9044,25 +5040,23 @@ void L2vpnv2::Standby::BridgeSummary::set_filter(const std::string & value_path,
 
 bool L2vpnv2::Standby::BridgeSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "number-groups" || name == "number-bridge-domains" || name == "number-bridge-domains-up" || name == "number-bridge-domains-shut" || name == "number-default-bridge-doamins" || name == "number-pbb-edge" || name == "number-pbb-core" || name == "number-p2mp" || name == "number-p2mp-up" || name == "number-p2mp-down" || name == "number-a-cs" || name == "number-a-cs-up" || name == "number-a-cs-down" || name == "number-pseudowires" || name == "number-p-ws-up" || name == "number-p-ws-down" || name == "standby-pseudowires" || name == "num-vn-is" || name == "num-vn-is-up" || name == "num-vn-is-down" || name == "num-vn-is-unresolved" || name == "out-of-memory-state" || name == "partially-programmed-bridges" || name == "partially-programmed-pseudowires" || name == "partially-programmed-a-cs")
+    if(name == "number-groups" || name == "number-vlan-switches" || name == "number-bridge-domains" || name == "number-bridge-domains-up" || name == "number-bridge-domains-shut" || name == "number-default-bridge-doamins" || name == "number-pbb-edge" || name == "number-pbb-core" || name == "number-p2mp" || name == "number-p2mp-up" || name == "number-p2mp-down" || name == "number-a-cs" || name == "number-a-cs-up" || name == "number-a-cs-down" || name == "number-pseudowires" || name == "number-p-ws-up" || name == "number-p-ws-down" || name == "standby-pseudowires" || name == "num-vn-is" || name == "num-vn-is-up" || name == "num-vn-is-down" || name == "num-vn-is-unresolved" || name == "out-of-memory-state" || name == "partially-programmed-bridges" || name == "partially-programmed-pseudowires" || name == "partially-programmed-a-cs")
         return true;
     return false;
 }
 
 L2vpnv2::Standby::Nsr::Nsr()
     :
-    process_role{YType::uint8, "process-role"},
-    process_state{YType::uint8, "process-state"},
+    ha_role{YType::uint8, "ha-role"},
+    issu_role{YType::uint8, "issu-role"},
     sync_flags{YType::uint32, "sync-flags"},
     sw_install_in_progress{YType::boolean, "sw-install-in-progress"}
         ,
     failover_status(std::make_shared<L2vpnv2::Standby::Nsr::FailoverStatus>())
     , nsr_status(std::make_shared<L2vpnv2::Standby::Nsr::NsrStatus>())
     , issu_status(std::make_shared<L2vpnv2::Standby::Nsr::IssuStatus>())
-    , state_transition_time(this, {})
     , xid_info(this, {})
     , report_card(this, {})
-    , event_history(this, {})
 {
     failover_status->parent = this;
     nsr_status->parent = this;
@@ -9078,11 +5072,6 @@ L2vpnv2::Standby::Nsr::~Nsr()
 bool L2vpnv2::Standby::Nsr::has_data() const
 {
     if (is_presence_container) return true;
-    for (std::size_t index=0; index<state_transition_time.len(); index++)
-    {
-        if(state_transition_time[index]->has_data())
-            return true;
-    }
     for (std::size_t index=0; index<xid_info.len(); index++)
     {
         if(xid_info[index]->has_data())
@@ -9093,13 +5082,8 @@ bool L2vpnv2::Standby::Nsr::has_data() const
         if(report_card[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<event_history.len(); index++)
-    {
-        if(event_history[index]->has_data())
-            return true;
-    }
-    return process_role.is_set
-	|| process_state.is_set
+    return ha_role.is_set
+	|| issu_role.is_set
 	|| sync_flags.is_set
 	|| sw_install_in_progress.is_set
 	|| (failover_status !=  nullptr && failover_status->has_data())
@@ -9109,11 +5093,6 @@ bool L2vpnv2::Standby::Nsr::has_data() const
 
 bool L2vpnv2::Standby::Nsr::has_operation() const
 {
-    for (std::size_t index=0; index<state_transition_time.len(); index++)
-    {
-        if(state_transition_time[index]->has_operation())
-            return true;
-    }
     for (std::size_t index=0; index<xid_info.len(); index++)
     {
         if(xid_info[index]->has_operation())
@@ -9124,14 +5103,9 @@ bool L2vpnv2::Standby::Nsr::has_operation() const
         if(report_card[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<event_history.len(); index++)
-    {
-        if(event_history[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(process_role.yfilter)
-	|| ydk::is_set(process_state.yfilter)
+	|| ydk::is_set(ha_role.yfilter)
+	|| ydk::is_set(issu_role.yfilter)
 	|| ydk::is_set(sync_flags.yfilter)
 	|| ydk::is_set(sw_install_in_progress.yfilter)
 	|| (failover_status !=  nullptr && failover_status->has_operation())
@@ -9157,8 +5131,8 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Nsr::get_name_l
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (process_role.is_set || is_set(process_role.yfilter)) leaf_name_data.push_back(process_role.get_name_leafdata());
-    if (process_state.is_set || is_set(process_state.yfilter)) leaf_name_data.push_back(process_state.get_name_leafdata());
+    if (ha_role.is_set || is_set(ha_role.yfilter)) leaf_name_data.push_back(ha_role.get_name_leafdata());
+    if (issu_role.is_set || is_set(issu_role.yfilter)) leaf_name_data.push_back(issu_role.get_name_leafdata());
     if (sync_flags.is_set || is_set(sync_flags.yfilter)) leaf_name_data.push_back(sync_flags.get_name_leafdata());
     if (sw_install_in_progress.is_set || is_set(sw_install_in_progress.yfilter)) leaf_name_data.push_back(sw_install_in_progress.get_name_leafdata());
 
@@ -9195,14 +5169,6 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Nsr::get_child_by_name(const std::stri
         return issu_status;
     }
 
-    if(child_yang_name == "state-transition-time")
-    {
-        auto c = std::make_shared<L2vpnv2::Standby::Nsr::StateTransitionTime>();
-        c->parent = this;
-        state_transition_time.append(c);
-        return c;
-    }
-
     if(child_yang_name == "xid-info")
     {
         auto c = std::make_shared<L2vpnv2::Standby::Nsr::XidInfo>();
@@ -9216,14 +5182,6 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Nsr::get_child_by_name(const std::stri
         auto c = std::make_shared<L2vpnv2::Standby::Nsr::ReportCard>();
         c->parent = this;
         report_card.append(c);
-        return c;
-    }
-
-    if(child_yang_name == "event-history")
-    {
-        auto c = std::make_shared<L2vpnv2::Standby::Nsr::EventHistory>();
-        c->parent = this;
-        event_history.append(c);
         return c;
     }
 
@@ -9250,15 +5208,6 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Nsr::get_childr
     }
 
     count = 0;
-    for (auto c : state_transition_time.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    count = 0;
     for (auto c : xid_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
@@ -9276,31 +5225,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Nsr::get_childr
             children[c->get_segment_path()+count++] = c;
     }
 
-    count = 0;
-    for (auto c : event_history.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
     return children;
 }
 
 void L2vpnv2::Standby::Nsr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "process-role")
+    if(value_path == "ha-role")
     {
-        process_role = value;
-        process_role.value_namespace = name_space;
-        process_role.value_namespace_prefix = name_space_prefix;
+        ha_role = value;
+        ha_role.value_namespace = name_space;
+        ha_role.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "process-state")
+    if(value_path == "issu-role")
     {
-        process_state = value;
-        process_state.value_namespace = name_space;
-        process_state.value_namespace_prefix = name_space_prefix;
+        issu_role = value;
+        issu_role.value_namespace = name_space;
+        issu_role.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sync-flags")
     {
@@ -9318,13 +5258,13 @@ void L2vpnv2::Standby::Nsr::set_value(const std::string & value_path, const std:
 
 void L2vpnv2::Standby::Nsr::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "process-role")
+    if(value_path == "ha-role")
     {
-        process_role.yfilter = yfilter;
+        ha_role.yfilter = yfilter;
     }
-    if(value_path == "process-state")
+    if(value_path == "issu-role")
     {
-        process_state.yfilter = yfilter;
+        issu_role.yfilter = yfilter;
     }
     if(value_path == "sync-flags")
     {
@@ -9338,7 +5278,7 @@ void L2vpnv2::Standby::Nsr::set_filter(const std::string & value_path, YFilter y
 
 bool L2vpnv2::Standby::Nsr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "failover-status" || name == "nsr-status" || name == "issu-status" || name == "state-transition-time" || name == "xid-info" || name == "report-card" || name == "event-history" || name == "process-role" || name == "process-state" || name == "sync-flags" || name == "sw-install-in-progress")
+    if(name == "failover-status" || name == "nsr-status" || name == "issu-status" || name == "xid-info" || name == "report-card" || name == "ha-role" || name == "issu-role" || name == "sync-flags" || name == "sw-install-in-progress")
         return true;
     return false;
 }
@@ -9458,7 +5398,8 @@ bool L2vpnv2::Standby::Nsr::FailoverStatus::has_leaf_or_child_of_name(const std:
 
 L2vpnv2::Standby::Nsr::NsrStatus::NsrStatus()
     :
-    role{YType::enumeration, "role"}
+    nsr_role{YType::uint8, "nsr-role"},
+    issu_role{YType::uint8, "issu-role"}
         ,
     idt_status(std::make_shared<L2vpnv2::Standby::Nsr::NsrStatus::IdtStatus>())
     , previ_ous_idt_status(std::make_shared<L2vpnv2::Standby::Nsr::NsrStatus::PreviOusIdtStatus>())
@@ -9476,7 +5417,8 @@ L2vpnv2::Standby::Nsr::NsrStatus::~NsrStatus()
 bool L2vpnv2::Standby::Nsr::NsrStatus::has_data() const
 {
     if (is_presence_container) return true;
-    return role.is_set
+    return nsr_role.is_set
+	|| issu_role.is_set
 	|| (idt_status !=  nullptr && idt_status->has_data())
 	|| (previ_ous_idt_status !=  nullptr && previ_ous_idt_status->has_data());
 }
@@ -9484,7 +5426,8 @@ bool L2vpnv2::Standby::Nsr::NsrStatus::has_data() const
 bool L2vpnv2::Standby::Nsr::NsrStatus::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(role.yfilter)
+	|| ydk::is_set(nsr_role.yfilter)
+	|| ydk::is_set(issu_role.yfilter)
 	|| (idt_status !=  nullptr && idt_status->has_operation())
 	|| (previ_ous_idt_status !=  nullptr && previ_ous_idt_status->has_operation());
 }
@@ -9507,7 +5450,8 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Nsr::NsrStatus:
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (role.is_set || is_set(role.yfilter)) leaf_name_data.push_back(role.get_name_leafdata());
+    if (nsr_role.is_set || is_set(nsr_role.yfilter)) leaf_name_data.push_back(nsr_role.get_name_leafdata());
+    if (issu_role.is_set || is_set(issu_role.yfilter)) leaf_name_data.push_back(issu_role.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -9555,25 +5499,35 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Nsr::NsrStatus:
 
 void L2vpnv2::Standby::Nsr::NsrStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "role")
+    if(value_path == "nsr-role")
     {
-        role = value;
-        role.value_namespace = name_space;
-        role.value_namespace_prefix = name_space_prefix;
+        nsr_role = value;
+        nsr_role.value_namespace = name_space;
+        nsr_role.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "issu-role")
+    {
+        issu_role = value;
+        issu_role.value_namespace = name_space;
+        issu_role.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void L2vpnv2::Standby::Nsr::NsrStatus::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "role")
+    if(value_path == "nsr-role")
     {
-        role.yfilter = yfilter;
+        nsr_role.yfilter = yfilter;
+    }
+    if(value_path == "issu-role")
+    {
+        issu_role.yfilter = yfilter;
     }
 }
 
 bool L2vpnv2::Standby::Nsr::NsrStatus::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "idt-status" || name == "previ-ous-idt-status" || name == "role")
+    if(name == "idt-status" || name == "previ-ous-idt-status" || name == "nsr-role" || name == "issu-role")
         return true;
     return false;
 }
@@ -9890,7 +5844,8 @@ bool L2vpnv2::Standby::Nsr::NsrStatus::PreviOusIdtStatus::has_leaf_or_child_of_n
 
 L2vpnv2::Standby::Nsr::IssuStatus::IssuStatus()
     :
-    role{YType::enumeration, "role"}
+    nsr_role{YType::uint8, "nsr-role"},
+    issu_role{YType::uint8, "issu-role"}
         ,
     idt_status(std::make_shared<L2vpnv2::Standby::Nsr::IssuStatus::IdtStatus>())
     , previ_ous_idt_status(std::make_shared<L2vpnv2::Standby::Nsr::IssuStatus::PreviOusIdtStatus>())
@@ -9908,7 +5863,8 @@ L2vpnv2::Standby::Nsr::IssuStatus::~IssuStatus()
 bool L2vpnv2::Standby::Nsr::IssuStatus::has_data() const
 {
     if (is_presence_container) return true;
-    return role.is_set
+    return nsr_role.is_set
+	|| issu_role.is_set
 	|| (idt_status !=  nullptr && idt_status->has_data())
 	|| (previ_ous_idt_status !=  nullptr && previ_ous_idt_status->has_data());
 }
@@ -9916,7 +5872,8 @@ bool L2vpnv2::Standby::Nsr::IssuStatus::has_data() const
 bool L2vpnv2::Standby::Nsr::IssuStatus::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(role.yfilter)
+	|| ydk::is_set(nsr_role.yfilter)
+	|| ydk::is_set(issu_role.yfilter)
 	|| (idt_status !=  nullptr && idt_status->has_operation())
 	|| (previ_ous_idt_status !=  nullptr && previ_ous_idt_status->has_operation());
 }
@@ -9939,7 +5896,8 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Nsr::IssuStatus
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (role.is_set || is_set(role.yfilter)) leaf_name_data.push_back(role.get_name_leafdata());
+    if (nsr_role.is_set || is_set(nsr_role.yfilter)) leaf_name_data.push_back(nsr_role.get_name_leafdata());
+    if (issu_role.is_set || is_set(issu_role.yfilter)) leaf_name_data.push_back(issu_role.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -9987,25 +5945,35 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Nsr::IssuStatus
 
 void L2vpnv2::Standby::Nsr::IssuStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "role")
+    if(value_path == "nsr-role")
     {
-        role = value;
-        role.value_namespace = name_space;
-        role.value_namespace_prefix = name_space_prefix;
+        nsr_role = value;
+        nsr_role.value_namespace = name_space;
+        nsr_role.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "issu-role")
+    {
+        issu_role = value;
+        issu_role.value_namespace = name_space;
+        issu_role.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void L2vpnv2::Standby::Nsr::IssuStatus::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "role")
+    if(value_path == "nsr-role")
     {
-        role.yfilter = yfilter;
+        nsr_role.yfilter = yfilter;
+    }
+    if(value_path == "issu-role")
+    {
+        issu_role.yfilter = yfilter;
     }
 }
 
 bool L2vpnv2::Standby::Nsr::IssuStatus::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "idt-status" || name == "previ-ous-idt-status" || name == "role")
+    if(name == "idt-status" || name == "previ-ous-idt-status" || name == "nsr-role" || name == "issu-role")
         return true;
     return false;
 }
@@ -10320,91 +6288,6 @@ bool L2vpnv2::Standby::Nsr::IssuStatus::PreviOusIdtStatus::has_leaf_or_child_of_
     return false;
 }
 
-L2vpnv2::Standby::Nsr::StateTransitionTime::StateTransitionTime()
-    :
-    entry{YType::uint32, "entry"}
-{
-
-    yang_name = "state-transition-time"; yang_parent_name = "nsr"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-L2vpnv2::Standby::Nsr::StateTransitionTime::~StateTransitionTime()
-{
-}
-
-bool L2vpnv2::Standby::Nsr::StateTransitionTime::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool L2vpnv2::Standby::Nsr::StateTransitionTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string L2vpnv2::Standby::Nsr::StateTransitionTime::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/nsr/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string L2vpnv2::Standby::Nsr::StateTransitionTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state-transition-time";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Nsr::StateTransitionTime::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnv2::Standby::Nsr::StateTransitionTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Nsr::StateTransitionTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void L2vpnv2::Standby::Nsr::StateTransitionTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnv2::Standby::Nsr::StateTransitionTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool L2vpnv2::Standby::Nsr::StateTransitionTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
 L2vpnv2::Standby::Nsr::XidInfo::XidInfo()
     :
     app_type{YType::enumeration, "app-type"},
@@ -10510,7 +6393,8 @@ L2vpnv2::Standby::Nsr::ReportCard::ReportCard()
     connection_change_time{YType::uint32, "connection-change-time"},
     collaborator_idt_done{YType::boolean, "collaborator-idt-done"},
     idt_time{YType::uint32, "idt-time"},
-    collaborator_skipped{YType::boolean, "collaborator-skipped"}
+    collaborator_skipped{YType::boolean, "collaborator-skipped"},
+    expect_idt{YType::boolean, "expect-idt"}
 {
 
     yang_name = "report-card"; yang_parent_name = "nsr"; is_top_level_class = false; has_list_ancestor = false; 
@@ -10527,7 +6411,8 @@ bool L2vpnv2::Standby::Nsr::ReportCard::has_data() const
 	|| connection_change_time.is_set
 	|| collaborator_idt_done.is_set
 	|| idt_time.is_set
-	|| collaborator_skipped.is_set;
+	|| collaborator_skipped.is_set
+	|| expect_idt.is_set;
 }
 
 bool L2vpnv2::Standby::Nsr::ReportCard::has_operation() const
@@ -10537,7 +6422,8 @@ bool L2vpnv2::Standby::Nsr::ReportCard::has_operation() const
 	|| ydk::is_set(connection_change_time.yfilter)
 	|| ydk::is_set(collaborator_idt_done.yfilter)
 	|| ydk::is_set(idt_time.yfilter)
-	|| ydk::is_set(collaborator_skipped.yfilter);
+	|| ydk::is_set(collaborator_skipped.yfilter)
+	|| ydk::is_set(expect_idt.yfilter);
 }
 
 std::string L2vpnv2::Standby::Nsr::ReportCard::get_absolute_path() const
@@ -10563,6 +6449,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Nsr::ReportCard
     if (collaborator_idt_done.is_set || is_set(collaborator_idt_done.yfilter)) leaf_name_data.push_back(collaborator_idt_done.get_name_leafdata());
     if (idt_time.is_set || is_set(idt_time.yfilter)) leaf_name_data.push_back(idt_time.get_name_leafdata());
     if (collaborator_skipped.is_set || is_set(collaborator_skipped.yfilter)) leaf_name_data.push_back(collaborator_skipped.get_name_leafdata());
+    if (expect_idt.is_set || is_set(expect_idt.yfilter)) leaf_name_data.push_back(expect_idt.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -10612,6 +6499,12 @@ void L2vpnv2::Standby::Nsr::ReportCard::set_value(const std::string & value_path
         collaborator_skipped.value_namespace = name_space;
         collaborator_skipped.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "expect-idt")
+    {
+        expect_idt = value;
+        expect_idt.value_namespace = name_space;
+        expect_idt.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void L2vpnv2::Standby::Nsr::ReportCard::set_filter(const std::string & value_path, YFilter yfilter)
@@ -10636,152 +6529,15 @@ void L2vpnv2::Standby::Nsr::ReportCard::set_filter(const std::string & value_pat
     {
         collaborator_skipped.yfilter = yfilter;
     }
+    if(value_path == "expect-idt")
+    {
+        expect_idt.yfilter = yfilter;
+    }
 }
 
 bool L2vpnv2::Standby::Nsr::ReportCard::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "collaborator-is-connected" || name == "connection-change-time" || name == "collaborator-idt-done" || name == "idt-time" || name == "collaborator-skipped")
-        return true;
-    return false;
-}
-
-L2vpnv2::Standby::Nsr::EventHistory::EventHistory()
-    :
-    previous_state{YType::uint8, "previous-state"},
-    new_state{YType::uint8, "new-state"},
-    process_event{YType::uint16, "process-event"},
-    process_collaborator{YType::uint16, "process-collaborator"},
-    event_timestamp{YType::uint32, "event-timestamp"}
-{
-
-    yang_name = "event-history"; yang_parent_name = "nsr"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-L2vpnv2::Standby::Nsr::EventHistory::~EventHistory()
-{
-}
-
-bool L2vpnv2::Standby::Nsr::EventHistory::has_data() const
-{
-    if (is_presence_container) return true;
-    return previous_state.is_set
-	|| new_state.is_set
-	|| process_event.is_set
-	|| process_collaborator.is_set
-	|| event_timestamp.is_set;
-}
-
-bool L2vpnv2::Standby::Nsr::EventHistory::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(previous_state.yfilter)
-	|| ydk::is_set(new_state.yfilter)
-	|| ydk::is_set(process_event.yfilter)
-	|| ydk::is_set(process_collaborator.yfilter)
-	|| ydk::is_set(event_timestamp.yfilter);
-}
-
-std::string L2vpnv2::Standby::Nsr::EventHistory::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/nsr/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string L2vpnv2::Standby::Nsr::EventHistory::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "event-history";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Nsr::EventHistory::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (previous_state.is_set || is_set(previous_state.yfilter)) leaf_name_data.push_back(previous_state.get_name_leafdata());
-    if (new_state.is_set || is_set(new_state.yfilter)) leaf_name_data.push_back(new_state.get_name_leafdata());
-    if (process_event.is_set || is_set(process_event.yfilter)) leaf_name_data.push_back(process_event.get_name_leafdata());
-    if (process_collaborator.is_set || is_set(process_collaborator.yfilter)) leaf_name_data.push_back(process_collaborator.get_name_leafdata());
-    if (event_timestamp.is_set || is_set(event_timestamp.yfilter)) leaf_name_data.push_back(event_timestamp.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnv2::Standby::Nsr::EventHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Nsr::EventHistory::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void L2vpnv2::Standby::Nsr::EventHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "previous-state")
-    {
-        previous_state = value;
-        previous_state.value_namespace = name_space;
-        previous_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "new-state")
-    {
-        new_state = value;
-        new_state.value_namespace = name_space;
-        new_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "process-event")
-    {
-        process_event = value;
-        process_event.value_namespace = name_space;
-        process_event.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "process-collaborator")
-    {
-        process_collaborator = value;
-        process_collaborator.value_namespace = name_space;
-        process_collaborator.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "event-timestamp")
-    {
-        event_timestamp = value;
-        event_timestamp.value_namespace = name_space;
-        event_timestamp.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnv2::Standby::Nsr::EventHistory::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "previous-state")
-    {
-        previous_state.yfilter = yfilter;
-    }
-    if(value_path == "new-state")
-    {
-        new_state.yfilter = yfilter;
-    }
-    if(value_path == "process-event")
-    {
-        process_event.yfilter = yfilter;
-    }
-    if(value_path == "process-collaborator")
-    {
-        process_collaborator.yfilter = yfilter;
-    }
-    if(value_path == "event-timestamp")
-    {
-        event_timestamp.yfilter = yfilter;
-    }
-}
-
-bool L2vpnv2::Standby::Nsr::EventHistory::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "previous-state" || name == "new-state" || name == "process-event" || name == "process-collaborator" || name == "event-timestamp")
+    if(name == "collaborator-is-connected" || name == "connection-change-time" || name == "collaborator-idt-done" || name == "idt-time" || name == "collaborator-skipped" || name == "expect-idt")
         return true;
     return false;
 }
@@ -11221,6 +6977,1117 @@ void L2vpnv2::Standby::PreferredPaths::PreferredPath::VirtualCircuit::set_filter
 bool L2vpnv2::Standby::PreferredPaths::PreferredPath::VirtualCircuit::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "peer-id" || name == "source-address" || name == "pwid-type" || name == "pwid" || name == "fe-ctype")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::PseudowireHeadend::PseudowireHeadend()
+    :
+    detail_interfaces(std::make_shared<L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces>())
+    , summary(std::make_shared<L2vpnv2::Standby::PseudowireHeadend::Summary>())
+{
+    detail_interfaces->parent = this;
+    summary->parent = this;
+
+    yang_name = "pseudowire-headend"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::PseudowireHeadend::~PseudowireHeadend()
+{
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::has_data() const
+{
+    if (is_presence_container) return true;
+    return (detail_interfaces !=  nullptr && detail_interfaces->has_data())
+	|| (summary !=  nullptr && summary->has_data());
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::has_operation() const
+{
+    return is_set(yfilter)
+	|| (detail_interfaces !=  nullptr && detail_interfaces->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
+}
+
+std::string L2vpnv2::Standby::PseudowireHeadend::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::PseudowireHeadend::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pseudowire-headend";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::PseudowireHeadend::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::PseudowireHeadend::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "detail-interfaces")
+    {
+        if(detail_interfaces == nullptr)
+        {
+            detail_interfaces = std::make_shared<L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces>();
+        }
+        return detail_interfaces;
+    }
+
+    if(child_yang_name == "summary")
+    {
+        if(summary == nullptr)
+        {
+            summary = std::make_shared<L2vpnv2::Standby::PseudowireHeadend::Summary>();
+        }
+        return summary;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::PseudowireHeadend::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(detail_interfaces != nullptr)
+    {
+        children["detail-interfaces"] = detail_interfaces;
+    }
+
+    if(summary != nullptr)
+    {
+        children["summary"] = summary;
+    }
+
+    return children;
+}
+
+void L2vpnv2::Standby::PseudowireHeadend::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void L2vpnv2::Standby::PseudowireHeadend::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detail-interfaces" || name == "summary")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterfaces()
+    :
+    detail_interface(this, {"interface_name"})
+{
+
+    yang_name = "detail-interfaces"; yang_parent_name = "pseudowire-headend"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::~DetailInterfaces()
+{
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail_interface.len(); index++)
+    {
+        if(detail_interface[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::has_operation() const
+{
+    for (std::size_t index=0; index<detail_interface.len(); index++)
+    {
+        if(detail_interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/pseudowire-headend/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "detail-interfaces";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "detail-interface")
+    {
+        auto c = std::make_shared<L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface>();
+        c->parent = this;
+        detail_interface.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : detail_interface.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detail-interface")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::DetailInterface()
+    :
+    interface_name{YType::str, "interface-name"},
+    interface_state{YType::enumeration, "interface-state"},
+    admin_state{YType::enumeration, "admin-state"},
+    mtu{YType::uint32, "mtu"},
+    bandwidth{YType::uint32, "bandwidth"},
+    label{YType::uint32, "label"},
+    l2_overhead{YType::uint32, "l2-overhead"},
+    vctype{YType::uint32, "vctype"},
+    control_word{YType::boolean, "control-word"}
+        ,
+    l2_address(std::make_shared<L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address>())
+    , generic_interface_list(std::make_shared<L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList>())
+{
+    l2_address->parent = this;
+    generic_interface_list->parent = this;
+
+    yang_name = "detail-interface"; yang_parent_name = "detail-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::~DetailInterface()
+{
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::has_data() const
+{
+    if (is_presence_container) return true;
+    return interface_name.is_set
+	|| interface_state.is_set
+	|| admin_state.is_set
+	|| mtu.is_set
+	|| bandwidth.is_set
+	|| label.is_set
+	|| l2_overhead.is_set
+	|| vctype.is_set
+	|| control_word.is_set
+	|| (l2_address !=  nullptr && l2_address->has_data())
+	|| (generic_interface_list !=  nullptr && generic_interface_list->has_data());
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(interface_state.yfilter)
+	|| ydk::is_set(admin_state.yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(bandwidth.yfilter)
+	|| ydk::is_set(label.yfilter)
+	|| ydk::is_set(l2_overhead.yfilter)
+	|| ydk::is_set(vctype.yfilter)
+	|| ydk::is_set(control_word.yfilter)
+	|| (l2_address !=  nullptr && l2_address->has_operation())
+	|| (generic_interface_list !=  nullptr && generic_interface_list->has_operation());
+}
+
+std::string L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/pseudowire-headend/detail-interfaces/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "detail-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_state.is_set || is_set(interface_state.yfilter)) leaf_name_data.push_back(interface_state.get_name_leafdata());
+    if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (bandwidth.is_set || is_set(bandwidth.yfilter)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (l2_overhead.is_set || is_set(l2_overhead.yfilter)) leaf_name_data.push_back(l2_overhead.get_name_leafdata());
+    if (vctype.is_set || is_set(vctype.yfilter)) leaf_name_data.push_back(vctype.get_name_leafdata());
+    if (control_word.is_set || is_set(control_word.yfilter)) leaf_name_data.push_back(control_word.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "l2-address")
+    {
+        if(l2_address == nullptr)
+        {
+            l2_address = std::make_shared<L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address>();
+        }
+        return l2_address;
+    }
+
+    if(child_yang_name == "generic-interface-list")
+    {
+        if(generic_interface_list == nullptr)
+        {
+            generic_interface_list = std::make_shared<L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList>();
+        }
+        return generic_interface_list;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(l2_address != nullptr)
+    {
+        children["l2-address"] = l2_address;
+    }
+
+    if(generic_interface_list != nullptr)
+    {
+        children["generic-interface-list"] = generic_interface_list;
+    }
+
+    return children;
+}
+
+void L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-state")
+    {
+        interface_state = value;
+        interface_state.value_namespace = name_space;
+        interface_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "admin-state")
+    {
+        admin_state = value;
+        admin_state.value_namespace = name_space;
+        admin_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mtu")
+    {
+        mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bandwidth")
+    {
+        bandwidth = value;
+        bandwidth.value_namespace = name_space;
+        bandwidth.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label")
+    {
+        label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "l2-overhead")
+    {
+        l2_overhead = value;
+        l2_overhead.value_namespace = name_space;
+        l2_overhead.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vctype")
+    {
+        vctype = value;
+        vctype.value_namespace = name_space;
+        vctype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "control-word")
+    {
+        control_word = value;
+        control_word.value_namespace = name_space;
+        control_word.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-state")
+    {
+        interface_state.yfilter = yfilter;
+    }
+    if(value_path == "admin-state")
+    {
+        admin_state.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "bandwidth")
+    {
+        bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+    if(value_path == "l2-overhead")
+    {
+        l2_overhead.yfilter = yfilter;
+    }
+    if(value_path == "vctype")
+    {
+        vctype.yfilter = yfilter;
+    }
+    if(value_path == "control-word")
+    {
+        control_word.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2-address" || name == "generic-interface-list" || name == "interface-name" || name == "interface-state" || name == "admin-state" || name == "mtu" || name == "bandwidth" || name == "label" || name == "l2-overhead" || name == "vctype" || name == "control-word")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::L2Address()
+    :
+    interface_type{YType::enumeration, "interface-type"}
+        ,
+    mac_address(std::make_shared<L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::MacAddress>())
+{
+    mac_address->parent = this;
+
+    yang_name = "l2-address"; yang_parent_name = "detail-interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::~L2Address()
+{
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::has_data() const
+{
+    if (is_presence_container) return true;
+    return interface_type.is_set
+	|| (mac_address !=  nullptr && mac_address->has_data());
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_type.yfilter)
+	|| (mac_address !=  nullptr && mac_address->has_operation());
+}
+
+std::string L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_type.is_set || is_set(interface_type.yfilter)) leaf_name_data.push_back(interface_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mac-address")
+    {
+        if(mac_address == nullptr)
+        {
+            mac_address = std::make_shared<L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::MacAddress>();
+        }
+        return mac_address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(mac_address != nullptr)
+    {
+        children["mac-address"] = mac_address;
+    }
+
+    return children;
+}
+
+void L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-type")
+    {
+        interface_type = value;
+        interface_type.value_namespace = name_space;
+        interface_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-type")
+    {
+        interface_type.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mac-address" || name == "interface-type")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::MacAddress::MacAddress()
+    :
+    mac_address{YType::str, "mac-address"}
+{
+
+    yang_name = "mac-address"; yang_parent_name = "l2-address"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::MacAddress::~MacAddress()
+{
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::MacAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return mac_address.is_set;
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::MacAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mac_address.yfilter);
+}
+
+std::string L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::MacAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mac-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::MacAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::MacAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mac-address")
+    {
+        mac_address = value;
+        mac_address.value_namespace = name_space;
+        mac_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::MacAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mac-address")
+    {
+        mac_address.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::L2Address::MacAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mac-address")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::GenericInterfaceList()
+    :
+    generic_interface_list_name{YType::str, "generic-interface-list-name"},
+    id{YType::uint32, "id"}
+        ,
+    interface_detail(this, {})
+{
+
+    yang_name = "generic-interface-list"; yang_parent_name = "detail-interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::~GenericInterfaceList()
+{
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_detail.len(); index++)
+    {
+        if(interface_detail[index]->has_data())
+            return true;
+    }
+    return generic_interface_list_name.is_set
+	|| id.is_set;
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::has_operation() const
+{
+    for (std::size_t index=0; index<interface_detail.len(); index++)
+    {
+        if(interface_detail[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(generic_interface_list_name.yfilter)
+	|| ydk::is_set(id.yfilter);
+}
+
+std::string L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "generic-interface-list";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (generic_interface_list_name.is_set || is_set(generic_interface_list_name.yfilter)) leaf_name_data.push_back(generic_interface_list_name.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-detail")
+    {
+        auto c = std::make_shared<L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::InterfaceDetail>();
+        c->parent = this;
+        interface_detail.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : interface_detail.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "generic-interface-list-name")
+    {
+        generic_interface_list_name = value;
+        generic_interface_list_name.value_namespace = name_space;
+        generic_interface_list_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "generic-interface-list-name")
+    {
+        generic_interface_list_name.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-detail" || name == "generic-interface-list-name" || name == "id")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::InterfaceDetail::InterfaceDetail()
+    :
+    interface_name{YType::str, "interface-name"},
+    bundle_interface_name{YType::str, "bundle-interface-name"},
+    interface_state{YType::enumeration, "interface-state"},
+    replicate_state{YType::enumeration, "replicate-state"},
+    misconfigured{YType::boolean, "misconfigured"}
+{
+
+    yang_name = "interface-detail"; yang_parent_name = "generic-interface-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::InterfaceDetail::~InterfaceDetail()
+{
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::InterfaceDetail::has_data() const
+{
+    if (is_presence_container) return true;
+    return interface_name.is_set
+	|| bundle_interface_name.is_set
+	|| interface_state.is_set
+	|| replicate_state.is_set
+	|| misconfigured.is_set;
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::InterfaceDetail::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(bundle_interface_name.yfilter)
+	|| ydk::is_set(interface_state.yfilter)
+	|| ydk::is_set(replicate_state.yfilter)
+	|| ydk::is_set(misconfigured.yfilter);
+}
+
+std::string L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::InterfaceDetail::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-detail";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::InterfaceDetail::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (bundle_interface_name.is_set || is_set(bundle_interface_name.yfilter)) leaf_name_data.push_back(bundle_interface_name.get_name_leafdata());
+    if (interface_state.is_set || is_set(interface_state.yfilter)) leaf_name_data.push_back(interface_state.get_name_leafdata());
+    if (replicate_state.is_set || is_set(replicate_state.yfilter)) leaf_name_data.push_back(replicate_state.get_name_leafdata());
+    if (misconfigured.is_set || is_set(misconfigured.yfilter)) leaf_name_data.push_back(misconfigured.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::InterfaceDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::InterfaceDetail::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::InterfaceDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bundle-interface-name")
+    {
+        bundle_interface_name = value;
+        bundle_interface_name.value_namespace = name_space;
+        bundle_interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-state")
+    {
+        interface_state = value;
+        interface_state.value_namespace = name_space;
+        interface_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "replicate-state")
+    {
+        replicate_state = value;
+        replicate_state.value_namespace = name_space;
+        replicate_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "misconfigured")
+    {
+        misconfigured = value;
+        misconfigured.value_namespace = name_space;
+        misconfigured.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::InterfaceDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "bundle-interface-name")
+    {
+        bundle_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-state")
+    {
+        interface_state.yfilter = yfilter;
+    }
+    if(value_path == "replicate-state")
+    {
+        replicate_state.yfilter = yfilter;
+    }
+    if(value_path == "misconfigured")
+    {
+        misconfigured.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::DetailInterfaces::DetailInterface::GenericInterfaceList::InterfaceDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "bundle-interface-name" || name == "interface-state" || name == "replicate-state" || name == "misconfigured")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::PseudowireHeadend::Summary::Summary()
+    :
+    interfaces{YType::uint32, "interfaces"},
+    up_interfaces{YType::uint32, "up-interfaces"},
+    down_interfaces{YType::uint32, "down-interfaces"},
+    admin_down_interfaces{YType::uint32, "admin-down-interfaces"},
+    psuedowire_ether_interfaces{YType::uint32, "psuedowire-ether-interfaces"},
+    up_psuedowire_ether_interfaces{YType::uint32, "up-psuedowire-ether-interfaces"},
+    down_pseudowire_ether_interfaces{YType::uint32, "down-pseudowire-ether-interfaces"},
+    admin_down_pseudowire_ether_interfaces{YType::uint32, "admin-down-pseudowire-ether-interfaces"},
+    pseudowire_iw_interfaces{YType::uint32, "pseudowire-iw-interfaces"},
+    up_pseudowire_iw_interfaces{YType::uint32, "up-pseudowire-iw-interfaces"},
+    down_pseudowire_iw_interfaces{YType::uint32, "down-pseudowire-iw-interfaces"},
+    admin_down_pseudowire_iw_interfaces{YType::uint32, "admin-down-pseudowire-iw-interfaces"}
+{
+
+    yang_name = "summary"; yang_parent_name = "pseudowire-headend"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::PseudowireHeadend::Summary::~Summary()
+{
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::Summary::has_data() const
+{
+    if (is_presence_container) return true;
+    return interfaces.is_set
+	|| up_interfaces.is_set
+	|| down_interfaces.is_set
+	|| admin_down_interfaces.is_set
+	|| psuedowire_ether_interfaces.is_set
+	|| up_psuedowire_ether_interfaces.is_set
+	|| down_pseudowire_ether_interfaces.is_set
+	|| admin_down_pseudowire_ether_interfaces.is_set
+	|| pseudowire_iw_interfaces.is_set
+	|| up_pseudowire_iw_interfaces.is_set
+	|| down_pseudowire_iw_interfaces.is_set
+	|| admin_down_pseudowire_iw_interfaces.is_set;
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::Summary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interfaces.yfilter)
+	|| ydk::is_set(up_interfaces.yfilter)
+	|| ydk::is_set(down_interfaces.yfilter)
+	|| ydk::is_set(admin_down_interfaces.yfilter)
+	|| ydk::is_set(psuedowire_ether_interfaces.yfilter)
+	|| ydk::is_set(up_psuedowire_ether_interfaces.yfilter)
+	|| ydk::is_set(down_pseudowire_ether_interfaces.yfilter)
+	|| ydk::is_set(admin_down_pseudowire_ether_interfaces.yfilter)
+	|| ydk::is_set(pseudowire_iw_interfaces.yfilter)
+	|| ydk::is_set(up_pseudowire_iw_interfaces.yfilter)
+	|| ydk::is_set(down_pseudowire_iw_interfaces.yfilter)
+	|| ydk::is_set(admin_down_pseudowire_iw_interfaces.yfilter);
+}
+
+std::string L2vpnv2::Standby::PseudowireHeadend::Summary::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/pseudowire-headend/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::PseudowireHeadend::Summary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::PseudowireHeadend::Summary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interfaces.is_set || is_set(interfaces.yfilter)) leaf_name_data.push_back(interfaces.get_name_leafdata());
+    if (up_interfaces.is_set || is_set(up_interfaces.yfilter)) leaf_name_data.push_back(up_interfaces.get_name_leafdata());
+    if (down_interfaces.is_set || is_set(down_interfaces.yfilter)) leaf_name_data.push_back(down_interfaces.get_name_leafdata());
+    if (admin_down_interfaces.is_set || is_set(admin_down_interfaces.yfilter)) leaf_name_data.push_back(admin_down_interfaces.get_name_leafdata());
+    if (psuedowire_ether_interfaces.is_set || is_set(psuedowire_ether_interfaces.yfilter)) leaf_name_data.push_back(psuedowire_ether_interfaces.get_name_leafdata());
+    if (up_psuedowire_ether_interfaces.is_set || is_set(up_psuedowire_ether_interfaces.yfilter)) leaf_name_data.push_back(up_psuedowire_ether_interfaces.get_name_leafdata());
+    if (down_pseudowire_ether_interfaces.is_set || is_set(down_pseudowire_ether_interfaces.yfilter)) leaf_name_data.push_back(down_pseudowire_ether_interfaces.get_name_leafdata());
+    if (admin_down_pseudowire_ether_interfaces.is_set || is_set(admin_down_pseudowire_ether_interfaces.yfilter)) leaf_name_data.push_back(admin_down_pseudowire_ether_interfaces.get_name_leafdata());
+    if (pseudowire_iw_interfaces.is_set || is_set(pseudowire_iw_interfaces.yfilter)) leaf_name_data.push_back(pseudowire_iw_interfaces.get_name_leafdata());
+    if (up_pseudowire_iw_interfaces.is_set || is_set(up_pseudowire_iw_interfaces.yfilter)) leaf_name_data.push_back(up_pseudowire_iw_interfaces.get_name_leafdata());
+    if (down_pseudowire_iw_interfaces.is_set || is_set(down_pseudowire_iw_interfaces.yfilter)) leaf_name_data.push_back(down_pseudowire_iw_interfaces.get_name_leafdata());
+    if (admin_down_pseudowire_iw_interfaces.is_set || is_set(admin_down_pseudowire_iw_interfaces.yfilter)) leaf_name_data.push_back(admin_down_pseudowire_iw_interfaces.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::PseudowireHeadend::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::PseudowireHeadend::Summary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2vpnv2::Standby::PseudowireHeadend::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interfaces")
+    {
+        interfaces = value;
+        interfaces.value_namespace = name_space;
+        interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "up-interfaces")
+    {
+        up_interfaces = value;
+        up_interfaces.value_namespace = name_space;
+        up_interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "down-interfaces")
+    {
+        down_interfaces = value;
+        down_interfaces.value_namespace = name_space;
+        down_interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "admin-down-interfaces")
+    {
+        admin_down_interfaces = value;
+        admin_down_interfaces.value_namespace = name_space;
+        admin_down_interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "psuedowire-ether-interfaces")
+    {
+        psuedowire_ether_interfaces = value;
+        psuedowire_ether_interfaces.value_namespace = name_space;
+        psuedowire_ether_interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "up-psuedowire-ether-interfaces")
+    {
+        up_psuedowire_ether_interfaces = value;
+        up_psuedowire_ether_interfaces.value_namespace = name_space;
+        up_psuedowire_ether_interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "down-pseudowire-ether-interfaces")
+    {
+        down_pseudowire_ether_interfaces = value;
+        down_pseudowire_ether_interfaces.value_namespace = name_space;
+        down_pseudowire_ether_interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "admin-down-pseudowire-ether-interfaces")
+    {
+        admin_down_pseudowire_ether_interfaces = value;
+        admin_down_pseudowire_ether_interfaces.value_namespace = name_space;
+        admin_down_pseudowire_ether_interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pseudowire-iw-interfaces")
+    {
+        pseudowire_iw_interfaces = value;
+        pseudowire_iw_interfaces.value_namespace = name_space;
+        pseudowire_iw_interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "up-pseudowire-iw-interfaces")
+    {
+        up_pseudowire_iw_interfaces = value;
+        up_pseudowire_iw_interfaces.value_namespace = name_space;
+        up_pseudowire_iw_interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "down-pseudowire-iw-interfaces")
+    {
+        down_pseudowire_iw_interfaces = value;
+        down_pseudowire_iw_interfaces.value_namespace = name_space;
+        down_pseudowire_iw_interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "admin-down-pseudowire-iw-interfaces")
+    {
+        admin_down_pseudowire_iw_interfaces = value;
+        admin_down_pseudowire_iw_interfaces.value_namespace = name_space;
+        admin_down_pseudowire_iw_interfaces.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::PseudowireHeadend::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interfaces")
+    {
+        interfaces.yfilter = yfilter;
+    }
+    if(value_path == "up-interfaces")
+    {
+        up_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "down-interfaces")
+    {
+        down_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "admin-down-interfaces")
+    {
+        admin_down_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "psuedowire-ether-interfaces")
+    {
+        psuedowire_ether_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "up-psuedowire-ether-interfaces")
+    {
+        up_psuedowire_ether_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "down-pseudowire-ether-interfaces")
+    {
+        down_pseudowire_ether_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "admin-down-pseudowire-ether-interfaces")
+    {
+        admin_down_pseudowire_ether_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "pseudowire-iw-interfaces")
+    {
+        pseudowire_iw_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "up-pseudowire-iw-interfaces")
+    {
+        up_pseudowire_iw_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "down-pseudowire-iw-interfaces")
+    {
+        down_pseudowire_iw_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "admin-down-pseudowire-iw-interfaces")
+    {
+        admin_down_pseudowire_iw_interfaces.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::PseudowireHeadend::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces" || name == "up-interfaces" || name == "down-interfaces" || name == "admin-down-interfaces" || name == "psuedowire-ether-interfaces" || name == "up-psuedowire-ether-interfaces" || name == "down-pseudowire-ether-interfaces" || name == "admin-down-pseudowire-ether-interfaces" || name == "pseudowire-iw-interfaces" || name == "up-pseudowire-iw-interfaces" || name == "down-pseudowire-iw-interfaces" || name == "admin-down-pseudowire-iw-interfaces")
         return true;
     return false;
 }
@@ -12959,10 +9826,25 @@ L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::XconnectMp2mpCe2ce()
     mp2_mp_name{YType::str, "mp2-mp-name"},
     local_ceid{YType::uint32, "local-ceid"},
     remote_ceid{YType::uint32, "remote-ceid"},
-    local_customer_edge_id{YType::uint16, "local-customer-edge-id"},
-    remote_customer_edge_id{YType::uint16, "remote-customer-edge-id"},
-    ce_added{YType::boolean, "ce-added"}
+    group_name_xr{YType::str, "group-name-xr"},
+    xconnect_name_xr{YType::str, "xconnect-name-xr"},
+    number_of_backup_p_ws{YType::uint32, "number-of-backup-p-ws"},
+    state{YType::enumeration, "state"},
+    interworking{YType::enumeration, "interworking"},
+    diag_mask{YType::uint32, "diag-mask"},
+    description{YType::str, "description"},
+    is_mp2mp{YType::boolean, "is-mp2mp"}
+        ,
+    backup(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup>())
+    , segment1(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Segment1>())
+    , segment2(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Segment2>())
+    , ce2ce(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Ce2ce>())
+    , backup_segment(this, {})
 {
+    backup->parent = this;
+    segment1->parent = this;
+    segment2->parent = this;
+    ce2ce->parent = this;
 
     yang_name = "xconnect-mp2mp-ce2ce"; yang_parent_name = "xconnect-mp2mp-ce2ces"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -12974,25 +9856,53 @@ L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::~XconnectMp2mpCe2ce()
 bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::has_data() const
 {
     if (is_presence_container) return true;
+    for (std::size_t index=0; index<backup_segment.len(); index++)
+    {
+        if(backup_segment[index]->has_data())
+            return true;
+    }
     return group_name.is_set
 	|| mp2_mp_name.is_set
 	|| local_ceid.is_set
 	|| remote_ceid.is_set
-	|| local_customer_edge_id.is_set
-	|| remote_customer_edge_id.is_set
-	|| ce_added.is_set;
+	|| group_name_xr.is_set
+	|| xconnect_name_xr.is_set
+	|| number_of_backup_p_ws.is_set
+	|| state.is_set
+	|| interworking.is_set
+	|| diag_mask.is_set
+	|| description.is_set
+	|| is_mp2mp.is_set
+	|| (backup !=  nullptr && backup->has_data())
+	|| (segment1 !=  nullptr && segment1->has_data())
+	|| (segment2 !=  nullptr && segment2->has_data())
+	|| (ce2ce !=  nullptr && ce2ce->has_data());
 }
 
 bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::has_operation() const
 {
+    for (std::size_t index=0; index<backup_segment.len(); index++)
+    {
+        if(backup_segment[index]->has_operation())
+            return true;
+    }
     return is_set(yfilter)
 	|| ydk::is_set(group_name.yfilter)
 	|| ydk::is_set(mp2_mp_name.yfilter)
 	|| ydk::is_set(local_ceid.yfilter)
 	|| ydk::is_set(remote_ceid.yfilter)
-	|| ydk::is_set(local_customer_edge_id.yfilter)
-	|| ydk::is_set(remote_customer_edge_id.yfilter)
-	|| ydk::is_set(ce_added.yfilter);
+	|| ydk::is_set(group_name_xr.yfilter)
+	|| ydk::is_set(xconnect_name_xr.yfilter)
+	|| ydk::is_set(number_of_backup_p_ws.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(interworking.yfilter)
+	|| ydk::is_set(diag_mask.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(is_mp2mp.yfilter)
+	|| (backup !=  nullptr && backup->has_operation())
+	|| (segment1 !=  nullptr && segment1->has_operation())
+	|| (segment2 !=  nullptr && segment2->has_operation())
+	|| (ce2ce !=  nullptr && ce2ce->has_operation());
 }
 
 std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::get_absolute_path() const
@@ -13017,310 +9927,6 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe
     if (mp2_mp_name.is_set || is_set(mp2_mp_name.yfilter)) leaf_name_data.push_back(mp2_mp_name.get_name_leafdata());
     if (local_ceid.is_set || is_set(local_ceid.yfilter)) leaf_name_data.push_back(local_ceid.get_name_leafdata());
     if (remote_ceid.is_set || is_set(remote_ceid.yfilter)) leaf_name_data.push_back(remote_ceid.get_name_leafdata());
-    if (local_customer_edge_id.is_set || is_set(local_customer_edge_id.yfilter)) leaf_name_data.push_back(local_customer_edge_id.get_name_leafdata());
-    if (remote_customer_edge_id.is_set || is_set(remote_customer_edge_id.yfilter)) leaf_name_data.push_back(remote_customer_edge_id.get_name_leafdata());
-    if (ce_added.is_set || is_set(ce_added.yfilter)) leaf_name_data.push_back(ce_added.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "group-name")
-    {
-        group_name = value;
-        group_name.value_namespace = name_space;
-        group_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mp2-mp-name")
-    {
-        mp2_mp_name = value;
-        mp2_mp_name.value_namespace = name_space;
-        mp2_mp_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-ceid")
-    {
-        local_ceid = value;
-        local_ceid.value_namespace = name_space;
-        local_ceid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-ceid")
-    {
-        remote_ceid = value;
-        remote_ceid.value_namespace = name_space;
-        remote_ceid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-customer-edge-id")
-    {
-        local_customer_edge_id = value;
-        local_customer_edge_id.value_namespace = name_space;
-        local_customer_edge_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-customer-edge-id")
-    {
-        remote_customer_edge_id = value;
-        remote_customer_edge_id.value_namespace = name_space;
-        remote_customer_edge_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ce-added")
-    {
-        ce_added = value;
-        ce_added.value_namespace = name_space;
-        ce_added.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "group-name")
-    {
-        group_name.yfilter = yfilter;
-    }
-    if(value_path == "mp2-mp-name")
-    {
-        mp2_mp_name.yfilter = yfilter;
-    }
-    if(value_path == "local-ceid")
-    {
-        local_ceid.yfilter = yfilter;
-    }
-    if(value_path == "remote-ceid")
-    {
-        remote_ceid.yfilter = yfilter;
-    }
-    if(value_path == "local-customer-edge-id")
-    {
-        local_customer_edge_id.yfilter = yfilter;
-    }
-    if(value_path == "remote-customer-edge-id")
-    {
-        remote_customer_edge_id.yfilter = yfilter;
-    }
-    if(value_path == "ce-added")
-    {
-        ce_added.yfilter = yfilter;
-    }
-}
-
-bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "group-name" || name == "mp2-mp-name" || name == "local-ceid" || name == "remote-ceid" || name == "local-customer-edge-id" || name == "remote-customer-edge-id" || name == "ce-added")
-        return true;
-    return false;
-}
-
-L2vpnv2::Standby::Xconnects::Xconnects()
-    :
-    xconnect(this, {})
-{
-
-    yang_name = "xconnects"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-L2vpnv2::Standby::Xconnects::~Xconnects()
-{
-}
-
-bool L2vpnv2::Standby::Xconnects::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<xconnect.len(); index++)
-    {
-        if(xconnect[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool L2vpnv2::Standby::Xconnects::has_operation() const
-{
-    for (std::size_t index=0; index<xconnect.len(); index++)
-    {
-        if(xconnect[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string L2vpnv2::Standby::Xconnects::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string L2vpnv2::Standby::Xconnects::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "xconnects";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "xconnect")
-    {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect>();
-        c->parent = this;
-        xconnect.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : xconnect.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void L2vpnv2::Standby::Xconnects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void L2vpnv2::Standby::Xconnects::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool L2vpnv2::Standby::Xconnects::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "xconnect")
-        return true;
-    return false;
-}
-
-L2vpnv2::Standby::Xconnects::Xconnect::Xconnect()
-    :
-    group_name{YType::str, "group-name"},
-    xconnect_name{YType::str, "xconnect-name"},
-    group_name_xr{YType::str, "group-name-xr"},
-    xconnect_name_xr{YType::str, "xconnect-name-xr"},
-    number_of_backup_p_ws{YType::uint32, "number-of-backup-p-ws"},
-    state{YType::enumeration, "state"},
-    interworking{YType::enumeration, "interworking"},
-    diag_mask{YType::uint32, "diag-mask"},
-    description{YType::str, "description"},
-    is_mp2mp{YType::boolean, "is-mp2mp"}
-        ,
-    backup(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup>())
-    , segment1(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1>())
-    , segment2(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2>())
-    , ce2ce(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Ce2ce>())
-    , backup_segment(this, {})
-{
-    backup->parent = this;
-    segment1->parent = this;
-    segment2->parent = this;
-    ce2ce->parent = this;
-
-    yang_name = "xconnect"; yang_parent_name = "xconnects"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-L2vpnv2::Standby::Xconnects::Xconnect::~Xconnect()
-{
-}
-
-bool L2vpnv2::Standby::Xconnects::Xconnect::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<backup_segment.len(); index++)
-    {
-        if(backup_segment[index]->has_data())
-            return true;
-    }
-    return group_name.is_set
-	|| xconnect_name.is_set
-	|| group_name_xr.is_set
-	|| xconnect_name_xr.is_set
-	|| number_of_backup_p_ws.is_set
-	|| state.is_set
-	|| interworking.is_set
-	|| diag_mask.is_set
-	|| description.is_set
-	|| is_mp2mp.is_set
-	|| (backup !=  nullptr && backup->has_data())
-	|| (segment1 !=  nullptr && segment1->has_data())
-	|| (segment2 !=  nullptr && segment2->has_data())
-	|| (ce2ce !=  nullptr && ce2ce->has_data());
-}
-
-bool L2vpnv2::Standby::Xconnects::Xconnect::has_operation() const
-{
-    for (std::size_t index=0; index<backup_segment.len(); index++)
-    {
-        if(backup_segment[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(group_name.yfilter)
-	|| ydk::is_set(xconnect_name.yfilter)
-	|| ydk::is_set(group_name_xr.yfilter)
-	|| ydk::is_set(xconnect_name_xr.yfilter)
-	|| ydk::is_set(number_of_backup_p_ws.yfilter)
-	|| ydk::is_set(state.yfilter)
-	|| ydk::is_set(interworking.yfilter)
-	|| ydk::is_set(diag_mask.yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(is_mp2mp.yfilter)
-	|| (backup !=  nullptr && backup->has_operation())
-	|| (segment1 !=  nullptr && segment1->has_operation())
-	|| (segment2 !=  nullptr && segment2->has_operation())
-	|| (ce2ce !=  nullptr && ce2ce->has_operation());
-}
-
-std::string L2vpnv2::Standby::Xconnects::Xconnect::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string L2vpnv2::Standby::Xconnects::Xconnect::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "xconnect";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (xconnect_name.is_set || is_set(xconnect_name.yfilter)) leaf_name_data.push_back(xconnect_name.get_name_leafdata());
     if (group_name_xr.is_set || is_set(group_name_xr.yfilter)) leaf_name_data.push_back(group_name_xr.get_name_leafdata());
     if (xconnect_name_xr.is_set || is_set(xconnect_name_xr.yfilter)) leaf_name_data.push_back(xconnect_name_xr.get_name_leafdata());
     if (number_of_backup_p_ws.is_set || is_set(number_of_backup_p_ws.yfilter)) leaf_name_data.push_back(number_of_backup_p_ws.get_name_leafdata());
@@ -13334,13 +9940,13 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "backup")
     {
         if(backup == nullptr)
         {
-            backup = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup>();
+            backup = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup>();
         }
         return backup;
     }
@@ -13349,7 +9955,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::get_child_by_name
     {
         if(segment1 == nullptr)
         {
-            segment1 = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1>();
+            segment1 = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Segment1>();
         }
         return segment1;
     }
@@ -13358,7 +9964,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::get_child_by_name
     {
         if(segment2 == nullptr)
         {
-            segment2 = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2>();
+            segment2 = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Segment2>();
         }
         return segment2;
     }
@@ -13367,14 +9973,14 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::get_child_by_name
     {
         if(ce2ce == nullptr)
         {
-            ce2ce = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Ce2ce>();
+            ce2ce = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Ce2ce>();
         }
         return ce2ce;
     }
 
     if(child_yang_name == "backup-segment")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::BackupSegment>();
+        auto c = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::BackupSegment>();
         c->parent = this;
         backup_segment.append(c);
         return c;
@@ -13383,7 +9989,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13419,7 +10025,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xcon
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-name")
     {
@@ -13427,11 +10033,23 @@ void L2vpnv2::Standby::Xconnects::Xconnect::set_value(const std::string & value_
         group_name.value_namespace = name_space;
         group_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "xconnect-name")
+    if(value_path == "mp2-mp-name")
     {
-        xconnect_name = value;
-        xconnect_name.value_namespace = name_space;
-        xconnect_name.value_namespace_prefix = name_space_prefix;
+        mp2_mp_name = value;
+        mp2_mp_name.value_namespace = name_space;
+        mp2_mp_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-ceid")
+    {
+        local_ceid = value;
+        local_ceid.value_namespace = name_space;
+        local_ceid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-ceid")
+    {
+        remote_ceid = value;
+        remote_ceid.value_namespace = name_space;
+        remote_ceid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name-xr")
     {
@@ -13483,15 +10101,23 @@ void L2vpnv2::Standby::Xconnects::Xconnect::set_value(const std::string & value_
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "group-name")
     {
         group_name.yfilter = yfilter;
     }
-    if(value_path == "xconnect-name")
+    if(value_path == "mp2-mp-name")
     {
-        xconnect_name.yfilter = yfilter;
+        mp2_mp_name.yfilter = yfilter;
+    }
+    if(value_path == "local-ceid")
+    {
+        local_ceid.yfilter = yfilter;
+    }
+    if(value_path == "remote-ceid")
+    {
+        remote_ceid.yfilter = yfilter;
     }
     if(value_path == "group-name-xr")
     {
@@ -13527,31 +10153,31 @@ void L2vpnv2::Standby::Xconnects::Xconnect::set_filter(const std::string & value
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "backup" || name == "segment1" || name == "segment2" || name == "ce2ce" || name == "backup-segment" || name == "group-name" || name == "xconnect-name" || name == "group-name-xr" || name == "xconnect-name-xr" || name == "number-of-backup-p-ws" || name == "state" || name == "interworking" || name == "diag-mask" || name == "description" || name == "is-mp2mp")
+    if(name == "backup" || name == "segment1" || name == "segment2" || name == "ce2ce" || name == "backup-segment" || name == "group-name" || name == "mp2-mp-name" || name == "local-ceid" || name == "remote-ceid" || name == "group-name-xr" || name == "xconnect-name-xr" || name == "number-of-backup-p-ws" || name == "state" || name == "interworking" || name == "diag-mask" || name == "description" || name == "is-mp2mp")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::Backup()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::Backup()
     :
     segment_type{YType::enumeration, "segment-type"}
         ,
-    attachment_circuit(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit>())
-    , pseudo_wire(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire>())
+    attachment_circuit(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit>())
+    , pseudo_wire(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire>())
 {
     attachment_circuit->parent = this;
     pseudo_wire->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "backup"; yang_parent_name = "xconnect-mp2mp-ce2ce"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::~Backup()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::~Backup()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::has_data() const
 {
     if (is_presence_container) return true;
     return segment_type.is_set
@@ -13559,7 +10185,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::has_data() const
 	|| (pseudo_wire !=  nullptr && pseudo_wire->has_data());
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(segment_type.yfilter)
@@ -13567,21 +10193,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::has_operation() const
 	|| (pseudo_wire !=  nullptr && pseudo_wire->has_operation());
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "backup";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13591,13 +10217,13 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "attachment-circuit")
     {
         if(attachment_circuit == nullptr)
         {
-            attachment_circuit = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit>();
+            attachment_circuit = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit>();
         }
         return attachment_circuit;
     }
@@ -13606,7 +10232,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::get_child
     {
         if(pseudo_wire == nullptr)
         {
-            pseudo_wire = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire>();
+            pseudo_wire = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire>();
         }
         return pseudo_wire;
     }
@@ -13614,7 +10240,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13631,7 +10257,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xcon
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "segment-type")
     {
@@ -13641,7 +10267,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::set_value(const std::string 
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "segment-type")
     {
@@ -13649,19 +10275,18 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::set_filter(const std::string
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "attachment-circuit" || name == "pseudo-wire" || name == "segment-type")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::AttachmentCircuit()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::AttachmentCircuit()
     :
     state{YType::enumeration, "state"},
     msti{YType::str, "msti"},
     internal_ms_ti{YType::str, "internal-ms-ti"},
-    interface_handle{YType::str, "interface-handle"},
     node_id{YType::str, "node-id"},
     xconnect_id{YType::uint32, "xconnect-id"},
     ms_ti_mismatch{YType::boolean, "ms-ti-mismatch"},
@@ -13682,9 +10307,9 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::AttachmentCirc
     is_ac_partially_programmed{YType::boolean, "is-ac-partially-programmed"},
     evpn_internal_label{YType::uint32, "evpn-internal-label"}
         ,
-    interface(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface>())
-    , statistics(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics>())
-    , l2vpn_protection(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::L2vpnProtection>())
+    interface(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface>())
+    , statistics(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics>())
+    , l2vpn_protection(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::L2vpnProtection>())
 {
     interface->parent = this;
     statistics->parent = this;
@@ -13693,17 +10318,16 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::AttachmentCirc
     yang_name = "attachment-circuit"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::~AttachmentCircuit()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::~AttachmentCircuit()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::has_data() const
 {
     if (is_presence_container) return true;
     return state.is_set
 	|| msti.is_set
 	|| internal_ms_ti.is_set
-	|| interface_handle.is_set
 	|| node_id.is_set
 	|| xconnect_id.is_set
 	|| ms_ti_mismatch.is_set
@@ -13728,13 +10352,12 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::has_data(
 	|| (l2vpn_protection !=  nullptr && l2vpn_protection->has_data());
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(state.yfilter)
 	|| ydk::is_set(msti.yfilter)
 	|| ydk::is_set(internal_ms_ti.yfilter)
-	|| ydk::is_set(interface_handle.yfilter)
 	|| ydk::is_set(node_id.yfilter)
 	|| ydk::is_set(xconnect_id.yfilter)
 	|| ydk::is_set(ms_ti_mismatch.yfilter)
@@ -13759,28 +10382,27 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::has_opera
 	|| (l2vpn_protection !=  nullptr && l2vpn_protection->has_operation());
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "attachment-circuit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (msti.is_set || is_set(msti.yfilter)) leaf_name_data.push_back(msti.get_name_leafdata());
     if (internal_ms_ti.is_set || is_set(internal_ms_ti.yfilter)) leaf_name_data.push_back(internal_ms_ti.get_name_leafdata());
-    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
     if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
     if (xconnect_id.is_set || is_set(xconnect_id.yfilter)) leaf_name_data.push_back(xconnect_id.get_name_leafdata());
     if (ms_ti_mismatch.is_set || is_set(ms_ti_mismatch.yfilter)) leaf_name_data.push_back(ms_ti_mismatch.get_name_leafdata());
@@ -13805,13 +10427,13 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
         if(interface == nullptr)
         {
-            interface = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface>();
+            interface = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface>();
         }
         return interface;
     }
@@ -13820,7 +10442,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(statistics == nullptr)
         {
-            statistics = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics>();
+            statistics = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics>();
         }
         return statistics;
     }
@@ -13829,7 +10451,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(l2vpn_protection == nullptr)
         {
-            l2vpn_protection = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::L2vpnProtection>();
+            l2vpn_protection = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::L2vpnProtection>();
         }
         return l2vpn_protection;
     }
@@ -13837,7 +10459,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13859,7 +10481,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xcon
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "state")
     {
@@ -13878,12 +10500,6 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::set_value
         internal_ms_ti = value;
         internal_ms_ti.value_namespace = name_space;
         internal_ms_ti.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-handle")
-    {
-        interface_handle = value;
-        interface_handle.value_namespace = name_space;
-        interface_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-id")
     {
@@ -14001,7 +10617,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::set_value
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "state")
     {
@@ -14014,10 +10630,6 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::set_filte
     if(value_path == "internal-ms-ti")
     {
         internal_ms_ti.yfilter = yfilter;
-    }
-    if(value_path == "interface-handle")
-    {
-        interface_handle.yfilter = yfilter;
     }
     if(value_path == "node-id")
     {
@@ -14097,31 +10709,31 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::set_filte
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface" || name == "statistics" || name == "l2vpn-protection" || name == "state" || name == "msti" || name == "internal-ms-ti" || name == "interface-handle" || name == "node-id" || name == "xconnect-id" || name == "ms-ti-mismatch" || name == "mtu-mismatched" || name == "tdm-media-mismatched" || name == "bvi-mac-conflict" || name == "bvi-no-port-up" || name == "control-word-mismatched" || name == "encapsulation-mismatched" || name == "encapsulation-error" || name == "interworking" || name == "out-of-memory-state" || name == "msti-mismatch-down" || name == "mac-limit-oper-down" || name == "redundancy-group-id" || name == "redundancy-group-state" || name == "redundancy-object-id" || name == "is-ac-partially-programmed" || name == "evpn-internal-label")
+    if(name == "interface" || name == "statistics" || name == "l2vpn-protection" || name == "state" || name == "msti" || name == "internal-ms-ti" || name == "node-id" || name == "xconnect-id" || name == "ms-ti-mismatch" || name == "mtu-mismatched" || name == "tdm-media-mismatched" || name == "bvi-mac-conflict" || name == "bvi-no-port-up" || name == "control-word-mismatched" || name == "encapsulation-mismatched" || name == "encapsulation-error" || name == "interworking" || name == "out-of-memory-state" || name == "msti-mismatch-down" || name == "mac-limit-oper-down" || name == "redundancy-group-id" || name == "redundancy-group-state" || name == "redundancy-object-id" || name == "is-ac-partially-programmed" || name == "evpn-internal-label")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Interface()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Interface()
     :
     name{YType::str, "name"},
     mtu{YType::uint32, "mtu"},
     payload_bytes{YType::uint16, "payload-bytes"}
         ,
-    parameters(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters>())
+    parameters(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters>())
 {
     parameters->parent = this;
 
     yang_name = "interface"; yang_parent_name = "attachment-circuit"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::~Interface()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::~Interface()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::has_data() const
 {
     if (is_presence_container) return true;
     return name.is_set
@@ -14130,7 +10742,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 	|| (parameters !=  nullptr && parameters->has_data());
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
@@ -14139,21 +10751,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 	|| (parameters !=  nullptr && parameters->has_operation());
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14165,13 +10777,13 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "parameters")
     {
         if(parameters == nullptr)
         {
-            parameters = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters>();
+            parameters = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters>();
         }
         return parameters;
     }
@@ -14179,7 +10791,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14191,7 +10803,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xcon
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -14213,7 +10825,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -14229,24 +10841,24 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "parameters" || name == "name" || name == "mtu" || name == "payload-bytes")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Parameters()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Parameters()
     :
     type{YType::enumeration, "type"}
         ,
-    ethernet(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Ethernet>())
-    , vlan(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan>())
-    , tdm(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm>())
-    , atm(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Atm>())
-    , fr(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Fr>())
-    , pseudowire_ether(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther>())
-    , pseudowire_iw(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw>())
+    ethernet(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Ethernet>())
+    , vlan(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan>())
+    , tdm(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm>())
+    , atm(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Atm>())
+    , fr(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Fr>())
+    , pseudowire_ether(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther>())
+    , pseudowire_iw(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw>())
 {
     ethernet->parent = this;
     vlan->parent = this;
@@ -14259,11 +10871,11 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Par
     yang_name = "parameters"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::~Parameters()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::~Parameters()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::has_data() const
 {
     if (is_presence_container) return true;
     return type.is_set
@@ -14276,7 +10888,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 	|| (pseudowire_iw !=  nullptr && pseudowire_iw->has_data());
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -14289,21 +10901,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 	|| (pseudowire_iw !=  nullptr && pseudowire_iw->has_operation());
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/interface/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/interface/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "parameters";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14313,13 +10925,13 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet")
     {
         if(ethernet == nullptr)
         {
-            ethernet = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Ethernet>();
+            ethernet = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Ethernet>();
         }
         return ethernet;
     }
@@ -14328,7 +10940,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(vlan == nullptr)
         {
-            vlan = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan>();
+            vlan = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan>();
         }
         return vlan;
     }
@@ -14337,7 +10949,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(tdm == nullptr)
         {
-            tdm = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm>();
+            tdm = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm>();
         }
         return tdm;
     }
@@ -14346,7 +10958,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(atm == nullptr)
         {
-            atm = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Atm>();
+            atm = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Atm>();
         }
         return atm;
     }
@@ -14355,7 +10967,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(fr == nullptr)
         {
-            fr = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Fr>();
+            fr = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Fr>();
         }
         return fr;
     }
@@ -14364,7 +10976,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(pseudowire_ether == nullptr)
         {
-            pseudowire_ether = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther>();
+            pseudowire_ether = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther>();
         }
         return pseudowire_ether;
     }
@@ -14373,7 +10985,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(pseudowire_iw == nullptr)
         {
-            pseudowire_iw = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw>();
+            pseudowire_iw = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw>();
         }
         return pseudowire_iw;
     }
@@ -14381,7 +10993,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14423,7 +11035,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xcon
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -14433,7 +11045,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -14441,14 +11053,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ethernet" || name == "vlan" || name == "tdm" || name == "atm" || name == "fr" || name == "pseudowire-ether" || name == "pseudowire-iw" || name == "type")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::Ethernet()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::Ethernet()
     :
     xconnect_tags{YType::uint8, "xconnect-tags"}
 {
@@ -14456,37 +11068,37 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Par
     yang_name = "ethernet"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::~Ethernet()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::~Ethernet()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::has_data() const
 {
     if (is_presence_container) return true;
     return xconnect_tags.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(xconnect_tags.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/interface/parameters/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/interface/parameters/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ethernet";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14496,19 +11108,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "xconnect-tags")
     {
@@ -14518,7 +11130,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "xconnect-tags")
     {
@@ -14526,14 +11138,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Ethernet::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "xconnect-tags")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::Vlan()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::Vlan()
     :
     xconnect_tags{YType::uint8, "xconnect-tags"},
     vlan_rewrite_tag{YType::uint16, "vlan-rewrite-tag"},
@@ -14548,11 +11160,11 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Par
     yang_name = "vlan"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::~Vlan()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::~Vlan()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::has_data() const
 {
     if (is_presence_container) return true;
     for (std::size_t index=0; index<rewrite_tag.len(); index++)
@@ -14572,7 +11184,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 	|| outer_tag.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::has_operation() const
 {
     for (std::size_t index=0; index<rewrite_tag.len(); index++)
     {
@@ -14592,21 +11204,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 	|| ydk::is_set(outer_tag.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/interface/parameters/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/interface/parameters/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14620,11 +11232,11 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rewrite-tag")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag>();
+        auto c = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag>();
         c->parent = this;
         rewrite_tag.append(c);
         return c;
@@ -14632,7 +11244,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
 
     if(child_yang_name == "vlan-range")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange>();
+        auto c = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange>();
         c->parent = this;
         vlan_range.append(c);
         return c;
@@ -14641,7 +11253,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14666,7 +11278,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xcon
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "xconnect-tags")
     {
@@ -14700,7 +11312,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "xconnect-tags")
     {
@@ -14724,14 +11336,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rewrite-tag" || name == "vlan-range" || name == "xconnect-tags" || name == "vlan-rewrite-tag" || name == "simple-efp" || name == "encapsulation-type" || name == "outer-tag")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::RewriteTag()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::RewriteTag()
     :
     entry{YType::uint16, "entry"}
 {
@@ -14739,37 +11351,37 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Par
     yang_name = "rewrite-tag"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::~RewriteTag()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::~RewriteTag()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::has_data() const
 {
     if (is_presence_container) return true;
     return entry.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entry.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/interface/parameters/vlan/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/interface/parameters/vlan/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rewrite-tag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14779,19 +11391,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entry")
     {
@@ -14801,7 +11413,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entry")
     {
@@ -14809,14 +11421,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entry")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::VlanRange()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::VlanRange()
     :
     lower{YType::uint16, "lower"},
     upper{YType::uint16, "upper"}
@@ -14825,39 +11437,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Par
     yang_name = "vlan-range"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::~VlanRange()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::~VlanRange()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::has_data() const
 {
     if (is_presence_container) return true;
     return lower.is_set
 	|| upper.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(lower.yfilter)
 	|| ydk::is_set(upper.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/interface/parameters/vlan/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/interface/parameters/vlan/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14868,19 +11480,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lower")
     {
@@ -14896,7 +11508,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "lower")
     {
@@ -14908,31 +11520,31 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lower" || name == "upper")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::Tdm()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::Tdm()
     :
     timeslot_group{YType::str, "timeslot-group"},
     timeslot_rate{YType::uint8, "timeslot-rate"},
     tdm_mode{YType::enumeration, "tdm-mode"}
         ,
-    tdm_options(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions>())
+    tdm_options(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions>())
 {
     tdm_options->parent = this;
 
     yang_name = "tdm"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::~Tdm()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::~Tdm()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::has_data() const
 {
     if (is_presence_container) return true;
     return timeslot_group.is_set
@@ -14941,7 +11553,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 	|| (tdm_options !=  nullptr && tdm_options->has_data());
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(timeslot_group.yfilter)
@@ -14950,21 +11562,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 	|| (tdm_options !=  nullptr && tdm_options->has_operation());
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/interface/parameters/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/interface/parameters/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tdm";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14976,13 +11588,13 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tdm-options")
     {
         if(tdm_options == nullptr)
         {
-            tdm_options = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions>();
+            tdm_options = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions>();
         }
         return tdm_options;
     }
@@ -14990,7 +11602,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -15002,7 +11614,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xcon
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "timeslot-group")
     {
@@ -15024,7 +11636,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "timeslot-group")
     {
@@ -15040,14 +11652,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tdm-options" || name == "timeslot-group" || name == "timeslot-rate" || name == "tdm-mode")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::TdmOptions()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::TdmOptions()
     :
     payload_bytes{YType::uint16, "payload-bytes"},
     bit_rate{YType::uint32, "bit-rate"},
@@ -15063,11 +11675,11 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Par
     yang_name = "tdm-options"; yang_parent_name = "tdm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::~TdmOptions()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::~TdmOptions()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::has_data() const
 {
     if (is_presence_container) return true;
     return payload_bytes.is_set
@@ -15081,7 +11693,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 	|| ssrc.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(payload_bytes.yfilter)
@@ -15095,21 +11707,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 	|| ydk::is_set(ssrc.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/interface/parameters/tdm/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/interface/parameters/tdm/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tdm-options";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15127,19 +11739,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "payload-bytes")
     {
@@ -15197,7 +11809,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "payload-bytes")
     {
@@ -15237,14 +11849,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "payload-bytes" || name == "bit-rate" || name == "rtp" || name == "timestamp-mode" || name == "signalling-packets" || name == "cas" || name == "rtp-header-payload-type" || name == "timestamp-clock-freq" || name == "ssrc")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Atm::Atm()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Atm::Atm()
     :
     maximum_number_cells_packed{YType::uint16, "maximum-number-cells-packed"},
     maximum_number_cells_un_packed{YType::uint16, "maximum-number-cells-un-packed"},
@@ -15256,11 +11868,11 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Par
     yang_name = "atm"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Atm::~Atm()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Atm::~Atm()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Atm::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Atm::has_data() const
 {
     if (is_presence_container) return true;
     return maximum_number_cells_packed.is_set
@@ -15270,7 +11882,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 	|| vci.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Atm::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Atm::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(maximum_number_cells_packed.yfilter)
@@ -15280,21 +11892,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 	|| ydk::is_set(vci.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Atm::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Atm::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/interface/parameters/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/interface/parameters/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Atm::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Atm::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atm";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Atm::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Atm::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15308,19 +11920,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Atm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Atm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Atm::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Atm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Atm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Atm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-number-cells-packed")
     {
@@ -15354,7 +11966,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Atm::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Atm::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "maximum-number-cells-packed")
     {
@@ -15378,14 +11990,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Atm::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Atm::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "maximum-number-cells-packed" || name == "maximum-number-cells-un-packed" || name == "atm-mode" || name == "vpi" || name == "vci")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Fr::Fr()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Fr::Fr()
     :
     fr_mode{YType::enumeration, "fr-mode"},
     dlci{YType::uint32, "dlci"}
@@ -15394,39 +12006,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Par
     yang_name = "fr"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Fr::~Fr()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Fr::~Fr()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Fr::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Fr::has_data() const
 {
     if (is_presence_container) return true;
     return fr_mode.is_set
 	|| dlci.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Fr::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Fr::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(fr_mode.yfilter)
 	|| ydk::is_set(dlci.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Fr::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Fr::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/interface/parameters/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/interface/parameters/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Fr::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Fr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fr";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Fr::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Fr::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15437,19 +12049,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Fr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Fr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Fr::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Fr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Fr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Fr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fr-mode")
     {
@@ -15465,7 +12077,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Fr::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Fr::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "fr-mode")
     {
@@ -15477,30 +12089,30 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::Fr::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::Fr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "fr-mode" || name == "dlci")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::PseudowireEther()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::PseudowireEther()
     :
     is_valid{YType::boolean, "is-valid"},
     internal_label{YType::uint32, "internal-label"}
         ,
-    interface_list(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList>())
+    interface_list(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList>())
 {
     interface_list->parent = this;
 
     yang_name = "pseudowire-ether"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::~PseudowireEther()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::~PseudowireEther()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::has_data() const
 {
     if (is_presence_container) return true;
     return is_valid.is_set
@@ -15508,7 +12120,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 	|| (interface_list !=  nullptr && interface_list->has_data());
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_valid.yfilter)
@@ -15516,21 +12128,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 	|| (interface_list !=  nullptr && interface_list->has_operation());
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/interface/parameters/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/interface/parameters/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pseudowire-ether";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15541,13 +12153,13 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-list")
     {
         if(interface_list == nullptr)
         {
-            interface_list = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList>();
+            interface_list = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList>();
         }
         return interface_list;
     }
@@ -15555,7 +12167,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -15567,7 +12179,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xcon
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-valid")
     {
@@ -15583,7 +12195,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-valid")
     {
@@ -15595,14 +12207,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-list" || name == "is-valid" || name == "internal-label")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::InterfaceList()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::InterfaceList()
     :
     interface_list_name{YType::str, "interface-list-name"},
     interface_list_id{YType::uint32, "interface-list-id"}
@@ -15613,11 +12225,11 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Par
     yang_name = "interface-list"; yang_parent_name = "pseudowire-ether"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::~InterfaceList()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::~InterfaceList()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::has_data() const
 {
     if (is_presence_container) return true;
     for (std::size_t index=0; index<interface.len(); index++)
@@ -15629,7 +12241,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 	|| interface_list_id.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::has_operation() const
 {
     for (std::size_t index=0; index<interface.len(); index++)
     {
@@ -15641,21 +12253,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 	|| ydk::is_set(interface_list_id.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/interface/parameters/pseudowire-ether/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/interface/parameters/pseudowire-ether/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-list";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15666,11 +12278,11 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_>();
+        auto c = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_>();
         c->parent = this;
         interface.append(c);
         return c;
@@ -15679,7 +12291,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -15695,7 +12307,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xcon
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-list-name")
     {
@@ -15711,7 +12323,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-list-name")
     {
@@ -15723,14 +12335,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface" || name == "interface-list-name" || name == "interface-list-id")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::Interface_()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::Interface_()
     :
     interface_name{YType::str, "interface-name"},
     replicate_status{YType::enumeration, "replicate-status"}
@@ -15739,39 +12351,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Par
     yang_name = "interface"; yang_parent_name = "interface-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::~Interface_()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::~Interface_()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::has_data() const
 {
     if (is_presence_container) return true;
     return interface_name.is_set
 	|| replicate_status.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
 	|| ydk::is_set(replicate_status.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/interface/parameters/pseudowire-ether/interface-list/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/interface/parameters/pseudowire-ether/interface-list/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15782,19 +12394,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
@@ -15810,7 +12422,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-name")
     {
@@ -15822,30 +12434,30 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-name" || name == "replicate-status")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::PseudowireIw()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::PseudowireIw()
     :
     is_valid{YType::boolean, "is-valid"},
     internal_label{YType::uint32, "internal-label"}
         ,
-    interface_list(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList>())
+    interface_list(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList>())
 {
     interface_list->parent = this;
 
     yang_name = "pseudowire-iw"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::~PseudowireIw()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::~PseudowireIw()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::has_data() const
 {
     if (is_presence_container) return true;
     return is_valid.is_set
@@ -15853,7 +12465,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 	|| (interface_list !=  nullptr && interface_list->has_data());
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_valid.yfilter)
@@ -15861,21 +12473,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 	|| (interface_list !=  nullptr && interface_list->has_operation());
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/interface/parameters/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/interface/parameters/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pseudowire-iw";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15886,13 +12498,13 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-list")
     {
         if(interface_list == nullptr)
         {
-            interface_list = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList>();
+            interface_list = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList>();
         }
         return interface_list;
     }
@@ -15900,7 +12512,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -15912,7 +12524,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xcon
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-valid")
     {
@@ -15928,7 +12540,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-valid")
     {
@@ -15940,14 +12552,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-list" || name == "is-valid" || name == "internal-label")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::InterfaceList()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::InterfaceList()
     :
     interface_list_name{YType::str, "interface-list-name"},
     interface_list_id{YType::uint32, "interface-list-id"}
@@ -15958,11 +12570,11 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Par
     yang_name = "interface-list"; yang_parent_name = "pseudowire-iw"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::~InterfaceList()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::~InterfaceList()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::has_data() const
 {
     if (is_presence_container) return true;
     for (std::size_t index=0; index<interface.len(); index++)
@@ -15974,7 +12586,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 	|| interface_list_id.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::has_operation() const
 {
     for (std::size_t index=0; index<interface.len(); index++)
     {
@@ -15986,21 +12598,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
 	|| ydk::is_set(interface_list_id.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/interface/parameters/pseudowire-iw/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/interface/parameters/pseudowire-iw/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-list";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16011,11 +12623,11 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_>();
+        auto c = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_>();
         c->parent = this;
         interface.append(c);
         return c;
@@ -16024,7 +12636,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -16040,7 +12652,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xcon
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-list-name")
     {
@@ -16056,7 +12668,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-list-name")
     {
@@ -16068,14 +12680,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface" || name == "interface-list-name" || name == "interface-list-id")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::Interface_()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::Interface_()
     :
     interface_name{YType::str, "interface-name"},
     replicate_status{YType::enumeration, "replicate-status"}
@@ -16084,39 +12696,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Par
     yang_name = "interface"; yang_parent_name = "interface-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::~Interface_()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::~Interface_()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::has_data() const
 {
     if (is_presence_container) return true;
     return interface_name.is_set
 	|| replicate_status.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
 	|| ydk::is_set(replicate_status.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/interface/parameters/pseudowire-iw/interface-list/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/interface/parameters/pseudowire-iw/interface-list/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16127,19 +12739,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
@@ -16155,7 +12767,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-name")
     {
@@ -16167,18 +12779,18 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-name" || name == "replicate-status")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Statistics()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::Statistics()
     :
-    impostion_stats(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats>())
-    , dispostion_stats(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats>())
-    , sequence_number(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::SequenceNumber>())
+    impostion_stats(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats>())
+    , dispostion_stats(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats>())
+    , sequence_number(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::SequenceNumber>())
 {
     impostion_stats->parent = this;
     dispostion_stats->parent = this;
@@ -16187,11 +12799,11 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::St
     yang_name = "statistics"; yang_parent_name = "attachment-circuit"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::~Statistics()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::~Statistics()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::has_data() const
 {
     if (is_presence_container) return true;
     return (impostion_stats !=  nullptr && impostion_stats->has_data())
@@ -16199,7 +12811,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
 	|| (sequence_number !=  nullptr && sequence_number->has_data());
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::has_operation() const
 {
     return is_set(yfilter)
 	|| (impostion_stats !=  nullptr && impostion_stats->has_operation())
@@ -16207,21 +12819,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
 	|| (sequence_number !=  nullptr && sequence_number->has_operation());
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16230,13 +12842,13 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "impostion-stats")
     {
         if(impostion_stats == nullptr)
         {
-            impostion_stats = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats>();
+            impostion_stats = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats>();
         }
         return impostion_stats;
     }
@@ -16245,7 +12857,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(dispostion_stats == nullptr)
         {
-            dispostion_stats = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats>();
+            dispostion_stats = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats>();
         }
         return dispostion_stats;
     }
@@ -16254,7 +12866,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(sequence_number == nullptr)
         {
-            sequence_number = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::SequenceNumber>();
+            sequence_number = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::SequenceNumber>();
         }
         return sequence_number;
     }
@@ -16262,7 +12874,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -16284,31 +12896,31 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xcon
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "impostion-stats" || name == "dispostion-stats" || name == "sequence-number")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionStats()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionStats()
     :
-    imposition_stat(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat>())
-    , imposition_mtu_drop(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop>())
-    , impostion_tail_drop(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop>())
-    , l2fsbi_drop(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop>())
-    , multicast(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast>())
-    , broadcast(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast>())
-    , known_unicast(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast>())
-    , unknown_unicast(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast>())
+    imposition_stat(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat>())
+    , imposition_mtu_drop(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop>())
+    , impostion_tail_drop(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop>())
+    , l2fsbi_drop(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop>())
+    , multicast(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast>())
+    , broadcast(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast>())
+    , known_unicast(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast>())
+    , unknown_unicast(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast>())
 {
     imposition_stat->parent = this;
     imposition_mtu_drop->parent = this;
@@ -16322,11 +12934,11 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Im
     yang_name = "impostion-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::~ImpostionStats()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::~ImpostionStats()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::has_data() const
 {
     if (is_presence_container) return true;
     return (imposition_stat !=  nullptr && imposition_stat->has_data())
@@ -16339,7 +12951,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
 	|| (unknown_unicast !=  nullptr && unknown_unicast->has_data());
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::has_operation() const
 {
     return is_set(yfilter)
 	|| (imposition_stat !=  nullptr && imposition_stat->has_operation())
@@ -16352,21 +12964,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
 	|| (unknown_unicast !=  nullptr && unknown_unicast->has_operation());
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "impostion-stats";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16375,13 +12987,13 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "imposition-stat")
     {
         if(imposition_stat == nullptr)
         {
-            imposition_stat = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat>();
+            imposition_stat = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat>();
         }
         return imposition_stat;
     }
@@ -16390,7 +13002,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(imposition_mtu_drop == nullptr)
         {
-            imposition_mtu_drop = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop>();
+            imposition_mtu_drop = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop>();
         }
         return imposition_mtu_drop;
     }
@@ -16399,7 +13011,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(impostion_tail_drop == nullptr)
         {
-            impostion_tail_drop = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop>();
+            impostion_tail_drop = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop>();
         }
         return impostion_tail_drop;
     }
@@ -16408,7 +13020,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(l2fsbi_drop == nullptr)
         {
-            l2fsbi_drop = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop>();
+            l2fsbi_drop = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop>();
         }
         return l2fsbi_drop;
     }
@@ -16417,7 +13029,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(multicast == nullptr)
         {
-            multicast = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast>();
+            multicast = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast>();
         }
         return multicast;
     }
@@ -16426,7 +13038,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(broadcast == nullptr)
         {
-            broadcast = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast>();
+            broadcast = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast>();
         }
         return broadcast;
     }
@@ -16435,7 +13047,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(known_unicast == nullptr)
         {
-            known_unicast = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast>();
+            known_unicast = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast>();
         }
         return known_unicast;
     }
@@ -16444,7 +13056,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(unknown_unicast == nullptr)
         {
-            unknown_unicast = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast>();
+            unknown_unicast = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast>();
         }
         return unknown_unicast;
     }
@@ -16452,7 +13064,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -16499,22 +13111,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xcon
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "imposition-stat" || name == "imposition-mtu-drop" || name == "impostion-tail-drop" || name == "l2fsbi-drop" || name == "multicast" || name == "broadcast" || name == "known-unicast" || name == "unknown-unicast")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::ImpositionStat()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::ImpositionStat()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -16523,39 +13135,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Im
     yang_name = "imposition-stat"; yang_parent_name = "impostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::~ImpositionStat()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::~ImpositionStat()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/impostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/impostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "imposition-stat";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16566,19 +13178,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -16594,7 +13206,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -16606,14 +13218,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::ImpositionMtuDrop()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::ImpositionMtuDrop()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -16622,39 +13234,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Im
     yang_name = "imposition-mtu-drop"; yang_parent_name = "impostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::~ImpositionMtuDrop()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::~ImpositionMtuDrop()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/impostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/impostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "imposition-mtu-drop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16665,19 +13277,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -16693,7 +13305,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -16705,14 +13317,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::ImpostionTailDrop()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::ImpostionTailDrop()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -16721,39 +13333,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Im
     yang_name = "impostion-tail-drop"; yang_parent_name = "impostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::~ImpostionTailDrop()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::~ImpostionTailDrop()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/impostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/impostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "impostion-tail-drop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16764,19 +13376,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -16792,7 +13404,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -16804,14 +13416,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::L2fsbiDrop()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::L2fsbiDrop()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -16820,39 +13432,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Im
     yang_name = "l2fsbi-drop"; yang_parent_name = "impostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::~L2fsbiDrop()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::~L2fsbiDrop()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/impostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/impostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fsbi-drop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16863,19 +13475,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -16891,7 +13503,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -16903,14 +13515,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::Multicast()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::Multicast()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -16919,39 +13531,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Im
     yang_name = "multicast"; yang_parent_name = "impostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::~Multicast()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::~Multicast()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/impostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/impostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16962,19 +13574,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -16990,7 +13602,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -17002,14 +13614,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Multicast::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::Broadcast()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::Broadcast()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -17018,39 +13630,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Im
     yang_name = "broadcast"; yang_parent_name = "impostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::~Broadcast()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::~Broadcast()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/impostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/impostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "broadcast";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17061,19 +13673,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -17089,7 +13701,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -17101,14 +13713,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::KnownUnicast()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::KnownUnicast()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -17117,39 +13729,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Im
     yang_name = "known-unicast"; yang_parent_name = "impostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::~KnownUnicast()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::~KnownUnicast()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/impostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/impostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "known-unicast";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17160,19 +13772,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -17188,7 +13800,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -17200,14 +13812,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::UnknownUnicast()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::UnknownUnicast()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -17216,39 +13828,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Im
     yang_name = "unknown-unicast"; yang_parent_name = "impostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::~UnknownUnicast()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::~UnknownUnicast()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/impostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/impostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "unknown-unicast";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17259,19 +13871,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -17287,7 +13899,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -17299,28 +13911,28 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispostionStats()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispostionStats()
     :
-    disposition_stat(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat>())
-    , disposition_mtu_drop(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop>())
-    , disposition_tail_drop(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop>())
-    , multicast_drop(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop>())
-    , unicast_drop(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop>())
-    , broadcast_drop(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop>())
-    , received_drops(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops>())
-    , dai_drop(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop>())
-    , ipsg_drop(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop>())
-    , disposition_oo_o_drops(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops>())
-    , disposition_p2mp_stats(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats>())
-    , known_unicast(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast>())
-    , mac_move(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove>())
+    disposition_stat(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat>())
+    , disposition_mtu_drop(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop>())
+    , disposition_tail_drop(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop>())
+    , multicast_drop(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop>())
+    , unicast_drop(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop>())
+    , broadcast_drop(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop>())
+    , received_drops(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops>())
+    , dai_drop(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop>())
+    , ipsg_drop(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop>())
+    , disposition_oo_o_drops(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops>())
+    , disposition_p2mp_stats(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats>())
+    , known_unicast(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast>())
+    , mac_move(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove>())
 {
     disposition_stat->parent = this;
     disposition_mtu_drop->parent = this;
@@ -17339,11 +13951,11 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Di
     yang_name = "dispostion-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::~DispostionStats()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::~DispostionStats()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::has_data() const
 {
     if (is_presence_container) return true;
     return (disposition_stat !=  nullptr && disposition_stat->has_data())
@@ -17361,7 +13973,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
 	|| (mac_move !=  nullptr && mac_move->has_data());
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::has_operation() const
 {
     return is_set(yfilter)
 	|| (disposition_stat !=  nullptr && disposition_stat->has_operation())
@@ -17379,21 +13991,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
 	|| (mac_move !=  nullptr && mac_move->has_operation());
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dispostion-stats";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17402,13 +14014,13 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "disposition-stat")
     {
         if(disposition_stat == nullptr)
         {
-            disposition_stat = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat>();
+            disposition_stat = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat>();
         }
         return disposition_stat;
     }
@@ -17417,7 +14029,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(disposition_mtu_drop == nullptr)
         {
-            disposition_mtu_drop = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop>();
+            disposition_mtu_drop = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop>();
         }
         return disposition_mtu_drop;
     }
@@ -17426,7 +14038,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(disposition_tail_drop == nullptr)
         {
-            disposition_tail_drop = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop>();
+            disposition_tail_drop = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop>();
         }
         return disposition_tail_drop;
     }
@@ -17435,7 +14047,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(multicast_drop == nullptr)
         {
-            multicast_drop = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop>();
+            multicast_drop = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop>();
         }
         return multicast_drop;
     }
@@ -17444,7 +14056,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(unicast_drop == nullptr)
         {
-            unicast_drop = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop>();
+            unicast_drop = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop>();
         }
         return unicast_drop;
     }
@@ -17453,7 +14065,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(broadcast_drop == nullptr)
         {
-            broadcast_drop = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop>();
+            broadcast_drop = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop>();
         }
         return broadcast_drop;
     }
@@ -17462,7 +14074,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(received_drops == nullptr)
         {
-            received_drops = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops>();
+            received_drops = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops>();
         }
         return received_drops;
     }
@@ -17471,7 +14083,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(dai_drop == nullptr)
         {
-            dai_drop = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop>();
+            dai_drop = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop>();
         }
         return dai_drop;
     }
@@ -17480,7 +14092,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(ipsg_drop == nullptr)
         {
-            ipsg_drop = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop>();
+            ipsg_drop = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop>();
         }
         return ipsg_drop;
     }
@@ -17489,7 +14101,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(disposition_oo_o_drops == nullptr)
         {
-            disposition_oo_o_drops = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops>();
+            disposition_oo_o_drops = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops>();
         }
         return disposition_oo_o_drops;
     }
@@ -17498,7 +14110,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(disposition_p2mp_stats == nullptr)
         {
-            disposition_p2mp_stats = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats>();
+            disposition_p2mp_stats = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats>();
         }
         return disposition_p2mp_stats;
     }
@@ -17507,7 +14119,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(known_unicast == nullptr)
         {
-            known_unicast = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast>();
+            known_unicast = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast>();
         }
         return known_unicast;
     }
@@ -17516,7 +14128,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     {
         if(mac_move == nullptr)
         {
-            mac_move = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove>();
+            mac_move = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove>();
         }
         return mac_move;
     }
@@ -17524,7 +14136,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::Attachmen
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -17596,22 +14208,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xcon
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disposition-stat" || name == "disposition-mtu-drop" || name == "disposition-tail-drop" || name == "multicast-drop" || name == "unicast-drop" || name == "broadcast-drop" || name == "received-drops" || name == "dai-drop" || name == "ipsg-drop" || name == "disposition-oo-o-drops" || name == "disposition-p2mp-stats" || name == "known-unicast" || name == "mac-move")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::DispositionStat()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::DispositionStat()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -17620,39 +14232,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Di
     yang_name = "disposition-stat"; yang_parent_name = "dispostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::~DispositionStat()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::~DispositionStat()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "disposition-stat";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17663,19 +14275,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -17691,7 +14303,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -17703,14 +14315,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::DispositionMtuDrop()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::DispositionMtuDrop()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -17719,39 +14331,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Di
     yang_name = "disposition-mtu-drop"; yang_parent_name = "dispostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::~DispositionMtuDrop()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::~DispositionMtuDrop()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "disposition-mtu-drop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17762,19 +14374,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -17790,7 +14402,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -17802,14 +14414,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::DispositionTailDrop()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::DispositionTailDrop()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -17818,39 +14430,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Di
     yang_name = "disposition-tail-drop"; yang_parent_name = "dispostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::~DispositionTailDrop()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::~DispositionTailDrop()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "disposition-tail-drop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17861,19 +14473,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -17889,7 +14501,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -17901,14 +14513,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::MulticastDrop()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::MulticastDrop()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -17917,39 +14529,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Di
     yang_name = "multicast-drop"; yang_parent_name = "dispostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::~MulticastDrop()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::~MulticastDrop()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-drop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17960,19 +14572,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -17988,7 +14600,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -18000,14 +14612,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::UnicastDrop()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::UnicastDrop()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -18016,39 +14628,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Di
     yang_name = "unicast-drop"; yang_parent_name = "dispostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::~UnicastDrop()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::~UnicastDrop()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "unicast-drop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18059,19 +14671,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -18087,7 +14699,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -18099,14 +14711,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::BroadcastDrop()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::BroadcastDrop()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -18115,39 +14727,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Di
     yang_name = "broadcast-drop"; yang_parent_name = "dispostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::~BroadcastDrop()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::~BroadcastDrop()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "broadcast-drop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18158,19 +14770,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -18186,7 +14798,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -18198,14 +14810,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::ReceivedDrops()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::ReceivedDrops()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -18214,39 +14826,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Di
     yang_name = "received-drops"; yang_parent_name = "dispostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::~ReceivedDrops()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::~ReceivedDrops()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "received-drops";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18257,19 +14869,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -18285,7 +14897,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -18297,14 +14909,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::DaiDrop()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::DaiDrop()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -18313,39 +14925,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Di
     yang_name = "dai-drop"; yang_parent_name = "dispostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::~DaiDrop()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::~DaiDrop()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dai-drop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18356,19 +14968,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -18384,7 +14996,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -18396,14 +15008,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::IpsgDrop()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::IpsgDrop()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -18412,39 +15024,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Di
     yang_name = "ipsg-drop"; yang_parent_name = "dispostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::~IpsgDrop()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::~IpsgDrop()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipsg-drop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18455,19 +15067,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -18483,7 +15095,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -18495,14 +15107,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::DispositionOoODrops()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::DispositionOoODrops()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -18511,39 +15123,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Di
     yang_name = "disposition-oo-o-drops"; yang_parent_name = "dispostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::~DispositionOoODrops()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::~DispositionOoODrops()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "disposition-oo-o-drops";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18554,19 +15166,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -18582,7 +15194,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -18594,14 +15206,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::DispositionP2mpStats()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::DispositionP2mpStats()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -18610,39 +15222,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Di
     yang_name = "disposition-p2mp-stats"; yang_parent_name = "dispostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::~DispositionP2mpStats()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::~DispositionP2mpStats()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "disposition-p2mp-stats";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18653,19 +15265,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -18681,7 +15293,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -18693,14 +15305,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::KnownUnicast()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::KnownUnicast()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -18709,39 +15321,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Di
     yang_name = "known-unicast"; yang_parent_name = "dispostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::~KnownUnicast()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::~KnownUnicast()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "known-unicast";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18752,19 +15364,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -18780,7 +15392,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -18792,14 +15404,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::MacMove()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::MacMove()
     :
     packet_counts{YType::uint64, "packet-counts"},
     byte_counts{YType::uint64, "byte-counts"}
@@ -18808,39 +15420,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Di
     yang_name = "mac-move"; yang_parent_name = "dispostion-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::~MacMove()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::~MacMove()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::has_data() const
 {
     if (is_presence_container) return true;
     return packet_counts.is_set
 	|| byte_counts.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_counts.yfilter)
 	|| ydk::is_set(byte_counts.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/dispostion-stats/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-move";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18851,19 +15463,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-counts")
     {
@@ -18879,7 +15491,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-counts")
     {
@@ -18891,14 +15503,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::DispostionStats::MacMove::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-counts" || name == "byte-counts")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::SequenceNumber::SequenceNumber()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::SequenceNumber::SequenceNumber()
     :
     sequence_number_sent{YType::uint32, "sequence-number-sent"},
     sequence_number_expected{YType::uint32, "sequence-number-expected"},
@@ -18909,11 +15521,11 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::Se
     yang_name = "sequence-number"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::SequenceNumber::~SequenceNumber()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::SequenceNumber::~SequenceNumber()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::SequenceNumber::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::SequenceNumber::has_data() const
 {
     if (is_presence_container) return true;
     return sequence_number_sent.is_set
@@ -18922,7 +15534,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
 	|| bypassed_out_sequence_packet.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::SequenceNumber::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::SequenceNumber::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sequence_number_sent.yfilter)
@@ -18931,21 +15543,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
 	|| ydk::is_set(bypassed_out_sequence_packet.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::SequenceNumber::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::SequenceNumber::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/statistics/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/statistics/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::SequenceNumber::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::SequenceNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sequence-number";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::SequenceNumber::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::SequenceNumber::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18958,19 +15570,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::SequenceNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::SequenceNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::SequenceNumber::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::SequenceNumber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::SequenceNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::SequenceNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sequence-number-sent")
     {
@@ -18998,7 +15610,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::SequenceNumber::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::SequenceNumber::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sequence-number-sent")
     {
@@ -19018,14 +15630,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistic
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::Statistics::SequenceNumber::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::Statistics::SequenceNumber::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sequence-number-sent" || name == "sequence-number-expected" || name == "bypassed-inbound-sequence-packet" || name == "bypassed-out-sequence-packet")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::L2vpnProtection::L2vpnProtection()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::L2vpnProtection::L2vpnProtection()
     :
     protection_type{YType::enumeration, "protection-type"},
     protection_configured{YType::enumeration, "protection-configured"},
@@ -19037,11 +15649,11 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::L2vpnProtectio
     yang_name = "l2vpn-protection"; yang_parent_name = "attachment-circuit"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::L2vpnProtection::~L2vpnProtection()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::L2vpnProtection::~L2vpnProtection()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::L2vpnProtection::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::L2vpnProtection::has_data() const
 {
     if (is_presence_container) return true;
     return protection_type.is_set
@@ -19051,7 +15663,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::L2vpnProt
 	|| active.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::L2vpnProtection::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::L2vpnProtection::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(protection_type.yfilter)
@@ -19061,21 +15673,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::L2vpnProt
 	|| ydk::is_set(active.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::L2vpnProtection::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::L2vpnProtection::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/attachment-circuit/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/attachment-circuit/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::L2vpnProtection::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::L2vpnProtection::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2vpn-protection";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::L2vpnProtection::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::L2vpnProtection::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19089,19 +15701,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::L2vpnProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::L2vpnProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::L2vpnProtection::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::L2vpnProtection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::L2vpnProtection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::L2vpnProtection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protection-type")
     {
@@ -19135,7 +15747,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::L2vpnProt
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::L2vpnProtection::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::L2vpnProtection::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protection-type")
     {
@@ -19159,14 +15771,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::L2vpnProt
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::AttachmentCircuit::L2vpnProtection::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::AttachmentCircuit::L2vpnProtection::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protection-type" || name == "protection-configured" || name == "protection-name" || name == "protected-name" || name == "active")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PseudoWire()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::PseudoWire()
     :
     local_source_address{YType::str, "local-source-address"},
     ipv6_local_source_address{YType::str, "ipv6-local-source-address"},
@@ -19251,15 +15863,15 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PseudoWire()
     forward_class{YType::uint8, "forward-class"},
     table_policy_name{YType::str, "table-policy-name"}
         ,
-    peer_id(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PeerId>())
-    , encapsulation_info(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo>())
-    , local_interface(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::LocalInterface>())
-    , remote_interface(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::RemoteInterface>())
-    , preferred_path(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PreferredPath>())
-    , local_signalling(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::LocalSignalling>())
-    , remote_signalling(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::RemoteSignalling>())
-    , statistics(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::Statistics>())
-    , p2mp_pw(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::P2mpPw>())
+    peer_id(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::PeerId>())
+    , encapsulation_info(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo>())
+    , local_interface(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface>())
+    , remote_interface(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface>())
+    , preferred_path(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::PreferredPath>())
+    , local_signalling(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalSignalling>())
+    , remote_signalling(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteSignalling>())
+    , statistics(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::Statistics>())
+    , p2mp_pw(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::P2mpPw>())
 {
     peer_id->parent = this;
     encapsulation_info->parent = this;
@@ -19274,11 +15886,11 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PseudoWire()
     yang_name = "pseudo-wire"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::~PseudoWire()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::~PseudoWire()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::has_data() const
 {
     if (is_presence_container) return true;
     return local_source_address.is_set
@@ -19374,7 +15986,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::has_data() const
 	|| (p2mp_pw !=  nullptr && p2mp_pw->has_data());
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(local_source_address.yfilter)
@@ -19470,21 +16082,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::has_operation() 
 	|| (p2mp_pw !=  nullptr && p2mp_pw->has_operation());
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pseudo-wire";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19575,13 +16187,13 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer-id")
     {
         if(peer_id == nullptr)
         {
-            peer_id = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PeerId>();
+            peer_id = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::PeerId>();
         }
         return peer_id;
     }
@@ -19590,7 +16202,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWir
     {
         if(encapsulation_info == nullptr)
         {
-            encapsulation_info = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo>();
+            encapsulation_info = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo>();
         }
         return encapsulation_info;
     }
@@ -19599,7 +16211,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWir
     {
         if(local_interface == nullptr)
         {
-            local_interface = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::LocalInterface>();
+            local_interface = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface>();
         }
         return local_interface;
     }
@@ -19608,7 +16220,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWir
     {
         if(remote_interface == nullptr)
         {
-            remote_interface = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::RemoteInterface>();
+            remote_interface = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface>();
         }
         return remote_interface;
     }
@@ -19617,7 +16229,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWir
     {
         if(preferred_path == nullptr)
         {
-            preferred_path = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PreferredPath>();
+            preferred_path = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::PreferredPath>();
         }
         return preferred_path;
     }
@@ -19626,7 +16238,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWir
     {
         if(local_signalling == nullptr)
         {
-            local_signalling = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::LocalSignalling>();
+            local_signalling = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalSignalling>();
         }
         return local_signalling;
     }
@@ -19635,7 +16247,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWir
     {
         if(remote_signalling == nullptr)
         {
-            remote_signalling = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::RemoteSignalling>();
+            remote_signalling = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteSignalling>();
         }
         return remote_signalling;
     }
@@ -19644,7 +16256,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWir
     {
         if(statistics == nullptr)
         {
-            statistics = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::Statistics>();
+            statistics = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::Statistics>();
         }
         return statistics;
     }
@@ -19653,7 +16265,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWir
     {
         if(p2mp_pw == nullptr)
         {
-            p2mp_pw = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::P2mpPw>();
+            p2mp_pw = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::P2mpPw>();
         }
         return p2mp_pw;
     }
@@ -19661,7 +16273,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWir
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -19713,7 +16325,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xcon
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-source-address")
     {
@@ -20209,7 +16821,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::set_value(const 
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "local-source-address")
     {
@@ -20541,14 +17153,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::set_filter(const
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "peer-id" || name == "encapsulation-info" || name == "local-interface" || name == "remote-interface" || name == "preferred-path" || name == "local-signalling" || name == "remote-signalling" || name == "statistics" || name == "p2mp-pw" || name == "local-source-address" || name == "ipv6-local-source-address" || name == "pseudo-wire-id" || name == "is-pwr-type" || name == "is-evpn-vpws-type" || name == "xconnect-id" || name == "state" || name == "pseudo-wire-state" || name == "protocol" || name == "pw-class-name" || name == "tag-rewrite" || name == "interworking" || name == "fe-ctype" || name == "evpn-src-acid" || name == "sequencing-type" || name == "resync-enabled" || name == "resync-threshold" || name == "local-control-word" || name == "remote-control-word" || name == "local-pseudo-wire-type" || name == "remote-pseudo-wire-type" || name == "imposed-vlan-id" || name == "time-created" || name == "time-elapsed-creation" || name == "last-time-status-changed" || name == "time-elapsed-status-changed" || name == "last-time-status-down" || name == "time-elapsed-status-down" || name == "shutdown" || name == "data-path-down" || name == "use-tunnel-path" || name == "odn-configured" || name == "pseudo-wire-type-mismatched" || name == "payload-bytes-mismatched" || name == "bitrate-mismatched" || name == "rtp-mismatched" || name == "diff-ts-mismatched" || name == "sig-pkts-mismatched" || name == "cas-mismatched" || name == "payload-type-mismatched" || name == "freq-mismatched" || name == "ssrc-mismatched" || name == "mtu-mismatched" || name == "illegal-control-word" || name == "ad-remote-down" || name == "not-supported-qinq" || name == "local-label-failed" || name == "remote-label-failed" || name == "preferred-path-disable-fallback" || name == "backup-pw" || name == "primary-pw" || name == "backup-active" || name == "backup-force-active" || name == "disable-never" || name == "disable-delay" || name == "primary-peer-id" || name == "primary-pseudo-wire-id" || name == "number-ma-cwithdraw-message-sent" || name == "num-ma-cwithdraw-msg-received" || name == "out-of-memory-state" || name == "transport-lsp-down" || name == "mac-limit-oper-down" || name == "pw-status-use" || name == "auto-discovery" || name == "ad-method" || name == "pwlsd-rewrite-failed" || name == "ldp-label-advertise-failed" || name == "is-vfi" || name == "is-multi-segment-pseudowire" || name == "pw-redundancy-one-way" || name == "load-balance" || name == "pw-flow-label-type" || name == "pw-flow-label-type-cfg" || name == "pw-flow-label-code17-disabled" || name == "is-flow-label-static" || name == "is-partially-programmed" || name == "pw-redundancy-initial-delay" || name == "bridge-pw-type-mismatch" || name == "required-bw" || name == "admited-bw" || name == "forward-class" || name == "table-policy-name")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PeerId::PeerId()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::PeerId::PeerId()
     :
     type{YType::enumeration, "type"},
     ipv4_peer_id{YType::str, "ipv4-peer-id"},
@@ -20559,11 +17171,11 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PeerId::PeerId()
     yang_name = "peer-id"; yang_parent_name = "pseudo-wire"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PeerId::~PeerId()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::PeerId::~PeerId()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PeerId::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::PeerId::has_data() const
 {
     if (is_presence_container) return true;
     return type.is_set
@@ -20572,7 +17184,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PeerId::has_data
 	|| internal_label.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PeerId::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::PeerId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -20581,21 +17193,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PeerId::has_oper
 	|| ydk::is_set(internal_label.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PeerId::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::PeerId::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/pseudo-wire/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PeerId::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::PeerId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PeerId::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::PeerId::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20608,19 +17220,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PeerId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::PeerId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PeerId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::PeerId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PeerId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::PeerId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -20648,7 +17260,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PeerId::set_valu
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PeerId::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::PeerId::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -20668,19 +17280,19 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PeerId::set_filt
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::PeerId::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::PeerId::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "type" || name == "ipv4-peer-id" || name == "ipv6-peer-id" || name == "internal-label")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::EncapsulationInfo()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::EncapsulationInfo()
     :
     encapsulation{YType::enumeration, "encapsulation"}
         ,
-    atom(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom>())
-    , l2tpv3(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::L2tpv3>())
+    atom(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom>())
+    , l2tpv3(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::L2tpv3>())
 {
     atom->parent = this;
     l2tpv3->parent = this;
@@ -20688,11 +17300,11 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::En
     yang_name = "encapsulation-info"; yang_parent_name = "pseudo-wire"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::~EncapsulationInfo()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::~EncapsulationInfo()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::has_data() const
 {
     if (is_presence_container) return true;
     return encapsulation.is_set
@@ -20700,7 +17312,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInf
 	|| (l2tpv3 !=  nullptr && l2tpv3->has_data());
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(encapsulation.yfilter)
@@ -20708,21 +17320,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInf
 	|| (l2tpv3 !=  nullptr && l2tpv3->has_operation());
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/pseudo-wire/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "encapsulation-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20732,13 +17344,13 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atom")
     {
         if(atom == nullptr)
         {
-            atom = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom>();
+            atom = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom>();
         }
         return atom;
     }
@@ -20747,7 +17359,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWir
     {
         if(l2tpv3 == nullptr)
         {
-            l2tpv3 = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::L2tpv3>();
+            l2tpv3 = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::L2tpv3>();
         }
         return l2tpv3;
     }
@@ -20755,7 +17367,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWir
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -20772,7 +17384,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xcon
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "encapsulation")
     {
@@ -20782,7 +17394,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInf
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "encapsulation")
     {
@@ -20790,14 +17402,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInf
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atom" || name == "l2tpv3" || name == "encapsulation")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::Atom()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::Atom()
     :
     is_pseudowire_headend{YType::boolean, "is-pseudowire-headend"},
     local_label{YType::uint32, "local-label"},
@@ -20833,9 +17445,9 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::At
     lsd_rewrite_failed{YType::boolean, "lsd-rewrite-failed"},
     ldp_label_advertisment_failed{YType::boolean, "ldp-label-advertisment-failed"}
         ,
-    local_agi(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi>())
-    , remote_agi(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi>())
-    , multi_segment_pseudowire_stats(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats>())
+    local_agi(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi>())
+    , remote_agi(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi>())
+    , multi_segment_pseudowire_stats(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats>())
 {
     local_agi->parent = this;
     remote_agi->parent = this;
@@ -20844,11 +17456,11 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::At
     yang_name = "atom"; yang_parent_name = "encapsulation-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::~Atom()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::~Atom()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::has_data() const
 {
     if (is_presence_container) return true;
     return is_pseudowire_headend.is_set
@@ -20889,7 +17501,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInf
 	|| (multi_segment_pseudowire_stats !=  nullptr && multi_segment_pseudowire_stats->has_data());
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_pseudowire_headend.yfilter)
@@ -20930,21 +17542,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInf
 	|| (multi_segment_pseudowire_stats !=  nullptr && multi_segment_pseudowire_stats->has_operation());
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/pseudo-wire/encapsulation-info/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/encapsulation-info/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atom";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20986,13 +17598,13 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-agi")
     {
         if(local_agi == nullptr)
         {
-            local_agi = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi>();
+            local_agi = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi>();
         }
         return local_agi;
     }
@@ -21001,7 +17613,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWir
     {
         if(remote_agi == nullptr)
         {
-            remote_agi = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi>();
+            remote_agi = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi>();
         }
         return remote_agi;
     }
@@ -21010,7 +17622,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWir
     {
         if(multi_segment_pseudowire_stats == nullptr)
         {
-            multi_segment_pseudowire_stats = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats>();
+            multi_segment_pseudowire_stats = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats>();
         }
         return multi_segment_pseudowire_stats;
     }
@@ -21018,7 +17630,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWir
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -21040,7 +17652,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xcon
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-pseudowire-headend")
     {
@@ -21242,7 +17854,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInf
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-pseudowire-headend")
     {
@@ -21378,20 +17990,20 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInf
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "local-agi" || name == "remote-agi" || name == "multi-segment-pseudowire-stats" || name == "is-pseudowire-headend" || name == "local-label" || name == "remote-label" || name == "local-group-id" || name == "remote-group-id" || name == "local-cv-type" || name == "local-c-ctype" || name == "remote-cv-type" || name == "remote-c-ctype" || name == "local-veid" || name == "remote-veid" || name == "local-ceid" || name == "remote-ceid" || name == "source-address" || name == "remote-source-address" || name == "local-ldp-id" || name == "remote-ldp-id" || name == "saii" || name == "taii" || name == "is-sai-itype2" || name == "local-saii-gbl-id" || name == "local-saiiac-id" || name == "is-tai-itype2" || name == "local-taii-gbl-id" || name == "local-taiiac-id" || name == "rem-saii-gbl-id" || name == "rem-saiiac-id" || name == "rem-taii-gbl-id" || name == "rem-taiiac-id" || name == "rem-saii" || name == "rem-taii" || name == "lsd-rewrite-failed" || name == "ldp-label-advertisment-failed")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::LocalAgi()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::LocalAgi()
     :
     vpls_id_type{YType::enumeration, "vpls-id-type"}
         ,
-    auto_(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto>())
-    , two_byte_as(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs>())
-    , v4_addr(std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr>())
+    auto_(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto>())
+    , two_byte_as(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs>())
+    , v4_addr(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr>())
 {
     auto_->parent = this;
     two_byte_as->parent = this;
@@ -21400,11 +18012,11 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::At
     yang_name = "local-agi"; yang_parent_name = "atom"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::~LocalAgi()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::~LocalAgi()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::has_data() const
 {
     if (is_presence_container) return true;
     return vpls_id_type.is_set
@@ -21413,7 +18025,7 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInf
 	|| (v4_addr !=  nullptr && v4_addr->has_data());
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vpls_id_type.yfilter)
@@ -21422,21 +18034,21 @@ bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInf
 	|| (v4_addr !=  nullptr && v4_addr->has_operation());
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/pseudo-wire/encapsulation-info/atom/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/encapsulation-info/atom/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local-agi";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -21446,13 +18058,13 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auto")
     {
         if(auto_ == nullptr)
         {
-            auto_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto>();
+            auto_ = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto>();
         }
         return auto_;
     }
@@ -21461,7 +18073,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWir
     {
         if(two_byte_as == nullptr)
         {
-            two_byte_as = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs>();
+            two_byte_as = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs>();
         }
         return two_byte_as;
     }
@@ -21470,7 +18082,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWir
     {
         if(v4_addr == nullptr)
         {
-            v4_addr = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr>();
+            v4_addr = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr>();
         }
         return v4_addr;
     }
@@ -21478,7 +18090,7 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWir
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -21500,7 +18112,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xcon
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vpls-id-type")
     {
@@ -21510,7 +18122,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInf
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vpls-id-type")
     {
@@ -21518,14 +18130,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInf
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "auto" || name == "two-byte-as" || name == "v4-addr" || name == "vpls-id-type")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::Auto()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::Auto()
     :
     asn{YType::uint16, "asn"},
     vpn_id{YType::uint32, "vpn-id"}
@@ -21534,39 +18146,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::At
     yang_name = "auto"; yang_parent_name = "local-agi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::~Auto()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::~Auto()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::has_data() const
 {
     if (is_presence_container) return true;
     return asn.is_set
 	|| vpn_id.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(asn.yfilter)
 	|| ydk::is_set(vpn_id.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/pseudo-wire/encapsulation-info/atom/local-agi/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/encapsulation-info/atom/local-agi/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "auto";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -21577,19 +18189,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "asn")
     {
@@ -21605,7 +18217,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInf
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "asn")
     {
@@ -21617,14 +18229,14 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInf
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "asn" || name == "vpn-id")
         return true;
     return false;
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::TwoByteAs()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::TwoByteAs()
     :
     two_byte_as{YType::uint16, "two-byte-as"},
     four_byte_index{YType::uint32, "four-byte-index"}
@@ -21633,39 +18245,39 @@ L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::At
     yang_name = "two-byte-as"; yang_parent_name = "local-agi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::~TwoByteAs()
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::~TwoByteAs()
 {
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::has_data() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::has_data() const
 {
     if (is_presence_container) return true;
     return two_byte_as.is_set
 	|| four_byte_index.is_set;
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::has_operation() const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(two_byte_as.yfilter)
 	|| ydk::is_set(four_byte_index.yfilter);
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::get_absolute_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnects/xconnect/backup/pseudo-wire/encapsulation-info/atom/local-agi/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/encapsulation-info/atom/local-agi/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::get_segment_path() const
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "two-byte-as";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -21676,19 +18288,19 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "two-byte-as")
     {
@@ -21704,7 +18316,7 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInf
     }
 }
 
-void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "two-byte-as")
     {
@@ -21716,9 +18328,3720 @@ void L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInf
     }
 }
 
-bool L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "two-byte-as" || name == "four-byte-index")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::V4Addr()
+    :
+    ipv4_address{YType::str, "ipv4-address"},
+    two_byte_index{YType::uint16, "two-byte-index"}
+{
+
+    yang_name = "v4-addr"; yang_parent_name = "local-agi"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::~V4Addr()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::has_data() const
+{
+    if (is_presence_container) return true;
+    return ipv4_address.is_set
+	|| two_byte_index.is_set;
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(two_byte_index.yfilter);
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/encapsulation-info/atom/local-agi/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "v4-addr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (two_byte_index.is_set || is_set(two_byte_index.yfilter)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "two-byte-index")
+    {
+        two_byte_index = value;
+        two_byte_index.value_namespace = name_space;
+        two_byte_index.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "two-byte-index")
+    {
+        two_byte_index.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-address" || name == "two-byte-index")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::RemoteAgi()
+    :
+    vpls_id_type{YType::enumeration, "vpls-id-type"}
+        ,
+    auto_(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto>())
+    , two_byte_as(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs>())
+    , v4_addr(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr>())
+{
+    auto_->parent = this;
+    two_byte_as->parent = this;
+    v4_addr->parent = this;
+
+    yang_name = "remote-agi"; yang_parent_name = "atom"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::~RemoteAgi()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::has_data() const
+{
+    if (is_presence_container) return true;
+    return vpls_id_type.is_set
+	|| (auto_ !=  nullptr && auto_->has_data())
+	|| (two_byte_as !=  nullptr && two_byte_as->has_data())
+	|| (v4_addr !=  nullptr && v4_addr->has_data());
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vpls_id_type.yfilter)
+	|| (auto_ !=  nullptr && auto_->has_operation())
+	|| (two_byte_as !=  nullptr && two_byte_as->has_operation())
+	|| (v4_addr !=  nullptr && v4_addr->has_operation());
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/encapsulation-info/atom/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "remote-agi";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vpls_id_type.is_set || is_set(vpls_id_type.yfilter)) leaf_name_data.push_back(vpls_id_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "auto")
+    {
+        if(auto_ == nullptr)
+        {
+            auto_ = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto>();
+        }
+        return auto_;
+    }
+
+    if(child_yang_name == "two-byte-as")
+    {
+        if(two_byte_as == nullptr)
+        {
+            two_byte_as = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs>();
+        }
+        return two_byte_as;
+    }
+
+    if(child_yang_name == "v4-addr")
+    {
+        if(v4_addr == nullptr)
+        {
+            v4_addr = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr>();
+        }
+        return v4_addr;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(auto_ != nullptr)
+    {
+        children["auto"] = auto_;
+    }
+
+    if(two_byte_as != nullptr)
+    {
+        children["two-byte-as"] = two_byte_as;
+    }
+
+    if(v4_addr != nullptr)
+    {
+        children["v4-addr"] = v4_addr;
+    }
+
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vpls-id-type")
+    {
+        vpls_id_type = value;
+        vpls_id_type.value_namespace = name_space;
+        vpls_id_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vpls-id-type")
+    {
+        vpls_id_type.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auto" || name == "two-byte-as" || name == "v4-addr" || name == "vpls-id-type")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto::Auto()
+    :
+    asn{YType::uint16, "asn"},
+    vpn_id{YType::uint32, "vpn-id"}
+{
+
+    yang_name = "auto"; yang_parent_name = "remote-agi"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto::~Auto()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto::has_data() const
+{
+    if (is_presence_container) return true;
+    return asn.is_set
+	|| vpn_id.is_set;
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(asn.yfilter)
+	|| ydk::is_set(vpn_id.yfilter);
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/encapsulation-info/atom/remote-agi/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "auto";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (asn.is_set || is_set(asn.yfilter)) leaf_name_data.push_back(asn.get_name_leafdata());
+    if (vpn_id.is_set || is_set(vpn_id.yfilter)) leaf_name_data.push_back(vpn_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "asn")
+    {
+        asn = value;
+        asn.value_namespace = name_space;
+        asn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vpn-id")
+    {
+        vpn_id = value;
+        vpn_id.value_namespace = name_space;
+        vpn_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "asn")
+    {
+        asn.yfilter = yfilter;
+    }
+    if(value_path == "vpn-id")
+    {
+        vpn_id.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asn" || name == "vpn-id")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::TwoByteAs()
+    :
+    two_byte_as{YType::uint16, "two-byte-as"},
+    four_byte_index{YType::uint32, "four-byte-index"}
+{
+
+    yang_name = "two-byte-as"; yang_parent_name = "remote-agi"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::~TwoByteAs()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::has_data() const
+{
+    if (is_presence_container) return true;
+    return two_byte_as.is_set
+	|| four_byte_index.is_set;
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(two_byte_as.yfilter)
+	|| ydk::is_set(four_byte_index.yfilter);
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/encapsulation-info/atom/remote-agi/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "two-byte-as";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (two_byte_as.is_set || is_set(two_byte_as.yfilter)) leaf_name_data.push_back(two_byte_as.get_name_leafdata());
+    if (four_byte_index.is_set || is_set(four_byte_index.yfilter)) leaf_name_data.push_back(four_byte_index.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "two-byte-as")
+    {
+        two_byte_as = value;
+        two_byte_as.value_namespace = name_space;
+        two_byte_as.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "four-byte-index")
+    {
+        four_byte_index = value;
+        four_byte_index.value_namespace = name_space;
+        four_byte_index.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "two-byte-as")
+    {
+        two_byte_as.yfilter = yfilter;
+    }
+    if(value_path == "four-byte-index")
+    {
+        four_byte_index.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "two-byte-as" || name == "four-byte-index")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::V4Addr()
+    :
+    ipv4_address{YType::str, "ipv4-address"},
+    two_byte_index{YType::uint16, "two-byte-index"}
+{
+
+    yang_name = "v4-addr"; yang_parent_name = "remote-agi"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::~V4Addr()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::has_data() const
+{
+    if (is_presence_container) return true;
+    return ipv4_address.is_set
+	|| two_byte_index.is_set;
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(two_byte_index.yfilter);
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/encapsulation-info/atom/remote-agi/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "v4-addr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (two_byte_index.is_set || is_set(two_byte_index.yfilter)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "two-byte-index")
+    {
+        two_byte_index = value;
+        two_byte_index.value_namespace = name_space;
+        two_byte_index.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "two-byte-index")
+    {
+        two_byte_index.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-address" || name == "two-byte-index")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::MultiSegmentPseudowireStats()
+    :
+    received_packets{YType::uint64, "received-packets"},
+    received_bytes{YType::uint64, "received-bytes"}
+{
+
+    yang_name = "multi-segment-pseudowire-stats"; yang_parent_name = "atom"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::~MultiSegmentPseudowireStats()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::has_data() const
+{
+    if (is_presence_container) return true;
+    return received_packets.is_set
+	|| received_bytes.is_set;
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(received_packets.yfilter)
+	|| ydk::is_set(received_bytes.yfilter);
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/encapsulation-info/atom/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "multi-segment-pseudowire-stats";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (received_packets.is_set || is_set(received_packets.yfilter)) leaf_name_data.push_back(received_packets.get_name_leafdata());
+    if (received_bytes.is_set || is_set(received_bytes.yfilter)) leaf_name_data.push_back(received_bytes.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "received-packets")
+    {
+        received_packets = value;
+        received_packets.value_namespace = name_space;
+        received_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "received-bytes")
+    {
+        received_bytes = value;
+        received_bytes.value_namespace = name_space;
+        received_bytes.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "received-packets")
+    {
+        received_packets.yfilter = yfilter;
+    }
+    if(value_path == "received-bytes")
+    {
+        received_bytes.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "received-packets" || name == "received-bytes")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::L2tpv3::L2tpv3()
+    :
+    l2tp_class_name{YType::str, "l2tp-class-name"},
+    ipv4_source_address{YType::str, "ipv4-source-address"},
+    ipv6_source_address{YType::str, "ipv6-source-address"},
+    path_mtu_enabled{YType::boolean, "path-mtu-enabled"},
+    path_mtu_max_value{YType::uint16, "path-mtu-max-value"},
+    dont_fragment_bit{YType::boolean, "dont-fragment-bit"},
+    tos_mode{YType::enumeration, "tos-mode"},
+    tos{YType::uint8, "tos"},
+    ttl{YType::uint8, "ttl"},
+    local_session_id{YType::uint32, "local-session-id"},
+    remote_session_id{YType::uint32, "remote-session-id"},
+    local_cookie_size{YType::uint8, "local-cookie-size"},
+    remote_cookie_size{YType::uint8, "remote-cookie-size"},
+    local_cookie_low_value{YType::uint32, "local-cookie-low-value"},
+    remote_cookie_low_value{YType::uint32, "remote-cookie-low-value"},
+    local_cookie_high_value{YType::uint32, "local-cookie-high-value"},
+    remote_cookie_high_value{YType::uint32, "remote-cookie-high-value"},
+    remote_circuit_status_up{YType::boolean, "remote-circuit-status-up"},
+    tunnel_state{YType::enumeration, "tunnel-state"},
+    local_secondary_cookie_size{YType::uint8, "local-secondary-cookie-size"},
+    local_secondary_cookie_low_value{YType::uint32, "local-secondary-cookie-low-value"},
+    local_secondary_cookie_high_value{YType::uint32, "local-secondary-cookie-high-value"}
+{
+
+    yang_name = "l2tpv3"; yang_parent_name = "encapsulation-info"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::L2tpv3::~L2tpv3()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::L2tpv3::has_data() const
+{
+    if (is_presence_container) return true;
+    return l2tp_class_name.is_set
+	|| ipv4_source_address.is_set
+	|| ipv6_source_address.is_set
+	|| path_mtu_enabled.is_set
+	|| path_mtu_max_value.is_set
+	|| dont_fragment_bit.is_set
+	|| tos_mode.is_set
+	|| tos.is_set
+	|| ttl.is_set
+	|| local_session_id.is_set
+	|| remote_session_id.is_set
+	|| local_cookie_size.is_set
+	|| remote_cookie_size.is_set
+	|| local_cookie_low_value.is_set
+	|| remote_cookie_low_value.is_set
+	|| local_cookie_high_value.is_set
+	|| remote_cookie_high_value.is_set
+	|| remote_circuit_status_up.is_set
+	|| tunnel_state.is_set
+	|| local_secondary_cookie_size.is_set
+	|| local_secondary_cookie_low_value.is_set
+	|| local_secondary_cookie_high_value.is_set;
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::L2tpv3::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(l2tp_class_name.yfilter)
+	|| ydk::is_set(ipv4_source_address.yfilter)
+	|| ydk::is_set(ipv6_source_address.yfilter)
+	|| ydk::is_set(path_mtu_enabled.yfilter)
+	|| ydk::is_set(path_mtu_max_value.yfilter)
+	|| ydk::is_set(dont_fragment_bit.yfilter)
+	|| ydk::is_set(tos_mode.yfilter)
+	|| ydk::is_set(tos.yfilter)
+	|| ydk::is_set(ttl.yfilter)
+	|| ydk::is_set(local_session_id.yfilter)
+	|| ydk::is_set(remote_session_id.yfilter)
+	|| ydk::is_set(local_cookie_size.yfilter)
+	|| ydk::is_set(remote_cookie_size.yfilter)
+	|| ydk::is_set(local_cookie_low_value.yfilter)
+	|| ydk::is_set(remote_cookie_low_value.yfilter)
+	|| ydk::is_set(local_cookie_high_value.yfilter)
+	|| ydk::is_set(remote_cookie_high_value.yfilter)
+	|| ydk::is_set(remote_circuit_status_up.yfilter)
+	|| ydk::is_set(tunnel_state.yfilter)
+	|| ydk::is_set(local_secondary_cookie_size.yfilter)
+	|| ydk::is_set(local_secondary_cookie_low_value.yfilter)
+	|| ydk::is_set(local_secondary_cookie_high_value.yfilter);
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::L2tpv3::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/encapsulation-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::L2tpv3::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2tpv3";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::L2tpv3::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (l2tp_class_name.is_set || is_set(l2tp_class_name.yfilter)) leaf_name_data.push_back(l2tp_class_name.get_name_leafdata());
+    if (ipv4_source_address.is_set || is_set(ipv4_source_address.yfilter)) leaf_name_data.push_back(ipv4_source_address.get_name_leafdata());
+    if (ipv6_source_address.is_set || is_set(ipv6_source_address.yfilter)) leaf_name_data.push_back(ipv6_source_address.get_name_leafdata());
+    if (path_mtu_enabled.is_set || is_set(path_mtu_enabled.yfilter)) leaf_name_data.push_back(path_mtu_enabled.get_name_leafdata());
+    if (path_mtu_max_value.is_set || is_set(path_mtu_max_value.yfilter)) leaf_name_data.push_back(path_mtu_max_value.get_name_leafdata());
+    if (dont_fragment_bit.is_set || is_set(dont_fragment_bit.yfilter)) leaf_name_data.push_back(dont_fragment_bit.get_name_leafdata());
+    if (tos_mode.is_set || is_set(tos_mode.yfilter)) leaf_name_data.push_back(tos_mode.get_name_leafdata());
+    if (tos.is_set || is_set(tos.yfilter)) leaf_name_data.push_back(tos.get_name_leafdata());
+    if (ttl.is_set || is_set(ttl.yfilter)) leaf_name_data.push_back(ttl.get_name_leafdata());
+    if (local_session_id.is_set || is_set(local_session_id.yfilter)) leaf_name_data.push_back(local_session_id.get_name_leafdata());
+    if (remote_session_id.is_set || is_set(remote_session_id.yfilter)) leaf_name_data.push_back(remote_session_id.get_name_leafdata());
+    if (local_cookie_size.is_set || is_set(local_cookie_size.yfilter)) leaf_name_data.push_back(local_cookie_size.get_name_leafdata());
+    if (remote_cookie_size.is_set || is_set(remote_cookie_size.yfilter)) leaf_name_data.push_back(remote_cookie_size.get_name_leafdata());
+    if (local_cookie_low_value.is_set || is_set(local_cookie_low_value.yfilter)) leaf_name_data.push_back(local_cookie_low_value.get_name_leafdata());
+    if (remote_cookie_low_value.is_set || is_set(remote_cookie_low_value.yfilter)) leaf_name_data.push_back(remote_cookie_low_value.get_name_leafdata());
+    if (local_cookie_high_value.is_set || is_set(local_cookie_high_value.yfilter)) leaf_name_data.push_back(local_cookie_high_value.get_name_leafdata());
+    if (remote_cookie_high_value.is_set || is_set(remote_cookie_high_value.yfilter)) leaf_name_data.push_back(remote_cookie_high_value.get_name_leafdata());
+    if (remote_circuit_status_up.is_set || is_set(remote_circuit_status_up.yfilter)) leaf_name_data.push_back(remote_circuit_status_up.get_name_leafdata());
+    if (tunnel_state.is_set || is_set(tunnel_state.yfilter)) leaf_name_data.push_back(tunnel_state.get_name_leafdata());
+    if (local_secondary_cookie_size.is_set || is_set(local_secondary_cookie_size.yfilter)) leaf_name_data.push_back(local_secondary_cookie_size.get_name_leafdata());
+    if (local_secondary_cookie_low_value.is_set || is_set(local_secondary_cookie_low_value.yfilter)) leaf_name_data.push_back(local_secondary_cookie_low_value.get_name_leafdata());
+    if (local_secondary_cookie_high_value.is_set || is_set(local_secondary_cookie_high_value.yfilter)) leaf_name_data.push_back(local_secondary_cookie_high_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::L2tpv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::L2tpv3::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::L2tpv3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "l2tp-class-name")
+    {
+        l2tp_class_name = value;
+        l2tp_class_name.value_namespace = name_space;
+        l2tp_class_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-source-address")
+    {
+        ipv4_source_address = value;
+        ipv4_source_address.value_namespace = name_space;
+        ipv4_source_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-source-address")
+    {
+        ipv6_source_address = value;
+        ipv6_source_address.value_namespace = name_space;
+        ipv6_source_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path-mtu-enabled")
+    {
+        path_mtu_enabled = value;
+        path_mtu_enabled.value_namespace = name_space;
+        path_mtu_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path-mtu-max-value")
+    {
+        path_mtu_max_value = value;
+        path_mtu_max_value.value_namespace = name_space;
+        path_mtu_max_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dont-fragment-bit")
+    {
+        dont_fragment_bit = value;
+        dont_fragment_bit.value_namespace = name_space;
+        dont_fragment_bit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tos-mode")
+    {
+        tos_mode = value;
+        tos_mode.value_namespace = name_space;
+        tos_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tos")
+    {
+        tos = value;
+        tos.value_namespace = name_space;
+        tos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ttl")
+    {
+        ttl = value;
+        ttl.value_namespace = name_space;
+        ttl.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-session-id")
+    {
+        local_session_id = value;
+        local_session_id.value_namespace = name_space;
+        local_session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-session-id")
+    {
+        remote_session_id = value;
+        remote_session_id.value_namespace = name_space;
+        remote_session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-cookie-size")
+    {
+        local_cookie_size = value;
+        local_cookie_size.value_namespace = name_space;
+        local_cookie_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-cookie-size")
+    {
+        remote_cookie_size = value;
+        remote_cookie_size.value_namespace = name_space;
+        remote_cookie_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-cookie-low-value")
+    {
+        local_cookie_low_value = value;
+        local_cookie_low_value.value_namespace = name_space;
+        local_cookie_low_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-cookie-low-value")
+    {
+        remote_cookie_low_value = value;
+        remote_cookie_low_value.value_namespace = name_space;
+        remote_cookie_low_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-cookie-high-value")
+    {
+        local_cookie_high_value = value;
+        local_cookie_high_value.value_namespace = name_space;
+        local_cookie_high_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-cookie-high-value")
+    {
+        remote_cookie_high_value = value;
+        remote_cookie_high_value.value_namespace = name_space;
+        remote_cookie_high_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-circuit-status-up")
+    {
+        remote_circuit_status_up = value;
+        remote_circuit_status_up.value_namespace = name_space;
+        remote_circuit_status_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tunnel-state")
+    {
+        tunnel_state = value;
+        tunnel_state.value_namespace = name_space;
+        tunnel_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-secondary-cookie-size")
+    {
+        local_secondary_cookie_size = value;
+        local_secondary_cookie_size.value_namespace = name_space;
+        local_secondary_cookie_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-secondary-cookie-low-value")
+    {
+        local_secondary_cookie_low_value = value;
+        local_secondary_cookie_low_value.value_namespace = name_space;
+        local_secondary_cookie_low_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-secondary-cookie-high-value")
+    {
+        local_secondary_cookie_high_value = value;
+        local_secondary_cookie_high_value.value_namespace = name_space;
+        local_secondary_cookie_high_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::L2tpv3::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "l2tp-class-name")
+    {
+        l2tp_class_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-source-address")
+    {
+        ipv4_source_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-source-address")
+    {
+        ipv6_source_address.yfilter = yfilter;
+    }
+    if(value_path == "path-mtu-enabled")
+    {
+        path_mtu_enabled.yfilter = yfilter;
+    }
+    if(value_path == "path-mtu-max-value")
+    {
+        path_mtu_max_value.yfilter = yfilter;
+    }
+    if(value_path == "dont-fragment-bit")
+    {
+        dont_fragment_bit.yfilter = yfilter;
+    }
+    if(value_path == "tos-mode")
+    {
+        tos_mode.yfilter = yfilter;
+    }
+    if(value_path == "tos")
+    {
+        tos.yfilter = yfilter;
+    }
+    if(value_path == "ttl")
+    {
+        ttl.yfilter = yfilter;
+    }
+    if(value_path == "local-session-id")
+    {
+        local_session_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-session-id")
+    {
+        remote_session_id.yfilter = yfilter;
+    }
+    if(value_path == "local-cookie-size")
+    {
+        local_cookie_size.yfilter = yfilter;
+    }
+    if(value_path == "remote-cookie-size")
+    {
+        remote_cookie_size.yfilter = yfilter;
+    }
+    if(value_path == "local-cookie-low-value")
+    {
+        local_cookie_low_value.yfilter = yfilter;
+    }
+    if(value_path == "remote-cookie-low-value")
+    {
+        remote_cookie_low_value.yfilter = yfilter;
+    }
+    if(value_path == "local-cookie-high-value")
+    {
+        local_cookie_high_value.yfilter = yfilter;
+    }
+    if(value_path == "remote-cookie-high-value")
+    {
+        remote_cookie_high_value.yfilter = yfilter;
+    }
+    if(value_path == "remote-circuit-status-up")
+    {
+        remote_circuit_status_up.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-state")
+    {
+        tunnel_state.yfilter = yfilter;
+    }
+    if(value_path == "local-secondary-cookie-size")
+    {
+        local_secondary_cookie_size.yfilter = yfilter;
+    }
+    if(value_path == "local-secondary-cookie-low-value")
+    {
+        local_secondary_cookie_low_value.yfilter = yfilter;
+    }
+    if(value_path == "local-secondary-cookie-high-value")
+    {
+        local_secondary_cookie_high_value.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::EncapsulationInfo::L2tpv3::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2tp-class-name" || name == "ipv4-source-address" || name == "ipv6-source-address" || name == "path-mtu-enabled" || name == "path-mtu-max-value" || name == "dont-fragment-bit" || name == "tos-mode" || name == "tos" || name == "ttl" || name == "local-session-id" || name == "remote-session-id" || name == "local-cookie-size" || name == "remote-cookie-size" || name == "local-cookie-low-value" || name == "remote-cookie-low-value" || name == "local-cookie-high-value" || name == "remote-cookie-high-value" || name == "remote-circuit-status-up" || name == "tunnel-state" || name == "local-secondary-cookie-size" || name == "local-secondary-cookie-low-value" || name == "local-secondary-cookie-high-value")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::LocalInterface()
+    :
+    name{YType::str, "name"},
+    mtu{YType::uint32, "mtu"},
+    payload_bytes{YType::uint16, "payload-bytes"}
+        ,
+    parameters(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters>())
+{
+    parameters->parent = this;
+
+    yang_name = "local-interface"; yang_parent_name = "pseudo-wire"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::~LocalInterface()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| mtu.is_set
+	|| payload_bytes.is_set
+	|| (parameters !=  nullptr && parameters->has_data());
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(payload_bytes.yfilter)
+	|| (parameters !=  nullptr && parameters->has_operation());
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "local-interface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (payload_bytes.is_set || is_set(payload_bytes.yfilter)) leaf_name_data.push_back(payload_bytes.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "parameters")
+    {
+        if(parameters == nullptr)
+        {
+            parameters = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters>();
+        }
+        return parameters;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(parameters != nullptr)
+    {
+        children["parameters"] = parameters;
+    }
+
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mtu")
+    {
+        mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload-bytes")
+    {
+        payload_bytes = value;
+        payload_bytes.value_namespace = name_space;
+        payload_bytes.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "payload-bytes")
+    {
+        payload_bytes.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "parameters" || name == "name" || name == "mtu" || name == "payload-bytes")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Parameters()
+    :
+    type{YType::enumeration, "type"}
+        ,
+    ethernet(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Ethernet>())
+    , vlan(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan>())
+    , tdm(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm>())
+    , atm(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Atm>())
+    , fr(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Fr>())
+    , pseudowire_ether(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther>())
+    , pseudowire_iw(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw>())
+{
+    ethernet->parent = this;
+    vlan->parent = this;
+    tdm->parent = this;
+    atm->parent = this;
+    fr->parent = this;
+    pseudowire_ether->parent = this;
+    pseudowire_iw->parent = this;
+
+    yang_name = "parameters"; yang_parent_name = "local-interface"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::~Parameters()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::has_data() const
+{
+    if (is_presence_container) return true;
+    return type.is_set
+	|| (ethernet !=  nullptr && ethernet->has_data())
+	|| (vlan !=  nullptr && vlan->has_data())
+	|| (tdm !=  nullptr && tdm->has_data())
+	|| (atm !=  nullptr && atm->has_data())
+	|| (fr !=  nullptr && fr->has_data())
+	|| (pseudowire_ether !=  nullptr && pseudowire_ether->has_data())
+	|| (pseudowire_iw !=  nullptr && pseudowire_iw->has_data());
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| (ethernet !=  nullptr && ethernet->has_operation())
+	|| (vlan !=  nullptr && vlan->has_operation())
+	|| (tdm !=  nullptr && tdm->has_operation())
+	|| (atm !=  nullptr && atm->has_operation())
+	|| (fr !=  nullptr && fr->has_operation())
+	|| (pseudowire_ether !=  nullptr && pseudowire_ether->has_operation())
+	|| (pseudowire_iw !=  nullptr && pseudowire_iw->has_operation());
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/local-interface/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "parameters";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ethernet")
+    {
+        if(ethernet == nullptr)
+        {
+            ethernet = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Ethernet>();
+        }
+        return ethernet;
+    }
+
+    if(child_yang_name == "vlan")
+    {
+        if(vlan == nullptr)
+        {
+            vlan = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan>();
+        }
+        return vlan;
+    }
+
+    if(child_yang_name == "tdm")
+    {
+        if(tdm == nullptr)
+        {
+            tdm = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm>();
+        }
+        return tdm;
+    }
+
+    if(child_yang_name == "atm")
+    {
+        if(atm == nullptr)
+        {
+            atm = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Atm>();
+        }
+        return atm;
+    }
+
+    if(child_yang_name == "fr")
+    {
+        if(fr == nullptr)
+        {
+            fr = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Fr>();
+        }
+        return fr;
+    }
+
+    if(child_yang_name == "pseudowire-ether")
+    {
+        if(pseudowire_ether == nullptr)
+        {
+            pseudowire_ether = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther>();
+        }
+        return pseudowire_ether;
+    }
+
+    if(child_yang_name == "pseudowire-iw")
+    {
+        if(pseudowire_iw == nullptr)
+        {
+            pseudowire_iw = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw>();
+        }
+        return pseudowire_iw;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(ethernet != nullptr)
+    {
+        children["ethernet"] = ethernet;
+    }
+
+    if(vlan != nullptr)
+    {
+        children["vlan"] = vlan;
+    }
+
+    if(tdm != nullptr)
+    {
+        children["tdm"] = tdm;
+    }
+
+    if(atm != nullptr)
+    {
+        children["atm"] = atm;
+    }
+
+    if(fr != nullptr)
+    {
+        children["fr"] = fr;
+    }
+
+    if(pseudowire_ether != nullptr)
+    {
+        children["pseudowire-ether"] = pseudowire_ether;
+    }
+
+    if(pseudowire_iw != nullptr)
+    {
+        children["pseudowire-iw"] = pseudowire_iw;
+    }
+
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethernet" || name == "vlan" || name == "tdm" || name == "atm" || name == "fr" || name == "pseudowire-ether" || name == "pseudowire-iw" || name == "type")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Ethernet::Ethernet()
+    :
+    xconnect_tags{YType::uint8, "xconnect-tags"}
+{
+
+    yang_name = "ethernet"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Ethernet::~Ethernet()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Ethernet::has_data() const
+{
+    if (is_presence_container) return true;
+    return xconnect_tags.is_set;
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Ethernet::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(xconnect_tags.yfilter);
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Ethernet::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/local-interface/parameters/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Ethernet::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ethernet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Ethernet::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (xconnect_tags.is_set || is_set(xconnect_tags.yfilter)) leaf_name_data.push_back(xconnect_tags.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Ethernet::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "xconnect-tags")
+    {
+        xconnect_tags = value;
+        xconnect_tags.value_namespace = name_space;
+        xconnect_tags.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Ethernet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "xconnect-tags")
+    {
+        xconnect_tags.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Ethernet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "xconnect-tags")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::Vlan()
+    :
+    xconnect_tags{YType::uint8, "xconnect-tags"},
+    vlan_rewrite_tag{YType::uint16, "vlan-rewrite-tag"},
+    simple_efp{YType::uint8, "simple-efp"},
+    encapsulation_type{YType::uint8, "encapsulation-type"},
+    outer_tag{YType::uint16, "outer-tag"}
+        ,
+    rewrite_tag(this, {})
+    , vlan_range(this, {})
+{
+
+    yang_name = "vlan"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::~Vlan()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rewrite_tag.len(); index++)
+    {
+        if(rewrite_tag[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<vlan_range.len(); index++)
+    {
+        if(vlan_range[index]->has_data())
+            return true;
+    }
+    return xconnect_tags.is_set
+	|| vlan_rewrite_tag.is_set
+	|| simple_efp.is_set
+	|| encapsulation_type.is_set
+	|| outer_tag.is_set;
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::has_operation() const
+{
+    for (std::size_t index=0; index<rewrite_tag.len(); index++)
+    {
+        if(rewrite_tag[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<vlan_range.len(); index++)
+    {
+        if(vlan_range[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(xconnect_tags.yfilter)
+	|| ydk::is_set(vlan_rewrite_tag.yfilter)
+	|| ydk::is_set(simple_efp.yfilter)
+	|| ydk::is_set(encapsulation_type.yfilter)
+	|| ydk::is_set(outer_tag.yfilter);
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/local-interface/parameters/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vlan";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (xconnect_tags.is_set || is_set(xconnect_tags.yfilter)) leaf_name_data.push_back(xconnect_tags.get_name_leafdata());
+    if (vlan_rewrite_tag.is_set || is_set(vlan_rewrite_tag.yfilter)) leaf_name_data.push_back(vlan_rewrite_tag.get_name_leafdata());
+    if (simple_efp.is_set || is_set(simple_efp.yfilter)) leaf_name_data.push_back(simple_efp.get_name_leafdata());
+    if (encapsulation_type.is_set || is_set(encapsulation_type.yfilter)) leaf_name_data.push_back(encapsulation_type.get_name_leafdata());
+    if (outer_tag.is_set || is_set(outer_tag.yfilter)) leaf_name_data.push_back(outer_tag.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rewrite-tag")
+    {
+        auto c = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag>();
+        c->parent = this;
+        rewrite_tag.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "vlan-range")
+    {
+        auto c = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange>();
+        c->parent = this;
+        vlan_range.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : rewrite_tag.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : vlan_range.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "xconnect-tags")
+    {
+        xconnect_tags = value;
+        xconnect_tags.value_namespace = name_space;
+        xconnect_tags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vlan-rewrite-tag")
+    {
+        vlan_rewrite_tag = value;
+        vlan_rewrite_tag.value_namespace = name_space;
+        vlan_rewrite_tag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "simple-efp")
+    {
+        simple_efp = value;
+        simple_efp.value_namespace = name_space;
+        simple_efp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "encapsulation-type")
+    {
+        encapsulation_type = value;
+        encapsulation_type.value_namespace = name_space;
+        encapsulation_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "outer-tag")
+    {
+        outer_tag = value;
+        outer_tag.value_namespace = name_space;
+        outer_tag.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "xconnect-tags")
+    {
+        xconnect_tags.yfilter = yfilter;
+    }
+    if(value_path == "vlan-rewrite-tag")
+    {
+        vlan_rewrite_tag.yfilter = yfilter;
+    }
+    if(value_path == "simple-efp")
+    {
+        simple_efp.yfilter = yfilter;
+    }
+    if(value_path == "encapsulation-type")
+    {
+        encapsulation_type.yfilter = yfilter;
+    }
+    if(value_path == "outer-tag")
+    {
+        outer_tag.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rewrite-tag" || name == "vlan-range" || name == "xconnect-tags" || name == "vlan-rewrite-tag" || name == "simple-efp" || name == "encapsulation-type" || name == "outer-tag")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::RewriteTag()
+    :
+    entry{YType::uint16, "entry"}
+{
+
+    yang_name = "rewrite-tag"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::~RewriteTag()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/local-interface/parameters/vlan/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rewrite-tag";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::VlanRange()
+    :
+    lower{YType::uint16, "lower"},
+    upper{YType::uint16, "upper"}
+{
+
+    yang_name = "vlan-range"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::~VlanRange()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::has_data() const
+{
+    if (is_presence_container) return true;
+    return lower.is_set
+	|| upper.is_set;
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(lower.yfilter)
+	|| ydk::is_set(upper.yfilter);
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/local-interface/parameters/vlan/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vlan-range";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (lower.is_set || is_set(lower.yfilter)) leaf_name_data.push_back(lower.get_name_leafdata());
+    if (upper.is_set || is_set(upper.yfilter)) leaf_name_data.push_back(upper.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "lower")
+    {
+        lower = value;
+        lower.value_namespace = name_space;
+        lower.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "upper")
+    {
+        upper = value;
+        upper.value_namespace = name_space;
+        upper.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lower")
+    {
+        lower.yfilter = yfilter;
+    }
+    if(value_path == "upper")
+    {
+        upper.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lower" || name == "upper")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::Tdm()
+    :
+    timeslot_group{YType::str, "timeslot-group"},
+    timeslot_rate{YType::uint8, "timeslot-rate"},
+    tdm_mode{YType::enumeration, "tdm-mode"}
+        ,
+    tdm_options(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions>())
+{
+    tdm_options->parent = this;
+
+    yang_name = "tdm"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::~Tdm()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::has_data() const
+{
+    if (is_presence_container) return true;
+    return timeslot_group.is_set
+	|| timeslot_rate.is_set
+	|| tdm_mode.is_set
+	|| (tdm_options !=  nullptr && tdm_options->has_data());
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(timeslot_group.yfilter)
+	|| ydk::is_set(timeslot_rate.yfilter)
+	|| ydk::is_set(tdm_mode.yfilter)
+	|| (tdm_options !=  nullptr && tdm_options->has_operation());
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/local-interface/parameters/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tdm";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (timeslot_group.is_set || is_set(timeslot_group.yfilter)) leaf_name_data.push_back(timeslot_group.get_name_leafdata());
+    if (timeslot_rate.is_set || is_set(timeslot_rate.yfilter)) leaf_name_data.push_back(timeslot_rate.get_name_leafdata());
+    if (tdm_mode.is_set || is_set(tdm_mode.yfilter)) leaf_name_data.push_back(tdm_mode.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tdm-options")
+    {
+        if(tdm_options == nullptr)
+        {
+            tdm_options = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions>();
+        }
+        return tdm_options;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(tdm_options != nullptr)
+    {
+        children["tdm-options"] = tdm_options;
+    }
+
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "timeslot-group")
+    {
+        timeslot_group = value;
+        timeslot_group.value_namespace = name_space;
+        timeslot_group.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeslot-rate")
+    {
+        timeslot_rate = value;
+        timeslot_rate.value_namespace = name_space;
+        timeslot_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tdm-mode")
+    {
+        tdm_mode = value;
+        tdm_mode.value_namespace = name_space;
+        tdm_mode.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "timeslot-group")
+    {
+        timeslot_group.yfilter = yfilter;
+    }
+    if(value_path == "timeslot-rate")
+    {
+        timeslot_rate.yfilter = yfilter;
+    }
+    if(value_path == "tdm-mode")
+    {
+        tdm_mode.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tdm-options" || name == "timeslot-group" || name == "timeslot-rate" || name == "tdm-mode")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::TdmOptions()
+    :
+    payload_bytes{YType::uint16, "payload-bytes"},
+    bit_rate{YType::uint32, "bit-rate"},
+    rtp{YType::enumeration, "rtp"},
+    timestamp_mode{YType::enumeration, "timestamp-mode"},
+    signalling_packets{YType::uint8, "signalling-packets"},
+    cas{YType::uint8, "cas"},
+    rtp_header_payload_type{YType::uint8, "rtp-header-payload-type"},
+    timestamp_clock_freq{YType::uint16, "timestamp-clock-freq"},
+    ssrc{YType::uint32, "ssrc"}
+{
+
+    yang_name = "tdm-options"; yang_parent_name = "tdm"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::~TdmOptions()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::has_data() const
+{
+    if (is_presence_container) return true;
+    return payload_bytes.is_set
+	|| bit_rate.is_set
+	|| rtp.is_set
+	|| timestamp_mode.is_set
+	|| signalling_packets.is_set
+	|| cas.is_set
+	|| rtp_header_payload_type.is_set
+	|| timestamp_clock_freq.is_set
+	|| ssrc.is_set;
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(payload_bytes.yfilter)
+	|| ydk::is_set(bit_rate.yfilter)
+	|| ydk::is_set(rtp.yfilter)
+	|| ydk::is_set(timestamp_mode.yfilter)
+	|| ydk::is_set(signalling_packets.yfilter)
+	|| ydk::is_set(cas.yfilter)
+	|| ydk::is_set(rtp_header_payload_type.yfilter)
+	|| ydk::is_set(timestamp_clock_freq.yfilter)
+	|| ydk::is_set(ssrc.yfilter);
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/local-interface/parameters/tdm/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tdm-options";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (payload_bytes.is_set || is_set(payload_bytes.yfilter)) leaf_name_data.push_back(payload_bytes.get_name_leafdata());
+    if (bit_rate.is_set || is_set(bit_rate.yfilter)) leaf_name_data.push_back(bit_rate.get_name_leafdata());
+    if (rtp.is_set || is_set(rtp.yfilter)) leaf_name_data.push_back(rtp.get_name_leafdata());
+    if (timestamp_mode.is_set || is_set(timestamp_mode.yfilter)) leaf_name_data.push_back(timestamp_mode.get_name_leafdata());
+    if (signalling_packets.is_set || is_set(signalling_packets.yfilter)) leaf_name_data.push_back(signalling_packets.get_name_leafdata());
+    if (cas.is_set || is_set(cas.yfilter)) leaf_name_data.push_back(cas.get_name_leafdata());
+    if (rtp_header_payload_type.is_set || is_set(rtp_header_payload_type.yfilter)) leaf_name_data.push_back(rtp_header_payload_type.get_name_leafdata());
+    if (timestamp_clock_freq.is_set || is_set(timestamp_clock_freq.yfilter)) leaf_name_data.push_back(timestamp_clock_freq.get_name_leafdata());
+    if (ssrc.is_set || is_set(ssrc.yfilter)) leaf_name_data.push_back(ssrc.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "payload-bytes")
+    {
+        payload_bytes = value;
+        payload_bytes.value_namespace = name_space;
+        payload_bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bit-rate")
+    {
+        bit_rate = value;
+        bit_rate.value_namespace = name_space;
+        bit_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rtp")
+    {
+        rtp = value;
+        rtp.value_namespace = name_space;
+        rtp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timestamp-mode")
+    {
+        timestamp_mode = value;
+        timestamp_mode.value_namespace = name_space;
+        timestamp_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "signalling-packets")
+    {
+        signalling_packets = value;
+        signalling_packets.value_namespace = name_space;
+        signalling_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cas")
+    {
+        cas = value;
+        cas.value_namespace = name_space;
+        cas.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rtp-header-payload-type")
+    {
+        rtp_header_payload_type = value;
+        rtp_header_payload_type.value_namespace = name_space;
+        rtp_header_payload_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timestamp-clock-freq")
+    {
+        timestamp_clock_freq = value;
+        timestamp_clock_freq.value_namespace = name_space;
+        timestamp_clock_freq.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ssrc")
+    {
+        ssrc = value;
+        ssrc.value_namespace = name_space;
+        ssrc.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "payload-bytes")
+    {
+        payload_bytes.yfilter = yfilter;
+    }
+    if(value_path == "bit-rate")
+    {
+        bit_rate.yfilter = yfilter;
+    }
+    if(value_path == "rtp")
+    {
+        rtp.yfilter = yfilter;
+    }
+    if(value_path == "timestamp-mode")
+    {
+        timestamp_mode.yfilter = yfilter;
+    }
+    if(value_path == "signalling-packets")
+    {
+        signalling_packets.yfilter = yfilter;
+    }
+    if(value_path == "cas")
+    {
+        cas.yfilter = yfilter;
+    }
+    if(value_path == "rtp-header-payload-type")
+    {
+        rtp_header_payload_type.yfilter = yfilter;
+    }
+    if(value_path == "timestamp-clock-freq")
+    {
+        timestamp_clock_freq.yfilter = yfilter;
+    }
+    if(value_path == "ssrc")
+    {
+        ssrc.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "payload-bytes" || name == "bit-rate" || name == "rtp" || name == "timestamp-mode" || name == "signalling-packets" || name == "cas" || name == "rtp-header-payload-type" || name == "timestamp-clock-freq" || name == "ssrc")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Atm::Atm()
+    :
+    maximum_number_cells_packed{YType::uint16, "maximum-number-cells-packed"},
+    maximum_number_cells_un_packed{YType::uint16, "maximum-number-cells-un-packed"},
+    atm_mode{YType::enumeration, "atm-mode"},
+    vpi{YType::uint16, "vpi"},
+    vci{YType::uint16, "vci"}
+{
+
+    yang_name = "atm"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Atm::~Atm()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Atm::has_data() const
+{
+    if (is_presence_container) return true;
+    return maximum_number_cells_packed.is_set
+	|| maximum_number_cells_un_packed.is_set
+	|| atm_mode.is_set
+	|| vpi.is_set
+	|| vci.is_set;
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Atm::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_number_cells_packed.yfilter)
+	|| ydk::is_set(maximum_number_cells_un_packed.yfilter)
+	|| ydk::is_set(atm_mode.yfilter)
+	|| ydk::is_set(vpi.yfilter)
+	|| ydk::is_set(vci.yfilter);
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Atm::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/local-interface/parameters/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Atm::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "atm";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Atm::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (maximum_number_cells_packed.is_set || is_set(maximum_number_cells_packed.yfilter)) leaf_name_data.push_back(maximum_number_cells_packed.get_name_leafdata());
+    if (maximum_number_cells_un_packed.is_set || is_set(maximum_number_cells_un_packed.yfilter)) leaf_name_data.push_back(maximum_number_cells_un_packed.get_name_leafdata());
+    if (atm_mode.is_set || is_set(atm_mode.yfilter)) leaf_name_data.push_back(atm_mode.get_name_leafdata());
+    if (vpi.is_set || is_set(vpi.yfilter)) leaf_name_data.push_back(vpi.get_name_leafdata());
+    if (vci.is_set || is_set(vci.yfilter)) leaf_name_data.push_back(vci.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Atm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Atm::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Atm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "maximum-number-cells-packed")
+    {
+        maximum_number_cells_packed = value;
+        maximum_number_cells_packed.value_namespace = name_space;
+        maximum_number_cells_packed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-number-cells-un-packed")
+    {
+        maximum_number_cells_un_packed = value;
+        maximum_number_cells_un_packed.value_namespace = name_space;
+        maximum_number_cells_un_packed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "atm-mode")
+    {
+        atm_mode = value;
+        atm_mode.value_namespace = name_space;
+        atm_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vpi")
+    {
+        vpi = value;
+        vpi.value_namespace = name_space;
+        vpi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vci")
+    {
+        vci = value;
+        vci.value_namespace = name_space;
+        vci.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Atm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-number-cells-packed")
+    {
+        maximum_number_cells_packed.yfilter = yfilter;
+    }
+    if(value_path == "maximum-number-cells-un-packed")
+    {
+        maximum_number_cells_un_packed.yfilter = yfilter;
+    }
+    if(value_path == "atm-mode")
+    {
+        atm_mode.yfilter = yfilter;
+    }
+    if(value_path == "vpi")
+    {
+        vpi.yfilter = yfilter;
+    }
+    if(value_path == "vci")
+    {
+        vci.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Atm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-number-cells-packed" || name == "maximum-number-cells-un-packed" || name == "atm-mode" || name == "vpi" || name == "vci")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Fr::Fr()
+    :
+    fr_mode{YType::enumeration, "fr-mode"},
+    dlci{YType::uint32, "dlci"}
+{
+
+    yang_name = "fr"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Fr::~Fr()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Fr::has_data() const
+{
+    if (is_presence_container) return true;
+    return fr_mode.is_set
+	|| dlci.is_set;
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Fr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(fr_mode.yfilter)
+	|| ydk::is_set(dlci.yfilter);
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Fr::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/local-interface/parameters/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Fr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Fr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (fr_mode.is_set || is_set(fr_mode.yfilter)) leaf_name_data.push_back(fr_mode.get_name_leafdata());
+    if (dlci.is_set || is_set(dlci.yfilter)) leaf_name_data.push_back(dlci.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Fr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Fr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Fr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "fr-mode")
+    {
+        fr_mode = value;
+        fr_mode.value_namespace = name_space;
+        fr_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dlci")
+    {
+        dlci = value;
+        dlci.value_namespace = name_space;
+        dlci.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Fr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fr-mode")
+    {
+        fr_mode.yfilter = yfilter;
+    }
+    if(value_path == "dlci")
+    {
+        dlci.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::Fr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fr-mode" || name == "dlci")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::PseudowireEther()
+    :
+    is_valid{YType::boolean, "is-valid"},
+    internal_label{YType::uint32, "internal-label"}
+        ,
+    interface_list(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList>())
+{
+    interface_list->parent = this;
+
+    yang_name = "pseudowire-ether"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::~PseudowireEther()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::has_data() const
+{
+    if (is_presence_container) return true;
+    return is_valid.is_set
+	|| internal_label.is_set
+	|| (interface_list !=  nullptr && interface_list->has_data());
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(is_valid.yfilter)
+	|| ydk::is_set(internal_label.yfilter)
+	|| (interface_list !=  nullptr && interface_list->has_operation());
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/local-interface/parameters/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pseudowire-ether";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (is_valid.is_set || is_set(is_valid.yfilter)) leaf_name_data.push_back(is_valid.get_name_leafdata());
+    if (internal_label.is_set || is_set(internal_label.yfilter)) leaf_name_data.push_back(internal_label.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-list")
+    {
+        if(interface_list == nullptr)
+        {
+            interface_list = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList>();
+        }
+        return interface_list;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(interface_list != nullptr)
+    {
+        children["interface-list"] = interface_list;
+    }
+
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "is-valid")
+    {
+        is_valid = value;
+        is_valid.value_namespace = name_space;
+        is_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "internal-label")
+    {
+        internal_label = value;
+        internal_label.value_namespace = name_space;
+        internal_label.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-valid")
+    {
+        is_valid.yfilter = yfilter;
+    }
+    if(value_path == "internal-label")
+    {
+        internal_label.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-list" || name == "is-valid" || name == "internal-label")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::InterfaceList()
+    :
+    interface_list_name{YType::str, "interface-list-name"},
+    interface_list_id{YType::uint32, "interface-list-id"}
+        ,
+    interface(this, {})
+{
+
+    yang_name = "interface-list"; yang_parent_name = "pseudowire-ether"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::~InterfaceList()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
+    {
+        if(interface[index]->has_data())
+            return true;
+    }
+    return interface_list_name.is_set
+	|| interface_list_id.is_set;
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::has_operation() const
+{
+    for (std::size_t index=0; index<interface.len(); index++)
+    {
+        if(interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(interface_list_name.yfilter)
+	|| ydk::is_set(interface_list_id.yfilter);
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/local-interface/parameters/pseudowire-ether/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-list";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_list_name.is_set || is_set(interface_list_name.yfilter)) leaf_name_data.push_back(interface_list_name.get_name_leafdata());
+    if (interface_list_id.is_set || is_set(interface_list_id.yfilter)) leaf_name_data.push_back(interface_list_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface")
+    {
+        auto c = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface>();
+        c->parent = this;
+        interface.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : interface.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-list-name")
+    {
+        interface_list_name = value;
+        interface_list_name.value_namespace = name_space;
+        interface_list_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-list-id")
+    {
+        interface_list_id = value;
+        interface_list_id.value_namespace = name_space;
+        interface_list_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-list-name")
+    {
+        interface_list_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-list-id")
+    {
+        interface_list_id.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface" || name == "interface-list-name" || name == "interface-list-id")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::Interface()
+    :
+    interface_name{YType::str, "interface-name"},
+    replicate_status{YType::enumeration, "replicate-status"}
+{
+
+    yang_name = "interface"; yang_parent_name = "interface-list"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::~Interface()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::has_data() const
+{
+    if (is_presence_container) return true;
+    return interface_name.is_set
+	|| replicate_status.is_set;
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(replicate_status.yfilter);
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/local-interface/parameters/pseudowire-ether/interface-list/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (replicate_status.is_set || is_set(replicate_status.yfilter)) leaf_name_data.push_back(replicate_status.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "replicate-status")
+    {
+        replicate_status = value;
+        replicate_status.value_namespace = name_space;
+        replicate_status.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "replicate-status")
+    {
+        replicate_status.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "replicate-status")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::PseudowireIw()
+    :
+    is_valid{YType::boolean, "is-valid"},
+    internal_label{YType::uint32, "internal-label"}
+        ,
+    interface_list(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList>())
+{
+    interface_list->parent = this;
+
+    yang_name = "pseudowire-iw"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::~PseudowireIw()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::has_data() const
+{
+    if (is_presence_container) return true;
+    return is_valid.is_set
+	|| internal_label.is_set
+	|| (interface_list !=  nullptr && interface_list->has_data());
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(is_valid.yfilter)
+	|| ydk::is_set(internal_label.yfilter)
+	|| (interface_list !=  nullptr && interface_list->has_operation());
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/local-interface/parameters/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pseudowire-iw";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (is_valid.is_set || is_set(is_valid.yfilter)) leaf_name_data.push_back(is_valid.get_name_leafdata());
+    if (internal_label.is_set || is_set(internal_label.yfilter)) leaf_name_data.push_back(internal_label.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-list")
+    {
+        if(interface_list == nullptr)
+        {
+            interface_list = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList>();
+        }
+        return interface_list;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(interface_list != nullptr)
+    {
+        children["interface-list"] = interface_list;
+    }
+
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "is-valid")
+    {
+        is_valid = value;
+        is_valid.value_namespace = name_space;
+        is_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "internal-label")
+    {
+        internal_label = value;
+        internal_label.value_namespace = name_space;
+        internal_label.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-valid")
+    {
+        is_valid.yfilter = yfilter;
+    }
+    if(value_path == "internal-label")
+    {
+        internal_label.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-list" || name == "is-valid" || name == "internal-label")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::InterfaceList()
+    :
+    interface_list_name{YType::str, "interface-list-name"},
+    interface_list_id{YType::uint32, "interface-list-id"}
+        ,
+    interface(this, {})
+{
+
+    yang_name = "interface-list"; yang_parent_name = "pseudowire-iw"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::~InterfaceList()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
+    {
+        if(interface[index]->has_data())
+            return true;
+    }
+    return interface_list_name.is_set
+	|| interface_list_id.is_set;
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::has_operation() const
+{
+    for (std::size_t index=0; index<interface.len(); index++)
+    {
+        if(interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(interface_list_name.yfilter)
+	|| ydk::is_set(interface_list_id.yfilter);
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/local-interface/parameters/pseudowire-iw/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-list";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_list_name.is_set || is_set(interface_list_name.yfilter)) leaf_name_data.push_back(interface_list_name.get_name_leafdata());
+    if (interface_list_id.is_set || is_set(interface_list_id.yfilter)) leaf_name_data.push_back(interface_list_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface")
+    {
+        auto c = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface>();
+        c->parent = this;
+        interface.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : interface.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-list-name")
+    {
+        interface_list_name = value;
+        interface_list_name.value_namespace = name_space;
+        interface_list_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-list-id")
+    {
+        interface_list_id = value;
+        interface_list_id.value_namespace = name_space;
+        interface_list_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-list-name")
+    {
+        interface_list_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-list-id")
+    {
+        interface_list_id.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface" || name == "interface-list-name" || name == "interface-list-id")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::Interface()
+    :
+    interface_name{YType::str, "interface-name"},
+    replicate_status{YType::enumeration, "replicate-status"}
+{
+
+    yang_name = "interface"; yang_parent_name = "interface-list"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::~Interface()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::has_data() const
+{
+    if (is_presence_container) return true;
+    return interface_name.is_set
+	|| replicate_status.is_set;
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(replicate_status.yfilter);
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/local-interface/parameters/pseudowire-iw/interface-list/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (replicate_status.is_set || is_set(replicate_status.yfilter)) leaf_name_data.push_back(replicate_status.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "replicate-status")
+    {
+        replicate_status = value;
+        replicate_status.value_namespace = name_space;
+        replicate_status.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "replicate-status")
+    {
+        replicate_status.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "replicate-status")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::RemoteInterface()
+    :
+    name{YType::str, "name"},
+    mtu{YType::uint32, "mtu"},
+    payload_bytes{YType::uint16, "payload-bytes"}
+        ,
+    parameters(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters>())
+{
+    parameters->parent = this;
+
+    yang_name = "remote-interface"; yang_parent_name = "pseudo-wire"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::~RemoteInterface()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| mtu.is_set
+	|| payload_bytes.is_set
+	|| (parameters !=  nullptr && parameters->has_data());
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(payload_bytes.yfilter)
+	|| (parameters !=  nullptr && parameters->has_operation());
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "remote-interface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (payload_bytes.is_set || is_set(payload_bytes.yfilter)) leaf_name_data.push_back(payload_bytes.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "parameters")
+    {
+        if(parameters == nullptr)
+        {
+            parameters = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters>();
+        }
+        return parameters;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(parameters != nullptr)
+    {
+        children["parameters"] = parameters;
+    }
+
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mtu")
+    {
+        mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload-bytes")
+    {
+        payload_bytes = value;
+        payload_bytes.value_namespace = name_space;
+        payload_bytes.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "payload-bytes")
+    {
+        payload_bytes.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "parameters" || name == "name" || name == "mtu" || name == "payload-bytes")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Parameters()
+    :
+    type{YType::enumeration, "type"}
+        ,
+    ethernet(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Ethernet>())
+    , vlan(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Vlan>())
+    , tdm(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Tdm>())
+    , atm(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Atm>())
+    , fr(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Fr>())
+    , pseudowire_ether(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::PseudowireEther>())
+    , pseudowire_iw(std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::PseudowireIw>())
+{
+    ethernet->parent = this;
+    vlan->parent = this;
+    tdm->parent = this;
+    atm->parent = this;
+    fr->parent = this;
+    pseudowire_ether->parent = this;
+    pseudowire_iw->parent = this;
+
+    yang_name = "parameters"; yang_parent_name = "remote-interface"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::~Parameters()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::has_data() const
+{
+    if (is_presence_container) return true;
+    return type.is_set
+	|| (ethernet !=  nullptr && ethernet->has_data())
+	|| (vlan !=  nullptr && vlan->has_data())
+	|| (tdm !=  nullptr && tdm->has_data())
+	|| (atm !=  nullptr && atm->has_data())
+	|| (fr !=  nullptr && fr->has_data())
+	|| (pseudowire_ether !=  nullptr && pseudowire_ether->has_data())
+	|| (pseudowire_iw !=  nullptr && pseudowire_iw->has_data());
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| (ethernet !=  nullptr && ethernet->has_operation())
+	|| (vlan !=  nullptr && vlan->has_operation())
+	|| (tdm !=  nullptr && tdm->has_operation())
+	|| (atm !=  nullptr && atm->has_operation())
+	|| (fr !=  nullptr && fr->has_operation())
+	|| (pseudowire_ether !=  nullptr && pseudowire_ether->has_operation())
+	|| (pseudowire_iw !=  nullptr && pseudowire_iw->has_operation());
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/remote-interface/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "parameters";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ethernet")
+    {
+        if(ethernet == nullptr)
+        {
+            ethernet = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Ethernet>();
+        }
+        return ethernet;
+    }
+
+    if(child_yang_name == "vlan")
+    {
+        if(vlan == nullptr)
+        {
+            vlan = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Vlan>();
+        }
+        return vlan;
+    }
+
+    if(child_yang_name == "tdm")
+    {
+        if(tdm == nullptr)
+        {
+            tdm = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Tdm>();
+        }
+        return tdm;
+    }
+
+    if(child_yang_name == "atm")
+    {
+        if(atm == nullptr)
+        {
+            atm = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Atm>();
+        }
+        return atm;
+    }
+
+    if(child_yang_name == "fr")
+    {
+        if(fr == nullptr)
+        {
+            fr = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Fr>();
+        }
+        return fr;
+    }
+
+    if(child_yang_name == "pseudowire-ether")
+    {
+        if(pseudowire_ether == nullptr)
+        {
+            pseudowire_ether = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::PseudowireEther>();
+        }
+        return pseudowire_ether;
+    }
+
+    if(child_yang_name == "pseudowire-iw")
+    {
+        if(pseudowire_iw == nullptr)
+        {
+            pseudowire_iw = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::PseudowireIw>();
+        }
+        return pseudowire_iw;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(ethernet != nullptr)
+    {
+        children["ethernet"] = ethernet;
+    }
+
+    if(vlan != nullptr)
+    {
+        children["vlan"] = vlan;
+    }
+
+    if(tdm != nullptr)
+    {
+        children["tdm"] = tdm;
+    }
+
+    if(atm != nullptr)
+    {
+        children["atm"] = atm;
+    }
+
+    if(fr != nullptr)
+    {
+        children["fr"] = fr;
+    }
+
+    if(pseudowire_ether != nullptr)
+    {
+        children["pseudowire-ether"] = pseudowire_ether;
+    }
+
+    if(pseudowire_iw != nullptr)
+    {
+        children["pseudowire-iw"] = pseudowire_iw;
+    }
+
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethernet" || name == "vlan" || name == "tdm" || name == "atm" || name == "fr" || name == "pseudowire-ether" || name == "pseudowire-iw" || name == "type")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Ethernet::Ethernet()
+    :
+    xconnect_tags{YType::uint8, "xconnect-tags"}
+{
+
+    yang_name = "ethernet"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Ethernet::~Ethernet()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Ethernet::has_data() const
+{
+    if (is_presence_container) return true;
+    return xconnect_tags.is_set;
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Ethernet::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(xconnect_tags.yfilter);
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Ethernet::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/remote-interface/parameters/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Ethernet::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ethernet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Ethernet::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (xconnect_tags.is_set || is_set(xconnect_tags.yfilter)) leaf_name_data.push_back(xconnect_tags.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Ethernet::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "xconnect-tags")
+    {
+        xconnect_tags = value;
+        xconnect_tags.value_namespace = name_space;
+        xconnect_tags.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Ethernet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "xconnect-tags")
+    {
+        xconnect_tags.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Ethernet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "xconnect-tags")
+        return true;
+    return false;
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Vlan::Vlan()
+    :
+    xconnect_tags{YType::uint8, "xconnect-tags"},
+    vlan_rewrite_tag{YType::uint16, "vlan-rewrite-tag"},
+    simple_efp{YType::uint8, "simple-efp"},
+    encapsulation_type{YType::uint8, "encapsulation-type"},
+    outer_tag{YType::uint16, "outer-tag"}
+        ,
+    rewrite_tag(this, {})
+    , vlan_range(this, {})
+{
+
+    yang_name = "vlan"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Vlan::~Vlan()
+{
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Vlan::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rewrite_tag.len(); index++)
+    {
+        if(rewrite_tag[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<vlan_range.len(); index++)
+    {
+        if(vlan_range[index]->has_data())
+            return true;
+    }
+    return xconnect_tags.is_set
+	|| vlan_rewrite_tag.is_set
+	|| simple_efp.is_set
+	|| encapsulation_type.is_set
+	|| outer_tag.is_set;
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Vlan::has_operation() const
+{
+    for (std::size_t index=0; index<rewrite_tag.len(); index++)
+    {
+        if(rewrite_tag[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<vlan_range.len(); index++)
+    {
+        if(vlan_range[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(xconnect_tags.yfilter)
+	|| ydk::is_set(vlan_rewrite_tag.yfilter)
+	|| ydk::is_set(simple_efp.yfilter)
+	|| ydk::is_set(encapsulation_type.yfilter)
+	|| ydk::is_set(outer_tag.yfilter);
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Vlan::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/xconnect-mp2mp-ce2ces/xconnect-mp2mp-ce2ce/backup/pseudo-wire/remote-interface/parameters/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Vlan::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vlan";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Vlan::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (xconnect_tags.is_set || is_set(xconnect_tags.yfilter)) leaf_name_data.push_back(xconnect_tags.get_name_leafdata());
+    if (vlan_rewrite_tag.is_set || is_set(vlan_rewrite_tag.yfilter)) leaf_name_data.push_back(vlan_rewrite_tag.get_name_leafdata());
+    if (simple_efp.is_set || is_set(simple_efp.yfilter)) leaf_name_data.push_back(simple_efp.get_name_leafdata());
+    if (encapsulation_type.is_set || is_set(encapsulation_type.yfilter)) leaf_name_data.push_back(encapsulation_type.get_name_leafdata());
+    if (outer_tag.is_set || is_set(outer_tag.yfilter)) leaf_name_data.push_back(outer_tag.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rewrite-tag")
+    {
+        auto c = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag>();
+        c->parent = this;
+        rewrite_tag.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "vlan-range")
+    {
+        auto c = std::make_shared<L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange>();
+        c->parent = this;
+        vlan_range.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Vlan::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : rewrite_tag.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : vlan_range.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "xconnect-tags")
+    {
+        xconnect_tags = value;
+        xconnect_tags.value_namespace = name_space;
+        xconnect_tags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vlan-rewrite-tag")
+    {
+        vlan_rewrite_tag = value;
+        vlan_rewrite_tag.value_namespace = name_space;
+        vlan_rewrite_tag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "simple-efp")
+    {
+        simple_efp = value;
+        simple_efp.value_namespace = name_space;
+        simple_efp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "encapsulation-type")
+    {
+        encapsulation_type = value;
+        encapsulation_type.value_namespace = name_space;
+        encapsulation_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "outer-tag")
+    {
+        outer_tag = value;
+        outer_tag.value_namespace = name_space;
+        outer_tag.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Vlan::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "xconnect-tags")
+    {
+        xconnect_tags.yfilter = yfilter;
+    }
+    if(value_path == "vlan-rewrite-tag")
+    {
+        vlan_rewrite_tag.yfilter = yfilter;
+    }
+    if(value_path == "simple-efp")
+    {
+        simple_efp.yfilter = yfilter;
+    }
+    if(value_path == "encapsulation-type")
+    {
+        encapsulation_type.yfilter = yfilter;
+    }
+    if(value_path == "outer-tag")
+    {
+        outer_tag.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Standby::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::PseudoWire::RemoteInterface::Parameters::Vlan::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rewrite-tag" || name == "vlan-range" || name == "xconnect-tags" || name == "vlan-rewrite-tag" || name == "simple-efp" || name == "encapsulation-type" || name == "outer-tag")
         return true;
     return false;
 }

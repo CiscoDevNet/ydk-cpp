@@ -13,6 +13,7 @@ namespace Cisco_IOS_XR_mpls_ldp_oper_datatypes {
 
 const Enum::YLeaf MplsLdpOperAfName::ipv4 {1, "ipv4"};
 const Enum::YLeaf MplsLdpOperAfName::ipv6 {2, "ipv6"};
+const Enum::YLeaf MplsLdpOperAfName::all {65535, "all"};
 
 
 }

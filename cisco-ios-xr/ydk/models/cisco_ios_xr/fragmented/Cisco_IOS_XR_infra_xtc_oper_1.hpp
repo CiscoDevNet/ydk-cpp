@@ -13,6 +13,539 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_xtc_oper {
 
 
+class Pce::Cspf : public ydk::Entity
+{
+    public:
+        Cspf();
+        ~Cspf();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class CspfPaths; //type: Pce::Cspf::CspfPaths
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::Cspf::CspfPaths> cspf_paths;
+        
+}; // Pce::Cspf
+
+
+class Pce::Cspf::CspfPaths : public ydk::Entity
+{
+    public:
+        CspfPaths();
+        ~CspfPaths();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class CspfPath; //type: Pce::Cspf::CspfPaths::CspfPath
+
+        ydk::YList cspf_path;
+        
+}; // Pce::Cspf::CspfPaths
+
+
+class Pce::Cspf::CspfPaths::CspfPath : public ydk::Entity
+{
+    public:
+        CspfPath();
+        ~CspfPath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf af; //type: uint32
+        ydk::YLeaf source1; //type: string
+        ydk::YLeaf destination1; //type: string
+        ydk::YLeaf metric_type; //type: uint32
+        ydk::YLeaf source2; //type: string
+        ydk::YLeaf destination2; //type: string
+        ydk::YLeaf disjoint_level; //type: uint32
+        ydk::YLeaf disjoint_strict; //type: uint32
+        ydk::YLeaf shortest_path; //type: uint32
+        ydk::YLeaf headends_swapped; //type: PceHeadendSwap
+        ydk::YLeaf cspf_result; //type: PceCspfRc
+        ydk::YLeaf iterations_done; //type: uint32
+        class OutputPath; //type: Pce::Cspf::CspfPaths::CspfPath::OutputPath
+
+        ydk::YList output_path;
+        
+}; // Pce::Cspf::CspfPaths::CspfPath
+
+
+class Pce::Cspf::CspfPaths::CspfPath::OutputPath : public ydk::Entity
+{
+    public:
+        OutputPath();
+        ~OutputPath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf cost; //type: uint64
+        class Source; //type: Pce::Cspf::CspfPaths::CspfPath::OutputPath::Source
+        class Destination; //type: Pce::Cspf::CspfPaths::CspfPath::OutputPath::Destination
+        class Hops; //type: Pce::Cspf::CspfPaths::CspfPath::OutputPath::Hops
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::Cspf::CspfPaths::CspfPath::OutputPath::Source> source;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::Cspf::CspfPaths::CspfPath::OutputPath::Destination> destination;
+        ydk::YList hops;
+        
+}; // Pce::Cspf::CspfPaths::CspfPath::OutputPath
+
+
+class Pce::Cspf::CspfPaths::CspfPath::OutputPath::Source : public ydk::Entity
+{
+    public:
+        Source();
+        ~Source();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf af_name; //type: PceAfId
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
+
+}; // Pce::Cspf::CspfPaths::CspfPath::OutputPath::Source
+
+
+class Pce::Cspf::CspfPaths::CspfPath::OutputPath::Destination : public ydk::Entity
+{
+    public:
+        Destination();
+        ~Destination();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf af_name; //type: PceAfId
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
+
+}; // Pce::Cspf::CspfPaths::CspfPath::OutputPath::Destination
+
+
+class Pce::Cspf::CspfPaths::CspfPath::OutputPath::Hops : public ydk::Entity
+{
+    public:
+        Hops();
+        ~Hops();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf address_family; //type: uint8
+        ydk::YLeaf ipv4_prefix; //type: string
+        ydk::YLeaf ipv6_prefix; //type: string
+
+}; // Pce::Cspf::CspfPaths::CspfPath::OutputPath::Hops
+
+
+class Pce::TopologySummary : public ydk::Entity
+{
+    public:
+        TopologySummary();
+        ~TopologySummary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf nodes; //type: uint32
+        ydk::YLeaf lookup_nodes; //type: uint32
+        ydk::YLeaf prefixes; //type: uint32
+        ydk::YLeaf prefix_sids; //type: uint32
+        ydk::YLeaf regular_prefix_sids; //type: uint32
+        ydk::YLeaf strict_prefix_sids; //type: uint32
+        ydk::YLeaf links; //type: uint32
+        ydk::YLeaf epe_links; //type: uint32
+        ydk::YLeaf adjacency_sids; //type: uint32
+        ydk::YLeaf epesids; //type: uint32
+        ydk::YLeaf protected_adjacency_sids; //type: uint32
+        ydk::YLeaf un_protected_adjacency_sids; //type: uint32
+        ydk::YLeaf topology_consistent; //type: boolean
+        class StatsTopologyUpdate; //type: Pce::TopologySummary::StatsTopologyUpdate
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologySummary::StatsTopologyUpdate> stats_topology_update;
+        
+}; // Pce::TopologySummary
+
+
+class Pce::TopologySummary::StatsTopologyUpdate : public ydk::Entity
+{
+    public:
+        StatsTopologyUpdate();
+        ~StatsTopologyUpdate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf num_nodes_added; //type: uint32
+        ydk::YLeaf num_nodes_deleted; //type: uint32
+        ydk::YLeaf num_links_added; //type: uint32
+        ydk::YLeaf num_links_deleted; //type: uint32
+        ydk::YLeaf num_prefixes_added; //type: uint32
+        ydk::YLeaf num_prefixes_deleted; //type: uint32
+
+}; // Pce::TopologySummary::StatsTopologyUpdate
+
+
+class Pce::TunnelInfos : public ydk::Entity
+{
+    public:
+        TunnelInfos();
+        ~TunnelInfos();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class TunnelInfo; //type: Pce::TunnelInfos::TunnelInfo
+
+        ydk::YList tunnel_info;
+        
+}; // Pce::TunnelInfos
+
+
+class Pce::TunnelInfos::TunnelInfo : public ydk::Entity
+{
+    public:
+        TunnelInfo();
+        ~TunnelInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf peer_address; //type: string
+        ydk::YLeaf plsp_id; //type: uint32
+        ydk::YLeaf tunnel_name; //type: string
+        ydk::YLeaf tunnel_name_xr; //type: string
+        class PccAddress; //type: Pce::TunnelInfos::TunnelInfo::PccAddress
+        class BriefLspInformation; //type: Pce::TunnelInfos::TunnelInfo::BriefLspInformation
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TunnelInfos::TunnelInfo::PccAddress> pcc_address;
+        ydk::YList brief_lsp_information;
+        
+}; // Pce::TunnelInfos::TunnelInfo
+
+
+class Pce::TunnelInfos::TunnelInfo::PccAddress : public ydk::Entity
+{
+    public:
+        PccAddress();
+        ~PccAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf af_name; //type: PceAfId
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
+
+}; // Pce::TunnelInfos::TunnelInfo::PccAddress
+
+
+class Pce::TunnelInfos::TunnelInfo::BriefLspInformation : public ydk::Entity
+{
+    public:
+        BriefLspInformation();
+        ~BriefLspInformation();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf lspid; //type: uint32
+        ydk::YLeaf binding_sid; //type: uint32
+        ydk::YLeaf lsp_setup_type; //type: LspSetup
+        ydk::YLeaf operational_state; //type: PcepLspState
+        ydk::YLeaf administrative_state; //type: LspState
+        ydk::YLeaf msd; //type: uint32
+        class SourceAddress; //type: Pce::TunnelInfos::TunnelInfo::BriefLspInformation::SourceAddress
+        class DestinationAddress; //type: Pce::TunnelInfos::TunnelInfo::BriefLspInformation::DestinationAddress
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TunnelInfos::TunnelInfo::BriefLspInformation::SourceAddress> source_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TunnelInfos::TunnelInfo::BriefLspInformation::DestinationAddress> destination_address;
+        
+}; // Pce::TunnelInfos::TunnelInfo::BriefLspInformation
+
+
+class Pce::TunnelInfos::TunnelInfo::BriefLspInformation::SourceAddress : public ydk::Entity
+{
+    public:
+        SourceAddress();
+        ~SourceAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf af_name; //type: PceAfId
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
+
+}; // Pce::TunnelInfos::TunnelInfo::BriefLspInformation::SourceAddress
+
+
+class Pce::TunnelInfos::TunnelInfo::BriefLspInformation::DestinationAddress : public ydk::Entity
+{
+    public:
+        DestinationAddress();
+        ~DestinationAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf af_name; //type: PceAfId
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
+
+}; // Pce::TunnelInfos::TunnelInfo::BriefLspInformation::DestinationAddress
+
+
+class Pce::PeerDetailInfos : public ydk::Entity
+{
+    public:
+        PeerDetailInfos();
+        ~PeerDetailInfos();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class PeerDetailInfo; //type: Pce::PeerDetailInfos::PeerDetailInfo
+
+        ydk::YList peer_detail_info;
+        
+}; // Pce::PeerDetailInfos
+
+
+class Pce::PeerDetailInfos::PeerDetailInfo : public ydk::Entity
+{
+    public:
+        PeerDetailInfo();
+        ~PeerDetailInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf peer_address; //type: string
+        ydk::YLeaf peer_protocol; //type: PceProto
+        ydk::YLeaf max_sid_depth; //type: uint32
+        class PeerAddressXr; //type: Pce::PeerDetailInfos::PeerDetailInfo::PeerAddressXr
+        class DetailPcepInformation; //type: Pce::PeerDetailInfos::PeerDetailInfo::DetailPcepInformation
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PeerDetailInfos::PeerDetailInfo::PeerAddressXr> peer_address_xr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PeerDetailInfos::PeerDetailInfo::DetailPcepInformation> detail_pcep_information;
+        
+}; // Pce::PeerDetailInfos::PeerDetailInfo
+
+
+class Pce::PeerDetailInfos::PeerDetailInfo::PeerAddressXr : public ydk::Entity
+{
+    public:
+        PeerAddressXr();
+        ~PeerAddressXr();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf af_name; //type: PceAfId
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
+
+}; // Pce::PeerDetailInfos::PeerDetailInfo::PeerAddressXr
+
+
+class Pce::PeerDetailInfos::PeerDetailInfo::DetailPcepInformation : public ydk::Entity
+{
+    public:
+        DetailPcepInformation();
+        ~DetailPcepInformation();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf error; //type: string
+        ydk::YLeaf speaker_id; //type: string
+        ydk::YLeaf pcep_up_time; //type: uint32
+        ydk::YLeaf keepalives; //type: uint32
+        ydk::YLeaf md5_enabled; //type: boolean
+        ydk::YLeaf keychain_enabled; //type: boolean
+        ydk::YLeaf negotiated_local_keepalive; //type: uint32
+        ydk::YLeaf negotiated_remote_keepalive; //type: uint32
+        ydk::YLeaf negotiated_dead_time; //type: uint32
+        ydk::YLeaf pce_request_rx; //type: uint32
+        ydk::YLeaf pce_request_tx; //type: uint32
+        ydk::YLeaf pce_reply_rx; //type: uint32
+        ydk::YLeaf pce_reply_tx; //type: uint32
+        ydk::YLeaf pce_error_rx; //type: uint32
+        ydk::YLeaf pce_error_tx; //type: uint32
+        ydk::YLeaf pce_open_tx; //type: uint32
+        ydk::YLeaf pce_open_rx; //type: uint32
+        ydk::YLeaf pce_report_rx; //type: uint32
+        ydk::YLeaf pce_report_tx; //type: uint32
+        ydk::YLeaf pce_update_rx; //type: uint32
+        ydk::YLeaf pce_update_tx; //type: uint32
+        ydk::YLeaf pce_initiate_rx; //type: uint32
+        ydk::YLeaf pce_initiate_tx; //type: uint32
+        ydk::YLeaf pce_keepalive_tx; //type: uint64
+        ydk::YLeaf pce_keepalive_rx; //type: uint64
+        ydk::YLeaf local_session_id; //type: uint8
+        ydk::YLeaf remote_session_id; //type: uint8
+        ydk::YLeaf minimum_keepalive_interval; //type: uint8
+        ydk::YLeaf maximum_dead_interval; //type: uint8
+        ydk::YLeaf max_sid_depth; //type: uint8
+        class BriefPcepInformation; //type: Pce::PeerDetailInfos::PeerDetailInfo::DetailPcepInformation::BriefPcepInformation
+        class LastErrorRx; //type: Pce::PeerDetailInfos::PeerDetailInfo::DetailPcepInformation::LastErrorRx
+        class LastErrorTx; //type: Pce::PeerDetailInfos::PeerDetailInfo::DetailPcepInformation::LastErrorTx
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PeerDetailInfos::PeerDetailInfo::DetailPcepInformation::BriefPcepInformation> brief_pcep_information;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PeerDetailInfos::PeerDetailInfo::DetailPcepInformation::LastErrorRx> last_error_rx;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PeerDetailInfos::PeerDetailInfo::DetailPcepInformation::LastErrorTx> last_error_tx;
+        
+}; // Pce::PeerDetailInfos::PeerDetailInfo::DetailPcepInformation
+
+
 class Pce::PeerDetailInfos::PeerDetailInfo::DetailPcepInformation::BriefPcepInformation : public ydk::Entity
 {
     public:
@@ -130,12 +663,12 @@ class Pce::TopologyNodes::TopologyNode : public ydk::Entity
         ydk::YLeaf node_identifier_xr; //type: uint32
         ydk::YLeaf overload; //type: boolean
         class NodeProtocolIdentifier; //type: Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier
-        class PrefixSid; //type: Pce::TopologyNodes::TopologyNode::PrefixSid
+        class Prefixe; //type: Pce::TopologyNodes::TopologyNode::Prefixe
         class Ipv4Link; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link
         class Ipv6Link; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier> node_protocol_identifier;
-        ydk::YList prefix_sid;
+        ydk::YList prefixe;
         ydk::YList ipv4_link;
         ydk::YList ipv6_link;
         
@@ -189,15 +722,39 @@ class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf domain_identifier; //type: uint64
-        ydk::YLeaf autonomous_system_number; //type: uint32
-        class Igp; //type: Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp
+        class NodeId; //type: Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::NodeId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp> igp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::NodeId> node_id;
         
 }; // Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation
 
 
-class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::NodeId : public ydk::Entity
+{
+    public:
+        NodeId();
+        ~NodeId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf autonomous_system_number; //type: uint32
+        ydk::YLeaf ls_identifier; //type: uint32
+        class Igp; //type: Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::NodeId::Igp
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::NodeId::Igp> igp;
+        
+}; // Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::NodeId
+
+
+class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::NodeId::Igp : public ydk::Entity
 {
     public:
         Igp();
@@ -214,18 +771,18 @@ class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf igp_id; //type: PceIgpInfoId
-        class Isis; //type: Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Isis
-        class Ospf; //type: Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Ospf
-        class Bgp; //type: Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Bgp
+        class Isis; //type: Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Isis
+        class Ospf; //type: Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Ospf
+        class Bgp; //type: Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Bgp
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Isis> isis;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Ospf> ospf;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Bgp> bgp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Isis> isis;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Ospf> ospf;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Bgp> bgp;
         
-}; // Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp
+}; // Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::NodeId::Igp
 
 
-class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Isis : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Isis : public ydk::Entity
 {
     public:
         Isis();
@@ -244,10 +801,10 @@ class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::
         ydk::YLeaf system_id; //type: string
         ydk::YLeaf level; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Isis
+}; // Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Isis
 
 
-class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Ospf : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Ospf : public ydk::Entity
 {
     public:
         Ospf();
@@ -266,10 +823,10 @@ class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf area; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Ospf
+}; // Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Ospf
 
 
-class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Bgp : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Bgp : public ydk::Entity
 {
     public:
         Bgp();
@@ -288,7 +845,7 @@ class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf confed_asn; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Bgp
+}; // Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Bgp
 
 
 class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation : public ydk::Entity
@@ -309,18 +866,44 @@ class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation 
 
         ydk::YLeaf start; //type: uint32
         ydk::YLeaf size; //type: uint32
-        class IgpSrgb; //type: Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb
+        ydk::YLeaf domain_identifier; //type: uint64
+        class NodeId; //type: Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::NodeId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb> igp_srgb;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::NodeId> node_id;
         
 }; // Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation
 
 
-class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::NodeId : public ydk::Entity
 {
     public:
-        IgpSrgb();
-        ~IgpSrgb();
+        NodeId();
+        ~NodeId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf autonomous_system_number; //type: uint32
+        ydk::YLeaf ls_identifier; //type: uint32
+        class Igp; //type: Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp> igp;
+        
+}; // Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::NodeId
+
+
+class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp : public ydk::Entity
+{
+    public:
+        Igp();
+        ~Igp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -333,18 +916,18 @@ class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf igp_id; //type: PceIgpInfoId
-        class Isis; //type: Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis
-        class Ospf; //type: Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf
-        class Bgp; //type: Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp
+        class Isis; //type: Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Isis
+        class Ospf; //type: Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Ospf
+        class Bgp; //type: Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Bgp
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis> isis;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf> ospf;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp> bgp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Isis> isis;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Ospf> ospf;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Bgp> bgp;
         
-}; // Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb
+}; // Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp
 
 
-class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Isis : public ydk::Entity
 {
     public:
         Isis();
@@ -363,10 +946,10 @@ class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation:
         ydk::YLeaf system_id; //type: string
         ydk::YLeaf level; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis
+}; // Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Isis
 
 
-class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Ospf : public ydk::Entity
 {
     public:
         Ospf();
@@ -385,10 +968,10 @@ class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation:
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf area; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf
+}; // Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Ospf
 
 
-class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Bgp : public ydk::Entity
 {
     public:
         Bgp();
@@ -407,14 +990,40 @@ class Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation:
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf confed_asn; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp
+}; // Pce::TopologyNodes::TopologyNode::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Bgp
 
 
-class Pce::TopologyNodes::TopologyNode::PrefixSid : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Prefixe : public ydk::Entity
 {
     public:
-        PrefixSid();
-        ~PrefixSid();
+        Prefixe();
+        ~Prefixe();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf domain_identifier; //type: uint64
+        class PfxSid; //type: Pce::TopologyNodes::TopologyNode::Prefixe::PfxSid
+        class NodeId; //type: Pce::TopologyNodes::TopologyNode::Prefixe::NodeId
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Prefixe::PfxSid> pfx_sid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Prefixe::NodeId> node_id;
+        
+}; // Pce::TopologyNodes::TopologyNode::Prefixe
+
+
+class Pce::TopologyNodes::TopologyNode::Prefixe::PfxSid : public ydk::Entity
+{
+    public:
+        PfxSid();
+        ~PfxSid();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -428,21 +1037,20 @@ class Pce::TopologyNodes::TopologyNode::PrefixSid : public ydk::Entity
 
         ydk::YLeaf sid_type; //type: Sid
         ydk::YLeaf mpls_label; //type: uint32
-        ydk::YLeaf domain_identifier; //type: uint64
         ydk::YLeaf rflag; //type: boolean
         ydk::YLeaf nflag; //type: boolean
         ydk::YLeaf pflag; //type: boolean
         ydk::YLeaf eflag; //type: boolean
         ydk::YLeaf vflag; //type: boolean
         ydk::YLeaf lflag; //type: boolean
-        class SidPrefix; //type: Pce::TopologyNodes::TopologyNode::PrefixSid::SidPrefix
+        class SidPrefix; //type: Pce::TopologyNodes::TopologyNode::Prefixe::PfxSid::SidPrefix
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::PrefixSid::SidPrefix> sid_prefix;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Prefixe::PfxSid::SidPrefix> sid_prefix;
         
-}; // Pce::TopologyNodes::TopologyNode::PrefixSid
+}; // Pce::TopologyNodes::TopologyNode::Prefixe::PfxSid
 
 
-class Pce::TopologyNodes::TopologyNode::PrefixSid::SidPrefix : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Prefixe::PfxSid::SidPrefix : public ydk::Entity
 {
     public:
         SidPrefix();
@@ -462,7 +1070,126 @@ class Pce::TopologyNodes::TopologyNode::PrefixSid::SidPrefix : public ydk::Entit
         ydk::YLeaf ipv4; //type: string
         ydk::YLeaf ipv6; //type: string
 
-}; // Pce::TopologyNodes::TopologyNode::PrefixSid::SidPrefix
+}; // Pce::TopologyNodes::TopologyNode::Prefixe::PfxSid::SidPrefix
+
+
+class Pce::TopologyNodes::TopologyNode::Prefixe::NodeId : public ydk::Entity
+{
+    public:
+        NodeId();
+        ~NodeId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf autonomous_system_number; //type: uint32
+        ydk::YLeaf ls_identifier; //type: uint32
+        class Igp; //type: Pce::TopologyNodes::TopologyNode::Prefixe::NodeId::Igp
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Prefixe::NodeId::Igp> igp;
+        
+}; // Pce::TopologyNodes::TopologyNode::Prefixe::NodeId
+
+
+class Pce::TopologyNodes::TopologyNode::Prefixe::NodeId::Igp : public ydk::Entity
+{
+    public:
+        Igp();
+        ~Igp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf igp_id; //type: PceIgpInfoId
+        class Isis; //type: Pce::TopologyNodes::TopologyNode::Prefixe::NodeId::Igp::Isis
+        class Ospf; //type: Pce::TopologyNodes::TopologyNode::Prefixe::NodeId::Igp::Ospf
+        class Bgp; //type: Pce::TopologyNodes::TopologyNode::Prefixe::NodeId::Igp::Bgp
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Prefixe::NodeId::Igp::Isis> isis;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Prefixe::NodeId::Igp::Ospf> ospf;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Prefixe::NodeId::Igp::Bgp> bgp;
+        
+}; // Pce::TopologyNodes::TopologyNode::Prefixe::NodeId::Igp
+
+
+class Pce::TopologyNodes::TopologyNode::Prefixe::NodeId::Igp::Isis : public ydk::Entity
+{
+    public:
+        Isis();
+        ~Isis();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf system_id; //type: string
+        ydk::YLeaf level; //type: uint32
+
+}; // Pce::TopologyNodes::TopologyNode::Prefixe::NodeId::Igp::Isis
+
+
+class Pce::TopologyNodes::TopologyNode::Prefixe::NodeId::Igp::Ospf : public ydk::Entity
+{
+    public:
+        Ospf();
+        ~Ospf();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf area; //type: uint32
+
+}; // Pce::TopologyNodes::TopologyNode::Prefixe::NodeId::Igp::Ospf
+
+
+class Pce::TopologyNodes::TopologyNode::Prefixe::NodeId::Igp::Bgp : public ydk::Entity
+{
+    public:
+        Bgp();
+        ~Bgp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf confed_asn; //type: uint32
+
+}; // Pce::TopologyNodes::TopologyNode::Prefixe::NodeId::Igp::Bgp
 
 
 class Pce::TopologyNodes::TopologyNode::Ipv4Link : public ydk::Entity
@@ -487,6 +1214,7 @@ class Pce::TopologyNodes::TopologyNode::Ipv4Link : public ydk::Entity
         ydk::YLeaf te_metric; //type: uint32
         ydk::YLeaf maximum_link_bandwidth; //type: uint64
         ydk::YLeaf max_reservable_bandwidth; //type: uint64
+        ydk::YLeaf administrative_groups; //type: uint32
         ydk::YLeafList srlgs; //type: list of  uint32
         class LocalIgpInformation; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation
         class RemoteNodeProtocolIdentifier; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier
@@ -518,15 +1246,39 @@ class Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf domain_identifier; //type: uint64
-        ydk::YLeaf autonomous_system_number; //type: uint32
-        class Igp; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp
+        class NodeId; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::NodeId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp> igp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::NodeId> node_id;
         
 }; // Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::NodeId : public ydk::Entity
+{
+    public:
+        NodeId();
+        ~NodeId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf autonomous_system_number; //type: uint32
+        ydk::YLeaf ls_identifier; //type: uint32
+        class Igp; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::NodeId::Igp
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::NodeId::Igp> igp;
+        
+}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::NodeId
+
+
+class Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::NodeId::Igp : public ydk::Entity
 {
     public:
         Igp();
@@ -543,18 +1295,18 @@ class Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp : pub
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf igp_id; //type: PceIgpInfoId
-        class Isis; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Isis
-        class Ospf; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Ospf
-        class Bgp; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Bgp
+        class Isis; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::NodeId::Igp::Isis
+        class Ospf; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::NodeId::Igp::Ospf
+        class Bgp; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::NodeId::Igp::Bgp
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Isis> isis;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Ospf> ospf;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Bgp> bgp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::NodeId::Igp::Isis> isis;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::NodeId::Igp::Ospf> ospf;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::NodeId::Igp::Bgp> bgp;
         
-}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp
+}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::NodeId::Igp
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Isis : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::NodeId::Igp::Isis : public ydk::Entity
 {
     public:
         Isis();
@@ -573,10 +1325,10 @@ class Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Isis
         ydk::YLeaf system_id; //type: string
         ydk::YLeaf level; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Isis
+}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::NodeId::Igp::Isis
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Ospf : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::NodeId::Igp::Ospf : public ydk::Entity
 {
     public:
         Ospf();
@@ -595,10 +1347,10 @@ class Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Ospf
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf area; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Ospf
+}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::NodeId::Igp::Ospf
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Bgp : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::NodeId::Igp::Bgp : public ydk::Entity
 {
     public:
         Bgp();
@@ -617,7 +1369,7 @@ class Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Bgp 
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf confed_asn; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Bgp
+}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::NodeId::Igp::Bgp
 
 
 class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier : public ydk::Entity
@@ -667,15 +1419,39 @@ class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf domain_identifier; //type: uint64
-        ydk::YLeaf autonomous_system_number; //type: uint32
-        class Igp; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp
+        class NodeId; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp> igp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId> node_id;
         
 }; // Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId : public ydk::Entity
+{
+    public:
+        NodeId();
+        ~NodeId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf autonomous_system_number; //type: uint32
+        ydk::YLeaf ls_identifier; //type: uint32
+        class Igp; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp> igp;
+        
+}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId
+
+
+class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp : public ydk::Entity
 {
     public:
         Igp();
@@ -692,18 +1468,18 @@ class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf igp_id; //type: PceIgpInfoId
-        class Isis; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis
-        class Ospf; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf
-        class Bgp; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp
+        class Isis; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Isis
+        class Ospf; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Ospf
+        class Bgp; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Bgp
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis> isis;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf> ospf;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp> bgp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Isis> isis;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Ospf> ospf;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Bgp> bgp;
         
-}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp
+}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Isis : public ydk::Entity
 {
     public:
         Isis();
@@ -722,10 +1498,10 @@ class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::
         ydk::YLeaf system_id; //type: string
         ydk::YLeaf level; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis
+}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Isis
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Ospf : public ydk::Entity
 {
     public:
         Ospf();
@@ -744,10 +1520,10 @@ class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf area; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf
+}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Ospf
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Bgp : public ydk::Entity
 {
     public:
         Bgp();
@@ -766,7 +1542,7 @@ class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf confed_asn; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp
+}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Bgp
 
 
 class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation : public ydk::Entity
@@ -787,18 +1563,44 @@ class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::
 
         ydk::YLeaf start; //type: uint32
         ydk::YLeaf size; //type: uint32
-        class IgpSrgb; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb
+        ydk::YLeaf domain_identifier; //type: uint64
+        class NodeId; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb> igp_srgb;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId> node_id;
         
 }; // Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId : public ydk::Entity
 {
     public:
-        IgpSrgb();
-        ~IgpSrgb();
+        NodeId();
+        ~NodeId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf autonomous_system_number; //type: uint32
+        ydk::YLeaf ls_identifier; //type: uint32
+        class Igp; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp> igp;
+        
+}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId
+
+
+class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp : public ydk::Entity
+{
+    public:
+        Igp();
+        ~Igp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -811,18 +1613,18 @@ class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf igp_id; //type: PceIgpInfoId
-        class Isis; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis
-        class Ospf; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf
-        class Bgp; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp
+        class Isis; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Isis
+        class Ospf; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Ospf
+        class Bgp; //type: Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Bgp
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis> isis;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf> ospf;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp> bgp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Isis> isis;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Ospf> ospf;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Bgp> bgp;
         
-}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb
+}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Isis : public ydk::Entity
 {
     public:
         Isis();
@@ -841,10 +1643,10 @@ class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::
         ydk::YLeaf system_id; //type: string
         ydk::YLeaf level; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis
+}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Isis
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Ospf : public ydk::Entity
 {
     public:
         Ospf();
@@ -863,10 +1665,10 @@ class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf area; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf
+}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Ospf
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Bgp : public ydk::Entity
 {
     public:
         Bgp();
@@ -885,7 +1687,7 @@ class Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf confed_asn; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp
+}; // Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Bgp
 
 
 class Pce::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics : public ydk::Entity
@@ -927,7 +1729,6 @@ class Pce::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid : public ydk::Ent
 
         ydk::YLeaf sid_type; //type: Sid
         ydk::YLeaf mpls_label; //type: uint32
-        ydk::YLeaf domain_identifier; //type: uint64
         ydk::YLeaf rflag; //type: boolean
         ydk::YLeaf nflag; //type: boolean
         ydk::YLeaf pflag; //type: boolean
@@ -1014,15 +1815,39 @@ class Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf domain_identifier; //type: uint64
-        ydk::YLeaf autonomous_system_number; //type: uint32
-        class Igp; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp
+        class NodeId; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::NodeId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp> igp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::NodeId> node_id;
         
 }; // Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::NodeId : public ydk::Entity
+{
+    public:
+        NodeId();
+        ~NodeId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf autonomous_system_number; //type: uint32
+        ydk::YLeaf ls_identifier; //type: uint32
+        class Igp; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::NodeId::Igp
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::NodeId::Igp> igp;
+        
+}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::NodeId
+
+
+class Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::NodeId::Igp : public ydk::Entity
 {
     public:
         Igp();
@@ -1039,18 +1864,18 @@ class Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp : pub
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf igp_id; //type: PceIgpInfoId
-        class Isis; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis
-        class Ospf; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf
-        class Bgp; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp
+        class Isis; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::NodeId::Igp::Isis
+        class Ospf; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::NodeId::Igp::Ospf
+        class Bgp; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::NodeId::Igp::Bgp
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis> isis;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf> ospf;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp> bgp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::NodeId::Igp::Isis> isis;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::NodeId::Igp::Ospf> ospf;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::NodeId::Igp::Bgp> bgp;
         
-}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp
+}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::NodeId::Igp
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::NodeId::Igp::Isis : public ydk::Entity
 {
     public:
         Isis();
@@ -1069,10 +1894,10 @@ class Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis
         ydk::YLeaf system_id; //type: string
         ydk::YLeaf level; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis
+}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::NodeId::Igp::Isis
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::NodeId::Igp::Ospf : public ydk::Entity
 {
     public:
         Ospf();
@@ -1091,10 +1916,10 @@ class Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf area; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf
+}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::NodeId::Igp::Ospf
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::NodeId::Igp::Bgp : public ydk::Entity
 {
     public:
         Bgp();
@@ -1113,7 +1938,7 @@ class Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp 
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf confed_asn; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp
+}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::NodeId::Igp::Bgp
 
 
 class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier : public ydk::Entity
@@ -1163,15 +1988,39 @@ class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf domain_identifier; //type: uint64
-        ydk::YLeaf autonomous_system_number; //type: uint32
-        class Igp; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp
+        class NodeId; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp> igp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId> node_id;
         
 }; // Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId : public ydk::Entity
+{
+    public:
+        NodeId();
+        ~NodeId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf autonomous_system_number; //type: uint32
+        ydk::YLeaf ls_identifier; //type: uint32
+        class Igp; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp> igp;
+        
+}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId
+
+
+class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp : public ydk::Entity
 {
     public:
         Igp();
@@ -1188,18 +2037,18 @@ class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf igp_id; //type: PceIgpInfoId
-        class Isis; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis
-        class Ospf; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf
-        class Bgp; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp
+        class Isis; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Isis
+        class Ospf; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Ospf
+        class Bgp; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Bgp
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis> isis;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf> ospf;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp> bgp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Isis> isis;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Ospf> ospf;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Bgp> bgp;
         
-}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp
+}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Isis : public ydk::Entity
 {
     public:
         Isis();
@@ -1218,10 +2067,10 @@ class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::
         ydk::YLeaf system_id; //type: string
         ydk::YLeaf level; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis
+}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Isis
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Ospf : public ydk::Entity
 {
     public:
         Ospf();
@@ -1240,10 +2089,10 @@ class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf area; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf
+}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Ospf
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Bgp : public ydk::Entity
 {
     public:
         Bgp();
@@ -1262,7 +2111,7 @@ class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf confed_asn; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp
+}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::NodeId::Igp::Bgp
 
 
 class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation : public ydk::Entity
@@ -1283,18 +2132,44 @@ class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::
 
         ydk::YLeaf start; //type: uint32
         ydk::YLeaf size; //type: uint32
-        class IgpSrgb; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb
+        ydk::YLeaf domain_identifier; //type: uint64
+        class NodeId; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb> igp_srgb;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId> node_id;
         
 }; // Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId : public ydk::Entity
 {
     public:
-        IgpSrgb();
-        ~IgpSrgb();
+        NodeId();
+        ~NodeId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf autonomous_system_number; //type: uint32
+        ydk::YLeaf ls_identifier; //type: uint32
+        class Igp; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp> igp;
+        
+}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId
+
+
+class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp : public ydk::Entity
+{
+    public:
+        Igp();
+        ~Igp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1307,18 +2182,18 @@ class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf igp_id; //type: PceIgpInfoId
-        class Isis; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis
-        class Ospf; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf
-        class Bgp; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp
+        class Isis; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Isis
+        class Ospf; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Ospf
+        class Bgp; //type: Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Bgp
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis> isis;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf> ospf;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp> bgp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Isis> isis;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Ospf> ospf;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Bgp> bgp;
         
-}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb
+}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Isis : public ydk::Entity
 {
     public:
         Isis();
@@ -1337,10 +2212,10 @@ class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::
         ydk::YLeaf system_id; //type: string
         ydk::YLeaf level; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis
+}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Isis
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Ospf : public ydk::Entity
 {
     public:
         Ospf();
@@ -1359,10 +2234,10 @@ class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf area; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf
+}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Ospf
 
 
-class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp : public ydk::Entity
+class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Bgp : public ydk::Entity
 {
     public:
         Bgp();
@@ -1381,7 +2256,7 @@ class Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf confed_asn; //type: uint32
 
-}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp
+}; // Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Bgp
 
 
 class Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid : public ydk::Entity
@@ -1402,7 +2277,6 @@ class Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid : public ydk::Ent
 
         ydk::YLeaf sid_type; //type: Sid
         ydk::YLeaf mpls_label; //type: uint32
-        ydk::YLeaf domain_identifier; //type: uint64
         ydk::YLeaf rflag; //type: boolean
         ydk::YLeaf nflag; //type: boolean
         ydk::YLeaf pflag; //type: boolean
@@ -1538,15 +2412,39 @@ class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation : pub
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf domain_identifier; //type: uint64
-        ydk::YLeaf autonomous_system_number; //type: uint32
-        class Igp; //type: Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp
+        class NodeId; //type: Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::NodeId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp> igp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::NodeId> node_id;
         
 }; // Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation
 
 
-class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp : public ydk::Entity
+class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::NodeId : public ydk::Entity
+{
+    public:
+        NodeId();
+        ~NodeId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf autonomous_system_number; //type: uint32
+        ydk::YLeaf ls_identifier; //type: uint32
+        class Igp; //type: Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::NodeId::Igp
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::NodeId::Igp> igp;
+        
+}; // Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::NodeId
+
+
+class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::NodeId::Igp : public ydk::Entity
 {
     public:
         Igp();
@@ -1563,18 +2461,18 @@ class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf igp_id; //type: PceIgpInfoId
-        class Isis; //type: Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis
-        class Ospf; //type: Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf
-        class Bgp; //type: Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp
+        class Isis; //type: Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Isis
+        class Ospf; //type: Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Ospf
+        class Bgp; //type: Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Bgp
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis> isis;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf> ospf;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp> bgp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Isis> isis;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Ospf> ospf;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Bgp> bgp;
         
-}; // Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp
+}; // Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::NodeId::Igp
 
 
-class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis : public ydk::Entity
+class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Isis : public ydk::Entity
 {
     public:
         Isis();
@@ -1593,10 +2491,10 @@ class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp:
         ydk::YLeaf system_id; //type: string
         ydk::YLeaf level; //type: uint32
 
-}; // Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis
+}; // Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Isis
 
 
-class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf : public ydk::Entity
+class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Ospf : public ydk::Entity
 {
     public:
         Ospf();
@@ -1615,10 +2513,10 @@ class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp:
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf area; //type: uint32
 
-}; // Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf
+}; // Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Ospf
 
 
-class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp : public ydk::Entity
+class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Bgp : public ydk::Entity
 {
     public:
         Bgp();
@@ -1637,7 +2535,7 @@ class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp:
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf confed_asn; //type: uint32
 
-}; // Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp
+}; // Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::NodeId::Igp::Bgp
 
 
 class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation : public ydk::Entity
@@ -1658,18 +2556,44 @@ class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation : pu
 
         ydk::YLeaf start; //type: uint32
         ydk::YLeaf size; //type: uint32
-        class IgpSrgb; //type: Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb
+        ydk::YLeaf domain_identifier; //type: uint64
+        class NodeId; //type: Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::NodeId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb> igp_srgb;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::NodeId> node_id;
         
 }; // Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation
 
 
-class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb : public ydk::Entity
+class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::NodeId : public ydk::Entity
 {
     public:
-        IgpSrgb();
-        ~IgpSrgb();
+        NodeId();
+        ~NodeId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf autonomous_system_number; //type: uint32
+        ydk::YLeaf ls_identifier; //type: uint32
+        class Igp; //type: Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp> igp;
+        
+}; // Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::NodeId
+
+
+class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp : public ydk::Entity
+{
+    public:
+        Igp();
+        ~Igp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1682,18 +2606,18 @@ class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::Igp
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf igp_id; //type: PceIgpInfoId
-        class Isis; //type: Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis
-        class Ospf; //type: Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf
-        class Bgp; //type: Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp
+        class Isis; //type: Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Isis
+        class Ospf; //type: Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Ospf
+        class Bgp; //type: Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Bgp
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis> isis;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf> ospf;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp> bgp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Isis> isis;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Ospf> ospf;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Bgp> bgp;
         
-}; // Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb
+}; // Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp
 
 
-class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis : public ydk::Entity
+class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Isis : public ydk::Entity
 {
     public:
         Isis();
@@ -1712,10 +2636,10 @@ class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::Igp
         ydk::YLeaf system_id; //type: string
         ydk::YLeaf level; //type: uint32
 
-}; // Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis
+}; // Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Isis
 
 
-class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf : public ydk::Entity
+class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Ospf : public ydk::Entity
 {
     public:
         Ospf();
@@ -1734,10 +2658,10 @@ class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::Igp
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf area; //type: uint32
 
-}; // Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf
+}; // Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Ospf
 
 
-class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp : public ydk::Entity
+class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Bgp : public ydk::Entity
 {
     public:
         Bgp();
@@ -1756,7 +2680,7 @@ class Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::Igp
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf confed_asn; //type: uint32
 
-}; // Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp
+}; // Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::NodeId::Igp::Bgp
 
 
 class Pce::PrefixInfos::PrefixInfo::Address : public ydk::Entity
@@ -1775,11 +2699,34 @@ class Pce::PrefixInfos::PrefixInfo::Address : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        class Ip; //type: Pce::PrefixInfos::PrefixInfo::Address::Ip
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PrefixInfos::PrefixInfo::Address::Ip> ip;
+        
+}; // Pce::PrefixInfos::PrefixInfo::Address
+
+
+class Pce::PrefixInfos::PrefixInfo::Address::Ip : public ydk::Entity
+{
+    public:
+        Ip();
+        ~Ip();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
         ydk::YLeaf af_name; //type: PceAfId
         ydk::YLeaf ipv4; //type: string
         ydk::YLeaf ipv6; //type: string
 
-}; // Pce::PrefixInfos::PrefixInfo::Address
+}; // Pce::PrefixInfos::PrefixInfo::Address::Ip
 
 
 class Pce::LspSummary : public ydk::Entity
@@ -2133,6 +3080,7 @@ class Pce::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformation::EventBuff
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf event_id; //type: uint32
         ydk::YLeaf event_message; //type: string
         ydk::YLeaf time_stamp; //type: uint32
 
@@ -2207,6 +3155,7 @@ class Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::BriefLspIn
         ydk::YLeaf lsp_setup_type; //type: LspSetup
         ydk::YLeaf operational_state; //type: PcepLspState
         ydk::YLeaf administrative_state; //type: LspState
+        ydk::YLeaf msd; //type: uint32
         class SourceAddress; //type: Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::BriefLspInformation::SourceAddress
         class DestinationAddress; //type: Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::BriefLspInformation::DestinationAddress
 

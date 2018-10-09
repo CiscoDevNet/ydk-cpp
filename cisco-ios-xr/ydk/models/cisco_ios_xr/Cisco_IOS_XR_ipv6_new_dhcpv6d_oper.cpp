@@ -3221,9 +3221,11 @@ Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Profile()
     profile_name{YType::str, "profile-name"}
         ,
     throttle_infos(std::make_shared<Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos>())
+    , proxy_classes(std::make_shared<Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses>())
     , info(std::make_shared<Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info>())
 {
     throttle_infos->parent = this;
+    proxy_classes->parent = this;
     info->parent = this;
 
     yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = true; 
@@ -3238,6 +3240,7 @@ bool Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::has_data() const
     if (is_presence_container) return true;
     return profile_name.is_set
 	|| (throttle_infos !=  nullptr && throttle_infos->has_data())
+	|| (proxy_classes !=  nullptr && proxy_classes->has_data())
 	|| (info !=  nullptr && info->has_data());
 }
 
@@ -3246,6 +3249,7 @@ bool Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(profile_name.yfilter)
 	|| (throttle_infos !=  nullptr && throttle_infos->has_operation())
+	|| (proxy_classes !=  nullptr && proxy_classes->has_operation())
 	|| (info !=  nullptr && info->has_operation());
 }
 
@@ -3278,6 +3282,15 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::get_child
         return throttle_infos;
     }
 
+    if(child_yang_name == "proxy-classes")
+    {
+        if(proxy_classes == nullptr)
+        {
+            proxy_classes = std::make_shared<Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses>();
+        }
+        return proxy_classes;
+    }
+
     if(child_yang_name == "info")
     {
         if(info == nullptr)
@@ -3297,6 +3310,11 @@ std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Profi
     if(throttle_infos != nullptr)
     {
         children["throttle-infos"] = throttle_infos;
+    }
+
+    if(proxy_classes != nullptr)
+    {
+        children["proxy-classes"] = proxy_classes;
     }
 
     if(info != nullptr)
@@ -3327,7 +3345,7 @@ void Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::set_filter(const std::string
 
 bool Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "throttle-infos" || name == "info" || name == "profile-name")
+    if(name == "throttle-infos" || name == "proxy-classes" || name == "info" || name == "profile-name")
         return true;
     return false;
 }
@@ -3556,6 +3574,236 @@ void Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos::ThrottleInfo:
 bool Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos::ThrottleInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mac-address" || name == "binding-chaddr" || name == "ifname" || name == "state" || name == "time-left")
+        return true;
+    return false;
+}
+
+Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::ProxyClasses()
+    :
+    proxy_class(this, {"class_name"})
+{
+
+    yang_name = "proxy-classes"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::~ProxyClasses()
+{
+}
+
+bool Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<proxy_class.len(); index++)
+    {
+        if(proxy_class[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::has_operation() const
+{
+    for (std::size_t index=0; index<proxy_class.len(); index++)
+    {
+        if(proxy_class[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "proxy-classes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "proxy-class")
+    {
+        auto c = std::make_shared<Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::ProxyClass>();
+        c->parent = this;
+        proxy_class.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : proxy_class.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "proxy-class")
+        return true;
+    return false;
+}
+
+Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::ProxyClass::ProxyClass()
+    :
+    class_name{YType::str, "class-name"},
+    class_name_xr{YType::str, "class-name-xr"},
+    profile_helper_address{YType::str, "profile-helper-address"},
+    vrf_name{YType::str, "vrf-name"}
+{
+
+    yang_name = "proxy-class"; yang_parent_name = "proxy-classes"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::ProxyClass::~ProxyClass()
+{
+}
+
+bool Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::ProxyClass::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : profile_helper_address.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : vrf_name.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return class_name.is_set
+	|| class_name_xr.is_set;
+}
+
+bool Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::ProxyClass::has_operation() const
+{
+    for (auto const & leaf : profile_helper_address.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : vrf_name.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(class_name.yfilter)
+	|| ydk::is_set(class_name_xr.yfilter)
+	|| ydk::is_set(profile_helper_address.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
+}
+
+std::string Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::ProxyClass::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "proxy-class";
+    ADD_KEY_TOKEN(class_name, "class-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::ProxyClass::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
+    if (class_name_xr.is_set || is_set(class_name_xr.yfilter)) leaf_name_data.push_back(class_name_xr.get_name_leafdata());
+
+    auto profile_helper_address_name_datas = profile_helper_address.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), profile_helper_address_name_datas.begin(), profile_helper_address_name_datas.end());
+    auto vrf_name_name_datas = vrf_name.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), vrf_name_name_datas.begin(), vrf_name_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::ProxyClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::ProxyClass::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::ProxyClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "class-name")
+    {
+        class_name = value;
+        class_name.value_namespace = name_space;
+        class_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "class-name-xr")
+    {
+        class_name_xr = value;
+        class_name_xr.value_namespace = name_space;
+        class_name_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "profile-helper-address")
+    {
+        profile_helper_address.append(value);
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.append(value);
+    }
+}
+
+void Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::ProxyClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "class-name")
+    {
+        class_name.yfilter = yfilter;
+    }
+    if(value_path == "class-name-xr")
+    {
+        class_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "profile-helper-address")
+    {
+        profile_helper_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::ProxyClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "class-name" || name == "class-name-xr" || name == "profile-helper-address" || name == "vrf-name")
         return true;
     return false;
 }
@@ -11670,9 +11918,11 @@ Dhcpv6::Nodes::Node::Server::Profiles::Profile::Profile()
         ,
     info(std::make_shared<Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info>())
     , throttle_infos(std::make_shared<Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos>())
+    , server_classes(std::make_shared<Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses>())
 {
     info->parent = this;
     throttle_infos->parent = this;
+    server_classes->parent = this;
 
     yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -11686,7 +11936,8 @@ bool Dhcpv6::Nodes::Node::Server::Profiles::Profile::has_data() const
     if (is_presence_container) return true;
     return profile_name.is_set
 	|| (info !=  nullptr && info->has_data())
-	|| (throttle_infos !=  nullptr && throttle_infos->has_data());
+	|| (throttle_infos !=  nullptr && throttle_infos->has_data())
+	|| (server_classes !=  nullptr && server_classes->has_data());
 }
 
 bool Dhcpv6::Nodes::Node::Server::Profiles::Profile::has_operation() const
@@ -11694,7 +11945,8 @@ bool Dhcpv6::Nodes::Node::Server::Profiles::Profile::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(profile_name.yfilter)
 	|| (info !=  nullptr && info->has_operation())
-	|| (throttle_infos !=  nullptr && throttle_infos->has_operation());
+	|| (throttle_infos !=  nullptr && throttle_infos->has_operation())
+	|| (server_classes !=  nullptr && server_classes->has_operation());
 }
 
 std::string Dhcpv6::Nodes::Node::Server::Profiles::Profile::get_segment_path() const
@@ -11735,6 +11987,15 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Profiles::Profile::get_chil
         return throttle_infos;
     }
 
+    if(child_yang_name == "server-classes")
+    {
+        if(server_classes == nullptr)
+        {
+            server_classes = std::make_shared<Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses>();
+        }
+        return server_classes;
+    }
+
     return nullptr;
 }
 
@@ -11750,6 +12011,11 @@ std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Prof
     if(throttle_infos != nullptr)
     {
         children["throttle-infos"] = throttle_infos;
+    }
+
+    if(server_classes != nullptr)
+    {
+        children["server-classes"] = server_classes;
     }
 
     return children;
@@ -11775,7 +12041,7 @@ void Dhcpv6::Nodes::Node::Server::Profiles::Profile::set_filter(const std::strin
 
 bool Dhcpv6::Nodes::Node::Server::Profiles::Profile::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "info" || name == "throttle-infos" || name == "profile-name")
+    if(name == "info" || name == "throttle-infos" || name == "server-classes" || name == "profile-name")
         return true;
     return false;
 }
@@ -12502,6 +12768,270 @@ void Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos::ThrottleInfo
 bool Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos::ThrottleInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mac-address" || name == "binding-chaddr" || name == "ifname" || name == "state" || name == "time-left")
+        return true;
+    return false;
+}
+
+Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::ServerClasses()
+    :
+    server_class(this, {"class_name"})
+{
+
+    yang_name = "server-classes"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::~ServerClasses()
+{
+}
+
+bool Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<server_class.len(); index++)
+    {
+        if(server_class[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::has_operation() const
+{
+    for (std::size_t index=0; index<server_class.len(); index++)
+    {
+        if(server_class[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server-classes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "server-class")
+    {
+        auto c = std::make_shared<Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::ServerClass>();
+        c->parent = this;
+        server_class.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : server_class.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "server-class")
+        return true;
+    return false;
+}
+
+Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::ServerClass::ServerClass()
+    :
+    class_name{YType::str, "class-name"},
+    class_name_xr{YType::str, "class-name-xr"},
+    domain_name{YType::str, "domain-name"},
+    profile_dns{YType::uint8, "profile-dns"},
+    framed_addr_pool_name{YType::str, "framed-addr-pool-name"},
+    delegated_prefix_pool_name{YType::str, "delegated-prefix-pool-name"},
+    profile_dns_address{YType::str, "profile-dns-address"}
+{
+
+    yang_name = "server-class"; yang_parent_name = "server-classes"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::ServerClass::~ServerClass()
+{
+}
+
+bool Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::ServerClass::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : profile_dns_address.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return class_name.is_set
+	|| class_name_xr.is_set
+	|| domain_name.is_set
+	|| profile_dns.is_set
+	|| framed_addr_pool_name.is_set
+	|| delegated_prefix_pool_name.is_set;
+}
+
+bool Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::ServerClass::has_operation() const
+{
+    for (auto const & leaf : profile_dns_address.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(class_name.yfilter)
+	|| ydk::is_set(class_name_xr.yfilter)
+	|| ydk::is_set(domain_name.yfilter)
+	|| ydk::is_set(profile_dns.yfilter)
+	|| ydk::is_set(framed_addr_pool_name.yfilter)
+	|| ydk::is_set(delegated_prefix_pool_name.yfilter)
+	|| ydk::is_set(profile_dns_address.yfilter);
+}
+
+std::string Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::ServerClass::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server-class";
+    ADD_KEY_TOKEN(class_name, "class-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::ServerClass::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
+    if (class_name_xr.is_set || is_set(class_name_xr.yfilter)) leaf_name_data.push_back(class_name_xr.get_name_leafdata());
+    if (domain_name.is_set || is_set(domain_name.yfilter)) leaf_name_data.push_back(domain_name.get_name_leafdata());
+    if (profile_dns.is_set || is_set(profile_dns.yfilter)) leaf_name_data.push_back(profile_dns.get_name_leafdata());
+    if (framed_addr_pool_name.is_set || is_set(framed_addr_pool_name.yfilter)) leaf_name_data.push_back(framed_addr_pool_name.get_name_leafdata());
+    if (delegated_prefix_pool_name.is_set || is_set(delegated_prefix_pool_name.yfilter)) leaf_name_data.push_back(delegated_prefix_pool_name.get_name_leafdata());
+
+    auto profile_dns_address_name_datas = profile_dns_address.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), profile_dns_address_name_datas.begin(), profile_dns_address_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::ServerClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::ServerClass::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::ServerClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "class-name")
+    {
+        class_name = value;
+        class_name.value_namespace = name_space;
+        class_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "class-name-xr")
+    {
+        class_name_xr = value;
+        class_name_xr.value_namespace = name_space;
+        class_name_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "domain-name")
+    {
+        domain_name = value;
+        domain_name.value_namespace = name_space;
+        domain_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "profile-dns")
+    {
+        profile_dns = value;
+        profile_dns.value_namespace = name_space;
+        profile_dns.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "framed-addr-pool-name")
+    {
+        framed_addr_pool_name = value;
+        framed_addr_pool_name.value_namespace = name_space;
+        framed_addr_pool_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "delegated-prefix-pool-name")
+    {
+        delegated_prefix_pool_name = value;
+        delegated_prefix_pool_name.value_namespace = name_space;
+        delegated_prefix_pool_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "profile-dns-address")
+    {
+        profile_dns_address.append(value);
+    }
+}
+
+void Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::ServerClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "class-name")
+    {
+        class_name.yfilter = yfilter;
+    }
+    if(value_path == "class-name-xr")
+    {
+        class_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "domain-name")
+    {
+        domain_name.yfilter = yfilter;
+    }
+    if(value_path == "profile-dns")
+    {
+        profile_dns.yfilter = yfilter;
+    }
+    if(value_path == "framed-addr-pool-name")
+    {
+        framed_addr_pool_name.yfilter = yfilter;
+    }
+    if(value_path == "delegated-prefix-pool-name")
+    {
+        delegated_prefix_pool_name.yfilter = yfilter;
+    }
+    if(value_path == "profile-dns-address")
+    {
+        profile_dns_address.yfilter = yfilter;
+    }
+}
+
+bool Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::ServerClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "class-name" || name == "class-name-xr" || name == "domain-name" || name == "profile-dns" || name == "framed-addr-pool-name" || name == "delegated-prefix-pool-name" || name == "profile-dns-address")
         return true;
     return false;
 }

@@ -31,13 +31,19 @@ class TelemetryModelDriven : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
+        ydk::YLeaf strict_timer; //type: empty
         ydk::YLeaf enable; //type: empty
+        ydk::YLeaf max_sensor_paths; //type: uint32
+        ydk::YLeaf max_containers_per_path; //type: uint32
+        ydk::YLeaf tcp_send_timeout; //type: uint32
         class SensorGroups; //type: TelemetryModelDriven::SensorGroups
         class Subscriptions; //type: TelemetryModelDriven::Subscriptions
+        class Include; //type: TelemetryModelDriven::Include
         class DestinationGroups; //type: TelemetryModelDriven::DestinationGroups
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_cfg::TelemetryModelDriven::SensorGroups> sensor_groups;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_cfg::TelemetryModelDriven::Subscriptions> subscriptions;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_cfg::TelemetryModelDriven::Include> include;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_cfg::TelemetryModelDriven::DestinationGroups> destination_groups;
         
 }; // TelemetryModelDriven
@@ -279,6 +285,52 @@ class TelemetryModelDriven::Subscriptions::Subscription::DestinationProfiles::De
 }; // TelemetryModelDriven::Subscriptions::Subscription::DestinationProfiles::DestinationProfile
 
 
+class TelemetryModelDriven::Include : public ydk::Entity
+{
+    public:
+        Include();
+        ~Include();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Empty; //type: TelemetryModelDriven::Include::Empty
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_cfg::TelemetryModelDriven::Include::Empty> empty;
+        
+}; // TelemetryModelDriven::Include
+
+
+class TelemetryModelDriven::Include::Empty : public ydk::Entity
+{
+    public:
+        Empty();
+        ~Empty();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf values; //type: empty
+
+}; // TelemetryModelDriven::Include::Empty
+
+
 class TelemetryModelDriven::DestinationGroups : public ydk::Entity
 {
     public:
@@ -398,7 +450,7 @@ class TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv6Destination
 
         ydk::YLeaf protocol; //type: ProtoType
         ydk::YLeaf tls_hostname; //type: string
-        ydk::YLeaf no_tls; //type: int32
+        ydk::YLeaf no_tls; //type: uint32
         ydk::YLeaf packetsize; //type: uint32
 
 }; // TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv6Destinations::Ipv6Destination::Protocol
@@ -471,7 +523,7 @@ class TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv4Destination
 
         ydk::YLeaf protocol; //type: ProtoType
         ydk::YLeaf tls_hostname; //type: string
-        ydk::YLeaf no_tls; //type: int32
+        ydk::YLeaf no_tls; //type: uint32
         ydk::YLeaf packetsize; //type: uint32
 
 }; // TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv4Destinations::Ipv4Destination::Protocol

@@ -58,11 +58,11 @@ class Keychains::Keychain : public ydk::Entity
         ydk::YLeaf chain_name; //type: string
         class AcceptTolerance; //type: Keychains::Keychain::AcceptTolerance
         class MacsecKeychain; //type: Keychains::Keychain::MacsecKeychain
-        class Keies; //type: Keychains::Keychain::Keies
+        class Keys; //type: Keychains::Keychain::Keys
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain::AcceptTolerance> accept_tolerance;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain::MacsecKeychain> macsec_keychain;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain::Keies> keies;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain::Keys> keys;
         
 }; // Keychains::Keychain
 
@@ -105,18 +105,18 @@ class Keychains::Keychain::MacsecKeychain : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MacsecKeies; //type: Keychains::Keychain::MacsecKeychain::MacsecKeies
+        class MacsecKeys; //type: Keychains::Keychain::MacsecKeychain::MacsecKeys
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain::MacsecKeychain::MacsecKeies> macsec_keies;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain::MacsecKeychain::MacsecKeys> macsec_keys;
         
 }; // Keychains::Keychain::MacsecKeychain
 
 
-class Keychains::Keychain::MacsecKeychain::MacsecKeies : public ydk::Entity
+class Keychains::Keychain::MacsecKeychain::MacsecKeys : public ydk::Entity
 {
     public:
-        MacsecKeies();
-        ~MacsecKeies();
+        MacsecKeys();
+        ~MacsecKeys();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -128,14 +128,14 @@ class Keychains::Keychain::MacsecKeychain::MacsecKeies : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MacsecKey; //type: Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey
+        class MacsecKey; //type: Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey
 
         ydk::YList macsec_key;
         
-}; // Keychains::Keychain::MacsecKeychain::MacsecKeies
+}; // Keychains::Keychain::MacsecKeychain::MacsecKeys
 
 
-class Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey : public ydk::Entity
+class Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey : public ydk::Entity
 {
     public:
         MacsecKey();
@@ -152,16 +152,16 @@ class Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf key_id; //type: string
-        class MacsecLifetime; //type: Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime
-        class MacsecKeyString; //type: Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString
+        class MacsecLifetime; //type: Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecLifetime
+        class MacsecKeyString; //type: Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecKeyString
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime> macsec_lifetime;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString> macsec_key_string; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecLifetime> macsec_lifetime; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecKeyString> macsec_key_string; // presence node
         
-}; // Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey
+}; // Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey
 
 
-class Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime : public ydk::Entity
+class Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecLifetime : public ydk::Entity
 {
     public:
         MacsecLifetime();
@@ -192,10 +192,10 @@ class Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetim
         ydk::YLeaf end_month; //type: KeyChainMonth
         ydk::YLeaf end_year; //type: uint32
 
-}; // Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecLifetime
+}; // Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecLifetime
 
 
-class Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString : public ydk::Entity
+class Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecKeyString : public ydk::Entity
 {
     public:
         MacsecKeyString();
@@ -215,14 +215,14 @@ class Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyStri
         ydk::YLeaf cryptographic_algorithm; //type: MacsecCryptoAlg
         ydk::YLeaf encryption_type; //type: MacsecEncryption
 
-}; // Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey::MacsecKeyString
+}; // Keychains::Keychain::MacsecKeychain::MacsecKeys::MacsecKey::MacsecKeyString
 
 
-class Keychains::Keychain::Keies : public ydk::Entity
+class Keychains::Keychain::Keys : public ydk::Entity
 {
     public:
-        Keies();
-        ~Keies();
+        Keys();
+        ~Keys();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -234,14 +234,14 @@ class Keychains::Keychain::Keies : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Key; //type: Keychains::Keychain::Keies::Key
+        class Key; //type: Keychains::Keychain::Keys::Key
 
         ydk::YList key;
         
-}; // Keychains::Keychain::Keies
+}; // Keychains::Keychain::Keys
 
 
-class Keychains::Keychain::Keies::Key : public ydk::Entity
+class Keychains::Keychain::Keys::Key : public ydk::Entity
 {
     public:
         Key();
@@ -260,16 +260,16 @@ class Keychains::Keychain::Keies::Key : public ydk::Entity
         ydk::YLeaf key_id; //type: string
         ydk::YLeaf key_string; //type: string
         ydk::YLeaf cryptographic_algorithm; //type: CryptoAlg
-        class AcceptLifetime; //type: Keychains::Keychain::Keies::Key::AcceptLifetime
-        class SendLifetime; //type: Keychains::Keychain::Keies::Key::SendLifetime
+        class AcceptLifetime; //type: Keychains::Keychain::Keys::Key::AcceptLifetime
+        class SendLifetime; //type: Keychains::Keychain::Keys::Key::SendLifetime
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain::Keies::Key::AcceptLifetime> accept_lifetime;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain::Keies::Key::SendLifetime> send_lifetime;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain::Keys::Key::AcceptLifetime> accept_lifetime; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain::Keys::Key::SendLifetime> send_lifetime; // presence node
         
-}; // Keychains::Keychain::Keies::Key
+}; // Keychains::Keychain::Keys::Key
 
 
-class Keychains::Keychain::Keies::Key::AcceptLifetime : public ydk::Entity
+class Keychains::Keychain::Keys::Key::AcceptLifetime : public ydk::Entity
 {
     public:
         AcceptLifetime();
@@ -300,10 +300,10 @@ class Keychains::Keychain::Keies::Key::AcceptLifetime : public ydk::Entity
         ydk::YLeaf end_month; //type: KeyChainMonth
         ydk::YLeaf end_year; //type: uint32
 
-}; // Keychains::Keychain::Keies::Key::AcceptLifetime
+}; // Keychains::Keychain::Keys::Key::AcceptLifetime
 
 
-class Keychains::Keychain::Keies::Key::SendLifetime : public ydk::Entity
+class Keychains::Keychain::Keys::Key::SendLifetime : public ydk::Entity
 {
     public:
         SendLifetime();
@@ -334,7 +334,7 @@ class Keychains::Keychain::Keies::Key::SendLifetime : public ydk::Entity
         ydk::YLeaf end_month; //type: KeyChainMonth
         ydk::YLeaf end_year; //type: uint32
 
-}; // Keychains::Keychain::Keies::Key::SendLifetime
+}; // Keychains::Keychain::Keys::Key::SendLifetime
 
 class MacsecEncryption : public ydk::Enum
 {

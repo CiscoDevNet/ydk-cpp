@@ -14,6 +14,145 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_pmengine_oper {
 
 
+class PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs : public ydk::Entity
+{
+    public:
+        PathESs();
+        ~PathESs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf data; //type: uint32
+        ydk::YLeaf threshold; //type: uint32
+        ydk::YLeaf tca_report; //type: boolean
+
+}; // PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs
+
+
+class PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs : public ydk::Entity
+{
+    public:
+        PathSeSs();
+        ~PathSeSs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf data; //type: uint32
+        ydk::YLeaf threshold; //type: uint32
+        ydk::YLeaf tca_report; //type: boolean
+
+}; // PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs
+
+
+class PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs : public ydk::Entity
+{
+    public:
+        PathCVs();
+        ~PathCVs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf data; //type: uint32
+        ydk::YLeaf threshold; //type: uint32
+        ydk::YLeaf tca_report; //type: boolean
+
+}; // PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs
+
+
+class PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs : public ydk::Entity
+{
+    public:
+        PathUaSs();
+        ~PathUaSs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf data; //type: uint32
+        ydk::YLeaf threshold; //type: uint32
+        ydk::YLeaf tca_report; //type: boolean
+
+}; // PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs
+
+
+class PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath : public ydk::Entity
+{
+    public:
+        FePath();
+        ~FePath();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf far_end_path_e_ss; //type: uint32
+        ydk::YLeaf far_end_path_se_ss; //type: uint32
+        ydk::YLeaf far_end_path_c_vs; //type: uint32
+        ydk::YLeaf far_end_path_ua_ss; //type: uint32
+
+}; // PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath
+
+
+class PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24 : public ydk::Entity
+{
+    public:
+        StsHour24();
+        ~StsHour24();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class StsHour24Paths; //type: PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths> sts_hour24_paths;
+        
+}; // PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24
+
+
 class PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths : public ydk::Entity
 {
     public:
@@ -53,7 +192,7 @@ class PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsH
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -380,7 +519,7 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute1
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -605,7 +744,7 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute1
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -628,6 +767,8 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute1
         class Pn; //type: PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pn
         class RxSigPow; //type: PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::RxSigPow
         class LowSigFreqOff; //type: PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LowSigFreqOff
+        class AmpliGain; //type: PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGain
+        class AmpliGainTilt; //type: PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGainTilt
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Lbc> lbc;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LbcPc> lbc_pc;
@@ -643,6 +784,8 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute1
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pn> pn;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::RxSigPow> rx_sig_pow;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LowSigFreqOff> low_sig_freq_off;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGain> ampli_gain;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGainTilt> ampli_gain_tilt;
         
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic
 
@@ -668,8 +811,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute1
         ydk::YLeaf average; //type: int32
         ydk::YLeaf maximum; //type: int32
         ydk::YLeaf minimum_threshold; //type: int32
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: int32
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Lbc
@@ -696,8 +841,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute1
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LbcPc
@@ -724,8 +871,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute1
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opt
@@ -752,8 +901,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute1
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opr
@@ -780,8 +931,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute1
         ydk::YLeaf average; //type: int32
         ydk::YLeaf maximum; //type: int32
         ydk::YLeaf minimum_threshold; //type: int32
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: int32
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Cd
@@ -808,8 +961,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute1
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Dgd
@@ -836,8 +991,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute1
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pmd
@@ -864,8 +1021,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute1
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Osnr
@@ -892,8 +1051,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute1
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::CenterWavelength
@@ -920,8 +1081,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute1
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pdl
@@ -948,8 +1111,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute1
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pcr
@@ -976,8 +1141,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute1
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pn
@@ -1004,8 +1171,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute1
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::RxSigPow
@@ -1032,11 +1201,73 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute1
         ydk::YLeaf average; //type: int32
         ydk::YLeaf maximum; //type: int32
         ydk::YLeaf minimum_threshold; //type: int32
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: int32
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LowSigFreqOff
+
+
+class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGain : public ydk::Entity
+{
+    public:
+        AmpliGain();
+        ~AmpliGain();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf valid; //type: boolean
+        ydk::YLeaf minimum; //type: string
+        ydk::YLeaf average; //type: string
+        ydk::YLeaf maximum; //type: string
+        ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
+        ydk::YLeaf minimum_tca_report; //type: boolean
+        ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
+        ydk::YLeaf maximum_tca_report; //type: boolean
+
+}; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGain
+
+
+class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGainTilt : public ydk::Entity
+{
+    public:
+        AmpliGainTilt();
+        ~AmpliGainTilt();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf valid; //type: boolean
+        ydk::YLeaf minimum; //type: string
+        ydk::YLeaf average; //type: string
+        ydk::YLeaf maximum; //type: string
+        ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
+        ydk::YLeaf minimum_tca_report; //type: boolean
+        ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
+        ydk::YLeaf maximum_tca_report; //type: boolean
+
+}; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::AmpliGainTilt
 
 
 class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15otns : public ydk::Entity
@@ -1078,7 +1309,7 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute1
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -1583,7 +1814,7 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -1606,6 +1837,8 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24:
         class Pn; //type: PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pn
         class RxSigPow; //type: PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::RxSigPow
         class LowSigFreqOff; //type: PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::LowSigFreqOff
+        class AmpliGain; //type: PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGain
+        class AmpliGainTilt; //type: PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGainTilt
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Lbc> lbc;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::LbcPc> lbc_pc;
@@ -1621,6 +1854,8 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24:
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pn> pn;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::RxSigPow> rx_sig_pow;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::LowSigFreqOff> low_sig_freq_off;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGain> ampli_gain;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGainTilt> ampli_gain_tilt;
         
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic
 
@@ -1646,8 +1881,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24:
         ydk::YLeaf average; //type: int32
         ydk::YLeaf maximum; //type: int32
         ydk::YLeaf minimum_threshold; //type: int32
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: int32
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Lbc
@@ -1674,8 +1911,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24:
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::LbcPc
@@ -1702,8 +1941,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24:
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Opt
@@ -1730,8 +1971,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24:
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Opr
@@ -1758,8 +2001,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24:
         ydk::YLeaf average; //type: int32
         ydk::YLeaf maximum; //type: int32
         ydk::YLeaf minimum_threshold; //type: int32
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: int32
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Cd
@@ -1786,8 +2031,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24:
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Dgd
@@ -1814,8 +2061,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24:
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pmd
@@ -1842,8 +2091,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24:
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Osnr
@@ -1870,8 +2121,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24:
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::CenterWavelength
@@ -1898,8 +2151,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24:
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pdl
@@ -1926,8 +2181,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24:
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pcr
@@ -1954,8 +2211,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24:
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::Pn
@@ -1982,8 +2241,10 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24:
         ydk::YLeaf average; //type: string
         ydk::YLeaf maximum; //type: string
         ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::RxSigPow
@@ -2010,11 +2271,73 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24:
         ydk::YLeaf average; //type: int32
         ydk::YLeaf maximum; //type: int32
         ydk::YLeaf minimum_threshold; //type: int32
+        ydk::YLeaf configured_min_thresh; //type: string
         ydk::YLeaf minimum_tca_report; //type: boolean
         ydk::YLeaf maximum_threshold; //type: int32
+        ydk::YLeaf configured_max_thresh; //type: string
         ydk::YLeaf maximum_tca_report; //type: boolean
 
 }; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::LowSigFreqOff
+
+
+class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGain : public ydk::Entity
+{
+    public:
+        AmpliGain();
+        ~AmpliGain();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf valid; //type: boolean
+        ydk::YLeaf minimum; //type: string
+        ydk::YLeaf average; //type: string
+        ydk::YLeaf maximum; //type: string
+        ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
+        ydk::YLeaf minimum_tca_report; //type: boolean
+        ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
+        ydk::YLeaf maximum_tca_report; //type: boolean
+
+}; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGain
+
+
+class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGainTilt : public ydk::Entity
+{
+    public:
+        AmpliGainTilt();
+        ~AmpliGainTilt();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf valid; //type: boolean
+        ydk::YLeaf minimum; //type: string
+        ydk::YLeaf average; //type: string
+        ydk::YLeaf maximum; //type: string
+        ydk::YLeaf minimum_threshold; //type: string
+        ydk::YLeaf configured_min_thresh; //type: string
+        ydk::YLeaf minimum_tca_report; //type: boolean
+        ydk::YLeaf maximum_threshold; //type: string
+        ydk::YLeaf configured_max_thresh; //type: string
+        ydk::YLeaf maximum_tca_report; //type: boolean
+
+}; // PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24Optics::DwdmHour24Optic::AmpliGainTilt
 
 
 class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24::DwdmHour24fecs : public ydk::Entity
@@ -2056,7 +2379,7 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -2281,7 +2604,7 @@ class PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmHour24:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -2880,7 +3203,7 @@ class PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcHour24::OcHour24o
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -3375,7 +3698,7 @@ class PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinut
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf index_; //type: uint32
         ydk::YLeaf valid; //type: boolean
         ydk::YLeaf timestamp; //type: string
@@ -3714,244 +4037,6 @@ class PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinut
         ydk::YLeaf tca_report; //type: boolean
 
 }; // PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineESs
-
-
-class PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineSeSs : public ydk::Entity
-{
-    public:
-        FarEndLineSeSs();
-        ~FarEndLineSeSs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf data; //type: uint32
-        ydk::YLeaf threshold; //type: uint32
-        ydk::YLeaf tca_report; //type: boolean
-
-}; // PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineSeSs
-
-
-class PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineCVs : public ydk::Entity
-{
-    public:
-        FarEndLineCVs();
-        ~FarEndLineCVs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf data; //type: uint32
-        ydk::YLeaf threshold; //type: uint32
-        ydk::YLeaf tca_report; //type: boolean
-
-}; // PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineCVs
-
-
-class PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineUaSs : public ydk::Entity
-{
-    public:
-        FarEndLineUaSs();
-        ~FarEndLineUaSs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf data; //type: uint32
-        ydk::YLeaf threshold; //type: uint32
-        ydk::YLeaf tca_report; //type: boolean
-
-}; // PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineUaSs
-
-
-class PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineFcLs : public ydk::Entity
-{
-    public:
-        FarEndLineFcLs();
-        ~FarEndLineFcLs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf data; //type: uint32
-        ydk::YLeaf threshold; //type: uint32
-        ydk::YLeaf tca_report; //type: boolean
-
-}; // PerformanceManagement::Oc::OcPorts::OcPort::OcCurrent::OcMinute15::OcMinute15ocns::OcMinute15ocn::FeLine::FarEndLineFcLs
-
-
-class PerformanceManagement::Ethernet : public ydk::Entity
-{
-    public:
-        Ethernet();
-        ~Ethernet();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class EthernetPorts; //type: PerformanceManagement::Ethernet::EthernetPorts
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Ethernet::EthernetPorts> ethernet_ports;
-        
-}; // PerformanceManagement::Ethernet
-
-
-class PerformanceManagement::Ethernet::EthernetPorts : public ydk::Entity
-{
-    public:
-        EthernetPorts();
-        ~EthernetPorts();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class EthernetPort; //type: PerformanceManagement::Ethernet::EthernetPorts::EthernetPort
-
-        ydk::YList ethernet_port;
-        
-}; // PerformanceManagement::Ethernet::EthernetPorts
-
-
-class PerformanceManagement::Ethernet::EthernetPorts::EthernetPort : public ydk::Entity
-{
-    public:
-        EthernetPort();
-        ~EthernetPort();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf name; //type: string
-        class EthernetCurrent; //type: PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent> ethernet_current;
-        
-}; // PerformanceManagement::Ethernet::EthernetPorts::EthernetPort
-
-
-class PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent : public ydk::Entity
-{
-    public:
-        EthernetCurrent();
-        ~EthernetCurrent();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class EthernetSecond30; //type: PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30
-        class EthernetHour24; //type: PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24
-        class Minute15; //type: PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30> ethernet_second30;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetHour24> ethernet_hour24;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15> minute15;
-        
-}; // PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent
-
-
-class PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30 : public ydk::Entity
-{
-    public:
-        EthernetSecond30();
-        ~EthernetSecond30();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Second30Ethers; //type: PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers> second30_ethers;
-        
-}; // PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30
-
-
-class PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers : public ydk::Entity
-{
-    public:
-        Second30Ethers();
-        ~Second30Ethers();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Second30Ether; //type: PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers::Second30Ether
-
-        ydk::YList second30_ether;
-        
-}; // PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::EthernetSecond30::Second30Ethers
 
 
 }

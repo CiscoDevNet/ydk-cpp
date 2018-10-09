@@ -659,8 +659,34 @@ class AddressPoolService::Nodes::Node::Pools::Pool::Configuration : public ydk::
         ydk::YLeaf current_utilization; //type: uint8
         ydk::YLeaf utilization_high_count; //type: uint32
         ydk::YLeaf utilization_low_count; //type: uint32
+        class SergInfo; //type: AddressPoolService::Nodes::Node::Pools::Pool::Configuration::SergInfo
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_oper::AddressPoolService::Nodes::Node::Pools::Pool::Configuration::SergInfo> serg_info;
+        
 }; // AddressPoolService::Nodes::Node::Pools::Pool::Configuration
+
+
+class AddressPoolService::Nodes::Node::Pools::Pool::Configuration::SergInfo : public ydk::Entity
+{
+    public:
+        SergInfo();
+        ~SergInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf preferred_role; //type: DapsSergRole
+        ydk::YLeaf peer_down; //type: boolean
+        ydk::YLeaf verify_pend; //type: boolean
+
+}; // AddressPoolService::Nodes::Node::Pools::Pool::Configuration::SergInfo
 
 
 class AddressPoolService::Nodes::Node::TotalUtilization : public ydk::Entity
@@ -890,14 +916,12 @@ class AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools : public ydk::Enti
 
 }; // AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools
 
-class DapsClient : public ydk::Enum
+class DapsSergRole : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf ppp;
-        static const ydk::Enum::YLeaf dhcp;
-        static const ydk::Enum::YLeaf dhcpv6;
-        static const ydk::Enum::YLeaf ipv6nd;
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
 
 };
 
@@ -906,6 +930,17 @@ class IpAddr : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
+
+};
+
+class DapsClient : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf ppp;
+        static const ydk::Enum::YLeaf dhcp;
+        static const ydk::Enum::YLeaf dhcpv6;
+        static const ydk::Enum::YLeaf ipv6nd;
 
 };
 

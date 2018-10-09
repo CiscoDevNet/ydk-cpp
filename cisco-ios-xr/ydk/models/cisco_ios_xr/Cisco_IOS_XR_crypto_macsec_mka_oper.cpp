@@ -312,8 +312,10 @@ Macsec::Mka::Interfaces::Interface::Interface()
     name{YType::str, "name"}
         ,
     session(std::make_shared<Macsec::Mka::Interfaces::Interface::Session>())
+    , info(std::make_shared<Macsec::Mka::Interfaces::Interface::Info>())
 {
     session->parent = this;
+    info->parent = this;
 
     yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -326,14 +328,16 @@ bool Macsec::Mka::Interfaces::Interface::has_data() const
 {
     if (is_presence_container) return true;
     return name.is_set
-	|| (session !=  nullptr && session->has_data());
+	|| (session !=  nullptr && session->has_data())
+	|| (info !=  nullptr && info->has_data());
 }
 
 bool Macsec::Mka::Interfaces::Interface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
-	|| (session !=  nullptr && session->has_operation());
+	|| (session !=  nullptr && session->has_operation())
+	|| (info !=  nullptr && info->has_operation());
 }
 
 std::string Macsec::Mka::Interfaces::Interface::get_absolute_path() const
@@ -372,6 +376,15 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::get_child_by_name(co
         return session;
     }
 
+    if(child_yang_name == "info")
+    {
+        if(info == nullptr)
+        {
+            info = std::make_shared<Macsec::Mka::Interfaces::Interface::Info>();
+        }
+        return info;
+    }
+
     return nullptr;
 }
 
@@ -382,6 +395,11 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interfac
     if(session != nullptr)
     {
         children["session"] = session;
+    }
+
+    if(info != nullptr)
+    {
+        children["info"] = info;
     }
 
     return children;
@@ -407,7 +425,7 @@ void Macsec::Mka::Interfaces::Interface::set_filter(const std::string & value_pa
 
 bool Macsec::Mka::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "session" || name == "name")
+    if(name == "session" || name == "info" || name == "name")
         return true;
     return false;
 }
@@ -1107,7 +1125,7 @@ Macsec::Mka::Interfaces::Interface::Session::Vp::Vp()
     old_kn{YType::uint32, "old-kn"},
     wait_time{YType::uint32, "wait-time"},
     retire_time{YType::uint32, "retire-time"},
-    cipher_suite{YType::uint32, "cipher-suite"},
+    macsec_cipher_suite{YType::enumeration, "macsec-cipher-suite"},
     ssci{YType::uint32, "ssci"},
     time_to_sak_rekey{YType::str, "time-to-sak-rekey"}
         ,
@@ -1143,7 +1161,7 @@ bool Macsec::Mka::Interfaces::Interface::Session::Vp::has_data() const
 	|| old_kn.is_set
 	|| wait_time.is_set
 	|| retire_time.is_set
-	|| cipher_suite.is_set
+	|| macsec_cipher_suite.is_set
 	|| ssci.is_set
 	|| time_to_sak_rekey.is_set;
 }
@@ -1170,7 +1188,7 @@ bool Macsec::Mka::Interfaces::Interface::Session::Vp::has_operation() const
 	|| ydk::is_set(old_kn.yfilter)
 	|| ydk::is_set(wait_time.yfilter)
 	|| ydk::is_set(retire_time.yfilter)
-	|| ydk::is_set(cipher_suite.yfilter)
+	|| ydk::is_set(macsec_cipher_suite.yfilter)
 	|| ydk::is_set(ssci.yfilter)
 	|| ydk::is_set(time_to_sak_rekey.yfilter);
 }
@@ -1200,7 +1218,7 @@ std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interfac
     if (old_kn.is_set || is_set(old_kn.yfilter)) leaf_name_data.push_back(old_kn.get_name_leafdata());
     if (wait_time.is_set || is_set(wait_time.yfilter)) leaf_name_data.push_back(wait_time.get_name_leafdata());
     if (retire_time.is_set || is_set(retire_time.yfilter)) leaf_name_data.push_back(retire_time.get_name_leafdata());
-    if (cipher_suite.is_set || is_set(cipher_suite.yfilter)) leaf_name_data.push_back(cipher_suite.get_name_leafdata());
+    if (macsec_cipher_suite.is_set || is_set(macsec_cipher_suite.yfilter)) leaf_name_data.push_back(macsec_cipher_suite.get_name_leafdata());
     if (ssci.is_set || is_set(ssci.yfilter)) leaf_name_data.push_back(ssci.get_name_leafdata());
     if (time_to_sak_rekey.is_set || is_set(time_to_sak_rekey.yfilter)) leaf_name_data.push_back(time_to_sak_rekey.get_name_leafdata());
 
@@ -1323,11 +1341,11 @@ void Macsec::Mka::Interfaces::Interface::Session::Vp::set_value(const std::strin
         retire_time.value_namespace = name_space;
         retire_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cipher-suite")
+    if(value_path == "macsec-cipher-suite")
     {
-        cipher_suite = value;
-        cipher_suite.value_namespace = name_space;
-        cipher_suite.value_namespace_prefix = name_space_prefix;
+        macsec_cipher_suite = value;
+        macsec_cipher_suite.value_namespace = name_space;
+        macsec_cipher_suite.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ssci")
     {
@@ -1401,9 +1419,9 @@ void Macsec::Mka::Interfaces::Interface::Session::Vp::set_filter(const std::stri
     {
         retire_time.yfilter = yfilter;
     }
-    if(value_path == "cipher-suite")
+    if(value_path == "macsec-cipher-suite")
     {
-        cipher_suite.yfilter = yfilter;
+        macsec_cipher_suite.yfilter = yfilter;
     }
     if(value_path == "ssci")
     {
@@ -1417,7 +1435,7 @@ void Macsec::Mka::Interfaces::Interface::Session::Vp::set_filter(const std::stri
 
 bool Macsec::Mka::Interfaces::Interface::Session::Vp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fallback-keepalive" || name == "my-sci" || name == "virtual-port-id" || name == "latest-rx" || name == "latest-tx" || name == "latest-an" || name == "latest-ki" || name == "latest-kn" || name == "old-rx" || name == "old-tx" || name == "old-an" || name == "old-ki" || name == "old-kn" || name == "wait-time" || name == "retire-time" || name == "cipher-suite" || name == "ssci" || name == "time-to-sak-rekey")
+    if(name == "fallback-keepalive" || name == "my-sci" || name == "virtual-port-id" || name == "latest-rx" || name == "latest-tx" || name == "latest-an" || name == "latest-ki" || name == "latest-kn" || name == "old-rx" || name == "old-tx" || name == "old-an" || name == "old-ki" || name == "old-kn" || name == "wait-time" || name == "retire-time" || name == "macsec-cipher-suite" || name == "ssci" || name == "time-to-sak-rekey")
         return true;
     return false;
 }
@@ -2945,6 +2963,306 @@ bool Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::has_leaf_or_c
         return true;
     return false;
 }
+
+Macsec::Mka::Interfaces::Interface::Info::Info()
+    :
+    interface_summary(std::make_shared<Macsec::Mka::Interfaces::Interface::Info::InterfaceSummary>())
+{
+    interface_summary->parent = this;
+
+    yang_name = "info"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Macsec::Mka::Interfaces::Interface::Info::~Info()
+{
+}
+
+bool Macsec::Mka::Interfaces::Interface::Info::has_data() const
+{
+    if (is_presence_container) return true;
+    return (interface_summary !=  nullptr && interface_summary->has_data());
+}
+
+bool Macsec::Mka::Interfaces::Interface::Info::has_operation() const
+{
+    return is_set(yfilter)
+	|| (interface_summary !=  nullptr && interface_summary->has_operation());
+}
+
+std::string Macsec::Mka::Interfaces::Interface::Info::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interface::Info::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Info::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-summary")
+    {
+        if(interface_summary == nullptr)
+        {
+            interface_summary = std::make_shared<Macsec::Mka::Interfaces::Interface::Info::InterfaceSummary>();
+        }
+        return interface_summary;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Info::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(interface_summary != nullptr)
+    {
+        children["interface-summary"] = interface_summary;
+    }
+
+    return children;
+}
+
+void Macsec::Mka::Interfaces::Interface::Info::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Macsec::Mka::Interfaces::Interface::Info::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Macsec::Mka::Interfaces::Interface::Info::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-summary")
+        return true;
+    return false;
+}
+
+Macsec::Mka::Interfaces::Interface::Info::InterfaceSummary::InterfaceSummary()
+    :
+    interface_name{YType::str, "interface-name"},
+    short_name{YType::str, "short-name"},
+    key_chain{YType::str, "key-chain"},
+    policy{YType::str, "policy"},
+    macsec_svc_port{YType::boolean, "macsec-svc-port"},
+    macsec_svc_port_type{YType::enumeration, "macsec-svc-port-type"},
+    svcport_short_name{YType::str, "svcport-short-name"},
+    mka_mode{YType::enumeration, "mka-mode"},
+    fallback_keychain{YType::str, "fallback-keychain"},
+    macsec_shutdown{YType::boolean, "macsec-shutdown"}
+{
+
+    yang_name = "interface-summary"; yang_parent_name = "info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Macsec::Mka::Interfaces::Interface::Info::InterfaceSummary::~InterfaceSummary()
+{
+}
+
+bool Macsec::Mka::Interfaces::Interface::Info::InterfaceSummary::has_data() const
+{
+    if (is_presence_container) return true;
+    return interface_name.is_set
+	|| short_name.is_set
+	|| key_chain.is_set
+	|| policy.is_set
+	|| macsec_svc_port.is_set
+	|| macsec_svc_port_type.is_set
+	|| svcport_short_name.is_set
+	|| mka_mode.is_set
+	|| fallback_keychain.is_set
+	|| macsec_shutdown.is_set;
+}
+
+bool Macsec::Mka::Interfaces::Interface::Info::InterfaceSummary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(short_name.yfilter)
+	|| ydk::is_set(key_chain.yfilter)
+	|| ydk::is_set(policy.yfilter)
+	|| ydk::is_set(macsec_svc_port.yfilter)
+	|| ydk::is_set(macsec_svc_port_type.yfilter)
+	|| ydk::is_set(svcport_short_name.yfilter)
+	|| ydk::is_set(mka_mode.yfilter)
+	|| ydk::is_set(fallback_keychain.yfilter)
+	|| ydk::is_set(macsec_shutdown.yfilter);
+}
+
+std::string Macsec::Mka::Interfaces::Interface::Info::InterfaceSummary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interface::Info::InterfaceSummary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (short_name.is_set || is_set(short_name.yfilter)) leaf_name_data.push_back(short_name.get_name_leafdata());
+    if (key_chain.is_set || is_set(key_chain.yfilter)) leaf_name_data.push_back(key_chain.get_name_leafdata());
+    if (policy.is_set || is_set(policy.yfilter)) leaf_name_data.push_back(policy.get_name_leafdata());
+    if (macsec_svc_port.is_set || is_set(macsec_svc_port.yfilter)) leaf_name_data.push_back(macsec_svc_port.get_name_leafdata());
+    if (macsec_svc_port_type.is_set || is_set(macsec_svc_port_type.yfilter)) leaf_name_data.push_back(macsec_svc_port_type.get_name_leafdata());
+    if (svcport_short_name.is_set || is_set(svcport_short_name.yfilter)) leaf_name_data.push_back(svcport_short_name.get_name_leafdata());
+    if (mka_mode.is_set || is_set(mka_mode.yfilter)) leaf_name_data.push_back(mka_mode.get_name_leafdata());
+    if (fallback_keychain.is_set || is_set(fallback_keychain.yfilter)) leaf_name_data.push_back(fallback_keychain.get_name_leafdata());
+    if (macsec_shutdown.is_set || is_set(macsec_shutdown.yfilter)) leaf_name_data.push_back(macsec_shutdown.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Info::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interface::Info::InterfaceSummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Macsec::Mka::Interfaces::Interface::Info::InterfaceSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "short-name")
+    {
+        short_name = value;
+        short_name.value_namespace = name_space;
+        short_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "key-chain")
+    {
+        key_chain = value;
+        key_chain.value_namespace = name_space;
+        key_chain.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy")
+    {
+        policy = value;
+        policy.value_namespace = name_space;
+        policy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "macsec-svc-port")
+    {
+        macsec_svc_port = value;
+        macsec_svc_port.value_namespace = name_space;
+        macsec_svc_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "macsec-svc-port-type")
+    {
+        macsec_svc_port_type = value;
+        macsec_svc_port_type.value_namespace = name_space;
+        macsec_svc_port_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "svcport-short-name")
+    {
+        svcport_short_name = value;
+        svcport_short_name.value_namespace = name_space;
+        svcport_short_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mka-mode")
+    {
+        mka_mode = value;
+        mka_mode.value_namespace = name_space;
+        mka_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fallback-keychain")
+    {
+        fallback_keychain = value;
+        fallback_keychain.value_namespace = name_space;
+        fallback_keychain.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "macsec-shutdown")
+    {
+        macsec_shutdown = value;
+        macsec_shutdown.value_namespace = name_space;
+        macsec_shutdown.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Macsec::Mka::Interfaces::Interface::Info::InterfaceSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "short-name")
+    {
+        short_name.yfilter = yfilter;
+    }
+    if(value_path == "key-chain")
+    {
+        key_chain.yfilter = yfilter;
+    }
+    if(value_path == "policy")
+    {
+        policy.yfilter = yfilter;
+    }
+    if(value_path == "macsec-svc-port")
+    {
+        macsec_svc_port.yfilter = yfilter;
+    }
+    if(value_path == "macsec-svc-port-type")
+    {
+        macsec_svc_port_type.yfilter = yfilter;
+    }
+    if(value_path == "svcport-short-name")
+    {
+        svcport_short_name.yfilter = yfilter;
+    }
+    if(value_path == "mka-mode")
+    {
+        mka_mode.yfilter = yfilter;
+    }
+    if(value_path == "fallback-keychain")
+    {
+        fallback_keychain.yfilter = yfilter;
+    }
+    if(value_path == "macsec-shutdown")
+    {
+        macsec_shutdown.yfilter = yfilter;
+    }
+}
+
+bool Macsec::Mka::Interfaces::Interface::Info::InterfaceSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "short-name" || name == "key-chain" || name == "policy" || name == "macsec-svc-port" || name == "macsec-svc-port-type" || name == "svcport-short-name" || name == "mka-mode" || name == "fallback-keychain" || name == "macsec-shutdown")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf MacsecCipherSuite::cipher_suite_none {0, "cipher-suite-none"};
+const Enum::YLeaf MacsecCipherSuite::cipher_suite_gcm_aes_128 {1, "cipher-suite-gcm-aes-128"};
+const Enum::YLeaf MacsecCipherSuite::cipher_suite_gcm_aes_256 {2, "cipher-suite-gcm-aes-256"};
+const Enum::YLeaf MacsecCipherSuite::cipher_suite_gcm_aes_128_xpn {3, "cipher-suite-gcm-aes-128-xpn"};
+const Enum::YLeaf MacsecCipherSuite::cipher_suite_gcm_aes_256_xpn {4, "cipher-suite-gcm-aes-256-xpn"};
+
+const Enum::YLeaf MkaAuthenticationMode::auth_mode_invalid {0, "auth-mode-invalid"};
+const Enum::YLeaf MkaAuthenticationMode::auth_mode_psk {1, "auth-mode-psk"};
+const Enum::YLeaf MkaAuthenticationMode::auth_mode_eap {2, "auth-mode-eap"};
+
+const Enum::YLeaf MacsecServicePort::macsec_service_port_none {0, "macsec-service-port-none"};
+const Enum::YLeaf MacsecServicePort::macsec_service_port_encryption {1, "macsec-service-port-encryption"};
+const Enum::YLeaf MacsecServicePort::macsec_service_port_decryption {2, "macsec-service-port-decryption"};
 
 
 }

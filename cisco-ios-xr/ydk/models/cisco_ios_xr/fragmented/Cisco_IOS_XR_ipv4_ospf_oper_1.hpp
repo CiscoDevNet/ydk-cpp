@@ -2453,6 +2453,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes::Backu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -2764,6 +2765,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactRout
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -3013,6 +3015,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastIntactBack
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -3400,6 +3403,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::ConnectedRoutes::Co
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -3649,6 +3653,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::LocalRoutes::LocalR
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string
@@ -3957,6 +3962,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::RouteAr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf route_interface_name; //type: string
+        ydk::YLeaf route_interface_snmp_index; //type: uint32
         ydk::YLeaf route_next_hop_address; //type: string
         ydk::YLeaf route_source; //type: string
         ydk::YLeaf route_lsaid; //type: string

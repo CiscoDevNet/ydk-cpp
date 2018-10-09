@@ -5,463 +5,12 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ip_rsvp_oper_3.hpp"
+#include "Cisco_IOS_XR_ip_rsvp_oper_4.hpp"
 
 using namespace ydk;
 
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_rsvp_oper {
-
-Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4::Ipv4()
-    :
-    destination_address{YType::str, "destination-address"},
-    protocol{YType::uint8, "protocol"},
-    destination_port{YType::uint16, "destination-port"}
-{
-
-    yang_name = "ipv4"; yang_parent_name = "rsvp-session"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4::~Ipv4()
-{
-}
-
-bool Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4::has_data() const
-{
-    if (is_presence_container) return true;
-    return destination_address.is_set
-	|| protocol.is_set
-	|| destination_port.is_set;
-}
-
-bool Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(protocol.yfilter)
-	|| ydk::is_set(destination_port.yfilter);
-}
-
-std::string Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/rxsb-details/rxsb-detail/session/rsvp-session/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (destination_port.is_set || is_set(destination_port.yfilter)) leaf_name_data.push_back(destination_port.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "protocol")
-    {
-        protocol = value;
-        protocol.value_namespace = name_space;
-        protocol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination-port")
-    {
-        destination_port = value;
-        destination_port.value_namespace = name_space;
-        destination_port.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "protocol")
-    {
-        protocol.yfilter = yfilter;
-    }
-    if(value_path == "destination-port")
-    {
-        destination_port.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "destination-address" || name == "protocol" || name == "destination-port")
-        return true;
-    return false;
-}
-
-Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4LspSession::Ipv4LspSession()
-    :
-    destination_address{YType::str, "destination-address"},
-    tunnel_id{YType::uint16, "tunnel-id"},
-    extended_tunnel_id{YType::str, "extended-tunnel-id"}
-{
-
-    yang_name = "ipv4-lsp-session"; yang_parent_name = "rsvp-session"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4LspSession::~Ipv4LspSession()
-{
-}
-
-bool Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4LspSession::has_data() const
-{
-    if (is_presence_container) return true;
-    return destination_address.is_set
-	|| tunnel_id.is_set
-	|| extended_tunnel_id.is_set;
-}
-
-bool Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4LspSession::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(tunnel_id.yfilter)
-	|| ydk::is_set(extended_tunnel_id.yfilter);
-}
-
-std::string Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4LspSession::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/rxsb-details/rxsb-detail/session/rsvp-session/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4LspSession::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4-lsp-session";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4LspSession::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-    if (extended_tunnel_id.is_set || is_set(extended_tunnel_id.yfilter)) leaf_name_data.push_back(extended_tunnel_id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4LspSession::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4LspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tunnel-id")
-    {
-        tunnel_id = value;
-        tunnel_id.value_namespace = name_space;
-        tunnel_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "extended-tunnel-id")
-    {
-        extended_tunnel_id = value;
-        extended_tunnel_id.value_namespace = name_space;
-        extended_tunnel_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4LspSession::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "tunnel-id")
-    {
-        tunnel_id.yfilter = yfilter;
-    }
-    if(value_path == "extended-tunnel-id")
-    {
-        extended_tunnel_id.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4LspSession::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "destination-address" || name == "tunnel-id" || name == "extended-tunnel-id")
-        return true;
-    return false;
-}
-
-Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4UniSession::Ipv4UniSession()
-    :
-    destination_address{YType::str, "destination-address"},
-    tunnel_id{YType::uint16, "tunnel-id"},
-    extended_address{YType::str, "extended-address"}
-{
-
-    yang_name = "ipv4-uni-session"; yang_parent_name = "rsvp-session"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4UniSession::~Ipv4UniSession()
-{
-}
-
-bool Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4UniSession::has_data() const
-{
-    if (is_presence_container) return true;
-    return destination_address.is_set
-	|| tunnel_id.is_set
-	|| extended_address.is_set;
-}
-
-bool Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4UniSession::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(destination_address.yfilter)
-	|| ydk::is_set(tunnel_id.yfilter)
-	|| ydk::is_set(extended_address.yfilter);
-}
-
-std::string Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4UniSession::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/rxsb-details/rxsb-detail/session/rsvp-session/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4UniSession::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4-uni-session";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4UniSession::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-    if (extended_address.is_set || is_set(extended_address.yfilter)) leaf_name_data.push_back(extended_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4UniSession::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4UniSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tunnel-id")
-    {
-        tunnel_id = value;
-        tunnel_id.value_namespace = name_space;
-        tunnel_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "extended-address")
-    {
-        extended_address = value;
-        extended_address.value_namespace = name_space;
-        extended_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4UniSession::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-    if(value_path == "tunnel-id")
-    {
-        tunnel_id.yfilter = yfilter;
-    }
-    if(value_path == "extended-address")
-    {
-        extended_address.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4UniSession::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "destination-address" || name == "tunnel-id" || name == "extended-address")
-        return true;
-    return false;
-}
-
-Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4P2mpLspSession::Ipv4P2mpLspSession()
-    :
-    p2mp_id{YType::uint32, "p2mp-id"},
-    tunnel_id{YType::uint16, "tunnel-id"},
-    extended_tunnel_id{YType::str, "extended-tunnel-id"}
-{
-
-    yang_name = "ipv4-p2mp-lsp-session"; yang_parent_name = "rsvp-session"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4P2mpLspSession::~Ipv4P2mpLspSession()
-{
-}
-
-bool Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4P2mpLspSession::has_data() const
-{
-    if (is_presence_container) return true;
-    return p2mp_id.is_set
-	|| tunnel_id.is_set
-	|| extended_tunnel_id.is_set;
-}
-
-bool Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4P2mpLspSession::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(p2mp_id.yfilter)
-	|| ydk::is_set(tunnel_id.yfilter)
-	|| ydk::is_set(extended_tunnel_id.yfilter);
-}
-
-std::string Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4P2mpLspSession::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/rxsb-details/rxsb-detail/session/rsvp-session/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4P2mpLspSession::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4-p2mp-lsp-session";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4P2mpLspSession::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (p2mp_id.is_set || is_set(p2mp_id.yfilter)) leaf_name_data.push_back(p2mp_id.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-    if (extended_tunnel_id.is_set || is_set(extended_tunnel_id.yfilter)) leaf_name_data.push_back(extended_tunnel_id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4P2mpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4P2mpLspSession::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4P2mpLspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "p2mp-id")
-    {
-        p2mp_id = value;
-        p2mp_id.value_namespace = name_space;
-        p2mp_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tunnel-id")
-    {
-        tunnel_id = value;
-        tunnel_id.value_namespace = name_space;
-        tunnel_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "extended-tunnel-id")
-    {
-        extended_tunnel_id = value;
-        extended_tunnel_id.value_namespace = name_space;
-        extended_tunnel_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4P2mpLspSession::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "p2mp-id")
-    {
-        p2mp_id.yfilter = yfilter;
-    }
-    if(value_path == "tunnel-id")
-    {
-        tunnel_id.yfilter = yfilter;
-    }
-    if(value_path == "extended-tunnel-id")
-    {
-        extended_tunnel_id.yfilter = yfilter;
-    }
-}
-
-bool Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4P2mpLspSession::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "p2mp-id" || name == "tunnel-id" || name == "extended-tunnel-id")
-        return true;
-    return false;
-}
 
 Rsvp::RxsbDetails::RxsbDetail::S2lSubLsp::S2lSubLsp()
     :
@@ -19212,6 +18761,635 @@ void Rsvp::HelloInstanceBriefs::HelloInstanceBrief::set_filter(const std::string
 bool Rsvp::HelloInstanceBriefs::HelloInstanceBrief::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "source-address" || name == "destination-address" || name == "source-address-xr" || name == "destination-address-xr" || name == "neighbor-hello-state" || name == "instance-type" || name == "hello-interface" || name == "lost-communication-total")
+        return true;
+    return false;
+}
+
+Rsvp::AuthenticationDetails::AuthenticationDetails()
+    :
+    authentication_detail(this, {"source_address", "destination_address", "mode_id", "interface_name"})
+{
+
+    yang_name = "authentication-details"; yang_parent_name = "rsvp"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Rsvp::AuthenticationDetails::~AuthenticationDetails()
+{
+}
+
+bool Rsvp::AuthenticationDetails::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<authentication_detail.len(); index++)
+    {
+        if(authentication_detail[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Rsvp::AuthenticationDetails::has_operation() const
+{
+    for (std::size_t index=0; index<authentication_detail.len(); index++)
+    {
+        if(authentication_detail[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Rsvp::AuthenticationDetails::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Rsvp::AuthenticationDetails::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "authentication-details";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Rsvp::AuthenticationDetails::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Rsvp::AuthenticationDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "authentication-detail")
+    {
+        auto c = std::make_shared<Rsvp::AuthenticationDetails::AuthenticationDetail>();
+        c->parent = this;
+        authentication_detail.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::AuthenticationDetails::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : authentication_detail.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Rsvp::AuthenticationDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Rsvp::AuthenticationDetails::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rsvp::AuthenticationDetails::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authentication-detail")
+        return true;
+    return false;
+}
+
+Rsvp::AuthenticationDetails::AuthenticationDetail::AuthenticationDetail()
+    :
+    source_address{YType::str, "source-address"},
+    destination_address{YType::str, "destination-address"},
+    mode_id{YType::enumeration, "mode-id"},
+    interface_name{YType::str, "interface-name"},
+    key_status{YType::uint32, "key-status"},
+    key_digest_info{YType::uint32, "key-digest-info"},
+    lifetime{YType::uint32, "lifetime"},
+    lifetime_left{YType::uint32, "lifetime-left"},
+    challenge_status{YType::enumeration, "challenge-status"}
+        ,
+    auth_compact(std::make_shared<Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact>())
+    , direction_info(std::make_shared<Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo>())
+{
+    auth_compact->parent = this;
+    direction_info->parent = this;
+
+    yang_name = "authentication-detail"; yang_parent_name = "authentication-details"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Rsvp::AuthenticationDetails::AuthenticationDetail::~AuthenticationDetail()
+{
+}
+
+bool Rsvp::AuthenticationDetails::AuthenticationDetail::has_data() const
+{
+    if (is_presence_container) return true;
+    return source_address.is_set
+	|| destination_address.is_set
+	|| mode_id.is_set
+	|| interface_name.is_set
+	|| key_status.is_set
+	|| key_digest_info.is_set
+	|| lifetime.is_set
+	|| lifetime_left.is_set
+	|| challenge_status.is_set
+	|| (auth_compact !=  nullptr && auth_compact->has_data())
+	|| (direction_info !=  nullptr && direction_info->has_data());
+}
+
+bool Rsvp::AuthenticationDetails::AuthenticationDetail::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(mode_id.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(key_status.yfilter)
+	|| ydk::is_set(key_digest_info.yfilter)
+	|| ydk::is_set(lifetime.yfilter)
+	|| ydk::is_set(lifetime_left.yfilter)
+	|| ydk::is_set(challenge_status.yfilter)
+	|| (auth_compact !=  nullptr && auth_compact->has_operation())
+	|| (direction_info !=  nullptr && direction_info->has_operation());
+}
+
+std::string Rsvp::AuthenticationDetails::AuthenticationDetail::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-oper:rsvp/authentication-details/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Rsvp::AuthenticationDetails::AuthenticationDetail::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "authentication-detail";
+    ADD_KEY_TOKEN(source_address, "source-address");
+    ADD_KEY_TOKEN(destination_address, "destination-address");
+    ADD_KEY_TOKEN(mode_id, "mode-id");
+    ADD_KEY_TOKEN(interface_name, "interface-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Rsvp::AuthenticationDetails::AuthenticationDetail::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (mode_id.is_set || is_set(mode_id.yfilter)) leaf_name_data.push_back(mode_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (key_status.is_set || is_set(key_status.yfilter)) leaf_name_data.push_back(key_status.get_name_leafdata());
+    if (key_digest_info.is_set || is_set(key_digest_info.yfilter)) leaf_name_data.push_back(key_digest_info.get_name_leafdata());
+    if (lifetime.is_set || is_set(lifetime.yfilter)) leaf_name_data.push_back(lifetime.get_name_leafdata());
+    if (lifetime_left.is_set || is_set(lifetime_left.yfilter)) leaf_name_data.push_back(lifetime_left.get_name_leafdata());
+    if (challenge_status.is_set || is_set(challenge_status.yfilter)) leaf_name_data.push_back(challenge_status.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Rsvp::AuthenticationDetails::AuthenticationDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "auth-compact")
+    {
+        if(auth_compact == nullptr)
+        {
+            auth_compact = std::make_shared<Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact>();
+        }
+        return auth_compact;
+    }
+
+    if(child_yang_name == "direction-info")
+    {
+        if(direction_info == nullptr)
+        {
+            direction_info = std::make_shared<Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo>();
+        }
+        return direction_info;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::AuthenticationDetails::AuthenticationDetail::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(auth_compact != nullptr)
+    {
+        children["auth-compact"] = auth_compact;
+    }
+
+    if(direction_info != nullptr)
+    {
+        children["direction-info"] = direction_info;
+    }
+
+    return children;
+}
+
+void Rsvp::AuthenticationDetails::AuthenticationDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "source-address")
+    {
+        source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mode-id")
+    {
+        mode_id = value;
+        mode_id.value_namespace = name_space;
+        mode_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "key-status")
+    {
+        key_status = value;
+        key_status.value_namespace = name_space;
+        key_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "key-digest-info")
+    {
+        key_digest_info = value;
+        key_digest_info.value_namespace = name_space;
+        key_digest_info.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lifetime")
+    {
+        lifetime = value;
+        lifetime.value_namespace = name_space;
+        lifetime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lifetime-left")
+    {
+        lifetime_left = value;
+        lifetime_left.value_namespace = name_space;
+        lifetime_left.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "challenge-status")
+    {
+        challenge_status = value;
+        challenge_status.value_namespace = name_space;
+        challenge_status.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Rsvp::AuthenticationDetails::AuthenticationDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "mode-id")
+    {
+        mode_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "key-status")
+    {
+        key_status.yfilter = yfilter;
+    }
+    if(value_path == "key-digest-info")
+    {
+        key_digest_info.yfilter = yfilter;
+    }
+    if(value_path == "lifetime")
+    {
+        lifetime.yfilter = yfilter;
+    }
+    if(value_path == "lifetime-left")
+    {
+        lifetime_left.yfilter = yfilter;
+    }
+    if(value_path == "challenge-status")
+    {
+        challenge_status.yfilter = yfilter;
+    }
+}
+
+bool Rsvp::AuthenticationDetails::AuthenticationDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auth-compact" || name == "direction-info" || name == "source-address" || name == "destination-address" || name == "mode-id" || name == "interface-name" || name == "key-status" || name == "key-digest-info" || name == "lifetime" || name == "lifetime-left" || name == "challenge-status")
+        return true;
+    return false;
+}
+
+Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::AuthCompact()
+    :
+    source_address_xr{YType::str, "source-address-xr"},
+    destination_address_xr{YType::str, "destination-address-xr"},
+    neighbor_address{YType::str, "neighbor-address"},
+    direction{YType::enumeration, "direction"},
+    key_type{YType::enumeration, "key-type"},
+    key_source{YType::str, "key-source"},
+    key_id{YType::uint64, "key-id"},
+    key_id_valid{YType::uint32, "key-id-valid"}
+{
+
+    yang_name = "auth-compact"; yang_parent_name = "authentication-detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::~AuthCompact()
+{
+}
+
+bool Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::has_data() const
+{
+    if (is_presence_container) return true;
+    return source_address_xr.is_set
+	|| destination_address_xr.is_set
+	|| neighbor_address.is_set
+	|| direction.is_set
+	|| key_type.is_set
+	|| key_source.is_set
+	|| key_id.is_set
+	|| key_id_valid.is_set;
+}
+
+bool Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(source_address_xr.yfilter)
+	|| ydk::is_set(destination_address_xr.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(key_type.yfilter)
+	|| ydk::is_set(key_source.yfilter)
+	|| ydk::is_set(key_id.yfilter)
+	|| ydk::is_set(key_id_valid.yfilter);
+}
+
+std::string Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "auth-compact";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (source_address_xr.is_set || is_set(source_address_xr.yfilter)) leaf_name_data.push_back(source_address_xr.get_name_leafdata());
+    if (destination_address_xr.is_set || is_set(destination_address_xr.yfilter)) leaf_name_data.push_back(destination_address_xr.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (key_type.is_set || is_set(key_type.yfilter)) leaf_name_data.push_back(key_type.get_name_leafdata());
+    if (key_source.is_set || is_set(key_source.yfilter)) leaf_name_data.push_back(key_source.get_name_leafdata());
+    if (key_id.is_set || is_set(key_id.yfilter)) leaf_name_data.push_back(key_id.get_name_leafdata());
+    if (key_id_valid.is_set || is_set(key_id_valid.yfilter)) leaf_name_data.push_back(key_id_valid.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "source-address-xr")
+    {
+        source_address_xr = value;
+        source_address_xr.value_namespace = name_space;
+        source_address_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "destination-address-xr")
+    {
+        destination_address_xr = value;
+        destination_address_xr.value_namespace = name_space;
+        destination_address_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "direction")
+    {
+        direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "key-type")
+    {
+        key_type = value;
+        key_type.value_namespace = name_space;
+        key_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "key-source")
+    {
+        key_source = value;
+        key_source.value_namespace = name_space;
+        key_source.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "key-id")
+    {
+        key_id = value;
+        key_id.value_namespace = name_space;
+        key_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "key-id-valid")
+    {
+        key_id_valid = value;
+        key_id_valid.value_namespace = name_space;
+        key_id_valid.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-address-xr")
+    {
+        source_address_xr.yfilter = yfilter;
+    }
+    if(value_path == "destination-address-xr")
+    {
+        destination_address_xr.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "key-type")
+    {
+        key_type.yfilter = yfilter;
+    }
+    if(value_path == "key-source")
+    {
+        key_source.yfilter = yfilter;
+    }
+    if(value_path == "key-id")
+    {
+        key_id.yfilter = yfilter;
+    }
+    if(value_path == "key-id-valid")
+    {
+        key_id_valid.yfilter = yfilter;
+    }
+}
+
+bool Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-address-xr" || name == "destination-address-xr" || name == "neighbor-address" || name == "direction" || name == "key-type" || name == "key-source" || name == "key-id" || name == "key-id-valid")
+        return true;
+    return false;
+}
+
+Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::DirectionInfo()
+    :
+    auth_direction{YType::enumeration, "auth-direction"}
+        ,
+    send_info(std::make_shared<Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo>())
+    , receive_info(std::make_shared<Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo>())
+{
+    send_info->parent = this;
+    receive_info->parent = this;
+
+    yang_name = "direction-info"; yang_parent_name = "authentication-detail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::~DirectionInfo()
+{
+}
+
+bool Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return auth_direction.is_set
+	|| (send_info !=  nullptr && send_info->has_data())
+	|| (receive_info !=  nullptr && receive_info->has_data());
+}
+
+bool Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(auth_direction.yfilter)
+	|| (send_info !=  nullptr && send_info->has_operation())
+	|| (receive_info !=  nullptr && receive_info->has_operation());
+}
+
+std::string Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "direction-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (auth_direction.is_set || is_set(auth_direction.yfilter)) leaf_name_data.push_back(auth_direction.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "send-info")
+    {
+        if(send_info == nullptr)
+        {
+            send_info = std::make_shared<Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo>();
+        }
+        return send_info;
+    }
+
+    if(child_yang_name == "receive-info")
+    {
+        if(receive_info == nullptr)
+        {
+            receive_info = std::make_shared<Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo>();
+        }
+        return receive_info;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(send_info != nullptr)
+    {
+        children["send-info"] = send_info;
+    }
+
+    if(receive_info != nullptr)
+    {
+        children["receive-info"] = receive_info;
+    }
+
+    return children;
+}
+
+void Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "auth-direction")
+    {
+        auth_direction = value;
+        auth_direction.value_namespace = name_space;
+        auth_direction.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auth-direction")
+    {
+        auth_direction.yfilter = yfilter;
+    }
+}
+
+bool Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "send-info" || name == "receive-info" || name == "auth-direction")
         return true;
     return false;
 }

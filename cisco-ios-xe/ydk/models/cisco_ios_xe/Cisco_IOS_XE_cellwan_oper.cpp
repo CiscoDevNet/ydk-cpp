@@ -17,6 +17,9 @@ CellwanOperData::CellwanOperData()
     , cellwan_radio(this, {"cellular_interface"})
     , cellwan_network(this, {"cellular_interface"})
     , cellwan_connection(this, {"cellular_interface"})
+    , cellwan_security(this, {"cellular_interface"})
+    , cellwan_sms(this, {"cellular_interface"})
+    , cellwan_gps(this, {"cellular_interface"})
 {
 
     yang_name = "cellwan-oper-data"; yang_parent_name = "Cisco-IOS-XE-cellwan-oper"; is_top_level_class = true; has_list_ancestor = false; 
@@ -49,6 +52,21 @@ bool CellwanOperData::has_data() const
         if(cellwan_connection[index]->has_data())
             return true;
     }
+    for (std::size_t index=0; index<cellwan_security.len(); index++)
+    {
+        if(cellwan_security[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<cellwan_sms.len(); index++)
+    {
+        if(cellwan_sms[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<cellwan_gps.len(); index++)
+    {
+        if(cellwan_gps[index]->has_data())
+            return true;
+    }
     return false;
 }
 
@@ -72,6 +90,21 @@ bool CellwanOperData::has_operation() const
     for (std::size_t index=0; index<cellwan_connection.len(); index++)
     {
         if(cellwan_connection[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<cellwan_security.len(); index++)
+    {
+        if(cellwan_security[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<cellwan_sms.len(); index++)
+    {
+        if(cellwan_sms[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<cellwan_gps.len(); index++)
+    {
+        if(cellwan_gps[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
@@ -127,6 +160,30 @@ std::shared_ptr<Entity> CellwanOperData::get_child_by_name(const std::string & c
         return c;
     }
 
+    if(child_yang_name == "cellwan-security")
+    {
+        auto c = std::make_shared<CellwanOperData::CellwanSecurity>();
+        c->parent = this;
+        cellwan_security.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "cellwan-sms")
+    {
+        auto c = std::make_shared<CellwanOperData::CellwanSms>();
+        c->parent = this;
+        cellwan_sms.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "cellwan-gps")
+    {
+        auto c = std::make_shared<CellwanOperData::CellwanGps>();
+        c->parent = this;
+        cellwan_gps.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -163,6 +220,33 @@ std::map<std::string, std::shared_ptr<Entity>> CellwanOperData::get_children() c
 
     count = 0;
     for (auto c : cellwan_connection.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : cellwan_security.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : cellwan_sms.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : cellwan_gps.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -208,7 +292,7 @@ std::map<std::pair<std::string, std::string>, std::string> CellwanOperData::get_
 
 bool CellwanOperData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cellwan-hardware" || name == "cellwan-radio" || name == "cellwan-network" || name == "cellwan-connection")
+    if(name == "cellwan-hardware" || name == "cellwan-radio" || name == "cellwan-network" || name == "cellwan-connection" || name == "cellwan-security" || name == "cellwan-sms" || name == "cellwan-gps")
         return true;
     return false;
 }
@@ -1397,6 +1481,628 @@ bool CellwanOperData::CellwanConnection::has_leaf_or_child_of_name(const std::st
     return false;
 }
 
+CellwanOperData::CellwanSecurity::CellwanSecurity()
+    :
+    cellular_interface{YType::str, "cellular-interface"},
+    active_sim{YType::int8, "active-sim"},
+    sim_num_switchover{YType::uint32, "sim-num-switchover"},
+    chv1_status{YType::enumeration, "chv1-status"},
+    sim_status{YType::enumeration, "sim-status"},
+    sim_oper{YType::enumeration, "sim-oper"},
+    num_retries{YType::int8, "num-retries"}
+{
+
+    yang_name = "cellwan-security"; yang_parent_name = "cellwan-oper-data"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+CellwanOperData::CellwanSecurity::~CellwanSecurity()
+{
+}
+
+bool CellwanOperData::CellwanSecurity::has_data() const
+{
+    if (is_presence_container) return true;
+    return cellular_interface.is_set
+	|| active_sim.is_set
+	|| sim_num_switchover.is_set
+	|| chv1_status.is_set
+	|| sim_status.is_set
+	|| sim_oper.is_set
+	|| num_retries.is_set;
+}
+
+bool CellwanOperData::CellwanSecurity::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cellular_interface.yfilter)
+	|| ydk::is_set(active_sim.yfilter)
+	|| ydk::is_set(sim_num_switchover.yfilter)
+	|| ydk::is_set(chv1_status.yfilter)
+	|| ydk::is_set(sim_status.yfilter)
+	|| ydk::is_set(sim_oper.yfilter)
+	|| ydk::is_set(num_retries.yfilter);
+}
+
+std::string CellwanOperData::CellwanSecurity::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-cellwan-oper:cellwan-oper-data/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CellwanOperData::CellwanSecurity::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cellwan-security";
+    ADD_KEY_TOKEN(cellular_interface, "cellular-interface");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CellwanOperData::CellwanSecurity::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cellular_interface.is_set || is_set(cellular_interface.yfilter)) leaf_name_data.push_back(cellular_interface.get_name_leafdata());
+    if (active_sim.is_set || is_set(active_sim.yfilter)) leaf_name_data.push_back(active_sim.get_name_leafdata());
+    if (sim_num_switchover.is_set || is_set(sim_num_switchover.yfilter)) leaf_name_data.push_back(sim_num_switchover.get_name_leafdata());
+    if (chv1_status.is_set || is_set(chv1_status.yfilter)) leaf_name_data.push_back(chv1_status.get_name_leafdata());
+    if (sim_status.is_set || is_set(sim_status.yfilter)) leaf_name_data.push_back(sim_status.get_name_leafdata());
+    if (sim_oper.is_set || is_set(sim_oper.yfilter)) leaf_name_data.push_back(sim_oper.get_name_leafdata());
+    if (num_retries.is_set || is_set(num_retries.yfilter)) leaf_name_data.push_back(num_retries.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CellwanOperData::CellwanSecurity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CellwanOperData::CellwanSecurity::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void CellwanOperData::CellwanSecurity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cellular-interface")
+    {
+        cellular_interface = value;
+        cellular_interface.value_namespace = name_space;
+        cellular_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "active-sim")
+    {
+        active_sim = value;
+        active_sim.value_namespace = name_space;
+        active_sim.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sim-num-switchover")
+    {
+        sim_num_switchover = value;
+        sim_num_switchover.value_namespace = name_space;
+        sim_num_switchover.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chv1-status")
+    {
+        chv1_status = value;
+        chv1_status.value_namespace = name_space;
+        chv1_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sim-status")
+    {
+        sim_status = value;
+        sim_status.value_namespace = name_space;
+        sim_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sim-oper")
+    {
+        sim_oper = value;
+        sim_oper.value_namespace = name_space;
+        sim_oper.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-retries")
+    {
+        num_retries = value;
+        num_retries.value_namespace = name_space;
+        num_retries.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CellwanOperData::CellwanSecurity::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cellular-interface")
+    {
+        cellular_interface.yfilter = yfilter;
+    }
+    if(value_path == "active-sim")
+    {
+        active_sim.yfilter = yfilter;
+    }
+    if(value_path == "sim-num-switchover")
+    {
+        sim_num_switchover.yfilter = yfilter;
+    }
+    if(value_path == "chv1-status")
+    {
+        chv1_status.yfilter = yfilter;
+    }
+    if(value_path == "sim-status")
+    {
+        sim_status.yfilter = yfilter;
+    }
+    if(value_path == "sim-oper")
+    {
+        sim_oper.yfilter = yfilter;
+    }
+    if(value_path == "num-retries")
+    {
+        num_retries.yfilter = yfilter;
+    }
+}
+
+bool CellwanOperData::CellwanSecurity::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cellular-interface" || name == "active-sim" || name == "sim-num-switchover" || name == "chv1-status" || name == "sim-status" || name == "sim-oper" || name == "num-retries")
+        return true;
+    return false;
+}
+
+CellwanOperData::CellwanSms::CellwanSms()
+    :
+    cellular_interface{YType::str, "cellular-interface"},
+    in_sms_count{YType::uint16, "in-sms-count"},
+    in_sms_archived{YType::uint16, "in-sms-archived"},
+    in_sms_deleted{YType::uint16, "in-sms-deleted"},
+    in_sms_max{YType::uint16, "in-sms-max"},
+    in_sms_used{YType::uint16, "in-sms-used"},
+    sms_callback_count{YType::uint16, "sms-callback-count"},
+    in_sms_arch_count{YType::uint16, "in-sms-arch-count"},
+    in_sms_arch_error_count{YType::uint16, "in-sms-arch-error-count"},
+    out_sms_count{YType::uint16, "out-sms-count"},
+    out_sms_error_count{YType::uint16, "out-sms-error-count"},
+    out_sms_pending{YType::uint16, "out-sms-pending"},
+    out_sms_arch_count{YType::uint16, "out-sms-arch-count"},
+    out_sms_arch_error_count{YType::uint16, "out-sms-arch-error-count"}
+{
+
+    yang_name = "cellwan-sms"; yang_parent_name = "cellwan-oper-data"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+CellwanOperData::CellwanSms::~CellwanSms()
+{
+}
+
+bool CellwanOperData::CellwanSms::has_data() const
+{
+    if (is_presence_container) return true;
+    return cellular_interface.is_set
+	|| in_sms_count.is_set
+	|| in_sms_archived.is_set
+	|| in_sms_deleted.is_set
+	|| in_sms_max.is_set
+	|| in_sms_used.is_set
+	|| sms_callback_count.is_set
+	|| in_sms_arch_count.is_set
+	|| in_sms_arch_error_count.is_set
+	|| out_sms_count.is_set
+	|| out_sms_error_count.is_set
+	|| out_sms_pending.is_set
+	|| out_sms_arch_count.is_set
+	|| out_sms_arch_error_count.is_set;
+}
+
+bool CellwanOperData::CellwanSms::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cellular_interface.yfilter)
+	|| ydk::is_set(in_sms_count.yfilter)
+	|| ydk::is_set(in_sms_archived.yfilter)
+	|| ydk::is_set(in_sms_deleted.yfilter)
+	|| ydk::is_set(in_sms_max.yfilter)
+	|| ydk::is_set(in_sms_used.yfilter)
+	|| ydk::is_set(sms_callback_count.yfilter)
+	|| ydk::is_set(in_sms_arch_count.yfilter)
+	|| ydk::is_set(in_sms_arch_error_count.yfilter)
+	|| ydk::is_set(out_sms_count.yfilter)
+	|| ydk::is_set(out_sms_error_count.yfilter)
+	|| ydk::is_set(out_sms_pending.yfilter)
+	|| ydk::is_set(out_sms_arch_count.yfilter)
+	|| ydk::is_set(out_sms_arch_error_count.yfilter);
+}
+
+std::string CellwanOperData::CellwanSms::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-cellwan-oper:cellwan-oper-data/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CellwanOperData::CellwanSms::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cellwan-sms";
+    ADD_KEY_TOKEN(cellular_interface, "cellular-interface");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CellwanOperData::CellwanSms::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cellular_interface.is_set || is_set(cellular_interface.yfilter)) leaf_name_data.push_back(cellular_interface.get_name_leafdata());
+    if (in_sms_count.is_set || is_set(in_sms_count.yfilter)) leaf_name_data.push_back(in_sms_count.get_name_leafdata());
+    if (in_sms_archived.is_set || is_set(in_sms_archived.yfilter)) leaf_name_data.push_back(in_sms_archived.get_name_leafdata());
+    if (in_sms_deleted.is_set || is_set(in_sms_deleted.yfilter)) leaf_name_data.push_back(in_sms_deleted.get_name_leafdata());
+    if (in_sms_max.is_set || is_set(in_sms_max.yfilter)) leaf_name_data.push_back(in_sms_max.get_name_leafdata());
+    if (in_sms_used.is_set || is_set(in_sms_used.yfilter)) leaf_name_data.push_back(in_sms_used.get_name_leafdata());
+    if (sms_callback_count.is_set || is_set(sms_callback_count.yfilter)) leaf_name_data.push_back(sms_callback_count.get_name_leafdata());
+    if (in_sms_arch_count.is_set || is_set(in_sms_arch_count.yfilter)) leaf_name_data.push_back(in_sms_arch_count.get_name_leafdata());
+    if (in_sms_arch_error_count.is_set || is_set(in_sms_arch_error_count.yfilter)) leaf_name_data.push_back(in_sms_arch_error_count.get_name_leafdata());
+    if (out_sms_count.is_set || is_set(out_sms_count.yfilter)) leaf_name_data.push_back(out_sms_count.get_name_leafdata());
+    if (out_sms_error_count.is_set || is_set(out_sms_error_count.yfilter)) leaf_name_data.push_back(out_sms_error_count.get_name_leafdata());
+    if (out_sms_pending.is_set || is_set(out_sms_pending.yfilter)) leaf_name_data.push_back(out_sms_pending.get_name_leafdata());
+    if (out_sms_arch_count.is_set || is_set(out_sms_arch_count.yfilter)) leaf_name_data.push_back(out_sms_arch_count.get_name_leafdata());
+    if (out_sms_arch_error_count.is_set || is_set(out_sms_arch_error_count.yfilter)) leaf_name_data.push_back(out_sms_arch_error_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CellwanOperData::CellwanSms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CellwanOperData::CellwanSms::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void CellwanOperData::CellwanSms::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cellular-interface")
+    {
+        cellular_interface = value;
+        cellular_interface.value_namespace = name_space;
+        cellular_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-sms-count")
+    {
+        in_sms_count = value;
+        in_sms_count.value_namespace = name_space;
+        in_sms_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-sms-archived")
+    {
+        in_sms_archived = value;
+        in_sms_archived.value_namespace = name_space;
+        in_sms_archived.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-sms-deleted")
+    {
+        in_sms_deleted = value;
+        in_sms_deleted.value_namespace = name_space;
+        in_sms_deleted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-sms-max")
+    {
+        in_sms_max = value;
+        in_sms_max.value_namespace = name_space;
+        in_sms_max.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-sms-used")
+    {
+        in_sms_used = value;
+        in_sms_used.value_namespace = name_space;
+        in_sms_used.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sms-callback-count")
+    {
+        sms_callback_count = value;
+        sms_callback_count.value_namespace = name_space;
+        sms_callback_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-sms-arch-count")
+    {
+        in_sms_arch_count = value;
+        in_sms_arch_count.value_namespace = name_space;
+        in_sms_arch_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-sms-arch-error-count")
+    {
+        in_sms_arch_error_count = value;
+        in_sms_arch_error_count.value_namespace = name_space;
+        in_sms_arch_error_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-sms-count")
+    {
+        out_sms_count = value;
+        out_sms_count.value_namespace = name_space;
+        out_sms_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-sms-error-count")
+    {
+        out_sms_error_count = value;
+        out_sms_error_count.value_namespace = name_space;
+        out_sms_error_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-sms-pending")
+    {
+        out_sms_pending = value;
+        out_sms_pending.value_namespace = name_space;
+        out_sms_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-sms-arch-count")
+    {
+        out_sms_arch_count = value;
+        out_sms_arch_count.value_namespace = name_space;
+        out_sms_arch_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-sms-arch-error-count")
+    {
+        out_sms_arch_error_count = value;
+        out_sms_arch_error_count.value_namespace = name_space;
+        out_sms_arch_error_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CellwanOperData::CellwanSms::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cellular-interface")
+    {
+        cellular_interface.yfilter = yfilter;
+    }
+    if(value_path == "in-sms-count")
+    {
+        in_sms_count.yfilter = yfilter;
+    }
+    if(value_path == "in-sms-archived")
+    {
+        in_sms_archived.yfilter = yfilter;
+    }
+    if(value_path == "in-sms-deleted")
+    {
+        in_sms_deleted.yfilter = yfilter;
+    }
+    if(value_path == "in-sms-max")
+    {
+        in_sms_max.yfilter = yfilter;
+    }
+    if(value_path == "in-sms-used")
+    {
+        in_sms_used.yfilter = yfilter;
+    }
+    if(value_path == "sms-callback-count")
+    {
+        sms_callback_count.yfilter = yfilter;
+    }
+    if(value_path == "in-sms-arch-count")
+    {
+        in_sms_arch_count.yfilter = yfilter;
+    }
+    if(value_path == "in-sms-arch-error-count")
+    {
+        in_sms_arch_error_count.yfilter = yfilter;
+    }
+    if(value_path == "out-sms-count")
+    {
+        out_sms_count.yfilter = yfilter;
+    }
+    if(value_path == "out-sms-error-count")
+    {
+        out_sms_error_count.yfilter = yfilter;
+    }
+    if(value_path == "out-sms-pending")
+    {
+        out_sms_pending.yfilter = yfilter;
+    }
+    if(value_path == "out-sms-arch-count")
+    {
+        out_sms_arch_count.yfilter = yfilter;
+    }
+    if(value_path == "out-sms-arch-error-count")
+    {
+        out_sms_arch_error_count.yfilter = yfilter;
+    }
+}
+
+bool CellwanOperData::CellwanSms::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cellular-interface" || name == "in-sms-count" || name == "in-sms-archived" || name == "in-sms-deleted" || name == "in-sms-max" || name == "in-sms-used" || name == "sms-callback-count" || name == "in-sms-arch-count" || name == "in-sms-arch-error-count" || name == "out-sms-count" || name == "out-sms-error-count" || name == "out-sms-pending" || name == "out-sms-arch-count" || name == "out-sms-arch-error-count")
+        return true;
+    return false;
+}
+
+CellwanOperData::CellwanGps::CellwanGps()
+    :
+    cellular_interface{YType::str, "cellular-interface"},
+    gps_feature_state{YType::enumeration, "gps-feature-state"},
+    port_selected{YType::enumeration, "port-selected"},
+    state{YType::enumeration, "state"},
+    mode_selected{YType::enumeration, "mode-selected"},
+    latitude{YType::str, "latitude"},
+    longitude{YType::str, "longitude"},
+    timestamp{YType::str, "timestamp"}
+{
+
+    yang_name = "cellwan-gps"; yang_parent_name = "cellwan-oper-data"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+CellwanOperData::CellwanGps::~CellwanGps()
+{
+}
+
+bool CellwanOperData::CellwanGps::has_data() const
+{
+    if (is_presence_container) return true;
+    return cellular_interface.is_set
+	|| gps_feature_state.is_set
+	|| port_selected.is_set
+	|| state.is_set
+	|| mode_selected.is_set
+	|| latitude.is_set
+	|| longitude.is_set
+	|| timestamp.is_set;
+}
+
+bool CellwanOperData::CellwanGps::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cellular_interface.yfilter)
+	|| ydk::is_set(gps_feature_state.yfilter)
+	|| ydk::is_set(port_selected.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(mode_selected.yfilter)
+	|| ydk::is_set(latitude.yfilter)
+	|| ydk::is_set(longitude.yfilter)
+	|| ydk::is_set(timestamp.yfilter);
+}
+
+std::string CellwanOperData::CellwanGps::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-cellwan-oper:cellwan-oper-data/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string CellwanOperData::CellwanGps::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cellwan-gps";
+    ADD_KEY_TOKEN(cellular_interface, "cellular-interface");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > CellwanOperData::CellwanGps::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cellular_interface.is_set || is_set(cellular_interface.yfilter)) leaf_name_data.push_back(cellular_interface.get_name_leafdata());
+    if (gps_feature_state.is_set || is_set(gps_feature_state.yfilter)) leaf_name_data.push_back(gps_feature_state.get_name_leafdata());
+    if (port_selected.is_set || is_set(port_selected.yfilter)) leaf_name_data.push_back(port_selected.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (mode_selected.is_set || is_set(mode_selected.yfilter)) leaf_name_data.push_back(mode_selected.get_name_leafdata());
+    if (latitude.is_set || is_set(latitude.yfilter)) leaf_name_data.push_back(latitude.get_name_leafdata());
+    if (longitude.is_set || is_set(longitude.yfilter)) leaf_name_data.push_back(longitude.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> CellwanOperData::CellwanGps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> CellwanOperData::CellwanGps::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void CellwanOperData::CellwanGps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cellular-interface")
+    {
+        cellular_interface = value;
+        cellular_interface.value_namespace = name_space;
+        cellular_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "gps-feature-state")
+    {
+        gps_feature_state = value;
+        gps_feature_state.value_namespace = name_space;
+        gps_feature_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port-selected")
+    {
+        port_selected = value;
+        port_selected.value_namespace = name_space;
+        port_selected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mode-selected")
+    {
+        mode_selected = value;
+        mode_selected.value_namespace = name_space;
+        mode_selected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "latitude")
+    {
+        latitude = value;
+        latitude.value_namespace = name_space;
+        latitude.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "longitude")
+    {
+        longitude = value;
+        longitude.value_namespace = name_space;
+        longitude.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void CellwanOperData::CellwanGps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cellular-interface")
+    {
+        cellular_interface.yfilter = yfilter;
+    }
+    if(value_path == "gps-feature-state")
+    {
+        gps_feature_state.yfilter = yfilter;
+    }
+    if(value_path == "port-selected")
+    {
+        port_selected.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "mode-selected")
+    {
+        mode_selected.yfilter = yfilter;
+    }
+    if(value_path == "latitude")
+    {
+        latitude.yfilter = yfilter;
+    }
+    if(value_path == "longitude")
+    {
+        longitude.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+}
+
+bool CellwanOperData::CellwanGps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cellular-interface" || name == "gps-feature-state" || name == "port-selected" || name == "state" || name == "mode-selected" || name == "latitude" || name == "longitude" || name == "timestamp")
+        return true;
+    return false;
+}
+
 const Enum::YLeaf ModemService::service_type_circuit_switched {0, "service-type-circuit-switched"};
 const Enum::YLeaf ModemService::service_type_packet_switched {1, "service-type-packet-switched"};
 const Enum::YLeaf ModemService::service_type_combined {2, "service-type-combined"};
@@ -1466,8 +2172,21 @@ const Enum::YLeaf RatPreference::lte_radio_tech_null_bearer {21, "lte-radio-tech
 const Enum::YLeaf RatPreference::lte_radio_tech_unknown {22, "lte-radio-tech-unknown"};
 const Enum::YLeaf RatPreference::lte_radio_tech_no_change {23, "lte-radio-tech-no-change"};
 
+const Enum::YLeaf CwanGpsModeSelected::gps_mode_disable {0, "gps-mode-disable"};
+const Enum::YLeaf CwanGpsModeSelected::gps_mode_standalone {1, "gps-mode-standalone"};
+const Enum::YLeaf CwanGpsModeSelected::gps_mode_mbased {2, "gps-mode-mbased"};
+const Enum::YLeaf CwanGpsModeSelected::gps_mode_msassist {3, "gps-mode-msassist"};
+
+const Enum::YLeaf CwanGpsFeatureState::gps_disabled {0, "gps-disabled"};
+const Enum::YLeaf CwanGpsFeatureState::gps_enabled {1, "gps-enabled"};
+
 const Enum::YLeaf PacketSessStatus::packet_session_status_inactive {0, "packet-session-status-inactive"};
 const Enum::YLeaf PacketSessStatus::packet_session_status_active {1, "packet-session-status-active"};
+
+const Enum::YLeaf CwanGpsPortSelected::dedicated_gps_port {0, "dedicated-gps-port"};
+const Enum::YLeaf CwanGpsPortSelected::div_gps_port {1, "div-gps-port"};
+const Enum::YLeaf CwanGpsPortSelected::voltage_no_bias_gps_port {2, "voltage-no-bias-gps-port"};
+const Enum::YLeaf CwanGpsPortSelected::gps_port_none {3, "gps-port-none"};
 
 const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_online {0, "radio-power-mode-online"};
 const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_low_power {1, "radio-power-mode-low-power"};
@@ -1476,6 +2195,14 @@ const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_offline {3, "radio-power-
 const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_reset {4, "radio-power-mode-reset"};
 const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_off {5, "radio-power-mode-off"};
 const Enum::YLeaf CwRadioPowerStatus::radio_power_mode_persistent_low_power {6, "radio-power-mode-persistent-low-power"};
+
+const Enum::YLeaf CellwanSimUserOp::sim_user_op_none {0, "sim-user-op-none"};
+const Enum::YLeaf CellwanSimUserOp::sim_user_op_chv1 {1, "sim-user-op-chv1"};
+const Enum::YLeaf CellwanSimUserOp::sim_user_op_chv2 {2, "sim-user-op-chv2"};
+const Enum::YLeaf CellwanSimUserOp::sim_user_op_unblock_chv1 {3, "sim-user-op-unblock-chv1"};
+const Enum::YLeaf CellwanSimUserOp::sim_user_op_unblock_chv2 {4, "sim-user-op-unblock-chv2"};
+const Enum::YLeaf CellwanSimUserOp::sim_user_op_mep {5, "sim-user-op-mep"};
+const Enum::YLeaf CellwanSimUserOp::sim_user_op_unknown {6, "sim-user-op-unknown"};
 
 const Enum::YLeaf ModemTechnology::cdma_evdo_1x_rtt {0, "cdma-evdo-1x-rtt"};
 const Enum::YLeaf ModemTechnology::gsm_umts_gprs {1, "gsm-umts-gprs"};
@@ -1496,11 +2223,34 @@ const Enum::YLeaf ModemStatus::modem_status_power_off {3, "modem-status-power-of
 const Enum::YLeaf ModemStatus::modem_status_boot_ready {4, "modem-status-boot-ready"};
 const Enum::YLeaf ModemStatus::modem_status_unknown {5, "modem-status-unknown"};
 
+const Enum::YLeaf CwanGpsState::gps_state_disabled {1, "gps-state-disabled"};
+const Enum::YLeaf CwanGpsState::gps_state_acquiring {2, "gps-state-acquiring"};
+const Enum::YLeaf CwanGpsState::gps_state_enabled {3, "gps-state-enabled"};
+const Enum::YLeaf CwanGpsState::gps_loc_error {4, "gps-loc-error"};
+
 const Enum::YLeaf RegState::reg_status_not_registered {0, "reg-status-not-registered"};
 const Enum::YLeaf RegState::reg_status_registered {1, "reg-status-registered"};
 const Enum::YLeaf RegState::reg_status_searching {2, "reg-status-searching"};
 const Enum::YLeaf RegState::reg_status_registration_denied {3, "reg-status-registration-denied"};
 const Enum::YLeaf RegState::reg_status_unsupported {4, "reg-status-unsupported"};
+
+const Enum::YLeaf CellwanSimStatus::sim_status_ok {0, "sim-status-ok"};
+const Enum::YLeaf CellwanSimStatus::sim_status_not_inserted {1, "sim-status-not-inserted"};
+const Enum::YLeaf CellwanSimStatus::sim_status_removed {2, "sim-status-removed"};
+const Enum::YLeaf CellwanSimStatus::sim_status_init_failure {3, "sim-status-init-failure"};
+const Enum::YLeaf CellwanSimStatus::sim_status_general_failure {4, "sim-status-general-failure"};
+const Enum::YLeaf CellwanSimStatus::sim_status_locked {5, "sim-status-locked"};
+const Enum::YLeaf CellwanSimStatus::sim_status_chv1_blocked {6, "sim-status-chv1-blocked"};
+const Enum::YLeaf CellwanSimStatus::sim_status_chv2_blocked {7, "sim-status-chv2-blocked"};
+const Enum::YLeaf CellwanSimStatus::sim_status_chv1_rejected {8, "sim-status-chv1-rejected"};
+const Enum::YLeaf CellwanSimStatus::sim_status_chv2_rejected {9, "sim-status-chv2-rejected"};
+const Enum::YLeaf CellwanSimStatus::sim_status_mep_locked {10, "sim-status-mep-locked"};
+const Enum::YLeaf CellwanSimStatus::sim_status_network_reject {11, "sim-status-network-reject"};
+const Enum::YLeaf CellwanSimStatus::sim_status_unknown {12, "sim-status-unknown"};
+
+const Enum::YLeaf CellwanChv1SimStatus::chv1_verify_disabled {0, "chv1-verify-disabled"};
+const Enum::YLeaf CellwanChv1SimStatus::chv1_verify_enabled {1, "chv1-verify-enabled"};
+const Enum::YLeaf CellwanChv1SimStatus::chv1_verify_pending {2, "chv1-verify-pending"};
 
 
 }

@@ -11,6 +11,1190 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_bgp_cfg {
 
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroups()
+    :
+    session_group(this, {"session_group_name"})
+{
+
+    yang_name = "session-groups"; yang_parent_name = "bgp-entity"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::~SessionGroups()
+{
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session_group.len(); index++)
+    {
+        if(session_group[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::has_operation() const
+{
+    for (std::size_t index=0; index<session_group.len(); index++)
+    {
+        if(session_group[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session-groups";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "session-group")
+    {
+        auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup>();
+        c->parent = this;
+        session_group.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : session_group.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-group")
+        return true;
+    return false;
+}
+
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::SessionGroup()
+    :
+    session_group_name{YType::str, "session-group-name"},
+    session_group_add_member{YType::str, "session-group-add-member"},
+    internal_vpn_client_ibgp_ce{YType::boolean, "internal-vpn-client-ibgp-ce"},
+    egress_peer_engineering{YType::boolean, "egress-peer-engineering"},
+    neighbor_graceful_restart_stalepath_time{YType::uint32, "neighbor-graceful-restart-stalepath-time"},
+    shutdown{YType::boolean, "shutdown"},
+    description{YType::str, "description"},
+    ebgp_recv_dmz{YType::boolean, "ebgp-recv-dmz"},
+    neighbor_graceful_restart{YType::enumeration, "neighbor-graceful-restart"},
+    enforce_first_as{YType::boolean, "enforce-first-as"},
+    idle_watch_time{YType::uint32, "idle-watch-time"},
+    session_open_mode{YType::enumeration, "session-open-mode"},
+    rpki_origin_as_validation_disable{YType::empty, "rpki-origin-as-validation-disable"},
+    ebgp_send_dmz_enable_modes{YType::enumeration, "ebgp-send-dmz-enable-modes"},
+    suppress_all_capabilities{YType::boolean, "suppress-all-capabilities"},
+    max_peers{YType::uint32, "max-peers"},
+    rpki_bestpath_origin_as_allow_invalid{YType::empty, "rpki-bestpath-origin-as-allow-invalid"},
+    additional_paths_send_capability{YType::enumeration, "additional-paths-send-capability"},
+    propagate_dmz_link_bandwidth{YType::boolean, "propagate-dmz-link-bandwidth"},
+    bfd_enable_modes{YType::enumeration, "bfd-enable-modes"},
+    ttl_security{YType::boolean, "ttl-security"},
+    neighbor_graceful_restart_time{YType::uint32, "neighbor-graceful-restart-time"},
+    bfd_multiplier{YType::uint32, "bfd-multiplier"},
+    bfd_minimum_interval{YType::uint32, "bfd-minimum-interval"},
+    remote_as_list{YType::str, "remote-as-list"},
+    additional_paths_receive_capability{YType::enumeration, "additional-paths-receive-capability"},
+    ignore_connected_check_ebgp{YType::boolean, "ignore-connected-check-ebgp"},
+    suppress_four_byte_as_capability{YType::boolean, "suppress-four-byte-as-capability"},
+    update_source_interface{YType::str, "update-source-interface"},
+    create{YType::empty, "create"}
+        ,
+    local_address(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAddress>())
+    , bmp_activates(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates>())
+    , ebgp_multihop(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop>())
+    , remote_as(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs>())
+    , local_as(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAs>())
+    , password(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Password>())
+    , advertisement_interval(nullptr) // presence node
+    , neighbor_cluster_id(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::NeighborClusterId>())
+    , tcpmss(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Tcpmss>())
+    , tos(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Tos>())
+    , update_in_filtering(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::UpdateInFiltering>())
+    , msg_log_out(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::MsgLogOut>())
+    , ao_keychain(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AoKeychain>())
+    , receive_buffer_size(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::ReceiveBufferSize>())
+    , msg_log_in(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::MsgLogIn>())
+    , send_buffer_size(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::SendBufferSize>())
+    , timers(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Timers>())
+    , keychain(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Keychain>())
+    , graceful_maintenance(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::GracefulMaintenance>())
+{
+    local_address->parent = this;
+    bmp_activates->parent = this;
+    ebgp_multihop->parent = this;
+    remote_as->parent = this;
+    local_as->parent = this;
+    password->parent = this;
+    neighbor_cluster_id->parent = this;
+    tcpmss->parent = this;
+    tos->parent = this;
+    update_in_filtering->parent = this;
+    msg_log_out->parent = this;
+    ao_keychain->parent = this;
+    receive_buffer_size->parent = this;
+    msg_log_in->parent = this;
+    send_buffer_size->parent = this;
+    timers->parent = this;
+    keychain->parent = this;
+    graceful_maintenance->parent = this;
+
+    yang_name = "session-group"; yang_parent_name = "session-groups"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::~SessionGroup()
+{
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::has_data() const
+{
+    if (is_presence_container) return true;
+    return session_group_name.is_set
+	|| session_group_add_member.is_set
+	|| internal_vpn_client_ibgp_ce.is_set
+	|| egress_peer_engineering.is_set
+	|| neighbor_graceful_restart_stalepath_time.is_set
+	|| shutdown.is_set
+	|| description.is_set
+	|| ebgp_recv_dmz.is_set
+	|| neighbor_graceful_restart.is_set
+	|| enforce_first_as.is_set
+	|| idle_watch_time.is_set
+	|| session_open_mode.is_set
+	|| rpki_origin_as_validation_disable.is_set
+	|| ebgp_send_dmz_enable_modes.is_set
+	|| suppress_all_capabilities.is_set
+	|| max_peers.is_set
+	|| rpki_bestpath_origin_as_allow_invalid.is_set
+	|| additional_paths_send_capability.is_set
+	|| propagate_dmz_link_bandwidth.is_set
+	|| bfd_enable_modes.is_set
+	|| ttl_security.is_set
+	|| neighbor_graceful_restart_time.is_set
+	|| bfd_multiplier.is_set
+	|| bfd_minimum_interval.is_set
+	|| remote_as_list.is_set
+	|| additional_paths_receive_capability.is_set
+	|| ignore_connected_check_ebgp.is_set
+	|| suppress_four_byte_as_capability.is_set
+	|| update_source_interface.is_set
+	|| create.is_set
+	|| (local_address !=  nullptr && local_address->has_data())
+	|| (bmp_activates !=  nullptr && bmp_activates->has_data())
+	|| (ebgp_multihop !=  nullptr && ebgp_multihop->has_data())
+	|| (remote_as !=  nullptr && remote_as->has_data())
+	|| (local_as !=  nullptr && local_as->has_data())
+	|| (password !=  nullptr && password->has_data())
+	|| (advertisement_interval !=  nullptr && advertisement_interval->has_data())
+	|| (neighbor_cluster_id !=  nullptr && neighbor_cluster_id->has_data())
+	|| (tcpmss !=  nullptr && tcpmss->has_data())
+	|| (tos !=  nullptr && tos->has_data())
+	|| (update_in_filtering !=  nullptr && update_in_filtering->has_data())
+	|| (msg_log_out !=  nullptr && msg_log_out->has_data())
+	|| (ao_keychain !=  nullptr && ao_keychain->has_data())
+	|| (receive_buffer_size !=  nullptr && receive_buffer_size->has_data())
+	|| (msg_log_in !=  nullptr && msg_log_in->has_data())
+	|| (send_buffer_size !=  nullptr && send_buffer_size->has_data())
+	|| (timers !=  nullptr && timers->has_data())
+	|| (keychain !=  nullptr && keychain->has_data())
+	|| (graceful_maintenance !=  nullptr && graceful_maintenance->has_data());
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(session_group_name.yfilter)
+	|| ydk::is_set(session_group_add_member.yfilter)
+	|| ydk::is_set(internal_vpn_client_ibgp_ce.yfilter)
+	|| ydk::is_set(egress_peer_engineering.yfilter)
+	|| ydk::is_set(neighbor_graceful_restart_stalepath_time.yfilter)
+	|| ydk::is_set(shutdown.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(ebgp_recv_dmz.yfilter)
+	|| ydk::is_set(neighbor_graceful_restart.yfilter)
+	|| ydk::is_set(enforce_first_as.yfilter)
+	|| ydk::is_set(idle_watch_time.yfilter)
+	|| ydk::is_set(session_open_mode.yfilter)
+	|| ydk::is_set(rpki_origin_as_validation_disable.yfilter)
+	|| ydk::is_set(ebgp_send_dmz_enable_modes.yfilter)
+	|| ydk::is_set(suppress_all_capabilities.yfilter)
+	|| ydk::is_set(max_peers.yfilter)
+	|| ydk::is_set(rpki_bestpath_origin_as_allow_invalid.yfilter)
+	|| ydk::is_set(additional_paths_send_capability.yfilter)
+	|| ydk::is_set(propagate_dmz_link_bandwidth.yfilter)
+	|| ydk::is_set(bfd_enable_modes.yfilter)
+	|| ydk::is_set(ttl_security.yfilter)
+	|| ydk::is_set(neighbor_graceful_restart_time.yfilter)
+	|| ydk::is_set(bfd_multiplier.yfilter)
+	|| ydk::is_set(bfd_minimum_interval.yfilter)
+	|| ydk::is_set(remote_as_list.yfilter)
+	|| ydk::is_set(additional_paths_receive_capability.yfilter)
+	|| ydk::is_set(ignore_connected_check_ebgp.yfilter)
+	|| ydk::is_set(suppress_four_byte_as_capability.yfilter)
+	|| ydk::is_set(update_source_interface.yfilter)
+	|| ydk::is_set(create.yfilter)
+	|| (local_address !=  nullptr && local_address->has_operation())
+	|| (bmp_activates !=  nullptr && bmp_activates->has_operation())
+	|| (ebgp_multihop !=  nullptr && ebgp_multihop->has_operation())
+	|| (remote_as !=  nullptr && remote_as->has_operation())
+	|| (local_as !=  nullptr && local_as->has_operation())
+	|| (password !=  nullptr && password->has_operation())
+	|| (advertisement_interval !=  nullptr && advertisement_interval->has_operation())
+	|| (neighbor_cluster_id !=  nullptr && neighbor_cluster_id->has_operation())
+	|| (tcpmss !=  nullptr && tcpmss->has_operation())
+	|| (tos !=  nullptr && tos->has_operation())
+	|| (update_in_filtering !=  nullptr && update_in_filtering->has_operation())
+	|| (msg_log_out !=  nullptr && msg_log_out->has_operation())
+	|| (ao_keychain !=  nullptr && ao_keychain->has_operation())
+	|| (receive_buffer_size !=  nullptr && receive_buffer_size->has_operation())
+	|| (msg_log_in !=  nullptr && msg_log_in->has_operation())
+	|| (send_buffer_size !=  nullptr && send_buffer_size->has_operation())
+	|| (timers !=  nullptr && timers->has_operation())
+	|| (keychain !=  nullptr && keychain->has_operation())
+	|| (graceful_maintenance !=  nullptr && graceful_maintenance->has_operation());
+}
+
+std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session-group";
+    ADD_KEY_TOKEN(session_group_name, "session-group-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (session_group_name.is_set || is_set(session_group_name.yfilter)) leaf_name_data.push_back(session_group_name.get_name_leafdata());
+    if (session_group_add_member.is_set || is_set(session_group_add_member.yfilter)) leaf_name_data.push_back(session_group_add_member.get_name_leafdata());
+    if (internal_vpn_client_ibgp_ce.is_set || is_set(internal_vpn_client_ibgp_ce.yfilter)) leaf_name_data.push_back(internal_vpn_client_ibgp_ce.get_name_leafdata());
+    if (egress_peer_engineering.is_set || is_set(egress_peer_engineering.yfilter)) leaf_name_data.push_back(egress_peer_engineering.get_name_leafdata());
+    if (neighbor_graceful_restart_stalepath_time.is_set || is_set(neighbor_graceful_restart_stalepath_time.yfilter)) leaf_name_data.push_back(neighbor_graceful_restart_stalepath_time.get_name_leafdata());
+    if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (ebgp_recv_dmz.is_set || is_set(ebgp_recv_dmz.yfilter)) leaf_name_data.push_back(ebgp_recv_dmz.get_name_leafdata());
+    if (neighbor_graceful_restart.is_set || is_set(neighbor_graceful_restart.yfilter)) leaf_name_data.push_back(neighbor_graceful_restart.get_name_leafdata());
+    if (enforce_first_as.is_set || is_set(enforce_first_as.yfilter)) leaf_name_data.push_back(enforce_first_as.get_name_leafdata());
+    if (idle_watch_time.is_set || is_set(idle_watch_time.yfilter)) leaf_name_data.push_back(idle_watch_time.get_name_leafdata());
+    if (session_open_mode.is_set || is_set(session_open_mode.yfilter)) leaf_name_data.push_back(session_open_mode.get_name_leafdata());
+    if (rpki_origin_as_validation_disable.is_set || is_set(rpki_origin_as_validation_disable.yfilter)) leaf_name_data.push_back(rpki_origin_as_validation_disable.get_name_leafdata());
+    if (ebgp_send_dmz_enable_modes.is_set || is_set(ebgp_send_dmz_enable_modes.yfilter)) leaf_name_data.push_back(ebgp_send_dmz_enable_modes.get_name_leafdata());
+    if (suppress_all_capabilities.is_set || is_set(suppress_all_capabilities.yfilter)) leaf_name_data.push_back(suppress_all_capabilities.get_name_leafdata());
+    if (max_peers.is_set || is_set(max_peers.yfilter)) leaf_name_data.push_back(max_peers.get_name_leafdata());
+    if (rpki_bestpath_origin_as_allow_invalid.is_set || is_set(rpki_bestpath_origin_as_allow_invalid.yfilter)) leaf_name_data.push_back(rpki_bestpath_origin_as_allow_invalid.get_name_leafdata());
+    if (additional_paths_send_capability.is_set || is_set(additional_paths_send_capability.yfilter)) leaf_name_data.push_back(additional_paths_send_capability.get_name_leafdata());
+    if (propagate_dmz_link_bandwidth.is_set || is_set(propagate_dmz_link_bandwidth.yfilter)) leaf_name_data.push_back(propagate_dmz_link_bandwidth.get_name_leafdata());
+    if (bfd_enable_modes.is_set || is_set(bfd_enable_modes.yfilter)) leaf_name_data.push_back(bfd_enable_modes.get_name_leafdata());
+    if (ttl_security.is_set || is_set(ttl_security.yfilter)) leaf_name_data.push_back(ttl_security.get_name_leafdata());
+    if (neighbor_graceful_restart_time.is_set || is_set(neighbor_graceful_restart_time.yfilter)) leaf_name_data.push_back(neighbor_graceful_restart_time.get_name_leafdata());
+    if (bfd_multiplier.is_set || is_set(bfd_multiplier.yfilter)) leaf_name_data.push_back(bfd_multiplier.get_name_leafdata());
+    if (bfd_minimum_interval.is_set || is_set(bfd_minimum_interval.yfilter)) leaf_name_data.push_back(bfd_minimum_interval.get_name_leafdata());
+    if (remote_as_list.is_set || is_set(remote_as_list.yfilter)) leaf_name_data.push_back(remote_as_list.get_name_leafdata());
+    if (additional_paths_receive_capability.is_set || is_set(additional_paths_receive_capability.yfilter)) leaf_name_data.push_back(additional_paths_receive_capability.get_name_leafdata());
+    if (ignore_connected_check_ebgp.is_set || is_set(ignore_connected_check_ebgp.yfilter)) leaf_name_data.push_back(ignore_connected_check_ebgp.get_name_leafdata());
+    if (suppress_four_byte_as_capability.is_set || is_set(suppress_four_byte_as_capability.yfilter)) leaf_name_data.push_back(suppress_four_byte_as_capability.get_name_leafdata());
+    if (update_source_interface.is_set || is_set(update_source_interface.yfilter)) leaf_name_data.push_back(update_source_interface.get_name_leafdata());
+    if (create.is_set || is_set(create.yfilter)) leaf_name_data.push_back(create.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "local-address")
+    {
+        if(local_address == nullptr)
+        {
+            local_address = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAddress>();
+        }
+        return local_address;
+    }
+
+    if(child_yang_name == "bmp-activates")
+    {
+        if(bmp_activates == nullptr)
+        {
+            bmp_activates = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates>();
+        }
+        return bmp_activates;
+    }
+
+    if(child_yang_name == "ebgp-multihop")
+    {
+        if(ebgp_multihop == nullptr)
+        {
+            ebgp_multihop = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop>();
+        }
+        return ebgp_multihop;
+    }
+
+    if(child_yang_name == "remote-as")
+    {
+        if(remote_as == nullptr)
+        {
+            remote_as = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs>();
+        }
+        return remote_as;
+    }
+
+    if(child_yang_name == "local-as")
+    {
+        if(local_as == nullptr)
+        {
+            local_as = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAs>();
+        }
+        return local_as;
+    }
+
+    if(child_yang_name == "password")
+    {
+        if(password == nullptr)
+        {
+            password = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Password>();
+        }
+        return password;
+    }
+
+    if(child_yang_name == "advertisement-interval")
+    {
+        if(advertisement_interval == nullptr)
+        {
+            advertisement_interval = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AdvertisementInterval>();
+        }
+        return advertisement_interval;
+    }
+
+    if(child_yang_name == "neighbor-cluster-id")
+    {
+        if(neighbor_cluster_id == nullptr)
+        {
+            neighbor_cluster_id = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::NeighborClusterId>();
+        }
+        return neighbor_cluster_id;
+    }
+
+    if(child_yang_name == "tcpmss")
+    {
+        if(tcpmss == nullptr)
+        {
+            tcpmss = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Tcpmss>();
+        }
+        return tcpmss;
+    }
+
+    if(child_yang_name == "tos")
+    {
+        if(tos == nullptr)
+        {
+            tos = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Tos>();
+        }
+        return tos;
+    }
+
+    if(child_yang_name == "update-in-filtering")
+    {
+        if(update_in_filtering == nullptr)
+        {
+            update_in_filtering = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::UpdateInFiltering>();
+        }
+        return update_in_filtering;
+    }
+
+    if(child_yang_name == "msg-log-out")
+    {
+        if(msg_log_out == nullptr)
+        {
+            msg_log_out = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::MsgLogOut>();
+        }
+        return msg_log_out;
+    }
+
+    if(child_yang_name == "ao-keychain")
+    {
+        if(ao_keychain == nullptr)
+        {
+            ao_keychain = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AoKeychain>();
+        }
+        return ao_keychain;
+    }
+
+    if(child_yang_name == "receive-buffer-size")
+    {
+        if(receive_buffer_size == nullptr)
+        {
+            receive_buffer_size = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::ReceiveBufferSize>();
+        }
+        return receive_buffer_size;
+    }
+
+    if(child_yang_name == "msg-log-in")
+    {
+        if(msg_log_in == nullptr)
+        {
+            msg_log_in = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::MsgLogIn>();
+        }
+        return msg_log_in;
+    }
+
+    if(child_yang_name == "send-buffer-size")
+    {
+        if(send_buffer_size == nullptr)
+        {
+            send_buffer_size = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::SendBufferSize>();
+        }
+        return send_buffer_size;
+    }
+
+    if(child_yang_name == "timers")
+    {
+        if(timers == nullptr)
+        {
+            timers = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Timers>();
+        }
+        return timers;
+    }
+
+    if(child_yang_name == "keychain")
+    {
+        if(keychain == nullptr)
+        {
+            keychain = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Keychain>();
+        }
+        return keychain;
+    }
+
+    if(child_yang_name == "graceful-maintenance")
+    {
+        if(graceful_maintenance == nullptr)
+        {
+            graceful_maintenance = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::GracefulMaintenance>();
+        }
+        return graceful_maintenance;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(local_address != nullptr)
+    {
+        children["local-address"] = local_address;
+    }
+
+    if(bmp_activates != nullptr)
+    {
+        children["bmp-activates"] = bmp_activates;
+    }
+
+    if(ebgp_multihop != nullptr)
+    {
+        children["ebgp-multihop"] = ebgp_multihop;
+    }
+
+    if(remote_as != nullptr)
+    {
+        children["remote-as"] = remote_as;
+    }
+
+    if(local_as != nullptr)
+    {
+        children["local-as"] = local_as;
+    }
+
+    if(password != nullptr)
+    {
+        children["password"] = password;
+    }
+
+    if(advertisement_interval != nullptr)
+    {
+        children["advertisement-interval"] = advertisement_interval;
+    }
+
+    if(neighbor_cluster_id != nullptr)
+    {
+        children["neighbor-cluster-id"] = neighbor_cluster_id;
+    }
+
+    if(tcpmss != nullptr)
+    {
+        children["tcpmss"] = tcpmss;
+    }
+
+    if(tos != nullptr)
+    {
+        children["tos"] = tos;
+    }
+
+    if(update_in_filtering != nullptr)
+    {
+        children["update-in-filtering"] = update_in_filtering;
+    }
+
+    if(msg_log_out != nullptr)
+    {
+        children["msg-log-out"] = msg_log_out;
+    }
+
+    if(ao_keychain != nullptr)
+    {
+        children["ao-keychain"] = ao_keychain;
+    }
+
+    if(receive_buffer_size != nullptr)
+    {
+        children["receive-buffer-size"] = receive_buffer_size;
+    }
+
+    if(msg_log_in != nullptr)
+    {
+        children["msg-log-in"] = msg_log_in;
+    }
+
+    if(send_buffer_size != nullptr)
+    {
+        children["send-buffer-size"] = send_buffer_size;
+    }
+
+    if(timers != nullptr)
+    {
+        children["timers"] = timers;
+    }
+
+    if(keychain != nullptr)
+    {
+        children["keychain"] = keychain;
+    }
+
+    if(graceful_maintenance != nullptr)
+    {
+        children["graceful-maintenance"] = graceful_maintenance;
+    }
+
+    return children;
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "session-group-name")
+    {
+        session_group_name = value;
+        session_group_name.value_namespace = name_space;
+        session_group_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-group-add-member")
+    {
+        session_group_add_member = value;
+        session_group_add_member.value_namespace = name_space;
+        session_group_add_member.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "internal-vpn-client-ibgp-ce")
+    {
+        internal_vpn_client_ibgp_ce = value;
+        internal_vpn_client_ibgp_ce.value_namespace = name_space;
+        internal_vpn_client_ibgp_ce.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egress-peer-engineering")
+    {
+        egress_peer_engineering = value;
+        egress_peer_engineering.value_namespace = name_space;
+        egress_peer_engineering.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-graceful-restart-stalepath-time")
+    {
+        neighbor_graceful_restart_stalepath_time = value;
+        neighbor_graceful_restart_stalepath_time.value_namespace = name_space;
+        neighbor_graceful_restart_stalepath_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown")
+    {
+        shutdown = value;
+        shutdown.value_namespace = name_space;
+        shutdown.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ebgp-recv-dmz")
+    {
+        ebgp_recv_dmz = value;
+        ebgp_recv_dmz.value_namespace = name_space;
+        ebgp_recv_dmz.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-graceful-restart")
+    {
+        neighbor_graceful_restart = value;
+        neighbor_graceful_restart.value_namespace = name_space;
+        neighbor_graceful_restart.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enforce-first-as")
+    {
+        enforce_first_as = value;
+        enforce_first_as.value_namespace = name_space;
+        enforce_first_as.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idle-watch-time")
+    {
+        idle_watch_time = value;
+        idle_watch_time.value_namespace = name_space;
+        idle_watch_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-open-mode")
+    {
+        session_open_mode = value;
+        session_open_mode.value_namespace = name_space;
+        session_open_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpki-origin-as-validation-disable")
+    {
+        rpki_origin_as_validation_disable = value;
+        rpki_origin_as_validation_disable.value_namespace = name_space;
+        rpki_origin_as_validation_disable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ebgp-send-dmz-enable-modes")
+    {
+        ebgp_send_dmz_enable_modes = value;
+        ebgp_send_dmz_enable_modes.value_namespace = name_space;
+        ebgp_send_dmz_enable_modes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "suppress-all-capabilities")
+    {
+        suppress_all_capabilities = value;
+        suppress_all_capabilities.value_namespace = name_space;
+        suppress_all_capabilities.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-peers")
+    {
+        max_peers = value;
+        max_peers.value_namespace = name_space;
+        max_peers.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpki-bestpath-origin-as-allow-invalid")
+    {
+        rpki_bestpath_origin_as_allow_invalid = value;
+        rpki_bestpath_origin_as_allow_invalid.value_namespace = name_space;
+        rpki_bestpath_origin_as_allow_invalid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "additional-paths-send-capability")
+    {
+        additional_paths_send_capability = value;
+        additional_paths_send_capability.value_namespace = name_space;
+        additional_paths_send_capability.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "propagate-dmz-link-bandwidth")
+    {
+        propagate_dmz_link_bandwidth = value;
+        propagate_dmz_link_bandwidth.value_namespace = name_space;
+        propagate_dmz_link_bandwidth.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bfd-enable-modes")
+    {
+        bfd_enable_modes = value;
+        bfd_enable_modes.value_namespace = name_space;
+        bfd_enable_modes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ttl-security")
+    {
+        ttl_security = value;
+        ttl_security.value_namespace = name_space;
+        ttl_security.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-graceful-restart-time")
+    {
+        neighbor_graceful_restart_time = value;
+        neighbor_graceful_restart_time.value_namespace = name_space;
+        neighbor_graceful_restart_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bfd-multiplier")
+    {
+        bfd_multiplier = value;
+        bfd_multiplier.value_namespace = name_space;
+        bfd_multiplier.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bfd-minimum-interval")
+    {
+        bfd_minimum_interval = value;
+        bfd_minimum_interval.value_namespace = name_space;
+        bfd_minimum_interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-as-list")
+    {
+        remote_as_list = value;
+        remote_as_list.value_namespace = name_space;
+        remote_as_list.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "additional-paths-receive-capability")
+    {
+        additional_paths_receive_capability = value;
+        additional_paths_receive_capability.value_namespace = name_space;
+        additional_paths_receive_capability.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ignore-connected-check-ebgp")
+    {
+        ignore_connected_check_ebgp = value;
+        ignore_connected_check_ebgp.value_namespace = name_space;
+        ignore_connected_check_ebgp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "suppress-four-byte-as-capability")
+    {
+        suppress_four_byte_as_capability = value;
+        suppress_four_byte_as_capability.value_namespace = name_space;
+        suppress_four_byte_as_capability.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "update-source-interface")
+    {
+        update_source_interface = value;
+        update_source_interface.value_namespace = name_space;
+        update_source_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "create")
+    {
+        create = value;
+        create.value_namespace = name_space;
+        create.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-group-name")
+    {
+        session_group_name.yfilter = yfilter;
+    }
+    if(value_path == "session-group-add-member")
+    {
+        session_group_add_member.yfilter = yfilter;
+    }
+    if(value_path == "internal-vpn-client-ibgp-ce")
+    {
+        internal_vpn_client_ibgp_ce.yfilter = yfilter;
+    }
+    if(value_path == "egress-peer-engineering")
+    {
+        egress_peer_engineering.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-graceful-restart-stalepath-time")
+    {
+        neighbor_graceful_restart_stalepath_time.yfilter = yfilter;
+    }
+    if(value_path == "shutdown")
+    {
+        shutdown.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "ebgp-recv-dmz")
+    {
+        ebgp_recv_dmz.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-graceful-restart")
+    {
+        neighbor_graceful_restart.yfilter = yfilter;
+    }
+    if(value_path == "enforce-first-as")
+    {
+        enforce_first_as.yfilter = yfilter;
+    }
+    if(value_path == "idle-watch-time")
+    {
+        idle_watch_time.yfilter = yfilter;
+    }
+    if(value_path == "session-open-mode")
+    {
+        session_open_mode.yfilter = yfilter;
+    }
+    if(value_path == "rpki-origin-as-validation-disable")
+    {
+        rpki_origin_as_validation_disable.yfilter = yfilter;
+    }
+    if(value_path == "ebgp-send-dmz-enable-modes")
+    {
+        ebgp_send_dmz_enable_modes.yfilter = yfilter;
+    }
+    if(value_path == "suppress-all-capabilities")
+    {
+        suppress_all_capabilities.yfilter = yfilter;
+    }
+    if(value_path == "max-peers")
+    {
+        max_peers.yfilter = yfilter;
+    }
+    if(value_path == "rpki-bestpath-origin-as-allow-invalid")
+    {
+        rpki_bestpath_origin_as_allow_invalid.yfilter = yfilter;
+    }
+    if(value_path == "additional-paths-send-capability")
+    {
+        additional_paths_send_capability.yfilter = yfilter;
+    }
+    if(value_path == "propagate-dmz-link-bandwidth")
+    {
+        propagate_dmz_link_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "bfd-enable-modes")
+    {
+        bfd_enable_modes.yfilter = yfilter;
+    }
+    if(value_path == "ttl-security")
+    {
+        ttl_security.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-graceful-restart-time")
+    {
+        neighbor_graceful_restart_time.yfilter = yfilter;
+    }
+    if(value_path == "bfd-multiplier")
+    {
+        bfd_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "bfd-minimum-interval")
+    {
+        bfd_minimum_interval.yfilter = yfilter;
+    }
+    if(value_path == "remote-as-list")
+    {
+        remote_as_list.yfilter = yfilter;
+    }
+    if(value_path == "additional-paths-receive-capability")
+    {
+        additional_paths_receive_capability.yfilter = yfilter;
+    }
+    if(value_path == "ignore-connected-check-ebgp")
+    {
+        ignore_connected_check_ebgp.yfilter = yfilter;
+    }
+    if(value_path == "suppress-four-byte-as-capability")
+    {
+        suppress_four_byte_as_capability.yfilter = yfilter;
+    }
+    if(value_path == "update-source-interface")
+    {
+        update_source_interface.yfilter = yfilter;
+    }
+    if(value_path == "create")
+    {
+        create.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-address" || name == "bmp-activates" || name == "ebgp-multihop" || name == "remote-as" || name == "local-as" || name == "password" || name == "advertisement-interval" || name == "neighbor-cluster-id" || name == "tcpmss" || name == "tos" || name == "update-in-filtering" || name == "msg-log-out" || name == "ao-keychain" || name == "receive-buffer-size" || name == "msg-log-in" || name == "send-buffer-size" || name == "timers" || name == "keychain" || name == "graceful-maintenance" || name == "session-group-name" || name == "session-group-add-member" || name == "internal-vpn-client-ibgp-ce" || name == "egress-peer-engineering" || name == "neighbor-graceful-restart-stalepath-time" || name == "shutdown" || name == "description" || name == "ebgp-recv-dmz" || name == "neighbor-graceful-restart" || name == "enforce-first-as" || name == "idle-watch-time" || name == "session-open-mode" || name == "rpki-origin-as-validation-disable" || name == "ebgp-send-dmz-enable-modes" || name == "suppress-all-capabilities" || name == "max-peers" || name == "rpki-bestpath-origin-as-allow-invalid" || name == "additional-paths-send-capability" || name == "propagate-dmz-link-bandwidth" || name == "bfd-enable-modes" || name == "ttl-security" || name == "neighbor-graceful-restart-time" || name == "bfd-multiplier" || name == "bfd-minimum-interval" || name == "remote-as-list" || name == "additional-paths-receive-capability" || name == "ignore-connected-check-ebgp" || name == "suppress-four-byte-as-capability" || name == "update-source-interface" || name == "create")
+        return true;
+    return false;
+}
+
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAddress::LocalAddress()
+    :
+    local_address_disable{YType::boolean, "local-address-disable"},
+    local_ip_address{YType::str, "local-ip-address"}
+{
+
+    yang_name = "local-address"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAddress::~LocalAddress()
+{
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return local_address_disable.is_set
+	|| local_ip_address.is_set;
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(local_address_disable.yfilter)
+	|| ydk::is_set(local_ip_address.yfilter);
+}
+
+std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "local-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (local_address_disable.is_set || is_set(local_address_disable.yfilter)) leaf_name_data.push_back(local_address_disable.get_name_leafdata());
+    if (local_ip_address.is_set || is_set(local_ip_address.yfilter)) leaf_name_data.push_back(local_ip_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "local-address-disable")
+    {
+        local_address_disable = value;
+        local_address_disable.value_namespace = name_space;
+        local_address_disable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-ip-address")
+    {
+        local_ip_address = value;
+        local_ip_address.value_namespace = name_space;
+        local_ip_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-address-disable")
+    {
+        local_address_disable.yfilter = yfilter;
+    }
+    if(value_path == "local-ip-address")
+    {
+        local_ip_address.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-address-disable" || name == "local-ip-address")
+        return true;
+    return false;
+}
+
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::BmpActivates()
+    :
+    bmp_activate(this, {"server_id"})
+{
+
+    yang_name = "bmp-activates"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::~BmpActivates()
+{
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bmp_activate.len(); index++)
+    {
+        if(bmp_activate[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::has_operation() const
+{
+    for (std::size_t index=0; index<bmp_activate.len(); index++)
+    {
+        if(bmp_activate[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bmp-activates";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bmp-activate")
+    {
+        auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::BmpActivate>();
+        c->parent = this;
+        bmp_activate.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : bmp_activate.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bmp-activate")
+        return true;
+    return false;
+}
+
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::BmpActivate::BmpActivate()
+    :
+    server_id{YType::uint32, "server-id"}
+{
+
+    yang_name = "bmp-activate"; yang_parent_name = "bmp-activates"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::BmpActivate::~BmpActivate()
+{
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::BmpActivate::has_data() const
+{
+    if (is_presence_container) return true;
+    return server_id.is_set;
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::BmpActivate::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(server_id.yfilter);
+}
+
+std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::BmpActivate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bmp-activate";
+    ADD_KEY_TOKEN(server_id, "server-id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::BmpActivate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (server_id.is_set || is_set(server_id.yfilter)) leaf_name_data.push_back(server_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::BmpActivate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::BmpActivate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::BmpActivate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "server-id")
+    {
+        server_id = value;
+        server_id.value_namespace = name_space;
+        server_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::BmpActivate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "server-id")
+    {
+        server_id.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::BmpActivates::BmpActivate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "server-id")
+        return true;
+    return false;
+}
+
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::EbgpMultihop()
     :
     max_hop_count{YType::uint32, "max-hop-count"},
@@ -1125,6 +2309,126 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups
     return false;
 }
 
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AoKeychain::AoKeychain()
+    :
+    ao_keychain_disable{YType::boolean, "ao-keychain-disable"},
+    ao_keychain_name{YType::str, "ao-keychain-name"},
+    ao_include_tcp_options{YType::boolean, "ao-include-tcp-options"},
+    ao_accept_mismatch_connection{YType::boolean, "ao-accept-mismatch-connection"}
+{
+
+    yang_name = "ao-keychain"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AoKeychain::~AoKeychain()
+{
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AoKeychain::has_data() const
+{
+    if (is_presence_container) return true;
+    return ao_keychain_disable.is_set
+	|| ao_keychain_name.is_set
+	|| ao_include_tcp_options.is_set
+	|| ao_accept_mismatch_connection.is_set;
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AoKeychain::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ao_keychain_disable.yfilter)
+	|| ydk::is_set(ao_keychain_name.yfilter)
+	|| ydk::is_set(ao_include_tcp_options.yfilter)
+	|| ydk::is_set(ao_accept_mismatch_connection.yfilter);
+}
+
+std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AoKeychain::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ao-keychain";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AoKeychain::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ao_keychain_disable.is_set || is_set(ao_keychain_disable.yfilter)) leaf_name_data.push_back(ao_keychain_disable.get_name_leafdata());
+    if (ao_keychain_name.is_set || is_set(ao_keychain_name.yfilter)) leaf_name_data.push_back(ao_keychain_name.get_name_leafdata());
+    if (ao_include_tcp_options.is_set || is_set(ao_include_tcp_options.yfilter)) leaf_name_data.push_back(ao_include_tcp_options.get_name_leafdata());
+    if (ao_accept_mismatch_connection.is_set || is_set(ao_accept_mismatch_connection.yfilter)) leaf_name_data.push_back(ao_accept_mismatch_connection.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AoKeychain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AoKeychain::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AoKeychain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ao-keychain-disable")
+    {
+        ao_keychain_disable = value;
+        ao_keychain_disable.value_namespace = name_space;
+        ao_keychain_disable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ao-keychain-name")
+    {
+        ao_keychain_name = value;
+        ao_keychain_name.value_namespace = name_space;
+        ao_keychain_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ao-include-tcp-options")
+    {
+        ao_include_tcp_options = value;
+        ao_include_tcp_options.value_namespace = name_space;
+        ao_include_tcp_options.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ao-accept-mismatch-connection")
+    {
+        ao_accept_mismatch_connection = value;
+        ao_accept_mismatch_connection.value_namespace = name_space;
+        ao_accept_mismatch_connection.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AoKeychain::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ao-keychain-disable")
+    {
+        ao_keychain_disable.yfilter = yfilter;
+    }
+    if(value_path == "ao-keychain-name")
+    {
+        ao_keychain_name.yfilter = yfilter;
+    }
+    if(value_path == "ao-include-tcp-options")
+    {
+        ao_include_tcp_options.yfilter = yfilter;
+    }
+    if(value_path == "ao-accept-mismatch-connection")
+    {
+        ao_accept_mismatch_connection.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AoKeychain::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ao-keychain-disable" || name == "ao-keychain-name" || name == "ao-include-tcp-options" || name == "ao-accept-mismatch-connection")
+        return true;
+    return false;
+}
+
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::ReceiveBufferSize::ReceiveBufferSize()
     :
     socket_receive_size{YType::uint32, "socket-receive-size"},
@@ -1936,9 +3240,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Global()
     neighbor_logging_detail{YType::empty, "neighbor-logging-detail"},
     mvpn{YType::empty, "mvpn"},
     rpki_origin_as_validation_disable{YType::empty, "rpki-origin-as-validation-disable"},
-    rpki_origin_as_validity_signal_ibgp{YType::empty, "rpki-origin-as-validity-signal-ibgp"},
     global_scan_time{YType::uint32, "global-scan-time"},
-    rpki_bestpath_use_origin_as_validity{YType::empty, "rpki-bestpath-use-origin-as-validity"},
     rpki_origin_as_validation_time{YType::uint32, "rpki-origin-as-validation-time"},
     rpki_bestpath_origin_as_allow_invalid{YType::empty, "rpki-bestpath-origin-as-allow-invalid"},
     graceful_restart_purge_time{YType::uint32, "graceful-restart-purge-time"},
@@ -1964,10 +3266,14 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Global()
     unsafe_ebgp_policy{YType::empty, "unsafe-ebgp-policy"},
     default_metric{YType::uint32, "default-metric"},
     default_info_originate{YType::empty, "default-info-originate"},
+    rpki_origin_as_validity_signal_ibgp{YType::empty, "rpki-origin-as-validity-signal-ibgp"},
+    rpki_bestpath_use_origin_as_validity{YType::empty, "rpki-bestpath-use-origin-as-validity"},
     best_path_confederation_paths{YType::empty, "best-path-confederation-paths"},
     best_path_as_multipath_relax{YType::empty, "best-path-as-multipath-relax"},
     disable_auto_soft_reset{YType::empty, "disable-auto-soft-reset"},
     disable_msg_log{YType::empty, "disable-msg-log"},
+    best_path_igp_metric_ignore{YType::empty, "best-path-igp-metric-ignore"},
+    next_hop_res_allow_default{YType::empty, "next-hop-res-allow-default"},
     next_hop_mpls_fwd_ibgp{YType::empty, "next-hop-mpls-fwd-ibgp"},
     disable_neighbor_logging{YType::empty, "disable-neighbor-logging"},
     best_path_med_always{YType::empty, "best-path-med-always"},
@@ -2031,9 +3337,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::has_data() const
 	|| neighbor_logging_detail.is_set
 	|| mvpn.is_set
 	|| rpki_origin_as_validation_disable.is_set
-	|| rpki_origin_as_validity_signal_ibgp.is_set
 	|| global_scan_time.is_set
-	|| rpki_bestpath_use_origin_as_validity.is_set
 	|| rpki_origin_as_validation_time.is_set
 	|| rpki_bestpath_origin_as_allow_invalid.is_set
 	|| graceful_restart_purge_time.is_set
@@ -2059,10 +3363,14 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::has_data() const
 	|| unsafe_ebgp_policy.is_set
 	|| default_metric.is_set
 	|| default_info_originate.is_set
+	|| rpki_origin_as_validity_signal_ibgp.is_set
+	|| rpki_bestpath_use_origin_as_validity.is_set
 	|| best_path_confederation_paths.is_set
 	|| best_path_as_multipath_relax.is_set
 	|| disable_auto_soft_reset.is_set
 	|| disable_msg_log.is_set
+	|| best_path_igp_metric_ignore.is_set
+	|| next_hop_res_allow_default.is_set
 	|| next_hop_mpls_fwd_ibgp.is_set
 	|| disable_neighbor_logging.is_set
 	|| best_path_med_always.is_set
@@ -2100,9 +3408,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::has_operation() 
 	|| ydk::is_set(neighbor_logging_detail.yfilter)
 	|| ydk::is_set(mvpn.yfilter)
 	|| ydk::is_set(rpki_origin_as_validation_disable.yfilter)
-	|| ydk::is_set(rpki_origin_as_validity_signal_ibgp.yfilter)
 	|| ydk::is_set(global_scan_time.yfilter)
-	|| ydk::is_set(rpki_bestpath_use_origin_as_validity.yfilter)
 	|| ydk::is_set(rpki_origin_as_validation_time.yfilter)
 	|| ydk::is_set(rpki_bestpath_origin_as_allow_invalid.yfilter)
 	|| ydk::is_set(graceful_restart_purge_time.yfilter)
@@ -2128,10 +3434,14 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::has_operation() 
 	|| ydk::is_set(unsafe_ebgp_policy.yfilter)
 	|| ydk::is_set(default_metric.yfilter)
 	|| ydk::is_set(default_info_originate.yfilter)
+	|| ydk::is_set(rpki_origin_as_validity_signal_ibgp.yfilter)
+	|| ydk::is_set(rpki_bestpath_use_origin_as_validity.yfilter)
 	|| ydk::is_set(best_path_confederation_paths.yfilter)
 	|| ydk::is_set(best_path_as_multipath_relax.yfilter)
 	|| ydk::is_set(disable_auto_soft_reset.yfilter)
 	|| ydk::is_set(disable_msg_log.yfilter)
+	|| ydk::is_set(best_path_igp_metric_ignore.yfilter)
+	|| ydk::is_set(next_hop_res_allow_default.yfilter)
 	|| ydk::is_set(next_hop_mpls_fwd_ibgp.yfilter)
 	|| ydk::is_set(disable_neighbor_logging.yfilter)
 	|| ydk::is_set(best_path_med_always.yfilter)
@@ -2177,9 +3487,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourBy
     if (neighbor_logging_detail.is_set || is_set(neighbor_logging_detail.yfilter)) leaf_name_data.push_back(neighbor_logging_detail.get_name_leafdata());
     if (mvpn.is_set || is_set(mvpn.yfilter)) leaf_name_data.push_back(mvpn.get_name_leafdata());
     if (rpki_origin_as_validation_disable.is_set || is_set(rpki_origin_as_validation_disable.yfilter)) leaf_name_data.push_back(rpki_origin_as_validation_disable.get_name_leafdata());
-    if (rpki_origin_as_validity_signal_ibgp.is_set || is_set(rpki_origin_as_validity_signal_ibgp.yfilter)) leaf_name_data.push_back(rpki_origin_as_validity_signal_ibgp.get_name_leafdata());
     if (global_scan_time.is_set || is_set(global_scan_time.yfilter)) leaf_name_data.push_back(global_scan_time.get_name_leafdata());
-    if (rpki_bestpath_use_origin_as_validity.is_set || is_set(rpki_bestpath_use_origin_as_validity.yfilter)) leaf_name_data.push_back(rpki_bestpath_use_origin_as_validity.get_name_leafdata());
     if (rpki_origin_as_validation_time.is_set || is_set(rpki_origin_as_validation_time.yfilter)) leaf_name_data.push_back(rpki_origin_as_validation_time.get_name_leafdata());
     if (rpki_bestpath_origin_as_allow_invalid.is_set || is_set(rpki_bestpath_origin_as_allow_invalid.yfilter)) leaf_name_data.push_back(rpki_bestpath_origin_as_allow_invalid.get_name_leafdata());
     if (graceful_restart_purge_time.is_set || is_set(graceful_restart_purge_time.yfilter)) leaf_name_data.push_back(graceful_restart_purge_time.get_name_leafdata());
@@ -2205,10 +3513,14 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourBy
     if (unsafe_ebgp_policy.is_set || is_set(unsafe_ebgp_policy.yfilter)) leaf_name_data.push_back(unsafe_ebgp_policy.get_name_leafdata());
     if (default_metric.is_set || is_set(default_metric.yfilter)) leaf_name_data.push_back(default_metric.get_name_leafdata());
     if (default_info_originate.is_set || is_set(default_info_originate.yfilter)) leaf_name_data.push_back(default_info_originate.get_name_leafdata());
+    if (rpki_origin_as_validity_signal_ibgp.is_set || is_set(rpki_origin_as_validity_signal_ibgp.yfilter)) leaf_name_data.push_back(rpki_origin_as_validity_signal_ibgp.get_name_leafdata());
+    if (rpki_bestpath_use_origin_as_validity.is_set || is_set(rpki_bestpath_use_origin_as_validity.yfilter)) leaf_name_data.push_back(rpki_bestpath_use_origin_as_validity.get_name_leafdata());
     if (best_path_confederation_paths.is_set || is_set(best_path_confederation_paths.yfilter)) leaf_name_data.push_back(best_path_confederation_paths.get_name_leafdata());
     if (best_path_as_multipath_relax.is_set || is_set(best_path_as_multipath_relax.yfilter)) leaf_name_data.push_back(best_path_as_multipath_relax.get_name_leafdata());
     if (disable_auto_soft_reset.is_set || is_set(disable_auto_soft_reset.yfilter)) leaf_name_data.push_back(disable_auto_soft_reset.get_name_leafdata());
     if (disable_msg_log.is_set || is_set(disable_msg_log.yfilter)) leaf_name_data.push_back(disable_msg_log.get_name_leafdata());
+    if (best_path_igp_metric_ignore.is_set || is_set(best_path_igp_metric_ignore.yfilter)) leaf_name_data.push_back(best_path_igp_metric_ignore.get_name_leafdata());
+    if (next_hop_res_allow_default.is_set || is_set(next_hop_res_allow_default.yfilter)) leaf_name_data.push_back(next_hop_res_allow_default.get_name_leafdata());
     if (next_hop_mpls_fwd_ibgp.is_set || is_set(next_hop_mpls_fwd_ibgp.yfilter)) leaf_name_data.push_back(next_hop_mpls_fwd_ibgp.get_name_leafdata());
     if (disable_neighbor_logging.is_set || is_set(disable_neighbor_logging.yfilter)) leaf_name_data.push_back(disable_neighbor_logging.get_name_leafdata());
     if (best_path_med_always.is_set || is_set(best_path_med_always.yfilter)) leaf_name_data.push_back(best_path_med_always.get_name_leafdata());
@@ -2534,23 +3846,11 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::set_value(const 
         rpki_origin_as_validation_disable.value_namespace = name_space;
         rpki_origin_as_validation_disable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rpki-origin-as-validity-signal-ibgp")
-    {
-        rpki_origin_as_validity_signal_ibgp = value;
-        rpki_origin_as_validity_signal_ibgp.value_namespace = name_space;
-        rpki_origin_as_validity_signal_ibgp.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "global-scan-time")
     {
         global_scan_time = value;
         global_scan_time.value_namespace = name_space;
         global_scan_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rpki-bestpath-use-origin-as-validity")
-    {
-        rpki_bestpath_use_origin_as_validity = value;
-        rpki_bestpath_use_origin_as_validity.value_namespace = name_space;
-        rpki_bestpath_use_origin_as_validity.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpki-origin-as-validation-time")
     {
@@ -2702,6 +4002,18 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::set_value(const 
         default_info_originate.value_namespace = name_space;
         default_info_originate.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "rpki-origin-as-validity-signal-ibgp")
+    {
+        rpki_origin_as_validity_signal_ibgp = value;
+        rpki_origin_as_validity_signal_ibgp.value_namespace = name_space;
+        rpki_origin_as_validity_signal_ibgp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpki-bestpath-use-origin-as-validity")
+    {
+        rpki_bestpath_use_origin_as_validity = value;
+        rpki_bestpath_use_origin_as_validity.value_namespace = name_space;
+        rpki_bestpath_use_origin_as_validity.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "best-path-confederation-paths")
     {
         best_path_confederation_paths = value;
@@ -2725,6 +4037,18 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::set_value(const 
         disable_msg_log = value;
         disable_msg_log.value_namespace = name_space;
         disable_msg_log.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "best-path-igp-metric-ignore")
+    {
+        best_path_igp_metric_ignore = value;
+        best_path_igp_metric_ignore.value_namespace = name_space;
+        best_path_igp_metric_ignore.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "next-hop-res-allow-default")
+    {
+        next_hop_res_allow_default = value;
+        next_hop_res_allow_default.value_namespace = name_space;
+        next_hop_res_allow_default.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-mpls-fwd-ibgp")
     {
@@ -2798,17 +4122,9 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::set_filter(const
     {
         rpki_origin_as_validation_disable.yfilter = yfilter;
     }
-    if(value_path == "rpki-origin-as-validity-signal-ibgp")
-    {
-        rpki_origin_as_validity_signal_ibgp.yfilter = yfilter;
-    }
     if(value_path == "global-scan-time")
     {
         global_scan_time.yfilter = yfilter;
-    }
-    if(value_path == "rpki-bestpath-use-origin-as-validity")
-    {
-        rpki_bestpath_use_origin_as_validity.yfilter = yfilter;
     }
     if(value_path == "rpki-origin-as-validation-time")
     {
@@ -2910,6 +4226,14 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::set_filter(const
     {
         default_info_originate.yfilter = yfilter;
     }
+    if(value_path == "rpki-origin-as-validity-signal-ibgp")
+    {
+        rpki_origin_as_validity_signal_ibgp.yfilter = yfilter;
+    }
+    if(value_path == "rpki-bestpath-use-origin-as-validity")
+    {
+        rpki_bestpath_use_origin_as_validity.yfilter = yfilter;
+    }
     if(value_path == "best-path-confederation-paths")
     {
         best_path_confederation_paths.yfilter = yfilter;
@@ -2925,6 +4249,14 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::set_filter(const
     if(value_path == "disable-msg-log")
     {
         disable_msg_log.yfilter = yfilter;
+    }
+    if(value_path == "best-path-igp-metric-ignore")
+    {
+        best_path_igp_metric_ignore.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-res-allow-default")
+    {
+        next_hop_res_allow_default.yfilter = yfilter;
     }
     if(value_path == "next-hop-mpls-fwd-ibgp")
     {
@@ -2954,7 +4286,7 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::set_filter(const
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cluster-id" || name == "write-limit" || name == "update-delay" || name == "as-league" || name == "rpki-servers" || name == "as-list-groups" || name == "limits" || name == "confederation-domain" || name == "confederation-peer-ases" || name == "attribute-filter-groups" || name == "global-graceful-maintenance-activate" || name == "global-afs" || name == "rpki-static-routes" || name == "mpls-activated-interfaces" || name == "global-timers" || name == "bfd" || name == "send-socket-buffer-sizes" || name == "receive-socket-buffer-sizes" || name == "graceful-restart" || name == "update-out-logging" || name == "install-diversion" || name == "next-hop-trigger-delay" || name == "nsr" || name == "neighbor-logging-detail" || name == "mvpn" || name == "rpki-origin-as-validation-disable" || name == "rpki-origin-as-validity-signal-ibgp" || name == "global-scan-time" || name == "rpki-bestpath-use-origin-as-validity" || name == "rpki-origin-as-validation-time" || name == "rpki-bestpath-origin-as-allow-invalid" || name == "graceful-restart-purge-time" || name == "enforce-ibgp-out-policy" || name == "update-limit-process" || name == "graceful-restart-time" || name == "update-error-handling-basic-ibgp-disable" || name == "read-only" || name == "graceful-restart-stalepath-time" || name == "update-error-handling-extended-ebgp" || name == "update-error-handling-basic-ebgp-disable" || name == "graceful-reset" || name == "igp-loop-check" || name == "update-error-handling-extended-ibgp" || name == "router-id" || name == "disable-enforce-first-as" || name == "best-path-cost-community" || name == "best-path-aigp-ignore" || name == "best-path-as-path-length" || name == "igp-redist-internal" || name == "multi-path-as-path-ignore-onwards" || name == "disable-fast-external-fallover" || name == "unsafe-ebgp-policy" || name == "default-metric" || name == "default-info-originate" || name == "best-path-confederation-paths" || name == "best-path-as-multipath-relax" || name == "disable-auto-soft-reset" || name == "disable-msg-log" || name == "next-hop-mpls-fwd-ibgp" || name == "disable-neighbor-logging" || name == "best-path-med-always" || name == "best-path-router-id" || name == "best-path-med-missing" || name == "local-preference")
+    if(name == "cluster-id" || name == "write-limit" || name == "update-delay" || name == "as-league" || name == "rpki-servers" || name == "as-list-groups" || name == "limits" || name == "confederation-domain" || name == "confederation-peer-ases" || name == "attribute-filter-groups" || name == "global-graceful-maintenance-activate" || name == "global-afs" || name == "rpki-static-routes" || name == "mpls-activated-interfaces" || name == "global-timers" || name == "bfd" || name == "send-socket-buffer-sizes" || name == "receive-socket-buffer-sizes" || name == "graceful-restart" || name == "update-out-logging" || name == "install-diversion" || name == "next-hop-trigger-delay" || name == "nsr" || name == "neighbor-logging-detail" || name == "mvpn" || name == "rpki-origin-as-validation-disable" || name == "global-scan-time" || name == "rpki-origin-as-validation-time" || name == "rpki-bestpath-origin-as-allow-invalid" || name == "graceful-restart-purge-time" || name == "enforce-ibgp-out-policy" || name == "update-limit-process" || name == "graceful-restart-time" || name == "update-error-handling-basic-ibgp-disable" || name == "read-only" || name == "graceful-restart-stalepath-time" || name == "update-error-handling-extended-ebgp" || name == "update-error-handling-basic-ebgp-disable" || name == "graceful-reset" || name == "igp-loop-check" || name == "update-error-handling-extended-ibgp" || name == "router-id" || name == "disable-enforce-first-as" || name == "best-path-cost-community" || name == "best-path-aigp-ignore" || name == "best-path-as-path-length" || name == "igp-redist-internal" || name == "multi-path-as-path-ignore-onwards" || name == "disable-fast-external-fallover" || name == "unsafe-ebgp-policy" || name == "default-metric" || name == "default-info-originate" || name == "rpki-origin-as-validity-signal-ibgp" || name == "rpki-bestpath-use-origin-as-validity" || name == "best-path-confederation-paths" || name == "best-path-as-multipath-relax" || name == "disable-auto-soft-reset" || name == "disable-msg-log" || name == "best-path-igp-metric-ignore" || name == "next-hop-res-allow-default" || name == "next-hop-mpls-fwd-ibgp" || name == "disable-neighbor-logging" || name == "best-path-med-always" || name == "best-path-router-id" || name == "best-path-med-missing" || name == "local-preference")
         return true;
     return false;
 }
@@ -5268,25 +6600,28 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     use_igpsr_label{YType::empty, "use-igpsr-label"},
     label_retain{YType::uint32, "label-retain"},
     scan_time{YType::uint32, "scan-time"},
+    source_route_target_policy{YType::str, "source-route-target-policy"},
     rpki_origin_as_validation_disable{YType::empty, "rpki-origin-as-validation-disable"},
-    rpki_origin_as_validity_signal_ibgp{YType::empty, "rpki-origin-as-validity-signal-ibgp"},
     update_limit_sub_group_ebgp{YType::uint32, "update-limit-sub-group-ebgp"},
     update_limit_address_family{YType::uint32, "update-limit-address-family"},
-    rpki_bestpath_use_origin_as_validity{YType::empty, "rpki-bestpath-use-origin-as-validity"},
     update_limit_sub_group_ibgp{YType::uint32, "update-limit-sub-group-ibgp"},
-    rpki_bestpath_origin_as_allow_invalid{YType::empty, "rpki-bestpath-origin-as-allow-invalid"},
     disable_client_to_client_rr{YType::empty, "disable-client-to-client-rr"},
     next_hop_route_policy{YType::str, "next-hop-route-policy"},
     global_table_mcast{YType::empty, "global-table-mcast"},
     wait_rib_install{YType::empty, "wait-rib-install"},
     prefix_sid_map{YType::empty, "prefix-sid-map"},
+    rpki_origin_as_validation_enable{YType::empty, "rpki-origin-as-validation-enable"},
     dynamic_med_interval{YType::uint32, "dynamic-med-interval"},
     enable{YType::empty, "enable"},
     table_policy{YType::str, "table-policy"},
     attribute_download{YType::empty, "attribute-download"},
     best_external{YType::boolean, "best-external"},
+    rpki_origin_as_validity_signal_ibgp{YType::empty, "rpki-origin-as-validity-signal-ibgp"},
     additional_paths_receive{YType::enumeration, "additional-paths-receive"},
     permanent_network{YType::str, "permanent-network"},
+    rpki_bestpath_use_origin_as_validity{YType::empty, "rpki-bestpath-use-origin-as-validity"},
+    srv6_label_allocation_mode{YType::str, "srv6-label-allocation-mode"},
+    rpki_bestpath_origin_as_allow_invalid{YType::empty, "rpki-bestpath-origin-as-allow-invalid"},
     next_hop_resolution_prefix_length_minimum{YType::uint32, "next-hop-resolution-prefix-length-minimum"},
     reset_weight_on_import{YType::boolean, "reset-weight-on-import"},
     additional_paths_send{YType::enumeration, "additional-paths-send"},
@@ -5358,25 +6693,28 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 	|| use_igpsr_label.is_set
 	|| label_retain.is_set
 	|| scan_time.is_set
+	|| source_route_target_policy.is_set
 	|| rpki_origin_as_validation_disable.is_set
-	|| rpki_origin_as_validity_signal_ibgp.is_set
 	|| update_limit_sub_group_ebgp.is_set
 	|| update_limit_address_family.is_set
-	|| rpki_bestpath_use_origin_as_validity.is_set
 	|| update_limit_sub_group_ibgp.is_set
-	|| rpki_bestpath_origin_as_allow_invalid.is_set
 	|| disable_client_to_client_rr.is_set
 	|| next_hop_route_policy.is_set
 	|| global_table_mcast.is_set
 	|| wait_rib_install.is_set
 	|| prefix_sid_map.is_set
+	|| rpki_origin_as_validation_enable.is_set
 	|| dynamic_med_interval.is_set
 	|| enable.is_set
 	|| table_policy.is_set
 	|| attribute_download.is_set
 	|| best_external.is_set
+	|| rpki_origin_as_validity_signal_ibgp.is_set
 	|| additional_paths_receive.is_set
 	|| permanent_network.is_set
+	|| rpki_bestpath_use_origin_as_validity.is_set
+	|| srv6_label_allocation_mode.is_set
+	|| rpki_bestpath_origin_as_allow_invalid.is_set
 	|| next_hop_resolution_prefix_length_minimum.is_set
 	|| reset_weight_on_import.is_set
 	|| additional_paths_send.is_set
@@ -5426,25 +6764,28 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 	|| ydk::is_set(use_igpsr_label.yfilter)
 	|| ydk::is_set(label_retain.yfilter)
 	|| ydk::is_set(scan_time.yfilter)
+	|| ydk::is_set(source_route_target_policy.yfilter)
 	|| ydk::is_set(rpki_origin_as_validation_disable.yfilter)
-	|| ydk::is_set(rpki_origin_as_validity_signal_ibgp.yfilter)
 	|| ydk::is_set(update_limit_sub_group_ebgp.yfilter)
 	|| ydk::is_set(update_limit_address_family.yfilter)
-	|| ydk::is_set(rpki_bestpath_use_origin_as_validity.yfilter)
 	|| ydk::is_set(update_limit_sub_group_ibgp.yfilter)
-	|| ydk::is_set(rpki_bestpath_origin_as_allow_invalid.yfilter)
 	|| ydk::is_set(disable_client_to_client_rr.yfilter)
 	|| ydk::is_set(next_hop_route_policy.yfilter)
 	|| ydk::is_set(global_table_mcast.yfilter)
 	|| ydk::is_set(wait_rib_install.yfilter)
 	|| ydk::is_set(prefix_sid_map.yfilter)
+	|| ydk::is_set(rpki_origin_as_validation_enable.yfilter)
 	|| ydk::is_set(dynamic_med_interval.yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(table_policy.yfilter)
 	|| ydk::is_set(attribute_download.yfilter)
 	|| ydk::is_set(best_external.yfilter)
+	|| ydk::is_set(rpki_origin_as_validity_signal_ibgp.yfilter)
 	|| ydk::is_set(additional_paths_receive.yfilter)
 	|| ydk::is_set(permanent_network.yfilter)
+	|| ydk::is_set(rpki_bestpath_use_origin_as_validity.yfilter)
+	|| ydk::is_set(srv6_label_allocation_mode.yfilter)
+	|| ydk::is_set(rpki_bestpath_origin_as_allow_invalid.yfilter)
 	|| ydk::is_set(next_hop_resolution_prefix_length_minimum.yfilter)
 	|| ydk::is_set(reset_weight_on_import.yfilter)
 	|| ydk::is_set(additional_paths_send.yfilter)
@@ -5503,25 +6844,28 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourBy
     if (use_igpsr_label.is_set || is_set(use_igpsr_label.yfilter)) leaf_name_data.push_back(use_igpsr_label.get_name_leafdata());
     if (label_retain.is_set || is_set(label_retain.yfilter)) leaf_name_data.push_back(label_retain.get_name_leafdata());
     if (scan_time.is_set || is_set(scan_time.yfilter)) leaf_name_data.push_back(scan_time.get_name_leafdata());
+    if (source_route_target_policy.is_set || is_set(source_route_target_policy.yfilter)) leaf_name_data.push_back(source_route_target_policy.get_name_leafdata());
     if (rpki_origin_as_validation_disable.is_set || is_set(rpki_origin_as_validation_disable.yfilter)) leaf_name_data.push_back(rpki_origin_as_validation_disable.get_name_leafdata());
-    if (rpki_origin_as_validity_signal_ibgp.is_set || is_set(rpki_origin_as_validity_signal_ibgp.yfilter)) leaf_name_data.push_back(rpki_origin_as_validity_signal_ibgp.get_name_leafdata());
     if (update_limit_sub_group_ebgp.is_set || is_set(update_limit_sub_group_ebgp.yfilter)) leaf_name_data.push_back(update_limit_sub_group_ebgp.get_name_leafdata());
     if (update_limit_address_family.is_set || is_set(update_limit_address_family.yfilter)) leaf_name_data.push_back(update_limit_address_family.get_name_leafdata());
-    if (rpki_bestpath_use_origin_as_validity.is_set || is_set(rpki_bestpath_use_origin_as_validity.yfilter)) leaf_name_data.push_back(rpki_bestpath_use_origin_as_validity.get_name_leafdata());
     if (update_limit_sub_group_ibgp.is_set || is_set(update_limit_sub_group_ibgp.yfilter)) leaf_name_data.push_back(update_limit_sub_group_ibgp.get_name_leafdata());
-    if (rpki_bestpath_origin_as_allow_invalid.is_set || is_set(rpki_bestpath_origin_as_allow_invalid.yfilter)) leaf_name_data.push_back(rpki_bestpath_origin_as_allow_invalid.get_name_leafdata());
     if (disable_client_to_client_rr.is_set || is_set(disable_client_to_client_rr.yfilter)) leaf_name_data.push_back(disable_client_to_client_rr.get_name_leafdata());
     if (next_hop_route_policy.is_set || is_set(next_hop_route_policy.yfilter)) leaf_name_data.push_back(next_hop_route_policy.get_name_leafdata());
     if (global_table_mcast.is_set || is_set(global_table_mcast.yfilter)) leaf_name_data.push_back(global_table_mcast.get_name_leafdata());
     if (wait_rib_install.is_set || is_set(wait_rib_install.yfilter)) leaf_name_data.push_back(wait_rib_install.get_name_leafdata());
     if (prefix_sid_map.is_set || is_set(prefix_sid_map.yfilter)) leaf_name_data.push_back(prefix_sid_map.get_name_leafdata());
+    if (rpki_origin_as_validation_enable.is_set || is_set(rpki_origin_as_validation_enable.yfilter)) leaf_name_data.push_back(rpki_origin_as_validation_enable.get_name_leafdata());
     if (dynamic_med_interval.is_set || is_set(dynamic_med_interval.yfilter)) leaf_name_data.push_back(dynamic_med_interval.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (table_policy.is_set || is_set(table_policy.yfilter)) leaf_name_data.push_back(table_policy.get_name_leafdata());
     if (attribute_download.is_set || is_set(attribute_download.yfilter)) leaf_name_data.push_back(attribute_download.get_name_leafdata());
     if (best_external.is_set || is_set(best_external.yfilter)) leaf_name_data.push_back(best_external.get_name_leafdata());
+    if (rpki_origin_as_validity_signal_ibgp.is_set || is_set(rpki_origin_as_validity_signal_ibgp.yfilter)) leaf_name_data.push_back(rpki_origin_as_validity_signal_ibgp.get_name_leafdata());
     if (additional_paths_receive.is_set || is_set(additional_paths_receive.yfilter)) leaf_name_data.push_back(additional_paths_receive.get_name_leafdata());
     if (permanent_network.is_set || is_set(permanent_network.yfilter)) leaf_name_data.push_back(permanent_network.get_name_leafdata());
+    if (rpki_bestpath_use_origin_as_validity.is_set || is_set(rpki_bestpath_use_origin_as_validity.yfilter)) leaf_name_data.push_back(rpki_bestpath_use_origin_as_validity.get_name_leafdata());
+    if (srv6_label_allocation_mode.is_set || is_set(srv6_label_allocation_mode.yfilter)) leaf_name_data.push_back(srv6_label_allocation_mode.get_name_leafdata());
+    if (rpki_bestpath_origin_as_allow_invalid.is_set || is_set(rpki_bestpath_origin_as_allow_invalid.yfilter)) leaf_name_data.push_back(rpki_bestpath_origin_as_allow_invalid.get_name_leafdata());
     if (next_hop_resolution_prefix_length_minimum.is_set || is_set(next_hop_resolution_prefix_length_minimum.yfilter)) leaf_name_data.push_back(next_hop_resolution_prefix_length_minimum.get_name_leafdata());
     if (reset_weight_on_import.is_set || is_set(reset_weight_on_import.yfilter)) leaf_name_data.push_back(reset_weight_on_import.get_name_leafdata());
     if (additional_paths_send.is_set || is_set(additional_paths_send.yfilter)) leaf_name_data.push_back(additional_paths_send.get_name_leafdata());
@@ -5996,17 +7340,17 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
         scan_time.value_namespace = name_space;
         scan_time.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "source-route-target-policy")
+    {
+        source_route_target_policy = value;
+        source_route_target_policy.value_namespace = name_space;
+        source_route_target_policy.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "rpki-origin-as-validation-disable")
     {
         rpki_origin_as_validation_disable = value;
         rpki_origin_as_validation_disable.value_namespace = name_space;
         rpki_origin_as_validation_disable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rpki-origin-as-validity-signal-ibgp")
-    {
-        rpki_origin_as_validity_signal_ibgp = value;
-        rpki_origin_as_validity_signal_ibgp.value_namespace = name_space;
-        rpki_origin_as_validity_signal_ibgp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "update-limit-sub-group-ebgp")
     {
@@ -6020,23 +7364,11 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
         update_limit_address_family.value_namespace = name_space;
         update_limit_address_family.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rpki-bestpath-use-origin-as-validity")
-    {
-        rpki_bestpath_use_origin_as_validity = value;
-        rpki_bestpath_use_origin_as_validity.value_namespace = name_space;
-        rpki_bestpath_use_origin_as_validity.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "update-limit-sub-group-ibgp")
     {
         update_limit_sub_group_ibgp = value;
         update_limit_sub_group_ibgp.value_namespace = name_space;
         update_limit_sub_group_ibgp.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rpki-bestpath-origin-as-allow-invalid")
-    {
-        rpki_bestpath_origin_as_allow_invalid = value;
-        rpki_bestpath_origin_as_allow_invalid.value_namespace = name_space;
-        rpki_bestpath_origin_as_allow_invalid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disable-client-to-client-rr")
     {
@@ -6068,6 +7400,12 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
         prefix_sid_map.value_namespace = name_space;
         prefix_sid_map.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "rpki-origin-as-validation-enable")
+    {
+        rpki_origin_as_validation_enable = value;
+        rpki_origin_as_validation_enable.value_namespace = name_space;
+        rpki_origin_as_validation_enable.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "dynamic-med-interval")
     {
         dynamic_med_interval = value;
@@ -6098,6 +7436,12 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
         best_external.value_namespace = name_space;
         best_external.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "rpki-origin-as-validity-signal-ibgp")
+    {
+        rpki_origin_as_validity_signal_ibgp = value;
+        rpki_origin_as_validity_signal_ibgp.value_namespace = name_space;
+        rpki_origin_as_validity_signal_ibgp.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "additional-paths-receive")
     {
         additional_paths_receive = value;
@@ -6109,6 +7453,24 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
         permanent_network = value;
         permanent_network.value_namespace = name_space;
         permanent_network.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpki-bestpath-use-origin-as-validity")
+    {
+        rpki_bestpath_use_origin_as_validity = value;
+        rpki_bestpath_use_origin_as_validity.value_namespace = name_space;
+        rpki_bestpath_use_origin_as_validity.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srv6-label-allocation-mode")
+    {
+        srv6_label_allocation_mode = value;
+        srv6_label_allocation_mode.value_namespace = name_space;
+        srv6_label_allocation_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpki-bestpath-origin-as-allow-invalid")
+    {
+        rpki_bestpath_origin_as_allow_invalid = value;
+        rpki_bestpath_origin_as_allow_invalid.value_namespace = name_space;
+        rpki_bestpath_origin_as_allow_invalid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-resolution-prefix-length-minimum")
     {
@@ -6192,13 +7554,13 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
     {
         scan_time.yfilter = yfilter;
     }
+    if(value_path == "source-route-target-policy")
+    {
+        source_route_target_policy.yfilter = yfilter;
+    }
     if(value_path == "rpki-origin-as-validation-disable")
     {
         rpki_origin_as_validation_disable.yfilter = yfilter;
-    }
-    if(value_path == "rpki-origin-as-validity-signal-ibgp")
-    {
-        rpki_origin_as_validity_signal_ibgp.yfilter = yfilter;
     }
     if(value_path == "update-limit-sub-group-ebgp")
     {
@@ -6208,17 +7570,9 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
     {
         update_limit_address_family.yfilter = yfilter;
     }
-    if(value_path == "rpki-bestpath-use-origin-as-validity")
-    {
-        rpki_bestpath_use_origin_as_validity.yfilter = yfilter;
-    }
     if(value_path == "update-limit-sub-group-ibgp")
     {
         update_limit_sub_group_ibgp.yfilter = yfilter;
-    }
-    if(value_path == "rpki-bestpath-origin-as-allow-invalid")
-    {
-        rpki_bestpath_origin_as_allow_invalid.yfilter = yfilter;
     }
     if(value_path == "disable-client-to-client-rr")
     {
@@ -6240,6 +7594,10 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
     {
         prefix_sid_map.yfilter = yfilter;
     }
+    if(value_path == "rpki-origin-as-validation-enable")
+    {
+        rpki_origin_as_validation_enable.yfilter = yfilter;
+    }
     if(value_path == "dynamic-med-interval")
     {
         dynamic_med_interval.yfilter = yfilter;
@@ -6260,6 +7618,10 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
     {
         best_external.yfilter = yfilter;
     }
+    if(value_path == "rpki-origin-as-validity-signal-ibgp")
+    {
+        rpki_origin_as_validity_signal_ibgp.yfilter = yfilter;
+    }
     if(value_path == "additional-paths-receive")
     {
         additional_paths_receive.yfilter = yfilter;
@@ -6267,6 +7629,18 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
     if(value_path == "permanent-network")
     {
         permanent_network.yfilter = yfilter;
+    }
+    if(value_path == "rpki-bestpath-use-origin-as-validity")
+    {
+        rpki_bestpath_use_origin_as_validity.yfilter = yfilter;
+    }
+    if(value_path == "srv6-label-allocation-mode")
+    {
+        srv6_label_allocation_mode.yfilter = yfilter;
+    }
+    if(value_path == "rpki-bestpath-origin-as-allow-invalid")
+    {
+        rpki_bestpath_origin_as_allow_invalid.yfilter = yfilter;
     }
     if(value_path == "next-hop-resolution-prefix-length-minimum")
     {
@@ -6292,7 +7666,7 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "isis-routes" || name == "domain-distinguisher" || name == "vrf-all" || name == "disable-cluster-client-to-client-rrs" || name == "label-delay" || name == "ebgp" || name == "eibgp" || name == "retain-rt" || name == "ibgp" || name == "import-delay" || name == "aggregate-addresses" || name == "optimal-route-reflector-groups" || name == "dampening" || name == "rip-routes" || name == "lisp-routes" || name == "static-routes" || name == "distance" || name == "application-routes" || name == "label-mode" || name == "eigrp-routes" || name == "sourced-networks" || name == "connected-routes" || name == "allocate-label" || name == "additional-paths-selection" || name == "ospf-routes" || name == "mobile-routes" || name == "subscriber-routes" || name == "af-name" || name == "rnh-install-format" || name == "inter-as-install" || name == "segmented-mcast" || name == "implicit-import" || name == "disable-default-martian-check" || name == "next-hop-critical-trigger-delay" || name == "next-hop-non-critical-trigger-delay" || name == "label-security-rpf" || name == "use-igpsr-label" || name == "label-retain" || name == "scan-time" || name == "rpki-origin-as-validation-disable" || name == "rpki-origin-as-validity-signal-ibgp" || name == "update-limit-sub-group-ebgp" || name == "update-limit-address-family" || name == "rpki-bestpath-use-origin-as-validity" || name == "update-limit-sub-group-ibgp" || name == "rpki-bestpath-origin-as-allow-invalid" || name == "disable-client-to-client-rr" || name == "next-hop-route-policy" || name == "global-table-mcast" || name == "wait-rib-install" || name == "prefix-sid-map" || name == "dynamic-med-interval" || name == "enable" || name == "table-policy" || name == "attribute-download" || name == "best-external" || name == "additional-paths-receive" || name == "permanent-network" || name == "next-hop-resolution-prefix-length-minimum" || name == "reset-weight-on-import" || name == "additional-paths-send" || name == "advertise-local-labeled-route-safi-unicast" || name == "disable-as-path-loop-check")
+    if(name == "isis-routes" || name == "domain-distinguisher" || name == "vrf-all" || name == "disable-cluster-client-to-client-rrs" || name == "label-delay" || name == "ebgp" || name == "eibgp" || name == "retain-rt" || name == "ibgp" || name == "import-delay" || name == "aggregate-addresses" || name == "optimal-route-reflector-groups" || name == "dampening" || name == "rip-routes" || name == "lisp-routes" || name == "static-routes" || name == "distance" || name == "application-routes" || name == "label-mode" || name == "eigrp-routes" || name == "sourced-networks" || name == "connected-routes" || name == "allocate-label" || name == "additional-paths-selection" || name == "ospf-routes" || name == "mobile-routes" || name == "subscriber-routes" || name == "af-name" || name == "rnh-install-format" || name == "inter-as-install" || name == "segmented-mcast" || name == "implicit-import" || name == "disable-default-martian-check" || name == "next-hop-critical-trigger-delay" || name == "next-hop-non-critical-trigger-delay" || name == "label-security-rpf" || name == "use-igpsr-label" || name == "label-retain" || name == "scan-time" || name == "source-route-target-policy" || name == "rpki-origin-as-validation-disable" || name == "update-limit-sub-group-ebgp" || name == "update-limit-address-family" || name == "update-limit-sub-group-ibgp" || name == "disable-client-to-client-rr" || name == "next-hop-route-policy" || name == "global-table-mcast" || name == "wait-rib-install" || name == "prefix-sid-map" || name == "rpki-origin-as-validation-enable" || name == "dynamic-med-interval" || name == "enable" || name == "table-policy" || name == "attribute-download" || name == "best-external" || name == "rpki-origin-as-validity-signal-ibgp" || name == "additional-paths-receive" || name == "permanent-network" || name == "rpki-bestpath-use-origin-as-validity" || name == "srv6-label-allocation-mode" || name == "rpki-bestpath-origin-as-allow-invalid" || name == "next-hop-resolution-prefix-length-minimum" || name == "reset-weight-on-import" || name == "additional-paths-send" || name == "advertise-local-labeled-route-safi-unicast" || name == "disable-as-path-loop-check")
         return true;
     return false;
 }
@@ -6608,7 +7982,8 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     rnh_install_format{YType::enumeration, "rnh-install-format"},
     enable{YType::empty, "enable"},
     table_policy{YType::str, "table-policy"},
-    source_rt_import_policy{YType::empty, "source-rt-import-policy"}
+    source_rt_import_policy{YType::empty, "source-rt-import-policy"},
+    srv6_label_allocation_mode{YType::str, "srv6-label-allocation-mode"}
         ,
     label_mode(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::VrfAll::LabelMode>())
 {
@@ -6628,6 +8003,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 	|| enable.is_set
 	|| table_policy.is_set
 	|| source_rt_import_policy.is_set
+	|| srv6_label_allocation_mode.is_set
 	|| (label_mode !=  nullptr && label_mode->has_data());
 }
 
@@ -6638,6 +8014,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(table_policy.yfilter)
 	|| ydk::is_set(source_rt_import_policy.yfilter)
+	|| ydk::is_set(srv6_label_allocation_mode.yfilter)
 	|| (label_mode !=  nullptr && label_mode->has_operation());
 }
 
@@ -6656,6 +8033,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourBy
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (table_policy.is_set || is_set(table_policy.yfilter)) leaf_name_data.push_back(table_policy.get_name_leafdata());
     if (source_rt_import_policy.is_set || is_set(source_rt_import_policy.yfilter)) leaf_name_data.push_back(source_rt_import_policy.get_name_leafdata());
+    if (srv6_label_allocation_mode.is_set || is_set(srv6_label_allocation_mode.yfilter)) leaf_name_data.push_back(srv6_label_allocation_mode.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6713,6 +8091,12 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
         source_rt_import_policy.value_namespace = name_space;
         source_rt_import_policy.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "srv6-label-allocation-mode")
+    {
+        srv6_label_allocation_mode = value;
+        srv6_label_allocation_mode.value_namespace = name_space;
+        srv6_label_allocation_mode.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::VrfAll::set_filter(const std::string & value_path, YFilter yfilter)
@@ -6733,11 +8117,15 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
     {
         source_rt_import_policy.yfilter = yfilter;
     }
+    if(value_path == "srv6-label-allocation-mode")
+    {
+        srv6_label_allocation_mode.yfilter = yfilter;
+    }
 }
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::VrfAll::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "label-mode" || name == "rnh-install-format" || name == "enable" || name == "table-policy" || name == "source-rt-import-policy")
+    if(name == "label-mode" || name == "rnh-install-format" || name == "enable" || name == "table-policy" || name == "source-rt-import-policy" || name == "srv6-label-allocation-mode")
         return true;
     return false;
 }
@@ -9702,7 +11090,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AllocateLabel::AllocateLabel()
     :
     all{YType::boolean, "all"},
-    route_policy_name{YType::str, "route-policy-name"}
+    route_policy_name{YType::str, "route-policy-name"},
+    un_labeled_path{YType::boolean, "un-labeled-path"}
 {
 
     yang_name = "allocate-label"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; 
@@ -9716,14 +11105,16 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 {
     if (is_presence_container) return true;
     return all.is_set
-	|| route_policy_name.is_set;
+	|| route_policy_name.is_set
+	|| un_labeled_path.is_set;
 }
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AllocateLabel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(all.yfilter)
-	|| ydk::is_set(route_policy_name.yfilter);
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(un_labeled_path.yfilter);
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AllocateLabel::get_segment_path() const
@@ -9739,6 +11130,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourBy
 
     if (all.is_set || is_set(all.yfilter)) leaf_name_data.push_back(all.get_name_leafdata());
     if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (un_labeled_path.is_set || is_set(un_labeled_path.yfilter)) leaf_name_data.push_back(un_labeled_path.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -9770,6 +11162,12 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
         route_policy_name.value_namespace = name_space;
         route_policy_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "un-labeled-path")
+    {
+        un_labeled_path = value;
+        un_labeled_path.value_namespace = name_space;
+        un_labeled_path.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AllocateLabel::set_filter(const std::string & value_path, YFilter yfilter)
@@ -9782,11 +11180,15 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
     {
         route_policy_name.yfilter = yfilter;
     }
+    if(value_path == "un-labeled-path")
+    {
+        un_labeled_path.yfilter = yfilter;
+    }
 }
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AllocateLabel::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "all" || name == "route-policy-name")
+    if(name == "all" || name == "route-policy-name" || name == "un-labeled-path")
         return true;
     return false;
 }

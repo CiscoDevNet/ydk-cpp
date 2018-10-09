@@ -504,7 +504,7 @@ Vservice::ServiceFunctionLocator::Names::Name::Node::Node()
     transport{YType::enumeration, "transport"},
     ipv4_source_address{YType::str, "ipv4-source-address"},
     ipv4_destination_address{YType::str, "ipv4-destination-address"},
-    vni{YType::int32, "vni"}
+    vni{YType::uint32, "vni"}
 {
 
     yang_name = "node"; yang_parent_name = "name"; is_top_level_class = false; has_list_ancestor = true; 
@@ -953,7 +953,7 @@ Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node::Node()
     action_type{YType::enumeration, "action-type"},
     vrf{YType::str, "vrf"},
     nexthop_ipv4_address{YType::str, "nexthop-ipv4-address"},
-    tenant_id{YType::int32, "tenant-id"}
+    tenant_id{YType::uint32, "tenant-id"}
 {
 
     yang_name = "node"; yang_parent_name = "match-entry"; is_top_level_class = false; has_list_ancestor = true; 
@@ -1403,7 +1403,7 @@ Vservice::ServiceFunctionForwardLocator::Names::Name::Node::Node()
     transport{YType::enumeration, "transport"},
     ipv4_source_address{YType::str, "ipv4-source-address"},
     ipv4_destination_address{YType::str, "ipv4-destination-address"},
-    vni{YType::int32, "vni"}
+    vni{YType::uint32, "vni"}
 {
 
     yang_name = "node"; yang_parent_name = "name"; is_top_level_class = false; has_list_ancestor = true; 

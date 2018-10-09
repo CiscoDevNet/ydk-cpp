@@ -352,12 +352,16 @@ class Pppoe::Nodes::Node : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf node_name; //type: string
+        class DisconnectHistory; //type: Pppoe::Nodes::Node::DisconnectHistory
+        class DisconnectHistoryUnique; //type: Pppoe::Nodes::Node::DisconnectHistoryUnique
         class Statistics; //type: Pppoe::Nodes::Node::Statistics
         class AccessInterface; //type: Pppoe::Nodes::Node::AccessInterface
         class Interfaces; //type: Pppoe::Nodes::Node::Interfaces
         class BbaGroups; //type: Pppoe::Nodes::Node::BbaGroups
         class SummaryTotal; //type: Pppoe::Nodes::Node::SummaryTotal
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::DisconnectHistory> disconnect_history;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::DisconnectHistoryUnique> disconnect_history_unique;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::Statistics> statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::AccessInterface> access_interface;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::Interfaces> interfaces;
@@ -365,6 +369,512 @@ class Pppoe::Nodes::Node : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::SummaryTotal> summary_total;
         
 }; // Pppoe::Nodes::Node
+
+
+class Pppoe::Nodes::Node::DisconnectHistory : public ydk::Entity
+{
+    public:
+        DisconnectHistory();
+        ~DisconnectHistory();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf current_idx; //type: uint32
+        class Entry; //type: Pppoe::Nodes::Node::DisconnectHistory::Entry
+
+        ydk::YList entry;
+        
+}; // Pppoe::Nodes::Node::DisconnectHistory
+
+
+class Pppoe::Nodes::Node::DisconnectHistory::Entry : public ydk::Entity
+{
+    public:
+        Entry();
+        ~Entry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf timestamp; //type: uint64
+        ydk::YLeaf ifname; //type: string
+        ydk::YLeaf trigger; //type: PppoeMaSessionTrig
+        class SessionIdb; //type: Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb> session_idb;
+        
+}; // Pppoe::Nodes::Node::DisconnectHistory::Entry
+
+
+class Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb : public ydk::Entity
+{
+    public:
+        SessionIdb();
+        ~SessionIdb();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf access_interface; //type: string
+        ydk::YLeaf session_id; //type: uint16
+        ydk::YLeaf sub_label; //type: uint32
+        ydk::YLeaf peer_mac_address; //type: string
+        ydk::YLeaf state; //type: PppoeMaSessionState
+        ydk::YLeaf cdm_object_handle; //type: uint32
+        ydk::YLeaf chkpt_id; //type: uint32
+        ydk::YLeaf punted_count; //type: uint32
+        ydk::YLeaf port_limit; //type: uint32
+        ydk::YLeaf is_counted; //type: int32
+        ydk::YLeaf is_vlan_outer_tag; //type: int32
+        ydk::YLeaf is_vlan_inner_tag; //type: int32
+        ydk::YLeaf is_cleanup_pending; //type: int32
+        ydk::YLeaf is_disconnect_done_pending; //type: int32
+        ydk::YLeaf is_delete_done_pending; //type: int32
+        ydk::YLeaf is_intf_create_callback_pending; //type: int32
+        ydk::YLeaf is_publish_encaps_attr_pending; //type: int32
+        ydk::YLeaf is_publish_encaps_attr_cb_pending; //type: int32
+        ydk::YLeaf is_intf_delete_callback_pending; //type: int32
+        ydk::YLeaf is_intf_delete_pending; //type: int32
+        ydk::YLeaf is_im_owned_resource; //type: int32
+        ydk::YLeaf is_im_final_received; //type: int32
+        ydk::YLeaf is_im_owned_resource_missing; //type: int32
+        ydk::YLeaf is_aaa_start_request_callback_pending; //type: int32
+        ydk::YLeaf is_aaa_owned_resource; //type: int32
+        ydk::YLeaf is_aaa_disconnect_requested; //type: int32
+        ydk::YLeaf is_aaa_disconnect_received; //type: int32
+        ydk::YLeaf is_sub_db_activate_callback_pending; //type: int32
+        ydk::YLeaf is_pads_sent; //type: int32
+        ydk::YLeaf is_padt_received; //type: int32
+        ydk::YLeaf is_in_flight; //type: int32
+        ydk::YLeaf is_radius_override; //type: int32
+        ydk::YLeaf expected_notifications; //type: uint8
+        ydk::YLeaf received_notifications; //type: uint8
+        ydk::YLeaf srg_state; //type: PppoeMaSessionIdbSrgState
+        ydk::YLeaf is_srg_data_received; //type: int32
+        ydk::YLeaf is_iedge_data_received; //type: int32
+        class Tags; //type: Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags
+        class VlanOuterTag; //type: Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanOuterTag
+        class VlanInnerTag; //type: Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanInnerTag
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags> tags;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanOuterTag> vlan_outer_tag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanInnerTag> vlan_inner_tag;
+        
+}; // Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb
+
+
+class Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags : public ydk::Entity
+{
+    public:
+        Tags();
+        ~Tags();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_service_name; //type: int32
+        ydk::YLeaf is_max_payload; //type: int32
+        ydk::YLeaf is_host_uniq; //type: int32
+        ydk::YLeaf is_relay_session_id; //type: int32
+        ydk::YLeaf is_vendor_specific; //type: int32
+        ydk::YLeaf is_iwf; //type: int32
+        ydk::YLeaf is_remote_id; //type: int32
+        ydk::YLeaf is_circuit_id; //type: int32
+        ydk::YLeaf is_dsl_tag; //type: int32
+        ydk::YLeaf service_name; //type: string
+        ydk::YLeaf max_payload; //type: uint32
+        ydk::YLeaf host_uniq; //type: string
+        ydk::YLeaf relay_session_id; //type: string
+        ydk::YLeaf remote_id; //type: string
+        ydk::YLeaf circuit_id; //type: string
+        ydk::YLeaf is_dsl_actual_up; //type: int32
+        ydk::YLeaf is_dsl_actual_down; //type: int32
+        ydk::YLeaf is_dsl_min_up; //type: int32
+        ydk::YLeaf is_dsl_min_down; //type: int32
+        ydk::YLeaf is_dsl_attain_up; //type: int32
+        ydk::YLeaf is_dsl_attain_down; //type: int32
+        ydk::YLeaf is_dsl_max_up; //type: int32
+        ydk::YLeaf is_dsl_max_down; //type: int32
+        ydk::YLeaf is_dsl_min_up_low; //type: int32
+        ydk::YLeaf is_dsl_min_down_low; //type: int32
+        ydk::YLeaf is_dsl_max_delay_up; //type: int32
+        ydk::YLeaf is_dsl_actual_delay_up; //type: int32
+        ydk::YLeaf is_dsl_max_delay_down; //type: int32
+        ydk::YLeaf is_dsl_actual_delay_down; //type: int32
+        ydk::YLeaf is_access_loop_encapsulation; //type: int32
+        ydk::YLeaf dsl_actual_up; //type: uint32
+        ydk::YLeaf dsl_actual_down; //type: uint32
+        ydk::YLeaf dsl_min_up; //type: uint32
+        ydk::YLeaf dsl_min_down; //type: uint32
+        ydk::YLeaf dsl_attain_up; //type: uint32
+        ydk::YLeaf dsl_attain_down; //type: uint32
+        ydk::YLeaf dsl_max_up; //type: uint32
+        ydk::YLeaf dsl_max_down; //type: uint32
+        ydk::YLeaf dsl_min_up_low; //type: uint32
+        ydk::YLeaf dsl_min_down_low; //type: uint32
+        ydk::YLeaf dsl_max_delay_up; //type: uint32
+        ydk::YLeaf dsl_actual_delay_up; //type: uint32
+        ydk::YLeaf dsl_max_delay_down; //type: uint32
+        ydk::YLeaf dsl_actual_delay_down; //type: uint32
+        class AccessLoopEncapsulation; //type: Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::AccessLoopEncapsulation
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::AccessLoopEncapsulation> access_loop_encapsulation;
+        
+}; // Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags
+
+
+class Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::AccessLoopEncapsulation : public ydk::Entity
+{
+    public:
+        AccessLoopEncapsulation();
+        ~AccessLoopEncapsulation();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf data_link; //type: uint8
+        ydk::YLeaf encaps1; //type: uint8
+        ydk::YLeaf encaps2; //type: uint8
+
+}; // Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::Tags::AccessLoopEncapsulation
+
+
+class Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanOuterTag : public ydk::Entity
+{
+    public:
+        VlanOuterTag();
+        ~VlanOuterTag();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ether_type; //type: uint16
+        ydk::YLeaf user_priority; //type: uint8
+        ydk::YLeaf cfi; //type: uint8
+        ydk::YLeaf vlan_id; //type: uint16
+
+}; // Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanOuterTag
+
+
+class Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanInnerTag : public ydk::Entity
+{
+    public:
+        VlanInnerTag();
+        ~VlanInnerTag();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ether_type; //type: uint16
+        ydk::YLeaf user_priority; //type: uint8
+        ydk::YLeaf cfi; //type: uint8
+        ydk::YLeaf vlan_id; //type: uint16
+
+}; // Pppoe::Nodes::Node::DisconnectHistory::Entry::SessionIdb::VlanInnerTag
+
+
+class Pppoe::Nodes::Node::DisconnectHistoryUnique : public ydk::Entity
+{
+    public:
+        DisconnectHistoryUnique();
+        ~DisconnectHistoryUnique();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList disconnect_count; //type: list of  uint32
+        class Entry; //type: Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry
+
+        ydk::YList entry;
+        
+}; // Pppoe::Nodes::Node::DisconnectHistoryUnique
+
+
+class Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry : public ydk::Entity
+{
+    public:
+        Entry();
+        ~Entry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf timestamp; //type: uint64
+        ydk::YLeaf ifname; //type: string
+        ydk::YLeaf trigger; //type: PppoeMaSessionTrig
+        class SessionIdb; //type: Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb> session_idb;
+        
+}; // Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry
+
+
+class Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb : public ydk::Entity
+{
+    public:
+        SessionIdb();
+        ~SessionIdb();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf access_interface; //type: string
+        ydk::YLeaf session_id; //type: uint16
+        ydk::YLeaf sub_label; //type: uint32
+        ydk::YLeaf peer_mac_address; //type: string
+        ydk::YLeaf state; //type: PppoeMaSessionState
+        ydk::YLeaf cdm_object_handle; //type: uint32
+        ydk::YLeaf chkpt_id; //type: uint32
+        ydk::YLeaf punted_count; //type: uint32
+        ydk::YLeaf port_limit; //type: uint32
+        ydk::YLeaf is_counted; //type: int32
+        ydk::YLeaf is_vlan_outer_tag; //type: int32
+        ydk::YLeaf is_vlan_inner_tag; //type: int32
+        ydk::YLeaf is_cleanup_pending; //type: int32
+        ydk::YLeaf is_disconnect_done_pending; //type: int32
+        ydk::YLeaf is_delete_done_pending; //type: int32
+        ydk::YLeaf is_intf_create_callback_pending; //type: int32
+        ydk::YLeaf is_publish_encaps_attr_pending; //type: int32
+        ydk::YLeaf is_publish_encaps_attr_cb_pending; //type: int32
+        ydk::YLeaf is_intf_delete_callback_pending; //type: int32
+        ydk::YLeaf is_intf_delete_pending; //type: int32
+        ydk::YLeaf is_im_owned_resource; //type: int32
+        ydk::YLeaf is_im_final_received; //type: int32
+        ydk::YLeaf is_im_owned_resource_missing; //type: int32
+        ydk::YLeaf is_aaa_start_request_callback_pending; //type: int32
+        ydk::YLeaf is_aaa_owned_resource; //type: int32
+        ydk::YLeaf is_aaa_disconnect_requested; //type: int32
+        ydk::YLeaf is_aaa_disconnect_received; //type: int32
+        ydk::YLeaf is_sub_db_activate_callback_pending; //type: int32
+        ydk::YLeaf is_pads_sent; //type: int32
+        ydk::YLeaf is_padt_received; //type: int32
+        ydk::YLeaf is_in_flight; //type: int32
+        ydk::YLeaf is_radius_override; //type: int32
+        ydk::YLeaf expected_notifications; //type: uint8
+        ydk::YLeaf received_notifications; //type: uint8
+        ydk::YLeaf srg_state; //type: PppoeMaSessionIdbSrgState
+        ydk::YLeaf is_srg_data_received; //type: int32
+        ydk::YLeaf is_iedge_data_received; //type: int32
+        class Tags; //type: Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags
+        class VlanOuterTag; //type: Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanOuterTag
+        class VlanInnerTag; //type: Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanInnerTag
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags> tags;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanOuterTag> vlan_outer_tag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanInnerTag> vlan_inner_tag;
+        
+}; // Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb
+
+
+class Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags : public ydk::Entity
+{
+    public:
+        Tags();
+        ~Tags();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_service_name; //type: int32
+        ydk::YLeaf is_max_payload; //type: int32
+        ydk::YLeaf is_host_uniq; //type: int32
+        ydk::YLeaf is_relay_session_id; //type: int32
+        ydk::YLeaf is_vendor_specific; //type: int32
+        ydk::YLeaf is_iwf; //type: int32
+        ydk::YLeaf is_remote_id; //type: int32
+        ydk::YLeaf is_circuit_id; //type: int32
+        ydk::YLeaf is_dsl_tag; //type: int32
+        ydk::YLeaf service_name; //type: string
+        ydk::YLeaf max_payload; //type: uint32
+        ydk::YLeaf host_uniq; //type: string
+        ydk::YLeaf relay_session_id; //type: string
+        ydk::YLeaf remote_id; //type: string
+        ydk::YLeaf circuit_id; //type: string
+        ydk::YLeaf is_dsl_actual_up; //type: int32
+        ydk::YLeaf is_dsl_actual_down; //type: int32
+        ydk::YLeaf is_dsl_min_up; //type: int32
+        ydk::YLeaf is_dsl_min_down; //type: int32
+        ydk::YLeaf is_dsl_attain_up; //type: int32
+        ydk::YLeaf is_dsl_attain_down; //type: int32
+        ydk::YLeaf is_dsl_max_up; //type: int32
+        ydk::YLeaf is_dsl_max_down; //type: int32
+        ydk::YLeaf is_dsl_min_up_low; //type: int32
+        ydk::YLeaf is_dsl_min_down_low; //type: int32
+        ydk::YLeaf is_dsl_max_delay_up; //type: int32
+        ydk::YLeaf is_dsl_actual_delay_up; //type: int32
+        ydk::YLeaf is_dsl_max_delay_down; //type: int32
+        ydk::YLeaf is_dsl_actual_delay_down; //type: int32
+        ydk::YLeaf is_access_loop_encapsulation; //type: int32
+        ydk::YLeaf dsl_actual_up; //type: uint32
+        ydk::YLeaf dsl_actual_down; //type: uint32
+        ydk::YLeaf dsl_min_up; //type: uint32
+        ydk::YLeaf dsl_min_down; //type: uint32
+        ydk::YLeaf dsl_attain_up; //type: uint32
+        ydk::YLeaf dsl_attain_down; //type: uint32
+        ydk::YLeaf dsl_max_up; //type: uint32
+        ydk::YLeaf dsl_max_down; //type: uint32
+        ydk::YLeaf dsl_min_up_low; //type: uint32
+        ydk::YLeaf dsl_min_down_low; //type: uint32
+        ydk::YLeaf dsl_max_delay_up; //type: uint32
+        ydk::YLeaf dsl_actual_delay_up; //type: uint32
+        ydk::YLeaf dsl_max_delay_down; //type: uint32
+        ydk::YLeaf dsl_actual_delay_down; //type: uint32
+        class AccessLoopEncapsulation; //type: Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::AccessLoopEncapsulation
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_pppoe_ma_oper::Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::AccessLoopEncapsulation> access_loop_encapsulation;
+        
+}; // Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags
+
+
+class Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::AccessLoopEncapsulation : public ydk::Entity
+{
+    public:
+        AccessLoopEncapsulation();
+        ~AccessLoopEncapsulation();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf data_link; //type: uint8
+        ydk::YLeaf encaps1; //type: uint8
+        ydk::YLeaf encaps2; //type: uint8
+
+}; // Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::Tags::AccessLoopEncapsulation
+
+
+class Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanOuterTag : public ydk::Entity
+{
+    public:
+        VlanOuterTag();
+        ~VlanOuterTag();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ether_type; //type: uint16
+        ydk::YLeaf user_priority; //type: uint8
+        ydk::YLeaf cfi; //type: uint8
+        ydk::YLeaf vlan_id; //type: uint16
+
+}; // Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanOuterTag
+
+
+class Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanInnerTag : public ydk::Entity
+{
+    public:
+        VlanInnerTag();
+        ~VlanInnerTag();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ether_type; //type: uint16
+        ydk::YLeaf user_priority; //type: uint8
+        ydk::YLeaf cfi; //type: uint8
+        ydk::YLeaf vlan_id; //type: uint16
+
+}; // Pppoe::Nodes::Node::DisconnectHistoryUnique::Entry::SessionIdb::VlanInnerTag
 
 
 class Pppoe::Nodes::Node::Statistics : public ydk::Entity
@@ -1641,12 +2151,53 @@ class Pppoe::Nodes::Node::SummaryTotal : public ydk::Entity
 
 }; // Pppoe::Nodes::Node::SummaryTotal
 
-class PppoeMaThrottleState : public ydk::Enum
+class PppoeMaSessionState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf idle;
-        static const ydk::Enum::YLeaf monitor;
-        static const ydk::Enum::YLeaf block;
+        static const ydk::Enum::YLeaf destroying;
+        static const ydk::Enum::YLeaf deleting;
+        static const ydk::Enum::YLeaf initializing;
+        static const ydk::Enum::YLeaf created;
+        static const ydk::Enum::YLeaf stopping;
+        static const ydk::Enum::YLeaf started;
+        static const ydk::Enum::YLeaf activated;
+        static const ydk::Enum::YLeaf complete;
+
+};
+
+class PppoeMaSessionIdbSrgState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf standby;
+
+};
+
+class PppoeMaSessionTrig : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_error;
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_publish_encaps_attr_fail;
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_if_create_fail;
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_iedge_session_start_fail;
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_iedge_session_update_fail;
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_sub_db_activate_fail;
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_in_flight_timeout;
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_down;
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_parent;
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_padt;
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_session_pak;
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_final;
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_no_im_or;
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_restart;
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_admissions_config_change;
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_iedge_disconnect;
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_invalid_vlan_tags;
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_port_limit_disconnect;
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_srg_disconnect;
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_srg_sweep;
+        static const ydk::Enum::YLeaf pppoe_ma_session_trig_count;
 
 };
 
@@ -1659,12 +2210,12 @@ class PppoeMaLimitState : public ydk::Enum
 
 };
 
-class PppoeMaSessionIdbSrgState : public ydk::Enum
+class PppoeMaThrottleState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf standby;
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf monitor;
+        static const ydk::Enum::YLeaf block;
 
 };
 

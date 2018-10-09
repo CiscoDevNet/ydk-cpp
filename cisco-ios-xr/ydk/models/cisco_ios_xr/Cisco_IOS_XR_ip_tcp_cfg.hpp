@@ -41,10 +41,12 @@ class IpTcp : public ydk::Entity
         ydk::YLeaf path_mtu_discovery; //type: uint32
         class Directory; //type: IpTcp::Directory
         class Throttle; //type: IpTcp::Throttle
+        class Ao; //type: IpTcp::Ao
         class NumThread; //type: IpTcp::NumThread
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_cfg::IpTcp::Directory> directory; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_cfg::IpTcp::Throttle> throttle; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_cfg::IpTcp::Ao> ao;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_cfg::IpTcp::NumThread> num_thread; // presence node
         
 }; // IpTcp
@@ -95,6 +97,127 @@ class IpTcp::Throttle : public ydk::Entity
         ydk::YLeaf tcpmaxthrottle; //type: uint32
 
 }; // IpTcp::Throttle
+
+
+class IpTcp::Ao : public ydk::Entity
+{
+    public:
+        Ao();
+        ~Ao();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf enable; //type: empty
+        class Keychains; //type: IpTcp::Ao::Keychains
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_cfg::IpTcp::Ao::Keychains> keychains;
+        
+}; // IpTcp::Ao
+
+
+class IpTcp::Ao::Keychains : public ydk::Entity
+{
+    public:
+        Keychains();
+        ~Keychains();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Keychain; //type: IpTcp::Ao::Keychains::Keychain
+
+        ydk::YList keychain;
+        
+}; // IpTcp::Ao::Keychains
+
+
+class IpTcp::Ao::Keychains::Keychain : public ydk::Entity
+{
+    public:
+        Keychain();
+        ~Keychain();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf create; //type: empty
+        class Keys; //type: IpTcp::Ao::Keychains::Keychain::Keys
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_cfg::IpTcp::Ao::Keychains::Keychain::Keys> keys;
+        
+}; // IpTcp::Ao::Keychains::Keychain
+
+
+class IpTcp::Ao::Keychains::Keychain::Keys : public ydk::Entity
+{
+    public:
+        Keys();
+        ~Keys();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Key; //type: IpTcp::Ao::Keychains::Keychain::Keys::Key
+
+        ydk::YList key;
+        
+}; // IpTcp::Ao::Keychains::Keychain::Keys
+
+
+class IpTcp::Ao::Keychains::Keychain::Keys::Key : public ydk::Entity
+{
+    public:
+        Key();
+        ~Key();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf key_id; //type: string
+        ydk::YLeaf send_id; //type: uint32
+        ydk::YLeaf receive_id; //type: uint32
+
+}; // IpTcp::Ao::Keychains::Keychain::Keys::Key
 
 
 class IpTcp::NumThread : public ydk::Entity

@@ -977,6 +977,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelAttributes()
     , auto_bandwidth(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth>())
     , priority(nullptr) // presence node
     , affinity_mask(nullptr) // presence node
+    , forwarding_adjacency(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::ForwardingAdjacency>())
     , logging(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging>())
     , bandwidth(nullptr) // presence node
     , autoroute(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute>())
@@ -986,6 +987,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelAttributes()
     path_setups->parent = this;
     tunnel_path_selection->parent = this;
     auto_bandwidth->parent = this;
+    forwarding_adjacency->parent = this;
     logging->parent = this;
     autoroute->parent = this;
     new_style_affinity_affinity_types->parent = this;
@@ -1012,6 +1014,7 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::has_data() const
 	|| (auto_bandwidth !=  nullptr && auto_bandwidth->has_data())
 	|| (priority !=  nullptr && priority->has_data())
 	|| (affinity_mask !=  nullptr && affinity_mask->has_data())
+	|| (forwarding_adjacency !=  nullptr && forwarding_adjacency->has_data())
 	|| (logging !=  nullptr && logging->has_data())
 	|| (bandwidth !=  nullptr && bandwidth->has_data())
 	|| (autoroute !=  nullptr && autoroute->has_data())
@@ -1034,6 +1037,7 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::has_operation() co
 	|| (auto_bandwidth !=  nullptr && auto_bandwidth->has_operation())
 	|| (priority !=  nullptr && priority->has_operation())
 	|| (affinity_mask !=  nullptr && affinity_mask->has_operation())
+	|| (forwarding_adjacency !=  nullptr && forwarding_adjacency->has_operation())
 	|| (logging !=  nullptr && logging->has_operation())
 	|| (bandwidth !=  nullptr && bandwidth->has_operation())
 	|| (autoroute !=  nullptr && autoroute->has_operation())
@@ -1111,6 +1115,15 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
         return affinity_mask;
     }
 
+    if(child_yang_name == "forwarding-adjacency")
+    {
+        if(forwarding_adjacency == nullptr)
+        {
+            forwarding_adjacency = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::ForwardingAdjacency>();
+        }
+        return forwarding_adjacency;
+    }
+
     if(child_yang_name == "logging")
     {
         if(logging == nullptr)
@@ -1186,6 +1199,11 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tu
     if(affinity_mask != nullptr)
     {
         children["affinity-mask"] = affinity_mask;
+    }
+
+    if(forwarding_adjacency != nullptr)
+    {
+        children["forwarding-adjacency"] = forwarding_adjacency;
     }
 
     if(logging != nullptr)
@@ -1296,7 +1314,7 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::set_filter(const s
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "path-setups" || name == "tunnel-path-selection" || name == "auto-bandwidth" || name == "priority" || name == "affinity-mask" || name == "logging" || name == "bandwidth" || name == "autoroute" || name == "new-style-affinity-affinity-types" || name == "fast-reroute" || name == "shutdown" || name == "forward-class" || name == "destination" || name == "record-route" || name == "path-selection-metric" || name == "soft-preemption" || name == "load-share")
+    if(name == "path-setups" || name == "tunnel-path-selection" || name == "auto-bandwidth" || name == "priority" || name == "affinity-mask" || name == "forwarding-adjacency" || name == "logging" || name == "bandwidth" || name == "autoroute" || name == "new-style-affinity-affinity-types" || name == "fast-reroute" || name == "shutdown" || name == "forward-class" || name == "destination" || name == "record-route" || name == "path-selection-metric" || name == "soft-preemption" || name == "load-share")
         return true;
     return false;
 }
@@ -1629,6 +1647,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::Tu
     :
     tiebreaker{YType::enumeration, "tiebreaker"},
     path_selection_hop_limit{YType::uint32, "path-selection-hop-limit"},
+    path_selection_delay_limit{YType::uint32, "path-selection-delay-limit"},
     path_selection_cost_limit{YType::uint32, "path-selection-cost-limit"}
         ,
     invalidation(nullptr) // presence node
@@ -1646,6 +1665,7 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelectio
     if (is_presence_container) return true;
     return tiebreaker.is_set
 	|| path_selection_hop_limit.is_set
+	|| path_selection_delay_limit.is_set
 	|| path_selection_cost_limit.is_set
 	|| (invalidation !=  nullptr && invalidation->has_data());
 }
@@ -1655,6 +1675,7 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelectio
     return is_set(yfilter)
 	|| ydk::is_set(tiebreaker.yfilter)
 	|| ydk::is_set(path_selection_hop_limit.yfilter)
+	|| ydk::is_set(path_selection_delay_limit.yfilter)
 	|| ydk::is_set(path_selection_cost_limit.yfilter)
 	|| (invalidation !=  nullptr && invalidation->has_operation());
 }
@@ -1672,6 +1693,7 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::NamedTunnels::Tunnels::Tu
 
     if (tiebreaker.is_set || is_set(tiebreaker.yfilter)) leaf_name_data.push_back(tiebreaker.get_name_leafdata());
     if (path_selection_hop_limit.is_set || is_set(path_selection_hop_limit.yfilter)) leaf_name_data.push_back(path_selection_hop_limit.get_name_leafdata());
+    if (path_selection_delay_limit.is_set || is_set(path_selection_delay_limit.yfilter)) leaf_name_data.push_back(path_selection_delay_limit.get_name_leafdata());
     if (path_selection_cost_limit.is_set || is_set(path_selection_cost_limit.yfilter)) leaf_name_data.push_back(path_selection_cost_limit.get_name_leafdata());
 
     return leaf_name_data;
@@ -1718,6 +1740,12 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelectio
         path_selection_hop_limit.value_namespace = name_space;
         path_selection_hop_limit.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "path-selection-delay-limit")
+    {
+        path_selection_delay_limit = value;
+        path_selection_delay_limit.value_namespace = name_space;
+        path_selection_delay_limit.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "path-selection-cost-limit")
     {
         path_selection_cost_limit = value;
@@ -1736,6 +1764,10 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelectio
     {
         path_selection_hop_limit.yfilter = yfilter;
     }
+    if(value_path == "path-selection-delay-limit")
+    {
+        path_selection_delay_limit.yfilter = yfilter;
+    }
     if(value_path == "path-selection-cost-limit")
     {
         path_selection_cost_limit.yfilter = yfilter;
@@ -1744,7 +1776,7 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelectio
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "invalidation" || name == "tiebreaker" || name == "path-selection-hop-limit" || name == "path-selection-cost-limit")
+    if(name == "invalidation" || name == "tiebreaker" || name == "path-selection-hop-limit" || name == "path-selection-delay-limit" || name == "path-selection-cost-limit")
         return true;
     return false;
 }
@@ -1844,6 +1876,7 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelectio
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AutoBandwidth()
     :
     underflow_enable{YType::boolean, "underflow-enable"},
+    resignal_last_bandwidth_time_out{YType::uint32, "resignal-last-bandwidth-time-out"},
     enabled{YType::boolean, "enabled"},
     application_frequency{YType::uint32, "application-frequency"},
     overflow_enable{YType::boolean, "overflow-enable"},
@@ -1853,7 +1886,9 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AutoBand
     , overflow(nullptr) // presence node
     , bandwidth_limits(nullptr) // presence node
     , adjustment_threshold(nullptr) // presence node
+    , auto_capacity(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AutoCapacity>())
 {
+    auto_capacity->parent = this;
 
     yang_name = "auto-bandwidth"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -1866,6 +1901,7 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::has
 {
     if (is_presence_container) return true;
     return underflow_enable.is_set
+	|| resignal_last_bandwidth_time_out.is_set
 	|| enabled.is_set
 	|| application_frequency.is_set
 	|| overflow_enable.is_set
@@ -1873,13 +1909,15 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::has
 	|| (underflow !=  nullptr && underflow->has_data())
 	|| (overflow !=  nullptr && overflow->has_data())
 	|| (bandwidth_limits !=  nullptr && bandwidth_limits->has_data())
-	|| (adjustment_threshold !=  nullptr && adjustment_threshold->has_data());
+	|| (adjustment_threshold !=  nullptr && adjustment_threshold->has_data())
+	|| (auto_capacity !=  nullptr && auto_capacity->has_data());
 }
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(underflow_enable.yfilter)
+	|| ydk::is_set(resignal_last_bandwidth_time_out.yfilter)
 	|| ydk::is_set(enabled.yfilter)
 	|| ydk::is_set(application_frequency.yfilter)
 	|| ydk::is_set(overflow_enable.yfilter)
@@ -1887,7 +1925,8 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::has
 	|| (underflow !=  nullptr && underflow->has_operation())
 	|| (overflow !=  nullptr && overflow->has_operation())
 	|| (bandwidth_limits !=  nullptr && bandwidth_limits->has_operation())
-	|| (adjustment_threshold !=  nullptr && adjustment_threshold->has_operation());
+	|| (adjustment_threshold !=  nullptr && adjustment_threshold->has_operation())
+	|| (auto_capacity !=  nullptr && auto_capacity->has_operation());
 }
 
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::get_segment_path() const
@@ -1902,6 +1941,7 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::NamedTunnels::Tunnels::Tu
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (underflow_enable.is_set || is_set(underflow_enable.yfilter)) leaf_name_data.push_back(underflow_enable.get_name_leafdata());
+    if (resignal_last_bandwidth_time_out.is_set || is_set(resignal_last_bandwidth_time_out.yfilter)) leaf_name_data.push_back(resignal_last_bandwidth_time_out.get_name_leafdata());
     if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
     if (application_frequency.is_set || is_set(application_frequency.yfilter)) leaf_name_data.push_back(application_frequency.get_name_leafdata());
     if (overflow_enable.is_set || is_set(overflow_enable.yfilter)) leaf_name_data.push_back(overflow_enable.get_name_leafdata());
@@ -1949,6 +1989,15 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
         return adjustment_threshold;
     }
 
+    if(child_yang_name == "auto-capacity")
+    {
+        if(auto_capacity == nullptr)
+        {
+            auto_capacity = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AutoCapacity>();
+        }
+        return auto_capacity;
+    }
+
     return nullptr;
 }
 
@@ -1976,6 +2025,11 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tu
         children["adjustment-threshold"] = adjustment_threshold;
     }
 
+    if(auto_capacity != nullptr)
+    {
+        children["auto-capacity"] = auto_capacity;
+    }
+
     return children;
 }
 
@@ -1986,6 +2040,12 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::set
         underflow_enable = value;
         underflow_enable.value_namespace = name_space;
         underflow_enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "resignal-last-bandwidth-time-out")
+    {
+        resignal_last_bandwidth_time_out = value;
+        resignal_last_bandwidth_time_out.value_namespace = name_space;
+        resignal_last_bandwidth_time_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enabled")
     {
@@ -2019,6 +2079,10 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::set
     {
         underflow_enable.yfilter = yfilter;
     }
+    if(value_path == "resignal-last-bandwidth-time-out")
+    {
+        resignal_last_bandwidth_time_out.yfilter = yfilter;
+    }
     if(value_path == "enabled")
     {
         enabled.yfilter = yfilter;
@@ -2039,7 +2103,7 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::set
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "underflow" || name == "overflow" || name == "bandwidth-limits" || name == "adjustment-threshold" || name == "underflow-enable" || name == "enabled" || name == "application-frequency" || name == "overflow-enable" || name == "collection-only")
+    if(name == "underflow" || name == "overflow" || name == "bandwidth-limits" || name == "adjustment-threshold" || name == "auto-capacity" || name == "underflow-enable" || name == "resignal-last-bandwidth-time-out" || name == "enabled" || name == "application-frequency" || name == "overflow-enable" || name == "collection-only")
         return true;
     return false;
 }
@@ -2440,6 +2504,154 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Adj
     return false;
 }
 
+MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AutoCapacity::AutoCapacity()
+    :
+    nominal_bandwidth{YType::uint32, "nominal-bandwidth"},
+    enable{YType::boolean, "enable"},
+    clones_minimum{YType::uint32, "clones-minimum"},
+    split_bandwidth{YType::uint32, "split-bandwidth"},
+    merge_bandwidth{YType::uint32, "merge-bandwidth"},
+    clones_maximum{YType::uint32, "clones-maximum"}
+{
+
+    yang_name = "auto-capacity"; yang_parent_name = "auto-bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AutoCapacity::~AutoCapacity()
+{
+}
+
+bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AutoCapacity::has_data() const
+{
+    if (is_presence_container) return true;
+    return nominal_bandwidth.is_set
+	|| enable.is_set
+	|| clones_minimum.is_set
+	|| split_bandwidth.is_set
+	|| merge_bandwidth.is_set
+	|| clones_maximum.is_set;
+}
+
+bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AutoCapacity::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nominal_bandwidth.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(clones_minimum.yfilter)
+	|| ydk::is_set(split_bandwidth.yfilter)
+	|| ydk::is_set(merge_bandwidth.yfilter)
+	|| ydk::is_set(clones_maximum.yfilter);
+}
+
+std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AutoCapacity::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "auto-capacity";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AutoCapacity::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nominal_bandwidth.is_set || is_set(nominal_bandwidth.yfilter)) leaf_name_data.push_back(nominal_bandwidth.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (clones_minimum.is_set || is_set(clones_minimum.yfilter)) leaf_name_data.push_back(clones_minimum.get_name_leafdata());
+    if (split_bandwidth.is_set || is_set(split_bandwidth.yfilter)) leaf_name_data.push_back(split_bandwidth.get_name_leafdata());
+    if (merge_bandwidth.is_set || is_set(merge_bandwidth.yfilter)) leaf_name_data.push_back(merge_bandwidth.get_name_leafdata());
+    if (clones_maximum.is_set || is_set(clones_maximum.yfilter)) leaf_name_data.push_back(clones_maximum.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AutoCapacity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AutoCapacity::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AutoCapacity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nominal-bandwidth")
+    {
+        nominal_bandwidth = value;
+        nominal_bandwidth.value_namespace = name_space;
+        nominal_bandwidth.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clones-minimum")
+    {
+        clones_minimum = value;
+        clones_minimum.value_namespace = name_space;
+        clones_minimum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "split-bandwidth")
+    {
+        split_bandwidth = value;
+        split_bandwidth.value_namespace = name_space;
+        split_bandwidth.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "merge-bandwidth")
+    {
+        merge_bandwidth = value;
+        merge_bandwidth.value_namespace = name_space;
+        merge_bandwidth.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clones-maximum")
+    {
+        clones_maximum = value;
+        clones_maximum.value_namespace = name_space;
+        clones_maximum.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AutoCapacity::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nominal-bandwidth")
+    {
+        nominal_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "clones-minimum")
+    {
+        clones_minimum.yfilter = yfilter;
+    }
+    if(value_path == "split-bandwidth")
+    {
+        split_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "merge-bandwidth")
+    {
+        merge_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "clones-maximum")
+    {
+        clones_maximum.yfilter = yfilter;
+    }
+}
+
+bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AutoCapacity::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nominal-bandwidth" || name == "enable" || name == "clones-minimum" || name == "split-bandwidth" || name == "merge-bandwidth" || name == "clones-maximum")
+        return true;
+    return false;
+}
+
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority::Priority()
     :
     setup_priority{YType::uint32, "setup-priority"},
@@ -2620,6 +2832,112 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask::set_
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity" || name == "mask")
+        return true;
+    return false;
+}
+
+MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::ForwardingAdjacency::ForwardingAdjacency()
+    :
+    enable{YType::empty, "enable"},
+    include_ipv6{YType::empty, "include-ipv6"},
+    hold_time{YType::uint32, "hold-time"}
+{
+
+    yang_name = "forwarding-adjacency"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::ForwardingAdjacency::~ForwardingAdjacency()
+{
+}
+
+bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::ForwardingAdjacency::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set
+	|| include_ipv6.is_set
+	|| hold_time.is_set;
+}
+
+bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::ForwardingAdjacency::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(include_ipv6.yfilter)
+	|| ydk::is_set(hold_time.yfilter);
+}
+
+std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::ForwardingAdjacency::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "forwarding-adjacency";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::ForwardingAdjacency::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (include_ipv6.is_set || is_set(include_ipv6.yfilter)) leaf_name_data.push_back(include_ipv6.get_name_leafdata());
+    if (hold_time.is_set || is_set(hold_time.yfilter)) leaf_name_data.push_back(hold_time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::ForwardingAdjacency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::ForwardingAdjacency::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::ForwardingAdjacency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "include-ipv6")
+    {
+        include_ipv6 = value;
+        include_ipv6.value_namespace = name_space;
+        include_ipv6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hold-time")
+    {
+        hold_time = value;
+        hold_time.value_namespace = name_space;
+        hold_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::ForwardingAdjacency::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "include-ipv6")
+    {
+        include_ipv6.yfilter = yfilter;
+    }
+    if(value_path == "hold-time")
+    {
+        hold_time.yfilter = yfilter;
+    }
+}
+
+bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::ForwardingAdjacency::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "include-ipv6" || name == "hold-time")
         return true;
     return false;
 }
@@ -11975,6 +12293,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     :
     path_selection_exclude_list{YType::str, "path-selection-exclude-list"},
     enable{YType::empty, "enable"},
+    path_selection_delay_limit{YType::uint32, "path-selection-delay-limit"},
     path_selection_cost_limit{YType::uint32, "path-selection-cost-limit"}
         ,
     invalidation(nullptr) // presence node
@@ -11992,6 +12311,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
     if (is_presence_container) return true;
     return path_selection_exclude_list.is_set
 	|| enable.is_set
+	|| path_selection_delay_limit.is_set
 	|| path_selection_cost_limit.is_set
 	|| (invalidation !=  nullptr && invalidation->has_data());
 }
@@ -12001,6 +12321,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
     return is_set(yfilter)
 	|| ydk::is_set(path_selection_exclude_list.yfilter)
 	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(path_selection_delay_limit.yfilter)
 	|| ydk::is_set(path_selection_cost_limit.yfilter)
 	|| (invalidation !=  nullptr && invalidation->has_operation());
 }
@@ -12018,6 +12339,7 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
     if (path_selection_exclude_list.is_set || is_set(path_selection_exclude_list.yfilter)) leaf_name_data.push_back(path_selection_exclude_list.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (path_selection_delay_limit.is_set || is_set(path_selection_delay_limit.yfilter)) leaf_name_data.push_back(path_selection_delay_limit.get_name_leafdata());
     if (path_selection_cost_limit.is_set || is_set(path_selection_cost_limit.yfilter)) leaf_name_data.push_back(path_selection_cost_limit.get_name_leafdata());
 
     return leaf_name_data;
@@ -12064,6 +12386,12 @@ void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
         enable.value_namespace = name_space;
         enable.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "path-selection-delay-limit")
+    {
+        path_selection_delay_limit = value;
+        path_selection_delay_limit.value_namespace = name_space;
+        path_selection_delay_limit.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "path-selection-cost-limit")
     {
         path_selection_cost_limit = value;
@@ -12082,6 +12410,10 @@ void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
     {
         enable.yfilter = yfilter;
     }
+    if(value_path == "path-selection-delay-limit")
+    {
+        path_selection_delay_limit.yfilter = yfilter;
+    }
     if(value_path == "path-selection-cost-limit")
     {
         path_selection_cost_limit.yfilter = yfilter;
@@ -12090,7 +12422,7 @@ void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "invalidation" || name == "path-selection-exclude-list" || name == "enable" || name == "path-selection-cost-limit")
+    if(name == "invalidation" || name == "path-selection-exclude-list" || name == "enable" || name == "path-selection-delay-limit" || name == "path-selection-cost-limit")
         return true;
     return false;
 }
@@ -20053,299 +20385,6 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Ne
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4()
-    :
-    affinity_type{YType::enumeration, "affinity-type"},
-    affinity1{YType::str, "affinity1"},
-    affinity2{YType::str, "affinity2"},
-    affinity3{YType::str, "affinity3"},
-    affinity4{YType::str, "affinity4"}
-{
-
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4()
-{
-}
-
-bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_data() const
-{
-    if (is_presence_container) return true;
-    return affinity_type.is_set
-	|| affinity1.is_set
-	|| affinity2.is_set
-	|| affinity3.is_set
-	|| affinity4.is_set;
-}
-
-bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(affinity_type.yfilter)
-	|| ydk::is_set(affinity1.yfilter)
-	|| ydk::is_set(affinity2.yfilter)
-	|| ydk::is_set(affinity3.yfilter)
-	|| ydk::is_set(affinity4.yfilter);
-}
-
-std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4";
-    ADD_KEY_TOKEN(affinity_type, "affinity-type");
-    ADD_KEY_TOKEN(affinity1, "affinity1");
-    ADD_KEY_TOKEN(affinity2, "affinity2");
-    ADD_KEY_TOKEN(affinity3, "affinity3");
-    ADD_KEY_TOKEN(affinity4, "affinity4");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (affinity_type.is_set || is_set(affinity_type.yfilter)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
-    if (affinity1.is_set || is_set(affinity1.yfilter)) leaf_name_data.push_back(affinity1.get_name_leafdata());
-    if (affinity2.is_set || is_set(affinity2.yfilter)) leaf_name_data.push_back(affinity2.get_name_leafdata());
-    if (affinity3.is_set || is_set(affinity3.yfilter)) leaf_name_data.push_back(affinity3.get_name_leafdata());
-    if (affinity4.is_set || is_set(affinity4.yfilter)) leaf_name_data.push_back(affinity4.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-        affinity_type.value_namespace = name_space;
-        affinity_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1 = value;
-        affinity1.value_namespace = name_space;
-        affinity1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2 = value;
-        affinity2.value_namespace = name_space;
-        affinity2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3 = value;
-        affinity3.value_namespace = name_space;
-        affinity3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity4")
-    {
-        affinity4 = value;
-        affinity4.value_namespace = name_space;
-        affinity4.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type.yfilter = yfilter;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1.yfilter = yfilter;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2.yfilter = yfilter;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3.yfilter = yfilter;
-    }
-    if(value_path == "affinity4")
-    {
-        affinity4.yfilter = yfilter;
-    }
-}
-
-bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3" || name == "affinity4")
-        return true;
-    return false;
-}
-
-MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5()
-    :
-    affinity_type{YType::enumeration, "affinity-type"},
-    affinity1{YType::str, "affinity1"},
-    affinity2{YType::str, "affinity2"},
-    affinity3{YType::str, "affinity3"},
-    affinity4{YType::str, "affinity4"},
-    affinity5{YType::str, "affinity5"}
-{
-
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5()
-{
-}
-
-bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_data() const
-{
-    if (is_presence_container) return true;
-    return affinity_type.is_set
-	|| affinity1.is_set
-	|| affinity2.is_set
-	|| affinity3.is_set
-	|| affinity4.is_set
-	|| affinity5.is_set;
-}
-
-bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(affinity_type.yfilter)
-	|| ydk::is_set(affinity1.yfilter)
-	|| ydk::is_set(affinity2.yfilter)
-	|| ydk::is_set(affinity3.yfilter)
-	|| ydk::is_set(affinity4.yfilter)
-	|| ydk::is_set(affinity5.yfilter);
-}
-
-std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5";
-    ADD_KEY_TOKEN(affinity_type, "affinity-type");
-    ADD_KEY_TOKEN(affinity1, "affinity1");
-    ADD_KEY_TOKEN(affinity2, "affinity2");
-    ADD_KEY_TOKEN(affinity3, "affinity3");
-    ADD_KEY_TOKEN(affinity4, "affinity4");
-    ADD_KEY_TOKEN(affinity5, "affinity5");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (affinity_type.is_set || is_set(affinity_type.yfilter)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
-    if (affinity1.is_set || is_set(affinity1.yfilter)) leaf_name_data.push_back(affinity1.get_name_leafdata());
-    if (affinity2.is_set || is_set(affinity2.yfilter)) leaf_name_data.push_back(affinity2.get_name_leafdata());
-    if (affinity3.is_set || is_set(affinity3.yfilter)) leaf_name_data.push_back(affinity3.get_name_leafdata());
-    if (affinity4.is_set || is_set(affinity4.yfilter)) leaf_name_data.push_back(affinity4.get_name_leafdata());
-    if (affinity5.is_set || is_set(affinity5.yfilter)) leaf_name_data.push_back(affinity5.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-        affinity_type.value_namespace = name_space;
-        affinity_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1 = value;
-        affinity1.value_namespace = name_space;
-        affinity1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2 = value;
-        affinity2.value_namespace = name_space;
-        affinity2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3 = value;
-        affinity3.value_namespace = name_space;
-        affinity3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity4")
-    {
-        affinity4 = value;
-        affinity4.value_namespace = name_space;
-        affinity4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity5")
-    {
-        affinity5 = value;
-        affinity5.value_namespace = name_space;
-        affinity5.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type.yfilter = yfilter;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1.yfilter = yfilter;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2.yfilter = yfilter;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3.yfilter = yfilter;
-    }
-    if(value_path == "affinity4")
-    {
-        affinity4.yfilter = yfilter;
-    }
-    if(value_path == "affinity5")
-    {
-        affinity5.yfilter = yfilter;
-    }
-}
-
-bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3" || name == "affinity4" || name == "affinity5")
-        return true;
-    return false;
-}
-
 const Enum::YLeaf MplsTeBackupBandwidthClass::class0 {0, "class0"};
 const Enum::YLeaf MplsTeBackupBandwidthClass::class1 {1, "class1"};
 const Enum::YLeaf MplsTeBackupBandwidthClass::any_class {9, "any-class"};
@@ -20497,6 +20536,7 @@ const Enum::YLeaf MplsTeSwitchingEncode::sondet_sdh {5, "sondet-sdh"};
 
 const Enum::YLeaf MplsTePathSelectionMetric::igp {1, "igp"};
 const Enum::YLeaf MplsTePathSelectionMetric::te {2, "te"};
+const Enum::YLeaf MplsTePathSelectionMetric::delay {4, "delay"};
 
 const Enum::YLeaf MplsTePathOptionProtection::active {0, "active"};
 const Enum::YLeaf MplsTePathOptionProtection::protecting {1, "protecting"};

@@ -12,6 +12,42 @@
 namespace cisco_ios_xe {
 namespace cisco_routing_ext {
 
+class Igrp : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
+{
+    public:
+        Igrp();
+        ~Igrp();
+
+
+}; // Igrp
+
+class Nhrp : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
+{
+    public:
+        Nhrp();
+        ~Nhrp();
+
+
+}; // Nhrp
+
+class Hsrp : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
+{
+    public:
+        Hsrp();
+        ~Hsrp();
+
+
+}; // Hsrp
+
+class Rip : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
+{
+    public:
+        Rip();
+        ~Rip();
+
+
+}; // Rip
+
 class Bgp : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
@@ -21,14 +57,14 @@ class Bgp : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 
 }; // Bgp
 
-class Mobile : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
+class Lisp : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
-        Mobile();
-        ~Mobile();
+        Lisp();
+        ~Lisp();
 
 
-}; // Mobile
+}; // Lisp
 
 class Eigrp : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
@@ -47,15 +83,6 @@ class IsIs : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 
 
 }; // IsIs
-
-class Rip : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
-{
-    public:
-        Rip();
-        ~Rip();
-
-
-}; // Rip
 
 
 }

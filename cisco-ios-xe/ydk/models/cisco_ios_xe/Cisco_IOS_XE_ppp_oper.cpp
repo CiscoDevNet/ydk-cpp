@@ -1049,7 +1049,9 @@ PppData::Pppoe::PppoeStatistics::PppoeStatistics()
     pppoe_padi_pkts{YType::uint32, "pppoe-padi-pkts"},
     pppoe_pado_pkts{YType::uint32, "pppoe-pado-pkts"},
     pppoe_padr_pkts{YType::uint32, "pppoe-padr-pkts"},
-    pppoe_pads_pkts{YType::uint32, "pppoe-pads-pkts"}
+    pppoe_pads_pkts{YType::uint32, "pppoe-pads-pkts"},
+    pppoe_padt_pkts{YType::uint32, "pppoe-padt-pkts"},
+    invalid_discovery_pkts{YType::uint32, "invalid-discovery-pkts"}
 {
 
     yang_name = "pppoe-statistics"; yang_parent_name = "pppoe"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
@@ -1065,7 +1067,9 @@ bool PppData::Pppoe::PppoeStatistics::has_data() const
     return pppoe_padi_pkts.is_set
 	|| pppoe_pado_pkts.is_set
 	|| pppoe_padr_pkts.is_set
-	|| pppoe_pads_pkts.is_set;
+	|| pppoe_pads_pkts.is_set
+	|| pppoe_padt_pkts.is_set
+	|| invalid_discovery_pkts.is_set;
 }
 
 bool PppData::Pppoe::PppoeStatistics::has_operation() const
@@ -1074,7 +1078,9 @@ bool PppData::Pppoe::PppoeStatistics::has_operation() const
 	|| ydk::is_set(pppoe_padi_pkts.yfilter)
 	|| ydk::is_set(pppoe_pado_pkts.yfilter)
 	|| ydk::is_set(pppoe_padr_pkts.yfilter)
-	|| ydk::is_set(pppoe_pads_pkts.yfilter);
+	|| ydk::is_set(pppoe_pads_pkts.yfilter)
+	|| ydk::is_set(pppoe_padt_pkts.yfilter)
+	|| ydk::is_set(invalid_discovery_pkts.yfilter);
 }
 
 std::string PppData::Pppoe::PppoeStatistics::get_absolute_path() const
@@ -1099,6 +1105,8 @@ std::vector<std::pair<std::string, LeafData> > PppData::Pppoe::PppoeStatistics::
     if (pppoe_pado_pkts.is_set || is_set(pppoe_pado_pkts.yfilter)) leaf_name_data.push_back(pppoe_pado_pkts.get_name_leafdata());
     if (pppoe_padr_pkts.is_set || is_set(pppoe_padr_pkts.yfilter)) leaf_name_data.push_back(pppoe_padr_pkts.get_name_leafdata());
     if (pppoe_pads_pkts.is_set || is_set(pppoe_pads_pkts.yfilter)) leaf_name_data.push_back(pppoe_pads_pkts.get_name_leafdata());
+    if (pppoe_padt_pkts.is_set || is_set(pppoe_padt_pkts.yfilter)) leaf_name_data.push_back(pppoe_padt_pkts.get_name_leafdata());
+    if (invalid_discovery_pkts.is_set || is_set(invalid_discovery_pkts.yfilter)) leaf_name_data.push_back(invalid_discovery_pkts.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1142,6 +1150,18 @@ void PppData::Pppoe::PppoeStatistics::set_value(const std::string & value_path, 
         pppoe_pads_pkts.value_namespace = name_space;
         pppoe_pads_pkts.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "pppoe-padt-pkts")
+    {
+        pppoe_padt_pkts = value;
+        pppoe_padt_pkts.value_namespace = name_space;
+        pppoe_padt_pkts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid-discovery-pkts")
+    {
+        invalid_discovery_pkts = value;
+        invalid_discovery_pkts.value_namespace = name_space;
+        invalid_discovery_pkts.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void PppData::Pppoe::PppoeStatistics::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1162,11 +1182,19 @@ void PppData::Pppoe::PppoeStatistics::set_filter(const std::string & value_path,
     {
         pppoe_pads_pkts.yfilter = yfilter;
     }
+    if(value_path == "pppoe-padt-pkts")
+    {
+        pppoe_padt_pkts.yfilter = yfilter;
+    }
+    if(value_path == "invalid-discovery-pkts")
+    {
+        invalid_discovery_pkts.yfilter = yfilter;
+    }
 }
 
 bool PppData::Pppoe::PppoeStatistics::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "pppoe-padi-pkts" || name == "pppoe-pado-pkts" || name == "pppoe-padr-pkts" || name == "pppoe-pads-pkts")
+    if(name == "pppoe-padi-pkts" || name == "pppoe-pado-pkts" || name == "pppoe-padr-pkts" || name == "pppoe-pads-pkts" || name == "pppoe-padt-pkts" || name == "invalid-discovery-pkts")
         return true;
     return false;
 }

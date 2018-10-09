@@ -6,6 +6,7 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_l2vpn_cfg_0.hpp"
 #include "Cisco_IOS_XR_l2vpn_cfg_1.hpp"
+#include "Cisco_IOS_XR_l2vpn_cfg_2.hpp"
 
 using namespace ydk;
 
@@ -836,6 +837,7 @@ L2vpn::Database::Database()
     , xconnect_groups(std::make_shared<L2vpn::Database::XconnectGroups>())
     , bridge_domain_groups(std::make_shared<L2vpn::Database::BridgeDomainGroups>())
     , pseudowire_classes(std::make_shared<L2vpn::Database::PseudowireClasses>())
+    , vlan_switches(std::make_shared<L2vpn::Database::VlanSwitches>())
     , flexible_xconnect_service_table(std::make_shared<L2vpn::Database::FlexibleXconnectServiceTable>())
     , redundancy(std::make_shared<L2vpn::Database::Redundancy>())
 {
@@ -843,6 +845,7 @@ L2vpn::Database::Database()
     xconnect_groups->parent = this;
     bridge_domain_groups->parent = this;
     pseudowire_classes->parent = this;
+    vlan_switches->parent = this;
     flexible_xconnect_service_table->parent = this;
     redundancy->parent = this;
 
@@ -860,6 +863,7 @@ bool L2vpn::Database::has_data() const
 	|| (xconnect_groups !=  nullptr && xconnect_groups->has_data())
 	|| (bridge_domain_groups !=  nullptr && bridge_domain_groups->has_data())
 	|| (pseudowire_classes !=  nullptr && pseudowire_classes->has_data())
+	|| (vlan_switches !=  nullptr && vlan_switches->has_data())
 	|| (flexible_xconnect_service_table !=  nullptr && flexible_xconnect_service_table->has_data())
 	|| (redundancy !=  nullptr && redundancy->has_data());
 }
@@ -871,6 +875,7 @@ bool L2vpn::Database::has_operation() const
 	|| (xconnect_groups !=  nullptr && xconnect_groups->has_operation())
 	|| (bridge_domain_groups !=  nullptr && bridge_domain_groups->has_operation())
 	|| (pseudowire_classes !=  nullptr && pseudowire_classes->has_operation())
+	|| (vlan_switches !=  nullptr && vlan_switches->has_operation())
 	|| (flexible_xconnect_service_table !=  nullptr && flexible_xconnect_service_table->has_operation())
 	|| (redundancy !=  nullptr && redundancy->has_operation());
 }
@@ -936,6 +941,15 @@ std::shared_ptr<Entity> L2vpn::Database::get_child_by_name(const std::string & c
         return pseudowire_classes;
     }
 
+    if(child_yang_name == "vlan-switches")
+    {
+        if(vlan_switches == nullptr)
+        {
+            vlan_switches = std::make_shared<L2vpn::Database::VlanSwitches>();
+        }
+        return vlan_switches;
+    }
+
     if(child_yang_name == "flexible-xconnect-service-table")
     {
         if(flexible_xconnect_service_table == nullptr)
@@ -981,6 +995,11 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::get_children() c
         children["pseudowire-classes"] = pseudowire_classes;
     }
 
+    if(vlan_switches != nullptr)
+    {
+        children["vlan-switches"] = vlan_switches;
+    }
+
     if(flexible_xconnect_service_table != nullptr)
     {
         children["flexible-xconnect-service-table"] = flexible_xconnect_service_table;
@@ -1004,7 +1023,7 @@ void L2vpn::Database::set_filter(const std::string & value_path, YFilter yfilter
 
 bool L2vpn::Database::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "g8032-rings" || name == "xconnect-groups" || name == "bridge-domain-groups" || name == "pseudowire-classes" || name == "flexible-xconnect-service-table" || name == "redundancy")
+    if(name == "g8032-rings" || name == "xconnect-groups" || name == "bridge-domain-groups" || name == "pseudowire-classes" || name == "vlan-switches" || name == "flexible-xconnect-service-table" || name == "redundancy")
         return true;
     return false;
 }
@@ -8494,6 +8513,7 @@ L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDom
     , access_vfis(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::AccessVfis>())
     , bd_pseudowires(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires>())
     , vfis(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis>())
+    , bridge_domainvnis(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainvnis>())
     , bd_attachment_circuits(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits>())
     , bd_pseudowire_evpns(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns>())
     , ip_source_guard(std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard>())
@@ -8509,6 +8529,7 @@ L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDom
     access_vfis->parent = this;
     bd_pseudowires->parent = this;
     vfis->parent = this;
+    bridge_domainvnis->parent = this;
     bd_attachment_circuits->parent = this;
     bd_pseudowire_evpns->parent = this;
     ip_source_guard->parent = this;
@@ -8546,6 +8567,7 @@ bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| (access_vfis !=  nullptr && access_vfis->has_data())
 	|| (bd_pseudowires !=  nullptr && bd_pseudowires->has_data())
 	|| (vfis !=  nullptr && vfis->has_data())
+	|| (bridge_domainvnis !=  nullptr && bridge_domainvnis->has_data())
 	|| (bd_attachment_circuits !=  nullptr && bd_attachment_circuits->has_data())
 	|| (bd_pseudowire_evpns !=  nullptr && bd_pseudowire_evpns->has_data())
 	|| (ip_source_guard !=  nullptr && ip_source_guard->has_data())
@@ -8577,6 +8599,7 @@ bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| (access_vfis !=  nullptr && access_vfis->has_operation())
 	|| (bd_pseudowires !=  nullptr && bd_pseudowires->has_operation())
 	|| (vfis !=  nullptr && vfis->has_operation())
+	|| (bridge_domainvnis !=  nullptr && bridge_domainvnis->has_operation())
 	|| (bd_attachment_circuits !=  nullptr && bd_attachment_circuits->has_operation())
 	|| (bd_pseudowire_evpns !=  nullptr && bd_pseudowire_evpns->has_operation())
 	|| (ip_source_guard !=  nullptr && ip_source_guard->has_operation())
@@ -8696,6 +8719,15 @@ std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
         return vfis;
     }
 
+    if(child_yang_name == "bridge-domainvnis")
+    {
+        if(bridge_domainvnis == nullptr)
+        {
+            bridge_domainvnis = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainvnis>();
+        }
+        return bridge_domainvnis;
+    }
+
     if(child_yang_name == "bd-attachment-circuits")
     {
         if(bd_attachment_circuits == nullptr)
@@ -8791,6 +8823,11 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGrou
     if(vfis != nullptr)
     {
         children["vfis"] = vfis;
+    }
+
+    if(bridge_domainvnis != nullptr)
+    {
+        children["bridge-domainvnis"] = bridge_domainvnis;
     }
 
     if(bd_attachment_circuits != nullptr)
@@ -8951,7 +8988,7 @@ void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 
 bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "bd-storm-controls" || name == "member-vnis" || name == "bridge-domain-mac" || name == "nv-satellite" || name == "bridge-domain-pbb" || name == "bridge-domain-evis" || name == "access-vfis" || name == "bd-pseudowires" || name == "vfis" || name == "bd-attachment-circuits" || name == "bd-pseudowire-evpns" || name == "ip-source-guard" || name == "dai" || name == "routed-interfaces" || name == "name" || name == "coupled-mode" || name == "shutdown" || name == "flooding-unknown-unicast" || name == "igmp-snooping-disable" || name == "transport-mode" || name == "mld-snooping" || name == "bridge-domain-mtu" || name == "dhcp" || name == "bridge-description" || name == "igmp-snooping" || name == "flooding")
+    if(name == "bd-storm-controls" || name == "member-vnis" || name == "bridge-domain-mac" || name == "nv-satellite" || name == "bridge-domain-pbb" || name == "bridge-domain-evis" || name == "access-vfis" || name == "bd-pseudowires" || name == "vfis" || name == "bridge-domainvnis" || name == "bd-attachment-circuits" || name == "bd-pseudowire-evpns" || name == "ip-source-guard" || name == "dai" || name == "routed-interfaces" || name == "name" || name == "coupled-mode" || name == "shutdown" || name == "flooding-unknown-unicast" || name == "igmp-snooping-disable" || name == "transport-mode" || name == "mld-snooping" || name == "bridge-domain-mtu" || name == "dhcp" || name == "bridge-description" || name == "igmp-snooping" || name == "flooding")
         return true;
     return false;
 }
@@ -12396,7 +12433,7 @@ bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 
 L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainEvis::BridgeDomainEvis()
     :
-    bridge_domain_evi(this, {"eviid"})
+    bridge_domain_evi(this, {"vpn_id"})
 {
 
     yang_name = "bridge-domain-evis"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true; 
@@ -12489,7 +12526,7 @@ bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 
 L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainEvis::BridgeDomainEvi::BridgeDomainEvi()
     :
-    eviid{YType::uint32, "eviid"}
+    vpn_id{YType::uint32, "vpn-id"}
 {
 
     yang_name = "bridge-domain-evi"; yang_parent_name = "bridge-domain-evis"; is_top_level_class = false; has_list_ancestor = true; 
@@ -12502,20 +12539,20 @@ L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDom
 bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainEvis::BridgeDomainEvi::has_data() const
 {
     if (is_presence_container) return true;
-    return eviid.is_set;
+    return vpn_id.is_set;
 }
 
 bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainEvis::BridgeDomainEvi::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(eviid.yfilter);
+	|| ydk::is_set(vpn_id.yfilter);
 }
 
 std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainEvis::BridgeDomainEvi::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bridge-domain-evi";
-    ADD_KEY_TOKEN(eviid, "eviid");
+    ADD_KEY_TOKEN(vpn_id, "vpn-id");
     return path_buffer.str();
 }
 
@@ -12523,7 +12560,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (eviid.is_set || is_set(eviid.yfilter)) leaf_name_data.push_back(eviid.get_name_leafdata());
+    if (vpn_id.is_set || is_set(vpn_id.yfilter)) leaf_name_data.push_back(vpn_id.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -12543,25 +12580,25 @@ std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGrou
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainEvis::BridgeDomainEvi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "eviid")
+    if(value_path == "vpn-id")
     {
-        eviid = value;
-        eviid.value_namespace = name_space;
-        eviid.value_namespace_prefix = name_space_prefix;
+        vpn_id = value;
+        vpn_id.value_namespace = name_space;
+        vpn_id.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainEvis::BridgeDomainEvi::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "eviid")
+    if(value_path == "vpn-id")
     {
-        eviid.yfilter = yfilter;
+        vpn_id.yfilter = yfilter;
     }
 }
 
 bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainEvis::BridgeDomainEvi::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "eviid")
+    if(name == "vpn-id")
         return true;
     return false;
 }
@@ -17219,6 +17256,11 @@ const Enum::YLeaf FlowLabelTlvCode::disable {8, "disable"};
 const Enum::YLeaf MacAging::absolute {1, "absolute"};
 const Enum::YLeaf MacAging::inactivity {2, "inactivity"};
 
+const Enum::YLeaf MacLimitAction::none {0, "none"};
+const Enum::YLeaf MacLimitAction::flood {1, "flood"};
+const Enum::YLeaf MacLimitAction::no_flood {2, "no-flood"};
+const Enum::YLeaf MacLimitAction::shutdown {3, "shutdown"};
+
 const Enum::YLeaf BdmacLearn::disable_learning {2, "disable-learning"};
 
 const Enum::YLeaf Interworking::ethernet {1, "ethernet"};
@@ -17242,11 +17284,6 @@ const Enum::YLeaf ErpPort::interface {3, "interface"};
 
 const Enum::YLeaf BgpRouteTarget::no_stitching {0, "no-stitching"};
 const Enum::YLeaf BgpRouteTarget::stitching {1, "stitching"};
-
-const Enum::YLeaf MacLimitAction::none {0, "none"};
-const Enum::YLeaf MacLimitAction::flood {1, "flood"};
-const Enum::YLeaf MacLimitAction::no_flood {2, "no-flood"};
-const Enum::YLeaf MacLimitAction::shutdown {3, "shutdown"};
 
 const Enum::YLeaf FlowLabelLoadBalance::off {0, "off"};
 const Enum::YLeaf FlowLabelLoadBalance::receive {1, "receive"};
@@ -17315,7 +17352,11 @@ const Enum::YLeaf BgpRouteTargetFormat::es_import {1538, "es-import"};
 const Enum::YLeaf MplsSignalingProtocol::none {1, "none"};
 const Enum::YLeaf MplsSignalingProtocol::ldp {4, "ldp"};
 
+const Enum::YLeaf EvpnSide::evpn_side_regular {1, "evpn-side-regular"};
 const Enum::YLeaf EvpnSide::evpn_side_stitching {2, "evpn-side-stitching"};
+
+const Enum::YLeaf ControlWord::enable {1, "enable"};
+const Enum::YLeaf ControlWord::disable {2, "disable"};
 
 const Enum::YLeaf PreferredPath::te_tunnel {2, "te-tunnel"};
 const Enum::YLeaf PreferredPath::ip_tunnel {3, "ip-tunnel"};
@@ -17331,13 +17372,9 @@ const Enum::YLeaf MplsSequencing::receive {2, "receive"};
 const Enum::YLeaf MplsSequencing::both {4, "both"};
 
 const Enum::YLeaf EthernetSegmentLoadBalance::single_active {1, "single-active"};
-const Enum::YLeaf EthernetSegmentLoadBalance::port_active {2, "port-active"};
 
 const Enum::YLeaf L2tpSignalingProtocol::none {1, "none"};
 const Enum::YLeaf L2tpSignalingProtocol::l2tpv3 {2, "l2tpv3"};
-
-const Enum::YLeaf ControlWord::enable {1, "enable"};
-const Enum::YLeaf ControlWord::disable {2, "disable"};
 
 const Enum::YLeaf EthernetSegmentIdentifier::type0 {0, "type0"};
 const Enum::YLeaf EthernetSegmentIdentifier::legacy {128, "legacy"};
@@ -17350,6 +17387,8 @@ const Enum::YLeaf LdpVplsId::ipv4_address {266, "ipv4-address"};
 
 const Enum::YLeaf L2Encapsulation::vlan {4, "vlan"};
 const Enum::YLeaf L2Encapsulation::ethernet {5, "ethernet"};
+
+const Enum::YLeaf EthernetSegmentServiceCarving::hrw {2, "hrw"};
 
 const Enum::YLeaf L2vpnLogging::enable {1, "enable"};
 const Enum::YLeaf L2vpnLogging::disable {2, "disable"};

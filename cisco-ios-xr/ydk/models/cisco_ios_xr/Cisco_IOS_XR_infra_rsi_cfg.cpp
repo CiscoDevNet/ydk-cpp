@@ -549,8 +549,8 @@ Vrfs::Vrf::Afs::Af::Af()
     topology_name{YType::str, "topology-name"},
     create{YType::empty, "create"}
         ,
-    bgp(std::make_shared<Vrfs::Vrf::Afs::Af::Bgp>())
-    , maximum_prefix(nullptr) // presence node
+    maximum_prefix(nullptr) // presence node
+    , bgp(std::make_shared<Vrfs::Vrf::Afs::Af::Bgp>())
 {
     bgp->parent = this;
 
@@ -568,8 +568,8 @@ bool Vrfs::Vrf::Afs::Af::has_data() const
 	|| saf_name.is_set
 	|| topology_name.is_set
 	|| create.is_set
-	|| (bgp !=  nullptr && bgp->has_data())
-	|| (maximum_prefix !=  nullptr && maximum_prefix->has_data());
+	|| (maximum_prefix !=  nullptr && maximum_prefix->has_data())
+	|| (bgp !=  nullptr && bgp->has_data());
 }
 
 bool Vrfs::Vrf::Afs::Af::has_operation() const
@@ -579,8 +579,8 @@ bool Vrfs::Vrf::Afs::Af::has_operation() const
 	|| ydk::is_set(saf_name.yfilter)
 	|| ydk::is_set(topology_name.yfilter)
 	|| ydk::is_set(create.yfilter)
-	|| (bgp !=  nullptr && bgp->has_operation())
-	|| (maximum_prefix !=  nullptr && maximum_prefix->has_operation());
+	|| (maximum_prefix !=  nullptr && maximum_prefix->has_operation())
+	|| (bgp !=  nullptr && bgp->has_operation());
 }
 
 std::string Vrfs::Vrf::Afs::Af::get_segment_path() const
@@ -608,15 +608,6 @@ std::vector<std::pair<std::string, LeafData> > Vrfs::Vrf::Afs::Af::get_name_leaf
 
 std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "Cisco-IOS-XR-ipv4-bgp-cfg:bgp")
-    {
-        if(bgp == nullptr)
-        {
-            bgp = std::make_shared<Vrfs::Vrf::Afs::Af::Bgp>();
-        }
-        return bgp;
-    }
-
     if(child_yang_name == "Cisco-IOS-XR-ip-rib-cfg:maximum-prefix")
     {
         if(maximum_prefix == nullptr)
@@ -626,6 +617,15 @@ std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::get_child_by_name(const std::string 
         return maximum_prefix;
     }
 
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-bgp-cfg:bgp")
+    {
+        if(bgp == nullptr)
+        {
+            bgp = std::make_shared<Vrfs::Vrf::Afs::Af::Bgp>();
+        }
+        return bgp;
+    }
+
     return nullptr;
 }
 
@@ -633,14 +633,14 @@ std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::get_children(
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(bgp != nullptr)
-    {
-        children["Cisco-IOS-XR-ipv4-bgp-cfg:bgp"] = bgp;
-    }
-
     if(maximum_prefix != nullptr)
     {
         children["Cisco-IOS-XR-ip-rib-cfg:maximum-prefix"] = maximum_prefix;
+    }
+
+    if(bgp != nullptr)
+    {
+        children["Cisco-IOS-XR-ipv4-bgp-cfg:bgp"] = bgp;
     }
 
     return children;
@@ -696,7 +696,99 @@ void Vrfs::Vrf::Afs::Af::set_filter(const std::string & value_path, YFilter yfil
 
 bool Vrfs::Vrf::Afs::Af::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "bgp" || name == "maximum-prefix" || name == "af-name" || name == "saf-name" || name == "topology-name" || name == "create")
+    if(name == "maximum-prefix" || name == "bgp" || name == "af-name" || name == "saf-name" || name == "topology-name" || name == "create")
+        return true;
+    return false;
+}
+
+Vrfs::Vrf::Afs::Af::MaximumPrefix::MaximumPrefix()
+    :
+    prefix_limit{YType::uint32, "prefix-limit"},
+    mid_threshold{YType::uint32, "mid-threshold"}
+{
+
+    yang_name = "maximum-prefix"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Vrfs::Vrf::Afs::Af::MaximumPrefix::~MaximumPrefix()
+{
+}
+
+bool Vrfs::Vrf::Afs::Af::MaximumPrefix::has_data() const
+{
+    if (is_presence_container) return true;
+    return prefix_limit.is_set
+	|| mid_threshold.is_set;
+}
+
+bool Vrfs::Vrf::Afs::Af::MaximumPrefix::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix_limit.yfilter)
+	|| ydk::is_set(mid_threshold.yfilter);
+}
+
+std::string Vrfs::Vrf::Afs::Af::MaximumPrefix::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rib-cfg:maximum-prefix";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vrfs::Vrf::Afs::Af::MaximumPrefix::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix_limit.is_set || is_set(prefix_limit.yfilter)) leaf_name_data.push_back(prefix_limit.get_name_leafdata());
+    if (mid_threshold.is_set || is_set(mid_threshold.yfilter)) leaf_name_data.push_back(mid_threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::MaximumPrefix::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Vrfs::Vrf::Afs::Af::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix-limit")
+    {
+        prefix_limit = value;
+        prefix_limit.value_namespace = name_space;
+        prefix_limit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mid-threshold")
+    {
+        mid_threshold = value;
+        mid_threshold.value_namespace = name_space;
+        mid_threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Vrfs::Vrf::Afs::Af::MaximumPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix-limit")
+    {
+        prefix_limit.yfilter = yfilter;
+    }
+    if(value_path == "mid-threshold")
+    {
+        mid_threshold.yfilter = yfilter;
+    }
+}
+
+bool Vrfs::Vrf::Afs::Af::MaximumPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-limit" || name == "mid-threshold")
         return true;
     return false;
 }
@@ -2260,98 +2352,6 @@ bool Vrfs::Vrf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::has_leaf_or_child_of
     return false;
 }
 
-Vrfs::Vrf::Afs::Af::MaximumPrefix::MaximumPrefix()
-    :
-    prefix_limit{YType::uint32, "prefix-limit"},
-    mid_threshold{YType::uint32, "mid-threshold"}
-{
-
-    yang_name = "maximum-prefix"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Vrfs::Vrf::Afs::Af::MaximumPrefix::~MaximumPrefix()
-{
-}
-
-bool Vrfs::Vrf::Afs::Af::MaximumPrefix::has_data() const
-{
-    if (is_presence_container) return true;
-    return prefix_limit.is_set
-	|| mid_threshold.is_set;
-}
-
-bool Vrfs::Vrf::Afs::Af::MaximumPrefix::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(prefix_limit.yfilter)
-	|| ydk::is_set(mid_threshold.yfilter);
-}
-
-std::string Vrfs::Vrf::Afs::Af::MaximumPrefix::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-rib-cfg:maximum-prefix";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Vrfs::Vrf::Afs::Af::MaximumPrefix::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (prefix_limit.is_set || is_set(prefix_limit.yfilter)) leaf_name_data.push_back(prefix_limit.get_name_leafdata());
-    if (mid_threshold.is_set || is_set(mid_threshold.yfilter)) leaf_name_data.push_back(mid_threshold.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Vrfs::Vrf::Afs::Af::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Vrfs::Vrf::Afs::Af::MaximumPrefix::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Vrfs::Vrf::Afs::Af::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "prefix-limit")
-    {
-        prefix_limit = value;
-        prefix_limit.value_namespace = name_space;
-        prefix_limit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mid-threshold")
-    {
-        mid_threshold = value;
-        mid_threshold.value_namespace = name_space;
-        mid_threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Vrfs::Vrf::Afs::Af::MaximumPrefix::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "prefix-limit")
-    {
-        prefix_limit.yfilter = yfilter;
-    }
-    if(value_path == "mid-threshold")
-    {
-        mid_threshold.yfilter = yfilter;
-    }
-}
-
-bool Vrfs::Vrf::Afs::Af::MaximumPrefix::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "prefix-limit" || name == "mid-threshold")
-        return true;
-    return false;
-}
-
 Vrfs::Vrf::BgpGlobal::BgpGlobal()
     :
     route_distinguisher(std::make_shared<Vrfs::Vrf::BgpGlobal::RouteDistinguisher>())
@@ -3052,8 +3052,8 @@ GlobalAf::Afs::Af::Af()
     topology_name{YType::str, "topology-name"},
     create{YType::empty, "create"}
         ,
-    bgp(std::make_shared<GlobalAf::Afs::Af::Bgp>())
-    , maximum_prefix(nullptr) // presence node
+    maximum_prefix(nullptr) // presence node
+    , bgp(std::make_shared<GlobalAf::Afs::Af::Bgp>())
 {
     bgp->parent = this;
 
@@ -3071,8 +3071,8 @@ bool GlobalAf::Afs::Af::has_data() const
 	|| saf_name.is_set
 	|| topology_name.is_set
 	|| create.is_set
-	|| (bgp !=  nullptr && bgp->has_data())
-	|| (maximum_prefix !=  nullptr && maximum_prefix->has_data());
+	|| (maximum_prefix !=  nullptr && maximum_prefix->has_data())
+	|| (bgp !=  nullptr && bgp->has_data());
 }
 
 bool GlobalAf::Afs::Af::has_operation() const
@@ -3082,8 +3082,8 @@ bool GlobalAf::Afs::Af::has_operation() const
 	|| ydk::is_set(saf_name.yfilter)
 	|| ydk::is_set(topology_name.yfilter)
 	|| ydk::is_set(create.yfilter)
-	|| (bgp !=  nullptr && bgp->has_operation())
-	|| (maximum_prefix !=  nullptr && maximum_prefix->has_operation());
+	|| (maximum_prefix !=  nullptr && maximum_prefix->has_operation())
+	|| (bgp !=  nullptr && bgp->has_operation());
 }
 
 std::string GlobalAf::Afs::Af::get_absolute_path() const
@@ -3118,15 +3118,6 @@ std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::get_name_leaf_
 
 std::shared_ptr<Entity> GlobalAf::Afs::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "Cisco-IOS-XR-ipv4-bgp-cfg:bgp")
-    {
-        if(bgp == nullptr)
-        {
-            bgp = std::make_shared<GlobalAf::Afs::Af::Bgp>();
-        }
-        return bgp;
-    }
-
     if(child_yang_name == "Cisco-IOS-XR-ip-rib-cfg:maximum-prefix")
     {
         if(maximum_prefix == nullptr)
@@ -3136,6 +3127,15 @@ std::shared_ptr<Entity> GlobalAf::Afs::Af::get_child_by_name(const std::string &
         return maximum_prefix;
     }
 
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-bgp-cfg:bgp")
+    {
+        if(bgp == nullptr)
+        {
+            bgp = std::make_shared<GlobalAf::Afs::Af::Bgp>();
+        }
+        return bgp;
+    }
+
     return nullptr;
 }
 
@@ -3143,14 +3143,14 @@ std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::get_children()
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(bgp != nullptr)
-    {
-        children["Cisco-IOS-XR-ipv4-bgp-cfg:bgp"] = bgp;
-    }
-
     if(maximum_prefix != nullptr)
     {
         children["Cisco-IOS-XR-ip-rib-cfg:maximum-prefix"] = maximum_prefix;
+    }
+
+    if(bgp != nullptr)
+    {
+        children["Cisco-IOS-XR-ipv4-bgp-cfg:bgp"] = bgp;
     }
 
     return children;
@@ -3206,7 +3206,99 @@ void GlobalAf::Afs::Af::set_filter(const std::string & value_path, YFilter yfilt
 
 bool GlobalAf::Afs::Af::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "bgp" || name == "maximum-prefix" || name == "af-name" || name == "saf-name" || name == "topology-name" || name == "create")
+    if(name == "maximum-prefix" || name == "bgp" || name == "af-name" || name == "saf-name" || name == "topology-name" || name == "create")
+        return true;
+    return false;
+}
+
+GlobalAf::Afs::Af::MaximumPrefix::MaximumPrefix()
+    :
+    prefix_limit{YType::uint32, "prefix-limit"},
+    mid_threshold{YType::uint32, "mid-threshold"}
+{
+
+    yang_name = "maximum-prefix"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+GlobalAf::Afs::Af::MaximumPrefix::~MaximumPrefix()
+{
+}
+
+bool GlobalAf::Afs::Af::MaximumPrefix::has_data() const
+{
+    if (is_presence_container) return true;
+    return prefix_limit.is_set
+	|| mid_threshold.is_set;
+}
+
+bool GlobalAf::Afs::Af::MaximumPrefix::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix_limit.yfilter)
+	|| ydk::is_set(mid_threshold.yfilter);
+}
+
+std::string GlobalAf::Afs::Af::MaximumPrefix::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rib-cfg:maximum-prefix";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::MaximumPrefix::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix_limit.is_set || is_set(prefix_limit.yfilter)) leaf_name_data.push_back(prefix_limit.get_name_leafdata());
+    if (mid_threshold.is_set || is_set(mid_threshold.yfilter)) leaf_name_data.push_back(mid_threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> GlobalAf::Afs::Af::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::MaximumPrefix::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void GlobalAf::Afs::Af::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix-limit")
+    {
+        prefix_limit = value;
+        prefix_limit.value_namespace = name_space;
+        prefix_limit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mid-threshold")
+    {
+        mid_threshold = value;
+        mid_threshold.value_namespace = name_space;
+        mid_threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void GlobalAf::Afs::Af::MaximumPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix-limit")
+    {
+        prefix_limit.yfilter = yfilter;
+    }
+    if(value_path == "mid-threshold")
+    {
+        mid_threshold.yfilter = yfilter;
+    }
+}
+
+bool GlobalAf::Afs::Af::MaximumPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-limit" || name == "mid-threshold")
         return true;
     return false;
 }
@@ -4766,98 +4858,6 @@ void GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::set_filter(const std:
 bool GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-policy-name" || name == "advertise-as-vpn")
-        return true;
-    return false;
-}
-
-GlobalAf::Afs::Af::MaximumPrefix::MaximumPrefix()
-    :
-    prefix_limit{YType::uint32, "prefix-limit"},
-    mid_threshold{YType::uint32, "mid-threshold"}
-{
-
-    yang_name = "maximum-prefix"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-GlobalAf::Afs::Af::MaximumPrefix::~MaximumPrefix()
-{
-}
-
-bool GlobalAf::Afs::Af::MaximumPrefix::has_data() const
-{
-    if (is_presence_container) return true;
-    return prefix_limit.is_set
-	|| mid_threshold.is_set;
-}
-
-bool GlobalAf::Afs::Af::MaximumPrefix::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(prefix_limit.yfilter)
-	|| ydk::is_set(mid_threshold.yfilter);
-}
-
-std::string GlobalAf::Afs::Af::MaximumPrefix::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-rib-cfg:maximum-prefix";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::MaximumPrefix::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (prefix_limit.is_set || is_set(prefix_limit.yfilter)) leaf_name_data.push_back(prefix_limit.get_name_leafdata());
-    if (mid_threshold.is_set || is_set(mid_threshold.yfilter)) leaf_name_data.push_back(mid_threshold.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> GlobalAf::Afs::Af::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> GlobalAf::Afs::Af::MaximumPrefix::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void GlobalAf::Afs::Af::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "prefix-limit")
-    {
-        prefix_limit = value;
-        prefix_limit.value_namespace = name_space;
-        prefix_limit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mid-threshold")
-    {
-        mid_threshold = value;
-        mid_threshold.value_namespace = name_space;
-        mid_threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void GlobalAf::Afs::Af::MaximumPrefix::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "prefix-limit")
-    {
-        prefix_limit.yfilter = yfilter;
-    }
-    if(value_path == "mid-threshold")
-    {
-        mid_threshold.yfilter = yfilter;
-    }
-}
-
-bool GlobalAf::Afs::Af::MaximumPrefix::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "prefix-limit" || name == "mid-threshold")
         return true;
     return false;
 }

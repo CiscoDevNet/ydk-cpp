@@ -14,6 +14,76 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_te_cfg {
 
 
+class MplsTe::GmplsNni::TunnelHeads : public ydk::Entity
+{
+    public:
+        TunnelHeads();
+        ~TunnelHeads();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class TunnelHead; //type: MplsTe::GmplsNni::TunnelHeads::TunnelHead
+
+        ydk::YList tunnel_head;
+        
+}; // MplsTe::GmplsNni::TunnelHeads
+
+
+class MplsTe::GmplsNni::TunnelHeads::TunnelHead : public ydk::Entity
+{
+    public:
+        TunnelHead();
+        ~TunnelHead();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf announce_srlg; //type: empty
+        ydk::YLeaf restore_lsp_shutdown; //type: empty
+        ydk::YLeaf current_lsp_shutdown; //type: empty
+        ydk::YLeaf path_selection_metric; //type: MplsTePathSelectionMetric
+        ydk::YLeaf payload; //type: OtnPayload
+        ydk::YLeaf standby_lsp_shutdown; //type: empty
+        ydk::YLeaf shutdown; //type: empty
+        ydk::YLeaf path_protection_attribute_set_profile; //type: string
+        ydk::YLeaf record_route; //type: empty
+        ydk::YLeaf signalled_name; //type: string
+        class SignalledBandwidth; //type: MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth
+        class Destination; //type: MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination
+        class ProtectionSwitching; //type: MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching
+        class Logging; //type: MplsTe::GmplsNni::TunnelHeads::TunnelHead::Logging
+        class PathOptions; //type: MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions
+        class StaticUni; //type: MplsTe::GmplsNni::TunnelHeads::TunnelHead::StaticUni
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth> signalled_bandwidth;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination> destination;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching> protection_switching;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TunnelHeads::TunnelHead::Logging> logging;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions> path_options;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TunnelHeads::TunnelHead::StaticUni> static_uni;
+        
+}; // MplsTe::GmplsNni::TunnelHeads::TunnelHead
+
+
 class MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth : public ydk::Entity
 {
     public:

@@ -120,7 +120,9 @@ const Enum::YLeaf LptsFlow::dhcp4 {93, "dhcp4"};
 const Enum::YLeaf LptsFlow::dhcp6 {94, "dhcp6"};
 const Enum::YLeaf LptsFlow::onepk {95, "onepk"};
 const Enum::YLeaf LptsFlow::exr {96, "exr"};
-const Enum::YLeaf LptsFlow::platform_limit {98, "platform-limit"};
+const Enum::YLeaf LptsFlow::bob_ietf {97, "bob-ietf"};
+const Enum::YLeaf LptsFlow::xipc_throt {98, "xipc-throt"};
+const Enum::YLeaf LptsFlow::platform_limit {99, "platform-limit"};
 
 const Enum::YLeaf LptsDynamicFlowConfig::flows_config {0, "flows-config"};
 const Enum::YLeaf LptsDynamicFlowConfig::platform_config {1, "platform-config"};

@@ -1125,7 +1125,7 @@ bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstanc
 
 Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::RxLink_()
     :
-    link{YType::int32, "link"},
+    link{YType::uint32, "link"},
     speed{YType::uint32, "speed"},
     stage{YType::enumeration, "stage"},
     is_link_valid{YType::boolean, "is-link-valid"},
@@ -2562,7 +2562,12 @@ Fia::Nodes::Node::DriverInformation::DriverInformation()
     issu_abort_rcvd{YType::boolean, "issu-abort-rcvd"},
     fabric_mode{YType::uint8, "fabric-mode"},
     fc_mode{YType::enumeration, "fc-mode"},
-    board_rev_id{YType::uint32, "board-rev-id"}
+    board_rev_id{YType::uint32, "board-rev-id"},
+    all_wb_insync{YType::boolean, "all-wb-insync"},
+    all_wb_insync_since{YType::uint32, "all-wb-insync-since"},
+    all_startup_wb_insync{YType::boolean, "all-startup-wb-insync"},
+    plane_a_bitmap{YType::uint32, "plane-a-bitmap"},
+    plane_b_bitmap{YType::uint32, "plane-b-bitmap"}
         ,
     device_info(this, {})
     , card_info(this, {})
@@ -2631,7 +2636,12 @@ bool Fia::Nodes::Node::DriverInformation::has_data() const
 	|| issu_abort_rcvd.is_set
 	|| fabric_mode.is_set
 	|| fc_mode.is_set
-	|| board_rev_id.is_set;
+	|| board_rev_id.is_set
+	|| all_wb_insync.is_set
+	|| all_wb_insync_since.is_set
+	|| all_startup_wb_insync.is_set
+	|| plane_a_bitmap.is_set
+	|| plane_b_bitmap.is_set;
 }
 
 bool Fia::Nodes::Node::DriverInformation::has_operation() const
@@ -2690,7 +2700,12 @@ bool Fia::Nodes::Node::DriverInformation::has_operation() const
 	|| ydk::is_set(issu_abort_rcvd.yfilter)
 	|| ydk::is_set(fabric_mode.yfilter)
 	|| ydk::is_set(fc_mode.yfilter)
-	|| ydk::is_set(board_rev_id.yfilter);
+	|| ydk::is_set(board_rev_id.yfilter)
+	|| ydk::is_set(all_wb_insync.yfilter)
+	|| ydk::is_set(all_wb_insync_since.yfilter)
+	|| ydk::is_set(all_startup_wb_insync.yfilter)
+	|| ydk::is_set(plane_a_bitmap.yfilter)
+	|| ydk::is_set(plane_b_bitmap.yfilter);
 }
 
 std::string Fia::Nodes::Node::DriverInformation::get_segment_path() const
@@ -2748,6 +2763,11 @@ std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::DriverInformati
     if (fabric_mode.is_set || is_set(fabric_mode.yfilter)) leaf_name_data.push_back(fabric_mode.get_name_leafdata());
     if (fc_mode.is_set || is_set(fc_mode.yfilter)) leaf_name_data.push_back(fc_mode.get_name_leafdata());
     if (board_rev_id.is_set || is_set(board_rev_id.yfilter)) leaf_name_data.push_back(board_rev_id.get_name_leafdata());
+    if (all_wb_insync.is_set || is_set(all_wb_insync.yfilter)) leaf_name_data.push_back(all_wb_insync.get_name_leafdata());
+    if (all_wb_insync_since.is_set || is_set(all_wb_insync_since.yfilter)) leaf_name_data.push_back(all_wb_insync_since.get_name_leafdata());
+    if (all_startup_wb_insync.is_set || is_set(all_startup_wb_insync.yfilter)) leaf_name_data.push_back(all_startup_wb_insync.get_name_leafdata());
+    if (plane_a_bitmap.is_set || is_set(plane_a_bitmap.yfilter)) leaf_name_data.push_back(plane_a_bitmap.get_name_leafdata());
+    if (plane_b_bitmap.is_set || is_set(plane_b_bitmap.yfilter)) leaf_name_data.push_back(plane_b_bitmap.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3065,6 +3085,36 @@ void Fia::Nodes::Node::DriverInformation::set_value(const std::string & value_pa
         board_rev_id.value_namespace = name_space;
         board_rev_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "all-wb-insync")
+    {
+        all_wb_insync = value;
+        all_wb_insync.value_namespace = name_space;
+        all_wb_insync.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "all-wb-insync-since")
+    {
+        all_wb_insync_since = value;
+        all_wb_insync_since.value_namespace = name_space;
+        all_wb_insync_since.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "all-startup-wb-insync")
+    {
+        all_startup_wb_insync = value;
+        all_startup_wb_insync.value_namespace = name_space;
+        all_startup_wb_insync.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "plane-a-bitmap")
+    {
+        plane_a_bitmap = value;
+        plane_a_bitmap.value_namespace = name_space;
+        plane_a_bitmap.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "plane-b-bitmap")
+    {
+        plane_b_bitmap = value;
+        plane_b_bitmap.value_namespace = name_space;
+        plane_b_bitmap.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Fia::Nodes::Node::DriverInformation::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3245,11 +3295,31 @@ void Fia::Nodes::Node::DriverInformation::set_filter(const std::string & value_p
     {
         board_rev_id.yfilter = yfilter;
     }
+    if(value_path == "all-wb-insync")
+    {
+        all_wb_insync.yfilter = yfilter;
+    }
+    if(value_path == "all-wb-insync-since")
+    {
+        all_wb_insync_since.yfilter = yfilter;
+    }
+    if(value_path == "all-startup-wb-insync")
+    {
+        all_startup_wb_insync.yfilter = yfilter;
+    }
+    if(value_path == "plane-a-bitmap")
+    {
+        plane_a_bitmap.yfilter = yfilter;
+    }
+    if(value_path == "plane-b-bitmap")
+    {
+        plane_b_bitmap.yfilter = yfilter;
+    }
 }
 
 bool Fia::Nodes::Node::DriverInformation::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "device-info" || name == "card-info" || name == "drv-version" || name == "coeff-major-rev" || name == "coeff-minor-rev" || name == "functional-role" || name == "issu-role" || name == "node-id" || name == "rack-type" || name == "rack-num" || name == "is-driver-ready" || name == "card-avail-mask" || name == "asic-avail-mask" || name == "exp-asic-avail-mask" || name == "ucmc-ratio" || name == "asic-oper-notify-to-fsdb-pending-bmap" || name == "is-full-fgid-download-req" || name == "is-fgid-download-in-progress" || name == "is-fgid-download-completed" || name == "fsdb-conn-active" || name == "fgid-conn-active" || name == "issu-mgr-conn-active" || name == "fsdb-reg-active" || name == "fgid-reg-active" || name == "issu-mgr-reg-active" || name == "num-pm-conn-reqs" || name == "num-fsdb-conn-reqs" || name == "num-fgid-conn-reqs" || name == "num-fstats-conn-reqs" || name == "num-cm-conn-reqs" || name == "num-issu-mgr-conn-reqs" || name == "num-peer-fia-conn-reqs" || name == "is-gaspp-registered" || name == "is-cih-registered" || name == "drvr-initial-startup-timestamp" || name == "drvr-current-startup-timestamp" || name == "num-intf-ports" || name == "uc-weight" || name == "respawn-count" || name == "total-asics" || name == "issu-ready-ntfy-pending" || name == "issu-abort-sent" || name == "issu-abort-rcvd" || name == "fabric-mode" || name == "fc-mode" || name == "board-rev-id")
+    if(name == "device-info" || name == "card-info" || name == "drv-version" || name == "coeff-major-rev" || name == "coeff-minor-rev" || name == "functional-role" || name == "issu-role" || name == "node-id" || name == "rack-type" || name == "rack-num" || name == "is-driver-ready" || name == "card-avail-mask" || name == "asic-avail-mask" || name == "exp-asic-avail-mask" || name == "ucmc-ratio" || name == "asic-oper-notify-to-fsdb-pending-bmap" || name == "is-full-fgid-download-req" || name == "is-fgid-download-in-progress" || name == "is-fgid-download-completed" || name == "fsdb-conn-active" || name == "fgid-conn-active" || name == "issu-mgr-conn-active" || name == "fsdb-reg-active" || name == "fgid-reg-active" || name == "issu-mgr-reg-active" || name == "num-pm-conn-reqs" || name == "num-fsdb-conn-reqs" || name == "num-fgid-conn-reqs" || name == "num-fstats-conn-reqs" || name == "num-cm-conn-reqs" || name == "num-issu-mgr-conn-reqs" || name == "num-peer-fia-conn-reqs" || name == "is-gaspp-registered" || name == "is-cih-registered" || name == "drvr-initial-startup-timestamp" || name == "drvr-current-startup-timestamp" || name == "num-intf-ports" || name == "uc-weight" || name == "respawn-count" || name == "total-asics" || name == "issu-ready-ntfy-pending" || name == "issu-abort-sent" || name == "issu-abort-rcvd" || name == "fabric-mode" || name == "fc-mode" || name == "board-rev-id" || name == "all-wb-insync" || name == "all-wb-insync-since" || name == "all-startup-wb-insync" || name == "plane-a-bitmap" || name == "plane-b-bitmap")
         return true;
     return false;
 }
@@ -3266,7 +3336,13 @@ Fia::Nodes::Node::DriverInformation::DeviceInfo::DeviceInfo()
     last_init_cause{YType::enumeration, "last-init-cause"},
     num_pon_resets{YType::uint32, "num-pon-resets"},
     num_hard_resets{YType::uint32, "num-hard-resets"},
-    local_switch_state{YType::boolean, "local-switch-state"}
+    local_switch_state{YType::boolean, "local-switch-state"},
+    startup_wb_mtime_str{YType::str, "startup-wb-mtime-str"},
+    startup_wb_outof_sync{YType::boolean, "startup-wb-outof-sync"},
+    local_wb_sync_end_str{YType::str, "local-wb-sync-end-str"},
+    remote_wb_sync_end_str{YType::str, "remote-wb-sync-end-str"},
+    local_wb_sync_pending{YType::boolean, "local-wb-sync-pending"},
+    sdk_delay_msec{YType::uint32, "sdk-delay-msec"}
         ,
     asic_id(std::make_shared<Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId>())
 {
@@ -3293,6 +3369,12 @@ bool Fia::Nodes::Node::DriverInformation::DeviceInfo::has_data() const
 	|| num_pon_resets.is_set
 	|| num_hard_resets.is_set
 	|| local_switch_state.is_set
+	|| startup_wb_mtime_str.is_set
+	|| startup_wb_outof_sync.is_set
+	|| local_wb_sync_end_str.is_set
+	|| remote_wb_sync_end_str.is_set
+	|| local_wb_sync_pending.is_set
+	|| sdk_delay_msec.is_set
 	|| (asic_id !=  nullptr && asic_id->has_data());
 }
 
@@ -3310,6 +3392,12 @@ bool Fia::Nodes::Node::DriverInformation::DeviceInfo::has_operation() const
 	|| ydk::is_set(num_pon_resets.yfilter)
 	|| ydk::is_set(num_hard_resets.yfilter)
 	|| ydk::is_set(local_switch_state.yfilter)
+	|| ydk::is_set(startup_wb_mtime_str.yfilter)
+	|| ydk::is_set(startup_wb_outof_sync.yfilter)
+	|| ydk::is_set(local_wb_sync_end_str.yfilter)
+	|| ydk::is_set(remote_wb_sync_end_str.yfilter)
+	|| ydk::is_set(local_wb_sync_pending.yfilter)
+	|| ydk::is_set(sdk_delay_msec.yfilter)
 	|| (asic_id !=  nullptr && asic_id->has_operation());
 }
 
@@ -3335,6 +3423,12 @@ std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::DriverInformati
     if (num_pon_resets.is_set || is_set(num_pon_resets.yfilter)) leaf_name_data.push_back(num_pon_resets.get_name_leafdata());
     if (num_hard_resets.is_set || is_set(num_hard_resets.yfilter)) leaf_name_data.push_back(num_hard_resets.get_name_leafdata());
     if (local_switch_state.is_set || is_set(local_switch_state.yfilter)) leaf_name_data.push_back(local_switch_state.get_name_leafdata());
+    if (startup_wb_mtime_str.is_set || is_set(startup_wb_mtime_str.yfilter)) leaf_name_data.push_back(startup_wb_mtime_str.get_name_leafdata());
+    if (startup_wb_outof_sync.is_set || is_set(startup_wb_outof_sync.yfilter)) leaf_name_data.push_back(startup_wb_outof_sync.get_name_leafdata());
+    if (local_wb_sync_end_str.is_set || is_set(local_wb_sync_end_str.yfilter)) leaf_name_data.push_back(local_wb_sync_end_str.get_name_leafdata());
+    if (remote_wb_sync_end_str.is_set || is_set(remote_wb_sync_end_str.yfilter)) leaf_name_data.push_back(remote_wb_sync_end_str.get_name_leafdata());
+    if (local_wb_sync_pending.is_set || is_set(local_wb_sync_pending.yfilter)) leaf_name_data.push_back(local_wb_sync_pending.get_name_leafdata());
+    if (sdk_delay_msec.is_set || is_set(sdk_delay_msec.yfilter)) leaf_name_data.push_back(sdk_delay_msec.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3434,6 +3528,42 @@ void Fia::Nodes::Node::DriverInformation::DeviceInfo::set_value(const std::strin
         local_switch_state.value_namespace = name_space;
         local_switch_state.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "startup-wb-mtime-str")
+    {
+        startup_wb_mtime_str = value;
+        startup_wb_mtime_str.value_namespace = name_space;
+        startup_wb_mtime_str.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "startup-wb-outof-sync")
+    {
+        startup_wb_outof_sync = value;
+        startup_wb_outof_sync.value_namespace = name_space;
+        startup_wb_outof_sync.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-wb-sync-end-str")
+    {
+        local_wb_sync_end_str = value;
+        local_wb_sync_end_str.value_namespace = name_space;
+        local_wb_sync_end_str.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-wb-sync-end-str")
+    {
+        remote_wb_sync_end_str = value;
+        remote_wb_sync_end_str.value_namespace = name_space;
+        remote_wb_sync_end_str.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-wb-sync-pending")
+    {
+        local_wb_sync_pending = value;
+        local_wb_sync_pending.value_namespace = name_space;
+        local_wb_sync_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sdk-delay-msec")
+    {
+        sdk_delay_msec = value;
+        sdk_delay_msec.value_namespace = name_space;
+        sdk_delay_msec.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Fia::Nodes::Node::DriverInformation::DeviceInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3482,11 +3612,35 @@ void Fia::Nodes::Node::DriverInformation::DeviceInfo::set_filter(const std::stri
     {
         local_switch_state.yfilter = yfilter;
     }
+    if(value_path == "startup-wb-mtime-str")
+    {
+        startup_wb_mtime_str.yfilter = yfilter;
+    }
+    if(value_path == "startup-wb-outof-sync")
+    {
+        startup_wb_outof_sync.yfilter = yfilter;
+    }
+    if(value_path == "local-wb-sync-end-str")
+    {
+        local_wb_sync_end_str.yfilter = yfilter;
+    }
+    if(value_path == "remote-wb-sync-end-str")
+    {
+        remote_wb_sync_end_str.yfilter = yfilter;
+    }
+    if(value_path == "local-wb-sync-pending")
+    {
+        local_wb_sync_pending.yfilter = yfilter;
+    }
+    if(value_path == "sdk-delay-msec")
+    {
+        sdk_delay_msec.yfilter = yfilter;
+    }
 }
 
 bool Fia::Nodes::Node::DriverInformation::DeviceInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "asic-id" || name == "is-valid" || name == "fapid" || name == "hotplug-event" || name == "slice-state" || name == "admin-state" || name == "oper-state" || name == "asic-state" || name == "last-init-cause" || name == "num-pon-resets" || name == "num-hard-resets" || name == "local-switch-state")
+    if(name == "asic-id" || name == "is-valid" || name == "fapid" || name == "hotplug-event" || name == "slice-state" || name == "admin-state" || name == "oper-state" || name == "asic-state" || name == "last-init-cause" || name == "num-pon-resets" || name == "num-hard-resets" || name == "local-switch-state" || name == "startup-wb-mtime-str" || name == "startup-wb-outof-sync" || name == "local-wb-sync-end-str" || name == "remote-wb-sync-end-str" || name == "local-wb-sync-pending" || name == "sdk-delay-msec")
         return true;
     return false;
 }
@@ -4393,7 +4547,7 @@ bool Fia::Nodes::Node::ClearStatistics::AsicInstances::has_leaf_or_child_of_name
 Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::AsicInstance()
     :
     asic_instance{YType::uint32, "asic-instance"},
-    instance{YType::int32, "instance"}
+    instance{YType::uint32, "instance"}
 {
 
     yang_name = "asic-instance"; yang_parent_name = "asic-instances"; is_top_level_class = false; has_list_ancestor = true; 
@@ -5136,7 +5290,7 @@ bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::T
 
 Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::TxLink_()
     :
-    link{YType::int32, "link"},
+    link{YType::uint32, "link"},
     speed{YType::uint32, "speed"},
     stage{YType::uint8, "stage"},
     is_link_valid{YType::boolean, "is-link-valid"},
@@ -7063,7 +7217,7 @@ bool Fia::Nodes::Node::OirHistory::Flags::has_leaf_or_child_of_name(const std::s
 
 Fia::Nodes::Node::OirHistory::Flags::Flag::Flag()
     :
-    flag{YType::int32, "flag"}
+    flag{YType::uint32, "flag"}
         ,
     slots(std::make_shared<Fia::Nodes::Node::OirHistory::Flags::Flag::Slots>())
 {
@@ -7254,7 +7408,7 @@ bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::has_leaf_or_child_of_name
 
 Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::Slot()
     :
-    slot{YType::int32, "slot"},
+    slot{YType::uint32, "slot"},
     drv_version{YType::uint32, "drv-version"},
     coeff_major_rev{YType::uint32, "coeff-major-rev"},
     coeff_minor_rev{YType::uint32, "coeff-minor-rev"},
@@ -7298,7 +7452,12 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::Slot()
     issu_abort_rcvd{YType::boolean, "issu-abort-rcvd"},
     fabric_mode{YType::uint8, "fabric-mode"},
     fc_mode{YType::enumeration, "fc-mode"},
-    board_rev_id{YType::uint32, "board-rev-id"}
+    board_rev_id{YType::uint32, "board-rev-id"},
+    all_wb_insync{YType::boolean, "all-wb-insync"},
+    all_wb_insync_since{YType::uint32, "all-wb-insync-since"},
+    all_startup_wb_insync{YType::boolean, "all-startup-wb-insync"},
+    plane_a_bitmap{YType::uint32, "plane-a-bitmap"},
+    plane_b_bitmap{YType::uint32, "plane-b-bitmap"}
         ,
     device_info(this, {})
     , card_info(this, {})
@@ -7368,7 +7527,12 @@ bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::has_data() const
 	|| issu_abort_rcvd.is_set
 	|| fabric_mode.is_set
 	|| fc_mode.is_set
-	|| board_rev_id.is_set;
+	|| board_rev_id.is_set
+	|| all_wb_insync.is_set
+	|| all_wb_insync_since.is_set
+	|| all_startup_wb_insync.is_set
+	|| plane_a_bitmap.is_set
+	|| plane_b_bitmap.is_set;
 }
 
 bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::has_operation() const
@@ -7428,7 +7592,12 @@ bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::has_operation() con
 	|| ydk::is_set(issu_abort_rcvd.yfilter)
 	|| ydk::is_set(fabric_mode.yfilter)
 	|| ydk::is_set(fc_mode.yfilter)
-	|| ydk::is_set(board_rev_id.yfilter);
+	|| ydk::is_set(board_rev_id.yfilter)
+	|| ydk::is_set(all_wb_insync.yfilter)
+	|| ydk::is_set(all_wb_insync_since.yfilter)
+	|| ydk::is_set(all_startup_wb_insync.yfilter)
+	|| ydk::is_set(plane_a_bitmap.yfilter)
+	|| ydk::is_set(plane_b_bitmap.yfilter);
 }
 
 std::string Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::get_segment_path() const
@@ -7488,6 +7657,11 @@ std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::OirHistory::Fla
     if (fabric_mode.is_set || is_set(fabric_mode.yfilter)) leaf_name_data.push_back(fabric_mode.get_name_leafdata());
     if (fc_mode.is_set || is_set(fc_mode.yfilter)) leaf_name_data.push_back(fc_mode.get_name_leafdata());
     if (board_rev_id.is_set || is_set(board_rev_id.yfilter)) leaf_name_data.push_back(board_rev_id.get_name_leafdata());
+    if (all_wb_insync.is_set || is_set(all_wb_insync.yfilter)) leaf_name_data.push_back(all_wb_insync.get_name_leafdata());
+    if (all_wb_insync_since.is_set || is_set(all_wb_insync_since.yfilter)) leaf_name_data.push_back(all_wb_insync_since.get_name_leafdata());
+    if (all_startup_wb_insync.is_set || is_set(all_startup_wb_insync.yfilter)) leaf_name_data.push_back(all_startup_wb_insync.get_name_leafdata());
+    if (plane_a_bitmap.is_set || is_set(plane_a_bitmap.yfilter)) leaf_name_data.push_back(plane_a_bitmap.get_name_leafdata());
+    if (plane_b_bitmap.is_set || is_set(plane_b_bitmap.yfilter)) leaf_name_data.push_back(plane_b_bitmap.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -7811,6 +7985,36 @@ void Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::set_value(const std
         board_rev_id.value_namespace = name_space;
         board_rev_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "all-wb-insync")
+    {
+        all_wb_insync = value;
+        all_wb_insync.value_namespace = name_space;
+        all_wb_insync.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "all-wb-insync-since")
+    {
+        all_wb_insync_since = value;
+        all_wb_insync_since.value_namespace = name_space;
+        all_wb_insync_since.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "all-startup-wb-insync")
+    {
+        all_startup_wb_insync = value;
+        all_startup_wb_insync.value_namespace = name_space;
+        all_startup_wb_insync.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "plane-a-bitmap")
+    {
+        plane_a_bitmap = value;
+        plane_a_bitmap.value_namespace = name_space;
+        plane_a_bitmap.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "plane-b-bitmap")
+    {
+        plane_b_bitmap = value;
+        plane_b_bitmap.value_namespace = name_space;
+        plane_b_bitmap.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::set_filter(const std::string & value_path, YFilter yfilter)
@@ -7995,11 +8199,31 @@ void Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::set_filter(const st
     {
         board_rev_id.yfilter = yfilter;
     }
+    if(value_path == "all-wb-insync")
+    {
+        all_wb_insync.yfilter = yfilter;
+    }
+    if(value_path == "all-wb-insync-since")
+    {
+        all_wb_insync_since.yfilter = yfilter;
+    }
+    if(value_path == "all-startup-wb-insync")
+    {
+        all_startup_wb_insync.yfilter = yfilter;
+    }
+    if(value_path == "plane-a-bitmap")
+    {
+        plane_a_bitmap.yfilter = yfilter;
+    }
+    if(value_path == "plane-b-bitmap")
+    {
+        plane_b_bitmap.yfilter = yfilter;
+    }
 }
 
 bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "device-info" || name == "card-info" || name == "slot" || name == "drv-version" || name == "coeff-major-rev" || name == "coeff-minor-rev" || name == "functional-role" || name == "issu-role" || name == "node-id" || name == "rack-type" || name == "rack-num" || name == "is-driver-ready" || name == "card-avail-mask" || name == "asic-avail-mask" || name == "exp-asic-avail-mask" || name == "ucmc-ratio" || name == "asic-oper-notify-to-fsdb-pending-bmap" || name == "is-full-fgid-download-req" || name == "is-fgid-download-in-progress" || name == "is-fgid-download-completed" || name == "fsdb-conn-active" || name == "fgid-conn-active" || name == "issu-mgr-conn-active" || name == "fsdb-reg-active" || name == "fgid-reg-active" || name == "issu-mgr-reg-active" || name == "num-pm-conn-reqs" || name == "num-fsdb-conn-reqs" || name == "num-fgid-conn-reqs" || name == "num-fstats-conn-reqs" || name == "num-cm-conn-reqs" || name == "num-issu-mgr-conn-reqs" || name == "num-peer-fia-conn-reqs" || name == "is-gaspp-registered" || name == "is-cih-registered" || name == "drvr-initial-startup-timestamp" || name == "drvr-current-startup-timestamp" || name == "num-intf-ports" || name == "uc-weight" || name == "respawn-count" || name == "total-asics" || name == "issu-ready-ntfy-pending" || name == "issu-abort-sent" || name == "issu-abort-rcvd" || name == "fabric-mode" || name == "fc-mode" || name == "board-rev-id")
+    if(name == "device-info" || name == "card-info" || name == "slot" || name == "drv-version" || name == "coeff-major-rev" || name == "coeff-minor-rev" || name == "functional-role" || name == "issu-role" || name == "node-id" || name == "rack-type" || name == "rack-num" || name == "is-driver-ready" || name == "card-avail-mask" || name == "asic-avail-mask" || name == "exp-asic-avail-mask" || name == "ucmc-ratio" || name == "asic-oper-notify-to-fsdb-pending-bmap" || name == "is-full-fgid-download-req" || name == "is-fgid-download-in-progress" || name == "is-fgid-download-completed" || name == "fsdb-conn-active" || name == "fgid-conn-active" || name == "issu-mgr-conn-active" || name == "fsdb-reg-active" || name == "fgid-reg-active" || name == "issu-mgr-reg-active" || name == "num-pm-conn-reqs" || name == "num-fsdb-conn-reqs" || name == "num-fgid-conn-reqs" || name == "num-fstats-conn-reqs" || name == "num-cm-conn-reqs" || name == "num-issu-mgr-conn-reqs" || name == "num-peer-fia-conn-reqs" || name == "is-gaspp-registered" || name == "is-cih-registered" || name == "drvr-initial-startup-timestamp" || name == "drvr-current-startup-timestamp" || name == "num-intf-ports" || name == "uc-weight" || name == "respawn-count" || name == "total-asics" || name == "issu-ready-ntfy-pending" || name == "issu-abort-sent" || name == "issu-abort-rcvd" || name == "fabric-mode" || name == "fc-mode" || name == "board-rev-id" || name == "all-wb-insync" || name == "all-wb-insync-since" || name == "all-startup-wb-insync" || name == "plane-a-bitmap" || name == "plane-b-bitmap")
         return true;
     return false;
 }
@@ -8016,7 +8240,13 @@ Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::DeviceInfo()
     last_init_cause{YType::enumeration, "last-init-cause"},
     num_pon_resets{YType::uint32, "num-pon-resets"},
     num_hard_resets{YType::uint32, "num-hard-resets"},
-    local_switch_state{YType::boolean, "local-switch-state"}
+    local_switch_state{YType::boolean, "local-switch-state"},
+    startup_wb_mtime_str{YType::str, "startup-wb-mtime-str"},
+    startup_wb_outof_sync{YType::boolean, "startup-wb-outof-sync"},
+    local_wb_sync_end_str{YType::str, "local-wb-sync-end-str"},
+    remote_wb_sync_end_str{YType::str, "remote-wb-sync-end-str"},
+    local_wb_sync_pending{YType::boolean, "local-wb-sync-pending"},
+    sdk_delay_msec{YType::uint32, "sdk-delay-msec"}
         ,
     asic_id(std::make_shared<Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::AsicId>())
 {
@@ -8043,6 +8273,12 @@ bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::has_dat
 	|| num_pon_resets.is_set
 	|| num_hard_resets.is_set
 	|| local_switch_state.is_set
+	|| startup_wb_mtime_str.is_set
+	|| startup_wb_outof_sync.is_set
+	|| local_wb_sync_end_str.is_set
+	|| remote_wb_sync_end_str.is_set
+	|| local_wb_sync_pending.is_set
+	|| sdk_delay_msec.is_set
 	|| (asic_id !=  nullptr && asic_id->has_data());
 }
 
@@ -8060,6 +8296,12 @@ bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::has_ope
 	|| ydk::is_set(num_pon_resets.yfilter)
 	|| ydk::is_set(num_hard_resets.yfilter)
 	|| ydk::is_set(local_switch_state.yfilter)
+	|| ydk::is_set(startup_wb_mtime_str.yfilter)
+	|| ydk::is_set(startup_wb_outof_sync.yfilter)
+	|| ydk::is_set(local_wb_sync_end_str.yfilter)
+	|| ydk::is_set(remote_wb_sync_end_str.yfilter)
+	|| ydk::is_set(local_wb_sync_pending.yfilter)
+	|| ydk::is_set(sdk_delay_msec.yfilter)
 	|| (asic_id !=  nullptr && asic_id->has_operation());
 }
 
@@ -8085,6 +8327,12 @@ std::vector<std::pair<std::string, LeafData> > Fia::Nodes::Node::OirHistory::Fla
     if (num_pon_resets.is_set || is_set(num_pon_resets.yfilter)) leaf_name_data.push_back(num_pon_resets.get_name_leafdata());
     if (num_hard_resets.is_set || is_set(num_hard_resets.yfilter)) leaf_name_data.push_back(num_hard_resets.get_name_leafdata());
     if (local_switch_state.is_set || is_set(local_switch_state.yfilter)) leaf_name_data.push_back(local_switch_state.get_name_leafdata());
+    if (startup_wb_mtime_str.is_set || is_set(startup_wb_mtime_str.yfilter)) leaf_name_data.push_back(startup_wb_mtime_str.get_name_leafdata());
+    if (startup_wb_outof_sync.is_set || is_set(startup_wb_outof_sync.yfilter)) leaf_name_data.push_back(startup_wb_outof_sync.get_name_leafdata());
+    if (local_wb_sync_end_str.is_set || is_set(local_wb_sync_end_str.yfilter)) leaf_name_data.push_back(local_wb_sync_end_str.get_name_leafdata());
+    if (remote_wb_sync_end_str.is_set || is_set(remote_wb_sync_end_str.yfilter)) leaf_name_data.push_back(remote_wb_sync_end_str.get_name_leafdata());
+    if (local_wb_sync_pending.is_set || is_set(local_wb_sync_pending.yfilter)) leaf_name_data.push_back(local_wb_sync_pending.get_name_leafdata());
+    if (sdk_delay_msec.is_set || is_set(sdk_delay_msec.yfilter)) leaf_name_data.push_back(sdk_delay_msec.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -8184,6 +8432,42 @@ void Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::set_val
         local_switch_state.value_namespace = name_space;
         local_switch_state.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "startup-wb-mtime-str")
+    {
+        startup_wb_mtime_str = value;
+        startup_wb_mtime_str.value_namespace = name_space;
+        startup_wb_mtime_str.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "startup-wb-outof-sync")
+    {
+        startup_wb_outof_sync = value;
+        startup_wb_outof_sync.value_namespace = name_space;
+        startup_wb_outof_sync.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-wb-sync-end-str")
+    {
+        local_wb_sync_end_str = value;
+        local_wb_sync_end_str.value_namespace = name_space;
+        local_wb_sync_end_str.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-wb-sync-end-str")
+    {
+        remote_wb_sync_end_str = value;
+        remote_wb_sync_end_str.value_namespace = name_space;
+        remote_wb_sync_end_str.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-wb-sync-pending")
+    {
+        local_wb_sync_pending = value;
+        local_wb_sync_pending.value_namespace = name_space;
+        local_wb_sync_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sdk-delay-msec")
+    {
+        sdk_delay_msec = value;
+        sdk_delay_msec.value_namespace = name_space;
+        sdk_delay_msec.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -8232,11 +8516,35 @@ void Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::set_fil
     {
         local_switch_state.yfilter = yfilter;
     }
+    if(value_path == "startup-wb-mtime-str")
+    {
+        startup_wb_mtime_str.yfilter = yfilter;
+    }
+    if(value_path == "startup-wb-outof-sync")
+    {
+        startup_wb_outof_sync.yfilter = yfilter;
+    }
+    if(value_path == "local-wb-sync-end-str")
+    {
+        local_wb_sync_end_str.yfilter = yfilter;
+    }
+    if(value_path == "remote-wb-sync-end-str")
+    {
+        remote_wb_sync_end_str.yfilter = yfilter;
+    }
+    if(value_path == "local-wb-sync-pending")
+    {
+        local_wb_sync_pending.yfilter = yfilter;
+    }
+    if(value_path == "sdk-delay-msec")
+    {
+        sdk_delay_msec.yfilter = yfilter;
+    }
 }
 
 bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "asic-id" || name == "is-valid" || name == "fapid" || name == "hotplug-event" || name == "slice-state" || name == "admin-state" || name == "oper-state" || name == "asic-state" || name == "last-init-cause" || name == "num-pon-resets" || name == "num-hard-resets" || name == "local-switch-state")
+    if(name == "asic-id" || name == "is-valid" || name == "fapid" || name == "hotplug-event" || name == "slice-state" || name == "admin-state" || name == "oper-state" || name == "asic-state" || name == "last-init-cause" || name == "num-pon-resets" || name == "num-hard-resets" || name == "local-switch-state" || name == "startup-wb-mtime-str" || name == "startup-wb-outof-sync" || name == "local-wb-sync-end-str" || name == "remote-wb-sync-end-str" || name == "local-wb-sync-pending" || name == "sdk-delay-msec")
         return true;
     return false;
 }
@@ -10002,7 +10310,7 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacLink()
     :
-    link{YType::int32, "link"}
+    link{YType::uint32, "link"}
         ,
     fmac_asic(this, {"asic"})
 {
@@ -10110,7 +10418,7 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 
 Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::FmacAsic()
     :
-    asic{YType::int32, "asic"},
+    asic{YType::uint32, "asic"},
     valid{YType::boolean, "valid"},
     rack_no{YType::uint32, "rack-no"},
     slot_no{YType::uint32, "slot-no"},

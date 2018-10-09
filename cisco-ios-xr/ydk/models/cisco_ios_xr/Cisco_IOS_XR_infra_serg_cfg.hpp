@@ -98,10 +98,12 @@ class SessionRedundancy::Groups::Group : public ydk::Entity
         class Peer; //type: SessionRedundancy::Groups::Group::Peer
         class RevertiveTimer; //type: SessionRedundancy::Groups::Group::RevertiveTimer
         class InterfaceList; //type: SessionRedundancy::Groups::Group::InterfaceList
+        class PoolList; //type: SessionRedundancy::Groups::Group::PoolList
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_cfg::SessionRedundancy::Groups::Group::Peer> peer;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_cfg::SessionRedundancy::Groups::Group::RevertiveTimer> revertive_timer;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_cfg::SessionRedundancy::Groups::Group::InterfaceList> interface_list;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_cfg::SessionRedundancy::Groups::Group::PoolList> pool_list;
         
 }; // SessionRedundancy::Groups::Group
 
@@ -290,6 +292,74 @@ class SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface : p
         ydk::YLeaf interface_id; //type: uint32
 
 }; // SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface
+
+
+class SessionRedundancy::Groups::Group::PoolList : public ydk::Entity
+{
+    public:
+        PoolList();
+        ~PoolList();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enable; //type: empty
+        class PoolNames; //type: SessionRedundancy::Groups::Group::PoolList::PoolNames
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_serg_cfg::SessionRedundancy::Groups::Group::PoolList::PoolNames> pool_names;
+        
+}; // SessionRedundancy::Groups::Group::PoolList
+
+
+class SessionRedundancy::Groups::Group::PoolList::PoolNames : public ydk::Entity
+{
+    public:
+        PoolNames();
+        ~PoolNames();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class PoolName; //type: SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName
+
+        ydk::YList pool_name;
+        
+}; // SessionRedundancy::Groups::Group::PoolList::PoolNames
+
+
+class SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName : public ydk::Entity
+{
+    public:
+        PoolName();
+        ~PoolName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf pool_name; //type: string
+
+}; // SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName
 
 
 class SessionRedundancy::RevertiveTimer : public ydk::Entity

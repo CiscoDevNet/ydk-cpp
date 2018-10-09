@@ -352,10 +352,12 @@ Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::InterfaceStatistic()
     idb(std::make_shared<Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb>())
     , auth(std::make_shared<Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth>())
     , supp(std::make_shared<Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp>())
+    , local_eap(std::make_shared<Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap>())
 {
     idb->parent = this;
     auth->parent = this;
     supp->parent = this;
+    local_eap->parent = this;
 
     yang_name = "interface-statistic"; yang_parent_name = "interface-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -372,7 +374,8 @@ bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::has_data() cons
 	|| pae.is_set
 	|| (idb !=  nullptr && idb->has_data())
 	|| (auth !=  nullptr && auth->has_data())
-	|| (supp !=  nullptr && supp->has_data());
+	|| (supp !=  nullptr && supp->has_data())
+	|| (local_eap !=  nullptr && local_eap->has_data());
 }
 
 bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::has_operation() const
@@ -383,7 +386,8 @@ bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::has_operation()
 	|| ydk::is_set(pae.yfilter)
 	|| (idb !=  nullptr && idb->has_operation())
 	|| (auth !=  nullptr && auth->has_operation())
-	|| (supp !=  nullptr && supp->has_operation());
+	|| (supp !=  nullptr && supp->has_operation())
+	|| (local_eap !=  nullptr && local_eap->has_operation());
 }
 
 std::string Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::get_absolute_path() const
@@ -442,6 +446,15 @@ std::shared_ptr<Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatist
         return supp;
     }
 
+    if(child_yang_name == "local-eap")
+    {
+        if(local_eap == nullptr)
+        {
+            local_eap = std::make_shared<Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap>();
+        }
+        return local_eap;
+    }
+
     return nullptr;
 }
 
@@ -462,6 +475,11 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1x::Statistics::InterfaceStati
     if(supp != nullptr)
     {
         children["supp"] = supp;
+    }
+
+    if(local_eap != nullptr)
+    {
+        children["local-eap"] = local_eap;
     }
 
     return children;
@@ -507,7 +525,7 @@ void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::set_filter(cons
 
 bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "idb" || name == "auth" || name == "supp" || name == "name" || name == "interface-name" || name == "pae")
+    if(name == "idb" || name == "auth" || name == "supp" || name == "local-eap" || name == "name" || name == "interface-name" || name == "pae")
         return true;
     return false;
 }
@@ -630,8 +648,12 @@ Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::Auth()
     rx_total{YType::uint32, "rx-total"},
     tx_req{YType::uint32, "tx-req"},
     tx_reqid{YType::uint32, "tx-reqid"},
-    tx_total{YType::uint32, "tx-total"}
+    tx_total{YType::uint32, "tx-total"},
+    packet_drop_no_config_received{YType::uint32, "packet-drop-no-config-received"}
+        ,
+    port_control(std::make_shared<Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl>())
 {
+    port_control->parent = this;
 
     yang_name = "auth"; yang_parent_name = "interface-statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -653,7 +675,9 @@ bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::has_data(
 	|| rx_total.is_set
 	|| tx_req.is_set
 	|| tx_reqid.is_set
-	|| tx_total.is_set;
+	|| tx_total.is_set
+	|| packet_drop_no_config_received.is_set
+	|| (port_control !=  nullptr && port_control->has_data());
 }
 
 bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::has_operation() const
@@ -669,7 +693,9 @@ bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::has_opera
 	|| ydk::is_set(rx_total.yfilter)
 	|| ydk::is_set(tx_req.yfilter)
 	|| ydk::is_set(tx_reqid.yfilter)
-	|| ydk::is_set(tx_total.yfilter);
+	|| ydk::is_set(tx_total.yfilter)
+	|| ydk::is_set(packet_drop_no_config_received.yfilter)
+	|| (port_control !=  nullptr && port_control->has_operation());
 }
 
 std::string Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::get_segment_path() const
@@ -694,6 +720,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Statistics::InterfaceStati
     if (tx_req.is_set || is_set(tx_req.yfilter)) leaf_name_data.push_back(tx_req.get_name_leafdata());
     if (tx_reqid.is_set || is_set(tx_reqid.yfilter)) leaf_name_data.push_back(tx_reqid.get_name_leafdata());
     if (tx_total.is_set || is_set(tx_total.yfilter)) leaf_name_data.push_back(tx_total.get_name_leafdata());
+    if (packet_drop_no_config_received.is_set || is_set(packet_drop_no_config_received.yfilter)) leaf_name_data.push_back(packet_drop_no_config_received.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -701,6 +728,15 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Statistics::InterfaceStati
 
 std::shared_ptr<Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "port-control")
+    {
+        if(port_control == nullptr)
+        {
+            port_control = std::make_shared<Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl>();
+        }
+        return port_control;
+    }
+
     return nullptr;
 }
 
@@ -708,6 +744,11 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1x::Statistics::InterfaceStati
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(port_control != nullptr)
+    {
+        children["port-control"] = port_control;
+    }
+
     return children;
 }
 
@@ -779,6 +820,12 @@ void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::set_value
         tx_total.value_namespace = name_space;
         tx_total.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "packet-drop-no-config-received")
+    {
+        packet_drop_no_config_received = value;
+        packet_drop_no_config_received.value_namespace = name_space;
+        packet_drop_no_config_received.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::set_filter(const std::string & value_path, YFilter yfilter)
@@ -827,11 +874,163 @@ void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::set_filte
     {
         tx_total.yfilter = yfilter;
     }
+    if(value_path == "packet-drop-no-config-received")
+    {
+        packet_drop_no_config_received.yfilter = yfilter;
+    }
 }
 
 bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rx-start" || name == "rx-logoff" || name == "rx-resp" || name == "rx-resp-id" || name == "rx-invalid" || name == "rx-len-err" || name == "rx-my-mac-err" || name == "rx-total" || name == "tx-req" || name == "tx-reqid" || name == "tx-total")
+    if(name == "port-control" || name == "rx-start" || name == "rx-logoff" || name == "rx-resp" || name == "rx-resp-id" || name == "rx-invalid" || name == "rx-len-err" || name == "rx-my-mac-err" || name == "rx-total" || name == "tx-req" || name == "tx-reqid" || name == "tx-total" || name == "packet-drop-no-config-received")
+        return true;
+    return false;
+}
+
+Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl::PortControl()
+    :
+    enable_succ{YType::uint32, "enable-succ"},
+    enable_fail{YType::uint32, "enable-fail"},
+    add_client_succ{YType::uint32, "add-client-succ"},
+    add_client_fail{YType::uint32, "add-client-fail"},
+    remove_client_succ{YType::uint32, "remove-client-succ"},
+    remove_client_fail{YType::uint32, "remove-client-fail"}
+{
+
+    yang_name = "port-control"; yang_parent_name = "auth"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl::~PortControl()
+{
+}
+
+bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable_succ.is_set
+	|| enable_fail.is_set
+	|| add_client_succ.is_set
+	|| add_client_fail.is_set
+	|| remove_client_succ.is_set
+	|| remove_client_fail.is_set;
+}
+
+bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable_succ.yfilter)
+	|| ydk::is_set(enable_fail.yfilter)
+	|| ydk::is_set(add_client_succ.yfilter)
+	|| ydk::is_set(add_client_fail.yfilter)
+	|| ydk::is_set(remove_client_succ.yfilter)
+	|| ydk::is_set(remove_client_fail.yfilter);
+}
+
+std::string Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port-control";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable_succ.is_set || is_set(enable_succ.yfilter)) leaf_name_data.push_back(enable_succ.get_name_leafdata());
+    if (enable_fail.is_set || is_set(enable_fail.yfilter)) leaf_name_data.push_back(enable_fail.get_name_leafdata());
+    if (add_client_succ.is_set || is_set(add_client_succ.yfilter)) leaf_name_data.push_back(add_client_succ.get_name_leafdata());
+    if (add_client_fail.is_set || is_set(add_client_fail.yfilter)) leaf_name_data.push_back(add_client_fail.get_name_leafdata());
+    if (remove_client_succ.is_set || is_set(remove_client_succ.yfilter)) leaf_name_data.push_back(remove_client_succ.get_name_leafdata());
+    if (remove_client_fail.is_set || is_set(remove_client_fail.yfilter)) leaf_name_data.push_back(remove_client_fail.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable-succ")
+    {
+        enable_succ = value;
+        enable_succ.value_namespace = name_space;
+        enable_succ.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable-fail")
+    {
+        enable_fail = value;
+        enable_fail.value_namespace = name_space;
+        enable_fail.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "add-client-succ")
+    {
+        add_client_succ = value;
+        add_client_succ.value_namespace = name_space;
+        add_client_succ.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "add-client-fail")
+    {
+        add_client_fail = value;
+        add_client_fail.value_namespace = name_space;
+        add_client_fail.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remove-client-succ")
+    {
+        remove_client_succ = value;
+        remove_client_succ.value_namespace = name_space;
+        remove_client_succ.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remove-client-fail")
+    {
+        remove_client_fail = value;
+        remove_client_fail.value_namespace = name_space;
+        remove_client_fail.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable-succ")
+    {
+        enable_succ.yfilter = yfilter;
+    }
+    if(value_path == "enable-fail")
+    {
+        enable_fail.yfilter = yfilter;
+    }
+    if(value_path == "add-client-succ")
+    {
+        add_client_succ.yfilter = yfilter;
+    }
+    if(value_path == "add-client-fail")
+    {
+        add_client_fail.yfilter = yfilter;
+    }
+    if(value_path == "remove-client-succ")
+    {
+        remove_client_succ.yfilter = yfilter;
+    }
+    if(value_path == "remove-client-fail")
+    {
+        remove_client_fail.yfilter = yfilter;
+    }
+}
+
+bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable-succ" || name == "enable-fail" || name == "add-client-succ" || name == "add-client-fail" || name == "remove-client-succ" || name == "remove-client-fail")
         return true;
     return false;
 }
@@ -1022,6 +1221,168 @@ void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::set_filte
 bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rx-req" || name == "rx-invalid" || name == "rx-len-err" || name == "rx-my-mac-err" || name == "rx-total" || name == "tx-start" || name == "tx-logoff" || name == "tx-resp" || name == "tx-total")
+        return true;
+    return false;
+}
+
+Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap::LocalEap()
+    :
+    requests{YType::uint32, "requests"},
+    replies{YType::uint32, "replies"},
+    timeout{YType::uint32, "timeout"},
+    dropped_no_eap{YType::uint32, "dropped-no-eap"},
+    dropped{YType::uint32, "dropped"},
+    success{YType::uint32, "success"},
+    failed{YType::uint32, "failed"}
+{
+
+    yang_name = "local-eap"; yang_parent_name = "interface-statistic"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap::~LocalEap()
+{
+}
+
+bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap::has_data() const
+{
+    if (is_presence_container) return true;
+    return requests.is_set
+	|| replies.is_set
+	|| timeout.is_set
+	|| dropped_no_eap.is_set
+	|| dropped.is_set
+	|| success.is_set
+	|| failed.is_set;
+}
+
+bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(requests.yfilter)
+	|| ydk::is_set(replies.yfilter)
+	|| ydk::is_set(timeout.yfilter)
+	|| ydk::is_set(dropped_no_eap.yfilter)
+	|| ydk::is_set(dropped.yfilter)
+	|| ydk::is_set(success.yfilter)
+	|| ydk::is_set(failed.yfilter);
+}
+
+std::string Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "local-eap";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (requests.is_set || is_set(requests.yfilter)) leaf_name_data.push_back(requests.get_name_leafdata());
+    if (replies.is_set || is_set(replies.yfilter)) leaf_name_data.push_back(replies.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (dropped_no_eap.is_set || is_set(dropped_no_eap.yfilter)) leaf_name_data.push_back(dropped_no_eap.get_name_leafdata());
+    if (dropped.is_set || is_set(dropped.yfilter)) leaf_name_data.push_back(dropped.get_name_leafdata());
+    if (success.is_set || is_set(success.yfilter)) leaf_name_data.push_back(success.get_name_leafdata());
+    if (failed.is_set || is_set(failed.yfilter)) leaf_name_data.push_back(failed.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "requests")
+    {
+        requests = value;
+        requests.value_namespace = name_space;
+        requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "replies")
+    {
+        replies = value;
+        replies.value_namespace = name_space;
+        replies.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dropped-no-eap")
+    {
+        dropped_no_eap = value;
+        dropped_no_eap.value_namespace = name_space;
+        dropped_no_eap.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dropped")
+    {
+        dropped = value;
+        dropped.value_namespace = name_space;
+        dropped.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "success")
+    {
+        success = value;
+        success.value_namespace = name_space;
+        success.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "failed")
+    {
+        failed = value;
+        failed.value_namespace = name_space;
+        failed.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "requests")
+    {
+        requests.yfilter = yfilter;
+    }
+    if(value_path == "replies")
+    {
+        replies.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+    if(value_path == "dropped-no-eap")
+    {
+        dropped_no_eap.yfilter = yfilter;
+    }
+    if(value_path == "dropped")
+    {
+        dropped.yfilter = yfilter;
+    }
+    if(value_path == "success")
+    {
+        success.yfilter = yfilter;
+    }
+    if(value_path == "failed")
+    {
+        failed.yfilter = yfilter;
+    }
+}
+
+bool Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "requests" || name == "replies" || name == "timeout" || name == "dropped-no-eap" || name == "dropped" || name == "success" || name == "failed")
         return true;
     return false;
 }
@@ -1746,8 +2107,12 @@ Dot1x::Nodes::Node::Statistics::GlStats::GlStats()
     :
     tx_total{YType::uint32, "tx-total"},
     rx_total{YType::uint32, "rx-total"},
-    rx_no_idb{YType::uint32, "rx-no-idb"}
+    rx_no_idb{YType::uint32, "rx-no-idb"},
+    packet_drop_no_config_received{YType::uint32, "packet-drop-no-config-received"}
+        ,
+    port_control(std::make_shared<Dot1x::Nodes::Node::Statistics::GlStats::PortControl>())
 {
+    port_control->parent = this;
 
     yang_name = "gl-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -1761,7 +2126,9 @@ bool Dot1x::Nodes::Node::Statistics::GlStats::has_data() const
     if (is_presence_container) return true;
     return tx_total.is_set
 	|| rx_total.is_set
-	|| rx_no_idb.is_set;
+	|| rx_no_idb.is_set
+	|| packet_drop_no_config_received.is_set
+	|| (port_control !=  nullptr && port_control->has_data());
 }
 
 bool Dot1x::Nodes::Node::Statistics::GlStats::has_operation() const
@@ -1769,7 +2136,9 @@ bool Dot1x::Nodes::Node::Statistics::GlStats::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(tx_total.yfilter)
 	|| ydk::is_set(rx_total.yfilter)
-	|| ydk::is_set(rx_no_idb.yfilter);
+	|| ydk::is_set(rx_no_idb.yfilter)
+	|| ydk::is_set(packet_drop_no_config_received.yfilter)
+	|| (port_control !=  nullptr && port_control->has_operation());
 }
 
 std::string Dot1x::Nodes::Node::Statistics::GlStats::get_segment_path() const
@@ -1786,6 +2155,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::G
     if (tx_total.is_set || is_set(tx_total.yfilter)) leaf_name_data.push_back(tx_total.get_name_leafdata());
     if (rx_total.is_set || is_set(rx_total.yfilter)) leaf_name_data.push_back(rx_total.get_name_leafdata());
     if (rx_no_idb.is_set || is_set(rx_no_idb.yfilter)) leaf_name_data.push_back(rx_no_idb.get_name_leafdata());
+    if (packet_drop_no_config_received.is_set || is_set(packet_drop_no_config_received.yfilter)) leaf_name_data.push_back(packet_drop_no_config_received.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1793,6 +2163,15 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::G
 
 std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::GlStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "port-control")
+    {
+        if(port_control == nullptr)
+        {
+            port_control = std::make_shared<Dot1x::Nodes::Node::Statistics::GlStats::PortControl>();
+        }
+        return port_control;
+    }
+
     return nullptr;
 }
 
@@ -1800,6 +2179,11 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::G
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(port_control != nullptr)
+    {
+        children["port-control"] = port_control;
+    }
+
     return children;
 }
 
@@ -1823,6 +2207,12 @@ void Dot1x::Nodes::Node::Statistics::GlStats::set_value(const std::string & valu
         rx_no_idb.value_namespace = name_space;
         rx_no_idb.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "packet-drop-no-config-received")
+    {
+        packet_drop_no_config_received = value;
+        packet_drop_no_config_received.value_namespace = name_space;
+        packet_drop_no_config_received.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Dot1x::Nodes::Node::Statistics::GlStats::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1839,11 +2229,191 @@ void Dot1x::Nodes::Node::Statistics::GlStats::set_filter(const std::string & val
     {
         rx_no_idb.yfilter = yfilter;
     }
+    if(value_path == "packet-drop-no-config-received")
+    {
+        packet_drop_no_config_received.yfilter = yfilter;
+    }
 }
 
 bool Dot1x::Nodes::Node::Statistics::GlStats::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "tx-total" || name == "rx-total" || name == "rx-no-idb")
+    if(name == "port-control" || name == "tx-total" || name == "rx-total" || name == "rx-no-idb" || name == "packet-drop-no-config-received")
+        return true;
+    return false;
+}
+
+Dot1x::Nodes::Node::Statistics::GlStats::PortControl::PortControl()
+    :
+    enable_succ{YType::uint32, "enable-succ"},
+    enable_fail{YType::uint32, "enable-fail"},
+    disable_succ{YType::uint32, "disable-succ"},
+    disable_fail{YType::uint32, "disable-fail"},
+    add_client_succ{YType::uint32, "add-client-succ"},
+    add_client_fail{YType::uint32, "add-client-fail"},
+    remove_client_succ{YType::uint32, "remove-client-succ"},
+    remove_client_fail{YType::uint32, "remove-client-fail"}
+{
+
+    yang_name = "port-control"; yang_parent_name = "gl-stats"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Dot1x::Nodes::Node::Statistics::GlStats::PortControl::~PortControl()
+{
+}
+
+bool Dot1x::Nodes::Node::Statistics::GlStats::PortControl::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable_succ.is_set
+	|| enable_fail.is_set
+	|| disable_succ.is_set
+	|| disable_fail.is_set
+	|| add_client_succ.is_set
+	|| add_client_fail.is_set
+	|| remove_client_succ.is_set
+	|| remove_client_fail.is_set;
+}
+
+bool Dot1x::Nodes::Node::Statistics::GlStats::PortControl::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable_succ.yfilter)
+	|| ydk::is_set(enable_fail.yfilter)
+	|| ydk::is_set(disable_succ.yfilter)
+	|| ydk::is_set(disable_fail.yfilter)
+	|| ydk::is_set(add_client_succ.yfilter)
+	|| ydk::is_set(add_client_fail.yfilter)
+	|| ydk::is_set(remove_client_succ.yfilter)
+	|| ydk::is_set(remove_client_fail.yfilter);
+}
+
+std::string Dot1x::Nodes::Node::Statistics::GlStats::PortControl::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port-control";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::GlStats::PortControl::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable_succ.is_set || is_set(enable_succ.yfilter)) leaf_name_data.push_back(enable_succ.get_name_leafdata());
+    if (enable_fail.is_set || is_set(enable_fail.yfilter)) leaf_name_data.push_back(enable_fail.get_name_leafdata());
+    if (disable_succ.is_set || is_set(disable_succ.yfilter)) leaf_name_data.push_back(disable_succ.get_name_leafdata());
+    if (disable_fail.is_set || is_set(disable_fail.yfilter)) leaf_name_data.push_back(disable_fail.get_name_leafdata());
+    if (add_client_succ.is_set || is_set(add_client_succ.yfilter)) leaf_name_data.push_back(add_client_succ.get_name_leafdata());
+    if (add_client_fail.is_set || is_set(add_client_fail.yfilter)) leaf_name_data.push_back(add_client_fail.get_name_leafdata());
+    if (remove_client_succ.is_set || is_set(remove_client_succ.yfilter)) leaf_name_data.push_back(remove_client_succ.get_name_leafdata());
+    if (remove_client_fail.is_set || is_set(remove_client_fail.yfilter)) leaf_name_data.push_back(remove_client_fail.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::GlStats::PortControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::GlStats::PortControl::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Dot1x::Nodes::Node::Statistics::GlStats::PortControl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable-succ")
+    {
+        enable_succ = value;
+        enable_succ.value_namespace = name_space;
+        enable_succ.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable-fail")
+    {
+        enable_fail = value;
+        enable_fail.value_namespace = name_space;
+        enable_fail.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disable-succ")
+    {
+        disable_succ = value;
+        disable_succ.value_namespace = name_space;
+        disable_succ.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disable-fail")
+    {
+        disable_fail = value;
+        disable_fail.value_namespace = name_space;
+        disable_fail.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "add-client-succ")
+    {
+        add_client_succ = value;
+        add_client_succ.value_namespace = name_space;
+        add_client_succ.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "add-client-fail")
+    {
+        add_client_fail = value;
+        add_client_fail.value_namespace = name_space;
+        add_client_fail.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remove-client-succ")
+    {
+        remove_client_succ = value;
+        remove_client_succ.value_namespace = name_space;
+        remove_client_succ.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remove-client-fail")
+    {
+        remove_client_fail = value;
+        remove_client_fail.value_namespace = name_space;
+        remove_client_fail.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dot1x::Nodes::Node::Statistics::GlStats::PortControl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable-succ")
+    {
+        enable_succ.yfilter = yfilter;
+    }
+    if(value_path == "enable-fail")
+    {
+        enable_fail.yfilter = yfilter;
+    }
+    if(value_path == "disable-succ")
+    {
+        disable_succ.yfilter = yfilter;
+    }
+    if(value_path == "disable-fail")
+    {
+        disable_fail.yfilter = yfilter;
+    }
+    if(value_path == "add-client-succ")
+    {
+        add_client_succ.yfilter = yfilter;
+    }
+    if(value_path == "add-client-fail")
+    {
+        add_client_fail.yfilter = yfilter;
+    }
+    if(value_path == "remove-client-succ")
+    {
+        remove_client_succ.yfilter = yfilter;
+    }
+    if(value_path == "remove-client-fail")
+    {
+        remove_client_fail.yfilter = yfilter;
+    }
+}
+
+bool Dot1x::Nodes::Node::Statistics::GlStats::PortControl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable-succ" || name == "enable-fail" || name == "disable-succ" || name == "disable-fail" || name == "add-client-succ" || name == "add-client-fail" || name == "remove-client-succ" || name == "remove-client-fail")
         return true;
     return false;
 }
@@ -1856,10 +2426,12 @@ Dot1x::Nodes::Node::Statistics::IfStats::IfStats()
     idb(std::make_shared<Dot1x::Nodes::Node::Statistics::IfStats::Idb>())
     , auth(std::make_shared<Dot1x::Nodes::Node::Statistics::IfStats::Auth>())
     , supp(std::make_shared<Dot1x::Nodes::Node::Statistics::IfStats::Supp>())
+    , local_eap(std::make_shared<Dot1x::Nodes::Node::Statistics::IfStats::LocalEap>())
 {
     idb->parent = this;
     auth->parent = this;
     supp->parent = this;
+    local_eap->parent = this;
 
     yang_name = "if-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -1875,7 +2447,8 @@ bool Dot1x::Nodes::Node::Statistics::IfStats::has_data() const
 	|| pae.is_set
 	|| (idb !=  nullptr && idb->has_data())
 	|| (auth !=  nullptr && auth->has_data())
-	|| (supp !=  nullptr && supp->has_data());
+	|| (supp !=  nullptr && supp->has_data())
+	|| (local_eap !=  nullptr && local_eap->has_data());
 }
 
 bool Dot1x::Nodes::Node::Statistics::IfStats::has_operation() const
@@ -1885,7 +2458,8 @@ bool Dot1x::Nodes::Node::Statistics::IfStats::has_operation() const
 	|| ydk::is_set(pae.yfilter)
 	|| (idb !=  nullptr && idb->has_operation())
 	|| (auth !=  nullptr && auth->has_operation())
-	|| (supp !=  nullptr && supp->has_operation());
+	|| (supp !=  nullptr && supp->has_operation())
+	|| (local_eap !=  nullptr && local_eap->has_operation());
 }
 
 std::string Dot1x::Nodes::Node::Statistics::IfStats::get_segment_path() const
@@ -1935,6 +2509,15 @@ std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::IfStats::get_child_by_na
         return supp;
     }
 
+    if(child_yang_name == "local-eap")
+    {
+        if(local_eap == nullptr)
+        {
+            local_eap = std::make_shared<Dot1x::Nodes::Node::Statistics::IfStats::LocalEap>();
+        }
+        return local_eap;
+    }
+
     return nullptr;
 }
 
@@ -1955,6 +2538,11 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::I
     if(supp != nullptr)
     {
         children["supp"] = supp;
+    }
+
+    if(local_eap != nullptr)
+    {
+        children["local-eap"] = local_eap;
     }
 
     return children;
@@ -1990,7 +2578,7 @@ void Dot1x::Nodes::Node::Statistics::IfStats::set_filter(const std::string & val
 
 bool Dot1x::Nodes::Node::Statistics::IfStats::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "idb" || name == "auth" || name == "supp" || name == "interface-name" || name == "pae")
+    if(name == "idb" || name == "auth" || name == "supp" || name == "local-eap" || name == "interface-name" || name == "pae")
         return true;
     return false;
 }
@@ -2113,8 +2701,12 @@ Dot1x::Nodes::Node::Statistics::IfStats::Auth::Auth()
     rx_total{YType::uint32, "rx-total"},
     tx_req{YType::uint32, "tx-req"},
     tx_reqid{YType::uint32, "tx-reqid"},
-    tx_total{YType::uint32, "tx-total"}
+    tx_total{YType::uint32, "tx-total"},
+    packet_drop_no_config_received{YType::uint32, "packet-drop-no-config-received"}
+        ,
+    port_control(std::make_shared<Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl>())
 {
+    port_control->parent = this;
 
     yang_name = "auth"; yang_parent_name = "if-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -2136,7 +2728,9 @@ bool Dot1x::Nodes::Node::Statistics::IfStats::Auth::has_data() const
 	|| rx_total.is_set
 	|| tx_req.is_set
 	|| tx_reqid.is_set
-	|| tx_total.is_set;
+	|| tx_total.is_set
+	|| packet_drop_no_config_received.is_set
+	|| (port_control !=  nullptr && port_control->has_data());
 }
 
 bool Dot1x::Nodes::Node::Statistics::IfStats::Auth::has_operation() const
@@ -2152,7 +2746,9 @@ bool Dot1x::Nodes::Node::Statistics::IfStats::Auth::has_operation() const
 	|| ydk::is_set(rx_total.yfilter)
 	|| ydk::is_set(tx_req.yfilter)
 	|| ydk::is_set(tx_reqid.yfilter)
-	|| ydk::is_set(tx_total.yfilter);
+	|| ydk::is_set(tx_total.yfilter)
+	|| ydk::is_set(packet_drop_no_config_received.yfilter)
+	|| (port_control !=  nullptr && port_control->has_operation());
 }
 
 std::string Dot1x::Nodes::Node::Statistics::IfStats::Auth::get_segment_path() const
@@ -2177,6 +2773,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::I
     if (tx_req.is_set || is_set(tx_req.yfilter)) leaf_name_data.push_back(tx_req.get_name_leafdata());
     if (tx_reqid.is_set || is_set(tx_reqid.yfilter)) leaf_name_data.push_back(tx_reqid.get_name_leafdata());
     if (tx_total.is_set || is_set(tx_total.yfilter)) leaf_name_data.push_back(tx_total.get_name_leafdata());
+    if (packet_drop_no_config_received.is_set || is_set(packet_drop_no_config_received.yfilter)) leaf_name_data.push_back(packet_drop_no_config_received.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2184,6 +2781,15 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::I
 
 std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::IfStats::Auth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "port-control")
+    {
+        if(port_control == nullptr)
+        {
+            port_control = std::make_shared<Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl>();
+        }
+        return port_control;
+    }
+
     return nullptr;
 }
 
@@ -2191,6 +2797,11 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::I
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(port_control != nullptr)
+    {
+        children["port-control"] = port_control;
+    }
+
     return children;
 }
 
@@ -2262,6 +2873,12 @@ void Dot1x::Nodes::Node::Statistics::IfStats::Auth::set_value(const std::string 
         tx_total.value_namespace = name_space;
         tx_total.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "packet-drop-no-config-received")
+    {
+        packet_drop_no_config_received = value;
+        packet_drop_no_config_received.value_namespace = name_space;
+        packet_drop_no_config_received.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Dot1x::Nodes::Node::Statistics::IfStats::Auth::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2310,11 +2927,163 @@ void Dot1x::Nodes::Node::Statistics::IfStats::Auth::set_filter(const std::string
     {
         tx_total.yfilter = yfilter;
     }
+    if(value_path == "packet-drop-no-config-received")
+    {
+        packet_drop_no_config_received.yfilter = yfilter;
+    }
 }
 
 bool Dot1x::Nodes::Node::Statistics::IfStats::Auth::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rx-start" || name == "rx-logoff" || name == "rx-resp" || name == "rx-resp-id" || name == "rx-invalid" || name == "rx-len-err" || name == "rx-my-mac-err" || name == "rx-total" || name == "tx-req" || name == "tx-reqid" || name == "tx-total")
+    if(name == "port-control" || name == "rx-start" || name == "rx-logoff" || name == "rx-resp" || name == "rx-resp-id" || name == "rx-invalid" || name == "rx-len-err" || name == "rx-my-mac-err" || name == "rx-total" || name == "tx-req" || name == "tx-reqid" || name == "tx-total" || name == "packet-drop-no-config-received")
+        return true;
+    return false;
+}
+
+Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl::PortControl()
+    :
+    enable_succ{YType::uint32, "enable-succ"},
+    enable_fail{YType::uint32, "enable-fail"},
+    add_client_succ{YType::uint32, "add-client-succ"},
+    add_client_fail{YType::uint32, "add-client-fail"},
+    remove_client_succ{YType::uint32, "remove-client-succ"},
+    remove_client_fail{YType::uint32, "remove-client-fail"}
+{
+
+    yang_name = "port-control"; yang_parent_name = "auth"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl::~PortControl()
+{
+}
+
+bool Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable_succ.is_set
+	|| enable_fail.is_set
+	|| add_client_succ.is_set
+	|| add_client_fail.is_set
+	|| remove_client_succ.is_set
+	|| remove_client_fail.is_set;
+}
+
+bool Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable_succ.yfilter)
+	|| ydk::is_set(enable_fail.yfilter)
+	|| ydk::is_set(add_client_succ.yfilter)
+	|| ydk::is_set(add_client_fail.yfilter)
+	|| ydk::is_set(remove_client_succ.yfilter)
+	|| ydk::is_set(remove_client_fail.yfilter);
+}
+
+std::string Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port-control";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable_succ.is_set || is_set(enable_succ.yfilter)) leaf_name_data.push_back(enable_succ.get_name_leafdata());
+    if (enable_fail.is_set || is_set(enable_fail.yfilter)) leaf_name_data.push_back(enable_fail.get_name_leafdata());
+    if (add_client_succ.is_set || is_set(add_client_succ.yfilter)) leaf_name_data.push_back(add_client_succ.get_name_leafdata());
+    if (add_client_fail.is_set || is_set(add_client_fail.yfilter)) leaf_name_data.push_back(add_client_fail.get_name_leafdata());
+    if (remove_client_succ.is_set || is_set(remove_client_succ.yfilter)) leaf_name_data.push_back(remove_client_succ.get_name_leafdata());
+    if (remove_client_fail.is_set || is_set(remove_client_fail.yfilter)) leaf_name_data.push_back(remove_client_fail.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable-succ")
+    {
+        enable_succ = value;
+        enable_succ.value_namespace = name_space;
+        enable_succ.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable-fail")
+    {
+        enable_fail = value;
+        enable_fail.value_namespace = name_space;
+        enable_fail.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "add-client-succ")
+    {
+        add_client_succ = value;
+        add_client_succ.value_namespace = name_space;
+        add_client_succ.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "add-client-fail")
+    {
+        add_client_fail = value;
+        add_client_fail.value_namespace = name_space;
+        add_client_fail.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remove-client-succ")
+    {
+        remove_client_succ = value;
+        remove_client_succ.value_namespace = name_space;
+        remove_client_succ.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remove-client-fail")
+    {
+        remove_client_fail = value;
+        remove_client_fail.value_namespace = name_space;
+        remove_client_fail.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable-succ")
+    {
+        enable_succ.yfilter = yfilter;
+    }
+    if(value_path == "enable-fail")
+    {
+        enable_fail.yfilter = yfilter;
+    }
+    if(value_path == "add-client-succ")
+    {
+        add_client_succ.yfilter = yfilter;
+    }
+    if(value_path == "add-client-fail")
+    {
+        add_client_fail.yfilter = yfilter;
+    }
+    if(value_path == "remove-client-succ")
+    {
+        remove_client_succ.yfilter = yfilter;
+    }
+    if(value_path == "remove-client-fail")
+    {
+        remove_client_fail.yfilter = yfilter;
+    }
+}
+
+bool Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable-succ" || name == "enable-fail" || name == "add-client-succ" || name == "add-client-fail" || name == "remove-client-succ" || name == "remove-client-fail")
         return true;
     return false;
 }
@@ -2505,6 +3274,168 @@ void Dot1x::Nodes::Node::Statistics::IfStats::Supp::set_filter(const std::string
 bool Dot1x::Nodes::Node::Statistics::IfStats::Supp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rx-req" || name == "rx-invalid" || name == "rx-len-err" || name == "rx-my-mac-err" || name == "rx-total" || name == "tx-start" || name == "tx-logoff" || name == "tx-resp" || name == "tx-total")
+        return true;
+    return false;
+}
+
+Dot1x::Nodes::Node::Statistics::IfStats::LocalEap::LocalEap()
+    :
+    requests{YType::uint32, "requests"},
+    replies{YType::uint32, "replies"},
+    timeout{YType::uint32, "timeout"},
+    dropped_no_eap{YType::uint32, "dropped-no-eap"},
+    dropped{YType::uint32, "dropped"},
+    success{YType::uint32, "success"},
+    failed{YType::uint32, "failed"}
+{
+
+    yang_name = "local-eap"; yang_parent_name = "if-stats"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Dot1x::Nodes::Node::Statistics::IfStats::LocalEap::~LocalEap()
+{
+}
+
+bool Dot1x::Nodes::Node::Statistics::IfStats::LocalEap::has_data() const
+{
+    if (is_presence_container) return true;
+    return requests.is_set
+	|| replies.is_set
+	|| timeout.is_set
+	|| dropped_no_eap.is_set
+	|| dropped.is_set
+	|| success.is_set
+	|| failed.is_set;
+}
+
+bool Dot1x::Nodes::Node::Statistics::IfStats::LocalEap::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(requests.yfilter)
+	|| ydk::is_set(replies.yfilter)
+	|| ydk::is_set(timeout.yfilter)
+	|| ydk::is_set(dropped_no_eap.yfilter)
+	|| ydk::is_set(dropped.yfilter)
+	|| ydk::is_set(success.yfilter)
+	|| ydk::is_set(failed.yfilter);
+}
+
+std::string Dot1x::Nodes::Node::Statistics::IfStats::LocalEap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "local-eap";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::IfStats::LocalEap::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (requests.is_set || is_set(requests.yfilter)) leaf_name_data.push_back(requests.get_name_leafdata());
+    if (replies.is_set || is_set(replies.yfilter)) leaf_name_data.push_back(replies.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (dropped_no_eap.is_set || is_set(dropped_no_eap.yfilter)) leaf_name_data.push_back(dropped_no_eap.get_name_leafdata());
+    if (dropped.is_set || is_set(dropped.yfilter)) leaf_name_data.push_back(dropped.get_name_leafdata());
+    if (success.is_set || is_set(success.yfilter)) leaf_name_data.push_back(success.get_name_leafdata());
+    if (failed.is_set || is_set(failed.yfilter)) leaf_name_data.push_back(failed.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::IfStats::LocalEap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::IfStats::LocalEap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Dot1x::Nodes::Node::Statistics::IfStats::LocalEap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "requests")
+    {
+        requests = value;
+        requests.value_namespace = name_space;
+        requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "replies")
+    {
+        replies = value;
+        replies.value_namespace = name_space;
+        replies.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dropped-no-eap")
+    {
+        dropped_no_eap = value;
+        dropped_no_eap.value_namespace = name_space;
+        dropped_no_eap.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dropped")
+    {
+        dropped = value;
+        dropped.value_namespace = name_space;
+        dropped.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "success")
+    {
+        success = value;
+        success.value_namespace = name_space;
+        success.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "failed")
+    {
+        failed = value;
+        failed.value_namespace = name_space;
+        failed.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dot1x::Nodes::Node::Statistics::IfStats::LocalEap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "requests")
+    {
+        requests.yfilter = yfilter;
+    }
+    if(value_path == "replies")
+    {
+        replies.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+    if(value_path == "dropped-no-eap")
+    {
+        dropped_no_eap.yfilter = yfilter;
+    }
+    if(value_path == "dropped")
+    {
+        dropped.yfilter = yfilter;
+    }
+    if(value_path == "success")
+    {
+        success.yfilter = yfilter;
+    }
+    if(value_path == "failed")
+    {
+        failed.yfilter = yfilter;
+    }
+}
+
+bool Dot1x::Nodes::Node::Statistics::IfStats::LocalEap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "requests" || name == "replies" || name == "timeout" || name == "dropped-no-eap" || name == "dropped" || name == "success" || name == "failed")
         return true;
     return false;
 }
@@ -2895,7 +3826,8 @@ Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::IntfInfo()
     :
     pae{YType::str, "pae"},
     port_status{YType::str, "port-status"},
-    dot1x_profile{YType::str, "dot1x-profile"}
+    dot1x_profile{YType::str, "dot1x-profile"},
+    l2_transport{YType::boolean, "l2-transport"}
         ,
     auth_info(std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo>())
     , supp_info(std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo>())
@@ -2916,6 +3848,7 @@ bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::has_data() c
     return pae.is_set
 	|| port_status.is_set
 	|| dot1x_profile.is_set
+	|| l2_transport.is_set
 	|| (auth_info !=  nullptr && auth_info->has_data())
 	|| (supp_info !=  nullptr && supp_info->has_data());
 }
@@ -2926,6 +3859,7 @@ bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::has_operatio
 	|| ydk::is_set(pae.yfilter)
 	|| ydk::is_set(port_status.yfilter)
 	|| ydk::is_set(dot1x_profile.yfilter)
+	|| ydk::is_set(l2_transport.yfilter)
 	|| (auth_info !=  nullptr && auth_info->has_operation())
 	|| (supp_info !=  nullptr && supp_info->has_operation());
 }
@@ -2944,6 +3878,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Session::InterfaceSessions
     if (pae.is_set || is_set(pae.yfilter)) leaf_name_data.push_back(pae.get_name_leafdata());
     if (port_status.is_set || is_set(port_status.yfilter)) leaf_name_data.push_back(port_status.get_name_leafdata());
     if (dot1x_profile.is_set || is_set(dot1x_profile.yfilter)) leaf_name_data.push_back(dot1x_profile.get_name_leafdata());
+    if (l2_transport.is_set || is_set(l2_transport.yfilter)) leaf_name_data.push_back(l2_transport.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3009,6 +3944,12 @@ void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::set_value(co
         dot1x_profile.value_namespace = name_space;
         dot1x_profile.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "l2-transport")
+    {
+        l2_transport = value;
+        l2_transport.value_namespace = name_space;
+        l2_transport.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3025,19 +3966,25 @@ void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::set_filter(c
     {
         dot1x_profile.yfilter = yfilter;
     }
+    if(value_path == "l2-transport")
+    {
+        l2_transport.yfilter = yfilter;
+    }
 }
 
 bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "auth-info" || name == "supp-info" || name == "pae" || name == "port-status" || name == "dot1x-profile")
+    if(name == "auth-info" || name == "supp-info" || name == "pae" || name == "port-status" || name == "dot1x-profile" || name == "l2-transport")
         return true;
     return false;
 }
 
 Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::AuthInfo()
     :
+    port_control{YType::str, "port-control"},
     reauth{YType::str, "reauth"},
-    config_dependency{YType::str, "config-dependency"}
+    config_dependency{YType::str, "config-dependency"},
+    eap_profile{YType::str, "eap-profile"}
         ,
     client(this, {})
 {
@@ -3057,8 +4004,10 @@ bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::ha
         if(client[index]->has_data())
             return true;
     }
-    return reauth.is_set
-	|| config_dependency.is_set;
+    return port_control.is_set
+	|| reauth.is_set
+	|| config_dependency.is_set
+	|| eap_profile.is_set;
 }
 
 bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::has_operation() const
@@ -3069,8 +4018,10 @@ bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::ha
             return true;
     }
     return is_set(yfilter)
+	|| ydk::is_set(port_control.yfilter)
 	|| ydk::is_set(reauth.yfilter)
-	|| ydk::is_set(config_dependency.yfilter);
+	|| ydk::is_set(config_dependency.yfilter)
+	|| ydk::is_set(eap_profile.yfilter);
 }
 
 std::string Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::get_segment_path() const
@@ -3084,8 +4035,10 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Session::InterfaceSessions
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (port_control.is_set || is_set(port_control.yfilter)) leaf_name_data.push_back(port_control.get_name_leafdata());
     if (reauth.is_set || is_set(reauth.yfilter)) leaf_name_data.push_back(reauth.get_name_leafdata());
     if (config_dependency.is_set || is_set(config_dependency.yfilter)) leaf_name_data.push_back(config_dependency.get_name_leafdata());
+    if (eap_profile.is_set || is_set(eap_profile.yfilter)) leaf_name_data.push_back(eap_profile.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3122,6 +4075,12 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1x::Session::InterfaceSessions
 
 void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "port-control")
+    {
+        port_control = value;
+        port_control.value_namespace = name_space;
+        port_control.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "reauth")
     {
         reauth = value;
@@ -3134,10 +4093,20 @@ void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::se
         config_dependency.value_namespace = name_space;
         config_dependency.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "eap-profile")
+    {
+        eap_profile = value;
+        eap_profile.value_namespace = name_space;
+        eap_profile.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "port-control")
+    {
+        port_control.yfilter = yfilter;
+    }
     if(value_path == "reauth")
     {
         reauth.yfilter = yfilter;
@@ -3146,11 +4115,15 @@ void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::se
     {
         config_dependency.yfilter = yfilter;
     }
+    if(value_path == "eap-profile")
+    {
+        eap_profile.yfilter = yfilter;
+    }
 }
 
 bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "client" || name == "reauth" || name == "config-dependency")
+    if(name == "client" || name == "port-control" || name == "reauth" || name == "config-dependency" || name == "eap-profile")
         return true;
     return false;
 }
@@ -3162,7 +4135,8 @@ Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client:
     auth_bend_sm_state{YType::str, "auth-bend-sm-state"},
     time_to_next_reauth{YType::str, "time-to-next-reauth"},
     last_auth_time{YType::str, "last-auth-time"},
-    last_auth_server{YType::str, "last-auth-server"}
+    last_auth_server{YType::str, "last-auth-server"},
+    port_control{YType::str, "port-control"}
 {
 
     yang_name = "client"; yang_parent_name = "auth-info"; is_top_level_class = false; has_list_ancestor = true; 
@@ -3180,7 +4154,8 @@ bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Cl
 	|| auth_bend_sm_state.is_set
 	|| time_to_next_reauth.is_set
 	|| last_auth_time.is_set
-	|| last_auth_server.is_set;
+	|| last_auth_server.is_set
+	|| port_control.is_set;
 }
 
 bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::has_operation() const
@@ -3191,7 +4166,8 @@ bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Cl
 	|| ydk::is_set(auth_bend_sm_state.yfilter)
 	|| ydk::is_set(time_to_next_reauth.yfilter)
 	|| ydk::is_set(last_auth_time.yfilter)
-	|| ydk::is_set(last_auth_server.yfilter);
+	|| ydk::is_set(last_auth_server.yfilter)
+	|| ydk::is_set(port_control.yfilter);
 }
 
 std::string Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::get_segment_path() const
@@ -3211,6 +4187,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Session::InterfaceSessions
     if (time_to_next_reauth.is_set || is_set(time_to_next_reauth.yfilter)) leaf_name_data.push_back(time_to_next_reauth.get_name_leafdata());
     if (last_auth_time.is_set || is_set(last_auth_time.yfilter)) leaf_name_data.push_back(last_auth_time.get_name_leafdata());
     if (last_auth_server.is_set || is_set(last_auth_server.yfilter)) leaf_name_data.push_back(last_auth_server.get_name_leafdata());
+    if (port_control.is_set || is_set(port_control.yfilter)) leaf_name_data.push_back(port_control.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3266,6 +4243,12 @@ void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Cl
         last_auth_server.value_namespace = name_space;
         last_auth_server.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "port-control")
+    {
+        port_control = value;
+        port_control.value_namespace = name_space;
+        port_control.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3294,11 +4277,15 @@ void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Cl
     {
         last_auth_server.yfilter = yfilter;
     }
+    if(value_path == "port-control")
+    {
+        port_control.yfilter = yfilter;
+    }
 }
 
 bool Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mac" || name == "auth-sm-state" || name == "auth-bend-sm-state" || name == "time-to-next-reauth" || name == "last-auth-time" || name == "last-auth-server")
+    if(name == "mac" || name == "auth-sm-state" || name == "auth-bend-sm-state" || name == "time-to-next-reauth" || name == "last-auth-time" || name == "last-auth-server" || name == "port-control")
         return true;
     return false;
 }

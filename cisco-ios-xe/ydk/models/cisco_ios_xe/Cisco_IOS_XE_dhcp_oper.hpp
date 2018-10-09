@@ -119,7 +119,9 @@ class DhcpOperData::Dhcpv4ClientOper : public ydk::Entity
         ydk::YLeaf gateway_addr; //type: string
         ydk::YLeaf lease_time; //type: uint32
         ydk::YLeaf lease_remaining; //type: uint32
-        ydk::YLeafList dns_list; //type: list of  string
+        ydk::YLeaf dns_address; //type: string
+        ydk::YLeaf dns_address_secondary; //type: string
+        ydk::YLeaf subnet_mask; //type: string
         class LeaseExpiry; //type: DhcpOperData::Dhcpv4ClientOper::LeaseExpiry
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_dhcp_oper::DhcpOperData::Dhcpv4ClientOper::LeaseExpiry> lease_expiry;

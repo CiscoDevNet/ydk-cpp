@@ -26,6 +26,8 @@ class OpticsThreshold : public ydk::Enum
         static const ydk::Enum::YLeaf thresh_pn_min;
         static const ydk::Enum::YLeaf thresh_rx_sig_pow_min;
         static const ydk::Enum::YLeaf thresh_low_sig_freq_off_min;
+        static const ydk::Enum::YLeaf thresh_ampli_gain_min;
+        static const ydk::Enum::YLeaf thresh_ampli_gain_tilt_min;
         static const ydk::Enum::YLeaf thresh_opt_max;
         static const ydk::Enum::YLeaf thresh_opr_max;
         static const ydk::Enum::YLeaf thresh_lbc_max;
@@ -39,6 +41,8 @@ class OpticsThreshold : public ydk::Enum
         static const ydk::Enum::YLeaf thresh_pn_max;
         static const ydk::Enum::YLeaf thresh_rx_sig_pow_max;
         static const ydk::Enum::YLeaf thresh_low_sig_freq_off_max;
+        static const ydk::Enum::YLeaf thresh_ampli_gain_max;
+        static const ydk::Enum::YLeaf thresh_ampli_gain_tilt_max;
 
 };
 
@@ -171,6 +175,14 @@ class GfpThreshold : public ydk::Enum
 
 };
 
+class PcsThreshold : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf thresh_bip;
+        static const ydk::Enum::YLeaf thresh_frm_err;
+
+};
+
 class SecytxThreshold : public ydk::Enum
 {
     public:
@@ -179,6 +191,14 @@ class SecytxThreshold : public ydk::Enum
         static const ydk::Enum::YLeaf thresh_tx_outoctetsprotected;
         static const ydk::Enum::YLeaf thresh_tx_outoctetsencrypted;
         static const ydk::Enum::YLeaf thresh_tx_outpkts_too_long;
+
+};
+
+class PcsReport : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf report_bip;
+        static const ydk::Enum::YLeaf report_frm_err;
 
 };
 
@@ -228,6 +248,8 @@ class OpticsReport : public ydk::Enum
         static const ydk::Enum::YLeaf report_pn_min;
         static const ydk::Enum::YLeaf report_rx_sig_pow_min;
         static const ydk::Enum::YLeaf report_low_sig_freq_off_min;
+        static const ydk::Enum::YLeaf report_ampli_gain_min;
+        static const ydk::Enum::YLeaf report_ampli_gain_tilt_min;
         static const ydk::Enum::YLeaf report_opt_max;
         static const ydk::Enum::YLeaf report_opr_max;
         static const ydk::Enum::YLeaf report_lbc_max;
@@ -241,6 +263,8 @@ class OpticsReport : public ydk::Enum
         static const ydk::Enum::YLeaf report_pn_max;
         static const ydk::Enum::YLeaf report_rx_sig_pow_max;
         static const ydk::Enum::YLeaf report_low_sig_freq_off_max;
+        static const ydk::Enum::YLeaf report_ampli_gain_max;
+        static const ydk::Enum::YLeaf report_ampli_gain_tilt_max;
 
 };
 

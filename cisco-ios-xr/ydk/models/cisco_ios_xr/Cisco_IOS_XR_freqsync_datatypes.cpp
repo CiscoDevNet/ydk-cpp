@@ -44,6 +44,9 @@ const Enum::YLeaf GnssConstellation::gps {1, "gps"};
 const Enum::YLeaf GnssConstellation::galileo {2, "galileo"};
 const Enum::YLeaf GnssConstellation::bei_dou {3, "bei-dou"};
 const Enum::YLeaf GnssConstellation::qzss {4, "qzss"};
+const Enum::YLeaf GnssConstellation::glonass {5, "glonass"};
+const Enum::YLeaf GnssConstellation::sbas {6, "sbas"};
+const Enum::YLeaf GnssConstellation::irnss {7, "irnss"};
 
 const Enum::YLeaf Gnss1ppsPolarity::positive {0, "positive"};
 const Enum::YLeaf Gnss1ppsPolarity::negative {1, "negative"};

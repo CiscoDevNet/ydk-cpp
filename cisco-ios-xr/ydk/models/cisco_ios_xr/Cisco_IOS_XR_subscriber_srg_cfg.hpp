@@ -106,7 +106,7 @@ class SubscriberRedundancy::Groups::Group : public ydk::Entity
         class VirtualMac; //type: SubscriberRedundancy::Groups::Group::VirtualMac
         class StateControlRoute; //type: SubscriberRedundancy::Groups::Group::StateControlRoute
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::InterfaceList> interface_list;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::InterfaceList> interface_list; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::Peer> peer;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::RevertiveTimer> revertive_timer;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::VirtualMac> virtual_mac;
@@ -388,58 +388,12 @@ class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Ro
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf prefix_string; //type: string
-        ydk::YLeaf prefix_length; //type: uint32
-        class Ipv4RouteData; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData
-        class Vrfname; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData> ipv4_route_data;
-        ydk::YList vrfname;
-        
-}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route
-
-
-class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData : public ydk::Entity
-{
-    public:
-        Ipv4RouteData();
-        ~Ipv4RouteData();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf tagvalue; //type: uint32
-
-}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData
-
-
-class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname : public ydk::Entity
-{
-    public:
-        Vrfname();
-        ~Vrfname();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
         ydk::YLeaf vrfname; //type: string
+        ydk::YLeaf prefix_length; //type: uint32
+        ydk::YLeaf prefix_string; //type: string
         ydk::YLeaf tagvalue; //type: uint32
 
-}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname
+}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route
 
 
 class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route : public ydk::Entity

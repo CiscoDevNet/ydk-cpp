@@ -615,6 +615,7 @@ class Xtc : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Policies; //type: Xtc::Policies
+        class PolicySummary; //type: Xtc::PolicySummary
         class OnDemandColors; //type: Xtc::OnDemandColors
         class Forwarding; //type: Xtc::Forwarding
         class Controller; //type: Xtc::Controller
@@ -623,6 +624,7 @@ class Xtc : public ydk::Entity
         class PrefixInfos; //type: Xtc::PrefixInfos
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::Policies> policies;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::PolicySummary> policy_summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::OnDemandColors> on_demand_colors;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::Forwarding> forwarding;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::Controller> controller;
@@ -687,10 +689,13 @@ class Xtc::Policies::Policy : public ydk::Entity
         ydk::YLeaf down_time; //type: uint64
         ydk::YLeaf down_age; //type: uint64
         ydk::YLeaf lsp_id; //type: uint32
+        ydk::YLeaf steering_bgp_disabled; //type: boolean
         ydk::YLeaf interface_handle; //type: uint32
         ydk::YLeaf policy_group_identifier; //type: uint16
         ydk::YLeaf local_label_identifier; //type: uint16
         ydk::YLeaf local_label; //type: uint32
+        ydk::YLeaf profile_id; //type: uint16
+        ydk::YLeaf ipv6_caps_enabled; //type: boolean
         class DestinationAddress; //type: Xtc::Policies::Policy::DestinationAddress
         class BindingSid; //type: Xtc::Policies::Policy::BindingSid
         class AutoPolicyInfo; //type: Xtc::Policies::Policy::AutoPolicyInfo
@@ -797,7 +802,6 @@ class Xtc::Policies::Policy::AutoPolicyInfo : public ydk::Entity
         ydk::YLeaf creator_name; //type: string
         ydk::YLeaf distinguisher; //type: uint32
         ydk::YLeaf preference; //type: uint32
-        ydk::YLeaf ipv6_caps_enabled; //type: boolean
 
 }; // Xtc::Policies::Policy::AutoPolicyInfo
 
@@ -855,9 +859,11 @@ class Xtc::Policies::Policy::Paths::SrPathConstraints : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PathMetrics; //type: Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics
+        class Segments; //type: Xtc::Policies::Policy::Paths::SrPathConstraints::Segments
         class AffinityConstraint; //type: Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics> path_metrics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::Policies::Policy::Paths::SrPathConstraints::Segments> segments;
         ydk::YList affinity_constraint;
         
 }; // Xtc::Policies::Policy::Paths::SrPathConstraints
@@ -887,6 +893,27 @@ class Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics : public ydk:
         ydk::YLeaf accumulative_delay; //type: uint32
 
 }; // Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics
+
+
+class Xtc::Policies::Policy::Paths::SrPathConstraints::Segments : public ydk::Entity
+{
+    public:
+        Segments();
+        ~Segments();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf segment_algorithm; //type: uint8
+
+}; // Xtc::Policies::Policy::Paths::SrPathConstraints::Segments
 
 
 class Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint : public ydk::Entity
@@ -952,6 +979,7 @@ class Xtc::Policies::Policy::Paths::Hops : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf sid_type; //type: XtcSrSid
+        ydk::YLeaf algorithm; //type: uint8
         class Sid; //type: Xtc::Policies::Policy::Paths::Hops::Sid
         class LocalAddress; //type: Xtc::Policies::Policy::Paths::Hops::LocalAddress
         class RemoteAddress; //type: Xtc::Policies::Policy::Paths::Hops::RemoteAddress
@@ -1032,6 +1060,57 @@ class Xtc::Policies::Policy::Paths::Hops::RemoteAddress : public ydk::Entity
 }; // Xtc::Policies::Policy::Paths::Hops::RemoteAddress
 
 
+class Xtc::PolicySummary : public ydk::Entity
+{
+    public:
+        PolicySummary();
+        ~PolicySummary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf configured_total_policy_count; //type: uint32
+        ydk::YLeaf configured_up_policy_count; //type: uint32
+        ydk::YLeaf configured_down_policy_count; //type: uint32
+        class Ipv4SourceAddress; //type: Xtc::PolicySummary::Ipv4SourceAddress
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::PolicySummary::Ipv4SourceAddress> ipv4_source_address;
+        
+}; // Xtc::PolicySummary
+
+
+class Xtc::PolicySummary::Ipv4SourceAddress : public ydk::Entity
+{
+    public:
+        Ipv4SourceAddress();
+        ~Ipv4SourceAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf af_name; //type: XtcAfId
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
+
+}; // Xtc::PolicySummary::Ipv4SourceAddress
+
+
 class Xtc::OnDemandColors : public ydk::Entity
 {
     public:
@@ -1075,6 +1154,7 @@ class Xtc::OnDemandColors::OnDemandColor : public ydk::Entity
 
         ydk::YLeaf color; //type: uint32
         ydk::YLeaf color_xr; //type: uint32
+        ydk::YLeaf maximum_sid_depth; //type: uint32
         class DisjointPathInfo; //type: Xtc::OnDemandColors::OnDemandColor::DisjointPathInfo
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::OnDemandColors::OnDemandColor::DisjointPathInfo> disjoint_path_info;
@@ -1379,9 +1459,11 @@ class Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PathMetrics; //type: Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics
+        class Segments; //type: Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments
         class AffinityConstraint; //type: Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics> path_metrics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments> segments;
         ydk::YList affinity_constraint;
         
 }; // Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints
@@ -1411,6 +1493,27 @@ class Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::
         ydk::YLeaf accumulative_delay; //type: uint32
 
 }; // Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics
+
+
+class Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments : public ydk::Entity
+{
+    public:
+        Segments();
+        ~Segments();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf segment_algorithm; //type: uint8
+
+}; // Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments
 
 
 class Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint : public ydk::Entity
@@ -1476,6 +1579,7 @@ class Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf sid_type; //type: XtcSrSid
+        ydk::YLeaf algorithm; //type: uint8
         class Sid; //type: Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid
         class LocalAddress; //type: Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress
         class RemoteAddress; //type: Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress
@@ -2736,11 +2840,34 @@ class Xtc::PrefixInfos::PrefixInfo::Address : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        class IpAddress; //type: Xtc::PrefixInfos::PrefixInfo::Address::IpAddress
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::PrefixInfos::PrefixInfo::Address::IpAddress> ip_address;
+        
+}; // Xtc::PrefixInfos::PrefixInfo::Address
+
+
+class Xtc::PrefixInfos::PrefixInfo::Address::IpAddress : public ydk::Entity
+{
+    public:
+        IpAddress();
+        ~IpAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
         ydk::YLeaf af_name; //type: XtcAfId
         ydk::YLeaf ipv4; //type: string
         ydk::YLeaf ipv6; //type: string
 
-}; // Xtc::PrefixInfos::PrefixInfo::Address
+}; // Xtc::PrefixInfos::PrefixInfo::Address::IpAddress
 
 class XtcSrSid : public ydk::Enum
 {
@@ -2809,6 +2936,7 @@ class XtcBsidError : public ydk::Enum
         static const ydk::Enum::YLeaf color_endpoint_exists;
         static const ydk::Enum::YLeaf forwarding_rewrite_error;
         static const ydk::Enum::YLeaf srlb_invalid_label;
+        static const ydk::Enum::YLeaf internal_error;
 
 };
 

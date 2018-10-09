@@ -3606,6 +3606,444 @@ bool SdrManager::SdrMgr::Trace::Location::AllOptions::TraceBlocks::has_leaf_or_c
     return false;
 }
 
+SdrOperation::SdrOperation()
+    :
+    sdr(this, {"name"})
+{
+
+    yang_name = "sdr-operation"; yang_parent_name = "Cisco-IOS-XR-sysadmin-sdr-mgr"; is_top_level_class = true; has_list_ancestor = false; 
+}
+
+SdrOperation::~SdrOperation()
+{
+}
+
+bool SdrOperation::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sdr.len(); index++)
+    {
+        if(sdr[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool SdrOperation::has_operation() const
+{
+    for (std::size_t index=0; index<sdr.len(); index++)
+    {
+        if(sdr[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string SdrOperation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-sysadmin-sdr-mgr:sdr-operation";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SdrOperation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SdrOperation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "sdr")
+    {
+        auto c = std::make_shared<SdrOperation::Sdr>();
+        c->parent = this;
+        sdr.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SdrOperation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : sdr.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void SdrOperation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SdrOperation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> SdrOperation::clone_ptr() const
+{
+    return std::make_shared<SdrOperation>();
+}
+
+std::string SdrOperation::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xr_models_path;
+}
+
+std::string SdrOperation::get_bundle_name() const
+{
+    return "cisco_ios_xr";
+}
+
+augment_capabilities_function SdrOperation::get_augment_capabilities_function() const
+{
+    return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> SdrOperation::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool SdrOperation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sdr")
+        return true;
+    return false;
+}
+
+SdrOperation::Sdr::Sdr()
+    :
+    name{YType::str, "name"}
+        ,
+    nodes(std::make_shared<SdrOperation::Sdr::Nodes>())
+{
+    nodes->parent = this;
+
+    yang_name = "sdr"; yang_parent_name = "sdr-operation"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+SdrOperation::Sdr::~Sdr()
+{
+}
+
+bool SdrOperation::Sdr::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| (nodes !=  nullptr && nodes->has_data());
+}
+
+bool SdrOperation::Sdr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| (nodes !=  nullptr && nodes->has_operation());
+}
+
+std::string SdrOperation::Sdr::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-sysadmin-sdr-mgr:sdr-operation/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string SdrOperation::Sdr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sdr";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SdrOperation::Sdr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SdrOperation::Sdr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "nodes")
+    {
+        if(nodes == nullptr)
+        {
+            nodes = std::make_shared<SdrOperation::Sdr::Nodes>();
+        }
+        return nodes;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SdrOperation::Sdr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(nodes != nullptr)
+    {
+        children["nodes"] = nodes;
+    }
+
+    return children;
+}
+
+void SdrOperation::Sdr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SdrOperation::Sdr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool SdrOperation::Sdr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes" || name == "name")
+        return true;
+    return false;
+}
+
+SdrOperation::Sdr::Nodes::Nodes()
+    :
+    location(this, {"node_location", "node_type"})
+{
+
+    yang_name = "nodes"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+SdrOperation::Sdr::Nodes::~Nodes()
+{
+}
+
+bool SdrOperation::Sdr::Nodes::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
+    {
+        if(location[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool SdrOperation::Sdr::Nodes::has_operation() const
+{
+    for (std::size_t index=0; index<location.len(); index++)
+    {
+        if(location[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string SdrOperation::Sdr::Nodes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nodes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SdrOperation::Sdr::Nodes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SdrOperation::Sdr::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "location")
+    {
+        auto c = std::make_shared<SdrOperation::Sdr::Nodes::Location>();
+        c->parent = this;
+        location.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SdrOperation::Sdr::Nodes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : location.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void SdrOperation::Sdr::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SdrOperation::Sdr::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SdrOperation::Sdr::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "location")
+        return true;
+    return false;
+}
+
+SdrOperation::Sdr::Nodes::Location::Location()
+    :
+    node_location{YType::str, "node-location"},
+    node_type{YType::uint32, "node-type"},
+    progress{YType::str, "progress"},
+    state{YType::str, "state"}
+{
+
+    yang_name = "location"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+SdrOperation::Sdr::Nodes::Location::~Location()
+{
+}
+
+bool SdrOperation::Sdr::Nodes::Location::has_data() const
+{
+    if (is_presence_container) return true;
+    return node_location.is_set
+	|| node_type.is_set
+	|| progress.is_set
+	|| state.is_set;
+}
+
+bool SdrOperation::Sdr::Nodes::Location::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node_location.yfilter)
+	|| ydk::is_set(node_type.yfilter)
+	|| ydk::is_set(progress.yfilter)
+	|| ydk::is_set(state.yfilter);
+}
+
+std::string SdrOperation::Sdr::Nodes::Location::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "location";
+    ADD_KEY_TOKEN(node_location, "node-location");
+    ADD_KEY_TOKEN(node_type, "node-type");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SdrOperation::Sdr::Nodes::Location::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node_location.is_set || is_set(node_location.yfilter)) leaf_name_data.push_back(node_location.get_name_leafdata());
+    if (node_type.is_set || is_set(node_type.yfilter)) leaf_name_data.push_back(node_type.get_name_leafdata());
+    if (progress.is_set || is_set(progress.yfilter)) leaf_name_data.push_back(progress.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SdrOperation::Sdr::Nodes::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SdrOperation::Sdr::Nodes::Location::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void SdrOperation::Sdr::Nodes::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node-location")
+    {
+        node_location = value;
+        node_location.value_namespace = name_space;
+        node_location.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "node-type")
+    {
+        node_type = value;
+        node_type.value_namespace = name_space;
+        node_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "progress")
+    {
+        progress = value;
+        progress.value_namespace = name_space;
+        progress.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SdrOperation::Sdr::Nodes::Location::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-location")
+    {
+        node_location.yfilter = yfilter;
+    }
+    if(value_path == "node-type")
+    {
+        node_type.yfilter = yfilter;
+    }
+    if(value_path == "progress")
+    {
+        progress.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool SdrOperation::Sdr::Nodes::Location::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-location" || name == "node-type" || name == "progress" || name == "state")
+        return true;
+    return false;
+}
+
 PrivateSdr::PrivateSdr()
     :
     sdr_name(this, {"name"})

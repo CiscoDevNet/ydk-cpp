@@ -1005,9 +1005,19 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Detail()
     rg_id_exists{YType::boolean, "rg-id-exists"},
     mlacp_active{YType::boolean, "mlacp-active"},
     unnumbered_interface_name{YType::str, "unnumbered-interface-name"},
+    next_unnumbered_interface_name{YType::str, "next-unnumbered-interface-name"},
     proxy_arp_disabled{YType::boolean, "proxy-arp-disabled"},
     flow_tag_src{YType::boolean, "flow-tag-src"},
-    flow_tag_dst{YType::boolean, "flow-tag-dst"}
+    flow_tag_dst{YType::boolean, "flow-tag-dst"},
+    config_flags{YType::uint16, "config-flags"},
+    oper_flags{YType::uint64, "oper-flags"},
+    arm_flags{YType::uint16, "arm-flags"},
+    state_recvd_frm_im{YType::enumeration, "state-recvd-frm-im"},
+    cflct_address{YType::str, "cflct-address"},
+    client_type{YType::enumeration, "client-type"},
+    is_or_event{YType::boolean, "is-or-event"},
+    or_im_state{YType::enumeration, "or-im-state"},
+    idb_pointer{YType::uint64, "idb-pointer"}
         ,
     acl(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl>())
     , multi_acl(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl>())
@@ -1067,9 +1077,19 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_da
 	|| rg_id_exists.is_set
 	|| mlacp_active.is_set
 	|| unnumbered_interface_name.is_set
+	|| next_unnumbered_interface_name.is_set
 	|| proxy_arp_disabled.is_set
 	|| flow_tag_src.is_set
 	|| flow_tag_dst.is_set
+	|| config_flags.is_set
+	|| oper_flags.is_set
+	|| arm_flags.is_set
+	|| state_recvd_frm_im.is_set
+	|| cflct_address.is_set
+	|| client_type.is_set
+	|| is_or_event.is_set
+	|| or_im_state.is_set
+	|| idb_pointer.is_set
 	|| (acl !=  nullptr && acl->has_data())
 	|| (multi_acl !=  nullptr && multi_acl->has_data())
 	|| (helper_address !=  nullptr && helper_address->has_data())
@@ -1109,9 +1129,19 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_op
 	|| ydk::is_set(rg_id_exists.yfilter)
 	|| ydk::is_set(mlacp_active.yfilter)
 	|| ydk::is_set(unnumbered_interface_name.yfilter)
+	|| ydk::is_set(next_unnumbered_interface_name.yfilter)
 	|| ydk::is_set(proxy_arp_disabled.yfilter)
 	|| ydk::is_set(flow_tag_src.yfilter)
 	|| ydk::is_set(flow_tag_dst.yfilter)
+	|| ydk::is_set(config_flags.yfilter)
+	|| ydk::is_set(oper_flags.yfilter)
+	|| ydk::is_set(arm_flags.yfilter)
+	|| ydk::is_set(state_recvd_frm_im.yfilter)
+	|| ydk::is_set(cflct_address.yfilter)
+	|| ydk::is_set(client_type.yfilter)
+	|| ydk::is_set(is_or_event.yfilter)
+	|| ydk::is_set(or_im_state.yfilter)
+	|| ydk::is_set(idb_pointer.yfilter)
 	|| (acl !=  nullptr && acl->has_operation())
 	|| (multi_acl !=  nullptr && multi_acl->has_operation())
 	|| (helper_address !=  nullptr && helper_address->has_operation())
@@ -1150,9 +1180,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Network::Nodes::Node::Interfa
     if (rg_id_exists.is_set || is_set(rg_id_exists.yfilter)) leaf_name_data.push_back(rg_id_exists.get_name_leafdata());
     if (mlacp_active.is_set || is_set(mlacp_active.yfilter)) leaf_name_data.push_back(mlacp_active.get_name_leafdata());
     if (unnumbered_interface_name.is_set || is_set(unnumbered_interface_name.yfilter)) leaf_name_data.push_back(unnumbered_interface_name.get_name_leafdata());
+    if (next_unnumbered_interface_name.is_set || is_set(next_unnumbered_interface_name.yfilter)) leaf_name_data.push_back(next_unnumbered_interface_name.get_name_leafdata());
     if (proxy_arp_disabled.is_set || is_set(proxy_arp_disabled.yfilter)) leaf_name_data.push_back(proxy_arp_disabled.get_name_leafdata());
     if (flow_tag_src.is_set || is_set(flow_tag_src.yfilter)) leaf_name_data.push_back(flow_tag_src.get_name_leafdata());
     if (flow_tag_dst.is_set || is_set(flow_tag_dst.yfilter)) leaf_name_data.push_back(flow_tag_dst.get_name_leafdata());
+    if (config_flags.is_set || is_set(config_flags.yfilter)) leaf_name_data.push_back(config_flags.get_name_leafdata());
+    if (oper_flags.is_set || is_set(oper_flags.yfilter)) leaf_name_data.push_back(oper_flags.get_name_leafdata());
+    if (arm_flags.is_set || is_set(arm_flags.yfilter)) leaf_name_data.push_back(arm_flags.get_name_leafdata());
+    if (state_recvd_frm_im.is_set || is_set(state_recvd_frm_im.yfilter)) leaf_name_data.push_back(state_recvd_frm_im.get_name_leafdata());
+    if (cflct_address.is_set || is_set(cflct_address.yfilter)) leaf_name_data.push_back(cflct_address.get_name_leafdata());
+    if (client_type.is_set || is_set(client_type.yfilter)) leaf_name_data.push_back(client_type.get_name_leafdata());
+    if (is_or_event.is_set || is_set(is_or_event.yfilter)) leaf_name_data.push_back(is_or_event.get_name_leafdata());
+    if (or_im_state.is_set || is_set(or_im_state.yfilter)) leaf_name_data.push_back(or_im_state.get_name_leafdata());
+    if (idb_pointer.is_set || is_set(idb_pointer.yfilter)) leaf_name_data.push_back(idb_pointer.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1430,6 +1470,12 @@ void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::set_va
         unnumbered_interface_name.value_namespace = name_space;
         unnumbered_interface_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "next-unnumbered-interface-name")
+    {
+        next_unnumbered_interface_name = value;
+        next_unnumbered_interface_name.value_namespace = name_space;
+        next_unnumbered_interface_name.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "proxy-arp-disabled")
     {
         proxy_arp_disabled = value;
@@ -1447,6 +1493,60 @@ void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::set_va
         flow_tag_dst = value;
         flow_tag_dst.value_namespace = name_space;
         flow_tag_dst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "config-flags")
+    {
+        config_flags = value;
+        config_flags.value_namespace = name_space;
+        config_flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oper-flags")
+    {
+        oper_flags = value;
+        oper_flags.value_namespace = name_space;
+        oper_flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "arm-flags")
+    {
+        arm_flags = value;
+        arm_flags.value_namespace = name_space;
+        arm_flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state-recvd-frm-im")
+    {
+        state_recvd_frm_im = value;
+        state_recvd_frm_im.value_namespace = name_space;
+        state_recvd_frm_im.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cflct-address")
+    {
+        cflct_address = value;
+        cflct_address.value_namespace = name_space;
+        cflct_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "client-type")
+    {
+        client_type = value;
+        client_type.value_namespace = name_space;
+        client_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-or-event")
+    {
+        is_or_event = value;
+        is_or_event.value_namespace = name_space;
+        is_or_event.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "or-im-state")
+    {
+        or_im_state = value;
+        or_im_state.value_namespace = name_space;
+        or_im_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idb-pointer")
+    {
+        idb_pointer = value;
+        idb_pointer.value_namespace = name_space;
+        idb_pointer.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1508,6 +1608,10 @@ void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::set_fi
     {
         unnumbered_interface_name.yfilter = yfilter;
     }
+    if(value_path == "next-unnumbered-interface-name")
+    {
+        next_unnumbered_interface_name.yfilter = yfilter;
+    }
     if(value_path == "proxy-arp-disabled")
     {
         proxy_arp_disabled.yfilter = yfilter;
@@ -1520,11 +1624,47 @@ void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::set_fi
     {
         flow_tag_dst.yfilter = yfilter;
     }
+    if(value_path == "config-flags")
+    {
+        config_flags.yfilter = yfilter;
+    }
+    if(value_path == "oper-flags")
+    {
+        oper_flags.yfilter = yfilter;
+    }
+    if(value_path == "arm-flags")
+    {
+        arm_flags.yfilter = yfilter;
+    }
+    if(value_path == "state-recvd-frm-im")
+    {
+        state_recvd_frm_im.yfilter = yfilter;
+    }
+    if(value_path == "cflct-address")
+    {
+        cflct_address.yfilter = yfilter;
+    }
+    if(value_path == "client-type")
+    {
+        client_type.yfilter = yfilter;
+    }
+    if(value_path == "is-or-event")
+    {
+        is_or_event.yfilter = yfilter;
+    }
+    if(value_path == "or-im-state")
+    {
+        or_im_state.yfilter = yfilter;
+    }
+    if(value_path == "idb-pointer")
+    {
+        idb_pointer.yfilter = yfilter;
+    }
 }
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "acl" || name == "multi-acl" || name == "helper-address" || name == "rpf" || name == "bgp-pa" || name == "pub-utime" || name == "idb-utime" || name == "caps-utime" || name == "fwd-en-utime" || name == "fwd-dis-utime" || name == "multicast-group" || name == "secondary-address" || name == "interface-name" || name == "primary-address" || name == "vrf-id" || name == "line-state" || name == "prefix-length" || name == "route-tag" || name == "mtu" || name == "unreachable" || name == "redirect" || name == "direct-broadcast" || name == "mask-reply" || name == "rg-id-exists" || name == "mlacp-active" || name == "unnumbered-interface-name" || name == "proxy-arp-disabled" || name == "flow-tag-src" || name == "flow-tag-dst")
+    if(name == "acl" || name == "multi-acl" || name == "helper-address" || name == "rpf" || name == "bgp-pa" || name == "pub-utime" || name == "idb-utime" || name == "caps-utime" || name == "fwd-en-utime" || name == "fwd-dis-utime" || name == "multicast-group" || name == "secondary-address" || name == "interface-name" || name == "primary-address" || name == "vrf-id" || name == "line-state" || name == "prefix-length" || name == "route-tag" || name == "mtu" || name == "unreachable" || name == "redirect" || name == "direct-broadcast" || name == "mask-reply" || name == "rg-id-exists" || name == "mlacp-active" || name == "unnumbered-interface-name" || name == "next-unnumbered-interface-name" || name == "proxy-arp-disabled" || name == "flow-tag-src" || name == "flow-tag-dst" || name == "config-flags" || name == "oper-flags" || name == "arm-flags" || name == "state-recvd-frm-im" || name == "cflct-address" || name == "client-type" || name == "is-or-event" || name == "or-im-state" || name == "idb-pointer")
         return true;
     return false;
 }
@@ -5591,9 +5731,19 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Detail()
     rg_id_exists{YType::boolean, "rg-id-exists"},
     mlacp_active{YType::boolean, "mlacp-active"},
     unnumbered_interface_name{YType::str, "unnumbered-interface-name"},
+    next_unnumbered_interface_name{YType::str, "next-unnumbered-interface-name"},
     proxy_arp_disabled{YType::boolean, "proxy-arp-disabled"},
     flow_tag_src{YType::boolean, "flow-tag-src"},
-    flow_tag_dst{YType::boolean, "flow-tag-dst"}
+    flow_tag_dst{YType::boolean, "flow-tag-dst"},
+    config_flags{YType::uint16, "config-flags"},
+    oper_flags{YType::uint64, "oper-flags"},
+    arm_flags{YType::uint16, "arm-flags"},
+    state_recvd_frm_im{YType::enumeration, "state-recvd-frm-im"},
+    cflct_address{YType::str, "cflct-address"},
+    client_type{YType::enumeration, "client-type"},
+    is_or_event{YType::boolean, "is-or-event"},
+    or_im_state{YType::enumeration, "or-im-state"},
+    idb_pointer{YType::uint64, "idb-pointer"}
         ,
     acl(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl>())
     , multi_acl(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl>())
@@ -5652,9 +5802,19 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::has_data() const
 	|| rg_id_exists.is_set
 	|| mlacp_active.is_set
 	|| unnumbered_interface_name.is_set
+	|| next_unnumbered_interface_name.is_set
 	|| proxy_arp_disabled.is_set
 	|| flow_tag_src.is_set
 	|| flow_tag_dst.is_set
+	|| config_flags.is_set
+	|| oper_flags.is_set
+	|| arm_flags.is_set
+	|| state_recvd_frm_im.is_set
+	|| cflct_address.is_set
+	|| client_type.is_set
+	|| is_or_event.is_set
+	|| or_im_state.is_set
+	|| idb_pointer.is_set
 	|| (acl !=  nullptr && acl->has_data())
 	|| (multi_acl !=  nullptr && multi_acl->has_data())
 	|| (helper_address !=  nullptr && helper_address->has_data())
@@ -5693,9 +5853,19 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::has_operation() cons
 	|| ydk::is_set(rg_id_exists.yfilter)
 	|| ydk::is_set(mlacp_active.yfilter)
 	|| ydk::is_set(unnumbered_interface_name.yfilter)
+	|| ydk::is_set(next_unnumbered_interface_name.yfilter)
 	|| ydk::is_set(proxy_arp_disabled.yfilter)
 	|| ydk::is_set(flow_tag_src.yfilter)
 	|| ydk::is_set(flow_tag_dst.yfilter)
+	|| ydk::is_set(config_flags.yfilter)
+	|| ydk::is_set(oper_flags.yfilter)
+	|| ydk::is_set(arm_flags.yfilter)
+	|| ydk::is_set(state_recvd_frm_im.yfilter)
+	|| ydk::is_set(cflct_address.yfilter)
+	|| ydk::is_set(client_type.yfilter)
+	|| ydk::is_set(is_or_event.yfilter)
+	|| ydk::is_set(or_im_state.yfilter)
+	|| ydk::is_set(idb_pointer.yfilter)
 	|| (acl !=  nullptr && acl->has_operation())
 	|| (multi_acl !=  nullptr && multi_acl->has_operation())
 	|| (helper_address !=  nullptr && helper_address->has_operation())
@@ -5732,9 +5902,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Network::Interfaces::Interfac
     if (rg_id_exists.is_set || is_set(rg_id_exists.yfilter)) leaf_name_data.push_back(rg_id_exists.get_name_leafdata());
     if (mlacp_active.is_set || is_set(mlacp_active.yfilter)) leaf_name_data.push_back(mlacp_active.get_name_leafdata());
     if (unnumbered_interface_name.is_set || is_set(unnumbered_interface_name.yfilter)) leaf_name_data.push_back(unnumbered_interface_name.get_name_leafdata());
+    if (next_unnumbered_interface_name.is_set || is_set(next_unnumbered_interface_name.yfilter)) leaf_name_data.push_back(next_unnumbered_interface_name.get_name_leafdata());
     if (proxy_arp_disabled.is_set || is_set(proxy_arp_disabled.yfilter)) leaf_name_data.push_back(proxy_arp_disabled.get_name_leafdata());
     if (flow_tag_src.is_set || is_set(flow_tag_src.yfilter)) leaf_name_data.push_back(flow_tag_src.get_name_leafdata());
     if (flow_tag_dst.is_set || is_set(flow_tag_dst.yfilter)) leaf_name_data.push_back(flow_tag_dst.get_name_leafdata());
+    if (config_flags.is_set || is_set(config_flags.yfilter)) leaf_name_data.push_back(config_flags.get_name_leafdata());
+    if (oper_flags.is_set || is_set(oper_flags.yfilter)) leaf_name_data.push_back(oper_flags.get_name_leafdata());
+    if (arm_flags.is_set || is_set(arm_flags.yfilter)) leaf_name_data.push_back(arm_flags.get_name_leafdata());
+    if (state_recvd_frm_im.is_set || is_set(state_recvd_frm_im.yfilter)) leaf_name_data.push_back(state_recvd_frm_im.get_name_leafdata());
+    if (cflct_address.is_set || is_set(cflct_address.yfilter)) leaf_name_data.push_back(cflct_address.get_name_leafdata());
+    if (client_type.is_set || is_set(client_type.yfilter)) leaf_name_data.push_back(client_type.get_name_leafdata());
+    if (is_or_event.is_set || is_set(is_or_event.yfilter)) leaf_name_data.push_back(is_or_event.get_name_leafdata());
+    if (or_im_state.is_set || is_set(or_im_state.yfilter)) leaf_name_data.push_back(or_im_state.get_name_leafdata());
+    if (idb_pointer.is_set || is_set(idb_pointer.yfilter)) leaf_name_data.push_back(idb_pointer.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6006,6 +6186,12 @@ void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::set_value(const std:
         unnumbered_interface_name.value_namespace = name_space;
         unnumbered_interface_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "next-unnumbered-interface-name")
+    {
+        next_unnumbered_interface_name = value;
+        next_unnumbered_interface_name.value_namespace = name_space;
+        next_unnumbered_interface_name.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "proxy-arp-disabled")
     {
         proxy_arp_disabled = value;
@@ -6023,6 +6209,60 @@ void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::set_value(const std:
         flow_tag_dst = value;
         flow_tag_dst.value_namespace = name_space;
         flow_tag_dst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "config-flags")
+    {
+        config_flags = value;
+        config_flags.value_namespace = name_space;
+        config_flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oper-flags")
+    {
+        oper_flags = value;
+        oper_flags.value_namespace = name_space;
+        oper_flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "arm-flags")
+    {
+        arm_flags = value;
+        arm_flags.value_namespace = name_space;
+        arm_flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state-recvd-frm-im")
+    {
+        state_recvd_frm_im = value;
+        state_recvd_frm_im.value_namespace = name_space;
+        state_recvd_frm_im.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cflct-address")
+    {
+        cflct_address = value;
+        cflct_address.value_namespace = name_space;
+        cflct_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "client-type")
+    {
+        client_type = value;
+        client_type.value_namespace = name_space;
+        client_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-or-event")
+    {
+        is_or_event = value;
+        is_or_event.value_namespace = name_space;
+        is_or_event.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "or-im-state")
+    {
+        or_im_state = value;
+        or_im_state.value_namespace = name_space;
+        or_im_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idb-pointer")
+    {
+        idb_pointer = value;
+        idb_pointer.value_namespace = name_space;
+        idb_pointer.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -6080,6 +6320,10 @@ void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::set_filter(const std
     {
         unnumbered_interface_name.yfilter = yfilter;
     }
+    if(value_path == "next-unnumbered-interface-name")
+    {
+        next_unnumbered_interface_name.yfilter = yfilter;
+    }
     if(value_path == "proxy-arp-disabled")
     {
         proxy_arp_disabled.yfilter = yfilter;
@@ -6092,11 +6336,47 @@ void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::set_filter(const std
     {
         flow_tag_dst.yfilter = yfilter;
     }
+    if(value_path == "config-flags")
+    {
+        config_flags.yfilter = yfilter;
+    }
+    if(value_path == "oper-flags")
+    {
+        oper_flags.yfilter = yfilter;
+    }
+    if(value_path == "arm-flags")
+    {
+        arm_flags.yfilter = yfilter;
+    }
+    if(value_path == "state-recvd-frm-im")
+    {
+        state_recvd_frm_im.yfilter = yfilter;
+    }
+    if(value_path == "cflct-address")
+    {
+        cflct_address.yfilter = yfilter;
+    }
+    if(value_path == "client-type")
+    {
+        client_type.yfilter = yfilter;
+    }
+    if(value_path == "is-or-event")
+    {
+        is_or_event.yfilter = yfilter;
+    }
+    if(value_path == "or-im-state")
+    {
+        or_im_state.yfilter = yfilter;
+    }
+    if(value_path == "idb-pointer")
+    {
+        idb_pointer.yfilter = yfilter;
+    }
 }
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "acl" || name == "multi-acl" || name == "helper-address" || name == "rpf" || name == "bgp-pa" || name == "pub-utime" || name == "idb-utime" || name == "caps-utime" || name == "fwd-en-utime" || name == "fwd-dis-utime" || name == "multicast-group" || name == "secondary-address" || name == "primary-address" || name == "vrf-id" || name == "line-state" || name == "prefix-length" || name == "route-tag" || name == "mtu" || name == "unreachable" || name == "redirect" || name == "direct-broadcast" || name == "mask-reply" || name == "rg-id-exists" || name == "mlacp-active" || name == "unnumbered-interface-name" || name == "proxy-arp-disabled" || name == "flow-tag-src" || name == "flow-tag-dst")
+    if(name == "acl" || name == "multi-acl" || name == "helper-address" || name == "rpf" || name == "bgp-pa" || name == "pub-utime" || name == "idb-utime" || name == "caps-utime" || name == "fwd-en-utime" || name == "fwd-dis-utime" || name == "multicast-group" || name == "secondary-address" || name == "primary-address" || name == "vrf-id" || name == "line-state" || name == "prefix-length" || name == "route-tag" || name == "mtu" || name == "unreachable" || name == "redirect" || name == "direct-broadcast" || name == "mask-reply" || name == "rg-id-exists" || name == "mlacp-active" || name == "unnumbered-interface-name" || name == "next-unnumbered-interface-name" || name == "proxy-arp-disabled" || name == "flow-tag-src" || name == "flow-tag-dst" || name == "config-flags" || name == "oper-flags" || name == "arm-flags" || name == "state-recvd-frm-im" || name == "cflct-address" || name == "client-type" || name == "is-or-event" || name == "or-im-state" || name == "idb-pointer")
         return true;
     return false;
 }
@@ -7820,6 +8100,10 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::has_leaf_or_child_of_
         return true;
     return false;
 }
+
+const Enum::YLeaf Ipv4MaOperConfig::ipv4_ma_oper_client_none {0, "ipv4-ma-oper-client-none"};
+const Enum::YLeaf Ipv4MaOperConfig::ipv4_ma_oper_non_oc_client {1, "ipv4-ma-oper-non-oc-client"};
+const Enum::YLeaf Ipv4MaOperConfig::ipv4_ma_oper_oc_client {2, "ipv4-ma-oper-oc-client"};
 
 const Enum::YLeaf RpfMode::strict {0, "strict"};
 const Enum::YLeaf RpfMode::loose {1, "loose"};

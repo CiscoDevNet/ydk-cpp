@@ -122,9 +122,11 @@ NetconfYang::Agent::Agent()
     :
     rate_limit{YType::uint32, "rate-limit"}
         ,
-    ssh(std::make_shared<NetconfYang::Agent::Ssh>())
+    models(std::make_shared<NetconfYang::Agent::Models>())
+    , ssh(std::make_shared<NetconfYang::Agent::Ssh>())
     , session(std::make_shared<NetconfYang::Agent::Session>())
 {
+    models->parent = this;
     ssh->parent = this;
     session->parent = this;
 
@@ -139,6 +141,7 @@ bool NetconfYang::Agent::has_data() const
 {
     if (is_presence_container) return true;
     return rate_limit.is_set
+	|| (models !=  nullptr && models->has_data())
 	|| (ssh !=  nullptr && ssh->has_data())
 	|| (session !=  nullptr && session->has_data());
 }
@@ -147,6 +150,7 @@ bool NetconfYang::Agent::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rate_limit.yfilter)
+	|| (models !=  nullptr && models->has_operation())
 	|| (ssh !=  nullptr && ssh->has_operation())
 	|| (session !=  nullptr && session->has_operation());
 }
@@ -177,6 +181,15 @@ std::vector<std::pair<std::string, LeafData> > NetconfYang::Agent::get_name_leaf
 
 std::shared_ptr<Entity> NetconfYang::Agent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "models")
+    {
+        if(models == nullptr)
+        {
+            models = std::make_shared<NetconfYang::Agent::Models>();
+        }
+        return models;
+    }
+
     if(child_yang_name == "ssh")
     {
         if(ssh == nullptr)
@@ -202,6 +215,11 @@ std::map<std::string, std::shared_ptr<Entity>> NetconfYang::Agent::get_children(
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(models != nullptr)
+    {
+        children["models"] = models;
+    }
+
     if(ssh != nullptr)
     {
         children["ssh"] = ssh;
@@ -235,7 +253,181 @@ void NetconfYang::Agent::set_filter(const std::string & value_path, YFilter yfil
 
 bool NetconfYang::Agent::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ssh" || name == "session" || name == "rate-limit")
+    if(name == "models" || name == "ssh" || name == "session" || name == "rate-limit")
+        return true;
+    return false;
+}
+
+NetconfYang::Agent::Models::Models()
+    :
+    openconfig(std::make_shared<NetconfYang::Agent::Models::Openconfig>())
+{
+    openconfig->parent = this;
+
+    yang_name = "models"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+NetconfYang::Agent::Models::~Models()
+{
+}
+
+bool NetconfYang::Agent::Models::has_data() const
+{
+    if (is_presence_container) return true;
+    return (openconfig !=  nullptr && openconfig->has_data());
+}
+
+bool NetconfYang::Agent::Models::has_operation() const
+{
+    return is_set(yfilter)
+	|| (openconfig !=  nullptr && openconfig->has_operation());
+}
+
+std::string NetconfYang::Agent::Models::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-netconf-cfg:netconf-yang/agent/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NetconfYang::Agent::Models::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "models";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetconfYang::Agent::Models::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetconfYang::Agent::Models::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "openconfig")
+    {
+        if(openconfig == nullptr)
+        {
+            openconfig = std::make_shared<NetconfYang::Agent::Models::Openconfig>();
+        }
+        return openconfig;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetconfYang::Agent::Models::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(openconfig != nullptr)
+    {
+        children["openconfig"] = openconfig;
+    }
+
+    return children;
+}
+
+void NetconfYang::Agent::Models::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void NetconfYang::Agent::Models::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool NetconfYang::Agent::Models::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "openconfig")
+        return true;
+    return false;
+}
+
+NetconfYang::Agent::Models::Openconfig::Openconfig()
+    :
+    disabled{YType::empty, "disabled"}
+{
+
+    yang_name = "openconfig"; yang_parent_name = "models"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+NetconfYang::Agent::Models::Openconfig::~Openconfig()
+{
+}
+
+bool NetconfYang::Agent::Models::Openconfig::has_data() const
+{
+    if (is_presence_container) return true;
+    return disabled.is_set;
+}
+
+bool NetconfYang::Agent::Models::Openconfig::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(disabled.yfilter);
+}
+
+std::string NetconfYang::Agent::Models::Openconfig::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-man-netconf-cfg:netconf-yang/agent/models/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NetconfYang::Agent::Models::Openconfig::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "openconfig";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetconfYang::Agent::Models::Openconfig::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (disabled.is_set || is_set(disabled.yfilter)) leaf_name_data.push_back(disabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NetconfYang::Agent::Models::Openconfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NetconfYang::Agent::Models::Openconfig::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void NetconfYang::Agent::Models::Openconfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disabled")
+    {
+        disabled = value;
+        disabled.value_namespace = name_space;
+        disabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetconfYang::Agent::Models::Openconfig::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disabled")
+    {
+        disabled.yfilter = yfilter;
+    }
+}
+
+bool NetconfYang::Agent::Models::Openconfig::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disabled")
         return true;
     return false;
 }

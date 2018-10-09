@@ -90,18 +90,41 @@ class ShowFpd::Locations::Location : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf location_name; //type: string
-        class Fpd; //type: ShowFpd::Locations::Location::Fpd
+        class Details; //type: ShowFpd::Locations::Location::Details
 
-        ydk::YList fpd;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_show_fpd_loc_ng_oper::ShowFpd::Locations::Location::Details> details;
         
 }; // ShowFpd::Locations::Location
 
 
-class ShowFpd::Locations::Location::Fpd : public ydk::Entity
+class ShowFpd::Locations::Location::Details : public ydk::Entity
 {
     public:
-        Fpd();
-        ~Fpd();
+        Details();
+        ~Details();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Detail; //type: ShowFpd::Locations::Location::Details::Detail
+
+        ydk::YList detail;
+        
+}; // ShowFpd::Locations::Location::Details
+
+
+class ShowFpd::Locations::Location::Details::Detail : public ydk::Entity
+{
+    public:
+        Detail();
+        ~Detail();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -114,14 +137,15 @@ class ShowFpd::Locations::Location::Fpd : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf fpd_name; //type: string
-        class FpdInfoDetaile; //type: ShowFpd::Locations::Location::Fpd::FpdInfoDetaile
+        ydk::YLeaf upgrade_status; //type: string
+        class FpdInfoDetaile; //type: ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile
 
         ydk::YList fpd_info_detaile;
         
-}; // ShowFpd::Locations::Location::Fpd
+}; // ShowFpd::Locations::Location::Details::Detail
 
 
-class ShowFpd::Locations::Location::Fpd::FpdInfoDetaile : public ydk::Entity
+class ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile : public ydk::Entity
 {
     public:
         FpdInfoDetaile();
@@ -146,7 +170,7 @@ class ShowFpd::Locations::Location::Fpd::FpdInfoDetaile : public ydk::Entity
         ydk::YLeaf running_version; //type: string
         ydk::YLeaf programd_version; //type: string
 
-}; // ShowFpd::Locations::Location::Fpd::FpdInfoDetaile
+}; // ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile
 
 
 class ShowFpd::HwModuleFpd : public ydk::Entity
@@ -166,6 +190,7 @@ class ShowFpd::HwModuleFpd : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
+        ydk::YLeaf upgrade_status; //type: string
         class FpdInfoDetaile; //type: ShowFpd::HwModuleFpd::FpdInfoDetaile
 
         ydk::YList fpd_info_detaile;

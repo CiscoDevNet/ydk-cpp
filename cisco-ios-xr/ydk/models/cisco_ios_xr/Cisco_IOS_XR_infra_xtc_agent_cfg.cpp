@@ -32,6 +32,10 @@ const Enum::YLeaf XtcDisjointness::srlg_node {4, "srlg-node"};
 const Enum::YLeaf XtcAutoRouteMetric::relative {1, "relative"};
 const Enum::YLeaf XtcAutoRouteMetric::constant {3, "constant"};
 
+const Enum::YLeaf XtcSteeringApplication::bgp {1, "bgp"};
+const Enum::YLeaf XtcSteeringApplication::isis {2, "isis"};
+const Enum::YLeaf XtcSteeringApplication::ospf {3, "ospf"};
+
 const Enum::YLeaf XtcBindingSid::mpls_label_specified {1, "mpls-label-specified"};
 const Enum::YLeaf XtcBindingSid::mpls_label_any {2, "mpls-label-any"};
 

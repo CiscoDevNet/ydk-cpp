@@ -173,7 +173,7 @@ class InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol : publi
         ydk::YLeaf bytes_sent; //type: uint64
         ydk::YLeaf packets_sent; //type: uint64
         ydk::YLeaf protocol; //type: uint32
-        ydk::YLeaf last_data_time; //type: uint32
+        ydk::YLeaf last_data_time; //type: uint64
         ydk::YLeaf input_data_rate; //type: uint64
         ydk::YLeaf input_packet_rate; //type: uint64
         ydk::YLeaf output_data_rate; //type: uint64
@@ -401,7 +401,7 @@ class InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol : publ
         ydk::YLeaf bytes_sent; //type: uint64
         ydk::YLeaf packets_sent; //type: uint64
         ydk::YLeaf protocol; //type: uint32
-        ydk::YLeaf last_data_time; //type: uint32
+        ydk::YLeaf last_data_time; //type: uint64
         ydk::YLeaf input_data_rate; //type: uint64
         ydk::YLeaf input_packet_rate; //type: uint64
         ydk::YLeaf output_data_rate; //type: uint64
@@ -629,7 +629,7 @@ class InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol : publi
         ydk::YLeaf bytes_sent; //type: uint64
         ydk::YLeaf packets_sent; //type: uint64
         ydk::YLeaf protocol; //type: uint32
-        ydk::YLeaf last_data_time; //type: uint32
+        ydk::YLeaf last_data_time; //type: uint64
         ydk::YLeaf input_data_rate; //type: uint64
         ydk::YLeaf input_packet_rate; //type: uint64
         ydk::YLeaf output_data_rate; //type: uint64
@@ -828,7 +828,7 @@ class InfraStatistics::Interfaces::Interface::Protocols::Protocol : public ydk::
         ydk::YLeaf bytes_sent; //type: uint64
         ydk::YLeaf packets_sent; //type: uint64
         ydk::YLeaf protocol; //type: uint32
-        ydk::YLeaf last_data_time; //type: uint32
+        ydk::YLeaf last_data_time; //type: uint64
         ydk::YLeaf input_data_rate; //type: uint64
         ydk::YLeaf input_packet_rate; //type: uint64
         ydk::YLeaf output_data_rate; //type: uint64

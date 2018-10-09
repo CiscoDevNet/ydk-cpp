@@ -5,2085 +5,11 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_mpls_ldp_oper_7.hpp"
-#include "Cisco_IOS_XR_mpls_ldp_oper_8.hpp"
 
 using namespace ydk;
 
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_ldp_oper {
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::Binding()
-    :
-    prefix{YType::str, "prefix"},
-    prefix_length{YType::uint8, "prefix-length"},
-    local_label{YType::uint32, "local-label"},
-    le_local_binding_revision{YType::uint32, "le-local-binding-revision"},
-    le_local_label_state{YType::enumeration, "le-local-label-state"},
-    is_no_route{YType::boolean, "is-no-route"},
-    label_oor{YType::boolean, "label-oor"},
-    advertise_prefix_acl{YType::str, "advertise-prefix-acl"},
-    advertise_tsr_acl{YType::str, "advertise-tsr-acl"},
-    config_enforced_local_label_value{YType::boolean, "config-enforced-local-label-value"},
-    is_elc{YType::boolean, "is-elc"}
-        ,
-    vrf(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::Vrf_>())
-    , prefix_xr(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PrefixXr>())
-    , remote_binding(this, {})
-    , peers_advertised_to(this, {})
-    , peers_acked(this, {})
-{
-    vrf->parent = this;
-    prefix_xr->parent = this;
-
-    yang_name = "binding"; yang_parent_name = "bindings"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::~Binding()
-{
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<remote_binding.len(); index++)
-    {
-        if(remote_binding[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<peers_advertised_to.len(); index++)
-    {
-        if(peers_advertised_to[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<peers_acked.len(); index++)
-    {
-        if(peers_acked[index]->has_data())
-            return true;
-    }
-    return prefix.is_set
-	|| prefix_length.is_set
-	|| local_label.is_set
-	|| le_local_binding_revision.is_set
-	|| le_local_label_state.is_set
-	|| is_no_route.is_set
-	|| label_oor.is_set
-	|| advertise_prefix_acl.is_set
-	|| advertise_tsr_acl.is_set
-	|| config_enforced_local_label_value.is_set
-	|| is_elc.is_set
-	|| (vrf !=  nullptr && vrf->has_data())
-	|| (prefix_xr !=  nullptr && prefix_xr->has_data());
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::has_operation() const
-{
-    for (std::size_t index=0; index<remote_binding.len(); index++)
-    {
-        if(remote_binding[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<peers_advertised_to.len(); index++)
-    {
-        if(peers_advertised_to[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<peers_acked.len(); index++)
-    {
-        if(peers_acked[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(prefix.yfilter)
-	|| ydk::is_set(prefix_length.yfilter)
-	|| ydk::is_set(local_label.yfilter)
-	|| ydk::is_set(le_local_binding_revision.yfilter)
-	|| ydk::is_set(le_local_label_state.yfilter)
-	|| ydk::is_set(is_no_route.yfilter)
-	|| ydk::is_set(label_oor.yfilter)
-	|| ydk::is_set(advertise_prefix_acl.yfilter)
-	|| ydk::is_set(advertise_tsr_acl.yfilter)
-	|| ydk::is_set(config_enforced_local_label_value.yfilter)
-	|| ydk::is_set(is_elc.yfilter)
-	|| (vrf !=  nullptr && vrf->has_operation())
-	|| (prefix_xr !=  nullptr && prefix_xr->has_operation());
-}
-
-std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "binding";
-    ADD_KEY_TOKEN(prefix, "prefix");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (local_label.is_set || is_set(local_label.yfilter)) leaf_name_data.push_back(local_label.get_name_leafdata());
-    if (le_local_binding_revision.is_set || is_set(le_local_binding_revision.yfilter)) leaf_name_data.push_back(le_local_binding_revision.get_name_leafdata());
-    if (le_local_label_state.is_set || is_set(le_local_label_state.yfilter)) leaf_name_data.push_back(le_local_label_state.get_name_leafdata());
-    if (is_no_route.is_set || is_set(is_no_route.yfilter)) leaf_name_data.push_back(is_no_route.get_name_leafdata());
-    if (label_oor.is_set || is_set(label_oor.yfilter)) leaf_name_data.push_back(label_oor.get_name_leafdata());
-    if (advertise_prefix_acl.is_set || is_set(advertise_prefix_acl.yfilter)) leaf_name_data.push_back(advertise_prefix_acl.get_name_leafdata());
-    if (advertise_tsr_acl.is_set || is_set(advertise_tsr_acl.yfilter)) leaf_name_data.push_back(advertise_tsr_acl.get_name_leafdata());
-    if (config_enforced_local_label_value.is_set || is_set(config_enforced_local_label_value.yfilter)) leaf_name_data.push_back(config_enforced_local_label_value.get_name_leafdata());
-    if (is_elc.is_set || is_set(is_elc.yfilter)) leaf_name_data.push_back(is_elc.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "vrf")
-    {
-        if(vrf == nullptr)
-        {
-            vrf = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::Vrf_>();
-        }
-        return vrf;
-    }
-
-    if(child_yang_name == "prefix-xr")
-    {
-        if(prefix_xr == nullptr)
-        {
-            prefix_xr = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PrefixXr>();
-        }
-        return prefix_xr;
-    }
-
-    if(child_yang_name == "remote-binding")
-    {
-        auto c = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding>();
-        c->parent = this;
-        remote_binding.append(c);
-        return c;
-    }
-
-    if(child_yang_name == "peers-advertised-to")
-    {
-        auto c = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAdvertisedTo>();
-        c->parent = this;
-        peers_advertised_to.append(c);
-        return c;
-    }
-
-    if(child_yang_name == "peers-acked")
-    {
-        auto c = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAcked>();
-        c->parent = this;
-        peers_acked.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(vrf != nullptr)
-    {
-        children["vrf"] = vrf;
-    }
-
-    if(prefix_xr != nullptr)
-    {
-        children["prefix-xr"] = prefix_xr;
-    }
-
-    count = 0;
-    for (auto c : remote_binding.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    count = 0;
-    for (auto c : peers_advertised_to.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    count = 0;
-    for (auto c : peers_acked.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "prefix")
-    {
-        prefix = value;
-        prefix.value_namespace = name_space;
-        prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length = value;
-        prefix_length.value_namespace = name_space;
-        prefix_length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-label")
-    {
-        local_label = value;
-        local_label.value_namespace = name_space;
-        local_label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "le-local-binding-revision")
-    {
-        le_local_binding_revision = value;
-        le_local_binding_revision.value_namespace = name_space;
-        le_local_binding_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "le-local-label-state")
-    {
-        le_local_label_state = value;
-        le_local_label_state.value_namespace = name_space;
-        le_local_label_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-no-route")
-    {
-        is_no_route = value;
-        is_no_route.value_namespace = name_space;
-        is_no_route.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "label-oor")
-    {
-        label_oor = value;
-        label_oor.value_namespace = name_space;
-        label_oor.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "advertise-prefix-acl")
-    {
-        advertise_prefix_acl = value;
-        advertise_prefix_acl.value_namespace = name_space;
-        advertise_prefix_acl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "advertise-tsr-acl")
-    {
-        advertise_tsr_acl = value;
-        advertise_tsr_acl.value_namespace = name_space;
-        advertise_tsr_acl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "config-enforced-local-label-value")
-    {
-        config_enforced_local_label_value = value;
-        config_enforced_local_label_value.value_namespace = name_space;
-        config_enforced_local_label_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-elc")
-    {
-        is_elc = value;
-        is_elc.value_namespace = name_space;
-        is_elc.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "prefix")
-    {
-        prefix.yfilter = yfilter;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length.yfilter = yfilter;
-    }
-    if(value_path == "local-label")
-    {
-        local_label.yfilter = yfilter;
-    }
-    if(value_path == "le-local-binding-revision")
-    {
-        le_local_binding_revision.yfilter = yfilter;
-    }
-    if(value_path == "le-local-label-state")
-    {
-        le_local_label_state.yfilter = yfilter;
-    }
-    if(value_path == "is-no-route")
-    {
-        is_no_route.yfilter = yfilter;
-    }
-    if(value_path == "label-oor")
-    {
-        label_oor.yfilter = yfilter;
-    }
-    if(value_path == "advertise-prefix-acl")
-    {
-        advertise_prefix_acl.yfilter = yfilter;
-    }
-    if(value_path == "advertise-tsr-acl")
-    {
-        advertise_tsr_acl.yfilter = yfilter;
-    }
-    if(value_path == "config-enforced-local-label-value")
-    {
-        config_enforced_local_label_value.yfilter = yfilter;
-    }
-    if(value_path == "is-elc")
-    {
-        is_elc.yfilter = yfilter;
-    }
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vrf" || name == "prefix-xr" || name == "remote-binding" || name == "peers-advertised-to" || name == "peers-acked" || name == "prefix" || name == "prefix-length" || name == "local-label" || name == "le-local-binding-revision" || name == "le-local-label-state" || name == "is-no-route" || name == "label-oor" || name == "advertise-prefix-acl" || name == "advertise-tsr-acl" || name == "config-enforced-local-label-value" || name == "is-elc")
-        return true;
-    return false;
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::Vrf_::Vrf_()
-    :
-    name{YType::str, "name"},
-    id{YType::uint32, "id"}
-{
-
-    yang_name = "vrf"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::Vrf_::~Vrf_()
-{
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::Vrf_::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set
-	|| id.is_set;
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::Vrf_::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(id.yfilter);
-}
-
-std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::Vrf_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vrf";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::Vrf_::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::Vrf_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::Vrf_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::Vrf_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::Vrf_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name" || name == "id")
-        return true;
-    return false;
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PrefixXr::PrefixXr()
-    :
-    afi{YType::enumeration, "afi"},
-    dummy{YType::uint8, "dummy"},
-    ipv4{YType::str, "ipv4"},
-    ipv6{YType::str, "ipv6"}
-{
-
-    yang_name = "prefix-xr"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PrefixXr::~PrefixXr()
-{
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PrefixXr::has_data() const
-{
-    if (is_presence_container) return true;
-    return afi.is_set
-	|| dummy.is_set
-	|| ipv4.is_set
-	|| ipv6.is_set;
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PrefixXr::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(afi.yfilter)
-	|| ydk::is_set(dummy.yfilter)
-	|| ydk::is_set(ipv4.yfilter)
-	|| ydk::is_set(ipv6.yfilter);
-}
-
-std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PrefixXr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefix-xr";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PrefixXr::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PrefixXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PrefixXr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PrefixXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "afi")
-    {
-        afi = value;
-        afi.value_namespace = name_space;
-        afi.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dummy")
-    {
-        dummy = value;
-        dummy.value_namespace = name_space;
-        dummy.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4")
-    {
-        ipv4 = value;
-        ipv4.value_namespace = name_space;
-        ipv4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6")
-    {
-        ipv6 = value;
-        ipv6.value_namespace = name_space;
-        ipv6.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PrefixXr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "afi")
-    {
-        afi.yfilter = yfilter;
-    }
-    if(value_path == "dummy")
-    {
-        dummy.yfilter = yfilter;
-    }
-    if(value_path == "ipv4")
-    {
-        ipv4.yfilter = yfilter;
-    }
-    if(value_path == "ipv6")
-    {
-        ipv6.yfilter = yfilter;
-    }
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PrefixXr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
-        return true;
-    return false;
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::RemoteBinding()
-    :
-    remote_label{YType::uint32, "remote-label"},
-    is_stale{YType::boolean, "is-stale"},
-    is_elc{YType::boolean, "is-elc"}
-        ,
-    assigning_peer_ldp_ident(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent>())
-{
-    assigning_peer_ldp_ident->parent = this;
-
-    yang_name = "remote-binding"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::~RemoteBinding()
-{
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::has_data() const
-{
-    if (is_presence_container) return true;
-    return remote_label.is_set
-	|| is_stale.is_set
-	|| is_elc.is_set
-	|| (assigning_peer_ldp_ident !=  nullptr && assigning_peer_ldp_ident->has_data());
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(remote_label.yfilter)
-	|| ydk::is_set(is_stale.yfilter)
-	|| ydk::is_set(is_elc.yfilter)
-	|| (assigning_peer_ldp_ident !=  nullptr && assigning_peer_ldp_ident->has_operation());
-}
-
-std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "remote-binding";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (remote_label.is_set || is_set(remote_label.yfilter)) leaf_name_data.push_back(remote_label.get_name_leafdata());
-    if (is_stale.is_set || is_set(is_stale.yfilter)) leaf_name_data.push_back(is_stale.get_name_leafdata());
-    if (is_elc.is_set || is_set(is_elc.yfilter)) leaf_name_data.push_back(is_elc.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "assigning-peer-ldp-ident")
-    {
-        if(assigning_peer_ldp_ident == nullptr)
-        {
-            assigning_peer_ldp_ident = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent>();
-        }
-        return assigning_peer_ldp_ident;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(assigning_peer_ldp_ident != nullptr)
-    {
-        children["assigning-peer-ldp-ident"] = assigning_peer_ldp_ident;
-    }
-
-    return children;
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "remote-label")
-    {
-        remote_label = value;
-        remote_label.value_namespace = name_space;
-        remote_label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-stale")
-    {
-        is_stale = value;
-        is_stale.value_namespace = name_space;
-        is_stale.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-elc")
-    {
-        is_elc = value;
-        is_elc.value_namespace = name_space;
-        is_elc.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "remote-label")
-    {
-        remote_label.yfilter = yfilter;
-    }
-    if(value_path == "is-stale")
-    {
-        is_stale.yfilter = yfilter;
-    }
-    if(value_path == "is-elc")
-    {
-        is_elc.yfilter = yfilter;
-    }
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "assigning-peer-ldp-ident" || name == "remote-label" || name == "is-stale" || name == "is-elc")
-        return true;
-    return false;
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent::AssigningPeerLdpIdent()
-    :
-    lsr_id{YType::str, "lsr-id"},
-    label_space_id{YType::uint16, "label-space-id"},
-    ldp_id{YType::str, "ldp-id"}
-{
-
-    yang_name = "assigning-peer-ldp-ident"; yang_parent_name = "remote-binding"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent::~AssigningPeerLdpIdent()
-{
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent::has_data() const
-{
-    if (is_presence_container) return true;
-    return lsr_id.is_set
-	|| label_space_id.is_set
-	|| ldp_id.is_set;
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(lsr_id.yfilter)
-	|| ydk::is_set(label_space_id.yfilter)
-	|| ydk::is_set(ldp_id.yfilter);
-}
-
-std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "assigning-peer-ldp-ident";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (lsr_id.is_set || is_set(lsr_id.yfilter)) leaf_name_data.push_back(lsr_id.get_name_leafdata());
-    if (label_space_id.is_set || is_set(label_space_id.yfilter)) leaf_name_data.push_back(label_space_id.get_name_leafdata());
-    if (ldp_id.is_set || is_set(ldp_id.yfilter)) leaf_name_data.push_back(ldp_id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "lsr-id")
-    {
-        lsr_id = value;
-        lsr_id.value_namespace = name_space;
-        lsr_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "label-space-id")
-    {
-        label_space_id = value;
-        label_space_id.value_namespace = name_space;
-        label_space_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ldp-id")
-    {
-        ldp_id = value;
-        ldp_id.value_namespace = name_space;
-        ldp_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "lsr-id")
-    {
-        lsr_id.yfilter = yfilter;
-    }
-    if(value_path == "label-space-id")
-    {
-        label_space_id.yfilter = yfilter;
-    }
-    if(value_path == "ldp-id")
-    {
-        ldp_id.yfilter = yfilter;
-    }
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lsr-id" || name == "label-space-id" || name == "ldp-id")
-        return true;
-    return false;
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAdvertisedTo::PeersAdvertisedTo()
-    :
-    lsr_id{YType::str, "lsr-id"},
-    label_space_id{YType::uint16, "label-space-id"},
-    ldp_id{YType::str, "ldp-id"}
-{
-
-    yang_name = "peers-advertised-to"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAdvertisedTo::~PeersAdvertisedTo()
-{
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAdvertisedTo::has_data() const
-{
-    if (is_presence_container) return true;
-    return lsr_id.is_set
-	|| label_space_id.is_set
-	|| ldp_id.is_set;
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAdvertisedTo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(lsr_id.yfilter)
-	|| ydk::is_set(label_space_id.yfilter)
-	|| ydk::is_set(ldp_id.yfilter);
-}
-
-std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAdvertisedTo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "peers-advertised-to";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAdvertisedTo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (lsr_id.is_set || is_set(lsr_id.yfilter)) leaf_name_data.push_back(lsr_id.get_name_leafdata());
-    if (label_space_id.is_set || is_set(label_space_id.yfilter)) leaf_name_data.push_back(label_space_id.get_name_leafdata());
-    if (ldp_id.is_set || is_set(ldp_id.yfilter)) leaf_name_data.push_back(ldp_id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAdvertisedTo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAdvertisedTo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAdvertisedTo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "lsr-id")
-    {
-        lsr_id = value;
-        lsr_id.value_namespace = name_space;
-        lsr_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "label-space-id")
-    {
-        label_space_id = value;
-        label_space_id.value_namespace = name_space;
-        label_space_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ldp-id")
-    {
-        ldp_id = value;
-        ldp_id.value_namespace = name_space;
-        ldp_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAdvertisedTo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "lsr-id")
-    {
-        lsr_id.yfilter = yfilter;
-    }
-    if(value_path == "label-space-id")
-    {
-        label_space_id.yfilter = yfilter;
-    }
-    if(value_path == "ldp-id")
-    {
-        ldp_id.yfilter = yfilter;
-    }
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAdvertisedTo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lsr-id" || name == "label-space-id" || name == "ldp-id")
-        return true;
-    return false;
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAcked::PeersAcked()
-    :
-    lsr_id{YType::str, "lsr-id"},
-    label_space_id{YType::uint16, "label-space-id"},
-    ldp_id{YType::str, "ldp-id"}
-{
-
-    yang_name = "peers-acked"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAcked::~PeersAcked()
-{
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAcked::has_data() const
-{
-    if (is_presence_container) return true;
-    return lsr_id.is_set
-	|| label_space_id.is_set
-	|| ldp_id.is_set;
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAcked::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(lsr_id.yfilter)
-	|| ydk::is_set(label_space_id.yfilter)
-	|| ydk::is_set(ldp_id.yfilter);
-}
-
-std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAcked::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "peers-acked";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAcked::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (lsr_id.is_set || is_set(lsr_id.yfilter)) leaf_name_data.push_back(lsr_id.get_name_leafdata());
-    if (label_space_id.is_set || is_set(label_space_id.yfilter)) leaf_name_data.push_back(label_space_id.get_name_leafdata());
-    if (ldp_id.is_set || is_set(ldp_id.yfilter)) leaf_name_data.push_back(ldp_id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAcked::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAcked::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAcked::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "lsr-id")
-    {
-        lsr_id = value;
-        lsr_id.value_namespace = name_space;
-        lsr_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "label-space-id")
-    {
-        label_space_id = value;
-        label_space_id.value_namespace = name_space;
-        label_space_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ldp-id")
-    {
-        ldp_id = value;
-        ldp_id.value_namespace = name_space;
-        ldp_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAcked::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "lsr-id")
-    {
-        lsr_id.yfilter = yfilter;
-    }
-    if(value_path == "label-space-id")
-    {
-        label_space_id.yfilter = yfilter;
-    }
-    if(value_path == "ldp-id")
-    {
-        ldp_id.yfilter = yfilter;
-    }
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAcked::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lsr-id" || name == "label-space-id" || name == "ldp-id")
-        return true;
-    return false;
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Igp()
-    :
-    syncs(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs>())
-    , sync_delay_restart(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::SyncDelayRestart>())
-{
-    syncs->parent = this;
-    sync_delay_restart->parent = this;
-
-    yang_name = "igp"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::~Igp()
-{
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::has_data() const
-{
-    if (is_presence_container) return true;
-    return (syncs !=  nullptr && syncs->has_data())
-	|| (sync_delay_restart !=  nullptr && sync_delay_restart->has_data());
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::has_operation() const
-{
-    return is_set(yfilter)
-	|| (syncs !=  nullptr && syncs->has_operation())
-	|| (sync_delay_restart !=  nullptr && sync_delay_restart->has_operation());
-}
-
-std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "igp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "syncs")
-    {
-        if(syncs == nullptr)
-        {
-            syncs = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs>();
-        }
-        return syncs;
-    }
-
-    if(child_yang_name == "sync-delay-restart")
-    {
-        if(sync_delay_restart == nullptr)
-        {
-            sync_delay_restart = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::SyncDelayRestart>();
-        }
-        return sync_delay_restart;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(syncs != nullptr)
-    {
-        children["syncs"] = syncs;
-    }
-
-    if(sync_delay_restart != nullptr)
-    {
-        children["sync-delay-restart"] = sync_delay_restart;
-    }
-
-    return children;
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "syncs" || name == "sync-delay-restart")
-        return true;
-    return false;
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Syncs()
-    :
-    sync(this, {"interface_name"})
-{
-
-    yang_name = "syncs"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::~Syncs()
-{
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<sync.len(); index++)
-    {
-        if(sync[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::has_operation() const
-{
-    for (std::size_t index=0; index<sync.len(); index++)
-    {
-        if(sync[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "syncs";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "sync")
-    {
-        auto c = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync>();
-        c->parent = this;
-        sync.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sync.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sync")
-        return true;
-    return false;
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Sync()
-    :
-    interface_name{YType::str, "interface-name"},
-    interface_name_xr{YType::str, "interface-name-xr"},
-    igp_sync_state{YType::enumeration, "igp-sync-state"},
-    igp_sync_delay{YType::uint32, "igp-sync-delay"},
-    is_delay_timer_running{YType::boolean, "is-delay-timer-running"},
-    delay_timer_remaining{YType::uint32, "delay-timer-remaining"},
-    igp_sync_down_reason{YType::enumeration, "igp-sync-down-reason"}
-        ,
-    vrf(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Vrf_>())
-    , peers(this, {})
-    , gr_only_peer(this, {})
-{
-    vrf->parent = this;
-
-    yang_name = "sync"; yang_parent_name = "syncs"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::~Sync()
-{
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<peers.len(); index++)
-    {
-        if(peers[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<gr_only_peer.len(); index++)
-    {
-        if(gr_only_peer[index]->has_data())
-            return true;
-    }
-    return interface_name.is_set
-	|| interface_name_xr.is_set
-	|| igp_sync_state.is_set
-	|| igp_sync_delay.is_set
-	|| is_delay_timer_running.is_set
-	|| delay_timer_remaining.is_set
-	|| igp_sync_down_reason.is_set
-	|| (vrf !=  nullptr && vrf->has_data());
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::has_operation() const
-{
-    for (std::size_t index=0; index<peers.len(); index++)
-    {
-        if(peers[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<gr_only_peer.len(); index++)
-    {
-        if(gr_only_peer[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(interface_name_xr.yfilter)
-	|| ydk::is_set(igp_sync_state.yfilter)
-	|| ydk::is_set(igp_sync_delay.yfilter)
-	|| ydk::is_set(is_delay_timer_running.yfilter)
-	|| ydk::is_set(delay_timer_remaining.yfilter)
-	|| ydk::is_set(igp_sync_down_reason.yfilter)
-	|| (vrf !=  nullptr && vrf->has_operation());
-}
-
-std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sync";
-    ADD_KEY_TOKEN(interface_name, "interface-name");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (interface_name_xr.is_set || is_set(interface_name_xr.yfilter)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
-    if (igp_sync_state.is_set || is_set(igp_sync_state.yfilter)) leaf_name_data.push_back(igp_sync_state.get_name_leafdata());
-    if (igp_sync_delay.is_set || is_set(igp_sync_delay.yfilter)) leaf_name_data.push_back(igp_sync_delay.get_name_leafdata());
-    if (is_delay_timer_running.is_set || is_set(is_delay_timer_running.yfilter)) leaf_name_data.push_back(is_delay_timer_running.get_name_leafdata());
-    if (delay_timer_remaining.is_set || is_set(delay_timer_remaining.yfilter)) leaf_name_data.push_back(delay_timer_remaining.get_name_leafdata());
-    if (igp_sync_down_reason.is_set || is_set(igp_sync_down_reason.yfilter)) leaf_name_data.push_back(igp_sync_down_reason.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "vrf")
-    {
-        if(vrf == nullptr)
-        {
-            vrf = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Vrf_>();
-        }
-        return vrf;
-    }
-
-    if(child_yang_name == "peers")
-    {
-        auto c = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Peers>();
-        c->parent = this;
-        peers.append(c);
-        return c;
-    }
-
-    if(child_yang_name == "gr-only-peer")
-    {
-        auto c = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer>();
-        c->parent = this;
-        gr_only_peer.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(vrf != nullptr)
-    {
-        children["vrf"] = vrf;
-    }
-
-    count = 0;
-    for (auto c : peers.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    count = 0;
-    for (auto c : gr_only_peer.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name-xr")
-    {
-        interface_name_xr = value;
-        interface_name_xr.value_namespace = name_space;
-        interface_name_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igp-sync-state")
-    {
-        igp_sync_state = value;
-        igp_sync_state.value_namespace = name_space;
-        igp_sync_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igp-sync-delay")
-    {
-        igp_sync_delay = value;
-        igp_sync_delay.value_namespace = name_space;
-        igp_sync_delay.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-delay-timer-running")
-    {
-        is_delay_timer_running = value;
-        is_delay_timer_running.value_namespace = name_space;
-        is_delay_timer_running.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "delay-timer-remaining")
-    {
-        delay_timer_remaining = value;
-        delay_timer_remaining.value_namespace = name_space;
-        delay_timer_remaining.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "igp-sync-down-reason")
-    {
-        igp_sync_down_reason = value;
-        igp_sync_down_reason.value_namespace = name_space;
-        igp_sync_down_reason.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "interface-name-xr")
-    {
-        interface_name_xr.yfilter = yfilter;
-    }
-    if(value_path == "igp-sync-state")
-    {
-        igp_sync_state.yfilter = yfilter;
-    }
-    if(value_path == "igp-sync-delay")
-    {
-        igp_sync_delay.yfilter = yfilter;
-    }
-    if(value_path == "is-delay-timer-running")
-    {
-        is_delay_timer_running.yfilter = yfilter;
-    }
-    if(value_path == "delay-timer-remaining")
-    {
-        delay_timer_remaining.yfilter = yfilter;
-    }
-    if(value_path == "igp-sync-down-reason")
-    {
-        igp_sync_down_reason.yfilter = yfilter;
-    }
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vrf" || name == "peers" || name == "gr-only-peer" || name == "interface-name" || name == "interface-name-xr" || name == "igp-sync-state" || name == "igp-sync-delay" || name == "is-delay-timer-running" || name == "delay-timer-remaining" || name == "igp-sync-down-reason")
-        return true;
-    return false;
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Vrf_::Vrf_()
-    :
-    name{YType::str, "name"},
-    id{YType::uint32, "id"}
-{
-
-    yang_name = "vrf"; yang_parent_name = "sync"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Vrf_::~Vrf_()
-{
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Vrf_::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set
-	|| id.is_set;
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Vrf_::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(id.yfilter);
-}
-
-std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Vrf_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vrf";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Vrf_::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Vrf_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Vrf_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Vrf_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Vrf_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name" || name == "id")
-        return true;
-    return false;
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Peers::Peers()
-    :
-    peer_id{YType::str, "peer-id"},
-    is_gr_enabled{YType::boolean, "is-gr-enabled"}
-{
-
-    yang_name = "peers"; yang_parent_name = "sync"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Peers::~Peers()
-{
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Peers::has_data() const
-{
-    if (is_presence_container) return true;
-    return peer_id.is_set
-	|| is_gr_enabled.is_set;
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Peers::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(peer_id.yfilter)
-	|| ydk::is_set(is_gr_enabled.yfilter);
-}
-
-std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Peers::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "peers";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Peers::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (peer_id.is_set || is_set(peer_id.yfilter)) leaf_name_data.push_back(peer_id.get_name_leafdata());
-    if (is_gr_enabled.is_set || is_set(is_gr_enabled.yfilter)) leaf_name_data.push_back(is_gr_enabled.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Peers::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "peer-id")
-    {
-        peer_id = value;
-        peer_id.value_namespace = name_space;
-        peer_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-gr-enabled")
-    {
-        is_gr_enabled = value;
-        is_gr_enabled.value_namespace = name_space;
-        is_gr_enabled.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Peers::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "peer-id")
-    {
-        peer_id.yfilter = yfilter;
-    }
-    if(value_path == "is-gr-enabled")
-    {
-        is_gr_enabled.yfilter = yfilter;
-    }
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Peers::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "peer-id" || name == "is-gr-enabled")
-        return true;
-    return false;
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer::GrOnlyPeer()
-    :
-    peer_id{YType::str, "peer-id"},
-    is_chkpt_created{YType::boolean, "is-chkpt-created"}
-{
-
-    yang_name = "gr-only-peer"; yang_parent_name = "sync"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer::~GrOnlyPeer()
-{
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer::has_data() const
-{
-    if (is_presence_container) return true;
-    return peer_id.is_set
-	|| is_chkpt_created.is_set;
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(peer_id.yfilter)
-	|| ydk::is_set(is_chkpt_created.yfilter);
-}
-
-std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "gr-only-peer";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (peer_id.is_set || is_set(peer_id.yfilter)) leaf_name_data.push_back(peer_id.get_name_leafdata());
-    if (is_chkpt_created.is_set || is_set(is_chkpt_created.yfilter)) leaf_name_data.push_back(is_chkpt_created.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "peer-id")
-    {
-        peer_id = value;
-        peer_id.value_namespace = name_space;
-        peer_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-chkpt-created")
-    {
-        is_chkpt_created = value;
-        is_chkpt_created.value_namespace = name_space;
-        is_chkpt_created.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "peer-id")
-    {
-        peer_id.yfilter = yfilter;
-    }
-    if(value_path == "is-chkpt-created")
-    {
-        is_chkpt_created.yfilter = yfilter;
-    }
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "peer-id" || name == "is-chkpt-created")
-        return true;
-    return false;
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::SyncDelayRestart::SyncDelayRestart()
-    :
-    configured{YType::boolean, "configured"},
-    delay_secs{YType::uint32, "delay-secs"},
-    timer_running{YType::boolean, "timer-running"},
-    remaining_secs{YType::uint32, "remaining-secs"}
-{
-
-    yang_name = "sync-delay-restart"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::SyncDelayRestart::~SyncDelayRestart()
-{
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::SyncDelayRestart::has_data() const
-{
-    if (is_presence_container) return true;
-    return configured.is_set
-	|| delay_secs.is_set
-	|| timer_running.is_set
-	|| remaining_secs.is_set;
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::SyncDelayRestart::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(configured.yfilter)
-	|| ydk::is_set(delay_secs.yfilter)
-	|| ydk::is_set(timer_running.yfilter)
-	|| ydk::is_set(remaining_secs.yfilter);
-}
-
-std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::SyncDelayRestart::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sync-delay-restart";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::SyncDelayRestart::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (configured.is_set || is_set(configured.yfilter)) leaf_name_data.push_back(configured.get_name_leafdata());
-    if (delay_secs.is_set || is_set(delay_secs.yfilter)) leaf_name_data.push_back(delay_secs.get_name_leafdata());
-    if (timer_running.is_set || is_set(timer_running.yfilter)) leaf_name_data.push_back(timer_running.get_name_leafdata());
-    if (remaining_secs.is_set || is_set(remaining_secs.yfilter)) leaf_name_data.push_back(remaining_secs.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::SyncDelayRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::SyncDelayRestart::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::SyncDelayRestart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "configured")
-    {
-        configured = value;
-        configured.value_namespace = name_space;
-        configured.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "delay-secs")
-    {
-        delay_secs = value;
-        delay_secs.value_namespace = name_space;
-        delay_secs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timer-running")
-    {
-        timer_running = value;
-        timer_running.value_namespace = name_space;
-        timer_running.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remaining-secs")
-    {
-        remaining_secs = value;
-        remaining_secs.value_namespace = name_space;
-        remaining_secs.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::SyncDelayRestart::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "configured")
-    {
-        configured.yfilter = yfilter;
-    }
-    if(value_path == "delay-secs")
-    {
-        delay_secs.yfilter = yfilter;
-    }
-    if(value_path == "timer-running")
-    {
-        timer_running.yfilter = yfilter;
-    }
-    if(value_path == "remaining-secs")
-    {
-        remaining_secs.yfilter = yfilter;
-    }
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Igp::SyncDelayRestart::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "configured" || name == "delay-secs" || name == "timer-running" || name == "remaining-secs")
-        return true;
-    return false;
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummary::BindingsSummary()
-    :
-    address_family{YType::enumeration, "address-family"},
-    binding_no_route{YType::uint32, "binding-no-route"},
-    binding_local_no_route{YType::uint32, "binding-local-no-route"},
-    binding_local_null{YType::uint32, "binding-local-null"},
-    binding_local_implicit_null{YType::uint32, "binding-local-implicit-null"},
-    binding_local_explicit_null{YType::uint32, "binding-local-explicit-null"},
-    binding_local_non_null{YType::uint32, "binding-local-non-null"},
-    binding_local_oor{YType::uint32, "binding-local-oor"},
-    lowest_allocated_label{YType::uint32, "lowest-allocated-label"},
-    highest_allocated_label{YType::uint32, "highest-allocated-label"}
-        ,
-    vrf(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummary::Vrf_>())
-    , bind_af(this, {})
-{
-    vrf->parent = this;
-
-    yang_name = "bindings-summary"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummary::~BindingsSummary()
-{
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummary::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<bind_af.len(); index++)
-    {
-        if(bind_af[index]->has_data())
-            return true;
-    }
-    return address_family.is_set
-	|| binding_no_route.is_set
-	|| binding_local_no_route.is_set
-	|| binding_local_null.is_set
-	|| binding_local_implicit_null.is_set
-	|| binding_local_explicit_null.is_set
-	|| binding_local_non_null.is_set
-	|| binding_local_oor.is_set
-	|| lowest_allocated_label.is_set
-	|| highest_allocated_label.is_set
-	|| (vrf !=  nullptr && vrf->has_data());
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummary::has_operation() const
-{
-    for (std::size_t index=0; index<bind_af.len(); index++)
-    {
-        if(bind_af[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(address_family.yfilter)
-	|| ydk::is_set(binding_no_route.yfilter)
-	|| ydk::is_set(binding_local_no_route.yfilter)
-	|| ydk::is_set(binding_local_null.yfilter)
-	|| ydk::is_set(binding_local_implicit_null.yfilter)
-	|| ydk::is_set(binding_local_explicit_null.yfilter)
-	|| ydk::is_set(binding_local_non_null.yfilter)
-	|| ydk::is_set(binding_local_oor.yfilter)
-	|| ydk::is_set(lowest_allocated_label.yfilter)
-	|| ydk::is_set(highest_allocated_label.yfilter)
-	|| (vrf !=  nullptr && vrf->has_operation());
-}
-
-std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bindings-summary";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummary::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (binding_no_route.is_set || is_set(binding_no_route.yfilter)) leaf_name_data.push_back(binding_no_route.get_name_leafdata());
-    if (binding_local_no_route.is_set || is_set(binding_local_no_route.yfilter)) leaf_name_data.push_back(binding_local_no_route.get_name_leafdata());
-    if (binding_local_null.is_set || is_set(binding_local_null.yfilter)) leaf_name_data.push_back(binding_local_null.get_name_leafdata());
-    if (binding_local_implicit_null.is_set || is_set(binding_local_implicit_null.yfilter)) leaf_name_data.push_back(binding_local_implicit_null.get_name_leafdata());
-    if (binding_local_explicit_null.is_set || is_set(binding_local_explicit_null.yfilter)) leaf_name_data.push_back(binding_local_explicit_null.get_name_leafdata());
-    if (binding_local_non_null.is_set || is_set(binding_local_non_null.yfilter)) leaf_name_data.push_back(binding_local_non_null.get_name_leafdata());
-    if (binding_local_oor.is_set || is_set(binding_local_oor.yfilter)) leaf_name_data.push_back(binding_local_oor.get_name_leafdata());
-    if (lowest_allocated_label.is_set || is_set(lowest_allocated_label.yfilter)) leaf_name_data.push_back(lowest_allocated_label.get_name_leafdata());
-    if (highest_allocated_label.is_set || is_set(highest_allocated_label.yfilter)) leaf_name_data.push_back(highest_allocated_label.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "vrf")
-    {
-        if(vrf == nullptr)
-        {
-            vrf = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummary::Vrf_>();
-        }
-        return vrf;
-    }
-
-    if(child_yang_name == "bind-af")
-    {
-        auto c = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummary::BindAf>();
-        c->parent = this;
-        bind_af.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(vrf != nullptr)
-    {
-        children["vrf"] = vrf;
-    }
-
-    count = 0;
-    for (auto c : bind_af.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address-family")
-    {
-        address_family = value;
-        address_family.value_namespace = name_space;
-        address_family.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "binding-no-route")
-    {
-        binding_no_route = value;
-        binding_no_route.value_namespace = name_space;
-        binding_no_route.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "binding-local-no-route")
-    {
-        binding_local_no_route = value;
-        binding_local_no_route.value_namespace = name_space;
-        binding_local_no_route.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "binding-local-null")
-    {
-        binding_local_null = value;
-        binding_local_null.value_namespace = name_space;
-        binding_local_null.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "binding-local-implicit-null")
-    {
-        binding_local_implicit_null = value;
-        binding_local_implicit_null.value_namespace = name_space;
-        binding_local_implicit_null.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "binding-local-explicit-null")
-    {
-        binding_local_explicit_null = value;
-        binding_local_explicit_null.value_namespace = name_space;
-        binding_local_explicit_null.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "binding-local-non-null")
-    {
-        binding_local_non_null = value;
-        binding_local_non_null.value_namespace = name_space;
-        binding_local_non_null.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "binding-local-oor")
-    {
-        binding_local_oor = value;
-        binding_local_oor.value_namespace = name_space;
-        binding_local_oor.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lowest-allocated-label")
-    {
-        lowest_allocated_label = value;
-        lowest_allocated_label.value_namespace = name_space;
-        lowest_allocated_label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "highest-allocated-label")
-    {
-        highest_allocated_label = value;
-        highest_allocated_label.value_namespace = name_space;
-        highest_allocated_label.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address-family")
-    {
-        address_family.yfilter = yfilter;
-    }
-    if(value_path == "binding-no-route")
-    {
-        binding_no_route.yfilter = yfilter;
-    }
-    if(value_path == "binding-local-no-route")
-    {
-        binding_local_no_route.yfilter = yfilter;
-    }
-    if(value_path == "binding-local-null")
-    {
-        binding_local_null.yfilter = yfilter;
-    }
-    if(value_path == "binding-local-implicit-null")
-    {
-        binding_local_implicit_null.yfilter = yfilter;
-    }
-    if(value_path == "binding-local-explicit-null")
-    {
-        binding_local_explicit_null.yfilter = yfilter;
-    }
-    if(value_path == "binding-local-non-null")
-    {
-        binding_local_non_null.yfilter = yfilter;
-    }
-    if(value_path == "binding-local-oor")
-    {
-        binding_local_oor.yfilter = yfilter;
-    }
-    if(value_path == "lowest-allocated-label")
-    {
-        lowest_allocated_label.yfilter = yfilter;
-    }
-    if(value_path == "highest-allocated-label")
-    {
-        highest_allocated_label.yfilter = yfilter;
-    }
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vrf" || name == "bind-af" || name == "address-family" || name == "binding-no-route" || name == "binding-local-no-route" || name == "binding-local-null" || name == "binding-local-implicit-null" || name == "binding-local-explicit-null" || name == "binding-local-non-null" || name == "binding-local-oor" || name == "lowest-allocated-label" || name == "highest-allocated-label")
-        return true;
-    return false;
-}
 
 MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummary::Vrf_::Vrf_()
     :
@@ -7116,497 +5042,6 @@ void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Discovery::Stats::Stat::set_filte
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::Discovery::Stats::Stat::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lsr-id" || name == "label-space-id" || name == "adjacency-group-up-time" || name == "tcp-open-count" || name == "tcp-arb-chg-count" || name == "tcp-role")
-        return true;
-    return false;
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::BindingsSummaryAll()
-    :
-    address_family{YType::enumeration, "address-family"},
-    binding_no_route{YType::uint32, "binding-no-route"},
-    binding_local_no_route{YType::uint32, "binding-local-no-route"},
-    binding_local_null{YType::uint32, "binding-local-null"},
-    binding_local_implicit_null{YType::uint32, "binding-local-implicit-null"},
-    binding_local_explicit_null{YType::uint32, "binding-local-explicit-null"},
-    binding_local_non_null{YType::uint32, "binding-local-non-null"},
-    binding_local_oor{YType::uint32, "binding-local-oor"},
-    lowest_allocated_label{YType::uint32, "lowest-allocated-label"},
-    highest_allocated_label{YType::uint32, "highest-allocated-label"}
-        ,
-    vrf(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::Vrf_>())
-    , bind_af(this, {})
-{
-    vrf->parent = this;
-
-    yang_name = "bindings-summary-all"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::~BindingsSummaryAll()
-{
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<bind_af.len(); index++)
-    {
-        if(bind_af[index]->has_data())
-            return true;
-    }
-    return address_family.is_set
-	|| binding_no_route.is_set
-	|| binding_local_no_route.is_set
-	|| binding_local_null.is_set
-	|| binding_local_implicit_null.is_set
-	|| binding_local_explicit_null.is_set
-	|| binding_local_non_null.is_set
-	|| binding_local_oor.is_set
-	|| lowest_allocated_label.is_set
-	|| highest_allocated_label.is_set
-	|| (vrf !=  nullptr && vrf->has_data());
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::has_operation() const
-{
-    for (std::size_t index=0; index<bind_af.len(); index++)
-    {
-        if(bind_af[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(address_family.yfilter)
-	|| ydk::is_set(binding_no_route.yfilter)
-	|| ydk::is_set(binding_local_no_route.yfilter)
-	|| ydk::is_set(binding_local_null.yfilter)
-	|| ydk::is_set(binding_local_implicit_null.yfilter)
-	|| ydk::is_set(binding_local_explicit_null.yfilter)
-	|| ydk::is_set(binding_local_non_null.yfilter)
-	|| ydk::is_set(binding_local_oor.yfilter)
-	|| ydk::is_set(lowest_allocated_label.yfilter)
-	|| ydk::is_set(highest_allocated_label.yfilter)
-	|| (vrf !=  nullptr && vrf->has_operation());
-}
-
-std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bindings-summary-all";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (binding_no_route.is_set || is_set(binding_no_route.yfilter)) leaf_name_data.push_back(binding_no_route.get_name_leafdata());
-    if (binding_local_no_route.is_set || is_set(binding_local_no_route.yfilter)) leaf_name_data.push_back(binding_local_no_route.get_name_leafdata());
-    if (binding_local_null.is_set || is_set(binding_local_null.yfilter)) leaf_name_data.push_back(binding_local_null.get_name_leafdata());
-    if (binding_local_implicit_null.is_set || is_set(binding_local_implicit_null.yfilter)) leaf_name_data.push_back(binding_local_implicit_null.get_name_leafdata());
-    if (binding_local_explicit_null.is_set || is_set(binding_local_explicit_null.yfilter)) leaf_name_data.push_back(binding_local_explicit_null.get_name_leafdata());
-    if (binding_local_non_null.is_set || is_set(binding_local_non_null.yfilter)) leaf_name_data.push_back(binding_local_non_null.get_name_leafdata());
-    if (binding_local_oor.is_set || is_set(binding_local_oor.yfilter)) leaf_name_data.push_back(binding_local_oor.get_name_leafdata());
-    if (lowest_allocated_label.is_set || is_set(lowest_allocated_label.yfilter)) leaf_name_data.push_back(lowest_allocated_label.get_name_leafdata());
-    if (highest_allocated_label.is_set || is_set(highest_allocated_label.yfilter)) leaf_name_data.push_back(highest_allocated_label.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "vrf")
-    {
-        if(vrf == nullptr)
-        {
-            vrf = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::Vrf_>();
-        }
-        return vrf;
-    }
-
-    if(child_yang_name == "bind-af")
-    {
-        auto c = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::BindAf>();
-        c->parent = this;
-        bind_af.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(vrf != nullptr)
-    {
-        children["vrf"] = vrf;
-    }
-
-    count = 0;
-    for (auto c : bind_af.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address-family")
-    {
-        address_family = value;
-        address_family.value_namespace = name_space;
-        address_family.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "binding-no-route")
-    {
-        binding_no_route = value;
-        binding_no_route.value_namespace = name_space;
-        binding_no_route.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "binding-local-no-route")
-    {
-        binding_local_no_route = value;
-        binding_local_no_route.value_namespace = name_space;
-        binding_local_no_route.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "binding-local-null")
-    {
-        binding_local_null = value;
-        binding_local_null.value_namespace = name_space;
-        binding_local_null.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "binding-local-implicit-null")
-    {
-        binding_local_implicit_null = value;
-        binding_local_implicit_null.value_namespace = name_space;
-        binding_local_implicit_null.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "binding-local-explicit-null")
-    {
-        binding_local_explicit_null = value;
-        binding_local_explicit_null.value_namespace = name_space;
-        binding_local_explicit_null.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "binding-local-non-null")
-    {
-        binding_local_non_null = value;
-        binding_local_non_null.value_namespace = name_space;
-        binding_local_non_null.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "binding-local-oor")
-    {
-        binding_local_oor = value;
-        binding_local_oor.value_namespace = name_space;
-        binding_local_oor.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lowest-allocated-label")
-    {
-        lowest_allocated_label = value;
-        lowest_allocated_label.value_namespace = name_space;
-        lowest_allocated_label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "highest-allocated-label")
-    {
-        highest_allocated_label = value;
-        highest_allocated_label.value_namespace = name_space;
-        highest_allocated_label.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address-family")
-    {
-        address_family.yfilter = yfilter;
-    }
-    if(value_path == "binding-no-route")
-    {
-        binding_no_route.yfilter = yfilter;
-    }
-    if(value_path == "binding-local-no-route")
-    {
-        binding_local_no_route.yfilter = yfilter;
-    }
-    if(value_path == "binding-local-null")
-    {
-        binding_local_null.yfilter = yfilter;
-    }
-    if(value_path == "binding-local-implicit-null")
-    {
-        binding_local_implicit_null.yfilter = yfilter;
-    }
-    if(value_path == "binding-local-explicit-null")
-    {
-        binding_local_explicit_null.yfilter = yfilter;
-    }
-    if(value_path == "binding-local-non-null")
-    {
-        binding_local_non_null.yfilter = yfilter;
-    }
-    if(value_path == "binding-local-oor")
-    {
-        binding_local_oor.yfilter = yfilter;
-    }
-    if(value_path == "lowest-allocated-label")
-    {
-        lowest_allocated_label.yfilter = yfilter;
-    }
-    if(value_path == "highest-allocated-label")
-    {
-        highest_allocated_label.yfilter = yfilter;
-    }
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vrf" || name == "bind-af" || name == "address-family" || name == "binding-no-route" || name == "binding-local-no-route" || name == "binding-local-null" || name == "binding-local-implicit-null" || name == "binding-local-explicit-null" || name == "binding-local-non-null" || name == "binding-local-oor" || name == "lowest-allocated-label" || name == "highest-allocated-label")
-        return true;
-    return false;
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::Vrf_::Vrf_()
-    :
-    name{YType::str, "name"},
-    id{YType::uint32, "id"}
-{
-
-    yang_name = "vrf"; yang_parent_name = "bindings-summary-all"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::Vrf_::~Vrf_()
-{
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::Vrf_::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set
-	|| id.is_set;
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::Vrf_::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(id.yfilter);
-}
-
-std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::Vrf_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vrf";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::Vrf_::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::Vrf_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::Vrf_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::Vrf_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::Vrf_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name" || name == "id")
-        return true;
-    return false;
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::BindAf::BindAf()
-    :
-    address_family{YType::enumeration, "address-family"},
-    last_lib_update{YType::uint32, "last-lib-update"},
-    lib_minimum_revision_sent_all{YType::uint32, "lib-minimum-revision-sent-all"},
-    binding_total{YType::uint32, "binding-total"},
-    binding_local{YType::uint32, "binding-local"},
-    binding_remote{YType::uint32, "binding-remote"}
-{
-
-    yang_name = "bind-af"; yang_parent_name = "bindings-summary-all"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::BindAf::~BindAf()
-{
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::BindAf::has_data() const
-{
-    if (is_presence_container) return true;
-    return address_family.is_set
-	|| last_lib_update.is_set
-	|| lib_minimum_revision_sent_all.is_set
-	|| binding_total.is_set
-	|| binding_local.is_set
-	|| binding_remote.is_set;
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::BindAf::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address_family.yfilter)
-	|| ydk::is_set(last_lib_update.yfilter)
-	|| ydk::is_set(lib_minimum_revision_sent_all.yfilter)
-	|| ydk::is_set(binding_total.yfilter)
-	|| ydk::is_set(binding_local.yfilter)
-	|| ydk::is_set(binding_remote.yfilter);
-}
-
-std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::BindAf::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bind-af";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::BindAf::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (last_lib_update.is_set || is_set(last_lib_update.yfilter)) leaf_name_data.push_back(last_lib_update.get_name_leafdata());
-    if (lib_minimum_revision_sent_all.is_set || is_set(lib_minimum_revision_sent_all.yfilter)) leaf_name_data.push_back(lib_minimum_revision_sent_all.get_name_leafdata());
-    if (binding_total.is_set || is_set(binding_total.yfilter)) leaf_name_data.push_back(binding_total.get_name_leafdata());
-    if (binding_local.is_set || is_set(binding_local.yfilter)) leaf_name_data.push_back(binding_local.get_name_leafdata());
-    if (binding_remote.is_set || is_set(binding_remote.yfilter)) leaf_name_data.push_back(binding_remote.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::BindAf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::BindAf::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::BindAf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address-family")
-    {
-        address_family = value;
-        address_family.value_namespace = name_space;
-        address_family.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-lib-update")
-    {
-        last_lib_update = value;
-        last_lib_update.value_namespace = name_space;
-        last_lib_update.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lib-minimum-revision-sent-all")
-    {
-        lib_minimum_revision_sent_all = value;
-        lib_minimum_revision_sent_all.value_namespace = name_space;
-        lib_minimum_revision_sent_all.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "binding-total")
-    {
-        binding_total = value;
-        binding_total.value_namespace = name_space;
-        binding_total.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "binding-local")
-    {
-        binding_local = value;
-        binding_local.value_namespace = name_space;
-        binding_local.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "binding-remote")
-    {
-        binding_remote = value;
-        binding_remote.value_namespace = name_space;
-        binding_remote.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::BindAf::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address-family")
-    {
-        address_family.yfilter = yfilter;
-    }
-    if(value_path == "last-lib-update")
-    {
-        last_lib_update.yfilter = yfilter;
-    }
-    if(value_path == "lib-minimum-revision-sent-all")
-    {
-        lib_minimum_revision_sent_all.yfilter = yfilter;
-    }
-    if(value_path == "binding-total")
-    {
-        binding_total.yfilter = yfilter;
-    }
-    if(value_path == "binding-local")
-    {
-        binding_local.yfilter = yfilter;
-    }
-    if(value_path == "binding-remote")
-    {
-        binding_remote.yfilter = yfilter;
-    }
-}
-
-bool MplsLdp::Nodes::Node::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::BindAf::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "address-family" || name == "last-lib-update" || name == "lib-minimum-revision-sent-all" || name == "binding-total" || name == "binding-local" || name == "binding-remote")
         return true;
     return false;
 }
@@ -20491,6 +17926,2445 @@ void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::se
 bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "adjacency-group")
+        return true;
+    return false;
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::AdjacencyGroup()
+    :
+    hello_type{YType::enumeration, "hello-type"}
+        ,
+    link_hello_data(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::LinkHelloData>())
+    , target_hello_data(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData>())
+{
+    link_hello_data->parent = this;
+    target_hello_data->parent = this;
+
+    yang_name = "adjacency-group"; yang_parent_name = "ldp-nbr-ipv4-adj-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::~AdjacencyGroup()
+{
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::has_data() const
+{
+    if (is_presence_container) return true;
+    return hello_type.is_set
+	|| (link_hello_data !=  nullptr && link_hello_data->has_data())
+	|| (target_hello_data !=  nullptr && target_hello_data->has_data());
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hello_type.yfilter)
+	|| (link_hello_data !=  nullptr && link_hello_data->has_operation())
+	|| (target_hello_data !=  nullptr && target_hello_data->has_operation());
+}
+
+std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "adjacency-group";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hello_type.is_set || is_set(hello_type.yfilter)) leaf_name_data.push_back(hello_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "link-hello-data")
+    {
+        if(link_hello_data == nullptr)
+        {
+            link_hello_data = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::LinkHelloData>();
+        }
+        return link_hello_data;
+    }
+
+    if(child_yang_name == "target-hello-data")
+    {
+        if(target_hello_data == nullptr)
+        {
+            target_hello_data = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData>();
+        }
+        return target_hello_data;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(link_hello_data != nullptr)
+    {
+        children["link-hello-data"] = link_hello_data;
+    }
+
+    if(target_hello_data != nullptr)
+    {
+        children["target-hello-data"] = target_hello_data;
+    }
+
+    return children;
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hello-type")
+    {
+        hello_type = value;
+        hello_type.value_namespace = name_space;
+        hello_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hello-type")
+    {
+        hello_type.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-hello-data" || name == "target-hello-data" || name == "hello-type")
+        return true;
+    return false;
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::LinkHelloData::LinkHelloData()
+    :
+    interface{YType::str, "interface"},
+    interface_name{YType::str, "interface-name"}
+{
+
+    yang_name = "link-hello-data"; yang_parent_name = "adjacency-group"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::LinkHelloData::~LinkHelloData()
+{
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::LinkHelloData::has_data() const
+{
+    if (is_presence_container) return true;
+    return interface.is_set
+	|| interface_name.is_set;
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::LinkHelloData::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(interface_name.yfilter);
+}
+
+std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::LinkHelloData::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "link-hello-data";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::LinkHelloData::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::LinkHelloData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::LinkHelloData::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::LinkHelloData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::LinkHelloData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::LinkHelloData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface" || name == "interface-name")
+        return true;
+    return false;
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetHelloData()
+    :
+    state{YType::enumeration, "state"}
+        ,
+    local_address(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress>())
+    , target_address(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress>())
+{
+    local_address->parent = this;
+    target_address->parent = this;
+
+    yang_name = "target-hello-data"; yang_parent_name = "adjacency-group"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::~TargetHelloData()
+{
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::has_data() const
+{
+    if (is_presence_container) return true;
+    return state.is_set
+	|| (local_address !=  nullptr && local_address->has_data())
+	|| (target_address !=  nullptr && target_address->has_data());
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| (local_address !=  nullptr && local_address->has_operation())
+	|| (target_address !=  nullptr && target_address->has_operation());
+}
+
+std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "target-hello-data";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "local-address")
+    {
+        if(local_address == nullptr)
+        {
+            local_address = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress>();
+        }
+        return local_address;
+    }
+
+    if(child_yang_name == "target-address")
+    {
+        if(target_address == nullptr)
+        {
+            target_address = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress>();
+        }
+        return target_address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(local_address != nullptr)
+    {
+        children["local-address"] = local_address;
+    }
+
+    if(target_address != nullptr)
+    {
+        children["target-address"] = target_address;
+    }
+
+    return children;
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-address" || name == "target-address" || name == "state")
+        return true;
+    return false;
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::LocalAddress()
+    :
+    afi{YType::enumeration, "afi"},
+    dummy{YType::uint8, "dummy"},
+    ipv4{YType::str, "ipv4"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "local-address"; yang_parent_name = "target-hello-data"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::~LocalAddress()
+{
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return afi.is_set
+	|| dummy.is_set
+	|| ipv4.is_set
+	|| ipv6.is_set;
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(dummy.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "local-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "afi")
+    {
+        afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dummy")
+    {
+        dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::TargetAddress()
+    :
+    afi{YType::enumeration, "afi"},
+    dummy{YType::uint8, "dummy"},
+    ipv4{YType::str, "ipv4"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "target-address"; yang_parent_name = "target-hello-data"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::~TargetAddress()
+{
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return afi.is_set
+	|| dummy.is_set
+	|| ipv4.is_set
+	|| ipv6.is_set;
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(dummy.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "target-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "afi")
+    {
+        afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dummy")
+    {
+        dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::LdpNbrIpv6AdjInfo()
+    :
+    adjacency_group(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup>())
+{
+    adjacency_group->parent = this;
+
+    yang_name = "ldp-nbr-ipv6-adj-info"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::~LdpNbrIpv6AdjInfo()
+{
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return (adjacency_group !=  nullptr && adjacency_group->has_data());
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| (adjacency_group !=  nullptr && adjacency_group->has_operation());
+}
+
+std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ldp-nbr-ipv6-adj-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "adjacency-group")
+    {
+        if(adjacency_group == nullptr)
+        {
+            adjacency_group = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup>();
+        }
+        return adjacency_group;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(adjacency_group != nullptr)
+    {
+        children["adjacency-group"] = adjacency_group;
+    }
+
+    return children;
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adjacency-group")
+        return true;
+    return false;
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::AdjacencyGroup()
+    :
+    hello_type{YType::enumeration, "hello-type"}
+        ,
+    link_hello_data(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::LinkHelloData>())
+    , target_hello_data(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData>())
+{
+    link_hello_data->parent = this;
+    target_hello_data->parent = this;
+
+    yang_name = "adjacency-group"; yang_parent_name = "ldp-nbr-ipv6-adj-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::~AdjacencyGroup()
+{
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::has_data() const
+{
+    if (is_presence_container) return true;
+    return hello_type.is_set
+	|| (link_hello_data !=  nullptr && link_hello_data->has_data())
+	|| (target_hello_data !=  nullptr && target_hello_data->has_data());
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hello_type.yfilter)
+	|| (link_hello_data !=  nullptr && link_hello_data->has_operation())
+	|| (target_hello_data !=  nullptr && target_hello_data->has_operation());
+}
+
+std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "adjacency-group";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hello_type.is_set || is_set(hello_type.yfilter)) leaf_name_data.push_back(hello_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "link-hello-data")
+    {
+        if(link_hello_data == nullptr)
+        {
+            link_hello_data = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::LinkHelloData>();
+        }
+        return link_hello_data;
+    }
+
+    if(child_yang_name == "target-hello-data")
+    {
+        if(target_hello_data == nullptr)
+        {
+            target_hello_data = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData>();
+        }
+        return target_hello_data;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(link_hello_data != nullptr)
+    {
+        children["link-hello-data"] = link_hello_data;
+    }
+
+    if(target_hello_data != nullptr)
+    {
+        children["target-hello-data"] = target_hello_data;
+    }
+
+    return children;
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hello-type")
+    {
+        hello_type = value;
+        hello_type.value_namespace = name_space;
+        hello_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hello-type")
+    {
+        hello_type.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-hello-data" || name == "target-hello-data" || name == "hello-type")
+        return true;
+    return false;
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::LinkHelloData::LinkHelloData()
+    :
+    interface{YType::str, "interface"},
+    interface_name{YType::str, "interface-name"}
+{
+
+    yang_name = "link-hello-data"; yang_parent_name = "adjacency-group"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::LinkHelloData::~LinkHelloData()
+{
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::LinkHelloData::has_data() const
+{
+    if (is_presence_container) return true;
+    return interface.is_set
+	|| interface_name.is_set;
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::LinkHelloData::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(interface_name.yfilter);
+}
+
+std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::LinkHelloData::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "link-hello-data";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::LinkHelloData::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::LinkHelloData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::LinkHelloData::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::LinkHelloData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::LinkHelloData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::LinkHelloData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface" || name == "interface-name")
+        return true;
+    return false;
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetHelloData()
+    :
+    state{YType::enumeration, "state"}
+        ,
+    local_address(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress>())
+    , target_address(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress>())
+{
+    local_address->parent = this;
+    target_address->parent = this;
+
+    yang_name = "target-hello-data"; yang_parent_name = "adjacency-group"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::~TargetHelloData()
+{
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::has_data() const
+{
+    if (is_presence_container) return true;
+    return state.is_set
+	|| (local_address !=  nullptr && local_address->has_data())
+	|| (target_address !=  nullptr && target_address->has_data());
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| (local_address !=  nullptr && local_address->has_operation())
+	|| (target_address !=  nullptr && target_address->has_operation());
+}
+
+std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "target-hello-data";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "local-address")
+    {
+        if(local_address == nullptr)
+        {
+            local_address = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress>();
+        }
+        return local_address;
+    }
+
+    if(child_yang_name == "target-address")
+    {
+        if(target_address == nullptr)
+        {
+            target_address = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress>();
+        }
+        return target_address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(local_address != nullptr)
+    {
+        children["local-address"] = local_address;
+    }
+
+    if(target_address != nullptr)
+    {
+        children["target-address"] = target_address;
+    }
+
+    return children;
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-address" || name == "target-address" || name == "state")
+        return true;
+    return false;
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::LocalAddress()
+    :
+    afi{YType::enumeration, "afi"},
+    dummy{YType::uint8, "dummy"},
+    ipv4{YType::str, "ipv4"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "local-address"; yang_parent_name = "target-hello-data"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::~LocalAddress()
+{
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return afi.is_set
+	|| dummy.is_set
+	|| ipv4.is_set
+	|| ipv6.is_set;
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(dummy.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "local-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "afi")
+    {
+        afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dummy")
+    {
+        dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::LocalAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::TargetAddress()
+    :
+    afi{YType::enumeration, "afi"},
+    dummy{YType::uint8, "dummy"},
+    ipv4{YType::str, "ipv4"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "target-address"; yang_parent_name = "target-hello-data"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::~TargetAddress()
+{
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return afi.is_set
+	|| dummy.is_set
+	|| ipv4.is_set
+	|| ipv6.is_set;
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(dummy.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "target-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "afi")
+    {
+        afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dummy")
+    {
+        dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo::AdjacencyGroup::TargetHelloData::TargetAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::LdpId::LdpId()
+    :
+    lsr_id{YType::str, "lsr-id"},
+    label_space_id{YType::uint16, "label-space-id"},
+    ldp_id{YType::str, "ldp-id"}
+{
+
+    yang_name = "ldp-id"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::LdpId::~LdpId()
+{
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::LdpId::has_data() const
+{
+    if (is_presence_container) return true;
+    return lsr_id.is_set
+	|| label_space_id.is_set
+	|| ldp_id.is_set;
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::LdpId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(lsr_id.yfilter)
+	|| ydk::is_set(label_space_id.yfilter)
+	|| ydk::is_set(ldp_id.yfilter);
+}
+
+std::string MplsLdp::Nodes::Node::Vrfs::Vrf::LdpId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ldp-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::LdpId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (lsr_id.is_set || is_set(lsr_id.yfilter)) leaf_name_data.push_back(lsr_id.get_name_leafdata());
+    if (label_space_id.is_set || is_set(label_space_id.yfilter)) leaf_name_data.push_back(label_space_id.get_name_leafdata());
+    if (ldp_id.is_set || is_set(ldp_id.yfilter)) leaf_name_data.push_back(ldp_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::LdpId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::LdpId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::LdpId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "lsr-id")
+    {
+        lsr_id = value;
+        lsr_id.value_namespace = name_space;
+        lsr_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-space-id")
+    {
+        label_space_id = value;
+        label_space_id.value_namespace = name_space;
+        label_space_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ldp-id")
+    {
+        ldp_id = value;
+        ldp_id.value_namespace = name_space;
+        ldp_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::LdpId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsr-id")
+    {
+        lsr_id.yfilter = yfilter;
+    }
+    if(value_path == "label-space-id")
+    {
+        label_space_id.yfilter = yfilter;
+    }
+    if(value_path == "ldp-id")
+    {
+        ldp_id.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::LdpId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsr-id" || name == "label-space-id" || name == "ldp-id")
+        return true;
+    return false;
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistics()
+    :
+    statistic(this, {})
+{
+
+    yang_name = "statistics"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::~Statistics()
+{
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<statistic.len(); index++)
+    {
+        if(statistic[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::has_operation() const
+{
+    for (std::size_t index=0; index<statistic.len(); index++)
+    {
+        if(statistic[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "statistic")
+    {
+        auto c = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic>();
+        c->parent = this;
+        statistic.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : statistic.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "statistic")
+        return true;
+    return false;
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::Statistic()
+    :
+    lsr_id{YType::str, "lsr-id"},
+    label_space_id{YType::uint32, "label-space-id"},
+    iccp_enabled{YType::boolean, "iccp-enabled"}
+        ,
+    message_out(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageOut>())
+    , message_in(std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageIn>())
+{
+    message_out->parent = this;
+    message_in->parent = this;
+
+    yang_name = "statistic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::~Statistic()
+{
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::has_data() const
+{
+    if (is_presence_container) return true;
+    return lsr_id.is_set
+	|| label_space_id.is_set
+	|| iccp_enabled.is_set
+	|| (message_out !=  nullptr && message_out->has_data())
+	|| (message_in !=  nullptr && message_in->has_data());
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(lsr_id.yfilter)
+	|| ydk::is_set(label_space_id.yfilter)
+	|| ydk::is_set(iccp_enabled.yfilter)
+	|| (message_out !=  nullptr && message_out->has_operation())
+	|| (message_in !=  nullptr && message_in->has_operation());
+}
+
+std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "statistic";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (lsr_id.is_set || is_set(lsr_id.yfilter)) leaf_name_data.push_back(lsr_id.get_name_leafdata());
+    if (label_space_id.is_set || is_set(label_space_id.yfilter)) leaf_name_data.push_back(label_space_id.get_name_leafdata());
+    if (iccp_enabled.is_set || is_set(iccp_enabled.yfilter)) leaf_name_data.push_back(iccp_enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "message-out")
+    {
+        if(message_out == nullptr)
+        {
+            message_out = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageOut>();
+        }
+        return message_out;
+    }
+
+    if(child_yang_name == "message-in")
+    {
+        if(message_in == nullptr)
+        {
+            message_in = std::make_shared<MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageIn>();
+        }
+        return message_in;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(message_out != nullptr)
+    {
+        children["message-out"] = message_out;
+    }
+
+    if(message_in != nullptr)
+    {
+        children["message-in"] = message_in;
+    }
+
+    return children;
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "lsr-id")
+    {
+        lsr_id = value;
+        lsr_id.value_namespace = name_space;
+        lsr_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-space-id")
+    {
+        label_space_id = value;
+        label_space_id.value_namespace = name_space;
+        label_space_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iccp-enabled")
+    {
+        iccp_enabled = value;
+        iccp_enabled.value_namespace = name_space;
+        iccp_enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsr-id")
+    {
+        lsr_id.yfilter = yfilter;
+    }
+    if(value_path == "label-space-id")
+    {
+        label_space_id.yfilter = yfilter;
+    }
+    if(value_path == "iccp-enabled")
+    {
+        iccp_enabled.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "message-out" || name == "message-in" || name == "lsr-id" || name == "label-space-id" || name == "iccp-enabled")
+        return true;
+    return false;
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageOut::MessageOut()
+    :
+    total_count{YType::uint32, "total-count"},
+    init_count{YType::uint32, "init-count"},
+    address_count{YType::uint32, "address-count"},
+    address_withdraw_count{YType::uint32, "address-withdraw-count"},
+    label_map_count{YType::uint32, "label-map-count"},
+    label_withdraw_count{YType::uint32, "label-withdraw-count"},
+    label_release_count{YType::uint32, "label-release-count"},
+    label_request_count{YType::uint32, "label-request-count"},
+    label_abort_request_count{YType::uint32, "label-abort-request-count"},
+    notification_count{YType::uint32, "notification-count"},
+    keep_alive_count{YType::uint32, "keep-alive-count"},
+    iccp_rg_conn_count{YType::uint32, "iccp-rg-conn-count"},
+    iccp_rg_disconn_count{YType::uint32, "iccp-rg-disconn-count"},
+    iccp_rg_notif_count{YType::uint32, "iccp-rg-notif-count"},
+    iccp_rg_app_data_count{YType::uint32, "iccp-rg-app-data-count"}
+{
+
+    yang_name = "message-out"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageOut::~MessageOut()
+{
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageOut::has_data() const
+{
+    if (is_presence_container) return true;
+    return total_count.is_set
+	|| init_count.is_set
+	|| address_count.is_set
+	|| address_withdraw_count.is_set
+	|| label_map_count.is_set
+	|| label_withdraw_count.is_set
+	|| label_release_count.is_set
+	|| label_request_count.is_set
+	|| label_abort_request_count.is_set
+	|| notification_count.is_set
+	|| keep_alive_count.is_set
+	|| iccp_rg_conn_count.is_set
+	|| iccp_rg_disconn_count.is_set
+	|| iccp_rg_notif_count.is_set
+	|| iccp_rg_app_data_count.is_set;
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageOut::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(total_count.yfilter)
+	|| ydk::is_set(init_count.yfilter)
+	|| ydk::is_set(address_count.yfilter)
+	|| ydk::is_set(address_withdraw_count.yfilter)
+	|| ydk::is_set(label_map_count.yfilter)
+	|| ydk::is_set(label_withdraw_count.yfilter)
+	|| ydk::is_set(label_release_count.yfilter)
+	|| ydk::is_set(label_request_count.yfilter)
+	|| ydk::is_set(label_abort_request_count.yfilter)
+	|| ydk::is_set(notification_count.yfilter)
+	|| ydk::is_set(keep_alive_count.yfilter)
+	|| ydk::is_set(iccp_rg_conn_count.yfilter)
+	|| ydk::is_set(iccp_rg_disconn_count.yfilter)
+	|| ydk::is_set(iccp_rg_notif_count.yfilter)
+	|| ydk::is_set(iccp_rg_app_data_count.yfilter);
+}
+
+std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageOut::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "message-out";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageOut::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (total_count.is_set || is_set(total_count.yfilter)) leaf_name_data.push_back(total_count.get_name_leafdata());
+    if (init_count.is_set || is_set(init_count.yfilter)) leaf_name_data.push_back(init_count.get_name_leafdata());
+    if (address_count.is_set || is_set(address_count.yfilter)) leaf_name_data.push_back(address_count.get_name_leafdata());
+    if (address_withdraw_count.is_set || is_set(address_withdraw_count.yfilter)) leaf_name_data.push_back(address_withdraw_count.get_name_leafdata());
+    if (label_map_count.is_set || is_set(label_map_count.yfilter)) leaf_name_data.push_back(label_map_count.get_name_leafdata());
+    if (label_withdraw_count.is_set || is_set(label_withdraw_count.yfilter)) leaf_name_data.push_back(label_withdraw_count.get_name_leafdata());
+    if (label_release_count.is_set || is_set(label_release_count.yfilter)) leaf_name_data.push_back(label_release_count.get_name_leafdata());
+    if (label_request_count.is_set || is_set(label_request_count.yfilter)) leaf_name_data.push_back(label_request_count.get_name_leafdata());
+    if (label_abort_request_count.is_set || is_set(label_abort_request_count.yfilter)) leaf_name_data.push_back(label_abort_request_count.get_name_leafdata());
+    if (notification_count.is_set || is_set(notification_count.yfilter)) leaf_name_data.push_back(notification_count.get_name_leafdata());
+    if (keep_alive_count.is_set || is_set(keep_alive_count.yfilter)) leaf_name_data.push_back(keep_alive_count.get_name_leafdata());
+    if (iccp_rg_conn_count.is_set || is_set(iccp_rg_conn_count.yfilter)) leaf_name_data.push_back(iccp_rg_conn_count.get_name_leafdata());
+    if (iccp_rg_disconn_count.is_set || is_set(iccp_rg_disconn_count.yfilter)) leaf_name_data.push_back(iccp_rg_disconn_count.get_name_leafdata());
+    if (iccp_rg_notif_count.is_set || is_set(iccp_rg_notif_count.yfilter)) leaf_name_data.push_back(iccp_rg_notif_count.get_name_leafdata());
+    if (iccp_rg_app_data_count.is_set || is_set(iccp_rg_app_data_count.yfilter)) leaf_name_data.push_back(iccp_rg_app_data_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageOut::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageOut::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageOut::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "total-count")
+    {
+        total_count = value;
+        total_count.value_namespace = name_space;
+        total_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "init-count")
+    {
+        init_count = value;
+        init_count.value_namespace = name_space;
+        init_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "address-count")
+    {
+        address_count = value;
+        address_count.value_namespace = name_space;
+        address_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "address-withdraw-count")
+    {
+        address_withdraw_count = value;
+        address_withdraw_count.value_namespace = name_space;
+        address_withdraw_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-map-count")
+    {
+        label_map_count = value;
+        label_map_count.value_namespace = name_space;
+        label_map_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-withdraw-count")
+    {
+        label_withdraw_count = value;
+        label_withdraw_count.value_namespace = name_space;
+        label_withdraw_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-release-count")
+    {
+        label_release_count = value;
+        label_release_count.value_namespace = name_space;
+        label_release_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-request-count")
+    {
+        label_request_count = value;
+        label_request_count.value_namespace = name_space;
+        label_request_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-abort-request-count")
+    {
+        label_abort_request_count = value;
+        label_abort_request_count.value_namespace = name_space;
+        label_abort_request_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "notification-count")
+    {
+        notification_count = value;
+        notification_count.value_namespace = name_space;
+        notification_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "keep-alive-count")
+    {
+        keep_alive_count = value;
+        keep_alive_count.value_namespace = name_space;
+        keep_alive_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iccp-rg-conn-count")
+    {
+        iccp_rg_conn_count = value;
+        iccp_rg_conn_count.value_namespace = name_space;
+        iccp_rg_conn_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iccp-rg-disconn-count")
+    {
+        iccp_rg_disconn_count = value;
+        iccp_rg_disconn_count.value_namespace = name_space;
+        iccp_rg_disconn_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iccp-rg-notif-count")
+    {
+        iccp_rg_notif_count = value;
+        iccp_rg_notif_count.value_namespace = name_space;
+        iccp_rg_notif_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iccp-rg-app-data-count")
+    {
+        iccp_rg_app_data_count = value;
+        iccp_rg_app_data_count.value_namespace = name_space;
+        iccp_rg_app_data_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageOut::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "total-count")
+    {
+        total_count.yfilter = yfilter;
+    }
+    if(value_path == "init-count")
+    {
+        init_count.yfilter = yfilter;
+    }
+    if(value_path == "address-count")
+    {
+        address_count.yfilter = yfilter;
+    }
+    if(value_path == "address-withdraw-count")
+    {
+        address_withdraw_count.yfilter = yfilter;
+    }
+    if(value_path == "label-map-count")
+    {
+        label_map_count.yfilter = yfilter;
+    }
+    if(value_path == "label-withdraw-count")
+    {
+        label_withdraw_count.yfilter = yfilter;
+    }
+    if(value_path == "label-release-count")
+    {
+        label_release_count.yfilter = yfilter;
+    }
+    if(value_path == "label-request-count")
+    {
+        label_request_count.yfilter = yfilter;
+    }
+    if(value_path == "label-abort-request-count")
+    {
+        label_abort_request_count.yfilter = yfilter;
+    }
+    if(value_path == "notification-count")
+    {
+        notification_count.yfilter = yfilter;
+    }
+    if(value_path == "keep-alive-count")
+    {
+        keep_alive_count.yfilter = yfilter;
+    }
+    if(value_path == "iccp-rg-conn-count")
+    {
+        iccp_rg_conn_count.yfilter = yfilter;
+    }
+    if(value_path == "iccp-rg-disconn-count")
+    {
+        iccp_rg_disconn_count.yfilter = yfilter;
+    }
+    if(value_path == "iccp-rg-notif-count")
+    {
+        iccp_rg_notif_count.yfilter = yfilter;
+    }
+    if(value_path == "iccp-rg-app-data-count")
+    {
+        iccp_rg_app_data_count.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageOut::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "total-count" || name == "init-count" || name == "address-count" || name == "address-withdraw-count" || name == "label-map-count" || name == "label-withdraw-count" || name == "label-release-count" || name == "label-request-count" || name == "label-abort-request-count" || name == "notification-count" || name == "keep-alive-count" || name == "iccp-rg-conn-count" || name == "iccp-rg-disconn-count" || name == "iccp-rg-notif-count" || name == "iccp-rg-app-data-count")
+        return true;
+    return false;
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageIn::MessageIn()
+    :
+    total_count{YType::uint32, "total-count"},
+    init_count{YType::uint32, "init-count"},
+    address_count{YType::uint32, "address-count"},
+    address_withdraw_count{YType::uint32, "address-withdraw-count"},
+    label_map_count{YType::uint32, "label-map-count"},
+    label_withdraw_count{YType::uint32, "label-withdraw-count"},
+    label_release_count{YType::uint32, "label-release-count"},
+    label_request_count{YType::uint32, "label-request-count"},
+    label_abort_request_count{YType::uint32, "label-abort-request-count"},
+    notification_count{YType::uint32, "notification-count"},
+    keep_alive_count{YType::uint32, "keep-alive-count"},
+    iccp_rg_conn_count{YType::uint32, "iccp-rg-conn-count"},
+    iccp_rg_disconn_count{YType::uint32, "iccp-rg-disconn-count"},
+    iccp_rg_notif_count{YType::uint32, "iccp-rg-notif-count"},
+    iccp_rg_app_data_count{YType::uint32, "iccp-rg-app-data-count"}
+{
+
+    yang_name = "message-in"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageIn::~MessageIn()
+{
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageIn::has_data() const
+{
+    if (is_presence_container) return true;
+    return total_count.is_set
+	|| init_count.is_set
+	|| address_count.is_set
+	|| address_withdraw_count.is_set
+	|| label_map_count.is_set
+	|| label_withdraw_count.is_set
+	|| label_release_count.is_set
+	|| label_request_count.is_set
+	|| label_abort_request_count.is_set
+	|| notification_count.is_set
+	|| keep_alive_count.is_set
+	|| iccp_rg_conn_count.is_set
+	|| iccp_rg_disconn_count.is_set
+	|| iccp_rg_notif_count.is_set
+	|| iccp_rg_app_data_count.is_set;
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageIn::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(total_count.yfilter)
+	|| ydk::is_set(init_count.yfilter)
+	|| ydk::is_set(address_count.yfilter)
+	|| ydk::is_set(address_withdraw_count.yfilter)
+	|| ydk::is_set(label_map_count.yfilter)
+	|| ydk::is_set(label_withdraw_count.yfilter)
+	|| ydk::is_set(label_release_count.yfilter)
+	|| ydk::is_set(label_request_count.yfilter)
+	|| ydk::is_set(label_abort_request_count.yfilter)
+	|| ydk::is_set(notification_count.yfilter)
+	|| ydk::is_set(keep_alive_count.yfilter)
+	|| ydk::is_set(iccp_rg_conn_count.yfilter)
+	|| ydk::is_set(iccp_rg_disconn_count.yfilter)
+	|| ydk::is_set(iccp_rg_notif_count.yfilter)
+	|| ydk::is_set(iccp_rg_app_data_count.yfilter);
+}
+
+std::string MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageIn::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "message-in";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageIn::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (total_count.is_set || is_set(total_count.yfilter)) leaf_name_data.push_back(total_count.get_name_leafdata());
+    if (init_count.is_set || is_set(init_count.yfilter)) leaf_name_data.push_back(init_count.get_name_leafdata());
+    if (address_count.is_set || is_set(address_count.yfilter)) leaf_name_data.push_back(address_count.get_name_leafdata());
+    if (address_withdraw_count.is_set || is_set(address_withdraw_count.yfilter)) leaf_name_data.push_back(address_withdraw_count.get_name_leafdata());
+    if (label_map_count.is_set || is_set(label_map_count.yfilter)) leaf_name_data.push_back(label_map_count.get_name_leafdata());
+    if (label_withdraw_count.is_set || is_set(label_withdraw_count.yfilter)) leaf_name_data.push_back(label_withdraw_count.get_name_leafdata());
+    if (label_release_count.is_set || is_set(label_release_count.yfilter)) leaf_name_data.push_back(label_release_count.get_name_leafdata());
+    if (label_request_count.is_set || is_set(label_request_count.yfilter)) leaf_name_data.push_back(label_request_count.get_name_leafdata());
+    if (label_abort_request_count.is_set || is_set(label_abort_request_count.yfilter)) leaf_name_data.push_back(label_abort_request_count.get_name_leafdata());
+    if (notification_count.is_set || is_set(notification_count.yfilter)) leaf_name_data.push_back(notification_count.get_name_leafdata());
+    if (keep_alive_count.is_set || is_set(keep_alive_count.yfilter)) leaf_name_data.push_back(keep_alive_count.get_name_leafdata());
+    if (iccp_rg_conn_count.is_set || is_set(iccp_rg_conn_count.yfilter)) leaf_name_data.push_back(iccp_rg_conn_count.get_name_leafdata());
+    if (iccp_rg_disconn_count.is_set || is_set(iccp_rg_disconn_count.yfilter)) leaf_name_data.push_back(iccp_rg_disconn_count.get_name_leafdata());
+    if (iccp_rg_notif_count.is_set || is_set(iccp_rg_notif_count.yfilter)) leaf_name_data.push_back(iccp_rg_notif_count.get_name_leafdata());
+    if (iccp_rg_app_data_count.is_set || is_set(iccp_rg_app_data_count.yfilter)) leaf_name_data.push_back(iccp_rg_app_data_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageIn::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageIn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "total-count")
+    {
+        total_count = value;
+        total_count.value_namespace = name_space;
+        total_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "init-count")
+    {
+        init_count = value;
+        init_count.value_namespace = name_space;
+        init_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "address-count")
+    {
+        address_count = value;
+        address_count.value_namespace = name_space;
+        address_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "address-withdraw-count")
+    {
+        address_withdraw_count = value;
+        address_withdraw_count.value_namespace = name_space;
+        address_withdraw_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-map-count")
+    {
+        label_map_count = value;
+        label_map_count.value_namespace = name_space;
+        label_map_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-withdraw-count")
+    {
+        label_withdraw_count = value;
+        label_withdraw_count.value_namespace = name_space;
+        label_withdraw_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-release-count")
+    {
+        label_release_count = value;
+        label_release_count.value_namespace = name_space;
+        label_release_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-request-count")
+    {
+        label_request_count = value;
+        label_request_count.value_namespace = name_space;
+        label_request_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-abort-request-count")
+    {
+        label_abort_request_count = value;
+        label_abort_request_count.value_namespace = name_space;
+        label_abort_request_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "notification-count")
+    {
+        notification_count = value;
+        notification_count.value_namespace = name_space;
+        notification_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "keep-alive-count")
+    {
+        keep_alive_count = value;
+        keep_alive_count.value_namespace = name_space;
+        keep_alive_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iccp-rg-conn-count")
+    {
+        iccp_rg_conn_count = value;
+        iccp_rg_conn_count.value_namespace = name_space;
+        iccp_rg_conn_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iccp-rg-disconn-count")
+    {
+        iccp_rg_disconn_count = value;
+        iccp_rg_disconn_count.value_namespace = name_space;
+        iccp_rg_disconn_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iccp-rg-notif-count")
+    {
+        iccp_rg_notif_count = value;
+        iccp_rg_notif_count.value_namespace = name_space;
+        iccp_rg_notif_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iccp-rg-app-data-count")
+    {
+        iccp_rg_app_data_count = value;
+        iccp_rg_app_data_count.value_namespace = name_space;
+        iccp_rg_app_data_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageIn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "total-count")
+    {
+        total_count.yfilter = yfilter;
+    }
+    if(value_path == "init-count")
+    {
+        init_count.yfilter = yfilter;
+    }
+    if(value_path == "address-count")
+    {
+        address_count.yfilter = yfilter;
+    }
+    if(value_path == "address-withdraw-count")
+    {
+        address_withdraw_count.yfilter = yfilter;
+    }
+    if(value_path == "label-map-count")
+    {
+        label_map_count.yfilter = yfilter;
+    }
+    if(value_path == "label-withdraw-count")
+    {
+        label_withdraw_count.yfilter = yfilter;
+    }
+    if(value_path == "label-release-count")
+    {
+        label_release_count.yfilter = yfilter;
+    }
+    if(value_path == "label-request-count")
+    {
+        label_request_count.yfilter = yfilter;
+    }
+    if(value_path == "label-abort-request-count")
+    {
+        label_abort_request_count.yfilter = yfilter;
+    }
+    if(value_path == "notification-count")
+    {
+        notification_count.yfilter = yfilter;
+    }
+    if(value_path == "keep-alive-count")
+    {
+        keep_alive_count.yfilter = yfilter;
+    }
+    if(value_path == "iccp-rg-conn-count")
+    {
+        iccp_rg_conn_count.yfilter = yfilter;
+    }
+    if(value_path == "iccp-rg-disconn-count")
+    {
+        iccp_rg_disconn_count.yfilter = yfilter;
+    }
+    if(value_path == "iccp-rg-notif-count")
+    {
+        iccp_rg_notif_count.yfilter = yfilter;
+    }
+    if(value_path == "iccp-rg-app-data-count")
+    {
+        iccp_rg_app_data_count.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic::MessageIn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "total-count" || name == "init-count" || name == "address-count" || name == "address-withdraw-count" || name == "label-map-count" || name == "label-withdraw-count" || name == "label-release-count" || name == "label-request-count" || name == "label-abort-request-count" || name == "notification-count" || name == "keep-alive-count" || name == "iccp-rg-conn-count" || name == "iccp-rg-disconn-count" || name == "iccp-rg-notif-count" || name == "iccp-rg-app-data-count")
+        return true;
+    return false;
+}
+
+MplsLdp::Nodes::Node::DiscoverySummaryAll::DiscoverySummaryAll()
+    :
+    local_ldp_id{YType::str, "local-ldp-id"},
+    num_of_ldp_interfaces{YType::uint32, "num-of-ldp-interfaces"},
+    num_of_active_ldp_interfaces{YType::uint32, "num-of-active-ldp-interfaces"},
+    num_of_lnk_disc_xmit{YType::uint32, "num-of-lnk-disc-xmit"},
+    num_of_tgt_disc_xmit{YType::uint32, "num-of-tgt-disc-xmit"},
+    num_of_lnk_disc_recv{YType::uint32, "num-of-lnk-disc-recv"},
+    num_of_tgt_disc_recv{YType::uint32, "num-of-tgt-disc-recv"},
+    num_of_disc_with_bad_addr_recv{YType::uint32, "num-of-disc-with-bad-addr-recv"},
+    num_of_disc_with_bad_hello_pdu{YType::uint32, "num-of-disc-with-bad-hello-pdu"},
+    num_of_disc_with_bad_xport_addr{YType::uint32, "num-of-disc-with-bad-xport-addr"},
+    num_of_disc_with_same_router_id{YType::uint32, "num-of-disc-with-same-router-id"},
+    num_of_disc_with_wrong_router_id{YType::uint32, "num-of-disc-with-wrong-router-id"}
+        ,
+    vrf(std::make_shared<MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf>())
+{
+    vrf->parent = this;
+
+    yang_name = "discovery-summary-all"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Nodes::Node::DiscoverySummaryAll::~DiscoverySummaryAll()
+{
+}
+
+bool MplsLdp::Nodes::Node::DiscoverySummaryAll::has_data() const
+{
+    if (is_presence_container) return true;
+    return local_ldp_id.is_set
+	|| num_of_ldp_interfaces.is_set
+	|| num_of_active_ldp_interfaces.is_set
+	|| num_of_lnk_disc_xmit.is_set
+	|| num_of_tgt_disc_xmit.is_set
+	|| num_of_lnk_disc_recv.is_set
+	|| num_of_tgt_disc_recv.is_set
+	|| num_of_disc_with_bad_addr_recv.is_set
+	|| num_of_disc_with_bad_hello_pdu.is_set
+	|| num_of_disc_with_bad_xport_addr.is_set
+	|| num_of_disc_with_same_router_id.is_set
+	|| num_of_disc_with_wrong_router_id.is_set
+	|| (vrf !=  nullptr && vrf->has_data());
+}
+
+bool MplsLdp::Nodes::Node::DiscoverySummaryAll::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(local_ldp_id.yfilter)
+	|| ydk::is_set(num_of_ldp_interfaces.yfilter)
+	|| ydk::is_set(num_of_active_ldp_interfaces.yfilter)
+	|| ydk::is_set(num_of_lnk_disc_xmit.yfilter)
+	|| ydk::is_set(num_of_tgt_disc_xmit.yfilter)
+	|| ydk::is_set(num_of_lnk_disc_recv.yfilter)
+	|| ydk::is_set(num_of_tgt_disc_recv.yfilter)
+	|| ydk::is_set(num_of_disc_with_bad_addr_recv.yfilter)
+	|| ydk::is_set(num_of_disc_with_bad_hello_pdu.yfilter)
+	|| ydk::is_set(num_of_disc_with_bad_xport_addr.yfilter)
+	|| ydk::is_set(num_of_disc_with_same_router_id.yfilter)
+	|| ydk::is_set(num_of_disc_with_wrong_router_id.yfilter)
+	|| (vrf !=  nullptr && vrf->has_operation());
+}
+
+std::string MplsLdp::Nodes::Node::DiscoverySummaryAll::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "discovery-summary-all";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::DiscoverySummaryAll::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (local_ldp_id.is_set || is_set(local_ldp_id.yfilter)) leaf_name_data.push_back(local_ldp_id.get_name_leafdata());
+    if (num_of_ldp_interfaces.is_set || is_set(num_of_ldp_interfaces.yfilter)) leaf_name_data.push_back(num_of_ldp_interfaces.get_name_leafdata());
+    if (num_of_active_ldp_interfaces.is_set || is_set(num_of_active_ldp_interfaces.yfilter)) leaf_name_data.push_back(num_of_active_ldp_interfaces.get_name_leafdata());
+    if (num_of_lnk_disc_xmit.is_set || is_set(num_of_lnk_disc_xmit.yfilter)) leaf_name_data.push_back(num_of_lnk_disc_xmit.get_name_leafdata());
+    if (num_of_tgt_disc_xmit.is_set || is_set(num_of_tgt_disc_xmit.yfilter)) leaf_name_data.push_back(num_of_tgt_disc_xmit.get_name_leafdata());
+    if (num_of_lnk_disc_recv.is_set || is_set(num_of_lnk_disc_recv.yfilter)) leaf_name_data.push_back(num_of_lnk_disc_recv.get_name_leafdata());
+    if (num_of_tgt_disc_recv.is_set || is_set(num_of_tgt_disc_recv.yfilter)) leaf_name_data.push_back(num_of_tgt_disc_recv.get_name_leafdata());
+    if (num_of_disc_with_bad_addr_recv.is_set || is_set(num_of_disc_with_bad_addr_recv.yfilter)) leaf_name_data.push_back(num_of_disc_with_bad_addr_recv.get_name_leafdata());
+    if (num_of_disc_with_bad_hello_pdu.is_set || is_set(num_of_disc_with_bad_hello_pdu.yfilter)) leaf_name_data.push_back(num_of_disc_with_bad_hello_pdu.get_name_leafdata());
+    if (num_of_disc_with_bad_xport_addr.is_set || is_set(num_of_disc_with_bad_xport_addr.yfilter)) leaf_name_data.push_back(num_of_disc_with_bad_xport_addr.get_name_leafdata());
+    if (num_of_disc_with_same_router_id.is_set || is_set(num_of_disc_with_same_router_id.yfilter)) leaf_name_data.push_back(num_of_disc_with_same_router_id.get_name_leafdata());
+    if (num_of_disc_with_wrong_router_id.is_set || is_set(num_of_disc_with_wrong_router_id.yfilter)) leaf_name_data.push_back(num_of_disc_with_wrong_router_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Nodes::Node::DiscoverySummaryAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "vrf")
+    {
+        if(vrf == nullptr)
+        {
+            vrf = std::make_shared<MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf>();
+        }
+        return vrf;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DiscoverySummaryAll::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(vrf != nullptr)
+    {
+        children["vrf"] = vrf;
+    }
+
+    return children;
+}
+
+void MplsLdp::Nodes::Node::DiscoverySummaryAll::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "local-ldp-id")
+    {
+        local_ldp_id = value;
+        local_ldp_id.value_namespace = name_space;
+        local_ldp_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-ldp-interfaces")
+    {
+        num_of_ldp_interfaces = value;
+        num_of_ldp_interfaces.value_namespace = name_space;
+        num_of_ldp_interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-active-ldp-interfaces")
+    {
+        num_of_active_ldp_interfaces = value;
+        num_of_active_ldp_interfaces.value_namespace = name_space;
+        num_of_active_ldp_interfaces.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-lnk-disc-xmit")
+    {
+        num_of_lnk_disc_xmit = value;
+        num_of_lnk_disc_xmit.value_namespace = name_space;
+        num_of_lnk_disc_xmit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-tgt-disc-xmit")
+    {
+        num_of_tgt_disc_xmit = value;
+        num_of_tgt_disc_xmit.value_namespace = name_space;
+        num_of_tgt_disc_xmit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-lnk-disc-recv")
+    {
+        num_of_lnk_disc_recv = value;
+        num_of_lnk_disc_recv.value_namespace = name_space;
+        num_of_lnk_disc_recv.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-tgt-disc-recv")
+    {
+        num_of_tgt_disc_recv = value;
+        num_of_tgt_disc_recv.value_namespace = name_space;
+        num_of_tgt_disc_recv.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-disc-with-bad-addr-recv")
+    {
+        num_of_disc_with_bad_addr_recv = value;
+        num_of_disc_with_bad_addr_recv.value_namespace = name_space;
+        num_of_disc_with_bad_addr_recv.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-disc-with-bad-hello-pdu")
+    {
+        num_of_disc_with_bad_hello_pdu = value;
+        num_of_disc_with_bad_hello_pdu.value_namespace = name_space;
+        num_of_disc_with_bad_hello_pdu.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-disc-with-bad-xport-addr")
+    {
+        num_of_disc_with_bad_xport_addr = value;
+        num_of_disc_with_bad_xport_addr.value_namespace = name_space;
+        num_of_disc_with_bad_xport_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-disc-with-same-router-id")
+    {
+        num_of_disc_with_same_router_id = value;
+        num_of_disc_with_same_router_id.value_namespace = name_space;
+        num_of_disc_with_same_router_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-of-disc-with-wrong-router-id")
+    {
+        num_of_disc_with_wrong_router_id = value;
+        num_of_disc_with_wrong_router_id.value_namespace = name_space;
+        num_of_disc_with_wrong_router_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLdp::Nodes::Node::DiscoverySummaryAll::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-ldp-id")
+    {
+        local_ldp_id.yfilter = yfilter;
+    }
+    if(value_path == "num-of-ldp-interfaces")
+    {
+        num_of_ldp_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "num-of-active-ldp-interfaces")
+    {
+        num_of_active_ldp_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "num-of-lnk-disc-xmit")
+    {
+        num_of_lnk_disc_xmit.yfilter = yfilter;
+    }
+    if(value_path == "num-of-tgt-disc-xmit")
+    {
+        num_of_tgt_disc_xmit.yfilter = yfilter;
+    }
+    if(value_path == "num-of-lnk-disc-recv")
+    {
+        num_of_lnk_disc_recv.yfilter = yfilter;
+    }
+    if(value_path == "num-of-tgt-disc-recv")
+    {
+        num_of_tgt_disc_recv.yfilter = yfilter;
+    }
+    if(value_path == "num-of-disc-with-bad-addr-recv")
+    {
+        num_of_disc_with_bad_addr_recv.yfilter = yfilter;
+    }
+    if(value_path == "num-of-disc-with-bad-hello-pdu")
+    {
+        num_of_disc_with_bad_hello_pdu.yfilter = yfilter;
+    }
+    if(value_path == "num-of-disc-with-bad-xport-addr")
+    {
+        num_of_disc_with_bad_xport_addr.yfilter = yfilter;
+    }
+    if(value_path == "num-of-disc-with-same-router-id")
+    {
+        num_of_disc_with_same_router_id.yfilter = yfilter;
+    }
+    if(value_path == "num-of-disc-with-wrong-router-id")
+    {
+        num_of_disc_with_wrong_router_id.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Nodes::Node::DiscoverySummaryAll::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf" || name == "local-ldp-id" || name == "num-of-ldp-interfaces" || name == "num-of-active-ldp-interfaces" || name == "num-of-lnk-disc-xmit" || name == "num-of-tgt-disc-xmit" || name == "num-of-lnk-disc-recv" || name == "num-of-tgt-disc-recv" || name == "num-of-disc-with-bad-addr-recv" || name == "num-of-disc-with-bad-hello-pdu" || name == "num-of-disc-with-bad-xport-addr" || name == "num-of-disc-with-same-router-id" || name == "num-of-disc-with-wrong-router-id")
+        return true;
+    return false;
+}
+
+MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf::Vrf()
+    :
+    name{YType::str, "name"},
+    id{YType::uint32, "id"}
+{
+
+    yang_name = "vrf"; yang_parent_name = "discovery-summary-all"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf::~Vrf()
+{
+}
+
+bool MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| id.is_set;
+}
+
+bool MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(id.yfilter);
+}
+
+std::string MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vrf";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Nodes::Node::DiscoverySummaryAll::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "id")
         return true;
     return false;
 }

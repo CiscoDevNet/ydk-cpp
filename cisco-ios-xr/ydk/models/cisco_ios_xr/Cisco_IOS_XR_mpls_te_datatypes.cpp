@@ -115,6 +115,7 @@ const Enum::YLeaf MplsTeBackupBandwidthPool::sub_pool {4, "sub-pool"};
 
 const Enum::YLeaf MplsTePathSelectionMetric::igp {1, "igp"};
 const Enum::YLeaf MplsTePathSelectionMetric::te {2, "te"};
+const Enum::YLeaf MplsTePathSelectionMetric::delay {4, "delay"};
 
 const Enum::YLeaf MplsTePathOptionProtection::active {0, "active"};
 const Enum::YLeaf MplsTePathOptionProtection::protecting {1, "protecting"};

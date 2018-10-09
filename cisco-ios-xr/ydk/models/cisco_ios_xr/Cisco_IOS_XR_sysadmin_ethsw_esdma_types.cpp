@@ -70,6 +70,7 @@ const Enum::YLeaf EsdmaSwitchTypeEnum::EOBC_SW {6, "EOBC-SW"};
 const Enum::YLeaf EsdmaSwitchTypeEnum::EPC_SW {7, "EPC-SW"};
 const Enum::YLeaf EsdmaSwitchTypeEnum::CB_SW {8, "CB-SW"};
 const Enum::YLeaf EsdmaSwitchTypeEnum::Unknown {9, "Unknown"};
+const Enum::YLeaf EsdmaSwitchTypeEnum::RP_SW1 {10, "RP-SW1"};
 
 const Enum::YLeaf EsdmaSwitchSfpTranceiverTypeEnum::Unspecified {0, "Unspecified"};
 const Enum::YLeaf EsdmaSwitchSfpTranceiverTypeEnum::SFP {1, "SFP"};

@@ -13,6 +13,16 @@ namespace Cisco_IOS_XR_l2_eth_infra_datatypes {
 
 const Enum::YLeaf VlanTagOrCvp::native_with_cvlan_preservation {65534, "native-with-cvlan-preservation"};
 
+const Enum::YLeaf Vlan::vlan_type_dot1ad {1, "vlan-type-dot1ad"};
+const Enum::YLeaf Vlan::vlan_type_dot1q {2, "vlan-type-dot1q"};
+
+const Enum::YLeaf VsMode::trunk {1, "trunk"};
+const Enum::YLeaf VsMode::access {2, "access"};
+
+const Enum::YLeaf EthertypeMatch::ppp_over_ethernet {34915, "ppp-over-ethernet"};
+
+const Enum::YLeaf VlanTagOrNull::any {0, "any"};
+
 const Enum::YLeaf Rewrite::pop1 {1, "pop1"};
 const Enum::YLeaf Rewrite::pop2 {2, "pop2"};
 const Enum::YLeaf Rewrite::push1 {3, "push1"};
@@ -21,13 +31,6 @@ const Enum::YLeaf Rewrite::translate1to1 {5, "translate1to1"};
 const Enum::YLeaf Rewrite::translate1to2 {6, "translate1to2"};
 const Enum::YLeaf Rewrite::translate2to1 {7, "translate2to1"};
 const Enum::YLeaf Rewrite::translate2to2 {8, "translate2to2"};
-
-const Enum::YLeaf Vlan::vlan_type_dot1ad {1, "vlan-type-dot1ad"};
-const Enum::YLeaf Vlan::vlan_type_dot1q {2, "vlan-type-dot1q"};
-
-const Enum::YLeaf EthertypeMatch::ppp_over_ethernet {34915, "ppp-over-ethernet"};
-
-const Enum::YLeaf VlanTagOrNull::any {0, "any"};
 
 const Enum::YLeaf VlanTagOrAny::any {4096, "any"};
 

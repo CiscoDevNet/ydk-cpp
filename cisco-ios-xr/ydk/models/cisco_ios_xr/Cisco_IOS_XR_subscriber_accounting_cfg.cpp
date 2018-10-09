@@ -222,13 +222,13 @@ SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::PrepaidConfig
     :
     prepaid_config_name{YType::str, "prepaid-config-name"},
     password{YType::str, "password"},
-    volume_threshold{YType::int32, "volume-threshold"},
+    volume_threshold{YType::uint32, "volume-threshold"},
     accounting_method_list{YType::str, "accounting-method-list"},
-    time_hold{YType::int32, "time-hold"},
+    time_hold{YType::uint32, "time-hold"},
     author_method_list{YType::str, "author-method-list"},
     traffic_direction{YType::str, "traffic-direction"},
-    time_threshold{YType::int32, "time-threshold"},
-    time_valid{YType::int32, "time-valid"}
+    time_threshold{YType::uint32, "time-threshold"},
+    time_valid{YType::uint32, "time-valid"}
 {
 
     yang_name = "prepaid-configuration"; yang_parent_name = "prepaid-configurations"; is_top_level_class = false; has_list_ancestor = false; 

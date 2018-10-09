@@ -27170,6 +27170,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::Route
 Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::RoutePath()
     :
     interface_name{YType::str, "interface-name"},
+    interface_index{YType::uint32, "interface-index"},
     route_path_next_hop{YType::str, "route-path-next-hop"},
     route_path_id{YType::uint16, "route-path-id"}
         ,
@@ -27194,6 +27195,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::Route
             return true;
     }
     return interface_name.is_set
+	|| interface_index.is_set
 	|| route_path_next_hop.is_set
 	|| route_path_id.is_set
 	|| (route_backup_path !=  nullptr && route_backup_path->has_data());
@@ -27208,6 +27210,7 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::Route
     }
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(interface_index.yfilter)
 	|| ydk::is_set(route_path_next_hop.yfilter)
 	|| ydk::is_set(route_path_id.yfilter)
 	|| (route_backup_path !=  nullptr && route_backup_path->has_operation());
@@ -27225,6 +27228,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_index.is_set || is_set(interface_index.yfilter)) leaf_name_data.push_back(interface_index.get_name_leafdata());
     if (route_path_next_hop.is_set || is_set(route_path_next_hop.yfilter)) leaf_name_data.push_back(route_path_next_hop.get_name_leafdata());
     if (route_path_id.is_set || is_set(route_path_id.yfilter)) leaf_name_data.push_back(route_path_id.get_name_leafdata());
 
@@ -27283,6 +27287,12 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::Route
         interface_name.value_namespace = name_space;
         interface_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "interface-index")
+    {
+        interface_index = value;
+        interface_index.value_namespace = name_space;
+        interface_index.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "route-path-next-hop")
     {
         route_path_next_hop = value;
@@ -27303,6 +27313,10 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::Route
     {
         interface_name.yfilter = yfilter;
     }
+    if(value_path == "interface-index")
+    {
+        interface_index.yfilter = yfilter;
+    }
     if(value_path == "route-path-next-hop")
     {
         route_path_next_hop.yfilter = yfilter;
@@ -27315,7 +27329,7 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::Route
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "route-backup-path" || name == "neighbor-next-hop" || name == "interface-name" || name == "route-path-next-hop" || name == "route-path-id")
+    if(name == "route-backup-path" || name == "neighbor-next-hop" || name == "interface-name" || name == "interface-index" || name == "route-path-next-hop" || name == "route-path-id")
         return true;
     return false;
 }

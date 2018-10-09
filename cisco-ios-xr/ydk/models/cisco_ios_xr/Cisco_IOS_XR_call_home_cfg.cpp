@@ -29,7 +29,6 @@ CallHome::CallHome()
         ,
     mail_servers(std::make_shared<CallHome::MailServers>())
     , syslog_throttling(std::make_shared<CallHome::SyslogThrottling>())
-    , smart_licensing(std::make_shared<CallHome::SmartLicensing>())
     , http_proxy(std::make_shared<CallHome::HttpProxy>())
     , profiles(std::make_shared<CallHome::Profiles>())
     , alert_groups(std::make_shared<CallHome::AlertGroups>())
@@ -39,7 +38,6 @@ CallHome::CallHome()
 {
     mail_servers->parent = this;
     syslog_throttling->parent = this;
-    smart_licensing->parent = this;
     http_proxy->parent = this;
     profiles->parent = this;
     alert_groups->parent = this;
@@ -72,7 +70,6 @@ bool CallHome::has_data() const
 	|| active.is_set
 	|| (mail_servers !=  nullptr && mail_servers->has_data())
 	|| (syslog_throttling !=  nullptr && syslog_throttling->has_data())
-	|| (smart_licensing !=  nullptr && smart_licensing->has_data())
 	|| (http_proxy !=  nullptr && http_proxy->has_data())
 	|| (profiles !=  nullptr && profiles->has_data())
 	|| (alert_groups !=  nullptr && alert_groups->has_data())
@@ -99,7 +96,6 @@ bool CallHome::has_operation() const
 	|| ydk::is_set(active.yfilter)
 	|| (mail_servers !=  nullptr && mail_servers->has_operation())
 	|| (syslog_throttling !=  nullptr && syslog_throttling->has_operation())
-	|| (smart_licensing !=  nullptr && smart_licensing->has_operation())
 	|| (http_proxy !=  nullptr && http_proxy->has_operation())
 	|| (profiles !=  nullptr && profiles->has_operation())
 	|| (alert_groups !=  nullptr && alert_groups->has_operation())
@@ -155,15 +151,6 @@ std::shared_ptr<Entity> CallHome::get_child_by_name(const std::string & child_ya
             syslog_throttling = std::make_shared<CallHome::SyslogThrottling>();
         }
         return syslog_throttling;
-    }
-
-    if(child_yang_name == "smart-licensing")
-    {
-        if(smart_licensing == nullptr)
-        {
-            smart_licensing = std::make_shared<CallHome::SmartLicensing>();
-        }
-        return smart_licensing;
     }
 
     if(child_yang_name == "http-proxy")
@@ -235,11 +222,6 @@ std::map<std::string, std::shared_ptr<Entity>> CallHome::get_children() const
     if(syslog_throttling != nullptr)
     {
         children["syslog-throttling"] = syslog_throttling;
-    }
-
-    if(smart_licensing != nullptr)
-    {
-        children["smart-licensing"] = smart_licensing;
     }
 
     if(http_proxy != nullptr)
@@ -440,7 +422,7 @@ std::map<std::pair<std::string, std::string>, std::string> CallHome::get_namespa
 
 bool CallHome::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mail-servers" || name == "syslog-throttling" || name == "smart-licensing" || name == "http-proxy" || name == "profiles" || name == "alert-groups" || name == "data-privacies" || name == "alert-group-config" || name == "authorization" || name == "customer-id" || name == "phone-number" || name == "contact-smart-licensing" || name == "contact-email-address" || name == "rate-limit" || name == "site-id" || name == "vrf" || name == "street-address" || name == "source-interface" || name == "contract-id" || name == "reply-to" || name == "from" || name == "active")
+    if(name == "mail-servers" || name == "syslog-throttling" || name == "http-proxy" || name == "profiles" || name == "alert-groups" || name == "data-privacies" || name == "alert-group-config" || name == "authorization" || name == "customer-id" || name == "phone-number" || name == "contact-smart-licensing" || name == "contact-email-address" || name == "rate-limit" || name == "site-id" || name == "vrf" || name == "street-address" || name == "source-interface" || name == "contract-id" || name == "reply-to" || name == "from" || name == "active")
         return true;
     return false;
 }
@@ -726,105 +708,6 @@ void CallHome::SyslogThrottling::set_filter(const std::string & value_path, YFil
 bool CallHome::SyslogThrottling::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "active")
-        return true;
-    return false;
-}
-
-CallHome::SmartLicensing::SmartLicensing()
-    :
-    profile_name{YType::str, "profile-name"},
-    active{YType::empty, "active"}
-{
-
-    yang_name = "smart-licensing"; yang_parent_name = "call-home"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-CallHome::SmartLicensing::~SmartLicensing()
-{
-}
-
-bool CallHome::SmartLicensing::has_data() const
-{
-    if (is_presence_container) return true;
-    return profile_name.is_set
-	|| active.is_set;
-}
-
-bool CallHome::SmartLicensing::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(profile_name.yfilter)
-	|| ydk::is_set(active.yfilter);
-}
-
-std::string CallHome::SmartLicensing::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-call-home-cfg:call-home/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string CallHome::SmartLicensing::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "smart-licensing";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > CallHome::SmartLicensing::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
-    if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> CallHome::SmartLicensing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CallHome::SmartLicensing::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void CallHome::SmartLicensing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "profile-name")
-    {
-        profile_name = value;
-        profile_name.value_namespace = name_space;
-        profile_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "active")
-    {
-        active = value;
-        active.value_namespace = name_space;
-        active.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void CallHome::SmartLicensing::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "profile-name")
-    {
-        profile_name.yfilter = yfilter;
-    }
-    if(value_path == "active")
-    {
-        active.yfilter = yfilter;
-    }
-}
-
-bool CallHome::SmartLicensing::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "profile-name" || name == "active")
         return true;
     return false;
 }

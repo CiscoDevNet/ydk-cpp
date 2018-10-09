@@ -181,6 +181,7 @@ class L2vpn::Database : public ydk::Entity
         class XconnectGroups; //type: L2vpn::Database::XconnectGroups
         class BridgeDomainGroups; //type: L2vpn::Database::BridgeDomainGroups
         class PseudowireClasses; //type: L2vpn::Database::PseudowireClasses
+        class VlanSwitches; //type: L2vpn::Database::VlanSwitches
         class FlexibleXconnectServiceTable; //type: L2vpn::Database::FlexibleXconnectServiceTable
         class Redundancy; //type: L2vpn::Database::Redundancy
 
@@ -188,6 +189,7 @@ class L2vpn::Database : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::L2vpn::Database::XconnectGroups> xconnect_groups;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::L2vpn::Database::BridgeDomainGroups> bridge_domain_groups;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::L2vpn::Database::PseudowireClasses> pseudowire_classes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::L2vpn::Database::VlanSwitches> vlan_switches;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::L2vpn::Database::FlexibleXconnectServiceTable> flexible_xconnect_service_table;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::L2vpn::Database::Redundancy> redundancy;
         
@@ -1863,6 +1865,7 @@ class L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Bri
         class AccessVfis; //type: L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::AccessVfis
         class BdPseudowires; //type: L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires
         class Vfis; //type: L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis
+        class BridgeDomainvnis; //type: L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainvnis
         class BdAttachmentCircuits; //type: L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits
         class BdPseudowireEvpns; //type: L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns
         class IpSourceGuard; //type: L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard
@@ -1878,6 +1881,7 @@ class L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Bri
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::AccessVfis> access_vfis;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires> bd_pseudowires;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis> vfis;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainvnis> bridge_domainvnis;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits> bd_attachment_circuits;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns> bd_pseudowire_evpns;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard> ip_source_guard;
@@ -2693,7 +2697,7 @@ class L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Bri
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf eviid; //type: uint32
+        ydk::YLeaf vpn_id; //type: uint32
 
 }; // L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainEvis::BridgeDomainEvi
 
@@ -3737,6 +3741,16 @@ class MacAging : public ydk::Enum
 
 };
 
+class MacLimitAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf flood;
+        static const ydk::Enum::YLeaf no_flood;
+        static const ydk::Enum::YLeaf shutdown;
+
+};
+
 class BdmacLearn : public ydk::Enum
 {
     public:
@@ -3798,16 +3812,6 @@ class BgpRouteTarget : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf no_stitching;
         static const ydk::Enum::YLeaf stitching;
-
-};
-
-class MacLimitAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf flood;
-        static const ydk::Enum::YLeaf no_flood;
-        static const ydk::Enum::YLeaf shutdown;
 
 };
 
@@ -3966,7 +3970,16 @@ class MplsSignalingProtocol : public ydk::Enum
 class EvpnSide : public ydk::Enum
 {
     public:
+        static const ydk::Enum::YLeaf evpn_side_regular;
         static const ydk::Enum::YLeaf evpn_side_stitching;
+
+};
+
+class ControlWord : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
 
 };
 
@@ -4002,7 +4015,6 @@ class EthernetSegmentLoadBalance : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf single_active;
-        static const ydk::Enum::YLeaf port_active;
 
 };
 
@@ -4011,14 +4023,6 @@ class L2tpSignalingProtocol : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf l2tpv3;
-
-};
-
-class ControlWord : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enable;
-        static const ydk::Enum::YLeaf disable;
 
 };
 
@@ -4051,6 +4055,13 @@ class L2Encapsulation : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf vlan;
         static const ydk::Enum::YLeaf ethernet;
+
+};
+
+class EthernetSegmentServiceCarving : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf hrw;
 
 };
 

@@ -454,7 +454,7 @@ bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::has
 
 SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SubscriberAccountingSessionFeature()
     :
-    sub_label{YType::int32, "sub-label"}
+    sub_label{YType::uint32, "sub-label"}
         ,
     session_feature_data(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData>())
 {
@@ -2314,7 +2314,7 @@ bool SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::has_le
 
 SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::SubscriberAccountingFlowFeature()
     :
-    class_label{YType::int32, "class-label"}
+    class_label{YType::uint32, "class-label"}
         ,
     flow_feature_data(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData>())
 {
@@ -2447,6 +2447,9 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberA
     prepaid_volume_refi_quota{YType::uint64, "prepaid-volume-refi-quota"},
     prepaid_volume_refo_quota{YType::uint64, "prepaid-volume-refo-quota"},
     prepaid_volume_refb_quota{YType::uint64, "prepaid-volume-refb-quota"},
+    prepaid_volume_agg_refi_quota{YType::uint64, "prepaid-volume-agg-refi-quota"},
+    prepaid_volume_agg_refo_quota{YType::uint64, "prepaid-volume-agg-refo-quota"},
+    prepaid_volume_agg_refb_quota{YType::uint64, "prepaid-volume-agg-refb-quota"},
     prepaid_volume_newi_quota{YType::uint64, "prepaid-volume-newi-quota"},
     prepaid_volume_newo_quota{YType::uint64, "prepaid-volume-newo-quota"},
     prepaid_volume_newb_quota{YType::uint64, "prepaid-volume-newb-quota"},
@@ -2505,6 +2508,9 @@ bool SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::Subscr
 	|| prepaid_volume_refi_quota.is_set
 	|| prepaid_volume_refo_quota.is_set
 	|| prepaid_volume_refb_quota.is_set
+	|| prepaid_volume_agg_refi_quota.is_set
+	|| prepaid_volume_agg_refo_quota.is_set
+	|| prepaid_volume_agg_refb_quota.is_set
 	|| prepaid_volume_newi_quota.is_set
 	|| prepaid_volume_newo_quota.is_set
 	|| prepaid_volume_newb_quota.is_set
@@ -2556,6 +2562,9 @@ bool SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::Subscr
 	|| ydk::is_set(prepaid_volume_refi_quota.yfilter)
 	|| ydk::is_set(prepaid_volume_refo_quota.yfilter)
 	|| ydk::is_set(prepaid_volume_refb_quota.yfilter)
+	|| ydk::is_set(prepaid_volume_agg_refi_quota.yfilter)
+	|| ydk::is_set(prepaid_volume_agg_refo_quota.yfilter)
+	|| ydk::is_set(prepaid_volume_agg_refb_quota.yfilter)
 	|| ydk::is_set(prepaid_volume_newi_quota.yfilter)
 	|| ydk::is_set(prepaid_volume_newo_quota.yfilter)
 	|| ydk::is_set(prepaid_volume_newb_quota.yfilter)
@@ -2615,6 +2624,9 @@ std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::Nodes::Node
     if (prepaid_volume_refi_quota.is_set || is_set(prepaid_volume_refi_quota.yfilter)) leaf_name_data.push_back(prepaid_volume_refi_quota.get_name_leafdata());
     if (prepaid_volume_refo_quota.is_set || is_set(prepaid_volume_refo_quota.yfilter)) leaf_name_data.push_back(prepaid_volume_refo_quota.get_name_leafdata());
     if (prepaid_volume_refb_quota.is_set || is_set(prepaid_volume_refb_quota.yfilter)) leaf_name_data.push_back(prepaid_volume_refb_quota.get_name_leafdata());
+    if (prepaid_volume_agg_refi_quota.is_set || is_set(prepaid_volume_agg_refi_quota.yfilter)) leaf_name_data.push_back(prepaid_volume_agg_refi_quota.get_name_leafdata());
+    if (prepaid_volume_agg_refo_quota.is_set || is_set(prepaid_volume_agg_refo_quota.yfilter)) leaf_name_data.push_back(prepaid_volume_agg_refo_quota.get_name_leafdata());
+    if (prepaid_volume_agg_refb_quota.is_set || is_set(prepaid_volume_agg_refb_quota.yfilter)) leaf_name_data.push_back(prepaid_volume_agg_refb_quota.get_name_leafdata());
     if (prepaid_volume_newi_quota.is_set || is_set(prepaid_volume_newi_quota.yfilter)) leaf_name_data.push_back(prepaid_volume_newi_quota.get_name_leafdata());
     if (prepaid_volume_newo_quota.is_set || is_set(prepaid_volume_newo_quota.yfilter)) leaf_name_data.push_back(prepaid_volume_newo_quota.get_name_leafdata());
     if (prepaid_volume_newb_quota.is_set || is_set(prepaid_volume_newb_quota.yfilter)) leaf_name_data.push_back(prepaid_volume_newb_quota.get_name_leafdata());
@@ -2855,6 +2867,24 @@ void SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::Subscr
         prepaid_volume_refb_quota.value_namespace = name_space;
         prepaid_volume_refb_quota.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "prepaid-volume-agg-refi-quota")
+    {
+        prepaid_volume_agg_refi_quota = value;
+        prepaid_volume_agg_refi_quota.value_namespace = name_space;
+        prepaid_volume_agg_refi_quota.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prepaid-volume-agg-refo-quota")
+    {
+        prepaid_volume_agg_refo_quota = value;
+        prepaid_volume_agg_refo_quota.value_namespace = name_space;
+        prepaid_volume_agg_refo_quota.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prepaid-volume-agg-refb-quota")
+    {
+        prepaid_volume_agg_refb_quota = value;
+        prepaid_volume_agg_refb_quota.value_namespace = name_space;
+        prepaid_volume_agg_refb_quota.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "prepaid-volume-newi-quota")
     {
         prepaid_volume_newi_quota = value;
@@ -3065,6 +3095,18 @@ void SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::Subscr
     {
         prepaid_volume_refb_quota.yfilter = yfilter;
     }
+    if(value_path == "prepaid-volume-agg-refi-quota")
+    {
+        prepaid_volume_agg_refi_quota.yfilter = yfilter;
+    }
+    if(value_path == "prepaid-volume-agg-refo-quota")
+    {
+        prepaid_volume_agg_refo_quota.yfilter = yfilter;
+    }
+    if(value_path == "prepaid-volume-agg-refb-quota")
+    {
+        prepaid_volume_agg_refb_quota.yfilter = yfilter;
+    }
     if(value_path == "prepaid-volume-newi-quota")
     {
         prepaid_volume_newi_quota.yfilter = yfilter;
@@ -3113,7 +3155,7 @@ void SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::Subscr
 
 bool SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "flow-accounting-enabled-flag" || name == "flow-idle-timeout-enabled-flag" || name == "prepaid-enabled-flag" || name == "prepaid-reauth-timer-enabled" || name == "prepaid-idle-timeout-enabled" || name == "prepaid-final-unit" || name == "unique-class-label" || name == "flow-direction" || name == "flow-accounting-periodic-interval" || name == "flow-idle-timeout-value" || name == "prepaid-time-quota" || name == "prepaid-time-threshold" || name == "prepaid-total-time-quota" || name == "prepaid-volume-threshold" || name == "prepaid-remaining-qt" || name == "prepaid-remaining-qat" || name == "prepaid-remaining-qit" || name == "prepaid-remaining-qtt" || name == "prepaid-remaining-wheel" || name == "prepaid-tariff-time" || name == "prepaid-idle-timeout-value" || name == "prepaid-reauth-timeout-value" || name == "prepaid-ccfh" || name == "prepaid-result-code" || name == "prepaid-volumei-quota" || name == "prepaid-volumeo-quota" || name == "prepaid-volumeb-quota" || name == "prepaid-total-volumei-quota" || name == "prepaid-total-volumeo-quota" || name == "prepaid-total-volumeb-quota" || name == "prepaid-volume-usedi-quota" || name == "prepaid-volume-usedo-quota" || name == "prepaid-volume-refi-quota" || name == "prepaid-volume-refo-quota" || name == "prepaid-volume-refb-quota" || name == "prepaid-volume-newi-quota" || name == "prepaid-volume-newo-quota" || name == "prepaid-volume-newb-quota" || name == "prepaid-tariff-volumei-quota" || name == "prepaid-tariff-volumeo-quota" || name == "prepaid-tariff-volumeb-quota" || name == "flow-accounting-method-list-name" || name == "prepaid-cfg" || name == "prepaid-time-state" || name == "prepaid-volume-state" || name == "prepaid-charging-rule")
+    if(name == "flow-accounting-enabled-flag" || name == "flow-idle-timeout-enabled-flag" || name == "prepaid-enabled-flag" || name == "prepaid-reauth-timer-enabled" || name == "prepaid-idle-timeout-enabled" || name == "prepaid-final-unit" || name == "unique-class-label" || name == "flow-direction" || name == "flow-accounting-periodic-interval" || name == "flow-idle-timeout-value" || name == "prepaid-time-quota" || name == "prepaid-time-threshold" || name == "prepaid-total-time-quota" || name == "prepaid-volume-threshold" || name == "prepaid-remaining-qt" || name == "prepaid-remaining-qat" || name == "prepaid-remaining-qit" || name == "prepaid-remaining-qtt" || name == "prepaid-remaining-wheel" || name == "prepaid-tariff-time" || name == "prepaid-idle-timeout-value" || name == "prepaid-reauth-timeout-value" || name == "prepaid-ccfh" || name == "prepaid-result-code" || name == "prepaid-volumei-quota" || name == "prepaid-volumeo-quota" || name == "prepaid-volumeb-quota" || name == "prepaid-total-volumei-quota" || name == "prepaid-total-volumeo-quota" || name == "prepaid-total-volumeb-quota" || name == "prepaid-volume-usedi-quota" || name == "prepaid-volume-usedo-quota" || name == "prepaid-volume-refi-quota" || name == "prepaid-volume-refo-quota" || name == "prepaid-volume-refb-quota" || name == "prepaid-volume-agg-refi-quota" || name == "prepaid-volume-agg-refo-quota" || name == "prepaid-volume-agg-refb-quota" || name == "prepaid-volume-newi-quota" || name == "prepaid-volume-newo-quota" || name == "prepaid-volume-newb-quota" || name == "prepaid-tariff-volumei-quota" || name == "prepaid-tariff-volumeo-quota" || name == "prepaid-tariff-volumeb-quota" || name == "flow-accounting-method-list-name" || name == "prepaid-cfg" || name == "prepaid-time-state" || name == "prepaid-volume-state" || name == "prepaid-charging-rule")
         return true;
     return false;
 }

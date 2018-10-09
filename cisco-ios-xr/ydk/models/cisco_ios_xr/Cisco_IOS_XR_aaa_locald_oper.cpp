@@ -22,9 +22,9 @@ Aaa::Aaa()
     , usergroups(std::make_shared<Aaa::Usergroups>())
     , authen_method(std::make_shared<Aaa::AuthenMethod>())
     , current_usergroup(std::make_shared<Aaa::CurrentUsergroup>())
+    , radius(std::make_shared<Aaa::Radius>())
     , tacacs(std::make_shared<Aaa::Tacacs>())
     , diameter(std::make_shared<Aaa::Diameter>())
-    , radius(std::make_shared<Aaa::Radius>())
 {
     all_tasks->parent = this;
     currentuser_detail->parent = this;
@@ -35,9 +35,9 @@ Aaa::Aaa()
     usergroups->parent = this;
     authen_method->parent = this;
     current_usergroup->parent = this;
+    radius->parent = this;
     tacacs->parent = this;
     diameter->parent = this;
-    radius->parent = this;
 
     yang_name = "aaa"; yang_parent_name = "Cisco-IOS-XR-aaa-locald-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
@@ -58,9 +58,9 @@ bool Aaa::has_data() const
 	|| (usergroups !=  nullptr && usergroups->has_data())
 	|| (authen_method !=  nullptr && authen_method->has_data())
 	|| (current_usergroup !=  nullptr && current_usergroup->has_data())
+	|| (radius !=  nullptr && radius->has_data())
 	|| (tacacs !=  nullptr && tacacs->has_data())
-	|| (diameter !=  nullptr && diameter->has_data())
-	|| (radius !=  nullptr && radius->has_data());
+	|| (diameter !=  nullptr && diameter->has_data());
 }
 
 bool Aaa::has_operation() const
@@ -75,9 +75,9 @@ bool Aaa::has_operation() const
 	|| (usergroups !=  nullptr && usergroups->has_operation())
 	|| (authen_method !=  nullptr && authen_method->has_operation())
 	|| (current_usergroup !=  nullptr && current_usergroup->has_operation())
+	|| (radius !=  nullptr && radius->has_operation())
 	|| (tacacs !=  nullptr && tacacs->has_operation())
-	|| (diameter !=  nullptr && diameter->has_operation())
-	|| (radius !=  nullptr && radius->has_operation());
+	|| (diameter !=  nullptr && diameter->has_operation());
 }
 
 std::string Aaa::get_segment_path() const
@@ -179,6 +179,15 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
         return current_usergroup;
     }
 
+    if(child_yang_name == "Cisco-IOS-XR-aaa-protocol-radius-oper:radius")
+    {
+        if(radius == nullptr)
+        {
+            radius = std::make_shared<Aaa::Radius>();
+        }
+        return radius;
+    }
+
     if(child_yang_name == "Cisco-IOS-XR-aaa-tacacs-oper:tacacs")
     {
         if(tacacs == nullptr)
@@ -195,15 +204,6 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
             diameter = std::make_shared<Aaa::Diameter>();
         }
         return diameter;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-aaa-protocol-radius-oper:radius")
-    {
-        if(radius == nullptr)
-        {
-            radius = std::make_shared<Aaa::Radius>();
-        }
-        return radius;
     }
 
     return nullptr;
@@ -258,6 +258,11 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::get_children() const
         children["current-usergroup"] = current_usergroup;
     }
 
+    if(radius != nullptr)
+    {
+        children["Cisco-IOS-XR-aaa-protocol-radius-oper:radius"] = radius;
+    }
+
     if(tacacs != nullptr)
     {
         children["Cisco-IOS-XR-aaa-tacacs-oper:tacacs"] = tacacs;
@@ -266,11 +271,6 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::get_children() const
     if(diameter != nullptr)
     {
         children["Cisco-IOS-XR-aaa-diameter-oper:diameter"] = diameter;
-    }
-
-    if(radius != nullptr)
-    {
-        children["Cisco-IOS-XR-aaa-protocol-radius-oper:radius"] = radius;
     }
 
     return children;
@@ -311,7 +311,7 @@ std::map<std::pair<std::string, std::string>, std::string> Aaa::get_namespace_id
 
 bool Aaa::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "all-tasks" || name == "currentuser-detail" || name == "task-map" || name == "taskgroups" || name == "users" || name == "password-policies" || name == "usergroups" || name == "authen-method" || name == "current-usergroup" || name == "tacacs" || name == "diameter" || name == "radius")
+    if(name == "all-tasks" || name == "currentuser-detail" || name == "task-map" || name == "taskgroups" || name == "users" || name == "password-policies" || name == "usergroups" || name == "authen-method" || name == "current-usergroup" || name == "radius" || name == "tacacs" || name == "diameter")
         return true;
     return false;
 }
@@ -3909,6 +3909,1888 @@ void Aaa::CurrentUsergroup::set_filter(const std::string & value_path, YFilter y
 bool Aaa::CurrentUsergroup::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name" || name == "authenmethod" || name == "usergroup" || name == "taskmap")
+        return true;
+    return false;
+}
+
+Aaa::Radius::Radius()
+    :
+    servers(std::make_shared<Aaa::Radius::Servers>())
+    , radius_source_interface(std::make_shared<Aaa::Radius::RadiusSourceInterface>())
+    , global(std::make_shared<Aaa::Radius::Global>())
+{
+    servers->parent = this;
+    radius_source_interface->parent = this;
+    global->parent = this;
+
+    yang_name = "radius"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::Radius::~Radius()
+{
+}
+
+bool Aaa::Radius::has_data() const
+{
+    if (is_presence_container) return true;
+    return (servers !=  nullptr && servers->has_data())
+	|| (radius_source_interface !=  nullptr && radius_source_interface->has_data())
+	|| (global !=  nullptr && global->has_data());
+}
+
+bool Aaa::Radius::has_operation() const
+{
+    return is_set(yfilter)
+	|| (servers !=  nullptr && servers->has_operation())
+	|| (radius_source_interface !=  nullptr && radius_source_interface->has_operation())
+	|| (global !=  nullptr && global->has_operation());
+}
+
+std::string Aaa::Radius::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Radius::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-protocol-radius-oper:radius";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Radius::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Radius::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "servers")
+    {
+        if(servers == nullptr)
+        {
+            servers = std::make_shared<Aaa::Radius::Servers>();
+        }
+        return servers;
+    }
+
+    if(child_yang_name == "radius-source-interface")
+    {
+        if(radius_source_interface == nullptr)
+        {
+            radius_source_interface = std::make_shared<Aaa::Radius::RadiusSourceInterface>();
+        }
+        return radius_source_interface;
+    }
+
+    if(child_yang_name == "global")
+    {
+        if(global == nullptr)
+        {
+            global = std::make_shared<Aaa::Radius::Global>();
+        }
+        return global;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(servers != nullptr)
+    {
+        children["servers"] = servers;
+    }
+
+    if(radius_source_interface != nullptr)
+    {
+        children["radius-source-interface"] = radius_source_interface;
+    }
+
+    if(global != nullptr)
+    {
+        children["global"] = global;
+    }
+
+    return children;
+}
+
+void Aaa::Radius::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Radius::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Radius::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "servers" || name == "radius-source-interface" || name == "global")
+        return true;
+    return false;
+}
+
+Aaa::Radius::Servers::Servers()
+    :
+    server(this, {})
+{
+
+    yang_name = "servers"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::Radius::Servers::~Servers()
+{
+}
+
+bool Aaa::Radius::Servers::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<server.len(); index++)
+    {
+        if(server[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Radius::Servers::has_operation() const
+{
+    for (std::size_t index=0; index<server.len(); index++)
+    {
+        if(server[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Aaa::Radius::Servers::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-protocol-radius-oper:radius/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Radius::Servers::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "servers";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Radius::Servers::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Radius::Servers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "server")
+    {
+        auto c = std::make_shared<Aaa::Radius::Servers::Server>();
+        c->parent = this;
+        server.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::Servers::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : server.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Radius::Servers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Radius::Servers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Radius::Servers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "server")
+        return true;
+    return false;
+}
+
+Aaa::Radius::Servers::Server::Server()
+    :
+    ip_address{YType::str, "ip-address"},
+    auth_port_number{YType::uint32, "auth-port-number"},
+    acct_port_number{YType::uint32, "acct-port-number"},
+    ipv4_address{YType::str, "ipv4-address"},
+    priority{YType::uint32, "priority"},
+    timeout_xr{YType::uint32, "timeout-xr"},
+    retransmit{YType::uint32, "retransmit"},
+    dead_time{YType::uint32, "dead-time"},
+    dead_detect_time{YType::uint32, "dead-detect-time"},
+    dead_detect_tries{YType::uint32, "dead-detect-tries"},
+    authentication_port{YType::uint32, "authentication-port"},
+    accounting_port{YType::uint32, "accounting-port"},
+    state{YType::str, "state"},
+    current_state_duration{YType::uint32, "current-state-duration"},
+    previous_state_duration{YType::uint32, "previous-state-duration"},
+    packets_in{YType::uint32, "packets-in"},
+    packets_out{YType::uint32, "packets-out"},
+    timeouts{YType::uint32, "timeouts"},
+    aborts{YType::uint32, "aborts"},
+    replies_expected{YType::uint32, "replies-expected"},
+    redirected_requests{YType::uint32, "redirected-requests"},
+    authentication_rtt{YType::uint32, "authentication-rtt"},
+    access_requests{YType::uint32, "access-requests"},
+    access_request_retransmits{YType::uint32, "access-request-retransmits"},
+    access_accepts{YType::uint32, "access-accepts"},
+    access_rejects{YType::uint32, "access-rejects"},
+    access_challenges{YType::uint32, "access-challenges"},
+    bad_access_responses{YType::uint32, "bad-access-responses"},
+    bad_access_authenticators{YType::uint32, "bad-access-authenticators"},
+    pending_access_requests{YType::uint32, "pending-access-requests"},
+    access_timeouts{YType::uint32, "access-timeouts"},
+    unknown_access_types{YType::uint32, "unknown-access-types"},
+    dropped_access_responses{YType::uint32, "dropped-access-responses"},
+    throttled_access_reqs{YType::uint32, "throttled-access-reqs"},
+    throttled_timed_out_reqs{YType::uint32, "throttled-timed-out-reqs"},
+    throttled_dropped_reqs{YType::uint32, "throttled-dropped-reqs"},
+    max_throttled_access_reqs{YType::uint32, "max-throttled-access-reqs"},
+    currently_throttled_access_reqs{YType::uint32, "currently-throttled-access-reqs"},
+    authen_response_time{YType::uint32, "authen-response-time"},
+    authen_transaction_successess{YType::uint32, "authen-transaction-successess"},
+    authen_transaction_failure{YType::uint32, "authen-transaction-failure"},
+    authen_unexpected_responses{YType::uint32, "authen-unexpected-responses"},
+    authen_server_error_responses{YType::uint32, "authen-server-error-responses"},
+    authen_incorrect_responses{YType::uint32, "authen-incorrect-responses"},
+    author_requests{YType::uint32, "author-requests"},
+    author_request_timeouts{YType::uint32, "author-request-timeouts"},
+    author_response_time{YType::uint32, "author-response-time"},
+    author_transaction_successess{YType::uint32, "author-transaction-successess"},
+    author_transaction_failure{YType::uint32, "author-transaction-failure"},
+    author_unexpected_responses{YType::uint32, "author-unexpected-responses"},
+    author_server_error_responses{YType::uint32, "author-server-error-responses"},
+    author_incorrect_responses{YType::uint32, "author-incorrect-responses"},
+    accounting_rtt{YType::uint32, "accounting-rtt"},
+    accounting_requests{YType::uint32, "accounting-requests"},
+    accounting_retransmits{YType::uint32, "accounting-retransmits"},
+    accounting_responses{YType::uint32, "accounting-responses"},
+    bad_accounting_responses{YType::uint32, "bad-accounting-responses"},
+    bad_accounting_authenticators{YType::uint32, "bad-accounting-authenticators"},
+    pending_accounting_requets{YType::uint32, "pending-accounting-requets"},
+    accounting_timeouts{YType::uint32, "accounting-timeouts"},
+    unknown_accounting_types{YType::uint32, "unknown-accounting-types"},
+    dropped_accounting_responses{YType::uint32, "dropped-accounting-responses"},
+    is_a_private_server{YType::boolean, "is-a-private-server"},
+    total_test_auth_reqs{YType::uint32, "total-test-auth-reqs"},
+    total_test_auth_timeouts{YType::uint32, "total-test-auth-timeouts"},
+    total_test_auth_response{YType::uint32, "total-test-auth-response"},
+    total_test_auth_pending{YType::uint32, "total-test-auth-pending"},
+    total_test_acct_reqs{YType::uint32, "total-test-acct-reqs"},
+    total_test_acct_timeouts{YType::uint32, "total-test-acct-timeouts"},
+    total_test_acct_response{YType::uint32, "total-test-acct-response"},
+    total_test_acct_pending{YType::uint32, "total-test-acct-pending"},
+    throttled_acct_transactions{YType::uint32, "throttled-acct-transactions"},
+    throttled_acct_timed_out_stats{YType::uint32, "throttled-acct-timed-out-stats"},
+    throttled_acct_failures_stats{YType::uint32, "throttled-acct-failures-stats"},
+    max_acct_throttled{YType::uint32, "max-acct-throttled"},
+    throttleda_acct_transactions{YType::uint32, "throttleda-acct-transactions"},
+    acct_unexpected_responses{YType::uint32, "acct-unexpected-responses"},
+    acct_server_error_responses{YType::uint32, "acct-server-error-responses"},
+    acct_incorrect_responses{YType::uint32, "acct-incorrect-responses"},
+    acct_response_time{YType::uint32, "acct-response-time"},
+    acct_transaction_successess{YType::uint32, "acct-transaction-successess"},
+    acct_transaction_failure{YType::uint32, "acct-transaction-failure"},
+    total_deadtime{YType::uint32, "total-deadtime"},
+    last_deadtime{YType::uint32, "last-deadtime"},
+    is_quarantined{YType::boolean, "is-quarantined"},
+    group_name{YType::str, "group-name"},
+    ip_address_xr{YType::str, "ip-address-xr"},
+    family{YType::str, "family"}
+{
+
+    yang_name = "server"; yang_parent_name = "servers"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::Radius::Servers::Server::~Server()
+{
+}
+
+bool Aaa::Radius::Servers::Server::has_data() const
+{
+    if (is_presence_container) return true;
+    return ip_address.is_set
+	|| auth_port_number.is_set
+	|| acct_port_number.is_set
+	|| ipv4_address.is_set
+	|| priority.is_set
+	|| timeout_xr.is_set
+	|| retransmit.is_set
+	|| dead_time.is_set
+	|| dead_detect_time.is_set
+	|| dead_detect_tries.is_set
+	|| authentication_port.is_set
+	|| accounting_port.is_set
+	|| state.is_set
+	|| current_state_duration.is_set
+	|| previous_state_duration.is_set
+	|| packets_in.is_set
+	|| packets_out.is_set
+	|| timeouts.is_set
+	|| aborts.is_set
+	|| replies_expected.is_set
+	|| redirected_requests.is_set
+	|| authentication_rtt.is_set
+	|| access_requests.is_set
+	|| access_request_retransmits.is_set
+	|| access_accepts.is_set
+	|| access_rejects.is_set
+	|| access_challenges.is_set
+	|| bad_access_responses.is_set
+	|| bad_access_authenticators.is_set
+	|| pending_access_requests.is_set
+	|| access_timeouts.is_set
+	|| unknown_access_types.is_set
+	|| dropped_access_responses.is_set
+	|| throttled_access_reqs.is_set
+	|| throttled_timed_out_reqs.is_set
+	|| throttled_dropped_reqs.is_set
+	|| max_throttled_access_reqs.is_set
+	|| currently_throttled_access_reqs.is_set
+	|| authen_response_time.is_set
+	|| authen_transaction_successess.is_set
+	|| authen_transaction_failure.is_set
+	|| authen_unexpected_responses.is_set
+	|| authen_server_error_responses.is_set
+	|| authen_incorrect_responses.is_set
+	|| author_requests.is_set
+	|| author_request_timeouts.is_set
+	|| author_response_time.is_set
+	|| author_transaction_successess.is_set
+	|| author_transaction_failure.is_set
+	|| author_unexpected_responses.is_set
+	|| author_server_error_responses.is_set
+	|| author_incorrect_responses.is_set
+	|| accounting_rtt.is_set
+	|| accounting_requests.is_set
+	|| accounting_retransmits.is_set
+	|| accounting_responses.is_set
+	|| bad_accounting_responses.is_set
+	|| bad_accounting_authenticators.is_set
+	|| pending_accounting_requets.is_set
+	|| accounting_timeouts.is_set
+	|| unknown_accounting_types.is_set
+	|| dropped_accounting_responses.is_set
+	|| is_a_private_server.is_set
+	|| total_test_auth_reqs.is_set
+	|| total_test_auth_timeouts.is_set
+	|| total_test_auth_response.is_set
+	|| total_test_auth_pending.is_set
+	|| total_test_acct_reqs.is_set
+	|| total_test_acct_timeouts.is_set
+	|| total_test_acct_response.is_set
+	|| total_test_acct_pending.is_set
+	|| throttled_acct_transactions.is_set
+	|| throttled_acct_timed_out_stats.is_set
+	|| throttled_acct_failures_stats.is_set
+	|| max_acct_throttled.is_set
+	|| throttleda_acct_transactions.is_set
+	|| acct_unexpected_responses.is_set
+	|| acct_server_error_responses.is_set
+	|| acct_incorrect_responses.is_set
+	|| acct_response_time.is_set
+	|| acct_transaction_successess.is_set
+	|| acct_transaction_failure.is_set
+	|| total_deadtime.is_set
+	|| last_deadtime.is_set
+	|| is_quarantined.is_set
+	|| group_name.is_set
+	|| ip_address_xr.is_set
+	|| family.is_set;
+}
+
+bool Aaa::Radius::Servers::Server::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip_address.yfilter)
+	|| ydk::is_set(auth_port_number.yfilter)
+	|| ydk::is_set(acct_port_number.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(timeout_xr.yfilter)
+	|| ydk::is_set(retransmit.yfilter)
+	|| ydk::is_set(dead_time.yfilter)
+	|| ydk::is_set(dead_detect_time.yfilter)
+	|| ydk::is_set(dead_detect_tries.yfilter)
+	|| ydk::is_set(authentication_port.yfilter)
+	|| ydk::is_set(accounting_port.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(current_state_duration.yfilter)
+	|| ydk::is_set(previous_state_duration.yfilter)
+	|| ydk::is_set(packets_in.yfilter)
+	|| ydk::is_set(packets_out.yfilter)
+	|| ydk::is_set(timeouts.yfilter)
+	|| ydk::is_set(aborts.yfilter)
+	|| ydk::is_set(replies_expected.yfilter)
+	|| ydk::is_set(redirected_requests.yfilter)
+	|| ydk::is_set(authentication_rtt.yfilter)
+	|| ydk::is_set(access_requests.yfilter)
+	|| ydk::is_set(access_request_retransmits.yfilter)
+	|| ydk::is_set(access_accepts.yfilter)
+	|| ydk::is_set(access_rejects.yfilter)
+	|| ydk::is_set(access_challenges.yfilter)
+	|| ydk::is_set(bad_access_responses.yfilter)
+	|| ydk::is_set(bad_access_authenticators.yfilter)
+	|| ydk::is_set(pending_access_requests.yfilter)
+	|| ydk::is_set(access_timeouts.yfilter)
+	|| ydk::is_set(unknown_access_types.yfilter)
+	|| ydk::is_set(dropped_access_responses.yfilter)
+	|| ydk::is_set(throttled_access_reqs.yfilter)
+	|| ydk::is_set(throttled_timed_out_reqs.yfilter)
+	|| ydk::is_set(throttled_dropped_reqs.yfilter)
+	|| ydk::is_set(max_throttled_access_reqs.yfilter)
+	|| ydk::is_set(currently_throttled_access_reqs.yfilter)
+	|| ydk::is_set(authen_response_time.yfilter)
+	|| ydk::is_set(authen_transaction_successess.yfilter)
+	|| ydk::is_set(authen_transaction_failure.yfilter)
+	|| ydk::is_set(authen_unexpected_responses.yfilter)
+	|| ydk::is_set(authen_server_error_responses.yfilter)
+	|| ydk::is_set(authen_incorrect_responses.yfilter)
+	|| ydk::is_set(author_requests.yfilter)
+	|| ydk::is_set(author_request_timeouts.yfilter)
+	|| ydk::is_set(author_response_time.yfilter)
+	|| ydk::is_set(author_transaction_successess.yfilter)
+	|| ydk::is_set(author_transaction_failure.yfilter)
+	|| ydk::is_set(author_unexpected_responses.yfilter)
+	|| ydk::is_set(author_server_error_responses.yfilter)
+	|| ydk::is_set(author_incorrect_responses.yfilter)
+	|| ydk::is_set(accounting_rtt.yfilter)
+	|| ydk::is_set(accounting_requests.yfilter)
+	|| ydk::is_set(accounting_retransmits.yfilter)
+	|| ydk::is_set(accounting_responses.yfilter)
+	|| ydk::is_set(bad_accounting_responses.yfilter)
+	|| ydk::is_set(bad_accounting_authenticators.yfilter)
+	|| ydk::is_set(pending_accounting_requets.yfilter)
+	|| ydk::is_set(accounting_timeouts.yfilter)
+	|| ydk::is_set(unknown_accounting_types.yfilter)
+	|| ydk::is_set(dropped_accounting_responses.yfilter)
+	|| ydk::is_set(is_a_private_server.yfilter)
+	|| ydk::is_set(total_test_auth_reqs.yfilter)
+	|| ydk::is_set(total_test_auth_timeouts.yfilter)
+	|| ydk::is_set(total_test_auth_response.yfilter)
+	|| ydk::is_set(total_test_auth_pending.yfilter)
+	|| ydk::is_set(total_test_acct_reqs.yfilter)
+	|| ydk::is_set(total_test_acct_timeouts.yfilter)
+	|| ydk::is_set(total_test_acct_response.yfilter)
+	|| ydk::is_set(total_test_acct_pending.yfilter)
+	|| ydk::is_set(throttled_acct_transactions.yfilter)
+	|| ydk::is_set(throttled_acct_timed_out_stats.yfilter)
+	|| ydk::is_set(throttled_acct_failures_stats.yfilter)
+	|| ydk::is_set(max_acct_throttled.yfilter)
+	|| ydk::is_set(throttleda_acct_transactions.yfilter)
+	|| ydk::is_set(acct_unexpected_responses.yfilter)
+	|| ydk::is_set(acct_server_error_responses.yfilter)
+	|| ydk::is_set(acct_incorrect_responses.yfilter)
+	|| ydk::is_set(acct_response_time.yfilter)
+	|| ydk::is_set(acct_transaction_successess.yfilter)
+	|| ydk::is_set(acct_transaction_failure.yfilter)
+	|| ydk::is_set(total_deadtime.yfilter)
+	|| ydk::is_set(last_deadtime.yfilter)
+	|| ydk::is_set(is_quarantined.yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(ip_address_xr.yfilter)
+	|| ydk::is_set(family.yfilter);
+}
+
+std::string Aaa::Radius::Servers::Server::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-protocol-radius-oper:radius/servers/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Radius::Servers::Server::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Radius::Servers::Server::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (auth_port_number.is_set || is_set(auth_port_number.yfilter)) leaf_name_data.push_back(auth_port_number.get_name_leafdata());
+    if (acct_port_number.is_set || is_set(acct_port_number.yfilter)) leaf_name_data.push_back(acct_port_number.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (timeout_xr.is_set || is_set(timeout_xr.yfilter)) leaf_name_data.push_back(timeout_xr.get_name_leafdata());
+    if (retransmit.is_set || is_set(retransmit.yfilter)) leaf_name_data.push_back(retransmit.get_name_leafdata());
+    if (dead_time.is_set || is_set(dead_time.yfilter)) leaf_name_data.push_back(dead_time.get_name_leafdata());
+    if (dead_detect_time.is_set || is_set(dead_detect_time.yfilter)) leaf_name_data.push_back(dead_detect_time.get_name_leafdata());
+    if (dead_detect_tries.is_set || is_set(dead_detect_tries.yfilter)) leaf_name_data.push_back(dead_detect_tries.get_name_leafdata());
+    if (authentication_port.is_set || is_set(authentication_port.yfilter)) leaf_name_data.push_back(authentication_port.get_name_leafdata());
+    if (accounting_port.is_set || is_set(accounting_port.yfilter)) leaf_name_data.push_back(accounting_port.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (current_state_duration.is_set || is_set(current_state_duration.yfilter)) leaf_name_data.push_back(current_state_duration.get_name_leafdata());
+    if (previous_state_duration.is_set || is_set(previous_state_duration.yfilter)) leaf_name_data.push_back(previous_state_duration.get_name_leafdata());
+    if (packets_in.is_set || is_set(packets_in.yfilter)) leaf_name_data.push_back(packets_in.get_name_leafdata());
+    if (packets_out.is_set || is_set(packets_out.yfilter)) leaf_name_data.push_back(packets_out.get_name_leafdata());
+    if (timeouts.is_set || is_set(timeouts.yfilter)) leaf_name_data.push_back(timeouts.get_name_leafdata());
+    if (aborts.is_set || is_set(aborts.yfilter)) leaf_name_data.push_back(aborts.get_name_leafdata());
+    if (replies_expected.is_set || is_set(replies_expected.yfilter)) leaf_name_data.push_back(replies_expected.get_name_leafdata());
+    if (redirected_requests.is_set || is_set(redirected_requests.yfilter)) leaf_name_data.push_back(redirected_requests.get_name_leafdata());
+    if (authentication_rtt.is_set || is_set(authentication_rtt.yfilter)) leaf_name_data.push_back(authentication_rtt.get_name_leafdata());
+    if (access_requests.is_set || is_set(access_requests.yfilter)) leaf_name_data.push_back(access_requests.get_name_leafdata());
+    if (access_request_retransmits.is_set || is_set(access_request_retransmits.yfilter)) leaf_name_data.push_back(access_request_retransmits.get_name_leafdata());
+    if (access_accepts.is_set || is_set(access_accepts.yfilter)) leaf_name_data.push_back(access_accepts.get_name_leafdata());
+    if (access_rejects.is_set || is_set(access_rejects.yfilter)) leaf_name_data.push_back(access_rejects.get_name_leafdata());
+    if (access_challenges.is_set || is_set(access_challenges.yfilter)) leaf_name_data.push_back(access_challenges.get_name_leafdata());
+    if (bad_access_responses.is_set || is_set(bad_access_responses.yfilter)) leaf_name_data.push_back(bad_access_responses.get_name_leafdata());
+    if (bad_access_authenticators.is_set || is_set(bad_access_authenticators.yfilter)) leaf_name_data.push_back(bad_access_authenticators.get_name_leafdata());
+    if (pending_access_requests.is_set || is_set(pending_access_requests.yfilter)) leaf_name_data.push_back(pending_access_requests.get_name_leafdata());
+    if (access_timeouts.is_set || is_set(access_timeouts.yfilter)) leaf_name_data.push_back(access_timeouts.get_name_leafdata());
+    if (unknown_access_types.is_set || is_set(unknown_access_types.yfilter)) leaf_name_data.push_back(unknown_access_types.get_name_leafdata());
+    if (dropped_access_responses.is_set || is_set(dropped_access_responses.yfilter)) leaf_name_data.push_back(dropped_access_responses.get_name_leafdata());
+    if (throttled_access_reqs.is_set || is_set(throttled_access_reqs.yfilter)) leaf_name_data.push_back(throttled_access_reqs.get_name_leafdata());
+    if (throttled_timed_out_reqs.is_set || is_set(throttled_timed_out_reqs.yfilter)) leaf_name_data.push_back(throttled_timed_out_reqs.get_name_leafdata());
+    if (throttled_dropped_reqs.is_set || is_set(throttled_dropped_reqs.yfilter)) leaf_name_data.push_back(throttled_dropped_reqs.get_name_leafdata());
+    if (max_throttled_access_reqs.is_set || is_set(max_throttled_access_reqs.yfilter)) leaf_name_data.push_back(max_throttled_access_reqs.get_name_leafdata());
+    if (currently_throttled_access_reqs.is_set || is_set(currently_throttled_access_reqs.yfilter)) leaf_name_data.push_back(currently_throttled_access_reqs.get_name_leafdata());
+    if (authen_response_time.is_set || is_set(authen_response_time.yfilter)) leaf_name_data.push_back(authen_response_time.get_name_leafdata());
+    if (authen_transaction_successess.is_set || is_set(authen_transaction_successess.yfilter)) leaf_name_data.push_back(authen_transaction_successess.get_name_leafdata());
+    if (authen_transaction_failure.is_set || is_set(authen_transaction_failure.yfilter)) leaf_name_data.push_back(authen_transaction_failure.get_name_leafdata());
+    if (authen_unexpected_responses.is_set || is_set(authen_unexpected_responses.yfilter)) leaf_name_data.push_back(authen_unexpected_responses.get_name_leafdata());
+    if (authen_server_error_responses.is_set || is_set(authen_server_error_responses.yfilter)) leaf_name_data.push_back(authen_server_error_responses.get_name_leafdata());
+    if (authen_incorrect_responses.is_set || is_set(authen_incorrect_responses.yfilter)) leaf_name_data.push_back(authen_incorrect_responses.get_name_leafdata());
+    if (author_requests.is_set || is_set(author_requests.yfilter)) leaf_name_data.push_back(author_requests.get_name_leafdata());
+    if (author_request_timeouts.is_set || is_set(author_request_timeouts.yfilter)) leaf_name_data.push_back(author_request_timeouts.get_name_leafdata());
+    if (author_response_time.is_set || is_set(author_response_time.yfilter)) leaf_name_data.push_back(author_response_time.get_name_leafdata());
+    if (author_transaction_successess.is_set || is_set(author_transaction_successess.yfilter)) leaf_name_data.push_back(author_transaction_successess.get_name_leafdata());
+    if (author_transaction_failure.is_set || is_set(author_transaction_failure.yfilter)) leaf_name_data.push_back(author_transaction_failure.get_name_leafdata());
+    if (author_unexpected_responses.is_set || is_set(author_unexpected_responses.yfilter)) leaf_name_data.push_back(author_unexpected_responses.get_name_leafdata());
+    if (author_server_error_responses.is_set || is_set(author_server_error_responses.yfilter)) leaf_name_data.push_back(author_server_error_responses.get_name_leafdata());
+    if (author_incorrect_responses.is_set || is_set(author_incorrect_responses.yfilter)) leaf_name_data.push_back(author_incorrect_responses.get_name_leafdata());
+    if (accounting_rtt.is_set || is_set(accounting_rtt.yfilter)) leaf_name_data.push_back(accounting_rtt.get_name_leafdata());
+    if (accounting_requests.is_set || is_set(accounting_requests.yfilter)) leaf_name_data.push_back(accounting_requests.get_name_leafdata());
+    if (accounting_retransmits.is_set || is_set(accounting_retransmits.yfilter)) leaf_name_data.push_back(accounting_retransmits.get_name_leafdata());
+    if (accounting_responses.is_set || is_set(accounting_responses.yfilter)) leaf_name_data.push_back(accounting_responses.get_name_leafdata());
+    if (bad_accounting_responses.is_set || is_set(bad_accounting_responses.yfilter)) leaf_name_data.push_back(bad_accounting_responses.get_name_leafdata());
+    if (bad_accounting_authenticators.is_set || is_set(bad_accounting_authenticators.yfilter)) leaf_name_data.push_back(bad_accounting_authenticators.get_name_leafdata());
+    if (pending_accounting_requets.is_set || is_set(pending_accounting_requets.yfilter)) leaf_name_data.push_back(pending_accounting_requets.get_name_leafdata());
+    if (accounting_timeouts.is_set || is_set(accounting_timeouts.yfilter)) leaf_name_data.push_back(accounting_timeouts.get_name_leafdata());
+    if (unknown_accounting_types.is_set || is_set(unknown_accounting_types.yfilter)) leaf_name_data.push_back(unknown_accounting_types.get_name_leafdata());
+    if (dropped_accounting_responses.is_set || is_set(dropped_accounting_responses.yfilter)) leaf_name_data.push_back(dropped_accounting_responses.get_name_leafdata());
+    if (is_a_private_server.is_set || is_set(is_a_private_server.yfilter)) leaf_name_data.push_back(is_a_private_server.get_name_leafdata());
+    if (total_test_auth_reqs.is_set || is_set(total_test_auth_reqs.yfilter)) leaf_name_data.push_back(total_test_auth_reqs.get_name_leafdata());
+    if (total_test_auth_timeouts.is_set || is_set(total_test_auth_timeouts.yfilter)) leaf_name_data.push_back(total_test_auth_timeouts.get_name_leafdata());
+    if (total_test_auth_response.is_set || is_set(total_test_auth_response.yfilter)) leaf_name_data.push_back(total_test_auth_response.get_name_leafdata());
+    if (total_test_auth_pending.is_set || is_set(total_test_auth_pending.yfilter)) leaf_name_data.push_back(total_test_auth_pending.get_name_leafdata());
+    if (total_test_acct_reqs.is_set || is_set(total_test_acct_reqs.yfilter)) leaf_name_data.push_back(total_test_acct_reqs.get_name_leafdata());
+    if (total_test_acct_timeouts.is_set || is_set(total_test_acct_timeouts.yfilter)) leaf_name_data.push_back(total_test_acct_timeouts.get_name_leafdata());
+    if (total_test_acct_response.is_set || is_set(total_test_acct_response.yfilter)) leaf_name_data.push_back(total_test_acct_response.get_name_leafdata());
+    if (total_test_acct_pending.is_set || is_set(total_test_acct_pending.yfilter)) leaf_name_data.push_back(total_test_acct_pending.get_name_leafdata());
+    if (throttled_acct_transactions.is_set || is_set(throttled_acct_transactions.yfilter)) leaf_name_data.push_back(throttled_acct_transactions.get_name_leafdata());
+    if (throttled_acct_timed_out_stats.is_set || is_set(throttled_acct_timed_out_stats.yfilter)) leaf_name_data.push_back(throttled_acct_timed_out_stats.get_name_leafdata());
+    if (throttled_acct_failures_stats.is_set || is_set(throttled_acct_failures_stats.yfilter)) leaf_name_data.push_back(throttled_acct_failures_stats.get_name_leafdata());
+    if (max_acct_throttled.is_set || is_set(max_acct_throttled.yfilter)) leaf_name_data.push_back(max_acct_throttled.get_name_leafdata());
+    if (throttleda_acct_transactions.is_set || is_set(throttleda_acct_transactions.yfilter)) leaf_name_data.push_back(throttleda_acct_transactions.get_name_leafdata());
+    if (acct_unexpected_responses.is_set || is_set(acct_unexpected_responses.yfilter)) leaf_name_data.push_back(acct_unexpected_responses.get_name_leafdata());
+    if (acct_server_error_responses.is_set || is_set(acct_server_error_responses.yfilter)) leaf_name_data.push_back(acct_server_error_responses.get_name_leafdata());
+    if (acct_incorrect_responses.is_set || is_set(acct_incorrect_responses.yfilter)) leaf_name_data.push_back(acct_incorrect_responses.get_name_leafdata());
+    if (acct_response_time.is_set || is_set(acct_response_time.yfilter)) leaf_name_data.push_back(acct_response_time.get_name_leafdata());
+    if (acct_transaction_successess.is_set || is_set(acct_transaction_successess.yfilter)) leaf_name_data.push_back(acct_transaction_successess.get_name_leafdata());
+    if (acct_transaction_failure.is_set || is_set(acct_transaction_failure.yfilter)) leaf_name_data.push_back(acct_transaction_failure.get_name_leafdata());
+    if (total_deadtime.is_set || is_set(total_deadtime.yfilter)) leaf_name_data.push_back(total_deadtime.get_name_leafdata());
+    if (last_deadtime.is_set || is_set(last_deadtime.yfilter)) leaf_name_data.push_back(last_deadtime.get_name_leafdata());
+    if (is_quarantined.is_set || is_set(is_quarantined.yfilter)) leaf_name_data.push_back(is_quarantined.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (ip_address_xr.is_set || is_set(ip_address_xr.yfilter)) leaf_name_data.push_back(ip_address_xr.get_name_leafdata());
+    if (family.is_set || is_set(family.yfilter)) leaf_name_data.push_back(family.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Radius::Servers::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::Servers::Server::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Aaa::Radius::Servers::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip-address")
+    {
+        ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "auth-port-number")
+    {
+        auth_port_number = value;
+        auth_port_number.value_namespace = name_space;
+        auth_port_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "acct-port-number")
+    {
+        acct_port_number = value;
+        acct_port_number.value_namespace = name_space;
+        acct_port_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout-xr")
+    {
+        timeout_xr = value;
+        timeout_xr.value_namespace = name_space;
+        timeout_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "retransmit")
+    {
+        retransmit = value;
+        retransmit.value_namespace = name_space;
+        retransmit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dead-time")
+    {
+        dead_time = value;
+        dead_time.value_namespace = name_space;
+        dead_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dead-detect-time")
+    {
+        dead_detect_time = value;
+        dead_detect_time.value_namespace = name_space;
+        dead_detect_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dead-detect-tries")
+    {
+        dead_detect_tries = value;
+        dead_detect_tries.value_namespace = name_space;
+        dead_detect_tries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authentication-port")
+    {
+        authentication_port = value;
+        authentication_port.value_namespace = name_space;
+        authentication_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-port")
+    {
+        accounting_port = value;
+        accounting_port.value_namespace = name_space;
+        accounting_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "current-state-duration")
+    {
+        current_state_duration = value;
+        current_state_duration.value_namespace = name_space;
+        current_state_duration.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "previous-state-duration")
+    {
+        previous_state_duration = value;
+        previous_state_duration.value_namespace = name_space;
+        previous_state_duration.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets-in")
+    {
+        packets_in = value;
+        packets_in.value_namespace = name_space;
+        packets_in.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets-out")
+    {
+        packets_out = value;
+        packets_out.value_namespace = name_space;
+        packets_out.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeouts")
+    {
+        timeouts = value;
+        timeouts.value_namespace = name_space;
+        timeouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aborts")
+    {
+        aborts = value;
+        aborts.value_namespace = name_space;
+        aborts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "replies-expected")
+    {
+        replies_expected = value;
+        replies_expected.value_namespace = name_space;
+        replies_expected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "redirected-requests")
+    {
+        redirected_requests = value;
+        redirected_requests.value_namespace = name_space;
+        redirected_requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authentication-rtt")
+    {
+        authentication_rtt = value;
+        authentication_rtt.value_namespace = name_space;
+        authentication_rtt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "access-requests")
+    {
+        access_requests = value;
+        access_requests.value_namespace = name_space;
+        access_requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "access-request-retransmits")
+    {
+        access_request_retransmits = value;
+        access_request_retransmits.value_namespace = name_space;
+        access_request_retransmits.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "access-accepts")
+    {
+        access_accepts = value;
+        access_accepts.value_namespace = name_space;
+        access_accepts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "access-rejects")
+    {
+        access_rejects = value;
+        access_rejects.value_namespace = name_space;
+        access_rejects.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "access-challenges")
+    {
+        access_challenges = value;
+        access_challenges.value_namespace = name_space;
+        access_challenges.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bad-access-responses")
+    {
+        bad_access_responses = value;
+        bad_access_responses.value_namespace = name_space;
+        bad_access_responses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bad-access-authenticators")
+    {
+        bad_access_authenticators = value;
+        bad_access_authenticators.value_namespace = name_space;
+        bad_access_authenticators.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pending-access-requests")
+    {
+        pending_access_requests = value;
+        pending_access_requests.value_namespace = name_space;
+        pending_access_requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "access-timeouts")
+    {
+        access_timeouts = value;
+        access_timeouts.value_namespace = name_space;
+        access_timeouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unknown-access-types")
+    {
+        unknown_access_types = value;
+        unknown_access_types.value_namespace = name_space;
+        unknown_access_types.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dropped-access-responses")
+    {
+        dropped_access_responses = value;
+        dropped_access_responses.value_namespace = name_space;
+        dropped_access_responses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "throttled-access-reqs")
+    {
+        throttled_access_reqs = value;
+        throttled_access_reqs.value_namespace = name_space;
+        throttled_access_reqs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "throttled-timed-out-reqs")
+    {
+        throttled_timed_out_reqs = value;
+        throttled_timed_out_reqs.value_namespace = name_space;
+        throttled_timed_out_reqs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "throttled-dropped-reqs")
+    {
+        throttled_dropped_reqs = value;
+        throttled_dropped_reqs.value_namespace = name_space;
+        throttled_dropped_reqs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-throttled-access-reqs")
+    {
+        max_throttled_access_reqs = value;
+        max_throttled_access_reqs.value_namespace = name_space;
+        max_throttled_access_reqs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "currently-throttled-access-reqs")
+    {
+        currently_throttled_access_reqs = value;
+        currently_throttled_access_reqs.value_namespace = name_space;
+        currently_throttled_access_reqs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authen-response-time")
+    {
+        authen_response_time = value;
+        authen_response_time.value_namespace = name_space;
+        authen_response_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authen-transaction-successess")
+    {
+        authen_transaction_successess = value;
+        authen_transaction_successess.value_namespace = name_space;
+        authen_transaction_successess.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authen-transaction-failure")
+    {
+        authen_transaction_failure = value;
+        authen_transaction_failure.value_namespace = name_space;
+        authen_transaction_failure.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authen-unexpected-responses")
+    {
+        authen_unexpected_responses = value;
+        authen_unexpected_responses.value_namespace = name_space;
+        authen_unexpected_responses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authen-server-error-responses")
+    {
+        authen_server_error_responses = value;
+        authen_server_error_responses.value_namespace = name_space;
+        authen_server_error_responses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authen-incorrect-responses")
+    {
+        authen_incorrect_responses = value;
+        authen_incorrect_responses.value_namespace = name_space;
+        authen_incorrect_responses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "author-requests")
+    {
+        author_requests = value;
+        author_requests.value_namespace = name_space;
+        author_requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "author-request-timeouts")
+    {
+        author_request_timeouts = value;
+        author_request_timeouts.value_namespace = name_space;
+        author_request_timeouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "author-response-time")
+    {
+        author_response_time = value;
+        author_response_time.value_namespace = name_space;
+        author_response_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "author-transaction-successess")
+    {
+        author_transaction_successess = value;
+        author_transaction_successess.value_namespace = name_space;
+        author_transaction_successess.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "author-transaction-failure")
+    {
+        author_transaction_failure = value;
+        author_transaction_failure.value_namespace = name_space;
+        author_transaction_failure.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "author-unexpected-responses")
+    {
+        author_unexpected_responses = value;
+        author_unexpected_responses.value_namespace = name_space;
+        author_unexpected_responses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "author-server-error-responses")
+    {
+        author_server_error_responses = value;
+        author_server_error_responses.value_namespace = name_space;
+        author_server_error_responses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "author-incorrect-responses")
+    {
+        author_incorrect_responses = value;
+        author_incorrect_responses.value_namespace = name_space;
+        author_incorrect_responses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-rtt")
+    {
+        accounting_rtt = value;
+        accounting_rtt.value_namespace = name_space;
+        accounting_rtt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-requests")
+    {
+        accounting_requests = value;
+        accounting_requests.value_namespace = name_space;
+        accounting_requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-retransmits")
+    {
+        accounting_retransmits = value;
+        accounting_retransmits.value_namespace = name_space;
+        accounting_retransmits.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-responses")
+    {
+        accounting_responses = value;
+        accounting_responses.value_namespace = name_space;
+        accounting_responses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bad-accounting-responses")
+    {
+        bad_accounting_responses = value;
+        bad_accounting_responses.value_namespace = name_space;
+        bad_accounting_responses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bad-accounting-authenticators")
+    {
+        bad_accounting_authenticators = value;
+        bad_accounting_authenticators.value_namespace = name_space;
+        bad_accounting_authenticators.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pending-accounting-requets")
+    {
+        pending_accounting_requets = value;
+        pending_accounting_requets.value_namespace = name_space;
+        pending_accounting_requets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-timeouts")
+    {
+        accounting_timeouts = value;
+        accounting_timeouts.value_namespace = name_space;
+        accounting_timeouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unknown-accounting-types")
+    {
+        unknown_accounting_types = value;
+        unknown_accounting_types.value_namespace = name_space;
+        unknown_accounting_types.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dropped-accounting-responses")
+    {
+        dropped_accounting_responses = value;
+        dropped_accounting_responses.value_namespace = name_space;
+        dropped_accounting_responses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-a-private-server")
+    {
+        is_a_private_server = value;
+        is_a_private_server.value_namespace = name_space;
+        is_a_private_server.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-auth-reqs")
+    {
+        total_test_auth_reqs = value;
+        total_test_auth_reqs.value_namespace = name_space;
+        total_test_auth_reqs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-auth-timeouts")
+    {
+        total_test_auth_timeouts = value;
+        total_test_auth_timeouts.value_namespace = name_space;
+        total_test_auth_timeouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-auth-response")
+    {
+        total_test_auth_response = value;
+        total_test_auth_response.value_namespace = name_space;
+        total_test_auth_response.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-auth-pending")
+    {
+        total_test_auth_pending = value;
+        total_test_auth_pending.value_namespace = name_space;
+        total_test_auth_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-acct-reqs")
+    {
+        total_test_acct_reqs = value;
+        total_test_acct_reqs.value_namespace = name_space;
+        total_test_acct_reqs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-acct-timeouts")
+    {
+        total_test_acct_timeouts = value;
+        total_test_acct_timeouts.value_namespace = name_space;
+        total_test_acct_timeouts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-acct-response")
+    {
+        total_test_acct_response = value;
+        total_test_acct_response.value_namespace = name_space;
+        total_test_acct_response.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-test-acct-pending")
+    {
+        total_test_acct_pending = value;
+        total_test_acct_pending.value_namespace = name_space;
+        total_test_acct_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "throttled-acct-transactions")
+    {
+        throttled_acct_transactions = value;
+        throttled_acct_transactions.value_namespace = name_space;
+        throttled_acct_transactions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "throttled-acct-timed-out-stats")
+    {
+        throttled_acct_timed_out_stats = value;
+        throttled_acct_timed_out_stats.value_namespace = name_space;
+        throttled_acct_timed_out_stats.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "throttled-acct-failures-stats")
+    {
+        throttled_acct_failures_stats = value;
+        throttled_acct_failures_stats.value_namespace = name_space;
+        throttled_acct_failures_stats.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-acct-throttled")
+    {
+        max_acct_throttled = value;
+        max_acct_throttled.value_namespace = name_space;
+        max_acct_throttled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "throttleda-acct-transactions")
+    {
+        throttleda_acct_transactions = value;
+        throttleda_acct_transactions.value_namespace = name_space;
+        throttleda_acct_transactions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "acct-unexpected-responses")
+    {
+        acct_unexpected_responses = value;
+        acct_unexpected_responses.value_namespace = name_space;
+        acct_unexpected_responses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "acct-server-error-responses")
+    {
+        acct_server_error_responses = value;
+        acct_server_error_responses.value_namespace = name_space;
+        acct_server_error_responses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "acct-incorrect-responses")
+    {
+        acct_incorrect_responses = value;
+        acct_incorrect_responses.value_namespace = name_space;
+        acct_incorrect_responses.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "acct-response-time")
+    {
+        acct_response_time = value;
+        acct_response_time.value_namespace = name_space;
+        acct_response_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "acct-transaction-successess")
+    {
+        acct_transaction_successess = value;
+        acct_transaction_successess.value_namespace = name_space;
+        acct_transaction_successess.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "acct-transaction-failure")
+    {
+        acct_transaction_failure = value;
+        acct_transaction_failure.value_namespace = name_space;
+        acct_transaction_failure.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-deadtime")
+    {
+        total_deadtime = value;
+        total_deadtime.value_namespace = name_space;
+        total_deadtime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-deadtime")
+    {
+        last_deadtime = value;
+        last_deadtime.value_namespace = name_space;
+        last_deadtime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-quarantined")
+    {
+        is_quarantined = value;
+        is_quarantined.value_namespace = name_space;
+        is_quarantined.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "group-name")
+    {
+        group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ip-address-xr")
+    {
+        ip_address_xr = value;
+        ip_address_xr.value_namespace = name_space;
+        ip_address_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "family")
+    {
+        family = value;
+        family.value_namespace = name_space;
+        family.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Radius::Servers::Server::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+    if(value_path == "auth-port-number")
+    {
+        auth_port_number.yfilter = yfilter;
+    }
+    if(value_path == "acct-port-number")
+    {
+        acct_port_number.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "timeout-xr")
+    {
+        timeout_xr.yfilter = yfilter;
+    }
+    if(value_path == "retransmit")
+    {
+        retransmit.yfilter = yfilter;
+    }
+    if(value_path == "dead-time")
+    {
+        dead_time.yfilter = yfilter;
+    }
+    if(value_path == "dead-detect-time")
+    {
+        dead_detect_time.yfilter = yfilter;
+    }
+    if(value_path == "dead-detect-tries")
+    {
+        dead_detect_tries.yfilter = yfilter;
+    }
+    if(value_path == "authentication-port")
+    {
+        authentication_port.yfilter = yfilter;
+    }
+    if(value_path == "accounting-port")
+    {
+        accounting_port.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "current-state-duration")
+    {
+        current_state_duration.yfilter = yfilter;
+    }
+    if(value_path == "previous-state-duration")
+    {
+        previous_state_duration.yfilter = yfilter;
+    }
+    if(value_path == "packets-in")
+    {
+        packets_in.yfilter = yfilter;
+    }
+    if(value_path == "packets-out")
+    {
+        packets_out.yfilter = yfilter;
+    }
+    if(value_path == "timeouts")
+    {
+        timeouts.yfilter = yfilter;
+    }
+    if(value_path == "aborts")
+    {
+        aborts.yfilter = yfilter;
+    }
+    if(value_path == "replies-expected")
+    {
+        replies_expected.yfilter = yfilter;
+    }
+    if(value_path == "redirected-requests")
+    {
+        redirected_requests.yfilter = yfilter;
+    }
+    if(value_path == "authentication-rtt")
+    {
+        authentication_rtt.yfilter = yfilter;
+    }
+    if(value_path == "access-requests")
+    {
+        access_requests.yfilter = yfilter;
+    }
+    if(value_path == "access-request-retransmits")
+    {
+        access_request_retransmits.yfilter = yfilter;
+    }
+    if(value_path == "access-accepts")
+    {
+        access_accepts.yfilter = yfilter;
+    }
+    if(value_path == "access-rejects")
+    {
+        access_rejects.yfilter = yfilter;
+    }
+    if(value_path == "access-challenges")
+    {
+        access_challenges.yfilter = yfilter;
+    }
+    if(value_path == "bad-access-responses")
+    {
+        bad_access_responses.yfilter = yfilter;
+    }
+    if(value_path == "bad-access-authenticators")
+    {
+        bad_access_authenticators.yfilter = yfilter;
+    }
+    if(value_path == "pending-access-requests")
+    {
+        pending_access_requests.yfilter = yfilter;
+    }
+    if(value_path == "access-timeouts")
+    {
+        access_timeouts.yfilter = yfilter;
+    }
+    if(value_path == "unknown-access-types")
+    {
+        unknown_access_types.yfilter = yfilter;
+    }
+    if(value_path == "dropped-access-responses")
+    {
+        dropped_access_responses.yfilter = yfilter;
+    }
+    if(value_path == "throttled-access-reqs")
+    {
+        throttled_access_reqs.yfilter = yfilter;
+    }
+    if(value_path == "throttled-timed-out-reqs")
+    {
+        throttled_timed_out_reqs.yfilter = yfilter;
+    }
+    if(value_path == "throttled-dropped-reqs")
+    {
+        throttled_dropped_reqs.yfilter = yfilter;
+    }
+    if(value_path == "max-throttled-access-reqs")
+    {
+        max_throttled_access_reqs.yfilter = yfilter;
+    }
+    if(value_path == "currently-throttled-access-reqs")
+    {
+        currently_throttled_access_reqs.yfilter = yfilter;
+    }
+    if(value_path == "authen-response-time")
+    {
+        authen_response_time.yfilter = yfilter;
+    }
+    if(value_path == "authen-transaction-successess")
+    {
+        authen_transaction_successess.yfilter = yfilter;
+    }
+    if(value_path == "authen-transaction-failure")
+    {
+        authen_transaction_failure.yfilter = yfilter;
+    }
+    if(value_path == "authen-unexpected-responses")
+    {
+        authen_unexpected_responses.yfilter = yfilter;
+    }
+    if(value_path == "authen-server-error-responses")
+    {
+        authen_server_error_responses.yfilter = yfilter;
+    }
+    if(value_path == "authen-incorrect-responses")
+    {
+        authen_incorrect_responses.yfilter = yfilter;
+    }
+    if(value_path == "author-requests")
+    {
+        author_requests.yfilter = yfilter;
+    }
+    if(value_path == "author-request-timeouts")
+    {
+        author_request_timeouts.yfilter = yfilter;
+    }
+    if(value_path == "author-response-time")
+    {
+        author_response_time.yfilter = yfilter;
+    }
+    if(value_path == "author-transaction-successess")
+    {
+        author_transaction_successess.yfilter = yfilter;
+    }
+    if(value_path == "author-transaction-failure")
+    {
+        author_transaction_failure.yfilter = yfilter;
+    }
+    if(value_path == "author-unexpected-responses")
+    {
+        author_unexpected_responses.yfilter = yfilter;
+    }
+    if(value_path == "author-server-error-responses")
+    {
+        author_server_error_responses.yfilter = yfilter;
+    }
+    if(value_path == "author-incorrect-responses")
+    {
+        author_incorrect_responses.yfilter = yfilter;
+    }
+    if(value_path == "accounting-rtt")
+    {
+        accounting_rtt.yfilter = yfilter;
+    }
+    if(value_path == "accounting-requests")
+    {
+        accounting_requests.yfilter = yfilter;
+    }
+    if(value_path == "accounting-retransmits")
+    {
+        accounting_retransmits.yfilter = yfilter;
+    }
+    if(value_path == "accounting-responses")
+    {
+        accounting_responses.yfilter = yfilter;
+    }
+    if(value_path == "bad-accounting-responses")
+    {
+        bad_accounting_responses.yfilter = yfilter;
+    }
+    if(value_path == "bad-accounting-authenticators")
+    {
+        bad_accounting_authenticators.yfilter = yfilter;
+    }
+    if(value_path == "pending-accounting-requets")
+    {
+        pending_accounting_requets.yfilter = yfilter;
+    }
+    if(value_path == "accounting-timeouts")
+    {
+        accounting_timeouts.yfilter = yfilter;
+    }
+    if(value_path == "unknown-accounting-types")
+    {
+        unknown_accounting_types.yfilter = yfilter;
+    }
+    if(value_path == "dropped-accounting-responses")
+    {
+        dropped_accounting_responses.yfilter = yfilter;
+    }
+    if(value_path == "is-a-private-server")
+    {
+        is_a_private_server.yfilter = yfilter;
+    }
+    if(value_path == "total-test-auth-reqs")
+    {
+        total_test_auth_reqs.yfilter = yfilter;
+    }
+    if(value_path == "total-test-auth-timeouts")
+    {
+        total_test_auth_timeouts.yfilter = yfilter;
+    }
+    if(value_path == "total-test-auth-response")
+    {
+        total_test_auth_response.yfilter = yfilter;
+    }
+    if(value_path == "total-test-auth-pending")
+    {
+        total_test_auth_pending.yfilter = yfilter;
+    }
+    if(value_path == "total-test-acct-reqs")
+    {
+        total_test_acct_reqs.yfilter = yfilter;
+    }
+    if(value_path == "total-test-acct-timeouts")
+    {
+        total_test_acct_timeouts.yfilter = yfilter;
+    }
+    if(value_path == "total-test-acct-response")
+    {
+        total_test_acct_response.yfilter = yfilter;
+    }
+    if(value_path == "total-test-acct-pending")
+    {
+        total_test_acct_pending.yfilter = yfilter;
+    }
+    if(value_path == "throttled-acct-transactions")
+    {
+        throttled_acct_transactions.yfilter = yfilter;
+    }
+    if(value_path == "throttled-acct-timed-out-stats")
+    {
+        throttled_acct_timed_out_stats.yfilter = yfilter;
+    }
+    if(value_path == "throttled-acct-failures-stats")
+    {
+        throttled_acct_failures_stats.yfilter = yfilter;
+    }
+    if(value_path == "max-acct-throttled")
+    {
+        max_acct_throttled.yfilter = yfilter;
+    }
+    if(value_path == "throttleda-acct-transactions")
+    {
+        throttleda_acct_transactions.yfilter = yfilter;
+    }
+    if(value_path == "acct-unexpected-responses")
+    {
+        acct_unexpected_responses.yfilter = yfilter;
+    }
+    if(value_path == "acct-server-error-responses")
+    {
+        acct_server_error_responses.yfilter = yfilter;
+    }
+    if(value_path == "acct-incorrect-responses")
+    {
+        acct_incorrect_responses.yfilter = yfilter;
+    }
+    if(value_path == "acct-response-time")
+    {
+        acct_response_time.yfilter = yfilter;
+    }
+    if(value_path == "acct-transaction-successess")
+    {
+        acct_transaction_successess.yfilter = yfilter;
+    }
+    if(value_path == "acct-transaction-failure")
+    {
+        acct_transaction_failure.yfilter = yfilter;
+    }
+    if(value_path == "total-deadtime")
+    {
+        total_deadtime.yfilter = yfilter;
+    }
+    if(value_path == "last-deadtime")
+    {
+        last_deadtime.yfilter = yfilter;
+    }
+    if(value_path == "is-quarantined")
+    {
+        is_quarantined.yfilter = yfilter;
+    }
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "ip-address-xr")
+    {
+        ip_address_xr.yfilter = yfilter;
+    }
+    if(value_path == "family")
+    {
+        family.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Radius::Servers::Server::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-address" || name == "auth-port-number" || name == "acct-port-number" || name == "ipv4-address" || name == "priority" || name == "timeout-xr" || name == "retransmit" || name == "dead-time" || name == "dead-detect-time" || name == "dead-detect-tries" || name == "authentication-port" || name == "accounting-port" || name == "state" || name == "current-state-duration" || name == "previous-state-duration" || name == "packets-in" || name == "packets-out" || name == "timeouts" || name == "aborts" || name == "replies-expected" || name == "redirected-requests" || name == "authentication-rtt" || name == "access-requests" || name == "access-request-retransmits" || name == "access-accepts" || name == "access-rejects" || name == "access-challenges" || name == "bad-access-responses" || name == "bad-access-authenticators" || name == "pending-access-requests" || name == "access-timeouts" || name == "unknown-access-types" || name == "dropped-access-responses" || name == "throttled-access-reqs" || name == "throttled-timed-out-reqs" || name == "throttled-dropped-reqs" || name == "max-throttled-access-reqs" || name == "currently-throttled-access-reqs" || name == "authen-response-time" || name == "authen-transaction-successess" || name == "authen-transaction-failure" || name == "authen-unexpected-responses" || name == "authen-server-error-responses" || name == "authen-incorrect-responses" || name == "author-requests" || name == "author-request-timeouts" || name == "author-response-time" || name == "author-transaction-successess" || name == "author-transaction-failure" || name == "author-unexpected-responses" || name == "author-server-error-responses" || name == "author-incorrect-responses" || name == "accounting-rtt" || name == "accounting-requests" || name == "accounting-retransmits" || name == "accounting-responses" || name == "bad-accounting-responses" || name == "bad-accounting-authenticators" || name == "pending-accounting-requets" || name == "accounting-timeouts" || name == "unknown-accounting-types" || name == "dropped-accounting-responses" || name == "is-a-private-server" || name == "total-test-auth-reqs" || name == "total-test-auth-timeouts" || name == "total-test-auth-response" || name == "total-test-auth-pending" || name == "total-test-acct-reqs" || name == "total-test-acct-timeouts" || name == "total-test-acct-response" || name == "total-test-acct-pending" || name == "throttled-acct-transactions" || name == "throttled-acct-timed-out-stats" || name == "throttled-acct-failures-stats" || name == "max-acct-throttled" || name == "throttleda-acct-transactions" || name == "acct-unexpected-responses" || name == "acct-server-error-responses" || name == "acct-incorrect-responses" || name == "acct-response-time" || name == "acct-transaction-successess" || name == "acct-transaction-failure" || name == "total-deadtime" || name == "last-deadtime" || name == "is-quarantined" || name == "group-name" || name == "ip-address-xr" || name == "family")
+        return true;
+    return false;
+}
+
+Aaa::Radius::RadiusSourceInterface::RadiusSourceInterface()
+    :
+    list_of_source_interface(this, {})
+{
+
+    yang_name = "radius-source-interface"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::Radius::RadiusSourceInterface::~RadiusSourceInterface()
+{
+}
+
+bool Aaa::Radius::RadiusSourceInterface::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<list_of_source_interface.len(); index++)
+    {
+        if(list_of_source_interface[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Aaa::Radius::RadiusSourceInterface::has_operation() const
+{
+    for (std::size_t index=0; index<list_of_source_interface.len(); index++)
+    {
+        if(list_of_source_interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Aaa::Radius::RadiusSourceInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-protocol-radius-oper:radius/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Radius::RadiusSourceInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "radius-source-interface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Radius::RadiusSourceInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Radius::RadiusSourceInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "list-of-source-interface")
+    {
+        auto c = std::make_shared<Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface>();
+        c->parent = this;
+        list_of_source_interface.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::RadiusSourceInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : list_of_source_interface.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Aaa::Radius::RadiusSourceInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Radius::RadiusSourceInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Radius::RadiusSourceInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "list-of-source-interface")
+        return true;
+    return false;
+}
+
+Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::ListOfSourceInterface()
+    :
+    interface_name{YType::str, "interface-name"},
+    ipaddrv4{YType::str, "ipaddrv4"},
+    ipaddrv6{YType::str, "ipaddrv6"},
+    vrfid{YType::uint32, "vrfid"}
+{
+
+    yang_name = "list-of-source-interface"; yang_parent_name = "radius-source-interface"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::~ListOfSourceInterface()
+{
+}
+
+bool Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::has_data() const
+{
+    if (is_presence_container) return true;
+    return interface_name.is_set
+	|| ipaddrv4.is_set
+	|| ipaddrv6.is_set
+	|| vrfid.is_set;
+}
+
+bool Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(ipaddrv4.yfilter)
+	|| ydk::is_set(ipaddrv6.yfilter)
+	|| ydk::is_set(vrfid.yfilter);
+}
+
+std::string Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-protocol-radius-oper:radius/radius-source-interface/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "list-of-source-interface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (ipaddrv4.is_set || is_set(ipaddrv4.yfilter)) leaf_name_data.push_back(ipaddrv4.get_name_leafdata());
+    if (ipaddrv6.is_set || is_set(ipaddrv6.yfilter)) leaf_name_data.push_back(ipaddrv6.get_name_leafdata());
+    if (vrfid.is_set || is_set(vrfid.yfilter)) leaf_name_data.push_back(vrfid.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipaddrv4")
+    {
+        ipaddrv4 = value;
+        ipaddrv4.value_namespace = name_space;
+        ipaddrv4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipaddrv6")
+    {
+        ipaddrv6 = value;
+        ipaddrv6.value_namespace = name_space;
+        ipaddrv6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrfid")
+    {
+        vrfid = value;
+        vrfid.value_namespace = name_space;
+        vrfid.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "ipaddrv4")
+    {
+        ipaddrv4.yfilter = yfilter;
+    }
+    if(value_path == "ipaddrv6")
+    {
+        ipaddrv6.yfilter = yfilter;
+    }
+    if(value_path == "vrfid")
+    {
+        vrfid.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "ipaddrv4" || name == "ipaddrv6" || name == "vrfid")
+        return true;
+    return false;
+}
+
+Aaa::Radius::Global::Global()
+    :
+    unknown_authentication_response{YType::uint32, "unknown-authentication-response"},
+    authentication_nas_id{YType::str, "authentication-nas-id"},
+    unknown_accounting_response{YType::uint32, "unknown-accounting-response"},
+    accounting_nas_id{YType::str, "accounting-nas-id"}
+{
+
+    yang_name = "global"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::Radius::Global::~Global()
+{
+}
+
+bool Aaa::Radius::Global::has_data() const
+{
+    if (is_presence_container) return true;
+    return unknown_authentication_response.is_set
+	|| authentication_nas_id.is_set
+	|| unknown_accounting_response.is_set
+	|| accounting_nas_id.is_set;
+}
+
+bool Aaa::Radius::Global::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unknown_authentication_response.yfilter)
+	|| ydk::is_set(authentication_nas_id.yfilter)
+	|| ydk::is_set(unknown_accounting_response.yfilter)
+	|| ydk::is_set(accounting_nas_id.yfilter);
+}
+
+std::string Aaa::Radius::Global::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-protocol-radius-oper:radius/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Radius::Global::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "global";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Radius::Global::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unknown_authentication_response.is_set || is_set(unknown_authentication_response.yfilter)) leaf_name_data.push_back(unknown_authentication_response.get_name_leafdata());
+    if (authentication_nas_id.is_set || is_set(authentication_nas_id.yfilter)) leaf_name_data.push_back(authentication_nas_id.get_name_leafdata());
+    if (unknown_accounting_response.is_set || is_set(unknown_accounting_response.yfilter)) leaf_name_data.push_back(unknown_accounting_response.get_name_leafdata());
+    if (accounting_nas_id.is_set || is_set(accounting_nas_id.yfilter)) leaf_name_data.push_back(accounting_nas_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Aaa::Radius::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::Global::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Aaa::Radius::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unknown-authentication-response")
+    {
+        unknown_authentication_response = value;
+        unknown_authentication_response.value_namespace = name_space;
+        unknown_authentication_response.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authentication-nas-id")
+    {
+        authentication_nas_id = value;
+        authentication_nas_id.value_namespace = name_space;
+        authentication_nas_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unknown-accounting-response")
+    {
+        unknown_accounting_response = value;
+        unknown_accounting_response.value_namespace = name_space;
+        unknown_accounting_response.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-nas-id")
+    {
+        accounting_nas_id = value;
+        accounting_nas_id.value_namespace = name_space;
+        accounting_nas_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Radius::Global::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unknown-authentication-response")
+    {
+        unknown_authentication_response.yfilter = yfilter;
+    }
+    if(value_path == "authentication-nas-id")
+    {
+        authentication_nas_id.yfilter = yfilter;
+    }
+    if(value_path == "unknown-accounting-response")
+    {
+        unknown_accounting_response.yfilter = yfilter;
+    }
+    if(value_path == "accounting-nas-id")
+    {
+        accounting_nas_id.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Radius::Global::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unknown-authentication-response" || name == "authentication-nas-id" || name == "unknown-accounting-response" || name == "accounting-nas-id")
         return true;
     return false;
 }
@@ -9577,7 +11459,10 @@ Aaa::Diameter::GxSessionIds::GxSessionId::GxSessionId()
     request_number{YType::uint32, "request-number"},
     session_state{YType::str, "session-state"},
     request_type{YType::str, "request-type"},
-    retry_count{YType::uint32, "retry-count"}
+    retry_count{YType::uint32, "retry-count"},
+    service_count{YType::uint32, "service-count"},
+    gx_plus_services{YType::str, "gx-plus-services"},
+    reavalidation_time{YType::str, "reavalidation-time"}
 {
 
     yang_name = "gx-session-id"; yang_parent_name = "gx-session-ids"; is_top_level_class = false; has_list_ancestor = false; 
@@ -9596,7 +11481,10 @@ bool Aaa::Diameter::GxSessionIds::GxSessionId::has_data() const
 	|| request_number.is_set
 	|| session_state.is_set
 	|| request_type.is_set
-	|| retry_count.is_set;
+	|| retry_count.is_set
+	|| service_count.is_set
+	|| gx_plus_services.is_set
+	|| reavalidation_time.is_set;
 }
 
 bool Aaa::Diameter::GxSessionIds::GxSessionId::has_operation() const
@@ -9608,7 +11496,10 @@ bool Aaa::Diameter::GxSessionIds::GxSessionId::has_operation() const
 	|| ydk::is_set(request_number.yfilter)
 	|| ydk::is_set(session_state.yfilter)
 	|| ydk::is_set(request_type.yfilter)
-	|| ydk::is_set(retry_count.yfilter);
+	|| ydk::is_set(retry_count.yfilter)
+	|| ydk::is_set(service_count.yfilter)
+	|| ydk::is_set(gx_plus_services.yfilter)
+	|| ydk::is_set(reavalidation_time.yfilter);
 }
 
 std::string Aaa::Diameter::GxSessionIds::GxSessionId::get_absolute_path() const
@@ -9637,6 +11528,9 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Diameter::GxSessionIds::GxSe
     if (session_state.is_set || is_set(session_state.yfilter)) leaf_name_data.push_back(session_state.get_name_leafdata());
     if (request_type.is_set || is_set(request_type.yfilter)) leaf_name_data.push_back(request_type.get_name_leafdata());
     if (retry_count.is_set || is_set(retry_count.yfilter)) leaf_name_data.push_back(retry_count.get_name_leafdata());
+    if (service_count.is_set || is_set(service_count.yfilter)) leaf_name_data.push_back(service_count.get_name_leafdata());
+    if (gx_plus_services.is_set || is_set(gx_plus_services.yfilter)) leaf_name_data.push_back(gx_plus_services.get_name_leafdata());
+    if (reavalidation_time.is_set || is_set(reavalidation_time.yfilter)) leaf_name_data.push_back(reavalidation_time.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -9698,6 +11592,24 @@ void Aaa::Diameter::GxSessionIds::GxSessionId::set_value(const std::string & val
         retry_count.value_namespace = name_space;
         retry_count.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "service-count")
+    {
+        service_count = value;
+        service_count.value_namespace = name_space;
+        service_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "gx-plus-services")
+    {
+        gx_plus_services = value;
+        gx_plus_services.value_namespace = name_space;
+        gx_plus_services.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reavalidation-time")
+    {
+        reavalidation_time = value;
+        reavalidation_time.value_namespace = name_space;
+        reavalidation_time.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Aaa::Diameter::GxSessionIds::GxSessionId::set_filter(const std::string & value_path, YFilter yfilter)
@@ -9730,11 +11642,23 @@ void Aaa::Diameter::GxSessionIds::GxSessionId::set_filter(const std::string & va
     {
         retry_count.yfilter = yfilter;
     }
+    if(value_path == "service-count")
+    {
+        service_count.yfilter = yfilter;
+    }
+    if(value_path == "gx-plus-services")
+    {
+        gx_plus_services.yfilter = yfilter;
+    }
+    if(value_path == "reavalidation-time")
+    {
+        reavalidation_time.yfilter = yfilter;
+    }
 }
 
 bool Aaa::Diameter::GxSessionIds::GxSessionId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "session-id" || name == "aaa-session-id" || name == "diameter-session-id" || name == "request-number" || name == "session-state" || name == "request-type" || name == "retry-count")
+    if(name == "session-id" || name == "aaa-session-id" || name == "diameter-session-id" || name == "request-number" || name == "session-state" || name == "request-type" || name == "retry-count" || name == "service-count" || name == "gx-plus-services" || name == "reavalidation-time")
         return true;
     return false;
 }
@@ -10074,1888 +11998,6 @@ void Aaa::Diameter::NasSession::ListOfNas::set_filter(const std::string & value_
 bool Aaa::Diameter::NasSession::ListOfNas::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "aaa-session-id" || name == "diameter-session-id" || name == "authentication-status" || name == "authorization-status" || name == "accounting-status" || name == "accounting-status-stop" || name == "disconnect-status" || name == "accounting-intrim-in-packets" || name == "accounting-intrim-out-packets" || name == "method-list" || name == "server-used-list")
-        return true;
-    return false;
-}
-
-Aaa::Radius::Radius()
-    :
-    servers(std::make_shared<Aaa::Radius::Servers>())
-    , radius_source_interface(std::make_shared<Aaa::Radius::RadiusSourceInterface>())
-    , global(std::make_shared<Aaa::Radius::Global>())
-{
-    servers->parent = this;
-    radius_source_interface->parent = this;
-    global->parent = this;
-
-    yang_name = "radius"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Aaa::Radius::~Radius()
-{
-}
-
-bool Aaa::Radius::has_data() const
-{
-    if (is_presence_container) return true;
-    return (servers !=  nullptr && servers->has_data())
-	|| (radius_source_interface !=  nullptr && radius_source_interface->has_data())
-	|| (global !=  nullptr && global->has_data());
-}
-
-bool Aaa::Radius::has_operation() const
-{
-    return is_set(yfilter)
-	|| (servers !=  nullptr && servers->has_operation())
-	|| (radius_source_interface !=  nullptr && radius_source_interface->has_operation())
-	|| (global !=  nullptr && global->has_operation());
-}
-
-std::string Aaa::Radius::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Aaa::Radius::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-aaa-protocol-radius-oper:radius";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Aaa::Radius::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Aaa::Radius::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "servers")
-    {
-        if(servers == nullptr)
-        {
-            servers = std::make_shared<Aaa::Radius::Servers>();
-        }
-        return servers;
-    }
-
-    if(child_yang_name == "radius-source-interface")
-    {
-        if(radius_source_interface == nullptr)
-        {
-            radius_source_interface = std::make_shared<Aaa::Radius::RadiusSourceInterface>();
-        }
-        return radius_source_interface;
-    }
-
-    if(child_yang_name == "global")
-    {
-        if(global == nullptr)
-        {
-            global = std::make_shared<Aaa::Radius::Global>();
-        }
-        return global;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(servers != nullptr)
-    {
-        children["servers"] = servers;
-    }
-
-    if(radius_source_interface != nullptr)
-    {
-        children["radius-source-interface"] = radius_source_interface;
-    }
-
-    if(global != nullptr)
-    {
-        children["global"] = global;
-    }
-
-    return children;
-}
-
-void Aaa::Radius::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Aaa::Radius::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Aaa::Radius::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "servers" || name == "radius-source-interface" || name == "global")
-        return true;
-    return false;
-}
-
-Aaa::Radius::Servers::Servers()
-    :
-    server(this, {})
-{
-
-    yang_name = "servers"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Aaa::Radius::Servers::~Servers()
-{
-}
-
-bool Aaa::Radius::Servers::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<server.len(); index++)
-    {
-        if(server[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Radius::Servers::has_operation() const
-{
-    for (std::size_t index=0; index<server.len(); index++)
-    {
-        if(server[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Aaa::Radius::Servers::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-protocol-radius-oper:radius/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Aaa::Radius::Servers::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "servers";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Aaa::Radius::Servers::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Aaa::Radius::Servers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "server")
-    {
-        auto c = std::make_shared<Aaa::Radius::Servers::Server>();
-        c->parent = this;
-        server.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::Servers::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : server.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Aaa::Radius::Servers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Aaa::Radius::Servers::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Aaa::Radius::Servers::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "server")
-        return true;
-    return false;
-}
-
-Aaa::Radius::Servers::Server::Server()
-    :
-    ip_address{YType::str, "ip-address"},
-    auth_port_number{YType::uint32, "auth-port-number"},
-    acct_port_number{YType::uint32, "acct-port-number"},
-    ipv4_address{YType::str, "ipv4-address"},
-    priority{YType::uint32, "priority"},
-    timeout_xr{YType::uint32, "timeout-xr"},
-    retransmit{YType::uint32, "retransmit"},
-    dead_time{YType::uint32, "dead-time"},
-    dead_detect_time{YType::uint32, "dead-detect-time"},
-    dead_detect_tries{YType::uint32, "dead-detect-tries"},
-    authentication_port{YType::uint32, "authentication-port"},
-    accounting_port{YType::uint32, "accounting-port"},
-    state{YType::str, "state"},
-    current_state_duration{YType::uint32, "current-state-duration"},
-    previous_state_duration{YType::uint32, "previous-state-duration"},
-    packets_in{YType::uint32, "packets-in"},
-    packets_out{YType::uint32, "packets-out"},
-    timeouts{YType::uint32, "timeouts"},
-    aborts{YType::uint32, "aborts"},
-    replies_expected{YType::uint32, "replies-expected"},
-    redirected_requests{YType::uint32, "redirected-requests"},
-    authentication_rtt{YType::uint32, "authentication-rtt"},
-    access_requests{YType::uint32, "access-requests"},
-    access_request_retransmits{YType::uint32, "access-request-retransmits"},
-    access_accepts{YType::uint32, "access-accepts"},
-    access_rejects{YType::uint32, "access-rejects"},
-    access_challenges{YType::uint32, "access-challenges"},
-    bad_access_responses{YType::uint32, "bad-access-responses"},
-    bad_access_authenticators{YType::uint32, "bad-access-authenticators"},
-    pending_access_requests{YType::uint32, "pending-access-requests"},
-    access_timeouts{YType::uint32, "access-timeouts"},
-    unknown_access_types{YType::uint32, "unknown-access-types"},
-    dropped_access_responses{YType::uint32, "dropped-access-responses"},
-    throttled_access_reqs{YType::uint32, "throttled-access-reqs"},
-    throttled_timed_out_reqs{YType::uint32, "throttled-timed-out-reqs"},
-    throttled_dropped_reqs{YType::uint32, "throttled-dropped-reqs"},
-    max_throttled_access_reqs{YType::uint32, "max-throttled-access-reqs"},
-    currently_throttled_access_reqs{YType::uint32, "currently-throttled-access-reqs"},
-    authen_response_time{YType::uint32, "authen-response-time"},
-    authen_transaction_successess{YType::uint32, "authen-transaction-successess"},
-    authen_transaction_failure{YType::uint32, "authen-transaction-failure"},
-    authen_unexpected_responses{YType::uint32, "authen-unexpected-responses"},
-    authen_server_error_responses{YType::uint32, "authen-server-error-responses"},
-    authen_incorrect_responses{YType::uint32, "authen-incorrect-responses"},
-    author_requests{YType::uint32, "author-requests"},
-    author_request_timeouts{YType::uint32, "author-request-timeouts"},
-    author_response_time{YType::uint32, "author-response-time"},
-    author_transaction_successess{YType::uint32, "author-transaction-successess"},
-    author_transaction_failure{YType::uint32, "author-transaction-failure"},
-    author_unexpected_responses{YType::uint32, "author-unexpected-responses"},
-    author_server_error_responses{YType::uint32, "author-server-error-responses"},
-    author_incorrect_responses{YType::uint32, "author-incorrect-responses"},
-    accounting_rtt{YType::uint32, "accounting-rtt"},
-    accounting_requests{YType::uint32, "accounting-requests"},
-    accounting_retransmits{YType::uint32, "accounting-retransmits"},
-    accounting_responses{YType::uint32, "accounting-responses"},
-    bad_accounting_responses{YType::uint32, "bad-accounting-responses"},
-    bad_accounting_authenticators{YType::uint32, "bad-accounting-authenticators"},
-    pending_accounting_requets{YType::uint32, "pending-accounting-requets"},
-    accounting_timeouts{YType::uint32, "accounting-timeouts"},
-    unknown_accounting_types{YType::uint32, "unknown-accounting-types"},
-    dropped_accounting_responses{YType::uint32, "dropped-accounting-responses"},
-    is_a_private_server{YType::boolean, "is-a-private-server"},
-    total_test_auth_reqs{YType::uint32, "total-test-auth-reqs"},
-    total_test_auth_timeouts{YType::uint32, "total-test-auth-timeouts"},
-    total_test_auth_response{YType::uint32, "total-test-auth-response"},
-    total_test_auth_pending{YType::uint32, "total-test-auth-pending"},
-    total_test_acct_reqs{YType::uint32, "total-test-acct-reqs"},
-    total_test_acct_timeouts{YType::uint32, "total-test-acct-timeouts"},
-    total_test_acct_response{YType::uint32, "total-test-acct-response"},
-    total_test_acct_pending{YType::uint32, "total-test-acct-pending"},
-    throttled_acct_transactions{YType::uint32, "throttled-acct-transactions"},
-    throttled_acct_timed_out_stats{YType::uint32, "throttled-acct-timed-out-stats"},
-    throttled_acct_failures_stats{YType::uint32, "throttled-acct-failures-stats"},
-    max_acct_throttled{YType::uint32, "max-acct-throttled"},
-    throttleda_acct_transactions{YType::uint32, "throttleda-acct-transactions"},
-    acct_unexpected_responses{YType::uint32, "acct-unexpected-responses"},
-    acct_server_error_responses{YType::uint32, "acct-server-error-responses"},
-    acct_incorrect_responses{YType::uint32, "acct-incorrect-responses"},
-    acct_response_time{YType::uint32, "acct-response-time"},
-    acct_transaction_successess{YType::uint32, "acct-transaction-successess"},
-    acct_transaction_failure{YType::uint32, "acct-transaction-failure"},
-    total_deadtime{YType::uint32, "total-deadtime"},
-    last_deadtime{YType::uint32, "last-deadtime"},
-    is_quarantined{YType::boolean, "is-quarantined"},
-    group_name{YType::str, "group-name"},
-    ip_address_xr{YType::str, "ip-address-xr"},
-    family{YType::str, "family"}
-{
-
-    yang_name = "server"; yang_parent_name = "servers"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Aaa::Radius::Servers::Server::~Server()
-{
-}
-
-bool Aaa::Radius::Servers::Server::has_data() const
-{
-    if (is_presence_container) return true;
-    return ip_address.is_set
-	|| auth_port_number.is_set
-	|| acct_port_number.is_set
-	|| ipv4_address.is_set
-	|| priority.is_set
-	|| timeout_xr.is_set
-	|| retransmit.is_set
-	|| dead_time.is_set
-	|| dead_detect_time.is_set
-	|| dead_detect_tries.is_set
-	|| authentication_port.is_set
-	|| accounting_port.is_set
-	|| state.is_set
-	|| current_state_duration.is_set
-	|| previous_state_duration.is_set
-	|| packets_in.is_set
-	|| packets_out.is_set
-	|| timeouts.is_set
-	|| aborts.is_set
-	|| replies_expected.is_set
-	|| redirected_requests.is_set
-	|| authentication_rtt.is_set
-	|| access_requests.is_set
-	|| access_request_retransmits.is_set
-	|| access_accepts.is_set
-	|| access_rejects.is_set
-	|| access_challenges.is_set
-	|| bad_access_responses.is_set
-	|| bad_access_authenticators.is_set
-	|| pending_access_requests.is_set
-	|| access_timeouts.is_set
-	|| unknown_access_types.is_set
-	|| dropped_access_responses.is_set
-	|| throttled_access_reqs.is_set
-	|| throttled_timed_out_reqs.is_set
-	|| throttled_dropped_reqs.is_set
-	|| max_throttled_access_reqs.is_set
-	|| currently_throttled_access_reqs.is_set
-	|| authen_response_time.is_set
-	|| authen_transaction_successess.is_set
-	|| authen_transaction_failure.is_set
-	|| authen_unexpected_responses.is_set
-	|| authen_server_error_responses.is_set
-	|| authen_incorrect_responses.is_set
-	|| author_requests.is_set
-	|| author_request_timeouts.is_set
-	|| author_response_time.is_set
-	|| author_transaction_successess.is_set
-	|| author_transaction_failure.is_set
-	|| author_unexpected_responses.is_set
-	|| author_server_error_responses.is_set
-	|| author_incorrect_responses.is_set
-	|| accounting_rtt.is_set
-	|| accounting_requests.is_set
-	|| accounting_retransmits.is_set
-	|| accounting_responses.is_set
-	|| bad_accounting_responses.is_set
-	|| bad_accounting_authenticators.is_set
-	|| pending_accounting_requets.is_set
-	|| accounting_timeouts.is_set
-	|| unknown_accounting_types.is_set
-	|| dropped_accounting_responses.is_set
-	|| is_a_private_server.is_set
-	|| total_test_auth_reqs.is_set
-	|| total_test_auth_timeouts.is_set
-	|| total_test_auth_response.is_set
-	|| total_test_auth_pending.is_set
-	|| total_test_acct_reqs.is_set
-	|| total_test_acct_timeouts.is_set
-	|| total_test_acct_response.is_set
-	|| total_test_acct_pending.is_set
-	|| throttled_acct_transactions.is_set
-	|| throttled_acct_timed_out_stats.is_set
-	|| throttled_acct_failures_stats.is_set
-	|| max_acct_throttled.is_set
-	|| throttleda_acct_transactions.is_set
-	|| acct_unexpected_responses.is_set
-	|| acct_server_error_responses.is_set
-	|| acct_incorrect_responses.is_set
-	|| acct_response_time.is_set
-	|| acct_transaction_successess.is_set
-	|| acct_transaction_failure.is_set
-	|| total_deadtime.is_set
-	|| last_deadtime.is_set
-	|| is_quarantined.is_set
-	|| group_name.is_set
-	|| ip_address_xr.is_set
-	|| family.is_set;
-}
-
-bool Aaa::Radius::Servers::Server::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ip_address.yfilter)
-	|| ydk::is_set(auth_port_number.yfilter)
-	|| ydk::is_set(acct_port_number.yfilter)
-	|| ydk::is_set(ipv4_address.yfilter)
-	|| ydk::is_set(priority.yfilter)
-	|| ydk::is_set(timeout_xr.yfilter)
-	|| ydk::is_set(retransmit.yfilter)
-	|| ydk::is_set(dead_time.yfilter)
-	|| ydk::is_set(dead_detect_time.yfilter)
-	|| ydk::is_set(dead_detect_tries.yfilter)
-	|| ydk::is_set(authentication_port.yfilter)
-	|| ydk::is_set(accounting_port.yfilter)
-	|| ydk::is_set(state.yfilter)
-	|| ydk::is_set(current_state_duration.yfilter)
-	|| ydk::is_set(previous_state_duration.yfilter)
-	|| ydk::is_set(packets_in.yfilter)
-	|| ydk::is_set(packets_out.yfilter)
-	|| ydk::is_set(timeouts.yfilter)
-	|| ydk::is_set(aborts.yfilter)
-	|| ydk::is_set(replies_expected.yfilter)
-	|| ydk::is_set(redirected_requests.yfilter)
-	|| ydk::is_set(authentication_rtt.yfilter)
-	|| ydk::is_set(access_requests.yfilter)
-	|| ydk::is_set(access_request_retransmits.yfilter)
-	|| ydk::is_set(access_accepts.yfilter)
-	|| ydk::is_set(access_rejects.yfilter)
-	|| ydk::is_set(access_challenges.yfilter)
-	|| ydk::is_set(bad_access_responses.yfilter)
-	|| ydk::is_set(bad_access_authenticators.yfilter)
-	|| ydk::is_set(pending_access_requests.yfilter)
-	|| ydk::is_set(access_timeouts.yfilter)
-	|| ydk::is_set(unknown_access_types.yfilter)
-	|| ydk::is_set(dropped_access_responses.yfilter)
-	|| ydk::is_set(throttled_access_reqs.yfilter)
-	|| ydk::is_set(throttled_timed_out_reqs.yfilter)
-	|| ydk::is_set(throttled_dropped_reqs.yfilter)
-	|| ydk::is_set(max_throttled_access_reqs.yfilter)
-	|| ydk::is_set(currently_throttled_access_reqs.yfilter)
-	|| ydk::is_set(authen_response_time.yfilter)
-	|| ydk::is_set(authen_transaction_successess.yfilter)
-	|| ydk::is_set(authen_transaction_failure.yfilter)
-	|| ydk::is_set(authen_unexpected_responses.yfilter)
-	|| ydk::is_set(authen_server_error_responses.yfilter)
-	|| ydk::is_set(authen_incorrect_responses.yfilter)
-	|| ydk::is_set(author_requests.yfilter)
-	|| ydk::is_set(author_request_timeouts.yfilter)
-	|| ydk::is_set(author_response_time.yfilter)
-	|| ydk::is_set(author_transaction_successess.yfilter)
-	|| ydk::is_set(author_transaction_failure.yfilter)
-	|| ydk::is_set(author_unexpected_responses.yfilter)
-	|| ydk::is_set(author_server_error_responses.yfilter)
-	|| ydk::is_set(author_incorrect_responses.yfilter)
-	|| ydk::is_set(accounting_rtt.yfilter)
-	|| ydk::is_set(accounting_requests.yfilter)
-	|| ydk::is_set(accounting_retransmits.yfilter)
-	|| ydk::is_set(accounting_responses.yfilter)
-	|| ydk::is_set(bad_accounting_responses.yfilter)
-	|| ydk::is_set(bad_accounting_authenticators.yfilter)
-	|| ydk::is_set(pending_accounting_requets.yfilter)
-	|| ydk::is_set(accounting_timeouts.yfilter)
-	|| ydk::is_set(unknown_accounting_types.yfilter)
-	|| ydk::is_set(dropped_accounting_responses.yfilter)
-	|| ydk::is_set(is_a_private_server.yfilter)
-	|| ydk::is_set(total_test_auth_reqs.yfilter)
-	|| ydk::is_set(total_test_auth_timeouts.yfilter)
-	|| ydk::is_set(total_test_auth_response.yfilter)
-	|| ydk::is_set(total_test_auth_pending.yfilter)
-	|| ydk::is_set(total_test_acct_reqs.yfilter)
-	|| ydk::is_set(total_test_acct_timeouts.yfilter)
-	|| ydk::is_set(total_test_acct_response.yfilter)
-	|| ydk::is_set(total_test_acct_pending.yfilter)
-	|| ydk::is_set(throttled_acct_transactions.yfilter)
-	|| ydk::is_set(throttled_acct_timed_out_stats.yfilter)
-	|| ydk::is_set(throttled_acct_failures_stats.yfilter)
-	|| ydk::is_set(max_acct_throttled.yfilter)
-	|| ydk::is_set(throttleda_acct_transactions.yfilter)
-	|| ydk::is_set(acct_unexpected_responses.yfilter)
-	|| ydk::is_set(acct_server_error_responses.yfilter)
-	|| ydk::is_set(acct_incorrect_responses.yfilter)
-	|| ydk::is_set(acct_response_time.yfilter)
-	|| ydk::is_set(acct_transaction_successess.yfilter)
-	|| ydk::is_set(acct_transaction_failure.yfilter)
-	|| ydk::is_set(total_deadtime.yfilter)
-	|| ydk::is_set(last_deadtime.yfilter)
-	|| ydk::is_set(is_quarantined.yfilter)
-	|| ydk::is_set(group_name.yfilter)
-	|| ydk::is_set(ip_address_xr.yfilter)
-	|| ydk::is_set(family.yfilter);
-}
-
-std::string Aaa::Radius::Servers::Server::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-protocol-radius-oper:radius/servers/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Aaa::Radius::Servers::Server::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "server";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Aaa::Radius::Servers::Server::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
-    if (auth_port_number.is_set || is_set(auth_port_number.yfilter)) leaf_name_data.push_back(auth_port_number.get_name_leafdata());
-    if (acct_port_number.is_set || is_set(acct_port_number.yfilter)) leaf_name_data.push_back(acct_port_number.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (timeout_xr.is_set || is_set(timeout_xr.yfilter)) leaf_name_data.push_back(timeout_xr.get_name_leafdata());
-    if (retransmit.is_set || is_set(retransmit.yfilter)) leaf_name_data.push_back(retransmit.get_name_leafdata());
-    if (dead_time.is_set || is_set(dead_time.yfilter)) leaf_name_data.push_back(dead_time.get_name_leafdata());
-    if (dead_detect_time.is_set || is_set(dead_detect_time.yfilter)) leaf_name_data.push_back(dead_detect_time.get_name_leafdata());
-    if (dead_detect_tries.is_set || is_set(dead_detect_tries.yfilter)) leaf_name_data.push_back(dead_detect_tries.get_name_leafdata());
-    if (authentication_port.is_set || is_set(authentication_port.yfilter)) leaf_name_data.push_back(authentication_port.get_name_leafdata());
-    if (accounting_port.is_set || is_set(accounting_port.yfilter)) leaf_name_data.push_back(accounting_port.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (current_state_duration.is_set || is_set(current_state_duration.yfilter)) leaf_name_data.push_back(current_state_duration.get_name_leafdata());
-    if (previous_state_duration.is_set || is_set(previous_state_duration.yfilter)) leaf_name_data.push_back(previous_state_duration.get_name_leafdata());
-    if (packets_in.is_set || is_set(packets_in.yfilter)) leaf_name_data.push_back(packets_in.get_name_leafdata());
-    if (packets_out.is_set || is_set(packets_out.yfilter)) leaf_name_data.push_back(packets_out.get_name_leafdata());
-    if (timeouts.is_set || is_set(timeouts.yfilter)) leaf_name_data.push_back(timeouts.get_name_leafdata());
-    if (aborts.is_set || is_set(aborts.yfilter)) leaf_name_data.push_back(aborts.get_name_leafdata());
-    if (replies_expected.is_set || is_set(replies_expected.yfilter)) leaf_name_data.push_back(replies_expected.get_name_leafdata());
-    if (redirected_requests.is_set || is_set(redirected_requests.yfilter)) leaf_name_data.push_back(redirected_requests.get_name_leafdata());
-    if (authentication_rtt.is_set || is_set(authentication_rtt.yfilter)) leaf_name_data.push_back(authentication_rtt.get_name_leafdata());
-    if (access_requests.is_set || is_set(access_requests.yfilter)) leaf_name_data.push_back(access_requests.get_name_leafdata());
-    if (access_request_retransmits.is_set || is_set(access_request_retransmits.yfilter)) leaf_name_data.push_back(access_request_retransmits.get_name_leafdata());
-    if (access_accepts.is_set || is_set(access_accepts.yfilter)) leaf_name_data.push_back(access_accepts.get_name_leafdata());
-    if (access_rejects.is_set || is_set(access_rejects.yfilter)) leaf_name_data.push_back(access_rejects.get_name_leafdata());
-    if (access_challenges.is_set || is_set(access_challenges.yfilter)) leaf_name_data.push_back(access_challenges.get_name_leafdata());
-    if (bad_access_responses.is_set || is_set(bad_access_responses.yfilter)) leaf_name_data.push_back(bad_access_responses.get_name_leafdata());
-    if (bad_access_authenticators.is_set || is_set(bad_access_authenticators.yfilter)) leaf_name_data.push_back(bad_access_authenticators.get_name_leafdata());
-    if (pending_access_requests.is_set || is_set(pending_access_requests.yfilter)) leaf_name_data.push_back(pending_access_requests.get_name_leafdata());
-    if (access_timeouts.is_set || is_set(access_timeouts.yfilter)) leaf_name_data.push_back(access_timeouts.get_name_leafdata());
-    if (unknown_access_types.is_set || is_set(unknown_access_types.yfilter)) leaf_name_data.push_back(unknown_access_types.get_name_leafdata());
-    if (dropped_access_responses.is_set || is_set(dropped_access_responses.yfilter)) leaf_name_data.push_back(dropped_access_responses.get_name_leafdata());
-    if (throttled_access_reqs.is_set || is_set(throttled_access_reqs.yfilter)) leaf_name_data.push_back(throttled_access_reqs.get_name_leafdata());
-    if (throttled_timed_out_reqs.is_set || is_set(throttled_timed_out_reqs.yfilter)) leaf_name_data.push_back(throttled_timed_out_reqs.get_name_leafdata());
-    if (throttled_dropped_reqs.is_set || is_set(throttled_dropped_reqs.yfilter)) leaf_name_data.push_back(throttled_dropped_reqs.get_name_leafdata());
-    if (max_throttled_access_reqs.is_set || is_set(max_throttled_access_reqs.yfilter)) leaf_name_data.push_back(max_throttled_access_reqs.get_name_leafdata());
-    if (currently_throttled_access_reqs.is_set || is_set(currently_throttled_access_reqs.yfilter)) leaf_name_data.push_back(currently_throttled_access_reqs.get_name_leafdata());
-    if (authen_response_time.is_set || is_set(authen_response_time.yfilter)) leaf_name_data.push_back(authen_response_time.get_name_leafdata());
-    if (authen_transaction_successess.is_set || is_set(authen_transaction_successess.yfilter)) leaf_name_data.push_back(authen_transaction_successess.get_name_leafdata());
-    if (authen_transaction_failure.is_set || is_set(authen_transaction_failure.yfilter)) leaf_name_data.push_back(authen_transaction_failure.get_name_leafdata());
-    if (authen_unexpected_responses.is_set || is_set(authen_unexpected_responses.yfilter)) leaf_name_data.push_back(authen_unexpected_responses.get_name_leafdata());
-    if (authen_server_error_responses.is_set || is_set(authen_server_error_responses.yfilter)) leaf_name_data.push_back(authen_server_error_responses.get_name_leafdata());
-    if (authen_incorrect_responses.is_set || is_set(authen_incorrect_responses.yfilter)) leaf_name_data.push_back(authen_incorrect_responses.get_name_leafdata());
-    if (author_requests.is_set || is_set(author_requests.yfilter)) leaf_name_data.push_back(author_requests.get_name_leafdata());
-    if (author_request_timeouts.is_set || is_set(author_request_timeouts.yfilter)) leaf_name_data.push_back(author_request_timeouts.get_name_leafdata());
-    if (author_response_time.is_set || is_set(author_response_time.yfilter)) leaf_name_data.push_back(author_response_time.get_name_leafdata());
-    if (author_transaction_successess.is_set || is_set(author_transaction_successess.yfilter)) leaf_name_data.push_back(author_transaction_successess.get_name_leafdata());
-    if (author_transaction_failure.is_set || is_set(author_transaction_failure.yfilter)) leaf_name_data.push_back(author_transaction_failure.get_name_leafdata());
-    if (author_unexpected_responses.is_set || is_set(author_unexpected_responses.yfilter)) leaf_name_data.push_back(author_unexpected_responses.get_name_leafdata());
-    if (author_server_error_responses.is_set || is_set(author_server_error_responses.yfilter)) leaf_name_data.push_back(author_server_error_responses.get_name_leafdata());
-    if (author_incorrect_responses.is_set || is_set(author_incorrect_responses.yfilter)) leaf_name_data.push_back(author_incorrect_responses.get_name_leafdata());
-    if (accounting_rtt.is_set || is_set(accounting_rtt.yfilter)) leaf_name_data.push_back(accounting_rtt.get_name_leafdata());
-    if (accounting_requests.is_set || is_set(accounting_requests.yfilter)) leaf_name_data.push_back(accounting_requests.get_name_leafdata());
-    if (accounting_retransmits.is_set || is_set(accounting_retransmits.yfilter)) leaf_name_data.push_back(accounting_retransmits.get_name_leafdata());
-    if (accounting_responses.is_set || is_set(accounting_responses.yfilter)) leaf_name_data.push_back(accounting_responses.get_name_leafdata());
-    if (bad_accounting_responses.is_set || is_set(bad_accounting_responses.yfilter)) leaf_name_data.push_back(bad_accounting_responses.get_name_leafdata());
-    if (bad_accounting_authenticators.is_set || is_set(bad_accounting_authenticators.yfilter)) leaf_name_data.push_back(bad_accounting_authenticators.get_name_leafdata());
-    if (pending_accounting_requets.is_set || is_set(pending_accounting_requets.yfilter)) leaf_name_data.push_back(pending_accounting_requets.get_name_leafdata());
-    if (accounting_timeouts.is_set || is_set(accounting_timeouts.yfilter)) leaf_name_data.push_back(accounting_timeouts.get_name_leafdata());
-    if (unknown_accounting_types.is_set || is_set(unknown_accounting_types.yfilter)) leaf_name_data.push_back(unknown_accounting_types.get_name_leafdata());
-    if (dropped_accounting_responses.is_set || is_set(dropped_accounting_responses.yfilter)) leaf_name_data.push_back(dropped_accounting_responses.get_name_leafdata());
-    if (is_a_private_server.is_set || is_set(is_a_private_server.yfilter)) leaf_name_data.push_back(is_a_private_server.get_name_leafdata());
-    if (total_test_auth_reqs.is_set || is_set(total_test_auth_reqs.yfilter)) leaf_name_data.push_back(total_test_auth_reqs.get_name_leafdata());
-    if (total_test_auth_timeouts.is_set || is_set(total_test_auth_timeouts.yfilter)) leaf_name_data.push_back(total_test_auth_timeouts.get_name_leafdata());
-    if (total_test_auth_response.is_set || is_set(total_test_auth_response.yfilter)) leaf_name_data.push_back(total_test_auth_response.get_name_leafdata());
-    if (total_test_auth_pending.is_set || is_set(total_test_auth_pending.yfilter)) leaf_name_data.push_back(total_test_auth_pending.get_name_leafdata());
-    if (total_test_acct_reqs.is_set || is_set(total_test_acct_reqs.yfilter)) leaf_name_data.push_back(total_test_acct_reqs.get_name_leafdata());
-    if (total_test_acct_timeouts.is_set || is_set(total_test_acct_timeouts.yfilter)) leaf_name_data.push_back(total_test_acct_timeouts.get_name_leafdata());
-    if (total_test_acct_response.is_set || is_set(total_test_acct_response.yfilter)) leaf_name_data.push_back(total_test_acct_response.get_name_leafdata());
-    if (total_test_acct_pending.is_set || is_set(total_test_acct_pending.yfilter)) leaf_name_data.push_back(total_test_acct_pending.get_name_leafdata());
-    if (throttled_acct_transactions.is_set || is_set(throttled_acct_transactions.yfilter)) leaf_name_data.push_back(throttled_acct_transactions.get_name_leafdata());
-    if (throttled_acct_timed_out_stats.is_set || is_set(throttled_acct_timed_out_stats.yfilter)) leaf_name_data.push_back(throttled_acct_timed_out_stats.get_name_leafdata());
-    if (throttled_acct_failures_stats.is_set || is_set(throttled_acct_failures_stats.yfilter)) leaf_name_data.push_back(throttled_acct_failures_stats.get_name_leafdata());
-    if (max_acct_throttled.is_set || is_set(max_acct_throttled.yfilter)) leaf_name_data.push_back(max_acct_throttled.get_name_leafdata());
-    if (throttleda_acct_transactions.is_set || is_set(throttleda_acct_transactions.yfilter)) leaf_name_data.push_back(throttleda_acct_transactions.get_name_leafdata());
-    if (acct_unexpected_responses.is_set || is_set(acct_unexpected_responses.yfilter)) leaf_name_data.push_back(acct_unexpected_responses.get_name_leafdata());
-    if (acct_server_error_responses.is_set || is_set(acct_server_error_responses.yfilter)) leaf_name_data.push_back(acct_server_error_responses.get_name_leafdata());
-    if (acct_incorrect_responses.is_set || is_set(acct_incorrect_responses.yfilter)) leaf_name_data.push_back(acct_incorrect_responses.get_name_leafdata());
-    if (acct_response_time.is_set || is_set(acct_response_time.yfilter)) leaf_name_data.push_back(acct_response_time.get_name_leafdata());
-    if (acct_transaction_successess.is_set || is_set(acct_transaction_successess.yfilter)) leaf_name_data.push_back(acct_transaction_successess.get_name_leafdata());
-    if (acct_transaction_failure.is_set || is_set(acct_transaction_failure.yfilter)) leaf_name_data.push_back(acct_transaction_failure.get_name_leafdata());
-    if (total_deadtime.is_set || is_set(total_deadtime.yfilter)) leaf_name_data.push_back(total_deadtime.get_name_leafdata());
-    if (last_deadtime.is_set || is_set(last_deadtime.yfilter)) leaf_name_data.push_back(last_deadtime.get_name_leafdata());
-    if (is_quarantined.is_set || is_set(is_quarantined.yfilter)) leaf_name_data.push_back(is_quarantined.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (ip_address_xr.is_set || is_set(ip_address_xr.yfilter)) leaf_name_data.push_back(ip_address_xr.get_name_leafdata());
-    if (family.is_set || is_set(family.yfilter)) leaf_name_data.push_back(family.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Aaa::Radius::Servers::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::Servers::Server::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Aaa::Radius::Servers::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip-address")
-    {
-        ip_address = value;
-        ip_address.value_namespace = name_space;
-        ip_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "auth-port-number")
-    {
-        auth_port_number = value;
-        auth_port_number.value_namespace = name_space;
-        auth_port_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acct-port-number")
-    {
-        acct_port_number = value;
-        acct_port_number.value_namespace = name_space;
-        acct_port_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address = value;
-        ipv4_address.value_namespace = name_space;
-        ipv4_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority")
-    {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timeout-xr")
-    {
-        timeout_xr = value;
-        timeout_xr.value_namespace = name_space;
-        timeout_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "retransmit")
-    {
-        retransmit = value;
-        retransmit.value_namespace = name_space;
-        retransmit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dead-time")
-    {
-        dead_time = value;
-        dead_time.value_namespace = name_space;
-        dead_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dead-detect-time")
-    {
-        dead_detect_time = value;
-        dead_detect_time.value_namespace = name_space;
-        dead_detect_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dead-detect-tries")
-    {
-        dead_detect_tries = value;
-        dead_detect_tries.value_namespace = name_space;
-        dead_detect_tries.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authentication-port")
-    {
-        authentication_port = value;
-        authentication_port.value_namespace = name_space;
-        authentication_port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-port")
-    {
-        accounting_port = value;
-        accounting_port.value_namespace = name_space;
-        accounting_port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "current-state-duration")
-    {
-        current_state_duration = value;
-        current_state_duration.value_namespace = name_space;
-        current_state_duration.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "previous-state-duration")
-    {
-        previous_state_duration = value;
-        previous_state_duration.value_namespace = name_space;
-        previous_state_duration.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets-in")
-    {
-        packets_in = value;
-        packets_in.value_namespace = name_space;
-        packets_in.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "packets-out")
-    {
-        packets_out = value;
-        packets_out.value_namespace = name_space;
-        packets_out.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timeouts")
-    {
-        timeouts = value;
-        timeouts.value_namespace = name_space;
-        timeouts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "aborts")
-    {
-        aborts = value;
-        aborts.value_namespace = name_space;
-        aborts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "replies-expected")
-    {
-        replies_expected = value;
-        replies_expected.value_namespace = name_space;
-        replies_expected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "redirected-requests")
-    {
-        redirected_requests = value;
-        redirected_requests.value_namespace = name_space;
-        redirected_requests.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authentication-rtt")
-    {
-        authentication_rtt = value;
-        authentication_rtt.value_namespace = name_space;
-        authentication_rtt.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "access-requests")
-    {
-        access_requests = value;
-        access_requests.value_namespace = name_space;
-        access_requests.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "access-request-retransmits")
-    {
-        access_request_retransmits = value;
-        access_request_retransmits.value_namespace = name_space;
-        access_request_retransmits.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "access-accepts")
-    {
-        access_accepts = value;
-        access_accepts.value_namespace = name_space;
-        access_accepts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "access-rejects")
-    {
-        access_rejects = value;
-        access_rejects.value_namespace = name_space;
-        access_rejects.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "access-challenges")
-    {
-        access_challenges = value;
-        access_challenges.value_namespace = name_space;
-        access_challenges.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bad-access-responses")
-    {
-        bad_access_responses = value;
-        bad_access_responses.value_namespace = name_space;
-        bad_access_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bad-access-authenticators")
-    {
-        bad_access_authenticators = value;
-        bad_access_authenticators.value_namespace = name_space;
-        bad_access_authenticators.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pending-access-requests")
-    {
-        pending_access_requests = value;
-        pending_access_requests.value_namespace = name_space;
-        pending_access_requests.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "access-timeouts")
-    {
-        access_timeouts = value;
-        access_timeouts.value_namespace = name_space;
-        access_timeouts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unknown-access-types")
-    {
-        unknown_access_types = value;
-        unknown_access_types.value_namespace = name_space;
-        unknown_access_types.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dropped-access-responses")
-    {
-        dropped_access_responses = value;
-        dropped_access_responses.value_namespace = name_space;
-        dropped_access_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "throttled-access-reqs")
-    {
-        throttled_access_reqs = value;
-        throttled_access_reqs.value_namespace = name_space;
-        throttled_access_reqs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "throttled-timed-out-reqs")
-    {
-        throttled_timed_out_reqs = value;
-        throttled_timed_out_reqs.value_namespace = name_space;
-        throttled_timed_out_reqs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "throttled-dropped-reqs")
-    {
-        throttled_dropped_reqs = value;
-        throttled_dropped_reqs.value_namespace = name_space;
-        throttled_dropped_reqs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-throttled-access-reqs")
-    {
-        max_throttled_access_reqs = value;
-        max_throttled_access_reqs.value_namespace = name_space;
-        max_throttled_access_reqs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "currently-throttled-access-reqs")
-    {
-        currently_throttled_access_reqs = value;
-        currently_throttled_access_reqs.value_namespace = name_space;
-        currently_throttled_access_reqs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authen-response-time")
-    {
-        authen_response_time = value;
-        authen_response_time.value_namespace = name_space;
-        authen_response_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authen-transaction-successess")
-    {
-        authen_transaction_successess = value;
-        authen_transaction_successess.value_namespace = name_space;
-        authen_transaction_successess.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authen-transaction-failure")
-    {
-        authen_transaction_failure = value;
-        authen_transaction_failure.value_namespace = name_space;
-        authen_transaction_failure.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authen-unexpected-responses")
-    {
-        authen_unexpected_responses = value;
-        authen_unexpected_responses.value_namespace = name_space;
-        authen_unexpected_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authen-server-error-responses")
-    {
-        authen_server_error_responses = value;
-        authen_server_error_responses.value_namespace = name_space;
-        authen_server_error_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authen-incorrect-responses")
-    {
-        authen_incorrect_responses = value;
-        authen_incorrect_responses.value_namespace = name_space;
-        authen_incorrect_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "author-requests")
-    {
-        author_requests = value;
-        author_requests.value_namespace = name_space;
-        author_requests.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "author-request-timeouts")
-    {
-        author_request_timeouts = value;
-        author_request_timeouts.value_namespace = name_space;
-        author_request_timeouts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "author-response-time")
-    {
-        author_response_time = value;
-        author_response_time.value_namespace = name_space;
-        author_response_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "author-transaction-successess")
-    {
-        author_transaction_successess = value;
-        author_transaction_successess.value_namespace = name_space;
-        author_transaction_successess.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "author-transaction-failure")
-    {
-        author_transaction_failure = value;
-        author_transaction_failure.value_namespace = name_space;
-        author_transaction_failure.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "author-unexpected-responses")
-    {
-        author_unexpected_responses = value;
-        author_unexpected_responses.value_namespace = name_space;
-        author_unexpected_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "author-server-error-responses")
-    {
-        author_server_error_responses = value;
-        author_server_error_responses.value_namespace = name_space;
-        author_server_error_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "author-incorrect-responses")
-    {
-        author_incorrect_responses = value;
-        author_incorrect_responses.value_namespace = name_space;
-        author_incorrect_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-rtt")
-    {
-        accounting_rtt = value;
-        accounting_rtt.value_namespace = name_space;
-        accounting_rtt.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-requests")
-    {
-        accounting_requests = value;
-        accounting_requests.value_namespace = name_space;
-        accounting_requests.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-retransmits")
-    {
-        accounting_retransmits = value;
-        accounting_retransmits.value_namespace = name_space;
-        accounting_retransmits.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-responses")
-    {
-        accounting_responses = value;
-        accounting_responses.value_namespace = name_space;
-        accounting_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bad-accounting-responses")
-    {
-        bad_accounting_responses = value;
-        bad_accounting_responses.value_namespace = name_space;
-        bad_accounting_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bad-accounting-authenticators")
-    {
-        bad_accounting_authenticators = value;
-        bad_accounting_authenticators.value_namespace = name_space;
-        bad_accounting_authenticators.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pending-accounting-requets")
-    {
-        pending_accounting_requets = value;
-        pending_accounting_requets.value_namespace = name_space;
-        pending_accounting_requets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-timeouts")
-    {
-        accounting_timeouts = value;
-        accounting_timeouts.value_namespace = name_space;
-        accounting_timeouts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unknown-accounting-types")
-    {
-        unknown_accounting_types = value;
-        unknown_accounting_types.value_namespace = name_space;
-        unknown_accounting_types.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dropped-accounting-responses")
-    {
-        dropped_accounting_responses = value;
-        dropped_accounting_responses.value_namespace = name_space;
-        dropped_accounting_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-a-private-server")
-    {
-        is_a_private_server = value;
-        is_a_private_server.value_namespace = name_space;
-        is_a_private_server.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-test-auth-reqs")
-    {
-        total_test_auth_reqs = value;
-        total_test_auth_reqs.value_namespace = name_space;
-        total_test_auth_reqs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-test-auth-timeouts")
-    {
-        total_test_auth_timeouts = value;
-        total_test_auth_timeouts.value_namespace = name_space;
-        total_test_auth_timeouts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-test-auth-response")
-    {
-        total_test_auth_response = value;
-        total_test_auth_response.value_namespace = name_space;
-        total_test_auth_response.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-test-auth-pending")
-    {
-        total_test_auth_pending = value;
-        total_test_auth_pending.value_namespace = name_space;
-        total_test_auth_pending.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-test-acct-reqs")
-    {
-        total_test_acct_reqs = value;
-        total_test_acct_reqs.value_namespace = name_space;
-        total_test_acct_reqs.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-test-acct-timeouts")
-    {
-        total_test_acct_timeouts = value;
-        total_test_acct_timeouts.value_namespace = name_space;
-        total_test_acct_timeouts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-test-acct-response")
-    {
-        total_test_acct_response = value;
-        total_test_acct_response.value_namespace = name_space;
-        total_test_acct_response.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-test-acct-pending")
-    {
-        total_test_acct_pending = value;
-        total_test_acct_pending.value_namespace = name_space;
-        total_test_acct_pending.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "throttled-acct-transactions")
-    {
-        throttled_acct_transactions = value;
-        throttled_acct_transactions.value_namespace = name_space;
-        throttled_acct_transactions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "throttled-acct-timed-out-stats")
-    {
-        throttled_acct_timed_out_stats = value;
-        throttled_acct_timed_out_stats.value_namespace = name_space;
-        throttled_acct_timed_out_stats.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "throttled-acct-failures-stats")
-    {
-        throttled_acct_failures_stats = value;
-        throttled_acct_failures_stats.value_namespace = name_space;
-        throttled_acct_failures_stats.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-acct-throttled")
-    {
-        max_acct_throttled = value;
-        max_acct_throttled.value_namespace = name_space;
-        max_acct_throttled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "throttleda-acct-transactions")
-    {
-        throttleda_acct_transactions = value;
-        throttleda_acct_transactions.value_namespace = name_space;
-        throttleda_acct_transactions.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acct-unexpected-responses")
-    {
-        acct_unexpected_responses = value;
-        acct_unexpected_responses.value_namespace = name_space;
-        acct_unexpected_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acct-server-error-responses")
-    {
-        acct_server_error_responses = value;
-        acct_server_error_responses.value_namespace = name_space;
-        acct_server_error_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acct-incorrect-responses")
-    {
-        acct_incorrect_responses = value;
-        acct_incorrect_responses.value_namespace = name_space;
-        acct_incorrect_responses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acct-response-time")
-    {
-        acct_response_time = value;
-        acct_response_time.value_namespace = name_space;
-        acct_response_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acct-transaction-successess")
-    {
-        acct_transaction_successess = value;
-        acct_transaction_successess.value_namespace = name_space;
-        acct_transaction_successess.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acct-transaction-failure")
-    {
-        acct_transaction_failure = value;
-        acct_transaction_failure.value_namespace = name_space;
-        acct_transaction_failure.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "total-deadtime")
-    {
-        total_deadtime = value;
-        total_deadtime.value_namespace = name_space;
-        total_deadtime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-deadtime")
-    {
-        last_deadtime = value;
-        last_deadtime.value_namespace = name_space;
-        last_deadtime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-quarantined")
-    {
-        is_quarantined = value;
-        is_quarantined.value_namespace = name_space;
-        is_quarantined.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "group-name")
-    {
-        group_name = value;
-        group_name.value_namespace = name_space;
-        group_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ip-address-xr")
-    {
-        ip_address_xr = value;
-        ip_address_xr.value_namespace = name_space;
-        ip_address_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "family")
-    {
-        family = value;
-        family.value_namespace = name_space;
-        family.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Radius::Servers::Server::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip-address")
-    {
-        ip_address.yfilter = yfilter;
-    }
-    if(value_path == "auth-port-number")
-    {
-        auth_port_number.yfilter = yfilter;
-    }
-    if(value_path == "acct-port-number")
-    {
-        acct_port_number.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address.yfilter = yfilter;
-    }
-    if(value_path == "priority")
-    {
-        priority.yfilter = yfilter;
-    }
-    if(value_path == "timeout-xr")
-    {
-        timeout_xr.yfilter = yfilter;
-    }
-    if(value_path == "retransmit")
-    {
-        retransmit.yfilter = yfilter;
-    }
-    if(value_path == "dead-time")
-    {
-        dead_time.yfilter = yfilter;
-    }
-    if(value_path == "dead-detect-time")
-    {
-        dead_detect_time.yfilter = yfilter;
-    }
-    if(value_path == "dead-detect-tries")
-    {
-        dead_detect_tries.yfilter = yfilter;
-    }
-    if(value_path == "authentication-port")
-    {
-        authentication_port.yfilter = yfilter;
-    }
-    if(value_path == "accounting-port")
-    {
-        accounting_port.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-    if(value_path == "current-state-duration")
-    {
-        current_state_duration.yfilter = yfilter;
-    }
-    if(value_path == "previous-state-duration")
-    {
-        previous_state_duration.yfilter = yfilter;
-    }
-    if(value_path == "packets-in")
-    {
-        packets_in.yfilter = yfilter;
-    }
-    if(value_path == "packets-out")
-    {
-        packets_out.yfilter = yfilter;
-    }
-    if(value_path == "timeouts")
-    {
-        timeouts.yfilter = yfilter;
-    }
-    if(value_path == "aborts")
-    {
-        aborts.yfilter = yfilter;
-    }
-    if(value_path == "replies-expected")
-    {
-        replies_expected.yfilter = yfilter;
-    }
-    if(value_path == "redirected-requests")
-    {
-        redirected_requests.yfilter = yfilter;
-    }
-    if(value_path == "authentication-rtt")
-    {
-        authentication_rtt.yfilter = yfilter;
-    }
-    if(value_path == "access-requests")
-    {
-        access_requests.yfilter = yfilter;
-    }
-    if(value_path == "access-request-retransmits")
-    {
-        access_request_retransmits.yfilter = yfilter;
-    }
-    if(value_path == "access-accepts")
-    {
-        access_accepts.yfilter = yfilter;
-    }
-    if(value_path == "access-rejects")
-    {
-        access_rejects.yfilter = yfilter;
-    }
-    if(value_path == "access-challenges")
-    {
-        access_challenges.yfilter = yfilter;
-    }
-    if(value_path == "bad-access-responses")
-    {
-        bad_access_responses.yfilter = yfilter;
-    }
-    if(value_path == "bad-access-authenticators")
-    {
-        bad_access_authenticators.yfilter = yfilter;
-    }
-    if(value_path == "pending-access-requests")
-    {
-        pending_access_requests.yfilter = yfilter;
-    }
-    if(value_path == "access-timeouts")
-    {
-        access_timeouts.yfilter = yfilter;
-    }
-    if(value_path == "unknown-access-types")
-    {
-        unknown_access_types.yfilter = yfilter;
-    }
-    if(value_path == "dropped-access-responses")
-    {
-        dropped_access_responses.yfilter = yfilter;
-    }
-    if(value_path == "throttled-access-reqs")
-    {
-        throttled_access_reqs.yfilter = yfilter;
-    }
-    if(value_path == "throttled-timed-out-reqs")
-    {
-        throttled_timed_out_reqs.yfilter = yfilter;
-    }
-    if(value_path == "throttled-dropped-reqs")
-    {
-        throttled_dropped_reqs.yfilter = yfilter;
-    }
-    if(value_path == "max-throttled-access-reqs")
-    {
-        max_throttled_access_reqs.yfilter = yfilter;
-    }
-    if(value_path == "currently-throttled-access-reqs")
-    {
-        currently_throttled_access_reqs.yfilter = yfilter;
-    }
-    if(value_path == "authen-response-time")
-    {
-        authen_response_time.yfilter = yfilter;
-    }
-    if(value_path == "authen-transaction-successess")
-    {
-        authen_transaction_successess.yfilter = yfilter;
-    }
-    if(value_path == "authen-transaction-failure")
-    {
-        authen_transaction_failure.yfilter = yfilter;
-    }
-    if(value_path == "authen-unexpected-responses")
-    {
-        authen_unexpected_responses.yfilter = yfilter;
-    }
-    if(value_path == "authen-server-error-responses")
-    {
-        authen_server_error_responses.yfilter = yfilter;
-    }
-    if(value_path == "authen-incorrect-responses")
-    {
-        authen_incorrect_responses.yfilter = yfilter;
-    }
-    if(value_path == "author-requests")
-    {
-        author_requests.yfilter = yfilter;
-    }
-    if(value_path == "author-request-timeouts")
-    {
-        author_request_timeouts.yfilter = yfilter;
-    }
-    if(value_path == "author-response-time")
-    {
-        author_response_time.yfilter = yfilter;
-    }
-    if(value_path == "author-transaction-successess")
-    {
-        author_transaction_successess.yfilter = yfilter;
-    }
-    if(value_path == "author-transaction-failure")
-    {
-        author_transaction_failure.yfilter = yfilter;
-    }
-    if(value_path == "author-unexpected-responses")
-    {
-        author_unexpected_responses.yfilter = yfilter;
-    }
-    if(value_path == "author-server-error-responses")
-    {
-        author_server_error_responses.yfilter = yfilter;
-    }
-    if(value_path == "author-incorrect-responses")
-    {
-        author_incorrect_responses.yfilter = yfilter;
-    }
-    if(value_path == "accounting-rtt")
-    {
-        accounting_rtt.yfilter = yfilter;
-    }
-    if(value_path == "accounting-requests")
-    {
-        accounting_requests.yfilter = yfilter;
-    }
-    if(value_path == "accounting-retransmits")
-    {
-        accounting_retransmits.yfilter = yfilter;
-    }
-    if(value_path == "accounting-responses")
-    {
-        accounting_responses.yfilter = yfilter;
-    }
-    if(value_path == "bad-accounting-responses")
-    {
-        bad_accounting_responses.yfilter = yfilter;
-    }
-    if(value_path == "bad-accounting-authenticators")
-    {
-        bad_accounting_authenticators.yfilter = yfilter;
-    }
-    if(value_path == "pending-accounting-requets")
-    {
-        pending_accounting_requets.yfilter = yfilter;
-    }
-    if(value_path == "accounting-timeouts")
-    {
-        accounting_timeouts.yfilter = yfilter;
-    }
-    if(value_path == "unknown-accounting-types")
-    {
-        unknown_accounting_types.yfilter = yfilter;
-    }
-    if(value_path == "dropped-accounting-responses")
-    {
-        dropped_accounting_responses.yfilter = yfilter;
-    }
-    if(value_path == "is-a-private-server")
-    {
-        is_a_private_server.yfilter = yfilter;
-    }
-    if(value_path == "total-test-auth-reqs")
-    {
-        total_test_auth_reqs.yfilter = yfilter;
-    }
-    if(value_path == "total-test-auth-timeouts")
-    {
-        total_test_auth_timeouts.yfilter = yfilter;
-    }
-    if(value_path == "total-test-auth-response")
-    {
-        total_test_auth_response.yfilter = yfilter;
-    }
-    if(value_path == "total-test-auth-pending")
-    {
-        total_test_auth_pending.yfilter = yfilter;
-    }
-    if(value_path == "total-test-acct-reqs")
-    {
-        total_test_acct_reqs.yfilter = yfilter;
-    }
-    if(value_path == "total-test-acct-timeouts")
-    {
-        total_test_acct_timeouts.yfilter = yfilter;
-    }
-    if(value_path == "total-test-acct-response")
-    {
-        total_test_acct_response.yfilter = yfilter;
-    }
-    if(value_path == "total-test-acct-pending")
-    {
-        total_test_acct_pending.yfilter = yfilter;
-    }
-    if(value_path == "throttled-acct-transactions")
-    {
-        throttled_acct_transactions.yfilter = yfilter;
-    }
-    if(value_path == "throttled-acct-timed-out-stats")
-    {
-        throttled_acct_timed_out_stats.yfilter = yfilter;
-    }
-    if(value_path == "throttled-acct-failures-stats")
-    {
-        throttled_acct_failures_stats.yfilter = yfilter;
-    }
-    if(value_path == "max-acct-throttled")
-    {
-        max_acct_throttled.yfilter = yfilter;
-    }
-    if(value_path == "throttleda-acct-transactions")
-    {
-        throttleda_acct_transactions.yfilter = yfilter;
-    }
-    if(value_path == "acct-unexpected-responses")
-    {
-        acct_unexpected_responses.yfilter = yfilter;
-    }
-    if(value_path == "acct-server-error-responses")
-    {
-        acct_server_error_responses.yfilter = yfilter;
-    }
-    if(value_path == "acct-incorrect-responses")
-    {
-        acct_incorrect_responses.yfilter = yfilter;
-    }
-    if(value_path == "acct-response-time")
-    {
-        acct_response_time.yfilter = yfilter;
-    }
-    if(value_path == "acct-transaction-successess")
-    {
-        acct_transaction_successess.yfilter = yfilter;
-    }
-    if(value_path == "acct-transaction-failure")
-    {
-        acct_transaction_failure.yfilter = yfilter;
-    }
-    if(value_path == "total-deadtime")
-    {
-        total_deadtime.yfilter = yfilter;
-    }
-    if(value_path == "last-deadtime")
-    {
-        last_deadtime.yfilter = yfilter;
-    }
-    if(value_path == "is-quarantined")
-    {
-        is_quarantined.yfilter = yfilter;
-    }
-    if(value_path == "group-name")
-    {
-        group_name.yfilter = yfilter;
-    }
-    if(value_path == "ip-address-xr")
-    {
-        ip_address_xr.yfilter = yfilter;
-    }
-    if(value_path == "family")
-    {
-        family.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Radius::Servers::Server::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ip-address" || name == "auth-port-number" || name == "acct-port-number" || name == "ipv4-address" || name == "priority" || name == "timeout-xr" || name == "retransmit" || name == "dead-time" || name == "dead-detect-time" || name == "dead-detect-tries" || name == "authentication-port" || name == "accounting-port" || name == "state" || name == "current-state-duration" || name == "previous-state-duration" || name == "packets-in" || name == "packets-out" || name == "timeouts" || name == "aborts" || name == "replies-expected" || name == "redirected-requests" || name == "authentication-rtt" || name == "access-requests" || name == "access-request-retransmits" || name == "access-accepts" || name == "access-rejects" || name == "access-challenges" || name == "bad-access-responses" || name == "bad-access-authenticators" || name == "pending-access-requests" || name == "access-timeouts" || name == "unknown-access-types" || name == "dropped-access-responses" || name == "throttled-access-reqs" || name == "throttled-timed-out-reqs" || name == "throttled-dropped-reqs" || name == "max-throttled-access-reqs" || name == "currently-throttled-access-reqs" || name == "authen-response-time" || name == "authen-transaction-successess" || name == "authen-transaction-failure" || name == "authen-unexpected-responses" || name == "authen-server-error-responses" || name == "authen-incorrect-responses" || name == "author-requests" || name == "author-request-timeouts" || name == "author-response-time" || name == "author-transaction-successess" || name == "author-transaction-failure" || name == "author-unexpected-responses" || name == "author-server-error-responses" || name == "author-incorrect-responses" || name == "accounting-rtt" || name == "accounting-requests" || name == "accounting-retransmits" || name == "accounting-responses" || name == "bad-accounting-responses" || name == "bad-accounting-authenticators" || name == "pending-accounting-requets" || name == "accounting-timeouts" || name == "unknown-accounting-types" || name == "dropped-accounting-responses" || name == "is-a-private-server" || name == "total-test-auth-reqs" || name == "total-test-auth-timeouts" || name == "total-test-auth-response" || name == "total-test-auth-pending" || name == "total-test-acct-reqs" || name == "total-test-acct-timeouts" || name == "total-test-acct-response" || name == "total-test-acct-pending" || name == "throttled-acct-transactions" || name == "throttled-acct-timed-out-stats" || name == "throttled-acct-failures-stats" || name == "max-acct-throttled" || name == "throttleda-acct-transactions" || name == "acct-unexpected-responses" || name == "acct-server-error-responses" || name == "acct-incorrect-responses" || name == "acct-response-time" || name == "acct-transaction-successess" || name == "acct-transaction-failure" || name == "total-deadtime" || name == "last-deadtime" || name == "is-quarantined" || name == "group-name" || name == "ip-address-xr" || name == "family")
-        return true;
-    return false;
-}
-
-Aaa::Radius::RadiusSourceInterface::RadiusSourceInterface()
-    :
-    list_of_source_interface(this, {})
-{
-
-    yang_name = "radius-source-interface"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Aaa::Radius::RadiusSourceInterface::~RadiusSourceInterface()
-{
-}
-
-bool Aaa::Radius::RadiusSourceInterface::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<list_of_source_interface.len(); index++)
-    {
-        if(list_of_source_interface[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Aaa::Radius::RadiusSourceInterface::has_operation() const
-{
-    for (std::size_t index=0; index<list_of_source_interface.len(); index++)
-    {
-        if(list_of_source_interface[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Aaa::Radius::RadiusSourceInterface::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-protocol-radius-oper:radius/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Aaa::Radius::RadiusSourceInterface::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "radius-source-interface";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Aaa::Radius::RadiusSourceInterface::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Aaa::Radius::RadiusSourceInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "list-of-source-interface")
-    {
-        auto c = std::make_shared<Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface>();
-        c->parent = this;
-        list_of_source_interface.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::RadiusSourceInterface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : list_of_source_interface.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Aaa::Radius::RadiusSourceInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Aaa::Radius::RadiusSourceInterface::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Aaa::Radius::RadiusSourceInterface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "list-of-source-interface")
-        return true;
-    return false;
-}
-
-Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::ListOfSourceInterface()
-    :
-    interface_name{YType::str, "interface-name"},
-    ipaddrv4{YType::str, "ipaddrv4"},
-    ipaddrv6{YType::str, "ipaddrv6"},
-    vrfid{YType::uint32, "vrfid"}
-{
-
-    yang_name = "list-of-source-interface"; yang_parent_name = "radius-source-interface"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::~ListOfSourceInterface()
-{
-}
-
-bool Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::has_data() const
-{
-    if (is_presence_container) return true;
-    return interface_name.is_set
-	|| ipaddrv4.is_set
-	|| ipaddrv6.is_set
-	|| vrfid.is_set;
-}
-
-bool Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(ipaddrv4.yfilter)
-	|| ydk::is_set(ipaddrv6.yfilter)
-	|| ydk::is_set(vrfid.yfilter);
-}
-
-std::string Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-protocol-radius-oper:radius/radius-source-interface/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "list-of-source-interface";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (ipaddrv4.is_set || is_set(ipaddrv4.yfilter)) leaf_name_data.push_back(ipaddrv4.get_name_leafdata());
-    if (ipaddrv6.is_set || is_set(ipaddrv6.yfilter)) leaf_name_data.push_back(ipaddrv6.get_name_leafdata());
-    if (vrfid.is_set || is_set(vrfid.yfilter)) leaf_name_data.push_back(vrfid.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipaddrv4")
-    {
-        ipaddrv4 = value;
-        ipaddrv4.value_namespace = name_space;
-        ipaddrv4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipaddrv6")
-    {
-        ipaddrv6 = value;
-        ipaddrv6.value_namespace = name_space;
-        ipaddrv6.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrfid")
-    {
-        vrfid = value;
-        vrfid.value_namespace = name_space;
-        vrfid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "ipaddrv4")
-    {
-        ipaddrv4.yfilter = yfilter;
-    }
-    if(value_path == "ipaddrv6")
-    {
-        ipaddrv6.yfilter = yfilter;
-    }
-    if(value_path == "vrfid")
-    {
-        vrfid.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Radius::RadiusSourceInterface::ListOfSourceInterface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interface-name" || name == "ipaddrv4" || name == "ipaddrv6" || name == "vrfid")
-        return true;
-    return false;
-}
-
-Aaa::Radius::Global::Global()
-    :
-    unknown_authentication_response{YType::uint32, "unknown-authentication-response"},
-    authentication_nas_id{YType::str, "authentication-nas-id"},
-    unknown_accounting_response{YType::uint32, "unknown-accounting-response"},
-    accounting_nas_id{YType::str, "accounting-nas-id"}
-{
-
-    yang_name = "global"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Aaa::Radius::Global::~Global()
-{
-}
-
-bool Aaa::Radius::Global::has_data() const
-{
-    if (is_presence_container) return true;
-    return unknown_authentication_response.is_set
-	|| authentication_nas_id.is_set
-	|| unknown_accounting_response.is_set
-	|| accounting_nas_id.is_set;
-}
-
-bool Aaa::Radius::Global::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unknown_authentication_response.yfilter)
-	|| ydk::is_set(authentication_nas_id.yfilter)
-	|| ydk::is_set(unknown_accounting_response.yfilter)
-	|| ydk::is_set(accounting_nas_id.yfilter);
-}
-
-std::string Aaa::Radius::Global::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-aaa-locald-oper:aaa/Cisco-IOS-XR-aaa-protocol-radius-oper:radius/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Aaa::Radius::Global::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "global";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Aaa::Radius::Global::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unknown_authentication_response.is_set || is_set(unknown_authentication_response.yfilter)) leaf_name_data.push_back(unknown_authentication_response.get_name_leafdata());
-    if (authentication_nas_id.is_set || is_set(authentication_nas_id.yfilter)) leaf_name_data.push_back(authentication_nas_id.get_name_leafdata());
-    if (unknown_accounting_response.is_set || is_set(unknown_accounting_response.yfilter)) leaf_name_data.push_back(unknown_accounting_response.get_name_leafdata());
-    if (accounting_nas_id.is_set || is_set(accounting_nas_id.yfilter)) leaf_name_data.push_back(accounting_nas_id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Aaa::Radius::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Radius::Global::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Aaa::Radius::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unknown-authentication-response")
-    {
-        unknown_authentication_response = value;
-        unknown_authentication_response.value_namespace = name_space;
-        unknown_authentication_response.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "authentication-nas-id")
-    {
-        authentication_nas_id = value;
-        authentication_nas_id.value_namespace = name_space;
-        authentication_nas_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unknown-accounting-response")
-    {
-        unknown_accounting_response = value;
-        unknown_accounting_response.value_namespace = name_space;
-        unknown_accounting_response.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-nas-id")
-    {
-        accounting_nas_id = value;
-        accounting_nas_id.value_namespace = name_space;
-        accounting_nas_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Aaa::Radius::Global::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unknown-authentication-response")
-    {
-        unknown_authentication_response.yfilter = yfilter;
-    }
-    if(value_path == "authentication-nas-id")
-    {
-        authentication_nas_id.yfilter = yfilter;
-    }
-    if(value_path == "unknown-accounting-response")
-    {
-        unknown_accounting_response.yfilter = yfilter;
-    }
-    if(value_path == "accounting-nas-id")
-    {
-        accounting_nas_id.yfilter = yfilter;
-    }
-}
-
-bool Aaa::Radius::Global::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unknown-authentication-response" || name == "authentication-nas-id" || name == "unknown-accounting-response" || name == "accounting-nas-id")
         return true;
     return false;
 }

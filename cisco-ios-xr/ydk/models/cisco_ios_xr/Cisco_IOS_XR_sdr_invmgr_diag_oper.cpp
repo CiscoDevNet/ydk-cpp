@@ -223,12 +223,12 @@ Diag::Racks::Rack::Rack()
     rack_name{YType::str, "rack-name"}
         ,
     power_shelfs(std::make_shared<Diag::Racks::Rack::PowerShelfs>())
-    , fan_traies(std::make_shared<Diag::Racks::Rack::FanTraies>())
+    , fan_trays(std::make_shared<Diag::Racks::Rack::FanTrays>())
     , slots(std::make_shared<Diag::Racks::Rack::Slots>())
     , chassis(std::make_shared<Diag::Racks::Rack::Chassis>())
 {
     power_shelfs->parent = this;
-    fan_traies->parent = this;
+    fan_trays->parent = this;
     slots->parent = this;
     chassis->parent = this;
 
@@ -244,7 +244,7 @@ bool Diag::Racks::Rack::has_data() const
     if (is_presence_container) return true;
     return rack_name.is_set
 	|| (power_shelfs !=  nullptr && power_shelfs->has_data())
-	|| (fan_traies !=  nullptr && fan_traies->has_data())
+	|| (fan_trays !=  nullptr && fan_trays->has_data())
 	|| (slots !=  nullptr && slots->has_data())
 	|| (chassis !=  nullptr && chassis->has_data());
 }
@@ -254,7 +254,7 @@ bool Diag::Racks::Rack::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(rack_name.yfilter)
 	|| (power_shelfs !=  nullptr && power_shelfs->has_operation())
-	|| (fan_traies !=  nullptr && fan_traies->has_operation())
+	|| (fan_trays !=  nullptr && fan_trays->has_operation())
 	|| (slots !=  nullptr && slots->has_operation())
 	|| (chassis !=  nullptr && chassis->has_operation());
 }
@@ -295,13 +295,13 @@ std::shared_ptr<Entity> Diag::Racks::Rack::get_child_by_name(const std::string &
         return power_shelfs;
     }
 
-    if(child_yang_name == "fan-traies")
+    if(child_yang_name == "fan-trays")
     {
-        if(fan_traies == nullptr)
+        if(fan_trays == nullptr)
         {
-            fan_traies = std::make_shared<Diag::Racks::Rack::FanTraies>();
+            fan_trays = std::make_shared<Diag::Racks::Rack::FanTrays>();
         }
-        return fan_traies;
+        return fan_trays;
     }
 
     if(child_yang_name == "slots")
@@ -334,9 +334,9 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::get_children()
         children["power-shelfs"] = power_shelfs;
     }
 
-    if(fan_traies != nullptr)
+    if(fan_trays != nullptr)
     {
-        children["fan-traies"] = fan_traies;
+        children["fan-trays"] = fan_trays;
     }
 
     if(slots != nullptr)
@@ -372,7 +372,7 @@ void Diag::Racks::Rack::set_filter(const std::string & value_path, YFilter yfilt
 
 bool Diag::Racks::Rack::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "power-shelfs" || name == "fan-traies" || name == "slots" || name == "chassis" || name == "rack-name")
+    if(name == "power-shelfs" || name == "fan-trays" || name == "slots" || name == "chassis" || name == "rack-name")
         return true;
     return false;
 }
@@ -816,7 +816,8 @@ Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Informat
     mfg_bits{YType::str, "mfg-bits"},
     engineer_use{YType::str, "engineer-use"},
     snmpoid{YType::str, "snmpoid"},
-    rma_code{YType::str, "rma-code"}
+    rma_code{YType::str, "rma-code"},
+    eci_alpha_number{YType::str, "eci-alpha-number"}
         ,
     rma(std::make_shared<Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma>())
 {
@@ -888,6 +889,7 @@ bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Inf
 	|| engineer_use.is_set
 	|| snmpoid.is_set
 	|| rma_code.is_set
+	|| eci_alpha_number.is_set
 	|| (rma !=  nullptr && rma->has_data());
 }
 
@@ -950,6 +952,7 @@ bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Inf
 	|| ydk::is_set(engineer_use.yfilter)
 	|| ydk::is_set(snmpoid.yfilter)
 	|| ydk::is_set(rma_code.yfilter)
+	|| ydk::is_set(eci_alpha_number.yfilter)
 	|| (rma !=  nullptr && rma->has_operation());
 }
 
@@ -1020,6 +1023,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::PowerShelfs::P
     if (engineer_use.is_set || is_set(engineer_use.yfilter)) leaf_name_data.push_back(engineer_use.get_name_leafdata());
     if (snmpoid.is_set || is_set(snmpoid.yfilter)) leaf_name_data.push_back(snmpoid.get_name_leafdata());
     if (rma_code.is_set || is_set(rma_code.yfilter)) leaf_name_data.push_back(rma_code.get_name_leafdata());
+    if (eci_alpha_number.is_set || is_set(eci_alpha_number.yfilter)) leaf_name_data.push_back(eci_alpha_number.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1389,6 +1393,12 @@ void Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Inf
         rma_code.value_namespace = name_space;
         rma_code.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "eci-alpha-number")
+    {
+        eci_alpha_number = value;
+        eci_alpha_number.value_namespace = name_space;
+        eci_alpha_number.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1617,11 +1627,15 @@ void Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Inf
     {
         rma_code.yfilter = yfilter;
     }
+    if(value_path == "eci-alpha-number")
+    {
+        eci_alpha_number.yfilter = yfilter;
+    }
 }
 
 bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rma" || name == "description" || name == "idprom-format-rev" || name == "controller-family" || name == "controller-type" || name == "vid" || name == "hwid" || name == "pid" || name == "udi-description" || name == "udi-name" || name == "clei" || name == "eci" || name == "top-assem-part-num" || name == "top-assem-vid" || name == "pca-num" || name == "pcavid" || name == "chassis-sid" || name == "dev-num1" || name == "dev-num2" || name == "dev-num3" || name == "dev-num4" || name == "dev-num5" || name == "dev-num6" || name == "dev-num7" || name == "manu-test-data" || name == "asset-id" || name == "asset-alias" || name == "base-mac-address1" || name == "mac-add-blk-size1" || name == "base-mac-address2" || name == "mac-add-blk-size2" || name == "base-mac-address3" || name == "mac-add-blk-size3" || name == "base-mac-address4" || name == "mac-add-blk-size4" || name == "pcb-serial-num" || name == "power-supply-type" || name == "power-consumption" || name == "block-signature" || name == "block-version" || name == "block-length" || name == "block-checksum" || name == "eeprom-size" || name == "block-count" || name == "fru-major-type" || name == "fru-minor-type" || name == "oem-string" || name == "product-id" || name == "serial-number" || name == "part-number" || name == "part-revision" || name == "mfg-deviation" || name == "hw-version" || name == "mfg-bits" || name == "engineer-use" || name == "snmpoid" || name == "rma-code")
+    if(name == "rma" || name == "description" || name == "idprom-format-rev" || name == "controller-family" || name == "controller-type" || name == "vid" || name == "hwid" || name == "pid" || name == "udi-description" || name == "udi-name" || name == "clei" || name == "eci" || name == "top-assem-part-num" || name == "top-assem-vid" || name == "pca-num" || name == "pcavid" || name == "chassis-sid" || name == "dev-num1" || name == "dev-num2" || name == "dev-num3" || name == "dev-num4" || name == "dev-num5" || name == "dev-num6" || name == "dev-num7" || name == "manu-test-data" || name == "asset-id" || name == "asset-alias" || name == "base-mac-address1" || name == "mac-add-blk-size1" || name == "base-mac-address2" || name == "mac-add-blk-size2" || name == "base-mac-address3" || name == "mac-add-blk-size3" || name == "base-mac-address4" || name == "mac-add-blk-size4" || name == "pcb-serial-num" || name == "power-supply-type" || name == "power-consumption" || name == "block-signature" || name == "block-version" || name == "block-length" || name == "block-checksum" || name == "eeprom-size" || name == "block-count" || name == "fru-major-type" || name == "fru-minor-type" || name == "oem-string" || name == "product-id" || name == "serial-number" || name == "part-number" || name == "part-revision" || name == "mfg-deviation" || name == "hw-version" || name == "mfg-bits" || name == "engineer-use" || name == "snmpoid" || name == "rma-code" || name == "eci-alpha-number")
         return true;
     return false;
 }
@@ -1732,19 +1746,19 @@ bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Inf
     return false;
 }
 
-Diag::Racks::Rack::FanTraies::FanTraies()
+Diag::Racks::Rack::FanTrays::FanTrays()
     :
     fan_tray(this, {"fan_tray_name"})
 {
 
-    yang_name = "fan-traies"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "fan-trays"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Diag::Racks::Rack::FanTraies::~FanTraies()
+Diag::Racks::Rack::FanTrays::~FanTrays()
 {
 }
 
-bool Diag::Racks::Rack::FanTraies::has_data() const
+bool Diag::Racks::Rack::FanTrays::has_data() const
 {
     if (is_presence_container) return true;
     for (std::size_t index=0; index<fan_tray.len(); index++)
@@ -1755,7 +1769,7 @@ bool Diag::Racks::Rack::FanTraies::has_data() const
     return false;
 }
 
-bool Diag::Racks::Rack::FanTraies::has_operation() const
+bool Diag::Racks::Rack::FanTrays::has_operation() const
 {
     for (std::size_t index=0; index<fan_tray.len(); index++)
     {
@@ -1765,14 +1779,14 @@ bool Diag::Racks::Rack::FanTraies::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Diag::Racks::Rack::FanTraies::get_segment_path() const
+std::string Diag::Racks::Rack::FanTrays::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fan-traies";
+    path_buffer << "fan-trays";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTraies::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTrays::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1781,11 +1795,11 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTraies::get
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Diag::Racks::Rack::FanTrays::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fan-tray")
     {
-        auto c = std::make_shared<Diag::Racks::Rack::FanTraies::FanTray>();
+        auto c = std::make_shared<Diag::Racks::Rack::FanTrays::FanTray>();
         c->parent = this;
         fan_tray.append(c);
         return c;
@@ -1794,7 +1808,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTrays::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1810,51 +1824,51 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::get
     return children;
 }
 
-void Diag::Racks::Rack::FanTraies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Diag::Racks::Rack::FanTrays::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Diag::Racks::Rack::FanTraies::set_filter(const std::string & value_path, YFilter yfilter)
+void Diag::Racks::Rack::FanTrays::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Diag::Racks::Rack::FanTraies::has_leaf_or_child_of_name(const std::string & name) const
+bool Diag::Racks::Rack::FanTrays::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "fan-tray")
         return true;
     return false;
 }
 
-Diag::Racks::Rack::FanTraies::FanTray::FanTray()
+Diag::Racks::Rack::FanTrays::FanTray::FanTray()
     :
     fan_tray_name{YType::str, "fan-tray-name"}
         ,
-    fanses(std::make_shared<Diag::Racks::Rack::FanTraies::FanTray::Fanses>())
+    fanses(std::make_shared<Diag::Racks::Rack::FanTrays::FanTray::Fanses>())
 {
     fanses->parent = this;
 
-    yang_name = "fan-tray"; yang_parent_name = "fan-traies"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "fan-tray"; yang_parent_name = "fan-trays"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Diag::Racks::Rack::FanTraies::FanTray::~FanTray()
+Diag::Racks::Rack::FanTrays::FanTray::~FanTray()
 {
 }
 
-bool Diag::Racks::Rack::FanTraies::FanTray::has_data() const
+bool Diag::Racks::Rack::FanTrays::FanTray::has_data() const
 {
     if (is_presence_container) return true;
     return fan_tray_name.is_set
 	|| (fanses !=  nullptr && fanses->has_data());
 }
 
-bool Diag::Racks::Rack::FanTraies::FanTray::has_operation() const
+bool Diag::Racks::Rack::FanTrays::FanTray::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(fan_tray_name.yfilter)
 	|| (fanses !=  nullptr && fanses->has_operation());
 }
 
-std::string Diag::Racks::Rack::FanTraies::FanTray::get_segment_path() const
+std::string Diag::Racks::Rack::FanTrays::FanTray::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fan-tray";
@@ -1862,7 +1876,7 @@ std::string Diag::Racks::Rack::FanTraies::FanTray::get_segment_path() const
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTraies::FanTray::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTrays::FanTray::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1872,13 +1886,13 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTraies::Fan
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::FanTray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Diag::Racks::Rack::FanTrays::FanTray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fanses")
     {
         if(fanses == nullptr)
         {
-            fanses = std::make_shared<Diag::Racks::Rack::FanTraies::FanTray::Fanses>();
+            fanses = std::make_shared<Diag::Racks::Rack::FanTrays::FanTray::Fanses>();
         }
         return fanses;
     }
@@ -1886,7 +1900,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::FanTray::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::FanTray::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTrays::FanTray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1898,7 +1912,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::Fan
     return children;
 }
 
-void Diag::Racks::Rack::FanTraies::FanTray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Diag::Racks::Rack::FanTrays::FanTray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fan-tray-name")
     {
@@ -1908,7 +1922,7 @@ void Diag::Racks::Rack::FanTraies::FanTray::set_value(const std::string & value_
     }
 }
 
-void Diag::Racks::Rack::FanTraies::FanTray::set_filter(const std::string & value_path, YFilter yfilter)
+void Diag::Racks::Rack::FanTrays::FanTray::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "fan-tray-name")
     {
@@ -1916,14 +1930,14 @@ void Diag::Racks::Rack::FanTraies::FanTray::set_filter(const std::string & value
     }
 }
 
-bool Diag::Racks::Rack::FanTraies::FanTray::has_leaf_or_child_of_name(const std::string & name) const
+bool Diag::Racks::Rack::FanTrays::FanTray::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "fanses" || name == "fan-tray-name")
         return true;
     return false;
 }
 
-Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fanses()
+Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fanses()
     :
     fans(this, {"fans_name"})
 {
@@ -1931,11 +1945,11 @@ Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fanses()
     yang_name = "fanses"; yang_parent_name = "fan-tray"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Diag::Racks::Rack::FanTraies::FanTray::Fanses::~Fanses()
+Diag::Racks::Rack::FanTrays::FanTray::Fanses::~Fanses()
 {
 }
 
-bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::has_data() const
+bool Diag::Racks::Rack::FanTrays::FanTray::Fanses::has_data() const
 {
     if (is_presence_container) return true;
     for (std::size_t index=0; index<fans.len(); index++)
@@ -1946,7 +1960,7 @@ bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::has_data() const
     return false;
 }
 
-bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::has_operation() const
+bool Diag::Racks::Rack::FanTrays::FanTray::Fanses::has_operation() const
 {
     for (std::size_t index=0; index<fans.len(); index++)
     {
@@ -1956,14 +1970,14 @@ bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Diag::Racks::Rack::FanTraies::FanTray::Fanses::get_segment_path() const
+std::string Diag::Racks::Rack::FanTrays::FanTray::Fanses::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fanses";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTraies::FanTray::Fanses::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTrays::FanTray::Fanses::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1972,11 +1986,11 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTraies::Fan
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::FanTray::Fanses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Diag::Racks::Rack::FanTrays::FanTray::Fanses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fans")
     {
-        auto c = std::make_shared<Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans>();
+        auto c = std::make_shared<Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans>();
         c->parent = this;
         fans.append(c);
         return c;
@@ -1985,7 +1999,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::FanTray::Fanses::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::FanTray::Fanses::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTrays::FanTray::Fanses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2001,51 +2015,51 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::Fan
     return children;
 }
 
-void Diag::Racks::Rack::FanTraies::FanTray::Fanses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Diag::Racks::Rack::FanTrays::FanTray::Fanses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Diag::Racks::Rack::FanTraies::FanTray::Fanses::set_filter(const std::string & value_path, YFilter yfilter)
+void Diag::Racks::Rack::FanTrays::FanTray::Fanses::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::has_leaf_or_child_of_name(const std::string & name) const
+bool Diag::Racks::Rack::FanTrays::FanTray::Fanses::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "fans")
         return true;
     return false;
 }
 
-Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Fans()
+Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Fans()
     :
     fans_name{YType::str, "fans-name"}
         ,
-    information(std::make_shared<Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information>())
+    information(std::make_shared<Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information>())
 {
     information->parent = this;
 
     yang_name = "fans"; yang_parent_name = "fanses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::~Fans()
+Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::~Fans()
 {
 }
 
-bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::has_data() const
+bool Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::has_data() const
 {
     if (is_presence_container) return true;
     return fans_name.is_set
 	|| (information !=  nullptr && information->has_data());
 }
 
-bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::has_operation() const
+bool Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(fans_name.yfilter)
 	|| (information !=  nullptr && information->has_operation());
 }
 
-std::string Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::get_segment_path() const
+std::string Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fans";
@@ -2053,7 +2067,7 @@ std::string Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::get_segment_pat
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2063,13 +2077,13 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTraies::Fan
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "information")
     {
         if(information == nullptr)
         {
-            information = std::make_shared<Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information>();
+            information = std::make_shared<Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information>();
         }
         return information;
     }
@@ -2077,7 +2091,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2089,7 +2103,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::Fan
     return children;
 }
 
-void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fans-name")
     {
@@ -2099,7 +2113,7 @@ void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::set_value(const std::s
     }
 }
 
-void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::set_filter(const std::string & value_path, YFilter yfilter)
+void Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "fans-name")
     {
@@ -2107,14 +2121,14 @@ void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::set_filter(const std::
     }
 }
 
-bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::has_leaf_or_child_of_name(const std::string & name) const
+bool Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "information" || name == "fans-name")
         return true;
     return false;
 }
 
-Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Information()
+Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Information()
     :
     description{YType::str, "description"},
     idprom_format_rev{YType::str, "idprom-format-rev"},
@@ -2171,20 +2185,21 @@ Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Information()
     mfg_bits{YType::str, "mfg-bits"},
     engineer_use{YType::str, "engineer-use"},
     snmpoid{YType::str, "snmpoid"},
-    rma_code{YType::str, "rma-code"}
+    rma_code{YType::str, "rma-code"},
+    eci_alpha_number{YType::str, "eci-alpha-number"}
         ,
-    rma(std::make_shared<Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma>())
+    rma(std::make_shared<Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma>())
 {
     rma->parent = this;
 
     yang_name = "information"; yang_parent_name = "fans"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::~Information()
+Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::~Information()
 {
 }
 
-bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::has_data() const
+bool Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::has_data() const
 {
     if (is_presence_container) return true;
     return description.is_set
@@ -2243,10 +2258,11 @@ bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::has_data(
 	|| engineer_use.is_set
 	|| snmpoid.is_set
 	|| rma_code.is_set
+	|| eci_alpha_number.is_set
 	|| (rma !=  nullptr && rma->has_data());
 }
 
-bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::has_operation() const
+bool Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(description.yfilter)
@@ -2305,17 +2321,18 @@ bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::has_opera
 	|| ydk::is_set(engineer_use.yfilter)
 	|| ydk::is_set(snmpoid.yfilter)
 	|| ydk::is_set(rma_code.yfilter)
+	|| ydk::is_set(eci_alpha_number.yfilter)
 	|| (rma !=  nullptr && rma->has_operation());
 }
 
-std::string Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::get_segment_path() const
+std::string Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "information";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2375,18 +2392,19 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTraies::Fan
     if (engineer_use.is_set || is_set(engineer_use.yfilter)) leaf_name_data.push_back(engineer_use.get_name_leafdata());
     if (snmpoid.is_set || is_set(snmpoid.yfilter)) leaf_name_data.push_back(snmpoid.get_name_leafdata());
     if (rma_code.is_set || is_set(rma_code.yfilter)) leaf_name_data.push_back(rma_code.get_name_leafdata());
+    if (eci_alpha_number.is_set || is_set(eci_alpha_number.yfilter)) leaf_name_data.push_back(eci_alpha_number.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rma")
     {
         if(rma == nullptr)
         {
-            rma = std::make_shared<Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma>();
+            rma = std::make_shared<Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma>();
         }
         return rma;
     }
@@ -2394,7 +2412,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Inf
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2406,7 +2424,7 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::Fan
     return children;
 }
 
-void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
@@ -2744,9 +2762,15 @@ void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::set_value
         rma_code.value_namespace = name_space;
         rma_code.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "eci-alpha-number")
+    {
+        eci_alpha_number = value;
+        eci_alpha_number.value_namespace = name_space;
+        eci_alpha_number.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::set_filter(const std::string & value_path, YFilter yfilter)
+void Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "description")
     {
@@ -2972,16 +2996,20 @@ void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::set_filte
     {
         rma_code.yfilter = yfilter;
     }
+    if(value_path == "eci-alpha-number")
+    {
+        eci_alpha_number.yfilter = yfilter;
+    }
 }
 
-bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::has_leaf_or_child_of_name(const std::string & name) const
+bool Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rma" || name == "description" || name == "idprom-format-rev" || name == "controller-family" || name == "controller-type" || name == "vid" || name == "hwid" || name == "pid" || name == "udi-description" || name == "udi-name" || name == "clei" || name == "eci" || name == "top-assem-part-num" || name == "top-assem-vid" || name == "pca-num" || name == "pcavid" || name == "chassis-sid" || name == "dev-num1" || name == "dev-num2" || name == "dev-num3" || name == "dev-num4" || name == "dev-num5" || name == "dev-num6" || name == "dev-num7" || name == "manu-test-data" || name == "asset-id" || name == "asset-alias" || name == "base-mac-address1" || name == "mac-add-blk-size1" || name == "base-mac-address2" || name == "mac-add-blk-size2" || name == "base-mac-address3" || name == "mac-add-blk-size3" || name == "base-mac-address4" || name == "mac-add-blk-size4" || name == "pcb-serial-num" || name == "power-supply-type" || name == "power-consumption" || name == "block-signature" || name == "block-version" || name == "block-length" || name == "block-checksum" || name == "eeprom-size" || name == "block-count" || name == "fru-major-type" || name == "fru-minor-type" || name == "oem-string" || name == "product-id" || name == "serial-number" || name == "part-number" || name == "part-revision" || name == "mfg-deviation" || name == "hw-version" || name == "mfg-bits" || name == "engineer-use" || name == "snmpoid" || name == "rma-code")
+    if(name == "rma" || name == "description" || name == "idprom-format-rev" || name == "controller-family" || name == "controller-type" || name == "vid" || name == "hwid" || name == "pid" || name == "udi-description" || name == "udi-name" || name == "clei" || name == "eci" || name == "top-assem-part-num" || name == "top-assem-vid" || name == "pca-num" || name == "pcavid" || name == "chassis-sid" || name == "dev-num1" || name == "dev-num2" || name == "dev-num3" || name == "dev-num4" || name == "dev-num5" || name == "dev-num6" || name == "dev-num7" || name == "manu-test-data" || name == "asset-id" || name == "asset-alias" || name == "base-mac-address1" || name == "mac-add-blk-size1" || name == "base-mac-address2" || name == "mac-add-blk-size2" || name == "base-mac-address3" || name == "mac-add-blk-size3" || name == "base-mac-address4" || name == "mac-add-blk-size4" || name == "pcb-serial-num" || name == "power-supply-type" || name == "power-consumption" || name == "block-signature" || name == "block-version" || name == "block-length" || name == "block-checksum" || name == "eeprom-size" || name == "block-count" || name == "fru-major-type" || name == "fru-minor-type" || name == "oem-string" || name == "product-id" || name == "serial-number" || name == "part-number" || name == "part-revision" || name == "mfg-deviation" || name == "hw-version" || name == "mfg-bits" || name == "engineer-use" || name == "snmpoid" || name == "rma-code" || name == "eci-alpha-number")
         return true;
     return false;
 }
 
-Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::Rma()
+Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma::Rma()
     :
     test_history{YType::str, "test-history"},
     rma_number{YType::str, "rma-number"},
@@ -2991,11 +3019,11 @@ Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::Rma()
     yang_name = "rma"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::~Rma()
+Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma::~Rma()
 {
 }
 
-bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::has_data() const
+bool Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma::has_data() const
 {
     if (is_presence_container) return true;
     return test_history.is_set
@@ -3003,7 +3031,7 @@ bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::has_
 	|| rma_history.is_set;
 }
 
-bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::has_operation() const
+bool Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(test_history.yfilter)
@@ -3011,14 +3039,14 @@ bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::has_
 	|| ydk::is_set(rma_history.yfilter);
 }
 
-std::string Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::get_segment_path() const
+std::string Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rma";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3030,19 +3058,19 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTraies::Fan
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "test-history")
     {
@@ -3064,7 +3092,7 @@ void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::set_
     }
 }
 
-void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::set_filter(const std::string & value_path, YFilter yfilter)
+void Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "test-history")
     {
@@ -3080,7 +3108,7 @@ void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::set_
     }
 }
 
-bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::has_leaf_or_child_of_name(const std::string & name) const
+bool Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "test-history" || name == "rma-number" || name == "rma-history")
         return true;
@@ -3623,7 +3651,8 @@ Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::CardI
     mfg_bits{YType::str, "mfg-bits"},
     engineer_use{YType::str, "engineer-use"},
     snmpoid{YType::str, "snmpoid"},
-    rma_code{YType::str, "rma-code"}
+    rma_code{YType::str, "rma-code"},
+    eci_alpha_number{YType::str, "eci-alpha-number"}
         ,
     rma(std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma>())
 {
@@ -3695,6 +3724,7 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::
 	|| engineer_use.is_set
 	|| snmpoid.is_set
 	|| rma_code.is_set
+	|| eci_alpha_number.is_set
 	|| (rma !=  nullptr && rma->has_data());
 }
 
@@ -3757,6 +3787,7 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::
 	|| ydk::is_set(engineer_use.yfilter)
 	|| ydk::is_set(snmpoid.yfilter)
 	|| ydk::is_set(rma_code.yfilter)
+	|| ydk::is_set(eci_alpha_number.yfilter)
 	|| (rma !=  nullptr && rma->has_operation());
 }
 
@@ -3827,6 +3858,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::I
     if (engineer_use.is_set || is_set(engineer_use.yfilter)) leaf_name_data.push_back(engineer_use.get_name_leafdata());
     if (snmpoid.is_set || is_set(snmpoid.yfilter)) leaf_name_data.push_back(snmpoid.get_name_leafdata());
     if (rma_code.is_set || is_set(rma_code.yfilter)) leaf_name_data.push_back(rma_code.get_name_leafdata());
+    if (eci_alpha_number.is_set || is_set(eci_alpha_number.yfilter)) leaf_name_data.push_back(eci_alpha_number.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4196,6 +4228,12 @@ void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::
         rma_code.value_namespace = name_space;
         rma_code.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "eci-alpha-number")
+    {
+        eci_alpha_number = value;
+        eci_alpha_number.value_namespace = name_space;
+        eci_alpha_number.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::set_filter(const std::string & value_path, YFilter yfilter)
@@ -4424,11 +4462,15 @@ void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::
     {
         rma_code.yfilter = yfilter;
     }
+    if(value_path == "eci-alpha-number")
+    {
+        eci_alpha_number.yfilter = yfilter;
+    }
 }
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rma" || name == "description" || name == "idprom-format-rev" || name == "controller-family" || name == "controller-type" || name == "vid" || name == "hwid" || name == "pid" || name == "udi-description" || name == "udi-name" || name == "clei" || name == "eci" || name == "top-assem-part-num" || name == "top-assem-vid" || name == "pca-num" || name == "pcavid" || name == "chassis-sid" || name == "dev-num1" || name == "dev-num2" || name == "dev-num3" || name == "dev-num4" || name == "dev-num5" || name == "dev-num6" || name == "dev-num7" || name == "manu-test-data" || name == "asset-id" || name == "asset-alias" || name == "base-mac-address1" || name == "mac-add-blk-size1" || name == "base-mac-address2" || name == "mac-add-blk-size2" || name == "base-mac-address3" || name == "mac-add-blk-size3" || name == "base-mac-address4" || name == "mac-add-blk-size4" || name == "pcb-serial-num" || name == "power-supply-type" || name == "power-consumption" || name == "block-signature" || name == "block-version" || name == "block-length" || name == "block-checksum" || name == "eeprom-size" || name == "block-count" || name == "fru-major-type" || name == "fru-minor-type" || name == "oem-string" || name == "product-id" || name == "serial-number" || name == "part-number" || name == "part-revision" || name == "mfg-deviation" || name == "hw-version" || name == "mfg-bits" || name == "engineer-use" || name == "snmpoid" || name == "rma-code")
+    if(name == "rma" || name == "description" || name == "idprom-format-rev" || name == "controller-family" || name == "controller-type" || name == "vid" || name == "hwid" || name == "pid" || name == "udi-description" || name == "udi-name" || name == "clei" || name == "eci" || name == "top-assem-part-num" || name == "top-assem-vid" || name == "pca-num" || name == "pcavid" || name == "chassis-sid" || name == "dev-num1" || name == "dev-num2" || name == "dev-num3" || name == "dev-num4" || name == "dev-num5" || name == "dev-num6" || name == "dev-num7" || name == "manu-test-data" || name == "asset-id" || name == "asset-alias" || name == "base-mac-address1" || name == "mac-add-blk-size1" || name == "base-mac-address2" || name == "mac-add-blk-size2" || name == "base-mac-address3" || name == "mac-add-blk-size3" || name == "base-mac-address4" || name == "mac-add-blk-size4" || name == "pcb-serial-num" || name == "power-supply-type" || name == "power-consumption" || name == "block-signature" || name == "block-version" || name == "block-length" || name == "block-checksum" || name == "eeprom-size" || name == "block-count" || name == "fru-major-type" || name == "fru-minor-type" || name == "oem-string" || name == "product-id" || name == "serial-number" || name == "part-number" || name == "part-revision" || name == "mfg-deviation" || name == "hw-version" || name == "mfg-bits" || name == "engineer-use" || name == "snmpoid" || name == "rma-code" || name == "eci-alpha-number")
         return true;
     return false;
 }
@@ -4596,7 +4638,8 @@ Diag::Racks::Rack::Chassis::Chassis()
     mfg_bits{YType::str, "mfg-bits"},
     engineer_use{YType::str, "engineer-use"},
     snmpoid{YType::str, "snmpoid"},
-    rma_code{YType::str, "rma-code"}
+    rma_code{YType::str, "rma-code"},
+    eci_alpha_number{YType::str, "eci-alpha-number"}
         ,
     rma(std::make_shared<Diag::Racks::Rack::Chassis::Rma>())
 {
@@ -4668,6 +4711,7 @@ bool Diag::Racks::Rack::Chassis::has_data() const
 	|| engineer_use.is_set
 	|| snmpoid.is_set
 	|| rma_code.is_set
+	|| eci_alpha_number.is_set
 	|| (rma !=  nullptr && rma->has_data());
 }
 
@@ -4730,6 +4774,7 @@ bool Diag::Racks::Rack::Chassis::has_operation() const
 	|| ydk::is_set(engineer_use.yfilter)
 	|| ydk::is_set(snmpoid.yfilter)
 	|| ydk::is_set(rma_code.yfilter)
+	|| ydk::is_set(eci_alpha_number.yfilter)
 	|| (rma !=  nullptr && rma->has_operation());
 }
 
@@ -4800,6 +4845,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Chassis::get_n
     if (engineer_use.is_set || is_set(engineer_use.yfilter)) leaf_name_data.push_back(engineer_use.get_name_leafdata());
     if (snmpoid.is_set || is_set(snmpoid.yfilter)) leaf_name_data.push_back(snmpoid.get_name_leafdata());
     if (rma_code.is_set || is_set(rma_code.yfilter)) leaf_name_data.push_back(rma_code.get_name_leafdata());
+    if (eci_alpha_number.is_set || is_set(eci_alpha_number.yfilter)) leaf_name_data.push_back(eci_alpha_number.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -5169,6 +5215,12 @@ void Diag::Racks::Rack::Chassis::set_value(const std::string & value_path, const
         rma_code.value_namespace = name_space;
         rma_code.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "eci-alpha-number")
+    {
+        eci_alpha_number = value;
+        eci_alpha_number.value_namespace = name_space;
+        eci_alpha_number.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Diag::Racks::Rack::Chassis::set_filter(const std::string & value_path, YFilter yfilter)
@@ -5397,11 +5449,15 @@ void Diag::Racks::Rack::Chassis::set_filter(const std::string & value_path, YFil
     {
         rma_code.yfilter = yfilter;
     }
+    if(value_path == "eci-alpha-number")
+    {
+        eci_alpha_number.yfilter = yfilter;
+    }
 }
 
 bool Diag::Racks::Rack::Chassis::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rma" || name == "description" || name == "idprom-format-rev" || name == "controller-family" || name == "controller-type" || name == "vid" || name == "hwid" || name == "pid" || name == "udi-description" || name == "udi-name" || name == "clei" || name == "eci" || name == "top-assem-part-num" || name == "top-assem-vid" || name == "pca-num" || name == "pcavid" || name == "chassis-sid" || name == "dev-num1" || name == "dev-num2" || name == "dev-num3" || name == "dev-num4" || name == "dev-num5" || name == "dev-num6" || name == "dev-num7" || name == "manu-test-data" || name == "asset-id" || name == "asset-alias" || name == "base-mac-address1" || name == "mac-add-blk-size1" || name == "base-mac-address2" || name == "mac-add-blk-size2" || name == "base-mac-address3" || name == "mac-add-blk-size3" || name == "base-mac-address4" || name == "mac-add-blk-size4" || name == "pcb-serial-num" || name == "power-supply-type" || name == "power-consumption" || name == "block-signature" || name == "block-version" || name == "block-length" || name == "block-checksum" || name == "eeprom-size" || name == "block-count" || name == "fru-major-type" || name == "fru-minor-type" || name == "oem-string" || name == "product-id" || name == "serial-number" || name == "part-number" || name == "part-revision" || name == "mfg-deviation" || name == "hw-version" || name == "mfg-bits" || name == "engineer-use" || name == "snmpoid" || name == "rma-code")
+    if(name == "rma" || name == "description" || name == "idprom-format-rev" || name == "controller-family" || name == "controller-type" || name == "vid" || name == "hwid" || name == "pid" || name == "udi-description" || name == "udi-name" || name == "clei" || name == "eci" || name == "top-assem-part-num" || name == "top-assem-vid" || name == "pca-num" || name == "pcavid" || name == "chassis-sid" || name == "dev-num1" || name == "dev-num2" || name == "dev-num3" || name == "dev-num4" || name == "dev-num5" || name == "dev-num6" || name == "dev-num7" || name == "manu-test-data" || name == "asset-id" || name == "asset-alias" || name == "base-mac-address1" || name == "mac-add-blk-size1" || name == "base-mac-address2" || name == "mac-add-blk-size2" || name == "base-mac-address3" || name == "mac-add-blk-size3" || name == "base-mac-address4" || name == "mac-add-blk-size4" || name == "pcb-serial-num" || name == "power-supply-type" || name == "power-consumption" || name == "block-signature" || name == "block-version" || name == "block-length" || name == "block-checksum" || name == "eeprom-size" || name == "block-count" || name == "fru-major-type" || name == "fru-minor-type" || name == "oem-string" || name == "product-id" || name == "serial-number" || name == "part-number" || name == "part-revision" || name == "mfg-deviation" || name == "hw-version" || name == "mfg-bits" || name == "engineer-use" || name == "snmpoid" || name == "rma-code" || name == "eci-alpha-number")
         return true;
     return false;
 }

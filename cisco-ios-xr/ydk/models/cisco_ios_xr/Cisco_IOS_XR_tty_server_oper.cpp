@@ -1645,7 +1645,7 @@ Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfigurat
     select{YType::enumeration, "select"},
     protocol1{YType::enumeration, "protocol1"},
     protocol2{YType::enumeration, "protocol2"},
-    none{YType::int32, "none"}
+    none{YType::uint32, "none"}
 {
 
     yang_name = "transport-input"; yang_parent_name = "connection-configuration"; is_top_level_class = false; has_list_ancestor = true; 
@@ -1862,7 +1862,7 @@ bool Tty::VtyLines::has_leaf_or_child_of_name(const std::string & name) const
 
 Tty::VtyLines::VtyLine::VtyLine()
     :
-    line_number{YType::int32, "line-number"}
+    line_number{YType::uint32, "line-number"}
         ,
     vty_statistics(std::make_shared<Tty::VtyLines::VtyLine::VtyStatistics>())
     , state(std::make_shared<Tty::VtyLines::VtyLine::State>())
@@ -3103,7 +3103,7 @@ Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportInput::
     select{YType::enumeration, "select"},
     protocol1{YType::enumeration, "protocol1"},
     protocol2{YType::enumeration, "protocol2"},
-    none{YType::int32, "none"}
+    none{YType::uint32, "none"}
 {
 
     yang_name = "transport-input"; yang_parent_name = "connection-configuration"; is_top_level_class = false; has_list_ancestor = true; 
@@ -5061,7 +5061,7 @@ Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConf
     select{YType::enumeration, "select"},
     protocol1{YType::enumeration, "protocol1"},
     protocol2{YType::enumeration, "protocol2"},
-    none{YType::int32, "none"}
+    none{YType::uint32, "none"}
 {
 
     yang_name = "transport-input"; yang_parent_name = "connection-configuration"; is_top_level_class = false; has_list_ancestor = true; 

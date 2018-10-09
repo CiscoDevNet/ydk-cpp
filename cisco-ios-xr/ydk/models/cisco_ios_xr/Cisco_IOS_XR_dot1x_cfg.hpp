@@ -103,6 +103,7 @@ class Dot1x::Dot1xProfile::Authenticator : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf eap_profile; //type: string
         class Timers; //type: Dot1x::Dot1xProfile::Authenticator::Timers
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_cfg::Dot1x::Dot1xProfile::Authenticator::Timers> timers;

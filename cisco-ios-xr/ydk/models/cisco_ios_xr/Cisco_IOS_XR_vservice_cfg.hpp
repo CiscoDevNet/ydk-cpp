@@ -139,7 +139,7 @@ class Vservice::ServiceFunctionLocator::Names::Name::Node : public ydk::Entity
         ydk::YLeaf transport; //type: SfcSfTransport
         ydk::YLeaf ipv4_source_address; //type: string
         ydk::YLeaf ipv4_destination_address; //type: string
-        ydk::YLeaf vni; //type: int32
+        ydk::YLeaf vni; //type: uint32
 
 }; // Vservice::ServiceFunctionLocator::Names::Name::Node
 
@@ -238,7 +238,7 @@ class Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node : pu
         ydk::YLeaf action_type; //type: SfcMetadataDispositionAction
         ydk::YLeaf vrf; //type: string
         ydk::YLeaf nexthop_ipv4_address; //type: string
-        ydk::YLeafList tenant_id; //type: list of  int32
+        ydk::YLeafList tenant_id; //type: list of  uint32
 
 }; // Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node
 
@@ -336,7 +336,7 @@ class Vservice::ServiceFunctionForwardLocator::Names::Name::Node : public ydk::E
         ydk::YLeaf transport; //type: SfcSfTransport
         ydk::YLeaf ipv4_source_address; //type: string
         ydk::YLeaf ipv4_destination_address; //type: string
-        ydk::YLeaf vni; //type: int32
+        ydk::YLeaf vni; //type: uint32
 
 }; // Vservice::ServiceFunctionForwardLocator::Names::Name::Node
 

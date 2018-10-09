@@ -113,10 +113,12 @@ class Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic : public ydk::E
         class Idb; //type: Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb
         class Auth; //type: Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth
         class Supp; //type: Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp
+        class LocalEap; //type: Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_oper::Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb> idb;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_oper::Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth> auth;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_oper::Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp> supp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_oper::Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap> local_eap;
         
 }; // Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic
 
@@ -171,8 +173,38 @@ class Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth : public 
         ydk::YLeaf tx_req; //type: uint32
         ydk::YLeaf tx_reqid; //type: uint32
         ydk::YLeaf tx_total; //type: uint32
+        ydk::YLeaf packet_drop_no_config_received; //type: uint32
+        class PortControl; //type: Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_oper::Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl> port_control;
+        
 }; // Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth
+
+
+class Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl : public ydk::Entity
+{
+    public:
+        PortControl();
+        ~PortControl();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enable_succ; //type: uint32
+        ydk::YLeaf enable_fail; //type: uint32
+        ydk::YLeaf add_client_succ; //type: uint32
+        ydk::YLeaf add_client_fail; //type: uint32
+        ydk::YLeaf remove_client_succ; //type: uint32
+        ydk::YLeaf remove_client_fail; //type: uint32
+
+}; // Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl
 
 
 class Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp : public ydk::Entity
@@ -202,6 +234,33 @@ class Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp : public 
         ydk::YLeaf tx_total; //type: uint32
 
 }; // Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp
+
+
+class Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap : public ydk::Entity
+{
+    public:
+        LocalEap();
+        ~LocalEap();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf requests; //type: uint32
+        ydk::YLeaf replies; //type: uint32
+        ydk::YLeaf timeout; //type: uint32
+        ydk::YLeaf dropped_no_eap; //type: uint32
+        ydk::YLeaf dropped; //type: uint32
+        ydk::YLeaf success; //type: uint32
+        ydk::YLeaf failed; //type: uint32
+
+}; // Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap
 
 
 class Dot1x::Nodes : public ydk::Entity
@@ -375,8 +434,40 @@ class Dot1x::Nodes::Node::Statistics::GlStats : public ydk::Entity
         ydk::YLeaf tx_total; //type: uint32
         ydk::YLeaf rx_total; //type: uint32
         ydk::YLeaf rx_no_idb; //type: uint32
+        ydk::YLeaf packet_drop_no_config_received; //type: uint32
+        class PortControl; //type: Dot1x::Nodes::Node::Statistics::GlStats::PortControl
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_oper::Dot1x::Nodes::Node::Statistics::GlStats::PortControl> port_control;
+        
 }; // Dot1x::Nodes::Node::Statistics::GlStats
+
+
+class Dot1x::Nodes::Node::Statistics::GlStats::PortControl : public ydk::Entity
+{
+    public:
+        PortControl();
+        ~PortControl();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enable_succ; //type: uint32
+        ydk::YLeaf enable_fail; //type: uint32
+        ydk::YLeaf disable_succ; //type: uint32
+        ydk::YLeaf disable_fail; //type: uint32
+        ydk::YLeaf add_client_succ; //type: uint32
+        ydk::YLeaf add_client_fail; //type: uint32
+        ydk::YLeaf remove_client_succ; //type: uint32
+        ydk::YLeaf remove_client_fail; //type: uint32
+
+}; // Dot1x::Nodes::Node::Statistics::GlStats::PortControl
 
 
 class Dot1x::Nodes::Node::Statistics::IfStats : public ydk::Entity
@@ -400,10 +491,12 @@ class Dot1x::Nodes::Node::Statistics::IfStats : public ydk::Entity
         class Idb; //type: Dot1x::Nodes::Node::Statistics::IfStats::Idb
         class Auth; //type: Dot1x::Nodes::Node::Statistics::IfStats::Auth
         class Supp; //type: Dot1x::Nodes::Node::Statistics::IfStats::Supp
+        class LocalEap; //type: Dot1x::Nodes::Node::Statistics::IfStats::LocalEap
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_oper::Dot1x::Nodes::Node::Statistics::IfStats::Idb> idb;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_oper::Dot1x::Nodes::Node::Statistics::IfStats::Auth> auth;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_oper::Dot1x::Nodes::Node::Statistics::IfStats::Supp> supp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_oper::Dot1x::Nodes::Node::Statistics::IfStats::LocalEap> local_eap;
         
 }; // Dot1x::Nodes::Node::Statistics::IfStats
 
@@ -458,8 +551,38 @@ class Dot1x::Nodes::Node::Statistics::IfStats::Auth : public ydk::Entity
         ydk::YLeaf tx_req; //type: uint32
         ydk::YLeaf tx_reqid; //type: uint32
         ydk::YLeaf tx_total; //type: uint32
+        ydk::YLeaf packet_drop_no_config_received; //type: uint32
+        class PortControl; //type: Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_oper::Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl> port_control;
+        
 }; // Dot1x::Nodes::Node::Statistics::IfStats::Auth
+
+
+class Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl : public ydk::Entity
+{
+    public:
+        PortControl();
+        ~PortControl();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enable_succ; //type: uint32
+        ydk::YLeaf enable_fail; //type: uint32
+        ydk::YLeaf add_client_succ; //type: uint32
+        ydk::YLeaf add_client_fail; //type: uint32
+        ydk::YLeaf remove_client_succ; //type: uint32
+        ydk::YLeaf remove_client_fail; //type: uint32
+
+}; // Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl
 
 
 class Dot1x::Nodes::Node::Statistics::IfStats::Supp : public ydk::Entity
@@ -489,6 +612,33 @@ class Dot1x::Nodes::Node::Statistics::IfStats::Supp : public ydk::Entity
         ydk::YLeaf tx_total; //type: uint32
 
 }; // Dot1x::Nodes::Node::Statistics::IfStats::Supp
+
+
+class Dot1x::Nodes::Node::Statistics::IfStats::LocalEap : public ydk::Entity
+{
+    public:
+        LocalEap();
+        ~LocalEap();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf requests; //type: uint32
+        ydk::YLeaf replies; //type: uint32
+        ydk::YLeaf timeout; //type: uint32
+        ydk::YLeaf dropped_no_eap; //type: uint32
+        ydk::YLeaf dropped; //type: uint32
+        ydk::YLeaf success; //type: uint32
+        ydk::YLeaf failed; //type: uint32
+
+}; // Dot1x::Nodes::Node::Statistics::IfStats::LocalEap
 
 
 class Dot1x::Session : public ydk::Entity
@@ -590,6 +740,7 @@ class Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo : public ydk
         ydk::YLeaf pae; //type: string
         ydk::YLeaf port_status; //type: string
         ydk::YLeaf dot1x_profile; //type: string
+        ydk::YLeaf l2_transport; //type: boolean
         class AuthInfo; //type: Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo
         class SuppInfo; //type: Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo
 
@@ -615,8 +766,10 @@ class Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf port_control; //type: string
         ydk::YLeaf reauth; //type: string
         ydk::YLeaf config_dependency; //type: string
+        ydk::YLeaf eap_profile; //type: string
         class Client; //type: Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client
 
         ydk::YList client;
@@ -646,6 +799,7 @@ class Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::C
         ydk::YLeaf time_to_next_reauth; //type: string
         ydk::YLeaf last_auth_time; //type: string
         ydk::YLeaf last_auth_server; //type: string
+        ydk::YLeaf port_control; //type: string
 
 }; // Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client
 

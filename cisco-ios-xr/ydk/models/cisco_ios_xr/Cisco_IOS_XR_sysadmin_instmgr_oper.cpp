@@ -1320,7 +1320,10 @@ bool Install::Active::Summary::has_leaf_or_child_of_name(const std::string & nam
 Install::Superseded::Superseded()
     :
     si_superseded_output{YType::str, "si_superseded_output"}
+        ,
+    summary(std::make_shared<Install::Superseded::Summary>())
 {
+    summary->parent = this;
 
     yang_name = "superseded"; yang_parent_name = "install"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -1337,7 +1340,7 @@ bool Install::Superseded::has_data() const
         if(leaf.is_set)
             return true;
     }
-    return false;
+    return (summary !=  nullptr && summary->has_data());
 }
 
 bool Install::Superseded::has_operation() const
@@ -1348,7 +1351,8 @@ bool Install::Superseded::has_operation() const
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(si_superseded_output.yfilter);
+	|| ydk::is_set(si_superseded_output.yfilter)
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string Install::Superseded::get_absolute_path() const
@@ -1378,6 +1382,15 @@ std::vector<std::pair<std::string, LeafData> > Install::Superseded::get_name_lea
 
 std::shared_ptr<Entity> Install::Superseded::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "summary")
+    {
+        if(summary == nullptr)
+        {
+            summary = std::make_shared<Install::Superseded::Summary>();
+        }
+        return summary;
+    }
+
     return nullptr;
 }
 
@@ -1385,6 +1398,11 @@ std::map<std::string, std::shared_ptr<Entity>> Install::Superseded::get_children
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(summary != nullptr)
+    {
+        children["summary"] = summary;
+    }
+
     return children;
 }
 
@@ -1406,7 +1424,101 @@ void Install::Superseded::set_filter(const std::string & value_path, YFilter yfi
 
 bool Install::Superseded::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "si_superseded_output")
+    if(name == "summary" || name == "si_superseded_output")
+        return true;
+    return false;
+}
+
+Install::Superseded::Summary::Summary()
+    :
+    si_superseded_summary_output{YType::str, "si_superseded_summary_output"}
+{
+
+    yang_name = "summary"; yang_parent_name = "superseded"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Install::Superseded::Summary::~Summary()
+{
+}
+
+bool Install::Superseded::Summary::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : si_superseded_summary_output.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool Install::Superseded::Summary::has_operation() const
+{
+    for (auto const & leaf : si_superseded_summary_output.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(si_superseded_summary_output.yfilter);
+}
+
+std::string Install::Superseded::Summary::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-sysadmin-instmgr-oper:install/superseded/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Install::Superseded::Summary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Install::Superseded::Summary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto si_superseded_summary_output_name_datas = si_superseded_summary_output.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), si_superseded_summary_output_name_datas.begin(), si_superseded_summary_output_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Install::Superseded::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Install::Superseded::Summary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Install::Superseded::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "si_superseded_summary_output")
+    {
+        si_superseded_summary_output.append(value);
+    }
+}
+
+void Install::Superseded::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "si_superseded_summary_output")
+    {
+        si_superseded_summary_output.yfilter = yfilter;
+    }
+}
+
+bool Install::Superseded::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "si_superseded_summary_output")
         return true;
     return false;
 }

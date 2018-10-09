@@ -3758,94 +3758,94 @@ Snmp::Notification::Notification()
     ipsla{YType::boolean, "Cisco-IOS-XR-man-ipsla-cfg:ipsla"}
         ,
     snmp(std::make_shared<Snmp::Notification::Snmp_>())
-    , cisco_entity_ext(std::make_shared<Snmp::Notification::CiscoEntityExt>())
-    , fru_control(std::make_shared<Snmp::Notification::FruControl>())
-    , ntp(std::make_shared<Snmp::Notification::Ntp>())
-    , mpls_l3vpn(std::make_shared<Snmp::Notification::MplsL3vpn>())
+    , selective_vrf_download(std::make_shared<Snmp::Notification::SelectiveVrfDownload>())
+    , flash(std::make_shared<Snmp::Notification::Flash>())
+    , entity_state(std::make_shared<Snmp::Notification::EntityState>())
+    , ospfv3(std::make_shared<Snmp::Notification::Ospfv3>())
     , vpls(std::make_shared<Snmp::Notification::Vpls>())
     , l2vpn(std::make_shared<Snmp::Notification::L2vpn>())
+    , config_man(std::make_shared<Snmp::Notification::ConfigMan>())
+    , isis(std::make_shared<Snmp::Notification::Isis>())
+    , entity_redundancy(std::make_shared<Snmp::Notification::EntityRedundancy>())
     , cfm(std::make_shared<Snmp::Notification::Cfm>())
-    , hsrp(std::make_shared<Snmp::Notification::Hsrp>())
-    , l2tun(std::make_shared<Snmp::Notification::L2tun>())
-    , selective_vrf_download(std::make_shared<Snmp::Notification::SelectiveVrfDownload>())
-    , bgp(std::make_shared<Snmp::Notification::Bgp>())
-    , bfd(std::make_shared<Snmp::Notification::Bfd>())
-    , flash(std::make_shared<Snmp::Notification::Flash>())
-    , ospfv3(std::make_shared<Snmp::Notification::Ospfv3>())
+    , rsvp(std::make_shared<Snmp::Notification::Rsvp>())
+    , vrrp(std::make_shared<Snmp::Notification::Vrrp>())
+    , subscriber_mib(std::make_shared<Snmp::Notification::SubscriberMib>())
+    , mpls_l3vpn(std::make_shared<Snmp::Notification::MplsL3vpn>())
+    , frequency_synchronization(std::make_shared<Snmp::Notification::FrequencySynchronization>())
+    , entity_(std::make_shared<Snmp::Notification::Entity>())
     , otn(std::make_shared<Snmp::Notification::Otn>())
-    , fabric_crs(std::make_shared<Snmp::Notification::FabricCrs>())
+    , bfd(std::make_shared<Snmp::Notification::Bfd>())
+    , ip_sec(std::make_shared<Snmp::Notification::IpSec>())
+    , isakmp(std::make_shared<Snmp::Notification::Isakmp>())
+    , mpls_ldp(std::make_shared<Snmp::Notification::MplsLdp>())
+    , optical(std::make_shared<Snmp::Notification::Optical>())
+    , fru_control(std::make_shared<Snmp::Notification::FruControl>())
+    , diametermib(std::make_shared<Snmp::Notification::Diametermib>())
+    , rf(std::make_shared<Snmp::Notification::Rf>())
+    , bgp(std::make_shared<Snmp::Notification::Bgp>())
+    , ntp(std::make_shared<Snmp::Notification::Ntp>())
+    , syslog(std::make_shared<Snmp::Notification::Syslog>())
+    , hsrp(std::make_shared<Snmp::Notification::Hsrp>())
+    , optical_ots(std::make_shared<Snmp::Notification::OpticalOts>())
+    , config_copy(std::make_shared<Snmp::Notification::ConfigCopy>())
+    , ospf(std::make_shared<Snmp::Notification::Ospf>())
+    , system(std::make_shared<Snmp::Notification::System>())
+    , l2tun(std::make_shared<Snmp::Notification::L2tun>())
+    , cisco_entity_ext(std::make_shared<Snmp::Notification::CiscoEntityExt>())
+    , addresspool_mib(std::make_shared<Snmp::Notification::AddresspoolMib>())
+    , sensor(std::make_shared<Snmp::Notification::Sensor>())
+    , oam(std::make_shared<Snmp::Notification::Oam>())
+    , bridge(std::make_shared<Snmp::Notification::Bridge>())
     , mpls_te_p2mp(std::make_shared<Snmp::Notification::MplsTeP2mp>())
     , mpls_te(std::make_shared<Snmp::Notification::MplsTe>())
     , mpls_frr(std::make_shared<Snmp::Notification::MplsFrr>())
-    , sensor(std::make_shared<Snmp::Notification::Sensor>())
-    , isis(std::make_shared<Snmp::Notification::Isis>())
-    , ospf(std::make_shared<Snmp::Notification::Ospf>())
-    , config_copy(std::make_shared<Snmp::Notification::ConfigCopy>())
-    , mpls_ldp(std::make_shared<Snmp::Notification::MplsLdp>())
-    , optical(std::make_shared<Snmp::Notification::Optical>())
-    , bridge(std::make_shared<Snmp::Notification::Bridge>())
-    , frequency_synchronization(std::make_shared<Snmp::Notification::FrequencySynchronization>())
-    , vrrp(std::make_shared<Snmp::Notification::Vrrp>())
-    , oam(std::make_shared<Snmp::Notification::Oam>())
-    , system(std::make_shared<Snmp::Notification::System>())
-    , ip_sec(std::make_shared<Snmp::Notification::IpSec>())
-    , isakmp(std::make_shared<Snmp::Notification::Isakmp>())
-    , syslog(std::make_shared<Snmp::Notification::Syslog>())
-    , entity_redundancy(std::make_shared<Snmp::Notification::EntityRedundancy>())
-    , entity_(std::make_shared<Snmp::Notification::Entity_>())
-    , rsvp(std::make_shared<Snmp::Notification::Rsvp>())
-    , config_man(std::make_shared<Snmp::Notification::ConfigMan>())
-    , subscriber_mib(std::make_shared<Snmp::Notification::SubscriberMib>())
-    , optical_ots(std::make_shared<Snmp::Notification::OpticalOts>())
-    , addresspool_mib(std::make_shared<Snmp::Notification::AddresspoolMib>())
-    , diametermib(std::make_shared<Snmp::Notification::Diametermib>())
-    , rf(std::make_shared<Snmp::Notification::Rf>())
-    , entity_state(std::make_shared<Snmp::Notification::EntityState>())
+    , fabric_crs(std::make_shared<Snmp::Notification::FabricCrs>())
 {
     snmp->parent = this;
-    cisco_entity_ext->parent = this;
-    fru_control->parent = this;
-    ntp->parent = this;
-    mpls_l3vpn->parent = this;
+    selective_vrf_download->parent = this;
+    flash->parent = this;
+    entity_state->parent = this;
+    ospfv3->parent = this;
     vpls->parent = this;
     l2vpn->parent = this;
+    config_man->parent = this;
+    isis->parent = this;
+    entity_redundancy->parent = this;
     cfm->parent = this;
-    hsrp->parent = this;
-    l2tun->parent = this;
-    selective_vrf_download->parent = this;
-    bgp->parent = this;
-    bfd->parent = this;
-    flash->parent = this;
-    ospfv3->parent = this;
+    rsvp->parent = this;
+    vrrp->parent = this;
+    subscriber_mib->parent = this;
+    mpls_l3vpn->parent = this;
+    frequency_synchronization->parent = this;
+    entity_->parent = this;
     otn->parent = this;
-    fabric_crs->parent = this;
+    bfd->parent = this;
+    ip_sec->parent = this;
+    isakmp->parent = this;
+    mpls_ldp->parent = this;
+    optical->parent = this;
+    fru_control->parent = this;
+    diametermib->parent = this;
+    rf->parent = this;
+    bgp->parent = this;
+    ntp->parent = this;
+    syslog->parent = this;
+    hsrp->parent = this;
+    optical_ots->parent = this;
+    config_copy->parent = this;
+    ospf->parent = this;
+    system->parent = this;
+    l2tun->parent = this;
+    cisco_entity_ext->parent = this;
+    addresspool_mib->parent = this;
+    sensor->parent = this;
+    oam->parent = this;
+    bridge->parent = this;
     mpls_te_p2mp->parent = this;
     mpls_te->parent = this;
     mpls_frr->parent = this;
-    sensor->parent = this;
-    isis->parent = this;
-    ospf->parent = this;
-    config_copy->parent = this;
-    mpls_ldp->parent = this;
-    optical->parent = this;
-    bridge->parent = this;
-    frequency_synchronization->parent = this;
-    vrrp->parent = this;
-    oam->parent = this;
-    system->parent = this;
-    ip_sec->parent = this;
-    isakmp->parent = this;
-    syslog->parent = this;
-    entity_redundancy->parent = this;
-    entity_->parent = this;
-    rsvp->parent = this;
-    config_man->parent = this;
-    subscriber_mib->parent = this;
-    optical_ots->parent = this;
-    addresspool_mib->parent = this;
-    diametermib->parent = this;
-    rf->parent = this;
-    entity_state->parent = this;
+    fabric_crs->parent = this;
 
     yang_name = "notification"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -3859,49 +3859,49 @@ bool Snmp::Notification::has_data() const
     if (is_presence_container) return true;
     return ipsla.is_set
 	|| (snmp !=  nullptr && snmp->has_data())
-	|| (cisco_entity_ext !=  nullptr && cisco_entity_ext->has_data())
-	|| (fru_control !=  nullptr && fru_control->has_data())
-	|| (ntp !=  nullptr && ntp->has_data())
-	|| (mpls_l3vpn !=  nullptr && mpls_l3vpn->has_data())
+	|| (selective_vrf_download !=  nullptr && selective_vrf_download->has_data())
+	|| (flash !=  nullptr && flash->has_data())
+	|| (entity_state !=  nullptr && entity_state->has_data())
+	|| (ospfv3 !=  nullptr && ospfv3->has_data())
 	|| (vpls !=  nullptr && vpls->has_data())
 	|| (l2vpn !=  nullptr && l2vpn->has_data())
+	|| (config_man !=  nullptr && config_man->has_data())
+	|| (isis !=  nullptr && isis->has_data())
+	|| (entity_redundancy !=  nullptr && entity_redundancy->has_data())
 	|| (cfm !=  nullptr && cfm->has_data())
-	|| (hsrp !=  nullptr && hsrp->has_data())
-	|| (l2tun !=  nullptr && l2tun->has_data())
-	|| (selective_vrf_download !=  nullptr && selective_vrf_download->has_data())
-	|| (bgp !=  nullptr && bgp->has_data())
-	|| (bfd !=  nullptr && bfd->has_data())
-	|| (flash !=  nullptr && flash->has_data())
-	|| (ospfv3 !=  nullptr && ospfv3->has_data())
+	|| (rsvp !=  nullptr && rsvp->has_data())
+	|| (vrrp !=  nullptr && vrrp->has_data())
+	|| (subscriber_mib !=  nullptr && subscriber_mib->has_data())
+	|| (mpls_l3vpn !=  nullptr && mpls_l3vpn->has_data())
+	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_data())
+	|| (entity_ !=  nullptr && entity_->has_data())
 	|| (otn !=  nullptr && otn->has_data())
-	|| (fabric_crs !=  nullptr && fabric_crs->has_data())
+	|| (bfd !=  nullptr && bfd->has_data())
+	|| (ip_sec !=  nullptr && ip_sec->has_data())
+	|| (isakmp !=  nullptr && isakmp->has_data())
+	|| (mpls_ldp !=  nullptr && mpls_ldp->has_data())
+	|| (optical !=  nullptr && optical->has_data())
+	|| (fru_control !=  nullptr && fru_control->has_data())
+	|| (diametermib !=  nullptr && diametermib->has_data())
+	|| (rf !=  nullptr && rf->has_data())
+	|| (bgp !=  nullptr && bgp->has_data())
+	|| (ntp !=  nullptr && ntp->has_data())
+	|| (syslog !=  nullptr && syslog->has_data())
+	|| (hsrp !=  nullptr && hsrp->has_data())
+	|| (optical_ots !=  nullptr && optical_ots->has_data())
+	|| (config_copy !=  nullptr && config_copy->has_data())
+	|| (ospf !=  nullptr && ospf->has_data())
+	|| (system !=  nullptr && system->has_data())
+	|| (l2tun !=  nullptr && l2tun->has_data())
+	|| (cisco_entity_ext !=  nullptr && cisco_entity_ext->has_data())
+	|| (addresspool_mib !=  nullptr && addresspool_mib->has_data())
+	|| (sensor !=  nullptr && sensor->has_data())
+	|| (oam !=  nullptr && oam->has_data())
+	|| (bridge !=  nullptr && bridge->has_data())
 	|| (mpls_te_p2mp !=  nullptr && mpls_te_p2mp->has_data())
 	|| (mpls_te !=  nullptr && mpls_te->has_data())
 	|| (mpls_frr !=  nullptr && mpls_frr->has_data())
-	|| (sensor !=  nullptr && sensor->has_data())
-	|| (isis !=  nullptr && isis->has_data())
-	|| (ospf !=  nullptr && ospf->has_data())
-	|| (config_copy !=  nullptr && config_copy->has_data())
-	|| (mpls_ldp !=  nullptr && mpls_ldp->has_data())
-	|| (optical !=  nullptr && optical->has_data())
-	|| (bridge !=  nullptr && bridge->has_data())
-	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_data())
-	|| (vrrp !=  nullptr && vrrp->has_data())
-	|| (oam !=  nullptr && oam->has_data())
-	|| (system !=  nullptr && system->has_data())
-	|| (ip_sec !=  nullptr && ip_sec->has_data())
-	|| (isakmp !=  nullptr && isakmp->has_data())
-	|| (syslog !=  nullptr && syslog->has_data())
-	|| (entity_redundancy !=  nullptr && entity_redundancy->has_data())
-	|| (entity_ !=  nullptr && entity_->has_data())
-	|| (rsvp !=  nullptr && rsvp->has_data())
-	|| (config_man !=  nullptr && config_man->has_data())
-	|| (subscriber_mib !=  nullptr && subscriber_mib->has_data())
-	|| (optical_ots !=  nullptr && optical_ots->has_data())
-	|| (addresspool_mib !=  nullptr && addresspool_mib->has_data())
-	|| (diametermib !=  nullptr && diametermib->has_data())
-	|| (rf !=  nullptr && rf->has_data())
-	|| (entity_state !=  nullptr && entity_state->has_data());
+	|| (fabric_crs !=  nullptr && fabric_crs->has_data());
 }
 
 bool Snmp::Notification::has_operation() const
@@ -3909,49 +3909,49 @@ bool Snmp::Notification::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(ipsla.yfilter)
 	|| (snmp !=  nullptr && snmp->has_operation())
-	|| (cisco_entity_ext !=  nullptr && cisco_entity_ext->has_operation())
-	|| (fru_control !=  nullptr && fru_control->has_operation())
-	|| (ntp !=  nullptr && ntp->has_operation())
-	|| (mpls_l3vpn !=  nullptr && mpls_l3vpn->has_operation())
+	|| (selective_vrf_download !=  nullptr && selective_vrf_download->has_operation())
+	|| (flash !=  nullptr && flash->has_operation())
+	|| (entity_state !=  nullptr && entity_state->has_operation())
+	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
 	|| (vpls !=  nullptr && vpls->has_operation())
 	|| (l2vpn !=  nullptr && l2vpn->has_operation())
+	|| (config_man !=  nullptr && config_man->has_operation())
+	|| (isis !=  nullptr && isis->has_operation())
+	|| (entity_redundancy !=  nullptr && entity_redundancy->has_operation())
 	|| (cfm !=  nullptr && cfm->has_operation())
-	|| (hsrp !=  nullptr && hsrp->has_operation())
-	|| (l2tun !=  nullptr && l2tun->has_operation())
-	|| (selective_vrf_download !=  nullptr && selective_vrf_download->has_operation())
-	|| (bgp !=  nullptr && bgp->has_operation())
-	|| (bfd !=  nullptr && bfd->has_operation())
-	|| (flash !=  nullptr && flash->has_operation())
-	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
+	|| (rsvp !=  nullptr && rsvp->has_operation())
+	|| (vrrp !=  nullptr && vrrp->has_operation())
+	|| (subscriber_mib !=  nullptr && subscriber_mib->has_operation())
+	|| (mpls_l3vpn !=  nullptr && mpls_l3vpn->has_operation())
+	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_operation())
+	|| (entity_ !=  nullptr && entity_->has_operation())
 	|| (otn !=  nullptr && otn->has_operation())
-	|| (fabric_crs !=  nullptr && fabric_crs->has_operation())
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (ip_sec !=  nullptr && ip_sec->has_operation())
+	|| (isakmp !=  nullptr && isakmp->has_operation())
+	|| (mpls_ldp !=  nullptr && mpls_ldp->has_operation())
+	|| (optical !=  nullptr && optical->has_operation())
+	|| (fru_control !=  nullptr && fru_control->has_operation())
+	|| (diametermib !=  nullptr && diametermib->has_operation())
+	|| (rf !=  nullptr && rf->has_operation())
+	|| (bgp !=  nullptr && bgp->has_operation())
+	|| (ntp !=  nullptr && ntp->has_operation())
+	|| (syslog !=  nullptr && syslog->has_operation())
+	|| (hsrp !=  nullptr && hsrp->has_operation())
+	|| (optical_ots !=  nullptr && optical_ots->has_operation())
+	|| (config_copy !=  nullptr && config_copy->has_operation())
+	|| (ospf !=  nullptr && ospf->has_operation())
+	|| (system !=  nullptr && system->has_operation())
+	|| (l2tun !=  nullptr && l2tun->has_operation())
+	|| (cisco_entity_ext !=  nullptr && cisco_entity_ext->has_operation())
+	|| (addresspool_mib !=  nullptr && addresspool_mib->has_operation())
+	|| (sensor !=  nullptr && sensor->has_operation())
+	|| (oam !=  nullptr && oam->has_operation())
+	|| (bridge !=  nullptr && bridge->has_operation())
 	|| (mpls_te_p2mp !=  nullptr && mpls_te_p2mp->has_operation())
 	|| (mpls_te !=  nullptr && mpls_te->has_operation())
 	|| (mpls_frr !=  nullptr && mpls_frr->has_operation())
-	|| (sensor !=  nullptr && sensor->has_operation())
-	|| (isis !=  nullptr && isis->has_operation())
-	|| (ospf !=  nullptr && ospf->has_operation())
-	|| (config_copy !=  nullptr && config_copy->has_operation())
-	|| (mpls_ldp !=  nullptr && mpls_ldp->has_operation())
-	|| (optical !=  nullptr && optical->has_operation())
-	|| (bridge !=  nullptr && bridge->has_operation())
-	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_operation())
-	|| (vrrp !=  nullptr && vrrp->has_operation())
-	|| (oam !=  nullptr && oam->has_operation())
-	|| (system !=  nullptr && system->has_operation())
-	|| (ip_sec !=  nullptr && ip_sec->has_operation())
-	|| (isakmp !=  nullptr && isakmp->has_operation())
-	|| (syslog !=  nullptr && syslog->has_operation())
-	|| (entity_redundancy !=  nullptr && entity_redundancy->has_operation())
-	|| (entity_ !=  nullptr && entity_->has_operation())
-	|| (rsvp !=  nullptr && rsvp->has_operation())
-	|| (config_man !=  nullptr && config_man->has_operation())
-	|| (subscriber_mib !=  nullptr && subscriber_mib->has_operation())
-	|| (optical_ots !=  nullptr && optical_ots->has_operation())
-	|| (addresspool_mib !=  nullptr && addresspool_mib->has_operation())
-	|| (diametermib !=  nullptr && diametermib->has_operation())
-	|| (rf !=  nullptr && rf->has_operation())
-	|| (entity_state !=  nullptr && entity_state->has_operation());
+	|| (fabric_crs !=  nullptr && fabric_crs->has_operation());
 }
 
 std::string Snmp::Notification::get_absolute_path() const
@@ -3989,40 +3989,40 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return snmp;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-snmp-entityextmib-cfg:cisco-entity-ext")
+    if(child_yang_name == "Cisco-IOS-XR-infra-rsi-cfg:selective-vrf-download")
     {
-        if(cisco_entity_ext == nullptr)
+        if(selective_vrf_download == nullptr)
         {
-            cisco_entity_ext = std::make_shared<Snmp::Notification::CiscoEntityExt>();
+            selective_vrf_download = std::make_shared<Snmp::Notification::SelectiveVrfDownload>();
         }
-        return cisco_entity_ext;
+        return selective_vrf_download;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-snmp-frucontrolmib-cfg:fru-control")
+    if(child_yang_name == "Cisco-IOS-XR-flashmib-cfg:flash")
     {
-        if(fru_control == nullptr)
+        if(flash == nullptr)
         {
-            fru_control = std::make_shared<Snmp::Notification::FruControl>();
+            flash = std::make_shared<Snmp::Notification::Flash>();
         }
-        return fru_control;
+        return flash;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-ip-ntp-cfg:ntp")
+    if(child_yang_name == "Cisco-IOS-XR-snmp-entstatemib-cfg:entity-state")
     {
-        if(ntp == nullptr)
+        if(entity_state == nullptr)
         {
-            ntp = std::make_shared<Snmp::Notification::Ntp>();
+            entity_state = std::make_shared<Snmp::Notification::EntityState>();
         }
-        return ntp;
+        return entity_state;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-mpls-vpn-cfg:mpls-l3vpn")
+    if(child_yang_name == "Cisco-IOS-XR-ipv6-ospfv3-cfg:ospfv3")
     {
-        if(mpls_l3vpn == nullptr)
+        if(ospfv3 == nullptr)
         {
-            mpls_l3vpn = std::make_shared<Snmp::Notification::MplsL3vpn>();
+            ospfv3 = std::make_shared<Snmp::Notification::Ospfv3>();
         }
-        return mpls_l3vpn;
+        return ospfv3;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-l2vpn-cfg:vpls")
@@ -4043,6 +4043,33 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return l2vpn;
     }
 
+    if(child_yang_name == "Cisco-IOS-XR-config-mibs-cfg:config-man")
+    {
+        if(config_man == nullptr)
+        {
+            config_man = std::make_shared<Snmp::Notification::ConfigMan>();
+        }
+        return config_man;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-clns-isis-cfg:isis")
+    {
+        if(isis == nullptr)
+        {
+            isis = std::make_shared<Snmp::Notification::Isis>();
+        }
+        return isis;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-infra-ceredundancymib-cfg:entity-redundancy")
+    {
+        if(entity_redundancy == nullptr)
+        {
+            entity_redundancy = std::make_shared<Snmp::Notification::EntityRedundancy>();
+        }
+        return entity_redundancy;
+    }
+
     if(child_yang_name == "Cisco-IOS-XR-ethernet-cfm-cfg:cfm")
     {
         if(cfm == nullptr)
@@ -4052,67 +4079,58 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return cfm;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-ipv4-hsrp-cfg:hsrp")
+    if(child_yang_name == "Cisco-IOS-XR-ip-rsvp-cfg:rsvp")
     {
-        if(hsrp == nullptr)
+        if(rsvp == nullptr)
         {
-            hsrp = std::make_shared<Snmp::Notification::Hsrp>();
+            rsvp = std::make_shared<Snmp::Notification::Rsvp>();
         }
-        return hsrp;
+        return rsvp;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-tunnel-l2tun-proto-mibs-cfg:l2tun")
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-vrrp-cfg:vrrp")
     {
-        if(l2tun == nullptr)
+        if(vrrp == nullptr)
         {
-            l2tun = std::make_shared<Snmp::Notification::L2tun>();
+            vrrp = std::make_shared<Snmp::Notification::Vrrp>();
         }
-        return l2tun;
+        return vrrp;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-infra-rsi-cfg:selective-vrf-download")
+    if(child_yang_name == "Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber-mib")
     {
-        if(selective_vrf_download == nullptr)
+        if(subscriber_mib == nullptr)
         {
-            selective_vrf_download = std::make_shared<Snmp::Notification::SelectiveVrfDownload>();
+            subscriber_mib = std::make_shared<Snmp::Notification::SubscriberMib>();
         }
-        return selective_vrf_download;
+        return subscriber_mib;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-ipv4-bgp-cfg:bgp")
+    if(child_yang_name == "Cisco-IOS-XR-mpls-vpn-cfg:mpls-l3vpn")
     {
-        if(bgp == nullptr)
+        if(mpls_l3vpn == nullptr)
         {
-            bgp = std::make_shared<Snmp::Notification::Bgp>();
+            mpls_l3vpn = std::make_shared<Snmp::Notification::MplsL3vpn>();
         }
-        return bgp;
+        return mpls_l3vpn;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-ip-bfd-cfg:bfd")
+    if(child_yang_name == "Cisco-IOS-XR-freqsync-cfg:frequency-synchronization")
     {
-        if(bfd == nullptr)
+        if(frequency_synchronization == nullptr)
         {
-            bfd = std::make_shared<Snmp::Notification::Bfd>();
+            frequency_synchronization = std::make_shared<Snmp::Notification::FrequencySynchronization>();
         }
-        return bfd;
+        return frequency_synchronization;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-flashmib-cfg:flash")
+    if(child_yang_name == "Cisco-IOS-XR-snmp-entitymib-cfg:entity")
     {
-        if(flash == nullptr)
+        if(entity_ == nullptr)
         {
-            flash = std::make_shared<Snmp::Notification::Flash>();
+            entity_ = std::make_shared<Snmp::Notification::Entity>();
         }
-        return flash;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-ipv6-ospfv3-cfg:ospfv3")
-    {
-        if(ospfv3 == nullptr)
-        {
-            ospfv3 = std::make_shared<Snmp::Notification::Ospfv3>();
-        }
-        return ospfv3;
+        return entity_;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-otnifmib-cfg:otn")
@@ -4124,13 +4142,202 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return otn;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-fabhfr-mib-cfg:fabric-crs")
+    if(child_yang_name == "Cisco-IOS-XR-ip-bfd-cfg:bfd")
     {
-        if(fabric_crs == nullptr)
+        if(bfd == nullptr)
         {
-            fabric_crs = std::make_shared<Snmp::Notification::FabricCrs>();
+            bfd = std::make_shared<Snmp::Notification::Bfd>();
         }
-        return fabric_crs;
+        return bfd;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-crypto-mibs-ipsecflowmon-cfg:ip-sec")
+    {
+        if(ip_sec == nullptr)
+        {
+            ip_sec = std::make_shared<Snmp::Notification::IpSec>();
+        }
+        return ip_sec;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-crypto-mibs-ipsecflowmon-cfg:isakmp")
+    {
+        if(isakmp == nullptr)
+        {
+            isakmp = std::make_shared<Snmp::Notification::Isakmp>();
+        }
+        return isakmp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-mpls-ldp-cfg:mpls-ldp")
+    {
+        if(mpls_ldp == nullptr)
+        {
+            mpls_ldp = std::make_shared<Snmp::Notification::MplsLdp>();
+        }
+        return mpls_ldp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-opticalmib-cfg:optical")
+    {
+        if(optical == nullptr)
+        {
+            optical = std::make_shared<Snmp::Notification::Optical>();
+        }
+        return optical;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-snmp-frucontrolmib-cfg:fru-control")
+    {
+        if(fru_control == nullptr)
+        {
+            fru_control = std::make_shared<Snmp::Notification::FruControl>();
+        }
+        return fru_control;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-aaa-diameter-base-mib-cfg:diametermib")
+    {
+        if(diametermib == nullptr)
+        {
+            diametermib = std::make_shared<Snmp::Notification::Diametermib>();
+        }
+        return diametermib;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-snmp-mib-rfmib-cfg:rf")
+    {
+        if(rf == nullptr)
+        {
+            rf = std::make_shared<Snmp::Notification::Rf>();
+        }
+        return rf;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-bgp-cfg:bgp")
+    {
+        if(bgp == nullptr)
+        {
+            bgp = std::make_shared<Snmp::Notification::Bgp>();
+        }
+        return bgp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-ip-ntp-cfg:ntp")
+    {
+        if(ntp == nullptr)
+        {
+            ntp = std::make_shared<Snmp::Notification::Ntp>();
+        }
+        return ntp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-snmp-syslogmib-cfg:syslog")
+    {
+        if(syslog == nullptr)
+        {
+            syslog = std::make_shared<Snmp::Notification::Syslog>();
+        }
+        return syslog;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-hsrp-cfg:hsrp")
+    {
+        if(hsrp == nullptr)
+        {
+            hsrp = std::make_shared<Snmp::Notification::Hsrp>();
+        }
+        return hsrp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-opticalotsmib-cfg:optical-ots")
+    {
+        if(optical_ots == nullptr)
+        {
+            optical_ots = std::make_shared<Snmp::Notification::OpticalOts>();
+        }
+        return optical_ots;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-infra-confcopymib-cfg:config-copy")
+    {
+        if(config_copy == nullptr)
+        {
+            config_copy = std::make_shared<Snmp::Notification::ConfigCopy>();
+        }
+        return config_copy;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-ospf-cfg:ospf")
+    {
+        if(ospf == nullptr)
+        {
+            ospf = std::make_shared<Snmp::Notification::Ospf>();
+        }
+        return ospf;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-infra-systemmib-cfg:system")
+    {
+        if(system == nullptr)
+        {
+            system = std::make_shared<Snmp::Notification::System>();
+        }
+        return system;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-tunnel-l2tun-proto-mibs-cfg:l2tun")
+    {
+        if(l2tun == nullptr)
+        {
+            l2tun = std::make_shared<Snmp::Notification::L2tun>();
+        }
+        return l2tun;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-snmp-entityextmib-cfg:cisco-entity-ext")
+    {
+        if(cisco_entity_ext == nullptr)
+        {
+            cisco_entity_ext = std::make_shared<Snmp::Notification::CiscoEntityExt>();
+        }
+        return cisco_entity_ext;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-ip-daps-mib-cfg:addresspool-mib")
+    {
+        if(addresspool_mib == nullptr)
+        {
+            addresspool_mib = std::make_shared<Snmp::Notification::AddresspoolMib>();
+        }
+        return addresspool_mib;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-snmp-ciscosensormib-cfg:sensor")
+    {
+        if(sensor == nullptr)
+        {
+            sensor = std::make_shared<Snmp::Notification::Sensor>();
+        }
+        return sensor;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-ethernet-link-oam-cfg:oam")
+    {
+        if(oam == nullptr)
+        {
+            oam = std::make_shared<Snmp::Notification::Oam>();
+        }
+        return oam;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-snmp-bridgemib-cfg:bridge")
+    {
+        if(bridge == nullptr)
+        {
+            bridge = std::make_shared<Snmp::Notification::Bridge>();
+        }
+        return bridge;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-mpls-te-cfg:mpls-te-p2mp")
@@ -4160,220 +4367,13 @@ std::shared_ptr<Entity> Snmp::Notification::get_child_by_name(const std::string 
         return mpls_frr;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-snmp-ciscosensormib-cfg:sensor")
+    if(child_yang_name == "Cisco-IOS-XR-fabhfr-mib-cfg:fabric-crs")
     {
-        if(sensor == nullptr)
+        if(fabric_crs == nullptr)
         {
-            sensor = std::make_shared<Snmp::Notification::Sensor>();
+            fabric_crs = std::make_shared<Snmp::Notification::FabricCrs>();
         }
-        return sensor;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-clns-isis-cfg:isis")
-    {
-        if(isis == nullptr)
-        {
-            isis = std::make_shared<Snmp::Notification::Isis>();
-        }
-        return isis;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-ipv4-ospf-cfg:ospf")
-    {
-        if(ospf == nullptr)
-        {
-            ospf = std::make_shared<Snmp::Notification::Ospf>();
-        }
-        return ospf;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-infra-confcopymib-cfg:config-copy")
-    {
-        if(config_copy == nullptr)
-        {
-            config_copy = std::make_shared<Snmp::Notification::ConfigCopy>();
-        }
-        return config_copy;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-mpls-ldp-cfg:mpls-ldp")
-    {
-        if(mpls_ldp == nullptr)
-        {
-            mpls_ldp = std::make_shared<Snmp::Notification::MplsLdp>();
-        }
-        return mpls_ldp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-opticalmib-cfg:optical")
-    {
-        if(optical == nullptr)
-        {
-            optical = std::make_shared<Snmp::Notification::Optical>();
-        }
-        return optical;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-snmp-bridgemib-cfg:bridge")
-    {
-        if(bridge == nullptr)
-        {
-            bridge = std::make_shared<Snmp::Notification::Bridge>();
-        }
-        return bridge;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-freqsync-cfg:frequency-synchronization")
-    {
-        if(frequency_synchronization == nullptr)
-        {
-            frequency_synchronization = std::make_shared<Snmp::Notification::FrequencySynchronization>();
-        }
-        return frequency_synchronization;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-ipv4-vrrp-cfg:vrrp")
-    {
-        if(vrrp == nullptr)
-        {
-            vrrp = std::make_shared<Snmp::Notification::Vrrp>();
-        }
-        return vrrp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-ethernet-link-oam-cfg:oam")
-    {
-        if(oam == nullptr)
-        {
-            oam = std::make_shared<Snmp::Notification::Oam>();
-        }
-        return oam;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-infra-systemmib-cfg:system")
-    {
-        if(system == nullptr)
-        {
-            system = std::make_shared<Snmp::Notification::System>();
-        }
-        return system;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-crypto-mibs-ipsecflowmon-cfg:ip-sec")
-    {
-        if(ip_sec == nullptr)
-        {
-            ip_sec = std::make_shared<Snmp::Notification::IpSec>();
-        }
-        return ip_sec;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-crypto-mibs-ipsecflowmon-cfg:isakmp")
-    {
-        if(isakmp == nullptr)
-        {
-            isakmp = std::make_shared<Snmp::Notification::Isakmp>();
-        }
-        return isakmp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-snmp-syslogmib-cfg:syslog")
-    {
-        if(syslog == nullptr)
-        {
-            syslog = std::make_shared<Snmp::Notification::Syslog>();
-        }
-        return syslog;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-infra-ceredundancymib-cfg:entity-redundancy")
-    {
-        if(entity_redundancy == nullptr)
-        {
-            entity_redundancy = std::make_shared<Snmp::Notification::EntityRedundancy>();
-        }
-        return entity_redundancy;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-snmp-entitymib-cfg:entity")
-    {
-        if(entity_ == nullptr)
-        {
-            entity_ = std::make_shared<Snmp::Notification::Entity_>();
-        }
-        return entity_;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-ip-rsvp-cfg:rsvp")
-    {
-        if(rsvp == nullptr)
-        {
-            rsvp = std::make_shared<Snmp::Notification::Rsvp>();
-        }
-        return rsvp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-config-mibs-cfg:config-man")
-    {
-        if(config_man == nullptr)
-        {
-            config_man = std::make_shared<Snmp::Notification::ConfigMan>();
-        }
-        return config_man;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber-mib")
-    {
-        if(subscriber_mib == nullptr)
-        {
-            subscriber_mib = std::make_shared<Snmp::Notification::SubscriberMib>();
-        }
-        return subscriber_mib;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-opticalotsmib-cfg:optical-ots")
-    {
-        if(optical_ots == nullptr)
-        {
-            optical_ots = std::make_shared<Snmp::Notification::OpticalOts>();
-        }
-        return optical_ots;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-ip-daps-mib-cfg:addresspool-mib")
-    {
-        if(addresspool_mib == nullptr)
-        {
-            addresspool_mib = std::make_shared<Snmp::Notification::AddresspoolMib>();
-        }
-        return addresspool_mib;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-aaa-diameter-base-mib-cfg:diametermib")
-    {
-        if(diametermib == nullptr)
-        {
-            diametermib = std::make_shared<Snmp::Notification::Diametermib>();
-        }
-        return diametermib;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-snmp-mib-rfmib-cfg:rf")
-    {
-        if(rf == nullptr)
-        {
-            rf = std::make_shared<Snmp::Notification::Rf>();
-        }
-        return rf;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-snmp-entstatemib-cfg:entity-state")
-    {
-        if(entity_state == nullptr)
-        {
-            entity_state = std::make_shared<Snmp::Notification::EntityState>();
-        }
-        return entity_state;
+        return fabric_crs;
     }
 
     return nullptr;
@@ -4388,24 +4388,24 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::get_children(
         children["snmp"] = snmp;
     }
 
-    if(cisco_entity_ext != nullptr)
+    if(selective_vrf_download != nullptr)
     {
-        children["Cisco-IOS-XR-snmp-entityextmib-cfg:cisco-entity-ext"] = cisco_entity_ext;
+        children["Cisco-IOS-XR-infra-rsi-cfg:selective-vrf-download"] = selective_vrf_download;
     }
 
-    if(fru_control != nullptr)
+    if(flash != nullptr)
     {
-        children["Cisco-IOS-XR-snmp-frucontrolmib-cfg:fru-control"] = fru_control;
+        children["Cisco-IOS-XR-flashmib-cfg:flash"] = flash;
     }
 
-    if(ntp != nullptr)
+    if(entity_state != nullptr)
     {
-        children["Cisco-IOS-XR-ip-ntp-cfg:ntp"] = ntp;
+        children["Cisco-IOS-XR-snmp-entstatemib-cfg:entity-state"] = entity_state;
     }
 
-    if(mpls_l3vpn != nullptr)
+    if(ospfv3 != nullptr)
     {
-        children["Cisco-IOS-XR-mpls-vpn-cfg:mpls-l3vpn"] = mpls_l3vpn;
+        children["Cisco-IOS-XR-ipv6-ospfv3-cfg:ospfv3"] = ospfv3;
     }
 
     if(vpls != nullptr)
@@ -4418,44 +4418,54 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::get_children(
         children["Cisco-IOS-XR-l2vpn-cfg:l2vpn"] = l2vpn;
     }
 
+    if(config_man != nullptr)
+    {
+        children["Cisco-IOS-XR-config-mibs-cfg:config-man"] = config_man;
+    }
+
+    if(isis != nullptr)
+    {
+        children["Cisco-IOS-XR-clns-isis-cfg:isis"] = isis;
+    }
+
+    if(entity_redundancy != nullptr)
+    {
+        children["Cisco-IOS-XR-infra-ceredundancymib-cfg:entity-redundancy"] = entity_redundancy;
+    }
+
     if(cfm != nullptr)
     {
         children["Cisco-IOS-XR-ethernet-cfm-cfg:cfm"] = cfm;
     }
 
-    if(hsrp != nullptr)
+    if(rsvp != nullptr)
     {
-        children["Cisco-IOS-XR-ipv4-hsrp-cfg:hsrp"] = hsrp;
+        children["Cisco-IOS-XR-ip-rsvp-cfg:rsvp"] = rsvp;
     }
 
-    if(l2tun != nullptr)
+    if(vrrp != nullptr)
     {
-        children["Cisco-IOS-XR-tunnel-l2tun-proto-mibs-cfg:l2tun"] = l2tun;
+        children["Cisco-IOS-XR-ipv4-vrrp-cfg:vrrp"] = vrrp;
     }
 
-    if(selective_vrf_download != nullptr)
+    if(subscriber_mib != nullptr)
     {
-        children["Cisco-IOS-XR-infra-rsi-cfg:selective-vrf-download"] = selective_vrf_download;
+        children["Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber-mib"] = subscriber_mib;
     }
 
-    if(bgp != nullptr)
+    if(mpls_l3vpn != nullptr)
     {
-        children["Cisco-IOS-XR-ipv4-bgp-cfg:bgp"] = bgp;
+        children["Cisco-IOS-XR-mpls-vpn-cfg:mpls-l3vpn"] = mpls_l3vpn;
     }
 
-    if(bfd != nullptr)
+    if(frequency_synchronization != nullptr)
     {
-        children["Cisco-IOS-XR-ip-bfd-cfg:bfd"] = bfd;
+        children["Cisco-IOS-XR-freqsync-cfg:frequency-synchronization"] = frequency_synchronization;
     }
 
-    if(flash != nullptr)
+    if(entity_ != nullptr)
     {
-        children["Cisco-IOS-XR-flashmib-cfg:flash"] = flash;
-    }
-
-    if(ospfv3 != nullptr)
-    {
-        children["Cisco-IOS-XR-ipv6-ospfv3-cfg:ospfv3"] = ospfv3;
+        children["Cisco-IOS-XR-snmp-entitymib-cfg:entity"] = entity_;
     }
 
     if(otn != nullptr)
@@ -4463,9 +4473,114 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::get_children(
         children["Cisco-IOS-XR-otnifmib-cfg:otn"] = otn;
     }
 
-    if(fabric_crs != nullptr)
+    if(bfd != nullptr)
     {
-        children["Cisco-IOS-XR-fabhfr-mib-cfg:fabric-crs"] = fabric_crs;
+        children["Cisco-IOS-XR-ip-bfd-cfg:bfd"] = bfd;
+    }
+
+    if(ip_sec != nullptr)
+    {
+        children["Cisco-IOS-XR-crypto-mibs-ipsecflowmon-cfg:ip-sec"] = ip_sec;
+    }
+
+    if(isakmp != nullptr)
+    {
+        children["Cisco-IOS-XR-crypto-mibs-ipsecflowmon-cfg:isakmp"] = isakmp;
+    }
+
+    if(mpls_ldp != nullptr)
+    {
+        children["Cisco-IOS-XR-mpls-ldp-cfg:mpls-ldp"] = mpls_ldp;
+    }
+
+    if(optical != nullptr)
+    {
+        children["Cisco-IOS-XR-opticalmib-cfg:optical"] = optical;
+    }
+
+    if(fru_control != nullptr)
+    {
+        children["Cisco-IOS-XR-snmp-frucontrolmib-cfg:fru-control"] = fru_control;
+    }
+
+    if(diametermib != nullptr)
+    {
+        children["Cisco-IOS-XR-aaa-diameter-base-mib-cfg:diametermib"] = diametermib;
+    }
+
+    if(rf != nullptr)
+    {
+        children["Cisco-IOS-XR-snmp-mib-rfmib-cfg:rf"] = rf;
+    }
+
+    if(bgp != nullptr)
+    {
+        children["Cisco-IOS-XR-ipv4-bgp-cfg:bgp"] = bgp;
+    }
+
+    if(ntp != nullptr)
+    {
+        children["Cisco-IOS-XR-ip-ntp-cfg:ntp"] = ntp;
+    }
+
+    if(syslog != nullptr)
+    {
+        children["Cisco-IOS-XR-snmp-syslogmib-cfg:syslog"] = syslog;
+    }
+
+    if(hsrp != nullptr)
+    {
+        children["Cisco-IOS-XR-ipv4-hsrp-cfg:hsrp"] = hsrp;
+    }
+
+    if(optical_ots != nullptr)
+    {
+        children["Cisco-IOS-XR-opticalotsmib-cfg:optical-ots"] = optical_ots;
+    }
+
+    if(config_copy != nullptr)
+    {
+        children["Cisco-IOS-XR-infra-confcopymib-cfg:config-copy"] = config_copy;
+    }
+
+    if(ospf != nullptr)
+    {
+        children["Cisco-IOS-XR-ipv4-ospf-cfg:ospf"] = ospf;
+    }
+
+    if(system != nullptr)
+    {
+        children["Cisco-IOS-XR-infra-systemmib-cfg:system"] = system;
+    }
+
+    if(l2tun != nullptr)
+    {
+        children["Cisco-IOS-XR-tunnel-l2tun-proto-mibs-cfg:l2tun"] = l2tun;
+    }
+
+    if(cisco_entity_ext != nullptr)
+    {
+        children["Cisco-IOS-XR-snmp-entityextmib-cfg:cisco-entity-ext"] = cisco_entity_ext;
+    }
+
+    if(addresspool_mib != nullptr)
+    {
+        children["Cisco-IOS-XR-ip-daps-mib-cfg:addresspool-mib"] = addresspool_mib;
+    }
+
+    if(sensor != nullptr)
+    {
+        children["Cisco-IOS-XR-snmp-ciscosensormib-cfg:sensor"] = sensor;
+    }
+
+    if(oam != nullptr)
+    {
+        children["Cisco-IOS-XR-ethernet-link-oam-cfg:oam"] = oam;
+    }
+
+    if(bridge != nullptr)
+    {
+        children["Cisco-IOS-XR-snmp-bridgemib-cfg:bridge"] = bridge;
     }
 
     if(mpls_te_p2mp != nullptr)
@@ -4483,124 +4598,9 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::get_children(
         children["Cisco-IOS-XR-mpls-te-cfg:mpls-frr"] = mpls_frr;
     }
 
-    if(sensor != nullptr)
+    if(fabric_crs != nullptr)
     {
-        children["Cisco-IOS-XR-snmp-ciscosensormib-cfg:sensor"] = sensor;
-    }
-
-    if(isis != nullptr)
-    {
-        children["Cisco-IOS-XR-clns-isis-cfg:isis"] = isis;
-    }
-
-    if(ospf != nullptr)
-    {
-        children["Cisco-IOS-XR-ipv4-ospf-cfg:ospf"] = ospf;
-    }
-
-    if(config_copy != nullptr)
-    {
-        children["Cisco-IOS-XR-infra-confcopymib-cfg:config-copy"] = config_copy;
-    }
-
-    if(mpls_ldp != nullptr)
-    {
-        children["Cisco-IOS-XR-mpls-ldp-cfg:mpls-ldp"] = mpls_ldp;
-    }
-
-    if(optical != nullptr)
-    {
-        children["Cisco-IOS-XR-opticalmib-cfg:optical"] = optical;
-    }
-
-    if(bridge != nullptr)
-    {
-        children["Cisco-IOS-XR-snmp-bridgemib-cfg:bridge"] = bridge;
-    }
-
-    if(frequency_synchronization != nullptr)
-    {
-        children["Cisco-IOS-XR-freqsync-cfg:frequency-synchronization"] = frequency_synchronization;
-    }
-
-    if(vrrp != nullptr)
-    {
-        children["Cisco-IOS-XR-ipv4-vrrp-cfg:vrrp"] = vrrp;
-    }
-
-    if(oam != nullptr)
-    {
-        children["Cisco-IOS-XR-ethernet-link-oam-cfg:oam"] = oam;
-    }
-
-    if(system != nullptr)
-    {
-        children["Cisco-IOS-XR-infra-systemmib-cfg:system"] = system;
-    }
-
-    if(ip_sec != nullptr)
-    {
-        children["Cisco-IOS-XR-crypto-mibs-ipsecflowmon-cfg:ip-sec"] = ip_sec;
-    }
-
-    if(isakmp != nullptr)
-    {
-        children["Cisco-IOS-XR-crypto-mibs-ipsecflowmon-cfg:isakmp"] = isakmp;
-    }
-
-    if(syslog != nullptr)
-    {
-        children["Cisco-IOS-XR-snmp-syslogmib-cfg:syslog"] = syslog;
-    }
-
-    if(entity_redundancy != nullptr)
-    {
-        children["Cisco-IOS-XR-infra-ceredundancymib-cfg:entity-redundancy"] = entity_redundancy;
-    }
-
-    if(entity_ != nullptr)
-    {
-        children["Cisco-IOS-XR-snmp-entitymib-cfg:entity"] = entity_;
-    }
-
-    if(rsvp != nullptr)
-    {
-        children["Cisco-IOS-XR-ip-rsvp-cfg:rsvp"] = rsvp;
-    }
-
-    if(config_man != nullptr)
-    {
-        children["Cisco-IOS-XR-config-mibs-cfg:config-man"] = config_man;
-    }
-
-    if(subscriber_mib != nullptr)
-    {
-        children["Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber-mib"] = subscriber_mib;
-    }
-
-    if(optical_ots != nullptr)
-    {
-        children["Cisco-IOS-XR-opticalotsmib-cfg:optical-ots"] = optical_ots;
-    }
-
-    if(addresspool_mib != nullptr)
-    {
-        children["Cisco-IOS-XR-ip-daps-mib-cfg:addresspool-mib"] = addresspool_mib;
-    }
-
-    if(diametermib != nullptr)
-    {
-        children["Cisco-IOS-XR-aaa-diameter-base-mib-cfg:diametermib"] = diametermib;
-    }
-
-    if(rf != nullptr)
-    {
-        children["Cisco-IOS-XR-snmp-mib-rfmib-cfg:rf"] = rf;
-    }
-
-    if(entity_state != nullptr)
-    {
-        children["Cisco-IOS-XR-snmp-entstatemib-cfg:entity-state"] = entity_state;
+        children["Cisco-IOS-XR-fabhfr-mib-cfg:fabric-crs"] = fabric_crs;
     }
 
     return children;
@@ -4626,7 +4626,7 @@ void Snmp::Notification::set_filter(const std::string & value_path, YFilter yfil
 
 bool Snmp::Notification::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "snmp" || name == "cisco-entity-ext" || name == "fru-control" || name == "ntp" || name == "mpls-l3vpn" || name == "vpls" || name == "l2vpn" || name == "cfm" || name == "hsrp" || name == "l2tun" || name == "selective-vrf-download" || name == "bgp" || name == "bfd" || name == "flash" || name == "ospfv3" || name == "otn" || name == "fabric-crs" || name == "mpls-te-p2mp" || name == "mpls-te" || name == "mpls-frr" || name == "sensor" || name == "isis" || name == "ospf" || name == "config-copy" || name == "mpls-ldp" || name == "optical" || name == "bridge" || name == "frequency-synchronization" || name == "vrrp" || name == "oam" || name == "system" || name == "ip-sec" || name == "isakmp" || name == "syslog" || name == "entity-redundancy" || name == "entity" || name == "rsvp" || name == "config-man" || name == "subscriber-mib" || name == "optical-ots" || name == "addresspool-mib" || name == "diametermib" || name == "rf" || name == "entity-state" || name == "ipsla")
+    if(name == "snmp" || name == "selective-vrf-download" || name == "flash" || name == "entity-state" || name == "ospfv3" || name == "vpls" || name == "l2vpn" || name == "config-man" || name == "isis" || name == "entity-redundancy" || name == "cfm" || name == "rsvp" || name == "vrrp" || name == "subscriber-mib" || name == "mpls-l3vpn" || name == "frequency-synchronization" || name == "entity" || name == "otn" || name == "bfd" || name == "ip-sec" || name == "isakmp" || name == "mpls-ldp" || name == "optical" || name == "fru-control" || name == "diametermib" || name == "rf" || name == "bgp" || name == "ntp" || name == "syslog" || name == "hsrp" || name == "optical-ots" || name == "config-copy" || name == "ospf" || name == "system" || name == "l2tun" || name == "cisco-entity-ext" || name == "addresspool-mib" || name == "sensor" || name == "oam" || name == "bridge" || name == "mpls-te-p2mp" || name == "mpls-te" || name == "mpls-frr" || name == "fabric-crs" || name == "ipsla")
         return true;
     return false;
 }
@@ -4786,981 +4786,6 @@ bool Snmp::Notification::Snmp_::has_leaf_or_child_of_name(const std::string & na
     return false;
 }
 
-Snmp::Notification::CiscoEntityExt::CiscoEntityExt()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "cisco-entity-ext"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::CiscoEntityExt::~CiscoEntityExt()
-{
-}
-
-bool Snmp::Notification::CiscoEntityExt::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set;
-}
-
-bool Snmp::Notification::CiscoEntityExt::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Snmp::Notification::CiscoEntityExt::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::CiscoEntityExt::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-entityextmib-cfg:cisco-entity-ext";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::CiscoEntityExt::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::CiscoEntityExt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::CiscoEntityExt::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::CiscoEntityExt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::CiscoEntityExt::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::CiscoEntityExt::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-Snmp::Notification::FruControl::FruControl()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "fru-control"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::FruControl::~FruControl()
-{
-}
-
-bool Snmp::Notification::FruControl::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set;
-}
-
-bool Snmp::Notification::FruControl::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Snmp::Notification::FruControl::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::FruControl::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-frucontrolmib-cfg:fru-control";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::FruControl::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::FruControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::FruControl::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::FruControl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::FruControl::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::FruControl::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Ntp::Ntp()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "ntp"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::Ntp::~Ntp()
-{
-}
-
-bool Snmp::Notification::Ntp::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set;
-}
-
-bool Snmp::Notification::Ntp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Snmp::Notification::Ntp::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Ntp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Ntp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Ntp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Ntp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::Ntp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Ntp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Ntp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-Snmp::Notification::MplsL3vpn::MplsL3vpn()
-    :
-    max_threshold_reissue_notification_time{YType::uint32, "max-threshold-reissue-notification-time"},
-    max_threshold_exceeded{YType::empty, "max-threshold-exceeded"},
-    max_threshold_cleared{YType::empty, "max-threshold-cleared"},
-    mid_threshold_exceeded{YType::empty, "mid-threshold-exceeded"},
-    enable{YType::empty, "enable"},
-    vrf_down{YType::empty, "vrf-down"},
-    vrf_up{YType::empty, "vrf-up"}
-{
-
-    yang_name = "mpls-l3vpn"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::MplsL3vpn::~MplsL3vpn()
-{
-}
-
-bool Snmp::Notification::MplsL3vpn::has_data() const
-{
-    if (is_presence_container) return true;
-    return max_threshold_reissue_notification_time.is_set
-	|| max_threshold_exceeded.is_set
-	|| max_threshold_cleared.is_set
-	|| mid_threshold_exceeded.is_set
-	|| enable.is_set
-	|| vrf_down.is_set
-	|| vrf_up.is_set;
-}
-
-bool Snmp::Notification::MplsL3vpn::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(max_threshold_reissue_notification_time.yfilter)
-	|| ydk::is_set(max_threshold_exceeded.yfilter)
-	|| ydk::is_set(max_threshold_cleared.yfilter)
-	|| ydk::is_set(mid_threshold_exceeded.yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(vrf_down.yfilter)
-	|| ydk::is_set(vrf_up.yfilter);
-}
-
-std::string Snmp::Notification::MplsL3vpn::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::MplsL3vpn::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-mpls-vpn-cfg:mpls-l3vpn";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::MplsL3vpn::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_threshold_reissue_notification_time.is_set || is_set(max_threshold_reissue_notification_time.yfilter)) leaf_name_data.push_back(max_threshold_reissue_notification_time.get_name_leafdata());
-    if (max_threshold_exceeded.is_set || is_set(max_threshold_exceeded.yfilter)) leaf_name_data.push_back(max_threshold_exceeded.get_name_leafdata());
-    if (max_threshold_cleared.is_set || is_set(max_threshold_cleared.yfilter)) leaf_name_data.push_back(max_threshold_cleared.get_name_leafdata());
-    if (mid_threshold_exceeded.is_set || is_set(mid_threshold_exceeded.yfilter)) leaf_name_data.push_back(mid_threshold_exceeded.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (vrf_down.is_set || is_set(vrf_down.yfilter)) leaf_name_data.push_back(vrf_down.get_name_leafdata());
-    if (vrf_up.is_set || is_set(vrf_up.yfilter)) leaf_name_data.push_back(vrf_up.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::MplsL3vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::MplsL3vpn::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::MplsL3vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "max-threshold-reissue-notification-time")
-    {
-        max_threshold_reissue_notification_time = value;
-        max_threshold_reissue_notification_time.value_namespace = name_space;
-        max_threshold_reissue_notification_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-threshold-exceeded")
-    {
-        max_threshold_exceeded = value;
-        max_threshold_exceeded.value_namespace = name_space;
-        max_threshold_exceeded.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-threshold-cleared")
-    {
-        max_threshold_cleared = value;
-        max_threshold_cleared.value_namespace = name_space;
-        max_threshold_cleared.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mid-threshold-exceeded")
-    {
-        mid_threshold_exceeded = value;
-        mid_threshold_exceeded.value_namespace = name_space;
-        mid_threshold_exceeded.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-down")
-    {
-        vrf_down = value;
-        vrf_down.value_namespace = name_space;
-        vrf_down.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-up")
-    {
-        vrf_up = value;
-        vrf_up.value_namespace = name_space;
-        vrf_up.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::MplsL3vpn::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "max-threshold-reissue-notification-time")
-    {
-        max_threshold_reissue_notification_time.yfilter = yfilter;
-    }
-    if(value_path == "max-threshold-exceeded")
-    {
-        max_threshold_exceeded.yfilter = yfilter;
-    }
-    if(value_path == "max-threshold-cleared")
-    {
-        max_threshold_cleared.yfilter = yfilter;
-    }
-    if(value_path == "mid-threshold-exceeded")
-    {
-        mid_threshold_exceeded.yfilter = yfilter;
-    }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "vrf-down")
-    {
-        vrf_down.yfilter = yfilter;
-    }
-    if(value_path == "vrf-up")
-    {
-        vrf_up.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::MplsL3vpn::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "max-threshold-reissue-notification-time" || name == "max-threshold-exceeded" || name == "max-threshold-cleared" || name == "mid-threshold-exceeded" || name == "enable" || name == "vrf-down" || name == "vrf-up")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Vpls::Vpls()
-    :
-    full_clear{YType::empty, "full-clear"},
-    status{YType::empty, "status"},
-    enable{YType::empty, "enable"},
-    full_raise{YType::empty, "full-raise"}
-{
-
-    yang_name = "vpls"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::Vpls::~Vpls()
-{
-}
-
-bool Snmp::Notification::Vpls::has_data() const
-{
-    if (is_presence_container) return true;
-    return full_clear.is_set
-	|| status.is_set
-	|| enable.is_set
-	|| full_raise.is_set;
-}
-
-bool Snmp::Notification::Vpls::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(full_clear.yfilter)
-	|| ydk::is_set(status.yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(full_raise.yfilter);
-}
-
-std::string Snmp::Notification::Vpls::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Vpls::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-cfg:vpls";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Vpls::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (full_clear.is_set || is_set(full_clear.yfilter)) leaf_name_data.push_back(full_clear.get_name_leafdata());
-    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (full_raise.is_set || is_set(full_raise.yfilter)) leaf_name_data.push_back(full_raise.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Vpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Vpls::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::Vpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "full-clear")
-    {
-        full_clear = value;
-        full_clear.value_namespace = name_space;
-        full_clear.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "status")
-    {
-        status = value;
-        status.value_namespace = name_space;
-        status.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "full-raise")
-    {
-        full_raise = value;
-        full_raise.value_namespace = name_space;
-        full_raise.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Vpls::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "full-clear")
-    {
-        full_clear.yfilter = yfilter;
-    }
-    if(value_path == "status")
-    {
-        status.yfilter = yfilter;
-    }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "full-raise")
-    {
-        full_raise.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Vpls::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "full-clear" || name == "status" || name == "enable" || name == "full-raise")
-        return true;
-    return false;
-}
-
-Snmp::Notification::L2vpn::L2vpn()
-    :
-    cisco{YType::empty, "cisco"},
-    enable{YType::empty, "enable"},
-    vc_down{YType::empty, "vc-down"},
-    vc_up{YType::empty, "vc-up"}
-{
-
-    yang_name = "l2vpn"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::L2vpn::~L2vpn()
-{
-}
-
-bool Snmp::Notification::L2vpn::has_data() const
-{
-    if (is_presence_container) return true;
-    return cisco.is_set
-	|| enable.is_set
-	|| vc_down.is_set
-	|| vc_up.is_set;
-}
-
-bool Snmp::Notification::L2vpn::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cisco.yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(vc_down.yfilter)
-	|| ydk::is_set(vc_up.yfilter);
-}
-
-std::string Snmp::Notification::L2vpn::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::L2vpn::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::L2vpn::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cisco.is_set || is_set(cisco.yfilter)) leaf_name_data.push_back(cisco.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (vc_down.is_set || is_set(vc_down.yfilter)) leaf_name_data.push_back(vc_down.get_name_leafdata());
-    if (vc_up.is_set || is_set(vc_up.yfilter)) leaf_name_data.push_back(vc_up.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::L2vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::L2vpn::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::L2vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cisco")
-    {
-        cisco = value;
-        cisco.value_namespace = name_space;
-        cisco.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vc-down")
-    {
-        vc_down = value;
-        vc_down.value_namespace = name_space;
-        vc_down.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vc-up")
-    {
-        vc_up = value;
-        vc_up.value_namespace = name_space;
-        vc_up.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::L2vpn::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cisco")
-    {
-        cisco.yfilter = yfilter;
-    }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "vc-down")
-    {
-        vc_down.yfilter = yfilter;
-    }
-    if(value_path == "vc-up")
-    {
-        vc_up.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::L2vpn::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cisco" || name == "enable" || name == "vc-down" || name == "vc-up")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Cfm::Cfm()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "cfm"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::Cfm::~Cfm()
-{
-}
-
-bool Snmp::Notification::Cfm::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set;
-}
-
-bool Snmp::Notification::Cfm::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Snmp::Notification::Cfm::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Cfm::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ethernet-cfm-cfg:cfm";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Cfm::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Cfm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Cfm::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::Cfm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Cfm::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Cfm::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Hsrp::Hsrp()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "hsrp"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::Hsrp::~Hsrp()
-{
-}
-
-bool Snmp::Notification::Hsrp::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set;
-}
-
-bool Snmp::Notification::Hsrp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Snmp::Notification::Hsrp::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Hsrp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-cfg:hsrp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Hsrp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Hsrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Hsrp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::Hsrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Hsrp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Hsrp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-Snmp::Notification::L2tun::L2tun()
-    :
-    tunnel_up{YType::boolean, "tunnel-up"},
-    tunnel_down{YType::boolean, "tunnel-down"},
-    pseudowire_status{YType::boolean, "pseudowire-status"},
-    sessions{YType::boolean, "sessions"}
-{
-
-    yang_name = "l2tun"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::L2tun::~L2tun()
-{
-}
-
-bool Snmp::Notification::L2tun::has_data() const
-{
-    if (is_presence_container) return true;
-    return tunnel_up.is_set
-	|| tunnel_down.is_set
-	|| pseudowire_status.is_set
-	|| sessions.is_set;
-}
-
-bool Snmp::Notification::L2tun::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(tunnel_up.yfilter)
-	|| ydk::is_set(tunnel_down.yfilter)
-	|| ydk::is_set(pseudowire_status.yfilter)
-	|| ydk::is_set(sessions.yfilter);
-}
-
-std::string Snmp::Notification::L2tun::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::L2tun::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-tunnel-l2tun-proto-mibs-cfg:l2tun";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::L2tun::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (tunnel_up.is_set || is_set(tunnel_up.yfilter)) leaf_name_data.push_back(tunnel_up.get_name_leafdata());
-    if (tunnel_down.is_set || is_set(tunnel_down.yfilter)) leaf_name_data.push_back(tunnel_down.get_name_leafdata());
-    if (pseudowire_status.is_set || is_set(pseudowire_status.yfilter)) leaf_name_data.push_back(pseudowire_status.get_name_leafdata());
-    if (sessions.is_set || is_set(sessions.yfilter)) leaf_name_data.push_back(sessions.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::L2tun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::L2tun::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::L2tun::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "tunnel-up")
-    {
-        tunnel_up = value;
-        tunnel_up.value_namespace = name_space;
-        tunnel_up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tunnel-down")
-    {
-        tunnel_down = value;
-        tunnel_down.value_namespace = name_space;
-        tunnel_down.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pseudowire-status")
-    {
-        pseudowire_status = value;
-        pseudowire_status.value_namespace = name_space;
-        pseudowire_status.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sessions")
-    {
-        sessions = value;
-        sessions.value_namespace = name_space;
-        sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::L2tun::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "tunnel-up")
-    {
-        tunnel_up.yfilter = yfilter;
-    }
-    if(value_path == "tunnel-down")
-    {
-        tunnel_down.yfilter = yfilter;
-    }
-    if(value_path == "pseudowire-status")
-    {
-        pseudowire_status.yfilter = yfilter;
-    }
-    if(value_path == "sessions")
-    {
-        sessions.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::L2tun::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tunnel-up" || name == "tunnel-down" || name == "pseudowire-status" || name == "sessions")
-        return true;
-    return false;
-}
-
 Snmp::Notification::SelectiveVrfDownload::SelectiveVrfDownload()
     :
     role_change{YType::empty, "role-change"}
@@ -5842,396 +4867,6 @@ void Snmp::Notification::SelectiveVrfDownload::set_filter(const std::string & va
 bool Snmp::Notification::SelectiveVrfDownload::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "role-change")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Bgp::Bgp()
-    :
-    bgp4mib(std::make_shared<Snmp::Notification::Bgp::Bgp4mib>())
-    , cisco_bgp4mib(std::make_shared<Snmp::Notification::Bgp::CiscoBgp4mib>())
-{
-    bgp4mib->parent = this;
-    cisco_bgp4mib->parent = this;
-
-    yang_name = "bgp"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::Bgp::~Bgp()
-{
-}
-
-bool Snmp::Notification::Bgp::has_data() const
-{
-    if (is_presence_container) return true;
-    return (bgp4mib !=  nullptr && bgp4mib->has_data())
-	|| (cisco_bgp4mib !=  nullptr && cisco_bgp4mib->has_data());
-}
-
-bool Snmp::Notification::Bgp::has_operation() const
-{
-    return is_set(yfilter)
-	|| (bgp4mib !=  nullptr && bgp4mib->has_operation())
-	|| (cisco_bgp4mib !=  nullptr && cisco_bgp4mib->has_operation());
-}
-
-std::string Snmp::Notification::Bgp::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Bgp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-cfg:bgp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Bgp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bgp4mib")
-    {
-        if(bgp4mib == nullptr)
-        {
-            bgp4mib = std::make_shared<Snmp::Notification::Bgp::Bgp4mib>();
-        }
-        return bgp4mib;
-    }
-
-    if(child_yang_name == "cisco-bgp4mib")
-    {
-        if(cisco_bgp4mib == nullptr)
-        {
-            cisco_bgp4mib = std::make_shared<Snmp::Notification::Bgp::CiscoBgp4mib>();
-        }
-        return cisco_bgp4mib;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Bgp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(bgp4mib != nullptr)
-    {
-        children["bgp4mib"] = bgp4mib;
-    }
-
-    if(cisco_bgp4mib != nullptr)
-    {
-        children["cisco-bgp4mib"] = cisco_bgp4mib;
-    }
-
-    return children;
-}
-
-void Snmp::Notification::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Snmp::Notification::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Snmp::Notification::Bgp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bgp4mib" || name == "cisco-bgp4mib")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Bgp::Bgp4mib::Bgp4mib()
-    :
-    enable{YType::empty, "enable"},
-    up_down{YType::empty, "up-down"}
-{
-
-    yang_name = "bgp4mib"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::Bgp::Bgp4mib::~Bgp4mib()
-{
-}
-
-bool Snmp::Notification::Bgp::Bgp4mib::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set
-	|| up_down.is_set;
-}
-
-bool Snmp::Notification::Bgp::Bgp4mib::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(up_down.yfilter);
-}
-
-std::string Snmp::Notification::Bgp::Bgp4mib::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/Cisco-IOS-XR-ipv4-bgp-cfg:bgp/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Bgp::Bgp4mib::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bgp4mib";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Bgp::Bgp4mib::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (up_down.is_set || is_set(up_down.yfilter)) leaf_name_data.push_back(up_down.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Bgp::Bgp4mib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Bgp::Bgp4mib::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::Bgp::Bgp4mib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "up-down")
-    {
-        up_down = value;
-        up_down.value_namespace = name_space;
-        up_down.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Bgp::Bgp4mib::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "up-down")
-    {
-        up_down.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Bgp::Bgp4mib::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable" || name == "up-down")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Bgp::CiscoBgp4mib::CiscoBgp4mib()
-    :
-    enable{YType::empty, "enable"},
-    up_down{YType::empty, "up-down"}
-{
-
-    yang_name = "cisco-bgp4mib"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::Bgp::CiscoBgp4mib::~CiscoBgp4mib()
-{
-}
-
-bool Snmp::Notification::Bgp::CiscoBgp4mib::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set
-	|| up_down.is_set;
-}
-
-bool Snmp::Notification::Bgp::CiscoBgp4mib::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(up_down.yfilter);
-}
-
-std::string Snmp::Notification::Bgp::CiscoBgp4mib::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/Cisco-IOS-XR-ipv4-bgp-cfg:bgp/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Bgp::CiscoBgp4mib::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cisco-bgp4mib";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Bgp::CiscoBgp4mib::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (up_down.is_set || is_set(up_down.yfilter)) leaf_name_data.push_back(up_down.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Bgp::CiscoBgp4mib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Bgp::CiscoBgp4mib::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::Bgp::CiscoBgp4mib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "up-down")
-    {
-        up_down = value;
-        up_down.value_namespace = name_space;
-        up_down.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Bgp::CiscoBgp4mib::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "up-down")
-    {
-        up_down.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Bgp::CiscoBgp4mib::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable" || name == "up-down")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Bfd::Bfd()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "bfd"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::Bfd::~Bfd()
-{
-}
-
-bool Snmp::Notification::Bfd::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set;
-}
-
-bool Snmp::Notification::Bfd::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Snmp::Notification::Bfd::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Bfd::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Bfd::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Bfd::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Bfd::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
         return true;
     return false;
 }
@@ -6331,6 +4966,105 @@ void Snmp::Notification::Flash::set_filter(const std::string & value_path, YFilt
 bool Snmp::Notification::Flash::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "insertion" || name == "removal")
+        return true;
+    return false;
+}
+
+Snmp::Notification::EntityState::EntityState()
+    :
+    switchover{YType::empty, "switchover"},
+    oper_status{YType::empty, "oper-status"}
+{
+
+    yang_name = "entity-state"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::EntityState::~EntityState()
+{
+}
+
+bool Snmp::Notification::EntityState::has_data() const
+{
+    if (is_presence_container) return true;
+    return switchover.is_set
+	|| oper_status.is_set;
+}
+
+bool Snmp::Notification::EntityState::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(switchover.yfilter)
+	|| ydk::is_set(oper_status.yfilter);
+}
+
+std::string Snmp::Notification::EntityState::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::EntityState::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-entstatemib-cfg:entity-state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::EntityState::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (switchover.is_set || is_set(switchover.yfilter)) leaf_name_data.push_back(switchover.get_name_leafdata());
+    if (oper_status.is_set || is_set(oper_status.yfilter)) leaf_name_data.push_back(oper_status.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::EntityState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::EntityState::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::EntityState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "switchover")
+    {
+        switchover = value;
+        switchover.value_namespace = name_space;
+        switchover.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oper-status")
+    {
+        oper_status = value;
+        oper_status.value_namespace = name_space;
+        oper_status.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::EntityState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "switchover")
+    {
+        switchover.yfilter = yfilter;
+    }
+    if(value_path == "oper-status")
+    {
+        oper_status.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::EntityState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "switchover" || name == "oper-status")
         return true;
     return false;
 }
@@ -6752,399 +5486,206 @@ bool Snmp::Notification::Ospfv3::StateChange::has_leaf_or_child_of_name(const st
     return false;
 }
 
-Snmp::Notification::Otn::Otn()
+Snmp::Notification::Vpls::Vpls()
     :
-    enable{YType::empty, "enable"}
+    full_clear{YType::empty, "full-clear"},
+    status{YType::empty, "status"},
+    enable{YType::empty, "enable"},
+    full_raise{YType::empty, "full-raise"}
 {
 
-    yang_name = "otn"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "vpls"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Snmp::Notification::Otn::~Otn()
+Snmp::Notification::Vpls::~Vpls()
 {
 }
 
-bool Snmp::Notification::Otn::has_data() const
+bool Snmp::Notification::Vpls::has_data() const
 {
     if (is_presence_container) return true;
-    return enable.is_set;
+    return full_clear.is_set
+	|| status.is_set
+	|| enable.is_set
+	|| full_raise.is_set;
 }
 
-bool Snmp::Notification::Otn::has_operation() const
+bool Snmp::Notification::Vpls::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
+	|| ydk::is_set(full_clear.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(full_raise.yfilter);
 }
 
-std::string Snmp::Notification::Otn::get_absolute_path() const
+std::string Snmp::Notification::Vpls::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Snmp::Notification::Otn::get_segment_path() const
+std::string Snmp::Notification::Vpls::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-otnifmib-cfg:otn";
+    path_buffer << "Cisco-IOS-XR-l2vpn-cfg:vpls";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Otn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Vpls::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (full_clear.is_set || is_set(full_clear.yfilter)) leaf_name_data.push_back(full_clear.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (full_raise.is_set || is_set(full_raise.yfilter)) leaf_name_data.push_back(full_raise.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Snmp::Notification::Otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Notification::Vpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Otn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Vpls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Snmp::Notification::Otn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Notification::Vpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "full-clear")
+    {
+        full_clear = value;
+        full_clear.value_namespace = name_space;
+        full_clear.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "status")
+    {
+        status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "enable")
     {
         enable = value;
         enable.value_namespace = name_space;
         enable.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "full-raise")
+    {
+        full_raise = value;
+        full_raise.value_namespace = name_space;
+        full_raise.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Snmp::Notification::Otn::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Notification::Vpls::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "full-clear")
+    {
+        full_clear.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
     if(value_path == "enable")
     {
         enable.yfilter = yfilter;
     }
+    if(value_path == "full-raise")
+    {
+        full_raise.yfilter = yfilter;
+    }
 }
 
-bool Snmp::Notification::Otn::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Notification::Vpls::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "enable")
+    if(name == "full-clear" || name == "status" || name == "enable" || name == "full-raise")
         return true;
     return false;
 }
 
-Snmp::Notification::FabricCrs::FabricCrs()
-    :
-    bundle_state{YType::empty, "bundle-state"},
-    plane_state{YType::empty, "plane-state"},
-    bundle_downed_link{YType::empty, "bundle-downed-link"}
-{
-
-    yang_name = "fabric-crs"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::FabricCrs::~FabricCrs()
-{
-}
-
-bool Snmp::Notification::FabricCrs::has_data() const
-{
-    if (is_presence_container) return true;
-    return bundle_state.is_set
-	|| plane_state.is_set
-	|| bundle_downed_link.is_set;
-}
-
-bool Snmp::Notification::FabricCrs::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bundle_state.yfilter)
-	|| ydk::is_set(plane_state.yfilter)
-	|| ydk::is_set(bundle_downed_link.yfilter);
-}
-
-std::string Snmp::Notification::FabricCrs::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::FabricCrs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-fabhfr-mib-cfg:fabric-crs";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::FabricCrs::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bundle_state.is_set || is_set(bundle_state.yfilter)) leaf_name_data.push_back(bundle_state.get_name_leafdata());
-    if (plane_state.is_set || is_set(plane_state.yfilter)) leaf_name_data.push_back(plane_state.get_name_leafdata());
-    if (bundle_downed_link.is_set || is_set(bundle_downed_link.yfilter)) leaf_name_data.push_back(bundle_downed_link.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::FabricCrs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::FabricCrs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::FabricCrs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bundle-state")
-    {
-        bundle_state = value;
-        bundle_state.value_namespace = name_space;
-        bundle_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "plane-state")
-    {
-        plane_state = value;
-        plane_state.value_namespace = name_space;
-        plane_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bundle-downed-link")
-    {
-        bundle_downed_link = value;
-        bundle_downed_link.value_namespace = name_space;
-        bundle_downed_link.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::FabricCrs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bundle-state")
-    {
-        bundle_state.yfilter = yfilter;
-    }
-    if(value_path == "plane-state")
-    {
-        plane_state.yfilter = yfilter;
-    }
-    if(value_path == "bundle-downed-link")
-    {
-        bundle_downed_link.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::FabricCrs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bundle-state" || name == "plane-state" || name == "bundle-downed-link")
-        return true;
-    return false;
-}
-
-Snmp::Notification::MplsTeP2mp::MplsTeP2mp()
-    :
-    up{YType::empty, "up"},
-    down{YType::empty, "down"}
-{
-
-    yang_name = "mpls-te-p2mp"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::MplsTeP2mp::~MplsTeP2mp()
-{
-}
-
-bool Snmp::Notification::MplsTeP2mp::has_data() const
-{
-    if (is_presence_container) return true;
-    return up.is_set
-	|| down.is_set;
-}
-
-bool Snmp::Notification::MplsTeP2mp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(up.yfilter)
-	|| ydk::is_set(down.yfilter);
-}
-
-std::string Snmp::Notification::MplsTeP2mp::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::MplsTeP2mp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te-p2mp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::MplsTeP2mp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
-    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::MplsTeP2mp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::MplsTeP2mp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::MplsTeP2mp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "up")
-    {
-        up = value;
-        up.value_namespace = name_space;
-        up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "down")
-    {
-        down = value;
-        down.value_namespace = name_space;
-        down.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::MplsTeP2mp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "up")
-    {
-        up.yfilter = yfilter;
-    }
-    if(value_path == "down")
-    {
-        down.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::MplsTeP2mp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "up" || name == "down")
-        return true;
-    return false;
-}
-
-Snmp::Notification::MplsTe::MplsTe()
+Snmp::Notification::L2vpn::L2vpn()
     :
     cisco{YType::empty, "cisco"},
-    up{YType::empty, "up"},
-    reoptimize{YType::empty, "reoptimize"},
-    reroute{YType::empty, "reroute"},
-    down{YType::empty, "down"}
-        ,
-    cisco_extension(std::make_shared<Snmp::Notification::MplsTe::CiscoExtension>())
+    enable{YType::empty, "enable"},
+    vc_down{YType::empty, "vc-down"},
+    vc_up{YType::empty, "vc-up"}
 {
-    cisco_extension->parent = this;
 
-    yang_name = "mpls-te"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "l2vpn"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Snmp::Notification::MplsTe::~MplsTe()
+Snmp::Notification::L2vpn::~L2vpn()
 {
 }
 
-bool Snmp::Notification::MplsTe::has_data() const
+bool Snmp::Notification::L2vpn::has_data() const
 {
     if (is_presence_container) return true;
     return cisco.is_set
-	|| up.is_set
-	|| reoptimize.is_set
-	|| reroute.is_set
-	|| down.is_set
-	|| (cisco_extension !=  nullptr && cisco_extension->has_data());
+	|| enable.is_set
+	|| vc_down.is_set
+	|| vc_up.is_set;
 }
 
-bool Snmp::Notification::MplsTe::has_operation() const
+bool Snmp::Notification::L2vpn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cisco.yfilter)
-	|| ydk::is_set(up.yfilter)
-	|| ydk::is_set(reoptimize.yfilter)
-	|| ydk::is_set(reroute.yfilter)
-	|| ydk::is_set(down.yfilter)
-	|| (cisco_extension !=  nullptr && cisco_extension->has_operation());
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(vc_down.yfilter)
+	|| ydk::is_set(vc_up.yfilter);
 }
 
-std::string Snmp::Notification::MplsTe::get_absolute_path() const
+std::string Snmp::Notification::L2vpn::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Snmp::Notification::MplsTe::get_segment_path() const
+std::string Snmp::Notification::L2vpn::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te";
+    path_buffer << "Cisco-IOS-XR-l2vpn-cfg:l2vpn";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::MplsTe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::L2vpn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cisco.is_set || is_set(cisco.yfilter)) leaf_name_data.push_back(cisco.get_name_leafdata());
-    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
-    if (reoptimize.is_set || is_set(reoptimize.yfilter)) leaf_name_data.push_back(reoptimize.get_name_leafdata());
-    if (reroute.is_set || is_set(reroute.yfilter)) leaf_name_data.push_back(reroute.get_name_leafdata());
-    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (vc_down.is_set || is_set(vc_down.yfilter)) leaf_name_data.push_back(vc_down.get_name_leafdata());
+    if (vc_up.is_set || is_set(vc_up.yfilter)) leaf_name_data.push_back(vc_up.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Snmp::Notification::MplsTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Notification::L2vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "cisco-extension")
-    {
-        if(cisco_extension == nullptr)
-        {
-            cisco_extension = std::make_shared<Snmp::Notification::MplsTe::CiscoExtension>();
-        }
-        return cisco_extension;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::MplsTe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::L2vpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(cisco_extension != nullptr)
-    {
-        children["cisco-extension"] = cisco_extension;
-    }
-
     return children;
 }
 
-void Snmp::Notification::MplsTe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Notification::L2vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cisco")
     {
@@ -7152,356 +5693,92 @@ void Snmp::Notification::MplsTe::set_value(const std::string & value_path, const
         cisco.value_namespace = name_space;
         cisco.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "up")
+    if(value_path == "enable")
     {
-        up = value;
-        up.value_namespace = name_space;
-        up.value_namespace_prefix = name_space_prefix;
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "reoptimize")
+    if(value_path == "vc-down")
     {
-        reoptimize = value;
-        reoptimize.value_namespace = name_space;
-        reoptimize.value_namespace_prefix = name_space_prefix;
+        vc_down = value;
+        vc_down.value_namespace = name_space;
+        vc_down.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "reroute")
+    if(value_path == "vc-up")
     {
-        reroute = value;
-        reroute.value_namespace = name_space;
-        reroute.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "down")
-    {
-        down = value;
-        down.value_namespace = name_space;
-        down.value_namespace_prefix = name_space_prefix;
+        vc_up = value;
+        vc_up.value_namespace = name_space;
+        vc_up.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Snmp::Notification::MplsTe::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Notification::L2vpn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cisco")
     {
         cisco.yfilter = yfilter;
     }
-    if(value_path == "up")
-    {
-        up.yfilter = yfilter;
-    }
-    if(value_path == "reoptimize")
-    {
-        reoptimize.yfilter = yfilter;
-    }
-    if(value_path == "reroute")
-    {
-        reroute.yfilter = yfilter;
-    }
-    if(value_path == "down")
-    {
-        down.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::MplsTe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cisco-extension" || name == "cisco" || name == "up" || name == "reoptimize" || name == "reroute" || name == "down")
-        return true;
-    return false;
-}
-
-Snmp::Notification::MplsTe::CiscoExtension::CiscoExtension()
-    :
-    preempt{YType::empty, "preempt"},
-    insufficient_bandwidth{YType::empty, "insufficient-bandwidth"},
-    re_route_pending_clear{YType::empty, "re-route-pending-clear"},
-    bringup_fail{YType::empty, "bringup-fail"},
-    re_route_pending{YType::empty, "re-route-pending"}
-{
-
-    yang_name = "cisco-extension"; yang_parent_name = "mpls-te"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::MplsTe::CiscoExtension::~CiscoExtension()
-{
-}
-
-bool Snmp::Notification::MplsTe::CiscoExtension::has_data() const
-{
-    if (is_presence_container) return true;
-    return preempt.is_set
-	|| insufficient_bandwidth.is_set
-	|| re_route_pending_clear.is_set
-	|| bringup_fail.is_set
-	|| re_route_pending.is_set;
-}
-
-bool Snmp::Notification::MplsTe::CiscoExtension::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(preempt.yfilter)
-	|| ydk::is_set(insufficient_bandwidth.yfilter)
-	|| ydk::is_set(re_route_pending_clear.yfilter)
-	|| ydk::is_set(bringup_fail.yfilter)
-	|| ydk::is_set(re_route_pending.yfilter);
-}
-
-std::string Snmp::Notification::MplsTe::CiscoExtension::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/Cisco-IOS-XR-mpls-te-cfg:mpls-te/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::MplsTe::CiscoExtension::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cisco-extension";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::MplsTe::CiscoExtension::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (preempt.is_set || is_set(preempt.yfilter)) leaf_name_data.push_back(preempt.get_name_leafdata());
-    if (insufficient_bandwidth.is_set || is_set(insufficient_bandwidth.yfilter)) leaf_name_data.push_back(insufficient_bandwidth.get_name_leafdata());
-    if (re_route_pending_clear.is_set || is_set(re_route_pending_clear.yfilter)) leaf_name_data.push_back(re_route_pending_clear.get_name_leafdata());
-    if (bringup_fail.is_set || is_set(bringup_fail.yfilter)) leaf_name_data.push_back(bringup_fail.get_name_leafdata());
-    if (re_route_pending.is_set || is_set(re_route_pending.yfilter)) leaf_name_data.push_back(re_route_pending.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::MplsTe::CiscoExtension::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::MplsTe::CiscoExtension::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::MplsTe::CiscoExtension::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "preempt")
-    {
-        preempt = value;
-        preempt.value_namespace = name_space;
-        preempt.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "insufficient-bandwidth")
-    {
-        insufficient_bandwidth = value;
-        insufficient_bandwidth.value_namespace = name_space;
-        insufficient_bandwidth.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "re-route-pending-clear")
-    {
-        re_route_pending_clear = value;
-        re_route_pending_clear.value_namespace = name_space;
-        re_route_pending_clear.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bringup-fail")
-    {
-        bringup_fail = value;
-        bringup_fail.value_namespace = name_space;
-        bringup_fail.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "re-route-pending")
-    {
-        re_route_pending = value;
-        re_route_pending.value_namespace = name_space;
-        re_route_pending.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::MplsTe::CiscoExtension::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "preempt")
-    {
-        preempt.yfilter = yfilter;
-    }
-    if(value_path == "insufficient-bandwidth")
-    {
-        insufficient_bandwidth.yfilter = yfilter;
-    }
-    if(value_path == "re-route-pending-clear")
-    {
-        re_route_pending_clear.yfilter = yfilter;
-    }
-    if(value_path == "bringup-fail")
-    {
-        bringup_fail.yfilter = yfilter;
-    }
-    if(value_path == "re-route-pending")
-    {
-        re_route_pending.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::MplsTe::CiscoExtension::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "preempt" || name == "insufficient-bandwidth" || name == "re-route-pending-clear" || name == "bringup-fail" || name == "re-route-pending")
-        return true;
-    return false;
-}
-
-Snmp::Notification::MplsFrr::MplsFrr()
-    :
-    unprotected{YType::empty, "unprotected"},
-    enable{YType::empty, "enable"},
-    protected_{YType::empty, "protected"}
-{
-
-    yang_name = "mpls-frr"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::MplsFrr::~MplsFrr()
-{
-}
-
-bool Snmp::Notification::MplsFrr::has_data() const
-{
-    if (is_presence_container) return true;
-    return unprotected.is_set
-	|| enable.is_set
-	|| protected_.is_set;
-}
-
-bool Snmp::Notification::MplsFrr::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unprotected.yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(protected_.yfilter);
-}
-
-std::string Snmp::Notification::MplsFrr::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::MplsFrr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-frr";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::MplsFrr::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unprotected.is_set || is_set(unprotected.yfilter)) leaf_name_data.push_back(unprotected.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (protected_.is_set || is_set(protected_.yfilter)) leaf_name_data.push_back(protected_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::MplsFrr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::MplsFrr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::MplsFrr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unprotected")
-    {
-        unprotected = value;
-        unprotected.value_namespace = name_space;
-        unprotected.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "protected")
-    {
-        protected_ = value;
-        protected_.value_namespace = name_space;
-        protected_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::MplsFrr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unprotected")
-    {
-        unprotected.yfilter = yfilter;
-    }
     if(value_path == "enable")
     {
         enable.yfilter = yfilter;
     }
-    if(value_path == "protected")
+    if(value_path == "vc-down")
     {
-        protected_.yfilter = yfilter;
+        vc_down.yfilter = yfilter;
+    }
+    if(value_path == "vc-up")
+    {
+        vc_up.yfilter = yfilter;
     }
 }
 
-bool Snmp::Notification::MplsFrr::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Notification::L2vpn::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "unprotected" || name == "enable" || name == "protected")
+    if(name == "cisco" || name == "enable" || name == "vc-down" || name == "vc-up")
         return true;
     return false;
 }
 
-Snmp::Notification::Sensor::Sensor()
+Snmp::Notification::ConfigMan::ConfigMan()
     :
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "sensor"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "config-man"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Snmp::Notification::Sensor::~Sensor()
+Snmp::Notification::ConfigMan::~ConfigMan()
 {
 }
 
-bool Snmp::Notification::Sensor::has_data() const
+bool Snmp::Notification::ConfigMan::has_data() const
 {
     if (is_presence_container) return true;
     return enable.is_set;
 }
 
-bool Snmp::Notification::Sensor::has_operation() const
+bool Snmp::Notification::ConfigMan::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter);
 }
 
-std::string Snmp::Notification::Sensor::get_absolute_path() const
+std::string Snmp::Notification::ConfigMan::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Snmp::Notification::Sensor::get_segment_path() const
+std::string Snmp::Notification::ConfigMan::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-ciscosensormib-cfg:sensor";
+    path_buffer << "Cisco-IOS-XR-config-mibs-cfg:config-man";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Sensor::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::ConfigMan::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7511,19 +5788,19 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Sensor::get_n
 
 }
 
-std::shared_ptr<Entity> Snmp::Notification::Sensor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Notification::ConfigMan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Sensor::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::ConfigMan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Snmp::Notification::Sensor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Notification::ConfigMan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
@@ -7533,7 +5810,7 @@ void Snmp::Notification::Sensor::set_value(const std::string & value_path, const
     }
 }
 
-void Snmp::Notification::Sensor::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Notification::ConfigMan::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "enable")
     {
@@ -7541,7 +5818,7 @@ void Snmp::Notification::Sensor::set_filter(const std::string & value_path, YFil
     }
 }
 
-bool Snmp::Notification::Sensor::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Notification::ConfigMan::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enable")
         return true;
@@ -7881,6 +6158,2536 @@ void Snmp::Notification::Isis::set_filter(const std::string & value_path, YFilte
 bool Snmp::Notification::Isis::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "database-overflow" || name == "manual-address-drops" || name == "corrupted-lsp-detected" || name == "attempt-to-exceed-max-sequence" || name == "id-length-mismatch" || name == "max-area-address-mismatch" || name == "own-lsp-purge" || name == "sequence-number-skip" || name == "authentication-type-failure" || name == "authentication-failure" || name == "version-skew" || name == "area-mismatch" || name == "rejected-adjacency" || name == "lsp-too-large-to-propagate" || name == "originated-lsp-buffer-size-mismatch" || name == "protocols-supported-mismatch" || name == "adjacency-change" || name == "lsp-error-detected" || name == "all")
+        return true;
+    return false;
+}
+
+Snmp::Notification::EntityRedundancy::EntityRedundancy()
+    :
+    switchover{YType::empty, "switchover"},
+    enable{YType::empty, "enable"},
+    status{YType::empty, "status"}
+{
+
+    yang_name = "entity-redundancy"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::EntityRedundancy::~EntityRedundancy()
+{
+}
+
+bool Snmp::Notification::EntityRedundancy::has_data() const
+{
+    if (is_presence_container) return true;
+    return switchover.is_set
+	|| enable.is_set
+	|| status.is_set;
+}
+
+bool Snmp::Notification::EntityRedundancy::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(switchover.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(status.yfilter);
+}
+
+std::string Snmp::Notification::EntityRedundancy::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::EntityRedundancy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-ceredundancymib-cfg:entity-redundancy";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::EntityRedundancy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (switchover.is_set || is_set(switchover.yfilter)) leaf_name_data.push_back(switchover.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::EntityRedundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::EntityRedundancy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::EntityRedundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "switchover")
+    {
+        switchover = value;
+        switchover.value_namespace = name_space;
+        switchover.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "status")
+    {
+        status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::EntityRedundancy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "switchover")
+    {
+        switchover.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::EntityRedundancy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "switchover" || name == "enable" || name == "status")
+        return true;
+    return false;
+}
+
+Snmp::Notification::Cfm::Cfm()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "cfm"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::Cfm::~Cfm()
+{
+}
+
+bool Snmp::Notification::Cfm::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Snmp::Notification::Cfm::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Snmp::Notification::Cfm::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::Cfm::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ethernet-cfm-cfg:cfm";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Cfm::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::Cfm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Cfm::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::Cfm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::Cfm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::Cfm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Snmp::Notification::Rsvp::Rsvp()
+    :
+    lost_flow{YType::empty, "lost-flow"},
+    new_flow{YType::empty, "new-flow"},
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "rsvp"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::Rsvp::~Rsvp()
+{
+}
+
+bool Snmp::Notification::Rsvp::has_data() const
+{
+    if (is_presence_container) return true;
+    return lost_flow.is_set
+	|| new_flow.is_set
+	|| enable.is_set;
+}
+
+bool Snmp::Notification::Rsvp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(lost_flow.yfilter)
+	|| ydk::is_set(new_flow.yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Snmp::Notification::Rsvp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::Rsvp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-rsvp-cfg:rsvp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Rsvp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (lost_flow.is_set || is_set(lost_flow.yfilter)) leaf_name_data.push_back(lost_flow.get_name_leafdata());
+    if (new_flow.is_set || is_set(new_flow.yfilter)) leaf_name_data.push_back(new_flow.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::Rsvp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Rsvp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::Rsvp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "lost-flow")
+    {
+        lost_flow = value;
+        lost_flow.value_namespace = name_space;
+        lost_flow.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "new-flow")
+    {
+        new_flow = value;
+        new_flow.value_namespace = name_space;
+        new_flow.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::Rsvp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lost-flow")
+    {
+        lost_flow.yfilter = yfilter;
+    }
+    if(value_path == "new-flow")
+    {
+        new_flow.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::Rsvp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lost-flow" || name == "new-flow" || name == "enable")
+        return true;
+    return false;
+}
+
+Snmp::Notification::Vrrp::Vrrp()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "vrrp"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::Vrrp::~Vrrp()
+{
+}
+
+bool Snmp::Notification::Vrrp::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Snmp::Notification::Vrrp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Snmp::Notification::Vrrp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::Vrrp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-vrrp-cfg:vrrp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Vrrp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::Vrrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Vrrp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::Vrrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::Vrrp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::Vrrp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Snmp::Notification::SubscriberMib::SubscriberMib()
+    :
+    session_aggregate(std::make_shared<Snmp::Notification::SubscriberMib::SessionAggregate>())
+{
+    session_aggregate->parent = this;
+
+    yang_name = "subscriber-mib"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::SubscriberMib::~SubscriberMib()
+{
+}
+
+bool Snmp::Notification::SubscriberMib::has_data() const
+{
+    if (is_presence_container) return true;
+    return (session_aggregate !=  nullptr && session_aggregate->has_data());
+}
+
+bool Snmp::Notification::SubscriberMib::has_operation() const
+{
+    return is_set(yfilter)
+	|| (session_aggregate !=  nullptr && session_aggregate->has_operation());
+}
+
+std::string Snmp::Notification::SubscriberMib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::SubscriberMib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber-mib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::SubscriberMib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::SubscriberMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "session-aggregate")
+    {
+        if(session_aggregate == nullptr)
+        {
+            session_aggregate = std::make_shared<Snmp::Notification::SubscriberMib::SessionAggregate>();
+        }
+        return session_aggregate;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::SubscriberMib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(session_aggregate != nullptr)
+    {
+        children["session-aggregate"] = session_aggregate;
+    }
+
+    return children;
+}
+
+void Snmp::Notification::SubscriberMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Snmp::Notification::SubscriberMib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Notification::SubscriberMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-aggregate")
+        return true;
+    return false;
+}
+
+Snmp::Notification::SubscriberMib::SessionAggregate::SessionAggregate()
+    :
+    node{YType::empty, "node"},
+    access_interface{YType::empty, "access-interface"}
+{
+
+    yang_name = "session-aggregate"; yang_parent_name = "subscriber-mib"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::SubscriberMib::SessionAggregate::~SessionAggregate()
+{
+}
+
+bool Snmp::Notification::SubscriberMib::SessionAggregate::has_data() const
+{
+    if (is_presence_container) return true;
+    return node.is_set
+	|| access_interface.is_set;
+}
+
+bool Snmp::Notification::SubscriberMib::SessionAggregate::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(access_interface.yfilter);
+}
+
+std::string Snmp::Notification::SubscriberMib::SessionAggregate::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber-mib/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::SubscriberMib::SessionAggregate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session-aggregate";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::SubscriberMib::SessionAggregate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (access_interface.is_set || is_set(access_interface.yfilter)) leaf_name_data.push_back(access_interface.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::SubscriberMib::SessionAggregate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::SubscriberMib::SessionAggregate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::SubscriberMib::SessionAggregate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node")
+    {
+        node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "access-interface")
+    {
+        access_interface = value;
+        access_interface.value_namespace = name_space;
+        access_interface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::SubscriberMib::SessionAggregate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+    if(value_path == "access-interface")
+    {
+        access_interface.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::SubscriberMib::SessionAggregate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "access-interface")
+        return true;
+    return false;
+}
+
+Snmp::Notification::MplsL3vpn::MplsL3vpn()
+    :
+    max_threshold_reissue_notification_time{YType::uint32, "max-threshold-reissue-notification-time"},
+    max_threshold_exceeded{YType::empty, "max-threshold-exceeded"},
+    max_threshold_cleared{YType::empty, "max-threshold-cleared"},
+    mid_threshold_exceeded{YType::empty, "mid-threshold-exceeded"},
+    enable{YType::empty, "enable"},
+    vrf_down{YType::empty, "vrf-down"},
+    vrf_up{YType::empty, "vrf-up"}
+{
+
+    yang_name = "mpls-l3vpn"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::MplsL3vpn::~MplsL3vpn()
+{
+}
+
+bool Snmp::Notification::MplsL3vpn::has_data() const
+{
+    if (is_presence_container) return true;
+    return max_threshold_reissue_notification_time.is_set
+	|| max_threshold_exceeded.is_set
+	|| max_threshold_cleared.is_set
+	|| mid_threshold_exceeded.is_set
+	|| enable.is_set
+	|| vrf_down.is_set
+	|| vrf_up.is_set;
+}
+
+bool Snmp::Notification::MplsL3vpn::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_threshold_reissue_notification_time.yfilter)
+	|| ydk::is_set(max_threshold_exceeded.yfilter)
+	|| ydk::is_set(max_threshold_cleared.yfilter)
+	|| ydk::is_set(mid_threshold_exceeded.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(vrf_down.yfilter)
+	|| ydk::is_set(vrf_up.yfilter);
+}
+
+std::string Snmp::Notification::MplsL3vpn::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::MplsL3vpn::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-vpn-cfg:mpls-l3vpn";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::MplsL3vpn::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_threshold_reissue_notification_time.is_set || is_set(max_threshold_reissue_notification_time.yfilter)) leaf_name_data.push_back(max_threshold_reissue_notification_time.get_name_leafdata());
+    if (max_threshold_exceeded.is_set || is_set(max_threshold_exceeded.yfilter)) leaf_name_data.push_back(max_threshold_exceeded.get_name_leafdata());
+    if (max_threshold_cleared.is_set || is_set(max_threshold_cleared.yfilter)) leaf_name_data.push_back(max_threshold_cleared.get_name_leafdata());
+    if (mid_threshold_exceeded.is_set || is_set(mid_threshold_exceeded.yfilter)) leaf_name_data.push_back(mid_threshold_exceeded.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (vrf_down.is_set || is_set(vrf_down.yfilter)) leaf_name_data.push_back(vrf_down.get_name_leafdata());
+    if (vrf_up.is_set || is_set(vrf_up.yfilter)) leaf_name_data.push_back(vrf_up.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::MplsL3vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::MplsL3vpn::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::MplsL3vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-threshold-reissue-notification-time")
+    {
+        max_threshold_reissue_notification_time = value;
+        max_threshold_reissue_notification_time.value_namespace = name_space;
+        max_threshold_reissue_notification_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-threshold-exceeded")
+    {
+        max_threshold_exceeded = value;
+        max_threshold_exceeded.value_namespace = name_space;
+        max_threshold_exceeded.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-threshold-cleared")
+    {
+        max_threshold_cleared = value;
+        max_threshold_cleared.value_namespace = name_space;
+        max_threshold_cleared.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mid-threshold-exceeded")
+    {
+        mid_threshold_exceeded = value;
+        mid_threshold_exceeded.value_namespace = name_space;
+        mid_threshold_exceeded.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-down")
+    {
+        vrf_down = value;
+        vrf_down.value_namespace = name_space;
+        vrf_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-up")
+    {
+        vrf_up = value;
+        vrf_up.value_namespace = name_space;
+        vrf_up.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::MplsL3vpn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-threshold-reissue-notification-time")
+    {
+        max_threshold_reissue_notification_time.yfilter = yfilter;
+    }
+    if(value_path == "max-threshold-exceeded")
+    {
+        max_threshold_exceeded.yfilter = yfilter;
+    }
+    if(value_path == "max-threshold-cleared")
+    {
+        max_threshold_cleared.yfilter = yfilter;
+    }
+    if(value_path == "mid-threshold-exceeded")
+    {
+        mid_threshold_exceeded.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "vrf-down")
+    {
+        vrf_down.yfilter = yfilter;
+    }
+    if(value_path == "vrf-up")
+    {
+        vrf_up.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::MplsL3vpn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-threshold-reissue-notification-time" || name == "max-threshold-exceeded" || name == "max-threshold-cleared" || name == "mid-threshold-exceeded" || name == "enable" || name == "vrf-down" || name == "vrf-up")
+        return true;
+    return false;
+}
+
+Snmp::Notification::FrequencySynchronization::FrequencySynchronization()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "frequency-synchronization"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::FrequencySynchronization::~FrequencySynchronization()
+{
+}
+
+bool Snmp::Notification::FrequencySynchronization::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Snmp::Notification::FrequencySynchronization::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Snmp::Notification::FrequencySynchronization::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::FrequencySynchronization::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-freqsync-cfg:frequency-synchronization";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::FrequencySynchronization::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::FrequencySynchronization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::FrequencySynchronization::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::FrequencySynchronization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::FrequencySynchronization::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::FrequencySynchronization::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Snmp::Notification::Entity::Entity()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "entity"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::Entity::~Entity()
+{
+}
+
+bool Snmp::Notification::Entity::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Snmp::Notification::Entity::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Snmp::Notification::Entity::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::Entity::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-entitymib-cfg:entity";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Entity::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::Entity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Entity::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::Entity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::Entity::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::Entity::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Snmp::Notification::Otn::Otn()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "otn"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::Otn::~Otn()
+{
+}
+
+bool Snmp::Notification::Otn::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Snmp::Notification::Otn::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Snmp::Notification::Otn::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::Otn::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-otnifmib-cfg:otn";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Otn::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::Otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Otn::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::Otn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::Otn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::Otn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Snmp::Notification::Bfd::Bfd()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "bfd"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::Bfd::~Bfd()
+{
+}
+
+bool Snmp::Notification::Bfd::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Snmp::Notification::Bfd::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Snmp::Notification::Bfd::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::Bfd::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-bfd-cfg:bfd";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Bfd::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Bfd::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::Bfd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Snmp::Notification::IpSec::IpSec()
+    :
+    tunnel_stop{YType::empty, "tunnel-stop"},
+    tunnel_start{YType::empty, "tunnel-start"}
+{
+
+    yang_name = "ip-sec"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::IpSec::~IpSec()
+{
+}
+
+bool Snmp::Notification::IpSec::has_data() const
+{
+    if (is_presence_container) return true;
+    return tunnel_stop.is_set
+	|| tunnel_start.is_set;
+}
+
+bool Snmp::Notification::IpSec::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tunnel_stop.yfilter)
+	|| ydk::is_set(tunnel_start.yfilter);
+}
+
+std::string Snmp::Notification::IpSec::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::IpSec::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-mibs-ipsecflowmon-cfg:ip-sec";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::IpSec::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tunnel_stop.is_set || is_set(tunnel_stop.yfilter)) leaf_name_data.push_back(tunnel_stop.get_name_leafdata());
+    if (tunnel_start.is_set || is_set(tunnel_start.yfilter)) leaf_name_data.push_back(tunnel_start.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::IpSec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::IpSec::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::IpSec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tunnel-stop")
+    {
+        tunnel_stop = value;
+        tunnel_stop.value_namespace = name_space;
+        tunnel_stop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tunnel-start")
+    {
+        tunnel_start = value;
+        tunnel_start.value_namespace = name_space;
+        tunnel_start.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::IpSec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tunnel-stop")
+    {
+        tunnel_stop.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-start")
+    {
+        tunnel_start.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::IpSec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tunnel-stop" || name == "tunnel-start")
+        return true;
+    return false;
+}
+
+Snmp::Notification::Isakmp::Isakmp()
+    :
+    tunnel_stop{YType::empty, "tunnel-stop"},
+    tunnel_start{YType::empty, "tunnel-start"}
+{
+
+    yang_name = "isakmp"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::Isakmp::~Isakmp()
+{
+}
+
+bool Snmp::Notification::Isakmp::has_data() const
+{
+    if (is_presence_container) return true;
+    return tunnel_stop.is_set
+	|| tunnel_start.is_set;
+}
+
+bool Snmp::Notification::Isakmp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tunnel_stop.yfilter)
+	|| ydk::is_set(tunnel_start.yfilter);
+}
+
+std::string Snmp::Notification::Isakmp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::Isakmp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-mibs-ipsecflowmon-cfg:isakmp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Isakmp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tunnel_stop.is_set || is_set(tunnel_stop.yfilter)) leaf_name_data.push_back(tunnel_stop.get_name_leafdata());
+    if (tunnel_start.is_set || is_set(tunnel_start.yfilter)) leaf_name_data.push_back(tunnel_start.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::Isakmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Isakmp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::Isakmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tunnel-stop")
+    {
+        tunnel_stop = value;
+        tunnel_stop.value_namespace = name_space;
+        tunnel_stop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tunnel-start")
+    {
+        tunnel_start = value;
+        tunnel_start.value_namespace = name_space;
+        tunnel_start.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::Isakmp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tunnel-stop")
+    {
+        tunnel_stop.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-start")
+    {
+        tunnel_start.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::Isakmp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tunnel-stop" || name == "tunnel-start")
+        return true;
+    return false;
+}
+
+Snmp::Notification::MplsLdp::MplsLdp()
+    :
+    session_up{YType::empty, "session-up"},
+    init_session_threshold_exceeded{YType::empty, "init-session-threshold-exceeded"},
+    session_down{YType::empty, "session-down"}
+{
+
+    yang_name = "mpls-ldp"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::MplsLdp::~MplsLdp()
+{
+}
+
+bool Snmp::Notification::MplsLdp::has_data() const
+{
+    if (is_presence_container) return true;
+    return session_up.is_set
+	|| init_session_threshold_exceeded.is_set
+	|| session_down.is_set;
+}
+
+bool Snmp::Notification::MplsLdp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(session_up.yfilter)
+	|| ydk::is_set(init_session_threshold_exceeded.yfilter)
+	|| ydk::is_set(session_down.yfilter);
+}
+
+std::string Snmp::Notification::MplsLdp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::MplsLdp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-ldp-cfg:mpls-ldp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::MplsLdp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (session_up.is_set || is_set(session_up.yfilter)) leaf_name_data.push_back(session_up.get_name_leafdata());
+    if (init_session_threshold_exceeded.is_set || is_set(init_session_threshold_exceeded.yfilter)) leaf_name_data.push_back(init_session_threshold_exceeded.get_name_leafdata());
+    if (session_down.is_set || is_set(session_down.yfilter)) leaf_name_data.push_back(session_down.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::MplsLdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::MplsLdp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::MplsLdp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "session-up")
+    {
+        session_up = value;
+        session_up.value_namespace = name_space;
+        session_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "init-session-threshold-exceeded")
+    {
+        init_session_threshold_exceeded = value;
+        init_session_threshold_exceeded.value_namespace = name_space;
+        init_session_threshold_exceeded.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-down")
+    {
+        session_down = value;
+        session_down.value_namespace = name_space;
+        session_down.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::MplsLdp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-up")
+    {
+        session_up.yfilter = yfilter;
+    }
+    if(value_path == "init-session-threshold-exceeded")
+    {
+        init_session_threshold_exceeded.yfilter = yfilter;
+    }
+    if(value_path == "session-down")
+    {
+        session_down.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::MplsLdp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-up" || name == "init-session-threshold-exceeded" || name == "session-down")
+        return true;
+    return false;
+}
+
+Snmp::Notification::Optical::Optical()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "optical"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::Optical::~Optical()
+{
+}
+
+bool Snmp::Notification::Optical::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Snmp::Notification::Optical::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Snmp::Notification::Optical::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::Optical::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-opticalmib-cfg:optical";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Optical::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::Optical::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Optical::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::Optical::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::Optical::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::Optical::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Snmp::Notification::FruControl::FruControl()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "fru-control"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::FruControl::~FruControl()
+{
+}
+
+bool Snmp::Notification::FruControl::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Snmp::Notification::FruControl::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Snmp::Notification::FruControl::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::FruControl::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-frucontrolmib-cfg:fru-control";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::FruControl::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::FruControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::FruControl::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::FruControl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::FruControl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::FruControl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Snmp::Notification::Diametermib::Diametermib()
+    :
+    protocolerror{YType::boolean, "protocolerror"},
+    permanentfail{YType::boolean, "permanentfail"},
+    peerdown{YType::boolean, "peerdown"},
+    peerup{YType::boolean, "peerup"},
+    transientfail{YType::boolean, "transientfail"}
+{
+
+    yang_name = "diametermib"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::Diametermib::~Diametermib()
+{
+}
+
+bool Snmp::Notification::Diametermib::has_data() const
+{
+    if (is_presence_container) return true;
+    return protocolerror.is_set
+	|| permanentfail.is_set
+	|| peerdown.is_set
+	|| peerup.is_set
+	|| transientfail.is_set;
+}
+
+bool Snmp::Notification::Diametermib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(protocolerror.yfilter)
+	|| ydk::is_set(permanentfail.yfilter)
+	|| ydk::is_set(peerdown.yfilter)
+	|| ydk::is_set(peerup.yfilter)
+	|| ydk::is_set(transientfail.yfilter);
+}
+
+std::string Snmp::Notification::Diametermib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::Diametermib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-aaa-diameter-base-mib-cfg:diametermib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Diametermib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (protocolerror.is_set || is_set(protocolerror.yfilter)) leaf_name_data.push_back(protocolerror.get_name_leafdata());
+    if (permanentfail.is_set || is_set(permanentfail.yfilter)) leaf_name_data.push_back(permanentfail.get_name_leafdata());
+    if (peerdown.is_set || is_set(peerdown.yfilter)) leaf_name_data.push_back(peerdown.get_name_leafdata());
+    if (peerup.is_set || is_set(peerup.yfilter)) leaf_name_data.push_back(peerup.get_name_leafdata());
+    if (transientfail.is_set || is_set(transientfail.yfilter)) leaf_name_data.push_back(transientfail.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::Diametermib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Diametermib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::Diametermib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "protocolerror")
+    {
+        protocolerror = value;
+        protocolerror.value_namespace = name_space;
+        protocolerror.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "permanentfail")
+    {
+        permanentfail = value;
+        permanentfail.value_namespace = name_space;
+        permanentfail.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peerdown")
+    {
+        peerdown = value;
+        peerdown.value_namespace = name_space;
+        peerdown.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peerup")
+    {
+        peerup = value;
+        peerup.value_namespace = name_space;
+        peerup.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "transientfail")
+    {
+        transientfail = value;
+        transientfail.value_namespace = name_space;
+        transientfail.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::Diametermib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "protocolerror")
+    {
+        protocolerror.yfilter = yfilter;
+    }
+    if(value_path == "permanentfail")
+    {
+        permanentfail.yfilter = yfilter;
+    }
+    if(value_path == "peerdown")
+    {
+        peerdown.yfilter = yfilter;
+    }
+    if(value_path == "peerup")
+    {
+        peerup.yfilter = yfilter;
+    }
+    if(value_path == "transientfail")
+    {
+        transientfail.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::Diametermib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protocolerror" || name == "permanentfail" || name == "peerdown" || name == "peerup" || name == "transientfail")
+        return true;
+    return false;
+}
+
+Snmp::Notification::Rf::Rf()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "rf"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::Rf::~Rf()
+{
+}
+
+bool Snmp::Notification::Rf::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Snmp::Notification::Rf::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Snmp::Notification::Rf::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::Rf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-mib-rfmib-cfg:rf";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Rf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::Rf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Rf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::Rf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::Rf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::Rf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Snmp::Notification::Bgp::Bgp()
+    :
+    bgp4mib(std::make_shared<Snmp::Notification::Bgp::Bgp4mib>())
+    , cisco_bgp4mib(std::make_shared<Snmp::Notification::Bgp::CiscoBgp4mib>())
+{
+    bgp4mib->parent = this;
+    cisco_bgp4mib->parent = this;
+
+    yang_name = "bgp"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::Bgp::~Bgp()
+{
+}
+
+bool Snmp::Notification::Bgp::has_data() const
+{
+    if (is_presence_container) return true;
+    return (bgp4mib !=  nullptr && bgp4mib->has_data())
+	|| (cisco_bgp4mib !=  nullptr && cisco_bgp4mib->has_data());
+}
+
+bool Snmp::Notification::Bgp::has_operation() const
+{
+    return is_set(yfilter)
+	|| (bgp4mib !=  nullptr && bgp4mib->has_operation())
+	|| (cisco_bgp4mib !=  nullptr && cisco_bgp4mib->has_operation());
+}
+
+std::string Snmp::Notification::Bgp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::Bgp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-bgp-cfg:bgp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Bgp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp4mib")
+    {
+        if(bgp4mib == nullptr)
+        {
+            bgp4mib = std::make_shared<Snmp::Notification::Bgp::Bgp4mib>();
+        }
+        return bgp4mib;
+    }
+
+    if(child_yang_name == "cisco-bgp4mib")
+    {
+        if(cisco_bgp4mib == nullptr)
+        {
+            cisco_bgp4mib = std::make_shared<Snmp::Notification::Bgp::CiscoBgp4mib>();
+        }
+        return cisco_bgp4mib;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Bgp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(bgp4mib != nullptr)
+    {
+        children["bgp4mib"] = bgp4mib;
+    }
+
+    if(cisco_bgp4mib != nullptr)
+    {
+        children["cisco-bgp4mib"] = cisco_bgp4mib;
+    }
+
+    return children;
+}
+
+void Snmp::Notification::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Snmp::Notification::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Notification::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp4mib" || name == "cisco-bgp4mib")
+        return true;
+    return false;
+}
+
+Snmp::Notification::Bgp::Bgp4mib::Bgp4mib()
+    :
+    enable{YType::empty, "enable"},
+    up_down{YType::empty, "up-down"}
+{
+
+    yang_name = "bgp4mib"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::Bgp::Bgp4mib::~Bgp4mib()
+{
+}
+
+bool Snmp::Notification::Bgp::Bgp4mib::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set
+	|| up_down.is_set;
+}
+
+bool Snmp::Notification::Bgp::Bgp4mib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(up_down.yfilter);
+}
+
+std::string Snmp::Notification::Bgp::Bgp4mib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/Cisco-IOS-XR-ipv4-bgp-cfg:bgp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::Bgp::Bgp4mib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp4mib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Bgp::Bgp4mib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (up_down.is_set || is_set(up_down.yfilter)) leaf_name_data.push_back(up_down.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::Bgp::Bgp4mib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Bgp::Bgp4mib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::Bgp::Bgp4mib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "up-down")
+    {
+        up_down = value;
+        up_down.value_namespace = name_space;
+        up_down.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::Bgp::Bgp4mib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "up-down")
+    {
+        up_down.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::Bgp::Bgp4mib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "up-down")
+        return true;
+    return false;
+}
+
+Snmp::Notification::Bgp::CiscoBgp4mib::CiscoBgp4mib()
+    :
+    enable{YType::empty, "enable"},
+    up_down{YType::empty, "up-down"}
+{
+
+    yang_name = "cisco-bgp4mib"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::Bgp::CiscoBgp4mib::~CiscoBgp4mib()
+{
+}
+
+bool Snmp::Notification::Bgp::CiscoBgp4mib::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set
+	|| up_down.is_set;
+}
+
+bool Snmp::Notification::Bgp::CiscoBgp4mib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(up_down.yfilter);
+}
+
+std::string Snmp::Notification::Bgp::CiscoBgp4mib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/Cisco-IOS-XR-ipv4-bgp-cfg:bgp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::Bgp::CiscoBgp4mib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-bgp4mib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Bgp::CiscoBgp4mib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (up_down.is_set || is_set(up_down.yfilter)) leaf_name_data.push_back(up_down.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::Bgp::CiscoBgp4mib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Bgp::CiscoBgp4mib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::Bgp::CiscoBgp4mib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "up-down")
+    {
+        up_down = value;
+        up_down.value_namespace = name_space;
+        up_down.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::Bgp::CiscoBgp4mib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "up-down")
+    {
+        up_down.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::Bgp::CiscoBgp4mib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "up-down")
+        return true;
+    return false;
+}
+
+Snmp::Notification::Ntp::Ntp()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "ntp"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::Ntp::~Ntp()
+{
+}
+
+bool Snmp::Notification::Ntp::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Snmp::Notification::Ntp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Snmp::Notification::Ntp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::Ntp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ip-ntp-cfg:ntp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Ntp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::Ntp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Ntp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::Ntp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::Ntp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::Ntp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Snmp::Notification::Syslog::Syslog()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "syslog"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::Syslog::~Syslog()
+{
+}
+
+bool Snmp::Notification::Syslog::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Snmp::Notification::Syslog::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Snmp::Notification::Syslog::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::Syslog::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-syslogmib-cfg:syslog";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Syslog::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::Syslog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Syslog::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::Syslog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::Syslog::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::Syslog::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Snmp::Notification::Hsrp::Hsrp()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "hsrp"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::Hsrp::~Hsrp()
+{
+}
+
+bool Snmp::Notification::Hsrp::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Snmp::Notification::Hsrp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Snmp::Notification::Hsrp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::Hsrp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-hsrp-cfg:hsrp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Hsrp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::Hsrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Hsrp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::Hsrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::Hsrp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::Hsrp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Snmp::Notification::OpticalOts::OpticalOts()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "optical-ots"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::OpticalOts::~OpticalOts()
+{
+}
+
+bool Snmp::Notification::OpticalOts::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Snmp::Notification::OpticalOts::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Snmp::Notification::OpticalOts::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::OpticalOts::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-opticalotsmib-cfg:optical-ots";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::OpticalOts::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::OpticalOts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::OpticalOts::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::OpticalOts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::OpticalOts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::OpticalOts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Snmp::Notification::ConfigCopy::ConfigCopy()
+    :
+    completion{YType::empty, "completion"}
+{
+
+    yang_name = "config-copy"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::ConfigCopy::~ConfigCopy()
+{
+}
+
+bool Snmp::Notification::ConfigCopy::has_data() const
+{
+    if (is_presence_container) return true;
+    return completion.is_set;
+}
+
+bool Snmp::Notification::ConfigCopy::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(completion.yfilter);
+}
+
+std::string Snmp::Notification::ConfigCopy::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::ConfigCopy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-confcopymib-cfg:config-copy";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::ConfigCopy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (completion.is_set || is_set(completion.yfilter)) leaf_name_data.push_back(completion.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::ConfigCopy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::ConfigCopy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::ConfigCopy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "completion")
+    {
+        completion = value;
+        completion.value_namespace = name_space;
+        completion.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::ConfigCopy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "completion")
+    {
+        completion.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::ConfigCopy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "completion")
         return true;
     return false;
 }
@@ -8508,629 +9315,6 @@ bool Snmp::Notification::Ospf::Error::has_leaf_or_child_of_name(const std::strin
     return false;
 }
 
-Snmp::Notification::ConfigCopy::ConfigCopy()
-    :
-    completion{YType::empty, "completion"}
-{
-
-    yang_name = "config-copy"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::ConfigCopy::~ConfigCopy()
-{
-}
-
-bool Snmp::Notification::ConfigCopy::has_data() const
-{
-    if (is_presence_container) return true;
-    return completion.is_set;
-}
-
-bool Snmp::Notification::ConfigCopy::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(completion.yfilter);
-}
-
-std::string Snmp::Notification::ConfigCopy::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::ConfigCopy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-confcopymib-cfg:config-copy";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::ConfigCopy::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (completion.is_set || is_set(completion.yfilter)) leaf_name_data.push_back(completion.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::ConfigCopy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::ConfigCopy::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::ConfigCopy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "completion")
-    {
-        completion = value;
-        completion.value_namespace = name_space;
-        completion.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::ConfigCopy::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "completion")
-    {
-        completion.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::ConfigCopy::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "completion")
-        return true;
-    return false;
-}
-
-Snmp::Notification::MplsLdp::MplsLdp()
-    :
-    session_up{YType::empty, "session-up"},
-    init_session_threshold_exceeded{YType::empty, "init-session-threshold-exceeded"},
-    session_down{YType::empty, "session-down"}
-{
-
-    yang_name = "mpls-ldp"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::MplsLdp::~MplsLdp()
-{
-}
-
-bool Snmp::Notification::MplsLdp::has_data() const
-{
-    if (is_presence_container) return true;
-    return session_up.is_set
-	|| init_session_threshold_exceeded.is_set
-	|| session_down.is_set;
-}
-
-bool Snmp::Notification::MplsLdp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(session_up.yfilter)
-	|| ydk::is_set(init_session_threshold_exceeded.yfilter)
-	|| ydk::is_set(session_down.yfilter);
-}
-
-std::string Snmp::Notification::MplsLdp::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::MplsLdp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-mpls-ldp-cfg:mpls-ldp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::MplsLdp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (session_up.is_set || is_set(session_up.yfilter)) leaf_name_data.push_back(session_up.get_name_leafdata());
-    if (init_session_threshold_exceeded.is_set || is_set(init_session_threshold_exceeded.yfilter)) leaf_name_data.push_back(init_session_threshold_exceeded.get_name_leafdata());
-    if (session_down.is_set || is_set(session_down.yfilter)) leaf_name_data.push_back(session_down.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::MplsLdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::MplsLdp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::MplsLdp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "session-up")
-    {
-        session_up = value;
-        session_up.value_namespace = name_space;
-        session_up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "init-session-threshold-exceeded")
-    {
-        init_session_threshold_exceeded = value;
-        init_session_threshold_exceeded.value_namespace = name_space;
-        init_session_threshold_exceeded.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "session-down")
-    {
-        session_down = value;
-        session_down.value_namespace = name_space;
-        session_down.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::MplsLdp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "session-up")
-    {
-        session_up.yfilter = yfilter;
-    }
-    if(value_path == "init-session-threshold-exceeded")
-    {
-        init_session_threshold_exceeded.yfilter = yfilter;
-    }
-    if(value_path == "session-down")
-    {
-        session_down.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::MplsLdp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "session-up" || name == "init-session-threshold-exceeded" || name == "session-down")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Optical::Optical()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "optical"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::Optical::~Optical()
-{
-}
-
-bool Snmp::Notification::Optical::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set;
-}
-
-bool Snmp::Notification::Optical::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Snmp::Notification::Optical::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Optical::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-opticalmib-cfg:optical";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Optical::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Optical::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Optical::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::Optical::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Optical::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Optical::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Bridge::Bridge()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "bridge"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::Bridge::~Bridge()
-{
-}
-
-bool Snmp::Notification::Bridge::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set;
-}
-
-bool Snmp::Notification::Bridge::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Snmp::Notification::Bridge::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Bridge::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-bridgemib-cfg:bridge";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Bridge::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Bridge::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Bridge::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::Bridge::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Bridge::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Bridge::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-Snmp::Notification::FrequencySynchronization::FrequencySynchronization()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "frequency-synchronization"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::FrequencySynchronization::~FrequencySynchronization()
-{
-}
-
-bool Snmp::Notification::FrequencySynchronization::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set;
-}
-
-bool Snmp::Notification::FrequencySynchronization::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Snmp::Notification::FrequencySynchronization::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::FrequencySynchronization::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-freqsync-cfg:frequency-synchronization";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::FrequencySynchronization::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::FrequencySynchronization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::FrequencySynchronization::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::FrequencySynchronization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::FrequencySynchronization::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::FrequencySynchronization::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Vrrp::Vrrp()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "vrrp"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::Vrrp::~Vrrp()
-{
-}
-
-bool Snmp::Notification::Vrrp::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set;
-}
-
-bool Snmp::Notification::Vrrp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Snmp::Notification::Vrrp::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Vrrp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-vrrp-cfg:vrrp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Vrrp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Vrrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Vrrp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::Vrrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Vrrp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Vrrp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Oam::Oam()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "oam"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::Oam::~Oam()
-{
-}
-
-bool Snmp::Notification::Oam::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set;
-}
-
-bool Snmp::Notification::Oam::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Snmp::Notification::Oam::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Oam::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ethernet-link-oam-cfg:oam";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Oam::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Oam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Oam::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::Oam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Oam::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Oam::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
 Snmp::Notification::System::System()
     :
     enable{YType::empty, "enable"}
@@ -9216,243 +9400,172 @@ bool Snmp::Notification::System::has_leaf_or_child_of_name(const std::string & n
     return false;
 }
 
-Snmp::Notification::IpSec::IpSec()
+Snmp::Notification::L2tun::L2tun()
     :
-    tunnel_stop{YType::empty, "tunnel-stop"},
-    tunnel_start{YType::empty, "tunnel-start"}
+    tunnel_up{YType::boolean, "tunnel-up"},
+    tunnel_down{YType::boolean, "tunnel-down"},
+    pseudowire_status{YType::boolean, "pseudowire-status"},
+    sessions{YType::boolean, "sessions"}
 {
 
-    yang_name = "ip-sec"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "l2tun"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Snmp::Notification::IpSec::~IpSec()
+Snmp::Notification::L2tun::~L2tun()
 {
 }
 
-bool Snmp::Notification::IpSec::has_data() const
+bool Snmp::Notification::L2tun::has_data() const
 {
     if (is_presence_container) return true;
-    return tunnel_stop.is_set
-	|| tunnel_start.is_set;
+    return tunnel_up.is_set
+	|| tunnel_down.is_set
+	|| pseudowire_status.is_set
+	|| sessions.is_set;
 }
 
-bool Snmp::Notification::IpSec::has_operation() const
+bool Snmp::Notification::L2tun::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(tunnel_stop.yfilter)
-	|| ydk::is_set(tunnel_start.yfilter);
+	|| ydk::is_set(tunnel_up.yfilter)
+	|| ydk::is_set(tunnel_down.yfilter)
+	|| ydk::is_set(pseudowire_status.yfilter)
+	|| ydk::is_set(sessions.yfilter);
 }
 
-std::string Snmp::Notification::IpSec::get_absolute_path() const
+std::string Snmp::Notification::L2tun::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Snmp::Notification::IpSec::get_segment_path() const
+std::string Snmp::Notification::L2tun::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-crypto-mibs-ipsecflowmon-cfg:ip-sec";
+    path_buffer << "Cisco-IOS-XR-tunnel-l2tun-proto-mibs-cfg:l2tun";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::IpSec::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::L2tun::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tunnel_stop.is_set || is_set(tunnel_stop.yfilter)) leaf_name_data.push_back(tunnel_stop.get_name_leafdata());
-    if (tunnel_start.is_set || is_set(tunnel_start.yfilter)) leaf_name_data.push_back(tunnel_start.get_name_leafdata());
+    if (tunnel_up.is_set || is_set(tunnel_up.yfilter)) leaf_name_data.push_back(tunnel_up.get_name_leafdata());
+    if (tunnel_down.is_set || is_set(tunnel_down.yfilter)) leaf_name_data.push_back(tunnel_down.get_name_leafdata());
+    if (pseudowire_status.is_set || is_set(pseudowire_status.yfilter)) leaf_name_data.push_back(pseudowire_status.get_name_leafdata());
+    if (sessions.is_set || is_set(sessions.yfilter)) leaf_name_data.push_back(sessions.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Snmp::Notification::IpSec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Notification::L2tun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::IpSec::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::L2tun::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Snmp::Notification::IpSec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Notification::L2tun::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "tunnel-stop")
+    if(value_path == "tunnel-up")
     {
-        tunnel_stop = value;
-        tunnel_stop.value_namespace = name_space;
-        tunnel_stop.value_namespace_prefix = name_space_prefix;
+        tunnel_up = value;
+        tunnel_up.value_namespace = name_space;
+        tunnel_up.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "tunnel-start")
+    if(value_path == "tunnel-down")
     {
-        tunnel_start = value;
-        tunnel_start.value_namespace = name_space;
-        tunnel_start.value_namespace_prefix = name_space_prefix;
+        tunnel_down = value;
+        tunnel_down.value_namespace = name_space;
+        tunnel_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pseudowire-status")
+    {
+        pseudowire_status = value;
+        pseudowire_status.value_namespace = name_space;
+        pseudowire_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sessions")
+    {
+        sessions = value;
+        sessions.value_namespace = name_space;
+        sessions.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Snmp::Notification::IpSec::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Notification::L2tun::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "tunnel-stop")
+    if(value_path == "tunnel-up")
     {
-        tunnel_stop.yfilter = yfilter;
+        tunnel_up.yfilter = yfilter;
     }
-    if(value_path == "tunnel-start")
+    if(value_path == "tunnel-down")
     {
-        tunnel_start.yfilter = yfilter;
+        tunnel_down.yfilter = yfilter;
+    }
+    if(value_path == "pseudowire-status")
+    {
+        pseudowire_status.yfilter = yfilter;
+    }
+    if(value_path == "sessions")
+    {
+        sessions.yfilter = yfilter;
     }
 }
 
-bool Snmp::Notification::IpSec::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Notification::L2tun::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "tunnel-stop" || name == "tunnel-start")
+    if(name == "tunnel-up" || name == "tunnel-down" || name == "pseudowire-status" || name == "sessions")
         return true;
     return false;
 }
 
-Snmp::Notification::Isakmp::Isakmp()
-    :
-    tunnel_stop{YType::empty, "tunnel-stop"},
-    tunnel_start{YType::empty, "tunnel-start"}
-{
-
-    yang_name = "isakmp"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::Isakmp::~Isakmp()
-{
-}
-
-bool Snmp::Notification::Isakmp::has_data() const
-{
-    if (is_presence_container) return true;
-    return tunnel_stop.is_set
-	|| tunnel_start.is_set;
-}
-
-bool Snmp::Notification::Isakmp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(tunnel_stop.yfilter)
-	|| ydk::is_set(tunnel_start.yfilter);
-}
-
-std::string Snmp::Notification::Isakmp::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Isakmp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-crypto-mibs-ipsecflowmon-cfg:isakmp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Isakmp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (tunnel_stop.is_set || is_set(tunnel_stop.yfilter)) leaf_name_data.push_back(tunnel_stop.get_name_leafdata());
-    if (tunnel_start.is_set || is_set(tunnel_start.yfilter)) leaf_name_data.push_back(tunnel_start.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Isakmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Isakmp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::Isakmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "tunnel-stop")
-    {
-        tunnel_stop = value;
-        tunnel_stop.value_namespace = name_space;
-        tunnel_stop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tunnel-start")
-    {
-        tunnel_start = value;
-        tunnel_start.value_namespace = name_space;
-        tunnel_start.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Isakmp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "tunnel-stop")
-    {
-        tunnel_stop.yfilter = yfilter;
-    }
-    if(value_path == "tunnel-start")
-    {
-        tunnel_start.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Isakmp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tunnel-stop" || name == "tunnel-start")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Syslog::Syslog()
+Snmp::Notification::CiscoEntityExt::CiscoEntityExt()
     :
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "syslog"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "cisco-entity-ext"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Snmp::Notification::Syslog::~Syslog()
+Snmp::Notification::CiscoEntityExt::~CiscoEntityExt()
 {
 }
 
-bool Snmp::Notification::Syslog::has_data() const
+bool Snmp::Notification::CiscoEntityExt::has_data() const
 {
     if (is_presence_container) return true;
     return enable.is_set;
 }
 
-bool Snmp::Notification::Syslog::has_operation() const
+bool Snmp::Notification::CiscoEntityExt::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter);
 }
 
-std::string Snmp::Notification::Syslog::get_absolute_path() const
+std::string Snmp::Notification::CiscoEntityExt::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Snmp::Notification::Syslog::get_segment_path() const
+std::string Snmp::Notification::CiscoEntityExt::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-syslogmib-cfg:syslog";
+    path_buffer << "Cisco-IOS-XR-snmp-entityextmib-cfg:cisco-entity-ext";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Syslog::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::CiscoEntityExt::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9462,19 +9575,19 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Syslog::get_n
 
 }
 
-std::shared_ptr<Entity> Snmp::Notification::Syslog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Notification::CiscoEntityExt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Syslog::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::CiscoEntityExt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Snmp::Notification::Syslog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Notification::CiscoEntityExt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
@@ -9484,7 +9597,7 @@ void Snmp::Notification::Syslog::set_value(const std::string & value_path, const
     }
 }
 
-void Snmp::Notification::Syslog::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Notification::CiscoEntityExt::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "enable")
     {
@@ -9492,676 +9605,7 @@ void Snmp::Notification::Syslog::set_filter(const std::string & value_path, YFil
     }
 }
 
-bool Snmp::Notification::Syslog::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-Snmp::Notification::EntityRedundancy::EntityRedundancy()
-    :
-    switchover{YType::empty, "switchover"},
-    enable{YType::empty, "enable"},
-    status{YType::empty, "status"}
-{
-
-    yang_name = "entity-redundancy"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::EntityRedundancy::~EntityRedundancy()
-{
-}
-
-bool Snmp::Notification::EntityRedundancy::has_data() const
-{
-    if (is_presence_container) return true;
-    return switchover.is_set
-	|| enable.is_set
-	|| status.is_set;
-}
-
-bool Snmp::Notification::EntityRedundancy::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(switchover.yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(status.yfilter);
-}
-
-std::string Snmp::Notification::EntityRedundancy::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::EntityRedundancy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-ceredundancymib-cfg:entity-redundancy";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::EntityRedundancy::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (switchover.is_set || is_set(switchover.yfilter)) leaf_name_data.push_back(switchover.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::EntityRedundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::EntityRedundancy::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::EntityRedundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "switchover")
-    {
-        switchover = value;
-        switchover.value_namespace = name_space;
-        switchover.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "status")
-    {
-        status = value;
-        status.value_namespace = name_space;
-        status.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::EntityRedundancy::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "switchover")
-    {
-        switchover.yfilter = yfilter;
-    }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "status")
-    {
-        status.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::EntityRedundancy::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "switchover" || name == "enable" || name == "status")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Entity_::Entity_()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "entity"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::Entity_::~Entity_()
-{
-}
-
-bool Snmp::Notification::Entity_::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set;
-}
-
-bool Snmp::Notification::Entity_::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Snmp::Notification::Entity_::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Entity_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-entitymib-cfg:entity";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Entity_::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Entity_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Entity_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::Entity_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Entity_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Entity_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Rsvp::Rsvp()
-    :
-    lost_flow{YType::empty, "lost-flow"},
-    new_flow{YType::empty, "new-flow"},
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "rsvp"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::Rsvp::~Rsvp()
-{
-}
-
-bool Snmp::Notification::Rsvp::has_data() const
-{
-    if (is_presence_container) return true;
-    return lost_flow.is_set
-	|| new_flow.is_set
-	|| enable.is_set;
-}
-
-bool Snmp::Notification::Rsvp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(lost_flow.yfilter)
-	|| ydk::is_set(new_flow.yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Snmp::Notification::Rsvp::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Rsvp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ip-rsvp-cfg:rsvp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Rsvp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (lost_flow.is_set || is_set(lost_flow.yfilter)) leaf_name_data.push_back(lost_flow.get_name_leafdata());
-    if (new_flow.is_set || is_set(new_flow.yfilter)) leaf_name_data.push_back(new_flow.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Rsvp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Rsvp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::Rsvp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "lost-flow")
-    {
-        lost_flow = value;
-        lost_flow.value_namespace = name_space;
-        lost_flow.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "new-flow")
-    {
-        new_flow = value;
-        new_flow.value_namespace = name_space;
-        new_flow.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Rsvp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "lost-flow")
-    {
-        lost_flow.yfilter = yfilter;
-    }
-    if(value_path == "new-flow")
-    {
-        new_flow.yfilter = yfilter;
-    }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Rsvp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lost-flow" || name == "new-flow" || name == "enable")
-        return true;
-    return false;
-}
-
-Snmp::Notification::ConfigMan::ConfigMan()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "config-man"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::ConfigMan::~ConfigMan()
-{
-}
-
-bool Snmp::Notification::ConfigMan::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set;
-}
-
-bool Snmp::Notification::ConfigMan::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Snmp::Notification::ConfigMan::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::ConfigMan::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-config-mibs-cfg:config-man";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::ConfigMan::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::ConfigMan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::ConfigMan::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::ConfigMan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::ConfigMan::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::ConfigMan::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-Snmp::Notification::SubscriberMib::SubscriberMib()
-    :
-    session_aggregate(std::make_shared<Snmp::Notification::SubscriberMib::SessionAggregate>())
-{
-    session_aggregate->parent = this;
-
-    yang_name = "subscriber-mib"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::SubscriberMib::~SubscriberMib()
-{
-}
-
-bool Snmp::Notification::SubscriberMib::has_data() const
-{
-    if (is_presence_container) return true;
-    return (session_aggregate !=  nullptr && session_aggregate->has_data());
-}
-
-bool Snmp::Notification::SubscriberMib::has_operation() const
-{
-    return is_set(yfilter)
-	|| (session_aggregate !=  nullptr && session_aggregate->has_operation());
-}
-
-std::string Snmp::Notification::SubscriberMib::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::SubscriberMib::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber-mib";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::SubscriberMib::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::SubscriberMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "session-aggregate")
-    {
-        if(session_aggregate == nullptr)
-        {
-            session_aggregate = std::make_shared<Snmp::Notification::SubscriberMib::SessionAggregate>();
-        }
-        return session_aggregate;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::SubscriberMib::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(session_aggregate != nullptr)
-    {
-        children["session-aggregate"] = session_aggregate;
-    }
-
-    return children;
-}
-
-void Snmp::Notification::SubscriberMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Snmp::Notification::SubscriberMib::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Snmp::Notification::SubscriberMib::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "session-aggregate")
-        return true;
-    return false;
-}
-
-Snmp::Notification::SubscriberMib::SessionAggregate::SessionAggregate()
-    :
-    node{YType::empty, "node"},
-    access_interface{YType::empty, "access-interface"}
-{
-
-    yang_name = "session-aggregate"; yang_parent_name = "subscriber-mib"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::SubscriberMib::SessionAggregate::~SessionAggregate()
-{
-}
-
-bool Snmp::Notification::SubscriberMib::SessionAggregate::has_data() const
-{
-    if (is_presence_container) return true;
-    return node.is_set
-	|| access_interface.is_set;
-}
-
-bool Snmp::Notification::SubscriberMib::SessionAggregate::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(node.yfilter)
-	|| ydk::is_set(access_interface.yfilter);
-}
-
-std::string Snmp::Notification::SubscriberMib::SessionAggregate::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber-mib/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::SubscriberMib::SessionAggregate::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "session-aggregate";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::SubscriberMib::SessionAggregate::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (access_interface.is_set || is_set(access_interface.yfilter)) leaf_name_data.push_back(access_interface.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::SubscriberMib::SessionAggregate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::SubscriberMib::SessionAggregate::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::SubscriberMib::SessionAggregate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "node")
-    {
-        node = value;
-        node.value_namespace = name_space;
-        node.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "access-interface")
-    {
-        access_interface = value;
-        access_interface.value_namespace = name_space;
-        access_interface.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::SubscriberMib::SessionAggregate::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "node")
-    {
-        node.yfilter = yfilter;
-    }
-    if(value_path == "access-interface")
-    {
-        access_interface.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::SubscriberMib::SessionAggregate::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "node" || name == "access-interface")
-        return true;
-    return false;
-}
-
-Snmp::Notification::OpticalOts::OpticalOts()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "optical-ots"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::OpticalOts::~OpticalOts()
-{
-}
-
-bool Snmp::Notification::OpticalOts::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set;
-}
-
-bool Snmp::Notification::OpticalOts::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Snmp::Notification::OpticalOts::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::OpticalOts::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-opticalotsmib-cfg:optical-ots";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::OpticalOts::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::OpticalOts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::OpticalOts::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::OpticalOts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::OpticalOts::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::OpticalOts::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Notification::CiscoEntityExt::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enable")
         return true;
@@ -10267,186 +9711,45 @@ bool Snmp::Notification::AddresspoolMib::has_leaf_or_child_of_name(const std::st
     return false;
 }
 
-Snmp::Notification::Diametermib::Diametermib()
-    :
-    protocolerror{YType::boolean, "protocolerror"},
-    permanentfail{YType::boolean, "permanentfail"},
-    peerdown{YType::boolean, "peerdown"},
-    peerup{YType::boolean, "peerup"},
-    transientfail{YType::boolean, "transientfail"}
-{
-
-    yang_name = "diametermib"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Snmp::Notification::Diametermib::~Diametermib()
-{
-}
-
-bool Snmp::Notification::Diametermib::has_data() const
-{
-    if (is_presence_container) return true;
-    return protocolerror.is_set
-	|| permanentfail.is_set
-	|| peerdown.is_set
-	|| peerup.is_set
-	|| transientfail.is_set;
-}
-
-bool Snmp::Notification::Diametermib::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(protocolerror.yfilter)
-	|| ydk::is_set(permanentfail.yfilter)
-	|| ydk::is_set(peerdown.yfilter)
-	|| ydk::is_set(peerup.yfilter)
-	|| ydk::is_set(transientfail.yfilter);
-}
-
-std::string Snmp::Notification::Diametermib::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Snmp::Notification::Diametermib::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-aaa-diameter-base-mib-cfg:diametermib";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Diametermib::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (protocolerror.is_set || is_set(protocolerror.yfilter)) leaf_name_data.push_back(protocolerror.get_name_leafdata());
-    if (permanentfail.is_set || is_set(permanentfail.yfilter)) leaf_name_data.push_back(permanentfail.get_name_leafdata());
-    if (peerdown.is_set || is_set(peerdown.yfilter)) leaf_name_data.push_back(peerdown.get_name_leafdata());
-    if (peerup.is_set || is_set(peerup.yfilter)) leaf_name_data.push_back(peerup.get_name_leafdata());
-    if (transientfail.is_set || is_set(transientfail.yfilter)) leaf_name_data.push_back(transientfail.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Snmp::Notification::Diametermib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Diametermib::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Snmp::Notification::Diametermib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "protocolerror")
-    {
-        protocolerror = value;
-        protocolerror.value_namespace = name_space;
-        protocolerror.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "permanentfail")
-    {
-        permanentfail = value;
-        permanentfail.value_namespace = name_space;
-        permanentfail.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "peerdown")
-    {
-        peerdown = value;
-        peerdown.value_namespace = name_space;
-        peerdown.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "peerup")
-    {
-        peerup = value;
-        peerup.value_namespace = name_space;
-        peerup.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "transientfail")
-    {
-        transientfail = value;
-        transientfail.value_namespace = name_space;
-        transientfail.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Snmp::Notification::Diametermib::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "protocolerror")
-    {
-        protocolerror.yfilter = yfilter;
-    }
-    if(value_path == "permanentfail")
-    {
-        permanentfail.yfilter = yfilter;
-    }
-    if(value_path == "peerdown")
-    {
-        peerdown.yfilter = yfilter;
-    }
-    if(value_path == "peerup")
-    {
-        peerup.yfilter = yfilter;
-    }
-    if(value_path == "transientfail")
-    {
-        transientfail.yfilter = yfilter;
-    }
-}
-
-bool Snmp::Notification::Diametermib::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "protocolerror" || name == "permanentfail" || name == "peerdown" || name == "peerup" || name == "transientfail")
-        return true;
-    return false;
-}
-
-Snmp::Notification::Rf::Rf()
+Snmp::Notification::Sensor::Sensor()
     :
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "rf"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "sensor"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Snmp::Notification::Rf::~Rf()
+Snmp::Notification::Sensor::~Sensor()
 {
 }
 
-bool Snmp::Notification::Rf::has_data() const
+bool Snmp::Notification::Sensor::has_data() const
 {
     if (is_presence_container) return true;
     return enable.is_set;
 }
 
-bool Snmp::Notification::Rf::has_operation() const
+bool Snmp::Notification::Sensor::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter);
 }
 
-std::string Snmp::Notification::Rf::get_absolute_path() const
+std::string Snmp::Notification::Sensor::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Snmp::Notification::Rf::get_segment_path() const
+std::string Snmp::Notification::Sensor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-mib-rfmib-cfg:rf";
+    path_buffer << "Cisco-IOS-XR-snmp-ciscosensormib-cfg:sensor";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Rf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Sensor::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10456,19 +9759,19 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Rf::get_name_
 
 }
 
-std::shared_ptr<Entity> Snmp::Notification::Rf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Notification::Sensor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Rf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Sensor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Snmp::Notification::Rf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Notification::Sensor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
@@ -10478,7 +9781,7 @@ void Snmp::Notification::Rf::set_value(const std::string & value_path, const std
     }
 }
 
-void Snmp::Notification::Rf::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Notification::Sensor::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "enable")
     {
@@ -10486,108 +9789,805 @@ void Snmp::Notification::Rf::set_filter(const std::string & value_path, YFilter 
     }
 }
 
-bool Snmp::Notification::Rf::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Notification::Sensor::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enable")
         return true;
     return false;
 }
 
-Snmp::Notification::EntityState::EntityState()
+Snmp::Notification::Oam::Oam()
     :
-    switchover{YType::empty, "switchover"},
-    oper_status{YType::empty, "oper-status"}
+    enable{YType::empty, "enable"}
 {
 
-    yang_name = "entity-state"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "oam"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Snmp::Notification::EntityState::~EntityState()
+Snmp::Notification::Oam::~Oam()
 {
 }
 
-bool Snmp::Notification::EntityState::has_data() const
+bool Snmp::Notification::Oam::has_data() const
 {
     if (is_presence_container) return true;
-    return switchover.is_set
-	|| oper_status.is_set;
+    return enable.is_set;
 }
 
-bool Snmp::Notification::EntityState::has_operation() const
+bool Snmp::Notification::Oam::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(switchover.yfilter)
-	|| ydk::is_set(oper_status.yfilter);
+	|| ydk::is_set(enable.yfilter);
 }
 
-std::string Snmp::Notification::EntityState::get_absolute_path() const
+std::string Snmp::Notification::Oam::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Snmp::Notification::EntityState::get_segment_path() const
+std::string Snmp::Notification::Oam::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-entstatemib-cfg:entity-state";
+    path_buffer << "Cisco-IOS-XR-ethernet-link-oam-cfg:oam";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Snmp::Notification::EntityState::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Oam::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (switchover.is_set || is_set(switchover.yfilter)) leaf_name_data.push_back(switchover.get_name_leafdata());
-    if (oper_status.is_set || is_set(oper_status.yfilter)) leaf_name_data.push_back(oper_status.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Snmp::Notification::EntityState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Snmp::Notification::Oam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::EntityState::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Oam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Snmp::Notification::EntityState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Snmp::Notification::Oam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "switchover")
+    if(value_path == "enable")
     {
-        switchover = value;
-        switchover.value_namespace = name_space;
-        switchover.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "oper-status")
-    {
-        oper_status = value;
-        oper_status.value_namespace = name_space;
-        oper_status.value_namespace_prefix = name_space_prefix;
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Snmp::Notification::EntityState::set_filter(const std::string & value_path, YFilter yfilter)
+void Snmp::Notification::Oam::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "switchover")
+    if(value_path == "enable")
     {
-        switchover.yfilter = yfilter;
-    }
-    if(value_path == "oper-status")
-    {
-        oper_status.yfilter = yfilter;
+        enable.yfilter = yfilter;
     }
 }
 
-bool Snmp::Notification::EntityState::has_leaf_or_child_of_name(const std::string & name) const
+bool Snmp::Notification::Oam::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switchover" || name == "oper-status")
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Snmp::Notification::Bridge::Bridge()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "bridge"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::Bridge::~Bridge()
+{
+}
+
+bool Snmp::Notification::Bridge::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Snmp::Notification::Bridge::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Snmp::Notification::Bridge::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::Bridge::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-bridgemib-cfg:bridge";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::Bridge::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::Bridge::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::Bridge::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::Bridge::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::Bridge::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::Bridge::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Snmp::Notification::MplsTeP2mp::MplsTeP2mp()
+    :
+    up{YType::empty, "up"},
+    down{YType::empty, "down"}
+{
+
+    yang_name = "mpls-te-p2mp"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::MplsTeP2mp::~MplsTeP2mp()
+{
+}
+
+bool Snmp::Notification::MplsTeP2mp::has_data() const
+{
+    if (is_presence_container) return true;
+    return up.is_set
+	|| down.is_set;
+}
+
+bool Snmp::Notification::MplsTeP2mp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(up.yfilter)
+	|| ydk::is_set(down.yfilter);
+}
+
+std::string Snmp::Notification::MplsTeP2mp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::MplsTeP2mp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te-p2mp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::MplsTeP2mp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::MplsTeP2mp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::MplsTeP2mp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::MplsTeP2mp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "up")
+    {
+        up = value;
+        up.value_namespace = name_space;
+        up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "down")
+    {
+        down = value;
+        down.value_namespace = name_space;
+        down.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::MplsTeP2mp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "up")
+    {
+        up.yfilter = yfilter;
+    }
+    if(value_path == "down")
+    {
+        down.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::MplsTeP2mp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "up" || name == "down")
+        return true;
+    return false;
+}
+
+Snmp::Notification::MplsTe::MplsTe()
+    :
+    cisco{YType::empty, "cisco"},
+    up{YType::empty, "up"},
+    reoptimize{YType::empty, "reoptimize"},
+    reroute{YType::empty, "reroute"},
+    down{YType::empty, "down"}
+        ,
+    cisco_extension(std::make_shared<Snmp::Notification::MplsTe::CiscoExtension>())
+{
+    cisco_extension->parent = this;
+
+    yang_name = "mpls-te"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::MplsTe::~MplsTe()
+{
+}
+
+bool Snmp::Notification::MplsTe::has_data() const
+{
+    if (is_presence_container) return true;
+    return cisco.is_set
+	|| up.is_set
+	|| reoptimize.is_set
+	|| reroute.is_set
+	|| down.is_set
+	|| (cisco_extension !=  nullptr && cisco_extension->has_data());
+}
+
+bool Snmp::Notification::MplsTe::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cisco.yfilter)
+	|| ydk::is_set(up.yfilter)
+	|| ydk::is_set(reoptimize.yfilter)
+	|| ydk::is_set(reroute.yfilter)
+	|| ydk::is_set(down.yfilter)
+	|| (cisco_extension !=  nullptr && cisco_extension->has_operation());
+}
+
+std::string Snmp::Notification::MplsTe::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::MplsTe::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::MplsTe::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cisco.is_set || is_set(cisco.yfilter)) leaf_name_data.push_back(cisco.get_name_leafdata());
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (reoptimize.is_set || is_set(reoptimize.yfilter)) leaf_name_data.push_back(reoptimize.get_name_leafdata());
+    if (reroute.is_set || is_set(reroute.yfilter)) leaf_name_data.push_back(reroute.get_name_leafdata());
+    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::MplsTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cisco-extension")
+    {
+        if(cisco_extension == nullptr)
+        {
+            cisco_extension = std::make_shared<Snmp::Notification::MplsTe::CiscoExtension>();
+        }
+        return cisco_extension;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::MplsTe::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(cisco_extension != nullptr)
+    {
+        children["cisco-extension"] = cisco_extension;
+    }
+
+    return children;
+}
+
+void Snmp::Notification::MplsTe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cisco")
+    {
+        cisco = value;
+        cisco.value_namespace = name_space;
+        cisco.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "up")
+    {
+        up = value;
+        up.value_namespace = name_space;
+        up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reoptimize")
+    {
+        reoptimize = value;
+        reoptimize.value_namespace = name_space;
+        reoptimize.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reroute")
+    {
+        reroute = value;
+        reroute.value_namespace = name_space;
+        reroute.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "down")
+    {
+        down = value;
+        down.value_namespace = name_space;
+        down.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::MplsTe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cisco")
+    {
+        cisco.yfilter = yfilter;
+    }
+    if(value_path == "up")
+    {
+        up.yfilter = yfilter;
+    }
+    if(value_path == "reoptimize")
+    {
+        reoptimize.yfilter = yfilter;
+    }
+    if(value_path == "reroute")
+    {
+        reroute.yfilter = yfilter;
+    }
+    if(value_path == "down")
+    {
+        down.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::MplsTe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cisco-extension" || name == "cisco" || name == "up" || name == "reoptimize" || name == "reroute" || name == "down")
+        return true;
+    return false;
+}
+
+Snmp::Notification::MplsTe::CiscoExtension::CiscoExtension()
+    :
+    preempt{YType::empty, "preempt"},
+    insufficient_bandwidth{YType::empty, "insufficient-bandwidth"},
+    re_route_pending_clear{YType::empty, "re-route-pending-clear"},
+    bringup_fail{YType::empty, "bringup-fail"},
+    re_route_pending{YType::empty, "re-route-pending"}
+{
+
+    yang_name = "cisco-extension"; yang_parent_name = "mpls-te"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::MplsTe::CiscoExtension::~CiscoExtension()
+{
+}
+
+bool Snmp::Notification::MplsTe::CiscoExtension::has_data() const
+{
+    if (is_presence_container) return true;
+    return preempt.is_set
+	|| insufficient_bandwidth.is_set
+	|| re_route_pending_clear.is_set
+	|| bringup_fail.is_set
+	|| re_route_pending.is_set;
+}
+
+bool Snmp::Notification::MplsTe::CiscoExtension::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(preempt.yfilter)
+	|| ydk::is_set(insufficient_bandwidth.yfilter)
+	|| ydk::is_set(re_route_pending_clear.yfilter)
+	|| ydk::is_set(bringup_fail.yfilter)
+	|| ydk::is_set(re_route_pending.yfilter);
+}
+
+std::string Snmp::Notification::MplsTe::CiscoExtension::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/Cisco-IOS-XR-mpls-te-cfg:mpls-te/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::MplsTe::CiscoExtension::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-extension";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::MplsTe::CiscoExtension::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (preempt.is_set || is_set(preempt.yfilter)) leaf_name_data.push_back(preempt.get_name_leafdata());
+    if (insufficient_bandwidth.is_set || is_set(insufficient_bandwidth.yfilter)) leaf_name_data.push_back(insufficient_bandwidth.get_name_leafdata());
+    if (re_route_pending_clear.is_set || is_set(re_route_pending_clear.yfilter)) leaf_name_data.push_back(re_route_pending_clear.get_name_leafdata());
+    if (bringup_fail.is_set || is_set(bringup_fail.yfilter)) leaf_name_data.push_back(bringup_fail.get_name_leafdata());
+    if (re_route_pending.is_set || is_set(re_route_pending.yfilter)) leaf_name_data.push_back(re_route_pending.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::MplsTe::CiscoExtension::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::MplsTe::CiscoExtension::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::MplsTe::CiscoExtension::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "preempt")
+    {
+        preempt = value;
+        preempt.value_namespace = name_space;
+        preempt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "insufficient-bandwidth")
+    {
+        insufficient_bandwidth = value;
+        insufficient_bandwidth.value_namespace = name_space;
+        insufficient_bandwidth.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "re-route-pending-clear")
+    {
+        re_route_pending_clear = value;
+        re_route_pending_clear.value_namespace = name_space;
+        re_route_pending_clear.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bringup-fail")
+    {
+        bringup_fail = value;
+        bringup_fail.value_namespace = name_space;
+        bringup_fail.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "re-route-pending")
+    {
+        re_route_pending = value;
+        re_route_pending.value_namespace = name_space;
+        re_route_pending.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::MplsTe::CiscoExtension::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "preempt")
+    {
+        preempt.yfilter = yfilter;
+    }
+    if(value_path == "insufficient-bandwidth")
+    {
+        insufficient_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "re-route-pending-clear")
+    {
+        re_route_pending_clear.yfilter = yfilter;
+    }
+    if(value_path == "bringup-fail")
+    {
+        bringup_fail.yfilter = yfilter;
+    }
+    if(value_path == "re-route-pending")
+    {
+        re_route_pending.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::MplsTe::CiscoExtension::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "preempt" || name == "insufficient-bandwidth" || name == "re-route-pending-clear" || name == "bringup-fail" || name == "re-route-pending")
+        return true;
+    return false;
+}
+
+Snmp::Notification::MplsFrr::MplsFrr()
+    :
+    unprotected{YType::empty, "unprotected"},
+    enable{YType::empty, "enable"},
+    protected_{YType::empty, "protected"}
+{
+
+    yang_name = "mpls-frr"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::MplsFrr::~MplsFrr()
+{
+}
+
+bool Snmp::Notification::MplsFrr::has_data() const
+{
+    if (is_presence_container) return true;
+    return unprotected.is_set
+	|| enable.is_set
+	|| protected_.is_set;
+}
+
+bool Snmp::Notification::MplsFrr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unprotected.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(protected_.yfilter);
+}
+
+std::string Snmp::Notification::MplsFrr::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::MplsFrr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-frr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::MplsFrr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unprotected.is_set || is_set(unprotected.yfilter)) leaf_name_data.push_back(unprotected.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (protected_.is_set || is_set(protected_.yfilter)) leaf_name_data.push_back(protected_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::MplsFrr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::MplsFrr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::MplsFrr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unprotected")
+    {
+        unprotected = value;
+        unprotected.value_namespace = name_space;
+        unprotected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "protected")
+    {
+        protected_ = value;
+        protected_.value_namespace = name_space;
+        protected_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::MplsFrr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unprotected")
+    {
+        unprotected.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "protected")
+    {
+        protected_.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::MplsFrr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unprotected" || name == "enable" || name == "protected")
+        return true;
+    return false;
+}
+
+Snmp::Notification::FabricCrs::FabricCrs()
+    :
+    bundle_state{YType::empty, "bundle-state"},
+    plane_state{YType::empty, "plane-state"},
+    bundle_downed_link{YType::empty, "bundle-downed-link"}
+{
+
+    yang_name = "fabric-crs"; yang_parent_name = "notification"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Snmp::Notification::FabricCrs::~FabricCrs()
+{
+}
+
+bool Snmp::Notification::FabricCrs::has_data() const
+{
+    if (is_presence_container) return true;
+    return bundle_state.is_set
+	|| plane_state.is_set
+	|| bundle_downed_link.is_set;
+}
+
+bool Snmp::Notification::FabricCrs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_state.yfilter)
+	|| ydk::is_set(plane_state.yfilter)
+	|| ydk::is_set(bundle_downed_link.yfilter);
+}
+
+std::string Snmp::Notification::FabricCrs::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:snmp/notification/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Snmp::Notification::FabricCrs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-fabhfr-mib-cfg:fabric-crs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Snmp::Notification::FabricCrs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bundle_state.is_set || is_set(bundle_state.yfilter)) leaf_name_data.push_back(bundle_state.get_name_leafdata());
+    if (plane_state.is_set || is_set(plane_state.yfilter)) leaf_name_data.push_back(plane_state.get_name_leafdata());
+    if (bundle_downed_link.is_set || is_set(bundle_downed_link.yfilter)) leaf_name_data.push_back(bundle_downed_link.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Snmp::Notification::FabricCrs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Snmp::Notification::FabricCrs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Snmp::Notification::FabricCrs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bundle-state")
+    {
+        bundle_state = value;
+        bundle_state.value_namespace = name_space;
+        bundle_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "plane-state")
+    {
+        plane_state = value;
+        plane_state.value_namespace = name_space;
+        plane_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bundle-downed-link")
+    {
+        bundle_downed_link = value;
+        bundle_downed_link.value_namespace = name_space;
+        bundle_downed_link.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Snmp::Notification::FabricCrs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-state")
+    {
+        bundle_state.yfilter = yfilter;
+    }
+    if(value_path == "plane-state")
+    {
+        plane_state.yfilter = yfilter;
+    }
+    if(value_path == "bundle-downed-link")
+    {
+        bundle_downed_link.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Notification::FabricCrs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-state" || name == "plane-state" || name == "bundle-downed-link")
         return true;
     return false;
 }
@@ -14667,6 +14667,7 @@ Snmp::Timeouts::Timeouts()
     :
     duplicates{YType::uint32, "duplicates"},
     in_qdrop{YType::uint32, "in-qdrop"},
+    threshold{YType::uint32, "threshold"},
     subagent{YType::uint32, "subagent"},
     pdu_stats{YType::uint32, "pdu-stats"}
 {
@@ -14683,6 +14684,7 @@ bool Snmp::Timeouts::has_data() const
     if (is_presence_container) return true;
     return duplicates.is_set
 	|| in_qdrop.is_set
+	|| threshold.is_set
 	|| subagent.is_set
 	|| pdu_stats.is_set;
 }
@@ -14692,6 +14694,7 @@ bool Snmp::Timeouts::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(duplicates.yfilter)
 	|| ydk::is_set(in_qdrop.yfilter)
+	|| ydk::is_set(threshold.yfilter)
 	|| ydk::is_set(subagent.yfilter)
 	|| ydk::is_set(pdu_stats.yfilter);
 }
@@ -14716,6 +14719,7 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Timeouts::get_name_leaf_dat
 
     if (duplicates.is_set || is_set(duplicates.yfilter)) leaf_name_data.push_back(duplicates.get_name_leafdata());
     if (in_qdrop.is_set || is_set(in_qdrop.yfilter)) leaf_name_data.push_back(in_qdrop.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
     if (subagent.is_set || is_set(subagent.yfilter)) leaf_name_data.push_back(subagent.get_name_leafdata());
     if (pdu_stats.is_set || is_set(pdu_stats.yfilter)) leaf_name_data.push_back(pdu_stats.get_name_leafdata());
 
@@ -14749,6 +14753,12 @@ void Snmp::Timeouts::set_value(const std::string & value_path, const std::string
         in_qdrop.value_namespace = name_space;
         in_qdrop.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "subagent")
     {
         subagent = value;
@@ -14773,6 +14783,10 @@ void Snmp::Timeouts::set_filter(const std::string & value_path, YFilter yfilter)
     {
         in_qdrop.yfilter = yfilter;
     }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
     if(value_path == "subagent")
     {
         subagent.yfilter = yfilter;
@@ -14785,7 +14799,7 @@ void Snmp::Timeouts::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Snmp::Timeouts::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "duplicates" || name == "in-qdrop" || name == "subagent" || name == "pdu-stats")
+    if(name == "duplicates" || name == "in-qdrop" || name == "threshold" || name == "subagent" || name == "pdu-stats")
         return true;
     return false;
 }

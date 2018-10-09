@@ -510,7 +510,9 @@ Grpc::Status::Status()
     listening_port{YType::int32, "listening-port"},
     vrf_socket_ns_path{YType::str, "vrf-socket-ns-path"},
     max_req_per_user{YType::uint32, "max-req-per-user"},
-    max_req_total{YType::uint32, "max-req-total"}
+    max_req_total{YType::uint32, "max-req-total"},
+    max_streams{YType::uint32, "max-streams"},
+    max_streams_per_user{YType::uint32, "max-streams-per-user"}
 {
 
     yang_name = "status"; yang_parent_name = "grpc"; is_top_level_class = false; has_list_ancestor = false; 
@@ -530,7 +532,9 @@ bool Grpc::Status::has_data() const
 	|| listening_port.is_set
 	|| vrf_socket_ns_path.is_set
 	|| max_req_per_user.is_set
-	|| max_req_total.is_set;
+	|| max_req_total.is_set
+	|| max_streams.is_set
+	|| max_streams_per_user.is_set;
 }
 
 bool Grpc::Status::has_operation() const
@@ -543,7 +547,9 @@ bool Grpc::Status::has_operation() const
 	|| ydk::is_set(listening_port.yfilter)
 	|| ydk::is_set(vrf_socket_ns_path.yfilter)
 	|| ydk::is_set(max_req_per_user.yfilter)
-	|| ydk::is_set(max_req_total.yfilter);
+	|| ydk::is_set(max_req_total.yfilter)
+	|| ydk::is_set(max_streams.yfilter)
+	|| ydk::is_set(max_streams_per_user.yfilter);
 }
 
 std::string Grpc::Status::get_absolute_path() const
@@ -572,6 +578,8 @@ std::vector<std::pair<std::string, LeafData> > Grpc::Status::get_name_leaf_data(
     if (vrf_socket_ns_path.is_set || is_set(vrf_socket_ns_path.yfilter)) leaf_name_data.push_back(vrf_socket_ns_path.get_name_leafdata());
     if (max_req_per_user.is_set || is_set(max_req_per_user.yfilter)) leaf_name_data.push_back(max_req_per_user.get_name_leafdata());
     if (max_req_total.is_set || is_set(max_req_total.yfilter)) leaf_name_data.push_back(max_req_total.get_name_leafdata());
+    if (max_streams.is_set || is_set(max_streams.yfilter)) leaf_name_data.push_back(max_streams.get_name_leafdata());
+    if (max_streams_per_user.is_set || is_set(max_streams_per_user.yfilter)) leaf_name_data.push_back(max_streams_per_user.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -639,6 +647,18 @@ void Grpc::Status::set_value(const std::string & value_path, const std::string &
         max_req_total.value_namespace = name_space;
         max_req_total.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "max-streams")
+    {
+        max_streams = value;
+        max_streams.value_namespace = name_space;
+        max_streams.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-streams-per-user")
+    {
+        max_streams_per_user = value;
+        max_streams_per_user.value_namespace = name_space;
+        max_streams_per_user.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Grpc::Status::set_filter(const std::string & value_path, YFilter yfilter)
@@ -675,11 +695,19 @@ void Grpc::Status::set_filter(const std::string & value_path, YFilter yfilter)
     {
         max_req_total.yfilter = yfilter;
     }
+    if(value_path == "max-streams")
+    {
+        max_streams.yfilter = yfilter;
+    }
+    if(value_path == "max-streams-per-user")
+    {
+        max_streams_per_user.yfilter = yfilter;
+    }
 }
 
 bool Grpc::Status::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "transport" || name == "address-family" || name == "tls" || name == "trustpoint" || name == "listening-port" || name == "vrf-socket-ns-path" || name == "max-req-per-user" || name == "max-req-total")
+    if(name == "transport" || name == "address-family" || name == "tls" || name == "trustpoint" || name == "listening-port" || name == "vrf-socket-ns-path" || name == "max-req-per-user" || name == "max-req-total" || name == "max-streams" || name == "max-streams-per-user")
         return true;
     return false;
 }

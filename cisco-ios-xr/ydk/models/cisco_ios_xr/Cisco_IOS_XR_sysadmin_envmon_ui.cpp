@@ -463,7 +463,9 @@ bool Environment::Oper::Temperatures::has_leaf_or_child_of_name(const std::strin
 
 Environment::Oper::Temperatures::Location::Location()
     :
-    location{YType::str, "location"}
+    location{YType::str, "location"},
+    loc_header{YType::uint32, "loc_header"},
+    print_header{YType::boolean, "print_header"}
         ,
     sensor_attributes(this, {"sensor"})
 {
@@ -483,7 +485,9 @@ bool Environment::Oper::Temperatures::Location::has_data() const
         if(sensor_attributes[index]->has_data())
             return true;
     }
-    return location.is_set;
+    return location.is_set
+	|| loc_header.is_set
+	|| print_header.is_set;
 }
 
 bool Environment::Oper::Temperatures::Location::has_operation() const
@@ -494,7 +498,9 @@ bool Environment::Oper::Temperatures::Location::has_operation() const
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(location.yfilter);
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(loc_header.yfilter)
+	|| ydk::is_set(print_header.yfilter);
 }
 
 std::string Environment::Oper::Temperatures::Location::get_absolute_path() const
@@ -517,6 +523,8 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Temperatures::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (loc_header.is_set || is_set(loc_header.yfilter)) leaf_name_data.push_back(loc_header.get_name_leafdata());
+    if (print_header.is_set || is_set(print_header.yfilter)) leaf_name_data.push_back(print_header.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -559,6 +567,18 @@ void Environment::Oper::Temperatures::Location::set_value(const std::string & va
         location.value_namespace = name_space;
         location.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "loc_header")
+    {
+        loc_header = value;
+        loc_header.value_namespace = name_space;
+        loc_header.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "print_header")
+    {
+        print_header = value;
+        print_header.value_namespace = name_space;
+        print_header.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Environment::Oper::Temperatures::Location::set_filter(const std::string & value_path, YFilter yfilter)
@@ -567,11 +587,19 @@ void Environment::Oper::Temperatures::Location::set_filter(const std::string & v
     {
         location.yfilter = yfilter;
     }
+    if(value_path == "loc_header")
+    {
+        loc_header.yfilter = yfilter;
+    }
+    if(value_path == "print_header")
+    {
+        print_header.yfilter = yfilter;
+    }
 }
 
 bool Environment::Oper::Temperatures::Location::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sensor_attributes" || name == "location")
+    if(name == "sensor_attributes" || name == "location" || name == "loc_header" || name == "print_header")
         return true;
     return false;
 }
@@ -897,7 +925,9 @@ bool Environment::Oper::Voltages::has_leaf_or_child_of_name(const std::string & 
 
 Environment::Oper::Voltages::Location::Location()
     :
-    location{YType::str, "location"}
+    location{YType::str, "location"},
+    print_header{YType::boolean, "print_header"},
+    loc_header{YType::uint32, "loc_header"}
         ,
     sensor_attributes(this, {"sensor"})
 {
@@ -917,7 +947,9 @@ bool Environment::Oper::Voltages::Location::has_data() const
         if(sensor_attributes[index]->has_data())
             return true;
     }
-    return location.is_set;
+    return location.is_set
+	|| print_header.is_set
+	|| loc_header.is_set;
 }
 
 bool Environment::Oper::Voltages::Location::has_operation() const
@@ -928,7 +960,9 @@ bool Environment::Oper::Voltages::Location::has_operation() const
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(location.yfilter);
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(print_header.yfilter)
+	|| ydk::is_set(loc_header.yfilter);
 }
 
 std::string Environment::Oper::Voltages::Location::get_absolute_path() const
@@ -951,6 +985,8 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Voltages::Loca
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (print_header.is_set || is_set(print_header.yfilter)) leaf_name_data.push_back(print_header.get_name_leafdata());
+    if (loc_header.is_set || is_set(loc_header.yfilter)) leaf_name_data.push_back(loc_header.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -993,6 +1029,18 @@ void Environment::Oper::Voltages::Location::set_value(const std::string & value_
         location.value_namespace = name_space;
         location.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "print_header")
+    {
+        print_header = value;
+        print_header.value_namespace = name_space;
+        print_header.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "loc_header")
+    {
+        loc_header = value;
+        loc_header.value_namespace = name_space;
+        loc_header.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Environment::Oper::Voltages::Location::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1001,11 +1049,19 @@ void Environment::Oper::Voltages::Location::set_filter(const std::string & value
     {
         location.yfilter = yfilter;
     }
+    if(value_path == "print_header")
+    {
+        print_header.yfilter = yfilter;
+    }
+    if(value_path == "loc_header")
+    {
+        loc_header.yfilter = yfilter;
+    }
 }
 
 bool Environment::Oper::Voltages::Location::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sensor_attributes" || name == "location")
+    if(name == "sensor_attributes" || name == "location" || name == "print_header" || name == "loc_header")
         return true;
     return false;
 }
@@ -1331,7 +1387,9 @@ bool Environment::Oper::Current::has_leaf_or_child_of_name(const std::string & n
 
 Environment::Oper::Current::Location::Location()
     :
-    location{YType::str, "location"}
+    location{YType::str, "location"},
+    print_header{YType::boolean, "print_header"},
+    loc_header{YType::uint32, "loc_header"}
         ,
     sensor_attributes(this, {"sensor"})
 {
@@ -1351,7 +1409,9 @@ bool Environment::Oper::Current::Location::has_data() const
         if(sensor_attributes[index]->has_data())
             return true;
     }
-    return location.is_set;
+    return location.is_set
+	|| print_header.is_set
+	|| loc_header.is_set;
 }
 
 bool Environment::Oper::Current::Location::has_operation() const
@@ -1362,7 +1422,9 @@ bool Environment::Oper::Current::Location::has_operation() const
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(location.yfilter);
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(print_header.yfilter)
+	|| ydk::is_set(loc_header.yfilter);
 }
 
 std::string Environment::Oper::Current::Location::get_absolute_path() const
@@ -1385,6 +1447,8 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Current::Locat
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (print_header.is_set || is_set(print_header.yfilter)) leaf_name_data.push_back(print_header.get_name_leafdata());
+    if (loc_header.is_set || is_set(loc_header.yfilter)) leaf_name_data.push_back(loc_header.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1427,6 +1491,18 @@ void Environment::Oper::Current::Location::set_value(const std::string & value_p
         location.value_namespace = name_space;
         location.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "print_header")
+    {
+        print_header = value;
+        print_header.value_namespace = name_space;
+        print_header.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "loc_header")
+    {
+        loc_header = value;
+        loc_header.value_namespace = name_space;
+        loc_header.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Environment::Oper::Current::Location::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1435,11 +1511,19 @@ void Environment::Oper::Current::Location::set_filter(const std::string & value_
     {
         location.yfilter = yfilter;
     }
+    if(value_path == "print_header")
+    {
+        print_header.yfilter = yfilter;
+    }
+    if(value_path == "loc_header")
+    {
+        loc_header.yfilter = yfilter;
+    }
 }
 
 bool Environment::Oper::Current::Location::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sensor_attributes" || name == "location")
+    if(name == "sensor_attributes" || name == "location" || name == "print_header" || name == "loc_header")
         return true;
     return false;
 }
@@ -1681,7 +1765,9 @@ bool Environment::Oper::Fan::has_leaf_or_child_of_name(const std::string & name)
 
 Environment::Oper::Fan::Location::Location()
     :
-    location{YType::str, "location"}
+    location{YType::str, "location"},
+    print_header{YType::boolean, "print_header"},
+    loc_header{YType::uint32, "loc_header"}
         ,
     fan_attributes(this, {"logical_slot"})
 {
@@ -1701,7 +1787,9 @@ bool Environment::Oper::Fan::Location::has_data() const
         if(fan_attributes[index]->has_data())
             return true;
     }
-    return location.is_set;
+    return location.is_set
+	|| print_header.is_set
+	|| loc_header.is_set;
 }
 
 bool Environment::Oper::Fan::Location::has_operation() const
@@ -1712,7 +1800,9 @@ bool Environment::Oper::Fan::Location::has_operation() const
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(location.yfilter);
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(print_header.yfilter)
+	|| ydk::is_set(loc_header.yfilter);
 }
 
 std::string Environment::Oper::Fan::Location::get_absolute_path() const
@@ -1735,6 +1825,8 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Fan::Location:
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (print_header.is_set || is_set(print_header.yfilter)) leaf_name_data.push_back(print_header.get_name_leafdata());
+    if (loc_header.is_set || is_set(loc_header.yfilter)) leaf_name_data.push_back(loc_header.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1777,6 +1869,18 @@ void Environment::Oper::Fan::Location::set_value(const std::string & value_path,
         location.value_namespace = name_space;
         location.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "print_header")
+    {
+        print_header = value;
+        print_header.value_namespace = name_space;
+        print_header.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "loc_header")
+    {
+        loc_header = value;
+        loc_header.value_namespace = name_space;
+        loc_header.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Environment::Oper::Fan::Location::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1785,11 +1889,19 @@ void Environment::Oper::Fan::Location::set_filter(const std::string & value_path
     {
         location.yfilter = yfilter;
     }
+    if(value_path == "print_header")
+    {
+        print_header.yfilter = yfilter;
+    }
+    if(value_path == "loc_header")
+    {
+        loc_header.yfilter = yfilter;
+    }
 }
 
 bool Environment::Oper::Fan::Location::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fan_attributes" || name == "location")
+    if(name == "fan_attributes" || name == "location" || name == "print_header" || name == "loc_header")
         return true;
     return false;
 }
@@ -2849,7 +2961,8 @@ Environment::Oper::Altitude::Location::AltAttributes::AltAttributes()
     sensor{YType::str, "sensor"},
     rack{YType::uint32, "rack"},
     sensor_value{YType::str, "sensor_value"},
-    source{YType::str, "source"}
+    source{YType::str, "source"},
+    print_header{YType::boolean, "print_header"}
 {
 
     yang_name = "alt_attributes"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
@@ -2865,7 +2978,8 @@ bool Environment::Oper::Altitude::Location::AltAttributes::has_data() const
     return sensor.is_set
 	|| rack.is_set
 	|| sensor_value.is_set
-	|| source.is_set;
+	|| source.is_set
+	|| print_header.is_set;
 }
 
 bool Environment::Oper::Altitude::Location::AltAttributes::has_operation() const
@@ -2874,7 +2988,8 @@ bool Environment::Oper::Altitude::Location::AltAttributes::has_operation() const
 	|| ydk::is_set(sensor.yfilter)
 	|| ydk::is_set(rack.yfilter)
 	|| ydk::is_set(sensor_value.yfilter)
-	|| ydk::is_set(source.yfilter);
+	|| ydk::is_set(source.yfilter)
+	|| ydk::is_set(print_header.yfilter);
 }
 
 std::string Environment::Oper::Altitude::Location::AltAttributes::get_segment_path() const
@@ -2893,6 +3008,7 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Altitude::Loca
     if (rack.is_set || is_set(rack.yfilter)) leaf_name_data.push_back(rack.get_name_leafdata());
     if (sensor_value.is_set || is_set(sensor_value.yfilter)) leaf_name_data.push_back(sensor_value.get_name_leafdata());
     if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (print_header.is_set || is_set(print_header.yfilter)) leaf_name_data.push_back(print_header.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2936,6 +3052,12 @@ void Environment::Oper::Altitude::Location::AltAttributes::set_value(const std::
         source.value_namespace = name_space;
         source.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "print_header")
+    {
+        print_header = value;
+        print_header.value_namespace = name_space;
+        print_header.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Environment::Oper::Altitude::Location::AltAttributes::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2956,11 +3078,15 @@ void Environment::Oper::Altitude::Location::AltAttributes::set_filter(const std:
     {
         source.yfilter = yfilter;
     }
+    if(value_path == "print_header")
+    {
+        print_header.yfilter = yfilter;
+    }
 }
 
 bool Environment::Oper::Altitude::Location::AltAttributes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sensor" || name == "rack" || name == "sensor_value" || name == "source")
+    if(name == "sensor" || name == "rack" || name == "sensor_value" || name == "source" || name == "print_header")
         return true;
     return false;
 }
@@ -3073,6 +3199,8 @@ Environment::All::Location::Location()
     , voltages(this, {"loc_iden"})
     , current(this, {"loc_iden"})
     , fan(this, {"loc_iden"})
+    , power(this, {"loc_iden"})
+    , altitude(this, {"loc_iden"})
 {
 
     yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false; 
@@ -3105,6 +3233,16 @@ bool Environment::All::Location::has_data() const
         if(fan[index]->has_data())
             return true;
     }
+    for (std::size_t index=0; index<power.len(); index++)
+    {
+        if(power[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<altitude.len(); index++)
+    {
+        if(altitude[index]->has_data())
+            return true;
+    }
     return location.is_set;
 }
 
@@ -3128,6 +3266,16 @@ bool Environment::All::Location::has_operation() const
     for (std::size_t index=0; index<fan.len(); index++)
     {
         if(fan[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<power.len(); index++)
+    {
+        if(power[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<altitude.len(); index++)
+    {
+        if(altitude[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
@@ -3193,6 +3341,22 @@ std::shared_ptr<Entity> Environment::All::Location::get_child_by_name(const std:
         return c;
     }
 
+    if(child_yang_name == "power")
+    {
+        auto c = std::make_shared<Environment::All::Location::Power>();
+        c->parent = this;
+        power.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "altitude")
+    {
+        auto c = std::make_shared<Environment::All::Location::Altitude>();
+        c->parent = this;
+        altitude.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -3236,6 +3400,24 @@ std::map<std::string, std::shared_ptr<Entity>> Environment::All::Location::get_c
             children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
+    for (auto c : power.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : altitude.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -3259,7 +3441,7 @@ void Environment::All::Location::set_filter(const std::string & value_path, YFil
 
 bool Environment::All::Location::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "temperatures" || name == "voltages" || name == "current" || name == "fan" || name == "location")
+    if(name == "temperatures" || name == "voltages" || name == "current" || name == "fan" || name == "power" || name == "altitude" || name == "location")
         return true;
     return false;
 }
@@ -4446,23 +4628,831 @@ bool Environment::All::Location::Fan::FanAttributes::has_leaf_or_child_of_name(c
     return false;
 }
 
+Environment::All::Location::Power::Power()
+    :
+    loc_iden{YType::str, "loc_iden"}
+        ,
+    pem_attributes(this, {"pem"})
+{
+
+    yang_name = "power"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Environment::All::Location::Power::~Power()
+{
+}
+
+bool Environment::All::Location::Power::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pem_attributes.len(); index++)
+    {
+        if(pem_attributes[index]->has_data())
+            return true;
+    }
+    return loc_iden.is_set;
+}
+
+bool Environment::All::Location::Power::has_operation() const
+{
+    for (std::size_t index=0; index<pem_attributes.len(); index++)
+    {
+        if(pem_attributes[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(loc_iden.yfilter);
+}
+
+std::string Environment::All::Location::Power::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "power";
+    ADD_KEY_TOKEN(loc_iden, "loc_iden");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Environment::All::Location::Power::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (loc_iden.is_set || is_set(loc_iden.yfilter)) leaf_name_data.push_back(loc_iden.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Environment::All::Location::Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pem_attributes")
+    {
+        auto c = std::make_shared<Environment::All::Location::Power::PemAttributes>();
+        c->parent = this;
+        pem_attributes.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Environment::All::Location::Power::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : pem_attributes.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Environment::All::Location::Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "loc_iden")
+    {
+        loc_iden = value;
+        loc_iden.value_namespace = name_space;
+        loc_iden.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Environment::All::Location::Power::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "loc_iden")
+    {
+        loc_iden.yfilter = yfilter;
+    }
+}
+
+bool Environment::All::Location::Power::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pem_attributes" || name == "loc_iden")
+        return true;
+    return false;
+}
+
+Environment::All::Location::Power::PemAttributes::PemAttributes()
+    :
+    pem{YType::str, "pem"},
+    pem_id{YType::str, "pem_id"},
+    card_type{YType::str, "card_type"},
+    ps_type{YType::str, "ps_type"},
+    shelf_num{YType::uint16, "shelf_num"},
+    supply_type{YType::str, "supply_type"},
+    input_voltage{YType::str, "input_voltage"},
+    input_current{YType::str, "input_current"},
+    output_voltage{YType::str, "output_voltage"},
+    output_current{YType::str, "output_current"},
+    status{YType::str, "status"},
+    input_power_to_ps{YType::uint32, "input_power_to_ps"},
+    input_current_to_ps{YType::str, "input_current_to_ps"},
+    output_power_from_ps{YType::uint32, "output_power_from_ps"},
+    output_current_from_ps{YType::str, "output_current_from_ps"},
+    power_allocated{YType::uint32, "power_allocated"},
+    power_consumed{YType::str, "power_consumed"},
+    power_status{YType::str, "power_status"},
+    confgd_power_redundancy_mode{YType::str, "confgd_power_redundancy_mode"},
+    usable_power_capacity{YType::uint32, "usable_power_capacity"},
+    protection_power_capacity{YType::uint32, "protection_power_capacity"},
+    power_resrv_and_alloc{YType::uint32, "power_resrv_and_alloc"},
+    system_power_used{YType::uint32, "system_power_used"},
+    system_power_input{YType::uint32, "system_power_input"},
+    power_level{YType::uint16, "power_level"},
+    output_header{YType::uint16, "output_header"},
+    output_footer{YType::uint16, "output_footer"},
+    ps_sum_footer{YType::uint16, "ps_sum_footer"}
+{
+
+    yang_name = "pem_attributes"; yang_parent_name = "power"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Environment::All::Location::Power::PemAttributes::~PemAttributes()
+{
+}
+
+bool Environment::All::Location::Power::PemAttributes::has_data() const
+{
+    if (is_presence_container) return true;
+    return pem.is_set
+	|| pem_id.is_set
+	|| card_type.is_set
+	|| ps_type.is_set
+	|| shelf_num.is_set
+	|| supply_type.is_set
+	|| input_voltage.is_set
+	|| input_current.is_set
+	|| output_voltage.is_set
+	|| output_current.is_set
+	|| status.is_set
+	|| input_power_to_ps.is_set
+	|| input_current_to_ps.is_set
+	|| output_power_from_ps.is_set
+	|| output_current_from_ps.is_set
+	|| power_allocated.is_set
+	|| power_consumed.is_set
+	|| power_status.is_set
+	|| confgd_power_redundancy_mode.is_set
+	|| usable_power_capacity.is_set
+	|| protection_power_capacity.is_set
+	|| power_resrv_and_alloc.is_set
+	|| system_power_used.is_set
+	|| system_power_input.is_set
+	|| power_level.is_set
+	|| output_header.is_set
+	|| output_footer.is_set
+	|| ps_sum_footer.is_set;
+}
+
+bool Environment::All::Location::Power::PemAttributes::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(pem.yfilter)
+	|| ydk::is_set(pem_id.yfilter)
+	|| ydk::is_set(card_type.yfilter)
+	|| ydk::is_set(ps_type.yfilter)
+	|| ydk::is_set(shelf_num.yfilter)
+	|| ydk::is_set(supply_type.yfilter)
+	|| ydk::is_set(input_voltage.yfilter)
+	|| ydk::is_set(input_current.yfilter)
+	|| ydk::is_set(output_voltage.yfilter)
+	|| ydk::is_set(output_current.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(input_power_to_ps.yfilter)
+	|| ydk::is_set(input_current_to_ps.yfilter)
+	|| ydk::is_set(output_power_from_ps.yfilter)
+	|| ydk::is_set(output_current_from_ps.yfilter)
+	|| ydk::is_set(power_allocated.yfilter)
+	|| ydk::is_set(power_consumed.yfilter)
+	|| ydk::is_set(power_status.yfilter)
+	|| ydk::is_set(confgd_power_redundancy_mode.yfilter)
+	|| ydk::is_set(usable_power_capacity.yfilter)
+	|| ydk::is_set(protection_power_capacity.yfilter)
+	|| ydk::is_set(power_resrv_and_alloc.yfilter)
+	|| ydk::is_set(system_power_used.yfilter)
+	|| ydk::is_set(system_power_input.yfilter)
+	|| ydk::is_set(power_level.yfilter)
+	|| ydk::is_set(output_header.yfilter)
+	|| ydk::is_set(output_footer.yfilter)
+	|| ydk::is_set(ps_sum_footer.yfilter);
+}
+
+std::string Environment::All::Location::Power::PemAttributes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pem_attributes";
+    ADD_KEY_TOKEN(pem, "pem");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Environment::All::Location::Power::PemAttributes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (pem.is_set || is_set(pem.yfilter)) leaf_name_data.push_back(pem.get_name_leafdata());
+    if (pem_id.is_set || is_set(pem_id.yfilter)) leaf_name_data.push_back(pem_id.get_name_leafdata());
+    if (card_type.is_set || is_set(card_type.yfilter)) leaf_name_data.push_back(card_type.get_name_leafdata());
+    if (ps_type.is_set || is_set(ps_type.yfilter)) leaf_name_data.push_back(ps_type.get_name_leafdata());
+    if (shelf_num.is_set || is_set(shelf_num.yfilter)) leaf_name_data.push_back(shelf_num.get_name_leafdata());
+    if (supply_type.is_set || is_set(supply_type.yfilter)) leaf_name_data.push_back(supply_type.get_name_leafdata());
+    if (input_voltage.is_set || is_set(input_voltage.yfilter)) leaf_name_data.push_back(input_voltage.get_name_leafdata());
+    if (input_current.is_set || is_set(input_current.yfilter)) leaf_name_data.push_back(input_current.get_name_leafdata());
+    if (output_voltage.is_set || is_set(output_voltage.yfilter)) leaf_name_data.push_back(output_voltage.get_name_leafdata());
+    if (output_current.is_set || is_set(output_current.yfilter)) leaf_name_data.push_back(output_current.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (input_power_to_ps.is_set || is_set(input_power_to_ps.yfilter)) leaf_name_data.push_back(input_power_to_ps.get_name_leafdata());
+    if (input_current_to_ps.is_set || is_set(input_current_to_ps.yfilter)) leaf_name_data.push_back(input_current_to_ps.get_name_leafdata());
+    if (output_power_from_ps.is_set || is_set(output_power_from_ps.yfilter)) leaf_name_data.push_back(output_power_from_ps.get_name_leafdata());
+    if (output_current_from_ps.is_set || is_set(output_current_from_ps.yfilter)) leaf_name_data.push_back(output_current_from_ps.get_name_leafdata());
+    if (power_allocated.is_set || is_set(power_allocated.yfilter)) leaf_name_data.push_back(power_allocated.get_name_leafdata());
+    if (power_consumed.is_set || is_set(power_consumed.yfilter)) leaf_name_data.push_back(power_consumed.get_name_leafdata());
+    if (power_status.is_set || is_set(power_status.yfilter)) leaf_name_data.push_back(power_status.get_name_leafdata());
+    if (confgd_power_redundancy_mode.is_set || is_set(confgd_power_redundancy_mode.yfilter)) leaf_name_data.push_back(confgd_power_redundancy_mode.get_name_leafdata());
+    if (usable_power_capacity.is_set || is_set(usable_power_capacity.yfilter)) leaf_name_data.push_back(usable_power_capacity.get_name_leafdata());
+    if (protection_power_capacity.is_set || is_set(protection_power_capacity.yfilter)) leaf_name_data.push_back(protection_power_capacity.get_name_leafdata());
+    if (power_resrv_and_alloc.is_set || is_set(power_resrv_and_alloc.yfilter)) leaf_name_data.push_back(power_resrv_and_alloc.get_name_leafdata());
+    if (system_power_used.is_set || is_set(system_power_used.yfilter)) leaf_name_data.push_back(system_power_used.get_name_leafdata());
+    if (system_power_input.is_set || is_set(system_power_input.yfilter)) leaf_name_data.push_back(system_power_input.get_name_leafdata());
+    if (power_level.is_set || is_set(power_level.yfilter)) leaf_name_data.push_back(power_level.get_name_leafdata());
+    if (output_header.is_set || is_set(output_header.yfilter)) leaf_name_data.push_back(output_header.get_name_leafdata());
+    if (output_footer.is_set || is_set(output_footer.yfilter)) leaf_name_data.push_back(output_footer.get_name_leafdata());
+    if (ps_sum_footer.is_set || is_set(ps_sum_footer.yfilter)) leaf_name_data.push_back(ps_sum_footer.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Environment::All::Location::Power::PemAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Environment::All::Location::Power::PemAttributes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Environment::All::Location::Power::PemAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "pem")
+    {
+        pem = value;
+        pem.value_namespace = name_space;
+        pem.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pem_id")
+    {
+        pem_id = value;
+        pem_id.value_namespace = name_space;
+        pem_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "card_type")
+    {
+        card_type = value;
+        card_type.value_namespace = name_space;
+        card_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ps_type")
+    {
+        ps_type = value;
+        ps_type.value_namespace = name_space;
+        ps_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shelf_num")
+    {
+        shelf_num = value;
+        shelf_num.value_namespace = name_space;
+        shelf_num.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "supply_type")
+    {
+        supply_type = value;
+        supply_type.value_namespace = name_space;
+        supply_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "input_voltage")
+    {
+        input_voltage = value;
+        input_voltage.value_namespace = name_space;
+        input_voltage.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "input_current")
+    {
+        input_current = value;
+        input_current.value_namespace = name_space;
+        input_current.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output_voltage")
+    {
+        output_voltage = value;
+        output_voltage.value_namespace = name_space;
+        output_voltage.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output_current")
+    {
+        output_current = value;
+        output_current.value_namespace = name_space;
+        output_current.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "status")
+    {
+        status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "input_power_to_ps")
+    {
+        input_power_to_ps = value;
+        input_power_to_ps.value_namespace = name_space;
+        input_power_to_ps.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "input_current_to_ps")
+    {
+        input_current_to_ps = value;
+        input_current_to_ps.value_namespace = name_space;
+        input_current_to_ps.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output_power_from_ps")
+    {
+        output_power_from_ps = value;
+        output_power_from_ps.value_namespace = name_space;
+        output_power_from_ps.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output_current_from_ps")
+    {
+        output_current_from_ps = value;
+        output_current_from_ps.value_namespace = name_space;
+        output_current_from_ps.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "power_allocated")
+    {
+        power_allocated = value;
+        power_allocated.value_namespace = name_space;
+        power_allocated.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "power_consumed")
+    {
+        power_consumed = value;
+        power_consumed.value_namespace = name_space;
+        power_consumed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "power_status")
+    {
+        power_status = value;
+        power_status.value_namespace = name_space;
+        power_status.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "confgd_power_redundancy_mode")
+    {
+        confgd_power_redundancy_mode = value;
+        confgd_power_redundancy_mode.value_namespace = name_space;
+        confgd_power_redundancy_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "usable_power_capacity")
+    {
+        usable_power_capacity = value;
+        usable_power_capacity.value_namespace = name_space;
+        usable_power_capacity.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "protection_power_capacity")
+    {
+        protection_power_capacity = value;
+        protection_power_capacity.value_namespace = name_space;
+        protection_power_capacity.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "power_resrv_and_alloc")
+    {
+        power_resrv_and_alloc = value;
+        power_resrv_and_alloc.value_namespace = name_space;
+        power_resrv_and_alloc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "system_power_used")
+    {
+        system_power_used = value;
+        system_power_used.value_namespace = name_space;
+        system_power_used.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "system_power_input")
+    {
+        system_power_input = value;
+        system_power_input.value_namespace = name_space;
+        system_power_input.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "power_level")
+    {
+        power_level = value;
+        power_level.value_namespace = name_space;
+        power_level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output_header")
+    {
+        output_header = value;
+        output_header.value_namespace = name_space;
+        output_header.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output_footer")
+    {
+        output_footer = value;
+        output_footer.value_namespace = name_space;
+        output_footer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ps_sum_footer")
+    {
+        ps_sum_footer = value;
+        ps_sum_footer.value_namespace = name_space;
+        ps_sum_footer.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Environment::All::Location::Power::PemAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pem")
+    {
+        pem.yfilter = yfilter;
+    }
+    if(value_path == "pem_id")
+    {
+        pem_id.yfilter = yfilter;
+    }
+    if(value_path == "card_type")
+    {
+        card_type.yfilter = yfilter;
+    }
+    if(value_path == "ps_type")
+    {
+        ps_type.yfilter = yfilter;
+    }
+    if(value_path == "shelf_num")
+    {
+        shelf_num.yfilter = yfilter;
+    }
+    if(value_path == "supply_type")
+    {
+        supply_type.yfilter = yfilter;
+    }
+    if(value_path == "input_voltage")
+    {
+        input_voltage.yfilter = yfilter;
+    }
+    if(value_path == "input_current")
+    {
+        input_current.yfilter = yfilter;
+    }
+    if(value_path == "output_voltage")
+    {
+        output_voltage.yfilter = yfilter;
+    }
+    if(value_path == "output_current")
+    {
+        output_current.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "input_power_to_ps")
+    {
+        input_power_to_ps.yfilter = yfilter;
+    }
+    if(value_path == "input_current_to_ps")
+    {
+        input_current_to_ps.yfilter = yfilter;
+    }
+    if(value_path == "output_power_from_ps")
+    {
+        output_power_from_ps.yfilter = yfilter;
+    }
+    if(value_path == "output_current_from_ps")
+    {
+        output_current_from_ps.yfilter = yfilter;
+    }
+    if(value_path == "power_allocated")
+    {
+        power_allocated.yfilter = yfilter;
+    }
+    if(value_path == "power_consumed")
+    {
+        power_consumed.yfilter = yfilter;
+    }
+    if(value_path == "power_status")
+    {
+        power_status.yfilter = yfilter;
+    }
+    if(value_path == "confgd_power_redundancy_mode")
+    {
+        confgd_power_redundancy_mode.yfilter = yfilter;
+    }
+    if(value_path == "usable_power_capacity")
+    {
+        usable_power_capacity.yfilter = yfilter;
+    }
+    if(value_path == "protection_power_capacity")
+    {
+        protection_power_capacity.yfilter = yfilter;
+    }
+    if(value_path == "power_resrv_and_alloc")
+    {
+        power_resrv_and_alloc.yfilter = yfilter;
+    }
+    if(value_path == "system_power_used")
+    {
+        system_power_used.yfilter = yfilter;
+    }
+    if(value_path == "system_power_input")
+    {
+        system_power_input.yfilter = yfilter;
+    }
+    if(value_path == "power_level")
+    {
+        power_level.yfilter = yfilter;
+    }
+    if(value_path == "output_header")
+    {
+        output_header.yfilter = yfilter;
+    }
+    if(value_path == "output_footer")
+    {
+        output_footer.yfilter = yfilter;
+    }
+    if(value_path == "ps_sum_footer")
+    {
+        ps_sum_footer.yfilter = yfilter;
+    }
+}
+
+bool Environment::All::Location::Power::PemAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pem" || name == "pem_id" || name == "card_type" || name == "ps_type" || name == "shelf_num" || name == "supply_type" || name == "input_voltage" || name == "input_current" || name == "output_voltage" || name == "output_current" || name == "status" || name == "input_power_to_ps" || name == "input_current_to_ps" || name == "output_power_from_ps" || name == "output_current_from_ps" || name == "power_allocated" || name == "power_consumed" || name == "power_status" || name == "confgd_power_redundancy_mode" || name == "usable_power_capacity" || name == "protection_power_capacity" || name == "power_resrv_and_alloc" || name == "system_power_used" || name == "system_power_input" || name == "power_level" || name == "output_header" || name == "output_footer" || name == "ps_sum_footer")
+        return true;
+    return false;
+}
+
+Environment::All::Location::Altitude::Altitude()
+    :
+    loc_iden{YType::str, "loc_iden"}
+        ,
+    alt_attributes(this, {"sensor"})
+{
+
+    yang_name = "altitude"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Environment::All::Location::Altitude::~Altitude()
+{
+}
+
+bool Environment::All::Location::Altitude::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alt_attributes.len(); index++)
+    {
+        if(alt_attributes[index]->has_data())
+            return true;
+    }
+    return loc_iden.is_set;
+}
+
+bool Environment::All::Location::Altitude::has_operation() const
+{
+    for (std::size_t index=0; index<alt_attributes.len(); index++)
+    {
+        if(alt_attributes[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(loc_iden.yfilter);
+}
+
+std::string Environment::All::Location::Altitude::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "altitude";
+    ADD_KEY_TOKEN(loc_iden, "loc_iden");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Environment::All::Location::Altitude::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (loc_iden.is_set || is_set(loc_iden.yfilter)) leaf_name_data.push_back(loc_iden.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Environment::All::Location::Altitude::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "alt_attributes")
+    {
+        auto c = std::make_shared<Environment::All::Location::Altitude::AltAttributes>();
+        c->parent = this;
+        alt_attributes.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Environment::All::Location::Altitude::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : alt_attributes.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Environment::All::Location::Altitude::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "loc_iden")
+    {
+        loc_iden = value;
+        loc_iden.value_namespace = name_space;
+        loc_iden.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Environment::All::Location::Altitude::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "loc_iden")
+    {
+        loc_iden.yfilter = yfilter;
+    }
+}
+
+bool Environment::All::Location::Altitude::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "alt_attributes" || name == "loc_iden")
+        return true;
+    return false;
+}
+
+Environment::All::Location::Altitude::AltAttributes::AltAttributes()
+    :
+    sensor{YType::str, "sensor"},
+    print_header{YType::boolean, "print_header"},
+    rack{YType::uint32, "rack"},
+    sensor_value{YType::str, "sensor_value"},
+    source{YType::str, "source"}
+{
+
+    yang_name = "alt_attributes"; yang_parent_name = "altitude"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Environment::All::Location::Altitude::AltAttributes::~AltAttributes()
+{
+}
+
+bool Environment::All::Location::Altitude::AltAttributes::has_data() const
+{
+    if (is_presence_container) return true;
+    return sensor.is_set
+	|| print_header.is_set
+	|| rack.is_set
+	|| sensor_value.is_set
+	|| source.is_set;
+}
+
+bool Environment::All::Location::Altitude::AltAttributes::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sensor.yfilter)
+	|| ydk::is_set(print_header.yfilter)
+	|| ydk::is_set(rack.yfilter)
+	|| ydk::is_set(sensor_value.yfilter)
+	|| ydk::is_set(source.yfilter);
+}
+
+std::string Environment::All::Location::Altitude::AltAttributes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "alt_attributes";
+    ADD_KEY_TOKEN(sensor, "sensor");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Environment::All::Location::Altitude::AltAttributes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sensor.is_set || is_set(sensor.yfilter)) leaf_name_data.push_back(sensor.get_name_leafdata());
+    if (print_header.is_set || is_set(print_header.yfilter)) leaf_name_data.push_back(print_header.get_name_leafdata());
+    if (rack.is_set || is_set(rack.yfilter)) leaf_name_data.push_back(rack.get_name_leafdata());
+    if (sensor_value.is_set || is_set(sensor_value.yfilter)) leaf_name_data.push_back(sensor_value.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Environment::All::Location::Altitude::AltAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Environment::All::Location::Altitude::AltAttributes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Environment::All::Location::Altitude::AltAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sensor")
+    {
+        sensor = value;
+        sensor.value_namespace = name_space;
+        sensor.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "print_header")
+    {
+        print_header = value;
+        print_header.value_namespace = name_space;
+        print_header.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rack")
+    {
+        rack = value;
+        rack.value_namespace = name_space;
+        rack.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sensor_value")
+    {
+        sensor_value = value;
+        sensor_value.value_namespace = name_space;
+        sensor_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source")
+    {
+        source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Environment::All::Location::Altitude::AltAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sensor")
+    {
+        sensor.yfilter = yfilter;
+    }
+    if(value_path == "print_header")
+    {
+        print_header.yfilter = yfilter;
+    }
+    if(value_path == "rack")
+    {
+        rack.yfilter = yfilter;
+    }
+    if(value_path == "sensor_value")
+    {
+        sensor_value.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+}
+
+bool Environment::All::Location::Altitude::AltAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sensor" || name == "print_header" || name == "rack" || name == "sensor_value" || name == "source")
+        return true;
+    return false;
+}
+
 Environment::Config::Config()
     :
+    raise_fan_speed{YType::uint32, "raise-fan-speed"},
+    fan_ctrl_optics{YType::uint32, "fan-ctrl-optics"},
+    graceful_shutdown{YType::uint32, "graceful-shutdown"}
+        ,
     router(std::make_shared<Environment::Config::Router>())
     , air_filter(std::make_shared<Environment::Config::AirFilter>())
     , fan_ctrl(std::make_shared<Environment::Config::FanCtrl>())
     , temperature(std::make_shared<Environment::Config::Temperature>())
     , monitoring(std::make_shared<Environment::Config::Monitoring>())
-    , raise_fan_speed(std::make_shared<Environment::Config::RaiseFanSpeed>())
-    , fan_ctrl_optics(std::make_shared<Environment::Config::FanCtrlOptics>())
 {
     router->parent = this;
     air_filter->parent = this;
     fan_ctrl->parent = this;
     temperature->parent = this;
     monitoring->parent = this;
-    raise_fan_speed->parent = this;
-    fan_ctrl_optics->parent = this;
 
     yang_name = "config"; yang_parent_name = "environment"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -4474,25 +5464,27 @@ Environment::Config::~Config()
 bool Environment::Config::has_data() const
 {
     if (is_presence_container) return true;
-    return (router !=  nullptr && router->has_data())
+    return raise_fan_speed.is_set
+	|| fan_ctrl_optics.is_set
+	|| graceful_shutdown.is_set
+	|| (router !=  nullptr && router->has_data())
 	|| (air_filter !=  nullptr && air_filter->has_data())
 	|| (fan_ctrl !=  nullptr && fan_ctrl->has_data())
 	|| (temperature !=  nullptr && temperature->has_data())
-	|| (monitoring !=  nullptr && monitoring->has_data())
-	|| (raise_fan_speed !=  nullptr && raise_fan_speed->has_data())
-	|| (fan_ctrl_optics !=  nullptr && fan_ctrl_optics->has_data());
+	|| (monitoring !=  nullptr && monitoring->has_data());
 }
 
 bool Environment::Config::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(raise_fan_speed.yfilter)
+	|| ydk::is_set(fan_ctrl_optics.yfilter)
+	|| ydk::is_set(graceful_shutdown.yfilter)
 	|| (router !=  nullptr && router->has_operation())
 	|| (air_filter !=  nullptr && air_filter->has_operation())
 	|| (fan_ctrl !=  nullptr && fan_ctrl->has_operation())
 	|| (temperature !=  nullptr && temperature->has_operation())
-	|| (monitoring !=  nullptr && monitoring->has_operation())
-	|| (raise_fan_speed !=  nullptr && raise_fan_speed->has_operation())
-	|| (fan_ctrl_optics !=  nullptr && fan_ctrl_optics->has_operation());
+	|| (monitoring !=  nullptr && monitoring->has_operation());
 }
 
 std::string Environment::Config::get_absolute_path() const
@@ -4513,6 +5505,9 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::get_name_lea
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (raise_fan_speed.is_set || is_set(raise_fan_speed.yfilter)) leaf_name_data.push_back(raise_fan_speed.get_name_leafdata());
+    if (fan_ctrl_optics.is_set || is_set(fan_ctrl_optics.yfilter)) leaf_name_data.push_back(fan_ctrl_optics.get_name_leafdata());
+    if (graceful_shutdown.is_set || is_set(graceful_shutdown.yfilter)) leaf_name_data.push_back(graceful_shutdown.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4565,24 +5560,6 @@ std::shared_ptr<Entity> Environment::Config::get_child_by_name(const std::string
         return monitoring;
     }
 
-    if(child_yang_name == "raise-fan-speed")
-    {
-        if(raise_fan_speed == nullptr)
-        {
-            raise_fan_speed = std::make_shared<Environment::Config::RaiseFanSpeed>();
-        }
-        return raise_fan_speed;
-    }
-
-    if(child_yang_name == "fan-ctrl-optics")
-    {
-        if(fan_ctrl_optics == nullptr)
-        {
-            fan_ctrl_optics = std::make_shared<Environment::Config::FanCtrlOptics>();
-        }
-        return fan_ctrl_optics;
-    }
-
     return nullptr;
 }
 
@@ -4615,30 +5592,50 @@ std::map<std::string, std::shared_ptr<Entity>> Environment::Config::get_children
         children["monitoring"] = monitoring;
     }
 
-    if(raise_fan_speed != nullptr)
-    {
-        children["raise-fan-speed"] = raise_fan_speed;
-    }
-
-    if(fan_ctrl_optics != nullptr)
-    {
-        children["fan-ctrl-optics"] = fan_ctrl_optics;
-    }
-
     return children;
 }
 
 void Environment::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "raise-fan-speed")
+    {
+        raise_fan_speed = value;
+        raise_fan_speed.value_namespace = name_space;
+        raise_fan_speed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fan-ctrl-optics")
+    {
+        fan_ctrl_optics = value;
+        fan_ctrl_optics.value_namespace = name_space;
+        fan_ctrl_optics.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "graceful-shutdown")
+    {
+        graceful_shutdown = value;
+        graceful_shutdown.value_namespace = name_space;
+        graceful_shutdown.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Environment::Config::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "raise-fan-speed")
+    {
+        raise_fan_speed.yfilter = yfilter;
+    }
+    if(value_path == "fan-ctrl-optics")
+    {
+        fan_ctrl_optics.yfilter = yfilter;
+    }
+    if(value_path == "graceful-shutdown")
+    {
+        graceful_shutdown.yfilter = yfilter;
+    }
 }
 
 bool Environment::Config::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "router" || name == "air-filter" || name == "fan-ctrl" || name == "temperature" || name == "monitoring" || name == "raise-fan-speed" || name == "fan-ctrl-optics")
+    if(name == "router" || name == "air-filter" || name == "fan-ctrl" || name == "temperature" || name == "monitoring" || name == "raise-fan-speed" || name == "fan-ctrl-optics" || name == "graceful-shutdown")
         return true;
     return false;
 }
@@ -6739,776 +7736,6 @@ bool Environment::Config::Monitoring::Disable::RackLoc::Location::has_leaf_or_ch
     return false;
 }
 
-Environment::Config::RaiseFanSpeed::RaiseFanSpeed()
-    :
-    all(std::make_shared<Environment::Config::RaiseFanSpeed::All>())
-    , rack_loc(std::make_shared<Environment::Config::RaiseFanSpeed::RackLoc>())
-{
-    all->parent = this;
-    rack_loc->parent = this;
-
-    yang_name = "raise-fan-speed"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Environment::Config::RaiseFanSpeed::~RaiseFanSpeed()
-{
-}
-
-bool Environment::Config::RaiseFanSpeed::has_data() const
-{
-    if (is_presence_container) return true;
-    return (all !=  nullptr && all->has_data())
-	|| (rack_loc !=  nullptr && rack_loc->has_data());
-}
-
-bool Environment::Config::RaiseFanSpeed::has_operation() const
-{
-    return is_set(yfilter)
-	|| (all !=  nullptr && all->has_operation())
-	|| (rack_loc !=  nullptr && rack_loc->has_operation());
-}
-
-std::string Environment::Config::RaiseFanSpeed::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-sysadmin-envmon-ui:environment/config/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Environment::Config::RaiseFanSpeed::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "raise-fan-speed";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Environment::Config::RaiseFanSpeed::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Environment::Config::RaiseFanSpeed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "all")
-    {
-        if(all == nullptr)
-        {
-            all = std::make_shared<Environment::Config::RaiseFanSpeed::All>();
-        }
-        return all;
-    }
-
-    if(child_yang_name == "rack_loc")
-    {
-        if(rack_loc == nullptr)
-        {
-            rack_loc = std::make_shared<Environment::Config::RaiseFanSpeed::RackLoc>();
-        }
-        return rack_loc;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::RaiseFanSpeed::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(all != nullptr)
-    {
-        children["all"] = all;
-    }
-
-    if(rack_loc != nullptr)
-    {
-        children["rack_loc"] = rack_loc;
-    }
-
-    return children;
-}
-
-void Environment::Config::RaiseFanSpeed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Environment::Config::RaiseFanSpeed::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Environment::Config::RaiseFanSpeed::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "all" || name == "rack_loc")
-        return true;
-    return false;
-}
-
-Environment::Config::RaiseFanSpeed::All::All()
-    :
-    speed_pwm{YType::uint32, "speed_pwm"}
-{
-
-    yang_name = "all"; yang_parent_name = "raise-fan-speed"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Environment::Config::RaiseFanSpeed::All::~All()
-{
-}
-
-bool Environment::Config::RaiseFanSpeed::All::has_data() const
-{
-    if (is_presence_container) return true;
-    return speed_pwm.is_set;
-}
-
-bool Environment::Config::RaiseFanSpeed::All::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(speed_pwm.yfilter);
-}
-
-std::string Environment::Config::RaiseFanSpeed::All::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-sysadmin-envmon-ui:environment/config/raise-fan-speed/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Environment::Config::RaiseFanSpeed::All::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "all";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Environment::Config::RaiseFanSpeed::All::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (speed_pwm.is_set || is_set(speed_pwm.yfilter)) leaf_name_data.push_back(speed_pwm.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Environment::Config::RaiseFanSpeed::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::RaiseFanSpeed::All::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Environment::Config::RaiseFanSpeed::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "speed_pwm")
-    {
-        speed_pwm = value;
-        speed_pwm.value_namespace = name_space;
-        speed_pwm.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Environment::Config::RaiseFanSpeed::All::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "speed_pwm")
-    {
-        speed_pwm.yfilter = yfilter;
-    }
-}
-
-bool Environment::Config::RaiseFanSpeed::All::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "speed_pwm")
-        return true;
-    return false;
-}
-
-Environment::Config::RaiseFanSpeed::RackLoc::RackLoc()
-    :
-    location(this, {"rackid"})
-{
-
-    yang_name = "rack_loc"; yang_parent_name = "raise-fan-speed"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Environment::Config::RaiseFanSpeed::RackLoc::~RackLoc()
-{
-}
-
-bool Environment::Config::RaiseFanSpeed::RackLoc::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<location.len(); index++)
-    {
-        if(location[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Environment::Config::RaiseFanSpeed::RackLoc::has_operation() const
-{
-    for (std::size_t index=0; index<location.len(); index++)
-    {
-        if(location[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Environment::Config::RaiseFanSpeed::RackLoc::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-sysadmin-envmon-ui:environment/config/raise-fan-speed/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Environment::Config::RaiseFanSpeed::RackLoc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rack_loc";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Environment::Config::RaiseFanSpeed::RackLoc::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Environment::Config::RaiseFanSpeed::RackLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "location")
-    {
-        auto c = std::make_shared<Environment::Config::RaiseFanSpeed::RackLoc::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::RaiseFanSpeed::RackLoc::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Environment::Config::RaiseFanSpeed::RackLoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Environment::Config::RaiseFanSpeed::RackLoc::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Environment::Config::RaiseFanSpeed::RackLoc::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "location")
-        return true;
-    return false;
-}
-
-Environment::Config::RaiseFanSpeed::RackLoc::Location::Location()
-    :
-    rackid{YType::enumeration, "rackId"},
-    speed_pwm{YType::uint32, "speed_pwm"}
-{
-
-    yang_name = "location"; yang_parent_name = "rack_loc"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Environment::Config::RaiseFanSpeed::RackLoc::Location::~Location()
-{
-}
-
-bool Environment::Config::RaiseFanSpeed::RackLoc::Location::has_data() const
-{
-    if (is_presence_container) return true;
-    return rackid.is_set
-	|| speed_pwm.is_set;
-}
-
-bool Environment::Config::RaiseFanSpeed::RackLoc::Location::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(rackid.yfilter)
-	|| ydk::is_set(speed_pwm.yfilter);
-}
-
-std::string Environment::Config::RaiseFanSpeed::RackLoc::Location::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-sysadmin-envmon-ui:environment/config/raise-fan-speed/rack_loc/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Environment::Config::RaiseFanSpeed::RackLoc::Location::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "location";
-    ADD_KEY_TOKEN(rackid, "rackId");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Environment::Config::RaiseFanSpeed::RackLoc::Location::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rackid.is_set || is_set(rackid.yfilter)) leaf_name_data.push_back(rackid.get_name_leafdata());
-    if (speed_pwm.is_set || is_set(speed_pwm.yfilter)) leaf_name_data.push_back(speed_pwm.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Environment::Config::RaiseFanSpeed::RackLoc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::RaiseFanSpeed::RackLoc::Location::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Environment::Config::RaiseFanSpeed::RackLoc::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rackId")
-    {
-        rackid = value;
-        rackid.value_namespace = name_space;
-        rackid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "speed_pwm")
-    {
-        speed_pwm = value;
-        speed_pwm.value_namespace = name_space;
-        speed_pwm.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Environment::Config::RaiseFanSpeed::RackLoc::Location::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rackId")
-    {
-        rackid.yfilter = yfilter;
-    }
-    if(value_path == "speed_pwm")
-    {
-        speed_pwm.yfilter = yfilter;
-    }
-}
-
-bool Environment::Config::RaiseFanSpeed::RackLoc::Location::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rackId" || name == "speed_pwm")
-        return true;
-    return false;
-}
-
-Environment::Config::FanCtrlOptics::FanCtrlOptics()
-    :
-    enable(std::make_shared<Environment::Config::FanCtrlOptics::Enable>())
-{
-    enable->parent = this;
-
-    yang_name = "fan-ctrl-optics"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Environment::Config::FanCtrlOptics::~FanCtrlOptics()
-{
-}
-
-bool Environment::Config::FanCtrlOptics::has_data() const
-{
-    if (is_presence_container) return true;
-    return (enable !=  nullptr && enable->has_data());
-}
-
-bool Environment::Config::FanCtrlOptics::has_operation() const
-{
-    return is_set(yfilter)
-	|| (enable !=  nullptr && enable->has_operation());
-}
-
-std::string Environment::Config::FanCtrlOptics::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-sysadmin-envmon-ui:environment/config/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Environment::Config::FanCtrlOptics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fan-ctrl-optics";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Environment::Config::FanCtrlOptics::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Environment::Config::FanCtrlOptics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "enable")
-    {
-        if(enable == nullptr)
-        {
-            enable = std::make_shared<Environment::Config::FanCtrlOptics::Enable>();
-        }
-        return enable;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::FanCtrlOptics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(enable != nullptr)
-    {
-        children["enable"] = enable;
-    }
-
-    return children;
-}
-
-void Environment::Config::FanCtrlOptics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Environment::Config::FanCtrlOptics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Environment::Config::FanCtrlOptics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-Environment::Config::FanCtrlOptics::Enable::Enable()
-    :
-    rack_loc(std::make_shared<Environment::Config::FanCtrlOptics::Enable::RackLoc>())
-{
-    rack_loc->parent = this;
-
-    yang_name = "enable"; yang_parent_name = "fan-ctrl-optics"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Environment::Config::FanCtrlOptics::Enable::~Enable()
-{
-}
-
-bool Environment::Config::FanCtrlOptics::Enable::has_data() const
-{
-    if (is_presence_container) return true;
-    return (rack_loc !=  nullptr && rack_loc->has_data());
-}
-
-bool Environment::Config::FanCtrlOptics::Enable::has_operation() const
-{
-    return is_set(yfilter)
-	|| (rack_loc !=  nullptr && rack_loc->has_operation());
-}
-
-std::string Environment::Config::FanCtrlOptics::Enable::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-sysadmin-envmon-ui:environment/config/fan-ctrl-optics/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Environment::Config::FanCtrlOptics::Enable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "enable";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Environment::Config::FanCtrlOptics::Enable::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Environment::Config::FanCtrlOptics::Enable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rack_loc")
-    {
-        if(rack_loc == nullptr)
-        {
-            rack_loc = std::make_shared<Environment::Config::FanCtrlOptics::Enable::RackLoc>();
-        }
-        return rack_loc;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::FanCtrlOptics::Enable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(rack_loc != nullptr)
-    {
-        children["rack_loc"] = rack_loc;
-    }
-
-    return children;
-}
-
-void Environment::Config::FanCtrlOptics::Enable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Environment::Config::FanCtrlOptics::Enable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Environment::Config::FanCtrlOptics::Enable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rack_loc")
-        return true;
-    return false;
-}
-
-Environment::Config::FanCtrlOptics::Enable::RackLoc::RackLoc()
-    :
-    all{YType::empty, "all"}
-        ,
-    location(this, {"rackid"})
-{
-
-    yang_name = "rack_loc"; yang_parent_name = "enable"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Environment::Config::FanCtrlOptics::Enable::RackLoc::~RackLoc()
-{
-}
-
-bool Environment::Config::FanCtrlOptics::Enable::RackLoc::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<location.len(); index++)
-    {
-        if(location[index]->has_data())
-            return true;
-    }
-    return all.is_set;
-}
-
-bool Environment::Config::FanCtrlOptics::Enable::RackLoc::has_operation() const
-{
-    for (std::size_t index=0; index<location.len(); index++)
-    {
-        if(location[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(all.yfilter);
-}
-
-std::string Environment::Config::FanCtrlOptics::Enable::RackLoc::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-sysadmin-envmon-ui:environment/config/fan-ctrl-optics/enable/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Environment::Config::FanCtrlOptics::Enable::RackLoc::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rack_loc";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Environment::Config::FanCtrlOptics::Enable::RackLoc::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (all.is_set || is_set(all.yfilter)) leaf_name_data.push_back(all.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Environment::Config::FanCtrlOptics::Enable::RackLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "location")
-    {
-        auto c = std::make_shared<Environment::Config::FanCtrlOptics::Enable::RackLoc::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::FanCtrlOptics::Enable::RackLoc::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Environment::Config::FanCtrlOptics::Enable::RackLoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "all")
-    {
-        all = value;
-        all.value_namespace = name_space;
-        all.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Environment::Config::FanCtrlOptics::Enable::RackLoc::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "all")
-    {
-        all.yfilter = yfilter;
-    }
-}
-
-bool Environment::Config::FanCtrlOptics::Enable::RackLoc::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "location" || name == "all")
-        return true;
-    return false;
-}
-
-Environment::Config::FanCtrlOptics::Enable::RackLoc::Location::Location()
-    :
-    rackid{YType::enumeration, "rackId"}
-{
-
-    yang_name = "location"; yang_parent_name = "rack_loc"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Environment::Config::FanCtrlOptics::Enable::RackLoc::Location::~Location()
-{
-}
-
-bool Environment::Config::FanCtrlOptics::Enable::RackLoc::Location::has_data() const
-{
-    if (is_presence_container) return true;
-    return rackid.is_set;
-}
-
-bool Environment::Config::FanCtrlOptics::Enable::RackLoc::Location::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(rackid.yfilter);
-}
-
-std::string Environment::Config::FanCtrlOptics::Enable::RackLoc::Location::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-sysadmin-envmon-ui:environment/config/fan-ctrl-optics/enable/rack_loc/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Environment::Config::FanCtrlOptics::Enable::RackLoc::Location::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "location";
-    ADD_KEY_TOKEN(rackid, "rackId");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Environment::Config::FanCtrlOptics::Enable::RackLoc::Location::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rackid.is_set || is_set(rackid.yfilter)) leaf_name_data.push_back(rackid.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Environment::Config::FanCtrlOptics::Enable::RackLoc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::FanCtrlOptics::Enable::RackLoc::Location::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Environment::Config::FanCtrlOptics::Enable::RackLoc::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rackId")
-    {
-        rackid = value;
-        rackid.value_namespace = name_space;
-        rackid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Environment::Config::FanCtrlOptics::Enable::RackLoc::Location::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rackId")
-    {
-        rackid.yfilter = yfilter;
-    }
-}
-
-bool Environment::Config::FanCtrlOptics::Enable::RackLoc::Location::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rackId")
-        return true;
-    return false;
-}
-
 Environment::Trace::Trace()
     :
     buffer{YType::str, "buffer"}
@@ -8031,11 +8258,13 @@ PowerMgmt::Config::Config()
     , single_feed_mode(std::make_shared<PowerMgmt::Config::SingleFeedMode>())
     , extended_temp(std::make_shared<PowerMgmt::Config::ExtendedTemp>())
     , redundancy_num_pms(std::make_shared<PowerMgmt::Config::RedundancyNumPms>())
+    , progressive(std::make_shared<PowerMgmt::Config::Progressive>())
 {
     action->parent = this;
     single_feed_mode->parent = this;
     extended_temp->parent = this;
     redundancy_num_pms->parent = this;
+    progressive->parent = this;
 
     yang_name = "config"; yang_parent_name = "power-mgmt"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -8050,7 +8279,8 @@ bool PowerMgmt::Config::has_data() const
     return (action !=  nullptr && action->has_data())
 	|| (single_feed_mode !=  nullptr && single_feed_mode->has_data())
 	|| (extended_temp !=  nullptr && extended_temp->has_data())
-	|| (redundancy_num_pms !=  nullptr && redundancy_num_pms->has_data());
+	|| (redundancy_num_pms !=  nullptr && redundancy_num_pms->has_data())
+	|| (progressive !=  nullptr && progressive->has_data());
 }
 
 bool PowerMgmt::Config::has_operation() const
@@ -8059,7 +8289,8 @@ bool PowerMgmt::Config::has_operation() const
 	|| (action !=  nullptr && action->has_operation())
 	|| (single_feed_mode !=  nullptr && single_feed_mode->has_operation())
 	|| (extended_temp !=  nullptr && extended_temp->has_operation())
-	|| (redundancy_num_pms !=  nullptr && redundancy_num_pms->has_operation());
+	|| (redundancy_num_pms !=  nullptr && redundancy_num_pms->has_operation())
+	|| (progressive !=  nullptr && progressive->has_operation());
 }
 
 std::string PowerMgmt::Config::get_absolute_path() const
@@ -8123,6 +8354,15 @@ std::shared_ptr<Entity> PowerMgmt::Config::get_child_by_name(const std::string &
         return redundancy_num_pms;
     }
 
+    if(child_yang_name == "progressive")
+    {
+        if(progressive == nullptr)
+        {
+            progressive = std::make_shared<PowerMgmt::Config::Progressive>();
+        }
+        return progressive;
+    }
+
     return nullptr;
 }
 
@@ -8150,6 +8390,11 @@ std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::get_children()
         children["redundancy-num-pms"] = redundancy_num_pms;
     }
 
+    if(progressive != nullptr)
+    {
+        children["progressive"] = progressive;
+    }
+
     return children;
 }
 
@@ -8163,7 +8408,7 @@ void PowerMgmt::Config::set_filter(const std::string & value_path, YFilter yfilt
 
 bool PowerMgmt::Config::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "action" || name == "single-feed-mode" || name == "extended-temp" || name == "redundancy-num-pms")
+    if(name == "action" || name == "single-feed-mode" || name == "extended-temp" || name == "redundancy-num-pms" || name == "progressive")
         return true;
     return false;
 }
@@ -9693,6 +9938,427 @@ bool PowerMgmt::Config::RedundancyNumPms::RackLoc::Location::has_leaf_or_child_o
         return true;
     return false;
 }
+
+PowerMgmt::Config::Progressive::Progressive()
+    :
+    enable(this, {"enabled"})
+{
+
+    yang_name = "progressive"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+PowerMgmt::Config::Progressive::~Progressive()
+{
+}
+
+bool PowerMgmt::Config::Progressive::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<enable.len(); index++)
+    {
+        if(enable[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool PowerMgmt::Config::Progressive::has_operation() const
+{
+    for (std::size_t index=0; index<enable.len(); index++)
+    {
+        if(enable[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string PowerMgmt::Config::Progressive::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-sysadmin-envmon-ui:power-mgmt/config/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string PowerMgmt::Config::Progressive::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "progressive";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::Progressive::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PowerMgmt::Config::Progressive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "enable")
+    {
+        auto c = std::make_shared<PowerMgmt::Config::Progressive::Enable>();
+        c->parent = this;
+        enable.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::Progressive::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : enable.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void PowerMgmt::Config::Progressive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PowerMgmt::Config::Progressive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PowerMgmt::Config::Progressive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+PowerMgmt::Config::Progressive::Enable::Enable()
+    :
+    enabled{YType::enumeration, "enabled"},
+    syslog_threshold{YType::uint32, "syslog-threshold"},
+    shutdown_threshold{YType::uint32, "shutdown-threshold"}
+        ,
+    priority(std::make_shared<PowerMgmt::Config::Progressive::Enable::Priority>())
+{
+    priority->parent = this;
+
+    yang_name = "enable"; yang_parent_name = "progressive"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+PowerMgmt::Config::Progressive::Enable::~Enable()
+{
+}
+
+bool PowerMgmt::Config::Progressive::Enable::has_data() const
+{
+    if (is_presence_container) return true;
+    return enabled.is_set
+	|| syslog_threshold.is_set
+	|| shutdown_threshold.is_set
+	|| (priority !=  nullptr && priority->has_data());
+}
+
+bool PowerMgmt::Config::Progressive::Enable::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(syslog_threshold.yfilter)
+	|| ydk::is_set(shutdown_threshold.yfilter)
+	|| (priority !=  nullptr && priority->has_operation());
+}
+
+std::string PowerMgmt::Config::Progressive::Enable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-sysadmin-envmon-ui:power-mgmt/config/progressive/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string PowerMgmt::Config::Progressive::Enable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "enable";
+    ADD_KEY_TOKEN(enabled, "enabled");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::Progressive::Enable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (syslog_threshold.is_set || is_set(syslog_threshold.yfilter)) leaf_name_data.push_back(syslog_threshold.get_name_leafdata());
+    if (shutdown_threshold.is_set || is_set(shutdown_threshold.yfilter)) leaf_name_data.push_back(shutdown_threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PowerMgmt::Config::Progressive::Enable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "priority")
+    {
+        if(priority == nullptr)
+        {
+            priority = std::make_shared<PowerMgmt::Config::Progressive::Enable::Priority>();
+        }
+        return priority;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::Progressive::Enable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(priority != nullptr)
+    {
+        children["priority"] = priority;
+    }
+
+    return children;
+}
+
+void PowerMgmt::Config::Progressive::Enable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enabled")
+    {
+        enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "syslog-threshold")
+    {
+        syslog_threshold = value;
+        syslog_threshold.value_namespace = name_space;
+        syslog_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold")
+    {
+        shutdown_threshold = value;
+        shutdown_threshold.value_namespace = name_space;
+        shutdown_threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PowerMgmt::Config::Progressive::Enable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "syslog-threshold")
+    {
+        syslog_threshold.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold")
+    {
+        shutdown_threshold.yfilter = yfilter;
+    }
+}
+
+bool PowerMgmt::Config::Progressive::Enable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "priority" || name == "enabled" || name == "syslog-threshold" || name == "shutdown-threshold")
+        return true;
+    return false;
+}
+
+PowerMgmt::Config::Progressive::Enable::Priority::Priority()
+    :
+    location(this, {"loc"})
+{
+
+    yang_name = "priority"; yang_parent_name = "enable"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PowerMgmt::Config::Progressive::Enable::Priority::~Priority()
+{
+}
+
+bool PowerMgmt::Config::Progressive::Enable::Priority::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
+    {
+        if(location[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool PowerMgmt::Config::Progressive::Enable::Priority::has_operation() const
+{
+    for (std::size_t index=0; index<location.len(); index++)
+    {
+        if(location[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string PowerMgmt::Config::Progressive::Enable::Priority::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "priority";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::Progressive::Enable::Priority::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PowerMgmt::Config::Progressive::Enable::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "location")
+    {
+        auto c = std::make_shared<PowerMgmt::Config::Progressive::Enable::Priority::Location>();
+        c->parent = this;
+        location.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::Progressive::Enable::Priority::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : location.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void PowerMgmt::Config::Progressive::Enable::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PowerMgmt::Config::Progressive::Enable::Priority::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PowerMgmt::Config::Progressive::Enable::Priority::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "location")
+        return true;
+    return false;
+}
+
+PowerMgmt::Config::Progressive::Enable::Priority::Location::Location()
+    :
+    loc{YType::str, "loc"},
+    prior{YType::uint32, "prior"}
+{
+
+    yang_name = "location"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PowerMgmt::Config::Progressive::Enable::Priority::Location::~Location()
+{
+}
+
+bool PowerMgmt::Config::Progressive::Enable::Priority::Location::has_data() const
+{
+    if (is_presence_container) return true;
+    return loc.is_set
+	|| prior.is_set;
+}
+
+bool PowerMgmt::Config::Progressive::Enable::Priority::Location::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(loc.yfilter)
+	|| ydk::is_set(prior.yfilter);
+}
+
+std::string PowerMgmt::Config::Progressive::Enable::Priority::Location::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "location";
+    ADD_KEY_TOKEN(loc, "loc");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::Progressive::Enable::Priority::Location::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (loc.is_set || is_set(loc.yfilter)) leaf_name_data.push_back(loc.get_name_leafdata());
+    if (prior.is_set || is_set(prior.yfilter)) leaf_name_data.push_back(prior.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PowerMgmt::Config::Progressive::Enable::Priority::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::Progressive::Enable::Priority::Location::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PowerMgmt::Config::Progressive::Enable::Priority::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "loc")
+    {
+        loc = value;
+        loc.value_namespace = name_space;
+        loc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prior")
+    {
+        prior = value;
+        prior.value_namespace = name_space;
+        prior.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PowerMgmt::Config::Progressive::Enable::Priority::Location::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "loc")
+    {
+        loc.yfilter = yfilter;
+    }
+    if(value_path == "prior")
+    {
+        prior.yfilter = yfilter;
+    }
+}
+
+bool PowerMgmt::Config::Progressive::Enable::Priority::Location::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "loc" || name == "prior")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf PowerMgmt::Config::Progressive::Enable::Enabled::enable {0, "enable"};
 
 
 }

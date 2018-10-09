@@ -392,7 +392,7 @@ class UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf pcb_address; //type: uint32
+        ydk::YLeaf pcb_address; //type: string
         ydk::YLeaf vrf_id; //type: uint32
         ydk::YLeaf is_paw_socket; //type: boolean
         class Send; //type: UdpConnection::Nodes::Node::Statistics::PcbStatistics::PcbStatistic::Send
@@ -896,7 +896,7 @@ class UdpConnection::Nodes::Node::PcbDetails::PcbDetail : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf pcb_address; //type: uint32
+        ydk::YLeaf pcb_address; //type: string
         ydk::YLeaf af_name; //type: UdpAddressFamily
         ydk::YLeaf local_process_id; //type: uint32
         ydk::YLeaf local_port; //type: uint16
@@ -998,7 +998,7 @@ class UdpConnection::Nodes::Node::PcbBriefs::PcbBrief : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf pcb_address; //type: uint32
+        ydk::YLeaf pcb_address; //type: string
         ydk::YLeaf af_name; //type: UdpAddressFamily
         ydk::YLeaf local_port; //type: uint16
         ydk::YLeaf foreign_port; //type: uint16

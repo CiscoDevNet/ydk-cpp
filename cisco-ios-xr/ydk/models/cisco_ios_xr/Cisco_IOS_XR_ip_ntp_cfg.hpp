@@ -477,20 +477,20 @@ class Ntp::Authentication : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf enable; //type: empty
-        class Keies; //type: Ntp::Authentication::Keies
-        class TrustedKeies; //type: Ntp::Authentication::TrustedKeies
+        class Keys; //type: Ntp::Authentication::Keys
+        class TrustedKeys; //type: Ntp::Authentication::TrustedKeys
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::Authentication::Keies> keies;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::Authentication::TrustedKeies> trusted_keies;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::Authentication::Keys> keys;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_cfg::Ntp::Authentication::TrustedKeys> trusted_keys;
         
 }; // Ntp::Authentication
 
 
-class Ntp::Authentication::Keies : public ydk::Entity
+class Ntp::Authentication::Keys : public ydk::Entity
 {
     public:
-        Keies();
-        ~Keies();
+        Keys();
+        ~Keys();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -503,14 +503,14 @@ class Ntp::Authentication::Keies : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Key; //type: Ntp::Authentication::Keies::Key
+        class Key; //type: Ntp::Authentication::Keys::Key
 
         ydk::YList key;
         
-}; // Ntp::Authentication::Keies
+}; // Ntp::Authentication::Keys
 
 
-class Ntp::Authentication::Keies::Key : public ydk::Entity
+class Ntp::Authentication::Keys::Key : public ydk::Entity
 {
     public:
         Key();
@@ -530,14 +530,14 @@ class Ntp::Authentication::Keies::Key : public ydk::Entity
         ydk::YLeaf key_number; //type: uint32
         ydk::YLeaf authentication_key; //type: string
 
-}; // Ntp::Authentication::Keies::Key
+}; // Ntp::Authentication::Keys::Key
 
 
-class Ntp::Authentication::TrustedKeies : public ydk::Entity
+class Ntp::Authentication::TrustedKeys : public ydk::Entity
 {
     public:
-        TrustedKeies();
-        ~TrustedKeies();
+        TrustedKeys();
+        ~TrustedKeys();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -550,14 +550,14 @@ class Ntp::Authentication::TrustedKeies : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class TrustedKey; //type: Ntp::Authentication::TrustedKeies::TrustedKey
+        class TrustedKey; //type: Ntp::Authentication::TrustedKeys::TrustedKey
 
         ydk::YList trusted_key;
         
-}; // Ntp::Authentication::TrustedKeies
+}; // Ntp::Authentication::TrustedKeys
 
 
-class Ntp::Authentication::TrustedKeies::TrustedKey : public ydk::Entity
+class Ntp::Authentication::TrustedKeys::TrustedKey : public ydk::Entity
 {
     public:
         TrustedKey();
@@ -576,7 +576,7 @@ class Ntp::Authentication::TrustedKeies::TrustedKey : public ydk::Entity
 
         ydk::YLeaf key_number; //type: uint32
 
-}; // Ntp::Authentication::TrustedKeies::TrustedKey
+}; // Ntp::Authentication::TrustedKeys::TrustedKey
 
 
 class Ntp::Passive : public ydk::Entity

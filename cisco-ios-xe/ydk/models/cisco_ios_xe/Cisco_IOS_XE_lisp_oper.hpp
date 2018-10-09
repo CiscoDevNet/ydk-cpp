@@ -61,10 +61,12 @@ class LispState::LispRouters : public ydk::Entity
         class Instances; //type: LispState::LispRouters::Instances
         class Sessions; //type: LispState::LispRouters::Sessions
         class LocalRlocs; //type: LispState::LispRouters::LocalRlocs
+        class PrefixLists; //type: LispState::LispRouters::PrefixLists
 
         ydk::YList instances;
         ydk::YList sessions;
         ydk::YList local_rlocs;
+        ydk::YList prefix_lists;
         
 }; // LispState::LispRouters
 
@@ -349,6 +351,7 @@ class LispState::LispRouters::Instances::Af::LocalDbase : public ydk::Entity
         ydk::YLeaf prefix; //type: string
         ydk::YLeaf lsb; //type: uint32
         ydk::YLeaf is_reachable; //type: boolean
+        ydk::YLeaf is_proxy; //type: boolean
         class LocalDbaseRloc; //type: LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc
 
         ydk::YList local_dbase_rloc;
@@ -742,6 +745,56 @@ class LispState::LispRouters::LocalRlocs : public ydk::Entity
         ydk::YLeaf is_local; //type: boolean
 
 }; // LispState::LispRouters::LocalRlocs
+
+
+class LispState::LispRouters::PrefixLists : public ydk::Entity
+{
+    public:
+        PrefixLists();
+        ~PrefixLists();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf count; //type: uint64
+        class PrefixListEntry; //type: LispState::LispRouters::PrefixLists::PrefixListEntry
+
+        ydk::YList prefix_list_entry;
+        
+}; // LispState::LispRouters::PrefixLists
+
+
+class LispState::LispRouters::PrefixLists::PrefixListEntry : public ydk::Entity
+{
+    public:
+        PrefixListEntry();
+        ~PrefixListEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf afi; //type: LispAddressFamilyType
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf source_has_static; //type: boolean
+        ydk::YLeaf source_has_rib; //type: boolean
+        ydk::YLeaf source_has_site_reg; //type: boolean
+
+}; // LispState::LispRouters::PrefixLists::PrefixListEntry
 
 class LispAddressFamilyType : public ydk::Enum
 {

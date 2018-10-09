@@ -254,7 +254,10 @@ class Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::S
         ydk::YLeaf sham_link_youngest_md_key; //type: boolean
         ydk::YLeaf sham_link_youngest_md_key_id; //type: uint16
         ydk::YLeaf sham_link_old_md_key_count; //type: uint32
+        ydk::YLeaf keychain_name; //type: string
+        ydk::YLeaf sham_link_keychain_key_conf; //type: boolean
         ydk::YLeaf sham_link_keychain_id; //type: uint64
+        ydk::YLeaf sham_link_keychain_alg; //type: OspfCrytographicAlgo
         ydk::YLeaf sham_link_nsf_enabled; //type: boolean
         ydk::YLeaf sham_link_nsf; //type: boolean
         ydk::YLeaf sham_link_last_nsf; //type: uint32
@@ -3897,6 +3900,7 @@ class IpfrrTbrkr : public ydk::Enum
         static const ydk::Enum::YLeaf primary_path;
         static const ydk::Enum::YLeaf secondary_path;
         static const ydk::Enum::YLeaf srlg_disjoint;
+        static const ydk::Enum::YLeaf interface_disjoint;
         static const ydk::Enum::YLeaf tunnel;
         static const ydk::Enum::YLeaf post_convergence;
 
@@ -4022,6 +4026,15 @@ class OspfSrEndpResFailReason : public ydk::Enum
 
 };
 
+class OspfSrlbStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf not_allocated;
+        static const ydk::Enum::YLeaf allocated;
+
+};
+
 class SrDp : public ydk::Enum
 {
     public:
@@ -4044,14 +4057,20 @@ class Interface : public ydk::Enum
 
 };
 
-class InterfaceState : public ydk::Enum
+class OspfInternalLsaTypes : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mgmt_ifs_unknown;
-        static const ydk::Enum::YLeaf mgmt_ifs_admin_down;
-        static const ydk::Enum::YLeaf mgmt_ifs_down;
-        static const ydk::Enum::YLeaf mgmt_ifs_up;
-        static const ydk::Enum::YLeaf mgmt_ifs_shutdown;
+        static const ydk::Enum::YLeaf mgmt_rtr_type;
+        static const ydk::Enum::YLeaf mgmt_ntwk_type;
+        static const ydk::Enum::YLeaf mgmt_sum_type;
+        static const ydk::Enum::YLeaf mgmt_ext_type;
+        static const ydk::Enum::YLeaf mgmt_opq_type;
+        static const ydk::Enum::YLeaf mgmt_opq_link_type;
+        static const ydk::Enum::YLeaf mgmt_opq_rrr_type;
+        static const ydk::Enum::YLeaf mgmt_opq_gr_type;
+        static const ydk::Enum::YLeaf mgmt_opq_ri_type;
+        static const ydk::Enum::YLeaf mgmt_opq_epl_type;
+        static const ydk::Enum::YLeaf mgmt_opq_ell_type;
 
 };
 
@@ -4138,6 +4157,7 @@ class OspfShOpqRiTlvTypes : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_sr_algo;
         static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_sr_range;
         static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_node_msd;
+        static const ydk::Enum::YLeaf mgmt_ospf_opq_ri_tlv_type_srlb;
 
 };
 
@@ -4228,20 +4248,14 @@ class NeighborState : public ydk::Enum
 
 };
 
-class OspfInternalLsaTypes : public ydk::Enum
+class InterfaceState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mgmt_rtr_type;
-        static const ydk::Enum::YLeaf mgmt_ntwk_type;
-        static const ydk::Enum::YLeaf mgmt_sum_type;
-        static const ydk::Enum::YLeaf mgmt_ext_type;
-        static const ydk::Enum::YLeaf mgmt_opq_type;
-        static const ydk::Enum::YLeaf mgmt_opq_link_type;
-        static const ydk::Enum::YLeaf mgmt_opq_rrr_type;
-        static const ydk::Enum::YLeaf mgmt_opq_gr_type;
-        static const ydk::Enum::YLeaf mgmt_opq_ri_type;
-        static const ydk::Enum::YLeaf mgmt_opq_epl_type;
-        static const ydk::Enum::YLeaf mgmt_opq_ell_type;
+        static const ydk::Enum::YLeaf mgmt_ifs_unknown;
+        static const ydk::Enum::YLeaf mgmt_ifs_admin_down;
+        static const ydk::Enum::YLeaf mgmt_ifs_down;
+        static const ydk::Enum::YLeaf mgmt_ifs_up;
+        static const ydk::Enum::YLeaf mgmt_ifs_shutdown;
 
 };
 
@@ -4328,6 +4342,24 @@ class DrBdrState : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_dbdr_dr;
         static const ydk::Enum::YLeaf mgmt_dbdr_bdr;
         static const ydk::Enum::YLeaf mgmt_dbdr_dr_other;
+
+};
+
+class OspfCrytographicAlgo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_not_configured;
+        static const ydk::Enum::YLeaf mgmt_aes_128_cmac_96;
+        static const ydk::Enum::YLeaf mgmt_hmac_sha1_12;
+        static const ydk::Enum::YLeaf mgmt_md5_16;
+        static const ydk::Enum::YLeaf mgmt_sha1_20;
+        static const ydk::Enum::YLeaf mgmt_hmac_md5_16;
+        static const ydk::Enum::YLeaf mgmt_hmac_sha1_20;
+        static const ydk::Enum::YLeaf mgmt_aes_128_cmac;
+        static const ydk::Enum::YLeaf mgmt_aes_256_cmac;
+        static const ydk::Enum::YLeaf mgmt_hmac_sha1_96;
+        static const ydk::Enum::YLeaf mgmt_hmac_sha_256;
+        static const ydk::Enum::YLeaf mgmt_hmac_sha1;
 
 };
 

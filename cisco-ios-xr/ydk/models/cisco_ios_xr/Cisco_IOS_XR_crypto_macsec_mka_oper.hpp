@@ -105,8 +105,10 @@ class Macsec::Mka::Interfaces::Interface : public ydk::Entity
 
         ydk::YLeaf name; //type: string
         class Session; //type: Macsec::Mka::Interfaces::Interface::Session
+        class Info; //type: Macsec::Mka::Interfaces::Interface::Info
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_mka_oper::Macsec::Mka::Interfaces::Interface::Session> session;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_mka_oper::Macsec::Mka::Interfaces::Interface::Info> info;
         
 }; // Macsec::Mka::Interfaces::Interface
 
@@ -256,7 +258,7 @@ class Macsec::Mka::Interfaces::Interface::Session::Vp : public ydk::Entity
         ydk::YLeaf old_kn; //type: uint32
         ydk::YLeaf wait_time; //type: uint32
         ydk::YLeaf retire_time; //type: uint32
-        ydk::YLeaf cipher_suite; //type: uint32
+        ydk::YLeaf macsec_cipher_suite; //type: MacsecCipherSuite
         ydk::YLeaf ssci; //type: uint32
         ydk::YLeaf time_to_sak_rekey; //type: string
         class FallbackKeepalive; //type: Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive
@@ -551,6 +553,88 @@ class Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer : public ydk:
         ydk::YLeaf ssci; //type: uint32
 
 }; // Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer
+
+
+class Macsec::Mka::Interfaces::Interface::Info : public ydk::Entity
+{
+    public:
+        Info();
+        ~Info();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class InterfaceSummary; //type: Macsec::Mka::Interfaces::Interface::Info::InterfaceSummary
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_mka_oper::Macsec::Mka::Interfaces::Interface::Info::InterfaceSummary> interface_summary;
+        
+}; // Macsec::Mka::Interfaces::Interface::Info
+
+
+class Macsec::Mka::Interfaces::Interface::Info::InterfaceSummary : public ydk::Entity
+{
+    public:
+        InterfaceSummary();
+        ~InterfaceSummary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf short_name; //type: string
+        ydk::YLeaf key_chain; //type: string
+        ydk::YLeaf policy; //type: string
+        ydk::YLeaf macsec_svc_port; //type: boolean
+        ydk::YLeaf macsec_svc_port_type; //type: MacsecServicePort
+        ydk::YLeaf svcport_short_name; //type: string
+        ydk::YLeaf mka_mode; //type: MkaAuthenticationMode
+        ydk::YLeaf fallback_keychain; //type: string
+        ydk::YLeaf macsec_shutdown; //type: boolean
+
+}; // Macsec::Mka::Interfaces::Interface::Info::InterfaceSummary
+
+class MacsecCipherSuite : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cipher_suite_none;
+        static const ydk::Enum::YLeaf cipher_suite_gcm_aes_128;
+        static const ydk::Enum::YLeaf cipher_suite_gcm_aes_256;
+        static const ydk::Enum::YLeaf cipher_suite_gcm_aes_128_xpn;
+        static const ydk::Enum::YLeaf cipher_suite_gcm_aes_256_xpn;
+
+};
+
+class MkaAuthenticationMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf auth_mode_invalid;
+        static const ydk::Enum::YLeaf auth_mode_psk;
+        static const ydk::Enum::YLeaf auth_mode_eap;
+
+};
+
+class MacsecServicePort : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf macsec_service_port_none;
+        static const ydk::Enum::YLeaf macsec_service_port_encryption;
+        static const ydk::Enum::YLeaf macsec_service_port_decryption;
+
+};
 
 
 }

@@ -385,7 +385,7 @@ class Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConf
         ydk::YLeaf select; //type: TtyTransportProtocolSelect
         ydk::YLeaf protocol1; //type: TtyTransportProtocol
         ydk::YLeaf protocol2; //type: TtyTransportProtocol
-        ydk::YLeaf none; //type: int32
+        ydk::YLeaf none; //type: uint32
 
 }; // Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::TransportInput
 
@@ -431,7 +431,7 @@ class Tty::VtyLines::VtyLine : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf line_number; //type: int32
+        ydk::YLeaf line_number; //type: uint32
         class VtyStatistics; //type: Tty::VtyLines::VtyLine::VtyStatistics
         class State; //type: Tty::VtyLines::VtyLine::State
         class Configuration; //type: Tty::VtyLines::VtyLine::Configuration
@@ -705,7 +705,7 @@ class Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportI
         ydk::YLeaf select; //type: TtyTransportProtocolSelect
         ydk::YLeaf protocol1; //type: TtyTransportProtocol
         ydk::YLeaf protocol2; //type: TtyTransportProtocol
-        ydk::YLeaf none; //type: int32
+        ydk::YLeaf none; //type: uint32
 
 }; // Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportInput
 
@@ -1126,7 +1126,7 @@ class Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::Connecti
         ydk::YLeaf select; //type: TtyTransportProtocolSelect
         ydk::YLeaf protocol1; //type: TtyTransportProtocol
         ydk::YLeaf protocol2; //type: TtyTransportProtocol
-        ydk::YLeaf none; //type: int32
+        ydk::YLeaf none; //type: uint32
 
 }; // Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::TransportInput
 

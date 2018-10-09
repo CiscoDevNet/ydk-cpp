@@ -162,6 +162,7 @@ class Otu::Controllers::Controller::Info : public ydk::Entity
         class OtuAlarmInfo; //type: Otu::Controllers::Controller::Info::OtuAlarmInfo
         class Proactive; //type: Otu::Controllers::Controller::Info::Proactive
         class OtuFecSatistics; //type: Otu::Controllers::Controller::Info::OtuFecSatistics
+        class AinsInfo; //type: Otu::Controllers::Controller::Info::AinsInfo
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_otu_oper::Otu::Controllers::Controller::Info::Local> local;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_otu_oper::Otu::Controllers::Controller::Info::Remote> remote;
@@ -170,6 +171,7 @@ class Otu::Controllers::Controller::Info : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_otu_oper::Otu::Controllers::Controller::Info::OtuAlarmInfo> otu_alarm_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_otu_oper::Otu::Controllers::Controller::Info::Proactive> proactive;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_otu_oper::Otu::Controllers::Controller::Info::OtuFecSatistics> otu_fec_satistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_otu_oper::Otu::Controllers::Controller::Info::AinsInfo> ains_info;
         
 }; // Otu::Controllers::Controller::Info
 
@@ -1107,6 +1109,29 @@ class Otu::Controllers::Controller::Info::OtuFecSatistics : public ydk::Entity
 
 }; // Otu::Controllers::Controller::Info::OtuFecSatistics
 
+
+class Otu::Controllers::Controller::Info::AinsInfo : public ydk::Entity
+{
+    public:
+        AinsInfo();
+        ~AinsInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ains_state; //type: OtuAinsStateEt
+        ydk::YLeaf ains_timer_minutes; //type: uint32
+        ydk::YLeaf ains_remaining_secs; //type: uint32
+
+}; // Otu::Controllers::Controller::Info::AinsInfo
+
 class OtuPrbsStatus : public ydk::Enum
 {
     public:
@@ -1162,6 +1187,15 @@ class OtuPrbsTest : public ydk::Enum
 
 };
 
+class OtuAinsStateEt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf active_running;
+        static const ydk::Enum::YLeaf active_pending;
+
+};
+
 class OtuPpFsmState : public ydk::Enum
 {
     public:
@@ -1191,6 +1225,8 @@ class OtuG709fecMode : public ydk::Enum
         static const ydk::Enum::YLeaf otu_bag_enhanced_hg7_fec;
         static const ydk::Enum::YLeaf otu_bag_sd20_fec;
         static const ydk::Enum::YLeaf otu_bag_sd7_fec;
+        static const ydk::Enum::YLeaf otu_bag_sd15_fec;
+        static const ydk::Enum::YLeaf otu_bag_sd27_fec;
         static const ydk::Enum::YLeaf otu_bag_all_fec;
 
 };
@@ -1237,7 +1273,7 @@ class OtuSecState : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf normal;
         static const ydk::Enum::YLeaf maintenance;
-        static const ydk::Enum::YLeaf ais;
+        static const ydk::Enum::YLeaf ains;
 
 };
 
@@ -1266,7 +1302,7 @@ class OtuDerState : public ydk::Enum
         static const ydk::Enum::YLeaf out_of_service;
         static const ydk::Enum::YLeaf in_service;
         static const ydk::Enum::YLeaf maintenance;
-        static const ydk::Enum::YLeaf ais;
+        static const ydk::Enum::YLeaf ains;
 
 };
 

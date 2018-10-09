@@ -4347,6 +4347,8 @@ Cfm::Global::MepConfigurationErrors::MepConfigurationError::MepConfigurationErro
     bundle_level0{YType::boolean, "bundle-level0"},
     bridge_domain_not_in_bd_infra{YType::boolean, "bridge-domain-not-in-bd-infra"},
     maid_format_not_supported{YType::boolean, "maid-format-not-supported"},
+    sman_format_not_supported{YType::boolean, "sman-format-not-supported"},
+    mdid_format_not_supported{YType::boolean, "mdid-format-not-supported"},
     fatal_offload_error{YType::boolean, "fatal-offload-error"},
     satellite_limitation{YType::boolean, "satellite-limitation"},
     sla_loopback_operations_disabled{YType::boolean, "sla-loopback-operations-disabled"},
@@ -4397,6 +4399,8 @@ bool Cfm::Global::MepConfigurationErrors::MepConfigurationError::has_data() cons
 	|| bundle_level0.is_set
 	|| bridge_domain_not_in_bd_infra.is_set
 	|| maid_format_not_supported.is_set
+	|| sman_format_not_supported.is_set
+	|| mdid_format_not_supported.is_set
 	|| fatal_offload_error.is_set
 	|| satellite_limitation.is_set
 	|| sla_loopback_operations_disabled.is_set
@@ -4435,6 +4439,8 @@ bool Cfm::Global::MepConfigurationErrors::MepConfigurationError::has_operation()
 	|| ydk::is_set(bundle_level0.yfilter)
 	|| ydk::is_set(bridge_domain_not_in_bd_infra.yfilter)
 	|| ydk::is_set(maid_format_not_supported.yfilter)
+	|| ydk::is_set(sman_format_not_supported.yfilter)
+	|| ydk::is_set(mdid_format_not_supported.yfilter)
 	|| ydk::is_set(fatal_offload_error.yfilter)
 	|| ydk::is_set(satellite_limitation.yfilter)
 	|| ydk::is_set(sla_loopback_operations_disabled.yfilter)
@@ -4491,6 +4497,8 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Global::MepConfigurationErro
     if (bundle_level0.is_set || is_set(bundle_level0.yfilter)) leaf_name_data.push_back(bundle_level0.get_name_leafdata());
     if (bridge_domain_not_in_bd_infra.is_set || is_set(bridge_domain_not_in_bd_infra.yfilter)) leaf_name_data.push_back(bridge_domain_not_in_bd_infra.get_name_leafdata());
     if (maid_format_not_supported.is_set || is_set(maid_format_not_supported.yfilter)) leaf_name_data.push_back(maid_format_not_supported.get_name_leafdata());
+    if (sman_format_not_supported.is_set || is_set(sman_format_not_supported.yfilter)) leaf_name_data.push_back(sman_format_not_supported.get_name_leafdata());
+    if (mdid_format_not_supported.is_set || is_set(mdid_format_not_supported.yfilter)) leaf_name_data.push_back(mdid_format_not_supported.get_name_leafdata());
     if (fatal_offload_error.is_set || is_set(fatal_offload_error.yfilter)) leaf_name_data.push_back(fatal_offload_error.get_name_leafdata());
     if (satellite_limitation.is_set || is_set(satellite_limitation.yfilter)) leaf_name_data.push_back(satellite_limitation.get_name_leafdata());
     if (sla_loopback_operations_disabled.is_set || is_set(sla_loopback_operations_disabled.yfilter)) leaf_name_data.push_back(sla_loopback_operations_disabled.get_name_leafdata());
@@ -4685,6 +4693,18 @@ void Cfm::Global::MepConfigurationErrors::MepConfigurationError::set_value(const
         maid_format_not_supported.value_namespace = name_space;
         maid_format_not_supported.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "sman-format-not-supported")
+    {
+        sman_format_not_supported = value;
+        sman_format_not_supported.value_namespace = name_space;
+        sman_format_not_supported.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mdid-format-not-supported")
+    {
+        mdid_format_not_supported = value;
+        mdid_format_not_supported.value_namespace = name_space;
+        mdid_format_not_supported.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "fatal-offload-error")
     {
         fatal_offload_error = value;
@@ -4827,6 +4847,14 @@ void Cfm::Global::MepConfigurationErrors::MepConfigurationError::set_filter(cons
     {
         maid_format_not_supported.yfilter = yfilter;
     }
+    if(value_path == "sman-format-not-supported")
+    {
+        sman_format_not_supported.yfilter = yfilter;
+    }
+    if(value_path == "mdid-format-not-supported")
+    {
+        mdid_format_not_supported.yfilter = yfilter;
+    }
     if(value_path == "fatal-offload-error")
     {
         fatal_offload_error.yfilter = yfilter;
@@ -4875,7 +4903,7 @@ void Cfm::Global::MepConfigurationErrors::MepConfigurationError::set_filter(cons
 
 bool Cfm::Global::MepConfigurationErrors::MepConfigurationError::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mep" || name == "service-bridge-domain" || name == "interface-bridge-domain" || name == "satellite-capabilities" || name == "domain" || name == "service" || name == "interface" || name == "ccm-interval" || name == "no-domain" || name == "no-service" || name == "bridge-domain-mismatch" || name == "level-conflict" || name == "ccm-interval-not-supported" || name == "offload-out-of-resources" || name == "offload-multiple-local-mep" || name == "offload-no-cross-check" || name == "offload-multiple-peer-meps" || name == "offload-mep-direction-not-supported" || name == "ais-configured" || name == "bundle-level0" || name == "bridge-domain-not-in-bd-infra" || name == "maid-format-not-supported" || name == "fatal-offload-error" || name == "satellite-limitation" || name == "sla-loopback-operations-disabled" || name == "sla-synthetic-loss-operations-disabled" || name == "sla-delay-measurement-operations-disabled" || name == "no-valid-mac-address" || name == "no-interface-type" || name == "not-in-im" || name == "no-mlacp" || name == "satellite-error-string" || name == "satellite-id")
+    if(name == "mep" || name == "service-bridge-domain" || name == "interface-bridge-domain" || name == "satellite-capabilities" || name == "domain" || name == "service" || name == "interface" || name == "ccm-interval" || name == "no-domain" || name == "no-service" || name == "bridge-domain-mismatch" || name == "level-conflict" || name == "ccm-interval-not-supported" || name == "offload-out-of-resources" || name == "offload-multiple-local-mep" || name == "offload-no-cross-check" || name == "offload-multiple-peer-meps" || name == "offload-mep-direction-not-supported" || name == "ais-configured" || name == "bundle-level0" || name == "bridge-domain-not-in-bd-infra" || name == "maid-format-not-supported" || name == "sman-format-not-supported" || name == "mdid-format-not-supported" || name == "fatal-offload-error" || name == "satellite-limitation" || name == "sla-loopback-operations-disabled" || name == "sla-synthetic-loss-operations-disabled" || name == "sla-delay-measurement-operations-disabled" || name == "no-valid-mac-address" || name == "no-interface-type" || name == "not-in-im" || name == "no-mlacp" || name == "satellite-error-string" || name == "satellite-id")
         return true;
     return false;
 }

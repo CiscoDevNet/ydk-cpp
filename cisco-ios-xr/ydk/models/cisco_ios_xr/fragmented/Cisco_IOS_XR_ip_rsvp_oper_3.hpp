@@ -13,102 +13,6 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_rsvp_oper {
 
 
-class Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4 : public ydk::Entity
-{
-    public:
-        Ipv4();
-        ~Ipv4();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf destination_address; //type: string
-        ydk::YLeaf protocol; //type: uint8
-        ydk::YLeaf destination_port; //type: uint16
-
-}; // Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4
-
-
-class Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4LspSession : public ydk::Entity
-{
-    public:
-        Ipv4LspSession();
-        ~Ipv4LspSession();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf destination_address; //type: string
-        ydk::YLeaf tunnel_id; //type: uint16
-        ydk::YLeaf extended_tunnel_id; //type: string
-
-}; // Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4LspSession
-
-
-class Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4UniSession : public ydk::Entity
-{
-    public:
-        Ipv4UniSession();
-        ~Ipv4UniSession();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf destination_address; //type: string
-        ydk::YLeaf tunnel_id; //type: uint16
-        ydk::YLeaf extended_address; //type: string
-
-}; // Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4UniSession
-
-
-class Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4P2mpLspSession : public ydk::Entity
-{
-    public:
-        Ipv4P2mpLspSession();
-        ~Ipv4P2mpLspSession();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf p2mp_id; //type: uint32
-        ydk::YLeaf tunnel_id; //type: uint16
-        ydk::YLeaf extended_tunnel_id; //type: string
-
-}; // Rsvp::RxsbDetails::RxsbDetail::Session::RsvpSession::Ipv4P2mpLspSession
-
-
 class Rsvp::RxsbDetails::RxsbDetail::S2lSubLsp : public ydk::Entity
 {
     public:
@@ -3899,6 +3803,119 @@ class Rsvp::HelloInstanceBriefs::HelloInstanceBrief : public ydk::Entity
         ydk::YLeaf lost_communication_total; //type: uint16
 
 }; // Rsvp::HelloInstanceBriefs::HelloInstanceBrief
+
+
+class Rsvp::AuthenticationDetails : public ydk::Entity
+{
+    public:
+        AuthenticationDetails();
+        ~AuthenticationDetails();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class AuthenticationDetail; //type: Rsvp::AuthenticationDetails::AuthenticationDetail
+
+        ydk::YList authentication_detail;
+        
+}; // Rsvp::AuthenticationDetails
+
+
+class Rsvp::AuthenticationDetails::AuthenticationDetail : public ydk::Entity
+{
+    public:
+        AuthenticationDetail();
+        ~AuthenticationDetail();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf mode_id; //type: RsvpMode
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf key_status; //type: uint32
+        ydk::YLeaf key_digest_info; //type: uint32
+        ydk::YLeaf lifetime; //type: uint32
+        ydk::YLeaf lifetime_left; //type: uint32
+        ydk::YLeaf challenge_status; //type: RsvpMgmtAuthChallengeStatus
+        class AuthCompact; //type: Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact
+        class DirectionInfo; //type: Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact> auth_compact;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo> direction_info;
+        
+}; // Rsvp::AuthenticationDetails::AuthenticationDetail
+
+
+class Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact : public ydk::Entity
+{
+    public:
+        AuthCompact();
+        ~AuthCompact();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf source_address_xr; //type: string
+        ydk::YLeaf destination_address_xr; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf direction; //type: RsvpMgmtAuthDirection
+        ydk::YLeaf key_type; //type: RsvpMgmtAuthKi
+        ydk::YLeaf key_source; //type: string
+        ydk::YLeaf key_id; //type: uint64
+        ydk::YLeaf key_id_valid; //type: uint32
+
+}; // Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact
+
+
+class Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo : public ydk::Entity
+{
+    public:
+        DirectionInfo();
+        ~DirectionInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf auth_direction; //type: RsvpMgmtAuthDirection
+        class SendInfo; //type: Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo
+        class ReceiveInfo; //type: Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo> send_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_oper::Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo> receive_info;
+        
+}; // Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo
 
 
 }

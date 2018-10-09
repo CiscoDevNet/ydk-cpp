@@ -220,7 +220,7 @@ bool ShowUsers::Sessions::has_leaf_or_child_of_name(const std::string & name) co
 
 ShowUsers::Sessions::Session::Session()
     :
-    session_id{YType::int32, "session-id"},
+    session_id{YType::uint32, "session-id"},
     line{YType::str, "line"},
     user{YType::str, "user"},
     service{YType::str, "service"},

@@ -650,8 +650,10 @@ Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Statistic()
     buckets_archive{YType::uint32, "buckets-archive"}
         ,
     buckets_size(nullptr) // presence node
+    , actions(std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions>())
     , aggregation(nullptr) // presence node
 {
+    actions->parent = this;
 
     yang_name = "statistic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -667,6 +669,7 @@ bool Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::has_dat
 	|| enable.is_set
 	|| buckets_archive.is_set
 	|| (buckets_size !=  nullptr && buckets_size->has_data())
+	|| (actions !=  nullptr && actions->has_data())
 	|| (aggregation !=  nullptr && aggregation->has_data());
 }
 
@@ -677,6 +680,7 @@ bool Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::has_ope
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(buckets_archive.yfilter)
 	|| (buckets_size !=  nullptr && buckets_size->has_operation())
+	|| (actions !=  nullptr && actions->has_operation())
 	|| (aggregation !=  nullptr && aggregation->has_operation());
 }
 
@@ -711,6 +715,15 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics:
         return buckets_size;
     }
 
+    if(child_yang_name == "actions")
+    {
+        if(actions == nullptr)
+        {
+            actions = std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions>();
+        }
+        return actions;
+    }
+
     if(child_yang_name == "aggregation")
     {
         if(aggregation == nullptr)
@@ -730,6 +743,11 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profile
     if(buckets_size != nullptr)
     {
         children["buckets-size"] = buckets_size;
+    }
+
+    if(actions != nullptr)
+    {
+        children["actions"] = actions;
     }
 
     if(aggregation != nullptr)
@@ -780,7 +798,7 @@ void Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::set_fil
 
 bool Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "buckets-size" || name == "aggregation" || name == "statistic-name" || name == "enable" || name == "buckets-archive")
+    if(name == "buckets-size" || name == "actions" || name == "aggregation" || name == "statistic-name" || name == "enable" || name == "buckets-archive")
         return true;
     return false;
 }
@@ -873,6 +891,236 @@ void Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Buckets
 bool Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "buckets-size" || name == "buckets-size-unit")
+        return true;
+    return false;
+}
+
+Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::Actions()
+    :
+    action(this, {"threshold_type", "action_type", "condition"})
+{
+
+    yang_name = "actions"; yang_parent_name = "statistic"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::~Actions()
+{
+}
+
+bool Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<action.len(); index++)
+    {
+        if(action[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::has_operation() const
+{
+    for (std::size_t index=0; index<action.len(); index++)
+    {
+        if(action[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "actions";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "action")
+    {
+        auto c = std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::Action>();
+        c->parent = this;
+        action.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : action.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action")
+        return true;
+    return false;
+}
+
+Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::Action::Action()
+    :
+    threshold_type{YType::enumeration, "threshold-type"},
+    action_type{YType::enumeration, "action-type"},
+    condition{YType::enumeration, "condition"},
+    threshold_value{YType::uint32, "threshold-value"},
+    bin_number{YType::uint32, "bin-number"}
+{
+
+    yang_name = "action"; yang_parent_name = "actions"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::Action::~Action()
+{
+}
+
+bool Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::Action::has_data() const
+{
+    if (is_presence_container) return true;
+    return threshold_type.is_set
+	|| action_type.is_set
+	|| condition.is_set
+	|| threshold_value.is_set
+	|| bin_number.is_set;
+}
+
+bool Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::Action::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(threshold_type.yfilter)
+	|| ydk::is_set(action_type.yfilter)
+	|| ydk::is_set(condition.yfilter)
+	|| ydk::is_set(threshold_value.yfilter)
+	|| ydk::is_set(bin_number.yfilter);
+}
+
+std::string Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::Action::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "action";
+    ADD_KEY_TOKEN(threshold_type, "threshold-type");
+    ADD_KEY_TOKEN(action_type, "action-type");
+    ADD_KEY_TOKEN(condition, "condition");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::Action::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (threshold_type.is_set || is_set(threshold_type.yfilter)) leaf_name_data.push_back(threshold_type.get_name_leafdata());
+    if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
+    if (condition.is_set || is_set(condition.yfilter)) leaf_name_data.push_back(condition.get_name_leafdata());
+    if (threshold_value.is_set || is_set(threshold_value.yfilter)) leaf_name_data.push_back(threshold_value.get_name_leafdata());
+    if (bin_number.is_set || is_set(bin_number.yfilter)) leaf_name_data.push_back(bin_number.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::Action::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "threshold-type")
+    {
+        threshold_type = value;
+        threshold_type.value_namespace = name_space;
+        threshold_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "action-type")
+    {
+        action_type = value;
+        action_type.value_namespace = name_space;
+        action_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "condition")
+    {
+        condition = value;
+        condition.value_namespace = name_space;
+        condition.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold-value")
+    {
+        threshold_value = value;
+        threshold_value.value_namespace = name_space;
+        threshold_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bin-number")
+    {
+        bin_number = value;
+        bin_number.value_namespace = name_space;
+        bin_number.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::Action::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "threshold-type")
+    {
+        threshold_type.yfilter = yfilter;
+    }
+    if(value_path == "action-type")
+    {
+        action_type.yfilter = yfilter;
+    }
+    if(value_path == "condition")
+    {
+        condition.yfilter = yfilter;
+    }
+    if(value_path == "threshold-value")
+    {
+        threshold_value.yfilter = yfilter;
+    }
+    if(value_path == "bin-number")
+    {
+        bin_number.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::Action::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold-type" || name == "action-type" || name == "condition" || name == "threshold-value" || name == "bin-number")
         return true;
     return false;
 }

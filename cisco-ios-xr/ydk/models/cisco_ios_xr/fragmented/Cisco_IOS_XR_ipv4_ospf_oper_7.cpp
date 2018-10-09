@@ -11,6 +11,502 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_ospf_oper {
 
+Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::Tlv()
+    :
+    tlv_type{YType::uint16, "tlv-type"},
+    tlv_length{YType::uint16, "tlv-length"},
+    mpls_router_id{YType::str, "mpls-router-id"},
+    mpls_dste_link{YType::boolean, "mpls-dste-link"},
+    tlv_data{YType::str, "tlv-data"}
+        ,
+    te_link_sub_tlv(this, {})
+{
+
+    yang_name = "tlv"; yang_parent_name = "opaque-mpls-te-lsa-type"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::~Tlv()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<te_link_sub_tlv.len(); index++)
+    {
+        if(te_link_sub_tlv[index]->has_data())
+            return true;
+    }
+    return tlv_type.is_set
+	|| tlv_length.is_set
+	|| mpls_router_id.is_set
+	|| mpls_dste_link.is_set
+	|| tlv_data.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::has_operation() const
+{
+    for (std::size_t index=0; index<te_link_sub_tlv.len(); index++)
+    {
+        if(te_link_sub_tlv[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(tlv_type.yfilter)
+	|| ydk::is_set(tlv_length.yfilter)
+	|| ydk::is_set(mpls_router_id.yfilter)
+	|| ydk::is_set(mpls_dste_link.yfilter)
+	|| ydk::is_set(tlv_data.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tlv";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tlv_type.is_set || is_set(tlv_type.yfilter)) leaf_name_data.push_back(tlv_type.get_name_leafdata());
+    if (tlv_length.is_set || is_set(tlv_length.yfilter)) leaf_name_data.push_back(tlv_length.get_name_leafdata());
+    if (mpls_router_id.is_set || is_set(mpls_router_id.yfilter)) leaf_name_data.push_back(mpls_router_id.get_name_leafdata());
+    if (mpls_dste_link.is_set || is_set(mpls_dste_link.yfilter)) leaf_name_data.push_back(mpls_dste_link.get_name_leafdata());
+    if (tlv_data.is_set || is_set(tlv_data.yfilter)) leaf_name_data.push_back(tlv_data.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "te-link-sub-tlv")
+    {
+        auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::TeLinkSubTlv>();
+        c->parent = this;
+        te_link_sub_tlv.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : te_link_sub_tlv.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tlv-type")
+    {
+        tlv_type = value;
+        tlv_type.value_namespace = name_space;
+        tlv_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tlv-length")
+    {
+        tlv_length = value;
+        tlv_length.value_namespace = name_space;
+        tlv_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpls-router-id")
+    {
+        mpls_router_id = value;
+        mpls_router_id.value_namespace = name_space;
+        mpls_router_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpls-dste-link")
+    {
+        mpls_dste_link = value;
+        mpls_dste_link.value_namespace = name_space;
+        mpls_dste_link.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tlv-data")
+    {
+        tlv_data = value;
+        tlv_data.value_namespace = name_space;
+        tlv_data.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tlv-type")
+    {
+        tlv_type.yfilter = yfilter;
+    }
+    if(value_path == "tlv-length")
+    {
+        tlv_length.yfilter = yfilter;
+    }
+    if(value_path == "mpls-router-id")
+    {
+        mpls_router_id.yfilter = yfilter;
+    }
+    if(value_path == "mpls-dste-link")
+    {
+        mpls_dste_link.yfilter = yfilter;
+    }
+    if(value_path == "tlv-data")
+    {
+        tlv_data.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "te-link-sub-tlv" || name == "tlv-type" || name == "tlv-length" || name == "mpls-router-id" || name == "mpls-dste-link" || name == "tlv-data")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::TeLinkSubTlv::TeLinkSubTlv()
+    :
+    sub_tlv_type{YType::enumeration, "sub-tlv-type"},
+    sub_tlv_length{YType::uint16, "sub-tlv-length"},
+    sub_tlv_value{YType::str, "sub-tlv-value"}
+{
+
+    yang_name = "te-link-sub-tlv"; yang_parent_name = "tlv"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::TeLinkSubTlv::~TeLinkSubTlv()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::TeLinkSubTlv::has_data() const
+{
+    if (is_presence_container) return true;
+    return sub_tlv_type.is_set
+	|| sub_tlv_length.is_set
+	|| sub_tlv_value.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::TeLinkSubTlv::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sub_tlv_type.yfilter)
+	|| ydk::is_set(sub_tlv_length.yfilter)
+	|| ydk::is_set(sub_tlv_value.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::TeLinkSubTlv::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "te-link-sub-tlv";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::TeLinkSubTlv::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sub_tlv_type.is_set || is_set(sub_tlv_type.yfilter)) leaf_name_data.push_back(sub_tlv_type.get_name_leafdata());
+    if (sub_tlv_length.is_set || is_set(sub_tlv_length.yfilter)) leaf_name_data.push_back(sub_tlv_length.get_name_leafdata());
+    if (sub_tlv_value.is_set || is_set(sub_tlv_value.yfilter)) leaf_name_data.push_back(sub_tlv_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::TeLinkSubTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::TeLinkSubTlv::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::TeLinkSubTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sub-tlv-type")
+    {
+        sub_tlv_type = value;
+        sub_tlv_type.value_namespace = name_space;
+        sub_tlv_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sub-tlv-length")
+    {
+        sub_tlv_length = value;
+        sub_tlv_length.value_namespace = name_space;
+        sub_tlv_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sub-tlv-value")
+    {
+        sub_tlv_value = value;
+        sub_tlv_value.value_namespace = name_space;
+        sub_tlv_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::TeLinkSubTlv::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sub-tlv-type")
+    {
+        sub_tlv_type.yfilter = yfilter;
+    }
+    if(value_path == "sub-tlv-length")
+    {
+        sub_tlv_length.yfilter = yfilter;
+    }
+    if(value_path == "sub-tlv-value")
+    {
+        sub_tlv_value.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueMplsTeLsaType::Tlv::TeLinkSubTlv::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sub-tlv-type" || name == "sub-tlv-length" || name == "sub-tlv-value")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueGraceLsa::OpaqueGraceLsa()
+    :
+    grace_period{YType::uint32, "grace-period"},
+    grace_reason{YType::enumeration, "grace-reason"},
+    ip_address{YType::str, "ip-address"}
+{
+
+    yang_name = "opaque-grace-lsa"; yang_parent_name = "lsa-internal-data"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueGraceLsa::~OpaqueGraceLsa()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueGraceLsa::has_data() const
+{
+    if (is_presence_container) return true;
+    return grace_period.is_set
+	|| grace_reason.is_set
+	|| ip_address.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueGraceLsa::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(grace_period.yfilter)
+	|| ydk::is_set(grace_reason.yfilter)
+	|| ydk::is_set(ip_address.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueGraceLsa::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "opaque-grace-lsa";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueGraceLsa::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (grace_period.is_set || is_set(grace_period.yfilter)) leaf_name_data.push_back(grace_period.get_name_leafdata());
+    if (grace_reason.is_set || is_set(grace_reason.yfilter)) leaf_name_data.push_back(grace_reason.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueGraceLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueGraceLsa::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueGraceLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "grace-period")
+    {
+        grace_period = value;
+        grace_period.value_namespace = name_space;
+        grace_period.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "grace-reason")
+    {
+        grace_reason = value;
+        grace_reason.value_namespace = name_space;
+        grace_reason.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ip-address")
+    {
+        ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueGraceLsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "grace-period")
+    {
+        grace_period.yfilter = yfilter;
+    }
+    if(value_path == "grace-reason")
+    {
+        grace_reason.yfilter = yfilter;
+    }
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueGraceLsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "grace-period" || name == "grace-reason" || name == "ip-address")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRouterInfoLsaType()
+    :
+    opaque_rilsa_scope{YType::enumeration, "opaque-rilsa-scope"},
+    opaque_ri_interface_name{YType::str, "opaque-ri-interface-name"}
+        ,
+    opaque_ritlv(this, {})
+{
+
+    yang_name = "opaque-router-info-lsa-type"; yang_parent_name = "lsa-internal-data"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::~OpaqueRouterInfoLsaType()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<opaque_ritlv.len(); index++)
+    {
+        if(opaque_ritlv[index]->has_data())
+            return true;
+    }
+    return opaque_rilsa_scope.is_set
+	|| opaque_ri_interface_name.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::has_operation() const
+{
+    for (std::size_t index=0; index<opaque_ritlv.len(); index++)
+    {
+        if(opaque_ritlv[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(opaque_rilsa_scope.yfilter)
+	|| ydk::is_set(opaque_ri_interface_name.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "opaque-router-info-lsa-type";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (opaque_rilsa_scope.is_set || is_set(opaque_rilsa_scope.yfilter)) leaf_name_data.push_back(opaque_rilsa_scope.get_name_leafdata());
+    if (opaque_ri_interface_name.is_set || is_set(opaque_ri_interface_name.yfilter)) leaf_name_data.push_back(opaque_ri_interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "opaque-ritlv")
+    {
+        auto c = std::make_shared<Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv>();
+        c->parent = this;
+        opaque_ritlv.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : opaque_ritlv.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "opaque-rilsa-scope")
+    {
+        opaque_rilsa_scope = value;
+        opaque_rilsa_scope.value_namespace = name_space;
+        opaque_rilsa_scope.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "opaque-ri-interface-name")
+    {
+        opaque_ri_interface_name = value;
+        opaque_ri_interface_name.value_namespace = name_space;
+        opaque_ri_interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "opaque-rilsa-scope")
+    {
+        opaque_rilsa_scope.yfilter = yfilter;
+    }
+    if(value_path == "opaque-ri-interface-name")
+    {
+        opaque_ri_interface_name.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "opaque-ritlv" || name == "opaque-rilsa-scope" || name == "opaque-ri-interface-name")
+        return true;
+    return false;
+}
+
 Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::OpaqueRitlv()
     :
     ritlv_internal_type{YType::enumeration, "ritlv-internal-type"}
@@ -21,6 +517,7 @@ Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsa
     , sr_algo_tlv(std::make_shared<Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv>())
     , sr_range_tlv(std::make_shared<Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv>())
     , node_msdtlv(std::make_shared<Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::NodeMsdtlv>())
+    , srlbtlv(std::make_shared<Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv>())
 {
     unknown_tlv->parent = this;
     rtr_cap_tlv->parent = this;
@@ -28,6 +525,7 @@ Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsa
     sr_algo_tlv->parent = this;
     sr_range_tlv->parent = this;
     node_msdtlv->parent = this;
+    srlbtlv->parent = this;
 
     yang_name = "opaque-ritlv"; yang_parent_name = "opaque-router-info-lsa-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -45,7 +543,8 @@ bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea
 	|| (pcedtlv !=  nullptr && pcedtlv->has_data())
 	|| (sr_algo_tlv !=  nullptr && sr_algo_tlv->has_data())
 	|| (sr_range_tlv !=  nullptr && sr_range_tlv->has_data())
-	|| (node_msdtlv !=  nullptr && node_msdtlv->has_data());
+	|| (node_msdtlv !=  nullptr && node_msdtlv->has_data())
+	|| (srlbtlv !=  nullptr && srlbtlv->has_data());
 }
 
 bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::has_operation() const
@@ -57,7 +556,8 @@ bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea
 	|| (pcedtlv !=  nullptr && pcedtlv->has_operation())
 	|| (sr_algo_tlv !=  nullptr && sr_algo_tlv->has_operation())
 	|| (sr_range_tlv !=  nullptr && sr_range_tlv->has_operation())
-	|| (node_msdtlv !=  nullptr && node_msdtlv->has_operation());
+	|| (node_msdtlv !=  nullptr && node_msdtlv->has_operation())
+	|| (srlbtlv !=  nullptr && srlbtlv->has_operation());
 }
 
 std::string Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::get_segment_path() const
@@ -133,6 +633,15 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Database::Database
         return node_msdtlv;
     }
 
+    if(child_yang_name == "srlbtlv")
+    {
+        if(srlbtlv == nullptr)
+        {
+            srlbtlv = std::make_shared<Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv>();
+        }
+        return srlbtlv;
+    }
+
     return nullptr;
 }
 
@@ -170,6 +679,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Default
         children["node-msdtlv"] = node_msdtlv;
     }
 
+    if(srlbtlv != nullptr)
+    {
+        children["srlbtlv"] = srlbtlv;
+    }
+
     return children;
 }
 
@@ -193,7 +707,7 @@ void Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea
 
 bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "unknown-tlv" || name == "rtr-cap-tlv" || name == "pcedtlv" || name == "sr-algo-tlv" || name == "sr-range-tlv" || name == "node-msdtlv" || name == "ritlv-internal-type")
+    if(name == "unknown-tlv" || name == "rtr-cap-tlv" || name == "pcedtlv" || name == "sr-algo-tlv" || name == "sr-range-tlv" || name == "node-msdtlv" || name == "srlbtlv" || name == "ritlv-internal-type")
         return true;
     return false;
 }
@@ -1781,6 +2295,209 @@ void Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea
 bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::NodeMsdtlv::NodeMsdSubTypes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "msd-sub-type" || name == "msd-value")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Srlbtlv()
+    :
+    srlbtlv_length{YType::uint16, "srlbtlv-length"},
+    srlb_range_size{YType::uint32, "srlb-range-size"}
+        ,
+    sidtlv(std::make_shared<Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv>())
+{
+    sidtlv->parent = this;
+
+    yang_name = "srlbtlv"; yang_parent_name = "opaque-ritlv"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::~Srlbtlv()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::has_data() const
+{
+    if (is_presence_container) return true;
+    return srlbtlv_length.is_set
+	|| srlb_range_size.is_set
+	|| (sidtlv !=  nullptr && sidtlv->has_data());
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(srlbtlv_length.yfilter)
+	|| ydk::is_set(srlb_range_size.yfilter)
+	|| (sidtlv !=  nullptr && sidtlv->has_operation());
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "srlbtlv";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (srlbtlv_length.is_set || is_set(srlbtlv_length.yfilter)) leaf_name_data.push_back(srlbtlv_length.get_name_leafdata());
+    if (srlb_range_size.is_set || is_set(srlb_range_size.yfilter)) leaf_name_data.push_back(srlb_range_size.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "sidtlv")
+    {
+        if(sidtlv == nullptr)
+        {
+            sidtlv = std::make_shared<Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv>();
+        }
+        return sidtlv;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(sidtlv != nullptr)
+    {
+        children["sidtlv"] = sidtlv;
+    }
+
+    return children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "srlbtlv-length")
+    {
+        srlbtlv_length = value;
+        srlbtlv_length.value_namespace = name_space;
+        srlbtlv_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srlb-range-size")
+    {
+        srlb_range_size = value;
+        srlb_range_size.value_namespace = name_space;
+        srlb_range_size.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "srlbtlv-length")
+    {
+        srlbtlv_length.yfilter = yfilter;
+    }
+    if(value_path == "srlb-range-size")
+    {
+        srlb_range_size.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sidtlv" || name == "srlbtlv-length" || name == "srlb-range-size")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::Sidtlv()
+    :
+    sr_sid_length{YType::uint16, "sr-sid-length"},
+    sr_sid_value{YType::uint32, "sr-sid-value"}
+{
+
+    yang_name = "sidtlv"; yang_parent_name = "srlbtlv"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::~Sidtlv()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::has_data() const
+{
+    if (is_presence_container) return true;
+    return sr_sid_length.is_set
+	|| sr_sid_value.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sr_sid_length.yfilter)
+	|| ydk::is_set(sr_sid_value.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sidtlv";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sr_sid_length.is_set || is_set(sr_sid_length.yfilter)) leaf_name_data.push_back(sr_sid_length.get_name_leafdata());
+    if (sr_sid_value.is_set || is_set(sr_sid_value.yfilter)) leaf_name_data.push_back(sr_sid_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sr-sid-length")
+    {
+        sr_sid_length = value;
+        sr_sid_length.value_namespace = name_space;
+        sr_sid_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-sid-value")
+    {
+        sr_sid_value = value;
+        sr_sid_value.value_namespace = name_space;
+        sr_sid_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sr-sid-length")
+    {
+        sr_sid_length.yfilter = yfilter;
+    }
+    if(value_path == "sr-sid-value")
+    {
+        sr_sid_value.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::DatabaseAreas::DatabaseArea::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sr-sid-length" || name == "sr-sid-value")
         return true;
     return false;
 }
@@ -7152,6 +7869,7 @@ Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::Opaq
     , sr_algo_tlv(std::make_shared<Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrAlgoTlv>())
     , sr_range_tlv(std::make_shared<Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::SrRangeTlv>())
     , node_msdtlv(std::make_shared<Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::NodeMsdtlv>())
+    , srlbtlv(std::make_shared<Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv>())
 {
     unknown_tlv->parent = this;
     rtr_cap_tlv->parent = this;
@@ -7159,6 +7877,7 @@ Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::Opaq
     sr_algo_tlv->parent = this;
     sr_range_tlv->parent = this;
     node_msdtlv->parent = this;
+    srlbtlv->parent = this;
 
     yang_name = "opaque-ritlv"; yang_parent_name = "opaque-router-info-lsa-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -7176,7 +7895,8 @@ bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData:
 	|| (pcedtlv !=  nullptr && pcedtlv->has_data())
 	|| (sr_algo_tlv !=  nullptr && sr_algo_tlv->has_data())
 	|| (sr_range_tlv !=  nullptr && sr_range_tlv->has_data())
-	|| (node_msdtlv !=  nullptr && node_msdtlv->has_data());
+	|| (node_msdtlv !=  nullptr && node_msdtlv->has_data())
+	|| (srlbtlv !=  nullptr && srlbtlv->has_data());
 }
 
 bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::has_operation() const
@@ -7188,7 +7908,8 @@ bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData:
 	|| (pcedtlv !=  nullptr && pcedtlv->has_operation())
 	|| (sr_algo_tlv !=  nullptr && sr_algo_tlv->has_operation())
 	|| (sr_range_tlv !=  nullptr && sr_range_tlv->has_operation())
-	|| (node_msdtlv !=  nullptr && node_msdtlv->has_operation());
+	|| (node_msdtlv !=  nullptr && node_msdtlv->has_operation())
+	|| (srlbtlv !=  nullptr && srlbtlv->has_operation());
 }
 
 std::string Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::get_segment_path() const
@@ -7264,6 +7985,15 @@ std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Database::Lsas::Ls
         return node_msdtlv;
     }
 
+    if(child_yang_name == "srlbtlv")
+    {
+        if(srlbtlv == nullptr)
+        {
+            srlbtlv = std::make_shared<Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv>();
+        }
+        return srlbtlv;
+    }
+
     return nullptr;
 }
 
@@ -7301,6 +8031,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Default
         children["node-msdtlv"] = node_msdtlv;
     }
 
+    if(srlbtlv != nullptr)
+    {
+        children["srlbtlv"] = srlbtlv;
+    }
+
     return children;
 }
 
@@ -7324,7 +8059,7 @@ void Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData:
 
 bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "unknown-tlv" || name == "rtr-cap-tlv" || name == "pcedtlv" || name == "sr-algo-tlv" || name == "sr-range-tlv" || name == "node-msdtlv" || name == "ritlv-internal-type")
+    if(name == "unknown-tlv" || name == "rtr-cap-tlv" || name == "pcedtlv" || name == "sr-algo-tlv" || name == "sr-range-tlv" || name == "node-msdtlv" || name == "srlbtlv" || name == "ritlv-internal-type")
         return true;
     return false;
 }
@@ -8912,6 +9647,209 @@ void Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData:
 bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::NodeMsdtlv::NodeMsdSubTypes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "msd-sub-type" || name == "msd-value")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Srlbtlv()
+    :
+    srlbtlv_length{YType::uint16, "srlbtlv-length"},
+    srlb_range_size{YType::uint32, "srlb-range-size"}
+        ,
+    sidtlv(std::make_shared<Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv>())
+{
+    sidtlv->parent = this;
+
+    yang_name = "srlbtlv"; yang_parent_name = "opaque-ritlv"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::~Srlbtlv()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::has_data() const
+{
+    if (is_presence_container) return true;
+    return srlbtlv_length.is_set
+	|| srlb_range_size.is_set
+	|| (sidtlv !=  nullptr && sidtlv->has_data());
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(srlbtlv_length.yfilter)
+	|| ydk::is_set(srlb_range_size.yfilter)
+	|| (sidtlv !=  nullptr && sidtlv->has_operation());
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "srlbtlv";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (srlbtlv_length.is_set || is_set(srlbtlv_length.yfilter)) leaf_name_data.push_back(srlbtlv_length.get_name_leafdata());
+    if (srlb_range_size.is_set || is_set(srlb_range_size.yfilter)) leaf_name_data.push_back(srlb_range_size.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "sidtlv")
+    {
+        if(sidtlv == nullptr)
+        {
+            sidtlv = std::make_shared<Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv>();
+        }
+        return sidtlv;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(sidtlv != nullptr)
+    {
+        children["sidtlv"] = sidtlv;
+    }
+
+    return children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "srlbtlv-length")
+    {
+        srlbtlv_length = value;
+        srlbtlv_length.value_namespace = name_space;
+        srlbtlv_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srlb-range-size")
+    {
+        srlb_range_size = value;
+        srlb_range_size.value_namespace = name_space;
+        srlb_range_size.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "srlbtlv-length")
+    {
+        srlbtlv_length.yfilter = yfilter;
+    }
+    if(value_path == "srlb-range-size")
+    {
+        srlb_range_size.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sidtlv" || name == "srlbtlv-length" || name == "srlb-range-size")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::Sidtlv()
+    :
+    sr_sid_length{YType::uint16, "sr-sid-length"},
+    sr_sid_value{YType::uint32, "sr-sid-value"}
+{
+
+    yang_name = "sidtlv"; yang_parent_name = "srlbtlv"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::~Sidtlv()
+{
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::has_data() const
+{
+    if (is_presence_container) return true;
+    return sr_sid_length.is_set
+	|| sr_sid_value.is_set;
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sr_sid_length.yfilter)
+	|| ydk::is_set(sr_sid_value.yfilter);
+}
+
+std::string Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sidtlv";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sr_sid_length.is_set || is_set(sr_sid_length.yfilter)) leaf_name_data.push_back(sr_sid_length.get_name_leafdata());
+    if (sr_sid_value.is_set || is_set(sr_sid_value.yfilter)) leaf_name_data.push_back(sr_sid_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sr-sid-length")
+    {
+        sr_sid_length = value;
+        sr_sid_length.value_namespace = name_space;
+        sr_sid_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-sid-value")
+    {
+        sr_sid_value = value;
+        sr_sid_value.value_namespace = name_space;
+        sr_sid_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sr-sid-length")
+    {
+        sr_sid_length.yfilter = yfilter;
+    }
+    if(value_path == "sr-sid-value")
+    {
+        sr_sid_value.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::DefaultVrf::Database::Lsas::Lsa::LsaInternalData::OpaqueRouterInfoLsaType::OpaqueRitlv::Srlbtlv::Sidtlv::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sr-sid-length" || name == "sr-sid-value")
         return true;
     return false;
 }

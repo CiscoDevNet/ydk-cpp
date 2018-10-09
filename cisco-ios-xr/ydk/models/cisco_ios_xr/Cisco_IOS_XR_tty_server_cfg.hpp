@@ -384,7 +384,7 @@ class Tty::TtyLines::TtyLine::Connection::TransportInput : public ydk::Entity
         ydk::YLeaf select; //type: TtyTransportProtocolSelect
         ydk::YLeaf protocol1; //type: TtyTransportProtocol
         ydk::YLeaf protocol2; //type: TtyTransportProtocol
-        ydk::YLeaf none; //type: int32
+        ydk::YLeaf none; //type: uint32
 
 }; // Tty::TtyLines::TtyLine::Connection::TransportInput
 
@@ -408,7 +408,7 @@ class Tty::TtyLines::TtyLine::Connection::TransportOutput : public ydk::Entity
         ydk::YLeaf select; //type: TtyTransportProtocolSelect
         ydk::YLeaf protocol1; //type: TtyTransportProtocol
         ydk::YLeaf protocol2; //type: TtyTransportProtocol
-        ydk::YLeaf none; //type: int32
+        ydk::YLeaf none; //type: uint32
 
 }; // Tty::TtyLines::TtyLine::Connection::TransportOutput
 

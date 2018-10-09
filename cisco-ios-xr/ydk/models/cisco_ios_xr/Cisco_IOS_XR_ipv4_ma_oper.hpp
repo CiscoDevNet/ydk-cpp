@@ -10,6 +10,15 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_ma_oper {
 
+class Ipv4MaOperConfig : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4_ma_oper_client_none;
+        static const ydk::Enum::YLeaf ipv4_ma_oper_non_oc_client;
+        static const ydk::Enum::YLeaf ipv4_ma_oper_oc_client;
+
+};
+
 class RpfMode : public ydk::Enum
 {
     public:

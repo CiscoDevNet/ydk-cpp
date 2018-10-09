@@ -691,9 +691,11 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile : public ydk::Entity
 
         ydk::YLeaf profile_name; //type: string
         class ThrottleInfos; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos
+        class ProxyClasses; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses
         class Info; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos> throttle_infos;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses> proxy_classes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info> info;
         
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile
@@ -745,6 +747,53 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos::ThrottleInfo
         ydk::YLeaf time_left; //type: uint32
 
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos::ThrottleInfo
+
+
+class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses : public ydk::Entity
+{
+    public:
+        ProxyClasses();
+        ~ProxyClasses();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ProxyClass; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::ProxyClass
+
+        ydk::YList proxy_class;
+        
+}; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses
+
+
+class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::ProxyClass : public ydk::Entity
+{
+    public:
+        ProxyClass();
+        ~ProxyClass();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf class_name; //type: string
+        ydk::YLeaf class_name_xr; //type: string
+        ydk::YLeafList profile_helper_address; //type: list of  string
+        ydk::YLeafList vrf_name; //type: list of  string
+
+}; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ProxyClasses::ProxyClass
 
 
 class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info : public ydk::Entity
@@ -2294,9 +2343,11 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile : public ydk::Entity
         ydk::YLeaf profile_name; //type: string
         class Info; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info
         class ThrottleInfos; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos
+        class ServerClasses; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info> info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos> throttle_infos;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses> server_classes;
         
 }; // Dhcpv6::Nodes::Node::Server::Profiles::Profile
 
@@ -2447,6 +2498,56 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos::ThrottleInf
         ydk::YLeaf time_left; //type: uint32
 
 }; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos::ThrottleInfo
+
+
+class Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses : public ydk::Entity
+{
+    public:
+        ServerClasses();
+        ~ServerClasses();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ServerClass; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::ServerClass
+
+        ydk::YList server_class;
+        
+}; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses
+
+
+class Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::ServerClass : public ydk::Entity
+{
+    public:
+        ServerClass();
+        ~ServerClass();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf class_name; //type: string
+        ydk::YLeaf class_name_xr; //type: string
+        ydk::YLeaf domain_name; //type: string
+        ydk::YLeaf profile_dns; //type: uint8
+        ydk::YLeaf framed_addr_pool_name; //type: string
+        ydk::YLeaf delegated_prefix_pool_name; //type: string
+        ydk::YLeafList profile_dns_address; //type: list of  string
+
+}; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::ServerClasses::ServerClass
 
 
 class Dhcpv6::Nodes::Node::Server::Interfaces : public ydk::Entity

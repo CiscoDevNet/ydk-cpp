@@ -2145,8 +2145,8 @@ bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry:
 Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp::Tcp()
     :
     tcp_bits_match_operator{YType::enumeration, "tcp-bits-match-operator"},
-    tcp_bits{YType::str, "tcp-bits"},
-    tcp_bits_mask{YType::str, "tcp-bits-mask"}
+    tcp_bits{YType::bits, "tcp-bits"},
+    tcp_bits_mask{YType::bits, "tcp-bits-mask"}
 {
 
     yang_name = "tcp"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true; 
@@ -2213,15 +2213,11 @@ void Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry:
     }
     if(value_path == "tcp-bits")
     {
-        tcp_bits = value;
-        tcp_bits.value_namespace = name_space;
-        tcp_bits.value_namespace_prefix = name_space_prefix;
+        tcp_bits[value] = true;
     }
     if(value_path == "tcp-bits-mask")
     {
-        tcp_bits_mask = value;
-        tcp_bits_mask.value_namespace = name_space;
-        tcp_bits_mask.value_namespace_prefix = name_space_prefix;
+        tcp_bits_mask[value] = true;
     }
 }
 
@@ -3151,7 +3147,6 @@ bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry:
     return false;
 }
 
-const Enum::YLeaf NextHopType::none_next_hop {0, "none-next-hop"};
 const Enum::YLeaf NextHopType::regular_next_hop {1, "regular-next-hop"};
 const Enum::YLeaf NextHopType::default_next_hop {2, "default-next-hop"};
 

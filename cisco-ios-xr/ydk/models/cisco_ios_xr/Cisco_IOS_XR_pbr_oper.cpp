@@ -835,9 +835,11 @@ Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat:
         ,
     general_stats(std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats>())
     , httpr_stats(std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats>())
+    , http_enrich_stats(std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats>())
 {
     general_stats->parent = this;
     httpr_stats->parent = this;
+    http_enrich_stats->parent = this;
 
     yang_name = "class-stat"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -853,7 +855,8 @@ bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Class
 	|| class_name.is_set
 	|| class_id.is_set
 	|| (general_stats !=  nullptr && general_stats->has_data())
-	|| (httpr_stats !=  nullptr && httpr_stats->has_data());
+	|| (httpr_stats !=  nullptr && httpr_stats->has_data())
+	|| (http_enrich_stats !=  nullptr && http_enrich_stats->has_data());
 }
 
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::has_operation() const
@@ -863,7 +866,8 @@ bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Class
 	|| ydk::is_set(class_name.yfilter)
 	|| ydk::is_set(class_id.yfilter)
 	|| (general_stats !=  nullptr && general_stats->has_operation())
-	|| (httpr_stats !=  nullptr && httpr_stats->has_operation());
+	|| (httpr_stats !=  nullptr && httpr_stats->has_operation())
+	|| (http_enrich_stats !=  nullptr && http_enrich_stats->has_operation());
 }
 
 std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::get_segment_path() const
@@ -905,6 +909,15 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Dire
         return httpr_stats;
     }
 
+    if(child_yang_name == "http-enrich-stats")
+    {
+        if(http_enrich_stats == nullptr)
+        {
+            http_enrich_stats = std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats>();
+        }
+        return http_enrich_stats;
+    }
+
     return nullptr;
 }
 
@@ -920,6 +933,11 @@ std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Inte
     if(httpr_stats != nullptr)
     {
         children["httpr-stats"] = httpr_stats;
+    }
+
+    if(http_enrich_stats != nullptr)
+    {
+        children["http-enrich-stats"] = http_enrich_stats;
     }
 
     return children;
@@ -965,7 +983,7 @@ void Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Class
 
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "general-stats" || name == "httpr-stats" || name == "counter-validity-bitmask" || name == "class-name" || name == "class-id")
+    if(name == "general-stats" || name == "httpr-stats" || name == "http-enrich-stats" || name == "counter-validity-bitmask" || name == "class-name" || name == "class-id")
         return true;
     return false;
 }
@@ -1304,6 +1322,182 @@ void Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Class
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rqst-rcvd-packets" || name == "rqst-rcvd-bytes" || name == "drop-packets" || name == "drop-bytes" || name == "resp-sent-packets" || name == "resp-sent-bytes")
+        return true;
+    return false;
+}
+
+Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats::HttpEnrichStats()
+    :
+    rqst_rcvd_packets{YType::uint64, "rqst-rcvd-packets"},
+    rqst_rcvd_bytes{YType::uint64, "rqst-rcvd-bytes"},
+    drop_packets{YType::uint64, "drop-packets"},
+    drop_bytes{YType::uint64, "drop-bytes"},
+    resp_sent_packets{YType::uint64, "resp-sent-packets"},
+    resp_sent_bytes{YType::uint64, "resp-sent-bytes"},
+    req_sent_packets{YType::uint64, "req-sent-packets"},
+    tcp_sent_packets{YType::uint64, "tcp-sent-packets"}
+{
+
+    yang_name = "http-enrich-stats"; yang_parent_name = "class-stat"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats::~HttpEnrichStats()
+{
+}
+
+bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats::has_data() const
+{
+    if (is_presence_container) return true;
+    return rqst_rcvd_packets.is_set
+	|| rqst_rcvd_bytes.is_set
+	|| drop_packets.is_set
+	|| drop_bytes.is_set
+	|| resp_sent_packets.is_set
+	|| resp_sent_bytes.is_set
+	|| req_sent_packets.is_set
+	|| tcp_sent_packets.is_set;
+}
+
+bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rqst_rcvd_packets.yfilter)
+	|| ydk::is_set(rqst_rcvd_bytes.yfilter)
+	|| ydk::is_set(drop_packets.yfilter)
+	|| ydk::is_set(drop_bytes.yfilter)
+	|| ydk::is_set(resp_sent_packets.yfilter)
+	|| ydk::is_set(resp_sent_bytes.yfilter)
+	|| ydk::is_set(req_sent_packets.yfilter)
+	|| ydk::is_set(tcp_sent_packets.yfilter);
+}
+
+std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "http-enrich-stats";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rqst_rcvd_packets.is_set || is_set(rqst_rcvd_packets.yfilter)) leaf_name_data.push_back(rqst_rcvd_packets.get_name_leafdata());
+    if (rqst_rcvd_bytes.is_set || is_set(rqst_rcvd_bytes.yfilter)) leaf_name_data.push_back(rqst_rcvd_bytes.get_name_leafdata());
+    if (drop_packets.is_set || is_set(drop_packets.yfilter)) leaf_name_data.push_back(drop_packets.get_name_leafdata());
+    if (drop_bytes.is_set || is_set(drop_bytes.yfilter)) leaf_name_data.push_back(drop_bytes.get_name_leafdata());
+    if (resp_sent_packets.is_set || is_set(resp_sent_packets.yfilter)) leaf_name_data.push_back(resp_sent_packets.get_name_leafdata());
+    if (resp_sent_bytes.is_set || is_set(resp_sent_bytes.yfilter)) leaf_name_data.push_back(resp_sent_bytes.get_name_leafdata());
+    if (req_sent_packets.is_set || is_set(req_sent_packets.yfilter)) leaf_name_data.push_back(req_sent_packets.get_name_leafdata());
+    if (tcp_sent_packets.is_set || is_set(tcp_sent_packets.yfilter)) leaf_name_data.push_back(tcp_sent_packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rqst-rcvd-packets")
+    {
+        rqst_rcvd_packets = value;
+        rqst_rcvd_packets.value_namespace = name_space;
+        rqst_rcvd_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rqst-rcvd-bytes")
+    {
+        rqst_rcvd_bytes = value;
+        rqst_rcvd_bytes.value_namespace = name_space;
+        rqst_rcvd_bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drop-packets")
+    {
+        drop_packets = value;
+        drop_packets.value_namespace = name_space;
+        drop_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drop-bytes")
+    {
+        drop_bytes = value;
+        drop_bytes.value_namespace = name_space;
+        drop_bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "resp-sent-packets")
+    {
+        resp_sent_packets = value;
+        resp_sent_packets.value_namespace = name_space;
+        resp_sent_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "resp-sent-bytes")
+    {
+        resp_sent_bytes = value;
+        resp_sent_bytes.value_namespace = name_space;
+        resp_sent_bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "req-sent-packets")
+    {
+        req_sent_packets = value;
+        req_sent_packets.value_namespace = name_space;
+        req_sent_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tcp-sent-packets")
+    {
+        tcp_sent_packets = value;
+        tcp_sent_packets.value_namespace = name_space;
+        tcp_sent_packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rqst-rcvd-packets")
+    {
+        rqst_rcvd_packets.yfilter = yfilter;
+    }
+    if(value_path == "rqst-rcvd-bytes")
+    {
+        rqst_rcvd_bytes.yfilter = yfilter;
+    }
+    if(value_path == "drop-packets")
+    {
+        drop_packets.yfilter = yfilter;
+    }
+    if(value_path == "drop-bytes")
+    {
+        drop_bytes.yfilter = yfilter;
+    }
+    if(value_path == "resp-sent-packets")
+    {
+        resp_sent_packets.yfilter = yfilter;
+    }
+    if(value_path == "resp-sent-bytes")
+    {
+        resp_sent_bytes.yfilter = yfilter;
+    }
+    if(value_path == "req-sent-packets")
+    {
+        req_sent_packets.yfilter = yfilter;
+    }
+    if(value_path == "tcp-sent-packets")
+    {
+        tcp_sent_packets.yfilter = yfilter;
+    }
+}
+
+bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rqst-rcvd-packets" || name == "rqst-rcvd-bytes" || name == "drop-packets" || name == "drop-bytes" || name == "resp-sent-packets" || name == "resp-sent-bytes" || name == "req-sent-packets" || name == "tcp-sent-packets")
         return true;
     return false;
 }

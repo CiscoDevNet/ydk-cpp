@@ -464,7 +464,9 @@ DhcpOperData::Dhcpv4ClientOper::Dhcpv4ClientOper()
     gateway_addr{YType::str, "gateway-addr"},
     lease_time{YType::uint32, "lease-time"},
     lease_remaining{YType::uint32, "lease-remaining"},
-    dns_list{YType::str, "dns-list"}
+    dns_address{YType::str, "dns-address"},
+    dns_address_secondary{YType::str, "dns-address-secondary"},
+    subnet_mask{YType::str, "subnet-mask"}
         ,
     lease_expiry(std::make_shared<DhcpOperData::Dhcpv4ClientOper::LeaseExpiry>())
 {
@@ -480,11 +482,6 @@ DhcpOperData::Dhcpv4ClientOper::~Dhcpv4ClientOper()
 bool DhcpOperData::Dhcpv4ClientOper::has_data() const
 {
     if (is_presence_container) return true;
-    for (auto const & leaf : dns_list.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
     return if_name.is_set
 	|| client_addr.is_set
 	|| vrf_name.is_set
@@ -493,16 +490,14 @@ bool DhcpOperData::Dhcpv4ClientOper::has_data() const
 	|| gateway_addr.is_set
 	|| lease_time.is_set
 	|| lease_remaining.is_set
+	|| dns_address.is_set
+	|| dns_address_secondary.is_set
+	|| subnet_mask.is_set
 	|| (lease_expiry !=  nullptr && lease_expiry->has_data());
 }
 
 bool DhcpOperData::Dhcpv4ClientOper::has_operation() const
 {
-    for (auto const & leaf : dns_list.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
     return is_set(yfilter)
 	|| ydk::is_set(if_name.yfilter)
 	|| ydk::is_set(client_addr.yfilter)
@@ -512,7 +507,9 @@ bool DhcpOperData::Dhcpv4ClientOper::has_operation() const
 	|| ydk::is_set(gateway_addr.yfilter)
 	|| ydk::is_set(lease_time.yfilter)
 	|| ydk::is_set(lease_remaining.yfilter)
-	|| ydk::is_set(dns_list.yfilter)
+	|| ydk::is_set(dns_address.yfilter)
+	|| ydk::is_set(dns_address_secondary.yfilter)
+	|| ydk::is_set(subnet_mask.yfilter)
 	|| (lease_expiry !=  nullptr && lease_expiry->has_operation());
 }
 
@@ -545,9 +542,10 @@ std::vector<std::pair<std::string, LeafData> > DhcpOperData::Dhcpv4ClientOper::g
     if (gateway_addr.is_set || is_set(gateway_addr.yfilter)) leaf_name_data.push_back(gateway_addr.get_name_leafdata());
     if (lease_time.is_set || is_set(lease_time.yfilter)) leaf_name_data.push_back(lease_time.get_name_leafdata());
     if (lease_remaining.is_set || is_set(lease_remaining.yfilter)) leaf_name_data.push_back(lease_remaining.get_name_leafdata());
+    if (dns_address.is_set || is_set(dns_address.yfilter)) leaf_name_data.push_back(dns_address.get_name_leafdata());
+    if (dns_address_secondary.is_set || is_set(dns_address_secondary.yfilter)) leaf_name_data.push_back(dns_address_secondary.get_name_leafdata());
+    if (subnet_mask.is_set || is_set(subnet_mask.yfilter)) leaf_name_data.push_back(subnet_mask.get_name_leafdata());
 
-    auto dns_list_name_datas = dns_list.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), dns_list_name_datas.begin(), dns_list_name_datas.end());
     return leaf_name_data;
 
 }
@@ -628,9 +626,23 @@ void DhcpOperData::Dhcpv4ClientOper::set_value(const std::string & value_path, c
         lease_remaining.value_namespace = name_space;
         lease_remaining.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "dns-list")
+    if(value_path == "dns-address")
     {
-        dns_list.append(value);
+        dns_address = value;
+        dns_address.value_namespace = name_space;
+        dns_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dns-address-secondary")
+    {
+        dns_address_secondary = value;
+        dns_address_secondary.value_namespace = name_space;
+        dns_address_secondary.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subnet-mask")
+    {
+        subnet_mask = value;
+        subnet_mask.value_namespace = name_space;
+        subnet_mask.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -668,15 +680,23 @@ void DhcpOperData::Dhcpv4ClientOper::set_filter(const std::string & value_path, 
     {
         lease_remaining.yfilter = yfilter;
     }
-    if(value_path == "dns-list")
+    if(value_path == "dns-address")
     {
-        dns_list.yfilter = yfilter;
+        dns_address.yfilter = yfilter;
+    }
+    if(value_path == "dns-address-secondary")
+    {
+        dns_address_secondary.yfilter = yfilter;
+    }
+    if(value_path == "subnet-mask")
+    {
+        subnet_mask.yfilter = yfilter;
     }
 }
 
 bool DhcpOperData::Dhcpv4ClientOper::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lease-expiry" || name == "if-name" || name == "client-addr" || name == "vrf-name" || name == "state" || name == "lease-server-addr" || name == "gateway-addr" || name == "lease-time" || name == "lease-remaining" || name == "dns-list")
+    if(name == "lease-expiry" || name == "if-name" || name == "client-addr" || name == "vrf-name" || name == "state" || name == "lease-server-addr" || name == "gateway-addr" || name == "lease-time" || name == "lease-remaining" || name == "dns-address" || name == "dns-address-secondary" || name == "subnet-mask")
         return true;
     return false;
 }

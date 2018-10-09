@@ -85,6 +85,7 @@ class VrrpOperData::VrrpOperState : public ydk::Entity
         ydk::YLeaf advertisement_sent; //type: uint32
         ydk::YLeaf advertisement_rcvd; //type: uint32
         ydk::YLeaf omp_state; //type: OmpStateUpdown
+        ydk::YLeafList secondary_vip_addresses; //type: list of  string
         class TrackList; //type: VrrpOperData::VrrpOperState::TrackList
 
         ydk::YList track_list;

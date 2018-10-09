@@ -31,6 +31,7 @@ class Vrrp : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
+        ydk::YLeaf enable; //type: empty
         class Logging; //type: Vrrp::Logging
         class Interfaces; //type: Vrrp::Interfaces
 
@@ -331,10 +332,9 @@ class Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf in_msec; //type: boolean
         ydk::YLeaf advertisement_time_in_msec; //type: uint32
         ydk::YLeaf advertisement_time_in_sec; //type: uint32
-        ydk::YLeaf forced; //type: boolean
+        ydk::YLeaf forced; //type: empty
 
 }; // Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Timer
 
@@ -670,10 +670,9 @@ class Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf in_msec; //type: boolean
         ydk::YLeaf advertisement_time_in_msec; //type: uint32
         ydk::YLeaf advertisement_time_in_sec; //type: uint32
-        ydk::YLeaf forced; //type: boolean
+        ydk::YLeaf forced; //type: empty
 
 }; // Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Timer
 
@@ -1005,10 +1004,9 @@ class Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf in_msec; //type: boolean
         ydk::YLeaf advertisement_time_in_msec; //type: uint32
         ydk::YLeaf advertisement_time_in_sec; //type: uint32
-        ydk::YLeaf forced; //type: boolean
+        ydk::YLeaf forced; //type: empty
 
 }; // Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Timer
 

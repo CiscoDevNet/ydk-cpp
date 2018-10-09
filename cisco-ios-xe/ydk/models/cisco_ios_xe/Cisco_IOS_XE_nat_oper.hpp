@@ -112,6 +112,7 @@ class NatData::IpNatTranslation : public ydk::Entity
         ydk::YLeaf outside_global_port; //type: uint16
         ydk::YLeaf flags; //type: uint32
         ydk::YLeaf application_type; //type: uint8
+        ydk::YLeaf vrf_name; //type: string
 
 }; // NatData::IpNatTranslation
 

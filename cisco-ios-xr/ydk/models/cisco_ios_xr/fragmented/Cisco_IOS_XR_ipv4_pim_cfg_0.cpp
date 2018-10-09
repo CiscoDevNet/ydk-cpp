@@ -2143,7 +2143,8 @@ Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::RpfVectorEnable()
     :
     enable{YType::empty, "enable"},
     allow_ebgp{YType::empty, "allow-ebgp"},
-    disable_ibgp{YType::empty, "disable-ibgp"}
+    disable_ibgp{YType::empty, "disable-ibgp"},
+    use_standard_encoding{YType::empty, "use-standard-encoding"}
 {
 
     yang_name = "rpf-vector-enable"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
@@ -2158,7 +2159,8 @@ bool Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::has_data() const
     if (is_presence_container) return true;
     return enable.is_set
 	|| allow_ebgp.is_set
-	|| disable_ibgp.is_set;
+	|| disable_ibgp.is_set
+	|| use_standard_encoding.is_set;
 }
 
 bool Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::has_operation() const
@@ -2166,7 +2168,8 @@ bool Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(allow_ebgp.yfilter)
-	|| ydk::is_set(disable_ibgp.yfilter);
+	|| ydk::is_set(disable_ibgp.yfilter)
+	|| ydk::is_set(use_standard_encoding.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::get_segment_path() const
@@ -2183,6 +2186,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Vrfs::Vrf::Ipv4::RpfVectorEn
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (allow_ebgp.is_set || is_set(allow_ebgp.yfilter)) leaf_name_data.push_back(allow_ebgp.get_name_leafdata());
     if (disable_ibgp.is_set || is_set(disable_ibgp.yfilter)) leaf_name_data.push_back(disable_ibgp.get_name_leafdata());
+    if (use_standard_encoding.is_set || is_set(use_standard_encoding.yfilter)) leaf_name_data.push_back(use_standard_encoding.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2220,6 +2224,12 @@ void Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::set_value(const std::string & value_
         disable_ibgp.value_namespace = name_space;
         disable_ibgp.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "use-standard-encoding")
+    {
+        use_standard_encoding = value;
+        use_standard_encoding.value_namespace = name_space;
+        use_standard_encoding.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2236,11 +2246,15 @@ void Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::set_filter(const std::string & value
     {
         disable_ibgp.yfilter = yfilter;
     }
+    if(value_path == "use-standard-encoding")
+    {
+        use_standard_encoding.yfilter = yfilter;
+    }
 }
 
 bool Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "enable" || name == "allow-ebgp" || name == "disable-ibgp")
+    if(name == "enable" || name == "allow-ebgp" || name == "disable-ibgp" || name == "use-standard-encoding")
         return true;
     return false;
 }
@@ -6471,7 +6485,8 @@ Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::RpfVectorEnable()
     :
     enable{YType::empty, "enable"},
     allow_ebgp{YType::empty, "allow-ebgp"},
-    disable_ibgp{YType::empty, "disable-ibgp"}
+    disable_ibgp{YType::empty, "disable-ibgp"},
+    use_standard_encoding{YType::empty, "use-standard-encoding"}
 {
 
     yang_name = "rpf-vector-enable"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
@@ -6486,7 +6501,8 @@ bool Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::has_data() const
     if (is_presence_container) return true;
     return enable.is_set
 	|| allow_ebgp.is_set
-	|| disable_ibgp.is_set;
+	|| disable_ibgp.is_set
+	|| use_standard_encoding.is_set;
 }
 
 bool Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::has_operation() const
@@ -6494,7 +6510,8 @@ bool Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(allow_ebgp.yfilter)
-	|| ydk::is_set(disable_ibgp.yfilter);
+	|| ydk::is_set(disable_ibgp.yfilter)
+	|| ydk::is_set(use_standard_encoding.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::get_segment_path() const
@@ -6511,6 +6528,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Vrfs::Vrf::Ipv6::RpfVectorEn
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (allow_ebgp.is_set || is_set(allow_ebgp.yfilter)) leaf_name_data.push_back(allow_ebgp.get_name_leafdata());
     if (disable_ibgp.is_set || is_set(disable_ibgp.yfilter)) leaf_name_data.push_back(disable_ibgp.get_name_leafdata());
+    if (use_standard_encoding.is_set || is_set(use_standard_encoding.yfilter)) leaf_name_data.push_back(use_standard_encoding.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6548,6 +6566,12 @@ void Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::set_value(const std::string & value_
         disable_ibgp.value_namespace = name_space;
         disable_ibgp.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "use-standard-encoding")
+    {
+        use_standard_encoding = value;
+        use_standard_encoding.value_namespace = name_space;
+        use_standard_encoding.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::set_filter(const std::string & value_path, YFilter yfilter)
@@ -6564,11 +6588,15 @@ void Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::set_filter(const std::string & value
     {
         disable_ibgp.yfilter = yfilter;
     }
+    if(value_path == "use-standard-encoding")
+    {
+        use_standard_encoding.yfilter = yfilter;
+    }
 }
 
 bool Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "enable" || name == "allow-ebgp" || name == "disable-ibgp")
+    if(name == "enable" || name == "allow-ebgp" || name == "disable-ibgp" || name == "use-standard-encoding")
         return true;
     return false;
 }
@@ -9999,7 +10027,8 @@ Pim::DefaultContext::Ipv6::RpfVectorEnable::RpfVectorEnable()
     :
     enable{YType::empty, "enable"},
     allow_ebgp{YType::empty, "allow-ebgp"},
-    disable_ibgp{YType::empty, "disable-ibgp"}
+    disable_ibgp{YType::empty, "disable-ibgp"},
+    use_standard_encoding{YType::empty, "use-standard-encoding"}
 {
 
     yang_name = "rpf-vector-enable"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
@@ -10014,7 +10043,8 @@ bool Pim::DefaultContext::Ipv6::RpfVectorEnable::has_data() const
     if (is_presence_container) return true;
     return enable.is_set
 	|| allow_ebgp.is_set
-	|| disable_ibgp.is_set;
+	|| disable_ibgp.is_set
+	|| use_standard_encoding.is_set;
 }
 
 bool Pim::DefaultContext::Ipv6::RpfVectorEnable::has_operation() const
@@ -10022,7 +10052,8 @@ bool Pim::DefaultContext::Ipv6::RpfVectorEnable::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(allow_ebgp.yfilter)
-	|| ydk::is_set(disable_ibgp.yfilter);
+	|| ydk::is_set(disable_ibgp.yfilter)
+	|| ydk::is_set(use_standard_encoding.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::RpfVectorEnable::get_absolute_path() const
@@ -10046,6 +10077,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::DefaultContext::Ipv6::RpfVec
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (allow_ebgp.is_set || is_set(allow_ebgp.yfilter)) leaf_name_data.push_back(allow_ebgp.get_name_leafdata());
     if (disable_ibgp.is_set || is_set(disable_ibgp.yfilter)) leaf_name_data.push_back(disable_ibgp.get_name_leafdata());
+    if (use_standard_encoding.is_set || is_set(use_standard_encoding.yfilter)) leaf_name_data.push_back(use_standard_encoding.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -10083,6 +10115,12 @@ void Pim::DefaultContext::Ipv6::RpfVectorEnable::set_value(const std::string & v
         disable_ibgp.value_namespace = name_space;
         disable_ibgp.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "use-standard-encoding")
+    {
+        use_standard_encoding = value;
+        use_standard_encoding.value_namespace = name_space;
+        use_standard_encoding.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Pim::DefaultContext::Ipv6::RpfVectorEnable::set_filter(const std::string & value_path, YFilter yfilter)
@@ -10099,11 +10137,15 @@ void Pim::DefaultContext::Ipv6::RpfVectorEnable::set_filter(const std::string & 
     {
         disable_ibgp.yfilter = yfilter;
     }
+    if(value_path == "use-standard-encoding")
+    {
+        use_standard_encoding.yfilter = yfilter;
+    }
 }
 
 bool Pim::DefaultContext::Ipv6::RpfVectorEnable::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "enable" || name == "allow-ebgp" || name == "disable-ibgp")
+    if(name == "enable" || name == "allow-ebgp" || name == "disable-ibgp" || name == "use-standard-encoding")
         return true;
     return false;
 }
@@ -15380,7 +15422,8 @@ Pim::DefaultContext::Ipv4::RpfVectorEnable::RpfVectorEnable()
     :
     enable{YType::empty, "enable"},
     allow_ebgp{YType::empty, "allow-ebgp"},
-    disable_ibgp{YType::empty, "disable-ibgp"}
+    disable_ibgp{YType::empty, "disable-ibgp"},
+    use_standard_encoding{YType::empty, "use-standard-encoding"}
 {
 
     yang_name = "rpf-vector-enable"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
@@ -15395,7 +15438,8 @@ bool Pim::DefaultContext::Ipv4::RpfVectorEnable::has_data() const
     if (is_presence_container) return true;
     return enable.is_set
 	|| allow_ebgp.is_set
-	|| disable_ibgp.is_set;
+	|| disable_ibgp.is_set
+	|| use_standard_encoding.is_set;
 }
 
 bool Pim::DefaultContext::Ipv4::RpfVectorEnable::has_operation() const
@@ -15403,7 +15447,8 @@ bool Pim::DefaultContext::Ipv4::RpfVectorEnable::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(allow_ebgp.yfilter)
-	|| ydk::is_set(disable_ibgp.yfilter);
+	|| ydk::is_set(disable_ibgp.yfilter)
+	|| ydk::is_set(use_standard_encoding.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::RpfVectorEnable::get_absolute_path() const
@@ -15427,6 +15472,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::DefaultContext::Ipv4::RpfVec
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (allow_ebgp.is_set || is_set(allow_ebgp.yfilter)) leaf_name_data.push_back(allow_ebgp.get_name_leafdata());
     if (disable_ibgp.is_set || is_set(disable_ibgp.yfilter)) leaf_name_data.push_back(disable_ibgp.get_name_leafdata());
+    if (use_standard_encoding.is_set || is_set(use_standard_encoding.yfilter)) leaf_name_data.push_back(use_standard_encoding.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -15464,6 +15510,12 @@ void Pim::DefaultContext::Ipv4::RpfVectorEnable::set_value(const std::string & v
         disable_ibgp.value_namespace = name_space;
         disable_ibgp.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "use-standard-encoding")
+    {
+        use_standard_encoding = value;
+        use_standard_encoding.value_namespace = name_space;
+        use_standard_encoding.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Pim::DefaultContext::Ipv4::RpfVectorEnable::set_filter(const std::string & value_path, YFilter yfilter)
@@ -15480,11 +15532,15 @@ void Pim::DefaultContext::Ipv4::RpfVectorEnable::set_filter(const std::string & 
     {
         disable_ibgp.yfilter = yfilter;
     }
+    if(value_path == "use-standard-encoding")
+    {
+        use_standard_encoding.yfilter = yfilter;
+    }
 }
 
 bool Pim::DefaultContext::Ipv4::RpfVectorEnable::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "enable" || name == "allow-ebgp" || name == "disable-ibgp")
+    if(name == "enable" || name == "allow-ebgp" || name == "disable-ibgp" || name == "use-standard-encoding")
         return true;
     return false;
 }

@@ -13,98 +13,6 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_ldp_oper {
 
 
-class MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor : public ydk::Entity
-{
-    public:
-        Neighbor();
-        ~Neighbor();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf lsr_id; //type: string
-        ydk::YLeaf label_space_id; //type: uint32
-        class ProtocolInformation; //type: MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::ProtocolInformation
-        class TcpInformation; //type: MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::TcpInformation
-        class DetailedInformation; //type: MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::DetailedInformation
-        class LdpNbrBoundIpv4AddressInfo; //type: MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::LdpNbrBoundIpv4AddressInfo
-        class LdpNbrBoundIpv6AddressInfo; //type: MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::LdpNbrBoundIpv6AddressInfo
-        class LdpNbrIpv4AdjInfo; //type: MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv4AdjInfo
-        class LdpNbrIpv6AdjInfo; //type: MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::LdpNbrIpv6AdjInfo
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::ProtocolInformation> protocol_information;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::TcpInformation> tcp_information;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::DetailedInformation> detailed_information;
-        ydk::YList ldp_nbr_bound_ipv4_address_info;
-        ydk::YList ldp_nbr_bound_ipv6_address_info;
-        ydk::YList ldp_nbr_ipv4_adj_info;
-        ydk::YList ldp_nbr_ipv6_adj_info;
-        
-}; // MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor
-
-
-class MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::ProtocolInformation : public ydk::Entity
-{
-    public:
-        ProtocolInformation();
-        ~ProtocolInformation();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf ta_holdtime; //type: uint32
-        ydk::YLeaf ta_state; //type: string
-        ydk::YLeaf ta_pies_sent; //type: uint32
-        ydk::YLeaf ta_pies_rcvd; //type: uint32
-        ydk::YLeaf ta_up_time_seconds; //type: uint32
-        ydk::YLeaf downstream_on_demand; //type: boolean
-        class TaGracefulRestartAdjacency; //type: MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::ProtocolInformation::TaGracefulRestartAdjacency
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::ProtocolInformation::TaGracefulRestartAdjacency> ta_graceful_restart_adjacency;
-        
-}; // MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::ProtocolInformation
-
-
-class MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::ProtocolInformation::TaGracefulRestartAdjacency : public ydk::Entity
-{
-    public:
-        TaGracefulRestartAdjacency();
-        ~TaGracefulRestartAdjacency();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf is_graceful_restartable; //type: boolean
-        ydk::YLeaf reconnect_timeout; //type: uint32
-        ydk::YLeaf recovery_time; //type: uint32
-
-}; // MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::ProtocolInformation::TaGracefulRestartAdjacency
-
-
 class MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::TcpInformation : public ydk::Entity
 {
     public:
@@ -2370,7 +2278,6 @@ class MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af : public ydk::Entity
         class BindingsSummary; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::BindingsSummary
         class Interfaces; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Interfaces
         class Discovery; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Discovery
-        class BindingsSummaryAll; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::BindingsSummaryAll
         class Forwardings; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings
         class BindingsAdvertiseSpec; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec
         class ForwardingSummary; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::ForwardingSummary
@@ -2381,7 +2288,6 @@ class MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::BindingsSummary> bindings_summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Interfaces> interfaces;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Discovery> discovery;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::BindingsSummaryAll> bindings_summary_all;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings> forwardings;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec> bindings_advertise_spec;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::ForwardingSummary> forwarding_summary;
@@ -3805,89 +3711,6 @@ class MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Discovery::Stats::Stat : pub
 }; // MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Discovery::Stats::Stat
 
 
-class MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::BindingsSummaryAll : public ydk::Entity
-{
-    public:
-        BindingsSummaryAll();
-        ~BindingsSummaryAll();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address_family; //type: LdpAf
-        ydk::YLeaf binding_no_route; //type: uint32
-        ydk::YLeaf binding_local_no_route; //type: uint32
-        ydk::YLeaf binding_local_null; //type: uint32
-        ydk::YLeaf binding_local_implicit_null; //type: uint32
-        ydk::YLeaf binding_local_explicit_null; //type: uint32
-        ydk::YLeaf binding_local_non_null; //type: uint32
-        ydk::YLeaf binding_local_oor; //type: uint32
-        ydk::YLeaf lowest_allocated_label; //type: uint32
-        ydk::YLeaf highest_allocated_label; //type: uint32
-        class Vrf_; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::Vrf_
-        class BindAf; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::BindAf
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::Vrf_> vrf;
-        ydk::YList bind_af;
-        
-}; // MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::BindingsSummaryAll
-
-
-class MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::Vrf_ : public ydk::Entity
-{
-    public:
-        Vrf_();
-        ~Vrf_();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf id; //type: uint32
-
-}; // MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::Vrf_
-
-
-class MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::BindAf : public ydk::Entity
-{
-    public:
-        BindAf();
-        ~BindAf();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address_family; //type: LdpAf
-        ydk::YLeaf last_lib_update; //type: uint32
-        ydk::YLeaf lib_minimum_revision_sent_all; //type: uint32
-        ydk::YLeaf binding_total; //type: uint32
-        ydk::YLeaf binding_local; //type: uint32
-        ydk::YLeaf binding_remote; //type: uint32
-
-}; // MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::BindingsSummaryAll::BindAf
-
-
 class MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings : public ydk::Entity
 {
     public:
@@ -4012,6 +3835,173 @@ class MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Rou
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route::Mpls> mpls;
         
 }; // MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route
+
+
+class MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route::Routing : public ydk::Entity
+{
+    public:
+        Routing();
+        ~Routing();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf priority; //type: uint8
+        ydk::YLeaf source; //type: uint16
+        ydk::YLeaf type; //type: uint16
+        ydk::YLeaf flags; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf is_local_vrf_leaked; //type: boolean
+        ydk::YLeaf routing_update_count; //type: uint32
+        ydk::YLeaf routing_update_timestamp; //type: uint64
+        ydk::YLeaf routing_update_age; //type: uint64
+        ydk::YLeaf sr_local_label; //type: uint32
+
+}; // MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route::Routing
+
+
+class MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route::Mpls : public ydk::Entity
+{
+    public:
+        Mpls();
+        ~Mpls();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_label; //type: uint32
+        ydk::YLeaf forwarding_update_count; //type: uint32
+        ydk::YLeaf forwarding_update_timestamp; //type: uint64
+        ydk::YLeaf forwarding_update_age; //type: uint64
+
+}; // MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route::Mpls
+
+
+class MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths : public ydk::Entity
+{
+    public:
+        Paths();
+        ~Paths();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Routing; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing
+        class Mpls; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing> routing;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls> mpls;
+        
+}; // MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths
+
+
+class MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing : public ydk::Entity
+{
+    public:
+        Routing();
+        ~Routing();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf nh_is_overriden; //type: boolean
+        ydk::YLeaf nexthop_id; //type: uint32
+        ydk::YLeaf next_hop_table_id; //type: uint32
+        ydk::YLeaf flags; //type: uint32
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf path_id; //type: uint8
+        ydk::YLeaf bkup_path_id; //type: uint8
+        ydk::YLeaf path_flags; //type: LdpRoutePathFlags
+        class NextHop; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::NextHop
+        class RemoteLfa; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::NextHop> next_hop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa> remote_lfa;
+        
+}; // MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing
+
+
+class MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::NextHop : public ydk::Entity
+{
+    public:
+        NextHop();
+        ~NextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf afi; //type: LdpAfId
+        ydk::YLeaf dummy; //type: uint8
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
+
+}; // MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::NextHop
+
+
+class MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa : public ydk::Entity
+{
+    public:
+        RemoteLfa();
+        ~RemoteLfa();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf has_remote_lfa_bkup; //type: boolean
+        ydk::YLeaf needs_tldp; //type: boolean
+        ydk::YLeaf has_q_node; //type: boolean
+        class RemotePNodeId; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa::RemotePNodeId
+        class RemoteQNodeId; //type: MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa::RemoteQNodeId
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa::RemotePNodeId> remote_p_node_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa::RemoteQNodeId> remote_q_node_id;
+        
+}; // MplsLdp::Global::Standby::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa
 
 
 }

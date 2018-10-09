@@ -186,7 +186,7 @@ class PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_id; //type: int32
+        ydk::YLeaf sample_id; //type: uint32
         ydk::YLeaf time_stamp; //type: uint64
         ydk::YLeaf input_packets; //type: uint32
         ydk::YLeaf output_packets; //type: uint32
@@ -301,7 +301,7 @@ class PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_id; //type: int32
+        ydk::YLeaf sample_id; //type: uint32
         ydk::YLeaf time_stamp; //type: uint64
         ydk::YLeaf input_packets; //type: uint32
         ydk::YLeaf output_packets; //type: uint32
@@ -439,7 +439,7 @@ class PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_id; //type: int32
+        ydk::YLeaf sample_id; //type: uint32
         ydk::YLeaf time_stamp; //type: uint64
         ydk::YLeaf total_msgs_sent; //type: uint16
         ydk::YLeaf total_msgs_rcvd; //type: uint16
@@ -555,7 +555,7 @@ class PerfMgmt::Periodic::Nodes::Node::SampleXr::Sample : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_id; //type: int32
+        ydk::YLeaf sample_id; //type: uint32
         ydk::YLeaf time_stamp; //type: uint64
         ydk::YLeaf no_processes; //type: uint32
         ydk::YLeaf average_cpu_used; //type: uint32
@@ -602,7 +602,7 @@ class PerfMgmt::Periodic::Nodes::Node::Processes::Process : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf process_id; //type: int32
+        ydk::YLeaf process_id; //type: uint32
         class Samples; //type: PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples> samples;
@@ -649,7 +649,7 @@ class PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::Sample : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_id; //type: int32
+        ydk::YLeaf sample_id; //type: uint32
         ydk::YLeaf time_stamp; //type: uint64
         ydk::YLeaf peak_memory; //type: uint32
         ydk::YLeaf average_cpu_used; //type: uint32
@@ -697,7 +697,7 @@ class PerfMgmt::Periodic::Nodes::Node::Samples::Sample : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_id; //type: int32
+        ydk::YLeaf sample_id; //type: uint32
         ydk::YLeaf time_stamp; //type: uint64
         ydk::YLeaf curr_memory; //type: uint32
         ydk::YLeaf peak_memory; //type: uint32
@@ -817,7 +817,7 @@ class PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_id; //type: int32
+        ydk::YLeaf sample_id; //type: uint32
         ydk::YLeaf time_stamp; //type: uint64
         ydk::YLeaf input_messages; //type: uint32
         ydk::YLeaf output_messages; //type: uint32
@@ -947,7 +947,7 @@ class PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInt
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_id; //type: int32
+        ydk::YLeaf sample_id; //type: uint32
         ydk::YLeaf time_stamp; //type: uint64
         ydk::YLeaf in_packets; //type: uint64
         ydk::YLeaf in_octets; //type: uint64
@@ -1061,7 +1061,7 @@ class PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterfa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_id; //type: int32
+        ydk::YLeaf sample_id; //type: uint32
         ydk::YLeaf time_stamp; //type: uint64
         ydk::YLeaf in_packets; //type: uint64
         ydk::YLeaf in_octets; //type: uint64
@@ -1165,7 +1165,7 @@ class PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samp
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_id; //type: int32
+        ydk::YLeaf sample_id; //type: uint32
         ydk::YLeaf time_stamp; //type: uint64
         ydk::YLeaf input_data_rate; //type: uint32
         ydk::YLeaf input_packet_rate; //type: uint32
@@ -1326,7 +1326,7 @@ class PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_id; //type: int32
+        ydk::YLeaf sample_id; //type: uint32
         ydk::YLeaf time_stamp; //type: uint64
         ydk::YLeaf input_packets; //type: uint32
         ydk::YLeaf output_packets; //type: uint32
@@ -1441,7 +1441,7 @@ class PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_id; //type: int32
+        ydk::YLeaf sample_id; //type: uint32
         ydk::YLeaf time_stamp; //type: uint64
         ydk::YLeaf input_packets; //type: uint32
         ydk::YLeaf output_packets; //type: uint32
@@ -1579,7 +1579,7 @@ class PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_id; //type: int32
+        ydk::YLeaf sample_id; //type: uint32
         ydk::YLeaf time_stamp; //type: uint64
         ydk::YLeaf total_msgs_sent; //type: uint16
         ydk::YLeaf total_msgs_rcvd; //type: uint16
@@ -1695,7 +1695,7 @@ class PerfMgmt::Monitor::Nodes::Node::SampleXr::Sample : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_id; //type: int32
+        ydk::YLeaf sample_id; //type: uint32
         ydk::YLeaf time_stamp; //type: uint64
         ydk::YLeaf no_processes; //type: uint32
         ydk::YLeaf average_cpu_used; //type: uint32
@@ -1742,7 +1742,7 @@ class PerfMgmt::Monitor::Nodes::Node::Processes::Process : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf process_id; //type: int32
+        ydk::YLeaf process_id; //type: uint32
         class Samples; //type: PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples> samples;
@@ -1789,7 +1789,7 @@ class PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::Sample : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_id; //type: int32
+        ydk::YLeaf sample_id; //type: uint32
         ydk::YLeaf time_stamp; //type: uint64
         ydk::YLeaf peak_memory; //type: uint32
         ydk::YLeaf average_cpu_used; //type: uint32
@@ -1837,7 +1837,7 @@ class PerfMgmt::Monitor::Nodes::Node::Samples::Sample : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_id; //type: int32
+        ydk::YLeaf sample_id; //type: uint32
         ydk::YLeaf time_stamp; //type: uint64
         ydk::YLeaf curr_memory; //type: uint32
         ydk::YLeaf peak_memory; //type: uint32
@@ -1957,7 +1957,7 @@ class PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_id; //type: int32
+        ydk::YLeaf sample_id; //type: uint32
         ydk::YLeaf time_stamp; //type: uint64
         ydk::YLeaf input_messages; //type: uint32
         ydk::YLeaf output_messages; //type: uint32
@@ -2087,7 +2087,7 @@ class PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInte
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_id; //type: int32
+        ydk::YLeaf sample_id; //type: uint32
         ydk::YLeaf time_stamp; //type: uint64
         ydk::YLeaf in_packets; //type: uint64
         ydk::YLeaf in_octets; //type: uint64
@@ -2201,7 +2201,7 @@ class PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterfac
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_id; //type: int32
+        ydk::YLeaf sample_id; //type: uint32
         ydk::YLeaf time_stamp; //type: uint64
         ydk::YLeaf in_packets; //type: uint64
         ydk::YLeaf in_octets; //type: uint64
@@ -2305,7 +2305,7 @@ class PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Sampl
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_id; //type: int32
+        ydk::YLeaf sample_id; //type: uint32
         ydk::YLeaf time_stamp; //type: uint64
         ydk::YLeaf input_data_rate; //type: uint32
         ydk::YLeaf input_packet_rate; //type: uint32

@@ -232,6 +232,7 @@ class MplsTePathSelectionMetric : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf igp;
         static const ydk::Enum::YLeaf te;
+        static const ydk::Enum::YLeaf delay;
 
 };
 

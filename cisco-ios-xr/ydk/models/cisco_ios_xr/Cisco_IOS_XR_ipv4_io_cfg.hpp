@@ -26,13 +26,6 @@ class Ipv4SelfPing : public ydk::Enum
 
 };
 
-class DhcpClientOptionCode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf Y_60;
-
-};
-
 class Ipv4Reachable : public ydk::Enum
 {
     public:

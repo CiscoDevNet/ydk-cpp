@@ -704,7 +704,7 @@ bool PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::
 
 PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample::Sample()
     :
-    sample_id{YType::int32, "sample-id"},
+    sample_id{YType::uint32, "sample-id"},
     time_stamp{YType::uint64, "time-stamp"},
     input_packets{YType::uint32, "input-packets"},
     output_packets{YType::uint32, "output-packets"},
@@ -1389,7 +1389,7 @@ bool PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::
 
 PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample::Sample()
     :
-    sample_id{YType::int32, "sample-id"},
+    sample_id{YType::uint32, "sample-id"},
     time_stamp{YType::uint64, "time-stamp"},
     input_packets{YType::uint32, "input-packets"},
     output_packets{YType::uint32, "output-packets"},
@@ -2149,7 +2149,7 @@ bool PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::has_leaf_or_c
 
 PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::Sample()
     :
-    sample_id{YType::int32, "sample-id"},
+    sample_id{YType::uint32, "sample-id"},
     time_stamp{YType::uint64, "time-stamp"},
     total_msgs_sent{YType::uint16, "total-msgs-sent"},
     total_msgs_rcvd{YType::uint16, "total-msgs-rcvd"},
@@ -2828,7 +2828,7 @@ bool PerfMgmt::Periodic::Nodes::Node::SampleXr::has_leaf_or_child_of_name(const 
 
 PerfMgmt::Periodic::Nodes::Node::SampleXr::Sample::Sample()
     :
-    sample_id{YType::int32, "sample-id"},
+    sample_id{YType::uint32, "sample-id"},
     time_stamp{YType::uint64, "time-stamp"},
     no_processes{YType::uint32, "no-processes"},
     average_cpu_used{YType::uint32, "average-cpu-used"}
@@ -3042,7 +3042,7 @@ bool PerfMgmt::Periodic::Nodes::Node::Processes::has_leaf_or_child_of_name(const
 
 PerfMgmt::Periodic::Nodes::Node::Processes::Process::Process()
     :
-    process_id{YType::int32, "process-id"}
+    process_id{YType::uint32, "process-id"}
         ,
     samples(std::make_shared<PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples>())
 {
@@ -3233,7 +3233,7 @@ bool PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::has_leaf_or_c
 
 PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::Sample::Sample()
     :
-    sample_id{YType::int32, "sample-id"},
+    sample_id{YType::uint32, "sample-id"},
     time_stamp{YType::uint64, "time-stamp"},
     peak_memory{YType::uint32, "peak-memory"},
     average_cpu_used{YType::uint32, "average-cpu-used"},
@@ -3461,7 +3461,7 @@ bool PerfMgmt::Periodic::Nodes::Node::Samples::has_leaf_or_child_of_name(const s
 
 PerfMgmt::Periodic::Nodes::Node::Samples::Sample::Sample()
     :
-    sample_id{YType::int32, "sample-id"},
+    sample_id{YType::uint32, "sample-id"},
     time_stamp{YType::uint64, "time-stamp"},
     curr_memory{YType::uint32, "curr-memory"},
     peak_memory{YType::uint32, "peak-memory"}
@@ -3969,7 +3969,7 @@ bool PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::has_leaf_or_ch
 
 PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::Sample()
     :
-    sample_id{YType::int32, "sample-id"},
+    sample_id{YType::uint32, "sample-id"},
     time_stamp{YType::uint64, "time-stamp"},
     input_messages{YType::uint32, "input-messages"},
     output_messages{YType::uint32, "output-messages"},
@@ -4597,7 +4597,7 @@ bool PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInte
 
 PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample::Sample()
     :
-    sample_id{YType::int32, "sample-id"},
+    sample_id{YType::uint32, "sample-id"},
     time_stamp{YType::uint64, "time-stamp"},
     in_packets{YType::uint64, "in-packets"},
     in_octets{YType::uint64, "in-octets"},
@@ -5268,7 +5268,7 @@ bool PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterfac
 
 PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample::Sample()
     :
-    sample_id{YType::int32, "sample-id"},
+    sample_id{YType::uint32, "sample-id"},
     time_stamp{YType::uint64, "time-stamp"},
     in_packets{YType::uint64, "in-packets"},
     in_octets{YType::uint64, "in-octets"},
@@ -5799,7 +5799,7 @@ bool PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Sampl
 
 PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample::Sample()
     :
-    sample_id{YType::int32, "sample-id"},
+    sample_id{YType::uint32, "sample-id"},
     time_stamp{YType::uint64, "time-stamp"},
     input_data_rate{YType::uint32, "input-data-rate"},
     input_packet_rate{YType::uint32, "input-packet-rate"},
@@ -6584,7 +6584,7 @@ bool PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::S
 
 PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample::Sample()
     :
-    sample_id{YType::int32, "sample-id"},
+    sample_id{YType::uint32, "sample-id"},
     time_stamp{YType::uint64, "time-stamp"},
     input_packets{YType::uint32, "input-packets"},
     output_packets{YType::uint32, "output-packets"},
@@ -7269,7 +7269,7 @@ bool PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::S
 
 PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample::Sample()
     :
-    sample_id{YType::int32, "sample-id"},
+    sample_id{YType::uint32, "sample-id"},
     time_stamp{YType::uint64, "time-stamp"},
     input_packets{YType::uint32, "input-packets"},
     output_packets{YType::uint32, "output-packets"},
@@ -8029,7 +8029,7 @@ bool PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::has_leaf_or_ch
 
 PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::Sample()
     :
-    sample_id{YType::int32, "sample-id"},
+    sample_id{YType::uint32, "sample-id"},
     time_stamp{YType::uint64, "time-stamp"},
     total_msgs_sent{YType::uint16, "total-msgs-sent"},
     total_msgs_rcvd{YType::uint16, "total-msgs-rcvd"},
@@ -8708,7 +8708,7 @@ bool PerfMgmt::Monitor::Nodes::Node::SampleXr::has_leaf_or_child_of_name(const s
 
 PerfMgmt::Monitor::Nodes::Node::SampleXr::Sample::Sample()
     :
-    sample_id{YType::int32, "sample-id"},
+    sample_id{YType::uint32, "sample-id"},
     time_stamp{YType::uint64, "time-stamp"},
     no_processes{YType::uint32, "no-processes"},
     average_cpu_used{YType::uint32, "average-cpu-used"}
@@ -8922,7 +8922,7 @@ bool PerfMgmt::Monitor::Nodes::Node::Processes::has_leaf_or_child_of_name(const 
 
 PerfMgmt::Monitor::Nodes::Node::Processes::Process::Process()
     :
-    process_id{YType::int32, "process-id"}
+    process_id{YType::uint32, "process-id"}
         ,
     samples(std::make_shared<PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples>())
 {
@@ -9113,7 +9113,7 @@ bool PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::has_leaf_or_ch
 
 PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::Sample::Sample()
     :
-    sample_id{YType::int32, "sample-id"},
+    sample_id{YType::uint32, "sample-id"},
     time_stamp{YType::uint64, "time-stamp"},
     peak_memory{YType::uint32, "peak-memory"},
     average_cpu_used{YType::uint32, "average-cpu-used"},
@@ -9341,7 +9341,7 @@ bool PerfMgmt::Monitor::Nodes::Node::Samples::has_leaf_or_child_of_name(const st
 
 PerfMgmt::Monitor::Nodes::Node::Samples::Sample::Sample()
     :
-    sample_id{YType::int32, "sample-id"},
+    sample_id{YType::uint32, "sample-id"},
     time_stamp{YType::uint64, "time-stamp"},
     curr_memory{YType::uint32, "curr-memory"},
     peak_memory{YType::uint32, "peak-memory"}
@@ -9849,7 +9849,7 @@ bool PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::has_leaf_or_chi
 
 PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::Sample()
     :
-    sample_id{YType::int32, "sample-id"},
+    sample_id{YType::uint32, "sample-id"},
     time_stamp{YType::uint64, "time-stamp"},
     input_messages{YType::uint32, "input-messages"},
     output_messages{YType::uint32, "output-messages"},
@@ -10477,7 +10477,7 @@ bool PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInter
 
 PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample::Sample()
     :
-    sample_id{YType::int32, "sample-id"},
+    sample_id{YType::uint32, "sample-id"},
     time_stamp{YType::uint64, "time-stamp"},
     in_packets{YType::uint64, "in-packets"},
     in_octets{YType::uint64, "in-octets"},
@@ -11148,7 +11148,7 @@ bool PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface
 
 PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample::Sample()
     :
-    sample_id{YType::int32, "sample-id"},
+    sample_id{YType::uint32, "sample-id"},
     time_stamp{YType::uint64, "time-stamp"},
     in_packets{YType::uint64, "in-packets"},
     in_octets{YType::uint64, "in-octets"},
@@ -11679,7 +11679,7 @@ bool PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Sample
 
 PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample::Sample()
     :
-    sample_id{YType::int32, "sample-id"},
+    sample_id{YType::uint32, "sample-id"},
     time_stamp{YType::uint64, "time-stamp"},
     input_data_rate{YType::uint32, "input-data-rate"},
     input_packet_rate{YType::uint32, "input-packet-rate"},

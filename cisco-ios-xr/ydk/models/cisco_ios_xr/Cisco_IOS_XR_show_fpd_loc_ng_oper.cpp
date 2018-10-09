@@ -312,8 +312,9 @@ ShowFpd::Locations::Location::Location()
     :
     location_name{YType::str, "location-name"}
         ,
-    fpd(this, {"fpd_name"})
+    details(std::make_shared<ShowFpd::Locations::Location::Details>())
 {
+    details->parent = this;
 
     yang_name = "location"; yang_parent_name = "locations"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -325,23 +326,15 @@ ShowFpd::Locations::Location::~Location()
 bool ShowFpd::Locations::Location::has_data() const
 {
     if (is_presence_container) return true;
-    for (std::size_t index=0; index<fpd.len(); index++)
-    {
-        if(fpd[index]->has_data())
-            return true;
-    }
-    return location_name.is_set;
+    return location_name.is_set
+	|| (details !=  nullptr && details->has_data());
 }
 
 bool ShowFpd::Locations::Location::has_operation() const
 {
-    for (std::size_t index=0; index<fpd.len(); index++)
-    {
-        if(fpd[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(location_name.yfilter);
+	|| ydk::is_set(location_name.yfilter)
+	|| (details !=  nullptr && details->has_operation());
 }
 
 std::string ShowFpd::Locations::Location::get_absolute_path() const
@@ -371,12 +364,13 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::Locations::Location::get
 
 std::shared_ptr<Entity> ShowFpd::Locations::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "fpd")
+    if(child_yang_name == "details")
     {
-        auto c = std::make_shared<ShowFpd::Locations::Location::Fpd>();
-        c->parent = this;
-        fpd.append(c);
-        return c;
+        if(details == nullptr)
+        {
+            details = std::make_shared<ShowFpd::Locations::Location::Details>();
+        }
+        return details;
     }
 
     return nullptr;
@@ -386,13 +380,9 @@ std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::get
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    count = 0;
-    for (auto c : fpd.entities())
+    if(details != nullptr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
+        children["details"] = details;
     }
 
     return children;
@@ -418,26 +408,120 @@ void ShowFpd::Locations::Location::set_filter(const std::string & value_path, YF
 
 bool ShowFpd::Locations::Location::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fpd" || name == "location-name")
+    if(name == "details" || name == "location-name")
         return true;
     return false;
 }
 
-ShowFpd::Locations::Location::Fpd::Fpd()
+ShowFpd::Locations::Location::Details::Details()
     :
-    fpd_name{YType::str, "fpd-name"}
+    detail(this, {"fpd_name"})
+{
+
+    yang_name = "details"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+ShowFpd::Locations::Location::Details::~Details()
+{
+}
+
+bool ShowFpd::Locations::Location::Details::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail.len(); index++)
+    {
+        if(detail[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ShowFpd::Locations::Location::Details::has_operation() const
+{
+    for (std::size_t index=0; index<detail.len(); index++)
+    {
+        if(detail[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ShowFpd::Locations::Location::Details::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "details";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ShowFpd::Locations::Location::Details::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> ShowFpd::Locations::Location::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "detail")
+    {
+        auto c = std::make_shared<ShowFpd::Locations::Location::Details::Detail>();
+        c->parent = this;
+        detail.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::Details::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : detail.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void ShowFpd::Locations::Location::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ShowFpd::Locations::Location::Details::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ShowFpd::Locations::Location::Details::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detail")
+        return true;
+    return false;
+}
+
+ShowFpd::Locations::Location::Details::Detail::Detail()
+    :
+    fpd_name{YType::str, "fpd-name"},
+    upgrade_status{YType::str, "upgrade-status"}
         ,
     fpd_info_detaile(this, {})
 {
 
-    yang_name = "fpd"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "detail"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-ShowFpd::Locations::Location::Fpd::~Fpd()
+ShowFpd::Locations::Location::Details::Detail::~Detail()
 {
 }
 
-bool ShowFpd::Locations::Location::Fpd::has_data() const
+bool ShowFpd::Locations::Location::Details::Detail::has_data() const
 {
     if (is_presence_container) return true;
     for (std::size_t index=0; index<fpd_info_detaile.len(); index++)
@@ -445,10 +529,11 @@ bool ShowFpd::Locations::Location::Fpd::has_data() const
         if(fpd_info_detaile[index]->has_data())
             return true;
     }
-    return fpd_name.is_set;
+    return fpd_name.is_set
+	|| upgrade_status.is_set;
 }
 
-bool ShowFpd::Locations::Location::Fpd::has_operation() const
+bool ShowFpd::Locations::Location::Details::Detail::has_operation() const
 {
     for (std::size_t index=0; index<fpd_info_detaile.len(); index++)
     {
@@ -456,32 +541,34 @@ bool ShowFpd::Locations::Location::Fpd::has_operation() const
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(fpd_name.yfilter);
+	|| ydk::is_set(fpd_name.yfilter)
+	|| ydk::is_set(upgrade_status.yfilter);
 }
 
-std::string ShowFpd::Locations::Location::Fpd::get_segment_path() const
+std::string ShowFpd::Locations::Location::Details::Detail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fpd";
+    path_buffer << "detail";
     ADD_KEY_TOKEN(fpd_name, "fpd-name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ShowFpd::Locations::Location::Fpd::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ShowFpd::Locations::Location::Details::Detail::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (fpd_name.is_set || is_set(fpd_name.yfilter)) leaf_name_data.push_back(fpd_name.get_name_leafdata());
+    if (upgrade_status.is_set || is_set(upgrade_status.yfilter)) leaf_name_data.push_back(upgrade_status.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> ShowFpd::Locations::Location::Fpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ShowFpd::Locations::Location::Details::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fpd-info-detaile")
     {
-        auto c = std::make_shared<ShowFpd::Locations::Location::Fpd::FpdInfoDetaile>();
+        auto c = std::make_shared<ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile>();
         c->parent = this;
         fpd_info_detaile.append(c);
         return c;
@@ -490,7 +577,7 @@ std::shared_ptr<Entity> ShowFpd::Locations::Location::Fpd::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::Fpd::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::Details::Detail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -506,7 +593,7 @@ std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::Fpd
     return children;
 }
 
-void ShowFpd::Locations::Location::Fpd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ShowFpd::Locations::Location::Details::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fpd-name")
     {
@@ -514,24 +601,34 @@ void ShowFpd::Locations::Location::Fpd::set_value(const std::string & value_path
         fpd_name.value_namespace = name_space;
         fpd_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "upgrade-status")
+    {
+        upgrade_status = value;
+        upgrade_status.value_namespace = name_space;
+        upgrade_status.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void ShowFpd::Locations::Location::Fpd::set_filter(const std::string & value_path, YFilter yfilter)
+void ShowFpd::Locations::Location::Details::Detail::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "fpd-name")
     {
         fpd_name.yfilter = yfilter;
     }
+    if(value_path == "upgrade-status")
+    {
+        upgrade_status.yfilter = yfilter;
+    }
 }
 
-bool ShowFpd::Locations::Location::Fpd::has_leaf_or_child_of_name(const std::string & name) const
+bool ShowFpd::Locations::Location::Details::Detail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fpd-info-detaile" || name == "fpd-name")
+    if(name == "fpd-info-detaile" || name == "fpd-name" || name == "upgrade-status")
         return true;
     return false;
 }
 
-ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::FpdInfoDetaile()
+ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile::FpdInfoDetaile()
     :
     location{YType::str, "location"},
     card_name{YType::str, "card-name"},
@@ -543,14 +640,14 @@ ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::FpdInfoDetaile()
     programd_version{YType::str, "programd-version"}
 {
 
-    yang_name = "fpd-info-detaile"; yang_parent_name = "fpd"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "fpd-info-detaile"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::~FpdInfoDetaile()
+ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile::~FpdInfoDetaile()
 {
 }
 
-bool ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::has_data() const
+bool ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile::has_data() const
 {
     if (is_presence_container) return true;
     return location.is_set
@@ -563,7 +660,7 @@ bool ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::has_data() const
 	|| programd_version.is_set;
 }
 
-bool ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::has_operation() const
+bool ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(location.yfilter)
@@ -576,14 +673,14 @@ bool ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::has_operation() const
 	|| ydk::is_set(programd_version.yfilter);
 }
 
-std::string ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::get_segment_path() const
+std::string ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fpd-info-detaile";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -600,19 +697,19 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::Locations::Location::Fpd
 
 }
 
-std::shared_ptr<Entity> ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "location")
     {
@@ -664,7 +761,7 @@ void ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::set_value(const std::str
     }
 }
 
-void ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::set_filter(const std::string & value_path, YFilter yfilter)
+void ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "location")
     {
@@ -700,7 +797,7 @@ void ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::set_filter(const std::st
     }
 }
 
-bool ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::has_leaf_or_child_of_name(const std::string & name) const
+bool ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "location" || name == "card-name" || name == "fpd-name" || name == "hw-version" || name == "secure-boot-attr" || name == "status" || name == "running-version" || name == "programd-version")
         return true;
@@ -709,6 +806,8 @@ bool ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::has_leaf_or_child_of_nam
 
 ShowFpd::HwModuleFpd::HwModuleFpd()
     :
+    upgrade_status{YType::str, "upgrade-status"}
+        ,
     fpd_info_detaile(this, {})
 {
 
@@ -727,7 +826,7 @@ bool ShowFpd::HwModuleFpd::has_data() const
         if(fpd_info_detaile[index]->has_data())
             return true;
     }
-    return false;
+    return upgrade_status.is_set;
 }
 
 bool ShowFpd::HwModuleFpd::has_operation() const
@@ -737,7 +836,8 @@ bool ShowFpd::HwModuleFpd::has_operation() const
         if(fpd_info_detaile[index]->has_operation())
             return true;
     }
-    return is_set(yfilter);
+    return is_set(yfilter)
+	|| ydk::is_set(upgrade_status.yfilter);
 }
 
 std::string ShowFpd::HwModuleFpd::get_absolute_path() const
@@ -758,6 +858,7 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::HwModuleFpd::get_name_le
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (upgrade_status.is_set || is_set(upgrade_status.yfilter)) leaf_name_data.push_back(upgrade_status.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -794,15 +895,25 @@ std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HwModuleFpd::get_childre
 
 void ShowFpd::HwModuleFpd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "upgrade-status")
+    {
+        upgrade_status = value;
+        upgrade_status.value_namespace = name_space;
+        upgrade_status.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void ShowFpd::HwModuleFpd::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "upgrade-status")
+    {
+        upgrade_status.yfilter = yfilter;
+    }
 }
 
 bool ShowFpd::HwModuleFpd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fpd-info-detaile")
+    if(name == "fpd-info-detaile" || name == "upgrade-status")
         return true;
     return false;
 }

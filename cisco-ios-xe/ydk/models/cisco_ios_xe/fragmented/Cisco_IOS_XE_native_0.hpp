@@ -60,6 +60,7 @@ class Native : public ydk::Entity
         class Eap; //type: Native::Eap
         class Archive; //type: Native::Archive
         class Username; //type: Native::Username
+        class Card; //type: Native::Card
         class Controller; //type: Native::Controller
         class Vrf; //type: Native::Vrf
         class Rmon; //type: Native::Rmon
@@ -100,6 +101,7 @@ class Native : public ydk::Entity
         class Subscriber; //type: Native::Subscriber
         class Track; //type: Native::Track
         class Dot1x; //type: Native::Dot1x
+        class Mab; //type: Native::Mab
         class Fallback; //type: Native::Fallback
         class ParameterMap; //type: Native::ParameterMap
         class Ppp; //type: Native::Ppp
@@ -153,7 +155,6 @@ class Native : public ydk::Entity
         class Transceiver; //type: Native::Transceiver
         class ServiceInsertion; //type: Native::ServiceInsertion
         class Udld; //type: Native::Udld
-        class Wireless; //type: Native::Wireless
         class Qos; //type: Native::Qos
         class TimeRange; //type: Native::TimeRange
         class DeviceTracking; //type: Native::DeviceTracking
@@ -169,13 +170,9 @@ class Native : public ydk::Entity
         class Process; //type: Native::Process
         class Exception; //type: Native::Exception
         class Iox; //type: Native::Iox
-        class FabricGroup; //type: Native::FabricGroup
-        class Lldp; //type: Native::Lldp
-        class Utd; //type: Native::Utd
-        class UtdSt; //type: Native::UtdSt
-        class UtdMt; //type: Native::UtdMt
         class NamedOrderingRouteMap; //type: Native::NamedOrderingRouteMap
-        class PmAgent; //type: Native::PmAgent
+        class Esmc; //type: Native::Esmc
+        class Cef; //type: Native::Cef
         class Arp; //type: Native::Arp
         class NetworkPolicy; //type: Native::NetworkPolicy
         class Energywise; //type: Native::Energywise
@@ -189,28 +186,31 @@ class Native : public ydk::Entity
         class HwSwitch; //type: Native::HwSwitch
         class Feature; //type: Native::Feature
         class Openflow; //type: Native::Openflow
-        class Power; //type: Native::Power
-        class ServiceList; //type: Native::ServiceList
-        class MaintenanceTemplate; //type: Native::MaintenanceTemplate
-        class DeviceSensor; //type: Native::DeviceSensor
-        class Esmc; //type: Native::Esmc
         class EtAnalytics; //type: Native::EtAnalytics
-        class Diagnostic; //type: Native::Diagnostic
-        class Shell; //type: Native::Shell
-        class BbaGroup; //type: Native::BbaGroup
-        class AccessSession; //type: Native::AccessSession
-        class Authentication; //type: Native::Authentication
-        class Nat66; //type: Native::Nat66
-        class ServiceRouting; //type: Native::ServiceRouting
         class Dialer; //type: Native::Dialer
         class DialerList; //type: Native::DialerList
-        class Vpdn; //type: Native::Vpdn
+        class Utd; //type: Native::Utd
+        class UtdSt; //type: Native::UtdSt
+        class UtdMt; //type: Native::UtdMt
+        class FabricGroup; //type: Native::FabricGroup
         class Coap; //type: Native::Coap
-        class Card; //type: Native::Card
-        class Vstack; //type: Native::Vstack
         class Voice; //type: Native::Voice
         class VoiceCard; //type: Native::VoiceCard
-        class Cef; //type: Native::Cef
+        class Power; //type: Native::Power
+        class DeviceSensor; //type: Native::DeviceSensor
+        class ServiceList; //type: Native::ServiceList
+        class AccessSession; //type: Native::AccessSession
+        class Authentication; //type: Native::Authentication
+        class ServiceRouting; //type: Native::ServiceRouting
+        class MaintenanceTemplate; //type: Native::MaintenanceTemplate
+        class Lldp; //type: Native::Lldp
+        class Diagnostic; //type: Native::Diagnostic
+        class Nat66; //type: Native::Nat66
+        class BbaGroup; //type: Native::BbaGroup
+        class Shell; //type: Native::Shell
+        class Vstack; //type: Native::Vstack
+        class PmAgent; //type: Native::PmAgent
+        class Vpdn; //type: Native::Vpdn
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Bfd> bfd;
@@ -232,6 +232,7 @@ class Native : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Eap> eap;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Archive> archive;
         ydk::YList username;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Card> card;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller> controller;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf> vrf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Rmon> rmon;
@@ -272,8 +273,9 @@ class Native : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Subscriber> subscriber;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track> track;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Dot1x> dot1x;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mab> mab;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Fallback> fallback;
-        ydk::YList parameter_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ParameterMap> parameter_map;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ppp> ppp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mac> mac;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Tacacs> tacacs;
@@ -325,7 +327,6 @@ class Native : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Transceiver> transceiver;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceInsertion> service_insertion;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Udld> udld;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Wireless> wireless;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Qos> qos; // presence node
         ydk::YList time_range;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::DeviceTracking> device_tracking;
@@ -341,13 +342,9 @@ class Native : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Process> process;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Exception> exception;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Iox> iox; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::FabricGroup> fabric_group;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Lldp> lldp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Utd> utd; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::UtdSt> utd_st;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::UtdMt> utd_mt;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::NamedOrderingRouteMap> named_ordering_route_map;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent> pm_agent; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Esmc> esmc;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cef> cef;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Arp> arp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::NetworkPolicy> network_policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Energywise> energywise;
@@ -361,28 +358,31 @@ class Native : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::HwSwitch> hw_switch;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Feature> feature;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Openflow> openflow;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Power> power;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceList> service_list;
-        ydk::YList maintenance_template;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::DeviceSensor> device_sensor;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Esmc> esmc;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::EtAnalytics> et_analytics; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic> diagnostic;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Shell> shell;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BbaGroup> bba_group;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::AccessSession> access_session;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Nat66> nat66;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceRouting> service_routing;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Dialer> dialer;
         ydk::YList dialer_list;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vpdn> vpdn;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Utd> utd; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::UtdSt> utd_st;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::UtdMt> utd_mt;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::FabricGroup> fabric_group;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Coap> coap;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Card> card;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vstack> vstack;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Voice> voice;
         ydk::YList voice_card;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cef> cef;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Power> power;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::DeviceSensor> device_sensor;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceList> service_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::AccessSession> access_session;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceRouting> service_routing;
+        ydk::YList maintenance_template;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Lldp> lldp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic> diagnostic;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Nat66> nat66;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BbaGroup> bba_group;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Shell> shell;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vstack> vstack;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent> pm_agent; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vpdn> vpdn;
         
 }; // Native
 
@@ -1699,6 +1699,7 @@ class Native::CallHome::SourceInterface : public ydk::Entity
         ydk::YLeaf cem; //type: string
         ydk::YLeaf cem_acr; //type: uint8
         ydk::YLeaf embedded_service_engine; //type: string
+        ydk::YLeaf ethernet; //type: string
         ydk::YLeaf fastethernet; //type: string
         ydk::YLeaf gigabitethernet; //type: string
         ydk::YLeaf fivegigabitethernet; //type: string
@@ -2317,8 +2318,12 @@ class Native::HwModule : public ydk::Entity
         ydk::YLeaf sm; //type: uint8
         ydk::YLeaf pvdm; //type: string
         class Uplink; //type: Native::HwModule::Uplink
+        class Switch; //type: Native::HwModule::Switch
+        class Slot; //type: Native::HwModule::Slot
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::HwModule::Uplink> uplink;
+        ydk::YList switch_;
+        ydk::YList slot;
         
 }; // Native::HwModule
 
@@ -2345,6 +2350,121 @@ class Native::HwModule::Uplink : public ydk::Entity
         class Mode;
 
 }; // Native::HwModule::Uplink
+
+
+class Native::HwModule::Switch : public ydk::Entity
+{
+    public:
+        Switch();
+        ~Switch();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf switch_number; //type: uint8
+        class Usbflash1; //type: Native::HwModule::Switch::Usbflash1
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::HwModule::Switch::Usbflash1> usbflash1;
+        
+}; // Native::HwModule::Switch
+
+
+class Native::HwModule::Switch::Usbflash1 : public ydk::Entity
+{
+    public:
+        Usbflash1();
+        ~Usbflash1();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Security; //type: Native::HwModule::Switch::Usbflash1::Security
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::HwModule::Switch::Usbflash1::Security> security;
+        
+}; // Native::HwModule::Switch::Usbflash1
+
+
+class Native::HwModule::Switch::Usbflash1::Security : public ydk::Entity
+{
+    public:
+        Security();
+        ~Security();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Enable; //type: Native::HwModule::Switch::Usbflash1::Security::Enable
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::HwModule::Switch::Usbflash1::Security::Enable> enable; // presence node
+        
+}; // Native::HwModule::Switch::Usbflash1::Security
+
+
+class Native::HwModule::Switch::Usbflash1::Security::Enable : public ydk::Entity
+{
+    public:
+        Enable();
+        ~Enable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf password; //type: string
+
+}; // Native::HwModule::Switch::Usbflash1::Security::Enable
+
+
+class Native::HwModule::Slot : public ydk::Entity
+{
+    public:
+        Slot();
+        ~Slot();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf shutdown; //type: empty
+
+}; // Native::HwModule::Slot
 
 
 class Native::Cisp : public ydk::Entity
@@ -3941,126 +4061,6 @@ class Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone : pu
 
 }; // Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone
 
-
-class Native::Service::Timestamps::Debug::Datetime::Localtime::Year : public ydk::Entity
-{
-    public:
-        Year();
-        ~Year();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf msec; //type: empty
-        ydk::YLeaf show_timezone; //type: empty
-
-}; // Native::Service::Timestamps::Debug::Datetime::Localtime::Year
-
-
-class Native::Service::Timestamps::Debug::Datetime::Msec : public ydk::Entity
-{
-    public:
-        Msec();
-        ~Msec();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Localtime; //type: Native::Service::Timestamps::Debug::Datetime::Msec::Localtime
-        class ShowTimezone; //type: Native::Service::Timestamps::Debug::Datetime::Msec::ShowTimezone
-        class Year; //type: Native::Service::Timestamps::Debug::Datetime::Msec::Year
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Service::Timestamps::Debug::Datetime::Msec::Localtime> localtime; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Service::Timestamps::Debug::Datetime::Msec::ShowTimezone> show_timezone; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Service::Timestamps::Debug::Datetime::Msec::Year> year; // presence node
-        
-}; // Native::Service::Timestamps::Debug::Datetime::Msec
-
-
-class Native::Service::Timestamps::Debug::Datetime::Msec::Localtime : public ydk::Entity
-{
-    public:
-        Localtime();
-        ~Localtime();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf show_timezone; //type: empty
-        ydk::YLeaf year; //type: empty
-
-}; // Native::Service::Timestamps::Debug::Datetime::Msec::Localtime
-
-
-class Native::Service::Timestamps::Debug::Datetime::Msec::ShowTimezone : public ydk::Entity
-{
-    public:
-        ShowTimezone();
-        ~ShowTimezone();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf localtime; //type: empty
-        ydk::YLeaf year; //type: empty
-
-}; // Native::Service::Timestamps::Debug::Datetime::Msec::ShowTimezone
-
-
-class Native::Service::Timestamps::Debug::Datetime::Msec::Year : public ydk::Entity
-{
-    public:
-        Year();
-        ~Year();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf localtime; //type: empty
-        ydk::YLeaf show_timezone; //type: empty
-
-}; // Native::Service::Timestamps::Debug::Datetime::Msec::Year
-
 class MonitorEventType : public ydk::Enum
 {
     public:
@@ -4073,14 +4073,14 @@ class MonitorEventType : public ydk::Enum
 class LoggingLevelType : public ydk::Enum
 {
     public:
+        static const ydk::Enum::YLeaf emergencies;
         static const ydk::Enum::YLeaf alerts;
         static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf debugging;
-        static const ydk::Enum::YLeaf emergencies;
         static const ydk::Enum::YLeaf errors;
-        static const ydk::Enum::YLeaf informational;
-        static const ydk::Enum::YLeaf notifications;
         static const ydk::Enum::YLeaf warnings;
+        static const ydk::Enum::YLeaf notifications;
+        static const ydk::Enum::YLeaf informational;
+        static const ydk::Enum::YLeaf debugging;
         static const ydk::Enum::YLeaf bogus;
 
 };
@@ -4238,6 +4238,7 @@ class Native::Parser::Config::Cache : public ydk::Enum
 class Native::Parser::View::ViewNameList::Secret::Type : public ydk::Enum
 {
     public:
+        static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_5;
 
 };
@@ -4245,6 +4246,7 @@ class Native::Parser::View::ViewNameList::Secret::Type : public ydk::Enum
 class Native::Parser::View::ViewNameSuperviewList::Secret::Type : public ydk::Enum
 {
     public:
+        static const ydk::Enum::YLeaf Y_0;
         static const ydk::Enum::YLeaf Y_5;
 
 };

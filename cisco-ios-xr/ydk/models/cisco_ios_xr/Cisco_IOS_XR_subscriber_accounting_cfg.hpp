@@ -81,13 +81,13 @@ class SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration : public
 
         ydk::YLeaf prepaid_config_name; //type: string
         ydk::YLeaf password; //type: string
-        ydk::YLeaf volume_threshold; //type: int32
+        ydk::YLeaf volume_threshold; //type: uint32
         ydk::YLeaf accounting_method_list; //type: string
-        ydk::YLeaf time_hold; //type: int32
+        ydk::YLeaf time_hold; //type: uint32
         ydk::YLeaf author_method_list; //type: string
         ydk::YLeaf traffic_direction; //type: string
-        ydk::YLeaf time_threshold; //type: int32
-        ydk::YLeaf time_valid; //type: int32
+        ydk::YLeaf time_threshold; //type: uint32
+        ydk::YLeaf time_valid; //type: uint32
 
 }; // SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration
 

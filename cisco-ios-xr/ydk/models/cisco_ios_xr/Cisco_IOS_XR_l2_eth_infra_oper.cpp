@@ -1179,9 +1179,11 @@ Vlan::Nodes::Node::Trunks::Trunk::Trunk()
         ,
     layer2_sub_interfaces(std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces>())
     , layer3_sub_interfaces(std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces>())
+    , vlan_switched(std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched>())
 {
     layer2_sub_interfaces->parent = this;
     layer3_sub_interfaces->parent = this;
+    vlan_switched->parent = this;
 
     yang_name = "trunk"; yang_parent_name = "trunks"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -1202,7 +1204,8 @@ bool Vlan::Nodes::Node::Trunks::Trunk::has_data() const
 	|| untagged_interface.is_set
 	|| mac_filtering.is_set
 	|| (layer2_sub_interfaces !=  nullptr && layer2_sub_interfaces->has_data())
-	|| (layer3_sub_interfaces !=  nullptr && layer3_sub_interfaces->has_data());
+	|| (layer3_sub_interfaces !=  nullptr && layer3_sub_interfaces->has_data())
+	|| (vlan_switched !=  nullptr && vlan_switched->has_data());
 }
 
 bool Vlan::Nodes::Node::Trunks::Trunk::has_operation() const
@@ -1217,7 +1220,8 @@ bool Vlan::Nodes::Node::Trunks::Trunk::has_operation() const
 	|| ydk::is_set(untagged_interface.yfilter)
 	|| ydk::is_set(mac_filtering.yfilter)
 	|| (layer2_sub_interfaces !=  nullptr && layer2_sub_interfaces->has_operation())
-	|| (layer3_sub_interfaces !=  nullptr && layer3_sub_interfaces->has_operation());
+	|| (layer3_sub_interfaces !=  nullptr && layer3_sub_interfaces->has_operation())
+	|| (vlan_switched !=  nullptr && vlan_switched->has_operation());
 }
 
 std::string Vlan::Nodes::Node::Trunks::Trunk::get_segment_path() const
@@ -1265,6 +1269,15 @@ std::shared_ptr<Entity> Vlan::Nodes::Node::Trunks::Trunk::get_child_by_name(cons
         return layer3_sub_interfaces;
     }
 
+    if(child_yang_name == "vlan-switched")
+    {
+        if(vlan_switched == nullptr)
+        {
+            vlan_switched = std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched>();
+        }
+        return vlan_switched;
+    }
+
     return nullptr;
 }
 
@@ -1280,6 +1293,11 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::Trunk:
     if(layer3_sub_interfaces != nullptr)
     {
         children["layer3-sub-interfaces"] = layer3_sub_interfaces;
+    }
+
+    if(vlan_switched != nullptr)
+    {
+        children["vlan-switched"] = vlan_switched;
     }
 
     return children;
@@ -1375,7 +1393,7 @@ void Vlan::Nodes::Node::Trunks::Trunk::set_filter(const std::string & value_path
 
 bool Vlan::Nodes::Node::Trunks::Trunk::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "layer2-sub-interfaces" || name == "layer3-sub-interfaces" || name == "interface" || name == "interface-xr" || name == "state" || name == "mtu" || name == "qinq-outer-ether-type" || name == "dot1ad-count" || name == "untagged-interface" || name == "mac-filtering")
+    if(name == "layer2-sub-interfaces" || name == "layer3-sub-interfaces" || name == "vlan-switched" || name == "interface" || name == "interface-xr" || name == "state" || name == "mtu" || name == "qinq-outer-ether-type" || name == "dot1ad-count" || name == "untagged-interface" || name == "mac-filtering")
         return true;
     return false;
 }
@@ -1894,6 +1912,844 @@ void Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters::set_f
 bool Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "up" || name == "down" || name == "admin-down")
+        return true;
+    return false;
+}
+
+Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::VlanSwitched()
+    :
+    mode{YType::enumeration, "mode"},
+    access_vlan{YType::uint16, "access-vlan"}
+        ,
+    trunk_vlan_ranges(std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges>())
+{
+    trunk_vlan_ranges->parent = this;
+
+    yang_name = "vlan-switched"; yang_parent_name = "trunk"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::~VlanSwitched()
+{
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::has_data() const
+{
+    if (is_presence_container) return true;
+    return mode.is_set
+	|| access_vlan.is_set
+	|| (trunk_vlan_ranges !=  nullptr && trunk_vlan_ranges->has_data());
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mode.yfilter)
+	|| ydk::is_set(access_vlan.yfilter)
+	|| (trunk_vlan_ranges !=  nullptr && trunk_vlan_ranges->has_operation());
+}
+
+std::string Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vlan-switched";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (access_vlan.is_set || is_set(access_vlan.yfilter)) leaf_name_data.push_back(access_vlan.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "trunk-vlan-ranges")
+    {
+        if(trunk_vlan_ranges == nullptr)
+        {
+            trunk_vlan_ranges = std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges>();
+        }
+        return trunk_vlan_ranges;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(trunk_vlan_ranges != nullptr)
+    {
+        children["trunk-vlan-ranges"] = trunk_vlan_ranges;
+    }
+
+    return children;
+}
+
+void Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mode")
+    {
+        mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "access-vlan")
+    {
+        access_vlan = value;
+        access_vlan.value_namespace = name_space;
+        access_vlan.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+    if(value_path == "access-vlan")
+    {
+        access_vlan.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trunk-vlan-ranges" || name == "mode" || name == "access-vlan")
+        return true;
+    return false;
+}
+
+Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TrunkVlanRanges()
+    :
+    payload_ethertype{YType::enumeration, "payload-ethertype"},
+    tags_popped{YType::uint16, "tags-popped"},
+    is_exact_match{YType::boolean, "is-exact-match"},
+    is_native_vlan{YType::boolean, "is-native-vlan"},
+    is_native_preserving{YType::boolean, "is-native-preserving"},
+    source_mac_match{YType::str, "source-mac-match"},
+    destination_mac_match{YType::str, "destination-mac-match"}
+        ,
+    local_traffic_stack(std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack>())
+    , tags_to_match(this, {})
+    , pushe(this, {})
+{
+    local_traffic_stack->parent = this;
+
+    yang_name = "trunk-vlan-ranges"; yang_parent_name = "vlan-switched"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::~TrunkVlanRanges()
+{
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tags_to_match.len(); index++)
+    {
+        if(tags_to_match[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<pushe.len(); index++)
+    {
+        if(pushe[index]->has_data())
+            return true;
+    }
+    return payload_ethertype.is_set
+	|| tags_popped.is_set
+	|| is_exact_match.is_set
+	|| is_native_vlan.is_set
+	|| is_native_preserving.is_set
+	|| source_mac_match.is_set
+	|| destination_mac_match.is_set
+	|| (local_traffic_stack !=  nullptr && local_traffic_stack->has_data());
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::has_operation() const
+{
+    for (std::size_t index=0; index<tags_to_match.len(); index++)
+    {
+        if(tags_to_match[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<pushe.len(); index++)
+    {
+        if(pushe[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(payload_ethertype.yfilter)
+	|| ydk::is_set(tags_popped.yfilter)
+	|| ydk::is_set(is_exact_match.yfilter)
+	|| ydk::is_set(is_native_vlan.yfilter)
+	|| ydk::is_set(is_native_preserving.yfilter)
+	|| ydk::is_set(source_mac_match.yfilter)
+	|| ydk::is_set(destination_mac_match.yfilter)
+	|| (local_traffic_stack !=  nullptr && local_traffic_stack->has_operation());
+}
+
+std::string Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "trunk-vlan-ranges";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (payload_ethertype.is_set || is_set(payload_ethertype.yfilter)) leaf_name_data.push_back(payload_ethertype.get_name_leafdata());
+    if (tags_popped.is_set || is_set(tags_popped.yfilter)) leaf_name_data.push_back(tags_popped.get_name_leafdata());
+    if (is_exact_match.is_set || is_set(is_exact_match.yfilter)) leaf_name_data.push_back(is_exact_match.get_name_leafdata());
+    if (is_native_vlan.is_set || is_set(is_native_vlan.yfilter)) leaf_name_data.push_back(is_native_vlan.get_name_leafdata());
+    if (is_native_preserving.is_set || is_set(is_native_preserving.yfilter)) leaf_name_data.push_back(is_native_preserving.get_name_leafdata());
+    if (source_mac_match.is_set || is_set(source_mac_match.yfilter)) leaf_name_data.push_back(source_mac_match.get_name_leafdata());
+    if (destination_mac_match.is_set || is_set(destination_mac_match.yfilter)) leaf_name_data.push_back(destination_mac_match.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "local-traffic-stack")
+    {
+        if(local_traffic_stack == nullptr)
+        {
+            local_traffic_stack = std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack>();
+        }
+        return local_traffic_stack;
+    }
+
+    if(child_yang_name == "tags-to-match")
+    {
+        auto c = std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch>();
+        c->parent = this;
+        tags_to_match.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "pushe")
+    {
+        auto c = std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::Pushe>();
+        c->parent = this;
+        pushe.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(local_traffic_stack != nullptr)
+    {
+        children["local-traffic-stack"] = local_traffic_stack;
+    }
+
+    count = 0;
+    for (auto c : tags_to_match.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : pushe.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "payload-ethertype")
+    {
+        payload_ethertype = value;
+        payload_ethertype.value_namespace = name_space;
+        payload_ethertype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tags-popped")
+    {
+        tags_popped = value;
+        tags_popped.value_namespace = name_space;
+        tags_popped.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-exact-match")
+    {
+        is_exact_match = value;
+        is_exact_match.value_namespace = name_space;
+        is_exact_match.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-native-vlan")
+    {
+        is_native_vlan = value;
+        is_native_vlan.value_namespace = name_space;
+        is_native_vlan.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-native-preserving")
+    {
+        is_native_preserving = value;
+        is_native_preserving.value_namespace = name_space;
+        is_native_preserving.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-mac-match")
+    {
+        source_mac_match = value;
+        source_mac_match.value_namespace = name_space;
+        source_mac_match.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "destination-mac-match")
+    {
+        destination_mac_match = value;
+        destination_mac_match.value_namespace = name_space;
+        destination_mac_match.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "payload-ethertype")
+    {
+        payload_ethertype.yfilter = yfilter;
+    }
+    if(value_path == "tags-popped")
+    {
+        tags_popped.yfilter = yfilter;
+    }
+    if(value_path == "is-exact-match")
+    {
+        is_exact_match.yfilter = yfilter;
+    }
+    if(value_path == "is-native-vlan")
+    {
+        is_native_vlan.yfilter = yfilter;
+    }
+    if(value_path == "is-native-preserving")
+    {
+        is_native_preserving.yfilter = yfilter;
+    }
+    if(value_path == "source-mac-match")
+    {
+        source_mac_match.yfilter = yfilter;
+    }
+    if(value_path == "destination-mac-match")
+    {
+        destination_mac_match.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-traffic-stack" || name == "tags-to-match" || name == "pushe" || name == "payload-ethertype" || name == "tags-popped" || name == "is-exact-match" || name == "is-native-vlan" || name == "is-native-preserving" || name == "source-mac-match" || name == "destination-mac-match")
+        return true;
+    return false;
+}
+
+Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficStack()
+    :
+    local_traffic_tag(this, {})
+{
+
+    yang_name = "local-traffic-stack"; yang_parent_name = "trunk-vlan-ranges"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::~LocalTrafficStack()
+{
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<local_traffic_tag.len(); index++)
+    {
+        if(local_traffic_tag[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::has_operation() const
+{
+    for (std::size_t index=0; index<local_traffic_tag.len(); index++)
+    {
+        if(local_traffic_tag[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "local-traffic-stack";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "local-traffic-tag")
+    {
+        auto c = std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag>();
+        c->parent = this;
+        local_traffic_tag.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : local_traffic_tag.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-traffic-tag")
+        return true;
+    return false;
+}
+
+Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag::LocalTrafficTag()
+    :
+    ethertype{YType::enumeration, "ethertype"},
+    vlan_id{YType::uint16, "vlan-id"}
+{
+
+    yang_name = "local-traffic-tag"; yang_parent_name = "local-traffic-stack"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag::~LocalTrafficTag()
+{
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag::has_data() const
+{
+    if (is_presence_container) return true;
+    return ethertype.is_set
+	|| vlan_id.is_set;
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ethertype.yfilter)
+	|| ydk::is_set(vlan_id.yfilter);
+}
+
+std::string Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "local-traffic-tag";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ethertype.is_set || is_set(ethertype.yfilter)) leaf_name_data.push_back(ethertype.get_name_leafdata());
+    if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ethertype")
+    {
+        ethertype = value;
+        ethertype.value_namespace = name_space;
+        ethertype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vlan-id")
+    {
+        vlan_id = value;
+        vlan_id.value_namespace = name_space;
+        vlan_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ethertype")
+    {
+        ethertype.yfilter = yfilter;
+    }
+    if(value_path == "vlan-id")
+    {
+        vlan_id.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethertype" || name == "vlan-id")
+        return true;
+    return false;
+}
+
+Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::TagsToMatch()
+    :
+    ethertype{YType::enumeration, "ethertype"},
+    priority{YType::enumeration, "priority"}
+        ,
+    vlan_range(this, {})
+{
+
+    yang_name = "tags-to-match"; yang_parent_name = "trunk-vlan-ranges"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::~TagsToMatch()
+{
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan_range.len(); index++)
+    {
+        if(vlan_range[index]->has_data())
+            return true;
+    }
+    return ethertype.is_set
+	|| priority.is_set;
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::has_operation() const
+{
+    for (std::size_t index=0; index<vlan_range.len(); index++)
+    {
+        if(vlan_range[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(ethertype.yfilter)
+	|| ydk::is_set(priority.yfilter);
+}
+
+std::string Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tags-to-match";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ethertype.is_set || is_set(ethertype.yfilter)) leaf_name_data.push_back(ethertype.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "vlan-range")
+    {
+        auto c = std::make_shared<Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange>();
+        c->parent = this;
+        vlan_range.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : vlan_range.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ethertype")
+    {
+        ethertype = value;
+        ethertype.value_namespace = name_space;
+        ethertype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ethertype")
+    {
+        ethertype.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlan-range" || name == "ethertype" || name == "priority")
+        return true;
+    return false;
+}
+
+Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange::VlanRange()
+    :
+    vlan_id_low{YType::uint16, "vlan-id-low"},
+    vlan_id_high{YType::uint16, "vlan-id-high"}
+{
+
+    yang_name = "vlan-range"; yang_parent_name = "tags-to-match"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange::~VlanRange()
+{
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange::has_data() const
+{
+    if (is_presence_container) return true;
+    return vlan_id_low.is_set
+	|| vlan_id_high.is_set;
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vlan_id_low.yfilter)
+	|| ydk::is_set(vlan_id_high.yfilter);
+}
+
+std::string Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vlan-range";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vlan_id_low.is_set || is_set(vlan_id_low.yfilter)) leaf_name_data.push_back(vlan_id_low.get_name_leafdata());
+    if (vlan_id_high.is_set || is_set(vlan_id_high.yfilter)) leaf_name_data.push_back(vlan_id_high.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vlan-id-low")
+    {
+        vlan_id_low = value;
+        vlan_id_low.value_namespace = name_space;
+        vlan_id_low.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vlan-id-high")
+    {
+        vlan_id_high = value;
+        vlan_id_high.value_namespace = name_space;
+        vlan_id_high.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vlan-id-low")
+    {
+        vlan_id_low.yfilter = yfilter;
+    }
+    if(value_path == "vlan-id-high")
+    {
+        vlan_id_high.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlan-id-low" || name == "vlan-id-high")
+        return true;
+    return false;
+}
+
+Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::Pushe::Pushe()
+    :
+    ethertype{YType::enumeration, "ethertype"},
+    vlan_id{YType::uint16, "vlan-id"}
+{
+
+    yang_name = "pushe"; yang_parent_name = "trunk-vlan-ranges"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::Pushe::~Pushe()
+{
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::Pushe::has_data() const
+{
+    if (is_presence_container) return true;
+    return ethertype.is_set
+	|| vlan_id.is_set;
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::Pushe::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ethertype.yfilter)
+	|| ydk::is_set(vlan_id.yfilter);
+}
+
+std::string Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::Pushe::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pushe";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::Pushe::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ethertype.is_set || is_set(ethertype.yfilter)) leaf_name_data.push_back(ethertype.get_name_leafdata());
+    if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::Pushe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::Pushe::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::Pushe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ethertype")
+    {
+        ethertype = value;
+        ethertype.value_namespace = name_space;
+        ethertype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vlan-id")
+    {
+        vlan_id = value;
+        vlan_id.value_namespace = name_space;
+        vlan_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::Pushe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ethertype")
+    {
+        ethertype.yfilter = yfilter;
+    }
+    if(value_path == "vlan-id")
+    {
+        vlan_id.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::Pushe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethertype" || name == "vlan-id")
         return true;
     return false;
 }
@@ -5347,8 +6203,9 @@ const Enum::YLeaf VlanEncaps::service_instance {7, "service-instance"};
 const Enum::YLeaf VlanEncaps::dot1ad_dot1q {8, "dot1ad-dot1q"};
 const Enum::YLeaf VlanEncaps::dot1ad_any {9, "dot1ad-any"};
 
-const Enum::YLeaf EthCapsUcastMacMode::reserved {0, "reserved"};
-const Enum::YLeaf EthCapsUcastMacMode::permit {1, "permit"};
+const Enum::YLeaf VlanSwitchedMode::none {0, "none"};
+const Enum::YLeaf VlanSwitchedMode::trunk_port {1, "trunk-port"};
+const Enum::YLeaf VlanSwitchedMode::access_port {2, "access-port"};
 
 const Enum::YLeaf ImStateEnum::im_state_not_ready {0, "im-state-not-ready"};
 const Enum::YLeaf ImStateEnum::im_state_admin_down {1, "im-state-admin-down"};
@@ -5394,6 +6251,9 @@ const Enum::YLeaf EfpPayloadEtype::payload_ethertype_pppoe {2, "payload-ethertyp
 const Enum::YLeaf VlanQinqOuterEtype::ether_type8100 {33024, "ether-type8100"};
 const Enum::YLeaf VlanQinqOuterEtype::ether_type9100 {37120, "ether-type9100"};
 const Enum::YLeaf VlanQinqOuterEtype::ether_type9200 {37376, "ether-type9200"};
+
+const Enum::YLeaf EthCapsUcastMacMode::reserved {0, "reserved"};
+const Enum::YLeaf EthCapsUcastMacMode::permit {1, "permit"};
 
 const Enum::YLeaf EthFiltering::no_filtering {0, "no-filtering"};
 const Enum::YLeaf EthFiltering::dot1q_filtering {1, "dot1q-filtering"};

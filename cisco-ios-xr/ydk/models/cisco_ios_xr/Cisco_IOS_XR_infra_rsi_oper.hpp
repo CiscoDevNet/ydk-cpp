@@ -789,8 +789,10 @@ class Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail : public ydk::Entity
         ydk::YLeaf groups; //type: uint32
         ydk::YLeaf nodes; //type: uint32
         class SrlgAttribute; //type: Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::SrlgAttribute
+        class Rsip; //type: Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::Rsip
 
         ydk::YList srlg_attribute;
+        ydk::YList rsip;
         
 }; // Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail
 
@@ -818,6 +820,27 @@ class Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::SrlgAttribute : publ
         ydk::YLeaf srlg_index; //type: uint16
 
 }; // Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::SrlgAttribute
+
+
+class Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::Rsip : public ydk::Entity
+{
+    public:
+        Rsip();
+        ~Rsip();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf rsip_name; //type: string
+
+}; // Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::Rsip
 
 
 class Srlg::Nodes::Node::SrlgValues : public ydk::Entity
@@ -1173,8 +1196,10 @@ class Srlg::InterfaceDetails::InterfaceDetail : public ydk::Entity
         ydk::YLeaf groups; //type: uint32
         ydk::YLeaf nodes; //type: uint32
         class SrlgAttribute; //type: Srlg::InterfaceDetails::InterfaceDetail::SrlgAttribute
+        class Rsip; //type: Srlg::InterfaceDetails::InterfaceDetail::Rsip
 
         ydk::YList srlg_attribute;
+        ydk::YList rsip;
         
 }; // Srlg::InterfaceDetails::InterfaceDetail
 
@@ -1202,6 +1227,27 @@ class Srlg::InterfaceDetails::InterfaceDetail::SrlgAttribute : public ydk::Entit
         ydk::YLeaf srlg_index; //type: uint16
 
 }; // Srlg::InterfaceDetails::InterfaceDetail::SrlgAttribute
+
+
+class Srlg::InterfaceDetails::InterfaceDetail::Rsip : public ydk::Entity
+{
+    public:
+        Rsip();
+        ~Rsip();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf rsip_name; //type: string
+
+}; // Srlg::InterfaceDetails::InterfaceDetail::Rsip
 
 class SelectiveVrfDownload : public ydk::Entity
 {

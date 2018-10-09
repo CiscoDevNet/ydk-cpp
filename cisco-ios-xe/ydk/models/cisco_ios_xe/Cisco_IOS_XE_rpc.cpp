@@ -867,10 +867,14 @@ Clear::Input::Input()
     , ip(std::make_shared<Clear::Input::Ip>())
     , arp_cache(nullptr) // presence node
     , aaa(std::make_shared<Clear::Input::Aaa>())
+    , platform(std::make_shared<Clear::Input::Platform>())
+    , zone_pair(std::make_shared<Clear::Input::ZonePair>())
 {
     flow->parent = this;
     ip->parent = this;
     aaa->parent = this;
+    platform->parent = this;
+    zone_pair->parent = this;
 
     yang_name = "input"; yang_parent_name = "clear"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -887,7 +891,9 @@ bool Clear::Input::has_data() const
 	|| (flow !=  nullptr && flow->has_data())
 	|| (ip !=  nullptr && ip->has_data())
 	|| (arp_cache !=  nullptr && arp_cache->has_data())
-	|| (aaa !=  nullptr && aaa->has_data());
+	|| (aaa !=  nullptr && aaa->has_data())
+	|| (platform !=  nullptr && platform->has_data())
+	|| (zone_pair !=  nullptr && zone_pair->has_data());
 }
 
 bool Clear::Input::has_operation() const
@@ -898,7 +904,9 @@ bool Clear::Input::has_operation() const
 	|| (flow !=  nullptr && flow->has_operation())
 	|| (ip !=  nullptr && ip->has_operation())
 	|| (arp_cache !=  nullptr && arp_cache->has_operation())
-	|| (aaa !=  nullptr && aaa->has_operation());
+	|| (aaa !=  nullptr && aaa->has_operation())
+	|| (platform !=  nullptr && platform->has_operation())
+	|| (zone_pair !=  nullptr && zone_pair->has_operation());
 }
 
 std::string Clear::Input::get_absolute_path() const
@@ -964,6 +972,24 @@ std::shared_ptr<Entity> Clear::Input::get_child_by_name(const std::string & chil
         return aaa;
     }
 
+    if(child_yang_name == "platform")
+    {
+        if(platform == nullptr)
+        {
+            platform = std::make_shared<Clear::Input::Platform>();
+        }
+        return platform;
+    }
+
+    if(child_yang_name == "zone-pair")
+    {
+        if(zone_pair == nullptr)
+        {
+            zone_pair = std::make_shared<Clear::Input::ZonePair>();
+        }
+        return zone_pair;
+    }
+
     return nullptr;
 }
 
@@ -989,6 +1015,16 @@ std::map<std::string, std::shared_ptr<Entity>> Clear::Input::get_children() cons
     if(aaa != nullptr)
     {
         children["aaa"] = aaa;
+    }
+
+    if(platform != nullptr)
+    {
+        children["platform"] = platform;
+    }
+
+    if(zone_pair != nullptr)
+    {
+        children["zone-pair"] = zone_pair;
     }
 
     return children;
@@ -1024,7 +1060,7 @@ void Clear::Input::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Clear::Input::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "flow" || name == "ip" || name == "arp-cache" || name == "aaa" || name == "interface" || name == "count")
+    if(name == "flow" || name == "ip" || name == "arp-cache" || name == "aaa" || name == "platform" || name == "zone-pair" || name == "interface" || name == "count")
         return true;
     return false;
 }
@@ -2428,6 +2464,621 @@ bool Clear::Input::Aaa::Local::User::Lockout::has_leaf_or_child_of_name(const st
     return false;
 }
 
+Clear::Input::Platform::Platform()
+    :
+    hardware(std::make_shared<Clear::Input::Platform::Hardware>())
+{
+    hardware->parent = this;
+
+    yang_name = "platform"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Clear::Input::Platform::~Platform()
+{
+}
+
+bool Clear::Input::Platform::has_data() const
+{
+    if (is_presence_container) return true;
+    return (hardware !=  nullptr && hardware->has_data());
+}
+
+bool Clear::Input::Platform::has_operation() const
+{
+    return is_set(yfilter)
+	|| (hardware !=  nullptr && hardware->has_operation());
+}
+
+std::string Clear::Input::Platform::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:clear/input/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Clear::Input::Platform::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "platform";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Clear::Input::Platform::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Clear::Input::Platform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hardware")
+    {
+        if(hardware == nullptr)
+        {
+            hardware = std::make_shared<Clear::Input::Platform::Hardware>();
+        }
+        return hardware;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Clear::Input::Platform::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(hardware != nullptr)
+    {
+        children["hardware"] = hardware;
+    }
+
+    return children;
+}
+
+void Clear::Input::Platform::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Clear::Input::Platform::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Clear::Input::Platform::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hardware")
+        return true;
+    return false;
+}
+
+Clear::Input::Platform::Hardware::Hardware()
+    :
+    qfp(std::make_shared<Clear::Input::Platform::Hardware::Qfp>())
+{
+    qfp->parent = this;
+
+    yang_name = "hardware"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Clear::Input::Platform::Hardware::~Hardware()
+{
+}
+
+bool Clear::Input::Platform::Hardware::has_data() const
+{
+    if (is_presence_container) return true;
+    return (qfp !=  nullptr && qfp->has_data());
+}
+
+bool Clear::Input::Platform::Hardware::has_operation() const
+{
+    return is_set(yfilter)
+	|| (qfp !=  nullptr && qfp->has_operation());
+}
+
+std::string Clear::Input::Platform::Hardware::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:clear/input/platform/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Clear::Input::Platform::Hardware::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hardware";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Clear::Input::Platform::Hardware::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Clear::Input::Platform::Hardware::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "qfp")
+    {
+        if(qfp == nullptr)
+        {
+            qfp = std::make_shared<Clear::Input::Platform::Hardware::Qfp>();
+        }
+        return qfp;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Clear::Input::Platform::Hardware::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(qfp != nullptr)
+    {
+        children["qfp"] = qfp;
+    }
+
+    return children;
+}
+
+void Clear::Input::Platform::Hardware::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Clear::Input::Platform::Hardware::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Clear::Input::Platform::Hardware::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "qfp")
+        return true;
+    return false;
+}
+
+Clear::Input::Platform::Hardware::Qfp::Qfp()
+    :
+    active(std::make_shared<Clear::Input::Platform::Hardware::Qfp::Active>())
+{
+    active->parent = this;
+
+    yang_name = "qfp"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Clear::Input::Platform::Hardware::Qfp::~Qfp()
+{
+}
+
+bool Clear::Input::Platform::Hardware::Qfp::has_data() const
+{
+    if (is_presence_container) return true;
+    return (active !=  nullptr && active->has_data());
+}
+
+bool Clear::Input::Platform::Hardware::Qfp::has_operation() const
+{
+    return is_set(yfilter)
+	|| (active !=  nullptr && active->has_operation());
+}
+
+std::string Clear::Input::Platform::Hardware::Qfp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:clear/input/platform/hardware/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Clear::Input::Platform::Hardware::Qfp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "qfp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Clear::Input::Platform::Hardware::Qfp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Clear::Input::Platform::Hardware::Qfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "active")
+    {
+        if(active == nullptr)
+        {
+            active = std::make_shared<Clear::Input::Platform::Hardware::Qfp::Active>();
+        }
+        return active;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Clear::Input::Platform::Hardware::Qfp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(active != nullptr)
+    {
+        children["active"] = active;
+    }
+
+    return children;
+}
+
+void Clear::Input::Platform::Hardware::Qfp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Clear::Input::Platform::Hardware::Qfp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Clear::Input::Platform::Hardware::Qfp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active")
+        return true;
+    return false;
+}
+
+Clear::Input::Platform::Hardware::Qfp::Active::Active()
+    :
+    feature(std::make_shared<Clear::Input::Platform::Hardware::Qfp::Active::Feature>())
+{
+    feature->parent = this;
+
+    yang_name = "active"; yang_parent_name = "qfp"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Clear::Input::Platform::Hardware::Qfp::Active::~Active()
+{
+}
+
+bool Clear::Input::Platform::Hardware::Qfp::Active::has_data() const
+{
+    if (is_presence_container) return true;
+    return (feature !=  nullptr && feature->has_data());
+}
+
+bool Clear::Input::Platform::Hardware::Qfp::Active::has_operation() const
+{
+    return is_set(yfilter)
+	|| (feature !=  nullptr && feature->has_operation());
+}
+
+std::string Clear::Input::Platform::Hardware::Qfp::Active::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:clear/input/platform/hardware/qfp/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Clear::Input::Platform::Hardware::Qfp::Active::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "active";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Clear::Input::Platform::Hardware::Qfp::Active::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Clear::Input::Platform::Hardware::Qfp::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "feature")
+    {
+        if(feature == nullptr)
+        {
+            feature = std::make_shared<Clear::Input::Platform::Hardware::Qfp::Active::Feature>();
+        }
+        return feature;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Clear::Input::Platform::Hardware::Qfp::Active::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(feature != nullptr)
+    {
+        children["feature"] = feature;
+    }
+
+    return children;
+}
+
+void Clear::Input::Platform::Hardware::Qfp::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Clear::Input::Platform::Hardware::Qfp::Active::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Clear::Input::Platform::Hardware::Qfp::Active::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "feature")
+        return true;
+    return false;
+}
+
+Clear::Input::Platform::Hardware::Qfp::Active::Feature::Feature()
+    :
+    firewall(std::make_shared<Clear::Input::Platform::Hardware::Qfp::Active::Feature::Firewall>())
+{
+    firewall->parent = this;
+
+    yang_name = "feature"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Clear::Input::Platform::Hardware::Qfp::Active::Feature::~Feature()
+{
+}
+
+bool Clear::Input::Platform::Hardware::Qfp::Active::Feature::has_data() const
+{
+    if (is_presence_container) return true;
+    return (firewall !=  nullptr && firewall->has_data());
+}
+
+bool Clear::Input::Platform::Hardware::Qfp::Active::Feature::has_operation() const
+{
+    return is_set(yfilter)
+	|| (firewall !=  nullptr && firewall->has_operation());
+}
+
+std::string Clear::Input::Platform::Hardware::Qfp::Active::Feature::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:clear/input/platform/hardware/qfp/active/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Clear::Input::Platform::Hardware::Qfp::Active::Feature::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "feature";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Clear::Input::Platform::Hardware::Qfp::Active::Feature::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Clear::Input::Platform::Hardware::Qfp::Active::Feature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "firewall")
+    {
+        if(firewall == nullptr)
+        {
+            firewall = std::make_shared<Clear::Input::Platform::Hardware::Qfp::Active::Feature::Firewall>();
+        }
+        return firewall;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Clear::Input::Platform::Hardware::Qfp::Active::Feature::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(firewall != nullptr)
+    {
+        children["firewall"] = firewall;
+    }
+
+    return children;
+}
+
+void Clear::Input::Platform::Hardware::Qfp::Active::Feature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Clear::Input::Platform::Hardware::Qfp::Active::Feature::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Clear::Input::Platform::Hardware::Qfp::Active::Feature::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "firewall")
+        return true;
+    return false;
+}
+
+Clear::Input::Platform::Hardware::Qfp::Active::Feature::Firewall::Firewall()
+    :
+    drop{YType::empty, "drop"}
+{
+
+    yang_name = "firewall"; yang_parent_name = "feature"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Clear::Input::Platform::Hardware::Qfp::Active::Feature::Firewall::~Firewall()
+{
+}
+
+bool Clear::Input::Platform::Hardware::Qfp::Active::Feature::Firewall::has_data() const
+{
+    if (is_presence_container) return true;
+    return drop.is_set;
+}
+
+bool Clear::Input::Platform::Hardware::Qfp::Active::Feature::Firewall::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(drop.yfilter);
+}
+
+std::string Clear::Input::Platform::Hardware::Qfp::Active::Feature::Firewall::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:clear/input/platform/hardware/qfp/active/feature/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Clear::Input::Platform::Hardware::Qfp::Active::Feature::Firewall::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "firewall";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Clear::Input::Platform::Hardware::Qfp::Active::Feature::Firewall::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (drop.is_set || is_set(drop.yfilter)) leaf_name_data.push_back(drop.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Clear::Input::Platform::Hardware::Qfp::Active::Feature::Firewall::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Clear::Input::Platform::Hardware::Qfp::Active::Feature::Firewall::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Clear::Input::Platform::Hardware::Qfp::Active::Feature::Firewall::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "drop")
+    {
+        drop = value;
+        drop.value_namespace = name_space;
+        drop.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Clear::Input::Platform::Hardware::Qfp::Active::Feature::Firewall::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "drop")
+    {
+        drop.yfilter = yfilter;
+    }
+}
+
+bool Clear::Input::Platform::Hardware::Qfp::Active::Feature::Firewall::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "drop")
+        return true;
+    return false;
+}
+
+Clear::Input::ZonePair::ZonePair()
+    :
+    counter{YType::empty, "counter"}
+{
+
+    yang_name = "zone-pair"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Clear::Input::ZonePair::~ZonePair()
+{
+}
+
+bool Clear::Input::ZonePair::has_data() const
+{
+    if (is_presence_container) return true;
+    return counter.is_set;
+}
+
+bool Clear::Input::ZonePair::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter);
+}
+
+std::string Clear::Input::ZonePair::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:clear/input/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Clear::Input::ZonePair::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "zone-pair";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Clear::Input::ZonePair::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Clear::Input::ZonePair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Clear::Input::ZonePair::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Clear::Input::ZonePair::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "counter")
+    {
+        counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Clear::Input::ZonePair::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+}
+
+bool Clear::Input::ZonePair::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter")
+        return true;
+    return false;
+}
+
 Clear::Output::Output()
     :
     result{YType::str, "result"}
@@ -3348,6 +3999,8 @@ bool Cellular::Input::has_leaf_or_child_of_name(const std::string & name) const
 
 Cellular::Input::Lte::Lte()
     :
+    modem_reset{YType::empty, "modem-reset"}
+        ,
     technology(std::make_shared<Cellular::Input::Lte::Technology>())
     , profile(std::make_shared<Cellular::Input::Lte::Profile>())
 {
@@ -3364,13 +4017,15 @@ Cellular::Input::Lte::~Lte()
 bool Cellular::Input::Lte::has_data() const
 {
     if (is_presence_container) return true;
-    return (technology !=  nullptr && technology->has_data())
+    return modem_reset.is_set
+	|| (technology !=  nullptr && technology->has_data())
 	|| (profile !=  nullptr && profile->has_data());
 }
 
 bool Cellular::Input::Lte::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(modem_reset.yfilter)
 	|| (technology !=  nullptr && technology->has_operation())
 	|| (profile !=  nullptr && profile->has_operation());
 }
@@ -3393,6 +4048,7 @@ std::vector<std::pair<std::string, LeafData> > Cellular::Input::Lte::get_name_le
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (modem_reset.is_set || is_set(modem_reset.yfilter)) leaf_name_data.push_back(modem_reset.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3440,15 +4096,25 @@ std::map<std::string, std::shared_ptr<Entity>> Cellular::Input::Lte::get_childre
 
 void Cellular::Input::Lte::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "modem-reset")
+    {
+        modem_reset = value;
+        modem_reset.value_namespace = name_space;
+        modem_reset.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Cellular::Input::Lte::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "modem-reset")
+    {
+        modem_reset.yfilter = yfilter;
+    }
 }
 
 bool Cellular::Input::Lte::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "technology" || name == "profile")
+    if(name == "technology" || name == "profile" || name == "modem-reset")
         return true;
     return false;
 }
@@ -8048,6 +8714,1865 @@ void Guestshell::Output::set_filter(const std::string & value_path, YFilter yfil
 }
 
 bool Guestshell::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "result")
+        return true;
+    return false;
+}
+
+Start::Start()
+    :
+    input(std::make_shared<Start::Input>())
+    , output(std::make_shared<Start::Output>())
+{
+    input->parent = this;
+    output->parent = this;
+
+    yang_name = "start"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false; 
+}
+
+Start::~Start()
+{
+}
+
+bool Start::has_data() const
+{
+    if (is_presence_container) return true;
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
+}
+
+bool Start::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
+}
+
+std::string Start::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:start";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Start::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Start::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<Start::Input>();
+        }
+        return input;
+    }
+
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<Start::Output>();
+        }
+        return output;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Start::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    if(output != nullptr)
+    {
+        children["output"] = output;
+    }
+
+    return children;
+}
+
+void Start::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Start::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> Start::clone_ptr() const
+{
+    return std::make_shared<Start>();
+}
+
+std::string Start::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xe_models_path;
+}
+
+std::string Start::get_bundle_name() const
+{
+    return "cisco_ios_xe";
+}
+
+augment_capabilities_function Start::get_augment_capabilities_function() const
+{
+    return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Start::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool Start::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
+}
+
+Start::Input::Input()
+    :
+    maintenance{YType::empty, "maintenance"}
+{
+
+    yang_name = "input"; yang_parent_name = "start"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Start::Input::~Input()
+{
+}
+
+bool Start::Input::has_data() const
+{
+    if (is_presence_container) return true;
+    return maintenance.is_set;
+}
+
+bool Start::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(maintenance.yfilter);
+}
+
+std::string Start::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:start/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Start::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Start::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (maintenance.is_set || is_set(maintenance.yfilter)) leaf_name_data.push_back(maintenance.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Start::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Start::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Start::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "maintenance")
+    {
+        maintenance = value;
+        maintenance.value_namespace = name_space;
+        maintenance.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Start::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maintenance")
+    {
+        maintenance.yfilter = yfilter;
+    }
+}
+
+bool Start::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maintenance")
+        return true;
+    return false;
+}
+
+Start::Output::Output()
+    :
+    result{YType::str, "result"}
+{
+
+    yang_name = "output"; yang_parent_name = "start"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Start::Output::~Output()
+{
+}
+
+bool Start::Output::has_data() const
+{
+    if (is_presence_container) return true;
+    return result.is_set;
+}
+
+bool Start::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(result.yfilter);
+}
+
+std::string Start::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:start/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Start::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Start::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Start::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Start::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Start::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "result")
+    {
+        result = value;
+        result.value_namespace = name_space;
+        result.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Start::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "result")
+    {
+        result.yfilter = yfilter;
+    }
+}
+
+bool Start::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "result")
+        return true;
+    return false;
+}
+
+Stop::Stop()
+    :
+    input(std::make_shared<Stop::Input>())
+    , output(std::make_shared<Stop::Output>())
+{
+    input->parent = this;
+    output->parent = this;
+
+    yang_name = "stop"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false; 
+}
+
+Stop::~Stop()
+{
+}
+
+bool Stop::has_data() const
+{
+    if (is_presence_container) return true;
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
+}
+
+bool Stop::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
+}
+
+std::string Stop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:stop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Stop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Stop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<Stop::Input>();
+        }
+        return input;
+    }
+
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<Stop::Output>();
+        }
+        return output;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Stop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    if(output != nullptr)
+    {
+        children["output"] = output;
+    }
+
+    return children;
+}
+
+void Stop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Stop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> Stop::clone_ptr() const
+{
+    return std::make_shared<Stop>();
+}
+
+std::string Stop::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xe_models_path;
+}
+
+std::string Stop::get_bundle_name() const
+{
+    return "cisco_ios_xe";
+}
+
+augment_capabilities_function Stop::get_augment_capabilities_function() const
+{
+    return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Stop::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool Stop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
+}
+
+Stop::Input::Input()
+    :
+    maintenance{YType::empty, "maintenance"}
+{
+
+    yang_name = "input"; yang_parent_name = "stop"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Stop::Input::~Input()
+{
+}
+
+bool Stop::Input::has_data() const
+{
+    if (is_presence_container) return true;
+    return maintenance.is_set;
+}
+
+bool Stop::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(maintenance.yfilter);
+}
+
+std::string Stop::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:stop/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Stop::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Stop::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (maintenance.is_set || is_set(maintenance.yfilter)) leaf_name_data.push_back(maintenance.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Stop::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Stop::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Stop::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "maintenance")
+    {
+        maintenance = value;
+        maintenance.value_namespace = name_space;
+        maintenance.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Stop::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maintenance")
+    {
+        maintenance.yfilter = yfilter;
+    }
+}
+
+bool Stop::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maintenance")
+        return true;
+    return false;
+}
+
+Stop::Output::Output()
+    :
+    result{YType::str, "result"}
+{
+
+    yang_name = "output"; yang_parent_name = "stop"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Stop::Output::~Output()
+{
+}
+
+bool Stop::Output::has_data() const
+{
+    if (is_presence_container) return true;
+    return result.is_set;
+}
+
+bool Stop::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(result.yfilter);
+}
+
+std::string Stop::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:stop/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Stop::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Stop::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Stop::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Stop::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Stop::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "result")
+    {
+        result = value;
+        result.value_namespace = name_space;
+        result.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Stop::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "result")
+    {
+        result.yfilter = yfilter;
+    }
+}
+
+bool Stop::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "result")
+        return true;
+    return false;
+}
+
+Utd::Utd()
+    :
+    input(std::make_shared<Utd::Input>())
+    , output(std::make_shared<Utd::Output>())
+{
+    input->parent = this;
+    output->parent = this;
+
+    yang_name = "utd"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false; 
+}
+
+Utd::~Utd()
+{
+}
+
+bool Utd::has_data() const
+{
+    if (is_presence_container) return true;
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
+}
+
+bool Utd::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
+}
+
+std::string Utd::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:utd";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Utd::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Utd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<Utd::Input>();
+        }
+        return input;
+    }
+
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<Utd::Output>();
+        }
+        return output;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Utd::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(input != nullptr)
+    {
+        children["input"] = input;
+    }
+
+    if(output != nullptr)
+    {
+        children["output"] = output;
+    }
+
+    return children;
+}
+
+void Utd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Utd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> Utd::clone_ptr() const
+{
+    return std::make_shared<Utd>();
+}
+
+std::string Utd::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xe_models_path;
+}
+
+std::string Utd::get_bundle_name() const
+{
+    return "cisco_ios_xe";
+}
+
+augment_capabilities_function Utd::get_augment_capabilities_function() const
+{
+    return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Utd::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool Utd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
+}
+
+Utd::Input::Input()
+    :
+    threat_inspection(std::make_shared<Utd::Input::ThreatInspection>())
+{
+    threat_inspection->parent = this;
+
+    yang_name = "input"; yang_parent_name = "utd"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Utd::Input::~Input()
+{
+}
+
+bool Utd::Input::has_data() const
+{
+    if (is_presence_container) return true;
+    return (threat_inspection !=  nullptr && threat_inspection->has_data());
+}
+
+bool Utd::Input::has_operation() const
+{
+    return is_set(yfilter)
+	|| (threat_inspection !=  nullptr && threat_inspection->has_operation());
+}
+
+std::string Utd::Input::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:utd/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Utd::Input::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "input";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Utd::Input::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Utd::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "threat-inspection")
+    {
+        if(threat_inspection == nullptr)
+        {
+            threat_inspection = std::make_shared<Utd::Input::ThreatInspection>();
+        }
+        return threat_inspection;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Utd::Input::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(threat_inspection != nullptr)
+    {
+        children["threat-inspection"] = threat_inspection;
+    }
+
+    return children;
+}
+
+void Utd::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Utd::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Utd::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threat-inspection")
+        return true;
+    return false;
+}
+
+Utd::Input::ThreatInspection::ThreatInspection()
+    :
+    signature(std::make_shared<Utd::Input::ThreatInspection::Signature>())
+{
+    signature->parent = this;
+
+    yang_name = "threat-inspection"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Utd::Input::ThreatInspection::~ThreatInspection()
+{
+}
+
+bool Utd::Input::ThreatInspection::has_data() const
+{
+    if (is_presence_container) return true;
+    return (signature !=  nullptr && signature->has_data());
+}
+
+bool Utd::Input::ThreatInspection::has_operation() const
+{
+    return is_set(yfilter)
+	|| (signature !=  nullptr && signature->has_operation());
+}
+
+std::string Utd::Input::ThreatInspection::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:utd/input/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Utd::Input::ThreatInspection::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "threat-inspection";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Utd::Input::ThreatInspection::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Utd::Input::ThreatInspection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "signature")
+    {
+        if(signature == nullptr)
+        {
+            signature = std::make_shared<Utd::Input::ThreatInspection::Signature>();
+        }
+        return signature;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Utd::Input::ThreatInspection::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(signature != nullptr)
+    {
+        children["signature"] = signature;
+    }
+
+    return children;
+}
+
+void Utd::Input::ThreatInspection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Utd::Input::ThreatInspection::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Utd::Input::ThreatInspection::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "signature")
+        return true;
+    return false;
+}
+
+Utd::Input::ThreatInspection::Signature::Signature()
+    :
+    y_saved(std::make_shared<Utd::Input::ThreatInspection::Signature::Y_Saved>())
+    , y_manual(std::make_shared<Utd::Input::ThreatInspection::Signature::Y_Manual>())
+{
+    y_saved->parent = this;
+    y_manual->parent = this;
+
+    yang_name = "signature"; yang_parent_name = "threat-inspection"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Utd::Input::ThreatInspection::Signature::~Signature()
+{
+}
+
+bool Utd::Input::ThreatInspection::Signature::has_data() const
+{
+    if (is_presence_container) return true;
+    return (y_saved !=  nullptr && y_saved->has_data())
+	|| (y_manual !=  nullptr && y_manual->has_data());
+}
+
+bool Utd::Input::ThreatInspection::Signature::has_operation() const
+{
+    return is_set(yfilter)
+	|| (y_saved !=  nullptr && y_saved->has_operation())
+	|| (y_manual !=  nullptr && y_manual->has_operation());
+}
+
+std::string Utd::Input::ThreatInspection::Signature::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:utd/input/threat-inspection/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Utd::Input::ThreatInspection::Signature::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "signature";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Utd::Input::ThreatInspection::Signature::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Utd::Input::ThreatInspection::Signature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "_saved")
+    {
+        if(y_saved == nullptr)
+        {
+            y_saved = std::make_shared<Utd::Input::ThreatInspection::Signature::Y_Saved>();
+        }
+        return y_saved;
+    }
+
+    if(child_yang_name == "_manual")
+    {
+        if(y_manual == nullptr)
+        {
+            y_manual = std::make_shared<Utd::Input::ThreatInspection::Signature::Y_Manual>();
+        }
+        return y_manual;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Utd::Input::ThreatInspection::Signature::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(y_saved != nullptr)
+    {
+        children["_saved"] = y_saved;
+    }
+
+    if(y_manual != nullptr)
+    {
+        children["_manual"] = y_manual;
+    }
+
+    return children;
+}
+
+void Utd::Input::ThreatInspection::Signature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Utd::Input::ThreatInspection::Signature::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Utd::Input::ThreatInspection::Signature::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "_saved" || name == "_manual")
+        return true;
+    return false;
+}
+
+Utd::Input::ThreatInspection::Signature::Y_Saved::Y_Saved()
+    :
+    update{YType::empty, "update"}
+{
+
+    yang_name = "_saved"; yang_parent_name = "signature"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Utd::Input::ThreatInspection::Signature::Y_Saved::~Y_Saved()
+{
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Saved::has_data() const
+{
+    if (is_presence_container) return true;
+    return update.is_set;
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Saved::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(update.yfilter);
+}
+
+std::string Utd::Input::ThreatInspection::Signature::Y_Saved::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:utd/input/threat-inspection/signature/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Utd::Input::ThreatInspection::Signature::Y_Saved::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "_saved";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Utd::Input::ThreatInspection::Signature::Y_Saved::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (update.is_set || is_set(update.yfilter)) leaf_name_data.push_back(update.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Utd::Input::ThreatInspection::Signature::Y_Saved::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Utd::Input::ThreatInspection::Signature::Y_Saved::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Utd::Input::ThreatInspection::Signature::Y_Saved::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "update")
+    {
+        update = value;
+        update.value_namespace = name_space;
+        update.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Utd::Input::ThreatInspection::Signature::Y_Saved::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "update")
+    {
+        update.yfilter = yfilter;
+    }
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Saved::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "update")
+        return true;
+    return false;
+}
+
+Utd::Input::ThreatInspection::Signature::Y_Manual::Y_Manual()
+    :
+    update(std::make_shared<Utd::Input::ThreatInspection::Signature::Y_Manual::Update>())
+{
+    update->parent = this;
+
+    yang_name = "_manual"; yang_parent_name = "signature"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Utd::Input::ThreatInspection::Signature::Y_Manual::~Y_Manual()
+{
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::has_data() const
+{
+    if (is_presence_container) return true;
+    return (update !=  nullptr && update->has_data());
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::has_operation() const
+{
+    return is_set(yfilter)
+	|| (update !=  nullptr && update->has_operation());
+}
+
+std::string Utd::Input::ThreatInspection::Signature::Y_Manual::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:utd/input/threat-inspection/signature/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Utd::Input::ThreatInspection::Signature::Y_Manual::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "_manual";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Utd::Input::ThreatInspection::Signature::Y_Manual::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Utd::Input::ThreatInspection::Signature::Y_Manual::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "update")
+    {
+        if(update == nullptr)
+        {
+            update = std::make_shared<Utd::Input::ThreatInspection::Signature::Y_Manual::Update>();
+        }
+        return update;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Utd::Input::ThreatInspection::Signature::Y_Manual::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(update != nullptr)
+    {
+        children["update"] = update;
+    }
+
+    return children;
+}
+
+void Utd::Input::ThreatInspection::Signature::Y_Manual::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Utd::Input::ThreatInspection::Signature::Y_Manual::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "update")
+        return true;
+    return false;
+}
+
+Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Update()
+    :
+    server(std::make_shared<Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server>())
+{
+    server->parent = this;
+
+    yang_name = "update"; yang_parent_name = "_manual"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Utd::Input::ThreatInspection::Signature::Y_Manual::Update::~Update()
+{
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::Update::has_data() const
+{
+    if (is_presence_container) return true;
+    return (server !=  nullptr && server->has_data());
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::Update::has_operation() const
+{
+    return is_set(yfilter)
+	|| (server !=  nullptr && server->has_operation());
+}
+
+std::string Utd::Input::ThreatInspection::Signature::Y_Manual::Update::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:utd/input/threat-inspection/signature/_manual/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Utd::Input::ThreatInspection::Signature::Y_Manual::Update::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "update";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Utd::Input::ThreatInspection::Signature::Y_Manual::Update::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Utd::Input::ThreatInspection::Signature::Y_Manual::Update::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "server")
+    {
+        if(server == nullptr)
+        {
+            server = std::make_shared<Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server>();
+        }
+        return server;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Utd::Input::ThreatInspection::Signature::Y_Manual::Update::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(server != nullptr)
+    {
+        children["server"] = server;
+    }
+
+    return children;
+}
+
+void Utd::Input::ThreatInspection::Signature::Y_Manual::Update::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Utd::Input::ThreatInspection::Signature::Y_Manual::Update::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::Update::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "server")
+        return true;
+    return false;
+}
+
+Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Server()
+    :
+    cisco(std::make_shared<Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Cisco>())
+    , url(std::make_shared<Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url>())
+{
+    cisco->parent = this;
+    url->parent = this;
+
+    yang_name = "server"; yang_parent_name = "update"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::~Server()
+{
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::has_data() const
+{
+    if (is_presence_container) return true;
+    return (cisco !=  nullptr && cisco->has_data())
+	|| (url !=  nullptr && url->has_data());
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::has_operation() const
+{
+    return is_set(yfilter)
+	|| (cisco !=  nullptr && cisco->has_operation())
+	|| (url !=  nullptr && url->has_operation());
+}
+
+std::string Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:utd/input/threat-inspection/signature/_manual/update/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cisco")
+    {
+        if(cisco == nullptr)
+        {
+            cisco = std::make_shared<Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Cisco>();
+        }
+        return cisco;
+    }
+
+    if(child_yang_name == "url")
+    {
+        if(url == nullptr)
+        {
+            url = std::make_shared<Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url>();
+        }
+        return url;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(cisco != nullptr)
+    {
+        children["cisco"] = cisco;
+    }
+
+    if(url != nullptr)
+    {
+        children["url"] = url;
+    }
+
+    return children;
+}
+
+void Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cisco" || name == "url")
+        return true;
+    return false;
+}
+
+Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Cisco::Cisco()
+    :
+    username{YType::str, "username"},
+    password{YType::str, "password"}
+{
+
+    yang_name = "cisco"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Cisco::~Cisco()
+{
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Cisco::has_data() const
+{
+    if (is_presence_container) return true;
+    return username.is_set
+	|| password.is_set;
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Cisco::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(username.yfilter)
+	|| ydk::is_set(password.yfilter);
+}
+
+std::string Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Cisco::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:utd/input/threat-inspection/signature/_manual/update/server/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Cisco::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Cisco::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Cisco::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Cisco::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Cisco::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "username")
+    {
+        username = value;
+        username.value_namespace = name_space;
+        username.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "password")
+    {
+        password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Cisco::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "username")
+    {
+        username.yfilter = yfilter;
+    }
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
+    }
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Cisco::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "username" || name == "password")
+        return true;
+    return false;
+}
+
+Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Url()
+    :
+    y_credentials(std::make_shared<Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_Credentials>())
+    , y_no_credentials(std::make_shared<Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_NoCredentials>())
+{
+    y_credentials->parent = this;
+    y_no_credentials->parent = this;
+
+    yang_name = "url"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::~Url()
+{
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::has_data() const
+{
+    if (is_presence_container) return true;
+    return (y_credentials !=  nullptr && y_credentials->has_data())
+	|| (y_no_credentials !=  nullptr && y_no_credentials->has_data());
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::has_operation() const
+{
+    return is_set(yfilter)
+	|| (y_credentials !=  nullptr && y_credentials->has_operation())
+	|| (y_no_credentials !=  nullptr && y_no_credentials->has_operation());
+}
+
+std::string Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:utd/input/threat-inspection/signature/_manual/update/server/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "url";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "_credentials")
+    {
+        if(y_credentials == nullptr)
+        {
+            y_credentials = std::make_shared<Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_Credentials>();
+        }
+        return y_credentials;
+    }
+
+    if(child_yang_name == "_no-credentials")
+    {
+        if(y_no_credentials == nullptr)
+        {
+            y_no_credentials = std::make_shared<Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_NoCredentials>();
+        }
+        return y_no_credentials;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(y_credentials != nullptr)
+    {
+        children["_credentials"] = y_credentials;
+    }
+
+    if(y_no_credentials != nullptr)
+    {
+        children["_no-credentials"] = y_no_credentials;
+    }
+
+    return children;
+}
+
+void Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "_credentials" || name == "_no-credentials")
+        return true;
+    return false;
+}
+
+Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_Credentials::Y_Credentials()
+    :
+    y_url{YType::str, "_url"},
+    username{YType::str, "username"},
+    password{YType::str, "password"}
+{
+
+    yang_name = "_credentials"; yang_parent_name = "url"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_Credentials::~Y_Credentials()
+{
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_Credentials::has_data() const
+{
+    if (is_presence_container) return true;
+    return y_url.is_set
+	|| username.is_set
+	|| password.is_set;
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_Credentials::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(y_url.yfilter)
+	|| ydk::is_set(username.yfilter)
+	|| ydk::is_set(password.yfilter);
+}
+
+std::string Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_Credentials::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:utd/input/threat-inspection/signature/_manual/update/server/url/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_Credentials::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "_credentials";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_Credentials::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (y_url.is_set || is_set(y_url.yfilter)) leaf_name_data.push_back(y_url.get_name_leafdata());
+    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_Credentials::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_Credentials::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_Credentials::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "_url")
+    {
+        y_url = value;
+        y_url.value_namespace = name_space;
+        y_url.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "username")
+    {
+        username = value;
+        username.value_namespace = name_space;
+        username.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "password")
+    {
+        password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_Credentials::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "_url")
+    {
+        y_url.yfilter = yfilter;
+    }
+    if(value_path == "username")
+    {
+        username.yfilter = yfilter;
+    }
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
+    }
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_Credentials::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "_url" || name == "username" || name == "password")
+        return true;
+    return false;
+}
+
+Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_NoCredentials::Y_NoCredentials()
+    :
+    y_url{YType::str, "_url"}
+{
+
+    yang_name = "_no-credentials"; yang_parent_name = "url"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_NoCredentials::~Y_NoCredentials()
+{
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_NoCredentials::has_data() const
+{
+    if (is_presence_container) return true;
+    return y_url.is_set;
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_NoCredentials::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(y_url.yfilter);
+}
+
+std::string Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_NoCredentials::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:utd/input/threat-inspection/signature/_manual/update/server/url/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_NoCredentials::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "_no-credentials";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_NoCredentials::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (y_url.is_set || is_set(y_url.yfilter)) leaf_name_data.push_back(y_url.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_NoCredentials::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_NoCredentials::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_NoCredentials::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "_url")
+    {
+        y_url = value;
+        y_url.value_namespace = name_space;
+        y_url.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_NoCredentials::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "_url")
+    {
+        y_url.yfilter = yfilter;
+    }
+}
+
+bool Utd::Input::ThreatInspection::Signature::Y_Manual::Update::Server::Url::Y_NoCredentials::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "_url")
+        return true;
+    return false;
+}
+
+Utd::Output::Output()
+    :
+    result{YType::str, "result"}
+{
+
+    yang_name = "output"; yang_parent_name = "utd"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Utd::Output::~Output()
+{
+}
+
+bool Utd::Output::has_data() const
+{
+    if (is_presence_container) return true;
+    return result.is_set;
+}
+
+bool Utd::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(result.yfilter);
+}
+
+std::string Utd::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rpc:utd/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Utd::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Utd::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Utd::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Utd::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Utd::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "result")
+    {
+        result = value;
+        result.value_namespace = name_space;
+        result.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Utd::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "result")
+    {
+        result.yfilter = yfilter;
+    }
+}
+
+bool Utd::Output::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "result")
         return true;

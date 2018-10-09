@@ -12,6 +12,5637 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_bgp_oper {
 
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnMspwAddress::L2vpnMspwAddress()
+    :
+    l2vpn_address{YType::str, "l2vpn-address"}
+{
+
+    yang_name = "l2vpn-mspw-address"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnMspwAddress::~L2vpnMspwAddress()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnMspwAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return l2vpn_address.is_set;
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnMspwAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(l2vpn_address.yfilter);
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnMspwAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2vpn-mspw-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnMspwAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (l2vpn_address.is_set || is_set(l2vpn_address.yfilter)) leaf_name_data.push_back(l2vpn_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnMspwAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnMspwAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "l2vpn-address")
+    {
+        l2vpn_address = value;
+        l2vpn_address.value_namespace = name_space;
+        l2vpn_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnMspwAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "l2vpn-address")
+    {
+        l2vpn_address.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnMspwAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2vpn-address")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv4SrPolicyAddress::Ipv4SrPolicyAddress()
+    :
+    ipv4_srpolicy_address{YType::str, "ipv4-srpolicy-address"}
+{
+
+    yang_name = "ipv4-sr-policy-address"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv4SrPolicyAddress::~Ipv4SrPolicyAddress()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv4SrPolicyAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return ipv4_srpolicy_address.is_set;
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv4SrPolicyAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_srpolicy_address.yfilter);
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv4SrPolicyAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-sr-policy-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv4SrPolicyAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipv4_srpolicy_address.is_set || is_set(ipv4_srpolicy_address.yfilter)) leaf_name_data.push_back(ipv4_srpolicy_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv4SrPolicyAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv4SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipv4-srpolicy-address")
+    {
+        ipv4_srpolicy_address = value;
+        ipv4_srpolicy_address.value_namespace = name_space;
+        ipv4_srpolicy_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv4SrPolicyAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-srpolicy-address")
+    {
+        ipv4_srpolicy_address.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv4SrPolicyAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-srpolicy-address")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv6SrPolicyAddress::Ipv6SrPolicyAddress()
+    :
+    ipv6_srpolicy_address{YType::str, "ipv6-srpolicy-address"}
+{
+
+    yang_name = "ipv6-sr-policy-address"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv6SrPolicyAddress::~Ipv6SrPolicyAddress()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv6SrPolicyAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return ipv6_srpolicy_address.is_set;
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv6SrPolicyAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipv6_srpolicy_address.yfilter);
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv6SrPolicyAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6-sr-policy-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv6SrPolicyAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipv6_srpolicy_address.is_set || is_set(ipv6_srpolicy_address.yfilter)) leaf_name_data.push_back(ipv6_srpolicy_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv6SrPolicyAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv6SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipv6-srpolicy-address")
+    {
+        ipv6_srpolicy_address = value;
+        ipv6_srpolicy_address.value_namespace = name_space;
+        ipv6_srpolicy_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv6SrPolicyAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv6-srpolicy-address")
+    {
+        ipv6_srpolicy_address.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv6SrPolicyAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-srpolicy-address")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::GlobalAfProcessInfo()
+    :
+    vrf_name{YType::str, "vrf-name"},
+    af_name{YType::enumeration, "af-name"},
+    is_nsr_enabled{YType::boolean, "is-nsr-enabled"}
+        ,
+    global(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global>())
+    , vrf(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Vrf>())
+{
+    global->parent = this;
+    vrf->parent = this;
+
+    yang_name = "global-af-process-info"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::~GlobalAfProcessInfo()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return vrf_name.is_set
+	|| af_name.is_set
+	|| is_nsr_enabled.is_set
+	|| (global !=  nullptr && global->has_data())
+	|| (vrf !=  nullptr && vrf->has_data());
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(is_nsr_enabled.yfilter)
+	|| (global !=  nullptr && global->has_operation())
+	|| (vrf !=  nullptr && vrf->has_operation());
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "global-af-process-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (is_nsr_enabled.is_set || is_set(is_nsr_enabled.yfilter)) leaf_name_data.push_back(is_nsr_enabled.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "global")
+    {
+        if(global == nullptr)
+        {
+            global = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global>();
+        }
+        return global;
+    }
+
+    if(child_yang_name == "vrf")
+    {
+        if(vrf == nullptr)
+        {
+            vrf = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Vrf>();
+        }
+        return vrf;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(global != nullptr)
+    {
+        children["global"] = global;
+    }
+
+    if(vrf != nullptr)
+    {
+        children["vrf"] = vrf;
+    }
+
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-nsr-enabled")
+    {
+        is_nsr_enabled = value;
+        is_nsr_enabled.value_namespace = name_space;
+        is_nsr_enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "is-nsr-enabled")
+    {
+        is_nsr_enabled.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global" || name == "vrf" || name == "vrf-name" || name == "af-name" || name == "is-nsr-enabled")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::Global()
+    :
+    scanner_period{YType::uint16, "scanner-period"},
+    nh_tunnel_version{YType::uint32, "nh-tunnel-version"},
+    scan_prefixes{YType::uint32, "scan-prefixes"},
+    scan_segment_prefixes{YType::uint32, "scan-segment-prefixes"},
+    scan_segments{YType::uint8, "scan-segments"},
+    inter_as_install_enabled{YType::boolean, "inter-as-install-enabled"},
+    global_mcast_enabled{YType::boolean, "global-mcast-enabled"},
+    segmented_mcast_enabled{YType::boolean, "segmented-mcast-enabled"},
+    gblafrpki_disable{YType::boolean, "gblafrpki-disable"},
+    gblafrpki_use_validity{YType::boolean, "gblafrpki-use-validity"},
+    gblafrpki_allow_invalid{YType::boolean, "gblafrpki-allow-invalid"},
+    gblafrpki_signal_ibgp{YType::boolean, "gblafrpki-signal-ibgp"},
+    update_wait_install_enabled{YType::boolean, "update-wait-install-enabled"},
+    rib_ack_requests{YType::uint32, "rib-ack-requests"},
+    rib_acks_received{YType::uint32, "rib-acks-received"},
+    rib_slow_acks{YType::uint32, "rib-slow-acks"},
+    is_perm_net_cfg{YType::boolean, "is-perm-net-cfg"},
+    perm_net_del_count{YType::uint16, "perm-net-del-count"},
+    perm_net_stale_del_count{YType::uint16, "perm-net-stale-del-count"},
+    perm_net_stale_mark_count{YType::uint16, "perm-net-stale-mark-count"},
+    perm_net_insert_count{YType::uint16, "perm-net-insert-count"},
+    perm_net_existing_count{YType::uint16, "perm-net-existing-count"},
+    perm_net_rpl_query_count{YType::uint16, "perm-net-rpl-query-count"},
+    perm_net_rpl_process_count{YType::uint16, "perm-net-rpl-process-count"},
+    perm_nbr_count{YType::uint16, "perm-nbr-count"},
+    rib_perm_pelem_not_found_count{YType::uint16, "rib-perm-pelem-not-found-count"},
+    rib_perm_path_not_found_count{YType::uint16, "rib-perm-path-not-found-count"},
+    rib_perm_pelem_found_count{YType::uint16, "rib-perm-pelem-found-count"},
+    rib_reg_path_found_count{YType::uint16, "rib-reg-path-found-count"},
+    rib_perm_path_found_count{YType::uint16, "rib-perm-path-found-count"},
+    perm_pelem_free_count{YType::uint16, "perm-pelem-free-count"},
+    perm_path_refresh_count{YType::uint16, "perm-path-refresh-count"},
+    perm_pelem_bump_count{YType::uint16, "perm-pelem-bump-count"},
+    perm_pelem_all_bump_count{YType::uint16, "perm-pelem-all-bump-count"}
+        ,
+    rib_install(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall>())
+    , syncgrp_version(this, {})
+{
+    rib_install->parent = this;
+
+    yang_name = "global"; yang_parent_name = "global-af-process-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::~Global()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<syncgrp_version.len(); index++)
+    {
+        if(syncgrp_version[index]->has_data())
+            return true;
+    }
+    return scanner_period.is_set
+	|| nh_tunnel_version.is_set
+	|| scan_prefixes.is_set
+	|| scan_segment_prefixes.is_set
+	|| scan_segments.is_set
+	|| inter_as_install_enabled.is_set
+	|| global_mcast_enabled.is_set
+	|| segmented_mcast_enabled.is_set
+	|| gblafrpki_disable.is_set
+	|| gblafrpki_use_validity.is_set
+	|| gblafrpki_allow_invalid.is_set
+	|| gblafrpki_signal_ibgp.is_set
+	|| update_wait_install_enabled.is_set
+	|| rib_ack_requests.is_set
+	|| rib_acks_received.is_set
+	|| rib_slow_acks.is_set
+	|| is_perm_net_cfg.is_set
+	|| perm_net_del_count.is_set
+	|| perm_net_stale_del_count.is_set
+	|| perm_net_stale_mark_count.is_set
+	|| perm_net_insert_count.is_set
+	|| perm_net_existing_count.is_set
+	|| perm_net_rpl_query_count.is_set
+	|| perm_net_rpl_process_count.is_set
+	|| perm_nbr_count.is_set
+	|| rib_perm_pelem_not_found_count.is_set
+	|| rib_perm_path_not_found_count.is_set
+	|| rib_perm_pelem_found_count.is_set
+	|| rib_reg_path_found_count.is_set
+	|| rib_perm_path_found_count.is_set
+	|| perm_pelem_free_count.is_set
+	|| perm_path_refresh_count.is_set
+	|| perm_pelem_bump_count.is_set
+	|| perm_pelem_all_bump_count.is_set
+	|| (rib_install !=  nullptr && rib_install->has_data());
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::has_operation() const
+{
+    for (std::size_t index=0; index<syncgrp_version.len(); index++)
+    {
+        if(syncgrp_version[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(scanner_period.yfilter)
+	|| ydk::is_set(nh_tunnel_version.yfilter)
+	|| ydk::is_set(scan_prefixes.yfilter)
+	|| ydk::is_set(scan_segment_prefixes.yfilter)
+	|| ydk::is_set(scan_segments.yfilter)
+	|| ydk::is_set(inter_as_install_enabled.yfilter)
+	|| ydk::is_set(global_mcast_enabled.yfilter)
+	|| ydk::is_set(segmented_mcast_enabled.yfilter)
+	|| ydk::is_set(gblafrpki_disable.yfilter)
+	|| ydk::is_set(gblafrpki_use_validity.yfilter)
+	|| ydk::is_set(gblafrpki_allow_invalid.yfilter)
+	|| ydk::is_set(gblafrpki_signal_ibgp.yfilter)
+	|| ydk::is_set(update_wait_install_enabled.yfilter)
+	|| ydk::is_set(rib_ack_requests.yfilter)
+	|| ydk::is_set(rib_acks_received.yfilter)
+	|| ydk::is_set(rib_slow_acks.yfilter)
+	|| ydk::is_set(is_perm_net_cfg.yfilter)
+	|| ydk::is_set(perm_net_del_count.yfilter)
+	|| ydk::is_set(perm_net_stale_del_count.yfilter)
+	|| ydk::is_set(perm_net_stale_mark_count.yfilter)
+	|| ydk::is_set(perm_net_insert_count.yfilter)
+	|| ydk::is_set(perm_net_existing_count.yfilter)
+	|| ydk::is_set(perm_net_rpl_query_count.yfilter)
+	|| ydk::is_set(perm_net_rpl_process_count.yfilter)
+	|| ydk::is_set(perm_nbr_count.yfilter)
+	|| ydk::is_set(rib_perm_pelem_not_found_count.yfilter)
+	|| ydk::is_set(rib_perm_path_not_found_count.yfilter)
+	|| ydk::is_set(rib_perm_pelem_found_count.yfilter)
+	|| ydk::is_set(rib_reg_path_found_count.yfilter)
+	|| ydk::is_set(rib_perm_path_found_count.yfilter)
+	|| ydk::is_set(perm_pelem_free_count.yfilter)
+	|| ydk::is_set(perm_path_refresh_count.yfilter)
+	|| ydk::is_set(perm_pelem_bump_count.yfilter)
+	|| ydk::is_set(perm_pelem_all_bump_count.yfilter)
+	|| (rib_install !=  nullptr && rib_install->has_operation());
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "global";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (scanner_period.is_set || is_set(scanner_period.yfilter)) leaf_name_data.push_back(scanner_period.get_name_leafdata());
+    if (nh_tunnel_version.is_set || is_set(nh_tunnel_version.yfilter)) leaf_name_data.push_back(nh_tunnel_version.get_name_leafdata());
+    if (scan_prefixes.is_set || is_set(scan_prefixes.yfilter)) leaf_name_data.push_back(scan_prefixes.get_name_leafdata());
+    if (scan_segment_prefixes.is_set || is_set(scan_segment_prefixes.yfilter)) leaf_name_data.push_back(scan_segment_prefixes.get_name_leafdata());
+    if (scan_segments.is_set || is_set(scan_segments.yfilter)) leaf_name_data.push_back(scan_segments.get_name_leafdata());
+    if (inter_as_install_enabled.is_set || is_set(inter_as_install_enabled.yfilter)) leaf_name_data.push_back(inter_as_install_enabled.get_name_leafdata());
+    if (global_mcast_enabled.is_set || is_set(global_mcast_enabled.yfilter)) leaf_name_data.push_back(global_mcast_enabled.get_name_leafdata());
+    if (segmented_mcast_enabled.is_set || is_set(segmented_mcast_enabled.yfilter)) leaf_name_data.push_back(segmented_mcast_enabled.get_name_leafdata());
+    if (gblafrpki_disable.is_set || is_set(gblafrpki_disable.yfilter)) leaf_name_data.push_back(gblafrpki_disable.get_name_leafdata());
+    if (gblafrpki_use_validity.is_set || is_set(gblafrpki_use_validity.yfilter)) leaf_name_data.push_back(gblafrpki_use_validity.get_name_leafdata());
+    if (gblafrpki_allow_invalid.is_set || is_set(gblafrpki_allow_invalid.yfilter)) leaf_name_data.push_back(gblafrpki_allow_invalid.get_name_leafdata());
+    if (gblafrpki_signal_ibgp.is_set || is_set(gblafrpki_signal_ibgp.yfilter)) leaf_name_data.push_back(gblafrpki_signal_ibgp.get_name_leafdata());
+    if (update_wait_install_enabled.is_set || is_set(update_wait_install_enabled.yfilter)) leaf_name_data.push_back(update_wait_install_enabled.get_name_leafdata());
+    if (rib_ack_requests.is_set || is_set(rib_ack_requests.yfilter)) leaf_name_data.push_back(rib_ack_requests.get_name_leafdata());
+    if (rib_acks_received.is_set || is_set(rib_acks_received.yfilter)) leaf_name_data.push_back(rib_acks_received.get_name_leafdata());
+    if (rib_slow_acks.is_set || is_set(rib_slow_acks.yfilter)) leaf_name_data.push_back(rib_slow_acks.get_name_leafdata());
+    if (is_perm_net_cfg.is_set || is_set(is_perm_net_cfg.yfilter)) leaf_name_data.push_back(is_perm_net_cfg.get_name_leafdata());
+    if (perm_net_del_count.is_set || is_set(perm_net_del_count.yfilter)) leaf_name_data.push_back(perm_net_del_count.get_name_leafdata());
+    if (perm_net_stale_del_count.is_set || is_set(perm_net_stale_del_count.yfilter)) leaf_name_data.push_back(perm_net_stale_del_count.get_name_leafdata());
+    if (perm_net_stale_mark_count.is_set || is_set(perm_net_stale_mark_count.yfilter)) leaf_name_data.push_back(perm_net_stale_mark_count.get_name_leafdata());
+    if (perm_net_insert_count.is_set || is_set(perm_net_insert_count.yfilter)) leaf_name_data.push_back(perm_net_insert_count.get_name_leafdata());
+    if (perm_net_existing_count.is_set || is_set(perm_net_existing_count.yfilter)) leaf_name_data.push_back(perm_net_existing_count.get_name_leafdata());
+    if (perm_net_rpl_query_count.is_set || is_set(perm_net_rpl_query_count.yfilter)) leaf_name_data.push_back(perm_net_rpl_query_count.get_name_leafdata());
+    if (perm_net_rpl_process_count.is_set || is_set(perm_net_rpl_process_count.yfilter)) leaf_name_data.push_back(perm_net_rpl_process_count.get_name_leafdata());
+    if (perm_nbr_count.is_set || is_set(perm_nbr_count.yfilter)) leaf_name_data.push_back(perm_nbr_count.get_name_leafdata());
+    if (rib_perm_pelem_not_found_count.is_set || is_set(rib_perm_pelem_not_found_count.yfilter)) leaf_name_data.push_back(rib_perm_pelem_not_found_count.get_name_leafdata());
+    if (rib_perm_path_not_found_count.is_set || is_set(rib_perm_path_not_found_count.yfilter)) leaf_name_data.push_back(rib_perm_path_not_found_count.get_name_leafdata());
+    if (rib_perm_pelem_found_count.is_set || is_set(rib_perm_pelem_found_count.yfilter)) leaf_name_data.push_back(rib_perm_pelem_found_count.get_name_leafdata());
+    if (rib_reg_path_found_count.is_set || is_set(rib_reg_path_found_count.yfilter)) leaf_name_data.push_back(rib_reg_path_found_count.get_name_leafdata());
+    if (rib_perm_path_found_count.is_set || is_set(rib_perm_path_found_count.yfilter)) leaf_name_data.push_back(rib_perm_path_found_count.get_name_leafdata());
+    if (perm_pelem_free_count.is_set || is_set(perm_pelem_free_count.yfilter)) leaf_name_data.push_back(perm_pelem_free_count.get_name_leafdata());
+    if (perm_path_refresh_count.is_set || is_set(perm_path_refresh_count.yfilter)) leaf_name_data.push_back(perm_path_refresh_count.get_name_leafdata());
+    if (perm_pelem_bump_count.is_set || is_set(perm_pelem_bump_count.yfilter)) leaf_name_data.push_back(perm_pelem_bump_count.get_name_leafdata());
+    if (perm_pelem_all_bump_count.is_set || is_set(perm_pelem_all_bump_count.yfilter)) leaf_name_data.push_back(perm_pelem_all_bump_count.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rib-install")
+    {
+        if(rib_install == nullptr)
+        {
+            rib_install = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall>();
+        }
+        return rib_install;
+    }
+
+    if(child_yang_name == "syncgrp-version")
+    {
+        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::SyncgrpVersion>();
+        c->parent = this;
+        syncgrp_version.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(rib_install != nullptr)
+    {
+        children["rib-install"] = rib_install;
+    }
+
+    count = 0;
+    for (auto c : syncgrp_version.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "scanner-period")
+    {
+        scanner_period = value;
+        scanner_period.value_namespace = name_space;
+        scanner_period.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nh-tunnel-version")
+    {
+        nh_tunnel_version = value;
+        nh_tunnel_version.value_namespace = name_space;
+        nh_tunnel_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "scan-prefixes")
+    {
+        scan_prefixes = value;
+        scan_prefixes.value_namespace = name_space;
+        scan_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "scan-segment-prefixes")
+    {
+        scan_segment_prefixes = value;
+        scan_segment_prefixes.value_namespace = name_space;
+        scan_segment_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "scan-segments")
+    {
+        scan_segments = value;
+        scan_segments.value_namespace = name_space;
+        scan_segments.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "inter-as-install-enabled")
+    {
+        inter_as_install_enabled = value;
+        inter_as_install_enabled.value_namespace = name_space;
+        inter_as_install_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "global-mcast-enabled")
+    {
+        global_mcast_enabled = value;
+        global_mcast_enabled.value_namespace = name_space;
+        global_mcast_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "segmented-mcast-enabled")
+    {
+        segmented_mcast_enabled = value;
+        segmented_mcast_enabled.value_namespace = name_space;
+        segmented_mcast_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "gblafrpki-disable")
+    {
+        gblafrpki_disable = value;
+        gblafrpki_disable.value_namespace = name_space;
+        gblafrpki_disable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "gblafrpki-use-validity")
+    {
+        gblafrpki_use_validity = value;
+        gblafrpki_use_validity.value_namespace = name_space;
+        gblafrpki_use_validity.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "gblafrpki-allow-invalid")
+    {
+        gblafrpki_allow_invalid = value;
+        gblafrpki_allow_invalid.value_namespace = name_space;
+        gblafrpki_allow_invalid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "gblafrpki-signal-ibgp")
+    {
+        gblafrpki_signal_ibgp = value;
+        gblafrpki_signal_ibgp.value_namespace = name_space;
+        gblafrpki_signal_ibgp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "update-wait-install-enabled")
+    {
+        update_wait_install_enabled = value;
+        update_wait_install_enabled.value_namespace = name_space;
+        update_wait_install_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-ack-requests")
+    {
+        rib_ack_requests = value;
+        rib_ack_requests.value_namespace = name_space;
+        rib_ack_requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-acks-received")
+    {
+        rib_acks_received = value;
+        rib_acks_received.value_namespace = name_space;
+        rib_acks_received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-slow-acks")
+    {
+        rib_slow_acks = value;
+        rib_slow_acks.value_namespace = name_space;
+        rib_slow_acks.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-perm-net-cfg")
+    {
+        is_perm_net_cfg = value;
+        is_perm_net_cfg.value_namespace = name_space;
+        is_perm_net_cfg.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "perm-net-del-count")
+    {
+        perm_net_del_count = value;
+        perm_net_del_count.value_namespace = name_space;
+        perm_net_del_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "perm-net-stale-del-count")
+    {
+        perm_net_stale_del_count = value;
+        perm_net_stale_del_count.value_namespace = name_space;
+        perm_net_stale_del_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "perm-net-stale-mark-count")
+    {
+        perm_net_stale_mark_count = value;
+        perm_net_stale_mark_count.value_namespace = name_space;
+        perm_net_stale_mark_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "perm-net-insert-count")
+    {
+        perm_net_insert_count = value;
+        perm_net_insert_count.value_namespace = name_space;
+        perm_net_insert_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "perm-net-existing-count")
+    {
+        perm_net_existing_count = value;
+        perm_net_existing_count.value_namespace = name_space;
+        perm_net_existing_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "perm-net-rpl-query-count")
+    {
+        perm_net_rpl_query_count = value;
+        perm_net_rpl_query_count.value_namespace = name_space;
+        perm_net_rpl_query_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "perm-net-rpl-process-count")
+    {
+        perm_net_rpl_process_count = value;
+        perm_net_rpl_process_count.value_namespace = name_space;
+        perm_net_rpl_process_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "perm-nbr-count")
+    {
+        perm_nbr_count = value;
+        perm_nbr_count.value_namespace = name_space;
+        perm_nbr_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-perm-pelem-not-found-count")
+    {
+        rib_perm_pelem_not_found_count = value;
+        rib_perm_pelem_not_found_count.value_namespace = name_space;
+        rib_perm_pelem_not_found_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-perm-path-not-found-count")
+    {
+        rib_perm_path_not_found_count = value;
+        rib_perm_path_not_found_count.value_namespace = name_space;
+        rib_perm_path_not_found_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-perm-pelem-found-count")
+    {
+        rib_perm_pelem_found_count = value;
+        rib_perm_pelem_found_count.value_namespace = name_space;
+        rib_perm_pelem_found_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-reg-path-found-count")
+    {
+        rib_reg_path_found_count = value;
+        rib_reg_path_found_count.value_namespace = name_space;
+        rib_reg_path_found_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-perm-path-found-count")
+    {
+        rib_perm_path_found_count = value;
+        rib_perm_path_found_count.value_namespace = name_space;
+        rib_perm_path_found_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "perm-pelem-free-count")
+    {
+        perm_pelem_free_count = value;
+        perm_pelem_free_count.value_namespace = name_space;
+        perm_pelem_free_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "perm-path-refresh-count")
+    {
+        perm_path_refresh_count = value;
+        perm_path_refresh_count.value_namespace = name_space;
+        perm_path_refresh_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "perm-pelem-bump-count")
+    {
+        perm_pelem_bump_count = value;
+        perm_pelem_bump_count.value_namespace = name_space;
+        perm_pelem_bump_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "perm-pelem-all-bump-count")
+    {
+        perm_pelem_all_bump_count = value;
+        perm_pelem_all_bump_count.value_namespace = name_space;
+        perm_pelem_all_bump_count.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "scanner-period")
+    {
+        scanner_period.yfilter = yfilter;
+    }
+    if(value_path == "nh-tunnel-version")
+    {
+        nh_tunnel_version.yfilter = yfilter;
+    }
+    if(value_path == "scan-prefixes")
+    {
+        scan_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "scan-segment-prefixes")
+    {
+        scan_segment_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "scan-segments")
+    {
+        scan_segments.yfilter = yfilter;
+    }
+    if(value_path == "inter-as-install-enabled")
+    {
+        inter_as_install_enabled.yfilter = yfilter;
+    }
+    if(value_path == "global-mcast-enabled")
+    {
+        global_mcast_enabled.yfilter = yfilter;
+    }
+    if(value_path == "segmented-mcast-enabled")
+    {
+        segmented_mcast_enabled.yfilter = yfilter;
+    }
+    if(value_path == "gblafrpki-disable")
+    {
+        gblafrpki_disable.yfilter = yfilter;
+    }
+    if(value_path == "gblafrpki-use-validity")
+    {
+        gblafrpki_use_validity.yfilter = yfilter;
+    }
+    if(value_path == "gblafrpki-allow-invalid")
+    {
+        gblafrpki_allow_invalid.yfilter = yfilter;
+    }
+    if(value_path == "gblafrpki-signal-ibgp")
+    {
+        gblafrpki_signal_ibgp.yfilter = yfilter;
+    }
+    if(value_path == "update-wait-install-enabled")
+    {
+        update_wait_install_enabled.yfilter = yfilter;
+    }
+    if(value_path == "rib-ack-requests")
+    {
+        rib_ack_requests.yfilter = yfilter;
+    }
+    if(value_path == "rib-acks-received")
+    {
+        rib_acks_received.yfilter = yfilter;
+    }
+    if(value_path == "rib-slow-acks")
+    {
+        rib_slow_acks.yfilter = yfilter;
+    }
+    if(value_path == "is-perm-net-cfg")
+    {
+        is_perm_net_cfg.yfilter = yfilter;
+    }
+    if(value_path == "perm-net-del-count")
+    {
+        perm_net_del_count.yfilter = yfilter;
+    }
+    if(value_path == "perm-net-stale-del-count")
+    {
+        perm_net_stale_del_count.yfilter = yfilter;
+    }
+    if(value_path == "perm-net-stale-mark-count")
+    {
+        perm_net_stale_mark_count.yfilter = yfilter;
+    }
+    if(value_path == "perm-net-insert-count")
+    {
+        perm_net_insert_count.yfilter = yfilter;
+    }
+    if(value_path == "perm-net-existing-count")
+    {
+        perm_net_existing_count.yfilter = yfilter;
+    }
+    if(value_path == "perm-net-rpl-query-count")
+    {
+        perm_net_rpl_query_count.yfilter = yfilter;
+    }
+    if(value_path == "perm-net-rpl-process-count")
+    {
+        perm_net_rpl_process_count.yfilter = yfilter;
+    }
+    if(value_path == "perm-nbr-count")
+    {
+        perm_nbr_count.yfilter = yfilter;
+    }
+    if(value_path == "rib-perm-pelem-not-found-count")
+    {
+        rib_perm_pelem_not_found_count.yfilter = yfilter;
+    }
+    if(value_path == "rib-perm-path-not-found-count")
+    {
+        rib_perm_path_not_found_count.yfilter = yfilter;
+    }
+    if(value_path == "rib-perm-pelem-found-count")
+    {
+        rib_perm_pelem_found_count.yfilter = yfilter;
+    }
+    if(value_path == "rib-reg-path-found-count")
+    {
+        rib_reg_path_found_count.yfilter = yfilter;
+    }
+    if(value_path == "rib-perm-path-found-count")
+    {
+        rib_perm_path_found_count.yfilter = yfilter;
+    }
+    if(value_path == "perm-pelem-free-count")
+    {
+        perm_pelem_free_count.yfilter = yfilter;
+    }
+    if(value_path == "perm-path-refresh-count")
+    {
+        perm_path_refresh_count.yfilter = yfilter;
+    }
+    if(value_path == "perm-pelem-bump-count")
+    {
+        perm_pelem_bump_count.yfilter = yfilter;
+    }
+    if(value_path == "perm-pelem-all-bump-count")
+    {
+        perm_pelem_all_bump_count.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rib-install" || name == "syncgrp-version" || name == "scanner-period" || name == "nh-tunnel-version" || name == "scan-prefixes" || name == "scan-segment-prefixes" || name == "scan-segments" || name == "inter-as-install-enabled" || name == "global-mcast-enabled" || name == "segmented-mcast-enabled" || name == "gblafrpki-disable" || name == "gblafrpki-use-validity" || name == "gblafrpki-allow-invalid" || name == "gblafrpki-signal-ibgp" || name == "update-wait-install-enabled" || name == "rib-ack-requests" || name == "rib-acks-received" || name == "rib-slow-acks" || name == "is-perm-net-cfg" || name == "perm-net-del-count" || name == "perm-net-stale-del-count" || name == "perm-net-stale-mark-count" || name == "perm-net-insert-count" || name == "perm-net-existing-count" || name == "perm-net-rpl-query-count" || name == "perm-net-rpl-process-count" || name == "perm-nbr-count" || name == "rib-perm-pelem-not-found-count" || name == "rib-perm-path-not-found-count" || name == "rib-perm-pelem-found-count" || name == "rib-reg-path-found-count" || name == "rib-perm-path-found-count" || name == "perm-pelem-free-count" || name == "perm-path-refresh-count" || name == "perm-pelem-bump-count" || name == "perm-pelem-all-bump-count")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::RibInstall()
+    :
+    installed_count{YType::uint32, "installed-count"},
+    modified_count{YType::uint32, "modified-count"},
+    skipped_count{YType::uint32, "skipped-count"},
+    withdrawn_count{YType::uint32, "withdrawn-count"},
+    start_version{YType::uint32, "start-version"},
+    target_version{YType::uint32, "target-version"}
+        ,
+    update_time(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::UpdateTime>())
+    , install_time(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::InstallTime>())
+{
+    update_time->parent = this;
+    install_time->parent = this;
+
+    yang_name = "rib-install"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::~RibInstall()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::has_data() const
+{
+    if (is_presence_container) return true;
+    return installed_count.is_set
+	|| modified_count.is_set
+	|| skipped_count.is_set
+	|| withdrawn_count.is_set
+	|| start_version.is_set
+	|| target_version.is_set
+	|| (update_time !=  nullptr && update_time->has_data())
+	|| (install_time !=  nullptr && install_time->has_data());
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(installed_count.yfilter)
+	|| ydk::is_set(modified_count.yfilter)
+	|| ydk::is_set(skipped_count.yfilter)
+	|| ydk::is_set(withdrawn_count.yfilter)
+	|| ydk::is_set(start_version.yfilter)
+	|| ydk::is_set(target_version.yfilter)
+	|| (update_time !=  nullptr && update_time->has_operation())
+	|| (install_time !=  nullptr && install_time->has_operation());
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rib-install";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (installed_count.is_set || is_set(installed_count.yfilter)) leaf_name_data.push_back(installed_count.get_name_leafdata());
+    if (modified_count.is_set || is_set(modified_count.yfilter)) leaf_name_data.push_back(modified_count.get_name_leafdata());
+    if (skipped_count.is_set || is_set(skipped_count.yfilter)) leaf_name_data.push_back(skipped_count.get_name_leafdata());
+    if (withdrawn_count.is_set || is_set(withdrawn_count.yfilter)) leaf_name_data.push_back(withdrawn_count.get_name_leafdata());
+    if (start_version.is_set || is_set(start_version.yfilter)) leaf_name_data.push_back(start_version.get_name_leafdata());
+    if (target_version.is_set || is_set(target_version.yfilter)) leaf_name_data.push_back(target_version.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "update-time")
+    {
+        if(update_time == nullptr)
+        {
+            update_time = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::UpdateTime>();
+        }
+        return update_time;
+    }
+
+    if(child_yang_name == "install-time")
+    {
+        if(install_time == nullptr)
+        {
+            install_time = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::InstallTime>();
+        }
+        return install_time;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(update_time != nullptr)
+    {
+        children["update-time"] = update_time;
+    }
+
+    if(install_time != nullptr)
+    {
+        children["install-time"] = install_time;
+    }
+
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "installed-count")
+    {
+        installed_count = value;
+        installed_count.value_namespace = name_space;
+        installed_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "modified-count")
+    {
+        modified_count = value;
+        modified_count.value_namespace = name_space;
+        modified_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "skipped-count")
+    {
+        skipped_count = value;
+        skipped_count.value_namespace = name_space;
+        skipped_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "withdrawn-count")
+    {
+        withdrawn_count = value;
+        withdrawn_count.value_namespace = name_space;
+        withdrawn_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start-version")
+    {
+        start_version = value;
+        start_version.value_namespace = name_space;
+        start_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "target-version")
+    {
+        target_version = value;
+        target_version.value_namespace = name_space;
+        target_version.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "installed-count")
+    {
+        installed_count.yfilter = yfilter;
+    }
+    if(value_path == "modified-count")
+    {
+        modified_count.yfilter = yfilter;
+    }
+    if(value_path == "skipped-count")
+    {
+        skipped_count.yfilter = yfilter;
+    }
+    if(value_path == "withdrawn-count")
+    {
+        withdrawn_count.yfilter = yfilter;
+    }
+    if(value_path == "start-version")
+    {
+        start_version.yfilter = yfilter;
+    }
+    if(value_path == "target-version")
+    {
+        target_version.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "update-time" || name == "install-time" || name == "installed-count" || name == "modified-count" || name == "skipped-count" || name == "withdrawn-count" || name == "start-version" || name == "target-version")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::UpdateTime::UpdateTime()
+    :
+    seconds{YType::uint32, "seconds"},
+    nanoseconds{YType::uint32, "nanoseconds"}
+{
+
+    yang_name = "update-time"; yang_parent_name = "rib-install"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::UpdateTime::~UpdateTime()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::UpdateTime::has_data() const
+{
+    if (is_presence_container) return true;
+    return seconds.is_set
+	|| nanoseconds.is_set;
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::UpdateTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(seconds.yfilter)
+	|| ydk::is_set(nanoseconds.yfilter);
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::UpdateTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "update-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::UpdateTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::UpdateTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::UpdateTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::UpdateTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "seconds")
+    {
+        seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::UpdateTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::UpdateTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "seconds" || name == "nanoseconds")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::InstallTime::InstallTime()
+    :
+    seconds{YType::uint32, "seconds"},
+    nanoseconds{YType::uint32, "nanoseconds"}
+{
+
+    yang_name = "install-time"; yang_parent_name = "rib-install"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::InstallTime::~InstallTime()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::InstallTime::has_data() const
+{
+    if (is_presence_container) return true;
+    return seconds.is_set
+	|| nanoseconds.is_set;
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::InstallTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(seconds.yfilter)
+	|| ydk::is_set(nanoseconds.yfilter);
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::InstallTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "install-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::InstallTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::InstallTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::InstallTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::InstallTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "seconds")
+    {
+        seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::InstallTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::InstallTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "seconds" || name == "nanoseconds")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::SyncgrpVersion::SyncgrpVersion()
+    :
+    entry{YType::uint32, "entry"}
+{
+
+    yang_name = "syncgrp-version"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::SyncgrpVersion::~SyncgrpVersion()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::SyncgrpVersion::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::SyncgrpVersion::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::SyncgrpVersion::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "syncgrp-version";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::SyncgrpVersion::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::SyncgrpVersion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::SyncgrpVersion::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::SyncgrpVersion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::SyncgrpVersion::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::SyncgrpVersion::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Vrf::Vrf()
+    :
+    table_is_active{YType::boolean, "table-is-active"},
+    table_id{YType::uint32, "table-id"},
+    table_version{YType::uint32, "table-version"},
+    rd_version{YType::uint32, "rd-version"},
+    rib_version{YType::uint32, "rib-version"},
+    nsr_conv_version{YType::uint32, "nsr-conv-version"},
+    nsr_is_conv{YType::boolean, "nsr-is-conv"},
+    client_reflection_enabled{YType::boolean, "client-reflection-enabled"},
+    dampening_enabled{YType::boolean, "dampening-enabled"},
+    ebgp_distance{YType::uint16, "ebgp-distance"},
+    ibgp_distance{YType::uint16, "ibgp-distance"},
+    aggregates_distance{YType::uint16, "aggregates-distance"},
+    dynamic_med_enabled{YType::boolean, "dynamic-med-enabled"},
+    dynamic_med_interval{YType::uint16, "dynamic-med-interval"},
+    dynamic_med_timer_running{YType::boolean, "dynamic-med-timer-running"},
+    dynamic_med_timer_value{YType::uint16, "dynamic-med-timer-value"},
+    dynamic_med_periodic_timer_running{YType::boolean, "dynamic-med-periodic-timer-running"},
+    dynamic_med_periodic_timer_value{YType::uint16, "dynamic-med-periodic-timer-value"},
+    rib_has_converged{YType::boolean, "rib-has-converged"},
+    rib_convergence_version{YType::uint32, "rib-convergence-version"},
+    is_rib_table_full{YType::boolean, "is-rib-table-full"},
+    rib_table_full_version{YType::uint32, "rib-table-full-version"},
+    nexthop_resolution_minimum_prefix_length_configured{YType::boolean, "nexthop-resolution-minimum-prefix-length-configured"},
+    nexthop_resolution_minimum_prefix_length{YType::uint32, "nexthop-resolution-minimum-prefix-length"},
+    selective_ebgp_multipath_enabled{YType::boolean, "selective-ebgp-multipath-enabled"},
+    selective_ibgp_multipath_enabled{YType::boolean, "selective-ibgp-multipath-enabled"},
+    selective_eibgp_multipath_enabled{YType::boolean, "selective-eibgp-multipath-enabled"},
+    rib_acked_table_version{YType::uint32, "rib-acked-table-version"}
+{
+
+    yang_name = "vrf"; yang_parent_name = "global-af-process-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Vrf::~Vrf()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Vrf::has_data() const
+{
+    if (is_presence_container) return true;
+    return table_is_active.is_set
+	|| table_id.is_set
+	|| table_version.is_set
+	|| rd_version.is_set
+	|| rib_version.is_set
+	|| nsr_conv_version.is_set
+	|| nsr_is_conv.is_set
+	|| client_reflection_enabled.is_set
+	|| dampening_enabled.is_set
+	|| ebgp_distance.is_set
+	|| ibgp_distance.is_set
+	|| aggregates_distance.is_set
+	|| dynamic_med_enabled.is_set
+	|| dynamic_med_interval.is_set
+	|| dynamic_med_timer_running.is_set
+	|| dynamic_med_timer_value.is_set
+	|| dynamic_med_periodic_timer_running.is_set
+	|| dynamic_med_periodic_timer_value.is_set
+	|| rib_has_converged.is_set
+	|| rib_convergence_version.is_set
+	|| is_rib_table_full.is_set
+	|| rib_table_full_version.is_set
+	|| nexthop_resolution_minimum_prefix_length_configured.is_set
+	|| nexthop_resolution_minimum_prefix_length.is_set
+	|| selective_ebgp_multipath_enabled.is_set
+	|| selective_ibgp_multipath_enabled.is_set
+	|| selective_eibgp_multipath_enabled.is_set
+	|| rib_acked_table_version.is_set;
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Vrf::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(table_is_active.yfilter)
+	|| ydk::is_set(table_id.yfilter)
+	|| ydk::is_set(table_version.yfilter)
+	|| ydk::is_set(rd_version.yfilter)
+	|| ydk::is_set(rib_version.yfilter)
+	|| ydk::is_set(nsr_conv_version.yfilter)
+	|| ydk::is_set(nsr_is_conv.yfilter)
+	|| ydk::is_set(client_reflection_enabled.yfilter)
+	|| ydk::is_set(dampening_enabled.yfilter)
+	|| ydk::is_set(ebgp_distance.yfilter)
+	|| ydk::is_set(ibgp_distance.yfilter)
+	|| ydk::is_set(aggregates_distance.yfilter)
+	|| ydk::is_set(dynamic_med_enabled.yfilter)
+	|| ydk::is_set(dynamic_med_interval.yfilter)
+	|| ydk::is_set(dynamic_med_timer_running.yfilter)
+	|| ydk::is_set(dynamic_med_timer_value.yfilter)
+	|| ydk::is_set(dynamic_med_periodic_timer_running.yfilter)
+	|| ydk::is_set(dynamic_med_periodic_timer_value.yfilter)
+	|| ydk::is_set(rib_has_converged.yfilter)
+	|| ydk::is_set(rib_convergence_version.yfilter)
+	|| ydk::is_set(is_rib_table_full.yfilter)
+	|| ydk::is_set(rib_table_full_version.yfilter)
+	|| ydk::is_set(nexthop_resolution_minimum_prefix_length_configured.yfilter)
+	|| ydk::is_set(nexthop_resolution_minimum_prefix_length.yfilter)
+	|| ydk::is_set(selective_ebgp_multipath_enabled.yfilter)
+	|| ydk::is_set(selective_ibgp_multipath_enabled.yfilter)
+	|| ydk::is_set(selective_eibgp_multipath_enabled.yfilter)
+	|| ydk::is_set(rib_acked_table_version.yfilter);
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Vrf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vrf";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Vrf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (table_is_active.is_set || is_set(table_is_active.yfilter)) leaf_name_data.push_back(table_is_active.get_name_leafdata());
+    if (table_id.is_set || is_set(table_id.yfilter)) leaf_name_data.push_back(table_id.get_name_leafdata());
+    if (table_version.is_set || is_set(table_version.yfilter)) leaf_name_data.push_back(table_version.get_name_leafdata());
+    if (rd_version.is_set || is_set(rd_version.yfilter)) leaf_name_data.push_back(rd_version.get_name_leafdata());
+    if (rib_version.is_set || is_set(rib_version.yfilter)) leaf_name_data.push_back(rib_version.get_name_leafdata());
+    if (nsr_conv_version.is_set || is_set(nsr_conv_version.yfilter)) leaf_name_data.push_back(nsr_conv_version.get_name_leafdata());
+    if (nsr_is_conv.is_set || is_set(nsr_is_conv.yfilter)) leaf_name_data.push_back(nsr_is_conv.get_name_leafdata());
+    if (client_reflection_enabled.is_set || is_set(client_reflection_enabled.yfilter)) leaf_name_data.push_back(client_reflection_enabled.get_name_leafdata());
+    if (dampening_enabled.is_set || is_set(dampening_enabled.yfilter)) leaf_name_data.push_back(dampening_enabled.get_name_leafdata());
+    if (ebgp_distance.is_set || is_set(ebgp_distance.yfilter)) leaf_name_data.push_back(ebgp_distance.get_name_leafdata());
+    if (ibgp_distance.is_set || is_set(ibgp_distance.yfilter)) leaf_name_data.push_back(ibgp_distance.get_name_leafdata());
+    if (aggregates_distance.is_set || is_set(aggregates_distance.yfilter)) leaf_name_data.push_back(aggregates_distance.get_name_leafdata());
+    if (dynamic_med_enabled.is_set || is_set(dynamic_med_enabled.yfilter)) leaf_name_data.push_back(dynamic_med_enabled.get_name_leafdata());
+    if (dynamic_med_interval.is_set || is_set(dynamic_med_interval.yfilter)) leaf_name_data.push_back(dynamic_med_interval.get_name_leafdata());
+    if (dynamic_med_timer_running.is_set || is_set(dynamic_med_timer_running.yfilter)) leaf_name_data.push_back(dynamic_med_timer_running.get_name_leafdata());
+    if (dynamic_med_timer_value.is_set || is_set(dynamic_med_timer_value.yfilter)) leaf_name_data.push_back(dynamic_med_timer_value.get_name_leafdata());
+    if (dynamic_med_periodic_timer_running.is_set || is_set(dynamic_med_periodic_timer_running.yfilter)) leaf_name_data.push_back(dynamic_med_periodic_timer_running.get_name_leafdata());
+    if (dynamic_med_periodic_timer_value.is_set || is_set(dynamic_med_periodic_timer_value.yfilter)) leaf_name_data.push_back(dynamic_med_periodic_timer_value.get_name_leafdata());
+    if (rib_has_converged.is_set || is_set(rib_has_converged.yfilter)) leaf_name_data.push_back(rib_has_converged.get_name_leafdata());
+    if (rib_convergence_version.is_set || is_set(rib_convergence_version.yfilter)) leaf_name_data.push_back(rib_convergence_version.get_name_leafdata());
+    if (is_rib_table_full.is_set || is_set(is_rib_table_full.yfilter)) leaf_name_data.push_back(is_rib_table_full.get_name_leafdata());
+    if (rib_table_full_version.is_set || is_set(rib_table_full_version.yfilter)) leaf_name_data.push_back(rib_table_full_version.get_name_leafdata());
+    if (nexthop_resolution_minimum_prefix_length_configured.is_set || is_set(nexthop_resolution_minimum_prefix_length_configured.yfilter)) leaf_name_data.push_back(nexthop_resolution_minimum_prefix_length_configured.get_name_leafdata());
+    if (nexthop_resolution_minimum_prefix_length.is_set || is_set(nexthop_resolution_minimum_prefix_length.yfilter)) leaf_name_data.push_back(nexthop_resolution_minimum_prefix_length.get_name_leafdata());
+    if (selective_ebgp_multipath_enabled.is_set || is_set(selective_ebgp_multipath_enabled.yfilter)) leaf_name_data.push_back(selective_ebgp_multipath_enabled.get_name_leafdata());
+    if (selective_ibgp_multipath_enabled.is_set || is_set(selective_ibgp_multipath_enabled.yfilter)) leaf_name_data.push_back(selective_ibgp_multipath_enabled.get_name_leafdata());
+    if (selective_eibgp_multipath_enabled.is_set || is_set(selective_eibgp_multipath_enabled.yfilter)) leaf_name_data.push_back(selective_eibgp_multipath_enabled.get_name_leafdata());
+    if (rib_acked_table_version.is_set || is_set(rib_acked_table_version.yfilter)) leaf_name_data.push_back(rib_acked_table_version.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Vrf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "table-is-active")
+    {
+        table_is_active = value;
+        table_is_active.value_namespace = name_space;
+        table_is_active.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "table-id")
+    {
+        table_id = value;
+        table_id.value_namespace = name_space;
+        table_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "table-version")
+    {
+        table_version = value;
+        table_version.value_namespace = name_space;
+        table_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rd-version")
+    {
+        rd_version = value;
+        rd_version.value_namespace = name_space;
+        rd_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-version")
+    {
+        rib_version = value;
+        rib_version.value_namespace = name_space;
+        rib_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nsr-conv-version")
+    {
+        nsr_conv_version = value;
+        nsr_conv_version.value_namespace = name_space;
+        nsr_conv_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nsr-is-conv")
+    {
+        nsr_is_conv = value;
+        nsr_is_conv.value_namespace = name_space;
+        nsr_is_conv.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "client-reflection-enabled")
+    {
+        client_reflection_enabled = value;
+        client_reflection_enabled.value_namespace = name_space;
+        client_reflection_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dampening-enabled")
+    {
+        dampening_enabled = value;
+        dampening_enabled.value_namespace = name_space;
+        dampening_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ebgp-distance")
+    {
+        ebgp_distance = value;
+        ebgp_distance.value_namespace = name_space;
+        ebgp_distance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ibgp-distance")
+    {
+        ibgp_distance = value;
+        ibgp_distance.value_namespace = name_space;
+        ibgp_distance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aggregates-distance")
+    {
+        aggregates_distance = value;
+        aggregates_distance.value_namespace = name_space;
+        aggregates_distance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dynamic-med-enabled")
+    {
+        dynamic_med_enabled = value;
+        dynamic_med_enabled.value_namespace = name_space;
+        dynamic_med_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dynamic-med-interval")
+    {
+        dynamic_med_interval = value;
+        dynamic_med_interval.value_namespace = name_space;
+        dynamic_med_interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dynamic-med-timer-running")
+    {
+        dynamic_med_timer_running = value;
+        dynamic_med_timer_running.value_namespace = name_space;
+        dynamic_med_timer_running.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dynamic-med-timer-value")
+    {
+        dynamic_med_timer_value = value;
+        dynamic_med_timer_value.value_namespace = name_space;
+        dynamic_med_timer_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dynamic-med-periodic-timer-running")
+    {
+        dynamic_med_periodic_timer_running = value;
+        dynamic_med_periodic_timer_running.value_namespace = name_space;
+        dynamic_med_periodic_timer_running.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dynamic-med-periodic-timer-value")
+    {
+        dynamic_med_periodic_timer_value = value;
+        dynamic_med_periodic_timer_value.value_namespace = name_space;
+        dynamic_med_periodic_timer_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-has-converged")
+    {
+        rib_has_converged = value;
+        rib_has_converged.value_namespace = name_space;
+        rib_has_converged.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-convergence-version")
+    {
+        rib_convergence_version = value;
+        rib_convergence_version.value_namespace = name_space;
+        rib_convergence_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-rib-table-full")
+    {
+        is_rib_table_full = value;
+        is_rib_table_full.value_namespace = name_space;
+        is_rib_table_full.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-table-full-version")
+    {
+        rib_table_full_version = value;
+        rib_table_full_version.value_namespace = name_space;
+        rib_table_full_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nexthop-resolution-minimum-prefix-length-configured")
+    {
+        nexthop_resolution_minimum_prefix_length_configured = value;
+        nexthop_resolution_minimum_prefix_length_configured.value_namespace = name_space;
+        nexthop_resolution_minimum_prefix_length_configured.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nexthop-resolution-minimum-prefix-length")
+    {
+        nexthop_resolution_minimum_prefix_length = value;
+        nexthop_resolution_minimum_prefix_length.value_namespace = name_space;
+        nexthop_resolution_minimum_prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "selective-ebgp-multipath-enabled")
+    {
+        selective_ebgp_multipath_enabled = value;
+        selective_ebgp_multipath_enabled.value_namespace = name_space;
+        selective_ebgp_multipath_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "selective-ibgp-multipath-enabled")
+    {
+        selective_ibgp_multipath_enabled = value;
+        selective_ibgp_multipath_enabled.value_namespace = name_space;
+        selective_ibgp_multipath_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "selective-eibgp-multipath-enabled")
+    {
+        selective_eibgp_multipath_enabled = value;
+        selective_eibgp_multipath_enabled.value_namespace = name_space;
+        selective_eibgp_multipath_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-acked-table-version")
+    {
+        rib_acked_table_version = value;
+        rib_acked_table_version.value_namespace = name_space;
+        rib_acked_table_version.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "table-is-active")
+    {
+        table_is_active.yfilter = yfilter;
+    }
+    if(value_path == "table-id")
+    {
+        table_id.yfilter = yfilter;
+    }
+    if(value_path == "table-version")
+    {
+        table_version.yfilter = yfilter;
+    }
+    if(value_path == "rd-version")
+    {
+        rd_version.yfilter = yfilter;
+    }
+    if(value_path == "rib-version")
+    {
+        rib_version.yfilter = yfilter;
+    }
+    if(value_path == "nsr-conv-version")
+    {
+        nsr_conv_version.yfilter = yfilter;
+    }
+    if(value_path == "nsr-is-conv")
+    {
+        nsr_is_conv.yfilter = yfilter;
+    }
+    if(value_path == "client-reflection-enabled")
+    {
+        client_reflection_enabled.yfilter = yfilter;
+    }
+    if(value_path == "dampening-enabled")
+    {
+        dampening_enabled.yfilter = yfilter;
+    }
+    if(value_path == "ebgp-distance")
+    {
+        ebgp_distance.yfilter = yfilter;
+    }
+    if(value_path == "ibgp-distance")
+    {
+        ibgp_distance.yfilter = yfilter;
+    }
+    if(value_path == "aggregates-distance")
+    {
+        aggregates_distance.yfilter = yfilter;
+    }
+    if(value_path == "dynamic-med-enabled")
+    {
+        dynamic_med_enabled.yfilter = yfilter;
+    }
+    if(value_path == "dynamic-med-interval")
+    {
+        dynamic_med_interval.yfilter = yfilter;
+    }
+    if(value_path == "dynamic-med-timer-running")
+    {
+        dynamic_med_timer_running.yfilter = yfilter;
+    }
+    if(value_path == "dynamic-med-timer-value")
+    {
+        dynamic_med_timer_value.yfilter = yfilter;
+    }
+    if(value_path == "dynamic-med-periodic-timer-running")
+    {
+        dynamic_med_periodic_timer_running.yfilter = yfilter;
+    }
+    if(value_path == "dynamic-med-periodic-timer-value")
+    {
+        dynamic_med_periodic_timer_value.yfilter = yfilter;
+    }
+    if(value_path == "rib-has-converged")
+    {
+        rib_has_converged.yfilter = yfilter;
+    }
+    if(value_path == "rib-convergence-version")
+    {
+        rib_convergence_version.yfilter = yfilter;
+    }
+    if(value_path == "is-rib-table-full")
+    {
+        is_rib_table_full.yfilter = yfilter;
+    }
+    if(value_path == "rib-table-full-version")
+    {
+        rib_table_full_version.yfilter = yfilter;
+    }
+    if(value_path == "nexthop-resolution-minimum-prefix-length-configured")
+    {
+        nexthop_resolution_minimum_prefix_length_configured.yfilter = yfilter;
+    }
+    if(value_path == "nexthop-resolution-minimum-prefix-length")
+    {
+        nexthop_resolution_minimum_prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "selective-ebgp-multipath-enabled")
+    {
+        selective_ebgp_multipath_enabled.yfilter = yfilter;
+    }
+    if(value_path == "selective-ibgp-multipath-enabled")
+    {
+        selective_ibgp_multipath_enabled.yfilter = yfilter;
+    }
+    if(value_path == "selective-eibgp-multipath-enabled")
+    {
+        selective_eibgp_multipath_enabled.yfilter = yfilter;
+    }
+    if(value_path == "rib-acked-table-version")
+    {
+        rib_acked_table_version.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "table-is-active" || name == "table-id" || name == "table-version" || name == "rd-version" || name == "rib-version" || name == "nsr-conv-version" || name == "nsr-is-conv" || name == "client-reflection-enabled" || name == "dampening-enabled" || name == "ebgp-distance" || name == "ibgp-distance" || name == "aggregates-distance" || name == "dynamic-med-enabled" || name == "dynamic-med-interval" || name == "dynamic-med-timer-running" || name == "dynamic-med-timer-value" || name == "dynamic-med-periodic-timer-running" || name == "dynamic-med-periodic-timer-value" || name == "rib-has-converged" || name == "rib-convergence-version" || name == "is-rib-table-full" || name == "rib-table-full-version" || name == "nexthop-resolution-minimum-prefix-length-configured" || name == "nexthop-resolution-minimum-prefix-length" || name == "selective-ebgp-multipath-enabled" || name == "selective-ibgp-multipath-enabled" || name == "selective-eibgp-multipath-enabled" || name == "rib-acked-table-version")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPathXr()
+    :
+    advertised_path(this, {})
+{
+
+    yang_name = "advertised-path-xr"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::~AdvertisedPathXr()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<advertised_path.len(); index++)
+    {
+        if(advertised_path[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::has_operation() const
+{
+    for (std::size_t index=0; index<advertised_path.len(); index++)
+    {
+        if(advertised_path[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "advertised-path-xr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "advertised-path")
+    {
+        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath>();
+        c->parent = this;
+        advertised_path.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : advertised_path.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertised-path")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedPath()
+    :
+    rd{YType::str, "rd"},
+    network{YType::str, "network"},
+    prefix_length{YType::uint32, "prefix-length"},
+    neighbor_address{YType::str, "neighbor-address"},
+    no_path{YType::boolean, "no-path"},
+    af_name{YType::enumeration, "af-name"},
+    process_instance_id{YType::uint8, "process-instance-id"},
+    label_oor{YType::boolean, "label-oor"},
+    label_oor_version{YType::uint32, "label-oor-version"},
+    label_fail{YType::boolean, "label-fail"},
+    route_distinguisher{YType::str, "route-distinguisher"},
+    source_route_distinguisher{YType::str, "source-route-distinguisher"},
+    original_source_route_distinguisher{YType::str, "original-source-route-distinguisher"},
+    prefix_version{YType::uint32, "prefix-version"},
+    vrf_name{YType::str, "vrf-name"},
+    source_vrf_name{YType::str, "source-vrf-name"},
+    srcaf_name{YType::enumeration, "srcaf-name"}
+        ,
+    advertised_neighbor(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor>())
+    , path_information(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation>())
+    , attributes_after_policy_in(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn>())
+{
+    advertised_neighbor->parent = this;
+    path_information->parent = this;
+    attributes_after_policy_in->parent = this;
+
+    yang_name = "advertised-path"; yang_parent_name = "advertised-path-xr"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::~AdvertisedPath()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::has_data() const
+{
+    if (is_presence_container) return true;
+    return rd.is_set
+	|| network.is_set
+	|| prefix_length.is_set
+	|| neighbor_address.is_set
+	|| no_path.is_set
+	|| af_name.is_set
+	|| process_instance_id.is_set
+	|| label_oor.is_set
+	|| label_oor_version.is_set
+	|| label_fail.is_set
+	|| route_distinguisher.is_set
+	|| source_route_distinguisher.is_set
+	|| original_source_route_distinguisher.is_set
+	|| prefix_version.is_set
+	|| vrf_name.is_set
+	|| source_vrf_name.is_set
+	|| srcaf_name.is_set
+	|| (advertised_neighbor !=  nullptr && advertised_neighbor->has_data())
+	|| (path_information !=  nullptr && path_information->has_data())
+	|| (attributes_after_policy_in !=  nullptr && attributes_after_policy_in->has_data());
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rd.yfilter)
+	|| ydk::is_set(network.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(no_path.yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(process_instance_id.yfilter)
+	|| ydk::is_set(label_oor.yfilter)
+	|| ydk::is_set(label_oor_version.yfilter)
+	|| ydk::is_set(label_fail.yfilter)
+	|| ydk::is_set(route_distinguisher.yfilter)
+	|| ydk::is_set(source_route_distinguisher.yfilter)
+	|| ydk::is_set(original_source_route_distinguisher.yfilter)
+	|| ydk::is_set(prefix_version.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(source_vrf_name.yfilter)
+	|| ydk::is_set(srcaf_name.yfilter)
+	|| (advertised_neighbor !=  nullptr && advertised_neighbor->has_operation())
+	|| (path_information !=  nullptr && path_information->has_operation())
+	|| (attributes_after_policy_in !=  nullptr && attributes_after_policy_in->has_operation());
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "advertised-path";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rd.is_set || is_set(rd.yfilter)) leaf_name_data.push_back(rd.get_name_leafdata());
+    if (network.is_set || is_set(network.yfilter)) leaf_name_data.push_back(network.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (no_path.is_set || is_set(no_path.yfilter)) leaf_name_data.push_back(no_path.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (process_instance_id.is_set || is_set(process_instance_id.yfilter)) leaf_name_data.push_back(process_instance_id.get_name_leafdata());
+    if (label_oor.is_set || is_set(label_oor.yfilter)) leaf_name_data.push_back(label_oor.get_name_leafdata());
+    if (label_oor_version.is_set || is_set(label_oor_version.yfilter)) leaf_name_data.push_back(label_oor_version.get_name_leafdata());
+    if (label_fail.is_set || is_set(label_fail.yfilter)) leaf_name_data.push_back(label_fail.get_name_leafdata());
+    if (route_distinguisher.is_set || is_set(route_distinguisher.yfilter)) leaf_name_data.push_back(route_distinguisher.get_name_leafdata());
+    if (source_route_distinguisher.is_set || is_set(source_route_distinguisher.yfilter)) leaf_name_data.push_back(source_route_distinguisher.get_name_leafdata());
+    if (original_source_route_distinguisher.is_set || is_set(original_source_route_distinguisher.yfilter)) leaf_name_data.push_back(original_source_route_distinguisher.get_name_leafdata());
+    if (prefix_version.is_set || is_set(prefix_version.yfilter)) leaf_name_data.push_back(prefix_version.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (source_vrf_name.is_set || is_set(source_vrf_name.yfilter)) leaf_name_data.push_back(source_vrf_name.get_name_leafdata());
+    if (srcaf_name.is_set || is_set(srcaf_name.yfilter)) leaf_name_data.push_back(srcaf_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "advertised-neighbor")
+    {
+        if(advertised_neighbor == nullptr)
+        {
+            advertised_neighbor = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor>();
+        }
+        return advertised_neighbor;
+    }
+
+    if(child_yang_name == "path-information")
+    {
+        if(path_information == nullptr)
+        {
+            path_information = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation>();
+        }
+        return path_information;
+    }
+
+    if(child_yang_name == "attributes-after-policy-in")
+    {
+        if(attributes_after_policy_in == nullptr)
+        {
+            attributes_after_policy_in = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn>();
+        }
+        return attributes_after_policy_in;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(advertised_neighbor != nullptr)
+    {
+        children["advertised-neighbor"] = advertised_neighbor;
+    }
+
+    if(path_information != nullptr)
+    {
+        children["path-information"] = path_information;
+    }
+
+    if(attributes_after_policy_in != nullptr)
+    {
+        children["attributes-after-policy-in"] = attributes_after_policy_in;
+    }
+
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rd")
+    {
+        rd = value;
+        rd.value_namespace = name_space;
+        rd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "network")
+    {
+        network = value;
+        network.value_namespace = name_space;
+        network.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "no-path")
+    {
+        no_path = value;
+        no_path.value_namespace = name_space;
+        no_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "process-instance-id")
+    {
+        process_instance_id = value;
+        process_instance_id.value_namespace = name_space;
+        process_instance_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-oor")
+    {
+        label_oor = value;
+        label_oor.value_namespace = name_space;
+        label_oor.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-oor-version")
+    {
+        label_oor_version = value;
+        label_oor_version.value_namespace = name_space;
+        label_oor_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label-fail")
+    {
+        label_fail = value;
+        label_fail.value_namespace = name_space;
+        label_fail.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-distinguisher")
+    {
+        route_distinguisher = value;
+        route_distinguisher.value_namespace = name_space;
+        route_distinguisher.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-route-distinguisher")
+    {
+        source_route_distinguisher = value;
+        source_route_distinguisher.value_namespace = name_space;
+        source_route_distinguisher.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "original-source-route-distinguisher")
+    {
+        original_source_route_distinguisher = value;
+        original_source_route_distinguisher.value_namespace = name_space;
+        original_source_route_distinguisher.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-version")
+    {
+        prefix_version = value;
+        prefix_version.value_namespace = name_space;
+        prefix_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source-vrf-name")
+    {
+        source_vrf_name = value;
+        source_vrf_name.value_namespace = name_space;
+        source_vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srcaf-name")
+    {
+        srcaf_name = value;
+        srcaf_name.value_namespace = name_space;
+        srcaf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rd")
+    {
+        rd.yfilter = yfilter;
+    }
+    if(value_path == "network")
+    {
+        network.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "no-path")
+    {
+        no_path.yfilter = yfilter;
+    }
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "process-instance-id")
+    {
+        process_instance_id.yfilter = yfilter;
+    }
+    if(value_path == "label-oor")
+    {
+        label_oor.yfilter = yfilter;
+    }
+    if(value_path == "label-oor-version")
+    {
+        label_oor_version.yfilter = yfilter;
+    }
+    if(value_path == "label-fail")
+    {
+        label_fail.yfilter = yfilter;
+    }
+    if(value_path == "route-distinguisher")
+    {
+        route_distinguisher.yfilter = yfilter;
+    }
+    if(value_path == "source-route-distinguisher")
+    {
+        source_route_distinguisher.yfilter = yfilter;
+    }
+    if(value_path == "original-source-route-distinguisher")
+    {
+        original_source_route_distinguisher.yfilter = yfilter;
+    }
+    if(value_path == "prefix-version")
+    {
+        prefix_version.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "source-vrf-name")
+    {
+        source_vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "srcaf-name")
+    {
+        srcaf_name.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertised-neighbor" || name == "path-information" || name == "attributes-after-policy-in" || name == "rd" || name == "network" || name == "prefix-length" || name == "neighbor-address" || name == "no-path" || name == "af-name" || name == "process-instance-id" || name == "label-oor" || name == "label-oor-version" || name == "label-fail" || name == "route-distinguisher" || name == "source-route-distinguisher" || name == "original-source-route-distinguisher" || name == "prefix-version" || name == "vrf-name" || name == "source-vrf-name" || name == "srcaf-name")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::AdvertisedNeighbor()
+    :
+    afi{YType::enumeration, "afi"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv4_mcast_address{YType::str, "ipv4-mcast-address"},
+    ipv4_label_address{YType::str, "ipv4-label-address"},
+    ipv4_tunnel_address{YType::str, "ipv4-tunnel-address"},
+    ipv4_mdt_address{YType::str, "ipv4-mdt-address"},
+    ipv4vpn_address{YType::str, "ipv4vpn-address"},
+    ipv4vpna_mcastddress{YType::str, "ipv4vpna-mcastddress"},
+    ipv6_address{YType::str, "ipv6-address"},
+    ipv6_mcast_address{YType::str, "ipv6-mcast-address"},
+    ipv6_label_address{YType::str, "ipv6-label-address"},
+    ipv6vpn_address{YType::str, "ipv6vpn-address"},
+    ipv6vpn_mcast_address{YType::str, "ipv6vpn-mcast-address"},
+    rt_constraint_address{YType::str, "rt-constraint-address"},
+    ipv6mvpn_address{YType::str, "ipv6mvpn-address"},
+    ipv4mvpn_address{YType::str, "ipv4mvpn-address"},
+    l2vpn_evpn_address{YType::str, "l2vpn-evpn-address"},
+    ls_ls_address{YType::str, "ls-ls-address"},
+    ipv4_flowspec_address{YType::str, "ipv4-flowspec-address"},
+    ipv6_flowspec_address{YType::str, "ipv6-flowspec-address"},
+    ipv4vpn_flowspec_address{YType::str, "ipv4vpn-flowspec-address"},
+    ipv6vpn_flowspec_address{YType::str, "ipv6vpn-flowspec-address"}
+        ,
+    l2vpn_vpls_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnVplsAddress>())
+    , l2vpn_mspw_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnMspwAddress>())
+    , ipv4_sr_policy_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv4SrPolicyAddress>())
+    , ipv6_sr_policy_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv6SrPolicyAddress>())
+{
+    l2vpn_vpls_address->parent = this;
+    l2vpn_mspw_address->parent = this;
+    ipv4_sr_policy_address->parent = this;
+    ipv6_sr_policy_address->parent = this;
+
+    yang_name = "advertised-neighbor"; yang_parent_name = "advertised-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::~AdvertisedNeighbor()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::has_data() const
+{
+    if (is_presence_container) return true;
+    return afi.is_set
+	|| ipv4_address.is_set
+	|| ipv4_mcast_address.is_set
+	|| ipv4_label_address.is_set
+	|| ipv4_tunnel_address.is_set
+	|| ipv4_mdt_address.is_set
+	|| ipv4vpn_address.is_set
+	|| ipv4vpna_mcastddress.is_set
+	|| ipv6_address.is_set
+	|| ipv6_mcast_address.is_set
+	|| ipv6_label_address.is_set
+	|| ipv6vpn_address.is_set
+	|| ipv6vpn_mcast_address.is_set
+	|| rt_constraint_address.is_set
+	|| ipv6mvpn_address.is_set
+	|| ipv4mvpn_address.is_set
+	|| l2vpn_evpn_address.is_set
+	|| ls_ls_address.is_set
+	|| ipv4_flowspec_address.is_set
+	|| ipv6_flowspec_address.is_set
+	|| ipv4vpn_flowspec_address.is_set
+	|| ipv6vpn_flowspec_address.is_set
+	|| (l2vpn_vpls_address !=  nullptr && l2vpn_vpls_address->has_data())
+	|| (l2vpn_mspw_address !=  nullptr && l2vpn_mspw_address->has_data())
+	|| (ipv4_sr_policy_address !=  nullptr && ipv4_sr_policy_address->has_data())
+	|| (ipv6_sr_policy_address !=  nullptr && ipv6_sr_policy_address->has_data());
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv4_mcast_address.yfilter)
+	|| ydk::is_set(ipv4_label_address.yfilter)
+	|| ydk::is_set(ipv4_tunnel_address.yfilter)
+	|| ydk::is_set(ipv4_mdt_address.yfilter)
+	|| ydk::is_set(ipv4vpn_address.yfilter)
+	|| ydk::is_set(ipv4vpna_mcastddress.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter)
+	|| ydk::is_set(ipv6_mcast_address.yfilter)
+	|| ydk::is_set(ipv6_label_address.yfilter)
+	|| ydk::is_set(ipv6vpn_address.yfilter)
+	|| ydk::is_set(ipv6vpn_mcast_address.yfilter)
+	|| ydk::is_set(rt_constraint_address.yfilter)
+	|| ydk::is_set(ipv6mvpn_address.yfilter)
+	|| ydk::is_set(ipv4mvpn_address.yfilter)
+	|| ydk::is_set(l2vpn_evpn_address.yfilter)
+	|| ydk::is_set(ls_ls_address.yfilter)
+	|| ydk::is_set(ipv4_flowspec_address.yfilter)
+	|| ydk::is_set(ipv6_flowspec_address.yfilter)
+	|| ydk::is_set(ipv4vpn_flowspec_address.yfilter)
+	|| ydk::is_set(ipv6vpn_flowspec_address.yfilter)
+	|| (l2vpn_vpls_address !=  nullptr && l2vpn_vpls_address->has_operation())
+	|| (l2vpn_mspw_address !=  nullptr && l2vpn_mspw_address->has_operation())
+	|| (ipv4_sr_policy_address !=  nullptr && ipv4_sr_policy_address->has_operation())
+	|| (ipv6_sr_policy_address !=  nullptr && ipv6_sr_policy_address->has_operation());
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "advertised-neighbor";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv4_mcast_address.is_set || is_set(ipv4_mcast_address.yfilter)) leaf_name_data.push_back(ipv4_mcast_address.get_name_leafdata());
+    if (ipv4_label_address.is_set || is_set(ipv4_label_address.yfilter)) leaf_name_data.push_back(ipv4_label_address.get_name_leafdata());
+    if (ipv4_tunnel_address.is_set || is_set(ipv4_tunnel_address.yfilter)) leaf_name_data.push_back(ipv4_tunnel_address.get_name_leafdata());
+    if (ipv4_mdt_address.is_set || is_set(ipv4_mdt_address.yfilter)) leaf_name_data.push_back(ipv4_mdt_address.get_name_leafdata());
+    if (ipv4vpn_address.is_set || is_set(ipv4vpn_address.yfilter)) leaf_name_data.push_back(ipv4vpn_address.get_name_leafdata());
+    if (ipv4vpna_mcastddress.is_set || is_set(ipv4vpna_mcastddress.yfilter)) leaf_name_data.push_back(ipv4vpna_mcastddress.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (ipv6_mcast_address.is_set || is_set(ipv6_mcast_address.yfilter)) leaf_name_data.push_back(ipv6_mcast_address.get_name_leafdata());
+    if (ipv6_label_address.is_set || is_set(ipv6_label_address.yfilter)) leaf_name_data.push_back(ipv6_label_address.get_name_leafdata());
+    if (ipv6vpn_address.is_set || is_set(ipv6vpn_address.yfilter)) leaf_name_data.push_back(ipv6vpn_address.get_name_leafdata());
+    if (ipv6vpn_mcast_address.is_set || is_set(ipv6vpn_mcast_address.yfilter)) leaf_name_data.push_back(ipv6vpn_mcast_address.get_name_leafdata());
+    if (rt_constraint_address.is_set || is_set(rt_constraint_address.yfilter)) leaf_name_data.push_back(rt_constraint_address.get_name_leafdata());
+    if (ipv6mvpn_address.is_set || is_set(ipv6mvpn_address.yfilter)) leaf_name_data.push_back(ipv6mvpn_address.get_name_leafdata());
+    if (ipv4mvpn_address.is_set || is_set(ipv4mvpn_address.yfilter)) leaf_name_data.push_back(ipv4mvpn_address.get_name_leafdata());
+    if (l2vpn_evpn_address.is_set || is_set(l2vpn_evpn_address.yfilter)) leaf_name_data.push_back(l2vpn_evpn_address.get_name_leafdata());
+    if (ls_ls_address.is_set || is_set(ls_ls_address.yfilter)) leaf_name_data.push_back(ls_ls_address.get_name_leafdata());
+    if (ipv4_flowspec_address.is_set || is_set(ipv4_flowspec_address.yfilter)) leaf_name_data.push_back(ipv4_flowspec_address.get_name_leafdata());
+    if (ipv6_flowspec_address.is_set || is_set(ipv6_flowspec_address.yfilter)) leaf_name_data.push_back(ipv6_flowspec_address.get_name_leafdata());
+    if (ipv4vpn_flowspec_address.is_set || is_set(ipv4vpn_flowspec_address.yfilter)) leaf_name_data.push_back(ipv4vpn_flowspec_address.get_name_leafdata());
+    if (ipv6vpn_flowspec_address.is_set || is_set(ipv6vpn_flowspec_address.yfilter)) leaf_name_data.push_back(ipv6vpn_flowspec_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "l2vpn-vpls-address")
+    {
+        if(l2vpn_vpls_address == nullptr)
+        {
+            l2vpn_vpls_address = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnVplsAddress>();
+        }
+        return l2vpn_vpls_address;
+    }
+
+    if(child_yang_name == "l2vpn-mspw-address")
+    {
+        if(l2vpn_mspw_address == nullptr)
+        {
+            l2vpn_mspw_address = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnMspwAddress>();
+        }
+        return l2vpn_mspw_address;
+    }
+
+    if(child_yang_name == "ipv4-sr-policy-address")
+    {
+        if(ipv4_sr_policy_address == nullptr)
+        {
+            ipv4_sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv4SrPolicyAddress>();
+        }
+        return ipv4_sr_policy_address;
+    }
+
+    if(child_yang_name == "ipv6-sr-policy-address")
+    {
+        if(ipv6_sr_policy_address == nullptr)
+        {
+            ipv6_sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv6SrPolicyAddress>();
+        }
+        return ipv6_sr_policy_address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(l2vpn_vpls_address != nullptr)
+    {
+        children["l2vpn-vpls-address"] = l2vpn_vpls_address;
+    }
+
+    if(l2vpn_mspw_address != nullptr)
+    {
+        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
+    }
+
+    if(ipv4_sr_policy_address != nullptr)
+    {
+        children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
+    }
+
+    if(ipv6_sr_policy_address != nullptr)
+    {
+        children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
+    }
+
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "afi")
+    {
+        afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-mcast-address")
+    {
+        ipv4_mcast_address = value;
+        ipv4_mcast_address.value_namespace = name_space;
+        ipv4_mcast_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-label-address")
+    {
+        ipv4_label_address = value;
+        ipv4_label_address.value_namespace = name_space;
+        ipv4_label_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-tunnel-address")
+    {
+        ipv4_tunnel_address = value;
+        ipv4_tunnel_address.value_namespace = name_space;
+        ipv4_tunnel_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-mdt-address")
+    {
+        ipv4_mdt_address = value;
+        ipv4_mdt_address.value_namespace = name_space;
+        ipv4_mdt_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4vpn-address")
+    {
+        ipv4vpn_address = value;
+        ipv4vpn_address.value_namespace = name_space;
+        ipv4vpn_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4vpna-mcastddress")
+    {
+        ipv4vpna_mcastddress = value;
+        ipv4vpna_mcastddress.value_namespace = name_space;
+        ipv4vpna_mcastddress.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-mcast-address")
+    {
+        ipv6_mcast_address = value;
+        ipv6_mcast_address.value_namespace = name_space;
+        ipv6_mcast_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-label-address")
+    {
+        ipv6_label_address = value;
+        ipv6_label_address.value_namespace = name_space;
+        ipv6_label_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6vpn-address")
+    {
+        ipv6vpn_address = value;
+        ipv6vpn_address.value_namespace = name_space;
+        ipv6vpn_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6vpn-mcast-address")
+    {
+        ipv6vpn_mcast_address = value;
+        ipv6vpn_mcast_address.value_namespace = name_space;
+        ipv6vpn_mcast_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rt-constraint-address")
+    {
+        rt_constraint_address = value;
+        rt_constraint_address.value_namespace = name_space;
+        rt_constraint_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6mvpn-address")
+    {
+        ipv6mvpn_address = value;
+        ipv6mvpn_address.value_namespace = name_space;
+        ipv6mvpn_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4mvpn-address")
+    {
+        ipv4mvpn_address = value;
+        ipv4mvpn_address.value_namespace = name_space;
+        ipv4mvpn_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "l2vpn-evpn-address")
+    {
+        l2vpn_evpn_address = value;
+        l2vpn_evpn_address.value_namespace = name_space;
+        l2vpn_evpn_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ls-ls-address")
+    {
+        ls_ls_address = value;
+        ls_ls_address.value_namespace = name_space;
+        ls_ls_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-flowspec-address")
+    {
+        ipv4_flowspec_address = value;
+        ipv4_flowspec_address.value_namespace = name_space;
+        ipv4_flowspec_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-flowspec-address")
+    {
+        ipv6_flowspec_address = value;
+        ipv6_flowspec_address.value_namespace = name_space;
+        ipv6_flowspec_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4vpn-flowspec-address")
+    {
+        ipv4vpn_flowspec_address = value;
+        ipv4vpn_flowspec_address.value_namespace = name_space;
+        ipv4vpn_flowspec_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6vpn-flowspec-address")
+    {
+        ipv6vpn_flowspec_address = value;
+        ipv6vpn_flowspec_address.value_namespace = name_space;
+        ipv6vpn_flowspec_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-mcast-address")
+    {
+        ipv4_mcast_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-label-address")
+    {
+        ipv4_label_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-tunnel-address")
+    {
+        ipv4_tunnel_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-mdt-address")
+    {
+        ipv4_mdt_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4vpn-address")
+    {
+        ipv4vpn_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4vpna-mcastddress")
+    {
+        ipv4vpna_mcastddress.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-mcast-address")
+    {
+        ipv6_mcast_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-label-address")
+    {
+        ipv6_label_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6vpn-address")
+    {
+        ipv6vpn_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6vpn-mcast-address")
+    {
+        ipv6vpn_mcast_address.yfilter = yfilter;
+    }
+    if(value_path == "rt-constraint-address")
+    {
+        rt_constraint_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6mvpn-address")
+    {
+        ipv6mvpn_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4mvpn-address")
+    {
+        ipv4mvpn_address.yfilter = yfilter;
+    }
+    if(value_path == "l2vpn-evpn-address")
+    {
+        l2vpn_evpn_address.yfilter = yfilter;
+    }
+    if(value_path == "ls-ls-address")
+    {
+        ls_ls_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-flowspec-address")
+    {
+        ipv4_flowspec_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-flowspec-address")
+    {
+        ipv6_flowspec_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4vpn-flowspec-address")
+    {
+        ipv4vpn_flowspec_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6vpn-flowspec-address")
+    {
+        ipv6vpn_flowspec_address.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2vpn-vpls-address" || name == "l2vpn-mspw-address" || name == "ipv4-sr-policy-address" || name == "ipv6-sr-policy-address" || name == "afi" || name == "ipv4-address" || name == "ipv4-mcast-address" || name == "ipv4-label-address" || name == "ipv4-tunnel-address" || name == "ipv4-mdt-address" || name == "ipv4vpn-address" || name == "ipv4vpna-mcastddress" || name == "ipv6-address" || name == "ipv6-mcast-address" || name == "ipv6-label-address" || name == "ipv6vpn-address" || name == "ipv6vpn-mcast-address" || name == "rt-constraint-address" || name == "ipv6mvpn-address" || name == "ipv4mvpn-address" || name == "l2vpn-evpn-address" || name == "ls-ls-address" || name == "ipv4-flowspec-address" || name == "ipv6-flowspec-address" || name == "ipv4vpn-flowspec-address" || name == "ipv6vpn-flowspec-address")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnVplsAddress::L2vpnVplsAddress()
+    :
+    l2vpn_address{YType::str, "l2vpn-address"}
+{
+
+    yang_name = "l2vpn-vpls-address"; yang_parent_name = "advertised-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnVplsAddress::~L2vpnVplsAddress()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnVplsAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return l2vpn_address.is_set;
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnVplsAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(l2vpn_address.yfilter);
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnVplsAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2vpn-vpls-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnVplsAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (l2vpn_address.is_set || is_set(l2vpn_address.yfilter)) leaf_name_data.push_back(l2vpn_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnVplsAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "l2vpn-address")
+    {
+        l2vpn_address = value;
+        l2vpn_address.value_namespace = name_space;
+        l2vpn_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnVplsAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "l2vpn-address")
+    {
+        l2vpn_address.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnVplsAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2vpn-address")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnMspwAddress::L2vpnMspwAddress()
+    :
+    l2vpn_address{YType::str, "l2vpn-address"}
+{
+
+    yang_name = "l2vpn-mspw-address"; yang_parent_name = "advertised-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnMspwAddress::~L2vpnMspwAddress()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnMspwAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return l2vpn_address.is_set;
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnMspwAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(l2vpn_address.yfilter);
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnMspwAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2vpn-mspw-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnMspwAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (l2vpn_address.is_set || is_set(l2vpn_address.yfilter)) leaf_name_data.push_back(l2vpn_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnMspwAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnMspwAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "l2vpn-address")
+    {
+        l2vpn_address = value;
+        l2vpn_address.value_namespace = name_space;
+        l2vpn_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnMspwAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "l2vpn-address")
+    {
+        l2vpn_address.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnMspwAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2vpn-address")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv4SrPolicyAddress::Ipv4SrPolicyAddress()
+    :
+    ipv4_srpolicy_address{YType::str, "ipv4-srpolicy-address"}
+{
+
+    yang_name = "ipv4-sr-policy-address"; yang_parent_name = "advertised-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv4SrPolicyAddress::~Ipv4SrPolicyAddress()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv4SrPolicyAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return ipv4_srpolicy_address.is_set;
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv4SrPolicyAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_srpolicy_address.yfilter);
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv4SrPolicyAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-sr-policy-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv4SrPolicyAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipv4_srpolicy_address.is_set || is_set(ipv4_srpolicy_address.yfilter)) leaf_name_data.push_back(ipv4_srpolicy_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv4SrPolicyAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv4SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipv4-srpolicy-address")
+    {
+        ipv4_srpolicy_address = value;
+        ipv4_srpolicy_address.value_namespace = name_space;
+        ipv4_srpolicy_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv4SrPolicyAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-srpolicy-address")
+    {
+        ipv4_srpolicy_address.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv4SrPolicyAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-srpolicy-address")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv6SrPolicyAddress::Ipv6SrPolicyAddress()
+    :
+    ipv6_srpolicy_address{YType::str, "ipv6-srpolicy-address"}
+{
+
+    yang_name = "ipv6-sr-policy-address"; yang_parent_name = "advertised-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv6SrPolicyAddress::~Ipv6SrPolicyAddress()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv6SrPolicyAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return ipv6_srpolicy_address.is_set;
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv6SrPolicyAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipv6_srpolicy_address.yfilter);
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv6SrPolicyAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6-sr-policy-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv6SrPolicyAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipv6_srpolicy_address.is_set || is_set(ipv6_srpolicy_address.yfilter)) leaf_name_data.push_back(ipv6_srpolicy_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv6SrPolicyAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv6SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipv6-srpolicy-address")
+    {
+        ipv6_srpolicy_address = value;
+        ipv6_srpolicy_address.value_namespace = name_space;
+        ipv6_srpolicy_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv6SrPolicyAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv6-srpolicy-address")
+    {
+        ipv6_srpolicy_address.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv6SrPolicyAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-srpolicy-address")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::PathInformation()
+    :
+    route_type{YType::enumeration, "route-type"},
+    is_path_valid{YType::boolean, "is-path-valid"},
+    is_path_damped{YType::boolean, "is-path-damped"},
+    is_path_history_held{YType::boolean, "is-path-history-held"},
+    is_internal_path{YType::boolean, "is-internal-path"},
+    is_best_path{YType::boolean, "is-best-path"},
+    is_as_best{YType::boolean, "is-as-best"},
+    is_spkr_as_best{YType::boolean, "is-spkr-as-best"},
+    is_partial_best{YType::boolean, "is-partial-best"},
+    is_aggregation_suppressed{YType::boolean, "is-aggregation-suppressed"},
+    is_import_dampened{YType::boolean, "is-import-dampened"},
+    is_import_suspect{YType::boolean, "is-import-suspect"},
+    is_path_not_advertised{YType::boolean, "is-path-not-advertised"},
+    is_path_not_advertised_to_ebgp{YType::boolean, "is-path-not-advertised-to-ebgp"},
+    is_path_advertised_local_as_only{YType::boolean, "is-path-advertised-local-as-only"},
+    is_path_from_route_reflector{YType::boolean, "is-path-from-route-reflector"},
+    is_path_received_only{YType::boolean, "is-path-received-only"},
+    is_received_path_not_modified{YType::boolean, "is-received-path-not-modified"},
+    is_path_locally_sourced{YType::boolean, "is-path-locally-sourced"},
+    is_path_local_aggregate{YType::boolean, "is-path-local-aggregate"},
+    is_path_from_network_command{YType::boolean, "is-path-from-network-command"},
+    is_path_from_redistribute_command{YType::boolean, "is-path-from-redistribute-command"},
+    is_path_imported{YType::boolean, "is-path-imported"},
+    is_path_reoriginated{YType::boolean, "is-path-reoriginated"},
+    is_path_reoriginated_stitching{YType::boolean, "is-path-reoriginated-stitching"},
+    is_path_vpn_only{YType::boolean, "is-path-vpn-only"},
+    is_path_from_confederation_peer{YType::boolean, "is-path-from-confederation-peer"},
+    is_path_synced_with_igp{YType::boolean, "is-path-synced-with-igp"},
+    is_path_multipath{YType::boolean, "is-path-multipath"},
+    is_path_imp_candidate{YType::boolean, "is-path-imp-candidate"},
+    is_path_stale{YType::boolean, "is-path-stale"},
+    is_path_long_lived_stale{YType::boolean, "is-path-long-lived-stale"},
+    is_path_backup{YType::boolean, "is-path-backup"},
+    is_path_backup_protect_multipath{YType::boolean, "is-path-backup-protect-multipath"},
+    is_path_best_external{YType::boolean, "is-path-best-external"},
+    is_path_additional_path{YType::boolean, "is-path-additional-path"},
+    is_path_nexthop_discarded{YType::boolean, "is-path-nexthop-discarded"},
+    has_local_net_label{YType::boolean, "has-local-net-label"},
+    local_label{YType::uint32, "local-label"},
+    igp_metric{YType::uint32, "igp-metric"},
+    path_weight{YType::uint16, "path-weight"},
+    neighbor_router_id{YType::str, "neighbor-router-id"},
+    has_mdt_group_addr{YType::boolean, "has-mdt-group-addr"},
+    l2vpn_size{YType::uint32, "l2vpn-size"},
+    l2vpn_evpn_esi{YType::str, "l2vpn-evpn-esi"},
+    has_gw_addr{YType::boolean, "has-gw-addr"},
+    has_nh_addr{YType::boolean, "has-nh-addr"},
+    has_second_label{YType::boolean, "has-second-label"},
+    second_label{YType::uint32, "second-label"},
+    path_flap_count{YType::uint32, "path-flap-count"},
+    seconds_since_first_flap{YType::uint32, "seconds-since-first-flap"},
+    time_to_unsuppress{YType::uint32, "time-to-unsuppress"},
+    dampen_penalty{YType::uint32, "dampen-penalty"},
+    halflife_time{YType::uint32, "halflife-time"},
+    suppress_penalty{YType::uint32, "suppress-penalty"},
+    reuse_value{YType::uint32, "reuse-value"},
+    maximum_suppress_time{YType::uint32, "maximum-suppress-time"},
+    best_path_comp_stage{YType::enumeration, "best-path-comp-stage"},
+    best_path_id_comp_winner{YType::uint32, "best-path-id-comp-winner"},
+    path_flags{YType::uint64, "path-flags"},
+    path_import_flags{YType::uint32, "path-import-flags"},
+    best_path_id{YType::uint32, "best-path-id"},
+    local_path_id{YType::uint32, "local-path-id"},
+    rcvd_path_id{YType::uint32, "rcvd-path-id"},
+    path_table_version{YType::uint32, "path-table-version"},
+    advertisedto_pe{YType::boolean, "advertisedto-pe"},
+    rib_failed{YType::boolean, "rib-failed"},
+    sn_rpki_origin_as_validity{YType::uint8, "sn-rpki-origin-as-validity"},
+    show_rpki_origin_as_validity{YType::boolean, "show-rpki-origin-as-validity"},
+    ibgp_signaled_validity{YType::boolean, "ibgp-signaled-validity"},
+    rpki_origin_as_validation_disabled{YType::boolean, "rpki-origin-as-validation-disabled"},
+    accept_own_path{YType::boolean, "accept-own-path"},
+    accept_own_self_originated_path{YType::boolean, "accept-own-self-originated-path"},
+    aigp_metric{YType::uint64, "aigp-metric"},
+    mvpn_sfs_path{YType::boolean, "mvpn-sfs-path"},
+    fspec_invalid_path{YType::boolean, "fspec-invalid-path"},
+    has_mvpn_nbr_addr{YType::boolean, "has-mvpn-nbr-addr"},
+    has_mvpn_nexthop_addr{YType::boolean, "has-mvpn-nexthop-addr"},
+    has_mvpn_pmsi{YType::boolean, "has-mvpn-pmsi"},
+    mvpn_pmsi_type{YType::uint16, "mvpn-pmsi-type"},
+    mvpn_pmsi_flags{YType::uint8, "mvpn-pmsi-flags"},
+    mvpn_pmsi_label{YType::uint32, "mvpn-pmsi-label"},
+    has_mvpn_extcomm{YType::boolean, "has-mvpn-extcomm"},
+    mvpn_path_flags{YType::uint16, "mvpn-path-flags"},
+    local_nh{YType::boolean, "local-nh"},
+    rt_set_limit_enabled{YType::boolean, "rt-set-limit-enabled"},
+    path_rt_set_id{YType::uint32, "path-rt-set-id"},
+    path_rt_set_route_count{YType::uint32, "path-rt-set-route-count"},
+    is_path_af_install_eligible{YType::boolean, "is-path-af-install-eligible"},
+    is_permanent_path{YType::boolean, "is-permanent-path"},
+    graceful_shutdown{YType::boolean, "graceful-shutdown"},
+    labeled_unicast_safi_path{YType::boolean, "labeled-unicast-safi-path"},
+    has_vpn_nexthop_addr{YType::boolean, "has-vpn-nexthop-addr"},
+    is_orig_src_rd_present{YType::boolean, "is-orig-src-rd-present"},
+    af_name{YType::enumeration, "af-name"},
+    route_distinguisher{YType::str, "route-distinguisher"},
+    mac_ip_present{YType::boolean, "mac-ip-present"},
+    mac_ip{YType::str, "mac-ip"}
+        ,
+    bgp_prefix(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix>())
+    , neighbor_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress>())
+    , next_hop(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop>())
+    , nh_tunnel(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NhTunnel>())
+    , mdt_group_addr(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr>())
+    , gw_addr(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::GwAddr>())
+    , nh_addr(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NhAddr>())
+    , best_path_comp_winner(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner>())
+    , mvpn_nbr_addr(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr>())
+    , mvpn_nexthop_addr(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNexthopAddr>())
+    , vpn_nexthop_addr(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::VpnNexthopAddr>())
+    , rcvd_label(this, {})
+    , l2vpn_circuit_status_value(this, {})
+    , mvpn_pmsi_value(this, {})
+    , extended_community(this, {})
+    , local_peers_advertised_to(this, {})
+    , pe_peers_advertised_to(this, {})
+    , best_path_orr_bitfield(this, {})
+    , add_path_orr_bitfield(this, {})
+{
+    bgp_prefix->parent = this;
+    neighbor_address->parent = this;
+    next_hop->parent = this;
+    nh_tunnel->parent = this;
+    mdt_group_addr->parent = this;
+    gw_addr->parent = this;
+    nh_addr->parent = this;
+    best_path_comp_winner->parent = this;
+    mvpn_nbr_addr->parent = this;
+    mvpn_nexthop_addr->parent = this;
+    vpn_nexthop_addr->parent = this;
+
+    yang_name = "path-information"; yang_parent_name = "advertised-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::~PathInformation()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rcvd_label.len(); index++)
+    {
+        if(rcvd_label[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<l2vpn_circuit_status_value.len(); index++)
+    {
+        if(l2vpn_circuit_status_value[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<mvpn_pmsi_value.len(); index++)
+    {
+        if(mvpn_pmsi_value[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<extended_community.len(); index++)
+    {
+        if(extended_community[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<local_peers_advertised_to.len(); index++)
+    {
+        if(local_peers_advertised_to[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<pe_peers_advertised_to.len(); index++)
+    {
+        if(pe_peers_advertised_to[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<best_path_orr_bitfield.len(); index++)
+    {
+        if(best_path_orr_bitfield[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<add_path_orr_bitfield.len(); index++)
+    {
+        if(add_path_orr_bitfield[index]->has_data())
+            return true;
+    }
+    return route_type.is_set
+	|| is_path_valid.is_set
+	|| is_path_damped.is_set
+	|| is_path_history_held.is_set
+	|| is_internal_path.is_set
+	|| is_best_path.is_set
+	|| is_as_best.is_set
+	|| is_spkr_as_best.is_set
+	|| is_partial_best.is_set
+	|| is_aggregation_suppressed.is_set
+	|| is_import_dampened.is_set
+	|| is_import_suspect.is_set
+	|| is_path_not_advertised.is_set
+	|| is_path_not_advertised_to_ebgp.is_set
+	|| is_path_advertised_local_as_only.is_set
+	|| is_path_from_route_reflector.is_set
+	|| is_path_received_only.is_set
+	|| is_received_path_not_modified.is_set
+	|| is_path_locally_sourced.is_set
+	|| is_path_local_aggregate.is_set
+	|| is_path_from_network_command.is_set
+	|| is_path_from_redistribute_command.is_set
+	|| is_path_imported.is_set
+	|| is_path_reoriginated.is_set
+	|| is_path_reoriginated_stitching.is_set
+	|| is_path_vpn_only.is_set
+	|| is_path_from_confederation_peer.is_set
+	|| is_path_synced_with_igp.is_set
+	|| is_path_multipath.is_set
+	|| is_path_imp_candidate.is_set
+	|| is_path_stale.is_set
+	|| is_path_long_lived_stale.is_set
+	|| is_path_backup.is_set
+	|| is_path_backup_protect_multipath.is_set
+	|| is_path_best_external.is_set
+	|| is_path_additional_path.is_set
+	|| is_path_nexthop_discarded.is_set
+	|| has_local_net_label.is_set
+	|| local_label.is_set
+	|| igp_metric.is_set
+	|| path_weight.is_set
+	|| neighbor_router_id.is_set
+	|| has_mdt_group_addr.is_set
+	|| l2vpn_size.is_set
+	|| l2vpn_evpn_esi.is_set
+	|| has_gw_addr.is_set
+	|| has_nh_addr.is_set
+	|| has_second_label.is_set
+	|| second_label.is_set
+	|| path_flap_count.is_set
+	|| seconds_since_first_flap.is_set
+	|| time_to_unsuppress.is_set
+	|| dampen_penalty.is_set
+	|| halflife_time.is_set
+	|| suppress_penalty.is_set
+	|| reuse_value.is_set
+	|| maximum_suppress_time.is_set
+	|| best_path_comp_stage.is_set
+	|| best_path_id_comp_winner.is_set
+	|| path_flags.is_set
+	|| path_import_flags.is_set
+	|| best_path_id.is_set
+	|| local_path_id.is_set
+	|| rcvd_path_id.is_set
+	|| path_table_version.is_set
+	|| advertisedto_pe.is_set
+	|| rib_failed.is_set
+	|| sn_rpki_origin_as_validity.is_set
+	|| show_rpki_origin_as_validity.is_set
+	|| ibgp_signaled_validity.is_set
+	|| rpki_origin_as_validation_disabled.is_set
+	|| accept_own_path.is_set
+	|| accept_own_self_originated_path.is_set
+	|| aigp_metric.is_set
+	|| mvpn_sfs_path.is_set
+	|| fspec_invalid_path.is_set
+	|| has_mvpn_nbr_addr.is_set
+	|| has_mvpn_nexthop_addr.is_set
+	|| has_mvpn_pmsi.is_set
+	|| mvpn_pmsi_type.is_set
+	|| mvpn_pmsi_flags.is_set
+	|| mvpn_pmsi_label.is_set
+	|| has_mvpn_extcomm.is_set
+	|| mvpn_path_flags.is_set
+	|| local_nh.is_set
+	|| rt_set_limit_enabled.is_set
+	|| path_rt_set_id.is_set
+	|| path_rt_set_route_count.is_set
+	|| is_path_af_install_eligible.is_set
+	|| is_permanent_path.is_set
+	|| graceful_shutdown.is_set
+	|| labeled_unicast_safi_path.is_set
+	|| has_vpn_nexthop_addr.is_set
+	|| is_orig_src_rd_present.is_set
+	|| af_name.is_set
+	|| route_distinguisher.is_set
+	|| mac_ip_present.is_set
+	|| mac_ip.is_set
+	|| (bgp_prefix !=  nullptr && bgp_prefix->has_data())
+	|| (neighbor_address !=  nullptr && neighbor_address->has_data())
+	|| (next_hop !=  nullptr && next_hop->has_data())
+	|| (nh_tunnel !=  nullptr && nh_tunnel->has_data())
+	|| (mdt_group_addr !=  nullptr && mdt_group_addr->has_data())
+	|| (gw_addr !=  nullptr && gw_addr->has_data())
+	|| (nh_addr !=  nullptr && nh_addr->has_data())
+	|| (best_path_comp_winner !=  nullptr && best_path_comp_winner->has_data())
+	|| (mvpn_nbr_addr !=  nullptr && mvpn_nbr_addr->has_data())
+	|| (mvpn_nexthop_addr !=  nullptr && mvpn_nexthop_addr->has_data())
+	|| (vpn_nexthop_addr !=  nullptr && vpn_nexthop_addr->has_data());
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::has_operation() const
+{
+    for (std::size_t index=0; index<rcvd_label.len(); index++)
+    {
+        if(rcvd_label[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<l2vpn_circuit_status_value.len(); index++)
+    {
+        if(l2vpn_circuit_status_value[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<mvpn_pmsi_value.len(); index++)
+    {
+        if(mvpn_pmsi_value[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<extended_community.len(); index++)
+    {
+        if(extended_community[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<local_peers_advertised_to.len(); index++)
+    {
+        if(local_peers_advertised_to[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<pe_peers_advertised_to.len(); index++)
+    {
+        if(pe_peers_advertised_to[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<best_path_orr_bitfield.len(); index++)
+    {
+        if(best_path_orr_bitfield[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<add_path_orr_bitfield.len(); index++)
+    {
+        if(add_path_orr_bitfield[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(route_type.yfilter)
+	|| ydk::is_set(is_path_valid.yfilter)
+	|| ydk::is_set(is_path_damped.yfilter)
+	|| ydk::is_set(is_path_history_held.yfilter)
+	|| ydk::is_set(is_internal_path.yfilter)
+	|| ydk::is_set(is_best_path.yfilter)
+	|| ydk::is_set(is_as_best.yfilter)
+	|| ydk::is_set(is_spkr_as_best.yfilter)
+	|| ydk::is_set(is_partial_best.yfilter)
+	|| ydk::is_set(is_aggregation_suppressed.yfilter)
+	|| ydk::is_set(is_import_dampened.yfilter)
+	|| ydk::is_set(is_import_suspect.yfilter)
+	|| ydk::is_set(is_path_not_advertised.yfilter)
+	|| ydk::is_set(is_path_not_advertised_to_ebgp.yfilter)
+	|| ydk::is_set(is_path_advertised_local_as_only.yfilter)
+	|| ydk::is_set(is_path_from_route_reflector.yfilter)
+	|| ydk::is_set(is_path_received_only.yfilter)
+	|| ydk::is_set(is_received_path_not_modified.yfilter)
+	|| ydk::is_set(is_path_locally_sourced.yfilter)
+	|| ydk::is_set(is_path_local_aggregate.yfilter)
+	|| ydk::is_set(is_path_from_network_command.yfilter)
+	|| ydk::is_set(is_path_from_redistribute_command.yfilter)
+	|| ydk::is_set(is_path_imported.yfilter)
+	|| ydk::is_set(is_path_reoriginated.yfilter)
+	|| ydk::is_set(is_path_reoriginated_stitching.yfilter)
+	|| ydk::is_set(is_path_vpn_only.yfilter)
+	|| ydk::is_set(is_path_from_confederation_peer.yfilter)
+	|| ydk::is_set(is_path_synced_with_igp.yfilter)
+	|| ydk::is_set(is_path_multipath.yfilter)
+	|| ydk::is_set(is_path_imp_candidate.yfilter)
+	|| ydk::is_set(is_path_stale.yfilter)
+	|| ydk::is_set(is_path_long_lived_stale.yfilter)
+	|| ydk::is_set(is_path_backup.yfilter)
+	|| ydk::is_set(is_path_backup_protect_multipath.yfilter)
+	|| ydk::is_set(is_path_best_external.yfilter)
+	|| ydk::is_set(is_path_additional_path.yfilter)
+	|| ydk::is_set(is_path_nexthop_discarded.yfilter)
+	|| ydk::is_set(has_local_net_label.yfilter)
+	|| ydk::is_set(local_label.yfilter)
+	|| ydk::is_set(igp_metric.yfilter)
+	|| ydk::is_set(path_weight.yfilter)
+	|| ydk::is_set(neighbor_router_id.yfilter)
+	|| ydk::is_set(has_mdt_group_addr.yfilter)
+	|| ydk::is_set(l2vpn_size.yfilter)
+	|| ydk::is_set(l2vpn_evpn_esi.yfilter)
+	|| ydk::is_set(has_gw_addr.yfilter)
+	|| ydk::is_set(has_nh_addr.yfilter)
+	|| ydk::is_set(has_second_label.yfilter)
+	|| ydk::is_set(second_label.yfilter)
+	|| ydk::is_set(path_flap_count.yfilter)
+	|| ydk::is_set(seconds_since_first_flap.yfilter)
+	|| ydk::is_set(time_to_unsuppress.yfilter)
+	|| ydk::is_set(dampen_penalty.yfilter)
+	|| ydk::is_set(halflife_time.yfilter)
+	|| ydk::is_set(suppress_penalty.yfilter)
+	|| ydk::is_set(reuse_value.yfilter)
+	|| ydk::is_set(maximum_suppress_time.yfilter)
+	|| ydk::is_set(best_path_comp_stage.yfilter)
+	|| ydk::is_set(best_path_id_comp_winner.yfilter)
+	|| ydk::is_set(path_flags.yfilter)
+	|| ydk::is_set(path_import_flags.yfilter)
+	|| ydk::is_set(best_path_id.yfilter)
+	|| ydk::is_set(local_path_id.yfilter)
+	|| ydk::is_set(rcvd_path_id.yfilter)
+	|| ydk::is_set(path_table_version.yfilter)
+	|| ydk::is_set(advertisedto_pe.yfilter)
+	|| ydk::is_set(rib_failed.yfilter)
+	|| ydk::is_set(sn_rpki_origin_as_validity.yfilter)
+	|| ydk::is_set(show_rpki_origin_as_validity.yfilter)
+	|| ydk::is_set(ibgp_signaled_validity.yfilter)
+	|| ydk::is_set(rpki_origin_as_validation_disabled.yfilter)
+	|| ydk::is_set(accept_own_path.yfilter)
+	|| ydk::is_set(accept_own_self_originated_path.yfilter)
+	|| ydk::is_set(aigp_metric.yfilter)
+	|| ydk::is_set(mvpn_sfs_path.yfilter)
+	|| ydk::is_set(fspec_invalid_path.yfilter)
+	|| ydk::is_set(has_mvpn_nbr_addr.yfilter)
+	|| ydk::is_set(has_mvpn_nexthop_addr.yfilter)
+	|| ydk::is_set(has_mvpn_pmsi.yfilter)
+	|| ydk::is_set(mvpn_pmsi_type.yfilter)
+	|| ydk::is_set(mvpn_pmsi_flags.yfilter)
+	|| ydk::is_set(mvpn_pmsi_label.yfilter)
+	|| ydk::is_set(has_mvpn_extcomm.yfilter)
+	|| ydk::is_set(mvpn_path_flags.yfilter)
+	|| ydk::is_set(local_nh.yfilter)
+	|| ydk::is_set(rt_set_limit_enabled.yfilter)
+	|| ydk::is_set(path_rt_set_id.yfilter)
+	|| ydk::is_set(path_rt_set_route_count.yfilter)
+	|| ydk::is_set(is_path_af_install_eligible.yfilter)
+	|| ydk::is_set(is_permanent_path.yfilter)
+	|| ydk::is_set(graceful_shutdown.yfilter)
+	|| ydk::is_set(labeled_unicast_safi_path.yfilter)
+	|| ydk::is_set(has_vpn_nexthop_addr.yfilter)
+	|| ydk::is_set(is_orig_src_rd_present.yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(route_distinguisher.yfilter)
+	|| ydk::is_set(mac_ip_present.yfilter)
+	|| ydk::is_set(mac_ip.yfilter)
+	|| (bgp_prefix !=  nullptr && bgp_prefix->has_operation())
+	|| (neighbor_address !=  nullptr && neighbor_address->has_operation())
+	|| (next_hop !=  nullptr && next_hop->has_operation())
+	|| (nh_tunnel !=  nullptr && nh_tunnel->has_operation())
+	|| (mdt_group_addr !=  nullptr && mdt_group_addr->has_operation())
+	|| (gw_addr !=  nullptr && gw_addr->has_operation())
+	|| (nh_addr !=  nullptr && nh_addr->has_operation())
+	|| (best_path_comp_winner !=  nullptr && best_path_comp_winner->has_operation())
+	|| (mvpn_nbr_addr !=  nullptr && mvpn_nbr_addr->has_operation())
+	|| (mvpn_nexthop_addr !=  nullptr && mvpn_nexthop_addr->has_operation())
+	|| (vpn_nexthop_addr !=  nullptr && vpn_nexthop_addr->has_operation());
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "path-information";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (route_type.is_set || is_set(route_type.yfilter)) leaf_name_data.push_back(route_type.get_name_leafdata());
+    if (is_path_valid.is_set || is_set(is_path_valid.yfilter)) leaf_name_data.push_back(is_path_valid.get_name_leafdata());
+    if (is_path_damped.is_set || is_set(is_path_damped.yfilter)) leaf_name_data.push_back(is_path_damped.get_name_leafdata());
+    if (is_path_history_held.is_set || is_set(is_path_history_held.yfilter)) leaf_name_data.push_back(is_path_history_held.get_name_leafdata());
+    if (is_internal_path.is_set || is_set(is_internal_path.yfilter)) leaf_name_data.push_back(is_internal_path.get_name_leafdata());
+    if (is_best_path.is_set || is_set(is_best_path.yfilter)) leaf_name_data.push_back(is_best_path.get_name_leafdata());
+    if (is_as_best.is_set || is_set(is_as_best.yfilter)) leaf_name_data.push_back(is_as_best.get_name_leafdata());
+    if (is_spkr_as_best.is_set || is_set(is_spkr_as_best.yfilter)) leaf_name_data.push_back(is_spkr_as_best.get_name_leafdata());
+    if (is_partial_best.is_set || is_set(is_partial_best.yfilter)) leaf_name_data.push_back(is_partial_best.get_name_leafdata());
+    if (is_aggregation_suppressed.is_set || is_set(is_aggregation_suppressed.yfilter)) leaf_name_data.push_back(is_aggregation_suppressed.get_name_leafdata());
+    if (is_import_dampened.is_set || is_set(is_import_dampened.yfilter)) leaf_name_data.push_back(is_import_dampened.get_name_leafdata());
+    if (is_import_suspect.is_set || is_set(is_import_suspect.yfilter)) leaf_name_data.push_back(is_import_suspect.get_name_leafdata());
+    if (is_path_not_advertised.is_set || is_set(is_path_not_advertised.yfilter)) leaf_name_data.push_back(is_path_not_advertised.get_name_leafdata());
+    if (is_path_not_advertised_to_ebgp.is_set || is_set(is_path_not_advertised_to_ebgp.yfilter)) leaf_name_data.push_back(is_path_not_advertised_to_ebgp.get_name_leafdata());
+    if (is_path_advertised_local_as_only.is_set || is_set(is_path_advertised_local_as_only.yfilter)) leaf_name_data.push_back(is_path_advertised_local_as_only.get_name_leafdata());
+    if (is_path_from_route_reflector.is_set || is_set(is_path_from_route_reflector.yfilter)) leaf_name_data.push_back(is_path_from_route_reflector.get_name_leafdata());
+    if (is_path_received_only.is_set || is_set(is_path_received_only.yfilter)) leaf_name_data.push_back(is_path_received_only.get_name_leafdata());
+    if (is_received_path_not_modified.is_set || is_set(is_received_path_not_modified.yfilter)) leaf_name_data.push_back(is_received_path_not_modified.get_name_leafdata());
+    if (is_path_locally_sourced.is_set || is_set(is_path_locally_sourced.yfilter)) leaf_name_data.push_back(is_path_locally_sourced.get_name_leafdata());
+    if (is_path_local_aggregate.is_set || is_set(is_path_local_aggregate.yfilter)) leaf_name_data.push_back(is_path_local_aggregate.get_name_leafdata());
+    if (is_path_from_network_command.is_set || is_set(is_path_from_network_command.yfilter)) leaf_name_data.push_back(is_path_from_network_command.get_name_leafdata());
+    if (is_path_from_redistribute_command.is_set || is_set(is_path_from_redistribute_command.yfilter)) leaf_name_data.push_back(is_path_from_redistribute_command.get_name_leafdata());
+    if (is_path_imported.is_set || is_set(is_path_imported.yfilter)) leaf_name_data.push_back(is_path_imported.get_name_leafdata());
+    if (is_path_reoriginated.is_set || is_set(is_path_reoriginated.yfilter)) leaf_name_data.push_back(is_path_reoriginated.get_name_leafdata());
+    if (is_path_reoriginated_stitching.is_set || is_set(is_path_reoriginated_stitching.yfilter)) leaf_name_data.push_back(is_path_reoriginated_stitching.get_name_leafdata());
+    if (is_path_vpn_only.is_set || is_set(is_path_vpn_only.yfilter)) leaf_name_data.push_back(is_path_vpn_only.get_name_leafdata());
+    if (is_path_from_confederation_peer.is_set || is_set(is_path_from_confederation_peer.yfilter)) leaf_name_data.push_back(is_path_from_confederation_peer.get_name_leafdata());
+    if (is_path_synced_with_igp.is_set || is_set(is_path_synced_with_igp.yfilter)) leaf_name_data.push_back(is_path_synced_with_igp.get_name_leafdata());
+    if (is_path_multipath.is_set || is_set(is_path_multipath.yfilter)) leaf_name_data.push_back(is_path_multipath.get_name_leafdata());
+    if (is_path_imp_candidate.is_set || is_set(is_path_imp_candidate.yfilter)) leaf_name_data.push_back(is_path_imp_candidate.get_name_leafdata());
+    if (is_path_stale.is_set || is_set(is_path_stale.yfilter)) leaf_name_data.push_back(is_path_stale.get_name_leafdata());
+    if (is_path_long_lived_stale.is_set || is_set(is_path_long_lived_stale.yfilter)) leaf_name_data.push_back(is_path_long_lived_stale.get_name_leafdata());
+    if (is_path_backup.is_set || is_set(is_path_backup.yfilter)) leaf_name_data.push_back(is_path_backup.get_name_leafdata());
+    if (is_path_backup_protect_multipath.is_set || is_set(is_path_backup_protect_multipath.yfilter)) leaf_name_data.push_back(is_path_backup_protect_multipath.get_name_leafdata());
+    if (is_path_best_external.is_set || is_set(is_path_best_external.yfilter)) leaf_name_data.push_back(is_path_best_external.get_name_leafdata());
+    if (is_path_additional_path.is_set || is_set(is_path_additional_path.yfilter)) leaf_name_data.push_back(is_path_additional_path.get_name_leafdata());
+    if (is_path_nexthop_discarded.is_set || is_set(is_path_nexthop_discarded.yfilter)) leaf_name_data.push_back(is_path_nexthop_discarded.get_name_leafdata());
+    if (has_local_net_label.is_set || is_set(has_local_net_label.yfilter)) leaf_name_data.push_back(has_local_net_label.get_name_leafdata());
+    if (local_label.is_set || is_set(local_label.yfilter)) leaf_name_data.push_back(local_label.get_name_leafdata());
+    if (igp_metric.is_set || is_set(igp_metric.yfilter)) leaf_name_data.push_back(igp_metric.get_name_leafdata());
+    if (path_weight.is_set || is_set(path_weight.yfilter)) leaf_name_data.push_back(path_weight.get_name_leafdata());
+    if (neighbor_router_id.is_set || is_set(neighbor_router_id.yfilter)) leaf_name_data.push_back(neighbor_router_id.get_name_leafdata());
+    if (has_mdt_group_addr.is_set || is_set(has_mdt_group_addr.yfilter)) leaf_name_data.push_back(has_mdt_group_addr.get_name_leafdata());
+    if (l2vpn_size.is_set || is_set(l2vpn_size.yfilter)) leaf_name_data.push_back(l2vpn_size.get_name_leafdata());
+    if (l2vpn_evpn_esi.is_set || is_set(l2vpn_evpn_esi.yfilter)) leaf_name_data.push_back(l2vpn_evpn_esi.get_name_leafdata());
+    if (has_gw_addr.is_set || is_set(has_gw_addr.yfilter)) leaf_name_data.push_back(has_gw_addr.get_name_leafdata());
+    if (has_nh_addr.is_set || is_set(has_nh_addr.yfilter)) leaf_name_data.push_back(has_nh_addr.get_name_leafdata());
+    if (has_second_label.is_set || is_set(has_second_label.yfilter)) leaf_name_data.push_back(has_second_label.get_name_leafdata());
+    if (second_label.is_set || is_set(second_label.yfilter)) leaf_name_data.push_back(second_label.get_name_leafdata());
+    if (path_flap_count.is_set || is_set(path_flap_count.yfilter)) leaf_name_data.push_back(path_flap_count.get_name_leafdata());
+    if (seconds_since_first_flap.is_set || is_set(seconds_since_first_flap.yfilter)) leaf_name_data.push_back(seconds_since_first_flap.get_name_leafdata());
+    if (time_to_unsuppress.is_set || is_set(time_to_unsuppress.yfilter)) leaf_name_data.push_back(time_to_unsuppress.get_name_leafdata());
+    if (dampen_penalty.is_set || is_set(dampen_penalty.yfilter)) leaf_name_data.push_back(dampen_penalty.get_name_leafdata());
+    if (halflife_time.is_set || is_set(halflife_time.yfilter)) leaf_name_data.push_back(halflife_time.get_name_leafdata());
+    if (suppress_penalty.is_set || is_set(suppress_penalty.yfilter)) leaf_name_data.push_back(suppress_penalty.get_name_leafdata());
+    if (reuse_value.is_set || is_set(reuse_value.yfilter)) leaf_name_data.push_back(reuse_value.get_name_leafdata());
+    if (maximum_suppress_time.is_set || is_set(maximum_suppress_time.yfilter)) leaf_name_data.push_back(maximum_suppress_time.get_name_leafdata());
+    if (best_path_comp_stage.is_set || is_set(best_path_comp_stage.yfilter)) leaf_name_data.push_back(best_path_comp_stage.get_name_leafdata());
+    if (best_path_id_comp_winner.is_set || is_set(best_path_id_comp_winner.yfilter)) leaf_name_data.push_back(best_path_id_comp_winner.get_name_leafdata());
+    if (path_flags.is_set || is_set(path_flags.yfilter)) leaf_name_data.push_back(path_flags.get_name_leafdata());
+    if (path_import_flags.is_set || is_set(path_import_flags.yfilter)) leaf_name_data.push_back(path_import_flags.get_name_leafdata());
+    if (best_path_id.is_set || is_set(best_path_id.yfilter)) leaf_name_data.push_back(best_path_id.get_name_leafdata());
+    if (local_path_id.is_set || is_set(local_path_id.yfilter)) leaf_name_data.push_back(local_path_id.get_name_leafdata());
+    if (rcvd_path_id.is_set || is_set(rcvd_path_id.yfilter)) leaf_name_data.push_back(rcvd_path_id.get_name_leafdata());
+    if (path_table_version.is_set || is_set(path_table_version.yfilter)) leaf_name_data.push_back(path_table_version.get_name_leafdata());
+    if (advertisedto_pe.is_set || is_set(advertisedto_pe.yfilter)) leaf_name_data.push_back(advertisedto_pe.get_name_leafdata());
+    if (rib_failed.is_set || is_set(rib_failed.yfilter)) leaf_name_data.push_back(rib_failed.get_name_leafdata());
+    if (sn_rpki_origin_as_validity.is_set || is_set(sn_rpki_origin_as_validity.yfilter)) leaf_name_data.push_back(sn_rpki_origin_as_validity.get_name_leafdata());
+    if (show_rpki_origin_as_validity.is_set || is_set(show_rpki_origin_as_validity.yfilter)) leaf_name_data.push_back(show_rpki_origin_as_validity.get_name_leafdata());
+    if (ibgp_signaled_validity.is_set || is_set(ibgp_signaled_validity.yfilter)) leaf_name_data.push_back(ibgp_signaled_validity.get_name_leafdata());
+    if (rpki_origin_as_validation_disabled.is_set || is_set(rpki_origin_as_validation_disabled.yfilter)) leaf_name_data.push_back(rpki_origin_as_validation_disabled.get_name_leafdata());
+    if (accept_own_path.is_set || is_set(accept_own_path.yfilter)) leaf_name_data.push_back(accept_own_path.get_name_leafdata());
+    if (accept_own_self_originated_path.is_set || is_set(accept_own_self_originated_path.yfilter)) leaf_name_data.push_back(accept_own_self_originated_path.get_name_leafdata());
+    if (aigp_metric.is_set || is_set(aigp_metric.yfilter)) leaf_name_data.push_back(aigp_metric.get_name_leafdata());
+    if (mvpn_sfs_path.is_set || is_set(mvpn_sfs_path.yfilter)) leaf_name_data.push_back(mvpn_sfs_path.get_name_leafdata());
+    if (fspec_invalid_path.is_set || is_set(fspec_invalid_path.yfilter)) leaf_name_data.push_back(fspec_invalid_path.get_name_leafdata());
+    if (has_mvpn_nbr_addr.is_set || is_set(has_mvpn_nbr_addr.yfilter)) leaf_name_data.push_back(has_mvpn_nbr_addr.get_name_leafdata());
+    if (has_mvpn_nexthop_addr.is_set || is_set(has_mvpn_nexthop_addr.yfilter)) leaf_name_data.push_back(has_mvpn_nexthop_addr.get_name_leafdata());
+    if (has_mvpn_pmsi.is_set || is_set(has_mvpn_pmsi.yfilter)) leaf_name_data.push_back(has_mvpn_pmsi.get_name_leafdata());
+    if (mvpn_pmsi_type.is_set || is_set(mvpn_pmsi_type.yfilter)) leaf_name_data.push_back(mvpn_pmsi_type.get_name_leafdata());
+    if (mvpn_pmsi_flags.is_set || is_set(mvpn_pmsi_flags.yfilter)) leaf_name_data.push_back(mvpn_pmsi_flags.get_name_leafdata());
+    if (mvpn_pmsi_label.is_set || is_set(mvpn_pmsi_label.yfilter)) leaf_name_data.push_back(mvpn_pmsi_label.get_name_leafdata());
+    if (has_mvpn_extcomm.is_set || is_set(has_mvpn_extcomm.yfilter)) leaf_name_data.push_back(has_mvpn_extcomm.get_name_leafdata());
+    if (mvpn_path_flags.is_set || is_set(mvpn_path_flags.yfilter)) leaf_name_data.push_back(mvpn_path_flags.get_name_leafdata());
+    if (local_nh.is_set || is_set(local_nh.yfilter)) leaf_name_data.push_back(local_nh.get_name_leafdata());
+    if (rt_set_limit_enabled.is_set || is_set(rt_set_limit_enabled.yfilter)) leaf_name_data.push_back(rt_set_limit_enabled.get_name_leafdata());
+    if (path_rt_set_id.is_set || is_set(path_rt_set_id.yfilter)) leaf_name_data.push_back(path_rt_set_id.get_name_leafdata());
+    if (path_rt_set_route_count.is_set || is_set(path_rt_set_route_count.yfilter)) leaf_name_data.push_back(path_rt_set_route_count.get_name_leafdata());
+    if (is_path_af_install_eligible.is_set || is_set(is_path_af_install_eligible.yfilter)) leaf_name_data.push_back(is_path_af_install_eligible.get_name_leafdata());
+    if (is_permanent_path.is_set || is_set(is_permanent_path.yfilter)) leaf_name_data.push_back(is_permanent_path.get_name_leafdata());
+    if (graceful_shutdown.is_set || is_set(graceful_shutdown.yfilter)) leaf_name_data.push_back(graceful_shutdown.get_name_leafdata());
+    if (labeled_unicast_safi_path.is_set || is_set(labeled_unicast_safi_path.yfilter)) leaf_name_data.push_back(labeled_unicast_safi_path.get_name_leafdata());
+    if (has_vpn_nexthop_addr.is_set || is_set(has_vpn_nexthop_addr.yfilter)) leaf_name_data.push_back(has_vpn_nexthop_addr.get_name_leafdata());
+    if (is_orig_src_rd_present.is_set || is_set(is_orig_src_rd_present.yfilter)) leaf_name_data.push_back(is_orig_src_rd_present.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (route_distinguisher.is_set || is_set(route_distinguisher.yfilter)) leaf_name_data.push_back(route_distinguisher.get_name_leafdata());
+    if (mac_ip_present.is_set || is_set(mac_ip_present.yfilter)) leaf_name_data.push_back(mac_ip_present.get_name_leafdata());
+    if (mac_ip.is_set || is_set(mac_ip.yfilter)) leaf_name_data.push_back(mac_ip.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bgp-prefix")
+    {
+        if(bgp_prefix == nullptr)
+        {
+            bgp_prefix = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix>();
+        }
+        return bgp_prefix;
+    }
+
+    if(child_yang_name == "neighbor-address")
+    {
+        if(neighbor_address == nullptr)
+        {
+            neighbor_address = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress>();
+        }
+        return neighbor_address;
+    }
+
+    if(child_yang_name == "next-hop")
+    {
+        if(next_hop == nullptr)
+        {
+            next_hop = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop>();
+        }
+        return next_hop;
+    }
+
+    if(child_yang_name == "nh-tunnel")
+    {
+        if(nh_tunnel == nullptr)
+        {
+            nh_tunnel = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NhTunnel>();
+        }
+        return nh_tunnel;
+    }
+
+    if(child_yang_name == "mdt-group-addr")
+    {
+        if(mdt_group_addr == nullptr)
+        {
+            mdt_group_addr = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr>();
+        }
+        return mdt_group_addr;
+    }
+
+    if(child_yang_name == "gw-addr")
+    {
+        if(gw_addr == nullptr)
+        {
+            gw_addr = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::GwAddr>();
+        }
+        return gw_addr;
+    }
+
+    if(child_yang_name == "nh-addr")
+    {
+        if(nh_addr == nullptr)
+        {
+            nh_addr = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NhAddr>();
+        }
+        return nh_addr;
+    }
+
+    if(child_yang_name == "best-path-comp-winner")
+    {
+        if(best_path_comp_winner == nullptr)
+        {
+            best_path_comp_winner = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner>();
+        }
+        return best_path_comp_winner;
+    }
+
+    if(child_yang_name == "mvpn-nbr-addr")
+    {
+        if(mvpn_nbr_addr == nullptr)
+        {
+            mvpn_nbr_addr = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr>();
+        }
+        return mvpn_nbr_addr;
+    }
+
+    if(child_yang_name == "mvpn-nexthop-addr")
+    {
+        if(mvpn_nexthop_addr == nullptr)
+        {
+            mvpn_nexthop_addr = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNexthopAddr>();
+        }
+        return mvpn_nexthop_addr;
+    }
+
+    if(child_yang_name == "vpn-nexthop-addr")
+    {
+        if(vpn_nexthop_addr == nullptr)
+        {
+            vpn_nexthop_addr = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::VpnNexthopAddr>();
+        }
+        return vpn_nexthop_addr;
+    }
+
+    if(child_yang_name == "rcvd-label")
+    {
+        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::RcvdLabel>();
+        c->parent = this;
+        rcvd_label.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "l2vpn-circuit-status-value")
+    {
+        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::L2vpnCircuitStatusValue>();
+        c->parent = this;
+        l2vpn_circuit_status_value.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "mvpn-pmsi-value")
+    {
+        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnPmsiValue>();
+        c->parent = this;
+        mvpn_pmsi_value.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "extended-community")
+    {
+        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::ExtendedCommunity>();
+        c->parent = this;
+        extended_community.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "local-peers-advertised-to")
+    {
+        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::LocalPeersAdvertisedTo>();
+        c->parent = this;
+        local_peers_advertised_to.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "pe-peers-advertised-to")
+    {
+        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::PePeersAdvertisedTo>();
+        c->parent = this;
+        pe_peers_advertised_to.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "best-path-orr-bitfield")
+    {
+        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathOrrBitfield>();
+        c->parent = this;
+        best_path_orr_bitfield.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "add-path-orr-bitfield")
+    {
+        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::AddPathOrrBitfield>();
+        c->parent = this;
+        add_path_orr_bitfield.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(bgp_prefix != nullptr)
+    {
+        children["bgp-prefix"] = bgp_prefix;
+    }
+
+    if(neighbor_address != nullptr)
+    {
+        children["neighbor-address"] = neighbor_address;
+    }
+
+    if(next_hop != nullptr)
+    {
+        children["next-hop"] = next_hop;
+    }
+
+    if(nh_tunnel != nullptr)
+    {
+        children["nh-tunnel"] = nh_tunnel;
+    }
+
+    if(mdt_group_addr != nullptr)
+    {
+        children["mdt-group-addr"] = mdt_group_addr;
+    }
+
+    if(gw_addr != nullptr)
+    {
+        children["gw-addr"] = gw_addr;
+    }
+
+    if(nh_addr != nullptr)
+    {
+        children["nh-addr"] = nh_addr;
+    }
+
+    if(best_path_comp_winner != nullptr)
+    {
+        children["best-path-comp-winner"] = best_path_comp_winner;
+    }
+
+    if(mvpn_nbr_addr != nullptr)
+    {
+        children["mvpn-nbr-addr"] = mvpn_nbr_addr;
+    }
+
+    if(mvpn_nexthop_addr != nullptr)
+    {
+        children["mvpn-nexthop-addr"] = mvpn_nexthop_addr;
+    }
+
+    if(vpn_nexthop_addr != nullptr)
+    {
+        children["vpn-nexthop-addr"] = vpn_nexthop_addr;
+    }
+
+    count = 0;
+    for (auto c : rcvd_label.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : l2vpn_circuit_status_value.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : mvpn_pmsi_value.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : extended_community.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : local_peers_advertised_to.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : pe_peers_advertised_to.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : best_path_orr_bitfield.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : add_path_orr_bitfield.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "route-type")
+    {
+        route_type = value;
+        route_type.value_namespace = name_space;
+        route_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-valid")
+    {
+        is_path_valid = value;
+        is_path_valid.value_namespace = name_space;
+        is_path_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-damped")
+    {
+        is_path_damped = value;
+        is_path_damped.value_namespace = name_space;
+        is_path_damped.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-history-held")
+    {
+        is_path_history_held = value;
+        is_path_history_held.value_namespace = name_space;
+        is_path_history_held.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-internal-path")
+    {
+        is_internal_path = value;
+        is_internal_path.value_namespace = name_space;
+        is_internal_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-best-path")
+    {
+        is_best_path = value;
+        is_best_path.value_namespace = name_space;
+        is_best_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-as-best")
+    {
+        is_as_best = value;
+        is_as_best.value_namespace = name_space;
+        is_as_best.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-spkr-as-best")
+    {
+        is_spkr_as_best = value;
+        is_spkr_as_best.value_namespace = name_space;
+        is_spkr_as_best.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-partial-best")
+    {
+        is_partial_best = value;
+        is_partial_best.value_namespace = name_space;
+        is_partial_best.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-aggregation-suppressed")
+    {
+        is_aggregation_suppressed = value;
+        is_aggregation_suppressed.value_namespace = name_space;
+        is_aggregation_suppressed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-import-dampened")
+    {
+        is_import_dampened = value;
+        is_import_dampened.value_namespace = name_space;
+        is_import_dampened.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-import-suspect")
+    {
+        is_import_suspect = value;
+        is_import_suspect.value_namespace = name_space;
+        is_import_suspect.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-not-advertised")
+    {
+        is_path_not_advertised = value;
+        is_path_not_advertised.value_namespace = name_space;
+        is_path_not_advertised.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-not-advertised-to-ebgp")
+    {
+        is_path_not_advertised_to_ebgp = value;
+        is_path_not_advertised_to_ebgp.value_namespace = name_space;
+        is_path_not_advertised_to_ebgp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-advertised-local-as-only")
+    {
+        is_path_advertised_local_as_only = value;
+        is_path_advertised_local_as_only.value_namespace = name_space;
+        is_path_advertised_local_as_only.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-from-route-reflector")
+    {
+        is_path_from_route_reflector = value;
+        is_path_from_route_reflector.value_namespace = name_space;
+        is_path_from_route_reflector.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-received-only")
+    {
+        is_path_received_only = value;
+        is_path_received_only.value_namespace = name_space;
+        is_path_received_only.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-received-path-not-modified")
+    {
+        is_received_path_not_modified = value;
+        is_received_path_not_modified.value_namespace = name_space;
+        is_received_path_not_modified.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-locally-sourced")
+    {
+        is_path_locally_sourced = value;
+        is_path_locally_sourced.value_namespace = name_space;
+        is_path_locally_sourced.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-local-aggregate")
+    {
+        is_path_local_aggregate = value;
+        is_path_local_aggregate.value_namespace = name_space;
+        is_path_local_aggregate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-from-network-command")
+    {
+        is_path_from_network_command = value;
+        is_path_from_network_command.value_namespace = name_space;
+        is_path_from_network_command.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-from-redistribute-command")
+    {
+        is_path_from_redistribute_command = value;
+        is_path_from_redistribute_command.value_namespace = name_space;
+        is_path_from_redistribute_command.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-imported")
+    {
+        is_path_imported = value;
+        is_path_imported.value_namespace = name_space;
+        is_path_imported.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-reoriginated")
+    {
+        is_path_reoriginated = value;
+        is_path_reoriginated.value_namespace = name_space;
+        is_path_reoriginated.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-reoriginated-stitching")
+    {
+        is_path_reoriginated_stitching = value;
+        is_path_reoriginated_stitching.value_namespace = name_space;
+        is_path_reoriginated_stitching.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-vpn-only")
+    {
+        is_path_vpn_only = value;
+        is_path_vpn_only.value_namespace = name_space;
+        is_path_vpn_only.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-from-confederation-peer")
+    {
+        is_path_from_confederation_peer = value;
+        is_path_from_confederation_peer.value_namespace = name_space;
+        is_path_from_confederation_peer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-synced-with-igp")
+    {
+        is_path_synced_with_igp = value;
+        is_path_synced_with_igp.value_namespace = name_space;
+        is_path_synced_with_igp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-multipath")
+    {
+        is_path_multipath = value;
+        is_path_multipath.value_namespace = name_space;
+        is_path_multipath.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-imp-candidate")
+    {
+        is_path_imp_candidate = value;
+        is_path_imp_candidate.value_namespace = name_space;
+        is_path_imp_candidate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-stale")
+    {
+        is_path_stale = value;
+        is_path_stale.value_namespace = name_space;
+        is_path_stale.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-long-lived-stale")
+    {
+        is_path_long_lived_stale = value;
+        is_path_long_lived_stale.value_namespace = name_space;
+        is_path_long_lived_stale.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-backup")
+    {
+        is_path_backup = value;
+        is_path_backup.value_namespace = name_space;
+        is_path_backup.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-backup-protect-multipath")
+    {
+        is_path_backup_protect_multipath = value;
+        is_path_backup_protect_multipath.value_namespace = name_space;
+        is_path_backup_protect_multipath.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-best-external")
+    {
+        is_path_best_external = value;
+        is_path_best_external.value_namespace = name_space;
+        is_path_best_external.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-additional-path")
+    {
+        is_path_additional_path = value;
+        is_path_additional_path.value_namespace = name_space;
+        is_path_additional_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-nexthop-discarded")
+    {
+        is_path_nexthop_discarded = value;
+        is_path_nexthop_discarded.value_namespace = name_space;
+        is_path_nexthop_discarded.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-local-net-label")
+    {
+        has_local_net_label = value;
+        has_local_net_label.value_namespace = name_space;
+        has_local_net_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-label")
+    {
+        local_label = value;
+        local_label.value_namespace = name_space;
+        local_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "igp-metric")
+    {
+        igp_metric = value;
+        igp_metric.value_namespace = name_space;
+        igp_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path-weight")
+    {
+        path_weight = value;
+        path_weight.value_namespace = name_space;
+        path_weight.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-router-id")
+    {
+        neighbor_router_id = value;
+        neighbor_router_id.value_namespace = name_space;
+        neighbor_router_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-mdt-group-addr")
+    {
+        has_mdt_group_addr = value;
+        has_mdt_group_addr.value_namespace = name_space;
+        has_mdt_group_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "l2vpn-size")
+    {
+        l2vpn_size = value;
+        l2vpn_size.value_namespace = name_space;
+        l2vpn_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "l2vpn-evpn-esi")
+    {
+        l2vpn_evpn_esi = value;
+        l2vpn_evpn_esi.value_namespace = name_space;
+        l2vpn_evpn_esi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-gw-addr")
+    {
+        has_gw_addr = value;
+        has_gw_addr.value_namespace = name_space;
+        has_gw_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-nh-addr")
+    {
+        has_nh_addr = value;
+        has_nh_addr.value_namespace = name_space;
+        has_nh_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-second-label")
+    {
+        has_second_label = value;
+        has_second_label.value_namespace = name_space;
+        has_second_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "second-label")
+    {
+        second_label = value;
+        second_label.value_namespace = name_space;
+        second_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path-flap-count")
+    {
+        path_flap_count = value;
+        path_flap_count.value_namespace = name_space;
+        path_flap_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "seconds-since-first-flap")
+    {
+        seconds_since_first_flap = value;
+        seconds_since_first_flap.value_namespace = name_space;
+        seconds_since_first_flap.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-to-unsuppress")
+    {
+        time_to_unsuppress = value;
+        time_to_unsuppress.value_namespace = name_space;
+        time_to_unsuppress.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dampen-penalty")
+    {
+        dampen_penalty = value;
+        dampen_penalty.value_namespace = name_space;
+        dampen_penalty.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "halflife-time")
+    {
+        halflife_time = value;
+        halflife_time.value_namespace = name_space;
+        halflife_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "suppress-penalty")
+    {
+        suppress_penalty = value;
+        suppress_penalty.value_namespace = name_space;
+        suppress_penalty.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reuse-value")
+    {
+        reuse_value = value;
+        reuse_value.value_namespace = name_space;
+        reuse_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-suppress-time")
+    {
+        maximum_suppress_time = value;
+        maximum_suppress_time.value_namespace = name_space;
+        maximum_suppress_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "best-path-comp-stage")
+    {
+        best_path_comp_stage = value;
+        best_path_comp_stage.value_namespace = name_space;
+        best_path_comp_stage.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "best-path-id-comp-winner")
+    {
+        best_path_id_comp_winner = value;
+        best_path_id_comp_winner.value_namespace = name_space;
+        best_path_id_comp_winner.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path-flags")
+    {
+        path_flags = value;
+        path_flags.value_namespace = name_space;
+        path_flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path-import-flags")
+    {
+        path_import_flags = value;
+        path_import_flags.value_namespace = name_space;
+        path_import_flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "best-path-id")
+    {
+        best_path_id = value;
+        best_path_id.value_namespace = name_space;
+        best_path_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-path-id")
+    {
+        local_path_id = value;
+        local_path_id.value_namespace = name_space;
+        local_path_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rcvd-path-id")
+    {
+        rcvd_path_id = value;
+        rcvd_path_id.value_namespace = name_space;
+        rcvd_path_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path-table-version")
+    {
+        path_table_version = value;
+        path_table_version.value_namespace = name_space;
+        path_table_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "advertisedto-pe")
+    {
+        advertisedto_pe = value;
+        advertisedto_pe.value_namespace = name_space;
+        advertisedto_pe.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rib-failed")
+    {
+        rib_failed = value;
+        rib_failed.value_namespace = name_space;
+        rib_failed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sn-rpki-origin-as-validity")
+    {
+        sn_rpki_origin_as_validity = value;
+        sn_rpki_origin_as_validity.value_namespace = name_space;
+        sn_rpki_origin_as_validity.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "show-rpki-origin-as-validity")
+    {
+        show_rpki_origin_as_validity = value;
+        show_rpki_origin_as_validity.value_namespace = name_space;
+        show_rpki_origin_as_validity.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ibgp-signaled-validity")
+    {
+        ibgp_signaled_validity = value;
+        ibgp_signaled_validity.value_namespace = name_space;
+        ibgp_signaled_validity.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpki-origin-as-validation-disabled")
+    {
+        rpki_origin_as_validation_disabled = value;
+        rpki_origin_as_validation_disabled.value_namespace = name_space;
+        rpki_origin_as_validation_disabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accept-own-path")
+    {
+        accept_own_path = value;
+        accept_own_path.value_namespace = name_space;
+        accept_own_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accept-own-self-originated-path")
+    {
+        accept_own_self_originated_path = value;
+        accept_own_self_originated_path.value_namespace = name_space;
+        accept_own_self_originated_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "aigp-metric")
+    {
+        aigp_metric = value;
+        aigp_metric.value_namespace = name_space;
+        aigp_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mvpn-sfs-path")
+    {
+        mvpn_sfs_path = value;
+        mvpn_sfs_path.value_namespace = name_space;
+        mvpn_sfs_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fspec-invalid-path")
+    {
+        fspec_invalid_path = value;
+        fspec_invalid_path.value_namespace = name_space;
+        fspec_invalid_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-mvpn-nbr-addr")
+    {
+        has_mvpn_nbr_addr = value;
+        has_mvpn_nbr_addr.value_namespace = name_space;
+        has_mvpn_nbr_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-mvpn-nexthop-addr")
+    {
+        has_mvpn_nexthop_addr = value;
+        has_mvpn_nexthop_addr.value_namespace = name_space;
+        has_mvpn_nexthop_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-mvpn-pmsi")
+    {
+        has_mvpn_pmsi = value;
+        has_mvpn_pmsi.value_namespace = name_space;
+        has_mvpn_pmsi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mvpn-pmsi-type")
+    {
+        mvpn_pmsi_type = value;
+        mvpn_pmsi_type.value_namespace = name_space;
+        mvpn_pmsi_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mvpn-pmsi-flags")
+    {
+        mvpn_pmsi_flags = value;
+        mvpn_pmsi_flags.value_namespace = name_space;
+        mvpn_pmsi_flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mvpn-pmsi-label")
+    {
+        mvpn_pmsi_label = value;
+        mvpn_pmsi_label.value_namespace = name_space;
+        mvpn_pmsi_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-mvpn-extcomm")
+    {
+        has_mvpn_extcomm = value;
+        has_mvpn_extcomm.value_namespace = name_space;
+        has_mvpn_extcomm.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mvpn-path-flags")
+    {
+        mvpn_path_flags = value;
+        mvpn_path_flags.value_namespace = name_space;
+        mvpn_path_flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-nh")
+    {
+        local_nh = value;
+        local_nh.value_namespace = name_space;
+        local_nh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rt-set-limit-enabled")
+    {
+        rt_set_limit_enabled = value;
+        rt_set_limit_enabled.value_namespace = name_space;
+        rt_set_limit_enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path-rt-set-id")
+    {
+        path_rt_set_id = value;
+        path_rt_set_id.value_namespace = name_space;
+        path_rt_set_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path-rt-set-route-count")
+    {
+        path_rt_set_route_count = value;
+        path_rt_set_route_count.value_namespace = name_space;
+        path_rt_set_route_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-path-af-install-eligible")
+    {
+        is_path_af_install_eligible = value;
+        is_path_af_install_eligible.value_namespace = name_space;
+        is_path_af_install_eligible.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-permanent-path")
+    {
+        is_permanent_path = value;
+        is_permanent_path.value_namespace = name_space;
+        is_permanent_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "graceful-shutdown")
+    {
+        graceful_shutdown = value;
+        graceful_shutdown.value_namespace = name_space;
+        graceful_shutdown.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "labeled-unicast-safi-path")
+    {
+        labeled_unicast_safi_path = value;
+        labeled_unicast_safi_path.value_namespace = name_space;
+        labeled_unicast_safi_path.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "has-vpn-nexthop-addr")
+    {
+        has_vpn_nexthop_addr = value;
+        has_vpn_nexthop_addr.value_namespace = name_space;
+        has_vpn_nexthop_addr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-orig-src-rd-present")
+    {
+        is_orig_src_rd_present = value;
+        is_orig_src_rd_present.value_namespace = name_space;
+        is_orig_src_rd_present.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "route-distinguisher")
+    {
+        route_distinguisher = value;
+        route_distinguisher.value_namespace = name_space;
+        route_distinguisher.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mac-ip-present")
+    {
+        mac_ip_present = value;
+        mac_ip_present.value_namespace = name_space;
+        mac_ip_present.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mac-ip")
+    {
+        mac_ip = value;
+        mac_ip.value_namespace = name_space;
+        mac_ip.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-type")
+    {
+        route_type.yfilter = yfilter;
+    }
+    if(value_path == "is-path-valid")
+    {
+        is_path_valid.yfilter = yfilter;
+    }
+    if(value_path == "is-path-damped")
+    {
+        is_path_damped.yfilter = yfilter;
+    }
+    if(value_path == "is-path-history-held")
+    {
+        is_path_history_held.yfilter = yfilter;
+    }
+    if(value_path == "is-internal-path")
+    {
+        is_internal_path.yfilter = yfilter;
+    }
+    if(value_path == "is-best-path")
+    {
+        is_best_path.yfilter = yfilter;
+    }
+    if(value_path == "is-as-best")
+    {
+        is_as_best.yfilter = yfilter;
+    }
+    if(value_path == "is-spkr-as-best")
+    {
+        is_spkr_as_best.yfilter = yfilter;
+    }
+    if(value_path == "is-partial-best")
+    {
+        is_partial_best.yfilter = yfilter;
+    }
+    if(value_path == "is-aggregation-suppressed")
+    {
+        is_aggregation_suppressed.yfilter = yfilter;
+    }
+    if(value_path == "is-import-dampened")
+    {
+        is_import_dampened.yfilter = yfilter;
+    }
+    if(value_path == "is-import-suspect")
+    {
+        is_import_suspect.yfilter = yfilter;
+    }
+    if(value_path == "is-path-not-advertised")
+    {
+        is_path_not_advertised.yfilter = yfilter;
+    }
+    if(value_path == "is-path-not-advertised-to-ebgp")
+    {
+        is_path_not_advertised_to_ebgp.yfilter = yfilter;
+    }
+    if(value_path == "is-path-advertised-local-as-only")
+    {
+        is_path_advertised_local_as_only.yfilter = yfilter;
+    }
+    if(value_path == "is-path-from-route-reflector")
+    {
+        is_path_from_route_reflector.yfilter = yfilter;
+    }
+    if(value_path == "is-path-received-only")
+    {
+        is_path_received_only.yfilter = yfilter;
+    }
+    if(value_path == "is-received-path-not-modified")
+    {
+        is_received_path_not_modified.yfilter = yfilter;
+    }
+    if(value_path == "is-path-locally-sourced")
+    {
+        is_path_locally_sourced.yfilter = yfilter;
+    }
+    if(value_path == "is-path-local-aggregate")
+    {
+        is_path_local_aggregate.yfilter = yfilter;
+    }
+    if(value_path == "is-path-from-network-command")
+    {
+        is_path_from_network_command.yfilter = yfilter;
+    }
+    if(value_path == "is-path-from-redistribute-command")
+    {
+        is_path_from_redistribute_command.yfilter = yfilter;
+    }
+    if(value_path == "is-path-imported")
+    {
+        is_path_imported.yfilter = yfilter;
+    }
+    if(value_path == "is-path-reoriginated")
+    {
+        is_path_reoriginated.yfilter = yfilter;
+    }
+    if(value_path == "is-path-reoriginated-stitching")
+    {
+        is_path_reoriginated_stitching.yfilter = yfilter;
+    }
+    if(value_path == "is-path-vpn-only")
+    {
+        is_path_vpn_only.yfilter = yfilter;
+    }
+    if(value_path == "is-path-from-confederation-peer")
+    {
+        is_path_from_confederation_peer.yfilter = yfilter;
+    }
+    if(value_path == "is-path-synced-with-igp")
+    {
+        is_path_synced_with_igp.yfilter = yfilter;
+    }
+    if(value_path == "is-path-multipath")
+    {
+        is_path_multipath.yfilter = yfilter;
+    }
+    if(value_path == "is-path-imp-candidate")
+    {
+        is_path_imp_candidate.yfilter = yfilter;
+    }
+    if(value_path == "is-path-stale")
+    {
+        is_path_stale.yfilter = yfilter;
+    }
+    if(value_path == "is-path-long-lived-stale")
+    {
+        is_path_long_lived_stale.yfilter = yfilter;
+    }
+    if(value_path == "is-path-backup")
+    {
+        is_path_backup.yfilter = yfilter;
+    }
+    if(value_path == "is-path-backup-protect-multipath")
+    {
+        is_path_backup_protect_multipath.yfilter = yfilter;
+    }
+    if(value_path == "is-path-best-external")
+    {
+        is_path_best_external.yfilter = yfilter;
+    }
+    if(value_path == "is-path-additional-path")
+    {
+        is_path_additional_path.yfilter = yfilter;
+    }
+    if(value_path == "is-path-nexthop-discarded")
+    {
+        is_path_nexthop_discarded.yfilter = yfilter;
+    }
+    if(value_path == "has-local-net-label")
+    {
+        has_local_net_label.yfilter = yfilter;
+    }
+    if(value_path == "local-label")
+    {
+        local_label.yfilter = yfilter;
+    }
+    if(value_path == "igp-metric")
+    {
+        igp_metric.yfilter = yfilter;
+    }
+    if(value_path == "path-weight")
+    {
+        path_weight.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-router-id")
+    {
+        neighbor_router_id.yfilter = yfilter;
+    }
+    if(value_path == "has-mdt-group-addr")
+    {
+        has_mdt_group_addr.yfilter = yfilter;
+    }
+    if(value_path == "l2vpn-size")
+    {
+        l2vpn_size.yfilter = yfilter;
+    }
+    if(value_path == "l2vpn-evpn-esi")
+    {
+        l2vpn_evpn_esi.yfilter = yfilter;
+    }
+    if(value_path == "has-gw-addr")
+    {
+        has_gw_addr.yfilter = yfilter;
+    }
+    if(value_path == "has-nh-addr")
+    {
+        has_nh_addr.yfilter = yfilter;
+    }
+    if(value_path == "has-second-label")
+    {
+        has_second_label.yfilter = yfilter;
+    }
+    if(value_path == "second-label")
+    {
+        second_label.yfilter = yfilter;
+    }
+    if(value_path == "path-flap-count")
+    {
+        path_flap_count.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-first-flap")
+    {
+        seconds_since_first_flap.yfilter = yfilter;
+    }
+    if(value_path == "time-to-unsuppress")
+    {
+        time_to_unsuppress.yfilter = yfilter;
+    }
+    if(value_path == "dampen-penalty")
+    {
+        dampen_penalty.yfilter = yfilter;
+    }
+    if(value_path == "halflife-time")
+    {
+        halflife_time.yfilter = yfilter;
+    }
+    if(value_path == "suppress-penalty")
+    {
+        suppress_penalty.yfilter = yfilter;
+    }
+    if(value_path == "reuse-value")
+    {
+        reuse_value.yfilter = yfilter;
+    }
+    if(value_path == "maximum-suppress-time")
+    {
+        maximum_suppress_time.yfilter = yfilter;
+    }
+    if(value_path == "best-path-comp-stage")
+    {
+        best_path_comp_stage.yfilter = yfilter;
+    }
+    if(value_path == "best-path-id-comp-winner")
+    {
+        best_path_id_comp_winner.yfilter = yfilter;
+    }
+    if(value_path == "path-flags")
+    {
+        path_flags.yfilter = yfilter;
+    }
+    if(value_path == "path-import-flags")
+    {
+        path_import_flags.yfilter = yfilter;
+    }
+    if(value_path == "best-path-id")
+    {
+        best_path_id.yfilter = yfilter;
+    }
+    if(value_path == "local-path-id")
+    {
+        local_path_id.yfilter = yfilter;
+    }
+    if(value_path == "rcvd-path-id")
+    {
+        rcvd_path_id.yfilter = yfilter;
+    }
+    if(value_path == "path-table-version")
+    {
+        path_table_version.yfilter = yfilter;
+    }
+    if(value_path == "advertisedto-pe")
+    {
+        advertisedto_pe.yfilter = yfilter;
+    }
+    if(value_path == "rib-failed")
+    {
+        rib_failed.yfilter = yfilter;
+    }
+    if(value_path == "sn-rpki-origin-as-validity")
+    {
+        sn_rpki_origin_as_validity.yfilter = yfilter;
+    }
+    if(value_path == "show-rpki-origin-as-validity")
+    {
+        show_rpki_origin_as_validity.yfilter = yfilter;
+    }
+    if(value_path == "ibgp-signaled-validity")
+    {
+        ibgp_signaled_validity.yfilter = yfilter;
+    }
+    if(value_path == "rpki-origin-as-validation-disabled")
+    {
+        rpki_origin_as_validation_disabled.yfilter = yfilter;
+    }
+    if(value_path == "accept-own-path")
+    {
+        accept_own_path.yfilter = yfilter;
+    }
+    if(value_path == "accept-own-self-originated-path")
+    {
+        accept_own_self_originated_path.yfilter = yfilter;
+    }
+    if(value_path == "aigp-metric")
+    {
+        aigp_metric.yfilter = yfilter;
+    }
+    if(value_path == "mvpn-sfs-path")
+    {
+        mvpn_sfs_path.yfilter = yfilter;
+    }
+    if(value_path == "fspec-invalid-path")
+    {
+        fspec_invalid_path.yfilter = yfilter;
+    }
+    if(value_path == "has-mvpn-nbr-addr")
+    {
+        has_mvpn_nbr_addr.yfilter = yfilter;
+    }
+    if(value_path == "has-mvpn-nexthop-addr")
+    {
+        has_mvpn_nexthop_addr.yfilter = yfilter;
+    }
+    if(value_path == "has-mvpn-pmsi")
+    {
+        has_mvpn_pmsi.yfilter = yfilter;
+    }
+    if(value_path == "mvpn-pmsi-type")
+    {
+        mvpn_pmsi_type.yfilter = yfilter;
+    }
+    if(value_path == "mvpn-pmsi-flags")
+    {
+        mvpn_pmsi_flags.yfilter = yfilter;
+    }
+    if(value_path == "mvpn-pmsi-label")
+    {
+        mvpn_pmsi_label.yfilter = yfilter;
+    }
+    if(value_path == "has-mvpn-extcomm")
+    {
+        has_mvpn_extcomm.yfilter = yfilter;
+    }
+    if(value_path == "mvpn-path-flags")
+    {
+        mvpn_path_flags.yfilter = yfilter;
+    }
+    if(value_path == "local-nh")
+    {
+        local_nh.yfilter = yfilter;
+    }
+    if(value_path == "rt-set-limit-enabled")
+    {
+        rt_set_limit_enabled.yfilter = yfilter;
+    }
+    if(value_path == "path-rt-set-id")
+    {
+        path_rt_set_id.yfilter = yfilter;
+    }
+    if(value_path == "path-rt-set-route-count")
+    {
+        path_rt_set_route_count.yfilter = yfilter;
+    }
+    if(value_path == "is-path-af-install-eligible")
+    {
+        is_path_af_install_eligible.yfilter = yfilter;
+    }
+    if(value_path == "is-permanent-path")
+    {
+        is_permanent_path.yfilter = yfilter;
+    }
+    if(value_path == "graceful-shutdown")
+    {
+        graceful_shutdown.yfilter = yfilter;
+    }
+    if(value_path == "labeled-unicast-safi-path")
+    {
+        labeled_unicast_safi_path.yfilter = yfilter;
+    }
+    if(value_path == "has-vpn-nexthop-addr")
+    {
+        has_vpn_nexthop_addr.yfilter = yfilter;
+    }
+    if(value_path == "is-orig-src-rd-present")
+    {
+        is_orig_src_rd_present.yfilter = yfilter;
+    }
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "route-distinguisher")
+    {
+        route_distinguisher.yfilter = yfilter;
+    }
+    if(value_path == "mac-ip-present")
+    {
+        mac_ip_present.yfilter = yfilter;
+    }
+    if(value_path == "mac-ip")
+    {
+        mac_ip.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-prefix" || name == "neighbor-address" || name == "next-hop" || name == "nh-tunnel" || name == "mdt-group-addr" || name == "gw-addr" || name == "nh-addr" || name == "best-path-comp-winner" || name == "mvpn-nbr-addr" || name == "mvpn-nexthop-addr" || name == "vpn-nexthop-addr" || name == "rcvd-label" || name == "l2vpn-circuit-status-value" || name == "mvpn-pmsi-value" || name == "extended-community" || name == "local-peers-advertised-to" || name == "pe-peers-advertised-to" || name == "best-path-orr-bitfield" || name == "add-path-orr-bitfield" || name == "route-type" || name == "is-path-valid" || name == "is-path-damped" || name == "is-path-history-held" || name == "is-internal-path" || name == "is-best-path" || name == "is-as-best" || name == "is-spkr-as-best" || name == "is-partial-best" || name == "is-aggregation-suppressed" || name == "is-import-dampened" || name == "is-import-suspect" || name == "is-path-not-advertised" || name == "is-path-not-advertised-to-ebgp" || name == "is-path-advertised-local-as-only" || name == "is-path-from-route-reflector" || name == "is-path-received-only" || name == "is-received-path-not-modified" || name == "is-path-locally-sourced" || name == "is-path-local-aggregate" || name == "is-path-from-network-command" || name == "is-path-from-redistribute-command" || name == "is-path-imported" || name == "is-path-reoriginated" || name == "is-path-reoriginated-stitching" || name == "is-path-vpn-only" || name == "is-path-from-confederation-peer" || name == "is-path-synced-with-igp" || name == "is-path-multipath" || name == "is-path-imp-candidate" || name == "is-path-stale" || name == "is-path-long-lived-stale" || name == "is-path-backup" || name == "is-path-backup-protect-multipath" || name == "is-path-best-external" || name == "is-path-additional-path" || name == "is-path-nexthop-discarded" || name == "has-local-net-label" || name == "local-label" || name == "igp-metric" || name == "path-weight" || name == "neighbor-router-id" || name == "has-mdt-group-addr" || name == "l2vpn-size" || name == "l2vpn-evpn-esi" || name == "has-gw-addr" || name == "has-nh-addr" || name == "has-second-label" || name == "second-label" || name == "path-flap-count" || name == "seconds-since-first-flap" || name == "time-to-unsuppress" || name == "dampen-penalty" || name == "halflife-time" || name == "suppress-penalty" || name == "reuse-value" || name == "maximum-suppress-time" || name == "best-path-comp-stage" || name == "best-path-id-comp-winner" || name == "path-flags" || name == "path-import-flags" || name == "best-path-id" || name == "local-path-id" || name == "rcvd-path-id" || name == "path-table-version" || name == "advertisedto-pe" || name == "rib-failed" || name == "sn-rpki-origin-as-validity" || name == "show-rpki-origin-as-validity" || name == "ibgp-signaled-validity" || name == "rpki-origin-as-validation-disabled" || name == "accept-own-path" || name == "accept-own-self-originated-path" || name == "aigp-metric" || name == "mvpn-sfs-path" || name == "fspec-invalid-path" || name == "has-mvpn-nbr-addr" || name == "has-mvpn-nexthop-addr" || name == "has-mvpn-pmsi" || name == "mvpn-pmsi-type" || name == "mvpn-pmsi-flags" || name == "mvpn-pmsi-label" || name == "has-mvpn-extcomm" || name == "mvpn-path-flags" || name == "local-nh" || name == "rt-set-limit-enabled" || name == "path-rt-set-id" || name == "path-rt-set-route-count" || name == "is-path-af-install-eligible" || name == "is-permanent-path" || name == "graceful-shutdown" || name == "labeled-unicast-safi-path" || name == "has-vpn-nexthop-addr" || name == "is-orig-src-rd-present" || name == "af-name" || name == "route-distinguisher" || name == "mac-ip-present" || name == "mac-ip")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::BgpPrefix()
+    :
+    prefix_length{YType::uint16, "prefix-length"}
+        ,
+    prefix(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix>())
+{
+    prefix->parent = this;
+
+    yang_name = "bgp-prefix"; yang_parent_name = "path-information"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::~BgpPrefix()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::has_data() const
+{
+    if (is_presence_container) return true;
+    return prefix_length.is_set
+	|| (prefix !=  nullptr && prefix->has_data());
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| (prefix !=  nullptr && prefix->has_operation());
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bgp-prefix";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefix")
+    {
+        if(prefix == nullptr)
+        {
+            prefix = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix>();
+        }
+        return prefix;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(prefix != nullptr)
+    {
+        children["prefix"] = prefix;
+    }
+
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::Prefix()
+    :
+    afi{YType::enumeration, "afi"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv4_mcast_address{YType::str, "ipv4-mcast-address"},
+    ipv4_label_address{YType::str, "ipv4-label-address"},
+    ipv4_tunnel_address{YType::str, "ipv4-tunnel-address"},
+    ipv4_mdt_address{YType::str, "ipv4-mdt-address"},
+    ipv4vpn_address{YType::str, "ipv4vpn-address"},
+    ipv4vpna_mcastddress{YType::str, "ipv4vpna-mcastddress"},
+    ipv6_address{YType::str, "ipv6-address"},
+    ipv6_mcast_address{YType::str, "ipv6-mcast-address"},
+    ipv6_label_address{YType::str, "ipv6-label-address"},
+    ipv6vpn_address{YType::str, "ipv6vpn-address"},
+    ipv6vpn_mcast_address{YType::str, "ipv6vpn-mcast-address"},
+    rt_constraint_address{YType::str, "rt-constraint-address"},
+    ipv6mvpn_address{YType::str, "ipv6mvpn-address"},
+    ipv4mvpn_address{YType::str, "ipv4mvpn-address"},
+    l2vpn_evpn_address{YType::str, "l2vpn-evpn-address"},
+    ls_ls_address{YType::str, "ls-ls-address"},
+    ipv4_flowspec_address{YType::str, "ipv4-flowspec-address"},
+    ipv6_flowspec_address{YType::str, "ipv6-flowspec-address"},
+    ipv4vpn_flowspec_address{YType::str, "ipv4vpn-flowspec-address"},
+    ipv6vpn_flowspec_address{YType::str, "ipv6vpn-flowspec-address"}
+        ,
+    l2vpn_vpls_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress>())
+    , l2vpn_mspw_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress>())
+    , ipv4_sr_policy_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::Ipv4SrPolicyAddress>())
+    , ipv6_sr_policy_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::Ipv6SrPolicyAddress>())
+{
+    l2vpn_vpls_address->parent = this;
+    l2vpn_mspw_address->parent = this;
+    ipv4_sr_policy_address->parent = this;
+    ipv6_sr_policy_address->parent = this;
+
+    yang_name = "prefix"; yang_parent_name = "bgp-prefix"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::~Prefix()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::has_data() const
+{
+    if (is_presence_container) return true;
+    return afi.is_set
+	|| ipv4_address.is_set
+	|| ipv4_mcast_address.is_set
+	|| ipv4_label_address.is_set
+	|| ipv4_tunnel_address.is_set
+	|| ipv4_mdt_address.is_set
+	|| ipv4vpn_address.is_set
+	|| ipv4vpna_mcastddress.is_set
+	|| ipv6_address.is_set
+	|| ipv6_mcast_address.is_set
+	|| ipv6_label_address.is_set
+	|| ipv6vpn_address.is_set
+	|| ipv6vpn_mcast_address.is_set
+	|| rt_constraint_address.is_set
+	|| ipv6mvpn_address.is_set
+	|| ipv4mvpn_address.is_set
+	|| l2vpn_evpn_address.is_set
+	|| ls_ls_address.is_set
+	|| ipv4_flowspec_address.is_set
+	|| ipv6_flowspec_address.is_set
+	|| ipv4vpn_flowspec_address.is_set
+	|| ipv6vpn_flowspec_address.is_set
+	|| (l2vpn_vpls_address !=  nullptr && l2vpn_vpls_address->has_data())
+	|| (l2vpn_mspw_address !=  nullptr && l2vpn_mspw_address->has_data())
+	|| (ipv4_sr_policy_address !=  nullptr && ipv4_sr_policy_address->has_data())
+	|| (ipv6_sr_policy_address !=  nullptr && ipv6_sr_policy_address->has_data());
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv4_mcast_address.yfilter)
+	|| ydk::is_set(ipv4_label_address.yfilter)
+	|| ydk::is_set(ipv4_tunnel_address.yfilter)
+	|| ydk::is_set(ipv4_mdt_address.yfilter)
+	|| ydk::is_set(ipv4vpn_address.yfilter)
+	|| ydk::is_set(ipv4vpna_mcastddress.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter)
+	|| ydk::is_set(ipv6_mcast_address.yfilter)
+	|| ydk::is_set(ipv6_label_address.yfilter)
+	|| ydk::is_set(ipv6vpn_address.yfilter)
+	|| ydk::is_set(ipv6vpn_mcast_address.yfilter)
+	|| ydk::is_set(rt_constraint_address.yfilter)
+	|| ydk::is_set(ipv6mvpn_address.yfilter)
+	|| ydk::is_set(ipv4mvpn_address.yfilter)
+	|| ydk::is_set(l2vpn_evpn_address.yfilter)
+	|| ydk::is_set(ls_ls_address.yfilter)
+	|| ydk::is_set(ipv4_flowspec_address.yfilter)
+	|| ydk::is_set(ipv6_flowspec_address.yfilter)
+	|| ydk::is_set(ipv4vpn_flowspec_address.yfilter)
+	|| ydk::is_set(ipv6vpn_flowspec_address.yfilter)
+	|| (l2vpn_vpls_address !=  nullptr && l2vpn_vpls_address->has_operation())
+	|| (l2vpn_mspw_address !=  nullptr && l2vpn_mspw_address->has_operation())
+	|| (ipv4_sr_policy_address !=  nullptr && ipv4_sr_policy_address->has_operation())
+	|| (ipv6_sr_policy_address !=  nullptr && ipv6_sr_policy_address->has_operation());
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv4_mcast_address.is_set || is_set(ipv4_mcast_address.yfilter)) leaf_name_data.push_back(ipv4_mcast_address.get_name_leafdata());
+    if (ipv4_label_address.is_set || is_set(ipv4_label_address.yfilter)) leaf_name_data.push_back(ipv4_label_address.get_name_leafdata());
+    if (ipv4_tunnel_address.is_set || is_set(ipv4_tunnel_address.yfilter)) leaf_name_data.push_back(ipv4_tunnel_address.get_name_leafdata());
+    if (ipv4_mdt_address.is_set || is_set(ipv4_mdt_address.yfilter)) leaf_name_data.push_back(ipv4_mdt_address.get_name_leafdata());
+    if (ipv4vpn_address.is_set || is_set(ipv4vpn_address.yfilter)) leaf_name_data.push_back(ipv4vpn_address.get_name_leafdata());
+    if (ipv4vpna_mcastddress.is_set || is_set(ipv4vpna_mcastddress.yfilter)) leaf_name_data.push_back(ipv4vpna_mcastddress.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (ipv6_mcast_address.is_set || is_set(ipv6_mcast_address.yfilter)) leaf_name_data.push_back(ipv6_mcast_address.get_name_leafdata());
+    if (ipv6_label_address.is_set || is_set(ipv6_label_address.yfilter)) leaf_name_data.push_back(ipv6_label_address.get_name_leafdata());
+    if (ipv6vpn_address.is_set || is_set(ipv6vpn_address.yfilter)) leaf_name_data.push_back(ipv6vpn_address.get_name_leafdata());
+    if (ipv6vpn_mcast_address.is_set || is_set(ipv6vpn_mcast_address.yfilter)) leaf_name_data.push_back(ipv6vpn_mcast_address.get_name_leafdata());
+    if (rt_constraint_address.is_set || is_set(rt_constraint_address.yfilter)) leaf_name_data.push_back(rt_constraint_address.get_name_leafdata());
+    if (ipv6mvpn_address.is_set || is_set(ipv6mvpn_address.yfilter)) leaf_name_data.push_back(ipv6mvpn_address.get_name_leafdata());
+    if (ipv4mvpn_address.is_set || is_set(ipv4mvpn_address.yfilter)) leaf_name_data.push_back(ipv4mvpn_address.get_name_leafdata());
+    if (l2vpn_evpn_address.is_set || is_set(l2vpn_evpn_address.yfilter)) leaf_name_data.push_back(l2vpn_evpn_address.get_name_leafdata());
+    if (ls_ls_address.is_set || is_set(ls_ls_address.yfilter)) leaf_name_data.push_back(ls_ls_address.get_name_leafdata());
+    if (ipv4_flowspec_address.is_set || is_set(ipv4_flowspec_address.yfilter)) leaf_name_data.push_back(ipv4_flowspec_address.get_name_leafdata());
+    if (ipv6_flowspec_address.is_set || is_set(ipv6_flowspec_address.yfilter)) leaf_name_data.push_back(ipv6_flowspec_address.get_name_leafdata());
+    if (ipv4vpn_flowspec_address.is_set || is_set(ipv4vpn_flowspec_address.yfilter)) leaf_name_data.push_back(ipv4vpn_flowspec_address.get_name_leafdata());
+    if (ipv6vpn_flowspec_address.is_set || is_set(ipv6vpn_flowspec_address.yfilter)) leaf_name_data.push_back(ipv6vpn_flowspec_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "l2vpn-vpls-address")
+    {
+        if(l2vpn_vpls_address == nullptr)
+        {
+            l2vpn_vpls_address = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress>();
+        }
+        return l2vpn_vpls_address;
+    }
+
+    if(child_yang_name == "l2vpn-mspw-address")
+    {
+        if(l2vpn_mspw_address == nullptr)
+        {
+            l2vpn_mspw_address = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress>();
+        }
+        return l2vpn_mspw_address;
+    }
+
+    if(child_yang_name == "ipv4-sr-policy-address")
+    {
+        if(ipv4_sr_policy_address == nullptr)
+        {
+            ipv4_sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::Ipv4SrPolicyAddress>();
+        }
+        return ipv4_sr_policy_address;
+    }
+
+    if(child_yang_name == "ipv6-sr-policy-address")
+    {
+        if(ipv6_sr_policy_address == nullptr)
+        {
+            ipv6_sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::Ipv6SrPolicyAddress>();
+        }
+        return ipv6_sr_policy_address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(l2vpn_vpls_address != nullptr)
+    {
+        children["l2vpn-vpls-address"] = l2vpn_vpls_address;
+    }
+
+    if(l2vpn_mspw_address != nullptr)
+    {
+        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
+    }
+
+    if(ipv4_sr_policy_address != nullptr)
+    {
+        children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
+    }
+
+    if(ipv6_sr_policy_address != nullptr)
+    {
+        children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
+    }
+
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "afi")
+    {
+        afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-mcast-address")
+    {
+        ipv4_mcast_address = value;
+        ipv4_mcast_address.value_namespace = name_space;
+        ipv4_mcast_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-label-address")
+    {
+        ipv4_label_address = value;
+        ipv4_label_address.value_namespace = name_space;
+        ipv4_label_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-tunnel-address")
+    {
+        ipv4_tunnel_address = value;
+        ipv4_tunnel_address.value_namespace = name_space;
+        ipv4_tunnel_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-mdt-address")
+    {
+        ipv4_mdt_address = value;
+        ipv4_mdt_address.value_namespace = name_space;
+        ipv4_mdt_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4vpn-address")
+    {
+        ipv4vpn_address = value;
+        ipv4vpn_address.value_namespace = name_space;
+        ipv4vpn_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4vpna-mcastddress")
+    {
+        ipv4vpna_mcastddress = value;
+        ipv4vpna_mcastddress.value_namespace = name_space;
+        ipv4vpna_mcastddress.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-mcast-address")
+    {
+        ipv6_mcast_address = value;
+        ipv6_mcast_address.value_namespace = name_space;
+        ipv6_mcast_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-label-address")
+    {
+        ipv6_label_address = value;
+        ipv6_label_address.value_namespace = name_space;
+        ipv6_label_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6vpn-address")
+    {
+        ipv6vpn_address = value;
+        ipv6vpn_address.value_namespace = name_space;
+        ipv6vpn_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6vpn-mcast-address")
+    {
+        ipv6vpn_mcast_address = value;
+        ipv6vpn_mcast_address.value_namespace = name_space;
+        ipv6vpn_mcast_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rt-constraint-address")
+    {
+        rt_constraint_address = value;
+        rt_constraint_address.value_namespace = name_space;
+        rt_constraint_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6mvpn-address")
+    {
+        ipv6mvpn_address = value;
+        ipv6mvpn_address.value_namespace = name_space;
+        ipv6mvpn_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4mvpn-address")
+    {
+        ipv4mvpn_address = value;
+        ipv4mvpn_address.value_namespace = name_space;
+        ipv4mvpn_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "l2vpn-evpn-address")
+    {
+        l2vpn_evpn_address = value;
+        l2vpn_evpn_address.value_namespace = name_space;
+        l2vpn_evpn_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ls-ls-address")
+    {
+        ls_ls_address = value;
+        ls_ls_address.value_namespace = name_space;
+        ls_ls_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-flowspec-address")
+    {
+        ipv4_flowspec_address = value;
+        ipv4_flowspec_address.value_namespace = name_space;
+        ipv4_flowspec_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-flowspec-address")
+    {
+        ipv6_flowspec_address = value;
+        ipv6_flowspec_address.value_namespace = name_space;
+        ipv6_flowspec_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4vpn-flowspec-address")
+    {
+        ipv4vpn_flowspec_address = value;
+        ipv4vpn_flowspec_address.value_namespace = name_space;
+        ipv4vpn_flowspec_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6vpn-flowspec-address")
+    {
+        ipv6vpn_flowspec_address = value;
+        ipv6vpn_flowspec_address.value_namespace = name_space;
+        ipv6vpn_flowspec_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-mcast-address")
+    {
+        ipv4_mcast_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-label-address")
+    {
+        ipv4_label_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-tunnel-address")
+    {
+        ipv4_tunnel_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-mdt-address")
+    {
+        ipv4_mdt_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4vpn-address")
+    {
+        ipv4vpn_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4vpna-mcastddress")
+    {
+        ipv4vpna_mcastddress.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-mcast-address")
+    {
+        ipv6_mcast_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-label-address")
+    {
+        ipv6_label_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6vpn-address")
+    {
+        ipv6vpn_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6vpn-mcast-address")
+    {
+        ipv6vpn_mcast_address.yfilter = yfilter;
+    }
+    if(value_path == "rt-constraint-address")
+    {
+        rt_constraint_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6mvpn-address")
+    {
+        ipv6mvpn_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4mvpn-address")
+    {
+        ipv4mvpn_address.yfilter = yfilter;
+    }
+    if(value_path == "l2vpn-evpn-address")
+    {
+        l2vpn_evpn_address.yfilter = yfilter;
+    }
+    if(value_path == "ls-ls-address")
+    {
+        ls_ls_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-flowspec-address")
+    {
+        ipv4_flowspec_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-flowspec-address")
+    {
+        ipv6_flowspec_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4vpn-flowspec-address")
+    {
+        ipv4vpn_flowspec_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6vpn-flowspec-address")
+    {
+        ipv6vpn_flowspec_address.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2vpn-vpls-address" || name == "l2vpn-mspw-address" || name == "ipv4-sr-policy-address" || name == "ipv6-sr-policy-address" || name == "afi" || name == "ipv4-address" || name == "ipv4-mcast-address" || name == "ipv4-label-address" || name == "ipv4-tunnel-address" || name == "ipv4-mdt-address" || name == "ipv4vpn-address" || name == "ipv4vpna-mcastddress" || name == "ipv6-address" || name == "ipv6-mcast-address" || name == "ipv6-label-address" || name == "ipv6vpn-address" || name == "ipv6vpn-mcast-address" || name == "rt-constraint-address" || name == "ipv6mvpn-address" || name == "ipv4mvpn-address" || name == "l2vpn-evpn-address" || name == "ls-ls-address" || name == "ipv4-flowspec-address" || name == "ipv6-flowspec-address" || name == "ipv4vpn-flowspec-address" || name == "ipv6vpn-flowspec-address")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress::L2vpnVplsAddress()
+    :
+    l2vpn_address{YType::str, "l2vpn-address"}
+{
+
+    yang_name = "l2vpn-vpls-address"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress::~L2vpnVplsAddress()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return l2vpn_address.is_set;
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(l2vpn_address.yfilter);
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2vpn-vpls-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (l2vpn_address.is_set || is_set(l2vpn_address.yfilter)) leaf_name_data.push_back(l2vpn_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "l2vpn-address")
+    {
+        l2vpn_address = value;
+        l2vpn_address.value_namespace = name_space;
+        l2vpn_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "l2vpn-address")
+    {
+        l2vpn_address.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2vpn-address")
+        return true;
+    return false;
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress::L2vpnMspwAddress()
+    :
+    l2vpn_address{YType::str, "l2vpn-address"}
+{
+
+    yang_name = "l2vpn-mspw-address"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress::~L2vpnMspwAddress()
+{
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return l2vpn_address.is_set;
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(l2vpn_address.yfilter);
+}
+
+std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2vpn-mspw-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (l2vpn_address.is_set || is_set(l2vpn_address.yfilter)) leaf_name_data.push_back(l2vpn_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "l2vpn-address")
+    {
+        l2vpn_address = value;
+        l2vpn_address.value_namespace = name_space;
+        l2vpn_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "l2vpn-address")
+    {
+        l2vpn_address.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2vpn-address")
+        return true;
+    return false;
+}
+
 Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::Ipv4SrPolicyAddress::Ipv4SrPolicyAddress()
     :
     ipv4_srpolicy_address{YType::str, "ipv4-srpolicy-address"}
@@ -1691,9 +7322,14 @@ Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr
     is_tunnel_registered{YType::boolean, "is-tunnel-registered"},
     tunnel_v6_required{YType::boolean, "tunnel-v6-required"},
     tunnel_v6_enabled{YType::boolean, "tunnel-v6-enabled"},
+    tunnel_notif_first_rcvd{YType::boolean, "tunnel-notif-first-rcvd"},
+    tunnel_state_skip_reg{YType::boolean, "tunnel-state-skip-reg"},
     binding_label{YType::uint32, "binding-label"},
     tunnel_if_handle{YType::uint32, "tunnel-if-handle"},
-    last_tunnel_update{YType::uint32, "last-tunnel-update"}
+    last_tunnel_update{YType::uint32, "last-tunnel-update"},
+    tunnel_color{YType::uint32, "tunnel-color"},
+    is_tunnel_color_only{YType::boolean, "is-tunnel-color-only"},
+    tunnel_endpoint_afi{YType::enumeration, "tunnel-endpoint-afi"}
 {
 
     yang_name = "nh-tunnel"; yang_parent_name = "path-information"; is_top_level_class = false; has_list_ancestor = true; 
@@ -1713,9 +7349,14 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 	|| is_tunnel_registered.is_set
 	|| tunnel_v6_required.is_set
 	|| tunnel_v6_enabled.is_set
+	|| tunnel_notif_first_rcvd.is_set
+	|| tunnel_state_skip_reg.is_set
 	|| binding_label.is_set
 	|| tunnel_if_handle.is_set
-	|| last_tunnel_update.is_set;
+	|| last_tunnel_update.is_set
+	|| tunnel_color.is_set
+	|| is_tunnel_color_only.is_set
+	|| tunnel_endpoint_afi.is_set;
 }
 
 bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NhTunnel::has_operation() const
@@ -1728,9 +7369,14 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 	|| ydk::is_set(is_tunnel_registered.yfilter)
 	|| ydk::is_set(tunnel_v6_required.yfilter)
 	|| ydk::is_set(tunnel_v6_enabled.yfilter)
+	|| ydk::is_set(tunnel_notif_first_rcvd.yfilter)
+	|| ydk::is_set(tunnel_state_skip_reg.yfilter)
 	|| ydk::is_set(binding_label.yfilter)
 	|| ydk::is_set(tunnel_if_handle.yfilter)
-	|| ydk::is_set(last_tunnel_update.yfilter);
+	|| ydk::is_set(last_tunnel_update.yfilter)
+	|| ydk::is_set(tunnel_color.yfilter)
+	|| ydk::is_set(is_tunnel_color_only.yfilter)
+	|| ydk::is_set(tunnel_endpoint_afi.yfilter);
 }
 
 std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NhTunnel::get_segment_path() const
@@ -1751,9 +7397,14 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
     if (is_tunnel_registered.is_set || is_set(is_tunnel_registered.yfilter)) leaf_name_data.push_back(is_tunnel_registered.get_name_leafdata());
     if (tunnel_v6_required.is_set || is_set(tunnel_v6_required.yfilter)) leaf_name_data.push_back(tunnel_v6_required.get_name_leafdata());
     if (tunnel_v6_enabled.is_set || is_set(tunnel_v6_enabled.yfilter)) leaf_name_data.push_back(tunnel_v6_enabled.get_name_leafdata());
+    if (tunnel_notif_first_rcvd.is_set || is_set(tunnel_notif_first_rcvd.yfilter)) leaf_name_data.push_back(tunnel_notif_first_rcvd.get_name_leafdata());
+    if (tunnel_state_skip_reg.is_set || is_set(tunnel_state_skip_reg.yfilter)) leaf_name_data.push_back(tunnel_state_skip_reg.get_name_leafdata());
     if (binding_label.is_set || is_set(binding_label.yfilter)) leaf_name_data.push_back(binding_label.get_name_leafdata());
     if (tunnel_if_handle.is_set || is_set(tunnel_if_handle.yfilter)) leaf_name_data.push_back(tunnel_if_handle.get_name_leafdata());
     if (last_tunnel_update.is_set || is_set(last_tunnel_update.yfilter)) leaf_name_data.push_back(last_tunnel_update.get_name_leafdata());
+    if (tunnel_color.is_set || is_set(tunnel_color.yfilter)) leaf_name_data.push_back(tunnel_color.get_name_leafdata());
+    if (is_tunnel_color_only.is_set || is_set(is_tunnel_color_only.yfilter)) leaf_name_data.push_back(is_tunnel_color_only.get_name_leafdata());
+    if (tunnel_endpoint_afi.is_set || is_set(tunnel_endpoint_afi.yfilter)) leaf_name_data.push_back(tunnel_endpoint_afi.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1815,6 +7466,18 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
         tunnel_v6_enabled.value_namespace = name_space;
         tunnel_v6_enabled.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "tunnel-notif-first-rcvd")
+    {
+        tunnel_notif_first_rcvd = value;
+        tunnel_notif_first_rcvd.value_namespace = name_space;
+        tunnel_notif_first_rcvd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tunnel-state-skip-reg")
+    {
+        tunnel_state_skip_reg = value;
+        tunnel_state_skip_reg.value_namespace = name_space;
+        tunnel_state_skip_reg.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "binding-label")
     {
         binding_label = value;
@@ -1832,6 +7495,24 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
         last_tunnel_update = value;
         last_tunnel_update.value_namespace = name_space;
         last_tunnel_update.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tunnel-color")
+    {
+        tunnel_color = value;
+        tunnel_color.value_namespace = name_space;
+        tunnel_color.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-tunnel-color-only")
+    {
+        is_tunnel_color_only = value;
+        is_tunnel_color_only.value_namespace = name_space;
+        is_tunnel_color_only.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tunnel-endpoint-afi")
+    {
+        tunnel_endpoint_afi = value;
+        tunnel_endpoint_afi.value_namespace = name_space;
+        tunnel_endpoint_afi.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1865,6 +7546,14 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
     {
         tunnel_v6_enabled.yfilter = yfilter;
     }
+    if(value_path == "tunnel-notif-first-rcvd")
+    {
+        tunnel_notif_first_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-state-skip-reg")
+    {
+        tunnel_state_skip_reg.yfilter = yfilter;
+    }
     if(value_path == "binding-label")
     {
         binding_label.yfilter = yfilter;
@@ -1877,11 +7566,23 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
     {
         last_tunnel_update.yfilter = yfilter;
     }
+    if(value_path == "tunnel-color")
+    {
+        tunnel_color.yfilter = yfilter;
+    }
+    if(value_path == "is-tunnel-color-only")
+    {
+        is_tunnel_color_only.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-endpoint-afi")
+    {
+        tunnel_endpoint_afi.yfilter = yfilter;
+    }
 }
 
 bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NhTunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "tunnel-type" || name == "tunnel-name" || name == "is-tunnel-up" || name == "is-tunnel-info-stale" || name == "is-tunnel-registered" || name == "tunnel-v6-required" || name == "tunnel-v6-enabled" || name == "binding-label" || name == "tunnel-if-handle" || name == "last-tunnel-update")
+    if(name == "tunnel-type" || name == "tunnel-name" || name == "is-tunnel-up" || name == "is-tunnel-info-stale" || name == "is-tunnel-registered" || name == "tunnel-v6-required" || name == "tunnel-v6-enabled" || name == "tunnel-notif-first-rcvd" || name == "tunnel-state-skip-reg" || name == "binding-label" || name == "tunnel-if-handle" || name == "last-tunnel-update" || name == "tunnel-color" || name == "is-tunnel-color-only" || name == "tunnel-endpoint-afi")
         return true;
     return false;
 }
@@ -6198,6 +11899,7 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::LocalPeersAdvertisedTo::LocalPeersAdvertisedTo()
     :
     is_neighbor{YType::boolean, "is-neighbor"},
+    update_group_afi{YType::uint8, "update-group-afi"},
     update_group_number{YType::uint32, "update-group-number"}
         ,
     neighbor_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress>())
@@ -6215,6 +11917,7 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 {
     if (is_presence_container) return true;
     return is_neighbor.is_set
+	|| update_group_afi.is_set
 	|| update_group_number.is_set
 	|| (neighbor_address !=  nullptr && neighbor_address->has_data());
 }
@@ -6223,6 +11926,7 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_neighbor.yfilter)
+	|| ydk::is_set(update_group_afi.yfilter)
 	|| ydk::is_set(update_group_number.yfilter)
 	|| (neighbor_address !=  nullptr && neighbor_address->has_operation());
 }
@@ -6239,6 +11943,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (is_neighbor.is_set || is_set(is_neighbor.yfilter)) leaf_name_data.push_back(is_neighbor.get_name_leafdata());
+    if (update_group_afi.is_set || is_set(update_group_afi.yfilter)) leaf_name_data.push_back(update_group_afi.get_name_leafdata());
     if (update_group_number.is_set || is_set(update_group_number.yfilter)) leaf_name_data.push_back(update_group_number.get_name_leafdata());
 
     return leaf_name_data;
@@ -6279,6 +11984,12 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
         is_neighbor.value_namespace = name_space;
         is_neighbor.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "update-group-afi")
+    {
+        update_group_afi = value;
+        update_group_afi.value_namespace = name_space;
+        update_group_afi.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "update-group-number")
     {
         update_group_number = value;
@@ -6293,6 +12004,10 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
     {
         is_neighbor.yfilter = yfilter;
     }
+    if(value_path == "update-group-afi")
+    {
+        update_group_afi.yfilter = yfilter;
+    }
     if(value_path == "update-group-number")
     {
         update_group_number.yfilter = yfilter;
@@ -6301,7 +12016,7 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 
 bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::LocalPeersAdvertisedTo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbor-address" || name == "is-neighbor" || name == "update-group-number")
+    if(name == "neighbor-address" || name == "is-neighbor" || name == "update-group-afi" || name == "update-group-number")
         return true;
     return false;
 }
@@ -7066,6 +12781,7 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::PePeersAdvertisedTo::PePeersAdvertisedTo()
     :
     is_neighbor{YType::boolean, "is-neighbor"},
+    update_group_afi{YType::uint8, "update-group-afi"},
     update_group_number{YType::uint32, "update-group-number"}
         ,
     neighbor_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::PePeersAdvertisedTo::NeighborAddress>())
@@ -7083,6 +12799,7 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 {
     if (is_presence_container) return true;
     return is_neighbor.is_set
+	|| update_group_afi.is_set
 	|| update_group_number.is_set
 	|| (neighbor_address !=  nullptr && neighbor_address->has_data());
 }
@@ -7091,6 +12808,7 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_neighbor.yfilter)
+	|| ydk::is_set(update_group_afi.yfilter)
 	|| ydk::is_set(update_group_number.yfilter)
 	|| (neighbor_address !=  nullptr && neighbor_address->has_operation());
 }
@@ -7107,6 +12825,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (is_neighbor.is_set || is_set(is_neighbor.yfilter)) leaf_name_data.push_back(is_neighbor.get_name_leafdata());
+    if (update_group_afi.is_set || is_set(update_group_afi.yfilter)) leaf_name_data.push_back(update_group_afi.get_name_leafdata());
     if (update_group_number.is_set || is_set(update_group_number.yfilter)) leaf_name_data.push_back(update_group_number.get_name_leafdata());
 
     return leaf_name_data;
@@ -7147,6 +12866,12 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
         is_neighbor.value_namespace = name_space;
         is_neighbor.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "update-group-afi")
+    {
+        update_group_afi = value;
+        update_group_afi.value_namespace = name_space;
+        update_group_afi.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "update-group-number")
     {
         update_group_number = value;
@@ -7161,6 +12886,10 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
     {
         is_neighbor.yfilter = yfilter;
     }
+    if(value_path == "update-group-afi")
+    {
+        update_group_afi.yfilter = yfilter;
+    }
     if(value_path == "update-group-number")
     {
         update_group_number.yfilter = yfilter;
@@ -7169,7 +12898,7 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 
 bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::PePeersAdvertisedTo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbor-address" || name == "is-neighbor" || name == "update-group-number")
+    if(name == "neighbor-address" || name == "is-neighbor" || name == "update-group-afi" || name == "update-group-number")
         return true;
     return false;
 }
@@ -7934,6 +13663,7 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathOrrBitfield::BestPathOrrBitfield()
     :
     is_neighbor{YType::boolean, "is-neighbor"},
+    update_group_afi{YType::uint8, "update-group-afi"},
     update_group_number{YType::uint32, "update-group-number"}
         ,
     neighbor_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathOrrBitfield::NeighborAddress>())
@@ -7951,6 +13681,7 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 {
     if (is_presence_container) return true;
     return is_neighbor.is_set
+	|| update_group_afi.is_set
 	|| update_group_number.is_set
 	|| (neighbor_address !=  nullptr && neighbor_address->has_data());
 }
@@ -7959,6 +13690,7 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_neighbor.yfilter)
+	|| ydk::is_set(update_group_afi.yfilter)
 	|| ydk::is_set(update_group_number.yfilter)
 	|| (neighbor_address !=  nullptr && neighbor_address->has_operation());
 }
@@ -7975,6 +13707,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (is_neighbor.is_set || is_set(is_neighbor.yfilter)) leaf_name_data.push_back(is_neighbor.get_name_leafdata());
+    if (update_group_afi.is_set || is_set(update_group_afi.yfilter)) leaf_name_data.push_back(update_group_afi.get_name_leafdata());
     if (update_group_number.is_set || is_set(update_group_number.yfilter)) leaf_name_data.push_back(update_group_number.get_name_leafdata());
 
     return leaf_name_data;
@@ -8015,6 +13748,12 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
         is_neighbor.value_namespace = name_space;
         is_neighbor.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "update-group-afi")
+    {
+        update_group_afi = value;
+        update_group_afi.value_namespace = name_space;
+        update_group_afi.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "update-group-number")
     {
         update_group_number = value;
@@ -8029,6 +13768,10 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
     {
         is_neighbor.yfilter = yfilter;
     }
+    if(value_path == "update-group-afi")
+    {
+        update_group_afi.yfilter = yfilter;
+    }
     if(value_path == "update-group-number")
     {
         update_group_number.yfilter = yfilter;
@@ -8037,7 +13780,7 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 
 bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathOrrBitfield::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbor-address" || name == "is-neighbor" || name == "update-group-number")
+    if(name == "neighbor-address" || name == "is-neighbor" || name == "update-group-afi" || name == "update-group-number")
         return true;
     return false;
 }
@@ -8802,6 +14545,7 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::AddPathOrrBitfield::AddPathOrrBitfield()
     :
     is_neighbor{YType::boolean, "is-neighbor"},
+    update_group_afi{YType::uint8, "update-group-afi"},
     update_group_number{YType::uint32, "update-group-number"}
         ,
     neighbor_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::AddPathOrrBitfield::NeighborAddress>())
@@ -8819,6 +14563,7 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 {
     if (is_presence_container) return true;
     return is_neighbor.is_set
+	|| update_group_afi.is_set
 	|| update_group_number.is_set
 	|| (neighbor_address !=  nullptr && neighbor_address->has_data());
 }
@@ -8827,6 +14572,7 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_neighbor.yfilter)
+	|| ydk::is_set(update_group_afi.yfilter)
 	|| ydk::is_set(update_group_number.yfilter)
 	|| (neighbor_address !=  nullptr && neighbor_address->has_operation());
 }
@@ -8843,6 +14589,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (is_neighbor.is_set || is_set(is_neighbor.yfilter)) leaf_name_data.push_back(is_neighbor.get_name_leafdata());
+    if (update_group_afi.is_set || is_set(update_group_afi.yfilter)) leaf_name_data.push_back(update_group_afi.get_name_leafdata());
     if (update_group_number.is_set || is_set(update_group_number.yfilter)) leaf_name_data.push_back(update_group_number.get_name_leafdata());
 
     return leaf_name_data;
@@ -8883,6 +14630,12 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
         is_neighbor.value_namespace = name_space;
         is_neighbor.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "update-group-afi")
+    {
+        update_group_afi = value;
+        update_group_afi.value_namespace = name_space;
+        update_group_afi.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "update-group-number")
     {
         update_group_number = value;
@@ -8897,6 +14650,10 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
     {
         is_neighbor.yfilter = yfilter;
     }
+    if(value_path == "update-group-afi")
+    {
+        update_group_afi.yfilter = yfilter;
+    }
     if(value_path == "update-group-number")
     {
         update_group_number.yfilter = yfilter;
@@ -8905,7 +14662,7 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 
 bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::AddPathOrrBitfield::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbor-address" || name == "is-neighbor" || name == "update-group-number")
+    if(name == "neighbor-address" || name == "is-neighbor" || name == "update-group-afi" || name == "update-group-number")
         return true;
     return false;
 }
@@ -11255,7 +17012,8 @@ Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr
     tunnel_encap_type{YType::uint16, "tunnel-encap-type"},
     preference{YType::uint32, "preference"},
     state{YType::boolean, "state"},
-    request_state{YType::enumeration, "request-state"}
+    request_state{YType::enumeration, "request-state"},
+    usable{YType::boolean, "usable"}
         ,
     binding_sid(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid>())
     , allocated_binding_sid(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid>())
@@ -11283,6 +17041,7 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 	|| preference.is_set
 	|| state.is_set
 	|| request_state.is_set
+	|| usable.is_set
 	|| (binding_sid !=  nullptr && binding_sid->has_data())
 	|| (allocated_binding_sid !=  nullptr && allocated_binding_sid->has_data());
 }
@@ -11299,6 +17058,7 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 	|| ydk::is_set(preference.yfilter)
 	|| ydk::is_set(state.yfilter)
 	|| ydk::is_set(request_state.yfilter)
+	|| ydk::is_set(usable.yfilter)
 	|| (binding_sid !=  nullptr && binding_sid->has_operation())
 	|| (allocated_binding_sid !=  nullptr && allocated_binding_sid->has_operation());
 }
@@ -11318,6 +17078,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
     if (preference.is_set || is_set(preference.yfilter)) leaf_name_data.push_back(preference.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (request_state.is_set || is_set(request_state.yfilter)) leaf_name_data.push_back(request_state.get_name_leafdata());
+    if (usable.is_set || is_set(usable.yfilter)) leaf_name_data.push_back(usable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -11406,6 +17167,12 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
         request_state.value_namespace = name_space;
         request_state.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "usable")
+    {
+        usable = value;
+        usable.value_namespace = name_space;
+        usable.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::set_filter(const std::string & value_path, YFilter yfilter)
@@ -11426,11 +17193,15 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
     {
         request_state.yfilter = yfilter;
     }
+    if(value_path == "usable")
+    {
+        usable.yfilter = yfilter;
+    }
 }
 
 bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "binding-sid" || name == "allocated-binding-sid" || name == "segment-list" || name == "tunnel-encap-type" || name == "preference" || name == "state" || name == "request-state")
+    if(name == "binding-sid" || name == "allocated-binding-sid" || name == "segment-list" || name == "tunnel-encap-type" || name == "preference" || name == "state" || name == "request-state" || name == "usable")
         return true;
     return false;
 }
@@ -13825,7 +19596,8 @@ Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr
     tunnel_encap_type{YType::uint16, "tunnel-encap-type"},
     preference{YType::uint32, "preference"},
     state{YType::boolean, "state"},
-    request_state{YType::enumeration, "request-state"}
+    request_state{YType::enumeration, "request-state"},
+    usable{YType::boolean, "usable"}
         ,
     binding_sid(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid>())
     , allocated_binding_sid(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid>())
@@ -13853,6 +19625,7 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 	|| preference.is_set
 	|| state.is_set
 	|| request_state.is_set
+	|| usable.is_set
 	|| (binding_sid !=  nullptr && binding_sid->has_data())
 	|| (allocated_binding_sid !=  nullptr && allocated_binding_sid->has_data());
 }
@@ -13869,6 +19642,7 @@ bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
 	|| ydk::is_set(preference.yfilter)
 	|| ydk::is_set(state.yfilter)
 	|| ydk::is_set(request_state.yfilter)
+	|| ydk::is_set(usable.yfilter)
 	|| (binding_sid !=  nullptr && binding_sid->has_operation())
 	|| (allocated_binding_sid !=  nullptr && allocated_binding_sid->has_operation());
 }
@@ -13888,6 +19662,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
     if (preference.is_set || is_set(preference.yfilter)) leaf_name_data.push_back(preference.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
     if (request_state.is_set || is_set(request_state.yfilter)) leaf_name_data.push_back(request_state.get_name_leafdata());
+    if (usable.is_set || is_set(usable.yfilter)) leaf_name_data.push_back(usable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -13976,6 +19751,12 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
         request_state.value_namespace = name_space;
         request_state.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "usable")
+    {
+        usable = value;
+        usable.value_namespace = name_space;
+        usable.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::set_filter(const std::string & value_path, YFilter yfilter)
@@ -13996,11 +19777,15 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedP
     {
         request_state.yfilter = yfilter;
     }
+    if(value_path == "usable")
+    {
+        usable.yfilter = yfilter;
+    }
 }
 
 bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "binding-sid" || name == "allocated-binding-sid" || name == "segment-list" || name == "tunnel-encap-type" || name == "preference" || name == "state" || name == "request-state")
+    if(name == "binding-sid" || name == "allocated-binding-sid" || name == "segment-list" || name == "tunnel-encap-type" || name == "preference" || name == "state" || name == "request-state" || name == "usable")
         return true;
     return false;
 }
@@ -19195,3486 +24980,6 @@ void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroup
 bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv4SrPolicyAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4-srpolicy-address")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv6SrPolicyAddress::Ipv6SrPolicyAddress()
-    :
-    ipv6_srpolicy_address{YType::str, "ipv6-srpolicy-address"}
-{
-
-    yang_name = "ipv6-sr-policy-address"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv6SrPolicyAddress::~Ipv6SrPolicyAddress()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv6SrPolicyAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return ipv6_srpolicy_address.is_set;
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv6SrPolicyAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ipv6_srpolicy_address.yfilter);
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv6SrPolicyAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv6-sr-policy-address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv6SrPolicyAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipv6_srpolicy_address.is_set || is_set(ipv6_srpolicy_address.yfilter)) leaf_name_data.push_back(ipv6_srpolicy_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv6SrPolicyAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv6SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ipv6-srpolicy-address")
-    {
-        ipv6_srpolicy_address = value;
-        ipv6_srpolicy_address.value_namespace = name_space;
-        ipv6_srpolicy_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv6SrPolicyAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ipv6-srpolicy-address")
-    {
-        ipv6_srpolicy_address.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::Neighbor::Ipv6SrPolicyAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv6-srpolicy-address")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateSubGroup()
-    :
-    update_sub_group_number{YType::uint32, "update-sub-group-number"},
-    filter_group{YType::uint16, "filter-group"},
-    wait_for_eo_rs{YType::boolean, "wait-for-eo-rs"}
-        ,
-    update_filter_group(this, {})
-    , neighbor(this, {})
-{
-
-    yang_name = "update-sub-group"; yang_parent_name = "update-group"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::~UpdateSubGroup()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<update_filter_group.len(); index++)
-    {
-        if(update_filter_group[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<neighbor.len(); index++)
-    {
-        if(neighbor[index]->has_data())
-            return true;
-    }
-    return update_sub_group_number.is_set
-	|| filter_group.is_set
-	|| wait_for_eo_rs.is_set;
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::has_operation() const
-{
-    for (std::size_t index=0; index<update_filter_group.len(); index++)
-    {
-        if(update_filter_group[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<neighbor.len(); index++)
-    {
-        if(neighbor[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(update_sub_group_number.yfilter)
-	|| ydk::is_set(filter_group.yfilter)
-	|| ydk::is_set(wait_for_eo_rs.yfilter);
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "update-sub-group";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (update_sub_group_number.is_set || is_set(update_sub_group_number.yfilter)) leaf_name_data.push_back(update_sub_group_number.get_name_leafdata());
-    if (filter_group.is_set || is_set(filter_group.yfilter)) leaf_name_data.push_back(filter_group.get_name_leafdata());
-    if (wait_for_eo_rs.is_set || is_set(wait_for_eo_rs.yfilter)) leaf_name_data.push_back(wait_for_eo_rs.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "update-filter-group")
-    {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup>();
-        c->parent = this;
-        update_filter_group.append(c);
-        return c;
-    }
-
-    if(child_yang_name == "neighbor")
-    {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor>();
-        c->parent = this;
-        neighbor.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : update_filter_group.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    count = 0;
-    for (auto c : neighbor.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "update-sub-group-number")
-    {
-        update_sub_group_number = value;
-        update_sub_group_number.value_namespace = name_space;
-        update_sub_group_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "filter-group")
-    {
-        filter_group = value;
-        filter_group.value_namespace = name_space;
-        filter_group.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "wait-for-eo-rs")
-    {
-        wait_for_eo_rs = value;
-        wait_for_eo_rs.value_namespace = name_space;
-        wait_for_eo_rs.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "update-sub-group-number")
-    {
-        update_sub_group_number.yfilter = yfilter;
-    }
-    if(value_path == "filter-group")
-    {
-        filter_group.yfilter = yfilter;
-    }
-    if(value_path == "wait-for-eo-rs")
-    {
-        wait_for_eo_rs.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "update-filter-group" || name == "neighbor" || name == "update-sub-group-number" || name == "filter-group" || name == "wait-for-eo-rs")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::UpdateFilterGroup()
-    :
-    update_filter_group_number{YType::uint32, "update-filter-group-number"},
-    rts{YType::uint32, "rts"},
-    fgroup_flags{YType::uint8, "fgroup-flags"},
-    fgroup_neighbors{YType::uint16, "fgroup-neighbors"},
-    fgroup_created_message_elements{YType::uint32, "fgroup-created-message-elements"},
-    fgroup_deleted_message_elements{YType::uint32, "fgroup-deleted-message-elements"},
-    fgroup_queued_message_elements{YType::uint32, "fgroup-queued-message-elements"},
-    fgroup_advertised_prefixes{YType::uint32, "fgroup-advertised-prefixes"},
-    fgroup_total_advertised_prefixes{YType::uint32, "fgroup-total-advertised-prefixes"},
-    fgroup_withdrawn_prefixes{YType::uint32, "fgroup-withdrawn-prefixes"},
-    fgroup_total_withdrawn_prefixes{YType::uint32, "fgroup-total-withdrawn-prefixes"},
-    fgroup_total_non_optimised_prefixes{YType::uint32, "fgroup-total-non-optimised-prefixes"},
-    fgroup_skipped_prefixes{YType::uint32, "fgroup-skipped-prefixes"},
-    fgroup_suppressed_prefixes{YType::uint32, "fgroup-suppressed-prefixes"},
-    is_rt_present{YType::boolean, "is-rt-present"}
-        ,
-    extended_community(this, {})
-    , neighbor(this, {})
-{
-
-    yang_name = "update-filter-group"; yang_parent_name = "update-sub-group"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::~UpdateFilterGroup()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<extended_community.len(); index++)
-    {
-        if(extended_community[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<neighbor.len(); index++)
-    {
-        if(neighbor[index]->has_data())
-            return true;
-    }
-    return update_filter_group_number.is_set
-	|| rts.is_set
-	|| fgroup_flags.is_set
-	|| fgroup_neighbors.is_set
-	|| fgroup_created_message_elements.is_set
-	|| fgroup_deleted_message_elements.is_set
-	|| fgroup_queued_message_elements.is_set
-	|| fgroup_advertised_prefixes.is_set
-	|| fgroup_total_advertised_prefixes.is_set
-	|| fgroup_withdrawn_prefixes.is_set
-	|| fgroup_total_withdrawn_prefixes.is_set
-	|| fgroup_total_non_optimised_prefixes.is_set
-	|| fgroup_skipped_prefixes.is_set
-	|| fgroup_suppressed_prefixes.is_set
-	|| is_rt_present.is_set;
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::has_operation() const
-{
-    for (std::size_t index=0; index<extended_community.len(); index++)
-    {
-        if(extended_community[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<neighbor.len(); index++)
-    {
-        if(neighbor[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(update_filter_group_number.yfilter)
-	|| ydk::is_set(rts.yfilter)
-	|| ydk::is_set(fgroup_flags.yfilter)
-	|| ydk::is_set(fgroup_neighbors.yfilter)
-	|| ydk::is_set(fgroup_created_message_elements.yfilter)
-	|| ydk::is_set(fgroup_deleted_message_elements.yfilter)
-	|| ydk::is_set(fgroup_queued_message_elements.yfilter)
-	|| ydk::is_set(fgroup_advertised_prefixes.yfilter)
-	|| ydk::is_set(fgroup_total_advertised_prefixes.yfilter)
-	|| ydk::is_set(fgroup_withdrawn_prefixes.yfilter)
-	|| ydk::is_set(fgroup_total_withdrawn_prefixes.yfilter)
-	|| ydk::is_set(fgroup_total_non_optimised_prefixes.yfilter)
-	|| ydk::is_set(fgroup_skipped_prefixes.yfilter)
-	|| ydk::is_set(fgroup_suppressed_prefixes.yfilter)
-	|| ydk::is_set(is_rt_present.yfilter);
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "update-filter-group";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (update_filter_group_number.is_set || is_set(update_filter_group_number.yfilter)) leaf_name_data.push_back(update_filter_group_number.get_name_leafdata());
-    if (rts.is_set || is_set(rts.yfilter)) leaf_name_data.push_back(rts.get_name_leafdata());
-    if (fgroup_flags.is_set || is_set(fgroup_flags.yfilter)) leaf_name_data.push_back(fgroup_flags.get_name_leafdata());
-    if (fgroup_neighbors.is_set || is_set(fgroup_neighbors.yfilter)) leaf_name_data.push_back(fgroup_neighbors.get_name_leafdata());
-    if (fgroup_created_message_elements.is_set || is_set(fgroup_created_message_elements.yfilter)) leaf_name_data.push_back(fgroup_created_message_elements.get_name_leafdata());
-    if (fgroup_deleted_message_elements.is_set || is_set(fgroup_deleted_message_elements.yfilter)) leaf_name_data.push_back(fgroup_deleted_message_elements.get_name_leafdata());
-    if (fgroup_queued_message_elements.is_set || is_set(fgroup_queued_message_elements.yfilter)) leaf_name_data.push_back(fgroup_queued_message_elements.get_name_leafdata());
-    if (fgroup_advertised_prefixes.is_set || is_set(fgroup_advertised_prefixes.yfilter)) leaf_name_data.push_back(fgroup_advertised_prefixes.get_name_leafdata());
-    if (fgroup_total_advertised_prefixes.is_set || is_set(fgroup_total_advertised_prefixes.yfilter)) leaf_name_data.push_back(fgroup_total_advertised_prefixes.get_name_leafdata());
-    if (fgroup_withdrawn_prefixes.is_set || is_set(fgroup_withdrawn_prefixes.yfilter)) leaf_name_data.push_back(fgroup_withdrawn_prefixes.get_name_leafdata());
-    if (fgroup_total_withdrawn_prefixes.is_set || is_set(fgroup_total_withdrawn_prefixes.yfilter)) leaf_name_data.push_back(fgroup_total_withdrawn_prefixes.get_name_leafdata());
-    if (fgroup_total_non_optimised_prefixes.is_set || is_set(fgroup_total_non_optimised_prefixes.yfilter)) leaf_name_data.push_back(fgroup_total_non_optimised_prefixes.get_name_leafdata());
-    if (fgroup_skipped_prefixes.is_set || is_set(fgroup_skipped_prefixes.yfilter)) leaf_name_data.push_back(fgroup_skipped_prefixes.get_name_leafdata());
-    if (fgroup_suppressed_prefixes.is_set || is_set(fgroup_suppressed_prefixes.yfilter)) leaf_name_data.push_back(fgroup_suppressed_prefixes.get_name_leafdata());
-    if (is_rt_present.is_set || is_set(is_rt_present.yfilter)) leaf_name_data.push_back(is_rt_present.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "extended-community")
-    {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::ExtendedCommunity>();
-        c->parent = this;
-        extended_community.append(c);
-        return c;
-    }
-
-    if(child_yang_name == "neighbor")
-    {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor>();
-        c->parent = this;
-        neighbor.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : extended_community.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    count = 0;
-    for (auto c : neighbor.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "update-filter-group-number")
-    {
-        update_filter_group_number = value;
-        update_filter_group_number.value_namespace = name_space;
-        update_filter_group_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rts")
-    {
-        rts = value;
-        rts.value_namespace = name_space;
-        rts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fgroup-flags")
-    {
-        fgroup_flags = value;
-        fgroup_flags.value_namespace = name_space;
-        fgroup_flags.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fgroup-neighbors")
-    {
-        fgroup_neighbors = value;
-        fgroup_neighbors.value_namespace = name_space;
-        fgroup_neighbors.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fgroup-created-message-elements")
-    {
-        fgroup_created_message_elements = value;
-        fgroup_created_message_elements.value_namespace = name_space;
-        fgroup_created_message_elements.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fgroup-deleted-message-elements")
-    {
-        fgroup_deleted_message_elements = value;
-        fgroup_deleted_message_elements.value_namespace = name_space;
-        fgroup_deleted_message_elements.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fgroup-queued-message-elements")
-    {
-        fgroup_queued_message_elements = value;
-        fgroup_queued_message_elements.value_namespace = name_space;
-        fgroup_queued_message_elements.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fgroup-advertised-prefixes")
-    {
-        fgroup_advertised_prefixes = value;
-        fgroup_advertised_prefixes.value_namespace = name_space;
-        fgroup_advertised_prefixes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fgroup-total-advertised-prefixes")
-    {
-        fgroup_total_advertised_prefixes = value;
-        fgroup_total_advertised_prefixes.value_namespace = name_space;
-        fgroup_total_advertised_prefixes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fgroup-withdrawn-prefixes")
-    {
-        fgroup_withdrawn_prefixes = value;
-        fgroup_withdrawn_prefixes.value_namespace = name_space;
-        fgroup_withdrawn_prefixes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fgroup-total-withdrawn-prefixes")
-    {
-        fgroup_total_withdrawn_prefixes = value;
-        fgroup_total_withdrawn_prefixes.value_namespace = name_space;
-        fgroup_total_withdrawn_prefixes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fgroup-total-non-optimised-prefixes")
-    {
-        fgroup_total_non_optimised_prefixes = value;
-        fgroup_total_non_optimised_prefixes.value_namespace = name_space;
-        fgroup_total_non_optimised_prefixes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fgroup-skipped-prefixes")
-    {
-        fgroup_skipped_prefixes = value;
-        fgroup_skipped_prefixes.value_namespace = name_space;
-        fgroup_skipped_prefixes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fgroup-suppressed-prefixes")
-    {
-        fgroup_suppressed_prefixes = value;
-        fgroup_suppressed_prefixes.value_namespace = name_space;
-        fgroup_suppressed_prefixes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-rt-present")
-    {
-        is_rt_present = value;
-        is_rt_present.value_namespace = name_space;
-        is_rt_present.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "update-filter-group-number")
-    {
-        update_filter_group_number.yfilter = yfilter;
-    }
-    if(value_path == "rts")
-    {
-        rts.yfilter = yfilter;
-    }
-    if(value_path == "fgroup-flags")
-    {
-        fgroup_flags.yfilter = yfilter;
-    }
-    if(value_path == "fgroup-neighbors")
-    {
-        fgroup_neighbors.yfilter = yfilter;
-    }
-    if(value_path == "fgroup-created-message-elements")
-    {
-        fgroup_created_message_elements.yfilter = yfilter;
-    }
-    if(value_path == "fgroup-deleted-message-elements")
-    {
-        fgroup_deleted_message_elements.yfilter = yfilter;
-    }
-    if(value_path == "fgroup-queued-message-elements")
-    {
-        fgroup_queued_message_elements.yfilter = yfilter;
-    }
-    if(value_path == "fgroup-advertised-prefixes")
-    {
-        fgroup_advertised_prefixes.yfilter = yfilter;
-    }
-    if(value_path == "fgroup-total-advertised-prefixes")
-    {
-        fgroup_total_advertised_prefixes.yfilter = yfilter;
-    }
-    if(value_path == "fgroup-withdrawn-prefixes")
-    {
-        fgroup_withdrawn_prefixes.yfilter = yfilter;
-    }
-    if(value_path == "fgroup-total-withdrawn-prefixes")
-    {
-        fgroup_total_withdrawn_prefixes.yfilter = yfilter;
-    }
-    if(value_path == "fgroup-total-non-optimised-prefixes")
-    {
-        fgroup_total_non_optimised_prefixes.yfilter = yfilter;
-    }
-    if(value_path == "fgroup-skipped-prefixes")
-    {
-        fgroup_skipped_prefixes.yfilter = yfilter;
-    }
-    if(value_path == "fgroup-suppressed-prefixes")
-    {
-        fgroup_suppressed_prefixes.yfilter = yfilter;
-    }
-    if(value_path == "is-rt-present")
-    {
-        is_rt_present.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "extended-community" || name == "neighbor" || name == "update-filter-group-number" || name == "rts" || name == "fgroup-flags" || name == "fgroup-neighbors" || name == "fgroup-created-message-elements" || name == "fgroup-deleted-message-elements" || name == "fgroup-queued-message-elements" || name == "fgroup-advertised-prefixes" || name == "fgroup-total-advertised-prefixes" || name == "fgroup-withdrawn-prefixes" || name == "fgroup-total-withdrawn-prefixes" || name == "fgroup-total-non-optimised-prefixes" || name == "fgroup-skipped-prefixes" || name == "fgroup-suppressed-prefixes" || name == "is-rt-present")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::ExtendedCommunity::ExtendedCommunity()
-    :
-    entry{YType::uint8, "entry"}
-{
-
-    yang_name = "extended-community"; yang_parent_name = "update-filter-group"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::ExtendedCommunity::~ExtendedCommunity()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::ExtendedCommunity::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::ExtendedCommunity::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::ExtendedCommunity::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "extended-community";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::ExtendedCommunity::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::ExtendedCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::ExtendedCommunity::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::ExtendedCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::ExtendedCommunity::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::ExtendedCommunity::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Neighbor()
-    :
-    afi{YType::enumeration, "afi"},
-    ipv4_address{YType::str, "ipv4-address"},
-    ipv4_mcast_address{YType::str, "ipv4-mcast-address"},
-    ipv4_label_address{YType::str, "ipv4-label-address"},
-    ipv4_tunnel_address{YType::str, "ipv4-tunnel-address"},
-    ipv4_mdt_address{YType::str, "ipv4-mdt-address"},
-    ipv4vpn_address{YType::str, "ipv4vpn-address"},
-    ipv4vpna_mcastddress{YType::str, "ipv4vpna-mcastddress"},
-    ipv6_address{YType::str, "ipv6-address"},
-    ipv6_mcast_address{YType::str, "ipv6-mcast-address"},
-    ipv6_label_address{YType::str, "ipv6-label-address"},
-    ipv6vpn_address{YType::str, "ipv6vpn-address"},
-    ipv6vpn_mcast_address{YType::str, "ipv6vpn-mcast-address"},
-    rt_constraint_address{YType::str, "rt-constraint-address"},
-    ipv6mvpn_address{YType::str, "ipv6mvpn-address"},
-    ipv4mvpn_address{YType::str, "ipv4mvpn-address"},
-    l2vpn_evpn_address{YType::str, "l2vpn-evpn-address"},
-    ls_ls_address{YType::str, "ls-ls-address"},
-    ipv4_flowspec_address{YType::str, "ipv4-flowspec-address"},
-    ipv6_flowspec_address{YType::str, "ipv6-flowspec-address"},
-    ipv4vpn_flowspec_address{YType::str, "ipv4vpn-flowspec-address"},
-    ipv6vpn_flowspec_address{YType::str, "ipv6vpn-flowspec-address"}
-        ,
-    l2vpn_vpls_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnVplsAddress>())
-    , l2vpn_mspw_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnMspwAddress>())
-    , ipv4_sr_policy_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv4SrPolicyAddress>())
-    , ipv6_sr_policy_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv6SrPolicyAddress>())
-{
-    l2vpn_vpls_address->parent = this;
-    l2vpn_mspw_address->parent = this;
-    ipv4_sr_policy_address->parent = this;
-    ipv6_sr_policy_address->parent = this;
-
-    yang_name = "neighbor"; yang_parent_name = "update-filter-group"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::~Neighbor()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::has_data() const
-{
-    if (is_presence_container) return true;
-    return afi.is_set
-	|| ipv4_address.is_set
-	|| ipv4_mcast_address.is_set
-	|| ipv4_label_address.is_set
-	|| ipv4_tunnel_address.is_set
-	|| ipv4_mdt_address.is_set
-	|| ipv4vpn_address.is_set
-	|| ipv4vpna_mcastddress.is_set
-	|| ipv6_address.is_set
-	|| ipv6_mcast_address.is_set
-	|| ipv6_label_address.is_set
-	|| ipv6vpn_address.is_set
-	|| ipv6vpn_mcast_address.is_set
-	|| rt_constraint_address.is_set
-	|| ipv6mvpn_address.is_set
-	|| ipv4mvpn_address.is_set
-	|| l2vpn_evpn_address.is_set
-	|| ls_ls_address.is_set
-	|| ipv4_flowspec_address.is_set
-	|| ipv6_flowspec_address.is_set
-	|| ipv4vpn_flowspec_address.is_set
-	|| ipv6vpn_flowspec_address.is_set
-	|| (l2vpn_vpls_address !=  nullptr && l2vpn_vpls_address->has_data())
-	|| (l2vpn_mspw_address !=  nullptr && l2vpn_mspw_address->has_data())
-	|| (ipv4_sr_policy_address !=  nullptr && ipv4_sr_policy_address->has_data())
-	|| (ipv6_sr_policy_address !=  nullptr && ipv6_sr_policy_address->has_data());
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(afi.yfilter)
-	|| ydk::is_set(ipv4_address.yfilter)
-	|| ydk::is_set(ipv4_mcast_address.yfilter)
-	|| ydk::is_set(ipv4_label_address.yfilter)
-	|| ydk::is_set(ipv4_tunnel_address.yfilter)
-	|| ydk::is_set(ipv4_mdt_address.yfilter)
-	|| ydk::is_set(ipv4vpn_address.yfilter)
-	|| ydk::is_set(ipv4vpna_mcastddress.yfilter)
-	|| ydk::is_set(ipv6_address.yfilter)
-	|| ydk::is_set(ipv6_mcast_address.yfilter)
-	|| ydk::is_set(ipv6_label_address.yfilter)
-	|| ydk::is_set(ipv6vpn_address.yfilter)
-	|| ydk::is_set(ipv6vpn_mcast_address.yfilter)
-	|| ydk::is_set(rt_constraint_address.yfilter)
-	|| ydk::is_set(ipv6mvpn_address.yfilter)
-	|| ydk::is_set(ipv4mvpn_address.yfilter)
-	|| ydk::is_set(l2vpn_evpn_address.yfilter)
-	|| ydk::is_set(ls_ls_address.yfilter)
-	|| ydk::is_set(ipv4_flowspec_address.yfilter)
-	|| ydk::is_set(ipv6_flowspec_address.yfilter)
-	|| ydk::is_set(ipv4vpn_flowspec_address.yfilter)
-	|| ydk::is_set(ipv6vpn_flowspec_address.yfilter)
-	|| (l2vpn_vpls_address !=  nullptr && l2vpn_vpls_address->has_operation())
-	|| (l2vpn_mspw_address !=  nullptr && l2vpn_mspw_address->has_operation())
-	|| (ipv4_sr_policy_address !=  nullptr && ipv4_sr_policy_address->has_operation())
-	|| (ipv6_sr_policy_address !=  nullptr && ipv6_sr_policy_address->has_operation());
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "neighbor";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv4_mcast_address.is_set || is_set(ipv4_mcast_address.yfilter)) leaf_name_data.push_back(ipv4_mcast_address.get_name_leafdata());
-    if (ipv4_label_address.is_set || is_set(ipv4_label_address.yfilter)) leaf_name_data.push_back(ipv4_label_address.get_name_leafdata());
-    if (ipv4_tunnel_address.is_set || is_set(ipv4_tunnel_address.yfilter)) leaf_name_data.push_back(ipv4_tunnel_address.get_name_leafdata());
-    if (ipv4_mdt_address.is_set || is_set(ipv4_mdt_address.yfilter)) leaf_name_data.push_back(ipv4_mdt_address.get_name_leafdata());
-    if (ipv4vpn_address.is_set || is_set(ipv4vpn_address.yfilter)) leaf_name_data.push_back(ipv4vpn_address.get_name_leafdata());
-    if (ipv4vpna_mcastddress.is_set || is_set(ipv4vpna_mcastddress.yfilter)) leaf_name_data.push_back(ipv4vpna_mcastddress.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-    if (ipv6_mcast_address.is_set || is_set(ipv6_mcast_address.yfilter)) leaf_name_data.push_back(ipv6_mcast_address.get_name_leafdata());
-    if (ipv6_label_address.is_set || is_set(ipv6_label_address.yfilter)) leaf_name_data.push_back(ipv6_label_address.get_name_leafdata());
-    if (ipv6vpn_address.is_set || is_set(ipv6vpn_address.yfilter)) leaf_name_data.push_back(ipv6vpn_address.get_name_leafdata());
-    if (ipv6vpn_mcast_address.is_set || is_set(ipv6vpn_mcast_address.yfilter)) leaf_name_data.push_back(ipv6vpn_mcast_address.get_name_leafdata());
-    if (rt_constraint_address.is_set || is_set(rt_constraint_address.yfilter)) leaf_name_data.push_back(rt_constraint_address.get_name_leafdata());
-    if (ipv6mvpn_address.is_set || is_set(ipv6mvpn_address.yfilter)) leaf_name_data.push_back(ipv6mvpn_address.get_name_leafdata());
-    if (ipv4mvpn_address.is_set || is_set(ipv4mvpn_address.yfilter)) leaf_name_data.push_back(ipv4mvpn_address.get_name_leafdata());
-    if (l2vpn_evpn_address.is_set || is_set(l2vpn_evpn_address.yfilter)) leaf_name_data.push_back(l2vpn_evpn_address.get_name_leafdata());
-    if (ls_ls_address.is_set || is_set(ls_ls_address.yfilter)) leaf_name_data.push_back(ls_ls_address.get_name_leafdata());
-    if (ipv4_flowspec_address.is_set || is_set(ipv4_flowspec_address.yfilter)) leaf_name_data.push_back(ipv4_flowspec_address.get_name_leafdata());
-    if (ipv6_flowspec_address.is_set || is_set(ipv6_flowspec_address.yfilter)) leaf_name_data.push_back(ipv6_flowspec_address.get_name_leafdata());
-    if (ipv4vpn_flowspec_address.is_set || is_set(ipv4vpn_flowspec_address.yfilter)) leaf_name_data.push_back(ipv4vpn_flowspec_address.get_name_leafdata());
-    if (ipv6vpn_flowspec_address.is_set || is_set(ipv6vpn_flowspec_address.yfilter)) leaf_name_data.push_back(ipv6vpn_flowspec_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "l2vpn-vpls-address")
-    {
-        if(l2vpn_vpls_address == nullptr)
-        {
-            l2vpn_vpls_address = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnVplsAddress>();
-        }
-        return l2vpn_vpls_address;
-    }
-
-    if(child_yang_name == "l2vpn-mspw-address")
-    {
-        if(l2vpn_mspw_address == nullptr)
-        {
-            l2vpn_mspw_address = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnMspwAddress>();
-        }
-        return l2vpn_mspw_address;
-    }
-
-    if(child_yang_name == "ipv4-sr-policy-address")
-    {
-        if(ipv4_sr_policy_address == nullptr)
-        {
-            ipv4_sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv4SrPolicyAddress>();
-        }
-        return ipv4_sr_policy_address;
-    }
-
-    if(child_yang_name == "ipv6-sr-policy-address")
-    {
-        if(ipv6_sr_policy_address == nullptr)
-        {
-            ipv6_sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv6SrPolicyAddress>();
-        }
-        return ipv6_sr_policy_address;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(l2vpn_vpls_address != nullptr)
-    {
-        children["l2vpn-vpls-address"] = l2vpn_vpls_address;
-    }
-
-    if(l2vpn_mspw_address != nullptr)
-    {
-        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-    }
-
-    if(ipv4_sr_policy_address != nullptr)
-    {
-        children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
-    }
-
-    if(ipv6_sr_policy_address != nullptr)
-    {
-        children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
-    }
-
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "afi")
-    {
-        afi = value;
-        afi.value_namespace = name_space;
-        afi.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address = value;
-        ipv4_address.value_namespace = name_space;
-        ipv4_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-mcast-address")
-    {
-        ipv4_mcast_address = value;
-        ipv4_mcast_address.value_namespace = name_space;
-        ipv4_mcast_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-label-address")
-    {
-        ipv4_label_address = value;
-        ipv4_label_address.value_namespace = name_space;
-        ipv4_label_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-tunnel-address")
-    {
-        ipv4_tunnel_address = value;
-        ipv4_tunnel_address.value_namespace = name_space;
-        ipv4_tunnel_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-mdt-address")
-    {
-        ipv4_mdt_address = value;
-        ipv4_mdt_address.value_namespace = name_space;
-        ipv4_mdt_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4vpn-address")
-    {
-        ipv4vpn_address = value;
-        ipv4vpn_address.value_namespace = name_space;
-        ipv4vpn_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4vpna-mcastddress")
-    {
-        ipv4vpna_mcastddress = value;
-        ipv4vpna_mcastddress.value_namespace = name_space;
-        ipv4vpna_mcastddress.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address = value;
-        ipv6_address.value_namespace = name_space;
-        ipv6_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-mcast-address")
-    {
-        ipv6_mcast_address = value;
-        ipv6_mcast_address.value_namespace = name_space;
-        ipv6_mcast_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-label-address")
-    {
-        ipv6_label_address = value;
-        ipv6_label_address.value_namespace = name_space;
-        ipv6_label_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6vpn-address")
-    {
-        ipv6vpn_address = value;
-        ipv6vpn_address.value_namespace = name_space;
-        ipv6vpn_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6vpn-mcast-address")
-    {
-        ipv6vpn_mcast_address = value;
-        ipv6vpn_mcast_address.value_namespace = name_space;
-        ipv6vpn_mcast_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rt-constraint-address")
-    {
-        rt_constraint_address = value;
-        rt_constraint_address.value_namespace = name_space;
-        rt_constraint_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6mvpn-address")
-    {
-        ipv6mvpn_address = value;
-        ipv6mvpn_address.value_namespace = name_space;
-        ipv6mvpn_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4mvpn-address")
-    {
-        ipv4mvpn_address = value;
-        ipv4mvpn_address.value_namespace = name_space;
-        ipv4mvpn_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "l2vpn-evpn-address")
-    {
-        l2vpn_evpn_address = value;
-        l2vpn_evpn_address.value_namespace = name_space;
-        l2vpn_evpn_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ls-ls-address")
-    {
-        ls_ls_address = value;
-        ls_ls_address.value_namespace = name_space;
-        ls_ls_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-flowspec-address")
-    {
-        ipv4_flowspec_address = value;
-        ipv4_flowspec_address.value_namespace = name_space;
-        ipv4_flowspec_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-flowspec-address")
-    {
-        ipv6_flowspec_address = value;
-        ipv6_flowspec_address.value_namespace = name_space;
-        ipv6_flowspec_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4vpn-flowspec-address")
-    {
-        ipv4vpn_flowspec_address = value;
-        ipv4vpn_flowspec_address.value_namespace = name_space;
-        ipv4vpn_flowspec_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6vpn-flowspec-address")
-    {
-        ipv6vpn_flowspec_address = value;
-        ipv6vpn_flowspec_address.value_namespace = name_space;
-        ipv6vpn_flowspec_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "afi")
-    {
-        afi.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-mcast-address")
-    {
-        ipv4_mcast_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-label-address")
-    {
-        ipv4_label_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-tunnel-address")
-    {
-        ipv4_tunnel_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-mdt-address")
-    {
-        ipv4_mdt_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4vpn-address")
-    {
-        ipv4vpn_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4vpna-mcastddress")
-    {
-        ipv4vpna_mcastddress.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-mcast-address")
-    {
-        ipv6_mcast_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-label-address")
-    {
-        ipv6_label_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6vpn-address")
-    {
-        ipv6vpn_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6vpn-mcast-address")
-    {
-        ipv6vpn_mcast_address.yfilter = yfilter;
-    }
-    if(value_path == "rt-constraint-address")
-    {
-        rt_constraint_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6mvpn-address")
-    {
-        ipv6mvpn_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4mvpn-address")
-    {
-        ipv4mvpn_address.yfilter = yfilter;
-    }
-    if(value_path == "l2vpn-evpn-address")
-    {
-        l2vpn_evpn_address.yfilter = yfilter;
-    }
-    if(value_path == "ls-ls-address")
-    {
-        ls_ls_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-flowspec-address")
-    {
-        ipv4_flowspec_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-flowspec-address")
-    {
-        ipv6_flowspec_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4vpn-flowspec-address")
-    {
-        ipv4vpn_flowspec_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6vpn-flowspec-address")
-    {
-        ipv6vpn_flowspec_address.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "l2vpn-vpls-address" || name == "l2vpn-mspw-address" || name == "ipv4-sr-policy-address" || name == "ipv6-sr-policy-address" || name == "afi" || name == "ipv4-address" || name == "ipv4-mcast-address" || name == "ipv4-label-address" || name == "ipv4-tunnel-address" || name == "ipv4-mdt-address" || name == "ipv4vpn-address" || name == "ipv4vpna-mcastddress" || name == "ipv6-address" || name == "ipv6-mcast-address" || name == "ipv6-label-address" || name == "ipv6vpn-address" || name == "ipv6vpn-mcast-address" || name == "rt-constraint-address" || name == "ipv6mvpn-address" || name == "ipv4mvpn-address" || name == "l2vpn-evpn-address" || name == "ls-ls-address" || name == "ipv4-flowspec-address" || name == "ipv6-flowspec-address" || name == "ipv4vpn-flowspec-address" || name == "ipv6vpn-flowspec-address")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnVplsAddress::L2vpnVplsAddress()
-    :
-    l2vpn_address{YType::str, "l2vpn-address"}
-{
-
-    yang_name = "l2vpn-vpls-address"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnVplsAddress::~L2vpnVplsAddress()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnVplsAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return l2vpn_address.is_set;
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnVplsAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(l2vpn_address.yfilter);
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnVplsAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "l2vpn-vpls-address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnVplsAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (l2vpn_address.is_set || is_set(l2vpn_address.yfilter)) leaf_name_data.push_back(l2vpn_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnVplsAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "l2vpn-address")
-    {
-        l2vpn_address = value;
-        l2vpn_address.value_namespace = name_space;
-        l2vpn_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnVplsAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "l2vpn-address")
-    {
-        l2vpn_address.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnVplsAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "l2vpn-address")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnMspwAddress::L2vpnMspwAddress()
-    :
-    l2vpn_address{YType::str, "l2vpn-address"}
-{
-
-    yang_name = "l2vpn-mspw-address"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnMspwAddress::~L2vpnMspwAddress()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnMspwAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return l2vpn_address.is_set;
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnMspwAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(l2vpn_address.yfilter);
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnMspwAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "l2vpn-mspw-address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnMspwAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (l2vpn_address.is_set || is_set(l2vpn_address.yfilter)) leaf_name_data.push_back(l2vpn_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnMspwAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnMspwAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "l2vpn-address")
-    {
-        l2vpn_address = value;
-        l2vpn_address.value_namespace = name_space;
-        l2vpn_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnMspwAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "l2vpn-address")
-    {
-        l2vpn_address.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::L2vpnMspwAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "l2vpn-address")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv4SrPolicyAddress::Ipv4SrPolicyAddress()
-    :
-    ipv4_srpolicy_address{YType::str, "ipv4-srpolicy-address"}
-{
-
-    yang_name = "ipv4-sr-policy-address"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv4SrPolicyAddress::~Ipv4SrPolicyAddress()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv4SrPolicyAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return ipv4_srpolicy_address.is_set;
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv4SrPolicyAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ipv4_srpolicy_address.yfilter);
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv4SrPolicyAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4-sr-policy-address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv4SrPolicyAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipv4_srpolicy_address.is_set || is_set(ipv4_srpolicy_address.yfilter)) leaf_name_data.push_back(ipv4_srpolicy_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv4SrPolicyAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv4SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ipv4-srpolicy-address")
-    {
-        ipv4_srpolicy_address = value;
-        ipv4_srpolicy_address.value_namespace = name_space;
-        ipv4_srpolicy_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv4SrPolicyAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ipv4-srpolicy-address")
-    {
-        ipv4_srpolicy_address.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv4SrPolicyAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv4-srpolicy-address")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv6SrPolicyAddress::Ipv6SrPolicyAddress()
-    :
-    ipv6_srpolicy_address{YType::str, "ipv6-srpolicy-address"}
-{
-
-    yang_name = "ipv6-sr-policy-address"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv6SrPolicyAddress::~Ipv6SrPolicyAddress()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv6SrPolicyAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return ipv6_srpolicy_address.is_set;
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv6SrPolicyAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ipv6_srpolicy_address.yfilter);
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv6SrPolicyAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv6-sr-policy-address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv6SrPolicyAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipv6_srpolicy_address.is_set || is_set(ipv6_srpolicy_address.yfilter)) leaf_name_data.push_back(ipv6_srpolicy_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv6SrPolicyAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv6SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ipv6-srpolicy-address")
-    {
-        ipv6_srpolicy_address = value;
-        ipv6_srpolicy_address.value_namespace = name_space;
-        ipv6_srpolicy_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv6SrPolicyAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ipv6-srpolicy-address")
-    {
-        ipv6_srpolicy_address.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::UpdateFilterGroup::Neighbor::Ipv6SrPolicyAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv6-srpolicy-address")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Neighbor()
-    :
-    afi{YType::enumeration, "afi"},
-    ipv4_address{YType::str, "ipv4-address"},
-    ipv4_mcast_address{YType::str, "ipv4-mcast-address"},
-    ipv4_label_address{YType::str, "ipv4-label-address"},
-    ipv4_tunnel_address{YType::str, "ipv4-tunnel-address"},
-    ipv4_mdt_address{YType::str, "ipv4-mdt-address"},
-    ipv4vpn_address{YType::str, "ipv4vpn-address"},
-    ipv4vpna_mcastddress{YType::str, "ipv4vpna-mcastddress"},
-    ipv6_address{YType::str, "ipv6-address"},
-    ipv6_mcast_address{YType::str, "ipv6-mcast-address"},
-    ipv6_label_address{YType::str, "ipv6-label-address"},
-    ipv6vpn_address{YType::str, "ipv6vpn-address"},
-    ipv6vpn_mcast_address{YType::str, "ipv6vpn-mcast-address"},
-    rt_constraint_address{YType::str, "rt-constraint-address"},
-    ipv6mvpn_address{YType::str, "ipv6mvpn-address"},
-    ipv4mvpn_address{YType::str, "ipv4mvpn-address"},
-    l2vpn_evpn_address{YType::str, "l2vpn-evpn-address"},
-    ls_ls_address{YType::str, "ls-ls-address"},
-    ipv4_flowspec_address{YType::str, "ipv4-flowspec-address"},
-    ipv6_flowspec_address{YType::str, "ipv6-flowspec-address"},
-    ipv4vpn_flowspec_address{YType::str, "ipv4vpn-flowspec-address"},
-    ipv6vpn_flowspec_address{YType::str, "ipv6vpn-flowspec-address"}
-        ,
-    l2vpn_vpls_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnVplsAddress>())
-    , l2vpn_mspw_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnMspwAddress>())
-    , ipv4_sr_policy_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv4SrPolicyAddress>())
-    , ipv6_sr_policy_address(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv6SrPolicyAddress>())
-{
-    l2vpn_vpls_address->parent = this;
-    l2vpn_mspw_address->parent = this;
-    ipv4_sr_policy_address->parent = this;
-    ipv6_sr_policy_address->parent = this;
-
-    yang_name = "neighbor"; yang_parent_name = "update-sub-group"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::~Neighbor()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::has_data() const
-{
-    if (is_presence_container) return true;
-    return afi.is_set
-	|| ipv4_address.is_set
-	|| ipv4_mcast_address.is_set
-	|| ipv4_label_address.is_set
-	|| ipv4_tunnel_address.is_set
-	|| ipv4_mdt_address.is_set
-	|| ipv4vpn_address.is_set
-	|| ipv4vpna_mcastddress.is_set
-	|| ipv6_address.is_set
-	|| ipv6_mcast_address.is_set
-	|| ipv6_label_address.is_set
-	|| ipv6vpn_address.is_set
-	|| ipv6vpn_mcast_address.is_set
-	|| rt_constraint_address.is_set
-	|| ipv6mvpn_address.is_set
-	|| ipv4mvpn_address.is_set
-	|| l2vpn_evpn_address.is_set
-	|| ls_ls_address.is_set
-	|| ipv4_flowspec_address.is_set
-	|| ipv6_flowspec_address.is_set
-	|| ipv4vpn_flowspec_address.is_set
-	|| ipv6vpn_flowspec_address.is_set
-	|| (l2vpn_vpls_address !=  nullptr && l2vpn_vpls_address->has_data())
-	|| (l2vpn_mspw_address !=  nullptr && l2vpn_mspw_address->has_data())
-	|| (ipv4_sr_policy_address !=  nullptr && ipv4_sr_policy_address->has_data())
-	|| (ipv6_sr_policy_address !=  nullptr && ipv6_sr_policy_address->has_data());
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(afi.yfilter)
-	|| ydk::is_set(ipv4_address.yfilter)
-	|| ydk::is_set(ipv4_mcast_address.yfilter)
-	|| ydk::is_set(ipv4_label_address.yfilter)
-	|| ydk::is_set(ipv4_tunnel_address.yfilter)
-	|| ydk::is_set(ipv4_mdt_address.yfilter)
-	|| ydk::is_set(ipv4vpn_address.yfilter)
-	|| ydk::is_set(ipv4vpna_mcastddress.yfilter)
-	|| ydk::is_set(ipv6_address.yfilter)
-	|| ydk::is_set(ipv6_mcast_address.yfilter)
-	|| ydk::is_set(ipv6_label_address.yfilter)
-	|| ydk::is_set(ipv6vpn_address.yfilter)
-	|| ydk::is_set(ipv6vpn_mcast_address.yfilter)
-	|| ydk::is_set(rt_constraint_address.yfilter)
-	|| ydk::is_set(ipv6mvpn_address.yfilter)
-	|| ydk::is_set(ipv4mvpn_address.yfilter)
-	|| ydk::is_set(l2vpn_evpn_address.yfilter)
-	|| ydk::is_set(ls_ls_address.yfilter)
-	|| ydk::is_set(ipv4_flowspec_address.yfilter)
-	|| ydk::is_set(ipv6_flowspec_address.yfilter)
-	|| ydk::is_set(ipv4vpn_flowspec_address.yfilter)
-	|| ydk::is_set(ipv6vpn_flowspec_address.yfilter)
-	|| (l2vpn_vpls_address !=  nullptr && l2vpn_vpls_address->has_operation())
-	|| (l2vpn_mspw_address !=  nullptr && l2vpn_mspw_address->has_operation())
-	|| (ipv4_sr_policy_address !=  nullptr && ipv4_sr_policy_address->has_operation())
-	|| (ipv6_sr_policy_address !=  nullptr && ipv6_sr_policy_address->has_operation());
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "neighbor";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv4_mcast_address.is_set || is_set(ipv4_mcast_address.yfilter)) leaf_name_data.push_back(ipv4_mcast_address.get_name_leafdata());
-    if (ipv4_label_address.is_set || is_set(ipv4_label_address.yfilter)) leaf_name_data.push_back(ipv4_label_address.get_name_leafdata());
-    if (ipv4_tunnel_address.is_set || is_set(ipv4_tunnel_address.yfilter)) leaf_name_data.push_back(ipv4_tunnel_address.get_name_leafdata());
-    if (ipv4_mdt_address.is_set || is_set(ipv4_mdt_address.yfilter)) leaf_name_data.push_back(ipv4_mdt_address.get_name_leafdata());
-    if (ipv4vpn_address.is_set || is_set(ipv4vpn_address.yfilter)) leaf_name_data.push_back(ipv4vpn_address.get_name_leafdata());
-    if (ipv4vpna_mcastddress.is_set || is_set(ipv4vpna_mcastddress.yfilter)) leaf_name_data.push_back(ipv4vpna_mcastddress.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-    if (ipv6_mcast_address.is_set || is_set(ipv6_mcast_address.yfilter)) leaf_name_data.push_back(ipv6_mcast_address.get_name_leafdata());
-    if (ipv6_label_address.is_set || is_set(ipv6_label_address.yfilter)) leaf_name_data.push_back(ipv6_label_address.get_name_leafdata());
-    if (ipv6vpn_address.is_set || is_set(ipv6vpn_address.yfilter)) leaf_name_data.push_back(ipv6vpn_address.get_name_leafdata());
-    if (ipv6vpn_mcast_address.is_set || is_set(ipv6vpn_mcast_address.yfilter)) leaf_name_data.push_back(ipv6vpn_mcast_address.get_name_leafdata());
-    if (rt_constraint_address.is_set || is_set(rt_constraint_address.yfilter)) leaf_name_data.push_back(rt_constraint_address.get_name_leafdata());
-    if (ipv6mvpn_address.is_set || is_set(ipv6mvpn_address.yfilter)) leaf_name_data.push_back(ipv6mvpn_address.get_name_leafdata());
-    if (ipv4mvpn_address.is_set || is_set(ipv4mvpn_address.yfilter)) leaf_name_data.push_back(ipv4mvpn_address.get_name_leafdata());
-    if (l2vpn_evpn_address.is_set || is_set(l2vpn_evpn_address.yfilter)) leaf_name_data.push_back(l2vpn_evpn_address.get_name_leafdata());
-    if (ls_ls_address.is_set || is_set(ls_ls_address.yfilter)) leaf_name_data.push_back(ls_ls_address.get_name_leafdata());
-    if (ipv4_flowspec_address.is_set || is_set(ipv4_flowspec_address.yfilter)) leaf_name_data.push_back(ipv4_flowspec_address.get_name_leafdata());
-    if (ipv6_flowspec_address.is_set || is_set(ipv6_flowspec_address.yfilter)) leaf_name_data.push_back(ipv6_flowspec_address.get_name_leafdata());
-    if (ipv4vpn_flowspec_address.is_set || is_set(ipv4vpn_flowspec_address.yfilter)) leaf_name_data.push_back(ipv4vpn_flowspec_address.get_name_leafdata());
-    if (ipv6vpn_flowspec_address.is_set || is_set(ipv6vpn_flowspec_address.yfilter)) leaf_name_data.push_back(ipv6vpn_flowspec_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "l2vpn-vpls-address")
-    {
-        if(l2vpn_vpls_address == nullptr)
-        {
-            l2vpn_vpls_address = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnVplsAddress>();
-        }
-        return l2vpn_vpls_address;
-    }
-
-    if(child_yang_name == "l2vpn-mspw-address")
-    {
-        if(l2vpn_mspw_address == nullptr)
-        {
-            l2vpn_mspw_address = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnMspwAddress>();
-        }
-        return l2vpn_mspw_address;
-    }
-
-    if(child_yang_name == "ipv4-sr-policy-address")
-    {
-        if(ipv4_sr_policy_address == nullptr)
-        {
-            ipv4_sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv4SrPolicyAddress>();
-        }
-        return ipv4_sr_policy_address;
-    }
-
-    if(child_yang_name == "ipv6-sr-policy-address")
-    {
-        if(ipv6_sr_policy_address == nullptr)
-        {
-            ipv6_sr_policy_address = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv6SrPolicyAddress>();
-        }
-        return ipv6_sr_policy_address;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(l2vpn_vpls_address != nullptr)
-    {
-        children["l2vpn-vpls-address"] = l2vpn_vpls_address;
-    }
-
-    if(l2vpn_mspw_address != nullptr)
-    {
-        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-    }
-
-    if(ipv4_sr_policy_address != nullptr)
-    {
-        children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
-    }
-
-    if(ipv6_sr_policy_address != nullptr)
-    {
-        children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
-    }
-
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "afi")
-    {
-        afi = value;
-        afi.value_namespace = name_space;
-        afi.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address = value;
-        ipv4_address.value_namespace = name_space;
-        ipv4_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-mcast-address")
-    {
-        ipv4_mcast_address = value;
-        ipv4_mcast_address.value_namespace = name_space;
-        ipv4_mcast_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-label-address")
-    {
-        ipv4_label_address = value;
-        ipv4_label_address.value_namespace = name_space;
-        ipv4_label_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-tunnel-address")
-    {
-        ipv4_tunnel_address = value;
-        ipv4_tunnel_address.value_namespace = name_space;
-        ipv4_tunnel_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-mdt-address")
-    {
-        ipv4_mdt_address = value;
-        ipv4_mdt_address.value_namespace = name_space;
-        ipv4_mdt_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4vpn-address")
-    {
-        ipv4vpn_address = value;
-        ipv4vpn_address.value_namespace = name_space;
-        ipv4vpn_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4vpna-mcastddress")
-    {
-        ipv4vpna_mcastddress = value;
-        ipv4vpna_mcastddress.value_namespace = name_space;
-        ipv4vpna_mcastddress.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address = value;
-        ipv6_address.value_namespace = name_space;
-        ipv6_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-mcast-address")
-    {
-        ipv6_mcast_address = value;
-        ipv6_mcast_address.value_namespace = name_space;
-        ipv6_mcast_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-label-address")
-    {
-        ipv6_label_address = value;
-        ipv6_label_address.value_namespace = name_space;
-        ipv6_label_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6vpn-address")
-    {
-        ipv6vpn_address = value;
-        ipv6vpn_address.value_namespace = name_space;
-        ipv6vpn_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6vpn-mcast-address")
-    {
-        ipv6vpn_mcast_address = value;
-        ipv6vpn_mcast_address.value_namespace = name_space;
-        ipv6vpn_mcast_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rt-constraint-address")
-    {
-        rt_constraint_address = value;
-        rt_constraint_address.value_namespace = name_space;
-        rt_constraint_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6mvpn-address")
-    {
-        ipv6mvpn_address = value;
-        ipv6mvpn_address.value_namespace = name_space;
-        ipv6mvpn_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4mvpn-address")
-    {
-        ipv4mvpn_address = value;
-        ipv4mvpn_address.value_namespace = name_space;
-        ipv4mvpn_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "l2vpn-evpn-address")
-    {
-        l2vpn_evpn_address = value;
-        l2vpn_evpn_address.value_namespace = name_space;
-        l2vpn_evpn_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ls-ls-address")
-    {
-        ls_ls_address = value;
-        ls_ls_address.value_namespace = name_space;
-        ls_ls_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-flowspec-address")
-    {
-        ipv4_flowspec_address = value;
-        ipv4_flowspec_address.value_namespace = name_space;
-        ipv4_flowspec_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-flowspec-address")
-    {
-        ipv6_flowspec_address = value;
-        ipv6_flowspec_address.value_namespace = name_space;
-        ipv6_flowspec_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4vpn-flowspec-address")
-    {
-        ipv4vpn_flowspec_address = value;
-        ipv4vpn_flowspec_address.value_namespace = name_space;
-        ipv4vpn_flowspec_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6vpn-flowspec-address")
-    {
-        ipv6vpn_flowspec_address = value;
-        ipv6vpn_flowspec_address.value_namespace = name_space;
-        ipv6vpn_flowspec_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "afi")
-    {
-        afi.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-mcast-address")
-    {
-        ipv4_mcast_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-label-address")
-    {
-        ipv4_label_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-tunnel-address")
-    {
-        ipv4_tunnel_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-mdt-address")
-    {
-        ipv4_mdt_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4vpn-address")
-    {
-        ipv4vpn_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4vpna-mcastddress")
-    {
-        ipv4vpna_mcastddress.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-mcast-address")
-    {
-        ipv6_mcast_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-label-address")
-    {
-        ipv6_label_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6vpn-address")
-    {
-        ipv6vpn_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6vpn-mcast-address")
-    {
-        ipv6vpn_mcast_address.yfilter = yfilter;
-    }
-    if(value_path == "rt-constraint-address")
-    {
-        rt_constraint_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6mvpn-address")
-    {
-        ipv6mvpn_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4mvpn-address")
-    {
-        ipv4mvpn_address.yfilter = yfilter;
-    }
-    if(value_path == "l2vpn-evpn-address")
-    {
-        l2vpn_evpn_address.yfilter = yfilter;
-    }
-    if(value_path == "ls-ls-address")
-    {
-        ls_ls_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-flowspec-address")
-    {
-        ipv4_flowspec_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-flowspec-address")
-    {
-        ipv6_flowspec_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4vpn-flowspec-address")
-    {
-        ipv4vpn_flowspec_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6vpn-flowspec-address")
-    {
-        ipv6vpn_flowspec_address.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "l2vpn-vpls-address" || name == "l2vpn-mspw-address" || name == "ipv4-sr-policy-address" || name == "ipv6-sr-policy-address" || name == "afi" || name == "ipv4-address" || name == "ipv4-mcast-address" || name == "ipv4-label-address" || name == "ipv4-tunnel-address" || name == "ipv4-mdt-address" || name == "ipv4vpn-address" || name == "ipv4vpna-mcastddress" || name == "ipv6-address" || name == "ipv6-mcast-address" || name == "ipv6-label-address" || name == "ipv6vpn-address" || name == "ipv6vpn-mcast-address" || name == "rt-constraint-address" || name == "ipv6mvpn-address" || name == "ipv4mvpn-address" || name == "l2vpn-evpn-address" || name == "ls-ls-address" || name == "ipv4-flowspec-address" || name == "ipv6-flowspec-address" || name == "ipv4vpn-flowspec-address" || name == "ipv6vpn-flowspec-address")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnVplsAddress::L2vpnVplsAddress()
-    :
-    l2vpn_address{YType::str, "l2vpn-address"}
-{
-
-    yang_name = "l2vpn-vpls-address"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnVplsAddress::~L2vpnVplsAddress()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnVplsAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return l2vpn_address.is_set;
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnVplsAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(l2vpn_address.yfilter);
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnVplsAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "l2vpn-vpls-address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnVplsAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (l2vpn_address.is_set || is_set(l2vpn_address.yfilter)) leaf_name_data.push_back(l2vpn_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnVplsAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "l2vpn-address")
-    {
-        l2vpn_address = value;
-        l2vpn_address.value_namespace = name_space;
-        l2vpn_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnVplsAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "l2vpn-address")
-    {
-        l2vpn_address.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnVplsAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "l2vpn-address")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnMspwAddress::L2vpnMspwAddress()
-    :
-    l2vpn_address{YType::str, "l2vpn-address"}
-{
-
-    yang_name = "l2vpn-mspw-address"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnMspwAddress::~L2vpnMspwAddress()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnMspwAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return l2vpn_address.is_set;
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnMspwAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(l2vpn_address.yfilter);
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnMspwAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "l2vpn-mspw-address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnMspwAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (l2vpn_address.is_set || is_set(l2vpn_address.yfilter)) leaf_name_data.push_back(l2vpn_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnMspwAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnMspwAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "l2vpn-address")
-    {
-        l2vpn_address = value;
-        l2vpn_address.value_namespace = name_space;
-        l2vpn_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnMspwAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "l2vpn-address")
-    {
-        l2vpn_address.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::L2vpnMspwAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "l2vpn-address")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv4SrPolicyAddress::Ipv4SrPolicyAddress()
-    :
-    ipv4_srpolicy_address{YType::str, "ipv4-srpolicy-address"}
-{
-
-    yang_name = "ipv4-sr-policy-address"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv4SrPolicyAddress::~Ipv4SrPolicyAddress()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv4SrPolicyAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return ipv4_srpolicy_address.is_set;
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv4SrPolicyAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ipv4_srpolicy_address.yfilter);
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv4SrPolicyAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4-sr-policy-address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv4SrPolicyAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipv4_srpolicy_address.is_set || is_set(ipv4_srpolicy_address.yfilter)) leaf_name_data.push_back(ipv4_srpolicy_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv4SrPolicyAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv4SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ipv4-srpolicy-address")
-    {
-        ipv4_srpolicy_address = value;
-        ipv4_srpolicy_address.value_namespace = name_space;
-        ipv4_srpolicy_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv4SrPolicyAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ipv4-srpolicy-address")
-    {
-        ipv4_srpolicy_address.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv4SrPolicyAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv4-srpolicy-address")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv6SrPolicyAddress::Ipv6SrPolicyAddress()
-    :
-    ipv6_srpolicy_address{YType::str, "ipv6-srpolicy-address"}
-{
-
-    yang_name = "ipv6-sr-policy-address"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv6SrPolicyAddress::~Ipv6SrPolicyAddress()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv6SrPolicyAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return ipv6_srpolicy_address.is_set;
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv6SrPolicyAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ipv6_srpolicy_address.yfilter);
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv6SrPolicyAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv6-sr-policy-address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv6SrPolicyAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipv6_srpolicy_address.is_set || is_set(ipv6_srpolicy_address.yfilter)) leaf_name_data.push_back(ipv6_srpolicy_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv6SrPolicyAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv6SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ipv6-srpolicy-address")
-    {
-        ipv6_srpolicy_address = value;
-        ipv6_srpolicy_address.value_namespace = name_space;
-        ipv6_srpolicy_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv6SrPolicyAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ipv6-srpolicy-address")
-    {
-        ipv6_srpolicy_address.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGroups::UpdateGroup::UpdateSubGroup::Neighbor::Ipv6SrPolicyAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ipv6-srpolicy-address")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroups()
-    :
-    update_generation_sub_group(this, {})
-{
-
-    yang_name = "update-generation-sub-groups"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::~UpdateGenerationSubGroups()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<update_generation_sub_group.len(); index++)
-    {
-        if(update_generation_sub_group[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::has_operation() const
-{
-    for (std::size_t index=0; index<update_generation_sub_group.len(); index++)
-    {
-        if(update_generation_sub_group[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "update-generation-sub-groups";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "update-generation-sub-group")
-    {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup>();
-        c->parent = this;
-        update_generation_sub_group.append(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : update_generation_sub_group.entities())
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "update-generation-sub-group")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateGenerationSubGroup()
-    :
-    update_group_index{YType::uint32, "update-group-index"},
-    sub_group_index{YType::uint32, "sub-group-index"},
-    sub_group_id{YType::uint32, "sub-group-id"},
-    process_id{YType::uint32, "process-id"},
-    update_vrf_name{YType::str, "update-vrf-name"},
-    update_group_af_name{YType::enumeration, "update-group-af-name"},
-    sub_group_index_xr{YType::uint32, "sub-group-index-xr"},
-    sub_group_id_xr{YType::uint32, "sub-group-id-xr"},
-    parent_sub_group_index{YType::uint32, "parent-sub-group-index"},
-    parent_sub_group_id{YType::uint32, "parent-sub-group-id"},
-    update_group_index_xr{YType::uint32, "update-group-index-xr"},
-    update_main_table_version{YType::uint32, "update-main-table-version"},
-    update_vrf_table_rib_version{YType::uint32, "update-vrf-table-rib-version"},
-    current_update_limit_sub_group{YType::uint32, "current-update-limit-sub-group"},
-    configured_update_limit_sub_group{YType::uint32, "configured-update-limit-sub-group"},
-    update_out_queue_messages{YType::uint32, "update-out-queue-messages"},
-    update_out_queue_size{YType::uint32, "update-out-queue-size"},
-    update_throttled{YType::boolean, "update-throttled"},
-    refresh_sub_group_count{YType::uint32, "refresh-sub-group-count"},
-    filter_group_count{YType::uint32, "filter-group-count"},
-    neighbor_count{YType::uint32, "neighbor-count"},
-    version{YType::uint32, "version"},
-    nsr_version{YType::uint32, "nsr-version"},
-    pending_target_version{YType::uint32, "pending-target-version"},
-    next_resume_version{YType::uint32, "next-resume-version"},
-    update_refresh_target_version{YType::uint32, "update-refresh-target-version"},
-    io_write_event_pending{YType::boolean, "io-write-event-pending"},
-    update_default_route_sent{YType::boolean, "update-default-route-sent"},
-    merge_count{YType::uint32, "merge-count"},
-    last_merged_sub_group_index{YType::uint32, "last-merged-sub-group-index"},
-    eo_r_attempted{YType::boolean, "eo-r-attempted"},
-    last_update_walk_end_age{YType::uint32, "last-update-walk-end-age"},
-    last_update_queued_age{YType::uint32, "last-update-queued-age"}
-        ,
-    creation_timestamp(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::CreationTimestamp>())
-    , last_merge_timestamp(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastMergeTimestamp>())
-    , first_update_walk_start_timestamp(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkStartTimestamp>())
-    , first_update_walk_end_timestamp(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkEndTimestamp>())
-    , last_update_walk_start_timestamp(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkStartTimestamp>())
-    , last_update_walk_end_timestamp(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkEndTimestamp>())
-    , last_update_queued_timestamp(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateQueuedTimestamp>())
-    , update_statistics(std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics>())
-{
-    creation_timestamp->parent = this;
-    last_merge_timestamp->parent = this;
-    first_update_walk_start_timestamp->parent = this;
-    first_update_walk_end_timestamp->parent = this;
-    last_update_walk_start_timestamp->parent = this;
-    last_update_walk_end_timestamp->parent = this;
-    last_update_queued_timestamp->parent = this;
-    update_statistics->parent = this;
-
-    yang_name = "update-generation-sub-group"; yang_parent_name = "update-generation-sub-groups"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::~UpdateGenerationSubGroup()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::has_data() const
-{
-    if (is_presence_container) return true;
-    return update_group_index.is_set
-	|| sub_group_index.is_set
-	|| sub_group_id.is_set
-	|| process_id.is_set
-	|| update_vrf_name.is_set
-	|| update_group_af_name.is_set
-	|| sub_group_index_xr.is_set
-	|| sub_group_id_xr.is_set
-	|| parent_sub_group_index.is_set
-	|| parent_sub_group_id.is_set
-	|| update_group_index_xr.is_set
-	|| update_main_table_version.is_set
-	|| update_vrf_table_rib_version.is_set
-	|| current_update_limit_sub_group.is_set
-	|| configured_update_limit_sub_group.is_set
-	|| update_out_queue_messages.is_set
-	|| update_out_queue_size.is_set
-	|| update_throttled.is_set
-	|| refresh_sub_group_count.is_set
-	|| filter_group_count.is_set
-	|| neighbor_count.is_set
-	|| version.is_set
-	|| nsr_version.is_set
-	|| pending_target_version.is_set
-	|| next_resume_version.is_set
-	|| update_refresh_target_version.is_set
-	|| io_write_event_pending.is_set
-	|| update_default_route_sent.is_set
-	|| merge_count.is_set
-	|| last_merged_sub_group_index.is_set
-	|| eo_r_attempted.is_set
-	|| last_update_walk_end_age.is_set
-	|| last_update_queued_age.is_set
-	|| (creation_timestamp !=  nullptr && creation_timestamp->has_data())
-	|| (last_merge_timestamp !=  nullptr && last_merge_timestamp->has_data())
-	|| (first_update_walk_start_timestamp !=  nullptr && first_update_walk_start_timestamp->has_data())
-	|| (first_update_walk_end_timestamp !=  nullptr && first_update_walk_end_timestamp->has_data())
-	|| (last_update_walk_start_timestamp !=  nullptr && last_update_walk_start_timestamp->has_data())
-	|| (last_update_walk_end_timestamp !=  nullptr && last_update_walk_end_timestamp->has_data())
-	|| (last_update_queued_timestamp !=  nullptr && last_update_queued_timestamp->has_data())
-	|| (update_statistics !=  nullptr && update_statistics->has_data());
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(update_group_index.yfilter)
-	|| ydk::is_set(sub_group_index.yfilter)
-	|| ydk::is_set(sub_group_id.yfilter)
-	|| ydk::is_set(process_id.yfilter)
-	|| ydk::is_set(update_vrf_name.yfilter)
-	|| ydk::is_set(update_group_af_name.yfilter)
-	|| ydk::is_set(sub_group_index_xr.yfilter)
-	|| ydk::is_set(sub_group_id_xr.yfilter)
-	|| ydk::is_set(parent_sub_group_index.yfilter)
-	|| ydk::is_set(parent_sub_group_id.yfilter)
-	|| ydk::is_set(update_group_index_xr.yfilter)
-	|| ydk::is_set(update_main_table_version.yfilter)
-	|| ydk::is_set(update_vrf_table_rib_version.yfilter)
-	|| ydk::is_set(current_update_limit_sub_group.yfilter)
-	|| ydk::is_set(configured_update_limit_sub_group.yfilter)
-	|| ydk::is_set(update_out_queue_messages.yfilter)
-	|| ydk::is_set(update_out_queue_size.yfilter)
-	|| ydk::is_set(update_throttled.yfilter)
-	|| ydk::is_set(refresh_sub_group_count.yfilter)
-	|| ydk::is_set(filter_group_count.yfilter)
-	|| ydk::is_set(neighbor_count.yfilter)
-	|| ydk::is_set(version.yfilter)
-	|| ydk::is_set(nsr_version.yfilter)
-	|| ydk::is_set(pending_target_version.yfilter)
-	|| ydk::is_set(next_resume_version.yfilter)
-	|| ydk::is_set(update_refresh_target_version.yfilter)
-	|| ydk::is_set(io_write_event_pending.yfilter)
-	|| ydk::is_set(update_default_route_sent.yfilter)
-	|| ydk::is_set(merge_count.yfilter)
-	|| ydk::is_set(last_merged_sub_group_index.yfilter)
-	|| ydk::is_set(eo_r_attempted.yfilter)
-	|| ydk::is_set(last_update_walk_end_age.yfilter)
-	|| ydk::is_set(last_update_queued_age.yfilter)
-	|| (creation_timestamp !=  nullptr && creation_timestamp->has_operation())
-	|| (last_merge_timestamp !=  nullptr && last_merge_timestamp->has_operation())
-	|| (first_update_walk_start_timestamp !=  nullptr && first_update_walk_start_timestamp->has_operation())
-	|| (first_update_walk_end_timestamp !=  nullptr && first_update_walk_end_timestamp->has_operation())
-	|| (last_update_walk_start_timestamp !=  nullptr && last_update_walk_start_timestamp->has_operation())
-	|| (last_update_walk_end_timestamp !=  nullptr && last_update_walk_end_timestamp->has_operation())
-	|| (last_update_queued_timestamp !=  nullptr && last_update_queued_timestamp->has_operation())
-	|| (update_statistics !=  nullptr && update_statistics->has_operation());
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "update-generation-sub-group";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (update_group_index.is_set || is_set(update_group_index.yfilter)) leaf_name_data.push_back(update_group_index.get_name_leafdata());
-    if (sub_group_index.is_set || is_set(sub_group_index.yfilter)) leaf_name_data.push_back(sub_group_index.get_name_leafdata());
-    if (sub_group_id.is_set || is_set(sub_group_id.yfilter)) leaf_name_data.push_back(sub_group_id.get_name_leafdata());
-    if (process_id.is_set || is_set(process_id.yfilter)) leaf_name_data.push_back(process_id.get_name_leafdata());
-    if (update_vrf_name.is_set || is_set(update_vrf_name.yfilter)) leaf_name_data.push_back(update_vrf_name.get_name_leafdata());
-    if (update_group_af_name.is_set || is_set(update_group_af_name.yfilter)) leaf_name_data.push_back(update_group_af_name.get_name_leafdata());
-    if (sub_group_index_xr.is_set || is_set(sub_group_index_xr.yfilter)) leaf_name_data.push_back(sub_group_index_xr.get_name_leafdata());
-    if (sub_group_id_xr.is_set || is_set(sub_group_id_xr.yfilter)) leaf_name_data.push_back(sub_group_id_xr.get_name_leafdata());
-    if (parent_sub_group_index.is_set || is_set(parent_sub_group_index.yfilter)) leaf_name_data.push_back(parent_sub_group_index.get_name_leafdata());
-    if (parent_sub_group_id.is_set || is_set(parent_sub_group_id.yfilter)) leaf_name_data.push_back(parent_sub_group_id.get_name_leafdata());
-    if (update_group_index_xr.is_set || is_set(update_group_index_xr.yfilter)) leaf_name_data.push_back(update_group_index_xr.get_name_leafdata());
-    if (update_main_table_version.is_set || is_set(update_main_table_version.yfilter)) leaf_name_data.push_back(update_main_table_version.get_name_leafdata());
-    if (update_vrf_table_rib_version.is_set || is_set(update_vrf_table_rib_version.yfilter)) leaf_name_data.push_back(update_vrf_table_rib_version.get_name_leafdata());
-    if (current_update_limit_sub_group.is_set || is_set(current_update_limit_sub_group.yfilter)) leaf_name_data.push_back(current_update_limit_sub_group.get_name_leafdata());
-    if (configured_update_limit_sub_group.is_set || is_set(configured_update_limit_sub_group.yfilter)) leaf_name_data.push_back(configured_update_limit_sub_group.get_name_leafdata());
-    if (update_out_queue_messages.is_set || is_set(update_out_queue_messages.yfilter)) leaf_name_data.push_back(update_out_queue_messages.get_name_leafdata());
-    if (update_out_queue_size.is_set || is_set(update_out_queue_size.yfilter)) leaf_name_data.push_back(update_out_queue_size.get_name_leafdata());
-    if (update_throttled.is_set || is_set(update_throttled.yfilter)) leaf_name_data.push_back(update_throttled.get_name_leafdata());
-    if (refresh_sub_group_count.is_set || is_set(refresh_sub_group_count.yfilter)) leaf_name_data.push_back(refresh_sub_group_count.get_name_leafdata());
-    if (filter_group_count.is_set || is_set(filter_group_count.yfilter)) leaf_name_data.push_back(filter_group_count.get_name_leafdata());
-    if (neighbor_count.is_set || is_set(neighbor_count.yfilter)) leaf_name_data.push_back(neighbor_count.get_name_leafdata());
-    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
-    if (nsr_version.is_set || is_set(nsr_version.yfilter)) leaf_name_data.push_back(nsr_version.get_name_leafdata());
-    if (pending_target_version.is_set || is_set(pending_target_version.yfilter)) leaf_name_data.push_back(pending_target_version.get_name_leafdata());
-    if (next_resume_version.is_set || is_set(next_resume_version.yfilter)) leaf_name_data.push_back(next_resume_version.get_name_leafdata());
-    if (update_refresh_target_version.is_set || is_set(update_refresh_target_version.yfilter)) leaf_name_data.push_back(update_refresh_target_version.get_name_leafdata());
-    if (io_write_event_pending.is_set || is_set(io_write_event_pending.yfilter)) leaf_name_data.push_back(io_write_event_pending.get_name_leafdata());
-    if (update_default_route_sent.is_set || is_set(update_default_route_sent.yfilter)) leaf_name_data.push_back(update_default_route_sent.get_name_leafdata());
-    if (merge_count.is_set || is_set(merge_count.yfilter)) leaf_name_data.push_back(merge_count.get_name_leafdata());
-    if (last_merged_sub_group_index.is_set || is_set(last_merged_sub_group_index.yfilter)) leaf_name_data.push_back(last_merged_sub_group_index.get_name_leafdata());
-    if (eo_r_attempted.is_set || is_set(eo_r_attempted.yfilter)) leaf_name_data.push_back(eo_r_attempted.get_name_leafdata());
-    if (last_update_walk_end_age.is_set || is_set(last_update_walk_end_age.yfilter)) leaf_name_data.push_back(last_update_walk_end_age.get_name_leafdata());
-    if (last_update_queued_age.is_set || is_set(last_update_queued_age.yfilter)) leaf_name_data.push_back(last_update_queued_age.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "creation-timestamp")
-    {
-        if(creation_timestamp == nullptr)
-        {
-            creation_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::CreationTimestamp>();
-        }
-        return creation_timestamp;
-    }
-
-    if(child_yang_name == "last-merge-timestamp")
-    {
-        if(last_merge_timestamp == nullptr)
-        {
-            last_merge_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastMergeTimestamp>();
-        }
-        return last_merge_timestamp;
-    }
-
-    if(child_yang_name == "first-update-walk-start-timestamp")
-    {
-        if(first_update_walk_start_timestamp == nullptr)
-        {
-            first_update_walk_start_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkStartTimestamp>();
-        }
-        return first_update_walk_start_timestamp;
-    }
-
-    if(child_yang_name == "first-update-walk-end-timestamp")
-    {
-        if(first_update_walk_end_timestamp == nullptr)
-        {
-            first_update_walk_end_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkEndTimestamp>();
-        }
-        return first_update_walk_end_timestamp;
-    }
-
-    if(child_yang_name == "last-update-walk-start-timestamp")
-    {
-        if(last_update_walk_start_timestamp == nullptr)
-        {
-            last_update_walk_start_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkStartTimestamp>();
-        }
-        return last_update_walk_start_timestamp;
-    }
-
-    if(child_yang_name == "last-update-walk-end-timestamp")
-    {
-        if(last_update_walk_end_timestamp == nullptr)
-        {
-            last_update_walk_end_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkEndTimestamp>();
-        }
-        return last_update_walk_end_timestamp;
-    }
-
-    if(child_yang_name == "last-update-queued-timestamp")
-    {
-        if(last_update_queued_timestamp == nullptr)
-        {
-            last_update_queued_timestamp = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateQueuedTimestamp>();
-        }
-        return last_update_queued_timestamp;
-    }
-
-    if(child_yang_name == "update-statistics")
-    {
-        if(update_statistics == nullptr)
-        {
-            update_statistics = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::UpdateStatistics>();
-        }
-        return update_statistics;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(creation_timestamp != nullptr)
-    {
-        children["creation-timestamp"] = creation_timestamp;
-    }
-
-    if(last_merge_timestamp != nullptr)
-    {
-        children["last-merge-timestamp"] = last_merge_timestamp;
-    }
-
-    if(first_update_walk_start_timestamp != nullptr)
-    {
-        children["first-update-walk-start-timestamp"] = first_update_walk_start_timestamp;
-    }
-
-    if(first_update_walk_end_timestamp != nullptr)
-    {
-        children["first-update-walk-end-timestamp"] = first_update_walk_end_timestamp;
-    }
-
-    if(last_update_walk_start_timestamp != nullptr)
-    {
-        children["last-update-walk-start-timestamp"] = last_update_walk_start_timestamp;
-    }
-
-    if(last_update_walk_end_timestamp != nullptr)
-    {
-        children["last-update-walk-end-timestamp"] = last_update_walk_end_timestamp;
-    }
-
-    if(last_update_queued_timestamp != nullptr)
-    {
-        children["last-update-queued-timestamp"] = last_update_queued_timestamp;
-    }
-
-    if(update_statistics != nullptr)
-    {
-        children["update-statistics"] = update_statistics;
-    }
-
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "update-group-index")
-    {
-        update_group_index = value;
-        update_group_index.value_namespace = name_space;
-        update_group_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sub-group-index")
-    {
-        sub_group_index = value;
-        sub_group_index.value_namespace = name_space;
-        sub_group_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sub-group-id")
-    {
-        sub_group_id = value;
-        sub_group_id.value_namespace = name_space;
-        sub_group_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "process-id")
-    {
-        process_id = value;
-        process_id.value_namespace = name_space;
-        process_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "update-vrf-name")
-    {
-        update_vrf_name = value;
-        update_vrf_name.value_namespace = name_space;
-        update_vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "update-group-af-name")
-    {
-        update_group_af_name = value;
-        update_group_af_name.value_namespace = name_space;
-        update_group_af_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sub-group-index-xr")
-    {
-        sub_group_index_xr = value;
-        sub_group_index_xr.value_namespace = name_space;
-        sub_group_index_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sub-group-id-xr")
-    {
-        sub_group_id_xr = value;
-        sub_group_id_xr.value_namespace = name_space;
-        sub_group_id_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "parent-sub-group-index")
-    {
-        parent_sub_group_index = value;
-        parent_sub_group_index.value_namespace = name_space;
-        parent_sub_group_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "parent-sub-group-id")
-    {
-        parent_sub_group_id = value;
-        parent_sub_group_id.value_namespace = name_space;
-        parent_sub_group_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "update-group-index-xr")
-    {
-        update_group_index_xr = value;
-        update_group_index_xr.value_namespace = name_space;
-        update_group_index_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "update-main-table-version")
-    {
-        update_main_table_version = value;
-        update_main_table_version.value_namespace = name_space;
-        update_main_table_version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "update-vrf-table-rib-version")
-    {
-        update_vrf_table_rib_version = value;
-        update_vrf_table_rib_version.value_namespace = name_space;
-        update_vrf_table_rib_version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "current-update-limit-sub-group")
-    {
-        current_update_limit_sub_group = value;
-        current_update_limit_sub_group.value_namespace = name_space;
-        current_update_limit_sub_group.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configured-update-limit-sub-group")
-    {
-        configured_update_limit_sub_group = value;
-        configured_update_limit_sub_group.value_namespace = name_space;
-        configured_update_limit_sub_group.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "update-out-queue-messages")
-    {
-        update_out_queue_messages = value;
-        update_out_queue_messages.value_namespace = name_space;
-        update_out_queue_messages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "update-out-queue-size")
-    {
-        update_out_queue_size = value;
-        update_out_queue_size.value_namespace = name_space;
-        update_out_queue_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "update-throttled")
-    {
-        update_throttled = value;
-        update_throttled.value_namespace = name_space;
-        update_throttled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "refresh-sub-group-count")
-    {
-        refresh_sub_group_count = value;
-        refresh_sub_group_count.value_namespace = name_space;
-        refresh_sub_group_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "filter-group-count")
-    {
-        filter_group_count = value;
-        filter_group_count.value_namespace = name_space;
-        filter_group_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "neighbor-count")
-    {
-        neighbor_count = value;
-        neighbor_count.value_namespace = name_space;
-        neighbor_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "version")
-    {
-        version = value;
-        version.value_namespace = name_space;
-        version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nsr-version")
-    {
-        nsr_version = value;
-        nsr_version.value_namespace = name_space;
-        nsr_version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pending-target-version")
-    {
-        pending_target_version = value;
-        pending_target_version.value_namespace = name_space;
-        pending_target_version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "next-resume-version")
-    {
-        next_resume_version = value;
-        next_resume_version.value_namespace = name_space;
-        next_resume_version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "update-refresh-target-version")
-    {
-        update_refresh_target_version = value;
-        update_refresh_target_version.value_namespace = name_space;
-        update_refresh_target_version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "io-write-event-pending")
-    {
-        io_write_event_pending = value;
-        io_write_event_pending.value_namespace = name_space;
-        io_write_event_pending.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "update-default-route-sent")
-    {
-        update_default_route_sent = value;
-        update_default_route_sent.value_namespace = name_space;
-        update_default_route_sent.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "merge-count")
-    {
-        merge_count = value;
-        merge_count.value_namespace = name_space;
-        merge_count.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-merged-sub-group-index")
-    {
-        last_merged_sub_group_index = value;
-        last_merged_sub_group_index.value_namespace = name_space;
-        last_merged_sub_group_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "eo-r-attempted")
-    {
-        eo_r_attempted = value;
-        eo_r_attempted.value_namespace = name_space;
-        eo_r_attempted.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-update-walk-end-age")
-    {
-        last_update_walk_end_age = value;
-        last_update_walk_end_age.value_namespace = name_space;
-        last_update_walk_end_age.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-update-queued-age")
-    {
-        last_update_queued_age = value;
-        last_update_queued_age.value_namespace = name_space;
-        last_update_queued_age.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "update-group-index")
-    {
-        update_group_index.yfilter = yfilter;
-    }
-    if(value_path == "sub-group-index")
-    {
-        sub_group_index.yfilter = yfilter;
-    }
-    if(value_path == "sub-group-id")
-    {
-        sub_group_id.yfilter = yfilter;
-    }
-    if(value_path == "process-id")
-    {
-        process_id.yfilter = yfilter;
-    }
-    if(value_path == "update-vrf-name")
-    {
-        update_vrf_name.yfilter = yfilter;
-    }
-    if(value_path == "update-group-af-name")
-    {
-        update_group_af_name.yfilter = yfilter;
-    }
-    if(value_path == "sub-group-index-xr")
-    {
-        sub_group_index_xr.yfilter = yfilter;
-    }
-    if(value_path == "sub-group-id-xr")
-    {
-        sub_group_id_xr.yfilter = yfilter;
-    }
-    if(value_path == "parent-sub-group-index")
-    {
-        parent_sub_group_index.yfilter = yfilter;
-    }
-    if(value_path == "parent-sub-group-id")
-    {
-        parent_sub_group_id.yfilter = yfilter;
-    }
-    if(value_path == "update-group-index-xr")
-    {
-        update_group_index_xr.yfilter = yfilter;
-    }
-    if(value_path == "update-main-table-version")
-    {
-        update_main_table_version.yfilter = yfilter;
-    }
-    if(value_path == "update-vrf-table-rib-version")
-    {
-        update_vrf_table_rib_version.yfilter = yfilter;
-    }
-    if(value_path == "current-update-limit-sub-group")
-    {
-        current_update_limit_sub_group.yfilter = yfilter;
-    }
-    if(value_path == "configured-update-limit-sub-group")
-    {
-        configured_update_limit_sub_group.yfilter = yfilter;
-    }
-    if(value_path == "update-out-queue-messages")
-    {
-        update_out_queue_messages.yfilter = yfilter;
-    }
-    if(value_path == "update-out-queue-size")
-    {
-        update_out_queue_size.yfilter = yfilter;
-    }
-    if(value_path == "update-throttled")
-    {
-        update_throttled.yfilter = yfilter;
-    }
-    if(value_path == "refresh-sub-group-count")
-    {
-        refresh_sub_group_count.yfilter = yfilter;
-    }
-    if(value_path == "filter-group-count")
-    {
-        filter_group_count.yfilter = yfilter;
-    }
-    if(value_path == "neighbor-count")
-    {
-        neighbor_count.yfilter = yfilter;
-    }
-    if(value_path == "version")
-    {
-        version.yfilter = yfilter;
-    }
-    if(value_path == "nsr-version")
-    {
-        nsr_version.yfilter = yfilter;
-    }
-    if(value_path == "pending-target-version")
-    {
-        pending_target_version.yfilter = yfilter;
-    }
-    if(value_path == "next-resume-version")
-    {
-        next_resume_version.yfilter = yfilter;
-    }
-    if(value_path == "update-refresh-target-version")
-    {
-        update_refresh_target_version.yfilter = yfilter;
-    }
-    if(value_path == "io-write-event-pending")
-    {
-        io_write_event_pending.yfilter = yfilter;
-    }
-    if(value_path == "update-default-route-sent")
-    {
-        update_default_route_sent.yfilter = yfilter;
-    }
-    if(value_path == "merge-count")
-    {
-        merge_count.yfilter = yfilter;
-    }
-    if(value_path == "last-merged-sub-group-index")
-    {
-        last_merged_sub_group_index.yfilter = yfilter;
-    }
-    if(value_path == "eo-r-attempted")
-    {
-        eo_r_attempted.yfilter = yfilter;
-    }
-    if(value_path == "last-update-walk-end-age")
-    {
-        last_update_walk_end_age.yfilter = yfilter;
-    }
-    if(value_path == "last-update-queued-age")
-    {
-        last_update_queued_age.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "creation-timestamp" || name == "last-merge-timestamp" || name == "first-update-walk-start-timestamp" || name == "first-update-walk-end-timestamp" || name == "last-update-walk-start-timestamp" || name == "last-update-walk-end-timestamp" || name == "last-update-queued-timestamp" || name == "update-statistics" || name == "update-group-index" || name == "sub-group-index" || name == "sub-group-id" || name == "process-id" || name == "update-vrf-name" || name == "update-group-af-name" || name == "sub-group-index-xr" || name == "sub-group-id-xr" || name == "parent-sub-group-index" || name == "parent-sub-group-id" || name == "update-group-index-xr" || name == "update-main-table-version" || name == "update-vrf-table-rib-version" || name == "current-update-limit-sub-group" || name == "configured-update-limit-sub-group" || name == "update-out-queue-messages" || name == "update-out-queue-size" || name == "update-throttled" || name == "refresh-sub-group-count" || name == "filter-group-count" || name == "neighbor-count" || name == "version" || name == "nsr-version" || name == "pending-target-version" || name == "next-resume-version" || name == "update-refresh-target-version" || name == "io-write-event-pending" || name == "update-default-route-sent" || name == "merge-count" || name == "last-merged-sub-group-index" || name == "eo-r-attempted" || name == "last-update-walk-end-age" || name == "last-update-queued-age")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::CreationTimestamp::CreationTimestamp()
-    :
-    seconds{YType::uint32, "seconds"},
-    nanoseconds{YType::uint32, "nanoseconds"}
-{
-
-    yang_name = "creation-timestamp"; yang_parent_name = "update-generation-sub-group"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::CreationTimestamp::~CreationTimestamp()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::CreationTimestamp::has_data() const
-{
-    if (is_presence_container) return true;
-    return seconds.is_set
-	|| nanoseconds.is_set;
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::CreationTimestamp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(seconds.yfilter)
-	|| ydk::is_set(nanoseconds.yfilter);
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::CreationTimestamp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "creation-timestamp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::CreationTimestamp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::CreationTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::CreationTimestamp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::CreationTimestamp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::CreationTimestamp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::CreationTimestamp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "seconds" || name == "nanoseconds")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastMergeTimestamp::LastMergeTimestamp()
-    :
-    seconds{YType::uint32, "seconds"},
-    nanoseconds{YType::uint32, "nanoseconds"}
-{
-
-    yang_name = "last-merge-timestamp"; yang_parent_name = "update-generation-sub-group"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastMergeTimestamp::~LastMergeTimestamp()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastMergeTimestamp::has_data() const
-{
-    if (is_presence_container) return true;
-    return seconds.is_set
-	|| nanoseconds.is_set;
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastMergeTimestamp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(seconds.yfilter)
-	|| ydk::is_set(nanoseconds.yfilter);
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastMergeTimestamp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "last-merge-timestamp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastMergeTimestamp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastMergeTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastMergeTimestamp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastMergeTimestamp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastMergeTimestamp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastMergeTimestamp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "seconds" || name == "nanoseconds")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkStartTimestamp::FirstUpdateWalkStartTimestamp()
-    :
-    seconds{YType::uint32, "seconds"},
-    nanoseconds{YType::uint32, "nanoseconds"}
-{
-
-    yang_name = "first-update-walk-start-timestamp"; yang_parent_name = "update-generation-sub-group"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkStartTimestamp::~FirstUpdateWalkStartTimestamp()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkStartTimestamp::has_data() const
-{
-    if (is_presence_container) return true;
-    return seconds.is_set
-	|| nanoseconds.is_set;
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkStartTimestamp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(seconds.yfilter)
-	|| ydk::is_set(nanoseconds.yfilter);
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkStartTimestamp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "first-update-walk-start-timestamp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkStartTimestamp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkStartTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkStartTimestamp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkStartTimestamp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkStartTimestamp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkStartTimestamp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "seconds" || name == "nanoseconds")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkEndTimestamp::FirstUpdateWalkEndTimestamp()
-    :
-    seconds{YType::uint32, "seconds"},
-    nanoseconds{YType::uint32, "nanoseconds"}
-{
-
-    yang_name = "first-update-walk-end-timestamp"; yang_parent_name = "update-generation-sub-group"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkEndTimestamp::~FirstUpdateWalkEndTimestamp()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkEndTimestamp::has_data() const
-{
-    if (is_presence_container) return true;
-    return seconds.is_set
-	|| nanoseconds.is_set;
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkEndTimestamp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(seconds.yfilter)
-	|| ydk::is_set(nanoseconds.yfilter);
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkEndTimestamp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "first-update-walk-end-timestamp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkEndTimestamp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkEndTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkEndTimestamp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkEndTimestamp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkEndTimestamp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::FirstUpdateWalkEndTimestamp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "seconds" || name == "nanoseconds")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkStartTimestamp::LastUpdateWalkStartTimestamp()
-    :
-    seconds{YType::uint32, "seconds"},
-    nanoseconds{YType::uint32, "nanoseconds"}
-{
-
-    yang_name = "last-update-walk-start-timestamp"; yang_parent_name = "update-generation-sub-group"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkStartTimestamp::~LastUpdateWalkStartTimestamp()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkStartTimestamp::has_data() const
-{
-    if (is_presence_container) return true;
-    return seconds.is_set
-	|| nanoseconds.is_set;
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkStartTimestamp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(seconds.yfilter)
-	|| ydk::is_set(nanoseconds.yfilter);
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkStartTimestamp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "last-update-walk-start-timestamp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkStartTimestamp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkStartTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkStartTimestamp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkStartTimestamp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkStartTimestamp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkStartTimestamp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "seconds" || name == "nanoseconds")
-        return true;
-    return false;
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkEndTimestamp::LastUpdateWalkEndTimestamp()
-    :
-    seconds{YType::uint32, "seconds"},
-    nanoseconds{YType::uint32, "nanoseconds"}
-{
-
-    yang_name = "last-update-walk-end-timestamp"; yang_parent_name = "update-generation-sub-group"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkEndTimestamp::~LastUpdateWalkEndTimestamp()
-{
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkEndTimestamp::has_data() const
-{
-    if (is_presence_container) return true;
-    return seconds.is_set
-	|| nanoseconds.is_set;
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkEndTimestamp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(seconds.yfilter)
-	|| ydk::is_set(nanoseconds.yfilter);
-}
-
-std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkEndTimestamp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "last-update-walk-end-timestamp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkEndTimestamp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
-    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkEndTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkEndTimestamp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkEndTimestamp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "seconds")
-    {
-        seconds = value;
-        seconds.value_namespace = name_space;
-        seconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds = value;
-        nanoseconds.value_namespace = name_space;
-        nanoseconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkEndTimestamp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "seconds")
-    {
-        seconds.yfilter = yfilter;
-    }
-    if(value_path == "nanoseconds")
-    {
-        nanoseconds.yfilter = yfilter;
-    }
-}
-
-bool Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::UpdateGenerationSubGroups::UpdateGenerationSubGroup::LastUpdateWalkEndTimestamp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "seconds" || name == "nanoseconds")
         return true;
     return false;
 }

@@ -107,7 +107,7 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
 
 PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::OtuMinute15otn()
     :
-    number{YType::int32, "number"},
+    number{YType::uint32, "number"},
     index_{YType::uint32, "index"},
     valid{YType::boolean, "valid"},
     timestamp{YType::str, "timestamp"},
@@ -2500,7 +2500,7 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::Otu
 
 PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::OtuMinute15prbs::OtuMinute15prbs()
     :
-    number{YType::int32, "number"},
+    number{YType::uint32, "number"},
     index_{YType::uint32, "index"},
     valid{YType::boolean, "valid"},
     timestamp{YType::str, "timestamp"},
@@ -3161,7 +3161,7 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Otu
 
 PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::OtuSecond30fec()
     :
-    number{YType::int32, "number"},
+    number{YType::uint32, "number"},
     index_{YType::uint32, "index"},
     valid{YType::boolean, "valid"},
     timestamp{YType::str, "timestamp"},
@@ -4498,7 +4498,7 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::Otu
 
 PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::OtuSecond30otn()
     :
-    number{YType::int32, "number"},
+    number{YType::uint32, "number"},
     index_{YType::uint32, "index"},
     valid{YType::boolean, "valid"},
     timestamp{YType::str, "timestamp"},
@@ -7009,7 +7009,7 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHo
 
 PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::OtuHour24fec()
     :
-    number{YType::int32, "number"},
+    number{YType::uint32, "number"},
     index_{YType::uint32, "index"},
     valid{YType::boolean, "valid"},
     timestamp{YType::str, "timestamp"},
@@ -8346,7 +8346,7 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHo
 
 PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::OtuHour24prbs::OtuHour24prbs()
     :
-    number{YType::int32, "number"},
+    number{YType::uint32, "number"},
     index_{YType::uint32, "index"},
     valid{YType::boolean, "valid"},
     timestamp{YType::str, "timestamp"},
@@ -8907,7 +8907,7 @@ bool PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHo
 
 PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::OtuHour24otn()
     :
-    number{YType::int32, "number"},
+    number{YType::uint32, "number"},
     index_{YType::uint32, "index"},
     valid{YType::boolean, "valid"},
     timestamp{YType::str, "timestamp"},
@@ -11776,7 +11776,7 @@ bool PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHo
 
 PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::StmHour24stm()
     :
-    number{YType::int32, "number"},
+    number{YType::uint32, "number"},
     index_{YType::uint32, "index"},
     valid{YType::boolean, "valid"},
     timestamp{YType::str, "timestamp"},
@@ -15367,7 +15367,7 @@ bool PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::Stm
 
 PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::StmMinute15stm()
     :
-    number{YType::int32, "number"},
+    number{YType::uint32, "number"},
     index_{YType::uint32, "index"},
     valid{YType::boolean, "valid"},
     timestamp{YType::str, "timestamp"},

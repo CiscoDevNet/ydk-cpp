@@ -1401,7 +1401,8 @@ EthernetInterface::Interfaces::Interface::PhyInfo::PhyInfo()
     :
     media_type{YType::enumeration, "media-type"},
     phy_present{YType::enumeration, "phy-present"},
-    loopback{YType::enumeration, "loopback"}
+    loopback{YType::enumeration, "loopback"},
+    holdoff_time{YType::uint32, "holdoff-time"}
         ,
     phy_details(std::make_shared<EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails>())
     , fec_details(std::make_shared<EthernetInterface::Interfaces::Interface::PhyInfo::FecDetails>())
@@ -1428,6 +1429,7 @@ bool EthernetInterface::Interfaces::Interface::PhyInfo::has_data() const
     return media_type.is_set
 	|| phy_present.is_set
 	|| loopback.is_set
+	|| holdoff_time.is_set
 	|| (phy_details !=  nullptr && phy_details->has_data())
 	|| (fec_details !=  nullptr && fec_details->has_data());
 }
@@ -1443,6 +1445,7 @@ bool EthernetInterface::Interfaces::Interface::PhyInfo::has_operation() const
 	|| ydk::is_set(media_type.yfilter)
 	|| ydk::is_set(phy_present.yfilter)
 	|| ydk::is_set(loopback.yfilter)
+	|| ydk::is_set(holdoff_time.yfilter)
 	|| (phy_details !=  nullptr && phy_details->has_operation())
 	|| (fec_details !=  nullptr && fec_details->has_operation());
 }
@@ -1461,6 +1464,7 @@ std::vector<std::pair<std::string, LeafData> > EthernetInterface::Interfaces::In
     if (media_type.is_set || is_set(media_type.yfilter)) leaf_name_data.push_back(media_type.get_name_leafdata());
     if (phy_present.is_set || is_set(phy_present.yfilter)) leaf_name_data.push_back(phy_present.get_name_leafdata());
     if (loopback.is_set || is_set(loopback.yfilter)) leaf_name_data.push_back(loopback.get_name_leafdata());
+    if (holdoff_time.is_set || is_set(holdoff_time.yfilter)) leaf_name_data.push_back(holdoff_time.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1543,6 +1547,12 @@ void EthernetInterface::Interfaces::Interface::PhyInfo::set_value(const std::str
         loopback.value_namespace = name_space;
         loopback.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "holdoff-time")
+    {
+        holdoff_time = value;
+        holdoff_time.value_namespace = name_space;
+        holdoff_time.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void EthernetInterface::Interfaces::Interface::PhyInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1559,11 +1569,15 @@ void EthernetInterface::Interfaces::Interface::PhyInfo::set_filter(const std::st
     {
         loopback.yfilter = yfilter;
     }
+    if(value_path == "holdoff-time")
+    {
+        holdoff_time.yfilter = yfilter;
+    }
 }
 
 bool EthernetInterface::Interfaces::Interface::PhyInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "phy-details" || name == "fec-details" || name == "extended-loopback" || name == "media-type" || name == "phy-present" || name == "loopback")
+    if(name == "phy-details" || name == "fec-details" || name == "extended-loopback" || name == "media-type" || name == "phy-present" || name == "loopback" || name == "holdoff-time")
         return true;
     return false;
 }
@@ -5736,6 +5750,7 @@ const Enum::YLeaf EtherLinkState::incompatible_config {24, "incompatible-config"
 const Enum::YLeaf EtherLinkState::system_error {25, "system-error"};
 const Enum::YLeaf EtherLinkState::wan_framing_error {26, "wan-framing-error"};
 const Enum::YLeaf EtherLinkState::otn_framing_error {27, "otn-framing-error"};
+const Enum::YLeaf EtherLinkState::shutdown {28, "shutdown"};
 
 const Enum::YLeaf EthernetBertPattern::no_test_pattern {0, "no-test-pattern"};
 const Enum::YLeaf EthernetBertPattern::high_frequency {1, "high-frequency"};
@@ -6184,11 +6199,32 @@ const Enum::YLeaf EthernetMedia::ethernet_400gbase_fr4 {347, "ethernet-400gbase-
 const Enum::YLeaf EthernetMedia::ethernet_400gbase_dr4 {348, "ethernet-400gbase-dr4"};
 const Enum::YLeaf EthernetMedia::ethernet_400gbase_cr4 {349, "ethernet-400gbase-cr4"};
 const Enum::YLeaf EthernetMedia::ethernet_10gbase_cu1m {350, "ethernet-10gbase-cu1m"};
-const Enum::YLeaf EthernetMedia::ethernet_10gbase_cu3m {351, "ethernet-10gbase-cu3m"};
-const Enum::YLeaf EthernetMedia::ethernet_10gbase_cu5m {352, "ethernet-10gbase-cu5m"};
-const Enum::YLeaf EthernetMedia::ethernet_10gbase_acu7m {353, "ethernet-10gbase-acu7m"};
-const Enum::YLeaf EthernetMedia::ethernet_10gbase_acu10m {354, "ethernet-10gbase-acu10m"};
-const Enum::YLeaf EthernetMedia::ethernet_base_max {355, "ethernet-base-max"};
+const Enum::YLeaf EthernetMedia::ethernet_10gbase_cu1_5m {351, "ethernet-10gbase-cu1-5m"};
+const Enum::YLeaf EthernetMedia::ethernet_10gbase_cu2m {352, "ethernet-10gbase-cu2m"};
+const Enum::YLeaf EthernetMedia::ethernet_10gbase_cu2_5m {353, "ethernet-10gbase-cu2-5m"};
+const Enum::YLeaf EthernetMedia::ethernet_10gbase_cu3m {354, "ethernet-10gbase-cu3m"};
+const Enum::YLeaf EthernetMedia::ethernet_10gbase_cu5m {355, "ethernet-10gbase-cu5m"};
+const Enum::YLeaf EthernetMedia::ethernet_10gbase_acu7m {356, "ethernet-10gbase-acu7m"};
+const Enum::YLeaf EthernetMedia::ethernet_10gbase_acu10m {357, "ethernet-10gbase-acu10m"};
+const Enum::YLeaf EthernetMedia::ethernet_10gbase_aoc1m {358, "ethernet-10gbase-aoc1m"};
+const Enum::YLeaf EthernetMedia::ethernet_10gbase_aoc2m {359, "ethernet-10gbase-aoc2m"};
+const Enum::YLeaf EthernetMedia::ethernet_10gbase_aoc3m {360, "ethernet-10gbase-aoc3m"};
+const Enum::YLeaf EthernetMedia::ethernet_10gbase_aoc5m {361, "ethernet-10gbase-aoc5m"};
+const Enum::YLeaf EthernetMedia::ethernet_10gbase_aoc7m {362, "ethernet-10gbase-aoc7m"};
+const Enum::YLeaf EthernetMedia::ethernet_10gbase_aoc10m {363, "ethernet-10gbase-aoc10m"};
+const Enum::YLeaf EthernetMedia::ethernet_40gbase_aoc {364, "ethernet-40gbase-aoc"};
+const Enum::YLeaf EthernetMedia::ethernet_4x10g_base_lr {365, "ethernet-4x10g-base-lr"};
+const Enum::YLeaf EthernetMedia::ethernet_40gbase_acu1m {366, "ethernet-40gbase-acu1m"};
+const Enum::YLeaf EthernetMedia::ethernet_40gbase_acu3m {367, "ethernet-40gbase-acu3m"};
+const Enum::YLeaf EthernetMedia::ethernet_40gbase_acu5m {368, "ethernet-40gbase-acu5m"};
+const Enum::YLeaf EthernetMedia::ethernet_40gbase_acu7m {369, "ethernet-40gbase-acu7m"};
+const Enum::YLeaf EthernetMedia::ethernet_40gbase_acu10m {370, "ethernet-40gbase-acu10m"};
+const Enum::YLeaf EthernetMedia::ethernet_25gbase_cu1m {371, "ethernet-25gbase-cu1m"};
+const Enum::YLeaf EthernetMedia::ethernet_25gbase_cu2m {372, "ethernet-25gbase-cu2m"};
+const Enum::YLeaf EthernetMedia::ethernet_25gbase_cu3m {373, "ethernet-25gbase-cu3m"};
+const Enum::YLeaf EthernetMedia::ethernet_25gbase_cu5m {374, "ethernet-25gbase-cu5m"};
+const Enum::YLeaf EthernetMedia::ethernet_100gbase_sm_sr {375, "ethernet-100gbase-sm-sr"};
+const Enum::YLeaf EthernetMedia::ethernet_base_max {376, "ethernet-base-max"};
 
 const Enum::YLeaf EtherAinsStatus::ains_soak_status_none {0, "ains-soak-status-none"};
 const Enum::YLeaf EtherAinsStatus::ains_soak_status_pending {1, "ains-soak-status-pending"};

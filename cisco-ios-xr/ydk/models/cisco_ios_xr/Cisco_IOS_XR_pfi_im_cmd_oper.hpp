@@ -365,8 +365,10 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInforma
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class EncapsulationDetails; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails
+        class VlanSwitched; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails> encapsulation_details;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched> vlan_switched;
         
 }; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation
 
@@ -595,6 +597,179 @@ class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInforma
         ydk::YLeaf second_tag; //type: uint16
 
 }; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack
+
+
+class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched : public ydk::Entity
+{
+    public:
+        VlanSwitched();
+        ~VlanSwitched();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mode; //type: VlanSwitchedMode
+        ydk::YLeaf access_vlan; //type: uint16
+        class TrunkVlanRanges; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges> trunk_vlan_ranges;
+        
+}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched
+
+
+class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges : public ydk::Entity
+{
+    public:
+        TrunkVlanRanges();
+        ~TrunkVlanRanges();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf payload_ethertype; //type: EfpPayloadEtype
+        ydk::YLeaf tags_popped; //type: uint16
+        ydk::YLeaf is_exact_match; //type: int32
+        ydk::YLeaf is_native_vlan; //type: int32
+        ydk::YLeaf is_native_preserving; //type: int32
+        ydk::YLeaf source_mac_match; //type: string
+        ydk::YLeaf destination_mac_match; //type: string
+        class LocalTrafficStack; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::LocalTrafficStack
+        class TagsToMatch; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::TagsToMatch
+        class Pushe; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::Pushe
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_oper::Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::LocalTrafficStack> local_traffic_stack;
+        ydk::YList tags_to_match;
+        ydk::YList pushe;
+        
+}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges
+
+
+class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::LocalTrafficStack : public ydk::Entity
+{
+    public:
+        LocalTrafficStack();
+        ~LocalTrafficStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class LocalTrafficTag; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag
+
+        ydk::YList local_traffic_tag;
+        
+}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::LocalTrafficStack
+
+
+class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag : public ydk::Entity
+{
+    public:
+        LocalTrafficTag();
+        ~LocalTrafficTag();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ethertype; //type: EfpTagEtype
+        ydk::YLeaf vlan_id; //type: uint16
+
+}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag
+
+
+class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::TagsToMatch : public ydk::Entity
+{
+    public:
+        TagsToMatch();
+        ~TagsToMatch();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ethertype; //type: EfpTagEtype
+        ydk::YLeaf priority; //type: EfpTagPriority
+        class VlanRange; //type: Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange
+
+        ydk::YList vlan_range;
+        
+}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::TagsToMatch
+
+
+class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange : public ydk::Entity
+{
+    public:
+        VlanRange();
+        ~VlanRange();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf vlan_id_low; //type: uint16
+        ydk::YLeaf vlan_id_high; //type: uint16
+
+}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange
+
+
+class Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::Pushe : public ydk::Entity
+{
+    public:
+        Pushe();
+        ~Pushe();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ethertype; //type: EfpTagEtype
+        ydk::YLeaf vlan_id; //type: uint16
+
+}; // Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::Pushe
 
 
 class Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation : public ydk::Entity
@@ -2480,6 +2655,15 @@ class ImCmdIntfTypeEnum : public ydk::Enum
 
 };
 
+class VlanSwitchedMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf trunk_port;
+        static const ydk::Enum::YLeaf access_port;
+
+};
+
 class ImCmdStatsEnum : public ydk::Enum
 {
     public:
@@ -3395,6 +3579,26 @@ class ImAttrMedia : public ydk::Enum
         static const ydk::Enum::YLeaf im_attr_media_10gbase_cu5m;
         static const ydk::Enum::YLeaf im_attr_media_10gbase_acu7m;
         static const ydk::Enum::YLeaf im_attr_media_10gbase_acu10m;
+        static const ydk::Enum::YLeaf im_attr_media_4x10g_base_lr;
+        static const ydk::Enum::YLeaf im_attr_media_10gbase_cu1_5m;
+        static const ydk::Enum::YLeaf im_attr_media_10gbase_cu2m;
+        static const ydk::Enum::YLeaf im_attr_media_10gbase_cu2_5m;
+        static const ydk::Enum::YLeaf im_attr_media_10gbase_aoc1m;
+        static const ydk::Enum::YLeaf im_attr_media_10gbase_aoc2m;
+        static const ydk::Enum::YLeaf im_attr_media_10gbase_aoc3m;
+        static const ydk::Enum::YLeaf im_attr_media_10gbase_aoc5m;
+        static const ydk::Enum::YLeaf im_attr_media_10gbase_aoc7m;
+        static const ydk::Enum::YLeaf im_attr_media_10gbase_aoc10m;
+        static const ydk::Enum::YLeaf im_attr_media_40gbase_acu1m;
+        static const ydk::Enum::YLeaf im_attr_media_40gbase_acu3m;
+        static const ydk::Enum::YLeaf im_attr_media_40gbase_acu5m;
+        static const ydk::Enum::YLeaf im_attr_media_40gbase_acu7m;
+        static const ydk::Enum::YLeaf im_attr_media_40gbase_acu10m;
+        static const ydk::Enum::YLeaf im_attr_media_25gbase_cu1m;
+        static const ydk::Enum::YLeaf im_attr_media_25gbase_cu2m;
+        static const ydk::Enum::YLeaf im_attr_media_25gbase_cu3m;
+        static const ydk::Enum::YLeaf im_attr_media_25gbase_cu5m;
+        static const ydk::Enum::YLeaf im_attr_media_100gbase_sm_sr;
 
 };
 

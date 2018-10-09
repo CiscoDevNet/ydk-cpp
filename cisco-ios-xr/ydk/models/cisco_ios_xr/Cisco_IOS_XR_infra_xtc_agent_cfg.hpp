@@ -61,6 +61,15 @@ class XtcAutoRouteMetric : public ydk::Enum
 
 };
 
+class XtcSteeringApplication : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf isis;
+        static const ydk::Enum::YLeaf ospf;
+
+};
+
 class XtcBindingSid : public ydk::Enum
 {
     public:

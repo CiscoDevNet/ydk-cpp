@@ -2821,6 +2821,8 @@ class Ipv6Pim::Standby::Vrfs::Vrf::TrafficCounters : public ydk::Entity
         ydk::YLeaf invalid_destination_packets; //type: uint32
         ydk::YLeaf mdt_joins_drop_multiple_encapsulation; //type: uint32
         ydk::YLeaf truncated_pim_packets; //type: uint32
+        ydk::YLeaf invalid_source_encodings; //type: uint32
+        ydk::YLeaf invalid_hello_options; //type: uint32
         class PacketQueue; //type: Ipv6Pim::Standby::Vrfs::Vrf::TrafficCounters::PacketQueue
 
         ydk::YList packet_queue;
